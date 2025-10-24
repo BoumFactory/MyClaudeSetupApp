@@ -30,8 +30,9 @@ export async function getRedisClient() {
       console.log('🔄 Attempting to connect to Redis...')
       console.log('📍 REDIS_URL format:', process.env.REDIS_URL?.substring(0, 20) + '...')
 
-      // Créer le client Redis avec options pour désactiver la reconnexion automatique
+      // Créer le client Redis avec l'URL explicite
       redisClient = createClient({
+        url: process.env.REDIS_URL, // IMPORTANT : Passer l'URL explicitement
         socket: {
           reconnectStrategy: false, // Pas de reconnexion automatique
           connectTimeout: 10000, // 10 secondes
