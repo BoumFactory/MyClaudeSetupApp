@@ -27,28 +27,33 @@ export async function getRedisClient() {
         throw new Error('REDIS_URL not configured')
       }
 
+      console.log('🔄 Attempting to connect to Redis...')
+      console.log('📍 REDIS_URL format:', process.env.REDIS_URL?.substring(0, 20) + '...')
+
       // Créer le client Redis avec options pour désactiver la reconnexion automatique
       redisClient = createClient({
         socket: {
           reconnectStrategy: false, // Pas de reconnexion automatique
+          connectTimeout: 10000, // 10 secondes
         }
       })
 
-      // Supprimer les listeners d'erreur par défaut pour éviter les logs intempestifs
-      redisClient.on('error', () => {
-        // Silencieux - on gère les erreurs dans le catch
+      // Logger les erreurs pour debug
+      redisClient.on('error', (err) => {
+        console.error('🔴 Redis connection error:', err.message)
       })
 
-      // Connecter avec timeout court
+      // Connecter avec timeout
+      console.log('⏳ Connecting to Redis...')
       await Promise.race([
         redisClient.connect(),
         new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Redis connection timeout')), 3000)
+          setTimeout(() => reject(new Error('Redis connection timeout after 10s')), 10000)
         )
       ])
 
       isRedisAvailable = true
-      console.log('✓ Redis connected successfully')
+      console.log('✅ Redis connected successfully!')
     } catch (error) {
       console.warn('⚠️ Redis not available - running in degraded mode:', error instanceof Error ? error.message : error)
       isRedisAvailable = false
