@@ -34,16 +34,16 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Python
-venv/
+# Python (à la racine du projet, pas dans public/download/)
+/venv/
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-build/
+/build/
 develop-eggs/
-dist/
+/dist/
 eggs/
 .eggs/
 lib64/
@@ -57,16 +57,6 @@ wheels/
 
 # Claude config at root (but NOT in public/download/)
 /.claude/
-
-# Fichiers de téléchargement - exclure les binaires et fichiers temporaires
-public/download/**/*.exe
-public/download/**/*.dll
-public/download/**/build/
-public/download/**/dist/
-public/download/**/lib/
-public/download/**/lib64/
-public/download/**/__pycache__/
-public/download/**/.pytest_cache/
 
 # IDE
 .vscode/
