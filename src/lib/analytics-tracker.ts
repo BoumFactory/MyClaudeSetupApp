@@ -1,5 +1,4 @@
-import fs from 'fs/promises'
-import path from 'path'
+import { getRedisClient } from './redis'
 
 /**
  * Type d'événement trackable
@@ -32,16 +31,16 @@ export interface AnalyticsStats {
  * Gestionnaire de tracking analytics
  */
 export class AnalyticsTracker {
-  private eventsPath: string
-  private statsPath: string
+  private eventsKey: string
+  private statsKey: string
   private maxEventsToKeep: number
 
   constructor(
-    dataDir: string,
+    namespace: string = 'analytics',
     maxEventsToKeep: number = 10000
   ) {
-    this.eventsPath = path.join(dataDir, 'events.json')
-    this.statsPath = path.join(dataDir, 'stats.json')
+    this.eventsKey = `${namespace}:events`
+    this.statsKey = `${namespace}:stats`
     this.maxEventsToKeep = maxEventsToKeep
   }
 
@@ -50,8 +49,9 @@ export class AnalyticsTracker {
    */
   private async loadEvents(): Promise<AnalyticsEvent[]> {
     try {
-      const content = await fs.readFile(this.eventsPath, 'utf-8')
-      return JSON.parse(content)
+      const redis = await getRedisClient()
+      const data = await redis.get(this.eventsKey)
+      return data ? JSON.parse(data) : []
     } catch (error) {
       return []
     }
@@ -61,12 +61,10 @@ export class AnalyticsTracker {
    * Sauvegarder les événements
    */
   private async saveEvents(events: AnalyticsEvent[]): Promise<void> {
-    const dir = path.dirname(this.eventsPath)
-    await fs.mkdir(dir, { recursive: true })
-
     // Garder seulement les N derniers événements
     const eventsToSave = events.slice(-this.maxEventsToKeep)
-    await fs.writeFile(this.eventsPath, JSON.stringify(eventsToSave, null, 2), 'utf-8')
+    const redis = await getRedisClient()
+    await redis.set(this.eventsKey, JSON.stringify(eventsToSave))
   }
 
   /**
@@ -74,8 +72,9 @@ export class AnalyticsTracker {
    */
   private async loadStats(): Promise<AnalyticsStats | null> {
     try {
-      const content = await fs.readFile(this.statsPath, 'utf-8')
-      return JSON.parse(content)
+      const redis = await getRedisClient()
+      const data = await redis.get(this.statsKey)
+      return data ? JSON.parse(data) : null
     } catch (error) {
       return null
     }
@@ -85,10 +84,8 @@ export class AnalyticsTracker {
    * Sauvegarder les statistiques
    */
   private async saveStats(stats: AnalyticsStats): Promise<void> {
-    const dir = path.dirname(this.statsPath)
-    await fs.mkdir(dir, { recursive: true })
-
-    await fs.writeFile(this.statsPath, JSON.stringify(stats, null, 2), 'utf-8')
+    const redis = await getRedisClient()
+    await redis.set(this.statsKey, JSON.stringify(stats))
   }
 
   /**
@@ -231,6 +228,5 @@ export class AnalyticsTracker {
  * Créer une instance globale du tracker
  */
 export function createAnalyticsTracker(): AnalyticsTracker {
-  const dataDir = path.join(process.cwd(), 'src', 'data', 'analytics')
-  return new AnalyticsTracker(dataDir)
+  return new AnalyticsTracker('analytics')
 }

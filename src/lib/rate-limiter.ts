@@ -1,5 +1,4 @@
-import fs from 'fs/promises'
-import path from 'path'
+import { getRedisClient } from './redis'
 
 /**
  * Interface pour les données de rate limiting
@@ -21,16 +20,16 @@ interface RateLimitData {
  * Gestionnaire de rate limiting pour les téléchargements
  */
 export class RateLimiter {
-  private dataPath: string
+  private dataKey: string
   private maxDownloadsPerIP: number
   private maxDailyNewIPs: number
 
   constructor(
-    dataPath: string,
+    namespace: string = 'ratelimit',
     maxDownloadsPerIP: number = 5,
     maxDailyNewIPs: number = 20
   ) {
-    this.dataPath = dataPath
+    this.dataKey = `${namespace}:data`
     this.maxDownloadsPerIP = maxDownloadsPerIP
     this.maxDailyNewIPs = maxDailyNewIPs
   }
@@ -40,10 +39,18 @@ export class RateLimiter {
    */
   private async loadData(): Promise<RateLimitData> {
     try {
-      const content = await fs.readFile(this.dataPath, 'utf-8')
-      return JSON.parse(content)
+      const redis = await getRedisClient()
+      const result = await redis.get(this.dataKey)
+      const data = result ? JSON.parse(result) : null
+      return data || {
+        dailyIPs: {
+          date: this.getToday(),
+          ips: []
+        },
+        ipDownloads: {}
+      }
     } catch (error) {
-      // Fichier inexistant, retourner des données vides
+      // Erreur de connexion, retourner des données vides
       return {
         dailyIPs: {
           date: this.getToday(),
@@ -58,11 +65,8 @@ export class RateLimiter {
    * Sauvegarder les données de rate limiting
    */
   private async saveData(data: RateLimitData): Promise<void> {
-    // Créer le dossier si nécessaire
-    const dir = path.dirname(this.dataPath)
-    await fs.mkdir(dir, { recursive: true })
-
-    await fs.writeFile(this.dataPath, JSON.stringify(data, null, 2), 'utf-8')
+    const redis = await getRedisClient()
+    await redis.set(this.dataKey, JSON.stringify(data))
   }
 
   /**
@@ -226,6 +230,5 @@ export class RateLimiter {
  * Créer une instance de RateLimiter pour les téléchargements
  */
 export function createDownloadRateLimiter(): RateLimiter {
-  const dataPath = path.join(process.cwd(), 'src', 'data', 'analytics', 'rate-limit.json')
-  return new RateLimiter(dataPath, 5, 20)
+  return new RateLimiter('ratelimit', 5, 20)
 }
