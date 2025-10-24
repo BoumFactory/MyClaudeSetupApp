@@ -103,8 +103,8 @@ function getCategoryBackgroundStyle(categoryId: string) {
  * Page listant toutes les présentations reveal.js disponibles organisées par catégories
  */
 export default async function PresentationsPage() {
-  // Scanner les présentations dans le dossier src/public/render/Reveals
-  const revealsPath = path.join(process.cwd(), 'src', 'public', 'render', 'Reveals')
+  // Scanner les présentations dans le dossier public/render/Reveals
+  const revealsPath = path.join(process.cwd(), 'public', 'render', 'Reveals')
   const presentations = await scanPresentations(revealsPath, 'claude-code')
 
   // Lire la configuration des catégories

@@ -60,14 +60,14 @@ wheels/
 /.claude/
 
 # Fichiers de téléchargement - exclure les binaires et fichiers temporaires
-src/public/download/**/*.exe
-src/public/download/**/*.dll
-src/public/download/**/build/
-src/public/download/**/dist/
-src/public/download/**/lib/
-src/public/download/**/lib64/
-src/public/download/**/__pycache__/
-src/public/download/**/.pytest_cache/
+public/download/**/*.exe
+public/download/**/*.dll
+public/download/**/build/
+public/download/**/dist/
+public/download/**/lib/
+public/download/**/lib64/
+public/download/**/__pycache__/
+public/download/**/.pytest_cache/
 
 # IDE
 .vscode/
@@ -78,3 +78,6 @@ src/public/download/**/.pytest_cache/
 
 # Analytics data (generated at runtime)
 src/data/analytics/
+
+# Fiche de description du site (document interne)
+fiche-description/

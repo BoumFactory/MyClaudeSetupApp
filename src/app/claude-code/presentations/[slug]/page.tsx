@@ -17,7 +17,7 @@ export async function generateMetadata(
   { params }: PresentationPageProps
 ): Promise<Metadata> {
   const { slug } = await params
-  const revealsPath = path.join(process.cwd(), 'src', 'public', 'render', 'Reveals')
+  const revealsPath = path.join(process.cwd(), 'public', 'render', 'Reveals')
   const presentations = await scanPresentations(revealsPath, 'claude-code')
   const presentation = presentations.find((p) => p.slug === slug)
 
@@ -37,7 +37,7 @@ export async function generateMetadata(
  * Génération statique des routes pour toutes les présentations
  */
 export async function generateStaticParams() {
-  const revealsPath = path.join(process.cwd(), 'src', 'public', 'render', 'Reveals')
+  const revealsPath = path.join(process.cwd(), 'public', 'render', 'Reveals')
   const presentations = await scanPresentations(revealsPath, 'claude-code')
 
   return presentations.map((presentation) => ({
@@ -51,7 +51,7 @@ export async function generateStaticParams() {
  */
 export default async function PresentationPage({ params }: PresentationPageProps) {
   const { slug } = await params
-  const revealsPath = path.join(process.cwd(), 'src', 'public', 'render', 'Reveals')
+  const revealsPath = path.join(process.cwd(), 'public', 'render', 'Reveals')
   const presentations = await scanPresentations(revealsPath, 'claude-code')
   const presentation = presentations.find((p) => p.slug === slug)
 
@@ -59,9 +59,9 @@ export default async function PresentationPage({ params }: PresentationPageProps
     notFound()
   }
 
-  // Construire l'URL de la présentation via l'API
-  // Les fichiers sont servis depuis src/public/ via la route API
-  const presentationUrl = `/api/serve-public/render/Reveals/${presentation.filename}`
+  // Construire l'URL de la présentation
+  // Les fichiers sont servis depuis le dossier public/ standard de Next.js
+  const presentationUrl = `/render/Reveals/${presentation.filename}`
 
   return (
     <div className="space-y-6">

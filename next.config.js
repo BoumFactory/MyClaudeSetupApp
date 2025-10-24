@@ -43,14 +43,6 @@ const nextConfig = {
       }
     ]
   },
-  // Configuration pour servir les fichiers statiques depuis src/public
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@/public': require('path').join(__dirname, 'src/public'),
-    }
-    return config
-  },
 }
 
 module.exports = nextConfig
