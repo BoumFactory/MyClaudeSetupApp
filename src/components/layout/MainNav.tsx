@@ -32,6 +32,7 @@ export function MainNav() {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [openCategory, setOpenCategory] = useState<string | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null)
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const { currentAnimation, cycleAnimation, animations } = useBackgroundAnimation()
 
@@ -290,11 +291,11 @@ export function MainNav() {
             {/* Bouton pour changer l'animation de fond */}
             <button
               onClick={cycleAnimation}
-              className="group relative flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30 border border-transparent hover:border-cosmic-700/50 flex-shrink-0"
+              className="group relative flex items-center gap-2 px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30 border border-transparent hover:border-cosmic-700/50 flex-shrink-0"
               title={currentAnimationInfo ? `Animation: ${currentAnimationInfo.name}` : 'Changer l\'animation'}
             >
               <Shuffle className="w-4 h-4 transition-transform group-hover:rotate-180 duration-500" />
-              <span className="hidden md:inline-block text-xs">Animation</span>
+              <span className="hidden lg:inline-block text-xs whitespace-nowrap">Animation</span>
 
               {/* Tooltip avec le nom de l'animation */}
               {currentAnimationInfo && (
@@ -483,7 +484,12 @@ export function MainNav() {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              setMobileMenuOpen(!mobileMenuOpen)
+              if (mobileMenuOpen) {
+                setOpenMobileSubmenu(null)
+              }
+            }}
             className="md:hidden p-2 text-muted-foreground hover:text-foreground"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -504,25 +510,50 @@ export function MainNav() {
 
                 return (
                   <div key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={() => !hasSubmenu && setMobileMenuOpen(false)}
-                      className={cn(
-                        "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200",
-                        isActive
-                          ? "bg-cosmic-900/50 text-cosmic-300 border border-cosmic-700"
-                          : isFeatured
-                          ? "text-foreground border border-cosmic-600/40 hover:border-cosmic-500/60 hover:bg-cosmic-900/30"
-                          : "text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30"
-                      )}
-                    >
-                      <Icon className={cn("w-4 h-4", isFeatured && "text-cosmic-400")} />
-                      <span>{item.title}</span>
-                    </Link>
+                    {hasSubmenu ? (
+                      <button
+                        onClick={() => setOpenMobileSubmenu(openMobileSubmenu === item.title ? null : item.title)}
+                        className={cn(
+                          "w-full flex items-center justify-between gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200",
+                          isActive
+                            ? "bg-cosmic-900/50 text-cosmic-300 border border-cosmic-700"
+                            : isFeatured
+                            ? "text-foreground border border-cosmic-600/40 hover:border-cosmic-500/60 hover:bg-cosmic-900/30"
+                            : "text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30"
+                        )}
+                      >
+                        <div className="flex items-center gap-2">
+                          <Icon className={cn("w-4 h-4", isFeatured && "text-cosmic-400")} />
+                          <span>{item.title}</span>
+                        </div>
+                        <ChevronDown
+                          className={cn(
+                            "w-4 h-4 transition-transform duration-200",
+                            openMobileSubmenu === item.title && "rotate-180"
+                          )}
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={cn(
+                          "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200",
+                          isActive
+                            ? "bg-cosmic-900/50 text-cosmic-300 border border-cosmic-700"
+                            : isFeatured
+                            ? "text-foreground border border-cosmic-600/40 hover:border-cosmic-500/60 hover:bg-cosmic-900/30"
+                            : "text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30"
+                        )}
+                      >
+                        <Icon className={cn("w-4 h-4", isFeatured && "text-cosmic-400")} />
+                        <span>{item.title}</span>
+                      </Link>
+                    )}
 
                     {/* Mobile Submenu */}
-                    {hasSubmenu && (
-                      <div className="ml-4 mt-1 space-y-1">
+                    {hasSubmenu && openMobileSubmenu === item.title && (
+                      <div className="ml-4 mt-1 space-y-1 animate-in slide-in-from-top-2 duration-200">
                         {isMultiLevel ? (
                           // Menu à 2 niveaux pour les présentations
                           item.submenu!.map((category: any) => {
