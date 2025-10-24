@@ -14,12 +14,15 @@ export async function GET(
     const { path: pathSegments } = await params
 
     // Construire le chemin vers le fichier
-    const filePath = path.join(
-      process.cwd(),
-      'src',
-      'public',
-      ...pathSegments
-    )
+    const publicDir = path.join(process.cwd(), 'src', 'public')
+    const filePath = path.join(publicDir, ...pathSegments)
+
+    // Protection contre path traversal : vérifier que le chemin résolu reste dans src/public
+    const resolvedPath = path.resolve(filePath)
+    const resolvedPublicDir = path.resolve(publicDir)
+    if (!resolvedPath.startsWith(resolvedPublicDir)) {
+      return new NextResponse('Forbidden', { status: 403 })
+    }
 
     // Vérifier que le fichier existe
     if (!fs.existsSync(filePath)) {
