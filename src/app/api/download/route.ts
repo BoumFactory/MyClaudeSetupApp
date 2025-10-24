@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { generateZip } from '@/lib/zip-generator-server'
 import { DownloadableItem } from '@/types'
+import path from 'path'
 
 /**
  * API route pour générer et télécharger un ZIP
@@ -8,18 +9,21 @@ import { DownloadableItem } from '@/types'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { files, basePath } = body as {
+    const { files } = body as {
       files: DownloadableItem[]
-      basePath: string
     }
 
     // Valider les données
-    if (!files || !basePath) {
+    if (!files) {
       return NextResponse.json(
         { error: 'Données manquantes' },
         { status: 400 }
       )
     }
+
+    // Recalculer le basePath côté serveur au runtime
+    // Cela garantit que le chemin est correct sur Vercel
+    const basePath = path.join(process.cwd(), 'public', 'download')
 
     // Générer le ZIP
     const zipBuffer = await generateZip(files, basePath, true)

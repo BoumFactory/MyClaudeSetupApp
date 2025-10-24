@@ -118,7 +118,7 @@ export function FileExplorer({ files: initialFiles, basePath }: FileExplorerProp
         },
         body: JSON.stringify({
           files,
-          basePath,
+          // basePath supprimé - sera recalculé côté serveur au runtime
         }),
       })
 
