@@ -48,4 +48,6 @@ Si un fichier latex bug : lance l'agent debug-tex-log en lui donnant le fichier 
 
 ## Critical
 
+Avant de faire un git commit / git push tu dois me demander si cela me convient.
+
 Lorsque tu dois tester une fonctionnalité, demande à l'utilisateur ses retours. Tu ne lance pas de pnpm dev, c'est l'utilisateur qui le fait.
