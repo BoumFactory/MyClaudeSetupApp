@@ -1,0 +1,44 @@
+{
+  "user_preferences": {
+    "etablissement": {
+      "nom_etablissement": "Camille Claudel",
+      "type_etablissement": "Lycee"
+    },
+    "author": {
+      "nom": "R.Deschamps",
+      "email": "romain.deschamps12@orange.fr"
+    },
+    "defaults": {
+      "niveau": "$\\mathbf{6^{\\text{ème}}}$",
+      "niveau_options": [
+        "$\\mathbf{6^{\\text{ème}}}$",
+        "$\\mathbf{5^{\\text{ème}}}$", 
+        "$\\mathbf{4^{\\text{ème}}}$",
+        "$\\mathbf{3^{\\text{ème}}}$",
+        "$\\mathbf{2^{\\text{nde}}}$",
+        "$\\mathbf{1^{\\text{ère}}}$",
+        "$\\mathbf{T^{\\text{Le}}}$"
+      ],
+      "theme": "Equations",
+      "theme_options": [
+        "Nombres",
+        "Calculs",
+        "Equations",
+        "Proportionnalité",
+        "Géométrie",
+        "Aires et volumes",
+        "Statistiques",
+        "Probabilités"
+      ]
+    },
+    "document_settings": {
+      "create_images_folder": false,
+      "create_annexes_folder": false, 
+      "create_sections_folder": true,
+      "create_figures_file": true,
+      "include_claude_instructions": true
+    }
+  },
+  "settings_version": "1.0",
+  "last_updated": "2025-01-08"
+}

@@ -1,0 +1,297 @@
+% Template de Fiche Technique - Format Inspecteur (Officiel)
+% Utilisation : Document administratif destiné aux inspecteurs
+% Style : Sobre, académique, professionnel avec en-tête officiel
+
+\documentclass[11pt,a4paper]{article}
+
+% ============================================
+% PACKAGES
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+
+% ============================================
+% CONFIGURATION DE LA PAGE
+% ============================================
+\geometry{
+    a4paper,
+    top=3.5cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.5cm,
+    headheight=2.5cm,
+    headsep=0.8cm
+}
+
+% ============================================
+% COULEURS OFFICIELLES
+% ============================================
+\definecolor{bleu-rf}{RGB}{0,85,164}      % Bleu République Française
+\definecolor{rouge-rf}{RGB}{239,65,53}    % Rouge République Française
+\definecolor{gris-titre}{RGB}{50,50,50}   % Gris pour les titres
+\definecolor{gris-clair}{RGB}{240,240,240} % Gris clair pour les encadrés
+
+% ============================================
+% EN-TÊTE ET PIED DE PAGE
+% ============================================
+\pagestyle{fancy}
+\fancyhf{}
+
+% En-tête avec logo République Française
+\fancyhead[L]{%
+    \begin{minipage}[c]{0.15\textwidth}
+        \includegraphics[height=1.8cm]{C:/Users/Utilisateur/Documents/Professionnel/1. Reims 2025 - 2026/.claude/datas/latex-modeles/logo-republique-francaise.svg}
+    \end{minipage}%
+    \hspace{0.02\textwidth}%
+    \begin{minipage}[c]{0.75\textwidth}
+        \small
+        \textbf{Académie de %ACADEMIE%}\\
+        %TYPE_ETABLISSEMENT% %NOM_ETABLISSEMENT%\\
+        \textit{Année scolaire %ANNEE_SCOLAIRE%}
+    \end{minipage}
+}
+
+\fancyhead[R]{}
+
+% Pied de page
+\fancyfoot[C]{\small Page \thepage}
+\fancyfoot[R]{\small \textit{Document confidentiel}}
+
+% Ligne de séparation en-tête
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ============================================
+% STYLE DES TITRES
+% ============================================
+\titleformat{\section}
+    {\Large\bfseries\color{bleu-rf}}
+    {\thesection}{1em}{}
+    [\vspace{-0.5em}\titlerule]
+
+\titleformat{\subsection}
+    {\large\bfseries\color{gris-titre}}
+    {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+    {\normalsize\bfseries\color{gris-titre}}
+    {\thesubsubsection}{1em}{}
+
+% Espacement des titres
+\titlespacing*{\section}{0pt}{1.5ex plus 1ex minus .2ex}{1ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.2ex plus 1ex minus .2ex}{0.8ex plus .2ex}
+
+% ============================================
+% STYLE DES LISTES
+% ============================================
+\setlist[itemize,1]{label=\textcolor{bleu-rf}{$\bullet$}, leftmargin=1.5em}
+\setlist[itemize,2]{label=\textcolor{gris-titre}{--}, leftmargin=2em}
+\setlist[enumerate]{leftmargin=1.5em}
+
+% ============================================
+% ENVIRONNEMENTS PERSONNALISÉS
+% ============================================
+
+% Encadré pour informations importantes
+\newenvironment{encadre}{%
+    \begin{center}
+    \begin{tabular}{|p{0.95\textwidth}|}
+    \hline
+    \rowcolor{gris-clair}
+}{%
+    \\
+    \hline
+    \end{tabular}
+    \end{center}
+}
+
+% Tableau d'informations clés
+\newenvironment{infoscles}{%
+    \begin{center}
+    \begin{tabularx}{0.95\textwidth}{>{\bfseries}l X}
+    \toprule
+}{%
+    \bottomrule
+    \end{tabularx}
+    \end{center}
+}
+
+% ============================================
+% CONFIGURATION HYPERREF
+% ============================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bleu-rf,
+    urlcolor=bleu-rf,
+    citecolor=bleu-rf,
+    pdfborder={0 0 0}
+}
+
+% ============================================
+% DÉBUT DU DOCUMENT
+% ============================================
+\begin{document}
+
+% ============================================
+% PAGE DE TITRE
+% ============================================
+\begin{center}
+    \vspace*{1cm}
+
+    {\LARGE\bfseries\color{bleu-rf} FICHE TECHNIQUE PÉDAGOGIQUE}
+
+    \vspace{0.5cm}
+    \rule{0.8\textwidth}{1pt}
+    \vspace{0.5cm}
+
+    {\Large %TITRE_RESSOURCE%}
+
+    \vspace{0.3cm}
+    {\large %NIVEAU%}
+
+    \vspace{1cm}
+\end{center}
+
+% Informations clés en encadré
+\begin{encadre}
+    \begin{infoscles}
+        Type de ressource & %TYPE_RESSOURCE% \\
+        \midrule
+        Niveau & %NIVEAU_DETAILLE% \\
+        \midrule
+        Thème & %THEME% \\
+        \midrule
+        Durée estimée & %DUREE% \\
+        \midrule
+        Auteur & %AUTEUR% \\
+        \midrule
+        Date & %DATE% \\
+    \end{infoscles}
+\end{encadre}
+
+\vspace{1cm}
+
+% ============================================
+% SECTION 1 : PRÉSENTATION DE LA RESSOURCE
+% ============================================
+\section{Présentation de la ressource}
+
+%PRESENTATION%
+
+% ============================================
+% SECTION 2 : OBJECTIFS PÉDAGOGIQUES
+% ============================================
+\section{Objectifs pédagogiques}
+
+\subsection{Connaissances}
+%CONNAISSANCES%
+
+\subsection{Compétences}
+%COMPETENCES%
+
+\subsection{Capacités travaillées}
+%CAPACITES%
+
+% ============================================
+% SECTION 3 : LIEN AVEC LES PROGRAMMES OFFICIELS
+% ============================================
+\section{Inscription dans les programmes officiels}
+
+\subsection{Références au Bulletin Officiel}
+%REFERENCES_BO%
+
+\subsection{Compétences du socle commun}
+\textit{(Pour le collège uniquement)}
+
+%COMPETENCES_SOCLE%
+
+\subsection{Compétences mathématiques travaillées}
+%COMPETENCES_MATHS%
+
+% ============================================
+% SECTION 4 : ACTIVITÉS PRÉVUES DES ÉLÈVES
+% ============================================
+\section{Activités prévues des élèves}
+
+%ACTIVITES_ELEVES%
+
+% ============================================
+% SECTION 5 : PRÉREQUIS
+% ============================================
+\section{Prérequis}
+
+\subsection{Prérequis mathématiques}
+%PREREQUIS_MATHS%
+
+\subsection{Prérequis méthodologiques}
+%PREREQUIS_METHODO%
+
+% ============================================
+% SECTION 6 : MODALITÉS DE MISE EN ŒUVRE
+% ============================================
+\section{Modalités de mise en œuvre}
+
+\begin{infoscles}
+    Durée totale & %DUREE_TOTALE% \\
+    \midrule
+    Organisation & %ORGANISATION% \\
+    \midrule
+    Matériel nécessaire & %MATERIEL% \\
+    \midrule
+    Supports & %SUPPORTS% \\
+\end{infoscles}
+
+\subsection{Déroulement proposé}
+%DEROULEMENT%
+
+% ============================================
+% SECTION 7 : CHOIX DIDACTIQUES ET PÉDAGOGIQUES
+% ============================================
+\section{Choix didactiques et pédagogiques}
+
+\subsection{Justification des choix pédagogiques}
+%JUSTIFICATION_PEDAGOGIQUE%
+
+\subsection{Différenciation}
+%DIFFERENCIATION%
+
+\subsection{Difficultés anticipées}
+%DIFFICULTES%
+
+% ============================================
+% SECTION 8 : ÉVALUATION
+% ============================================
+\section{Évaluation des acquis}
+
+\subsection{Modalités d'évaluation}
+%MODALITES_EVALUATION%
+
+\subsection{Critères de réussite}
+%CRITERES_REUSSITE%
+
+% ============================================
+% SECTION 9 : PROLONGEMENTS
+% ============================================
+\section{Prolongements possibles}
+
+%PROLONGEMENTS%
+
+% ============================================
+% SECTION 10 : BIBLIOGRAPHIE ET RESSOURCES
+% ============================================
+\section{Bibliographie et ressources}
+
+%BIBLIOGRAPHIE%
+
+\end{document}

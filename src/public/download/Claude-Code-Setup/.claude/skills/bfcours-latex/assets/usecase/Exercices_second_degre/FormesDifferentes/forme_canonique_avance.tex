@@ -1,0 +1,51 @@
+\begin{EXO}{Forme canonique - Niveau avancé}{}
+\tcbitempoint{6} Déterminer la forme canonique des fonctions suivantes (utiliser un brouillon). 
+\begin{tcbenumerate}[2]
+\tcbitem $f(x) = 3x^2+9x+5$
+\begin{crep}
+$f(x) = 3(x + \dfrac{3}{2})^2 - \dfrac{7}{4}$
+\end{crep}
+\tcbitem $f(x) = -2x^2+2x+2$
+\begin{crep}
+$f(x) = -2(x - \dfrac{1}{2})^2 + \dfrac{5}{2}$
+\end{crep}
+\end{tcbenumerate}
+
+\exocorrection
+
+D'après le cours : 
+L'écriture $a(x-\alpha)^{2} +\beta$ est la\voc{forme canonique} de la fonction $f:x\mapsto ax^{2} + bx + c$.
+    
+    \begin{tcbenumerate}[2]
+        \tcbitem[halign=center] $\alpha = -\dfrac{b}{2a}$
+        \tcbitem[halign=center] $\beta = -\dfrac{b^2-4ac}{4a}$
+    \end{tcbenumerate}
+    
+\begin{tcbenumerate}[1]
+\tcbitem[boxrule=0.4pt,colframe=black,halign=left] $f(x) = 3x^2+9x+5$
+
+Pour cette fonction, on a $a=3$, $b=9$, $c=5$.
+
+\begin{tcbenumerate}[2][1][alph]
+    \tcbitem[halign=center] $\alpha = -\dfrac{b}{2a} = -\dfrac{9}{2 \times 3} = -\dfrac{9}{6} = -\dfrac{3}{2}$
+    \tcbitem[halign=center] $\beta = -\dfrac{b^2-4ac}{4a} = -\dfrac{9^2-4 \times 3 \times 5}{4 \times 3}$
+    
+    $\phantom{\beta}= -\dfrac{81-60}{12} = -\dfrac{21}{12} = -\dfrac{7}{4}$
+\end{tcbenumerate}
+
+Ainsi $f(x) = 3(x - (-\dfrac{3}{2}))^2 + (-\dfrac{7}{4}) = 3(x + \dfrac{3}{2})^2 - \dfrac{7}{4}$
+
+\tcbitem[boxrule=0.4pt,colframe=black,halign=left] $f(x) = -2x^2+2x+2$
+
+Pour cette fonction, on a $a=-2$, $b=2$, $c=2$.
+
+\begin{tcbenumerate}[2][1][alph]
+    \tcbitem[halign=center] $\alpha = -\dfrac{b}{2a} = -\dfrac{2}{2 \times (-2)} = -\dfrac{2}{-4} = \dfrac{1}{2}$
+    \tcbitem[halign=center] $\beta = -\dfrac{b^2-4ac}{4a} = -\dfrac{2^2-4 \times (-2) \times 2}{4 \times (-2)}$
+    
+    $\phantom{\beta}= -\dfrac{4-(-16)}{-8} = -\dfrac{4+16}{-8} = -\dfrac{20}{-8} = \dfrac{5}{2}$
+\end{tcbenumerate}
+
+Ainsi $f(x) = -2(x - \dfrac{1}{2})^2 + \dfrac{5}{2}$
+\end{tcbenumerate}
+\end{EXO}

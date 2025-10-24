@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}Exercices - {{ config.APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="exercises-container">
+    <!-- Header des exercices -->
+    <section class="exercises-header">
+        <div class="exercises-intro">
+            <h2>Exercices Interactifs</h2>
+            <p class="intro-text">
+                Testez vos connaissances avec ces exercices corrigés. Chaque réponse est vérifiée
+                instantanément et une solution détaillée est disponible.
+            </p>
+        </div>
+
+        <!-- Barre de progression globale -->
+        <div class="global-progress">
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="globalProgressBar"></div>
+            </div>
+            <div class="progress-info">
+                <span class="progress-text" id="progressText">0 / {{ exercises|length }} exercices complétés</span>
+                <span class="progress-score" id="progressScore">Score : 0%</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liste des exercices -->
+    <div id="exercisesList">
+        {% for exercise in exercises %}
+        <div class="exercise-card" data-exercise-id="{{ exercise.id }}" data-points="{{ exercise.points }}">
+            <!-- En-tête de l'exercice -->
+            <div class="exercise-header">
+                <div class="exercise-header-left">
+                    <h3 class="exercise-title">
+                        <span class="exercise-number">Exercice {{ exercise.id }}</span>
+                        {{ exercise.title }}
+                    </h3>
+                    <div class="exercise-meta">
+                        <span class="badge badge-points">{{ exercise.points }} points</span>
+                        <span class="badge badge-difficulty badge-difficulty-{{ exercise.difficulty }}">
+                            {% if exercise.difficulty == 1 %}
+                                Facile
+                            {% elif exercise.difficulty == 2 %}
+                                Moyen
+                            {% else %}
+                                Difficile
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+                <div class="exercise-header-right">
+                    <span class="exercise-status" id="status-{{ exercise.id }}"></span>
+                </div>
+            </div>
+
+            <!-- Corps de l'exercice -->
+            <div class="exercise-body">
+                <!-- Question -->
+                <div class="question-section">
+                    <div class="question-content">{{ exercise.question | safe }}</div>
+                </div>
+
+                <!-- Champs de réponse -->
+                <div class="answer-section">
+                    <div class="answer-fields">
+                        {% for field in exercise.answer_fields %}
+                        <div class="answer-field" data-field-id="{{ field.id }}">
+                            <label class="answer-label">{{ field.label | safe }}</label>
+
+                            {% if field.type == 'select' %}
+                                <select class="answer-input answer-select" id="answer-{{ exercise.id }}-{{ field.id }}">
+                                    <option value="">-- Choisir --</option>
+                                    {% for option in field.options %}
+                                    <option value="{{ option }}">{{ option }}</option>
+                                    {% endfor %}
+                                </select>
+                            {% else %}
+                                <input type="text"
+                                       class="answer-input answer-text"
+                                       id="answer-{{ exercise.id }}-{{ field.id }}"
+                                       placeholder="Votre réponse"
+                                       autocomplete="off">
+                            {% endif %}
+
+                            <span class="field-status" id="field-status-{{ exercise.id }}-{{ field.id }}"></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Boutons d'action -->
+                    <div class="action-buttons">
+                        <button class="btn btn-primary btn-check"
+                                onclick="checkAnswer({{ exercise.id }})">
+                            Vérifier ma réponse
+                        </button>
+                        <button class="btn btn-secondary btn-hint"
+                                onclick="toggleHint({{ exercise.id }})">
+                            💡 Afficher l'indice
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Indice (caché par défaut) -->
+                <div class="hint-section collapsed" id="hint-{{ exercise.id }}">
+                    <div class="hint-header">
+                        <strong>💡 Indice :</strong>
+                    </div>
+                    <div class="hint-content">{{ exercise.hint | safe }}</div>
+                </div>
+
+                <!-- Feedback -->
+                <div class="feedback" id="feedback-{{ exercise.id }}"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Résumé final -->
+    <div class="summary-section" id="summarySection" style="display: none;">
+        <div class="summary-card">
+            <h2>🎉 Félicitations !</h2>
+            <p>Vous avez terminé tous les exercices.</p>
+
+            <div class="summary-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="finalScore">0%</div>
+                    <div class="stat-label">Score final</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="correctCount">0</div>
+                    <div class="stat-label">Exercices réussis</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalTime">0:00</div>
+                    <div class="stat-label">Temps total</div>
+                </div>
+            </div>
+
+            <div class="summary-actions">
+                <button class="btn btn-primary" onclick="resetExercises()">
+                    🔄 Recommencer
+                </button>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                    📖 Retour au cours
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/exercises.js') }}"></script>
+{% endblock %}

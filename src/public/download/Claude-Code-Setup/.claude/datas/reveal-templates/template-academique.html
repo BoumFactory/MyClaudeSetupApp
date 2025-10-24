@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titre de la présentation</title>
+  <meta name="author" content="Nom de l'auteur">
+  <meta name="description" content="Description de la présentation">
+
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/zenburn.css">
+
+  <!-- Custom styles pour académique -->
+  <style>
+    :root {
+      --main-color: #000000;
+      --secondary-color: #333333;
+      --accent-color: #666666;
+      --background-color: #ffffff;
+      --text-color: #222222;
+      --border-color: #cccccc;
+    }
+
+    .reveal {
+      font-family: 'Lato', 'Georgia', serif;
+      font-size: 18px;
+      color: var(--text-color);
+    }
+
+    .reveal h1 {
+      font-size: 2em;
+      color: var(--main-color);
+      font-weight: 300;
+      margin-bottom: 0.5em;
+      letter-spacing: 0.02em;
+    }
+
+    .reveal h2 {
+      font-size: 1.6em;
+      color: var(--main-color);
+      margin-bottom: 0.8em;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.3em;
+      font-weight: 300;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      font-weight: 400;
+    }
+
+    .reveal ul, .reveal ol {
+      margin-top: 1em;
+    }
+
+    .reveal li {
+      margin-bottom: 0.4em;
+      line-height: 1.5;
+    }
+
+    /* Boxes sobres */
+    .box-info {
+      border: 1px solid var(--border-color);
+      padding: 1em;
+      margin: 1em 0;
+      background-color: #fafafa;
+    }
+
+    .box-warning {
+      border: 1px solid #d39e00;
+      background-color: #fff3cd;
+      padding: 1em;
+      margin: 1em 0;
+    }
+
+    .box-success {
+      border: 1px solid #28a745;
+      background-color: #d4edda;
+      padding: 1em;
+      margin: 1em 0;
+    }
+
+    .result-box {
+      background-color: #f8f9fa;
+      border: 2px solid var(--main-color);
+      padding: 1em;
+      text-align: center;
+      font-size: 1.2em;
+      margin: 1em 0;
+    }
+
+    /* Théorèmes et définitions */
+    .theorem {
+      border-left: 3px solid var(--main-color);
+      padding: 1em;
+      background-color: #f8f9fa;
+      margin: 1em 0;
+      font-style: italic;
+    }
+
+    .theorem-title {
+      font-weight: bold;
+      font-style: normal;
+      margin-bottom: 0.5em;
+    }
+
+    .definition {
+      border: 1px solid var(--border-color);
+      padding: 1em;
+      background-color: #fafafa;
+      margin: 1em 0;
+    }
+
+    .definition-title {
+      font-weight: bold;
+      margin-bottom: 0.5em;
+      text-decoration: underline;
+    }
+
+    /* Preuves */
+    .proof {
+      margin: 1em 0;
+      padding: 1em;
+      border-left: 2px solid var(--accent-color);
+    }
+
+    .proof-title {
+      font-style: italic;
+      margin-bottom: 0.5em;
+    }
+
+    /* Références */
+    .reference {
+      font-size: 0.8em;
+      color: var(--accent-color);
+      margin-top: 1em;
+      font-style: italic;
+    }
+
+    .citation {
+      border-left: 3px solid var(--border-color);
+      padding-left: 1em;
+      font-style: italic;
+      color: var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    /* Mise en forme sobre */
+    .highlight {
+      font-weight: bold;
+      color: var(--main-color);
+    }
+
+    .emphasis {
+      font-style: italic;
+    }
+
+    /* Colonnes */
+    .two-columns {
+      display: flex;
+      gap: 2em;
+    }
+
+    .two-columns > div {
+      flex: 1;
+    }
+
+    /* Tables */
+    .reveal table {
+      border-collapse: collapse;
+      margin: 1em auto;
+    }
+
+    .reveal th {
+      background-color: #f8f9fa;
+      border: 1px solid var(--border-color);
+      padding: 0.5em 1em;
+      font-weight: bold;
+    }
+
+    .reveal td {
+      border: 1px solid var(--border-color);
+      padding: 0.5em 1em;
+    }
+
+    /* Footer sobre */
+    .reveal .slide-number {
+      background-color: transparent;
+      color: var(--accent-color);
+      font-size: 0.9em;
+    }
+
+    /* Bibliographie */
+    .bibliography {
+      font-size: 0.7em;
+      text-align: left;
+    }
+
+    .bibliography li {
+      margin-bottom: 0.8em;
+      line-height: 1.4;
+    }
+
+    /* Pas d'animations distrayantes pour académique */
+    .reveal .fragment {
+      transition: opacity 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide de titre -->
+      <section>
+        <h1>Titre de la présentation</h1>
+        <h3>Sous-titre</h3>
+        <p>
+          <strong>Nom de l'auteur</strong><br>
+          <em>Établissement / Laboratoire</em><br>
+          Date
+        </p>
+      </section>
+
+      <!-- Slide de plan -->
+      <section>
+        <h2>Plan</h2>
+        <ol>
+          <li>Contexte et motivation</li>
+          <li>Cadre théorique</li>
+          <li>Résultats principaux</li>
+          <li>Discussion</li>
+          <li>Conclusion et perspectives</li>
+        </ol>
+      </section>
+
+      <!-- Exemple de slide avec définition -->
+      <section>
+        <h2>Contexte</h2>
+
+        <div class="definition">
+          <div class="definition-title">Définition 1</div>
+          <p>Soit \(X\) un espace métrique. On dit que...</p>
+        </div>
+
+        <div class="fragment">
+          <p class="reference">[Smith et al., 2023]</p>
+        </div>
+      </section>
+
+      <!-- Exemple de théorème -->
+      <section>
+        <h2>Résultat principal</h2>
+
+        <div class="theorem">
+          <div class="theorem-title">Théorème 1</div>
+          <p>Soit \(f: \mathbb{R} \to \mathbb{R}\) une fonction continue. Alors...</p>
+        </div>
+
+        <div class="fragment">
+          <div class="proof">
+            <div class="proof-title">Preuve (esquisse) :</div>
+            <p>Par construction...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Exemple de slide avec formule -->
+      <section>
+        <h2>Formulation mathématique</h2>
+
+        <p>On considère le problème suivant :</p>
+
+        \[\min_{x \in \mathbb{R}^n} f(x) \quad \text{sous contrainte} \quad g(x) = 0\]
+
+        <div class="fragment">
+          <p>Les conditions d'optimalité s'écrivent :</p>
+          \[\nabla f(x^*) + \lambda \nabla g(x^*) = 0\]
+        </div>
+      </section>
+
+      <!-- Slide avec résultats -->
+      <section>
+        <h2>Résultats numériques</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Méthode</th>
+              <th>Précision</th>
+              <th>Temps (s)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Méthode A</td>
+              <td>\(10^{-6}\)</td>
+              <td>0.12</td>
+            </tr>
+            <tr class="fragment">
+              <td>Méthode B</td>
+              <td>\(10^{-8}\)</td>
+              <td>0.45</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Slide de conclusion -->
+      <section>
+        <h2>Conclusion</h2>
+
+        <ul>
+          <li>Résumé des contributions</li>
+          <li class="fragment">Perspectives de recherche</li>
+          <li class="fragment">Applications potentielles</li>
+        </ul>
+
+        <div class="fragment">
+          <div class="box-info">
+            <strong>Travaux futurs :</strong> Extension au cas non-linéaire
+          </div>
+        </div>
+      </section>
+
+      <!-- Bibliographie -->
+      <section>
+        <h2>Références</h2>
+        <div class="bibliography">
+          <ol>
+            <li>Smith, J. et al. (2023). "Titre de l'article", <em>Journal Name</em>, vol. 12, pp. 123-145.</li>
+            <li>Doe, A. (2022). "Autre référence", <em>Conference Proceedings</em>, pp. 456-478.</li>
+            <li>Brown, B. (2021). <em>Livre de référence</em>, Publisher.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Slide de remerciements -->
+      <section>
+        <h2>Remerciements</h2>
+        <p>Cette recherche a été soutenue par...</p>
+        <p style="margin-top: 2em;">
+          <strong>Questions ?</strong>
+        </p>
+        <p style="font-size: 0.8em; margin-top: 1em;">
+          Contact : nom.prenom@institution.fr
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Affichage
+      width: 1280,
+      height: 720,
+      margin: 0.1,
+
+      // Navigation
+      controls: true,
+      controlsLayout: 'bottom-right',
+      progress: true,
+      slideNumber: 'c/t',
+      hash: true,
+      navigationMode: 'default',
+
+      // Comportement (transitions sobres pour académique)
+      transition: 'fade', // fade pour sobriété
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+
+      // Math avec MathJax 3
+      math: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+        config: 'TeX-AMS_HTML-full',
+      },
+
+      // Plugins
+      plugins: [
+        RevealMath,
+        RevealNotes,
+        RevealHighlight,
+        RevealZoom
+      ]
+    });
+  </script>
+</body>
+</html>

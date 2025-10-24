@@ -1,0 +1,278 @@
+---
+name: tex-compiling-skill
+description: Skill sp�cialis� pour la compilation de documents LaTeX. G�re la compilation avec diff�rents moteurs (pdflatex, lualatex, xelatex), l'analyse des erreurs de compilation, la configuration des compilateurs et le nettoyage des fichiers auxiliaires. Utiliser pour compiler des documents LaTeX et diagnostiquer les erreurs de compilation.
+---
+
+# LaTeX Compilation Expert
+
+Syst�me expert pour la compilation de documents LaTeX avec gestion avanc�e des erreurs, support multi-compilateurs et diagnostic automatique. Ce skill utilise le serveur MCP latex-compiler-server pour une compilation robuste et informative.
+
+## Objectif
+
+Compiler des documents LaTeX de mani�re fiable en g�rant automatiquement les passes multiples, en analysant les erreurs de compilation et en fournissant des diagnostics d�taill�s pour faciliter le d�bogage.
+
+## Workflow Principal : Compilation de Document
+
+**Quand utiliser** : Lors de la compilation de documents LaTeX existants ou apr�s �dition de contenu
+
+**�tapes :**
+
+1. **V�rifier l'existence du fichier** .tex � compiler
+
+2. **Choisir le profil de compilation** appropri� :
+   - `lualatex_reims_favorite` : Profil recommand� (LuaLaTeX + shell-escape, 1 passe)
+   - `simple` : 2 passes pdflatex
+   - `standard` : 3 passes pdflatex
+   - `complete` : 3 passes avec analyse approfondie
+   - `bibliography` : Avec bibtex
+   - Personnalis� selon besoins
+
+3. **Compiler avec gestion d'erreur** :
+
+   ```
+   quick_compile(file_path, passes=1)  # Rapide pour tests
+   OU
+   compile_document(file_path, compilation_type="lualatex_reims_favorite")
+
+   ```
+
+4. **Analyser le r�sultat** :
+   - V�rifier si le PDF a �t� g�n�r�
+   - Examiner les erreurs �ventuelles
+   - Analyser les passes partielles (setup vs erreurs critiques)
+
+5. **En cas d'erreur, diagnostiquer** :
+
+   ```
+   analyze_latex_log(log_path, tex_file_path)  # Analyse d�taill�e des erreurs
+   get_file_context(file_path, line_number)     # Contexte autour de l'erreur
+
+   ```
+
+6. **Corriger et recompiler** si n�cessaire de mani�re it�rative
+
+7. **Nettoyer les fichiers auxiliaires** :
+
+   ```
+   clean_build_files(directory)  # Apr�s compilation r�ussie
+
+   ```
+
+## Serveur MCP : latex-compiler-server
+
+### Fonctions de Compilation
+
+#### quick_compile(file_path, passes=1)
+Compilation rapide avec le profil lualatex_reims_favorite (LuaLaTeX + shell-escape).
+
+**Param�tres** :
+- `file_path` : Chemin du fichier .tex
+- `passes` : Nombre de passes (d�faut: 1)
+
+**Recommand� pour** : Tests rapides, documents simples
+
+#### compile_document(file_path, compilation_type="default", clean_aux=True)
+Compile un document selon le profil sp�cifi�.
+
+**Param�tres** :
+- `file_path` : Chemin du fichier .tex
+- `compilation_type` : Profil de compilation
+- `clean_aux` : Nettoyer les fichiers auxiliaires apr�s (d�faut: true)
+
+**Retour** : R�sultat d�taill� avec :
+- Statut de chaque passe
+- Messages d'erreur avec num�ros de ligne
+- Chemin du PDF g�n�r�
+- Fichiers nettoy�s
+
+### Fonctions de Diagnostic
+
+#### analyze_latex_log(log_file_path, tex_file_path=None)
+Analyse un fichier .log LaTeX pour diagnostiquer les erreurs.
+
+**Param�tres** :
+- `log_file_path` : Chemin vers le fichier .log
+- `tex_file_path` : Fichier .tex correspondant (optionnel, pour contexte)
+
+**Retour** : Analyse compl�te avec :
+- Liste des erreurs avec ligne, message, contexte
+- Avertissements
+- Analyse g�n�rale (patterns d'erreurs courants)
+- Contexte du fichier source autour des erreurs
+
+#### get_file_context(file_path, line_number, context_lines=5)
+R�cup�re le contexte autour d'une ligne sp�cifique.
+
+**Param�tres** :
+- `file_path` : Chemin du fichier
+- `line_number` : Num�ro de ligne (1-index�)
+- `context_lines` : Nombre de lignes avant/apr�s (d�faut: 5)
+
+**Retour** : Lignes de contexte avec marquage de la ligne d'erreur
+
+### Gestion des Compilateurs
+
+#### detect_compilers()
+D�tecte automatiquement les compilateurs LaTeX disponibles sur le syst�me.
+
+**Retour** : Liste des compilateurs avec :
+- Disponibilit�
+- Version
+- �tat de configuration
+- Statut (activ�/d�sactiv�)
+
+#### update_compiler_config(compiler_name, path, args, enabled)
+Met � jour la configuration d'un compilateur.
+
+**Param�tres** :
+- `compiler_name` : Nom (pdflatex, lualatex, xelatex, etc.)
+- `path` : Chemin vers l'ex�cutable (optionnel)
+- `args` : Arguments JSON (optionnel)
+- `enabled` : Activer/d�sactiver (optionnel)
+
+### Gestion des Profils
+
+#### get_compilation_profiles()
+Liste tous les profils de compilation disponibles.
+
+**Retour** : Dictionnaire des profils avec :
+- Description
+- �tapes de compilation
+- Indication du profil par d�faut
+
+#### add_compilation_profile(name, description, steps)
+Ajoute un nouveau profil de compilation personnalis�.
+
+**Param�tres** :
+- `name` : Nom du profil
+- `description` : Description
+- `steps` : JSON des �tapes `[{"compiler": "lualatex", "count": 2}]`
+
+#### set_default_profile(profile_name)
+D�finit le profil de compilation par d�faut.
+
+### Utilitaires
+
+#### get_preferences()
+R�cup�re toutes les pr�f�rences de compilation.
+
+#### reset_preferences()
+R�initialise les pr�f�rences aux valeurs par d�faut.
+
+#### clean_build_files(directory, extensions=None)
+Nettoie les fichiers de build dans un r�pertoire.
+
+**Param�tres** :
+- `directory` : R�pertoire � nettoyer
+- `extensions` : Liste JSON d'extensions (optionnel)
+
+#### test_compilation(test_content=None)
+Teste la configuration avec un document LaTeX simple.
+
+## Profils de Compilation Recommand�s
+
+### lualatex_reims_favorite P (RECOMMAND� 99% du temps)
+- **Compilateur** : LuaLaTeX
+- **Passes** : 1
+- **Arguments** : `-synctex=1 -interaction=nonstopmode -file-line-error -shell-escape`
+- **Usage** : Documents bfcours, documents standard
+
+### simple
+- **Compilateur** : pdflatex
+- **Passes** : 2
+- **Usage** : Documents basiques sans r�f�rences complexes
+
+### standard
+- **Compilateur** : pdflatex
+- **Passes** : 3
+- **Usage** : Documents avec table des mati�res, r�f�rences crois�es
+
+### bibliography
+- **Compilateur** : pdflatex + bibtex + pdflatex�2
+- **Usage** : Documents avec bibliographie
+
+## Gestion des Erreurs de Compilation
+
+### Types d'Erreurs
+
+1. **Erreurs critiques** (arr�t imm�diat) :
+   - `Emergency stop`
+   - `File not found`
+   - `Undefined control sequence`
+
+2. **Erreurs de setup** (continuation possible) :
+   - `Something's wrong--perhaps a missing \item`
+   - Erreurs bfcours n�cessitant plusieurs passes
+   - R�f�rences ind�finies
+
+3. **Avertissements** (non bloquants) :
+   - Overfull/Underfull boxes
+   - References undefined
+
+### Logique de Tol�rance
+
+Le serveur impl�mente une logique de tol�rance intelligente :
+- **Succ�s partiel** : Si PDF g�n�r� malgr� code retour != 0
+- **Continuation automatique** : Pour erreurs bfcours sur passes initiales
+- **Arr�t sur critique** : Pour erreurs graves (fichier manquant, etc.)
+
+### Workflow de Correction It�rative
+
+1. Compiler avec `quick_compile()` ou `compile_document()`
+2. Si �chec, analyser avec `analyze_latex_log()`
+3. Identifier les erreurs principales (top 3)
+4. Obtenir le contexte avec `get_file_context()`
+5. Corriger le code LaTeX
+6. Recompiler
+7. R�p�ter si n�cessaire
+
+## Meilleures Pratiques
+
+1. **Utiliser lualatex_reims_favorite par d�faut** : Optimis� pour documents �ducatifs
+2. **Compiler progressivement** : 1 passe d'abord, puis plus si n�cessaire
+3. **Analyser les logs** : Toujours examiner les erreurs d�taill�es
+4. **Tol�rer les erreurs de setup** : Certaines erreurs se r�solvent aux passes suivantes
+5. **Nettoyer r�guli�rement** : Supprimer les .aux corrompus peut r�soudre des probl�mes
+6. **Tester la config** : Utiliser `test_compilation()` apr�s changement de configuration
+
+## Exemples d'Utilisation
+
+### Exemple 1 : Compilation rapide
+
+```
+1. V�rifier fichier existe
+2. quick_compile("mon_cours.tex", passes=1)
+3. V�rifier PDF g�n�r�
+4. Si erreurs non-critiques, ignorer (setup)
+```
+
+### Exemple 2 : Compilation avec erreurs
+
+```
+1. compile_document("devoir.tex", "lualatex_reims_favorite")
+2. �chec d�tect�
+3. analyze_latex_log("devoir.log", "devoir.tex")
+4. Identifier : Ligne 42, "Undefined control sequence \macommande"
+5. get_file_context("devoir.tex", 42)
+6. Corriger l'erreur
+7. Recompiler
+8. Succ�s
+```
+
+### Exemple 3 : Document avec bibliographie
+
+```
+1. compile_document("article.tex", "bibliography")
+2. Ex�cution : pdflatex � bibtex � pdflatex � pdflatex
+3. V�rifier PDF avec r�f�rences
+4. clean_build_files("./")
+```
+
+## Rappels Critiques
+
+- TOUJOURS utiliser `lualatex_reims_favorite` sauf besoin sp�cifique
+- TOUJOURS analyser les logs en cas d'�chec
+- NE PAS paniquer sur les erreurs de setup (passes initiales)
+- TOUJOURS v�rifier si le PDF est g�n�r� malgr� les erreurs
+- NETTOYER les .aux/.log peut r�soudre des probl�mes myst�rieux
+- COMPILER en plusieurs passes pour documents complexes

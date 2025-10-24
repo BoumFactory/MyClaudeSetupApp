@@ -1,0 +1,230 @@
+
+\begin{EXO}{Problème ouvert}{}
+    \vspace{-0.5cm}\begin{flushright}\textit{(source: académie Aix-Marseille)}\end{flushright}
+    \vspace{-0.4cm}\tcbitempoint{20} Le laboratoire d'une aciérie étudie la dilatation d'un acier fabriqué par l'entreprise.
+
+Les mesures effectuées donnent les résultats suivants pour une tige d'acier :
+\begin{center}
+\begin{tcbtab}{|c|c|c|c|c|c|}
+Température en $^\circ$C & 0 & 50 & 100 & 200 & 400 \\\hline
+Longueur en cm & \num{50} & \num{50.03} & \num{50.06} & \num{50.12} & \num{50.24} \\\hline
+\end{tcbtab}
+\end{center}
+
+\begin{tcbenumerate}
+\tcbitem A \acc{quelle température} faut-il porter la tige pour que sa longueur soit égale à \num{50,15}cm ?
+
+
+\tcbitem La température la plus basse que l'on peut atteindre est appelé le zéro absolue. Sa température est de \num{-273.15}$^\circ$C.
+
+\acc{Est-il possible} de réduire la taille de la tige d'acier d'\acc{un centième} de sa taille initiale ?
+\end{tcbenumerate}
+\exocorrection
+\begin{MultiColonnes}{2}
+    \tcbitem L'\acc{allongement} $A$ de la tige d'acier semble être \acc{proportionnel} à la \acc{température} de la tige. 
+    
+    En effet : 
+    \tcbitem[halign=center] \begin{tcbtab}{c|c|c|c|c}
+\acc{Température} en $^\circ$C &50 & 100 & 200 & 400 \\\hline
+Longueur en cm & \num{50.03} & \num{50.06} & \num{50.12} & \num{50.24} \\\hline
+\acc{Allongement} en cm & \num{0.03} & \num{0.06} & \num{0.12} & \num{0.24} \\
+\end{tcbtab}
+\end{MultiColonnes}
+On vérifie que les lignes Température et Allongement sont proportionnelles en calculant les rapports $\dfrac{A}{T}$ dans chaque colonne : 
+\vspace{-0.35cm}\begin{multicols}{2}
+\foreach \x/\y in {50/0.03 , 100/0.06 , 200/0.12 , 400/0.24 } {
+    $\dfrac{\num{\y}}{\x} = \displaystyle{\Simplification{\fpeval{\y*100}}{\fpeval{\x*100}}}=\num{\fpeval{\y/\x}}$ \\ \phantom{a} \\
+}
+\end{multicols}
+
+\vspace{-1cm}Le \acc{coefficient de proportionnalité} est $\num{0.0006}=\num{6d-4}$ et on en déduit : 
+
+$A = \num{6d-4} \times T$. 
+
+On peut observer le lien suivant : L = \encadrer[defi]{Longueur initiale} + \encadrer[blue]{Allongement}
+
+\begin{tcolorbox}[
+    colback=green!10,
+    colframe=green!50!black,
+    title={\faCalculator\space Modélisation mathématique}
+]
+À partir de ces observations et calculs, on peut déterminer l'expression de la \acc{fonction} donnant la \acc{longueur} $L$ de la tige en fonction de la \acc{température} $T \in \intervalle[ff]{0}{400}$:
+\begin{center}
+$L:T\mapsto \underbrace{50}_{L_0} + \underbrace{\num{6d-4}T}_{\text{Allongement}}$
+\end{center}
+
+Puisque l'expression est définie sur $\R$, il est \acc{naturel} d'étendre son domaine de définition pour 
+
+$T\in \intervalle[ff]{\num{-273.15}}{400}$ ce qui permet de répondre aux deux questions de façon raisonnable. 
+\end{tcolorbox}
+
+\textbf{\large Graphique des données expérimentales}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+    % Axes
+    \draw[thick,->] (-0.5,0) -- (11,0) node[right] {$T$ ($^\circ$C)};
+    \draw[thick,->] (0,-0.5) -- (0,9) node[above] {$L$ (cm)};
+
+    % Graduations axe x
+    \foreach \x/\xtext in {0/0, 2/100, 4/200, 6/300, 8/400, 10/500} {
+        \draw (\x,0.1) -- (\x,-0.1) node[below] {\num{\xtext}};
+    }
+
+    % Graduations axe y
+    \foreach \y/\ytext in {0/50.00, 2/50.06, 4/50.12, 6/50.18, 6.67/50.20, 8/50.24} {
+        \draw (0.1,\y) -- (-0.1,\y) node[left] {\num{\ytext}};
+    }
+
+    % Points expérimentaux
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (1,1);
+    \coordinate (C) at (2,2);
+    \coordinate (D) at (4,4);
+    \coordinate (E) at (8,8);
+
+    % Tracer les points
+    \foreach \point/\x/\y in {A/0/0,B/1/1,C/2/2,D/4/4,E/8/8} {
+        \fill[red] (\point) circle (2pt);
+        \draw[gray!70!black,dashed] (\point) -- (\x,0) node[below] {};
+        \draw[gray!70!black,dashed] (\point) -- (0,\y) node[left] {};
+    }
+
+    % Points avec leurs coordonnées
+    %\node[above right] at (A) {$(0, 50.00)$};
+    %\node[above right] at (B) {$(50, 50.03)$};
+    %\node[above right] at (C) {$(100, 50.06)$};
+    %\node[above right] at (D) {$(200, 50.12)$};
+    %\node[above right] at (E) {$(400, 50.24)$};
+
+    % Régression linéaire
+    \draw[blue,thick,dashed] (-1.5,-1.5) -- (8.5,8.5) node[right] {$L(T) = 50 + 6 \times 10^{-4} T$};
+
+    % Point recherché pour question 1
+    \coordinate (F) at (5,5);
+    \fill[green!70!black] (F) circle (2pt);
+    \draw[green!70!black,dashed] (F) -- (5,0) node[below] {$250$};
+    \draw[green!70!black,dashed] (F) -- (0,5) node[left] {$\num{50.15}$};
+    \node[above right,green!70!black,yshift=-10pt] at (F) {Solution Q1};
+\end{tikzpicture}
+\end{center}
+
+\begin{tcbenumerate}[2]
+\tcbitem Température pour $L = \num{50.15}$ cm
+\begin{tcolorbox}[
+    colback=blue!10,
+    colframe=blue!50!black,
+    title={\faThermometerHalf\space Résolution :}
+]
+Nous cherchons $T$ tel que $L(T) = \num{50.15}$ cm.
+\begin{align*}
+50 + 6 \times 10^{-4} T &= \num{50.15}\\[0.15cm]
+6 \times 10^{-4} T &= \num{0.15}\\[0.15cm]
+T &= \frac{\num{0.15}}{6 \times 10^{-4}}\\[0.15cm]
+T &= \frac{\num{0.15} \times 10^{4}}{6}\\[0.15cm]
+T &= \frac{1500}{6}\\[0.15cm]
+T &= \boxed{250 ^\circ\text{C}}
+\end{align*}
+
+\textbf{Vérification :} $L(250) = 50 + 6 \times 10^{-4} \times 250 = 50 + \num{0.15} = \num{50.15}$ 
+
+\bcoeil On pouvait aussi résoudre \acc{graphiquement} cette question ( voir graphique précédent ).
+\end{tcolorbox}
+
+\tcbitem Réduction d'un centième de la taille initiale
+
+\begin{tcolorbox}[
+    colback=red!10,
+    colframe=red!50!black,
+    title={\faSnowflake\space Analyse de la contraction thermique :}
+]
+Une réduction d'un centième signifie que la tige devrait mesurer : 
+
+$L_{\text{reduit}} = L_{\text{initial}} - \frac{L_{\text{initial}}}{100} = 50 - 0.5 = \num{49.5}$ cm
+
+    Cherchons la température nécessaire :
+\begin{align*}
+50 + 6 \times 10^{-4} T &= \num{49.5}\\[0.15cm]
+6 \times 10^{-4} T &= -\num{0.5}\\[0.15cm]
+T &= \frac{-\num{0.5}}{6 \times 10^{-4}}\\[0.15cm]
+T &= -\frac{5000}{6}\\[0.15cm]
+T &\approx \boxed{-\num{833.33} ^\circ\text{C}}
+\end{align*}
+
+Or, Le zéro absolu est à $-\num{273.15}$ $^\circ$C et aucune température ne peut descendre en dessous. 
+
+\textbf{Conclusion :} Cette température étant impossible à atteindre, on ne peut pas réduire la tige d'un centième de sa taille initiale.
+
+\end{tcolorbox}
+\end{tcbenumerate}
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[
+    colback=purple!10,
+    colframe=purple!50!black,
+    title={\faGraduationCap\space Remarques :}
+]
+\begin{tcbenumerate}
+    \tcbitem[colback=purple!10] \textbf{Modèle affine :} La dilatation de cet acier peut être \acc{modélisé} par une fonction affine $L(T) = 50 + \num{6d-4}T$
+
+    Dans le cadre de ce devoir et d'après les données disponibles, \acc{on a supposé que} le modèle affine suggéré par les données est valable pour $T>-273{,}15^\circ$.
+
+    Ce n'est pas nécessairement vrai, mais cela \acc{suffit} à répondre à la question posée. 
+
+    En effet il y a peu de chances que la contraction thermique se produise plus facilement au fur et à mesure que la température diminue. 
+    \tcbitem[colback=purple!10] \textbf{Contraction maximale :} À $T = -273.15$ $^\circ$C, $L \approx \num{49.836}$ cm , ce qui correspond à une contraction maximale de seulement $0{,}033\%$ de la longueur initiale.
+    \tcbitem[colback=purple!10] En l'absence d'informations supplémentaires, le problème reste ouvert. 
+
+    En effet, nos conlusions sont vraies dans le cadre de notre modèle et une simple hypothèse supplémentaire peut tout changer : par exemple qu'en est-il si la pression varie également ?
+\end{tcbenumerate}
+\end{tcolorbox}
+
+\begin{tcbtab}[Barème pour les traces de recherche]{|p{13cm}|c|}
+\textbf{Critère} & \textbf{Points} \\\hline\hline
+Formulation tableau de proportionnalité ou lien affine. & /2 \\\hline
+Calculs de vérification (ou partiel) & /1 \\\hline
+Lien avec l'expression de la fonction ou avec le graphique. & /2 \\\hline
+Modélisation par une fonction affine : explicitation par l'élève. & /2 \\\hline\hline
+\textbf{Total} & \textbf{/7} \\\hline
+\end{tcbtab}
+
+\vspace{0.5cm}
+
+\begin{tcbtab}[Barème pour la question 1]{|p{13cm}|c|}
+\textbf{Critère} & \textbf{Points} \\\hline\hline
+Expliquer le lien entre la question posée et le modèle déterminé. & /1 \\\hline
+Trouver l'équation à résoudre pour répondre à la question 1. Ou mise en lien avec le graphique. & /2 \\\hline
+Résoudre cette équation ou la résoudre graphiquement (traits de construction apparents). Pour obtenir tous les points l'élève doit avoir mentionné ou contourné (par du papier millimétré par exemple) la légère imprécision de la méthode, mais qui permet tout de même de conclure. & /2 \\\hline
+Conclure & /1 \\\hline\hline
+\textbf{Total} & \textbf{/6} \\\hline
+\end{tcbtab}
+
+\vspace{0.5cm}
+
+\begin{tcbtab}[Barème pour la question 2]{|p{13cm}|c|}
+\textbf{Critère} & \textbf{Points} \\\hline\hline
+Expliquer le lien entre la question posée et le modèle déterminé. & /1 \\\hline
+Trouver l'équation à résoudre & /2 \\\hline
+Résoudre l'équation & /2 \\\hline
+Conclure & /2 \\\hline\hline
+\textbf{Total} & \textbf{/7} \\\hline
+\end{tcbtab}
+
+
+\acc{Remarques pour la question 1 : } 
+
+\begin{itemize}
+    \item Le lien entre la température et la longueur est \acc{affine}. Il était attendu que l'élève le mentionne. 
+    \item Il était attendu que des calculs soient présents pour les traces de recherche.
+\end{itemize}
+
+\acc{Remarques pour la question 2 : } 
+
+\begin{itemize}
+    \item La méthode graphique est toujours possible pour la question 2 mais plus compliquée à mettre en \oe uvre. L'élève recevra tous les points s'il justifie comme dans la première question.
+    \item Dans la question 2, le calcul de la longueur à $T=\num{-273.15}^\circ$ ne suffit pas : il faut en plus préciser que la fonction étant croissante, la longueur voulue ne peut effectivement être atteinte pour $T>\num{-273.15}^\circ$.
+    \item Une autre stratégie plus efficace est de calculer directement la température à atteindre pour obtenir la longueur souhaitée. Cela permettait de ne pas justifier que la fonction $L(T)$ est croissante. 
+\end{itemize}
+
+\end{EXO}

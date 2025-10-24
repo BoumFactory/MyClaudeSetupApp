@@ -1,0 +1,82 @@
+% Nom du fichier : bfcours-environments.sty
+\ProvidesPackage{bfcours-mathsCommands}[02/10/2025 v1.0 Macros maths pour bfcours]
+
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\D}{\mathbb{D}}
+
+%Commande pour les coordonnées d'un point, nommé ou non.
+\newcommand{\Coordonnees}[3][]{%
+    #1\left(
+    \tcbox[on line, boxsep=1pt, left=1pt, right=1pt, top=1pt, bottom=1pt,
+           colback=gray!15, colframe=gray!15, arc=2pt]{$#2$};%
+    \tcbox[on line, boxsep=1pt, left=1pt, right=1pt, top=1pt, bottom=1pt,
+           colback=gray!15, colframe=gray!15, arc=2pt]{$#3$}%
+    \right)
+  }
+
+  
+% Macros pour de beauc crochets
+\newcommand{\CrochetGSize}[1][\normalsize] {%
+\begin{tikzpicture}[baseline]%
+{#1 \draw  (0.46ex,1.84ex)--(0ex,1.84ex)--(0ex,-0.46ex)--(0.46ex,-0.46ex);%
+%\draw  (0.07,0.28)--(0,0.28)--(0,-0.07)--(0.07,-0.07);%
+}%
+\end{tikzpicture}}
+
+\newcommand{\CrochetDSize}[1][\normalsize] {%
+\begin{tikzpicture}[baseline]%
+{#1 \draw  (-0.46ex,1.84ex)--(0ex,1.84ex)--(0ex,-0.46ex)--(-0.46ex,-0.46ex) (0.197ex,0ex);%
+%\draw  (-0.07,0.28)--(0,0.28)--(0,-0.07)--(-0.07,-0.07) (0.03,0);%
+}%
+\end{tikzpicture}}
+
+\newcommand{\CrochetG}[1][\normalsize]{%
+\ifmmode%
+\mathchoice%
+{\CrochetGSize}% \dispalystyle
+{\CrochetGSize}% \textstyle
+{\CrochetGSize[\scriptsize]}% \scriptstyle
+{\CrochetGSize[\tiny]}% \scriptscriptstyle
+\else \CrochetGSize[#1]%
+\fi}
+
+\newcommand{\CrochetD}[1][\normalsize]{%
+\ifmmode%
+\mathchoice{\CrochetDSize}{\CrochetDSize}{\CrochetDSize[\scriptsize]}{\CrochetDSize[\tiny]}%
+\else \CrochetDSize[#1]%
+\fi}
+% fin ajout dans preambule
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% commande \intervalle[forme]{borneInf}{borneSup}
+% forme : la structure de l'intervalle. chaine de caractères. valeurs possibles : ff,oo,fo,of,
+\newcommand{\intervalle}[3][ff]{%
+    \ifstrequal{#1}{ff}{%
+        \CrochetG\,#2\,;\,#3\,\CrochetD%
+    }{%
+        \ifstrequal{#1}{oo}{%
+            \CrochetD\,#2\,;\,#3\,\CrochetG%
+        }{%
+            \ifstrequal{#1}{fo}{%
+                \CrochetG\,#2\,;\,#3\,\CrochetG%
+            }{%
+                \ifstrequal{#1}{of}{%
+                    \CrochetD\,#2\,;\,#3\,\CrochetD%
+                }{%
+                    \PackageError{bfcours-mathsCommands}{Option invalide '#1' pour \string\intervalle - Valeurs possibles : ff, oo, fo, of}{}%
+                }%
+            }%
+        }%
+    }%
+}
+% \intervalle[of]{3}{5} -> \CrochetD 3 ; 5 \CrochetD  (]3; 5])
+% \intervalle[ff]{3}{5} -> \CrochetG 3 ; 5 \CrochetD  ([3; 5])
+% \intervalle[oo]{3}{5} -> \CrochetD 3 ; 5 \CrochetG  (]3; 5[)
+% \intervalle[fo]{3}{5} -> \CrochetG 3 ; 5 \CrochetG  ([3; 5[)
+% en effet, mes commandse Crochet sont des crochets mieux gérés en taille, et crochet d est tourné vers la gauche, crochet g est tourné vers la droite.
+
+\newcommand{\Rep}{\left(O \, ;\, I \, ; \, J \right)}
+\endinput

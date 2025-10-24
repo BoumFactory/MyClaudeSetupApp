@@ -1,0 +1,211 @@
+% Nom du fichier : bfcours-colors.sty
+\ProvidesPackage{bfcours-vocabulary}[2024/06/29 v1.0 Gestion de l'index vocabulaire pour bfcours]
+% Initialisation des listes pour éviter les doublons
+\newcommand{\voclist}{}
+\newcommand{\vocwordlist}{}
+
+% Commande \vocentry pour collecter les mots depuis le fichier .voc lors de la lecture
+\newcommand{\vocentry}[2]{%
+  %  \edef\upperword{\MakeUppercase{#1}}
+  %\ifinlist{\upperword}{\vocwordlist}{}{%
+    %\listadd{\vocwordlist}{#1}%
+    \listadd{\voclist}{{#1}{#2}}%
+  }%
+
+
+% Lire le fichier .voc au tout début pour initialiser l'index
+\InputIfFileExists{\jobname.voc}{}{}
+
+% Ouvrir le fichier .voc pour ajouter de nouveaux mots sans écraser les anciens
+\newwrite\vocfile
+\immediate\openout\vocfile=\jobname.voc
+\newcommand{\uppercaseword}{}
+\newcommand{\word}{}
+
+% Définition de la commande \voc
+\newcommand{\voc}[1]{%
+% Écrire dans le fichier seulement si le mot capitalisé n'est pas déjà dans la liste
+\ifinlist{#1}{\vocwordlist}{}{%
+\immediate\write\vocfile{\string\vocentry{#1}{\thepage}}%
+\listadd{\vocwordlist}{\MakeLowercase{#1}}%
+\listadd{\vocwordlist}{#1}%
+\listadd{\vocwordlist}{\MakeUppercase{#1}}%
+\hypertarget{voc:#1}{}
+}%
+\textbf{\textcolor{\currentAccentColor}{#1}}%% Affichage du mot en gras dans le texte
+}
+
+% Fermeture du fichier .voc à la fin du document
+\AtEndDocument{%
+  \immediate\closeout\vocfile
+}
+
+% Commande pour afficher l'index des mots de vocabulaire
+\newcommand{\printvocindex}{%
+  % Tester si voclist contient quelque chose en utilisant un compteur
+  \newcounter{@voclistcount}%
+  \setcounter{@voclistcount}{0}%
+  \renewcommand*{\do}[1]{\stepcounter{@voclistcount}}%
+  \expandafter\docsvlist\expandafter{\voclist}%
+  \ifnum\value{@voclistcount}=0\relax
+    % Liste vide
+    \begin{tcolorbox}[enhanced,
+      title=Vocabulaire utilisé,
+      colframe=blue!50!black,
+      colback=gray!5,
+      arc=1mm,
+      colbacktitle=blue!50!black,
+      fonttitle=\bfseries,coltitle=white,
+      attach boxed title to top text left={yshift=-0.50mm},
+      boxed title style={skin=enhancedfirst jigsaw,
+        size=small,arc=1mm,bottom=-1mm,
+        interior style={fill=none,
+          top color=blue!50!black,
+          bottom color=gray!5}}]
+      Aucun mot de vocabulaire n'a été défini.
+    \end{tcolorbox}
+  \else
+    % Liste non vide
+    \begin{tcolorbox}[enhanced,
+      title=Vocabulaire utilisé,
+      colframe=blue!50!black,
+      colback=gray!10,
+      arc=1mm,
+      colbacktitle=blue!50!black,
+      fonttitle=\bfseries,coltitle=white,
+      attach boxed title to top text left={yshift=-0.50mm},
+      boxed title style={skin=enhancedfirst jigsaw,
+        size=small,arc=1mm,bottom=1.5pt,
+        interior style={fill=none,
+          top color=blue!50!black,
+          bottom color=blue!50!black}}]
+      \begin{multicols}{3}
+        \begin{itemize}[label=$\bullet$]
+          \forlistloop{\printvocabularyitem}{\voclist}
+        \end{itemize}
+      \end{multicols}
+    \end{tcolorbox}
+  \fi
+}
+
+% Commande pour afficher chaque élément de l'index
+\newcommand{\printvocabularyitem}[1]{%
+  \edef\temp{#1}%
+  \expandafter\splitvocitem\temp\relax%
+}
+
+\def\splitvocitem#1#2\relax{%
+  \item \textbf{#1} \hyperlink{voc:#1}{(p.~#2)}%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% Nouvelle boite pour le vocabulaire %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{RoyalRed}{RGB}{200,20,20}
+\definecolor{RoyalGreen}{RGB}{20,110,20}
+\definecolor{RoyalBlue}{RGB}{65,105,250}
+\definecolor{color2}{RGB}{0,82,155} %
+ 
+
+% niceflower
+
+
+\newcommand{\leafedge}{%
+    \foreach ~ in {0,90,180,270}
+      \shade[ball color=purple!70,rotate=~] (0,0) .. controls +(-.5,0) and +(-.1,-.1) .. (-.5,.5) .. controls +(.1,.1) and +(0,.5) .. (0,0);
+    \foreach ~ in {1,-1}
+      \shade[ball color=RoyalGreen,yscale=~,rotate=45-~*45]
+        (0,0) .. controls +(0,.55) and +(-.1,-.1) .. (-.3,.7) .. controls +(.1,.1) and +(0,.55) .. (0,0)
+        (0,0) .. controls +(0,.8) and +(-.4,.1) .. (0,1) .. controls +(.3,-.1) and +(0,.7) .. (0,0);
+   \shade[ball color=RoyalGreen]
+      (0,0) to[relative,in=190,out=0] (0,1)
+      (0,0) to[relative,in=170,out=0] (-1,0);
+    \shade[ball color=RoyalGreen, scale=0.5] (0,0) .. controls +(-.5,0) and +(-.1,-.1) .. (-.5,.5) .. controls +(.1,.1) and +(0,.5) .. (0,0);
+}
+\newtcolorbox{newniceleaft}[1][]{
+enhanced,
+colback=\currentBackgroundColor,
+colframe=\currentAccentColor,
+boxrule=0.4pt,
+enlarge top by=0mm,enlarge bottom by=2.0mm,
+top=5pt,
+bottom=5pt,
+left=10mm, 
+right=10mm, 
+attach boxed title to top left={xshift=1cm,yshift*=0pt},%1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+boxed title style={skin=enhancedfirst jigsaw,
+ size=small,arc=1mm,bottom=1.5pt,
+ interior style={fill=none,
+ top color=defi,
+ bottom color=defi}},
+overlay={
+ \begin{scope}[scale=0.8,rotate=180,shift=(frame.north west)]
+  \leafedge
+\end{scope}
+%
+\begin{scope}[scale=0.8,rotate=-90,shift=(frame.south west)]
+  \leafedge
+\end{scope}
+%
+\begin{scope}[scale=0.8,rotate=0,shift=(frame.south east)]
+  \leafedge
+\end{scope}
+%
+\begin{scope}[scale=0.8,rotate=90,shift=(frame.north east)]
+  \leafedge
+\end{scope}
+\ifx#1\empty
+    \else
+      \node[anchor=north east, fill=white, draw=defi!50, rounded corners] at ([xshift=-0.1\columnwidth]frame.north east) 
+      {\begin{minipage}{\dimexpr(\columnwidth - 4cm - 0.2\columnwidth)\relax} 
+        \centering \textbf{#1}
+      \end{minipage}}; % Correctement fermer la minipage ici
+    \fi%
+},
+title={\large{Vocabulaire utilisé}},
+coltitle=white
+}
+%% SOLUTION TESTÉE ET FONCTIONNELLE
+
+% D'abord, définir les commandes de traitement EN DEHORS de toute autre commande
+\newcommand{\processvocentry}[1]{%
+    \edef\temp{#1}
+    \expandafter\splitvocentry\temp\relax
+}
+
+\def\splitvocentry#1#2\relax{%
+  $\bullet$ \textbf{#1} \hyperlink{voc:#1}{(p.~#2)}%
+}
+
+% Ensuite, la commande principale
+\newcommand{\badprintvocindex}[1][3]{%
+  \begin{newniceleaft}{}%
+    \begin{tcbitemize}[%
+      raster columns=#1,
+      raster equal height=rows,
+      raster column skip=5pt,
+      raster row skip=2pt,
+      nobeforeafter,
+      raster every box/.style={
+        enhanced,
+        colback=\currentBackgroundColor,
+        colframe=\currentAccentColor,
+        boxrule=0pt,
+        top=0pt,
+        bottom=0pt,
+        left=0pt,
+        right=0pt,
+        halign=left,
+        valign=center
+      }%
+    ]%
+      % Utiliser forlistloop avec notre commande
+      \forlistloop{\tcbitem \processvocentry}{\voclist}%
+    \end{tcbitemize}%
+  \end{newniceleaft}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\endinput

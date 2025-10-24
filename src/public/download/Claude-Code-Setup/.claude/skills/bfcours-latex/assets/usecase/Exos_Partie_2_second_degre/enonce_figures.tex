@@ -1,0 +1,121 @@
+\newcommand{\tikzfigTnVi}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.6]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-1.5,
+xmax=3.5,
+ymin=-3.2,
+ymax=3.2,
+xtick={-1.0,0.0,...,3.0},
+ytick={-3.0,-2.0,...,3.0},]
+\clip(-1.5,-3.2) rectangle (3.5,3.2);
+\draw[line width=2.pt,color=blue,smooth,samples=100,domain=-1.5:3.5] plot(\x,{-0.6*((\x)-1.0)^(2.0)+2.0});
+\begin{scriptsize}
+\draw[color=blue] (-1,1) node {\large{$\mathcal{C}_f$}};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\tikzfigXWyE}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.6]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-1.5,
+xmax=3.5,
+ymin=-3.2,
+ymax=3.2,
+xtick={-1.0,0.0,...,3.0},
+ytick={-3.0,-2.0,...,3.0},]
+\clip(-1.5,-3.2) rectangle (3.5,3.2);
+\draw[line width=2.pt,color=blue,smooth,samples=100,domain=-1.5:3.5] plot(\x,{0.5*((\x)-2.0)^(2.0)-3.0});
+\begin{scriptsize}
+\draw[color=blue] (-1,2.5) node {\large{$\mathcal{C}_g$}};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\tikzfigbxUA}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.6]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-1.5,
+xmax=3.5,
+ymin=-3.2,
+ymax=3.2,
+xtick={-1.0,0.0,...,3.0},
+ytick={-3.0,-2.0,...,3.0},]
+\clip(-1.5,-3.2) rectangle (3.5,3.2);
+\draw[line width=2.pt,color=blue,smooth,samples=100,domain=-1.5:3.5] plot(\x,{0-0.3*((\x)-1.0)^(2.0)-1.0});
+\begin{scriptsize}
+\draw[color=blue] (2.5,-1) node {\large{$\mathcal{C}_h$}};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\tikzfigzaPA}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.6]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-1.5,
+xmax=3.5,
+ymin=-3.2,
+ymax=3.2,
+xtick={-1.0,0.0,...,3.0},
+ytick={-3.0,-2.0,...,3.0},]
+\clip(-1.5,-3.2) rectangle (3.5,3.2);
+\draw[line width=2.pt,color=blue,smooth,samples=100,domain=-1.5:3.5] plot(\x,{0-1*((\x)+0.0)^(2.0)+2.0});
+\begin{scriptsize}
+\draw[color=blue] (-1,2.5) node {\large{$\mathcal{C}_i$}};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+}
+
+\newcommand{\tikzfigmWht}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.8]
+\clip(2.5,0.5) rectangle (9.5,5.5);
+\fill[line width=2.pt,color=ffffff,fill=ffffff,fill opacity=1.0] (3.,5.) -- (9.,5.) -- (9.,1.) -- (3.,1.) -- cycle;
+\fill[line width=0.pt,color=ffqqqq,fill=ffqqqq,fill opacity=1.0] (3.,5.) -- (3.,3.5) -- (4.5,3.5) -- (4.5,5.) -- cycle;
+\fill[line width=0.pt,color=ffqqqq,fill=ffqqqq,fill opacity=1.0] (3.,1.) -- (3.,2.5) -- (4.5,2.5) -- (4.5,1.) -- cycle;
+\fill[line width=0.pt,color=ffqqqq,fill=ffqqqq,fill opacity=1.0] (5.5,1.) -- (5.5,2.5) -- (9.,2.5) -- (9.,1.) -- cycle;
+\fill[line width=0.pt,color=ffqqqq,fill=ffqqqq,fill opacity=1.0] (5.5,5.) -- (5.5,3.5) -- (9.,3.5) -- (9.,5.) -- cycle;
+\draw [line width=2.pt] (3.,5.)-- (9.,5.);
+\draw [line width=2.pt] (9.,5.)-- (9.,1.);
+\draw [line width=2.pt] (9.,1.)-- (3.,1.);
+\draw [line width=2.pt] (3.,1.)-- (3.,5.);
+\end{tikzpicture}
+}
+
+\newcommand{\tikzfigFuya}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=1]
+\clip(-0.1,-0.1) rectangle (4.1,4.1);
+\fill[line width=1.pt,color=blue,fill=blue!30,fill opacity=1] (0,0) -- (3.,0.) -- (0.,1.) -- cycle;
+\fill[line width=1.pt,color=red,fill=blue!30,fill opacity=1] (4,0) -- (4,3) -- (3,0) -- cycle;
+\fill[line width=1.pt,color=blue,fill=blue!30,fill opacity=1] (4,4) -- (1,4) -- (4,3) -- cycle;
+\fill[line width=1.pt,color=blue,fill=blue!30,fill opacity=1] (0,4) -- (0,1) -- (1,4) -- cycle;
+\draw [line width=1.pt,color=blue] (0,0)-- (4,0);
+\draw [line width=1.pt,color=blue] (4,0)-- (4,4);
+\draw [line width=1.pt,color=blue] (4,4.)-- (0,4);
+\draw [line width=1.pt,color=blue] (0,4)-- (0,0);
+\draw [line width=1.pt,color=blue] (0,1)-- (3,0);
+\draw [line width=1.pt,color=blue] (3,0)-- (4,3);
+\draw [line width=1.pt,color=blue] (4,3)-- (1,4);
+\draw [line width=1.pt,color=blue] (1,4)-- (0,1);
+\end{tikzpicture}
+}
+

@@ -1,0 +1,815 @@
+% Nom du fichier : bfcours-commands.sty
+\ProvidesPackage{bfcours-commands}[2024/06/29 v1.0 Macros pour bfcours]
+
+
+
+ \newcommand{\pascalc}{\textbf{Calculatrice interdite}}
+\newcommand\degree{\degres}
+
+% Définition des commandes et styles
+\setlength{\parindent}{0mm}
+\renewcommand{\arraystretch}{1.5}
+\setlength{\fboxsep}{3mm}
+\setlength{\headheight}{14.5pt}
+\setlength{\premulticols}{0pt}
+
+\newcounter{ExoMA}
+\newlength{\parindentMA}%
+\setlength{\parindentMA}{\parindent}
+\addtolength{\parindentMA}{30pt}
+\newcounter{pagecounter}
+\setcounter{pagecounter}{0}
+
+% Définition des thèmes et environnements
+% (Ajoutez ici les définitions de vos thèmes et environnements)
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
+\def\points{1} %Pour indiquer les points dans les exos
+
+
+\newcounter{tikzfigcounter}
+\setcounter{tikzfigcounter}{0}
+
+
+\newcounter{profseyescounter}
+\setcounter{profseyescounter}{0}
+
+\newcommand{\masquerSiProf}[1]{%
+  \ifnum\value{profseyescounter}=0%
+    \phantom{#1}%
+  \else%
+    #1%
+  \fi%
+}
+
+\newlength{\myboxwidth}
+\newlength{\myboxheight}
+
+\newcommand{\seyesCMD}[6]{%
+  \settowidth{\myboxwidth}{\huge{#6}}%
+  \settoheight{\myboxheight}{#1em}%
+  \pgfmathsetmacro{\totalheight}{#1 * 3 * #3}%
+  \begin{tcolorbox}[%
+    enhanced,%
+    nobeforeafter,%
+    height=5 pt,%
+    capture=hbox,%
+    baseline={\the\dimexpr-\dp\strutbox+\ht\strutbox\relax},%
+    hbox,%
+    breakable,%
+    left=0pt,%
+    right=0pt,%
+    top=2pt,%
+    bottom=1pt,%
+    opacityback=0,
+    colback=transparent!0,% Rend le fond transparent
+    colframe=white,%
+    rounded corners,%
+    boxrule=0pt,%
+    %drop shadow,%
+    before upper={%
+      \begin{minipage}{\myboxwidth}%
+        %\pgfmathsetmacro{\linespreadfactor}{1 + 2 / #3}%
+        %\linespread{\linespreadfactor}\selectfont%
+        \tikz[overlay,remember picture] \coordinate (start);%
+        \phantom{\large{#6} } %si problemes mettre \phantom{\large{#6} }
+      \end{minipage}%
+    },%
+    after upper={%
+      \tikz[overlay,remember picture] \coordinate (end);%
+    },%
+    overlay={%
+      \begin{tikzpicture}[overlay, remember picture]%
+        \coordinate (A) at ([xshift=\myboxwidth]start);%
+        \coordinate (B) at ([xshift=\myboxwidth]end);%
+        \foreach \i in {1,...,#1} {%
+          \pgfmathsetmacro{\height}{\i * 3 * 1.9mm}%
+          \draw[blue!50, thin] ([xshift=#5, yshift=#2mm-\height]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height]A);%
+	  \draw[gray!50, ultra thin] ([xshift=#5, yshift=#2mm-\height+#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height+#3]A);%
+          \draw[gray!50, ultra thin] ([xshift=#5, yshift=#2mm-\height+3*#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height+3*#3]A);%
+          %\draw[gray!50, ultra thin] ([xshift=#5, yshift=#2mm-\height-#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height-#3]A);%
+          \draw[gray!50, ultra thin] ([xshift=#5, yshift=#2mm-\height+2*#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height+2*#3]A);%
+          %\draw[blue!50, ultra thin] ([xshift=#5, yshift=#2mm-\height+4*#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height+4*#3]A);%
+        }%
+      \end{tikzpicture}%
+    }%
+  ]%
+\noindent  \hspace{-\myboxwidth} \large{#6}
+  \end{tcolorbox}%
+}
+\newcommand{\seyesFrac}[6]{%
+  \settowidth{\myboxwidth}{\large{#6}}%
+  \settoheight{\myboxheight}{#1em}%
+  \pgfmathsetmacro{\totalheight}{#1 * 3 * #3}%
+  \begin{tcolorbox}[%
+    enhanced,%
+    nobeforeafter,%
+    height=7 pt,% Modifie la hauteur du texte dans la box
+    capture=hbox,%
+    baseline={\the\dimexpr-\dp\strutbox+\ht\strutbox\relax},%
+    hbox,%
+    breakable,%
+    left=0pt,%
+    right=0pt,%
+    top=-4.5pt,%
+    bottom=10pt,%
+    opacityback=0,
+    colback=transparent!0,% Rend le fond transparent
+    colframe=white,%
+    rounded corners,%
+    boxrule=0pt,%
+    %drop shadow,%
+    before upper={%
+      \begin{minipage}{\myboxwidth}%
+        %\pgfmathsetmacro{\linespreadfactor}{1 + 2 / #3}%
+        %\linespread{\linespreadfactor}\selectfont% MODIFIE POUR TETS, A REMETTRE AVC LIGNE DU DESSUS POUR LES FRACTIONS SEYES
+        \tikz[overlay,remember picture] \coordinate (start);%
+        \phantom{\large{#6} } %si problemes mettre \phantom{\large{#6} }
+      \end{minipage}%
+    },%
+    after upper={%
+      \tikz[overlay,remember picture] \coordinate (end);%
+    },%
+    overlay={%
+      \begin{tikzpicture}[overlay, remember picture]%
+        \coordinate (A) at ([xshift=1.2\myboxwidth]start);%
+        \coordinate (B) at ([xshift=1.2\myboxwidth]end);%
+        \foreach \i in {1,...,#1} {%
+          \pgfmathsetmacro{\height}{\i * 3 * 1.9mm}%
+          \draw[blue!50, thin] ([xshift=#5, yshift=#2mm-\height]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height]A);%
+	  \draw[gray!50, ultra thin] ([xshift=#5, yshift=#2mm-\height+#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height+#3]A);%
+          \draw[gray!50, ultra thin] ([xshift=#5, yshift=#2mm-\height+3*#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height+3*#3]A);%
+          \draw[gray!50, ultra thin] ([xshift=#5, yshift=#2mm-\height-#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height-#3]A);%
+          \draw[gray!50, ultra thin] ([xshift=#5, yshift=#2mm-\height+2*#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height+2*#3]A);%
+          \draw[blue!50, ultra thin] ([xshift=#5, yshift=#2mm-\height+4*#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height+4*#3]A);%
+          \draw[gray!50, ultra thin] ([xshift=#5, yshift=#2mm-\height-2*#3]start) -- ([xshift=#5-0.07cm, yshift=#2mm-\height-2*#3]A);%
+        }%
+      \end{tikzpicture}%
+    }%
+  ]%
+\hspace{-1.1\myboxwidth}\large{#6}% Ancien : \noindent  \hspace{-1.5\myboxwidth} \large{#6}
+  \end{tcolorbox}%
+}
+
+\newcommand{\score}[1][\hspace{0.4cm}]{\hfill \textbf{Score : \huge{\phantom{A}}\hspace{0.5cm} /} \Large{#1  }\hfill\phantom{a}}
+\newcommand{\scoreRD}[1][]{\tccrep[seyes=false]{1.2cm}{}{\Large /} \large{\num{\points}}}
+\newcommand{\mysquare}{
+    \tcbox[sharp corners, nobeforeafter, colback=white, colframe=black, size=small, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt, halign=center, valign=center, boxrule=1.5pt]{}
+}
+
+\newcommand{\repegal}[1]{%
+  \pgfmathtruncatemacro{\numlines}{#1 - 1}
+ \ifnum\numlines>0 % Si \numlines est supérieur à 0
+    \foreach \n in {1,...,\numlines} {%
+      \noindent = \dotfills \\ \ \\
+    }%
+  \fi
+  = \dotfills % Cette ligne sera toujours exécutée
+}
+
+\newcommand{\repModa}[3]{%
+  \pgfmathtruncatemacro{\numlines}{#1 - 1} % Calcul de #1 - 1
+  \noindent \\ \textbf{#2} % Affiche le préambule
+  \ifnum\numlines>0 % Si \numlines est supérieur à 0
+    \foreach \n in {1,...,\numlines} {%
+      \noindent  #3 \dotfills \\ \ \\
+    }%
+  \fi
+   #3 %\dotfills % Cette ligne sera toujours exécutée
+}
+\newcommand{\repModaAuto}[5]{%
+   \boxrepHead{#1}{#2}{#3}{#5}{#4}
+    }
+\newcommand{\repModaSimple}[2]{%
+\repModaAuto{1}{#2}{#1}{1}{1}
+}
+%utilisation : \repModa{1}{Décomposition}{:} ou encore \repModa{3}{Décomposer puis simplifier}{}
+\newcommand{\repModaLC}[3]{%
+  \pgfmathtruncatemacro{\numlines}{#1 - 1} % Calcul de #1 - 1
+  \noindent \\ #2 % Affiche le préambule
+  \ifnum\numlines>0 % Si \numlines est supérieur à 0
+    \foreach \n in {1,...,\numlines} {%
+      \noindent  #3 \dotfill \\ \ \\.
+    }%
+  \fi
+   #3 \dotfill % Cette ligne sera toujours exécutée
+}
+\newcommand{\emptySquare}{%
+  \tikz{%
+    \draw[black, line width=1pt, drop shadow={shadow xshift=0.08em, shadow yshift=-0.08em, fill=gray!70}] (0,0) rectangle (0.25,0.25);
+  }%
+}
+\newcommand{\repModaDoubleCheck}[3]{%
+  % Affiche les options à cocher
+  \noindent \qquad \emptySquare{} #1 \vrule \quad \emptySquare{} #2 \\ 
+  % Affiche "Justification :"
+  \noindent Justification : #3 
+}
+\newcommand{\repModaDoubleOptions}[4]{%
+  % Affiche les options à cocher
+  \noindent \qquad \emptySquare{} #1 \vrule \quad \emptySquare{} #2 \\ \ \\
+  % Affiche "Justification :"
+  \noindent #3 
+  % Calcul du nombre de lignes de pointillés
+  \pgfmathtruncatemacro{\numlines}{#4 - 1}
+  % Affiche les lignes de pointillés
+  \ifnum\numlines>0
+    \foreach \n in {1,...,\numlines} {%
+      \noindent \dotfills \dotfill \\ \ \\
+    }%
+	\dotfills
+  \fi
+  \noindent \dotfill % Cette ligne sera toujours exécutée
+}
+ \newcounter{linecounter}
+\newcommand{\repModaLignes}[3]{%
+  \setcounter{linecounter}{0}
+  \pgfmathtruncatemacro{\numlines}{#1 - 1} % Calcul de #1 - 1
+  \noindent #2 % Affiche le préambule
+  \ifnum\numlines>0 % Si \numlines est supérieur à 0
+    \foreach \n in {1,...,\numlines} {%
+     \addtocounter{linecounter}{1}
+      \noindent  (l.\arabic{linecounter}) #3 \dotfills \\ \ \\
+    }%
+  \fi
+   (l.\arabic{linecounter}) #3 \dotfills % Cette ligne sera toujours exécutée
+}
+
+\newcommand{\tableaucompetenceEval}[1]{
+      \begin{tcbtab}{>{\raggedright\arraybackslash}p{0.56\textwidth}|>{\centering\arraybackslash}p{0.05\textwidth}|>{\centering\arraybackslash}p{0.06\textwidth}|>{\centering\arraybackslash}p{0.06\textwidth}|>{\centering\arraybackslash}p{0.09\textwidth}}
+        \centering\textbf{Compétences évaluées} & \cellcolor{red!10!white}\mi &\cellcolor{orange!10!white} \mf &\cellcolor{yellow!10!white} \ms &\cellcolor{green!10!white} \tbm \\
+            \hline
+            #1
+        \end{tcbtab}
+}
+\newcommand{\tableaucompetence}[1]{
+%textbf{avant} de commencer la fiche d'exercices, puis \textbf{à la fin} de la fiche d'exercices :
+       \begin{tcbtab}{>{\raggedright\arraybackslash}p{0.56\textwidth}|>{\centering\arraybackslash}p{0.05\textwidth}|>{\centering\arraybackslash}p{0.06\textwidth}|>{\centering\arraybackslash}p{0.06\textwidth}|>{\centering\arraybackslash}p{0.09\textwidth}}
+        \centering\textbf{Compétences travaillées} & \cellcolor{red!10!white}\mi &\cellcolor{orange!10!white} \mf &\cellcolor{yellow!10!white} \ms &\cellcolor{green!10!white} \tbm \\
+            \hline
+            #1
+        \end{tcbtab}
+}
+\newcommand{\oldtableaucompetence}[1]{
+%textbf{avant} de commencer la fiche d'exercices, puis \textbf{à la fin} de la fiche d'exercices :
+       \begin{tcbtab}{|>{\raggedright\arraybackslash}p{0.68\textwidth}|*{4}{>{\centering\arraybackslash}p{0.05\textwidth}|}} 
+            \hline
+            \centering\textbf{Compétences travaillées} & \cellcolor{red!30!white}\textbf{MI} &\cellcolor{orange!30!white} \textbf{MF} &\cellcolor{yellow!30!white} \textbf{MS} &\cellcolor{green!30!white} \textbf{TBM} \\
+            \hline
+            #1
+        \end{tcbtab}
+}
+\newcommand{\tableaurecapsequence}[1]{
+%textbf{avant} de commencer la fiche d'exercices, puis \textbf{à la fin} de la fiche d'exercices : 
+        \begin{tcbtab}{|>{\raggedright\arraybackslash}p{0.68\textwidth}|*{4}{>{\centering\arraybackslash}p{0.05\textwidth}|}}
+            #1
+        \end{tcbtab}
+}
+\usetikzlibrary{trees, shapes, arrows.meta}
+\usetikzlibrary{chains}
+\usetikzlibrary{shapes.symbols,positioning}
+\definecolor{myblue}{RGB}{79,129,189}
+
+\tikzset{
+myshape/.style={
+  shape=signal,
+  fill=myblue,
+  draw = myblue,
+  minimum height=3cm,
+  minimum width=3cm,
+  text=white,
+  signal pointer angle=130,
+  signal to=east,
+  signal from=west,
+  rotate=-90,
+  transform shape
+  },
+mytext/.style={
+  draw=myblue,
+  text width=7cm,
+  minimum height=3cm,
+  thick,
+  outer sep=0pt
+  },  
+mynewtext/.style={
+  %draw=myblue,
+  text width=15cm,
+  minimum height=3cm,
+  thick,
+  outer sep=0pt,
+  inner sep=0pt
+  }  
+}
+\newcounter{tmp}
+\newcommand\MyoldDesc[4][]{
+\stepcounter{tmp}%
+%\xdef\mycommentary{#4}
+%\xdef\SequenceItemription{#3}
+\node[myshape,#1] (foo\thetmp) {};
+\node[font=\color{white}] at (foo\thetmp) {\begin{minipage}{2.5cm}\begin{center}#2\end{center}\end{minipage}};
+\node[mytext,anchor=north west] (desc\thetmp) at (foo\thetmp.north west) 
+  {%
+    %\parbox[t]{2em}{\hfill$\bullet$\hfill\null}%
+    \parbox[t]{\dimexpr\linewidth-2em\relax}{#3\\\Large{$1$h}}%
+  };
+\node[mytext,anchor=north west] (comm\thetmp) at (desc\thetmp.north east) 
+  {%
+    %\parbox[t]{2em}{\hfill$\bullet$\hfill\null}%
+    \parbox[t]{\dimexpr\linewidth-2em\relax}{\begin{minipage}[t]{6.7cm}#4\end{minipage}}%
+  };
+}
+
+\newcommand\SequenceItem[4][]{
+\stepcounter{tmp}%
+%\xdef\mycommentary{#4}
+%\xdef\SequenceItemription{#3}
+\node[myshape,#1] (foo\thetmp) {};
+\node[font=\color{white}] at (foo\thetmp) {\begin{minipage}{2.5cm}\begin{center}#2\end{center}\end{minipage}};
+\node[mynewtext,anchor=north west] (desc\thetmp) at (foo\thetmp.north west) 
+  {%
+  \tcbsidebyside[
+    bicolor,
+    height=3cm,
+    width=15cm,
+    nobeforeafter,
+    bottom=2pt,
+    colback=myblue!25!white,
+    colbacklower=myblue!10!white,
+    fonttitle=\bfseries,
+    center title,
+    drop lifted shadow,
+    colframe=myblue,
+    sharp corners=northwest,
+  ]{
+        #3 
+   }{
+        #4
+    }
+  };
+}
+\newcommand{\enteteContenu}{
+\centering\textbf{Contenu de la séquence} & \cellcolor{red!30!white}\textbf{MI} &\cellcolor{orange!30!white} \textbf{MF} &\cellcolor{yellow!30!white} \textbf{MS} &\cellcolor{green!30!white} \textbf{TBM} \\
+\hline
+}
+\newcommand{\recapHeures}{
+	\centering\textbf{Nombre d'heures} & \multicolumn{4}{c}{\thetmp \ heures}\\ 
+	\hline
+}
+\newcommand{\competence}[1]{
+   \cellcolor{gray!10}\textcolor{black}{$\bullet$} #1 & & & & \\
+    \hline
+}
+\newcounter{exerciceBCounter}
+
+\newcommand{\tableauPresenteEvalSixieme}[2]{
+  \begin{minipage}{0.7\textwidth}\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=2pt, arc=2pt,bottom=0pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.700
+    \begin{tabularx}{\textwidth}{XXX}
+      \textbf{Nom :} \tcfillcrep{} &\textbf{Prénom :} \tcfillcrep{} 
+    \end{tabularx}
+  \end{tcolorbox}\end{minipage}  \begin{minipage}{0.295\textwidth}\hfill\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=2pt, arc=2pt,bottom=0pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.280
+ \textbf{Bilan :\tccrep[seyes=false]{1cm}{}/#2\tccrep[seyes=false]{1.5cm}{}} 
+  \end{tcolorbox}
+	\end{minipage} \\%\vspace{-0.5cm}
+}
+\newcommand{\tableauEval}[1]{
+  \begin{None}
+    \begin{tcbraster}[
+      raster columns     = 4,
+      raster width       = \textwidth,
+      %size               = fbox,
+      raster equal height,
+      raster column skip = 5pt,
+      raster row skip    = 1pt
+    ]%
+      \begin{tcolorbox}[raster multicolumn=3, colback=white, colframe=black, width=\textwidth,raster column skip = 5pt, boxrule=1pt, arc=2pt,bottom=0pt, auto outer arc, boxsep=0pt, left=1pt,right=1pt,top=0pt, nobeforeafter]%0.700
+        %\begin{tabularx}{\textwidth}{XXX}
+        \begin{tcbraster}[raster columns=2, raster equal height, raster width=\textwidth, boxrule=1pt, arc=2pt,bottom=0pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.700
+          \begin{tcolorbox}[blankest]
+            \textbf{Nom :} \tcfillcrep{}
+          \end{tcolorbox}
+          \begin{tcolorbox}[blankest]
+            \textbf{Prénom :} \tcfillcrep{} 
+          \end{tcolorbox}
+        \end{tcbraster}
+        %\end{tabularx}
+      \end{tcolorbox}
+      \begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, valign=center, boxrule=1pt, arc=2pt,top=2pt,bottom=0pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.280
+        \textbf{Durée :} \hfill \overlaychrono{#1} \hfill\phantom{AA}
+      \end{tcolorbox}
+    \end{tcbraster}  
+  \end{None}
+}
+\newcommand{\tableauProjetEval}[1]{
+  \begin{None}
+    \begin{tcbraster}[
+      raster columns     = 4,
+      raster width       = \textwidth,
+      %size               = fbox,
+      raster equal height,
+      raster column skip = 5pt,
+      raster row skip    = 1pt
+    ]%
+      \begin{tcolorbox}[raster multicolumn=3, colback=white, colframe=black, width=\textwidth,raster column skip = 5pt, boxrule=0.4pt, arc=2pt,bottom=0pt, auto outer arc, boxsep=0pt, left=1pt,right=1pt,top=0pt, nobeforeafter]%0.700
+        %\begin{tabularx}{\textwidth}{XXX}
+        \begin{tcbraster}[raster columns=2, raster equal height, raster width=\textwidth, boxrule=0.4pt, arc=2pt,bottom=0pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.700
+          \begin{tcolorbox}[blankest]
+            \textbf{Nom :} \tcfillcrep{}
+          \end{tcolorbox}
+          \begin{tcolorbox}[blankest]
+            \textbf{Prénom :} \tcfillcrep{} 
+          \end{tcolorbox}
+        \end{tcbraster}
+        %\end{tabularx}
+      \end{tcolorbox}
+      \begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, valign=center,halign=center, boxrule=0.4pt, arc=2pt,top=2pt,bottom=0pt, auto outer arc, boxsep=0pt,bottomtitle=1.5pt,toptitle=1pt, nobeforeafter,title=Date de rendu :,fonttitle=\bfseries]%0.280
+        #1
+      \end{tcolorbox}
+
+    \end{tcbraster}
+    \begin{tcbraster}[
+      raster columns     = 3,
+      raster width       = \textwidth,
+      %size               = fbox,
+      raster equal height,
+      raster column skip = 5pt,
+      raster row skip    = 1pt
+    ]%
+      \begin{tcolorbox}[halign=left,colback=white, colframe=black, width=\textwidth, valign=center,halign=center, boxrule=0.4pt, arc=2pt,top=2pt,bottom=0pt, auto outer arc, boxsep=0pt]%0.280
+\acc{Classe :} \tccrep[seyes=false,colback=white]{1.5cm}{}\hfill\phantom{a}
+      \end{tcolorbox}
+      \begin{tcolorbox}[halign=left,colback=white, colframe=black, width=\textwidth, valign=center,halign=center, boxrule=0.4pt, arc=2pt,top=2pt,bottom=0pt, auto outer arc, boxsep=0pt]
+\acc{Date :} \tccrep[seyes=false,colback=white]{3.5cm}{}\hfill\phantom{a}
+      \end{tcolorbox}% Espace classe et date
+      \begin{tcolorbox}[halign=left,colback=white, colframe=black, width=\textwidth, top=1pt, bottom=1pt, left=1pt, right=1pt, boxrule=1pt, arc=2pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.280
+                    \textbf{Bilan : \tccrep[seyes=false]{1.5cm}{}/\getsavedtotalpoints\phantom{A}}
+    \end{tcolorbox}%
+    \end{tcbraster}  
+  \end{None}
+}
+%Commandes d'accentuation du texte 
+%\newcommand{\voc}[2][\currentAccentColor]{\textbf{\color{#1}#2}\index{#2}}
+\newcommand{\acc}[2][\currentAccentColor]{\textbf{\color{#1}#2}}
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+
+\NewDocumentCommand{\surligner}{ O{blue} m }{%
+  \tcbox[
+    on line,
+    colback=#1!10!white,
+    colframe=#1!10!white,
+    size=fbox,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\normalfont,
+    colupper=#1!75!black,
+    arc=5pt,
+    valign=center
+  ]{#2}%
+}
+
+\NewDocumentCommand{\encadrer}{ O{blue} m }{%
+  \tcbox[
+    on line,
+    colback=#1!5!white,
+    colframe=#1!75!black,
+    size=fbox,
+    boxsep=1pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\normalfont,
+    colupper=black,
+    arc=5pt,
+    valign=center
+  ]{#2}%
+}
+
+\newcommand{\formuleTable}[1]{\encadrer[red]{#1}}
+
+\newcommand{\lien}[2]{\hyperref[#1]{\bfseries\color{\lienInterneColor}#2}}
+\newcommand{\vocref}[2]{
+    \href{#1}{\bfseries\color{monrose} #2\index{#2}}
+}
+\newcommand{\vocnoindexref}[2]{
+    \href{#1}{\bfseries\color{monrose} #2}
+}
+
+% Commande \chrono pour dessiner un cadran avec le nombre de minutes et les tics des quarts d'heure
+\newcommand{\chrono}[1]{%
+    \begin{minipage}{3cm}
+        \boite{Durée :}{
+            %\vspace{0.35cm}
+            \begin{tikzpicture}[baseline=(text.base)]
+                % Dessin du cercle du cadran
+                \node[draw, circle, minimum width=0.8cm, inner sep=0pt] (cadran) {};
+
+                % Calcul de l'angle en fonction des minutes
+                \pgfmathsetmacro{\chronoAngle}{90 - (#1 / 60) * 360}
+
+                % Remplissage de l'intervalle entre 0 et le nombre de minutes
+                \fill[red, opacity=0.7] (cadran.center) -- ++(90:0.4cm) arc (90:\chronoAngle:0.4cm) -- cycle;
+
+                % Tics des quarts d'heure
+                \foreach \tick in {0, 90, 180, 270} {
+                    \draw[thick] ([shift=(\tick:0.33cm)]cadran.center) -- ([shift=(\tick:0.38cm)]cadran.center);
+                }
+
+                % Ajout de l'aiguille des minutes
+                \draw[thick] (cadran.center) -- ++(\chronoAngle:0.38cm); % Longueur de l'aiguille proportionnelle
+
+                % Placement du texte des minutes
+                \node[anchor=west] (text) at (0.7cm,0) {#1'};
+            \end{tikzpicture}%
+        }
+        %\vspace{0.35cm}
+    \end{minipage}
+}
+
+\newcommand{\overlaychrono}[1]{
+	\begin{tikzpicture}[baseline=(text.base),overlay]
+                % Dessin du cercle du cadran
+                \node[draw, circle, minimum width=0.8cm, inner sep=0pt] (cadran) {};
+
+                % Calcul de l'angle en fonction des minutes
+                \pgfmathsetmacro{\chronoAngle}{90 - (#1 / 60) * 360}
+
+                % Remplissage de l'intervalle entre 0 et le nombre de minutes
+                \fill[red, opacity=0.7] (cadran.center) -- ++(90:0.4cm) arc (90:\chronoAngle:0.4cm) -- cycle;
+
+                % Tics des quarts d'heure
+                \foreach \tick in {0, 90, 180, 270} {
+                    \draw[thick] ([shift=(\tick:0.33cm)]cadran.center) -- ([shift=(\tick:0.38cm)]cadran.center);
+                }
+
+                % Ajout de l'aiguille des minutes
+                \draw[thick] (cadran.center) -- ++(\chronoAngle:0.38cm); % Longueur de l'aiguille proportionnelle
+
+                % Placement du texte des minutes
+                \node[anchor=west] (text) at (0.7cm,0) {#1'};
+      \end{tikzpicture}%
+}
+
+
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
+
+\renewcommand{\widehat}[1]{\reallywidehat{#1}}
+
+
+% Définition du style pour les éléments dans la tcolorbox avec une case à cocher
+\NewDocumentCommand{\listnode}{ m m }{%
+    \tcbsidebyside[sidebyside adapt=both,
+    bicolor,width=3.5cm,nobeforeafter,colback=white,colbacklower=yellow!10,
+    fonttitle=\bfseries,center title,drop lifted shadow,
+    ]{
+        #1 % Case à cocher (\cb ou \ccb)
+    }{% % Petit espace après la case
+        #2 % Contenu de l'élément
+    }
+}
+
+%\checkbox[checked corr]{}
+\newcommand{\cb}{
+    \checkbox[check mark = mark14,skin = squareshadow]{}
+}
+\newcommand{\ccb}{
+    \checkbox[check mark = mark14,skin = squareshadow,checked corr]{}
+}
+% Commande personnalisée \myrdexohlist avec Lua pour découper suivant "&"
+\NewDocumentCommand{\myrdexohlist}{m}{
+    \begin{center}\begingroup
+    % Utilisation de Lua pour diviser et afficher chaque élément
+    \directlua{
+        local list = "\luatexluaescapestring{#1}"
+        for element in string.gmatch(list, "([^&]+)") do
+            tex.print(element)
+        end
+    }
+    \endgroup
+\end{center}
+}
+
+%EMOJIS
+% Déclaration des emojis et des textes par défaut
+    \newcommand{\mi}{\textbf{MI}}
+    \newcommand{\mf}{\textbf{MF}}
+    \newcommand{\ms}{\textbf{MS}}
+    \newcommand{\tbm}{\textbf{TBM}}
+
+% Définition de la commande \setemoji pour activer ou désactiver les emojis
+\newboolean{emojion} % Déclare un booléen emojion
+
+\newcommand{\setupemojit}{
+    \setboolean{emojion}{true}
+     \renewcommand{\mi}{\emoji{upside-down-face}} % Upside-down face
+    \renewcommand{\mf}{\emoji{face-with-raised-eyebrow}} % Face with raised eyebrow
+    \renewcommand{\ms}{\emoji{slightly-smiling-face}} % Slightly smiling face
+    \renewcommand{\tbm}{\emoji{star-struck}} % Star-struck
+}
+
+\newcommand{\setupemojif}{
+    \setboolean{emojion}{false}
+    \renewcommand{\mi}{\textbf{MI}}
+    \renewcommand{\mf}{\textbf{MF}}
+    \renewcommand{\ms}{\textbf{MS}}
+    \renewcommand{\tbm}{\textbf{TBM}}
+}
+
+% Commande principale \setemoji
+\newcommand{\setemoji}[1]{
+    \ifthenelse{\equal{#1}{true}}{\setupemojit}{\setupemojif}
+}
+\setemoji{true}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\affiche}{O{0}m} {
+  % Vérification et stockage du code numérique de l'option
+  \int_set:Nn \l_tmpa_int { #1 }
+  
+  % Stockage du nombre
+  \fp_set:Nn \l_tmpb_fp { #2 }
+
+  % Logique basée sur le code
+  \int_compare:nNnTF { \l_tmpa_int } = { 1 } {
+    % Forcer les parenthèses
+    (\num{#2})
+  } {
+    \int_compare:nNnTF { \l_tmpa_int } = { -1 } {
+      % Forcer l'absence de parenthèses
+      \num{#2}
+    } {
+      % Par défaut : selon le signe
+      \fp_compare:nTF { \l_tmpb_fp < 0 } {
+        (\num{#2})
+      } {
+        \num{#2}
+      }
+    }
+  }
+}
+\ExplSyntaxOff
+
+%Commandes logique
+% Définition des commandes \Si et \Alors pour les phrases logiques
+% Ces commandes créent des tcolorbox inline avec une couleur personnalisable
+
+\NewDocumentCommand{\Si}{ O{red} }{%
+  \tcbox[
+    on line,
+    colback=#1!10!white,
+    colframe=#1!10!white,
+    size=fbox,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\large,
+    colupper=#1!75!black,
+    sharp corners,
+    valign=center
+  ]{Si}\ %
+}
+\NewDocumentCommand{\SSI}{ O{purple} }{%
+  \tcbox[
+    on line,
+    colback=#1!10!white,
+    colframe=#1!10!white,
+    size=fbox,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\normalsize,
+    colupper=#1!75!black,
+    sharp corners,
+    valign=center
+  ]{si et seulement si }\ %
+}
+\NewDocumentCommand{\Alors}{ O{blue} }{%
+  \tcbox[
+    on line,
+    colback=#1!10!white,
+    colframe=#1!10!white,
+    size=fbox,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\large,
+    colupper=#1!75!black,
+    sharp corners,
+    valign=center
+  ]{Alors}\ %
+}
+
+\NewDocumentCommand{\Et}{ O{green} }{%
+  \tcbox[
+    on line,
+    colback=#1!10!white,
+    colframe=#1!10!white,
+    size=fbox,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\large,
+    colupper=#1!75!black,
+    sharp corners,
+    valign=center
+  ]{Et}\ %
+}
+
+\NewDocumentCommand{\Mais}{ O{red} }{%
+  \tcbox[
+    on line,
+    colback=#1!10!white,
+    colframe=#1!10!white,
+    size=fbox,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\large,
+    colupper=#1!75!black,
+    sharp corners,
+    valign=center
+  ]{Mais}\ %
+}
+
+\NewDocumentCommand{\Car}{ O{green} }{%
+  \tcbox[
+    on line,
+    colback=#1!10!white,
+    colframe=#1!10!white,
+    size=fbox,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\large,
+    colupper=#1!75!black,
+    sharp corners,
+    valign=center
+  ]{Car}\ %
+}
+
+\NewDocumentCommand{\Puisque}{ O{purple} }{%
+  \tcbox[
+    on line,
+    colback=#1!10!white,
+    colframe=#1!10!white,
+    size=fbox,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\large,
+    colupper=#1!75!black,
+    sharp corners,
+    valign=center
+  ]{Puisque}\ %
+}
+
+\NewDocumentCommand{\Donc}{ O{purple} }{%
+  \tcbox[
+    on line,
+    colback=#1!10!white,
+    colframe=#1!10!white,
+    size=fbox,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=2pt,
+    bottom=2pt,
+    fontupper=\large,
+    colupper=#1!75!black,
+    sharp corners,
+    valign=center
+  ]{Donc}\ %
+}
+
+
+
+
+
+
+\endinput

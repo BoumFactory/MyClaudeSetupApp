@@ -1,0 +1,4647 @@
+{
+  "metadata": {
+    "exportDate": "2025-09-04T16:13:10.952502Z",
+    "totalCompetences": 159,
+    "totalDocuments": 80,
+    "agentsReussis": 80,
+    "agentsErreur": 0,
+    "method": "orchestrateur-massif-automatique",
+    "nomenclature": "C{niveau}{categorie}{index:02d}-{palier}",
+    "themes_autorises": [
+      "NOMBRES",
+      "GEOMETRIE",
+      "DONNEES",
+      "GRANDEURS",
+      "INFORMATIQUE"
+    ],
+    "compteurs": {
+      "SECONDE": {
+        "NOMBRES": 63,
+        "GEOMETRIE": 40,
+        "DONNEES": 11,
+        "GRANDEURS": 10,
+        "INFORMATIQUE": 0
+      },
+      "PREMIERE_SPE": {
+        "NOMBRES": 23,
+        "GEOMETRIE": 3,
+        "DONNEES": 4,
+        "GRANDEURS": 4,
+        "INFORMATIQUE": 1
+      }
+    }
+  },
+  "competences": [
+    {
+      "code": "C2N01-2",
+      "nom": "Résoudre une équation par factorisation et théorème du produit nul",
+      "description": "Capacité à résoudre des équations en les factorisant et en appliquant le théorème selon lequel un produit est nul si et seulement si l'un de ses facteurs est nul",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser la technique de factorisation d'expressions algébriques",
+        "Comprendre et appliquer le théorème du produit nul",
+        "Identifier les différentes formes d'équations nécessitant une factorisation"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des équations du type (ax+b)(cx+d)=0",
+        "Transformer une expression pour obtenir un produit de facteurs",
+        "Vérifier la cohérence des solutions obtenues"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD24_equations_.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 25,
+        "timestamp": "2025-09-04T16:08:33.917815Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N02-2",
+      "nom": "Résoudre des équations avec fractions et réduction au même dénominateur",
+      "description": "Capacité à résoudre des équations comportant des fractions en utilisant la technique de réduction au même dénominateur et la simplification",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser la technique de réduction au même dénominateur",
+        "Comprendre les règles de calcul sur les fractions",
+        "Savoir simplifier des expressions fractionnaires"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des équations du type a/b + c/d = e/f",
+        "Manipuler des expressions avec fractions",
+        "Vérifier la validité des solutions obtenues"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD24_equations_.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 25,
+        "timestamp": "2025-09-04T16:08:33.917815Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G01-2",
+      "nom": "Calculer les coordonnées d'un point symétrique dans un repère orthonormé",
+      "description": "Déterminer les coordonnées d'un point par symétrie centrale en utilisant les propriétés du milieu dans un repère orthonormé",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser les propriétés de la symétrie centrale",
+        "Utiliser les coordonnées dans un repère orthonormé",
+        "Appliquer les formules du milieu d'un segment"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer les coordonnées d'un point symétrique par rapport à un autre",
+        "Identifier les propriétés d'un parallélogramme via ses coordonnées",
+        "Caractériser un quadrilatère à partir de ses sommets"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-Exos-milieu-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 47,
+        "timestamp": "2025-09-04T16:08:34.566883Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2R01-3",
+      "nom": "Calculer des distances dans le plan et caractériser des figures géométriques",
+      "description": "Utiliser la formule de la distance entre deux points pour calculer des longueurs et en déduire la nature de figures géométriques",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Appliquer la formule de distance entre deux points",
+        "Identifier des figures géométriques par leurs propriétés métriques",
+        "Calculer le périmètre et l'aire d'un triangle"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer des longueurs de segments dans un repère",
+        "Déterminer la nature d'un triangle à partir de ses côtés",
+        "Résoudre des problèmes de géométrie métrique"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-Exos-milieu-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 47,
+        "timestamp": "2025-09-04T16:08:34.566883Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N03-2",
+      "nom": "Résoudre des équations du premier degré à une inconnue",
+      "description": "Maîtrise des techniques de résolution d'équations linéaires incluant la réduction au même dénominateur et le regroupement des termes semblables",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les propriétés de conservation de l'égalité",
+        "Maîtriser la réduction au même dénominateur",
+        "Identifier et regrouper les termes semblables"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre une équation avec fractions type x/6 + 1/4 = 7x/12 - 1",
+        "Résoudre une équation avec parenthèses type 4(x-6)=3(2x+3)",
+        "Appliquer la résolution d'équations dans des problèmes concrets"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD24-equations.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 26,
+        "timestamp": "2025-09-04T16:08:35.347892Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N04-2",
+      "nom": "Résoudre des équations produit-nul",
+      "description": "Application du théorème des produits nuls pour résoudre des équations se ramenant à un produit de facteurs du premier degré",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre et appliquer le théorème des produits nuls",
+        "Identifier la forme factorisée d'une expression",
+        "Résoudre des équations de la forme (ax+b)(cx+d)=0"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre (3x-7)(5x+3)=0",
+        "Factoriser une expression du second degré",
+        "Résoudre une équation après factorisation"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD24-equations.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 26,
+        "timestamp": "2025-09-04T16:08:35.347892Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N05-2",
+      "nom": "Résoudre des inéquations produit",
+      "description": "Étudier le signe d'un produit de facteurs du premier degré en utilisant un tableau de signes et déterminer l'ensemble solution",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre que le signe d'un produit dépend du signe de ses facteurs",
+        "Maîtriser la construction et l'utilisation d'un tableau de signes",
+        "Déterminer les racines des facteurs du premier degré"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre une inéquation de type (ax+b)(cx+d)>0",
+        "Déterminer l'ensemble solution sous forme d'intervalles",
+        "Gérer le cas où l'inégalité est large (≥) ou stricte (>)"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-202-correction-TD25-inequations.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 24,
+        "timestamp": "2025-09-04T16:08:36.123559Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N06-3",
+      "nom": "Résoudre des inéquations quotient",
+      "description": "Étudier le signe d'un quotient en déterminant l'ensemble de définition et en utilisant un tableau de signes adapté aux valeurs interdites",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Déterminer l'ensemble de définition d'une fraction rationnelle",
+        "Comprendre le rôle des valeurs interdites dans une inéquation quotient",
+        "Maîtriser la technique de résolution par tableau de signes avec valeurs interdites"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre une inéquation de type (ax+b)/(cx+d)≥0",
+        "Gérer les valeurs interdites dans l'écriture de l'ensemble solution",
+        "Transformer une inéquation quotient en inéquation produit"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-202-correction-TD25-inequations.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 24,
+        "timestamp": "2025-09-04T16:08:36.123559Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G02-1",
+      "nom": "Calculer les coordonnées du milieu d'un segment dans un repère",
+      "description": "Utilisation des formules de calcul des coordonnées du milieu d'un segment à partir des coordonnées de ses extrémités dans un repère orthonormé",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Connaître et appliquer les formules du milieu",
+        "Manipuler les coordonnées dans le plan",
+        "Comprendre la notion de milieu géométrique via ses coordonnées"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les coordonnées du milieu M de [AB] connaissant A(x₁;y₁) et B(x₂;y₂)",
+        "Appliquer les formules xₘ=(x₁+x₂)/2 et yₘ=(y₁+y₂)/2",
+        "Vérifier numériquement que le point trouvé est bien le milieu"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-controle-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 46,
+        "timestamp": "2025-09-04T16:08:38.522901Z",
+        "document_type": "evaluation"
+      }
+    },
+    {
+      "code": "C2G03-2",
+      "nom": "Caractériser un parallélogramme par ses coordonnées",
+      "description": "Utilisation des propriétés des diagonales et des côtés d'un parallélogramme pour vérifier ou construire un parallélogramme dans un repère",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Connaître les caractérisations d'un parallélogramme",
+        "Traduire les propriétés géométriques en termes de coordonnées",
+        "Utiliser les vecteurs pour caractériser un parallélogramme"
+      ],
+      "objectifApprentissageExercice": [
+        "Vérifier qu'un quadrilatère ABCD est un parallélogramme",
+        "Déterminer les coordonnées du quatrième sommet d'un parallélogramme",
+        "Démontrer qu'un quadrilatère est un parallélogramme"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-controle-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 46,
+        "timestamp": "2025-09-04T16:08:38.522901Z",
+        "document_type": "evaluation"
+      }
+    },
+    {
+      "code": "C2G04-3",
+      "nom": "Caractériser un triangle rectangle isocèle",
+      "description": "Utilisation du théorème de Pythagore et de l'égalité des longueurs pour démontrer qu'un triangle est rectangle isocèle dans un repère",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Connaître les propriétés d'un triangle rectangle isocèle",
+        "Calculer des distances dans un repère",
+        "Utiliser le théorème de Pythagore"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les longueurs des côtés d'un triangle",
+        "Vérifier l'égalité de deux côtés d'un triangle",
+        "Démontrer qu'un angle est droit en utilisant le théorème de Pythagore"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-controle-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 46,
+        "timestamp": "2025-09-04T16:08:38.522901Z",
+        "document_type": "evaluation"
+      }
+    },
+    {
+      "code": "C2G05-2",
+      "nom": "Calculer des distances entre points dans un repère orthonormé",
+      "description": "Utilisation de la formule de distance entre deux points dans le plan pour déterminer des longueurs de segments et vérifier des propriétés géométriques",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser la formule de distance entre deux points dans un repère orthonormé",
+        "Comprendre le lien entre coordonnées et distances",
+        "Utiliser les distances pour caractériser des figures géométriques"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer la longueur d'un segment à partir des coordonnées de ses extrémités",
+        "Vérifier l'appartenance d'un point à la médiatrice d'un segment",
+        "Déterminer si un point appartient à un cercle de centre et rayon donnés"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD6-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 49,
+        "timestamp": "2025-09-04T16:08:45.701431Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2G06-2",
+      "nom": "Déterminer et utiliser les coordonnées de points particuliers",
+      "description": "Calcul des coordonnées de points spécifiques (milieux, centres de cercles) et utilisation pour résoudre des problèmes géométriques",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Calculer les coordonnées du milieu d'un segment",
+        "Déterminer les coordonnées du centre d'un cercle circonscrit",
+        "Utiliser les coordonnées pour établir des alignements ou des parallélismes"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les coordonnées du milieu d'un segment",
+        "Déterminer le point d'intersection d'une droite avec un segment",
+        "Calculer l'aire d'un triangle à partir des coordonnées de ses sommets"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD6-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 49,
+        "timestamp": "2025-09-04T16:08:45.701431Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N07-2",
+      "nom": "Résoudre des inéquations du premier degré",
+      "description": "Maîtrise des techniques de résolution d'inéquations du premier degré, incluant les règles de transformation (addition, soustraction, multiplication et division) et le traitement des cas selon le signe du coefficient",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les règles de transformation des inégalités",
+        "Maîtriser le changement de sens lors de la multiplication/division par un nombre négatif",
+        "Savoir isoler l'inconnue dans une inéquation"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des inéquations de type ax+b ≤ c",
+        "Déterminer le signe d'une expression ax+b",
+        "Utiliser un tableau de signes pour représenter la solution"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-inequations.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 28,
+        "timestamp": "2025-09-04T16:08:46.627746Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N08-2",
+      "nom": "Étudier le signe d'une expression du premier degré",
+      "description": "Analyse du signe d'une expression ax+b en fonction du coefficient directeur a et de l'ordonnée à l'origine b, utilisation des tableaux de variation",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre l'influence du signe de a sur les variations",
+        "Déterminer le point d'annulation -b/a",
+        "Interpréter graphiquement le signe d'une expression"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire un tableau de variations pour ax+b",
+        "Résoudre des inéquations par étude du signe",
+        "Représenter graphiquement les solutions"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-inequations.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 28,
+        "timestamp": "2025-09-04T16:08:46.627746Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N09-1",
+      "nom": "Résoudre une équation du premier degré",
+      "description": "Maîtrise des techniques de résolution d'équations fondamentales (ax=b, x+a=b, x-a=b, x/a=b) en appliquant les principes de conservation de l'égalité",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Comprendre la définition d'une équation et de ses solutions",
+        "Maîtriser les règles de transformation d'une égalité",
+        "Appliquer les techniques de résolution des équations fondamentales"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des équations du type ax+b=c",
+        "Vérifier qu'un nombre est solution d'une équation",
+        "Traduire un problème concret en équation du premier degré"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-equations.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 27,
+        "timestamp": "2025-09-04T16:08:48.866932Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N10-2",
+      "nom": "Résoudre une équation produit nul",
+      "description": "Application du théorème du produit nul pour résoudre des équations se ramenant à un produit de facteurs égal à zéro, incluant la factorisation préalable si nécessaire",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre et appliquer le théorème du produit nul",
+        "Identifier les situations nécessitant une factorisation",
+        "Maîtriser les différentes techniques de factorisation"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des équations du type (ax+b)(cx+d)=0",
+        "Factoriser une expression pour se ramener à un produit nul",
+        "Résoudre des équations nécessitant une factorisation préalable"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-equations.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 27,
+        "timestamp": "2025-09-04T16:08:48.866932Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N11-2",
+      "nom": "Résoudre une équation du type x²=a",
+      "description": "Résolution d'équations du second degré de la forme x²=a, avec étude des cas selon le signe de a et utilisation des racines carrées",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la notion de racine carrée",
+        "Distinguer les cas selon le signe de a",
+        "Maîtriser la résolution des équations x²=a"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des équations du type x²=k avec k réel",
+        "Déterminer l'existence des solutions selon le signe de k",
+        "Utiliser les racines carrées dans la résolution"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-equations.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 27,
+        "timestamp": "2025-09-04T16:08:48.866932Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G07-1",
+      "nom": "Calculer les coordonnées du milieu d'un segment",
+      "description": "Déterminer les coordonnées du milieu d'un segment à partir des coordonnées de ses extrémités dans un repère du plan en utilisant les formules de calcul du milieu",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Connaître et appliquer les formules du milieu d'un segment",
+        "Comprendre la notion de milieu dans un repère",
+        "Maîtriser le calcul des coordonnées dans le plan"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les coordonnées du milieu d'un segment [AB] connaissant A(xA;yA) et B(xB;yB)",
+        "Utiliser le milieu pour caractériser un parallélogramme",
+        "Déterminer le centre d'un cercle comme milieu de son diamètre"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD5-milieu-longueur.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 48,
+        "timestamp": "2025-09-04T16:08:48.919789Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2G08-2",
+      "nom": "Caractériser un parallélogramme par ses coordonnées",
+      "description": "Utiliser les propriétés des diagonales d'un parallélogramme et les coordonnées des points pour vérifier qu'un quadrilatère est un parallélogramme",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Connaître les propriétés caractéristiques d'un parallélogramme",
+        "Traduire les propriétés géométriques en termes de coordonnées",
+        "Utiliser les milieux des diagonales pour caractériser un parallélogramme"
+      ],
+      "objectifApprentissageExercice": [
+        "Vérifier qu'un quadrilatère ABCD est un parallélogramme à partir des coordonnées",
+        "Déterminer les coordonnées du quatrième sommet d'un parallélogramme",
+        "Démontrer qu'un quadrilatère est un parallélogramme"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD5-milieu-longueur.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 48,
+        "timestamp": "2025-09-04T16:08:48.919789Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2R02-3",
+      "nom": "Utiliser le théorème de Pythagore dans un repère orthonormé",
+      "description": "Calculer des longueurs dans un repère orthonormé en utilisant la distance entre deux points et le théorème de Pythagore pour caractériser des figures géométriques",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Calculer la distance entre deux points dans un repère orthonormé",
+        "Utiliser le théorème de Pythagore pour vérifier si un triangle est rectangle",
+        "Caractériser un cercle par la distance au centre"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer si un triangle est rectangle en calculant les longueurs de ses côtés",
+        "Vérifier si un point appartient à un cercle de diamètre donné",
+        "Démontrer qu'un triangle est isocèle en comparant les longueurs"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-TD5-milieu-longueur.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 48,
+        "timestamp": "2025-09-04T16:08:48.919789Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2D01-1",
+      "nom": "Identifier et caractériser les événements dans un univers fini",
+      "description": "Maîtriser le vocabulaire des probabilités finies : expérience aléatoire, univers, éventualités, événements élémentaires/impossibles/certains",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Définir rigoureusement une expérience aléatoire et son univers associé",
+        "Distinguer les différents types d'événements (élémentaire, impossible, certain)",
+        "Utiliser la notation ensembliste pour décrire les événements"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer l'univers d'une expérience aléatoire simple (dé, pièce)",
+        "Identifier les événements élémentaires d'une situation donnée",
+        "Caractériser la nature d'un événement (impossible, certain, élémentaire)"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-probabilites.tex",
+      "source_sequence": "Probabilites",
+      "agent_meta": {
+        "agent_id": 50,
+        "timestamp": "2025-09-04T16:08:49.182126Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2D02-2",
+      "nom": "Calculer des probabilités dans un univers fini",
+      "description": "Définir et utiliser une loi de probabilité sur un univers fini, calculer la probabilité d'événements par addition des probabilités élémentaires",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les conditions d'une loi de probabilité (somme = 1, valeurs entre 0 et 1)",
+        "Calculer la probabilité d'un événement comme somme de probabilités élémentaires",
+        "Manipuler les probabilités dans des situations équiprobables et non équiprobables"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer la loi de probabilité d'une expérience aléatoire simple",
+        "Calculer la probabilité d'événements composés",
+        "Résoudre des problèmes de probabilité avec dé truqué/non truqué"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-probabilites.tex",
+      "source_sequence": "Probabilites",
+      "agent_meta": {
+        "agent_id": 50,
+        "timestamp": "2025-09-04T16:08:49.182126Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G09-2",
+      "nom": "Identifier et utiliser un vecteur directeur d'une droite",
+      "description": "Comprendre la notion de vecteur directeur d'une droite, ses propriétés et son rôle dans la caractérisation d'une droite. Savoir que deux droites sont parallèles si et seulement si leurs vecteurs directeurs sont colinéaires.",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la définition d'un vecteur directeur",
+        "Identifier les vecteurs directeurs d'une droite",
+        "Utiliser la colinéarité des vecteurs directeurs pour le parallélisme"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer un vecteur directeur à partir d'une équation cartésienne",
+        "Vérifier le parallélisme de deux droites via leurs vecteurs directeurs",
+        "Construire une droite connaissant un point et un vecteur directeur"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-eq-droites.tex",
+      "source_sequence": "Equations droites",
+      "agent_meta": {
+        "agent_id": 29,
+        "timestamp": "2025-09-04T16:08:58.578800Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G10-3",
+      "nom": "Établir et manipuler l'équation cartésienne d'une droite",
+      "description": "Savoir qu'une droite peut être représentée par une équation de la forme ax + by + c = 0, comprendre le lien entre les coefficients et le vecteur directeur, et pouvoir déterminer une équation cartésienne à partir de deux points.",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre la forme générale ax + by + c = 0",
+        "Faire le lien entre coefficients et vecteur directeur",
+        "Déterminer une équation cartésienne à partir d'éléments géométriques"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer une équation cartésienne connaissant deux points",
+        "Utiliser le déterminant pour établir une équation de droite",
+        "Vérifier l'appartenance d'un point à une droite"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2024-2025-cours-eq-droites.tex",
+      "source_sequence": "Equations droites",
+      "agent_meta": {
+        "agent_id": 29,
+        "timestamp": "2025-09-04T16:08:58.578800Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2D03-1",
+      "nom": "Calculer et interpréter des proportions",
+      "description": "Capacité à calculer des proportions à partir d'effectifs, à les exprimer en pourcentages et à les interpréter dans un contexte donné",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Comprendre la définition d'une proportion comme rapport entre effectifs",
+        "Maîtriser la conversion entre proportion décimale et pourcentage",
+        "Identifier les propriétés des proportions (comprises entre 0 et 1)"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer une proportion à partir d'effectifs donnés",
+        "Résoudre des problèmes impliquant des pourcentages",
+        "Convertir des proportions en pourcentages et inversement"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-statistiques.tex",
+      "source_sequence": "Statistiques",
+      "agent_meta": {
+        "agent_id": 51,
+        "timestamp": "2025-09-04T16:09:01.194881Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2D04-2",
+      "nom": "Calculer des pourcentages de pourcentages",
+      "description": "Capacité à comprendre et calculer des proportions composées, notamment dans le cas de sous-populations",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la notion de proportion d'une sous-population",
+        "Maîtriser le calcul d'une proportion composée",
+        "Interpréter des situations concrètes impliquant des proportions successives"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des problèmes de pourcentages composés",
+        "Calculer des proportions dans des sous-ensembles",
+        "Appliquer la propriété de multiplication des proportions"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-statistiques.tex",
+      "source_sequence": "Statistiques",
+      "agent_meta": {
+        "agent_id": 51,
+        "timestamp": "2025-09-04T16:09:01.194881Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2R03-2",
+      "nom": "Calculer et interpréter des taux d'évolution",
+      "description": "Capacité à calculer des variations relatives, à utiliser des coefficients multiplicateurs et à interpréter des évolutions",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la différence entre variation absolue et variation relative",
+        "Maîtriser le calcul d'un taux d'évolution",
+        "Utiliser les coefficients multiplicateurs"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer des taux d'évolution dans des situations concrètes",
+        "Déterminer des coefficients multiplicateurs",
+        "Résoudre des problèmes d'évolution de grandeurs"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-statistiques.tex",
+      "source_sequence": "Statistiques",
+      "agent_meta": {
+        "agent_id": 51,
+        "timestamp": "2025-09-04T16:09:01.194881Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N12-1",
+      "nom": "Définir et calculer la valeur absolue d'un nombre réel",
+      "description": "Maîtriser la définition par morceaux de la valeur absolue et savoir calculer la valeur absolue de nombres positifs, négatifs et nuls",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Comprendre la définition par cas de la valeur absolue",
+        "Calculer la valeur absolue de nombres positifs et négatifs",
+        "Interpréter géométriquement la valeur absolue comme distance à zéro"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer des valeurs absolues simples comme |3| ou |-7|",
+        "Représenter graphiquement la valeur absolue sur une droite graduée",
+        "Utiliser la définition par morceaux selon le signe du nombre"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-valeur_absolue.tex",
+      "source_sequence": "Valeur absolue",
+      "agent_meta": {
+        "agent_id": 52,
+        "timestamp": "2025-09-04T16:09:02.630724Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2R04-2",
+      "nom": "Utiliser la valeur absolue pour exprimer des distances et des intervalles",
+      "description": "Maîtriser le lien entre valeur absolue, distance entre deux nombres et appartenance à un intervalle centré",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre que |x-a| représente la distance entre x et a",
+        "Traduire une condition du type |x-a| ≤ r en termes d'intervalle",
+        "Convertir une appartenance à un intervalle en inégalité avec valeur absolue"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer l'intervalle correspondant à |x-1| ≤ 10^(-3)",
+        "Exprimer y ∈ [7;7,8] avec une valeur absolue",
+        "Représenter graphiquement des intervalles centrés"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-valeur_absolue.tex",
+      "source_sequence": "Valeur absolue",
+      "agent_meta": {
+        "agent_id": 52,
+        "timestamp": "2025-09-04T16:09:02.630724Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G11-2",
+      "nom": "Manipuler les vecteurs avec la relation de Chasles",
+      "description": "Utilisation de la relation de Chasles pour simplifier des expressions vectorielles et démontrer l'égalité de vecteurs",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre et appliquer la relation de Chasles",
+        "Simplifier des sommes vectorielles",
+        "Identifier les égalités vectorielles dans un parallélogramme"
+      ],
+      "objectifApprentissageExercice": [
+        "Simplifier des expressions vectorielles type $\\overrightarrow{AB}+\\overrightarrow{BC}$",
+        "Démontrer qu'un quadrilatère est un parallélogramme avec les vecteurs",
+        "Utiliser les égalités vectorielles pour caractériser des figures"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-cont-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 53,
+        "timestamp": "2025-09-04T16:09:14.023669Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G12-2",
+      "nom": "Calculer les coordonnées de vecteurs dans un repère",
+      "description": "Détermination et utilisation des coordonnées de vecteurs dans un repère orthonormé pour résoudre des problèmes géométriques",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Calculer les coordonnées d'un vecteur à partir des coordonnées de points",
+        "Vérifier l'égalité de vecteurs par leurs coordonnées",
+        "Caractériser des figures géométriques par les coordonnées des vecteurs"
+      ],
+      "objectifApprentissageExercice": [
+        "Démontrer qu'un quadrilatère est un parallélogramme avec les coordonnées",
+        "Calculer les coordonnées d'un point pour former un parallélogramme",
+        "Déterminer la nature d'un quadrilatère avec les coordonnées des vecteurs"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-cont-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 53,
+        "timestamp": "2025-09-04T16:09:14.023669Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G13-2",
+      "nom": "Effectuer des opérations vectorielles dans le plan",
+      "description": "Maîtriser la somme de vecteurs dans le plan, leur représentation graphique et leurs coordonnées dans un repère",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la notion de somme vectorielle",
+        "Représenter graphiquement la somme de deux vecteurs",
+        "Maîtriser les coordonnées d'un vecteur dans un repère"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire le point M tel que ⃗AM = ⃗u + ⃗v",
+        "Calculer les coordonnées d'une somme de vecteurs",
+        "Vérifier l'égalité de deux vecteurs par leurs coordonnées"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD9-vect-coordonnees.tex",
+      "source_sequence": "Coordonnees reperage",
+      "agent_meta": {
+        "agent_id": 1,
+        "timestamp": "2025-09-04T16:09:14.674398Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G14-2",
+      "nom": "Caractériser un parallélogramme par ses vecteurs",
+      "description": "Utiliser les propriétés vectorielles pour identifier et construire un parallélogramme dans un repère",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la caractérisation vectorielle d'un parallélogramme",
+        "Traduire l'égalité de vecteurs en système d'équations",
+        "Déterminer les coordonnées d'un point pour former un parallélogramme"
+      ],
+      "objectifApprentissageExercice": [
+        "Vérifier qu'un quadrilatère est un parallélogramme avec les vecteurs",
+        "Calculer les coordonnées du quatrième sommet d'un parallélogramme",
+        "Résoudre un système d'équations issu d'une égalité vectorielle"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD9-vect-coordonnees.tex",
+      "source_sequence": "Coordonnees reperage",
+      "agent_meta": {
+        "agent_id": 1,
+        "timestamp": "2025-09-04T16:09:14.674398Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N13-1",
+      "nom": "Identifier et caractériser une fonction affine",
+      "description": "Reconnaître une fonction affine à partir de son expression algébrique, déterminer son coefficient directeur et son ordonnée à l'origine",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Distinguer une fonction affine d'une fonction quelconque",
+        "Identifier les coefficients caractéristiques d'une fonction affine",
+        "Reconnaître les cas particuliers (fonction linéaire, fonction constante)"
+      ],
+      "objectifApprentissageExercice": [
+        "Analyser différentes expressions algébriques pour déterminer si elles représentent des fonctions affines",
+        "Extraire le coefficient directeur et l'ordonnée à l'origine",
+        "Identifier le domaine de définition d'une fonction"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-correction-TD10-fonct-affines.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 31,
+        "timestamp": "2025-09-04T16:09:14.849217Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N14-2",
+      "nom": "Calculer images et antécédents par une fonction affine",
+      "description": "Déterminer l'image d'un nombre par une fonction affine et résoudre l'équation f(x)=k pour trouver les antécédents",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser le calcul algébrique avec les fractions",
+        "Comprendre la notion d'image et d'antécédent",
+        "Résoudre des équations du premier degré"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer l'image d'un nombre rationnel par une fonction affine",
+        "Déterminer l'antécédent d'un nombre par une fonction affine",
+        "Résoudre des problèmes d'intersection de droites"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD10-fonct-affines.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 31,
+        "timestamp": "2025-09-04T16:09:14.849217Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G15-2",
+      "nom": "Représenter et interpréter graphiquement une fonction affine",
+      "description": "Lire et exploiter la représentation graphique d'une fonction affine, notamment pour déterminer les coordonnées du point d'intersection de deux droites",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Interpréter graphiquement le coefficient directeur et l'ordonnée à l'origine",
+        "Comprendre la notion de point d'intersection de deux droites",
+        "Faire le lien entre représentation algébrique et graphique"
+      ],
+      "objectifApprentissageExercice": [
+        "Lire les coordonnées de points sur une représentation graphique",
+        "Déterminer graphiquement et algébriquement le point d'intersection de deux droites",
+        "Exploiter les propriétés géométriques des droites"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD10-fonct-affines.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 31,
+        "timestamp": "2025-09-04T16:09:14.849217Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N15-1",
+      "nom": "Développer des expressions algébriques avec distributivité simple",
+      "description": "Capacité à développer des expressions du type k(ax+b) en appliquant la distributivité simple et en regroupant les termes semblables",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Maîtriser la distributivité simple avec des coefficients entiers",
+        "Identifier et regrouper les termes semblables",
+        "Réduire une expression algébrique développée"
+      ],
+      "objectifApprentissageExercice": [
+        "Développer une expression de type 2x(-7x+4)",
+        "Effectuer des calculs avec distributivité et opposé comme 3(6x-8)-(-9-6x)",
+        "Réduire des expressions développées en regroupant les termes"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-correction-exos-developpements.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 5,
+        "timestamp": "2025-09-04T16:09:16.256659Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N16-2",
+      "nom": "Développer des produits de binômes",
+      "description": "Capacité à développer des expressions du type (ax+b)(cx+d) en appliquant la double distributivité et en organisant les calculs",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Appliquer la double distributivité",
+        "Organiser les calculs pour développer un produit de binômes",
+        "Réduire une expression avec termes en x² et en x"
+      ],
+      "objectifApprentissageExercice": [
+        "Développer (3x+2)(-6x-7)",
+        "Développer et réduire (3x+5)(7x-2)-(9x+2)(3x-8)",
+        "Organiser les calculs avec plusieurs binômes"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-exos-developpements.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 5,
+        "timestamp": "2025-09-04T16:09:16.256659Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G16-1",
+      "nom": "Repérer un point dans un repère orthonormé",
+      "description": "Maîtriser les coordonnées cartésiennes d'un point dans le plan, comprendre la notion d'abscisse et d'ordonnée, distinguer les repères orthogonaux et orthonormés",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Comprendre la construction d'un repère du plan",
+        "Identifier les propriétés d'un repère orthonormé",
+        "Lire et écrire les coordonnées d'un point"
+      ],
+      "objectifApprentissageExercice": [
+        "Placer un point de coordonnées données dans un repère",
+        "Déterminer les coordonnées d'un point dans un repère",
+        "Vérifier si un repère est orthonormé"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-Fonctions.tex",
+      "source_sequence": "Fonctions",
+      "agent_meta": {
+        "agent_id": 30,
+        "timestamp": "2025-09-04T16:09:19.214779Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N17-2",
+      "nom": "Déterminer l'ensemble de définition d'une fonction",
+      "description": "Identifier et exprimer l'ensemble des valeurs pour lesquelles une fonction est définie, comprendre les notations d'intervalles et reconnaître les cas d'impossibilité",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la notion d'ensemble de définition",
+        "Maîtriser les différentes notations d'intervalles",
+        "Identifier les valeurs interdites pour une fonction"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer l'ensemble de définition d'une fonction rationnelle",
+        "Exprimer un ensemble de définition avec la notation intervalle",
+        "Vérifier si un nombre appartient à l'ensemble de définition"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-Fonctions.tex",
+      "source_sequence": "Fonctions",
+      "agent_meta": {
+        "agent_id": 30,
+        "timestamp": "2025-09-04T16:09:19.214779Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N18-2",
+      "nom": "Calculer l'image d'un nombre par une fonction",
+      "description": "Déterminer l'image d'un nombre par une fonction polynomiale, comprendre la notion d'antécédent et d'image",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la différence entre image et antécédent",
+        "Maîtriser le calcul d'image pour une fonction polynomiale",
+        "Utiliser la notation fonctionnelle f(x)"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer des images par une fonction polynomiale",
+        "Déterminer si un nombre est l'image d'un autre",
+        "Résoudre des problèmes concrets utilisant le calcul d'images"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-Fonctions.tex",
+      "source_sequence": "Fonctions",
+      "agent_meta": {
+        "agent_id": 30,
+        "timestamp": "2025-09-04T16:09:19.214779Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2R05-2",
+      "nom": "Déterminer et interpréter le coefficient directeur d'une fonction affine",
+      "description": "Capacité à identifier le coefficient directeur d'une fonction affine, comprendre son impact sur le sens de variation et l'utiliser pour tracer la représentation graphique",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Identifier le coefficient directeur dans l'expression algébrique f(x)=mx+p",
+        "Interpréter le signe du coefficient directeur pour déterminer le sens de variation",
+        "Utiliser le coefficient directeur pour tracer la droite représentative"
+      ],
+      "objectifApprentissageExercice": [
+        "Analyser le sens de variation de différentes fonctions affines",
+        "Tracer plusieurs droites dans un même repère en utilisant leurs coefficients directeurs",
+        "Déterminer graphiquement le coefficient directeur d'une droite"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD11-fonct-affines_3_.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 32,
+        "timestamp": "2025-09-04T16:09:24.618302Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2D05-2",
+      "nom": "Construire un tableau de valeurs et représenter graphiquement une fonction affine",
+      "description": "Capacité à créer un tableau de valeurs pertinent et l'utiliser pour tracer la représentation graphique d'une fonction affine",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Choisir des valeurs pertinentes pour le tableau de valeurs",
+        "Calculer les images par une fonction affine",
+        "Placer des points dans un repère orthogonal"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire un tableau de valeurs pour différentes fonctions affines",
+        "Représenter graphiquement plusieurs fonctions affines dans un même repère",
+        "Vérifier la cohérence entre expression algébrique et représentation graphique"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-correction-TD11-fonct-affines_3_.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 32,
+        "timestamp": "2025-09-04T16:09:24.618302Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G17-2",
+      "nom": "Effectuer la somme géométrique de vecteurs dans un repère quadrillé",
+      "description": "Construction graphique du point M tel que la somme de deux vecteurs donnés soit égale à un vecteur résultant, en utilisant la méthode du parallélogramme ou la règle du triangle",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la somme vectorielle géométriquement",
+        "Maîtriser les propriétés de la somme de vecteurs",
+        "Savoir placer un point résultant d'une somme vectorielle"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire graphiquement la somme de deux vecteurs",
+        "Utiliser un quadrillage pour placer précisément les points",
+        "Vérifier la cohérence du résultat obtenu"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD9-vect-coordonnees.tex",
+      "source_sequence": "Coordonnees reperage",
+      "agent_meta": {
+        "agent_id": 2,
+        "timestamp": "2025-09-04T16:09:25.049815Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2G18-3",
+      "nom": "Calculer les coordonnées d'un vecteur et caractériser un parallélogramme",
+      "description": "Détermination des coordonnées de vecteurs à partir des coordonnées de points, et utilisation des propriétés vectorielles pour démontrer qu'un quadrilatère est un parallélogramme",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Maîtriser le calcul des coordonnées d'un vecteur",
+        "Comprendre la caractérisation vectorielle d'un parallélogramme",
+        "Utiliser les coordonnées pour démontrer des propriétés géométriques"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les coordonnées de vecteurs dans un repère",
+        "Démontrer qu'un quadrilatère est un parallélogramme",
+        "Déterminer les coordonnées d'un point pour former un parallélogramme"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD9-vect-coordonnees.tex",
+      "source_sequence": "Coordonnees reperage",
+      "agent_meta": {
+        "agent_id": 2,
+        "timestamp": "2025-09-04T16:09:25.049815Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2G19-1",
+      "nom": "Calculer les coordonnées du milieu d'un segment",
+      "description": "Déterminer les coordonnées du milieu d'un segment à partir des coordonnées de ses extrémités en utilisant les formules de moyenne arithmétique",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Comprendre et appliquer les formules du milieu",
+        "Interpréter géométriquement la moyenne des coordonnées",
+        "Faire le lien entre position du milieu et moyennes arithmétiques"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les coordonnées du milieu d'un segment donné",
+        "Utiliser les coordonnées du milieu pour démontrer qu'un quadrilatère est un parallélogramme",
+        "Déterminer un point manquant connaissant un milieu"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-coordonnees.tex",
+      "source_sequence": "Coordonnees reperage",
+      "agent_meta": {
+        "agent_id": 3,
+        "timestamp": "2025-09-04T16:09:27.451116Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2R06-2",
+      "nom": "Calculer la distance entre deux points dans un repère orthonormal",
+      "description": "Utiliser la formule de distance euclidienne pour calculer la longueur d'un segment à partir des coordonnées de ses extrémités",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre et appliquer la formule de distance",
+        "Faire le lien avec le théorème de Pythagore",
+        "Interpréter géométriquement les différences de coordonnées"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer des distances entre points donnés par leurs coordonnées",
+        "Démontrer des propriétés métriques dans un repère",
+        "Résoudre des problèmes impliquant des calculs de distances"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-coordonnees.tex",
+      "source_sequence": "Coordonnees reperage",
+      "agent_meta": {
+        "agent_id": 3,
+        "timestamp": "2025-09-04T16:09:27.451116Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G20-2",
+      "nom": "Appliquer la relation de Chasles pour simplifier des sommes de vecteurs",
+      "description": "Utilisation de la relation de Chasles pour réduire des sommes de vecteurs en identifiant les points intermédiaires et en réorganisant les termes de manière stratégique",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre que la somme de vecteurs consécutifs peut se réduire au vecteur entre les points extrêmes",
+        "Maîtriser la commutativité de la somme vectorielle",
+        "Identifier les chaînes de points permettant de simplifier une expression vectorielle"
+      ],
+      "objectifApprentissageExercice": [
+        "Simplifier une somme de plusieurs vecteurs en utilisant la relation de Chasles",
+        "Réorganiser les termes d'une somme vectorielle pour faire apparaître des vecteurs équivalents",
+        "Réduire une expression vectorielle complexe à un seul vecteur"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-exos-somme-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 54,
+        "timestamp": "2025-09-04T16:09:27.861178Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G21-2",
+      "nom": "Construire des points vérifiant des relations vectorielles dans un parallélogramme",
+      "description": "Construction géométrique de points satisfaisant des égalités vectorielles, notamment dans le contexte des parallélogrammes",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre le lien entre égalité vectorielle et parallélogramme",
+        "Maîtriser la construction au compas de points vérifiant une relation vectorielle",
+        "Identifier les propriétés caractéristiques d'un parallélogramme en termes de vecteurs"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire un point D tel que ADBC soit un parallélogramme",
+        "Vérifier qu'une construction géométrique satisfait une égalité vectorielle donnée",
+        "Démontrer qu'un quadrilatère est un parallélogramme à partir de relations vectorielles"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-correction-exos-somme-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 54,
+        "timestamp": "2025-09-04T16:09:27.861178Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N19-1",
+      "nom": "Identifier et caractériser une fonction affine",
+      "description": "Reconnaître une fonction affine à partir de son expression algébrique, déterminer son coefficient directeur et son ordonnée à l'origine",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Distinguer une fonction affine d'autres types de fonctions",
+        "Extraire les coefficients caractéristiques d'une fonction affine",
+        "Identifier le caractère croissant ou décroissant d'une fonction affine"
+      ],
+      "objectifApprentissageExercice": [
+        "Analyser différentes expressions algébriques pour identifier les fonctions affines",
+        "Déterminer le coefficient directeur et l'ordonnée à l'origine",
+        "Compléter un tableau de propriétés des fonctions affines"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-cont-fonction-affines.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 33,
+        "timestamp": "2025-09-04T16:09:31.872300Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G22-2",
+      "nom": "Représenter graphiquement des fonctions affines",
+      "description": "Tracer la représentation graphique d'une fonction affine dans un repère, interpréter géométriquement ses caractéristiques",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Tracer une droite à partir de son équation",
+        "Déterminer graphiquement le coefficient directeur et l'ordonnée à l'origine",
+        "Identifier le point d'intersection de deux droites"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire la représentation graphique d'une fonction affine",
+        "Lire les coordonnées de points d'intersection",
+        "Analyser les caractéristiques d'une droite à partir de sa représentation"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-cont-fonction-affines.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 33,
+        "timestamp": "2025-09-04T16:09:31.872300Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N20-3",
+      "nom": "Déterminer l'expression d'une fonction affine",
+      "description": "Calculer l'expression algébrique d'une fonction affine à partir de deux points ou d'informations graphiques",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Calculer le coefficient directeur à partir de deux points",
+        "Utiliser la forme y = ax + b pour déterminer l'équation d'une droite",
+        "Vérifier la cohérence entre représentation graphique et expression algébrique"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer l'équation d'une droite passant par deux points donnés",
+        "Retrouver l'expression d'une fonction affine à partir de sa représentation graphique",
+        "Résoudre des problèmes de modélisation par des fonctions affines"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-cont-fonction-affines.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 33,
+        "timestamp": "2025-09-04T16:09:31.872300Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G23-2",
+      "nom": "Utiliser les propriétés des figures géométriques en Vecteurs",
+      "description": "Maîtriser les propriétés spécifiques des figures géométriques étudiées dans le chapitre Vecteurs, comprendre leurs caractéristiques et savoir les appliquer dans des situations variées. Cette compétence inclut la reconnaissance visuelle, la construction précise et l'utilisation des propriétés pour résoudre des problèmes.",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Identifier et nommer les éléments caractéristiques des figures étudiées avec leur vocabulaire précis",
+        "Comprendre les relations entre les différents éléments d'une figure et leurs implications mathématiques",
+        "Mémoriser les propriétés fondamentales et savoir expliquer leur origine géométrique"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire des figures géométriques en respectant des contraintes données avec les outils appropriés",
+        "Résoudre des problèmes de construction géométrique en appliquant les propriétés connues",
+        "Démontrer des propriétés géométriques en utilisant un raisonnement déductif rigoureux"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD26-inequation-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 55,
+        "timestamp": "2025-09-04T16:09:48.174770Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G24-2",
+      "nom": "Effectuer des calculs de mesures géométriques",
+      "description": "Calculer avec précision les longueurs, aires et volumes selon le contexte du chapitre Vecteurs. Cette compétence implique la maîtrise des formules appropriées, leur application correcte et l'interprétation des résultats dans le contexte géométrique.",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Connaître et savoir retrouver les formules de calcul d'aires, périmètres et volumes",
+        "Comprendre l'origine des formules géométriques et leurs conditions d'application",
+        "Développer des stratégies de calcul adaptées aux différents types de problèmes géométriques"
+      ],
+      "objectifApprentissageExercice": [
+        "Appliquer les formules géométriques dans des situations concrètes avec unités appropriées",
+        "Résoudre des problèmes d'optimisation géométrique nécessitant des calculs de mesures",
+        "Vérifier la cohérence des résultats obtenus par rapport au contexte géométrique"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD26-inequation-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 55,
+        "timestamp": "2025-09-04T16:09:48.174770Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N21-2",
+      "nom": "Maîtriser les opérations numériques de Developpements factorisations",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Developpements factorisations, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-correction-cont-developpements.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 4,
+        "timestamp": "2025-09-04T16:09:49.343137Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N22-2",
+      "nom": "Maîtriser les opérations numériques de Fonctions affines",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Fonctions affines, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-TD10-fonct-affines.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 34,
+        "timestamp": "2025-09-04T16:09:50.862777Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N23-2",
+      "nom": "Maîtriser les opérations numériques de Vecteurs",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Vecteurs, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-correction-TD8-vecteurs_2_.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 56,
+        "timestamp": "2025-09-04T16:09:51.251928Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N24-2",
+      "nom": "Développer des expressions algébriques du type (ax+b)(cx+d)",
+      "description": "Maîtrise du développement d'expressions algébriques de la forme (ax+b)(cx+d) en utilisant la distributivité double, avec des coefficients entiers positifs et négatifs",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la technique de double distributivité",
+        "Identifier les termes à multiplier dans une expression de type (ax+b)(cx+d)",
+        "Maîtriser les règles de calcul avec les coefficients positifs et négatifs"
+      ],
+      "objectifApprentissageExercice": [
+        "Développer (x+1)(x+3) en appliquant la double distributivité",
+        "Développer (4x-1)(x+2) en gérant le coefficient négatif",
+        "Développer (5x+4)(4x+7) avec des coefficients plus complexes"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-cont-developpements.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 8,
+        "timestamp": "2025-09-04T16:09:59.912444Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N25-2",
+      "nom": "Réduire des expressions polynomiales du second degré",
+      "description": "Capacité à réduire les expressions développées en regroupant les termes de même degré pour obtenir un polynôme de la forme ax²+bx+c",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Identifier les termes de même degré dans une expression développée",
+        "Regrouper et réduire les termes en x², en x et les termes constants",
+        "Écrire le résultat sous forme canonique ax²+bx+c"
+      ],
+      "objectifApprentissageExercice": [
+        "Réduire le développement de (7x-4)(2x-1)",
+        "Réduire le développement de (4x+3)(3x-2)",
+        "Organiser les termes selon leur degré dans le résultat final"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-cont-developpements.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 8,
+        "timestamp": "2025-09-04T16:09:59.912444Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G25-2",
+      "nom": "Simplifier une somme de vecteurs",
+      "description": "Capacité à réduire une expression vectorielle complexe en identifiant les vecteurs qui s'annulent ou se combinent pour obtenir une écriture plus simple",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser les règles d'addition des vecteurs",
+        "Identifier les relations entre vecteurs (AB + BC = AC)",
+        "Comprendre la notion de chaîne de vecteurs"
+      ],
+      "objectifApprentissageExercice": [
+        "Simplifier des sommes de vecteurs en utilisant les relations de Chasles",
+        "Réduire une expression vectorielle à sa plus simple expression",
+        "Identifier les vecteurs qui s'annulent dans une somme"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-exercices-sommevecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 58,
+        "timestamp": "2025-09-04T16:10:11.577671Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2G26-2",
+      "nom": "Construire géométriquement une somme de vecteurs",
+      "description": "Capacité à représenter graphiquement la somme de plusieurs vecteurs et à construire des points vérifiant des relations vectorielles données",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser la construction géométrique d'une somme de vecteurs",
+        "Comprendre le lien entre relations vectorielles et configurations géométriques",
+        "Identifier les propriétés géométriques issues des relations vectorielles"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire des points vérifiant des relations vectorielles données",
+        "Déterminer la nature de figures géométriques à partir de relations vectorielles",
+        "Analyser l'équilibre de forces représentées par des vecteurs"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-exercices-sommevecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 58,
+        "timestamp": "2025-09-04T16:10:11.577671Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N26-1",
+      "nom": "Identifier et caractériser une fonction affine",
+      "description": "Reconnaître une fonction affine sous différentes formes, identifier ses coefficients (coefficient directeur et ordonnée à l'origine), distinguer les cas particuliers (linéaire, constante)",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Reconnaître la forme générale f(x)=mx+p d'une fonction affine",
+        "Identifier le coefficient directeur m et l'ordonnée à l'origine p",
+        "Distinguer les fonctions affines, linéaires et constantes"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer si une fonction donnée est affine ou non",
+        "Extraire les coefficients m et p d'une expression affine",
+        "Classifier une fonction affine selon son type (affine, linéaire, constante)"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-fonctionsaffines.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 36,
+        "timestamp": "2025-09-04T16:10:18.295969Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2D06-2",
+      "nom": "Étudier les variations d'une fonction affine",
+      "description": "Déterminer le sens de variation d'une fonction affine selon le signe de son coefficient directeur, établir son tableau de variations et étudier son signe",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre le lien entre le signe de m et les variations de f",
+        "Construire le tableau de variations d'une fonction affine",
+        "Déterminer les zones de positivité et négativité"
+      ],
+      "objectifApprentissageExercice": [
+        "Établir le tableau de variations d'une fonction affine donnée",
+        "Déterminer le signe d'une fonction affine selon x",
+        "Résoudre des inéquations du premier degré graphiquement"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-fonctionsaffines.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 36,
+        "timestamp": "2025-09-04T16:10:18.295969Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G27-2",
+      "nom": "Déterminer et représenter graphiquement le sens de variation d'une fonction affine",
+      "description": "Capacité à analyser le coefficient directeur pour déterminer le sens de variation et tracer la représentation graphique d'une fonction affine dans un repère",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre le lien entre le signe du coefficient directeur et le sens de variation",
+        "Maîtriser le tracé de droites dans un repère",
+        "Identifier les cas particuliers (fonction constante)"
+      ],
+      "objectifApprentissageExercice": [
+        "Tracer plusieurs fonctions affines dans un même repère",
+        "Analyser visuellement le sens de variation",
+        "Distinguer les différents types de fonctions affines selon leur coefficient directeur"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD11-fonct-affines_3_.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 35,
+        "timestamp": "2025-09-04T16:10:18.615340Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N27-3",
+      "nom": "Déterminer l'expression algébrique d'une fonction affine à partir de points",
+      "description": "Capacité à calculer les coefficients d'une fonction affine connaissant les coordonnées de deux points de sa courbe représentative",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre la méthode de calcul du coefficient directeur avec deux points",
+        "Maîtriser le calcul de l'ordonnée à l'origine",
+        "Vérifier la cohérence des résultats obtenus"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre un système d'équations pour trouver les coefficients",
+        "Exploiter des points donnés graphiquement",
+        "Valider l'expression obtenue par vérification des points donnés"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD11-fonct-affines_3_.tex",
+      "source_sequence": "Fonctions affines",
+      "agent_meta": {
+        "agent_id": 35,
+        "timestamp": "2025-09-04T16:10:18.615340Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N28-1",
+      "nom": "Factoriser une expression algébrique avec facteur commun visible",
+      "description": "Identifier et mettre en évidence un facteur commun dans une expression algébrique pour la factoriser, en utilisant les propriétés de la distributivité",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Reconnaître visuellement un facteur commun dans une expression",
+        "Appliquer la distributivité simple pour factoriser",
+        "Vérifier la validité d'une factorisation"
+      ],
+      "objectifApprentissageExercice": [
+        "Factoriser des expressions du type ax + bx = x(a+b)",
+        "Factoriser avec un facteur commun monôme comme 3x²",
+        "Factoriser des expressions numériques simples"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-correction-exos-factorisations.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 6,
+        "timestamp": "2025-09-04T16:10:20.412102Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N29-2",
+      "nom": "Factoriser une expression avec facteur commun à repérer",
+      "description": "Identifier un facteur commun non immédiatement visible et réorganiser l'expression pour mettre en évidence la factorisation, notamment avec des expressions complexes",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Repérer un facteur commun non évident dans une expression",
+        "Réorganiser les termes pour faire apparaître la factorisation",
+        "Maîtriser la double distributivité dans le sens du développement et de la factorisation"
+      ],
+      "objectifApprentissageExercice": [
+        "Factoriser des expressions du type (ax+b)(cx+d) + (cx+d)",
+        "Factoriser en regroupant astucieusement les termes",
+        "Simplifier l'expression obtenue après factorisation"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-exos-factorisations.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 6,
+        "timestamp": "2025-09-04T16:10:20.412102Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N30-2",
+      "nom": "Développer des expressions algébriques avec identités remarquables",
+      "description": "Maîtrise du développement d'expressions algébriques complexes utilisant les identités remarquables (a±b)², (a±b)³ et la différence de carrés (a+b)(a-b)",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Identifier les formes d'identités remarquables dans une expression",
+        "Appliquer les formules de développement (a±b)², (a±b)³",
+        "Reconnaître et utiliser la différence de carrés"
+      ],
+      "objectifApprentissageExercice": [
+        "Développer des expressions du type (√3+√2)(√3-√2)",
+        "Calculer (a+b)³ et (a-b)³ en utilisant les identités remarquables",
+        "Développer des expressions avec racines carrées"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD13-dev-id-rem.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 7,
+        "timestamp": "2025-09-04T16:10:23.015631Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N31-2",
+      "nom": "Développer et réduire des expressions polynomiales",
+      "description": "Capacité à développer et réduire des expressions algébriques complexes impliquant des polynômes de degré 2 et plus",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser la distributivité simple et double",
+        "Réduire des expressions polynomiales",
+        "Regrouper les termes de même degré"
+      ],
+      "objectifApprentissageExercice": [
+        "Développer des produits de binômes",
+        "Réduire des expressions avec coefficients négatifs",
+        "Calculer des expressions du type (5x+5)(8x-5)+(-10x-2)(9-6x)"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD13-dev-id-rem.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 7,
+        "timestamp": "2025-09-04T16:10:23.015631Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G28-1",
+      "nom": "Utiliser la relation de Chasles pour simplifier des expressions vectorielles",
+      "description": "Capacité à appliquer la relation de Chasles pour simplifier des sommes de vecteurs dans différentes configurations géométriques",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Comprendre et appliquer la relation de Chasles",
+        "Identifier les situations où la relation de Chasles est pertinente",
+        "Maîtriser les règles d'addition vectorielle"
+      ],
+      "objectifApprentissageExercice": [
+        "Simplifier des expressions vectorielles du type $\\overrightarrow{AB}+\\overrightarrow{CD}+\\overrightarrow{BC}$",
+        "Réduire des sommes de vecteurs en utilisant la relation de Chasles",
+        "Vérifier l'égalité de deux expressions vectorielles"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-cont-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 57,
+        "timestamp": "2025-09-04T16:10:23.900911Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G29-2",
+      "nom": "Caractériser et construire un parallélogramme à l'aide des vecteurs",
+      "description": "Capacité à utiliser les propriétés vectorielles pour identifier, construire et démontrer qu'un quadrilatère est un parallélogramme",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Connaître la caractérisation vectorielle d'un parallélogramme",
+        "Utiliser les coordonnées de vecteurs pour démontrer le parallélisme",
+        "Comprendre la relation entre vecteurs égaux et côtés parallèles"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire un parallélogramme à partir de trois points donnés",
+        "Démontrer qu'un quadrilatère est un parallélogramme en utilisant les vecteurs",
+        "Calculer les coordonnées du quatrième sommet d'un parallélogramme"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-cont-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 57,
+        "timestamp": "2025-09-04T16:10:23.900911Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2R07-2",
+      "nom": "Calculer et utiliser les coordonnées de vecteurs dans un repère",
+      "description": "Capacité à déterminer et manipuler les coordonnées de vecteurs dans un repère orthonormé, incluant le calcul de longueurs",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Calculer les coordonnées d'un vecteur à partir des coordonnées de points",
+        "Déterminer la longueur d'un vecteur à partir de ses coordonnées",
+        "Utiliser les coordonnées pour caractériser des figures géométriques"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les coordonnées des vecteurs $\\overrightarrow{AB}$, $\\overrightarrow{BC}$, $\\overrightarrow{AC}$",
+        "Déterminer la nature d'un triangle à partir des coordonnées de ses sommets",
+        "Calculer des distances entre points dans un repère orthonormé"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-cont-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 57,
+        "timestamp": "2025-09-04T16:10:23.900911Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N32-2",
+      "nom": "Résoudre une inéquation produit de facteurs du premier degré",
+      "description": "Capacité à résoudre une inéquation sous forme de produit de facteurs du premier degré en utilisant le tableau de signes et les propriétés des inégalités",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la méthode du tableau de signes",
+        "Maîtriser les règles de signes d'un produit",
+        "Déterminer les racines des facteurs du premier degré"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre (2x+1)(x-3)(7x+3)≤0",
+        "Étudier le signe de chaque facteur",
+        "Combiner les signes des facteurs pour obtenir l'ensemble solution"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD26-inequation-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 59,
+        "timestamp": "2025-09-04T16:10:28.983840Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2G30-2",
+      "nom": "Déterminer la colinéarité de vecteurs par leurs coordonnées",
+      "description": "Capacité à vérifier si deux vecteurs sont colinéaires en utilisant la proportionnalité de leurs coordonnées dans un repère",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la définition de vecteurs colinéaires",
+        "Maîtriser le critère de proportionnalité des coordonnées",
+        "Identifier le coefficient de proportionnalité entre deux vecteurs"
+      ],
+      "objectifApprentissageExercice": [
+        "Vérifier la colinéarité de vecteurs donnés par leurs coordonnées",
+        "Calculer le rapport de proportionnalité entre les coordonnées",
+        "Justifier la colinéarité ou non de deux vecteurs"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD26-inequation-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 59,
+        "timestamp": "2025-09-04T16:10:28.983840Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2R08-2",
+      "nom": "Étudier graphiquement la fonction inverse",
+      "description": "Analyser et exploiter la représentation graphique de la fonction inverse x→1/x, notamment pour résoudre des équations et inéquations",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Identifier les propriétés graphiques de la fonction inverse",
+        "Comprendre la notion d'asymptotes verticale et horizontale",
+        "Interpréter les variations de la fonction inverse"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer graphiquement les solutions d'équations du type 1/x=ax+b",
+        "Résoudre des inéquations impliquant la fonction inverse",
+        "Déterminer l'image d'intervalles par la fonction inverse"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD22-fonctioninverse.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 37,
+        "timestamp": "2025-09-04T16:10:29.417265Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G31-2",
+      "nom": "Résoudre graphiquement des équations avec fonction inverse",
+      "description": "Déterminer les points d'intersection entre une droite et l'hyperbole représentant la fonction inverse pour résoudre des équations",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la signification géométrique des solutions d'une équation",
+        "Interpréter graphiquement l'intersection de courbes",
+        "Vérifier la cohérence entre solutions exactes et approchées"
+      ],
+      "objectifApprentissageExercice": [
+        "Tracer la droite d'équation y=ax+b",
+        "Repérer les coordonnées des points d'intersection",
+        "Estimer graphiquement les solutions d'une équation"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-correction-TD22-fonctioninverse.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 37,
+        "timestamp": "2025-09-04T16:10:29.417265Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N33-1",
+      "nom": "Développer des expressions algébriques avec distributivité simple",
+      "description": "Maîtrise de la distributivité simple pour développer des expressions du type ax(bx+c) et a(bx+c)",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Comprendre la distributivité simple",
+        "Identifier les termes à multiplier",
+        "Réduire les expressions développées"
+      ],
+      "objectifApprentissageExercice": [
+        "Développer une expression de type 2x(-7x+4)",
+        "Développer une expression avec parenthèses de type 3(6x-8)",
+        "Réduire les termes semblables après développement"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-exos-developpements.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 9,
+        "timestamp": "2025-09-04T16:10:30.609456Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N34-2",
+      "nom": "Développer des expressions avec double distributivité",
+      "description": "Application de la double distributivité pour développer des produits de binômes (ax+b)(cx+d)",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser la double distributivité",
+        "Organiser les calculs de développement",
+        "Gérer les signes dans les calculs"
+      ],
+      "objectifApprentissageExercice": [
+        "Développer (3x+2)(-6x-7)",
+        "Développer et réduire (3x+5)(7x-2)-(9x+2)(3x-8)",
+        "Identifier et regrouper les termes de même degré"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-exos-developpements.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 9,
+        "timestamp": "2025-09-04T16:10:30.609456Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2D07-2",
+      "nom": "Analyser graphiquement les propriétés d'une fonction",
+      "description": "Déterminer les caractéristiques d'une fonction (extrema, variations, antécédents, images) à partir de sa représentation graphique",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Identifier les extremums d'une fonction sur un intervalle",
+        "Déterminer graphiquement les antécédents et images",
+        "Interpréter les variations d'une fonction"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre graphiquement des équations f(x)=k",
+        "Résoudre graphiquement des inéquations f(x)≤k ou f(x)>k",
+        "Construire le tableau de variations d'une fonction"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-TD4-fonctions.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 38,
+        "timestamp": "2025-09-04T16:10:32.563752Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2D08-2",
+      "nom": "Exploiter un tableau de variations",
+      "description": "Utiliser les informations d'un tableau de variations pour étudier les propriétés d'une fonction (monotonie, extrema, comparaisons)",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Lire et interpréter un tableau de variations",
+        "Déterminer le nombre d'antécédents d'une valeur",
+        "Comparer des images en utilisant la monotonie"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer les extremums à partir d'un tableau de variations",
+        "Étudier l'existence d'antécédents",
+        "Comparer des images en utilisant la monotonie sur des intervalles"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-correction-TD4-fonctions.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 38,
+        "timestamp": "2025-09-04T16:10:32.563752Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G32-1",
+      "nom": "Identifier l'image d'un point par une translation",
+      "description": "Déterminer le point image dans une translation définie par un vecteur, en utilisant les propriétés de conservation des distances et du parallélisme",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Comprendre qu'une translation transforme un point en un autre point",
+        "Maîtriser la notation vectorielle pour décrire une translation",
+        "Identifier les invariants d'une translation"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer l'image d'un point dans un repère quadrillé",
+        "Construire l'image d'une figure par translation",
+        "Utiliser les propriétés de conservation dans une translation"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD7-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 60,
+        "timestamp": "2025-09-04T16:10:34.496797Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2G33-2",
+      "nom": "Démontrer l'égalité de vecteurs",
+      "description": "Utiliser les propriétés des vecteurs et des translations pour établir l'égalité de vecteurs dans des configurations géométriques",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la relation d'égalité entre vecteurs",
+        "Identifier des vecteurs égaux dans une configuration",
+        "Utiliser les propriétés du parallélogramme pour démontrer l'égalité de vecteurs"
+      ],
+      "objectifApprentissageExercice": [
+        "Démontrer l'égalité de vecteurs dans un parallélogramme",
+        "Utiliser la translation pour prouver l'égalité de vecteurs",
+        "Caractériser un parallélogramme par l'égalité de vecteurs"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD7-vecteurs.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 60,
+        "timestamp": "2025-09-04T16:10:34.496797Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N35-2",
+      "nom": "Étudier les propriétés de la fonction carré",
+      "description": "Maîtriser les caractéristiques fondamentales de la fonction carré : parité, variations, minimum, positivité et représentation graphique",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Connaître et démontrer les propriétés de la fonction carré",
+        "Comprendre la notion de parité d'une fonction",
+        "Identifier le minimum et les variations de la fonction carré"
+      ],
+      "objectifApprentissageExercice": [
+        "Justifier les propriétés de la fonction carré à partir de sa courbe",
+        "Déterminer les antécédents d'un nombre par la fonction carré",
+        "Résoudre graphiquement des inéquations du type x² > a ou x² ≤ a"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD21-fonction_carre.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 39,
+        "timestamp": "2025-09-04T16:10:38.725177Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2D09-2",
+      "nom": "Interpréter un diagramme de Tuckey",
+      "description": "Lire et exploiter les informations d'une boîte à moustaches (minimum, maximum, quartiles, médiane)",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la construction d'un diagramme en boîte",
+        "Identifier les indicateurs statistiques sur une boîte à moustaches",
+        "Interpréter la dispersion des données"
+      ],
+      "objectifApprentissageExercice": [
+        "Extraire les valeurs caractéristiques d'un diagramme de Tuckey",
+        "Compléter un tableau de données statistiques",
+        "Analyser la répartition des données"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD21-fonction_carre.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 39,
+        "timestamp": "2025-09-04T16:10:38.725177Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N36-2",
+      "nom": "Maîtriser les opérations numériques de Developpements factorisations",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Developpements factorisations, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-exos-factorisations.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 10,
+        "timestamp": "2025-09-04T16:10:52.570839Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N37-2",
+      "nom": "Maîtriser les opérations numériques de Vecteurs",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Vecteurs, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-TD8-vecteurs_2_.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 61,
+        "timestamp": "2025-09-04T16:10:54.053636Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N38-2",
+      "nom": "Maîtriser les opérations numériques de Fonctions generalites",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Fonctions generalites, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-TD22-fonctioninverse.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 40,
+        "timestamp": "2025-09-04T16:10:56.049113Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2G34-2",
+      "nom": "Caractériser une translation par un vecteur",
+      "description": "Comprendre et utiliser les caractéristiques d'une translation (direction, sens, longueur) à travers son vecteur associé",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Identifier les caractéristiques d'un vecteur de translation (direction, sens, longueur)",
+        "Comprendre qu'une translation conserve les distances et l'orientation",
+        "Reconnaître que les vecteurs AA', BB', CC' sont égaux lors d'une translation"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire l'image d'une figure par une translation donnée",
+        "Déterminer le vecteur d'une translation à partir de deux points correspondants",
+        "Utiliser les propriétés de conservation des longueurs et des angles"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-vecteurs-partieI.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 62,
+        "timestamp": "2025-09-04T16:10:57.519918Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G35-2",
+      "nom": "Construire l'image d'un point par une translation",
+      "description": "Maîtriser la construction géométrique de l'image d'un point par une translation en utilisant la méthode du parallélogramme et du compas",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la méthode de construction au compas basée sur le parallélogramme",
+        "Identifier les égalités de longueurs dans un parallélogramme",
+        "Maîtriser l'utilisation du compas pour reporter des longueurs"
+      ],
+      "objectifApprentissageExercice": [
+        "Construire l'image d'un point par une translation donnée",
+        "Tracer un parallélogramme connaissant trois sommets",
+        "Vérifier les propriétés de conservation des distances"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-vecteurs-partieI.tex",
+      "source_sequence": "Vecteurs",
+      "agent_meta": {
+        "agent_id": 62,
+        "timestamp": "2025-09-04T16:10:57.519918Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N39-2",
+      "nom": "Maîtriser les opérations numériques de Developpements factorisations",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Developpements factorisations, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-TD13-dev-id-rem.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 11,
+        "timestamp": "2025-09-04T16:11:02.998967Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N40-1",
+      "nom": "Calculer rapidement avec des nombres entiers",
+      "description": "Développer des stratégies de calcul mental efficaces pour effectuer des opérations arithmétiques de base dans un temps limité",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Maîtriser les techniques de calcul mental",
+        "Identifier les propriétés des opérations permettant des calculs rapides",
+        "Développer des automatismes de calcul"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs chronométrés",
+        "Résoudre des opérations simples en temps limité (9 minutes)",
+        "Appliquer des stratégies de calcul rapide"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "Can_rentree.tex",
+      "source_sequence": "Courses aux nombres",
+      "agent_meta": {
+        "agent_id": 63,
+        "timestamp": "2025-09-04T16:11:09.633949Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N41-2",
+      "nom": "Organiser une démarche de calcul",
+      "description": "Structurer et optimiser sa démarche de résolution dans un contexte de calcul rapide avec contrainte temporelle",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Planifier une stratégie de résolution efficace",
+        "Hiérarchiser les étapes de calcul",
+        "Gérer son temps dans une activité mathématique"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des exercices de calcul en temps limité",
+        "Organiser sa réponse de manière structurée",
+        "Optimiser sa vitesse d'exécution"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "Can_rentree.tex",
+      "source_sequence": "Courses aux nombres",
+      "agent_meta": {
+        "agent_id": 63,
+        "timestamp": "2025-09-04T16:11:09.633949Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N42-1",
+      "nom": "Factoriser des expressions algébriques simples",
+      "description": "Mise en facteur d'expressions polynomiales de degré 1 à 3, avec identification et extraction du facteur commun",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Identifier le facteur commun dans une expression algébrique",
+        "Appliquer la méthode de mise en facteur",
+        "Maîtriser la distributivité simple et double"
+      ],
+      "objectifApprentissageExercice": [
+        "Factoriser des monômes (3x-15, 4x²-7x)",
+        "Factoriser des expressions de degré 3 (3x³-5x²+8x)",
+        "Factoriser des expressions avec racines (2√x+x√x)"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD14-factorisations_1_.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 12,
+        "timestamp": "2025-09-04T16:11:12.143986Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N43-2",
+      "nom": "Factoriser des expressions avec identités remarquables",
+      "description": "Factorisation d'expressions complexes utilisant la distributivité double et les identités remarquables",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Reconnaître la structure d'une expression à factoriser",
+        "Identifier le facteur commun dans des expressions complexes",
+        "Appliquer la factorisation par groupement"
+      ],
+      "objectifApprentissageExercice": [
+        "Factoriser des expressions de type (ax+b)(cx+d)+(ax+b)(ex+f)",
+        "Résoudre des équations après factorisation",
+        "Factoriser des expressions polynomiales de degré 3"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD14-factorisations_1_.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 12,
+        "timestamp": "2025-09-04T16:11:12.143986Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C1N01-4",
+      "nom": "Résoudre des inéquations du second degré par factorisation",
+      "description": "Maîtrise de la résolution d'inéquations du second degré par factorisation, étude du signe des facteurs et utilisation d'un tableau de signes",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Comprendre la méthode de factorisation pour les expressions du second degré",
+        "Maîtriser l'étude du signe d'un produit de facteurs",
+        "Interpréter le coefficient de x² pour déterminer le sens des inégalités"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre une inéquation du type x(x-a)<0",
+        "Étudier le signe d'une expression factorisée du second degré",
+        "Déterminer l'ensemble des solutions avec notation intervallaire"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "spe-Premiere-2024-2025-correction-cont-inequations-second-degre.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 64,
+        "timestamp": "2025-09-04T16:11:13.186931Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C1N02-5",
+      "nom": "Résoudre des inéquations quotients",
+      "description": "Étude du signe d'un quotient de polynômes en analysant séparément numérateur et dénominateur, avec prise en compte du domaine de définition",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 5,
+      "objectifApprentissageCours": [
+        "Déterminer le domaine de définition d'une fraction rationnelle",
+        "Étudier séparément le signe du numérateur et du dénominateur",
+        "Synthétiser les résultats dans un tableau de signes complet"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre une inéquation du type P(x)/Q(x)≥0",
+        "Déterminer l'ensemble de définition d'une fraction rationnelle",
+        "Combiner les signes du numérateur et dénominateur pour conclure"
+      ],
+      "dureeEstimee": 5,
+      "source_document": "spe-Premiere-2024-2025-correction-cont-inequations-second-degre.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 64,
+        "timestamp": "2025-09-04T16:11:13.186931Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N44-2",
+      "nom": "Étudier les variations de la fonction carré",
+      "description": "Analyse complète des variations de la fonction carré sur R, incluant la démonstration de la croissance sur [0;+∞[ et de la décroissance sur ]-∞;0], ainsi que la compréhension de la parité",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre et démontrer les variations de la fonction carré",
+        "Maîtriser la notion de parité et son impact sur la courbe",
+        "Savoir dresser le tableau de variations complet"
+      ],
+      "objectifApprentissageExercice": [
+        "Comparer des carrés de nombres positifs en utilisant les variations",
+        "Comparer des carrés de nombres négatifs en utilisant les variations",
+        "Utiliser la parité pour comparer des carrés de signes différents"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-fonctionsdereference.tex",
+      "source_sequence": "Fonctions reference",
+      "agent_meta": {
+        "agent_id": 42,
+        "timestamp": "2025-09-04T16:11:13.672824Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G36-2",
+      "nom": "Représenter graphiquement la fonction carré",
+      "description": "Construction point par point de la parabole représentative de la fonction carré, en utilisant la symétrie par rapport à l'axe des ordonnées",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Placer des points de coordonnées (x,x²)",
+        "Utiliser la symétrie par rapport à l'axe des ordonnées",
+        "Tracer une parabole régulière passant par les points calculés"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les coordonnées de points de la parabole",
+        "Construire les points symétriques par rapport à l'axe des ordonnées",
+        "Tracer la courbe complète en respectant sa régularité"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-cours-fonctionsdereference.tex",
+      "source_sequence": "Fonctions reference",
+      "agent_meta": {
+        "agent_id": 42,
+        "timestamp": "2025-09-04T16:11:13.672824Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2D10-2",
+      "nom": "Lire et interpréter la représentation graphique d'une fonction",
+      "description": "Capacité à extraire des informations d'une courbe représentative d'une fonction (images, antécédents, extremums, variations)",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Identifier les coordonnées de points sur une courbe",
+        "Comprendre la notion d'image et d'antécédent",
+        "Déterminer les variations d'une fonction à partir de sa courbe"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer graphiquement les images et antécédents",
+        "Résoudre graphiquement des équations et inéquations",
+        "Construire le tableau de variations d'une fonction"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD4-fonctions.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 41,
+        "timestamp": "2025-09-04T16:11:18.708758Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2D11-2",
+      "nom": "Exploiter un tableau de variations",
+      "description": "Capacité à extraire des informations d'un tableau de variations (extremums, variations, comparaisons de valeurs)",
+      "niveau": "SECONDE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la structure d'un tableau de variations",
+        "Interpréter les variations d'une fonction",
+        "Identifier les extremums locaux et globaux"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer le nombre d'antécédents d'une valeur",
+        "Comparer des images de valeurs",
+        "Analyser le comportement d'une fonction"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD4-fonctions.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 41,
+        "timestamp": "2025-09-04T16:11:18.708758Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2R09-3",
+      "nom": "Modéliser une situation concrète par une fonction",
+      "description": "Capacité à interpréter et analyser une fonction dans un contexte concret (température d'un four en fonction du temps)",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre la notion de variable et de fonction dans un contexte réel",
+        "Interpréter les variations dans un contexte physique",
+        "Analyser la cohérence d'un modèle mathématique"
+      ],
+      "objectifApprentissageExercice": [
+        "Lire et interpréter un graphique avec des grandeurs physiques",
+        "Résoudre des problèmes concrets avec des fonctions",
+        "Porter un jugement critique sur un modèle"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD4-fonctions.tex",
+      "source_sequence": "Fonctions generalites",
+      "agent_meta": {
+        "agent_id": 41,
+        "timestamp": "2025-09-04T16:11:18.708758Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N45-2",
+      "nom": "Développer une expression algébrique avec la double distributivité",
+      "description": "Maîtriser la technique de développement d'un produit de deux binômes en utilisant la double distributivité et en appliquant correctement les règles de signes",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre et appliquer la formule (a+b)(c+d)=ac+ad+bc+bd",
+        "Maîtriser les règles de signes dans le développement",
+        "Savoir réduire les termes semblables après développement"
+      ],
+      "objectifApprentissageExercice": [
+        "Développer des expressions de type (2x-3)(3x-5)",
+        "Réduire l'expression développée en regroupant les termes semblables",
+        "Vérifier la cohérence du résultat obtenu"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2024-2025-cours-developpements.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 13,
+        "timestamp": "2025-09-04T16:11:20.283721Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N46-3",
+      "nom": "Utiliser les identités remarquables",
+      "description": "Reconnaître et appliquer les trois identités remarquables : carré d'une somme, carré d'une différence, et différence de carrés",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Mémoriser les formules (a±b)² et (a+b)(a-b)",
+        "Identifier la forme de l'identité remarquable à utiliser",
+        "Repérer les valeurs de a et b dans l'expression donnée"
+      ],
+      "objectifApprentissageExercice": [
+        "Développer (2x+3)² en utilisant la première identité remarquable",
+        "Calculer (√7-√3)² avec la deuxième identité remarquable",
+        "Développer (7x+5)(7x-5) avec la troisième identité remarquable"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2024-2025-cours-developpements.tex",
+      "source_sequence": "Developpements factorisations",
+      "agent_meta": {
+        "agent_id": 13,
+        "timestamp": "2025-09-04T16:11:20.283721Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N47-2",
+      "nom": "Manipuler les intervalles de nombres réels",
+      "description": "Maîtrise des notations d'intervalles, conversion entre inégalités et intervalles, représentation graphique sur une droite graduée",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Connaître les différentes notations d'intervalles (fermés, ouverts, semi-ouverts)",
+        "Traduire des inégalités en notation d'intervalles et réciproquement",
+        "Comprendre la notion d'infini dans les intervalles"
+      ],
+      "objectifApprentissageExercice": [
+        "Convertir des inégalités simples et doubles en intervalles",
+        "Représenter graphiquement des intervalles sur une droite graduée",
+        "Décrire verbalement des intervalles de nombres"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-cont-intervalles.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 14,
+        "timestamp": "2025-09-04T16:11:22.679670Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N48-3",
+      "nom": "Opérations sur les ensembles d'intervalles",
+      "description": "Détermination et représentation des unions et intersections d'intervalles de nombres réels",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre les notions d'union et d'intersection d'ensembles",
+        "Déterminer l'intersection de deux intervalles",
+        "Déterminer l'union de deux intervalles"
+      ],
+      "objectifApprentissageExercice": [
+        "Représenter graphiquement l'union et l'intersection d'intervalles",
+        "Écrire le résultat d'opérations ensemblistes sous forme d'intervalles",
+        "Résoudre des problèmes impliquant des unions et intersections d'intervalles"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-correction-cont-intervalles.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 14,
+        "timestamp": "2025-09-04T16:11:22.679670Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G37-1",
+      "nom": "Calculer les coordonnées du milieu d'un segment",
+      "description": "Utilisation des formules de coordonnées du milieu d'un segment dans le plan : xM=(xA+xB)/2 et yM=(yA+yB)/2",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Connaître et appliquer les formules du milieu",
+        "Manipuler les coordonnées dans le plan",
+        "Comprendre la notion de milieu géométrique"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les coordonnées du milieu d'un segment [AB]",
+        "Vérifier qu'un point est le milieu d'un segment",
+        "Utiliser les coordonnées du milieu dans des configurations géométriques"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-correction-controle-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 43,
+        "timestamp": "2025-09-04T16:11:24.579406Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G38-2",
+      "nom": "Caractériser un parallélogramme par ses diagonales",
+      "description": "Utilisation de la propriété caractéristique du parallélogramme : les diagonales ont le même milieu",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Connaître la caractérisation du parallélogramme par ses diagonales",
+        "Démontrer qu'un quadrilatère est un parallélogramme",
+        "Utiliser les coordonnées pour prouver l'égalité de points"
+      ],
+      "objectifApprentissageExercice": [
+        "Vérifier si un quadrilatère est un parallélogramme",
+        "Déterminer les coordonnées d'un point pour former un parallélogramme",
+        "Construire un parallélogramme connaissant trois sommets"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-controle-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 43,
+        "timestamp": "2025-09-04T16:11:24.579406Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2R10-2",
+      "nom": "Calculer des distances dans le plan",
+      "description": "Application de la formule de la distance entre deux points et utilisation du théorème de Pythagore",
+      "niveau": "SECONDE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Connaître et appliquer la formule de distance",
+        "Utiliser le théorème de Pythagore et sa réciproque",
+        "Identifier des triangles rectangles isocèles"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer la longueur d'un segment à partir des coordonnées",
+        "Démontrer qu'un triangle est rectangle isocèle",
+        "Vérifier l'égalité de longueurs dans une figure"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-controle-longueurs.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 43,
+        "timestamp": "2025-09-04T16:11:24.579406Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C1N03-4",
+      "nom": "Résoudre des inéquations du second degré",
+      "description": "Maîtrise des techniques de résolution d'inéquations du second degré par factorisation, étude du signe et tableau de signes",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Factoriser une expression du second degré",
+        "Étudier le signe d'expressions polynomiales",
+        "Utiliser un tableau de signes pour résoudre une inéquation"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre une inéquation de type ax²+bx+c≥0",
+        "Étudier le signe d'un quotient de polynômes",
+        "Résoudre des inéquations avec valeur absolue ou carré"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "spe-Premiere-2024-2025-sujet-cont-inequations-second-degre.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 65,
+        "timestamp": "2025-09-04T16:11:25.999848Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1R01-4",
+      "nom": "Résoudre des problèmes géométriques avec inéquations",
+      "description": "Application des inéquations à la résolution de problèmes concrets impliquant des aires et des dimensions",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Modéliser une situation géométrique par une inéquation",
+        "Traduire des contraintes physiques en inéquations",
+        "Interpréter géométriquement les solutions d'une inéquation"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre un problème d'optimisation d'aire",
+        "Déterminer des dimensions sous contraintes",
+        "Vérifier la cohérence des solutions avec le contexte"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "spe-Premiere-2024-2025-sujet-cont-inequations-second-degre.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 65,
+        "timestamp": "2025-09-04T16:11:25.999848Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1D01-4",
+      "nom": "Étudier graphiquement des inégalités entre fonctions",
+      "description": "Analyse et interprétation graphique des inégalités entre fonctions polynômes du second degré",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Interpréter graphiquement une inégalité entre fonctions",
+        "Relier représentation graphique et résolution algébrique",
+        "Analyser la position relative de deux courbes"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer graphiquement les solutions d'une inéquation",
+        "Vérifier la cohérence entre méthode graphique et algébrique",
+        "Résoudre des problèmes d'intersection de courbes"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "spe-Premiere-2024-2025-sujet-cont-inequations-second-degre.tex",
+      "source_sequence": "Equations",
+      "agent_meta": {
+        "agent_id": 65,
+        "timestamp": "2025-09-04T16:11:25.999848Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2G39-2",
+      "nom": "Calculer les coordonnées d'un point par symétrie centrale",
+      "description": "Déterminer les coordonnées d'un point symétrique par rapport à un centre donné en utilisant les propriétés du milieu",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser les formules de calcul des coordonnées du milieu d'un segment",
+        "Comprendre la relation entre symétrie centrale et milieu",
+        "Utiliser un système d'équations pour déterminer des coordonnées"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre un système d'équations pour trouver les coordonnées d'un point symétrique",
+        "Vérifier qu'un point est le milieu d'un segment",
+        "Appliquer les propriétés de la symétrie centrale dans le plan"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-correction-Exos-milieu-longueurs_14.39.39.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 44,
+        "timestamp": "2025-09-04T16:11:28.611389Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2G40-3",
+      "nom": "Caractériser un quadrilatère particulier",
+      "description": "Démontrer la nature d'un quadrilatère (parallélogramme, losange, carré) en utilisant les propriétés des diagonales et des longueurs",
+      "niveau": "SECONDE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Connaître les propriétés caractéristiques des quadrilatères particuliers",
+        "Utiliser la réciproque du théorème de Pythagore",
+        "Relier les propriétés métriques aux propriétés géométriques"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer des longueurs dans le plan avec la distance entre deux points",
+        "Démontrer qu'un quadrilatère est un carré",
+        "Utiliser les propriétés des diagonales pour identifier un parallélogramme"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-correction-Exos-milieu-longueurs_14.39.39.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 44,
+        "timestamp": "2025-09-04T16:11:28.611389Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C1N04-3",
+      "nom": "Maîtriser les opérations numériques de Fonctions derivees",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Fonctions derivees, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-Premiere-2024-2025-cours-fonctions-derivees.tex",
+      "source_sequence": "Fonctions derivees",
+      "agent_meta": {
+        "agent_id": 66,
+        "timestamp": "2025-09-04T16:11:43.738819Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N05-4",
+      "nom": "Construire et structurer les connaissances en Fonctions derivees",
+      "description": "Organiser de manière cohérente les notions mathématiques du chapitre Fonctions derivees, établir des liens entre les concepts et développer une vision d'ensemble du domaine étudié. Cette compétence métacognitive est essentielle pour un apprentissage durable.",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Identifier les concepts clés du chapitre et comprendre leur articulation logique",
+        "Établir des connections avec les connaissances antérieures et prévoir les prolongements",
+        "Développer une représentation mentale organisée des notions mathématiques étudiées"
+      ],
+      "objectifApprentissageExercice": [
+        "Synthétiser les connaissances du chapitre sous forme de schémas ou cartes conceptuelles",
+        "Expliquer avec ses propres mots les notions importantes en utilisant le vocabulaire précis",
+        "Transférer les connaissances acquises vers des situations nouvelles ou des contextes différents"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "Spe-Premiere-2024-2025-cours-fonctions-derivees.tex",
+      "source_sequence": "Fonctions derivees",
+      "agent_meta": {
+        "agent_id": 66,
+        "timestamp": "2025-09-04T16:11:43.738819Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N49-2",
+      "nom": "Maîtriser les opérations numériques de Ensembles nombres",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Ensembles nombres, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-correction-cont-nombres.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 15,
+        "timestamp": "2025-09-04T16:11:46.245867Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N50-2",
+      "nom": "Maîtriser les opérations numériques de Geometrie mesures",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Geometrie mesures, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-correction-TD5-milieu-longueur.tex",
+      "source_sequence": "Geometrie mesures",
+      "agent_meta": {
+        "agent_id": 45,
+        "timestamp": "2025-09-04T16:11:48.012658Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C1N06-3",
+      "nom": "Maîtriser les opérations numériques de Fonction exponentielle",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Fonction exponentielle, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-premiere-2024-2025-cours-fonction-exponentielle.tex",
+      "source_sequence": "Fonction exponentielle",
+      "agent_meta": {
+        "agent_id": 67,
+        "timestamp": "2025-09-04T16:11:49.508166Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N07-4",
+      "nom": "Construire et structurer les connaissances en Fonction exponentielle",
+      "description": "Organiser de manière cohérente les notions mathématiques du chapitre Fonction exponentielle, établir des liens entre les concepts et développer une vision d'ensemble du domaine étudié. Cette compétence métacognitive est essentielle pour un apprentissage durable.",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Identifier les concepts clés du chapitre et comprendre leur articulation logique",
+        "Établir des connections avec les connaissances antérieures et prévoir les prolongements",
+        "Développer une représentation mentale organisée des notions mathématiques étudiées"
+      ],
+      "objectifApprentissageExercice": [
+        "Synthétiser les connaissances du chapitre sous forme de schémas ou cartes conceptuelles",
+        "Expliquer avec ses propres mots les notions importantes en utilisant le vocabulaire précis",
+        "Transférer les connaissances acquises vers des situations nouvelles ou des contextes différents"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "Spe-premiere-2024-2025-cours-fonction-exponentielle.tex",
+      "source_sequence": "Fonction exponentielle",
+      "agent_meta": {
+        "agent_id": 67,
+        "timestamp": "2025-09-04T16:11:49.508166Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N08-3",
+      "nom": "Maîtriser les opérations numériques de Probabilites",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Probabilites, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-Premiere-2024-2025-correction-cont-probabilites.tex",
+      "source_sequence": "Probabilites",
+      "agent_meta": {
+        "agent_id": 68,
+        "timestamp": "2025-09-04T16:11:52.103809Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C1D02-4",
+      "nom": "Calculer des probabilités conditionnelles dans un contexte d'équiprobabilité",
+      "description": "Capacité à déterminer la probabilité d'un événement sachant qu'un autre événement s'est réalisé, en utilisant la formule de probabilité conditionnelle dans des situations d'équiprobabilité",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Comprendre la notion de probabilité conditionnelle",
+        "Maîtriser la formule p(A∩B)/p(A) pour calculer pA(B)",
+        "Interpréter une probabilité conditionnelle dans un contexte concret"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des problèmes de probabilités conditionnelles avec tableaux croisés",
+        "Calculer des probabilités conditionnelles dans des situations d'équiprobabilité",
+        "Analyser la dépendance entre événements via les probabilités conditionnelles"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-Premiere-2024-2025-cours-proba-cond-independance.tex",
+      "source_sequence": "Probabilites conditionnelles independance",
+      "agent_meta": {
+        "agent_id": 70,
+        "timestamp": "2025-09-04T16:11:56.012384Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1D03-3",
+      "nom": "Utiliser les formules de probabilités d'événements",
+      "description": "Maîtrise des formules de probabilités pour les événements union, intersection et contraire, notamment dans le cadre de problèmes concrets",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Appliquer la formule p(A∪B) = p(A) + p(B) - p(A∩B)",
+        "Calculer la probabilité d'un événement contraire",
+        "Utiliser les propriétés des probabilités dans des situations concrètes"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des exercices utilisant les formules de probabilités",
+        "Traduire des situations concrètes en termes d'événements",
+        "Manipuler les opérations sur les événements"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "Spe-Premiere-2024-2025-cours-proba-cond-independance.tex",
+      "source_sequence": "Probabilites conditionnelles independance",
+      "agent_meta": {
+        "agent_id": 70,
+        "timestamp": "2025-09-04T16:11:56.012384Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N09-3",
+      "nom": "Maîtriser les opérations numériques de Probabilites",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Probabilites, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-Premiere-2024-2025-sujet-cont-probabilites.tex",
+      "source_sequence": "Probabilites",
+      "agent_meta": {
+        "agent_id": 69,
+        "timestamp": "2025-09-04T16:12:07.306907Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N10-4",
+      "nom": "Construire et structurer les connaissances en Probabilites",
+      "description": "Organiser de manière cohérente les notions mathématiques du chapitre Probabilites, établir des liens entre les concepts et développer une vision d'ensemble du domaine étudié. Cette compétence métacognitive est essentielle pour un apprentissage durable.",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Identifier les concepts clés du chapitre et comprendre leur articulation logique",
+        "Établir des connections avec les connaissances antérieures et prévoir les prolongements",
+        "Développer une représentation mentale organisée des notions mathématiques étudiées"
+      ],
+      "objectifApprentissageExercice": [
+        "Synthétiser les connaissances du chapitre sous forme de schémas ou cartes conceptuelles",
+        "Expliquer avec ses propres mots les notions importantes en utilisant le vocabulaire précis",
+        "Transférer les connaissances acquises vers des situations nouvelles ou des contextes différents"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "Spe-Premiere-2024-2025-sujet-cont-probabilites.tex",
+      "source_sequence": "Probabilites",
+      "agent_meta": {
+        "agent_id": 69,
+        "timestamp": "2025-09-04T16:12:07.306907Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1G01-4",
+      "nom": "Calculer le produit scalaire de deux vecteurs avec la formule trigonométrique",
+      "description": "Utilisation de la formule du produit scalaire avec les normes des vecteurs et le cosinus de l'angle, y compris les cas particuliers (vecteurs nuls)",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Maîtriser la définition du produit scalaire avec la formule trigonométrique",
+        "Identifier les cas particuliers (vecteurs nuls)",
+        "Comprendre le lien entre produit scalaire et angle entre vecteurs"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer un produit scalaire connaissant les normes et l'angle",
+        "Déterminer l'angle entre deux vecteurs à partir du produit scalaire",
+        "Appliquer la formule dans des configurations géométriques"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-premiere-2024-2025-cours-produit-scalaire.tex",
+      "source_sequence": "Produit scalaire",
+      "agent_meta": {
+        "agent_id": 71,
+        "timestamp": "2025-09-04T16:12:11.929843Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1G02-3",
+      "nom": "Utiliser les propriétés du produit scalaire avec des vecteurs colinéaires",
+      "description": "Application des propriétés spécifiques du produit scalaire pour des vecteurs colinéaires, incluant le carré scalaire et les cas de même sens/sens contraire",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre la relation entre colinéarité et produit scalaire",
+        "Maîtriser le calcul du carré scalaire d'un vecteur",
+        "Identifier l'impact du sens des vecteurs sur le signe du produit scalaire"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer si deux vecteurs sont colinéaires via leur produit scalaire",
+        "Calculer la norme d'un vecteur en utilisant le carré scalaire",
+        "Résoudre des problèmes impliquant des vecteurs colinéaires"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "Spe-premiere-2024-2025-cours-produit-scalaire.tex",
+      "source_sequence": "Produit scalaire",
+      "agent_meta": {
+        "agent_id": 71,
+        "timestamp": "2025-09-04T16:12:11.929843Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N11-3",
+      "nom": "Calculer les termes d'une suite numérique définie explicitement",
+      "description": "Capacité à calculer les premiers termes d'une suite numérique à partir de son expression explicite, en appliquant la formule pour différentes valeurs de n",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre la notation indicielle des suites",
+        "Maîtriser le calcul algébrique avec les expressions de suites",
+        "Identifier et utiliser correctement la formule explicite d'une suite"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les premiers termes d'une suite de type n² ou fraction rationnelle",
+        "Vérifier la cohérence des résultats obtenus",
+        "Présenter les calculs de manière claire et rigoureuse"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "spe-Premiere-2024-2025-correction-cont-suites.tex",
+      "source_sequence": "Suites numeriques",
+      "agent_meta": {
+        "agent_id": 74,
+        "timestamp": "2025-09-04T16:12:12.849179Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C1N12-4",
+      "nom": "Étudier les variations d'une suite arithmétique",
+      "description": "Capacité à déterminer et justifier le sens de variation d'une suite arithmétique, en utilisant la différence entre deux termes consécutifs",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Comprendre la définition d'une suite arithmétique",
+        "Maîtriser le calcul de la raison d'une suite arithmétique",
+        "Savoir démontrer le sens de variation d'une suite"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer la différence entre deux termes consécutifs",
+        "Déterminer la raison d'une suite arithmétique à partir de deux termes",
+        "Calculer un terme de rang n d'une suite arithmétique"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "spe-Premiere-2024-2025-correction-cont-suites.tex",
+      "source_sequence": "Suites numeriques",
+      "agent_meta": {
+        "agent_id": 74,
+        "timestamp": "2025-09-04T16:12:12.849179Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C1N13-4",
+      "nom": "Résoudre une équation du second degré par factorisation d'identités remarquables",
+      "description": "Capacité à identifier et utiliser les identités remarquables pour factoriser et résoudre des équations du type ax²+bx+c=0",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Reconnaître la forme d'une identité remarquable dans une expression du second degré",
+        "Factoriser une expression du second degré à l'aide des identités remarquables",
+        "Déterminer l'ensemble des solutions d'une équation du second degré après factorisation"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre x²+6x+9=0 en identifiant (x+3)²",
+        "Transformer x²+5x+6 en (x+5/2)²-1/4",
+        "Déterminer si une équation du second degré admet des solutions réelles"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-premiere-2024-2025-equations-cours-inequations-second_degre.tex",
+      "source_sequence": "Second degre",
+      "agent_meta": {
+        "agent_id": 72,
+        "timestamp": "2025-09-04T16:12:16.216307Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N14-4",
+      "nom": "Utiliser la forme canonique et le discriminant d'une équation du second degré",
+      "description": "Maîtrise de la mise sous forme canonique a(x-α)²+β et utilisation du discriminant Δ pour déterminer la nature et le nombre de solutions",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Établir la forme canonique d'un trinôme du second degré",
+        "Calculer le discriminant Δ=b²-4ac d'une équation du second degré",
+        "Interpréter le signe du discriminant pour connaître le nombre de solutions"
+      ],
+      "objectifApprentissageExercice": [
+        "Transformer ax²+bx+c en a(x-α)²+β",
+        "Calculer α=-b/(2a) et β=f(α) pour obtenir la forme canonique",
+        "Déterminer la nature des solutions selon le signe de Δ"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-premiere-2024-2025-equations-cours-inequations-second_degre.tex",
+      "source_sequence": "Second degre",
+      "agent_meta": {
+        "agent_id": 72,
+        "timestamp": "2025-09-04T16:12:16.216307Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N15-3",
+      "nom": "Définir et manipuler une suite numérique explicite",
+      "description": "Maîtriser la définition et l'utilisation des suites numériques définies de façon explicite, comprendre la notation du terme général et savoir calculer des termes spécifiques",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre la notation u_n pour le terme général d'une suite",
+        "Distinguer le terme général u_n de l'ensemble des termes (u_n)",
+        "Calculer directement n'importe quel terme d'une suite explicite"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les premiers termes d'une suite définie par u_n = 2^n - 1",
+        "Déterminer le domaine de définition d'une suite comme u_n = √(n-4)",
+        "Manipuler des expressions algébriques pour calculer des termes"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-1ere-2024-2025-cours-suites-numeriques.tex",
+      "source_sequence": "Suites numeriques",
+      "agent_meta": {
+        "agent_id": 73,
+        "timestamp": "2025-09-04T16:12:16.406850Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N16-4",
+      "nom": "Manipuler une suite définie par récurrence",
+      "description": "Comprendre et utiliser la définition par récurrence d'une suite numérique, incluant la donnée du premier terme et la relation de récurrence",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Comprendre la structure d'une définition par récurrence",
+        "Identifier le premier terme et la relation de récurrence",
+        "Calculer les termes successifs à partir de la relation de récurrence"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les premiers termes de la suite de Fibonacci",
+        "Déterminer les termes d'une suite définie par u_{n+1} = f(u_n)",
+        "Représenter graphiquement les termes d'une suite récurrente"
+      ],
+      "dureeEstimee": 5,
+      "source_document": "Spe-1ere-2024-2025-cours-suites-numeriques.tex",
+      "source_sequence": "Suites numeriques",
+      "agent_meta": {
+        "agent_id": 73,
+        "timestamp": "2025-09-04T16:12:16.406850Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N17-3",
+      "nom": "Calculer les termes d'une suite numérique définie explicitement",
+      "description": "Capacité à calculer les termes successifs d'une suite définie par une formule explicite (expression en fonction de n) ou par une relation de récurrence",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Maîtriser le calcul des premiers termes d'une suite définie explicitement",
+        "Comprendre la différence entre une définition explicite et par récurrence",
+        "Manipuler des expressions algébriques pour calculer des termes"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les 4 premiers termes d'une suite arithmétique",
+        "Déterminer les termes d'une suite définie par récurrence",
+        "Calculer des termes de suites géométriques"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "spe-Premiere-2024-2025-sujet-cont-suites.tex",
+      "source_sequence": "Suites numeriques",
+      "agent_meta": {
+        "agent_id": 75,
+        "timestamp": "2025-09-04T16:12:21.219465Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N18-4",
+      "nom": "Étudier les variations d'une suite numérique",
+      "description": "Capacité à déterminer et justifier le sens de variation d'une suite numérique en calculant la différence entre deux termes consécutifs",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Comprendre la méthode de comparaison des termes consécutifs",
+        "Maîtriser le calcul de Un+1 - Un",
+        "Interpréter le signe de la différence pour conclure sur les variations"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer Un+1 - Un pour une suite donnée",
+        "Étudier les variations d'une suite arithmétique",
+        "Déterminer le sens de variation d'une suite définie par récurrence"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "spe-Premiere-2024-2025-sujet-cont-suites.tex",
+      "source_sequence": "Suites numeriques",
+      "agent_meta": {
+        "agent_id": 75,
+        "timestamp": "2025-09-04T16:12:21.219465Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1R02-5",
+      "nom": "Résoudre des problèmes de croissance avec des suites",
+      "description": "Capacité à modéliser et résoudre des situations concrètes de croissance (intérêts, population) à l'aide de suites arithmétiques ou géométriques",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 5,
+      "objectifApprentissageCours": [
+        "Identifier le type de croissance (linéaire ou exponentielle)",
+        "Modéliser une situation par une suite adaptée",
+        "Calculer des termes éloignés et des sommes de termes"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des problèmes d'intérêts simples et composés",
+        "Calculer l'évolution d'une population",
+        "Comparer différents types de croissance"
+      ],
+      "dureeEstimee": 5,
+      "source_document": "spe-Premiere-2024-2025-sujet-cont-suites.tex",
+      "source_sequence": "Suites numeriques",
+      "agent_meta": {
+        "agent_id": 75,
+        "timestamp": "2025-09-04T16:12:21.219465Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1R03-3",
+      "nom": "Manipuler les mesures d'angles en radians",
+      "description": "Conversion entre degrés et radians, utilisation des angles remarquables et compréhension de la mesure en radians sur le cercle trigonométrique",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre la définition du radian comme longueur d'arc sur le cercle trigonométrique",
+        "Maîtriser les conversions entre degrés et radians pour les angles usuels",
+        "Identifier la correspondance entre un tour complet et 2π radians"
+      ],
+      "objectifApprentissageExercice": [
+        "Convertir des angles de degrés en radians et inversement",
+        "Utiliser le tableau de correspondance des angles remarquables",
+        "Placer des points sur le cercle trigonométrique selon leur mesure en radians"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-Premiere-2024-2025-cours-trigonometrie.tex",
+      "source_sequence": "Trigonometrie",
+      "agent_meta": {
+        "agent_id": 76,
+        "timestamp": "2025-09-04T16:12:22.453954Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1G03-4",
+      "nom": "Comprendre l'enroulement de la droite réelle sur le cercle trigonométrique",
+      "description": "Visualisation et manipulation de l'enroulement de la droite des réels sur le cercle trigonométrique, avec compréhension de la périodicité",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "GEOMETRIE",
+      "themes": [
+        "GEOMETRIE"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Comprendre le principe d'enroulement de la droite réelle sur le cercle",
+        "Identifier les points correspondants par enroulement",
+        "Maîtriser la notion de périodicité 2π sur le cercle trigonométrique"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer les différentes abscisses correspondant à un même point du cercle",
+        "Calculer la différence entre deux abscisses donnant le même point",
+        "Représenter graphiquement l'enroulement pour des points donnés"
+      ],
+      "dureeEstimee": 5,
+      "source_document": "Spe-Premiere-2024-2025-cours-trigonometrie.tex",
+      "source_sequence": "Trigonometrie",
+      "agent_meta": {
+        "agent_id": 76,
+        "timestamp": "2025-09-04T16:12:22.453954Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1D04-3",
+      "nom": "Définir et manipuler une variable aléatoire réelle sur un ensemble fini",
+      "description": "Capacité à associer des valeurs numériques aux issues d'une expérience aléatoire et à construire la loi de probabilité correspondante",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "DONNEES",
+      "themes": [
+        "DONNEES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre la notion de variable aléatoire comme fonction de Ω vers R",
+        "Construire un tableau de loi de probabilité pour une variable aléatoire",
+        "Identifier les différentes valeurs possibles et leurs probabilités associées"
+      ],
+      "objectifApprentissageExercice": [
+        "Modéliser une situation concrète par une variable aléatoire",
+        "Construire le tableau des valeurs et probabilités d'une variable aléatoire",
+        "Résoudre des problèmes de gains dans des jeux de hasard"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "Spe-2024-2025-cours-variablea-aleatoires.tex",
+      "source_sequence": "Variables aleatoires",
+      "agent_meta": {
+        "agent_id": 77,
+        "timestamp": "2025-09-04T16:12:22.975133Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1R04-4",
+      "nom": "Calculer et interpréter les paramètres d'une variable aléatoire",
+      "description": "Maîtrise du calcul de l'espérance, de la variance et de l'écart-type d'une variable aléatoire et de leur interprétation",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "GRANDEURS",
+      "themes": [
+        "GRANDEURS"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Calculer l'espérance mathématique d'une variable aléatoire",
+        "Déterminer la variance et l'écart-type d'une variable aléatoire",
+        "Interpréter ces paramètres dans un contexte concret"
+      ],
+      "objectifApprentissageExercice": [
+        "Utiliser la formule de l'espérance pour calculer un gain moyen",
+        "Appliquer la formule de la variance avec la notation somme",
+        "Démontrer des propriétés sur les paramètres probabilistes"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Spe-2024-2025-cours-variablea-aleatoires.tex",
+      "source_sequence": "Variables aleatoires",
+      "agent_meta": {
+        "agent_id": 77,
+        "timestamp": "2025-09-04T16:12:22.975133Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N19-4",
+      "nom": "Démontrer une propriété par récurrence",
+      "description": "Maîtriser la technique de démonstration par récurrence en suivant les étapes d'initialisation et d'hérédité pour prouver une propriété sur les entiers naturels",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Comprendre le principe de la démonstration par récurrence",
+        "Identifier les étapes clés : initialisation et hérédité",
+        "Rédiger rigoureusement une démonstration par récurrence"
+      ],
+      "objectifApprentissageExercice": [
+        "Démontrer une propriété numérique par récurrence",
+        "Prouver une formule de terme général d'une suite",
+        "Vérifier une égalité pour tout entier naturel"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Diapo.tex",
+      "source_sequence": "Récurrence",
+      "agent_meta": {
+        "agent_id": 79,
+        "timestamp": "2025-09-04T16:12:25.158848Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N20-4",
+      "nom": "Manipuler une suite définie par récurrence",
+      "description": "Étudier une suite définie par son premier terme et une relation de récurrence, démontrer son terme général par récurrence",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Comprendre la définition d'une suite par récurrence",
+        "Calculer les premiers termes d'une suite récurrente",
+        "Conjecturer une formule de terme général"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer des termes d'une suite récurrente",
+        "Démontrer une formule explicite du terme général",
+        "Vérifier une conjecture sur le terme général"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "Diapo.tex",
+      "source_sequence": "Récurrence",
+      "agent_meta": {
+        "agent_id": 79,
+        "timestamp": "2025-09-04T16:12:25.158848Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N21-4",
+      "nom": "Démontrer une propriété par récurrence",
+      "description": "Maîtriser la technique de démonstration par récurrence en suivant les étapes d'initialisation et d'hérédité pour prouver une propriété sur les entiers naturels",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Comprendre le principe de la récurrence basé sur les axiomes de Peano",
+        "Identifier les étapes clés d'une démonstration par récurrence",
+        "Rédiger rigoureusement une preuve par récurrence"
+      ],
+      "objectifApprentissageExercice": [
+        "Démontrer une formule explicite pour le terme général d'une suite",
+        "Prouver des propriétés d'encadrement de suites récurrentes",
+        "Vérifier une conjecture sur les termes d'une suite"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Cours.tex",
+      "source_sequence": "Récurrence",
+      "agent_meta": {
+        "agent_id": 78,
+        "timestamp": "2025-09-04T16:12:26.115273Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N22-3",
+      "nom": "Manipuler des suites définies par récurrence",
+      "description": "Étudier des suites numériques définies par une relation de récurrence et un premier terme, calculer leurs termes et démontrer leurs propriétés",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Comprendre la définition d'une suite par récurrence",
+        "Calculer les premiers termes d'une suite récurrente",
+        "Conjecturer une expression du terme général"
+      ],
+      "objectifApprentissageExercice": [
+        "Calculer les premiers termes d'une suite définie par récurrence",
+        "Démontrer une formule explicite conjecturée",
+        "Étudier les variations d'une suite récurrente"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "Cours.tex",
+      "source_sequence": "Récurrence",
+      "agent_meta": {
+        "agent_id": 78,
+        "timestamp": "2025-09-04T16:12:26.115273Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1N23-3",
+      "nom": "Utiliser un algorithme de calcul mental rapide",
+      "description": "Développer des stratégies de calcul mental efficaces pour résoudre des opérations numériques dans un temps limité, dans le cadre d'une course aux nombres",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Maîtriser les techniques de calcul mental rapide",
+        "Identifier la méthode la plus efficace selon le type d'opération",
+        "Développer des automatismes de calcul"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre des calculs numériques en temps limité",
+        "Appliquer des stratégies de simplification mentale",
+        "Optimiser son temps de réponse sur des opérations variées"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "Can_rentree.tex",
+      "source_sequence": "Courses aux nombres",
+      "agent_meta": {
+        "agent_id": 80,
+        "timestamp": "2025-09-04T16:12:32.141946Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C1I01-4",
+      "nom": "Structurer une démarche de résolution chronométrée",
+      "description": "Organiser sa réflexion et sa résolution de problèmes mathématiques dans un contexte de temps contraint (9 minutes)",
+      "niveau": "PREMIERE_SPE",
+      "categorie": "INFORMATIQUE",
+      "themes": [
+        "INFORMATIQUE"
+      ],
+      "palier": 4,
+      "objectifApprentissageCours": [
+        "Planifier une stratégie de résolution efficace",
+        "Gérer son temps sur une série d'exercices",
+        "Prioriser les étapes de résolution"
+      ],
+      "objectifApprentissageExercice": [
+        "Résoudre une série d'exercices en temps limité",
+        "Optimiser sa vitesse d'exécution",
+        "Adapter sa méthode selon la contrainte temporelle"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "Can_rentree.tex",
+      "source_sequence": "Courses aux nombres",
+      "agent_meta": {
+        "agent_id": 80,
+        "timestamp": "2025-09-04T16:12:32.141946Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N51-2",
+      "nom": "Maîtriser les opérations numériques de Ensembles nombres",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Ensembles nombres, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-correction-TD2-nombres-Thale_s.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 16,
+        "timestamp": "2025-09-04T16:12:45.936838Z",
+        "document_type": "correction"
+      }
+    },
+    {
+      "code": "C2N52-2",
+      "nom": "Maîtriser les opérations numériques de Ensembles nombres",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Ensembles nombres, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-cont-intervalles.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 17,
+        "timestamp": "2025-09-04T16:12:46.398819Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N53-3",
+      "nom": "Construire et structurer les connaissances en Ensembles nombres",
+      "description": "Organiser de manière cohérente les notions mathématiques du chapitre Ensembles nombres, établir des liens entre les concepts et développer une vision d'ensemble du domaine étudié. Cette compétence métacognitive est essentielle pour un apprentissage durable.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Identifier les concepts clés du chapitre et comprendre leur articulation logique",
+        "Établir des connections avec les connaissances antérieures et prévoir les prolongements",
+        "Développer une représentation mentale organisée des notions mathématiques étudiées"
+      ],
+      "objectifApprentissageExercice": [
+        "Synthétiser les connaissances du chapitre sous forme de schémas ou cartes conceptuelles",
+        "Expliquer avec ses propres mots les notions importantes en utilisant le vocabulaire précis",
+        "Transférer les connaissances acquises vers des situations nouvelles ou des contextes différents"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-cont-intervalles.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 17,
+        "timestamp": "2025-09-04T16:12:46.398819Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N54-2",
+      "nom": "Maîtriser les opérations numériques de Ensembles nombres",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Ensembles nombres, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-cont-nombres.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 18,
+        "timestamp": "2025-09-04T16:12:48.480154Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N55-3",
+      "nom": "Construire et structurer les connaissances en Ensembles nombres",
+      "description": "Organiser de manière cohérente les notions mathématiques du chapitre Ensembles nombres, établir des liens entre les concepts et développer une vision d'ensemble du domaine étudié. Cette compétence métacognitive est essentielle pour un apprentissage durable.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 3,
+      "objectifApprentissageCours": [
+        "Identifier les concepts clés du chapitre et comprendre leur articulation logique",
+        "Établir des connections avec les connaissances antérieures et prévoir les prolongements",
+        "Développer une représentation mentale organisée des notions mathématiques étudiées"
+      ],
+      "objectifApprentissageExercice": [
+        "Synthétiser les connaissances du chapitre sous forme de schémas ou cartes conceptuelles",
+        "Expliquer avec ses propres mots les notions importantes en utilisant le vocabulaire précis",
+        "Transférer les connaissances acquises vers des situations nouvelles ou des contextes différents"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-cont-nombres.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 18,
+        "timestamp": "2025-09-04T16:12:48.480154Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N56-2",
+      "nom": "Maîtriser les opérations numériques de Ensembles nombres",
+      "description": "Effectuer avec aisance et précision les calculs numériques spécifiques au chapitre Ensembles nombres, en comprenant la logique mathématique sous-jacente. Cette compétence inclut le choix de la méthode de calcul la plus appropriée et la vérification des résultats.",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les algorithmes de calcul et savoir expliquer chaque étape du processus",
+        "Développer des automatismes de calcul tout en gardant une approche réfléchie",
+        "Reconnaître les erreurs courantes et mettre en place des stratégies de vérification"
+      ],
+      "objectifApprentissageExercice": [
+        "Effectuer des calculs complexes en décomposant le problème en étapes élémentaires",
+        "Choisir la méthode de calcul la plus efficace selon le contexte du problème",
+        "Présenter les calculs de manière claire et structurée en justifiant chaque étape"
+      ],
+      "dureeEstimee": 4,
+      "source_document": "2nde-2023-2024-sujet-TD2-nombres-Thale_s.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 20,
+        "timestamp": "2025-09-04T16:12:55.508797Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N57-2",
+      "nom": "Effectuer des calculs avec les puissances de nombres réels",
+      "description": "Maîtriser les règles de calcul sur les puissances (produit, quotient, puissance de puissance) avec des exposants entiers relatifs",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Connaître et appliquer les règles de calcul des puissances",
+        "Comprendre la signification des exposants négatifs",
+        "Manipuler les puissances avec des bases négatives"
+      ],
+      "objectifApprentissageExercice": [
+        "Simplifier des expressions comportant des puissances",
+        "Calculer des produits et quotients de puissances",
+        "Déterminer la puissance d'une puissance"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD3-puissances-intervalles.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 21,
+        "timestamp": "2025-09-04T16:12:58.759004Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N58-2",
+      "nom": "Utiliser la notation scientifique",
+      "description": "Écrire et manipuler des nombres en notation scientifique de la forme a×10^n avec 1≤a<10 et n entier relatif",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre la structure de la notation scientifique",
+        "Convertir un nombre décimal en notation scientifique",
+        "Identifier l'ordre de grandeur d'un nombre"
+      ],
+      "objectifApprentissageExercice": [
+        "Convertir des grands nombres en notation scientifique",
+        "Convertir des petits nombres décimaux en notation scientifique",
+        "Vérifier la validité d'une écriture scientifique"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2023-2024-sujet-TD3-puissances-intervalles.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 21,
+        "timestamp": "2025-09-04T16:12:58.759004Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N59-2",
+      "nom": "Manipuler les intervalles de nombres réels",
+      "description": "Maîtriser la notation des intervalles, leur représentation et tester l'appartenance d'un nombre à un intervalle",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Comprendre les différents types d'intervalles (fermés, ouverts, semi-ouverts)",
+        "Traduire des inégalités en intervalles et réciproquement",
+        "Utiliser les symboles ∈ et ∉ correctement"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer si un nombre appartient à un intervalle donné",
+        "Convertir des inégalités en notation d'intervalle",
+        "Manipuler des intervalles avec l'infini"
+      ],
+      "dureeEstimee": 3,
+      "source_document": "2nde-2023-2024-sujet-TD3-puissances-intervalles.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 21,
+        "timestamp": "2025-09-04T16:12:58.759004Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N60-1",
+      "nom": "Identifier et caractériser les différents ensembles de nombres",
+      "description": "Maîtriser les définitions et propriétés des ensembles N, Z et D, comprendre leurs relations d'inclusion et utiliser la notation ensembliste appropriée",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 1,
+      "objectifApprentissageCours": [
+        "Connaître les définitions des ensembles N, Z et D",
+        "Comprendre les relations d'inclusion entre ces ensembles",
+        "Maîtriser les symboles d'appartenance et d'inclusion"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer si un nombre appartient à un ensemble donné",
+        "Justifier qu'un nombre est décimal ou non",
+        "Représenter les relations entre ensembles par des diagrammes"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-Ens-nombres-cours.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 22,
+        "timestamp": "2025-09-04T16:13:08.975855Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N61-2",
+      "nom": "Utiliser la notation ensembliste",
+      "description": "Maîtriser les symboles ∈, ⊂, ∉ et leurs significations dans le contexte des ensembles de nombres",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Distinguer appartenance et inclusion",
+        "Utiliser correctement les symboles ensemblistes",
+        "Comprendre la notion de sous-ensemble"
+      ],
+      "objectifApprentissageExercice": [
+        "Écrire des relations d'appartenance et d'inclusion",
+        "Traduire des phrases en langage mathématique",
+        "Vérifier des relations entre ensembles"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-2024-2025-Ens-nombres-cours.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 22,
+        "timestamp": "2025-09-04T16:13:08.975855Z",
+        "document_type": "cours"
+      }
+    },
+    {
+      "code": "C2N62-2",
+      "nom": "Déterminer l'intersection d'intervalles de nombres réels",
+      "description": "Capacité à identifier et représenter l'ensemble des nombres appartenant simultanément à deux intervalles donnés, en utilisant la notation ensembliste et les symboles d'intervalles",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser la définition de l'intersection d'intervalles",
+        "Comprendre la notion d'appartenance simultanée à deux ensembles",
+        "Utiliser correctement les notations d'intervalles et le symbole ∩"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer l'intersection d'intervalles bornés",
+        "Travailler avec des intervalles semi-ouverts et fermés",
+        "Gérer les cas particuliers avec l'infini"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-exo-intersction-reunion-intervalles.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 23,
+        "timestamp": "2025-09-04T16:13:10.949646Z",
+        "document_type": "exercice"
+      }
+    },
+    {
+      "code": "C2N63-2",
+      "nom": "Déterminer la réunion d'intervalles de nombres réels",
+      "description": "Capacité à identifier et représenter l'ensemble des nombres appartenant à au moins un des deux intervalles donnés, en utilisant la notation ensembliste appropriée",
+      "niveau": "SECONDE",
+      "categorie": "NOMBRES",
+      "themes": [
+        "NOMBRES"
+      ],
+      "palier": 2,
+      "objectifApprentissageCours": [
+        "Maîtriser la définition de la réunion d'intervalles",
+        "Comprendre la notion d'appartenance à au moins un ensemble",
+        "Utiliser correctement les notations d'intervalles et le symbole ∪"
+      ],
+      "objectifApprentissageExercice": [
+        "Déterminer la réunion d'intervalles disjoints ou non",
+        "Traiter les cas avec bornes communes",
+        "Manipuler des intervalles incluant l'infini"
+      ],
+      "dureeEstimee": 2,
+      "source_document": "2nde-exo-intersction-reunion-intervalles.tex",
+      "source_sequence": "Ensembles nombres",
+      "agent_meta": {
+        "agent_id": 23,
+        "timestamp": "2025-09-04T16:13:10.949646Z",
+        "document_type": "exercice"
+      }
+    }
+  ]
+}

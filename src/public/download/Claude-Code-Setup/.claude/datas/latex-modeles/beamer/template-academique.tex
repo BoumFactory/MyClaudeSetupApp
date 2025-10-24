@@ -1,0 +1,334 @@
+%% Template Beamer pour présentations académiques
+%% Style : Sobre, professionnel, haute densité d'information maîtrisée
+%% Densité maximale : 70%
+
+\documentclass[11pt, aspectratio=169, xcolor={svgnames}]{beamer}
+
+% === THÈME ET COULEURS ===
+\usetheme{default}
+\usecolortheme{dove}
+
+% Couleurs sobres académiques
+\definecolor{acad-main}{RGB}{0, 0, 0}             % Noir
+\definecolor{acad-accent}{RGB}{51, 51, 51}        % Gris foncé
+\definecolor{acad-light}{RGB}{245, 245, 245}      % Gris très clair
+\definecolor{acad-blue}{RGB}{0, 51, 102}          % Bleu nuit (optionnel)
+
+\setbeamercolor{structure}{fg=acad-main}
+\setbeamercolor{block title}{bg=acad-accent, fg=white}
+\setbeamercolor{block body}{bg=acad-light}
+\setbeamercolor{alerted text}{fg=acad-accent}
+
+% === PACKAGES ESSENTIELS ===
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{booktabs}  % Pour des tableaux professionnels
+
+% Packages TikZ pour graphiques techniques
+\usetikzlibrary{calc, positioning, shapes, arrows, decorations.pathreplacing, patterns, 3d}
+
+% Package pour les encadrés
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable, theorems}
+
+% Bibliographie (optionnel)
+% \usepackage[style=authoryear, backend=biber]{biblatex}
+% \addbibresource{references.bib}
+
+% === ENVIRONNEMENT EXERCICE (optionnel pour académique) ===
+\newtcolorbox{exobeamer}[1][]{
+  enhanced,
+  breakable,
+  colback=acad-light,
+  colframe=acad-accent,
+  coltitle=white,
+  fonttitle=\bfseries,
+  title={Application},
+  attach boxed title to top left={yshift=-2mm, xshift=5mm},
+  boxed title style={
+    colback=acad-accent,
+    sharp corners,
+    boxrule=0pt,
+  },
+  top=4mm,
+  bottom=2mm,
+  left=2mm,
+  right=2mm,
+  overlay unbroken and first={
+    \node[anchor=north west, font=\scriptsize\itshape, text=acad-accent!80!black]
+      at ([xshift=5mm, yshift=-8mm]frame.north west) {#1};
+  }
+}
+
+% === THÉORÈMES ET DÉFINITIONS ===
+\newtheorem{theoreme}{Théorème}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemme}{Lemme}
+\newtheorem{corollaire}{Corollaire}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}
+\newtheorem{remarque}{Remarque}
+
+% === MISE EN PAGE ===
+% Espacement des listes (compact)
+\setlength{\leftmargini}{1.2em}
+\setlength{\parskip}{0.2em}
+
+% En-tête et pied de page professionnel
+\setbeamertemplate{footline}{
+  \hbox{%
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+      \hspace*{1em}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.34\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+      \insertshortdate{}\hspace*{2em}
+      \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+    \end{beamercolorbox}%
+  }
+  \vskip0pt%
+}
+
+% Pas de symboles de navigation
+\setbeamertemplate{navigation symbols}{}
+
+% Numérotation des équations
+\setbeamertemplate{theorem}[numbered]
+
+% === MÉTADONNÉES (À REMPLIR) ===
+\title{{{TITRE_PRESENTATION}}}
+\subtitle{{{SOUS_TITRE}}}
+\author{{{AUTEUR}}}
+\date{{{DATE}}}
+\institute{%
+  {{ETABLISSEMENT}} \\
+  {{LABORATOIRE}} \\
+  {{VILLE}}, {{PAYS}}
+}
+
+% Versions courtes
+\def\insertshortauthor{{{AUTEUR_COURT}}}
+\def\insertshorttitle{{{TITRE_COURT}}}
+\def\insertshortdate{{{DATE_COURTE}}}
+
+% === DÉBUT DU DOCUMENT ===
+\begin{document}
+
+% === PAGE DE TITRE ===
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% === PLAN ===
+\begin{frame}{Plan}
+  \tableofcontents
+\end{frame}
+
+% === SECTION 1 : CONTEXTE ===
+\section{Contexte et motivation}
+
+\begin{frame}{Contexte}
+  \begin{block}{Problématique}
+    Présentation du problème scientifique ou mathématique étudié.
+  \end{block}
+
+  \vspace{0.5em}
+
+  \textbf{État de l'art :}
+  \begin{itemize}
+    \item Travaux de \cite{reference1} en 2020
+    \item Approche de \cite{reference2} limitée par...
+    \item Notre contribution : extension à...
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Objectifs}
+  \textbf{Objectifs de cette présentation :}
+
+  \begin{enumerate}
+    \item Présenter le cadre théorique
+    \item Démontrer les résultats principaux
+    \item Analyser les applications
+    \item Discuter des perspectives
+  \end{enumerate}
+\end{frame}
+
+% === SECTION 2 : CADRE THÉORIQUE ===
+\section{Cadre théorique}
+
+\begin{frame}{Définitions}
+  \begin{definition}[Espace de Hilbert]
+    Un espace de Hilbert $\mathcal{H}$ est un espace vectoriel muni d'un produit scalaire $\langle \cdot, \cdot \rangle$ complet pour la norme induite.
+  \end{definition}
+
+  \vspace{0.5em}
+
+  \begin{definition}[Opérateur compact]
+    Un opérateur $T : \mathcal{H} \to \mathcal{H}$ est compact si l'image de toute boule bornée est relativement compacte.
+  \end{definition}
+\end{frame}
+
+\begin{frame}{Théorème principal}
+  \begin{theoreme}[Spectral pour opérateurs compacts]
+    Soit $T : \mathcal{H} \to \mathcal{H}$ un opérateur compact auto-adjoint. Alors :
+    \begin{enumerate}
+      \item Le spectre de $T$ est discret
+      \item Il existe une base orthonormée de vecteurs propres
+      \item Les valeurs propres tendent vers zéro
+    \end{enumerate}
+  \end{theoreme}
+
+  \vspace{0.5em}
+
+  \begin{proof}[Esquisse]
+    Par analyse spectrale et compacité... (détails dans \cite{reference3})
+  \end{proof}
+\end{frame}
+
+% === SECTION 3 : RÉSULTATS ===
+\section{Résultats principaux}
+
+\begin{frame}{Résultat 1}
+  \begin{proposition}
+    Sous les hypothèses (H1)-(H3), le problème admet une solution unique.
+  \end{proposition}
+
+  \textbf{Démonstration :}
+
+  On procède en trois étapes :
+  \begin{enumerate}
+    \item Existence par méthode variationnelle
+    \item Unicité par stricte convexité
+    \item Régularité par bootstrap
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Illustration numérique}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Configuration :}
+      \begin{itemize}
+        \item Maillage : $N = 10^4$
+        \item Schéma : EF P1
+        \item Solver : GMRES
+      \end{itemize}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{center}
+        \includegraphics[width=\textwidth]{graphique_resultats.pdf}
+      \end{center}
+      \scriptsize Figure 1 : Convergence du schéma
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Tableau de résultats}
+  \begin{table}
+    \centering
+    \caption{Erreurs numériques en norme $L^2$}
+    \begin{tabular}{@{}ccccc@{}}
+      \toprule
+      $N$ & Erreur & Ordre & Temps (s) & Mémoire (MB) \\
+      \midrule
+      $10^2$ & $2.3 \times 10^{-2}$ & -- & 0.12 & 5 \\
+      $10^3$ & $2.5 \times 10^{-3}$ & 1.96 & 1.45 & 48 \\
+      $10^4$ & $2.6 \times 10^{-4}$ & 1.98 & 18.3 & 512 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+% === SECTION 4 : DISCUSSION ===
+\section{Discussion}
+
+\begin{frame}{Comparaison avec l'existant}
+  \begin{table}
+    \centering
+    \small
+    \begin{tabular}{lccc}
+      \toprule
+      Méthode & Complexité & Précision & Stabilité \\
+      \midrule
+      \cite{reference1} & $O(N^2)$ & $O(h^2)$ & Conditionnelle \\
+      \cite{reference2} & $O(N \log N)$ & $O(h)$ & Inconditionnelle \\
+      \textbf{Notre méthode} & $\mathbf{O(N)}$ & $\mathbf{O(h^2)}$ & \textbf{Inconditionnelle} \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+  \vspace{0.5em}
+
+  $\Rightarrow$ Amélioration significative en complexité tout en conservant l'ordre optimal.
+\end{frame}
+
+% === CONCLUSION ===
+\section{Conclusion}
+
+\begin{frame}{Conclusions}
+  \textbf{Résumé des contributions :}
+
+  \begin{itemize}
+    \item Nouveau cadre théorique unifié
+    \item Démonstration de convergence optimale
+    \item Implémentation efficace et validation
+  \end{itemize}
+
+  \vspace{1em}
+
+  \textbf{Perspectives :}
+
+  \begin{itemize}
+    \item Extension au cas non-linéaire
+    \item Analyse en dimension supérieure
+    \item Applications industrielles
+  \end{itemize}
+\end{frame}
+
+% === RÉFÉRENCES ===
+\begin{frame}[allowframebreaks]{Références}
+  \footnotesize
+  \begin{thebibliography}{99}
+    \bibitem{reference1} A. Auteur, B. Collaborateur,
+      \emph{Titre de l'article},
+      Journal Name, vol. 42, pp. 123-145, 2020.
+
+    \bibitem{reference2} C. Chercheur,
+      \emph{Monographie importante},
+      Éditeur, 2021.
+
+    \bibitem{reference3} D. Expert, E. Spécialiste,
+      \emph{Another relevant work},
+      Conference Proceedings, pp. 567-589, 2022.
+  \end{thebibliography}
+\end{frame}
+
+% === FIN ===
+\begin{frame}[plain]
+  \begin{center}
+    \vspace{2em}
+    {\Large Merci pour votre attention}
+
+    \vspace{2em}
+
+    {\normalsize Questions et discussion}
+
+    \vspace{3em}
+
+    \scriptsize
+    Contact : {{EMAIL}} \\
+    Slides disponibles sur : {{URL}}
+  \end{center}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Système de création de diaporamas Beamer pédagogiques">
+  <title>Création de Diaporamas Beamer Pédagogiques</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Theme personnalisé lycée -->
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --text-color: #34495e;
+      --bg-light: #ecf0f1;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.6em;
+      margin-bottom: 0.8em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.3em;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      margin-top: 0.8em;
+    }
+
+    .reveal ul, .reveal ol {
+      margin: 1em 0;
+    }
+
+    .reveal li {
+      margin: 0.5em 0;
+      line-height: 1.5;
+    }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 1em;
+      max-height: 500px;
+      font-size: 0.85em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .reveal .success {
+      color: var(--success-color);
+      font-weight: 600;
+    }
+
+    .reveal .warning {
+      color: var(--warning-color);
+      font-weight: 600;
+    }
+
+    .reveal .box {
+      background: var(--bg-light);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning-color);
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: #e8f5e9;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon {
+      font-size: 1.2em;
+      margin-right: 0.3em;
+      vertical-align: middle;
+    }
+
+    .reveal section img {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: var(--secondary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .feature-list {
+      font-size: 0.9em;
+    }
+
+    .reveal .feature-list li {
+      margin: 0.4em 0;
+    }
+
+    .reveal .tree-structure {
+      font-family: 'Consolas', monospace;
+      font-size: 0.65em;
+      text-align: left;
+      background: #f8f9fa;
+      padding: 1em;
+      border-radius: 8px;
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    .reveal .subtitle {
+      color: var(--secondary-color);
+      font-size: 0.7em;
+      margin-top: 0.5em;
+    }
+
+    .reveal .tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+
+    .reveal .tag.warning {
+      background: var(--warning-color);
+    }
+
+    .reveal .tag.success {
+      background: var(--success-color);
+    }
+
+    .reveal .tag.accent {
+      background: var(--accent-color);
+    }
+
+    .reveal .smaller {
+      font-size: 0.85em;
+    }
+
+    .reveal .comparison-table {
+      font-size: 0.75em;
+      width: 100%;
+      margin: 1em 0;
+    }
+
+    .reveal .comparison-table td, .reveal .comparison-table th {
+      padding: 0.5em;
+      border: 1px solid #ddd;
+    }
+
+    .reveal .comparison-table th {
+      background: var(--secondary-color);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fas fa-chalkboard-teacher icon"></i> Création de Diaporamas Beamer Pédagogiques</h1>
+        <p class="subtitle">Le système <code>beamer-presentation</code></p>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag">Formation GT IA & Maths</span>
+          <span class="tag success">Skill + Agent autonome</span>
+          <span class="tag accent">LuaLaTeX</span>
+        </p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <section>
+          <h2>Au programme</h2>
+          <ol class="feature-list">
+            <li class="fragment" data-fragment-index="1"><i class="fas fa-question-circle icon"></i> Qu'est-ce que le skill beamer-presentation ?</li>
+            <li class="fragment" data-fragment-index="2"><i class="fas fa-palette icon"></i> Les 3 styles : collège, lycée, académique</li>
+            <li class="fragment" data-fragment-index="3"><i class="fas fa-magic icon"></i> Règles clés : overlays explicites et siunitx</li>
+            <li class="fragment" data-fragment-index="4"><i class="fas fa-robot icon"></i> L'agent beamer-worker</li>
+            <li class="fragment" data-fragment-index="5"><i class="fas fa-route icon"></i> Workflow automatisé complet</li>
+            <li class="fragment" data-fragment-index="6"><i class="fas fa-lightbulb icon"></i> Exemples concrets</li>
+            <li class="fragment" data-fragment-index="7"><i class="fas fa-exclamation-triangle icon"></i> Limitations et bonnes pratiques</li>
+          </ol>
+          <p class="smaller fragment" data-fragment-index="8"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour naviguer verticalement dans certaines sections</p>
+        </section>
+      </section>
+
+      <!-- SLIDE 3 : QU'EST-CE QUE C'EST ? -->
+      <section>
+        <section>
+          <h2>Qu'est-ce que le skill beamer-presentation ?</h2>
+
+          <div class="box fragment">
+            <p><strong>Un système expert pour créer des présentations Beamer professionnelles</strong></p>
+          </div>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-graduation-cap icon"></i> <strong>3 styles adaptés</strong> au public cible (collège, lycée, académique)</li>
+            <li class="fragment"><i class="fas fa-eye icon"></i> <strong>Contrôle précis</strong> des animations avec overlays explicites</li>
+            <li class="fragment"><i class="fas fa-ruler icon"></i> <strong>Gestion rigoureuse</strong> de l'espacement et de la densité</li>
+            <li class="fragment"><i class="fas fa-calculator icon"></i> <strong>Package siunitx</strong> pour la typographie des nombres</li>
+            <li class="fragment"><i class="fas fa-clock icon"></i> <strong>Exercices avec estimation</strong> de temps</li>
+          </ul>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les caractéristiques détaillées</p>
+        </section>
+
+        <section>
+          <h3>Caractéristiques principales</h3>
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-ban icon"></i> NE JAMAIS utiliser <code>\pause</code></h3>
+              <p class="smaller">Toujours utiliser overlays explicites pour un contrôle total</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-hashtag icon"></i> Toujours <code>\num{nombre}</code></h3>
+              <p class="smaller">Package siunitx pour virgule française et espaces fines</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-compress icon"></i> Densité < 70%</h3>
+              <p class="smaller">Jamais plus de 70% de la slide remplie (60% pour collège)</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-layer-group icon"></i> Max 2-3 overlays/frame</h3>
+              <p class="smaller">Limiter les pauses pour éviter trop de pages PDF</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 4 : LES 3 STYLES -->
+      <section>
+        <section>
+          <h2>Les 3 styles disponibles</h2>
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour explorer chaque style en détail</p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-child icon"></i> Style Collège (6e-3e)</h3>
+          <div class="grid-2">
+            <div>
+              <div class="example-box" style="font-size: 0.85em;">
+                <p><strong>Caractéristiques</strong></p>
+                <ul class="smaller">
+                  <li>Police : <strong>14pt minimum</strong></li>
+                  <li>Densité : <strong>max 60%</strong></li>
+                  <li>Items/slide : <strong>max 5</strong></li>
+                  <li>Couleurs : <strong>vives</strong></li>
+                  <li>Animations : <strong>fréquentes</strong></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="box" style="font-size: 0.8em;">
+                <p><strong>Objectifs pédagogiques</strong></p>
+                <ul class="smaller">
+                  <li>Capter l'attention</li>
+                  <li>Faciliter la lecture</li>
+                  <li>Simplifier visuellement</li>
+                  <li>Encourager la participation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-info-circle icon"></i> Template : <code>template-college.tex</code></p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-user-graduate icon"></i> Style Lycée (2nde-Tale)</h3>
+          <div class="grid-2">
+            <div>
+              <div class="example-box" style="font-size: 0.85em;">
+                <p><strong>Caractéristiques</strong></p>
+                <ul class="smaller">
+                  <li>Police : <strong>12pt minimum</strong></li>
+                  <li>Densité : <strong>max 70%</strong></li>
+                  <li>Items/slide : <strong>max 6-7</strong></li>
+                  <li>Couleurs : <strong>équilibrées</strong></li>
+                  <li>Animations : <strong>modérées</strong></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="box" style="font-size: 0.8em;">
+                <p><strong>Objectifs pédagogiques</strong></p>
+                <ul class="smaller">
+                  <li>Équilibre accessibilité/rigueur</li>
+                  <li>Formalisme progressif</li>
+                  <li>Développer l'autonomie</li>
+                  <li>Préparer au supérieur</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-info-circle icon"></i> Template : <code>template-lycee.tex</code></p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-university icon"></i> Style Académique (conférences)</h3>
+          <div class="grid-2">
+            <div>
+              <div class="example-box" style="font-size: 0.85em;">
+                <p><strong>Caractéristiques</strong></p>
+                <ul class="smaller">
+                  <li>Police : <strong>11pt minimum</strong></li>
+                  <li>Densité : <strong>max 70%</strong></li>
+                  <li>Items/slide : <strong>max 7</strong></li>
+                  <li>Couleurs : <strong>sobres</strong></li>
+                  <li>Animations : <strong>rares</strong></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="box" style="font-size: 0.8em;">
+                <p><strong>Objectifs</strong></p>
+                <ul class="smaller">
+                  <li>Rigueur académique</li>
+                  <li>Densité maîtrisée</li>
+                  <li>Références bibliographiques</li>
+                  <li>Professionnalisme maximal</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-info-circle icon"></i> Template : <code>template-academique.tex</code></p>
+        </section>
+
+        <section>
+          <h3>Tableau comparatif</h3>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Critère</th>
+                <th>Collège</th>
+                <th>Lycée</th>
+                <th>Académique</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Police principale</td>
+                <td><strong>14pt</strong></td>
+                <td>12pt</td>
+                <td>11pt</td>
+              </tr>
+              <tr>
+                <td>Densité max</td>
+                <td><strong>60%</strong></td>
+                <td>70%</td>
+                <td>70%</td>
+              </tr>
+              <tr>
+                <td>Items/slide</td>
+                <td>5</td>
+                <td>6-7</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>Animations</td>
+                <td><span class="success">Fréquentes</span></td>
+                <td>Modérées</td>
+                <td><span class="warning">Rares</span></td>
+              </tr>
+              <tr>
+                <td>Slides/heure</td>
+                <td>15-20</td>
+                <td>25-35</td>
+                <td>40-60</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+
+      <!-- SLIDE 5 : OVERLAYS EXPLICITES -->
+      <section>
+        <section>
+          <h2>Règle clé n°1 : Overlays explicites</h2>
+
+          <div class="warning-box fragment">
+            <p><i class="fas fa-ban icon"></i> <strong>RÈGLE ABSOLUE :</strong> NE JAMAIS utiliser <code>\pause</code></p>
+          </div>
+
+          <div class="box fragment">
+            <p><i class="fas fa-check icon success"></i> <strong>TOUJOURS</strong> utiliser les overlays explicites pour un contrôle précis</p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les commandes disponibles</p>
+        </section>
+
+        <section>
+          <h3>Commandes d'overlay disponibles</h3>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Commande</th>
+                <th>Usage</th>
+                <th>Réserve l'espace ?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>\only&lt;2-&gt;{...}</code></td>
+                <td>Affichage sans réserver d'espace</td>
+                <td><span class="accent">Non</span></td>
+              </tr>
+              <tr>
+                <td><code>\uncover&lt;3-&gt;{...}</code></td>
+                <td>Révélation avec espace réservé</td>
+                <td><span class="success">Oui</span></td>
+              </tr>
+              <tr>
+                <td><code>\visible&lt;3-&gt;{...}</code></td>
+                <td>Identique à <code>\uncover</code></td>
+                <td><span class="success">Oui</span></td>
+              </tr>
+              <tr>
+                <td><code>\alert&lt;4&gt;{...}</code></td>
+                <td>Mise en évidence (rouge)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>\item&lt;5-&gt;</code></td>
+                <td>Item avec overlay</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h3>Syntaxe de spécification</h3>
+          <pre><code class="language-latex">&lt;2&gt;      % Seulement au slide 2
+&lt;2-&gt;     % À partir du slide 2 (2, 3, 4, ...)
+&lt;-3&gt;     % Jusqu'au slide 3 (1, 2, 3)
+&lt;2-4&gt;    % Du slide 2 au slide 4 (2, 3, 4)
+&lt;1,3,5&gt;  % Seulement aux slides 1, 3 et 5</code></pre>
+        </section>
+
+        <section>
+          <h3>Exemple : Exercice avec overlays explicites</h3>
+          <pre style="font-size: 0.6em;"><code class="language-latex">\begin{frame}{Exercice : Dérivée}
+  % ========================================
+  % SLIDE 1-2 : Énoncé présent partout
+  % ========================================
+  \only&lt;1-&gt;{%
+    \textbf{Question :} Que vaut la dérivée de $x^{\num{2}}$ ?
+  }
+
+  \vspace{0.5cm}
+
+  % ========================================
+  % SLIDE 2 : Réponse apparaît
+  % ========================================
+  \uncover&lt;2&gt;{%
+    \textit{On utilise la règle : $(x^n)' = n \cdot x^{n-1}$}
+
+    \vspace{0.3cm}
+
+    \textbf{Réponse :} $\textcolor{red}{\num{2}}x$
+  }
+\end{frame}</code></pre>
+          <p class="smaller success"><i class="fas fa-check icon"></i> <strong>2 pages PDF</strong> générées avec contrôle total</p>
+        </section>
+      </section>
+
+      <!-- SLIDE 6 : PACKAGE SIUNITX -->
+      <section>
+        <section>
+          <h2>Règle clé n°2 : Package siunitx</h2>
+
+          <div class="box fragment">
+            <p><strong>Utiliser <code>\num{nombre}</code> pour TOUS les nombres</strong></p>
+          </div>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Virgule française</strong> automatique : <code>3.14</code> → 3,14</li>
+            <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Espaces fines</strong> pour les milliers : <code>1234</code> → 1 234</li>
+            <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Notation scientifique</strong> : <code>6.022e23</code> → 6,022 × 10²³</li>
+          </ul>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la configuration et les exemples</p>
+        </section>
+
+        <section>
+          <h3>Configuration siunitx</h3>
+          <pre><code class="language-latex">\usepackage{siunitx}
+
+% Configuration française
+\sisetup{
+  locale = FR,
+  output-decimal-marker = {,},
+  group-separator = {\,}
+}</code></pre>
+        </section>
+
+        <section>
+          <h3>Exemples d'utilisation</h3>
+          <div class="grid-2">
+            <div>
+              <div class="example-box" style="font-size: 0.75em;">
+                <p><strong>Entiers</strong></p>
+                <pre style="margin: 0;"><code>\num{3}       → 3
+\num{1234}    → 1 234
+\num{1234567} → 1 234 567</code></pre>
+              </div>
+            </div>
+            <div>
+              <div class="example-box" style="font-size: 0.75em;">
+                <p><strong>Décimaux</strong></p>
+                <pre style="margin: 0;"><code>\num{3.14}    → 3,14
+\num{2.71828} → 2,718 28
+\num{0.5}     → 0,5</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="warning-box fragment" style="margin-top: 1em; font-size: 0.8em;">
+            <p><strong>NE PAS utiliser <code>\num{}</code> pour :</strong></p>
+            <ul class="smaller">
+              <li>Variables mathématiques : x, y, n, a, b</li>
+              <li>Exposants : x², 10⁻³</li>
+              <li>Constantes symboliques : π, e</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Exemple complet d'exercice</h3>
+          <pre style="font-size: 0.55em;"><code class="language-latex">\begin{frame}{Exercice : Produit scalaire}
+  % Énoncé
+  \only&lt;1-&gt;{%
+    Calculer $\vec{u} \cdot \vec{v}$ avec
+    $\vec{u}\begin{pmatrix}\num{15}\\-\num{8}\end{pmatrix}$
+    et $\vec{v}\begin{pmatrix}\num{6}\\\num{9}\end{pmatrix}$
+  }
+
+  % Formule
+  \uncover&lt;2-&gt;{%
+    \textbf{Formule :}
+    $\vec{u} \cdot \vec{v} = x_u x_v + y_u y_v$
+  }
+
+  % Application
+  \uncover&lt;3-&gt;{%
+    $\vec{u} \cdot \vec{v} = \num{15} \times \num{6} + (-\num{8}) \times \num{9}$
+  }
+
+  % Résultat
+  \uncover&lt;4&gt;{%
+    $= \num{90} - \num{72} = \boxed{\num{18}}$
+  }
+\end{frame}</code></pre>
+          <p class="smaller success"><i class="fas fa-check icon"></i> <strong>4 pages PDF</strong> avec typographie impeccable</p>
+        </section>
+      </section>
+
+      <!-- SLIDE 7 : RÈGLE DE DENSITÉ -->
+      <section>
+        <section>
+          <h2>Règle clé n°3 : Densité et espacement</h2>
+
+          <div class="warning-box fragment">
+            <p><i class="fas fa-compress-arrows-alt icon"></i> <strong>JAMAIS plus de 70% de la slide remplie</strong></p>
+            <p class="smaller">(60% pour collège)</p>
+          </div>
+
+          <div class="box fragment">
+            <p><strong>L'espace vide est votre allié :</strong></p>
+            <ul class="smaller">
+              <li>Respiration visuelle</li>
+              <li>Focalisation de l'attention</li>
+              <li>Mémorisation facilitée</li>
+              <li>Lisibilité depuis le fond de la classe</li>
+            </ul>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir comment vérifier la densité</p>
+        </section>
+
+        <section>
+          <h3>Comment vérifier la densité ?</h3>
+          <div class="grid-2">
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Méthode visuelle</strong></p>
+              <ul class="smaller">
+                <li>Imaginer 10 bandes horizontales</li>
+                <li>Si > 7 bandes contiennent du texte</li>
+                <li>→ <span class="accent">TROP DENSE</span></li>
+                <li>→ Découper en 2 slides</li>
+              </ul>
+            </div>
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Méthode par comptage</strong></p>
+              <ul class="smaller">
+                <li>Compter lignes de texte + formules</li>
+                <li><strong>Lycée/Académique :</strong> max 12 lignes</li>
+                <li><strong>Collège :</strong> max 8 lignes</li>
+                <li>Au-delà → <span class="accent">REFAIRE</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Espacements recommandés</h3>
+          <pre><code class="language-latex">% Après un titre de slide
+\vspace{1em}
+
+% Entre deux blocs d'information
+\vspace{0.5em}
+
+% Avant une formule importante
+\vspace{0.8em}
+\[
+  E = mc^2
+\]
+\vspace{0.8em}
+
+% Pour pousser du contenu vers le bas
+\vfill</code></pre>
+        </section>
+      </section>
+
+      <!-- SLIDE 8 : RÈGLE DES PAUSES -->
+      <section>
+        <section>
+          <h2>Règle clé n°4 : Maximum 2-3 pauses/frame</h2>
+
+          <div class="warning-box fragment">
+            <p><i class="fas fa-exclamation-triangle icon"></i> <strong>Problème :</strong> Trop de pauses = trop de pages PDF</p>
+            <ul class="smaller">
+              <li>1 frame avec 4 pauses = 5 pages PDF</li>
+              <li>20 frames avec 3-4 pauses = 80-100 pages PDF</li>
+              <li>→ Présentation trop longue, navigation difficile</li>
+            </ul>
+          </div>
+
+          <div class="example-box fragment">
+            <p><i class="fas fa-check icon success"></i> <strong>Solution :</strong> Limiter à 2-3 overlays maximum par frame de solution</p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la structure idéale</p>
+        </section>
+
+        <section>
+          <h3>Structure idéale d'un exercice</h3>
+          <div class="workflow-step" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div><strong>Frame Énoncé</strong> : 0 pause (tout visible d'un coup)</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div><strong>Frame Solution</strong> : 2-3 pauses maximum
+              <ul class="smaller">
+                <li>Pause 1 : Méthode/formule</li>
+                <li>Pause 2 : Calcul complet</li>
+                <li>Pause 3 : Résultat encadré</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="smaller success fragment" style="margin-top: 1em;"><i class="fas fa-check icon"></i> <strong>Total : 3-4 pages PDF</strong> pour un exercice complet</p>
+        </section>
+
+        <section>
+          <h3>Règle de décision : Faut-il une pause ?</h3>
+          <div class="grid-2">
+            <div class="example-box" style="font-size: 0.8em;">
+              <p><strong><i class="fas fa-check icon success"></i> OUI si :</strong></p>
+              <ul class="smaller">
+                <li>Changement d'étape conceptuelle</li>
+                <li>Besoin de laisser réfléchir</li>
+                <li>Séparation logique entre 2 idées</li>
+              </ul>
+            </div>
+            <div class="warning-box" style="font-size: 0.8em;">
+              <p><strong><i class="fas fa-times icon accent"></i> NON si :</strong></p>
+              <ul class="smaller">
+                <li>Juste une nouvelle ligne de calcul</li>
+                <li>Afficher un résultat immédiat</li>
+                <li>Juste pour "faire joli"</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 9 : L'AGENT BEAMER-WORKER -->
+      <section>
+        <section>
+          <h2><i class="fas fa-robot icon"></i> L'agent beamer-worker</h2>
+
+          <div class="box fragment">
+            <p><strong>Un agent autonome qui utilise le skill beamer-presentation</strong></p>
+          </div>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-brain icon"></i> <strong>Totalement autonome</strong> : Pas besoin de confirmer chaque étape</li>
+            <li class="fragment"><i class="fas fa-book icon"></i> <strong>Lit les guides</strong> de référence automatiquement</li>
+            <li class="fragment"><i class="fas fa-code icon"></i> <strong>Crée le LaTeX</strong> complet avec les bonnes pratiques</li>
+            <li class="fragment"><i class="fas fa-hammer icon"></i> <strong>Compile avec LuaLaTeX</strong> via tex-compiling-skill</li>
+            <li class="fragment"><i class="fas fa-broom icon"></i> <strong>Nettoie les fichiers</strong> temporaires</li>
+            <li class="fragment"><i class="fas fa-user-check icon"></i> <strong>Attend vos retours</strong> pour corrections</li>
+          </ul>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir le workflow</p>
+        </section>
+
+        <section>
+          <h3>Commande vague → Expert autonome</h3>
+          <div class="grid-2">
+            <div class="example-box">
+              <h3 class="smaller"><i class="fas fa-user icon"></i> Vous dites</h3>
+              <p style="font-style: italic; font-size: 0.85em;">"Crée un diaporama Beamer sur les dérivées pour une classe de 1ère, durée 55 minutes"</p>
+            </div>
+            <div class="box" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-robot icon"></i> L'agent fait</h3>
+              <ul class="smaller">
+                <li>Identifie le public : Lycée</li>
+                <li>Lit les guides de référence</li>
+                <li>Choisit le template lycée</li>
+                <li>Crée 20-25 slides</li>
+                <li>Applique overlays + siunitx</li>
+                <li>Compile et nettoie</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Modèle utilisé : Claude Haiku 4.5</h3>
+          <div class="box">
+            <p><strong><i class="fas fa-bolt icon"></i> Rapide et efficace</strong></p>
+            <ul class="smaller">
+              <li>Génération rapide du code LaTeX</li>
+              <li>Coût réduit pour productions fréquentes</li>
+              <li>Qualité professionnelle garantie</li>
+            </ul>
+          </div>
+
+          <div class="example-box fragment" style="margin-top: 1em;">
+            <p><i class="fas fa-magic icon"></i> <strong>Résultat :</strong> Vous obtenez un PDF professionnel prêt à présenter, sans écrire une ligne de LaTeX !</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 10 : WORKFLOW COMPLET -->
+      <section>
+        <section>
+          <h2>Workflow automatisé complet</h2>
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque étape en détail</p>
+        </section>
+
+        <section>
+          <h3>Étape 1 : Analyse de la demande</h3>
+          <div class="workflow-step" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div>Identifier le public cible (collège/lycée/académique)</div>
+          </div>
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div>Extraire : sujet, niveau, durée, nombre de slides estimé</div>
+          </div>
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">3</div>
+            <div>Choisir le template approprié</div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Étape 2 : Lecture des guides</h3>
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Guides lus automatiquement (ordre de priorité) :</strong></p>
+            <ol class="smaller">
+              <li><code>overlays-explicites.md</code> - <span class="accent">PRIORITÉ ABSOLUE</span></li>
+              <li><code>pauses-et-ordre.md</code> - <span class="accent">PRIORITÉ ABSOLUE</span></li>
+              <li><code>beamer-best-practices.md</code></li>
+              <li><code>beamer-styles-guide.md</code></li>
+              <li><code>exercices-beamer.md</code></li>
+            </ol>
+          </div>
+        </section>
+
+        <section>
+          <h3>Étape 3 : Création du contenu</h3>
+          <div class="workflow-step" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div>Copier le template vers le fichier destination</div>
+          </div>
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div>Remplir métadonnées (titre, auteur, date, institut)</div>
+          </div>
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">3</div>
+            <div>Structurer : titre, plan, sections, exercices, conclusion</div>
+          </div>
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">4</div>
+            <div>Appliquer overlays explicites + siunitx + règles de densité</div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Étape 4 : Compilation</h3>
+          <pre style="font-size: 0.65em;"><code class="language-bash">python .claude/skills/tex-compiling-skill/scripts/quick_compile.py \
+  --file "presentation.tex" \
+  --passes 1</code></pre>
+
+          <div class="box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><strong>En cas d'erreur :</strong></p>
+            <ul class="smaller">
+              <li>Analyser le log automatiquement</li>
+              <li>Identifier la ligne problématique</li>
+              <li>Corriger (caractères spéciaux, overlays mal fermés...)</li>
+              <li>Recompiler jusqu'au succès</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Étape 5 : Nettoyage</h3>
+          <pre style="font-size: 0.65em;"><code class="language-bash">python .claude/skills/tex-compiling-skill/scripts/clean_build_files.py \
+  --directory "."</code></pre>
+
+          <div class="example-box fragment" style="margin-top: 1em;">
+            <p><i class="fas fa-check icon success"></i> <strong>Résultat final :</strong> Seuls <code>.tex</code> et <code>.pdf</code> conservés</p>
+          </div>
+        </section>
+
+        <section>
+          <h3>Étape 6 : Rapport et attente</h3>
+          <div class="box" style="font-size: 0.75em;">
+            <p><strong>Rapport détaillé fourni :</strong></p>
+            <ul class="smaller">
+              <li>Style utilisé (collège/lycée/académique)</li>
+              <li>Nombre de frames créées</li>
+              <li>Nombre de pages PDF (avec overlays)</li>
+              <li>Durée estimée de présentation</li>
+              <li>Exercices intégrés avec temps estimés</li>
+              <li>Fichiers produits (.tex + .pdf)</li>
+            </ul>
+          </div>
+
+          <div class="warning-box fragment" style="margin-top: 1em; font-size: 0.8em;">
+            <p><i class="fas fa-user-check icon"></i> <strong>L'agent attend vos retours</strong> pour ajustements éventuels</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 11 : EXEMPLES CONCRETS -->
+      <section>
+        <section>
+          <h2>Exemples concrets</h2>
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir des cas d'usage</p>
+        </section>
+
+        <section>
+          <h3>Exemple 1 : Collège - Nombres relatifs (20 min)</h3>
+          <div class="example-box" style="font-size: 0.8em;">
+            <p><strong>Structure :</strong></p>
+            <ol class="smaller">
+              <li>Titre (1 slide)</li>
+              <li>Rappel avec images (2 slides animations)</li>
+              <li>Nouvelle notion étape par étape (4 slides)</li>
+              <li>Exercice guidé interactif (2 slides)</li>
+              <li>Synthèse visuelle (1 slide)</li>
+            </ol>
+            <p class="success"><strong>Total : 11 frames → ~15 pages PDF</strong></p>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><strong>Caractéristiques appliquées :</strong></p>
+            <ul class="smaller">
+              <li>Police 14pt, couleurs vives</li>
+              <li>Animations fréquentes (révélation item par item)</li>
+              <li>Densité < 60%, max 5 items/slide</li>
+              <li>Graphiques colorés (droite graduée TikZ)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Exemple 2 : Lycée - Dérivation (55 min)</h3>
+          <div class="example-box" style="font-size: 0.8em;">
+            <p><strong>Structure :</strong></p>
+            <ol class="smaller">
+              <li>Titre + Plan (2 slides)</li>
+              <li>Rappels et prérequis (2 slides)</li>
+              <li>Définition et théorème (5 slides)</li>
+              <li>Méthodes et exemples (4 slides)</li>
+              <li>Exercices d'application (5 slides)</li>
+              <li>Synthèse (2 slides)</li>
+            </ol>
+            <p class="success"><strong>Total : 20 frames → ~35 pages PDF</strong></p>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><strong>Caractéristiques appliquées :</strong></p>
+            <ul class="smaller">
+              <li>Police 12pt, couleurs équilibrées</li>
+              <li>2 overlays/frame maximum</li>
+              <li>Tous les nombres avec <code>\num{}</code></li>
+              <li>Exercices avec temps estimé (5-8 min)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Exemple 3 : Académique - Analyse numérique (30 min)</h3>
+          <div class="example-box" style="font-size: 0.8em;">
+            <p><strong>Structure :</strong></p>
+            <ol class="smaller">
+              <li>Titre avec affiliations (1 slide)</li>
+              <li>Plan détaillé (1 slide)</li>
+              <li>Contexte et état de l'art (3 slides)</li>
+              <li>Cadre théorique (5 slides)</li>
+              <li>Résultats (8 slides)</li>
+              <li>Discussion (3 slides)</li>
+              <li>Conclusion + Références (2 slides)</li>
+            </ol>
+            <p class="success"><strong>Total : 23 frames → ~30 pages PDF</strong></p>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><strong>Caractéristiques appliquées :</strong></p>
+            <ul class="smaller">
+              <li>Police 11pt, couleurs sobres (noir/gris)</li>
+              <li>Animations minimales (1 overlay/frame max)</li>
+              <li>Références bibliographiques systématiques</li>
+              <li>Format 16:9</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 12 : STRUCTURE DU SKILL -->
+      <section>
+        <h2>Structure du skill beamer-presentation</h2>
+
+        <div class="tree-structure">
+.claude/skills/beamer-presentation/
+├── SKILL.md                           # Instructions pour agents Claude
+├── references/
+│   ├── overlays-explicites.md         # PRIORITÉ ABSOLUE - Overlays + siunitx
+│   ├── pauses-et-ordre.md             # PRIORITÉ ABSOLUE - Max 2-3 pauses
+│   ├── beamer-best-practices.md       # Bonnes pratiques espacement
+│   ├── beamer-styles-guide.md         # Guide des 3 styles
+│   ├── exercices-beamer.md            # Exercices avec estimation temps
+│   └── workflow-compilation-verification.md  # Workflow complet
+└── datas/latex-modeles/beamer/
+    ├── template-college.tex           # Template collège (14pt, vif)
+    ├── template-lycee.tex             # Template lycée (12pt, équilibré)
+    └── template-academique.tex        # Template académique (11pt, sobre)
+        </div>
+      </section>
+
+      <!-- SLIDE 13 : LIMITATIONS -->
+      <section>
+        <section>
+          <h2><i class="fas fa-exclamation-triangle icon warning"></i> Limitations importantes</h2>
+
+          <div class="grid-2">
+            <div>
+              <div class="warning-box fragment" data-fragment-index="1">
+                <p><i class="fas fa-file-pdf icon"></i> <strong>Format PDF uniquement</strong><br><span class="smaller">(pas de formats éditables en ligne)</span></p>
+              </div>
+
+              <div class="warning-box fragment" data-fragment-index="2">
+                <p><i class="fas fa-code icon"></i> <strong>Nécessite LaTeX installé</strong><br><span class="smaller">(LuaLaTeX requis)</span></p>
+              </div>
+
+              <div class="warning-box fragment" data-fragment-index="3">
+                <p><i class="fas fa-book icon"></i> <strong>Courbe d'apprentissage</strong><br><span class="smaller">(syntaxe LaTeX/Beamer)</span></p>
+              </div>
+            </div>
+
+            <div>
+              <div class="warning-box fragment" data-fragment-index="4">
+                <p><i class="fas fa-eye icon"></i> <strong>Vérification visuelle manuelle</strong><br><span class="smaller">(agent ne voit pas le PDF)</span></p>
+              </div>
+
+              <div class="warning-box fragment" data-fragment-index="5">
+                <p><i class="fas fa-clock icon"></i> <strong>Compilation peut prendre du temps</strong><br><span class="smaller">(graphiques TikZ complexes)</span></p>
+              </div>
+
+              <div class="warning-box fragment" data-fragment-index="6">
+                <p><i class="fas fa-palette icon"></i> <strong>Personnalisation avancée</strong><br><span class="smaller">(nécessite connaissance Beamer)</span></p>
+              </div>
+            </div>
+          </div>
+
+          <p class="smaller fragment" data-fragment-index="7" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les pièges à éviter</p>
+        </section>
+
+        <section>
+          <h3>Erreurs fréquentes à éviter</h3>
+          <div class="grid-2">
+            <div>
+              <div class="warning-box" style="font-size: 0.75em;">
+                <p><strong>Slide trop dense</strong></p>
+                <p class="smaller accent">✗ 15 lignes + 3 formules + 2 graphiques</p>
+                <p class="smaller success">✓ Découper en 3 slides aérées</p>
+              </div>
+
+              <div class="warning-box fragment" style="font-size: 0.75em;">
+                <p><strong>Trop de pauses</strong></p>
+                <p class="smaller accent">✗ 1 frame avec 6 overlays = 7 pages</p>
+                <p class="smaller success">✓ Maximum 2-3 overlays/frame</p>
+              </div>
+
+              <div class="warning-box fragment" style="font-size: 0.75em;">
+                <p><strong>Oublier siunitx</strong></p>
+                <p class="smaller accent">✗ Écrire 3.14 directement</p>
+                <p class="smaller success">✓ Toujours <code>\num{3.14}</code></p>
+              </div>
+            </div>
+
+            <div>
+              <div class="warning-box" style="font-size: 0.75em;">
+                <p><strong>Utiliser \pause</strong></p>
+                <p class="smaller accent">✗ Contrôle imprécis, bugs</p>
+                <p class="smaller success">✓ Overlays explicites <code>\only&lt;&gt;</code>, <code>\uncover&lt;&gt;</code></p>
+              </div>
+
+              <div class="warning-box fragment" style="font-size: 0.75em;">
+                <p><strong>Police trop petite</strong></p>
+                <p class="smaller accent">✗ Réduire à 8pt pour tout faire rentrer</p>
+                <p class="smaller success">✓ Respecter tailles minimales par style</p>
+              </div>
+
+              <div class="warning-box fragment" style="font-size: 0.75em;">
+                <p><strong>Pas d'exercices</strong></p>
+                <p class="smaller accent">✗ 30 slides de cours sans pause</p>
+                <p class="smaller success">✓ 1 exercice / 5-7 slides avec temps estimé</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 14 : BONNES PRATIQUES -->
+      <section>
+        <section>
+          <h2><i class="fas fa-lightbulb icon"></i> Bonnes pratiques</h2>
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les conseils détaillés</p>
+        </section>
+
+        <section>
+          <h3>Conseils de création</h3>
+          <div class="grid-2">
+            <div>
+              <ul class="feature-list" style="font-size: 0.85em;">
+                <li class="fragment" data-fragment-index="1">
+                  <i class="fas fa-ruler icon"></i> <strong>Une idée = une slide</strong><br>
+                  <span class="smaller">Ne pas surcharger</span>
+                </li>
+                <li class="fragment" data-fragment-index="2">
+                  <i class="fas fa-palette icon"></i> <strong>Couleurs cohérentes</strong><br>
+                  <span class="smaller">Respecter le thème du style</span>
+                </li>
+                <li class="fragment" data-fragment-index="3">
+                  <i class="fas fa-font icon"></i> <strong>Police lisible</strong><br>
+                  <span class="smaller">Minimum selon le style</span>
+                </li>
+                <li class="fragment" data-fragment-index="4">
+                  <i class="fas fa-calculator icon"></i> <strong>Formules aérées</strong><br>
+                  <span class="smaller">Centrées, avec espacement</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul class="feature-list" style="font-size: 0.85em;">
+                <li class="fragment" data-fragment-index="5">
+                  <i class="fas fa-image icon"></i> <strong>Images haute résolution</strong><br>
+                  <span class="smaller">Vectorielles si possible (TikZ, PDF)</span>
+                </li>
+                <li class="fragment" data-fragment-index="6">
+                  <i class="fas fa-exchange-alt icon"></i> <strong>Transitions simples</strong><br>
+                  <span class="smaller">Éviter effets tape-à-l'œil</span>
+                </li>
+                <li class="fragment" data-fragment-index="7">
+                  <i class="fas fa-list icon"></i> <strong>Sommaire si > 20 slides</strong><br>
+                  <span class="smaller">Navigation facilitée</span>
+                </li>
+                <li class="fragment" data-fragment-index="8">
+                  <i class="fas fa-universal-access icon"></i> <strong>Contraste suffisant</strong><br>
+                  <span class="smaller">Accessibilité daltoniens</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Checklist avant finalisation</h3>
+          <div class="grid-2">
+            <div class="box" style="font-size: 0.75em;">
+              <p><strong>Contenu</strong></p>
+              <ul class="smaller">
+                <li>Chaque slide < 70% remplie (60% collège)</li>
+                <li>Overlays explicites utilisés (pas <code>\pause</code>)</li>
+                <li>Tous les nombres avec <code>\num{}</code></li>
+                <li>Exercices avec temps estimé</li>
+                <li>Orthographe vérifiée</li>
+              </ul>
+            </div>
+            <div class="box" style="font-size: 0.75em;">
+              <p><strong>Visuel</strong></p>
+              <ul class="smaller">
+                <li>Couleurs cohérentes</li>
+                <li>Police ≥ taille minimale</li>
+                <li>Images haute résolution</li>
+                <li>Graphiques lisibles</li>
+                <li>Contraste suffisant</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><strong>Technique</strong></p>
+            <ul class="smaller">
+              <li>Compilation sans erreur (LuaLaTeX)</li>
+              <li>Animations testées dans le PDF</li>
+              <li>Navigation fonctionnelle</li>
+              <li>Durée totale estimée correcte</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Conseils de présentation</h3>
+          <div class="example-box">
+            <ul class="smaller">
+              <li class="fragment"><i class="fas fa-clock icon"></i> <strong>Chronométrer</strong> la présentation complète avant le cours</li>
+              <li class="fragment"><i class="fas fa-laptop icon"></i> <strong>Tester sur le vidéoprojecteur</strong> de la classe (résolution, couleurs)</li>
+              <li class="fragment"><i class="fas fa-eye icon"></i> <strong>Vérifier la lisibilité</strong> depuis le fond de la salle</li>
+              <li class="fragment"><i class="fas fa-keyboard icon"></i> <strong>Maîtriser la navigation</strong> : flèches, espace, numéros</li>
+              <li class="fragment"><i class="fas fa-copy icon"></i> <strong>Avoir une version de secours</strong> (PDF exporté en images)</li>
+              <li class="fragment"><i class="fas fa-notes-medical icon"></i> <strong>Préparer des notes</strong> pour les slides complexes</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 15 : POURQUOI UTILISER CE SYSTÈME -->
+      <section>
+        <section>
+          <h2><i class="fas fa-star icon"></i> Pourquoi utiliser ce système ?</h2>
+
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-rocket icon"></i> Gain de temps</h3>
+              <p class="smaller">L'agent fait tout le travail complexe : structure, LaTeX, compilation</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-check-double icon"></i> Qualité garantie</h3>
+              <p class="smaller">Bonnes pratiques appliquées systématiquement</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-palette icon"></i> Styles professionnels</h3>
+              <p class="smaller">3 templates adaptés à chaque public</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-file-pdf icon"></i> PDF universel</h3>
+              <p class="smaller">Fonctionne partout, pas de dépendance cloud</p>
+            </div>
+          </div>
+
+          <p class="smaller fragment" data-fragment-index="5" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour plus d'avantages</p>
+        </section>
+
+        <section>
+          <h3>Avantages pédagogiques</h3>
+          <div class="grid-2">
+            <div class="example-box" style="font-size: 0.8em;">
+              <p><strong><i class="fas fa-eye icon"></i> Contrôle total des animations</strong></p>
+              <p class="smaller">Overlays explicites permettent de savoir exactement ce qui s'affiche à chaque clic</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.8em;">
+              <p><strong><i class="fas fa-hashtag icon"></i> Typographie mathématique impeccable</strong></p>
+              <p class="smaller">Siunitx garantit virgule française et espaces fines automatiquement</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="example-box fragment" style="font-size: 0.8em;">
+              <p><strong><i class="fas fa-compress icon"></i> Lisibilité optimale</strong></p>
+              <p class="smaller">Règles de densité assurent que tout est visible du fond de la classe</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.8em;">
+              <p><strong><i class="fas fa-clock icon"></i> Gestion du temps</strong></p>
+              <p class="smaller">Exercices avec estimation permettent de calibrer la séance</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Avantages techniques</h3>
+          <div class="grid-2">
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong><i class="fas fa-code icon"></i> Automatisation complète</strong></p>
+              <ul class="smaller">
+                <li>Lecture des guides</li>
+                <li>Création du LaTeX</li>
+                <li>Compilation LuaLaTeX</li>
+                <li>Nettoyage des fichiers</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><strong><i class="fas fa-sync-alt icon"></i> Corrections faciles</strong></p>
+              <ul class="smaller">
+                <li>Rapporter les bugs visuels</li>
+                <li>Agent corrige automatiquement</li>
+                <li>Recompilation rapide</li>
+                <li>Itération jusqu'à perfection</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 16 : RÉSULTATS TYPIQUES -->
+      <section>
+        <h2>Résultats typiques</h2>
+
+        <div class="grid-2">
+          <div class="fragment">
+            <h3><i class="fas fa-clock icon"></i> Temps de création</h3>
+            <ul class="smaller">
+              <li>Analyse + lecture guides : <strong>automatique</strong></li>
+              <li>Génération LaTeX : <strong>2-3 min</strong></li>
+              <li>Compilation : <strong>30 sec - 2 min</strong></li>
+              <li>Correction/ajustements : <strong>5-10 min</strong></li>
+            </ul>
+            <p class="success"><strong>Total : 10-20 minutes</strong></p>
+          </div>
+
+          <div class="fragment">
+            <h3><i class="fas fa-file-pdf icon"></i> Production</h3>
+            <ul class="smaller">
+              <li>Collège (20 min) : <strong>10-15 frames → 15-20 pages PDF</strong></li>
+              <li>Lycée (55 min) : <strong>20-25 frames → 30-40 pages PDF</strong></li>
+              <li>Académique (30 min) : <strong>20-25 frames → 25-35 pages PDF</strong></li>
+            </ul>
+            <p class="success"><strong>Qualité professionnelle garantie</strong></p>
+          </div>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1em; font-size: 0.8em;">
+          <p><i class="fas fa-chart-line icon"></i> vs création manuelle : <strong>gain de temps de 70-80%</strong></p>
+          <p class="smaller">Temps gagné réinvesti dans la préparation pédagogique du contenu</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 17 : CONCLUSION -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Points forts</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Agent autonome totalement automatisé</li>
+              <li>3 styles adaptés au public</li>
+              <li>Qualité professionnelle garantie</li>
+              <li>Overlays explicites + siunitx</li>
+              <li>Règles de densité et espacement</li>
+              <li>Compilation et nettoyage automatiques</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment warning" data-fragment-index="2"><i class="fas fa-exclamation-triangle icon"></i> À garder en tête</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Nécessite LaTeX installé (LuaLaTeX)</li>
+              <li>Vérification visuelle manuelle du PDF</li>
+              <li>Courbe d'apprentissage LaTeX/Beamer</li>
+              <li>Personnalisation avancée = code manuel</li>
+              <li>Compilation peut prendre du temps</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-graduation-cap icon"></i> Idéal pour créer rapidement des présentations Beamer pédagogiques de haute qualité, adaptées au contexte éducatif</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 18 : RESSOURCES ET DOCUMENTATION -->
+      <section>
+        <h2><i class="fas fa-book icon"></i> Ressources</h2>
+
+        <div class="grid-2">
+          <div class="box" style="font-size: 0.8em;">
+            <h3 class="smaller">Skill beamer-presentation</h3>
+            <ul class="smaller">
+              <li><code>SKILL.md</code> - Instructions agent</li>
+              <li><code>references/overlays-explicites.md</code></li>
+              <li><code>references/pauses-et-ordre.md</code></li>
+              <li><code>references/beamer-best-practices.md</code></li>
+              <li><code>references/beamer-styles-guide.md</code></li>
+              <li><code>references/exercices-beamer.md</code></li>
+            </ul>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <h3 class="smaller">Agent beamer-worker</h3>
+            <ul class="smaller">
+              <li><code>.claude/agents/beamer-worker.md</code></li>
+              <li>Modèle : Claude Haiku 4.5</li>
+              <li>Workflow complet automatisé</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box fragment" style="font-size: 0.8em; margin-top: 1em;">
+          <h3 class="smaller">Templates disponibles</h3>
+          <ul class="smaller">
+            <li><code>.claude/datas/latex-modeles/beamer/template-college.tex</code></li>
+            <li><code>.claude/datas/latex-modeles/beamer/template-lycee.tex</code></li>
+            <li><code>.claude/datas/latex-modeles/beamer/template-academique.tex</code></li>
+          </ul>
+        </div>
+
+        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
+          <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation 2D
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+
+      // Transitions
+      transition: 'slide',
+      transitionSpeed: 'default',
+
+      // Behavior
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      shuffle: false,
+
+      // Fragments
+      fragments: true,
+      fragmentInURL: true,
+
+      // Keyboard
+      keyboard: true,
+      keyboardCondition: null,
+
+      // Plugins
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
+    let lastHorizontalIndex = 0;
+
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+
+      // Si on change de slide horizontale et qu'on n'est pas au top
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        // Revenir au top de la nouvelle slide
+        Reveal.slide(currentH, 0);
+      }
+
+      // Mettre à jour l'index horizontal
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>

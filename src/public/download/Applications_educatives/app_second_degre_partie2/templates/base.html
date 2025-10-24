@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ config.APP_NAME }}{% endblock %}</title>
+
+    <!-- Meta tags -->
+    <meta name="description" content="Application éducative interactive pour réviser le second degré - Partie 2">
+    <meta name="author" content="{{ config.APP_AUTHOR }}">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+
+    <!-- Fonts Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- MathJax pour formules mathématiques -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            },
+            startup: {
+                pageReady: () => {
+                    return MathJax.startup.defaultPageReady().then(() => {
+                        console.log('MathJax chargé et prêt');
+                    });
+                }
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1 class="app-title">{{ config.APP_NAME }}</h1>
+                    <div class="app-meta">
+                        <span class="badge badge-level">{{ config.APP_LEVEL }}</span>
+                        <span class="badge badge-theme">{{ config.APP_THEME }}</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <span class="version">v{{ config.APP_VERSION }}</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="app-nav">
+            <div class="nav-content">
+                <a href="{{ url_for('index') }}" class="nav-link {% if request.endpoint == 'index' %}active{% endif %}">
+                    <span class="nav-icon">📖</span>
+                    <span class="nav-text">Cours</span>
+                </a>
+                <a href="{{ url_for('exercices') }}" class="nav-link {% if request.endpoint == 'exercices' %}active{% endif %}">
+                    <span class="nav-icon">✏️</span>
+                    <span class="nav-text">Exercices</span>
+                </a>
+                {% block extra_nav %}{% endblock %}
+            </div>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>{{ config.APP_NAME }} - Version {{ config.APP_VERSION }}</p>
+                    <p>{{ config.APP_AUTHOR }}</p>
+                </div>
+                <div class="footer-right">
+                    <p>Application éducative créée avec Educational App Builder</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,75 @@
+\begin{EXO}{Forme canonique par lecture graphique}{}
+Soit $f$ la fonction dont la représentation graphique est donnée ci-contre. 
+
+\begin{MultiColonnes}{3}
+    \tcbitem[raster multicolumn=2] \tcbitempoint{3} Déterminer la forme canonique de $f$.
+
+\begin{crep}
+- Sommet : $A(1;2)$ donc $\alpha = 1$ et $\beta = 2$
+
+- Point $B(0;4)$ appartient à la courbe
+
+Forme canonique : $f(x) = a(x-1)^2 + 2$
+
+Puisque $f(0) = 4$, $a(0-1)^2 + 2 = 4$
+
+D'où $a + 2 = 4 \Longrightarrow a = 2$ et $f(x) = 2(x-1)^2 + 2$
+\end{crep}
+
+    \tcbitem \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.8]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-1.5,
+xmax=3.5,
+ymin=-0.5,
+ymax=5.5,
+xtick={-1.0,0.0,...,3.0},
+ytick={-0.0,1.0,...,5.0},]
+\clip(-1.5,-0.5) rectangle (3.5,5.5);
+\addplot[thick,monrose,samples=200] {2*(x-1)^2+2};
+\begin{scriptsize}
+\draw[color=monrose] (0.24,5) node {$\mathcal{C}_f$};
+\draw [fill=black] (1.,2.) circle (3.0pt);
+\draw[color=black] (0.9,2.55) node {$A$};
+\draw [fill=black] (0.,4.) circle (3.0pt);
+\draw[color=black] (0.34,4.43) node {$B$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+    
+\end{MultiColonnes}
+
+\exocorrection
+
+En observant la représentation graphique, je peux identifier :
+
+\textbf{1) Le sommet de la parabole :} 
+
+Le point le plus bas de la courbe est $A(1;2)$, donc :
+
+- $\alpha = 1$ (abscisse du sommet)
+
+- $\beta = 2$ (ordonnée du sommet)
+
+\textbf{2) La forme canonique partielle :}
+
+$f(x) = a(x-\alpha)^2 + \beta = a(x-1)^2 + 2$
+
+\textbf{3) Détermination du coefficient $a$ :}
+
+La courbe passe par le point $B(0;4)$, donc $f(0) = 4$ :
+
+$f(0) = a(0-1)^2 + 2 = a \times 1 + 2 = a + 2$
+
+Puisque $f(0) = 4$ :
+\begin{center}$a + 2 = 4 \Leftrightarrow a = 2$\end{center}
+
+\textbf{4) Forme canonique finale :}
+
+\begin{center}$f(x) = 2(x-1)^2 + 2$\end{center}
+
+Vérification : $f(0) = 2(0-1)^2 + 2 = 2 \times 1 + 2 = 4$ ✓
+\end{EXO}

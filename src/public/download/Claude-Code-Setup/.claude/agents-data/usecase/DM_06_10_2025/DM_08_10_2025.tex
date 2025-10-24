@@ -1,0 +1,109 @@
+\documentclass[a4paper,11pt,fleqn]{article}
+
+\usepackage[left=1cm,right=1cm,top=0.5cm,bottom=2cm]{geometry}
+
+\usepackage{bfcours}
+\usepackage{bfcours-fonts}
+
+\def\rdifficulty{1}
+\setrdexo{%left skip=1cm,
+display exotitle,
+exo header = tcolorbox,
+%display tags,
+skin = bouyachakka,
+lower ={box=crep},
+display score,
+display level,
+save lower,
+score=\points,
+level=\rdifficulty,
+overlay={\node[inner sep=0pt,
+anchor=west,rotate=90, yshift=0.3cm]%,xshift=-3em], yshift=0.45cm
+at (frame.south west) {\thetags[0]} ;}
+]%obligatoire
+}
+\setrdcrep{seyes, correction=true, correction color=monrose, correction font = \large\bfseries}
+
+\newcommand{\tikzinclude}[1]{%
+    \stepcounter{tikzfigcounter}%
+    \csname tikzfig#1\endcsname
+}
+\input{enonce_figures}
+
+\hypersetup{
+    pdfauthor={R.Deschamps},
+    pdfsubject={},
+    pdfkeywords={},
+    pdfproducer={LuaLaTeX},
+    pdfcreator={Boum Factory}
+}
+
+
+\newcommand{\messageDevoir}{
+    Devoir à rendre pour le le 08/10/2025% : commande(get_current_date())
+    \\
+    Tout retard sera pris en compte dans la notation.\\
+    
+    Toute trace de recherche ( graphique, commentaire, calcul, piste non aboutie...) et d'implication sera prise en compte dans la notation.\\
+
+    Le devoir sera rendu sur \acc{feuille double} et présenté \acc{soigneusement}.
+}
+\begin{document}
+
+\setcounter{pagecounter}{0}
+\setcounter{ExoMA}{0}
+
+\def\points{\phantom{AAA}}
+\def\difficulty{\phantom{AAA}}
+\chapitre[
+    $\mathbf{1^{\text{ère}}}$% : $\mathbf{6^{\text{ème}}}$,$\mathbf{5^{\text{ème}}}$,$\mathbf{4^{\text{ème}}}$,$\mathbf{3^{\text{ème}}}$,$\mathbf{2^{\text{nde}}}$,$\mathbf{1^{\text{ère}}}$,$\mathbf{T^{\text{Le}}}$,
+    ]{
+    Problème ouvert% : ,Equations
+    }{
+    Lycée% : Collège,Lycée
+    }{
+    Camille Claudel% : Amadis Jamyn,Eugène Belgrand
+    }{
+    %\tableauPresenteEvalSixieme{}{20}% : \tableauPresenteEvalSixieme{}{20}
+    }{
+    Devoir maison :% : Exercices
+    }
+\setrdcrep{seyes, correction=false, correction color=monrose, correction font = \large\bfseries}
+\tableauProjetEval{08/10/25}
+
+\messageDevoir
+\input{enonce}% : \input{enonce},
+
+\newpage
+\phantom{a}
+\newpage
+\setcounter{pagecounter}{0}
+\setcounter{ExoMA}{0}
+
+\chapitre[
+    $\mathbf{1^{\text{ère}}}$%
+    ]{
+    Problème ouvert%
+    }{
+    Lycée%
+    }{
+    Camille Claudel%
+    }{
+%
+    }{
+    Solution% : Solution,
+    }
+
+\tcbset{
+    rdexo/default/.cd,correction style/.style={
+        before upper=%
+        \textbf{\thelabel~
+        \thecorrectionnum~:~}
+    }
+}
+
+\rdexocorrection{0}%,\rdexocorrection[columns=2]{0},
+
+
+
+\end{document}

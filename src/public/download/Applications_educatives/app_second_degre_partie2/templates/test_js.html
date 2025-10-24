@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        .success { border-color: green; background: #e8f5e9; }
+        .error { border-color: red; background: #ffebee; }
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background: #4F46E5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #4338CA;
+        }
+        #console-output {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test des Scripts JavaScript</h1>
+
+    <div class="test-section" id="test-utils">
+        <h2>Test 1 : Chargement de utils.js</h2>
+        <p id="utils-status">⏳ En attente...</p>
+    </div>
+
+    <div class="test-section" id="test-apputils">
+        <h2>Test 2 : Accès à window.AppUtils</h2>
+        <p id="apputils-status">⏳ En attente...</p>
+        <p id="apputils-content"></p>
+    </div>
+
+    <div class="test-section" id="test-exercises">
+        <h2>Test 3 : Fonctions globales d'exercices</h2>
+        <p id="exercises-status">⏳ En attente...</p>
+        <p id="exercises-content"></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4 : Test de bouton</h2>
+        <button onclick="testButton()">Cliquez-moi !</button>
+        <p id="button-result"></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Console de sortie</h2>
+        <div id="console-output"></div>
+    </div>
+
+    <!-- Scripts dans le bon ordre -->
+    <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <script>
+        const consoleOutput = document.getElementById('console-output');
+
+        // Capturer les logs
+        const originalLog = console.log;
+        const originalError = console.error;
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            consoleOutput.textContent += `[LOG] ${args.join(' ')}\n`;
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            consoleOutput.textContent += `[ERROR] ${args.join(' ')}\n`;
+            consoleOutput.style.color = 'red';
+        };
+
+        // Test 1 : utils.js chargé ?
+        setTimeout(() => {
+            const utilsStatus = document.getElementById('utils-status');
+            if (typeof window.AppUtils !== 'undefined') {
+                utilsStatus.textContent = '✅ utils.js chargé avec succès';
+                utilsStatus.parentElement.classList.add('success');
+            } else {
+                utilsStatus.textContent = '❌ window.AppUtils n\'est pas défini';
+                utilsStatus.parentElement.classList.add('error');
+            }
+        }, 100);
+
+        // Test 2 : Contenu de AppUtils
+        setTimeout(() => {
+            const apputilsStatus = document.getElementById('apputils-status');
+            const apputilsContent = document.getElementById('apputils-content');
+
+            if (typeof window.AppUtils !== 'undefined') {
+                const functions = Object.keys(window.AppUtils);
+                apputilsStatus.textContent = `✅ AppUtils contient ${functions.length} fonctions/classes`;
+                apputilsContent.innerHTML = '<strong>Contenu :</strong><br>' + functions.join(', ');
+                apputilsStatus.parentElement.classList.add('success');
+            } else {
+                apputilsStatus.textContent = '❌ Impossible d\'accéder à AppUtils';
+                apputilsStatus.parentElement.classList.add('error');
+            }
+        }, 200);
+
+        // Test 3 : Fonctions d'exercices
+        setTimeout(() => {
+            const exercisesStatus = document.getElementById('exercises-status');
+            const exercisesContent = document.getElementById('exercises-content');
+
+            const functions = [];
+            if (typeof window.checkAnswer !== 'undefined') functions.push('checkAnswer');
+            if (typeof window.toggleHint !== 'undefined') functions.push('toggleHint');
+            if (typeof window.resetExercises !== 'undefined') functions.push('resetExercises');
+
+            if (functions.length === 3) {
+                exercisesStatus.textContent = `✅ Toutes les fonctions d'exercices sont définies`;
+                exercisesContent.innerHTML = '<strong>Fonctions trouvées :</strong><br>' + functions.join(', ');
+                exercisesStatus.parentElement.classList.add('success');
+            } else {
+                exercisesStatus.textContent = `❌ Seulement ${functions.length}/3 fonctions trouvées`;
+                exercisesContent.innerHTML = '<strong>Fonctions trouvées :</strong><br>' + (functions.length > 0 ? functions.join(', ') : 'Aucune');
+                exercisesStatus.parentElement.classList.add('error');
+            }
+        }, 300);
+
+        // Test de bouton
+        function testButton() {
+            const result = document.getElementById('button-result');
+            result.textContent = '✅ Le bouton fonctionne ! onclick est opérationnel.';
+            result.style.color = 'green';
+            result.style.fontWeight = 'bold';
+
+            // Tester showNotification si disponible
+            if (window.AppUtils && window.AppUtils.showNotification) {
+                window.AppUtils.showNotification('Test de notification', 'success');
+            }
+        }
+
+        console.log('Page de test chargée');
+        console.log('Type of window.AppUtils:', typeof window.AppUtils);
+    </script>
+</body>
+</html>

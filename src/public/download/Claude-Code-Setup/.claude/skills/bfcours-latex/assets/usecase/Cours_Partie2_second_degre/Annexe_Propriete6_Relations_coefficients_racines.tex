@@ -1,0 +1,119 @@
+\documentclass[a4paper,11pt,fleqn]{article}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage{bfcours}
+\usepackage{bfcours-fonts}
+
+\hypersetup{
+    pdfauthor={R.Deschamps},
+    pdfsubject={Relations coefficients-racines},
+    pdfkeywords={Polynôme, Second degré, Racines, Somme, Produit},
+    pdfproducer={LuaLaTeX},
+    pdfcreator={Boum Factory}
+}
+
+\input{macros_trinome.tex}
+
+\begin{document}
+
+\begin{Propriete}[Relations entre coefficients et racines]
+Soit $P(x) = ax^2 + bx + c$ un polynôme de degré 2 avec $a \neq 0$.
+
+Si $P$ admet deux racines $x_1$ et $x_2$ (distinctes ou confondues), alors :
+
+\begin{tcbenumerate}
+\tcbitem La \textbf{somme} des racines est égale à \encadrer[defi]{$x_1 + x_2 = -\dfrac{b}{a}$}
+
+\tcbitem Le \textbf{produit} des racines est égal à \encadrer[defi]{$x_1 \times x_2 = \dfrac{c}{a}$}
+\end{tcbenumerate}
+
+\vspace{0.3cm}
+\noindent\textbf{Remarque :} Ces formules sont valables dans le cas où $\Delta \geq 0$, c'est-à-dire lorsque le polynôme admet au moins une racine réelle.
+
+Dans le cas $\Delta = 0$, la racine double $x_0$ vérifie : $x_0 + x_0 = -\dfrac{b}{a}$ et $x_0 \times x_0 = \dfrac{c}{a}$.
+\end{Propriete}
+
+\begin{Demonstration}[À partir de la forme factorisée]
+
+On considère un polynôme $P(x) = ax^2 + bx + c$ avec $a \neq 0$ et $\Delta \geq 0$.
+
+On sait que lorsque $\Delta \geq 0$, le polynôme peut s'écrire sous forme factorisée :
+$$P(x) = a(x - x_1)(x - x_2)$$
+
+où $x_1$ et $x_2$ sont les racines du polynôme.
+
+\vspace{0.3cm}
+
+\underline{Développons cette forme factorisée :}
+
+\begin{align*}
+P(x) &= a(x - x_1)(x - x_2) \\
+&= a\left[x^2 - x \cdot x_2 - x_1 \cdot x + x_1 \cdot x_2\right] \\
+&= a\left[x^2 - (x_1 + x_2)x + x_1 x_2\right] \\
+&= ax^2 - a(x_1 + x_2)x + a x_1 x_2
+\end{align*}
+
+\vspace{0.3cm}
+
+\underline{Identification avec la forme développée $P(x) = ax^2 + bx + c$ :}
+
+Par identification des coefficients, on obtient :
+
+\begin{MultiColonnes}{2}
+\tcbitem \textbf{Coefficient de $x$ :}
+
+$$-a(x_1 + x_2) = b$$
+
+D'où : \encadrer[prop]{$x_1 + x_2 = -\dfrac{b}{a}$}
+
+\tcbitem \textbf{Terme constant :}
+
+$$a x_1 x_2 = c$$
+
+D'où : \encadrer[prop]{$x_1 \times x_2 = \dfrac{c}{a}$}
+\end{MultiColonnes}
+
+\vspace{1cm}
+\end{Demonstration}
+
+\newpage
+\begin{Demonstration}[Calcul direct avec les formules des racines]
+    
+On rappelle que les racines sont données par :
+$$x_1 = \dfrac{-b - \sqrt{\Delta}}{2a} \quad \text{et} \quad x_2 = \dfrac{-b + \sqrt{\Delta}}{2a}$$
+
+\vspace{0.3cm}
+
+\underline{Calcul de la somme $x_1 + x_2$ :}
+
+\begin{align*}
+x_1 + x_2 &= \dfrac{-b - \sqrt{\Delta}}{2a} + \dfrac{-b + \sqrt{\Delta}}{2a} \\
+&= \dfrac{-b - \sqrt{\Delta} + (-b) + \sqrt{\Delta}}{2a} \\
+&= \dfrac{-2b}{2a} \\
+&= -\dfrac{b}{a}
+\end{align*}
+
+\vspace{0.3cm}
+
+\underline{Calcul du produit $x_1 \times x_2$ :}
+
+\begin{align*}
+x_1 \times x_2 &= \dfrac{-b - \sqrt{\Delta}}{2a} \times \dfrac{-b + \sqrt{\Delta}}{2a} \\
+&= \dfrac{(-b - \sqrt{\Delta})(-b + \sqrt{\Delta})}{4a^2} \\
+&= \dfrac{(-b)^2 - (\sqrt{\Delta})^2}{4a^2} \quad \text{(identité remarquable : $(a-b)(a+b) = a^2 - b^2$)} \\
+&= \dfrac{b^2 - \Delta}{4a^2} \\
+&= \dfrac{b^2 - (b^2 - 4ac)}{4a^2} \quad \text{(car $\Delta = b^2 - 4ac$)} \\
+&= \dfrac{b^2 - b^2 + 4ac}{4a^2} \\
+&= \dfrac{4ac}{4a^2} \\
+&= \dfrac{c}{a}
+\end{align*}
+
+\vspace{0.5cm}
+
+\noindent\encadrer[red]{\textbf{Conclusion :} Les relations $x_1 + x_2 = -\dfrac{b}{a}$ et $x_1 \times x_2 = \dfrac{c}{a}$ sont donc démontrées.}
+
+\end{Demonstration}
+
+
+\end{document}

@@ -1,0 +1,36 @@
+\begin{Exemple}[Aspect graphique des racines]
+    
+    \begin{MultiColonnes}{3}
+        \tcbitem[halign=center, valign=center] \definecolor{ffqqqq}{rgb}{1.,0.,0.}
+    \definecolor{qqqqff}{rgb}{0.,0.,1.}
+    \definecolor{ttqqqq}{rgb}{0.2,0.,0.}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.8]
+    \draw[->,color=black] (-2.,0.) -- (3.,0.);
+    \foreach \x in {-2.,-1.,1.,2.}
+    \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+    \draw[->,color=black] (0.,-2.5) -- (0.,3.);
+    \foreach \y in {-2.,-1.,1.,2.}
+    \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+    \draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+    \clip(-2.,-2.5) rectangle (3.,3.);
+    \draw[line width=1.2pt,color=ttqqqq,smooth,samples=100,domain=-2.0:3.0] plot(\x,{0-(\x)^(2.0)+(\x)+2.0});
+    \draw [->,color=qqqqff] (2.805914536286458,0.8043788880386957) -- (2.1711777835787407,0.19016846006020638);
+    \draw [->,color=ffqqqq] (-1.8740875019775842,0.8454315374971523) -- (-1.1410526494584565,0.1394736752707718);
+    \begin{scriptsize}
+    \draw[color=ttqqqq] (2,-2) node {\large{$\mathcal{C}_f$}};
+    \draw[color=qqqqff] (2.8,1) node {\large{$x_{2}$}};
+    \draw[color=ffqqqq] (-1.8,1) node {\large{$x_{1}$}};
+    \end{scriptsize}
+    \end{tikzpicture}
+        \tcbitem[raster multicolumn=2]    Prenons la fonction $f$ définie sur $\R$ par $f(x)=-x^2+x+2$.
+    \vspace{0.4cm}
+    
+    Sur cet exemple, on remarque que $\mathcal{C}_f$ coupe l'axe des abscisses en deux points.
+    \vspace{0.4cm}
+    
+    De plus, on observe graphiquement les solutions $x_{1}$ et $x_{2}$ de l'équation $f(x)=0$, à savoir :
+    \begin{center}$x_{1}=-1 \text{ et } x_{2} = 2$\end{center}
+    Les racines du polynôme $-x^2+x+2$ semblent être $-1$ et $2$.
+    \end{MultiColonnes}
+
+\end{Exemple}

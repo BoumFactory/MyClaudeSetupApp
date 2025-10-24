@@ -1,0 +1,685 @@
+% ========================================
+% MACROS POUR RÉSOLUTION AUTOMATIQUE DE TRINÔMES
+% ========================================
+
+\usepackage{siunitx} % Pour la notation avec virgule
+\usepackage{xfp}
+
+% Configuration siunitx pour affichage français
+\sisetup{%
+  output-decimal-marker={,}
+}
+
+% Commande personnalisée pour affichage avec virgule
+\newcommand{\cperso}[1]{\num{\fpeval{#1}}}
+
+% ========================================
+% ACCOLADES GRANDES ET ENSEMBLE DISCRET
+% ========================================
+
+% Accolade gauche grande avec TikZ
+\newcommand{\accoladeG}[1][1]{%
+    \tikz[baseline=0.1ex,scale=#1]{
+        \draw[line width=0.8pt,line cap=round]
+            (0.15,0.45) .. controls (0.08,0.42) and (0.05,0.35) ..
+            (0.05,0.25) .. controls (0.05,0.15) and (0.02,0.08) ..
+            (0,0) .. controls (0.02,-0.08) and (0.05,-0.15) ..
+            (0.05,-0.25) .. controls (0.05,-0.35) and (0.08,-0.42) ..
+            (0.15,-0.45);
+    }%
+}
+
+% Accolade droite grande avec TikZ
+\newcommand{\accoladeD}[1][1]{%
+    \tikz[baseline=0.1ex,scale=#1]{
+        \draw[line width=0.8pt,line cap=round]
+            (0,0.45) .. controls (0.07,0.42) and (0.1,0.35) ..
+            (0.1,0.25) .. controls (0.1,0.15) and (0.13,0.08) ..
+            (0.15,0) .. controls (0.13,-0.08) and (0.1,-0.15) ..
+            (0.1,-0.25) .. controls (0.1,-0.35) and (0.07,-0.42) ..
+            (0,-0.45);
+    }%
+}
+
+% Ensemble discret avec grandes accolades à hauteur fixe
+\newcommand{\ensembleDiscret}[2][1]{%
+    \ifcase#1\relax
+        \mathopen{\{}\,#2\,\mathclose{\}}%
+    \or
+        \mathopen{\{}\,#2\,\mathclose{\}}%
+    \or
+        \mathopen{\big\{}\,#2\,\mathclose{\big\}}%
+    \or
+        \mathopen{\Big\{}\,#2\,\mathclose{\Big\}}%
+    \fi
+}
+
+% ========================================
+% Variables globales pour les coefficients
+\newcommand{\seta}[1]{\def\coeffa{#1}}
+\newcommand{\setb}[1]{\def\coeffb{#1}}
+\newcommand{\setc}[1]{\def\coeffc{#1}}
+
+% Commandes pour afficher les coefficients avec signe
+\newcommand{\affsignea}{\ifdim\coeffa pt<0pt-\fi}
+\newcommand{\affsigneb}{\ifdim\coeffb pt<0pt-\fi}
+\newcommand{\affsignec}{\ifdim\coeffc pt<0pt-\fi}
+
+% Valeurs absolues
+\newcommand{\absa}{\fpeval{abs(\coeffa)}}
+\newcommand{\absb}{\fpeval{abs(\coeffb)}}
+\newcommand{\absc}{\fpeval{abs(\coeffc)}}
+
+% Affichage avec parenthèses si négatif (après un signe)
+\newcommand{\parencoeffa}{\ifdim\coeffa pt<0pt(\coeffa)\else\coeffa\fi}
+\newcommand{\parencoeffb}{\ifdim\coeffb pt<0pt(\coeffb)\else\coeffb\fi}
+\newcommand{\parencoeffc}{\ifdim\coeffc pt<0pt(\coeffc)\else\coeffc\fi}
+
+% Affichage direct (début de ligne ou sans multiplication)
+\newcommand{\directcoeffa}{\coeffa}
+\newcommand{\directcoeffb}{\coeffb}
+\newcommand{\directcoeffc}{\coeffc}
+
+% Calcul du discriminant
+\newcommand{\calcdelta}{\fpeval{\coeffb*\coeffb - 4*\coeffa*\coeffc}}
+\newcommand{\deltasimpl}{\cperso{round(\calcdelta,4)}}
+
+% Affichage du calcul du discriminant avec gestion intelligente des signes
+\newcommand{\affcalcdelta}{%
+    \directcoeffb^2-4\times\parencoeffa\times\parencoeffc = %
+    \cperso{\coeffb*\coeffb}%
+    \ifdim\fpeval{4*\coeffa*\coeffc} pt<0pt
+        +\cperso{abs(4*\coeffa*\coeffc)}
+    \else
+        -\cperso{4*\coeffa*\coeffc}
+    \fi = %
+    \deltasimpl
+}
+
+% Signe de delta
+\newcommand{\signedelta}{%
+    \ifnum\numexpr\fpeval{round(\calcdelta,0)}<0
+        <
+    \else
+        \ifnum\numexpr\fpeval{round(\calcdelta,0)}>0
+            >
+        \else
+            =
+        \fi
+    \fi
+}
+
+% Test si delta >= 0
+\newcommand{\ifdeltapositif}[2]{%
+    \ifnum\numexpr\fpeval{round(\calcdelta,0)}<0
+        #2%
+    \else
+        #1%
+    \fi
+}
+
+% Calcul de x0 (cas delta = 0)
+\newcommand{\calcxzero}{\fpeval{round(-\coeffb/(2*\coeffa),4)}}
+\newcommand{\calcxzerofrac}{\cperso{round(-\coeffb/(2*\coeffa),4)}}
+
+% Affichage du calcul de x0
+\newcommand{\affcalcxzero}{%
+    -\dfrac{b}{2a} = -\dfrac{\coeffb}{2\times\parencoeffa} = %
+    \ifdim\coeffb pt<0pt
+        \dfrac{\absb}{2\times\parencoeffa}
+    \else
+        -\dfrac{\coeffb}{2\times\parencoeffa}
+    \fi = %
+    \ifdim\fpeval{-\coeffb} pt<0pt
+        \dfrac{\cperso{abs(-\coeffb)}}{\cperso{2*\coeffa}}
+    \else
+        -\dfrac{\cperso{-\coeffb}}{\cperso{abs(2*\coeffa)}}
+    \fi = %
+    \calcxzerofrac
+}
+
+% Calcul des racines (cas delta > 0)
+\newcommand{\calcxun}{\fpeval{round((-\coeffb - sqrt(\calcdelta))/(2*\coeffa),4)}}
+\newcommand{\calcxdeux}{\fpeval{round((-\coeffb + sqrt(\calcdelta))/(2*\coeffa),4)}}
+
+% Racine carrée de delta arrondie
+\newcommand{\sqrtdelta}{\fpeval{round(sqrt(\calcdelta),4)}}
+\newcommand{\sqrtdeltafrac}{\cperso{round(sqrt(\calcdelta),4)}}
+
+% Affichage du calcul de x1
+\newcommand{\affcalcxun}{%
+    \dfrac{-b-\sqrt{\Delta}}{2a} = %
+    \dfrac{%
+        \ifdim\coeffb pt<0pt
+            \absb
+        \else
+            -\coeffb
+        \fi
+        -\sqrt{\deltasimpl}%
+    }{2\times\parencoeffa} = %
+    \ifdim\issimplexun pt=1pt
+        % Si simple, montrer les étapes de calcul
+        \dfrac{%
+            \ifdim\coeffb pt<0pt
+                \absb
+            \else
+                -\coeffb
+            \fi
+            -\sqrtdeltafrac%
+        }{\cperso{2*\coeffa}} = %
+        \dfrac{\cperso{-\coeffb-\sqrtdelta}}{\cperso{2*\coeffa}} = %
+        \xunaffichage
+    \else
+        % Si complexe, afficher directement la forme exacte simplifiée
+        \xunaffichage
+    \fi
+}
+
+% Affichage du calcul de x2
+\newcommand{\affcalcxdeux}{%
+    \dfrac{-b+\sqrt{\Delta}}{2a} = %
+    \dfrac{%
+        \ifdim\coeffb pt<0pt
+            \absb
+        \else
+            -\coeffb
+        \fi
+        +\sqrt{\deltasimpl}%
+    }{2\times\parencoeffa} = %
+    \ifdim\issimplexdeux pt=1pt
+        % Si simple, montrer les étapes de calcul
+        \dfrac{%
+            \ifdim\coeffb pt<0pt
+                \absb
+            \else
+                -\coeffb
+            \fi
+            +\sqrtdeltafrac%
+        }{\cperso{2*\coeffa}} = %
+        \dfrac{\cperso{-\coeffb+\sqrtdelta}}{\cperso{2*\coeffa}} = %
+        \xdeuxaffichage
+    \else
+        % Si complexe, afficher directement la forme exacte simplifiée
+        \xdeuxaffichage
+    \fi
+}
+
+% Simplification des racines si possibles (affichage fraction avec virgule)
+\newcommand{\xunfrac}{%
+    \cperso{abs(round(\calcxun,0) - \calcxun) < 0.001 ? round(\calcxun,0) : \calcxun}%
+}
+
+\newcommand{\xdeuxfrac}{%
+    \cperso{abs(round(\calcxdeux,0) - \calcxdeux) < 0.001 ? round(\calcxdeux,0) : \calcxdeux}%
+}
+
+% Plus petite et plus grande racine (pour calculs)
+\newcommand{\xpetit}{\fpeval{min(\calcxun,\calcxdeux)}}
+\newcommand{\xgrand}{\fpeval{max(\calcxun,\calcxdeux)}}
+
+% Plus petite et plus grande racine (pour affichage avec virgule)
+\newcommand{\xpetitfrac}{\cperso{min(\calcxun,\calcxdeux)}}
+\newcommand{\xgrandfrac}{\cperso{max(\calcxun,\calcxdeux)}}
+
+% ========================================
+% AFFICHAGE FORME EXACTE DES RACINES
+% ========================================
+
+% Test si une racine est "simple" (entière ou 1 décimale max)
+\newcommand{\issimplexun}{%
+    \fpeval{abs(round(\calcxun,1) - \calcxun) < 0.01 ? 1 : 0}%
+}
+\newcommand{\issimplexdeux}{%
+    \fpeval{abs(round(\calcxdeux,1) - \calcxdeux) < 0.01 ? 1 : 0}%
+}
+
+% Forme exacte de x1 = (-b - √Δ)/(2a)
+\newcommand{\xunexact}{%
+    \ifdim\fpeval{2*\coeffa} pt=-1pt
+        % Cas 2a = -1 : résultat = b + √Δ
+        \ifdim\coeffb pt<0pt
+            \fpeval{abs(\coeffb)} - \sqrt{\deltasimpl}%
+        \else
+            \coeffb + \sqrt{\deltasimpl}%
+        \fi
+    \else\ifdim\fpeval{2*\coeffa} pt=1pt
+        % Cas 2a = 1 : résultat = -b - √Δ
+        \ifdim\coeffb pt<0pt
+            \fpeval{abs(\coeffb)} - \sqrt{\deltasimpl}%
+        \else
+            -\coeffb - \sqrt{\deltasimpl}%
+        \fi
+    \else
+        % Cas général : fraction
+        \dfrac{%
+            \ifdim\coeffb pt<0pt
+                \fpeval{abs(\coeffb)}%
+            \else
+                -\coeffb
+            \fi
+            - \sqrt{\deltasimpl}%
+        }{\cperso{2*\coeffa}}%
+    \fi\fi
+}
+
+% Forme exacte de x2 = (-b + √Δ)/(2a)
+\newcommand{\xdeuxexact}{%
+    \ifdim\fpeval{2*\coeffa} pt=-1pt
+        % Cas 2a = -1 : résultat = b - √Δ
+        \ifdim\coeffb pt<0pt
+            \fpeval{abs(\coeffb)} + \sqrt{\deltasimpl}%
+        \else
+            \coeffb - \sqrt{\deltasimpl}%
+        \fi
+    \else\ifdim\fpeval{2*\coeffa} pt=1pt
+        % Cas 2a = 1 : résultat = -b + √Δ
+        \ifdim\coeffb pt<0pt
+            \fpeval{abs(\coeffb)} + \sqrt{\deltasimpl}%
+        \else
+            -\coeffb + \sqrt{\deltasimpl}%
+        \fi
+    \else
+        % Cas général : fraction
+        \dfrac{%
+            \ifdim\coeffb pt<0pt
+                \fpeval{abs(\coeffb)}%
+            \else
+                -\coeffb
+            \fi
+            + \sqrt{\deltasimpl}%
+        }{\cperso{2*\coeffa}}%
+    \fi\fi
+}
+
+% Affichage intelligent de x1 (forme exacte si complexe, décimale si simple)
+\newcommand{\xunaffichage}{%
+    \ifdim\issimplexun pt=1pt
+        \xunfrac
+    \else
+        \xunexact
+    \fi
+}
+
+% Affichage intelligent de x2 (forme exacte si complexe, décimale si simple)
+\newcommand{\xdeuxaffichage}{%
+    \ifdim\issimplexdeux pt=1pt
+        \xdeuxfrac
+    \else
+        \xdeuxexact
+    \fi
+}
+
+% Affichage intelligent du petit (min)
+\newcommand{\xpetitaffichage}{%
+    \ifdim\calcxun pt<\calcxdeux pt
+        \xunaffichage
+    \else
+        \xdeuxaffichage
+    \fi
+}
+
+% Affichage intelligent du grand (max)
+\newcommand{\xgrandaffichage}{%
+    \ifdim\calcxun pt>\calcxdeux pt
+        \xunaffichage
+    \else
+        \xdeuxaffichage
+    \fi
+}
+
+% Signe de a (pour tableau de signe)
+\newcommand{\signea}{%
+    \ifdim\coeffa pt<0pt
+        -
+    \else
+        +
+    \fi
+}
+
+% Signe de -a
+\newcommand{\signemoina}{%
+    \ifdim\coeffa pt<0pt
+        +
+    \else
+        -
+    \fi
+}
+
+% ========================================
+% COMMANDE PRINCIPALE : RÉSOLUTION ÉQUATION
+% ========================================
+\newcommand{\resoudreequation}[4]{%
+    \seta{#1}\setb{#2}\setc{#3}%
+    \begin{tcbenumerate}[2]
+    \tcbitem \textbf{Identification des coefficients :}
+
+    $a=\coeffa$, $b=\coeffb$ et $c=\coeffc$
+
+    \tcbitem \textbf{Calcul du discriminant :}
+
+    $\Delta = b^2-4ac = \affcalcdelta$
+
+    \ifdeltapositif{%
+        \ifnum\numexpr\fpeval{round(\calcdelta,0)}=0
+            % Cas delta = 0
+            \tcbitem[raster multicolumn=2]\textbf{Détermination de la racine :}   $\Delta = 0$ donc l'équation admet une solution double :
+
+            $x_0 = \affcalcxzero$
+
+            \tcbitem[raster multicolumn=2]\textbf{Ensemble des solutions :}
+
+            $S = \ensembleDiscret{ \calcxzero }$
+        \else
+            % Cas delta > 0
+            \tcbitem[raster multicolumn=2]\textbf{Détermination des racines :}
+            $\Delta = \deltasimpl > 0$ donc l'équation admet deux solutions réelles distinctes :
+
+            \begin{MultiColonnes}{2}[halign=center]
+            \tcbitem $x_1 = \affcalcxun$
+            \tcbitem $x_2 = \affcalcxdeux$
+            \end{MultiColonnes}
+
+            \tcbitem[raster multicolumn=2]\textbf{Ensemble des solutions :} \encadrer[red]{$S = \ensembleDiscret{ \xunaffichage ; \xdeuxaffichage }$}
+        \fi
+    }{%
+        % Cas delta < 0
+        \tcbitem[raster multicolumn=2]\textbf{Conclusion :}
+        $\Delta = \deltasimpl < 0$ donc l'équation n'admet pas de solution réelle.
+
+        $S = \emptyset$
+    }%
+    \end{tcbenumerate}
+}
+
+% ========================================
+% COMMANDE PRINCIPALE : RÉSOLUTION INÉQUATION
+% ========================================
+\newcommand{\resoudreinequation}[4]{%
+    % #1 = a, #2 = b, #3 = c, #4 = type (geq, leq, g, l)
+    \seta{#1}\setb{#2}\setc{#3}%
+    \def\typeineg{#4}%
+    \begin{tcbenumerate}[2]
+    \tcbitem \textbf{Identification des coefficients :}
+
+    $a=\coeffa$, $b=\coeffb$ et $c=\coeffc$
+
+    \tcbitem\textbf{Calcul du discriminant :}
+
+    $\Delta = b^2-4ac = \affcalcdelta$
+
+    \tcbitem[raster multicolumn=2]\textbf{Détermination des racines :}
+
+    \ifdeltapositif{%
+        \ifnum\numexpr\fpeval{round(\calcdelta,0)}=0
+            $\Delta = 0$ donc le trinôme admet une racine double :
+
+            $x_0 = \affcalcxzero$
+        \else
+            $\Delta = \deltasimpl > 0$ donc le trinôme admet deux racines réelles distinctes :
+
+            \begin{MultiColonnes}{2}[halign=center,boxrule=0.4pt,colframe=black,colback=white]
+            \tcbitem $x_1 = \affcalcxun$
+            \tcbitem $x_2 = \affcalcxdeux$
+            \end{MultiColonnes}
+        \fi
+    }{%
+        $\Delta = \deltasimpl < 0$ donc pas de racine réelle.
+    }%
+        \end{tcbenumerate}
+        \begin{MultiColonnes}{2}
+            \tcbitem \begin{tcbenumerate}[2][4]\tcbitem[raster multicolumn=2]\textbf{Tableau de signe} de $f:x\mapsto ax^2+bx+c$ :
+
+    On a $a=\coeffa$ \ifdim\coeffa pt<0pt{$<0$}\else{$>0$}\fi{} et %
+    \ifdeltapositif{%
+        \ifnum\numexpr\fpeval{round(\calcdelta,0)}=0
+            $x_0 = \calcxzero$
+        \else
+            $x_1 = \xunaffichage$ et $x_2 = \xdeuxaffichage$ donc $\xpetitaffichage < \xgrandaffichage$
+        \fi
+    }{pas de racine}
+
+    \ifdeltapositif{%
+        \ifnum\numexpr\fpeval{round(\calcdelta,0)}=0
+            % Delta = 0
+            \begin{tikzpicture}
+            \tkzTabInit[espcl=2,lgt=1.5]{$x$/0.8,$f(x)$/0.8}
+            {$-\infty$,$\calcxzero$,$+\infty$}
+            \tkzTabLine{,\signea,z,\signea}
+            \end{tikzpicture}
+        \else
+            % Delta > 0
+            \begin{tikzpicture}
+            \tkzTabInit[espcl=2,lgt=1.5]{$x$/0.8,$f(x)$/0.8}
+            {$-\infty$,$\xpetitaffichage$,$\xgrandaffichage$,$+\infty$}
+            \tkzTabLine{,\signea,z,\signemoina,z,\signea}
+            \end{tikzpicture}
+        \fi
+    }{%
+        % Delta < 0
+        \begin{tikzpicture}
+        \tkzTabInit[espcl=3,lgt=1.5]{$x$/0.8,$f(x)$/0.8}
+        {$-\infty$,$+\infty$}
+        \tkzTabLine{,\signea}
+        \end{tikzpicture}
+    }%
+
+    \tcbitem[raster multicolumn=2]\textbf{Solution de l'inéquation :}
+
+    % Solution selon le type et le signe
+    \def\tempgeq{geq}\def\templeq{leq}\def\tempg{g}\def\templ{l}%
+    \ifx\typeineg\tempgeq
+        On cherche où le trinôme est $\geq 0$, donc les signes $+$ et $0$ :
+    \fi
+    \ifx\typeineg\templeq
+        On cherche où le trinôme est $\leq 0$, donc les signes $-$ et $0$ :
+    \fi
+    \ifx\typeineg\tempg
+        On cherche où le trinôme est $> 0$, donc les signes $+$ (strictement) :
+    \fi
+    \ifx\typeineg\templ
+        On cherche où le trinôme est $< 0$, donc les signes $-$ (strictement) :
+    \fi
+
+    % Déterminer la solution selon delta et type
+    \ifdeltapositif{%
+        \ifnum\numexpr\fpeval{round(\calcdelta,0)}=0
+            % Delta = 0 : solution selon signe de a et type
+            \ifx\typeineg\tempgeq
+                \ifdim\coeffa pt>0pt
+                    $S = \R$
+                \else
+                    $S = \ensembleDiscret{\calcxzerofrac \right\rbrace$}
+                \fi
+            \fi
+            \ifx\typeineg\templeq
+                \ifdim\coeffa pt<0pt
+                    $S = \R$
+                \else
+                    $S = \ensembleDiscret{ \calcxzerofrac }$
+                \fi
+            \fi
+            \ifx\typeineg\tempg
+                \ifdim\coeffa pt>0pt
+                    $S = \R \setminus \ensembleDiscret{\calcxzerofrac}$
+                \else
+                    $S = \emptyset$
+                \fi
+            \fi
+            \ifx\typeineg\templ
+                \ifdim\coeffa pt<0pt
+                    $S = \R \setminus \ensembleDiscret{\calcxzerofrac}$
+                \else
+                    $S = \emptyset$
+                \fi
+            \fi
+        \else
+            % Delta > 0 : solution selon signe de a et type
+            \ifx\typeineg\tempgeq
+                \ifdim\coeffa pt>0pt
+                    $S = \CrochetD-\infty;\xpetitaffichage\,\,\CrochetD \cup \CrochetG\xgrandaffichage;+\infty\,\,\CrochetG$
+                \else
+                    $S = \CrochetG\xpetitaffichage;\xgrandaffichage\,\,\CrochetD$
+                \fi
+            \fi
+            \ifx\typeineg\templeq
+                \ifdim\coeffa pt<0pt
+                    $S = \CrochetD-\infty;\xpetitaffichage\CrochetD \cup \CrochetG\xgrandaffichage;+\infty\,\,\CrochetG$
+                \else
+                    $S = \CrochetG\xpetitaffichage;\xgrandaffichage\,\,\CrochetD$
+                \fi
+            \fi
+            \ifx\typeineg\tempg
+                \ifdim\coeffa pt>0pt
+                    $S = \CrochetD-\infty;\xpetitaffichage\,\,\CrochetG \cup \CrochetD\xgrandaffichage;+\infty\,\,\CrochetG$
+                \else
+                    $S = \CrochetD\xpetitaffichage;\xgrandaffichage\,\,\CrochetG$
+                \fi
+            \fi
+            \ifx\typeineg\templ
+                \ifdim\coeffa pt<0pt
+                    $S = \CrochetD-\infty;\xpetitaffichage\,\,\CrochetG \cup \CrochetD\xgrandaffichage;+\infty\,\,\CrochetG$
+                \else
+                    $S = \CrochetD\xpetitaffichage;\xgrandaffichage\,\,\CrochetG$
+                \fi
+            \fi
+        \fi
+    }{%
+        % Delta < 0 : solution selon signe de a et type
+        \ifx\typeineg\tempgeq
+            \ifdim\coeffa pt>0pt
+                $S = \R$
+            \else
+                $S = \emptyset$
+            \fi
+        \fi
+        \ifx\typeineg\templeq
+            \ifdim\coeffa pt<0pt
+                $S = \R$
+            \else
+                $S = \emptyset$
+            \fi
+        \fi
+        \ifx\typeineg\tempg
+            \ifdim\coeffa pt>0pt
+                $S = \R$
+            \else
+                $S = \emptyset$
+            \fi
+        \fi
+        \ifx\typeineg\templ
+            \ifdim\coeffa pt<0pt
+                $S = \R$
+            \else
+                $S = \emptyset$
+            \fi
+        \fi
+    }%
+        \end{tcbenumerate}
+            \tcbitem[halign=center,valign=center] \setrdcrep{seyes=false,correction color=black}\begin{crep}[colback=white,halign=center]
+\begin{tikzpicture}[scale=0.7]
+    % Calcul des bornes adaptatives
+    \pgfmathsetmacro{\ecart}{abs(\xgrand - \xpetit)}
+    \pgfmathsetmacro{\marge}{max(1.5, \ecart * 0.4)}
+    \pgfmathsetmacro{\xmin}{\xpetit - \marge}
+    \pgfmathsetmacro{\xmax}{\xgrand + \marge}
+
+    % Axes avec bornes adaptatives
+    \draw[->] (\xmin,0) -- (\xmax,0) node[right] {$x$};
+    \draw[->] (0,-3) -- (0,4) node[above] {};
+    \draw[thick,blue,domain=\xmin:\xmax,samples=100] plot (\x,{\coeffa*(\x)^2+\coeffb*(\x)+\coeffc});
+    \draw (\xpetit,0) node {$+$} node[below=3pt] {$\xpetitaffichage$};
+    \draw (\xgrand,0) node {$+$} node[below=3pt] {$\xgrandaffichage$};
+    \node[blue,above right] at (0.5,3) {$f(x)=\coeffa x^2
+  \ifdim\coeffb pt=1pt
+      +x
+  \else\ifdim\coeffb pt=-1pt
+      -x
+  \else\ifdim\coeffb pt<0pt
+      \coeffb x
+  \else
+      +\coeffb x
+  \fi\fi\fi
+  \ifdim\coeffc pt<0pt
+      \coeffc
+  \else
+      +\coeffc
+  \fi$};
+    % Variables pour la logique d'affichage
+    \def\tempgeq{geq}\def\templeq{leq}\def\tempg{g}\def\templ{l}%
+
+    % Dessiner ligne rouge selon type
+    % Pour geq (≥0)
+    \ifx\typeineg\tempgeq
+        \ifdim\coeffa pt>0pt
+            % a>0, f(x)≥0 : extérieur (]-∞,x1]∪[x2,+∞[)
+            \draw[red,line width=0.8pt,<-] (\xpetit,0) -- (\xmin,0);
+            \draw[red,line width=0.8pt,->] (\xgrand,0) -- (\xmax,0);
+            % Crochets fermés
+            \draw[red, line width=1.5pt] (\xpetit-0.1,-0.3) -- (\xpetit,-0.3) -- (\xpetit,0.3) -- (\xpetit-0.1,0.3);
+            \draw[red, line width=1.5pt] (\xgrand+0.1,-0.3) -- (\xgrand,-0.3) -- (\xgrand,0.3) -- (\xgrand+0.1,0.3);
+        \else
+            % a<0, f(x)≥0 : intérieur ([x1,x2])
+            \draw[red,line width=0.8pt] (\xpetit,0) -- (\xgrand,0);
+            % Crochets fermés
+            \draw[red, line width=1.5pt] (\xpetit-0.1,-0.3) -- (\xpetit,-0.3) -- (\xpetit,0.3) -- (\xpetit-0.1,0.3);
+            \draw[red, line width=1.5pt] (\xgrand+0.1,-0.3) -- (\xgrand,-0.3) -- (\xgrand,0.3) -- (\xgrand+0.1,0.3);
+        \fi
+    \fi
+
+    % Pour leq (≤0)
+    \ifx\typeineg\templeq
+        \ifdim\coeffa pt<0pt
+            % a<0, f(x)≤0 : extérieur (]-∞,x1]∪[x2,+∞[)
+            \draw[red,line width=0.8pt,<-] (\xpetit,0) -- (\xmin,0);
+            \draw[red,line width=0.8pt,->] (\xgrand,0) -- (\xmax,0);
+            % Crochets fermés
+            \draw[red, line width=1.5pt] (\xpetit-0.1,-0.3) -- (\xpetit,-0.3) -- (\xpetit,0.3) -- (\xpetit-0.1,0.3);
+            \draw[red, line width=1.5pt] (\xgrand+0.1,-0.3) -- (\xgrand,-0.3) -- (\xgrand,0.3) -- (\xgrand+0.1,0.3);
+        \else
+            % a>0, f(x)≤0 : intérieur ([x1,x2])
+            \draw[red,line width=0.8pt] (\xpetit,0) -- (\xgrand,0);
+            % Crochets fermés
+            \draw[red, line width=1.5pt] (\xpetit-0.1,-0.3) -- (\xpetit,-0.3) -- (\xpetit,0.3) -- (\xpetit-0.1,0.3);
+            \draw[red, line width=1.5pt] (\xgrand+0.1,-0.3) -- (\xgrand,-0.3) -- (\xgrand,0.3) -- (\xgrand+0.1,0.3);
+        \fi
+    \fi
+
+    % Pour g (>0)
+    \ifx\typeineg\tempg
+        \ifdim\coeffa pt>0pt
+            % a>0, f(x)>0 : extérieur (]-∞,x1[∪]x2,+∞[)
+            \draw[red,line width=0.8pt,<-] (\xpetit,0) -- (\xmin,0);
+            \draw[red,line width=0.8pt,->] (\xgrand,0) -- (\xmax,0);
+            % Crochets ouverts
+            \draw[red, line width=1.5pt] (\xpetit,-0.3) -- (\xpetit,0.3) -- (\xpetit+0.1,0.3) (\xpetit,-0.3) -- (\xpetit+0.1,-0.3);
+            \draw[red, line width=1.5pt] (\xgrand,-0.3) -- (\xgrand,0.3) -- (\xgrand-0.1,0.3) (\xgrand,-0.3) -- (\xgrand-0.1,-0.3);
+        \else
+            % a<0, f(x)>0 : intérieur (]x1,x2[)
+            \draw[red,line width=0.8pt] (\xpetit,0) -- (\xgrand,0);
+            % Crochets ouverts
+            \draw[red, line width=1.5pt] (\xpetit,-0.3) -- (\xpetit,0.3) -- (\xpetit+0.1,0.3) (\xpetit,-0.3) -- (\xpetit+0.1,-0.3);
+            \draw[red, line width=1.5pt] (\xgrand,-0.3) -- (\xgrand,0.3) -- (\xgrand-0.1,0.3) (\xgrand,-0.3) -- (\xgrand-0.1,-0.3);
+        \fi
+    \fi
+
+    % Pour l (<0)
+    \ifx\typeineg\templ
+        \ifdim\coeffa pt<0pt
+            % a<0, f(x)<0 : extérieur (]-∞,x1[∪]x2,+∞[)
+            \draw[red,line width=0.8pt,<-] (\xpetit,0) -- (\xmin,0);
+            \draw[red,line width=0.8pt,->] (\xgrand,0) -- (\xmax,0);
+            % Crochets ouverts
+            \draw[red, line width=1.5pt] (\xpetit,-0.3) -- (\xpetit,0.3) -- (\xpetit+0.1,0.3) (\xpetit,-0.3) -- (\xpetit+0.1,-0.3);
+            \draw[red, line width=1.5pt] (\xgrand,-0.3) -- (\xgrand,0.3) -- (\xgrand-0.1,0.3) (\xgrand,-0.3) -- (\xgrand-0.1,-0.3);
+        \else
+            % a>0, f(x)<0 : intérieur (]x1,x2[)
+            \draw[red,line width=0.8pt] (\xpetit,0) -- (\xgrand,0);
+            % Crochets ouverts
+            \draw[red, line width=1.5pt] (\xpetit,-0.3) -- (\xpetit,0.3) -- (\xpetit+0.1,0.3) (\xpetit,-0.3) -- (\xpetit+0.1,-0.3);
+            \draw[red, line width=1.5pt] (\xgrand,-0.3) -- (\xgrand,0.3) -- (\xgrand-0.1,0.3) (\xgrand,-0.3) -- (\xgrand-0.1,-0.3);
+        \fi
+    \fi
+\end{tikzpicture}
+\end{crep}
+        \end{MultiColonnes}
+    }

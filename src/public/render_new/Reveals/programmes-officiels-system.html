@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Programmes Officiels de l'Éducation Nationale - Skill et Agent">
+  <title>Programmes Officiels de l'Éducation Nationale</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Theme personnalisé lycée -->
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --text-color: #34495e;
+      --bg-light: #ecf0f1;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.6em;
+      margin-bottom: 0.8em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.3em;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      margin-top: 0.8em;
+    }
+
+    .reveal ul, .reveal ol {
+      margin: 1em 0;
+    }
+
+    .reveal li {
+      margin: 0.5em 0;
+      line-height: 1.5;
+    }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 1em;
+      max-height: 500px;
+      font-size: 0.85em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .reveal .success {
+      color: var(--success-color);
+      font-weight: 600;
+    }
+
+    .reveal .warning {
+      color: var(--warning-color);
+      font-weight: 600;
+    }
+
+    .reveal .box {
+      background: var(--bg-light);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning-color);
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: #e8f5e9;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon {
+      font-size: 1.2em;
+      margin-right: 0.3em;
+      vertical-align: middle;
+    }
+
+    .reveal section img {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: var(--secondary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .feature-list {
+      font-size: 0.9em;
+    }
+
+    .reveal .feature-list li {
+      margin: 0.4em 0;
+    }
+
+    .reveal .tree-structure {
+      font-family: 'Consolas', monospace;
+      font-size: 0.65em;
+      text-align: left;
+      background: #f8f9fa;
+      padding: 1em;
+      border-radius: 8px;
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    .reveal .subtitle {
+      color: var(--secondary-color);
+      font-size: 0.7em;
+      margin-top: 0.5em;
+    }
+
+    .reveal .tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+
+    .reveal .tag.warning {
+      background: var(--warning-color);
+    }
+
+    .reveal .tag.success {
+      background: var(--success-color);
+    }
+
+    .reveal .tag.accent {
+      background: var(--accent-color);
+    }
+
+    .reveal .smaller {
+      font-size: 0.85em;
+    }
+
+    .reveal .comparison-table {
+      font-size: 0.75em;
+      width: 100%;
+      margin: 1em 0;
+    }
+
+    .reveal .comparison-table td, .reveal .comparison-table th {
+      padding: 0.5em;
+      border: 1px solid #ddd;
+    }
+
+    .reveal .comparison-table th {
+      background: var(--secondary-color);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fas fa-graduation-cap icon"></i> Programmes Officiels de l'Éducation Nationale</h1>
+        <p class="subtitle">Le skill <code>programmes-officiels</code> et l'agent <code>programme-officiel-extractor</code></p>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag">Formation GT IA & Maths</span>
+          <span class="tag success">Conformité BO</span>
+          <span class="tag accent">Documentation automatisée</span>
+        </p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <h2>Au programme</h2>
+        <ol class="feature-list">
+          <li class="fragment" data-fragment-index="1"><i class="fas fa-book icon"></i> Le skill programmes-officiels</li>
+          <li class="fragment" data-fragment-index="2"><i class="fas fa-robot icon"></i> L'agent programme-officiel-extractor</li>
+          <li class="fragment" data-fragment-index="3"><i class="fas fa-lightbulb icon"></i> Quand utiliser ce skill</li>
+          <li class="fragment" data-fragment-index="4"><i class="fas fa-route icon"></i> Workflow d'utilisation</li>
+          <li class="fragment" data-fragment-index="5"><i class="fas fa-file-alt icon"></i> Structure des références</li>
+          <li class="fragment" data-fragment-index="6"><i class="fas fa-graduation-cap icon"></i> Conseils pratiques</li>
+        </ol>
+      </section>
+
+      <!-- SLIDE 3 : QU'EST-CE QUE LE SKILL ? -->
+      <section>
+        <h2>Le skill programmes-officiels</h2>
+
+        <div class="box fragment">
+          <p><strong>Un skill Claude pour rechercher et citer les programmes officiels</strong></p>
+        </div>
+
+        <ul class="feature-list">
+          <li class="fragment"><i class="fas fa-search icon"></i> <strong>Recherche précise</strong> dans les Bulletins Officiels (BO)</li>
+          <li class="fragment"><i class="fas fa-quote-right icon"></i> <strong>Citations exactes</strong> des programmes collège et lycée</li>
+          <li class="fragment"><i class="fas fa-clipboard-check icon"></i> <strong>Référencement des compétences</strong> attendues</li>
+          <li class="fragment"><i class="fas fa-sitemap icon"></i> <strong>Liens au socle commun</strong> (collège)</li>
+        </ul>
+      </section>
+
+      <!-- SLIDE 4 : STRUCTURE DES PROGRAMMES -->
+      <section>
+        <section>
+          <h2>Structure des programmes officiels</h2>
+
+          <div class="box fragment" style="font-size: 0.9em;">
+            <p><strong>Les programmes sont organisés de manière hiérarchique</strong></p>
+          </div>
+
+          <ul class="feature-list" style="font-size: 0.9em;">
+            <li class="fragment"><i class="fas fa-folder-open icon"></i> <strong>Thèmes</strong> : grandes catégories mathématiques (Nombres et calculs, Géométrie, etc.)</li>
+            <li class="fragment"><i class="fas fa-bullseye icon"></i> <strong>Attendus de fin d'année/cycle</strong> : objectifs généraux</li>
+            <li class="fragment"><i class="fas fa-tasks icon"></i> <strong>Connaissances et compétences</strong> : détail des notions</li>
+            <li class="fragment"><i class="fas fa-lightbulb icon"></i> <strong>Exemples d'activités</strong> : suggestions pédagogiques</li>
+          </ul>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les thèmes mathématiques</p>
+        </section>
+
+        <section>
+          <h3>Thèmes mathématiques principaux</h3>
+
+          <div class="grid-2">
+            <div>
+              <div class="example-box" style="font-size: 0.85em;">
+                <h3 class="smaller"><i class="fas fa-calculator icon"></i> Collège</h3>
+                <ul class="smaller">
+                  <li>Nombres et calculs</li>
+                  <li>Grandeurs et mesures</li>
+                  <li>Espace et géométrie</li>
+                  <li>Organisation et gestion de données</li>
+                  <li>Algorithmique et programmation</li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <div class="example-box" style="font-size: 0.85em;">
+                <h3 class="smaller"><i class="fas fa-calculator icon"></i> Lycée</h3>
+                <ul class="smaller">
+                  <li>Algèbre</li>
+                  <li>Analyse</li>
+                  <li>Géométrie</li>
+                  <li>Probabilités et statistiques</li>
+                  <li>Algorithmique et programmation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 5 : NIVEAUX DISPONIBLES -->
+      <section>
+        <section>
+          <h2>Niveaux disponibles</h2>
+
+          <div class="box fragment" style="font-size: 0.9em;">
+            <p><strong>Fichiers de référence pour tous les niveaux collège et lycée</strong></p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les fichiers disponibles</p>
+        </section>
+
+        <section>
+          <h3>Collège</h3>
+          <div class="grid-2">
+            <div class="example-box" style="font-size: 0.8em;">
+              <p><i class="fas fa-file-alt icon"></i> <code>college_cycle3.md</code></p>
+              <p class="smaller"><strong>6ème (Cycle 3)</strong></p>
+            </div>
+
+            <div class="example-box" style="font-size: 0.8em;">
+              <p><i class="fas fa-file-alt icon"></i> <code>college_cycle4.md</code></p>
+              <p class="smaller"><strong>5ème, 4ème, 3ème (Cycle 4)</strong></p>
+            </div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-file-alt icon"></i> <code>competences_socle_commun.md</code></p>
+            <p class="smaller"><strong>Socle commun de connaissances, de compétences et de culture</strong></p>
+          </div>
+        </section>
+
+        <section>
+          <h3>Lycée</h3>
+
+          <div class="grid-2">
+            <div>
+              <div class="example-box" style="font-size: 0.75em;">
+                <p><i class="fas fa-file-alt icon"></i> <code>seconde_generale.md</code></p>
+                <p class="smaller">Seconde générale et technologique</p>
+              </div>
+
+              <div class="example-box fragment" style="font-size: 0.75em; margin-top: 0.5em;">
+                <p><i class="fas fa-file-alt icon"></i> <code>premiere_specialite.md</code></p>
+                <p class="smaller">1ère spécialité mathématiques</p>
+              </div>
+
+              <div class="example-box fragment" style="font-size: 0.75em; margin-top: 0.5em;">
+                <p><i class="fas fa-file-alt icon"></i> <code>premiere_enseignement_scientifique.md</code></p>
+                <p class="smaller">1ère enseignement scientifique</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="fragment">
+                <div class="example-box" style="font-size: 0.75em;">
+                  <p><i class="fas fa-file-alt icon"></i> <code>terminale_specialite.md</code></p>
+                  <p class="smaller">Tale spécialité mathématiques</p>
+                </div>
+
+                <div class="example-box" style="font-size: 0.75em; margin-top: 0.5em;">
+                  <p><i class="fas fa-file-alt icon"></i> <code>terminale_enseignement_scientifique.md</code></p>
+                  <p class="smaller">Tale enseignement scientifique</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 6 : QUAND UTILISER CE SKILL -->
+      <section>
+        <h2>Quand utiliser ce skill ?</h2>
+
+        <div class="grid-2">
+          <div>
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-file-signature icon"></i> Fiches techniques</h3>
+              <p class="smaller">Pour les inspecteurs, justification pédagogique officielle</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-calendar-alt icon"></i> Progressions annuelles</h3>
+              <p class="smaller">Planification conforme aux attendus de fin d'année</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-check-circle icon"></i> Vérification conformité</h3>
+              <p class="smaller">S'assurer qu'un contenu respecte le programme officiel</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-quote-right icon"></i> Citations BO</h3>
+              <p class="smaller">Référencement exact pour documents administratifs</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 : WORKFLOW D'UTILISATION -->
+      <section>
+        <h2>Workflow d'utilisation</h2>
+
+        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
+          <div class="step-number">1</div>
+          <div><strong>Identifier</strong> le niveau et le thème de la ressource pédagogique</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
+          <div class="step-number">2</div>
+          <div><strong>Lire</strong> le fichier de référence correspondant (ex: <code>college_cycle4.md</code>)</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
+          <div class="step-number">3</div>
+          <div><strong>Extraire</strong> les attendus et compétences pertinents</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.9em;">
+          <div class="step-number">4</div>
+          <div><strong>Citer</strong> précisément avec la référence du BO</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.9em;">
+          <div class="step-number">5</div>
+          <div><strong>Relier</strong> aux compétences du socle commun (si collège)</div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 : EXEMPLE DE CITATION -->
+      <section>
+        <section>
+          <h2>Exemple de citation</h2>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <p><strong>Contexte :</strong> Fiche technique sur les fractions en 4ème</p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la citation formatée</p>
+        </section>
+
+        <section>
+          <h3>Citation formatée LaTeX</h3>
+          <pre class="fragment"><code class="language-latex">\textit{Programme officiel de 4ème (BO n°... du ...) :}
+
+« L'élève utilise les nombres pour comparer,
+calculer et résoudre des problèmes. Il comprend
+et utilise les notions de fraction irréductible,
+de quotient et de proportion. »
+
+\textbf{Compétences du socle commun associées :}
+\begin{itemize}
+  \item Domaine 1 : Les langages pour penser
+        et communiquer
+  \item Domaine 4 : Les systèmes naturels
+        et les systèmes techniques
+\end{itemize}</code></pre>
+        </section>
+      </section>
+
+      <!-- SLIDE 9 : LE SOCLE COMMUN -->
+      <section>
+        <section>
+          <h2>Le Socle Commun (Collège)</h2>
+
+          <div class="box fragment" style="font-size: 0.9em;">
+            <p><strong>5 domaines de formation pour structurer les compétences</strong></p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les domaines</p>
+        </section>
+
+        <section>
+          <h3>Les 5 domaines</h3>
+
+          <div style="font-size: 0.8em;">
+            <div class="example-box fragment">
+              <p><strong>Domaine 1 :</strong> Les langages pour penser et communiquer</p>
+            </div>
+
+            <div class="example-box fragment">
+              <p><strong>Domaine 2 :</strong> Les méthodes et outils pour apprendre</p>
+            </div>
+
+            <div class="example-box fragment">
+              <p><strong>Domaine 3 :</strong> La formation de la personne et du citoyen</p>
+            </div>
+
+            <div class="example-box fragment">
+              <p><strong>Domaine 4 :</strong> Les systèmes naturels et les systèmes techniques</p>
+            </div>
+
+            <div class="example-box fragment">
+              <p><strong>Domaine 5 :</strong> Les représentations du monde et l'activité humaine</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Domaines les plus utilisés en maths</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.75em;">
+              <h3 class="smaller"><i class="fas fa-comment icon"></i> Domaine 1</h3>
+              <p class="smaller">Langage mathématique, symboles, représentations graphiques</p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.75em;">
+              <h3 class="smaller"><i class="fas fa-tools icon"></i> Domaine 2</h3>
+              <p class="smaller">Raisonnement, résolution de problèmes, outils numériques</p>
+            </div>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <h3 class="smaller"><i class="fas fa-cogs icon"></i> Domaine 4</h3>
+            <p class="smaller">Modélisation, grandeurs et mesures, systèmes mathématiques</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 10 : L'AGENT PROGRAMME-OFFICIEL-EXTRACTOR -->
+      <section>
+        <h2><i class="fas fa-robot icon"></i> L'agent programme-officiel-extractor</h2>
+
+        <div class="box fragment">
+          <p><strong>Un agent Claude spécialisé pour extraire et structurer les programmes depuis les PDF du BO</strong></p>
+        </div>
+
+        <ul class="feature-list">
+          <li class="fragment"><i class="fas fa-file-pdf icon"></i> <strong>Analyse les PDF</strong> officiels du Bulletin Officiel</li>
+          <li class="fragment"><i class="fas fa-sitemap icon"></i> <strong>Extrait la structure</strong> (thèmes, attendus, compétences)</li>
+          <li class="fragment"><i class="fas fa-atom icon"></i> <strong>Découpe en compétences atomiques</strong> (insécables)</li>
+          <li class="fragment"><i class="fas fa-file-code icon"></i> <strong>Génère des fichiers JSON</strong> structurés par niveau</li>
+        </ul>
+      </section>
+
+      <!-- SLIDE 11 : COMPÉTENCES ATOMIQUES -->
+      <section>
+        <section>
+          <h2>Compétences atomiques</h2>
+
+          <div class="box fragment" style="font-size: 0.9em;">
+            <p><strong>Principe : découper chaque compétence en unités insécables</strong></p>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.85em;">
+            <p><strong>Exemple :</strong> "Calculer avec des nombres décimaux"</p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir le découpage</p>
+        </section>
+
+        <section>
+          <h3>Découpage atomique</h3>
+
+          <div class="grid-2">
+            <div>
+              <div class="warning-box fragment" style="font-size: 0.8em;">
+                <p><i class="fas fa-times-circle icon"></i> <strong>Trop général</strong></p>
+                <p class="smaller">"Calculer avec des nombres décimaux"</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="example-box fragment" style="font-size: 0.8em;">
+                <p><i class="fas fa-check-circle icon"></i> <strong>Atomique</strong></p>
+                <ul class="smaller">
+                  <li>Additionner des nombres décimaux</li>
+                  <li>Soustraire des nombres décimaux</li>
+                  <li>Multiplier des nombres décimaux</li>
+                  <li>Diviser des nombres décimaux</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-info-circle icon"></i> Chaque compétence atomique est la <strong>plus petite unité d'enseignement</strong></p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 12 : STRUCTURE JSON -->
+      <section>
+        <section>
+          <h2>Structure JSON générée</h2>
+
+          <div class="box fragment" style="font-size: 0.9em;">
+            <p><strong>L'agent génère un JSON structuré pour chaque niveau</strong></p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la structure</p>
+        </section>
+
+        <section>
+          <h3>Exemple de structure JSON</h3>
+          <pre style="font-size: 0.6em;"><code class="language-json">{
+  "niveau": "CYCLE4",
+  "niveaux_concernes": ["5EME", "4EME", "3EME"],
+  "bo_reference": "BO n°... du ...",
+  "url_bo": "https://...",
+  "date_publication": "...",
+  "themes": [
+    {
+      "nom": "Nombres et calculs",
+      "code": "cycle4_nombres",
+      "description": "...",
+      "attendus": [
+        {
+          "code": "cycle4_nb_att_001",
+          "enonce": "Utiliser les nombres pour comparer...",
+          "niveau_maitrise": "fin de cycle"
+        }
+      ],
+      "competences": [...]
+    }
+  ]
+}</code></pre>
+        </section>
+
+        <section>
+          <h3>Compétences détaillées</h3>
+          <pre style="font-size: 0.6em;"><code class="language-json">"competences": [
+  {
+    "code": "cycle4_nb_comp_001",
+    "nom": "Additionner des nombres décimaux",
+    "enonce": "Calculer la somme de nombres décimaux...",
+    "type": "savoir-faire",
+    "prerequis": ["cycle3_nb_comp_005"],
+    "exemples": [
+      "12,5 + 3,75 = 16,25",
+      "0,3 + 1,45 + 2 = 3,75"
+    ],
+    "notes_pedagogiques": "S'appuyer sur le sens..."
+  }
+]</code></pre>
+        </section>
+      </section>
+
+      <!-- SLIDE 13 : MÉTHODOLOGIE DE L'AGENT -->
+      <section>
+        <h2>Méthodologie de l'agent</h2>
+
+        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+          <div class="step-number">1</div>
+          <div><strong>Lire le PDF</strong> avec le skill <code>pdf</code> (page par page)</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+          <div class="step-number">2</div>
+          <div><strong>Identifier la structure</strong> (thèmes, attendus, compétences)</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+          <div class="step-number">3</div>
+          <div><strong>Découper</strong> en compétences atomiques</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+          <div class="step-number">4</div>
+          <div><strong>Générer des codes uniques</strong> (ex: <code>cycle4_nombres_001</code>)</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
+          <div class="step-number">5</div>
+          <div><strong>Sauvegarder</strong> le fichier JSON structuré</div>
+        </div>
+      </section>
+
+      <!-- SLIDE 14 : EXEMPLE DE COMMANDE -->
+      <section>
+        <h2>Exemple de commande</h2>
+
+        <div class="box fragment" style="font-size: 0.85em;">
+          <p><strong>Commande utilisateur à l'agent :</strong></p>
+        </div>
+
+        <pre class="fragment" style="font-size: 0.65em;"><code class="language-bash">Analyse le PDF ".claude/skills/programmes-officiels/pdf/cycle4_v2.pdf"
+pour le niveau CYCLE4 (5ème, 4ème, 3ème).
+
+Sauvegarde le résultat dans
+".claude/skills/programmes-officiels/data/cycle4.json"
+
+avec les références BO depuis
+".claude/skills/programmes-officiels/references_bo.json"</code></pre>
+
+        <div class="example-box fragment" style="font-size: 0.8em;">
+          <p><i class="fas fa-check-circle icon success"></i> <strong>Résultat :</strong> Fichier JSON avec toutes les compétences atomiques du cycle 4</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 15 : AVANTAGES DU SYSTÈME -->
+      <section>
+        <section>
+          <h2>Avantages du système</h2>
+
+          <div class="grid-2">
+            <div>
+              <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+                <h3 class="smaller"><i class="fas fa-quote-right icon"></i> Citations exactes</h3>
+                <p class="smaller">Formulation officielle du BO</p>
+              </div>
+
+              <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+                <h3 class="smaller"><i class="fas fa-clock icon"></i> Gain de temps</h3>
+                <p class="smaller">Plus besoin de chercher dans les PDF</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+                <h3 class="smaller"><i class="fas fa-sitemap icon"></i> Structure claire</h3>
+                <p class="smaller">Organisation hiérarchique lisible</p>
+              </div>
+
+              <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+                <h3 class="smaller"><i class="fas fa-search icon"></i> Recherche facile</h3>
+                <p class="smaller">Markdown et JSON interrogeables</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="smaller fragment" data-fragment-index="5" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour plus d'avantages</p>
+        </section>
+
+        <section>
+          <h3>Avantages supplémentaires</h3>
+
+          <div class="grid-2">
+            <div class="box" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-atom icon"></i> Compétences atomiques</h3>
+              <p class="smaller">Granularité optimale pour la programmation</p>
+            </div>
+
+            <div class="box" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-code icon"></i> Codes uniques</h3>
+              <p class="smaller">Traçabilité et référencement automatisés</p>
+            </div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-check-circle icon success"></i> <strong>Conformité garantie</strong> aux textes officiels</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 16 : CAS D'USAGE CONCRETS -->
+      <section>
+        <section>
+          <h2>Cas d'usage concrets</h2>
+
+          <div class="grid-2">
+            <div>
+              <div class="example-box fragment" data-fragment-index="1" style="font-size: 0.8em;">
+                <h3 class="smaller"><i class="fas fa-file-signature icon"></i> Fiche pédagogique</h3>
+                <p class="smaller">Justification des choix avec citation du BO</p>
+              </div>
+
+              <div class="example-box fragment" data-fragment-index="2" style="font-size: 0.8em;">
+                <h3 class="smaller"><i class="fas fa-calendar-alt icon"></i> Progression annuelle</h3>
+                <p class="smaller">Répartition des compétences par trimestre</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="example-box fragment" data-fragment-index="3" style="font-size: 0.8em;">
+                <h3 class="smaller"><i class="fas fa-clipboard-check icon"></i> Évaluation</h3>
+                <p class="smaller">Référencement des compétences évaluées</p>
+              </div>
+
+              <div class="example-box fragment" data-fragment-index="4" style="font-size: 0.8em;">
+                <h3 class="smaller"><i class="fas fa-user-tie icon"></i> Inspection</h3>
+                <p class="smaller">Documents conformes pour l'inspection</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="smaller fragment" data-fragment-index="5" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir un exemple détaillé</p>
+        </section>
+
+        <section>
+          <h3>Exemple : Progression annuelle 4ème</h3>
+
+          <div class="box" style="font-size: 0.75em;">
+            <p><strong>Trimestre 1 : Nombres et calculs</strong></p>
+            <ul class="smaller">
+              <li>Compétence : <code>cycle4_nb_comp_012</code> - "Utiliser les puissances de 10"</li>
+              <li>Référence BO : BO n°... du ...</li>
+              <li>Attendu : "Comprendre et utiliser la notion de puissance"</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><strong>Trimestre 2 : Géométrie</strong></p>
+            <ul class="smaller">
+              <li>Compétence : <code>cycle4_geo_comp_024</code> - "Calculer un volume"</li>
+              <li>Référence BO : BO n°... du ...</li>
+              <li>Attendu : "Résoudre des problèmes de géométrie dans l'espace"</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 17 : STRUCTURE DU SKILL -->
+      <section>
+        <h2>Structure du skill</h2>
+
+        <div class="tree-structure">
+.claude/skills/programmes-officiels/
+├── SKILL.md                    # Instructions pour agents
+├── references/
+│   ├── college_cycle3.md       # 6ème (Cycle 3)
+│   ├── college_cycle4.md       # 5ème, 4ème, 3ème
+│   ├── seconde_generale.md     # Seconde
+│   ├── premiere_specialite.md  # 1ère spé maths
+│   ├── premiere_enseignement_scientifique.md
+│   ├── terminale_specialite.md # Tale spé maths
+│   ├── terminale_enseignement_scientifique.md
+│   └── competences_socle_commun.md
+├── pdf/
+│   ├── cycle3_v2.pdf           # PDF officiels BO
+│   ├── cycle4_v2.pdf
+│   └── ...
+└── data/
+    ├── cycle3.json             # JSON structurés générés
+    ├── cycle4.json
+    └── ...
+        </div>
+      </section>
+
+      <!-- SLIDE 18 : CONSEILS D'UTILISATION -->
+      <section>
+        <h2><i class="fas fa-lightbulb icon"></i> Conseils pratiques</h2>
+
+        <div class="grid-2">
+          <div>
+            <ul class="feature-list">
+              <li class="fragment" data-fragment-index="1">
+                <i class="fas fa-quote-right icon"></i> <strong>Citations exactes</strong><br>
+                <span class="smaller">pour documents officiels (inspecteurs)</span>
+              </li>
+              <li class="fragment" data-fragment-index="2">
+                <i class="fas fa-edit icon"></i> <strong>Reformulation possible</strong><br>
+                <span class="smaller">entre collègues (garder la référence)</span>
+              </li>
+              <li class="fragment" data-fragment-index="3">
+                <i class="fas fa-calendar-check icon"></i> <strong>Vérifier la date du BO</strong><br>
+                <span class="smaller">les programmes évoluent</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul class="feature-list">
+              <li class="fragment" data-fragment-index="4">
+                <i class="fas fa-lightbulb icon"></i> <strong>Exemples indicatifs</strong><br>
+                <span class="smaller">les activités suggérées ne sont pas obligatoires</span>
+              </li>
+              <li class="fragment" data-fragment-index="5">
+                <i class="fas fa-sitemap icon"></i> <strong>Relier au socle</strong><br>
+                <span class="smaller">systématiquement pour le collège</span>
+              </li>
+              <li class="fragment" data-fragment-index="6">
+                <i class="fas fa-atom icon"></i> <strong>Utiliser les codes</strong><br>
+                <span class="smaller">pour traçabilité automatisée</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 19 : EXEMPLE COMPLET DE WORKFLOW -->
+      <section>
+        <section>
+          <h2>Exemple complet de workflow</h2>
+
+          <div class="example-box fragment" style="font-size: 0.85em;">
+            <p><strong>Contexte :</strong> Créer une fiche pédagogique sur les fractions en 4ème pour l'inspecteur</p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour suivre le workflow</p>
+        </section>
+
+        <section>
+          <h3>Étape 1 : Identifier</h3>
+          <div class="box" style="font-size: 0.8em;">
+            <ul class="smaller">
+              <li><strong>Niveau :</strong> 4ème (Cycle 4)</li>
+              <li><strong>Thème :</strong> Nombres et calculs</li>
+              <li><strong>Notion :</strong> Fractions</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Étape 2 : Lire le fichier de référence</h3>
+          <pre style="font-size: 0.6em;"><code class="language-bash"># Ouvrir le fichier
+.claude/skills/programmes-officiels/references/college_cycle4.md
+
+# Section "Nombres et calculs"
+# Sous-section "Fractions"</code></pre>
+        </section>
+
+        <section>
+          <h3>Étape 3 : Extraire les compétences</h3>
+          <div class="example-box" style="font-size: 0.75em;">
+            <p><strong>Attendu :</strong> "Utiliser les nombres pour comparer, calculer et résoudre des problèmes"</p>
+            <p><strong>Compétence :</strong> "Utiliser les fractions irréductibles"</p>
+            <p><strong>Code :</strong> <code>cycle4_nb_comp_018</code></p>
+          </div>
+        </section>
+
+        <section>
+          <h3>Étape 4 : Citer avec référence</h3>
+          <pre style="font-size: 0.6em;"><code class="language-latex">\textit{Programme officiel de 4ème
+(BO n°31 du 30 juillet 2020) :}
+
+« L'élève comprend et utilise les notions
+de fraction irréductible, de quotient
+et de proportion. »</code></pre>
+        </section>
+
+        <section>
+          <h3>Étape 5 : Relier au socle commun</h3>
+          <div class="example-box" style="font-size: 0.75em;">
+            <p><strong>Domaine 1 :</strong> Les langages pour penser et communiquer</p>
+            <p class="smaller">Langage mathématique (symboles, notations)</p>
+            <br>
+            <p><strong>Domaine 4 :</strong> Les systèmes naturels et les systèmes techniques</p>
+            <p class="smaller">Proportionnalité, grandeurs</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 20 : PERSPECTIVES ET ÉVOLUTIONS -->
+      <section>
+        <h2>Perspectives et évolutions</h2>
+
+        <div class="grid-2">
+          <div>
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-sync-alt icon"></i> Mises à jour automatiques</h3>
+              <p class="smaller">Lorsque les programmes changent</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-link icon"></i> Interconnexion</h3>
+              <p class="smaller">Avec d'autres skills (LaTeX, progressions)</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-chart-line icon"></i> Progressivité</h3>
+              <p class="smaller">Repères de progressivité entre niveaux</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> Extension disciplinaire</h3>
+              <p class="smaller">Autres matières (physique, SVT, etc.)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 21 : CONCLUSION -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Points forts</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Citations exactes et sourcées</li>
+              <li>Conformité aux programmes officiels</li>
+              <li>Gain de temps considérable</li>
+              <li>Compétences atomiques</li>
+              <li>Traçabilité par codes uniques</li>
+              <li>Lien au socle commun</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2" style="color: var(--secondary-color);"><i class="fas fa-clipboard-list icon"></i> Cas d'usage</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Fiches techniques inspecteurs</li>
+              <li>Progressions annuelles</li>
+              <li>Documents administratifs</li>
+              <li>Vérification conformité</li>
+              <li>Référencement évaluations</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-graduation-cap icon"></i> Indispensable pour une documentation pédagogique conforme et professionnelle</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 22 : RESSOURCES -->
+      <section>
+        <h2><i class="fas fa-book icon"></i> Ressources</h2>
+
+        <div class="grid-2">
+          <div class="box" style="font-size: 0.8em;">
+            <h3 class="smaller">Documentation</h3>
+            <ul class="smaller">
+              <li><code>SKILL.md</code> - Instructions skill</li>
+              <li><code>programme-officiel-extractor.md</code> - Agent</li>
+              <li><code>references/</code> - Fichiers Markdown par niveau</li>
+              <li><code>data/</code> - Fichiers JSON structurés</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <h3 class="smaller">Liens utiles</h3>
+            <ul class="smaller">
+              <li><i class="fas fa-external-link-alt icon"></i> education.gouv.fr - Programmes officiels</li>
+              <li><i class="fas fa-file-pdf icon"></i> Bulletins Officiels (BO)</li>
+              <li><i class="fas fa-book icon"></i> Socle commun de connaissances</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
+          <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation 2D
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+
+      // Transitions
+      transition: 'slide',
+      transitionSpeed: 'default',
+
+      // Behavior
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      shuffle: false,
+
+      // Fragments
+      fragments: true,
+      fragmentInURL: true,
+
+      // Keyboard
+      keyboard: true,
+      keyboardCondition: null,
+
+      // Plugins
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
+    let lastHorizontalIndex = 0;
+
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+
+      // Si on change de slide horizontale et qu'on n'est pas au top
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        // Revenir au top de la nouvelle slide
+        Reveal.slide(currentH, 0);
+      }
+
+      // Mettre à jour l'index horizontal
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>

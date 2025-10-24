@@ -1,0 +1,713 @@
+#!/usr/bin/env python3
+"""
+MCP Server pour la gestion des compétences pédagogiques.
+Fournit des outils de recherche et filtrage des compétences par niveau, thème, code, etc.
+"""
+
+import json
+import logging
+import sys
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+# Configuration du logging pour écrire dans stderr seulement
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler(sys.stderr)]
+)
+logger = logging.getLogger("competences-server")
+
+try:
+    from mcp.server.fastmcp import FastMCP
+except ImportError:
+    logger.error("Erreur: Le package 'mcp' n'est pas installé. Installez-le avec: pip install mcp")
+    sys.exit(1)
+
+# Créer l'instance du serveur MCP
+mcp = FastMCP("competences-server")
+
+# Chemins vers les fichiers de configuration
+PREFERENCES_FILE = Path(__file__).parent / ".." / "datas" / "competence-server-user-preferences.json"
+DEFAULT_COMPETENCES_FILE = Path(__file__).parent / ".." / "datas" / "competences.json"
+
+# Cache pour les données des compétences
+_competences_cache: Optional[Dict[str, Any]] = None
+_preferences_cache: Optional[Dict[str, Any]] = None
+
+def load_preferences() -> Dict[str, Any]:
+    """Charge les préférences utilisateur depuis le fichier de configuration."""
+    global _preferences_cache
+    
+    if _preferences_cache is None:
+        try:
+            with open(PREFERENCES_FILE, 'r', encoding='utf-8') as f:
+                _preferences_cache = json.load(f)
+                logger.info(f"Préférences chargées: {len(_preferences_cache.get('default_data_sources', {}))} niveaux configurés")
+        except FileNotFoundError:
+            logger.info("Fichier de préférences non trouvé, utilisation des valeurs par défaut")
+            _preferences_cache = {
+                "default_data_sources": {},
+                "fallback_behavior": "show_error_message",
+                "last_updated": "2025-09-11T00:00:00Z"
+            }
+            # Sauvegarder le fichier de préférences par défaut
+            save_preferences(_preferences_cache)
+        except json.JSONDecodeError as e:
+            logger.error(f"Erreur lors du décodage JSON des préférences: {e}")
+            _preferences_cache = {
+                "default_data_sources": {},
+                "fallback_behavior": "show_error_message",
+                "last_updated": "2025-09-11T00:00:00Z"
+            }
+            
+    return _preferences_cache
+
+def save_preferences(preferences: Dict[str, Any]) -> None:
+    """Sauvegarde les préférences dans le fichier de configuration."""
+    global _preferences_cache
+    try:
+        # Créer le répertoire si nécessaire
+        PREFERENCES_FILE.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Mettre à jour le timestamp
+        from datetime import datetime
+        preferences["last_updated"] = datetime.now().isoformat() + "Z"
+        
+        with open(PREFERENCES_FILE, 'w', encoding='utf-8') as f:
+            json.dump(preferences, f, ensure_ascii=False, indent=2)
+        
+        _preferences_cache = preferences
+        logger.info("Préférences sauvegardées avec succès")
+        
+    except Exception as e:
+        logger.error(f"Erreur lors de la sauvegarde des préférences: {e}")
+        raise
+
+def load_competences_for_niveau(niveau: str = None) -> Dict[str, Any]:
+    """Charge les données des compétences pour un niveau spécifique ou toutes."""
+    preferences = load_preferences()
+    
+    # Si pas de niveau spécifié, essayer le fichier par défaut global
+    if niveau is None:
+        return load_default_competences()
+    
+    # Chercher le fichier pour ce niveau dans les préférences
+    niveau_upper = niveau.upper()
+    data_sources = preferences.get('default_data_sources', {})
+    
+    if niveau_upper in data_sources:
+        file_path = Path(data_sources[niveau_upper])
+        try:
+            if file_path.is_absolute():
+                competences_file = file_path
+            else:
+                # Chemin relatif par rapport au répertoire des données
+                competences_file = Path(__file__).parent / ".." / "datas" / file_path
+                
+            with open(competences_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                logger.info(f"Compétences {niveau} chargées: {data.get('metadata', {}).get('totalEntries', len(data.get('competences', [])))} entrées")
+                return data
+                
+        except FileNotFoundError:
+            logger.error(f"Fichier de compétences non trouvé pour {niveau}: {competences_file}")
+            return {
+                "competences": [], 
+                "metadata": {"totalEntries": 0, "error": f"Aucun fichier de compétences configuré pour le niveau {niveau}"}
+            }
+        except json.JSONDecodeError as e:
+            logger.error(f"Erreur lors du décodage JSON pour {niveau}: {e}")
+            return {
+                "competences": [], 
+                "metadata": {"totalEntries": 0, "error": f"Erreur de format JSON pour le niveau {niveau}"}
+            }
+    else:
+        # Niveau non configuré
+        logger.warning(f"Aucun fichier de compétences configuré pour le niveau {niveau}")
+        return {
+            "competences": [], 
+            "metadata": {"totalEntries": 0, "error": f"Aucun fichier de compétences configuré pour le niveau {niveau}"}
+        }
+
+def load_default_competences() -> Dict[str, Any]:
+    """Charge les données depuis le fichier par défaut."""
+    global _competences_cache
+    
+    if _competences_cache is None:
+        try:
+            with open(DEFAULT_COMPETENCES_FILE, 'r', encoding='utf-8') as f:
+                _competences_cache = json.load(f)
+                logger.info(f"Compétences par défaut chargées: {_competences_cache.get('metadata', {}).get('totalEntries', len(_competences_cache.get('competences', [])))} entrées")
+        except FileNotFoundError:
+            logger.error(f"Fichier de compétences par défaut non trouvé: {DEFAULT_COMPETENCES_FILE}")
+            _competences_cache = {"competences": [], "metadata": {"totalEntries": 0, "error": "Fichier de compétences par défaut non trouvé"}}
+        except json.JSONDecodeError as e:
+            logger.error(f"Erreur lors du décodage JSON par défaut: {e}")
+            _competences_cache = {"competences": [], "metadata": {"totalEntries": 0, "error": "Erreur de format JSON"}}
+            
+    return _competences_cache
+
+def load_competences() -> Dict[str, Any]:
+    """Charge les données des compétences depuis le fichier par défaut (compatibilité)."""
+    return load_default_competences()
+
+@mcp.tool()
+def search_competences(query: str, limit: int = 20, offset: int = 0) -> str:
+    """
+    Recherche des compétences par texte libre (nom, description, code).
+
+    Args:
+        query: Terme de recherche (nom, description ou code de compétence)
+        limit: Nombre maximum de résultats à retourner (défaut: 20)
+        offset: Décalage pour la pagination (défaut: 0)
+
+    Returns:
+        JSON string avec les résultats de la recherche paginés
+    """
+    try:
+        # Charger toutes les compétences de tous les niveaux
+        all_competences = []
+        preferences = load_preferences()
+        data_sources = preferences.get('default_data_sources', {})
+
+        for niveau, file_path in data_sources.items():
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    niveau_data = json.load(f)
+                    competences = niveau_data.get('competences', [])
+                    all_competences.extend(competences)
+            except Exception as e:
+                logger.warning(f"Impossible de charger {file_path}: {e}")
+                continue
+
+        query_lower = query.lower()
+
+        # Recherche dans nom, description, code ET source_sequence
+        results = [
+            comp for comp in all_competences
+            if query_lower in comp.get('nom', '').lower()
+            or query_lower in comp.get('description', '').lower()
+            or query_lower in comp.get('code', '').lower()
+            or query_lower in comp.get('source_sequence', '').lower()
+        ]
+
+        total_found = len(results)
+        paginated_results = results[offset:offset + limit]
+
+        return json.dumps({
+            "query": query,
+            "found": total_found,
+            "pagination": {
+                "offset": offset,
+                "limit": limit,
+                "returned": len(paginated_results),
+                "has_more": offset + limit < total_found,
+                "next_offset": offset + limit if offset + limit < total_found else None
+            },
+            "competences": paginated_results
+        }, ensure_ascii=False, indent=2)
+
+    except Exception as e:
+        logger.error(f"Erreur dans search_competences: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def filter_by_niveau(niveau: str) -> str:
+    """
+    Filtre les compétences par niveau scolaire.
+    
+    Args:
+        niveau: Niveau scolaire (CM1, CM2, SIXIEME, CINQUIEME, QUATRIEME, etc.)
+    
+    Returns:
+        JSON string avec les compétences du niveau demandé
+    """
+    try:
+        # Charger les données spécifiques au niveau
+        data = load_competences_for_niveau(niveau)
+        
+        # Vérifier s'il y a une erreur
+        if "error" in data.get('metadata', {}):
+            return json.dumps({
+                "niveau": niveau,
+                "found": 0,
+                "competences": [],
+                "message": data['metadata']['error']
+            }, ensure_ascii=False, indent=2)
+        
+        competences = data.get('competences', [])
+        niveau_upper = niveau.upper()
+        
+        # Si on a chargé des données spécifiques au niveau, retourner tout
+        # Sinon filtrer par niveau depuis les données globales
+        if len(competences) > 0 and all(comp.get('niveau', '').upper() == niveau_upper for comp in competences):
+            results = competences
+        else:
+            results = [comp for comp in competences if comp.get('niveau', '').upper() == niveau_upper]
+        
+        return json.dumps({
+            "niveau": niveau,
+            "found": len(results),
+            "competences": results
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans filter_by_niveau: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def filter_by_theme(theme: str) -> str:
+    """
+    Filtre les compétences par thème.
+    
+    Args:
+        theme: Thème de compétence (DONNEES, GEOMETRIE, GRANDEURS, INFORMATIQUE, NOMBRES)
+    
+    Returns:
+        JSON string avec les compétences du thème demandé
+    """
+    try:
+        data = load_competences()
+        competences = data.get('competences', [])
+        theme_upper = theme.upper()
+        
+        results = [comp for comp in competences if theme_upper in [t.upper() for t in comp.get('themes', [])]]
+        
+        return json.dumps({
+            "theme": theme,
+            "found": len(results),
+            "competences": results
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans filter_by_theme: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def filter_by_palier(palier: int) -> str:
+    """
+    Filtre les compétences par palier de difficulté.
+    
+    Args:
+        palier: Palier de difficulté (1 à 5)
+    
+    Returns:
+        JSON string avec les compétences du palier demandé
+    """
+    try:
+        data = load_competences()
+        competences = data.get('competences', [])
+        
+        results = [comp for comp in competences if comp.get('palier') == palier]
+        
+        return json.dumps({
+            "palier": palier,
+            "found": len(results),
+            "competences": results
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans filter_by_palier: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def get_competence_by_code(code: str) -> str:
+    """
+    Récupère une compétence par son code exact.
+    
+    Args:
+        code: Code exact de la compétence (ex: C1D1-1)
+    
+    Returns:
+        JSON string avec la compétence trouvée ou un message d'erreur
+    """
+    try:
+        data = load_competences()
+        competences = data.get('competences', [])
+        code_upper = code.upper()
+        
+        for comp in competences:
+            if comp.get('code', '').upper() == code_upper:
+                return json.dumps({
+                    "code": code,
+                    "found": True,
+                    "competence": comp
+                }, ensure_ascii=False, indent=2)
+        
+        return json.dumps({
+            "code": code,
+            "found": False,
+            "message": f"Aucune compétence trouvée avec le code '{code}'"
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans get_competence_by_code: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def get_niveaux_available() -> str:
+    """
+    Liste tous les niveaux scolaires disponibles.
+    
+    Returns:
+        JSON string avec la liste des niveaux disponibles
+    """
+    try:
+        data = load_competences()
+        competences = data.get('competences', [])
+        niveaux = sorted(set(comp.get('niveau', '') for comp in competences if comp.get('niveau')))
+        
+        return json.dumps({
+            "niveaux_disponibles": niveaux,
+            "total": len(niveaux)
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans get_niveaux_available: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def get_themes_available() -> str:
+    """
+    Liste tous les thèmes de compétences disponibles.
+    
+    Returns:
+        JSON string avec la liste des thèmes disponibles
+    """
+    try:
+        data = load_competences()
+        competences = data.get('competences', [])
+        themes = set()
+        for comp in competences:
+            themes.update(comp.get('themes', []))
+        themes_list = sorted(list(themes))
+        
+        return json.dumps({
+            "themes_disponibles": themes_list,
+            "total": len(themes_list)
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans get_themes_available: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def get_paliers_available() -> str:
+    """
+    Liste tous les paliers de difficulté disponibles.
+    
+    Returns:
+        JSON string avec la liste des paliers disponibles
+    """
+    try:
+        data = load_competences()
+        competences = data.get('competences', [])
+        paliers = sorted(set(comp.get('palier', 0) for comp in competences if comp.get('palier')))
+        
+        return json.dumps({
+            "paliers_disponibles": paliers,
+            "total": len(paliers)
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans get_paliers_available: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def get_competences_stats() -> str:
+    """
+    Obtient les statistiques générales des compétences.
+    
+    Returns:
+        JSON string avec les statistiques détaillées
+    """
+    try:
+        data = load_competences()
+        competences = data.get('competences', [])
+        
+        niveaux_count = {}
+        themes_count = {}
+        paliers_count = {}
+        
+        for comp in competences:
+            # Compter par niveau
+            niveau = comp.get('niveau', 'Inconnu')
+            niveaux_count[niveau] = niveaux_count.get(niveau, 0) + 1
+            
+            # Compter par thème
+            for theme in comp.get('themes', []):
+                themes_count[theme] = themes_count.get(theme, 0) + 1
+                
+            # Compter par palier
+            palier = comp.get('palier', 0)
+            if palier:
+                paliers_count[palier] = paliers_count.get(palier, 0) + 1
+        
+        return json.dumps({
+            "total_competences": len(competences),
+            "repartition_par_niveau": niveaux_count,
+            "repartition_par_theme": themes_count,
+            "repartition_par_palier": paliers_count,
+            "metadata": data.get('metadata', {})
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans get_competences_stats: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def advanced_search(query: str = "", niveau: str = "", theme: str = "", palier: int = 0, limit: int = 20, offset: int = 0) -> str:
+    """
+    Recherche avancée avec plusieurs critères combinés.
+
+    Args:
+        query: Terme de recherche optionnel
+        niveau: Niveau scolaire optionnel
+        theme: Thème optionnel
+        palier: Palier optionnel (0 = ignoré)
+        limit: Nombre maximum de résultats à retourner (défaut: 20)
+        offset: Décalage pour la pagination (défaut: 0)
+
+    Returns:
+        JSON string avec les résultats de la recherche multicritères paginés
+    """
+    try:
+        # Charger toutes les compétences de tous les niveaux
+        all_competences = []
+        preferences = load_preferences()
+        data_sources = preferences.get('default_data_sources', {})
+
+        for niveau_key, file_path in data_sources.items():
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    niveau_data = json.load(f)
+                    competences = niveau_data.get('competences', [])
+                    all_competences.extend(competences)
+            except Exception as e:
+                logger.warning(f"Impossible de charger {file_path}: {e}")
+                continue
+
+        results = all_competences
+        filters_applied = []
+
+        # Appliquer les filtres un par un
+        if query:
+            query_lower = query.lower()
+            results = [
+                comp for comp in results
+                if query_lower in comp.get('nom', '').lower()
+                or query_lower in comp.get('description', '').lower()
+                or query_lower in comp.get('code', '').lower()
+                or query_lower in comp.get('source_sequence', '').lower()
+            ]
+            filters_applied.append(f"texte: '{query}'")
+
+        if niveau:
+            niveau_upper = niveau.upper()
+            results = [comp for comp in results if comp.get('niveau', '').upper() == niveau_upper]
+            filters_applied.append(f"niveau: {niveau}")
+
+        if theme:
+            theme_upper = theme.upper()
+            results = [comp for comp in results if theme_upper in [t.upper() for t in comp.get('themes', [])]]
+            filters_applied.append(f"theme: {theme}")
+            
+        if palier > 0:
+            results = [comp for comp in results if comp.get('palier') == palier]
+            filters_applied.append(f"palier: {palier}")
+
+        total_found = len(results)
+        paginated_results = results[offset:offset + limit]
+
+        return json.dumps({
+            "filtres_appliques": filters_applied,
+            "found": total_found,
+            "pagination": {
+                "offset": offset,
+                "limit": limit,
+                "returned": len(paginated_results),
+                "has_more": offset + limit < total_found,
+                "next_offset": offset + limit if offset + limit < total_found else None
+            },
+            "competences": paginated_results
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans advanced_search: {e}")
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+# Nouvelles méthodes CRUD pour la gestion des préférences
+@mcp.tool()
+def get_user_preferences() -> str:
+    """
+    Récupère les préférences utilisateur actuelles.
+    
+    Returns:
+        JSON string avec les préférences utilisateur
+    """
+    try:
+        preferences = load_preferences()
+        return json.dumps({
+            "status": "success",
+            "preferences": preferences
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans get_user_preferences: {e}")
+        return json.dumps({"status": "error", "error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def update_data_source(niveau: str, file_path: str) -> str:
+    """
+    Met à jour le chemin du fichier de données pour un niveau.
+    
+    Args:
+        niveau: Niveau scolaire (ex: SIXIEME, CINQUIEME, etc.)
+        file_path: Chemin vers le fichier de compétences
+    
+    Returns:
+        JSON string avec le résultat de l'opération
+    """
+    try:
+        preferences = load_preferences()
+        niveau_upper = niveau.upper()
+        
+        # Mettre à jour la source de données
+        preferences['default_data_sources'][niveau_upper] = file_path
+        
+        # Sauvegarder
+        save_preferences(preferences)
+        
+        # Invalider le cache pour forcer le rechargement
+        global _competences_cache
+        _competences_cache = None
+        
+        return json.dumps({
+            "status": "success",
+            "message": f"Source de données mise à jour pour {niveau}: {file_path}",
+            "niveau": niveau_upper,
+            "file_path": file_path
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans update_data_source: {e}")
+        return json.dumps({"status": "error", "error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def add_data_source(niveau: str, file_path: str) -> str:
+    """
+    Ajoute une nouvelle source de données pour un niveau.
+    
+    Args:
+        niveau: Niveau scolaire (ex: SECONDE, PREMIERE, etc.)
+        file_path: Chemin vers le fichier de compétences
+    
+    Returns:
+        JSON string avec le résultat de l'opération
+    """
+    return update_data_source(niveau, file_path)  # Même logique
+
+@mcp.tool()
+def remove_data_source(niveau: str) -> str:
+    """
+    Supprime la source de données pour un niveau.
+    
+    Args:
+        niveau: Niveau scolaire à supprimer
+    
+    Returns:
+        JSON string avec le résultat de l'opération
+    """
+    try:
+        preferences = load_preferences()
+        niveau_upper = niveau.upper()
+        
+        if niveau_upper in preferences['default_data_sources']:
+            del preferences['default_data_sources'][niveau_upper]
+            save_preferences(preferences)
+            
+            # Invalider le cache
+            global _competences_cache
+            _competences_cache = None
+            
+            return json.dumps({
+                "status": "success",
+                "message": f"Source de données supprimée pour {niveau}",
+                "niveau": niveau_upper
+            }, ensure_ascii=False, indent=2)
+        else:
+            return json.dumps({
+                "status": "warning",
+                "message": f"Aucune source de données configurée pour {niveau}",
+                "niveau": niveau_upper
+            }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans remove_data_source: {e}")
+        return json.dumps({"status": "error", "error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def reset_preferences() -> str:
+    """
+    Remet les préférences aux valeurs par défaut.
+    
+    Returns:
+        JSON string avec le résultat de l'opération
+    """
+    try:
+        default_preferences = {
+            "default_data_sources": {},
+            "fallback_behavior": "show_error_message",
+            "last_updated": "2025-09-11T00:00:00Z"
+        }
+        
+        save_preferences(default_preferences)
+        
+        # Invalider les caches
+        global _competences_cache, _preferences_cache
+        _competences_cache = None
+        _preferences_cache = None
+        
+        return json.dumps({
+            "status": "success",
+            "message": "Préférences remises à zéro",
+            "preferences": default_preferences
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans reset_preferences: {e}")
+        return json.dumps({"status": "error", "error": str(e)}, ensure_ascii=False)
+
+@mcp.tool()
+def list_configured_niveaux() -> str:
+    """
+    Liste tous les niveaux qui ont une source de données configurée.
+    
+    Returns:
+        JSON string avec la liste des niveaux configurés
+    """
+    try:
+        preferences = load_preferences()
+        configured_niveaux = list(preferences.get('default_data_sources', {}).keys())
+        
+        return json.dumps({
+            "status": "success",
+            "niveaux_configures": configured_niveaux,
+            "total": len(configured_niveaux)
+        }, ensure_ascii=False, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Erreur dans list_configured_niveaux: {e}")
+        return json.dumps({"status": "error", "error": str(e)}, ensure_ascii=False)
+
+if __name__ == "__main__":
+    # Précharger les préférences et compétences au démarrage
+    logger.info("Préchargement des préférences utilisateur...")
+    load_preferences()
+    logger.info("Préchargement des données de compétences par défaut...")
+    load_competences()
+    logger.info("Serveur MCP Compétences amélioré prêt")
+    
+    # Démarrer le serveur
+    mcp.run()

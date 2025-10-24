@@ -1,0 +1,240 @@
+{
+    "name": "Application de Révision Interactive",
+    "type": "revision",
+    "version": "2.0.0",
+    "description": "Template complet pour créer des applications de révision interactives avec système de thèmes avancé",
+
+    "placeholders": {
+        "APP_NAME": "Application de Révision",
+        "APP_VERSION": "1.0.0",
+        "APP_AUTHOR": "Educational App Builder",
+        "THEME": "Thème du cours",
+        "LEVEL": "Niveau",
+        "TOTAL_QUESTIONS": "52",
+        "CREATED_DATE": "2025-01-01",
+        "ESTABLISHMENT_TYPE": "Lycée",
+        "ESTABLISHMENT_NAME": "Établissement"
+    },
+
+    "structure": {
+        "root": [
+            "app.py",
+            "config.py",
+            "requirements.txt",
+            "requirements-dev.txt",
+            "README.md",
+            "GUIDE_REVISION.md",
+            "RAPPORT_CREATION.md",
+            "INSTRUCTIONS.txt"
+        ],
+        "static": {
+            "css": [
+                "main.css",
+                "components.css",
+                "themes.css"
+            ],
+            "js": [
+                "utils.js",
+                "storage.js",
+                "themes.js",
+                "revision.js",
+                "statistiques.js",
+                "main.js"
+            ]
+        },
+        "templates": [
+            "base.html",
+            "index.html",
+            "revision.html",
+            "cours.html",
+            "statistiques.html"
+        ],
+        "data": [
+            "questions.json"
+        ],
+        "tests": [
+            "test_app.py"
+        ],
+        "build": [
+            "build_exe.py"
+        ]
+    },
+
+    "features": [
+        "Système de thèmes avancé (8 thèmes)",
+        "Thème dyslexique optimisé (police OpenDyslexic, espacements augmentés)",
+        "Statistiques détaillées avec graphiques (Chart.js)",
+        "Algorithme de répétition espacée",
+        "Sauvegarde locale automatique (LocalStorage)",
+        "Rendu mathématique professionnel (MathJax)",
+        "Export/Import des données",
+        "Build exécutable standalone (.exe)",
+        "Tests automatisés (pytest)",
+        "Design responsive",
+        "Mode hors ligne (LocalStorage)",
+        "Progression par section",
+        "Recommandations personnalisées"
+    ],
+
+    "themes": {
+        "available": [
+            {
+                "id": "standard-light",
+                "name": "Standard Clair",
+                "icon": "☀️",
+                "description": "Thème par défaut lumineux"
+            },
+            {
+                "id": "standard-dark",
+                "name": "Standard Sombre",
+                "icon": "🌙",
+                "description": "Thème sombre pour le confort des yeux"
+            },
+            {
+                "id": "academic",
+                "name": "Académique",
+                "icon": "📚",
+                "description": "Style classique et professionnel"
+            },
+            {
+                "id": "manga",
+                "name": "Manga",
+                "icon": "🎨",
+                "description": "Coloré et dynamique"
+            },
+            {
+                "id": "matrix",
+                "name": "Matrix",
+                "icon": "💻",
+                "description": "Style cyberpunk rétro"
+            },
+            {
+                "id": "retro",
+                "name": "Rétro",
+                "icon": "🕹️",
+                "description": "Années 80-90"
+            },
+            {
+                "id": "futuristic",
+                "name": "Futuriste",
+                "icon": "🚀",
+                "description": "Design néon moderne"
+            },
+            {
+                "id": "dyslexic",
+                "name": "Dyslexie",
+                "icon": "👁️",
+                "description": "Optimisé pour la dyslexie (police adaptée, espacements augmentés)",
+                "priority": "high"
+            }
+        ],
+        "default": "standard-light"
+    },
+
+    "requirements": {
+        "python": "3.8+",
+        "pip_packages": [
+            "Flask==3.0.0",
+            "Jinja2==3.1.2",
+            "Werkzeug==3.0.0"
+        ],
+        "dev_packages": [
+            "pytest==7.4.3",
+            "pytest-cov==4.1.0",
+            "PyInstaller==6.3.0"
+        ]
+    },
+
+    "configuration": {
+        "content_structure": {
+            "sections": "Liste des sections du cours",
+            "questions": "Liste des questions avec structure définie",
+            "question_schema": {
+                "id": "number",
+                "section": "number",
+                "subsection": "number",
+                "type": "definition|formule|calcul|comprehension",
+                "difficulty": "1|2|3",
+                "question": "string (HTML + LaTeX)",
+                "answer": "string",
+                "alternatives": "array (optional, pour QCM)",
+                "correct_index": "number (optional, pour QCM)",
+                "explanation": "string (HTML + LaTeX)",
+                "hint": "string (optional)",
+                "solution": "string (optional, HTML + LaTeX)"
+            }
+        },
+        "statistics_tracking": {
+            "per_question": [
+                "total_attempts",
+                "correct_attempts",
+                "incorrect_attempts",
+                "success_rate",
+                "last_attempt",
+                "mastery"
+            ],
+            "global": [
+                "totalQuestions",
+                "questionsAttempted",
+                "totalAttempts",
+                "averageSuccessRate",
+                "masteryPercent",
+                "totalSessions",
+                "totalTime",
+                "currentStreak"
+            ]
+        }
+    },
+
+    "customization": {
+        "branding": {
+            "app_name": "Configurable",
+            "author": "Configurable",
+            "establishment": "Configurable",
+            "logo": "Optionnel"
+        },
+        "content": {
+            "total_questions": "Configurable",
+            "sections": "Configurable",
+            "difficulty_levels": "3 niveaux"
+        },
+        "features_toggles": {
+            "timer": "Activable/Désactivable",
+            "smart_selection": "Activable/Désactivable",
+            "export_import": "Toujours actif",
+            "build_exe": "Optionnel"
+        }
+    },
+
+    "generation_workflow": [
+        "Analyser la ressource source (LaTeX, PDF, texte)",
+        "Extraire les sections, définitions, propriétés, exemples",
+        "Générer les questions (définitions, formules, calculs, compréhension)",
+        "Créer le fichier questions.json",
+        "Copier les fichiers du template",
+        "Remplacer les placeholders",
+        "Configurer app.py et config.py",
+        "Générer la documentation (README, GUIDE)",
+        "Lancer les tests",
+        "Builder l'exécutable (optionnel)"
+    ],
+
+    "maintenance": {
+        "last_update": "2025-10-20",
+        "changelog": [
+            "2.0.0 - Ajout du système de thèmes avancé (8 thèmes)",
+            "2.0.0 - Thème dyslexique optimisé",
+            "2.0.0 - Corrections bugs statistiques",
+            "2.0.0 - Amélioration calculs de progression",
+            "2.0.0 - Refactoring ThemeManager",
+            "1.0.0 - Version initiale du template"
+        ]
+    },
+
+    "documentation": {
+        "user_guide": "GUIDE_REVISION.md",
+        "developer_guide": "README.md",
+        "technical_report": "RAPPORT_CREATION.md",
+        "quick_start": "INSTRUCTIONS.txt"
+    }
+}

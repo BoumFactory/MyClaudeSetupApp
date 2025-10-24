@@ -1,0 +1,152 @@
+{
+  "categories": [
+    {
+      "id": "architecture-config",
+      "name": "Architecture de ma config Claude Code",
+      "description": "Vue d'ensemble de l'architecture et de l'interface de ma configuration",
+      "icon": "Layers",
+      "gradient": "from-blue-500/10 via-purple-500/10 to-blue-600/10",
+      "color": "blue",
+      "borderColor": "border-blue-500/30",
+      "pattern": "dots",
+      "subcategories": [
+        {
+          "id": "architecture-interface",
+          "name": "Architecture & Interface",
+          "description": "Comprendre l'architecture globale et l'interface",
+          "presentations": [
+            {
+              "slug": "architecture-claude-code-reveals",
+              "comment": "Vue d'ensemble complète de l'architecture de ma configuration Claude Code. Découvrez comment agents, skills, commandes et serveurs MCP s'articulent ensemble."
+            },
+            {
+              "slug": "claude-code-interface",
+              "comment": "Guide détaillé de l'interface de Claude Code et de ses fonctionnalités principales. Apprenez à naviguer efficacement dans l'environnement et à utiliser les outils disponibles."
+            }
+          ]
+        },
+        {
+          "id": "commandes",
+          "name": "Commandes disponibles",
+          "description": "Liste et utilisation des commandes",
+          "presentations": [
+            {
+              "slug": "commandes-disponibles",
+              "comment": "Catalogue exhaustif de toutes les commandes disponibles dans ma configuration. Commandes slash, skills et raccourcis pour optimiser votre workflow pédagogique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "agents-skills",
+      "name": "Agents et Skills",
+      "description": "Systèmes de création automatisés (couples agent + skill)",
+      "icon": "Cpu",
+      "gradient": "from-violet-500/10 via-purple-500/10 to-fuchsia-500/10",
+      "color": "violet",
+      "borderColor": "border-violet-500/30",
+      "pattern": "circles",
+      "subcategories": [
+        {
+          "id": "creation-documents",
+          "name": "Création de documents",
+          "description": "Système d'initialisation de projets LaTeX",
+          "presentations": [
+            {
+              "slug": "tex-document-creator-system",
+              "comment": "Système d'initialisation automatisée de projets LaTeX avec templates personnalisés. Créez rapidement des cours, fiches, évaluations et activités avec le package bfcours."
+            }
+          ]
+        },
+        {
+          "id": "creation-images",
+          "name": "Génération d'images",
+          "description": "Agent et skill pour créer des images pédagogiques",
+          "presentations": [
+            {
+              "slug": "agent-make-images",
+              "comment": "Agent intelligent pour générer des images pédagogiques avec l'API Google Imagen. Optimisation automatique pour l'impression économique et les ressources éducatives."
+            }
+          ]
+        },
+        {
+          "id": "creation-skills",
+          "name": "Création de skills",
+          "description": "Système de création de nouveaux skills",
+          "presentations": [
+            {
+              "slug": "skill-creator-system",
+              "comment": "Framework complet pour créer vos propres skills personnalisés. Guide méthodologique et bonnes pratiques pour étendre les capacités de Claude Code."
+            }
+          ]
+        },
+        {
+          "id": "creation-presentations",
+          "name": "Systèmes de présentation",
+          "description": "Outils de génération de diaporamas",
+          "presentations": [
+            {
+              "slug": "beamer-presentation-system",
+              "comment": "Système de génération automatisée de diaporamas Beamer LaTeX professionnels. Gestion avancée des overlays, animations et styles pédagogiques (collège, lycée, académique)."
+            },
+            {
+              "slug": "reveals-presentation-system",
+              "comment": "Création de présentations web interactives avec Reveal.js. Navigation fluide, animations modernes et adaptation responsive pour vos cours en ligne."
+            }
+          ]
+        },
+        {
+          "id": "creation-apps",
+          "name": "Applications éducatives",
+          "description": "Générateur d'applications pédagogiques",
+          "presentations": [
+            {
+              "slug": "educational-app-builder-system",
+              "comment": "Générateur complet d'applications Flask éducatives interactives. Transformation automatique de ressources pédagogiques en applications web packagées et standalone."
+            }
+          ]
+        },
+        {
+          "id": "programmes-officiels",
+          "name": "Programmes officiels",
+          "description": "Extraction et structuration des programmes officiels",
+          "presentations": [
+            {
+              "slug": "programmes-officiels-system",
+              "comment": "Système d'extraction et structuration des programmes officiels de l'Éducation Nationale. Recherche avancée de compétences et capacités pour vos fiches pédagogiques."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "outils-latex",
+      "name": "Outils LaTeX",
+      "description": "Systèmes de création et compilation de documents LaTeX",
+      "icon": "FileCode",
+      "gradient": "from-slate-500/10 via-gray-500/10 to-zinc-500/10",
+      "color": "slate",
+      "borderColor": "border-slate-500/30",
+      "pattern": "lines",
+      "subcategories": [
+        {
+          "id": "bfcours",
+          "name": "Package bfcours",
+          "description": "Utilisation et fonctionnalités du package bfcours",
+          "presentations": [
+            {
+              "slug": "bfcours-latex-system",
+              "comment": "Guide complet du package LaTeX bfcours pour l'enseignement des mathématiques. Environnements prédéfinis, mise en page automatisée et outils de compilation optimisés."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "defaultIcon": "BookOpen",
+    "defaultGradient": "cosmic-gradient",
+    "defaultColor": "cosmic"
+  }
+}

@@ -1,0 +1,323 @@
+%% Template Beamer pour lycée (2nde - Terminale)
+%% Style : Équilibre entre rigueur et accessibilité
+%% Densité maximale : 70%
+
+\documentclass[12pt, xcolor={svgnames}]{beamer}
+
+% === THÈME ET COULEURS ===
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Couleurs équilibrées pour le lycée
+\definecolor{lycee-main}{RGB}{0, 51, 102}          % Bleu marine
+\definecolor{lycee-accent}{RGB}{153, 0, 0}         % Bordeaux
+\definecolor{lycee-light}{RGB}{230, 230, 250}      % Lavande
+\definecolor{lycee-example}{RGB}{0, 102, 51}       % Vert foncé
+
+\setbeamercolor{structure}{fg=lycee-main}
+\setbeamercolor{block title}{bg=lycee-main, fg=white}
+\setbeamercolor{block body}{bg=lycee-light}
+\setbeamercolor{block title example}{bg=lycee-example, fg=white}
+\setbeamercolor{block body example}{bg=lycee-example!10}
+\setbeamercolor{block title alerted}{bg=lycee-accent, fg=white}
+\setbeamercolor{block body alerted}{bg=lycee-accent!10}
+
+% === PACKAGES ESSENTIELS ===
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Packages TikZ pour graphiques avancés
+\usetikzlibrary{calc, positioning, shapes, arrows, decorations.pathreplacing, patterns}
+
+% Package pour les encadrés d'exercices
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable, theorems}
+
+% === ENVIRONNEMENT EXERCICE ===
+\newtcolorbox{exobeamer}[1][]{
+  enhanced,
+  breakable,
+  colback=lycee-light,
+  colframe=lycee-main,
+  coltitle=white,
+  fonttitle=\bfseries,
+  title={Exercice},
+  attach boxed title to top left={yshift=-2.5mm, xshift=5mm},
+  boxed title style={
+    colback=lycee-main,
+    sharp corners,
+    boxrule=0pt,
+  },
+  top=5mm,
+  bottom=3mm,
+  left=3mm,
+  right=3mm,
+  overlay unbroken and first={
+    % Estimation
+    \node[anchor=north west, font=\small\itshape, text=lycee-main!80!black]
+      at ([xshift=5mm, yshift=-10mm]frame.north west) {#1};
+    % Zone modifiable
+    \node[anchor=north east, font=\small, text=red!70!black, draw=red!70!black,
+          fill=white, inner sep=2pt, minimum width=3cm]
+      at ([xshift=-5mm, yshift=-10mm]frame.north east) {Temps réel : \underline{\hspace{1.5cm}}};
+  }
+}
+
+% === THÉORÈMES ET DÉFINITIONS ===
+\newtheorem{theoreme}{Théorème}
+\newtheorem{propriete}{Propriété}
+\newtheorem{lemme}{Lemme}
+\newtheorem{corollaire}{Corollaire}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}
+\newtheorem{exemple}{Exemple}
+
+% === MISE EN PAGE ===
+% Espacement des listes
+\setlength{\leftmargini}{1.5em}
+\setlength{\parskip}{0.3em}
+
+% En-tête et pied de page
+\setbeamertemplate{footline}{
+  \hbox{%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1ex,left]{author in head/foot}%
+      \hspace*{1em}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1ex,right]{title in head/foot}%
+      \insertshorttitle\hspace*{1em}
+      \insertframenumber{} / \inserttotalframenumber\hspace*{1em}
+    \end{beamercolorbox}%
+  }
+  \vskip0pt%
+}
+
+% Pas de symboles de navigation
+\setbeamertemplate{navigation symbols}{}
+
+% === MÉTADONNÉES (À REMPLIR) ===
+\title{{{TITRE_PRESENTATION}}}
+\subtitle{{{SOUS_TITRE}}}
+\author{{{AUTEUR}}}
+\date{{{DATE}}}
+\institute{{{ETABLISSEMENT}}}
+
+% Versions courtes pour l'en-tête
+\def\insertshortauthor{{{AUTEUR_COURT}}}
+\def\insertshorttitle{{{TITRE_COURT}}}
+
+% === DÉBUT DU DOCUMENT ===
+\begin{document}
+
+% === PAGE DE TITRE ===
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% === PLAN ===
+\begin{frame}{Plan}
+  \tableofcontents
+\end{frame}
+
+% === SECTION 1 : RAPPELS ===
+\section{Rappels et prérequis}
+
+\begin{frame}{Rappels}
+  \begin{block}{Notions à connaître}
+    \begin{itemize}
+      \item Notion 1 vue en classe précédente
+      \item Notion 2 essentielle pour aujourd'hui
+      \item Notion 3 à ne pas oublier
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  \begin{exampleblock}{Exemple de rappel}
+    Si $f(x) = x^2$, alors $f'(x) = 2x$
+  \end{exampleblock}
+\end{frame}
+
+% === SECTION 2 : COURS ===
+\section{Nouvelle notion}
+
+\begin{frame}{Définition}
+  \begin{definition}
+    On appelle \emph{fonction dérivée} de $f$ la fonction $f'$ définie par :
+    \[
+      f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}
+    \]
+  \end{definition}
+
+  \pause
+
+  \begin{alertblock}{Condition d'existence}
+    Cette limite doit exister et être finie.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Théorème principal}
+  \begin{theoreme}[Dérivée des fonctions puissances]
+    Soit $n \in \mathbb{N}^*$. La fonction $f : x \mapsto x^n$ est dérivable sur $\mathbb{R}$ et :
+    \[
+      \forall x \in \mathbb{R}, \quad f'(x) = nx^{n-1}
+    \]
+  \end{theoreme}
+
+  \pause
+
+  \begin{proof}[Esquisse de démonstration]
+    Par définition de la dérivée et développement du binôme...
+  \end{proof}
+\end{frame}
+
+\begin{frame}{Illustration graphique}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$,
+        ylabel=$y$,
+        domain=-2:2,
+        samples=100,
+        grid=major,
+        width=9cm,
+        height=6cm,
+        legend pos=north west
+      ]
+        \addplot[blue, thick] {x^2};
+        \addlegendentry{$f(x) = x^2$}
+
+        \addplot[red, thick, dashed] {2*x};
+        \addlegendentry{$f'(x) = 2x$}
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+% === SECTION 3 : MÉTHODES ===
+\section{Méthodes et exemples}
+
+\begin{frame}{Méthode : Calculer une dérivée}
+  \textbf{Étapes :}
+
+  \begin{enumerate}
+    \item<2-> Identifier la forme de la fonction
+    \item<3-> Appliquer la formule de dérivation
+    \item<4-> Simplifier l'expression obtenue
+    \item<5-> Vérifier le résultat
+  \end{enumerate}
+
+  \vspace{1em}
+
+  \uncover<6->{
+    \begin{exampleblock}{Application}
+      Calculons la dérivée de $f(x) = 3x^4 - 2x^2 + 5$
+    \end{exampleblock}
+  }
+\end{frame}
+
+\begin{frame}{Exemple détaillé}
+  \textbf{Calculer la dérivée de} $f(x) = 3x^4 - 2x^2 + 5$
+
+  \vspace{1em}
+
+  \begin{align*}
+    f'(x) &= \uncover<2->{(3x^4)' - (2x^2)' + (5)'} \\[0.5em]
+          &= \uncover<3->{3 \times 4x^3 - 2 \times 2x + 0} \\[0.5em]
+          &= \uncover<4->{12x^3 - 4x}
+  \end{align*}
+
+  \vspace{1em}
+
+  \uncover<5->{
+    \textbf{Conclusion :} $f'(x) = 12x^3 - 4x$
+  }
+\end{frame}
+
+% === SECTION 4 : EXERCICES ===
+\section{Exercices d'application}
+
+\begin{frame}{Exercice guidé}
+  \begin{exobeamer}[Estimation : 8 min | Difficulté : ★★☆]
+    \textbf{Énoncé :}
+
+    Étudier les variations de $f(x) = x^3 - 3x + 1$ sur $\mathbb{R}$.
+
+    \pause
+
+    \textbf{Méthode :}
+    \begin{enumerate}
+      \item<3-> Calculer $f'(x)$ : $f'(x) = 3x^2 - 3 = 3(x^2 - 1)$
+      \item<4-> Factoriser : $f'(x) = 3(x-1)(x+1)$
+      \item<5-> Tableau de signes et variations...
+    \end{enumerate}
+  \end{exobeamer}
+\end{frame}
+
+\begin{frame}{Exercice d'application}
+  \begin{exobeamer}[Estimation : 5 min | Difficulté : ★☆☆]
+    \textbf{À vous de jouer :}
+
+    Calculer la dérivée de :
+    \begin{enumerate}
+      \item $g(x) = 5x^3 + 2x$
+      \item $h(x) = x^4 - 7x^2 + 3$
+    \end{enumerate}
+
+    \pause
+    \vspace{0.5em}
+
+    \textbf{Solutions :}
+    \begin{enumerate}
+      \item<3-> $g'(x) = 15x^2 + 2$
+      \item<4-> $h'(x) = 4x^3 - 14x$
+    \end{enumerate}
+  \end{exobeamer}
+\end{frame}
+
+% === SYNTHÈSE ===
+\section{Conclusion}
+
+\begin{frame}{Ce qu'il faut retenir}
+  \begin{block}{Points clés du chapitre}
+    \begin{itemize}
+      \item Définition de la dérivée : limite du taux d'accroissement
+      \item Formule : $(x^n)' = nx^{n-1}$
+      \item Application : étude de variations
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  \begin{alertblock}{À savoir par cœur}
+    \begin{center}
+      \begin{tabular}{c|c}
+        Fonction & Dérivée \\
+        \hline
+        $x^n$ & $nx^{n-1}$ \\
+        $k$ & $0$ \\
+      \end{tabular}
+    \end{center}
+  \end{alertblock}
+\end{frame}
+
+% === FIN ===
+\begin{frame}
+  \begin{center}
+    {\Large Merci pour votre attention}
+
+    \vspace{2em}
+
+    {\normalsize Questions ?}
+  \end{center}
+\end{frame}
+
+\end{document}

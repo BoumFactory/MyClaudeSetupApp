@@ -1,0 +1,236 @@
+\documentclass[a4paper,11pt,fleqn]{article}
+
+\usepackage[left=1cm,right=1cm,top=0.5cm,bottom=2cm]{geometry}
+
+\usepackage{bfcours}
+\usepackage{bfcours-fonts}
+%\usepackage{bfcours-fonts-dys}
+\pgfplotsset{compat=1.18}
+\def\rdifficulty{1}
+\setrdexo{%left skip=1cm,
+display exotitle,
+exo header = tcolorbox,
+%display tags,
+skin = bouyachakka,
+lower ={box=crep},
+display score,
+display level,
+save lower,
+score=\points,
+level=\rdifficulty,
+overlay={\node[inner sep=0pt,
+anchor=west,rotate=90, yshift=0.3cm]%,xshift=-3em], yshift=0.45cm
+at (frame.south west) {\thetags[0]} ;}
+]%obligatoire
+}
+\setrdcrep{seyes, correction=true, correction color=monrose, correction font = \large\bfseries}
+
+\newcommand{\tikzinclude}[1]{%
+    \stepcounter{tikzfigcounter}%
+    \csname tikzfig#1\endcsname
+}
+\input{enonce_figures}
+
+\hypersetup{
+    pdfauthor={R.Deschamps},
+    pdfsubject={},
+    pdfkeywords={},
+    pdfproducer={LuaLaTeX},
+    pdfcreator={Boum Factory}
+}
+% Activer ou désactiver l'affichage des boîtes pour les points
+%\displayitempointsfalse % Ne pas afficher les boîtes
+\displayitempointstrue % Afficher les boîtes
+\renewcommand{\boldsymbol}[1]{#1}
+
+
+\newcommand{\intervalle}[2]{\CrochetG #1 ; #2\,\,\CrochetD}
+\begin{document}
+
+\setcounter{pagecounter}{0}
+\setcounter{ExoMA}{0}
+
+\def\points{\phantom{AAA}}
+\def\difficulty{\phantom{AAA}}
+\chapitre[
+    $\mathbf{1^{\text{ère}}}$% : $\mathbf{6^{\text{ème}}}$,$\mathbf{5^{\text{ème}}}$,$\mathbf{4^{\text{ème}}}$,$\mathbf{3^{\text{ème}}}$,$\mathbf{2^{\text{nde}}}$,$\mathbf{1^{\text{ère}}}$,$\mathbf{T^{\text{Le}}}$,
+    ]{
+    Aires et polynômes de degré 2% : ,Equations
+    }{
+    Lycée% : Collège,Lycée
+    }{
+    Camille Claudel% : Othe et Vanne,Amadis Jamyn,Eugène Belgrand
+    }{
+    % : 10},15},30},55}%}
+    }{
+    Complément :
+    }
+
+\setrdcrep{seyes, correction=true, correction color=monrose, correction font = \large\bfseries}
+
+\input{enonce}% : \input{enonce},
+
+\newpage
+\setcounter{pagecounter}{0}
+\setcounter{ExoMA}{0}
+
+\chapitre[
+    $\mathbf{1^{\text{ère}}}$%
+    ]{
+    Aires et polynômes de degré 2% : ,Equations
+    }{
+    Lycée%
+    }{
+    Camille Claudel%
+    }{
+    % supplement
+    }{
+    Solutions :
+    }
+\setrdcrep{seyes, correction=true, correction color=monrose, correction font = \large\bfseries}
+\tcbset{
+    rdexo/default/.cd,correction style/.style={
+        before upper=%
+        \textbf{\thelabel~
+        \thecorrectionnum~:~}
+    }
+}
+
+\begin{bfEnv}{Solution}[Problème de géométrie][defi]
+\begin{MultiColonnes}{2}
+\tcbitem[title=Configuration générale,halign=center]
+\begin{tikzpicture}[scale=0.8]
+% Rectangle ABCD (6cm x 3cm)
+\draw[thick] (0,0) rectangle (6,3);
+
+% Points du rectangle
+\fill (0,0) circle (2pt) node[below left] {$A$};
+\fill (6,0) circle (2pt) node[below right] {$B$};
+\fill (6,3) circle (2pt) node[above right] {$C$};
+\fill (0,3) circle (2pt) node[above left] {$D$};
+
+% Point E sur AB avec 2x=2 (x=1)
+\fill (2,0) circle (2pt) node[below,xshift=3pt] {$E$};
+\draw[dashed] (2,0) -- (2,-0.3);
+\draw[<->] (0,-0.6) -- (2,-0.6);
+\node[yshift=-10pt] at (1,-0.5) {$2x=2$};
+
+% Point F sur AD avec DF=x=1
+\fill (0,2) circle (2pt) node[left] {$F$};
+\draw[dashed] (0,2) -- (-0.3,2);
+\draw[<->] (-0.6,2) -- (-0.6,3);
+\node[xshift=-15pt] at (-0.6,2.5) {$x=1$};
+
+% Triangle FEC
+\draw[red,thick] (0,2) -- (2,0) -- (6,3) -- cycle;
+\fill[red,opacity=0.2] (0,2) -- (2,0) -- (6,3) -- cycle;
+
+% Dimensions du rectangle
+\draw[<->] (6.2,0) -- (6.2,3);
+\node[xshift=10pt] at (6.5,1.5) {$3$ cm};
+\draw[<->] (0,-1.2) -- (6,-1.2);
+\node[yshift=-10pt] at (3,-1) {$6$ cm};
+
+\node[red,yshift=15pt] at (3,1.25) {$\mathcal{A}=7$ cm$^2$};
+\end{tikzpicture}
+
+\tcbitem[title=Configuration avec aire minimale,halign=center]
+\begin{tikzpicture}[scale=0.8]
+% Rectangle ABCD (6cm x 3cm)
+\draw[thick] (0,0) rectangle (6,3);
+
+% Points du rectangle
+\fill (0,0) circle (2pt) node[below left] {$A$};
+\fill (6,0) circle (2pt) node[below right] {$B$};
+\fill (6,3) circle (2pt) node[above right] {$C$};
+\fill (0,3) circle (2pt) node[above left] {$D$};
+
+% Point E sur AB avec 2x=3 (x=1.5)
+\fill (3,0) circle (2pt) node[below] {$E$};
+\draw[dashed] (3,0) -- (3,-0.3);
+\draw[<->] (0,-0.6) -- (3,-0.6);
+\node[yshift=-10pt] at (1.5,-0.5) {$2x=3$};
+
+% Point F sur AD avec DF=x=1.5
+\fill (0,1.5) circle (2pt) node[left] {$F$};
+\draw[dashed] (0,1.5) -- (-0.3,1.5);
+\draw[<->] (-0.6,1.5) -- (-0.6,3);
+\node[xshift=-15pt] at (-0.6,2.25) {$x=1{,}5$};
+
+% Triangle FEC optimal
+\draw[blue,thick] (0,1.5) -- (3,0) -- (6,3) -- cycle;
+\fill[blue,opacity=0.2] (0,1.5) -- (3,0) -- (6,3) -- cycle;
+
+% Dimensions du rectangle
+\draw[<->] (6.2,0) -- (6.2,3);
+\node[xshift=10pt] at (6.5,1.5) {$3$ cm};
+\draw[<->] (0,-1.2) -- (6,-1.2);
+\node[yshift=-10pt] at (3,-1) {$6$ cm};
+
+\node[blue] at (2.5,1.5) {$\mathcal{A}_{\min}=\num{6.75}$ cm$^2$};
+\end{tikzpicture}
+\end{MultiColonnes}
+\begin{tcbenumerate}[2]
+\tcbitem[raster multicolumn=2] \textbf{Calcul de l'aire du triangle $FEC$ :}
+
+\begin{MultiColonnes}{2}
+\tcbitem $\text{Aire}_{FEC} = \text{Aire du rectangle} - \text{Aire des autres triangles}$
+
+L'aire du rectangle $ABCD$ est : $6 \times 3 = 18$ cm$^2$ ; de plus :
+
+\begin{MultiColonnes}{1}
+    \tcbitem $\text{Aire}_{AFE} = \dfrac{1}{2} \times 2x \times (3-x) = x(3-x) =  {\color{blue}3x-x^2}$
+
+    \tcbitem $\text{Aire}_{EBC} = \dfrac{1}{2} \times (6-2x) \times 3 = \dfrac{3}{2}(6-2x) =  {\color{red}9-3x}$
+
+    \tcbitem $\text{Aire}_{FDC} = \dfrac{1}{2} \times x \times 6 =  {\color{defi}3x}$
+
+\end{MultiColonnes}
+
+\tcbitem Donc :
+$\text{Aire}_{FEC} = 18 - \text{Aire}_{AFE} - \text{Aire}_{EBC} - \text{Aire}_{FDC}$
+
+$= 18 -  {\color{blue}(3x-x^2)} - ( {\color{red}9-3x}) -  {\color{defi}3x}$
+
+$= 18 - 3x + x^2 - 9 + 3x - 3x$
+
+$= 18 - 9 + x^2 - 3x$
+
+$= 9 + x^2 - 3x = x^2 - 3x + 9$
+\end{MultiColonnes}
+
+
+
+\tcbitem \textbf{Forme canonique et minimum :}
+
+$A_{FEC}(x) = x^2 - 3x + 9$
+
+Mettons sous forme canonique en utilisant la méthode du cours.
+
+Pour $f(x) = ax^2 + bx + c$, on a : $\alpha = -\dfrac{b}{2a}$ et $\beta = f(\alpha)$
+
+Ici : $a = 1$, $b = -3$, $c = 9$
+
+$\alpha = -\dfrac{-3}{2 \times 1} = \dfrac{3}{2} = 1{,}5$
+
+$\beta = f(1{,}5) = (1{,}5)^2 - 3 \times 1{,}5 + 9 = 2{,}25 - 4{,}5 + 9 = 6{,}75$
+
+Donc : $A_{FEC}(x) = \left(x-\dfrac{3}{2}\right)^2 + \dfrac{27}{4}$
+
+
+\tcbitem \textbf{Conclusion :}
+
+Le minimum de $A_{FEC}(x)$ est atteint pour $\alpha = \dfrac{3}{2} = 1{,}5$.
+
+Cette valeur appartient bien à $\intervalle{0}{3}$.
+
+La valeur minimale de l'aire est $\beta = \dfrac{27}{4} = 6{,}75$ cm$^2$.
+
+\textbf{Réponse :} L'aire du triangle $FEC$ est minimale pour $x = 1{,}5$ cm et vaut $6{,}75$ cm$^2$.
+\end{tcbenumerate}
+
+\end{bfEnv}
+
+
+
+\end{document}

@@ -1,0 +1,380 @@
+{
+  "metadata": {
+    "title": "Second Degré - Partie 2 : Factorisation des trinômes",
+    "level": "Première Spécialité",
+    "theme": "Factorisation des trinômes du second degré",
+    "type": "cours_et_exercices",
+    "version": "1.0.0",
+    "created": "2025-10-20",
+    "author": "Lycée Camille Claudel"
+  },
+  "competences": [
+    "Calculer le discriminant associé à un polynôme de degré 2",
+    "Connaître le lien entre discriminant et signe d'un polynôme de degré 2",
+    "Dresser le tableau de signes d'une fonction polynôme de degré 2",
+    "Résoudre des équations et des inéquations du second degré"
+  ],
+  "sections": [
+    {
+      "id": 1,
+      "title": "Factorisation d'un trinôme",
+      "type": "cours",
+      "content": [
+        {
+          "type": "definition",
+          "title": "Discriminant",
+          "content": "On considère un trinôme du second degré $ax^2+bx+c$. On appelle <strong>discriminant</strong> du polynôme, le nombre : $$\\Delta = b^2-4ac$$"
+        },
+        {
+          "type": "propriete",
+          "title": "Discriminant et forme factorisée",
+          "content": "<ul><li>Si $\\Delta < 0$, le trinôme n'a <strong>pas de racine réelle</strong>. Il n'est <strong>pas factorisable</strong> dans $\\mathbb{R}$.</li><li>Si $\\Delta = 0$, le trinôme a <strong>une racine double</strong> : $x_0 = -\\frac{b}{2a}$. Pour tout réel $x$, $ax^2+bx+c = a(x-x_0)^2$.</li><li>Si $\\Delta > 0$, le trinôme a <strong>deux racines distinctes</strong> : $$x_1 = \\frac{-b-\\sqrt{\\Delta}}{2a} \\quad \\text{et} \\quad x_2 = \\frac{-b+\\sqrt{\\Delta}}{2a}$$ Pour tout réel $x$, $ax^2+bx+c = a(x-x_1)(x-x_2)$.</li></ul>"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Signe du trinôme et discriminant",
+      "type": "cours",
+      "content": [
+        {
+          "type": "propriete",
+          "title": "Tableau de signes et discriminant",
+          "content": "Soit $f$ une fonction polynôme de degré 2 définie par $f(x) = ax^2+bx+c$ et $\\Delta$ son discriminant associé.<br><br><strong>Trois cas possibles :</strong><ul><li>Si $\\Delta < 0$ : pas de racine réelle. Le trinôme garde le <strong>signe de $a$</strong> sur $\\mathbb{R}$.</li><li>Si $\\Delta = 0$ : une racine double $x_0$. Le trinôme garde le <strong>signe de $a$</strong> sauf en $x_0$ où il s'annule.</li><li>Si $\\Delta > 0$ : deux racines distinctes $x_1 < x_2$. Le trinôme a le <strong>signe de $a$</strong> à l'extérieur des racines et le <strong>signe de $-a$</strong> entre les racines.</li></ul>"
+        },
+        {
+          "type": "methode",
+          "title": "Établir le tableau de signes d'une fonction $f:x\\mapsto ax^2+bx+c$",
+          "content": "<strong>Méthode en 4 étapes :</strong><ol><li><strong>Identifier</strong> les coefficients $a$, $b$ et $c$ (attention aux signes !)</li><li><strong>Calculer le discriminant</strong> $\\Delta = b^2 - 4ac$ et déterminer les racines éventuelles</li><li><strong>Déterminer le signe de $a$</strong> et ordonner les racines (si elles existent)</li><li><strong>Construire le tableau de signes</strong> en utilisant la propriété ci-dessus</li></ol>"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Équations et inéquations du second degré",
+      "type": "cours",
+      "content": [
+        {
+          "type": "definition",
+          "title": "Équation et inéquation du second degré",
+          "content": "<strong>Équation du second degré :</strong> Une équation qui peut s'écrire sous la forme $ax^2+bx+c=0$ où $a$, $b$ et $c$ sont des réels et $a \\neq 0$.<br><br><strong>Inéquation du second degré :</strong> Une inéquation qui peut s'écrire sous l'une des formes : $$ax^2+bx+c > 0 \\quad \\text{ou} \\quad ax^2+bx+c < 0$$ $$ax^2+bx+c \\geq 0 \\quad \\text{ou} \\quad ax^2+bx+c \\leq 0$$ où $a$, $b$ et $c$ sont des réels et $a \\neq 0$."
+        },
+        {
+          "type": "methode",
+          "title": "Résoudre une équation du second degré",
+          "content": "<strong>Méthode en 4 étapes :</strong><ol><li><strong>Réécrire l'équation</strong> sous forme développée $ax^2+bx+c=0$ avec $a \\neq 0$</li><li><strong>Identifier les coefficients</strong> $a$, $b$ et $c$ (attention aux signes !)</li><li><strong>Calculer le discriminant</strong> $\\Delta = b^2-4ac$</li><li><strong>Déterminer les racines</strong> selon le signe de $\\Delta$ :<ul><li>Si $\\Delta < 0$ : pas de solution réelle, donc $S = \\emptyset$</li><li>Si $\\Delta = 0$ : une solution double $x_0 = -\\frac{b}{2a}$, donc $S = \\{x_0\\}$</li><li>Si $\\Delta > 0$ : deux solutions $x_1 = \\frac{-b-\\sqrt{\\Delta}}{2a}$ et $x_2 = \\frac{-b+\\sqrt{\\Delta}}{2a}$, donc $S = \\{x_1 ; x_2\\}$</li></ul></li></ol>"
+        },
+        {
+          "type": "methode",
+          "title": "Résoudre une inéquation du second degré",
+          "content": "<strong>Méthode en 6 étapes :</strong><ol><li><strong>Réécrire l'inéquation</strong> sous la forme $ax^2+bx+c > 0$ (ou $< 0$, $\\geq 0$, $\\leq 0$) avec $a \\neq 0$</li><li><strong>Identifier les coefficients</strong> $a$, $b$ et $c$ (attention aux signes !)</li><li><strong>Calculer le discriminant</strong> $\\Delta = b^2-4ac$</li><li><strong>Déterminer les racines</strong> selon le signe de $\\Delta$</li><li><strong>Construire le tableau de signes</strong> du trinôme</li><li><strong>Lire la solution</strong> dans le tableau de signes selon l'inéquation demandée</li></ol>"
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": 1,
+      "section_id": 1,
+      "title": "Racines et forme factorisée",
+      "question": "Soit $f$ la fonction trinôme définie sur $\\mathbb{R}$ par $f(x)=2x^2+x-3$. On sait que $a=2$, $\\Delta=25$, $x_1=-\\frac{3}{2}$ et $x_2=1$ donc pour tout réel $x$, on a : $$f(x)=2\\left(x+\\frac{3}{2}\\right)(x-1)$$ <strong>Vérifier</strong> ces informations en <strong>calculant</strong> $\\Delta$ et en déterminant les racines de $f$.",
+      "type": "calculation",
+      "hint": "Utilisez les formules : $\\Delta = b^2 - 4ac$ puis $x_1 = \\frac{-b-\\sqrt{\\Delta}}{2a}$ et $x_2 = \\frac{-b+\\sqrt{\\Delta}}{2a}$",
+      "solution": "<strong>1. Calcul du discriminant :</strong><br>$\\Delta = b^2 - 4ac = 1^2 - 4 \\times 2 \\times (-3) = 1 + 24 = 25$ ✓<br><br><strong>2. Calcul des racines :</strong><br>$x_1 = \\frac{-1-\\sqrt{25}}{2 \\times 2} = \\frac{-1-5}{4} = \\frac{-6}{4} = -\\frac{3}{2}$ ✓<br><br>$x_2 = \\frac{-1+\\sqrt{25}}{2 \\times 2} = \\frac{-1+5}{4} = \\frac{4}{4} = 1$ ✓<br><br><strong>3. Forme factorisée :</strong><br>$f(x) = 2\\left(x+\\frac{3}{2}\\right)(x-1)$ ✓",
+      "answer_fields": [
+        {
+          "id": "delta",
+          "label": "Valeur de $\\Delta$ :",
+          "type": "number",
+          "answer": 25,
+          "tolerance": 0
+        },
+        {
+          "id": "x1",
+          "label": "Valeur de $x_1$ :",
+          "type": "text",
+          "answer": "-3/2",
+          "alternatives": ["-1.5", "-3/2", "-1,5"]
+        },
+        {
+          "id": "x2",
+          "label": "Valeur de $x_2$ :",
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "points": 3,
+      "difficulty": 1
+    },
+    {
+      "id": 2,
+      "section_id": 3,
+      "title": "Résoudre une équation du second degré",
+      "question": "<strong>Résoudre</strong> l'équation : $$2x^2-7x+3=0$$",
+      "type": "calculation",
+      "hint": "Calculez d'abord le discriminant $\\Delta = b^2 - 4ac$ avec $a=2$, $b=-7$ et $c=3$.",
+      "solution": "<strong>1. Identification des coefficients :</strong><br>$a = 2$, $b = -7$, $c = 3$<br><br><strong>2. Calcul du discriminant :</strong><br>$\\Delta = (-7)^2 - 4 \\times 2 \\times 3 = 49 - 24 = 25$<br><br><strong>3. Comme $\\Delta > 0$, l'équation a deux solutions :</strong><br>$x_1 = \\frac{-(-7)-\\sqrt{25}}{2 \\times 2} = \\frac{7-5}{4} = \\frac{2}{4} = \\frac{1}{2}$<br><br>$x_2 = \\frac{-(-7)+\\sqrt{25}}{2 \\times 2} = \\frac{7+5}{4} = \\frac{12}{4} = 3$<br><br><strong>Ensemble de solutions :</strong> $S = \\left\\{\\frac{1}{2} ; 3\\right\\}$",
+      "answer_fields": [
+        {
+          "id": "solution_type",
+          "label": "Type de solution :",
+          "type": "select",
+          "options": ["Pas de solution", "Une solution double", "Deux solutions distinctes"],
+          "answer": "Deux solutions distinctes"
+        },
+        {
+          "id": "x1",
+          "label": "Première solution $x_1$ :",
+          "type": "text",
+          "answer": "1/2",
+          "alternatives": ["0.5", "1/2", "0,5"]
+        },
+        {
+          "id": "x2",
+          "label": "Deuxième solution $x_2$ :",
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "points": 5,
+      "difficulty": 1
+    },
+    {
+      "id": 3,
+      "section_id": 3,
+      "title": "Résoudre une inéquation du second degré (1)",
+      "question": "<strong>Résoudre</strong> l'inéquation : $$-x^2+4x-3 \\geq 0$$",
+      "type": "calculation",
+      "hint": "Construisez d'abord le tableau de signes du trinôme $-x^2+4x-3$ en calculant son discriminant et ses racines.",
+      "solution": "<strong>1. Identification des coefficients :</strong><br>$a = -1$, $b = 4$, $c = -3$<br><br><strong>2. Calcul du discriminant :</strong><br>$\\Delta = 4^2 - 4 \\times (-1) \\times (-3) = 16 - 12 = 4$<br><br><strong>3. Comme $\\Delta > 0$, calcul des deux racines :</strong><br>$x_1 = \\frac{-4-\\sqrt{4}}{2 \\times (-1)} = \\frac{-4-2}{-2} = \\frac{-6}{-2} = 3$<br><br>$x_2 = \\frac{-4+\\sqrt{4}}{2 \\times (-1)} = \\frac{-4+2}{-2} = \\frac{-2}{-2} = 1$<br><br><strong>4. Tableau de signes :</strong><br>Comme $a = -1 < 0$ et $x_2 = 1 < x_1 = 3$ :<br><table border='1' style='border-collapse:collapse;text-align:center;'><tr><td>$x$</td><td>$-\\infty$</td><td></td><td>$1$</td><td></td><td>$3$</td><td></td><td>$+\\infty$</td></tr><tr><td>$-x^2+4x-3$</td><td></td><td>$-$</td><td>$0$</td><td>$+$</td><td>$0$</td><td>$-$</td><td></td></tr></table><br><strong>5. Lecture de la solution :</strong><br>On cherche où le trinôme est $\\geq 0$, c'est-à-dire positif ou nul.<br><br><strong>Ensemble de solutions :</strong> $S = [1 ; 3]$",
+      "answer_fields": [
+        {
+          "id": "solution_set",
+          "label": "Ensemble de solutions (notation d'intervalle) :",
+          "type": "text",
+          "answer": "[1;3]",
+          "alternatives": ["[1;3]", "[1 ; 3]", "[1, 3]"]
+        }
+      ],
+      "points": 6,
+      "difficulty": 2
+    },
+    {
+      "id": 4,
+      "section_id": 3,
+      "title": "Résoudre une inéquation du second degré (2)",
+      "question": "<strong>Résoudre</strong> l'inéquation : $$-\\frac{1}{2}x^2+2x+1 < 0$$",
+      "type": "calculation",
+      "hint": "Calculez le discriminant avec $a = -\\frac{1}{2}$, $b = 2$, $c = 1$. Attention aux calculs avec les fractions !",
+      "solution": "<strong>1. Identification des coefficients :</strong><br>$a = -\\frac{1}{2}$, $b = 2$, $c = 1$<br><br><strong>2. Calcul du discriminant :</strong><br>$\\Delta = 2^2 - 4 \\times \\left(-\\frac{1}{2}\\right) \\times 1 = 4 + 2 = 6$<br><br><strong>3. Comme $\\Delta > 0$, calcul des deux racines :</strong><br>$x_1 = \\frac{-2-\\sqrt{6}}{2 \\times (-\\frac{1}{2})} = \\frac{-2-\\sqrt{6}}{-1} = 2+\\sqrt{6} \\approx 4.45$<br><br>$x_2 = \\frac{-2+\\sqrt{6}}{2 \\times (-\\frac{1}{2})} = \\frac{-2+\\sqrt{6}}{-1} = 2-\\sqrt{6} \\approx -0.45$<br><br><strong>4. Tableau de signes :</strong><br>Comme $a = -\\frac{1}{2} < 0$ et $x_2 = 2-\\sqrt{6} < x_1 = 2+\\sqrt{6}$ :<br><table border='1' style='border-collapse:collapse;text-align:center;'><tr><td>$x$</td><td>$-\\infty$</td><td></td><td>$2-\\sqrt{6}$</td><td></td><td>$2+\\sqrt{6}$</td><td></td><td>$+\\infty$</td></tr><tr><td>trinôme</td><td></td><td>$-$</td><td>$0$</td><td>$+$</td><td>$0$</td><td>$-$</td><td></td></tr></table><br><strong>5. Lecture de la solution :</strong><br>On cherche où le trinôme est $< 0$, c'est-à-dire strictement négatif.<br><br><strong>Ensemble de solutions :</strong> $S = ]-\\infty ; 2-\\sqrt{6}[ \\cup ]2+\\sqrt{6} ; +\\infty[$",
+      "answer_fields": [
+        {
+          "id": "solution_set",
+          "label": "Ensemble de solutions (notation d'intervalle) :",
+          "type": "text",
+          "answer": "]-∞;2-√6[∪]2+√6;+∞[",
+          "alternatives": [
+            "]-∞;2-√6[∪]2+√6;+∞[",
+            "]-infini;2-sqrt(6)[U]2+sqrt(6);+infini[",
+            "(-∞;2-√6)∪(2+√6;+∞)"
+          ]
+        }
+      ],
+      "points": 6,
+      "difficulty": 2
+    },
+    {
+      "id": 5,
+      "section_id": 1,
+      "title": "Formule du discriminant - Piège sur les signes",
+      "question": "Soit le trinôme $f(x) = -3x^2-6x+9$. ⚠️ <strong>Attention aux signes !</strong><br><br>Calculer le discriminant $\\Delta$ de ce trinôme.",
+      "type": "calculation",
+      "hint": "Identifiez bien les coefficients : $a=-3$, $b=-6$, $c=9$. Puis utilisez $\\Delta = b^2 - 4ac$. Attention au signe de $b$ !",
+      "solution": "<strong>Identification des coefficients :</strong><br>$a = -3$, $b = -6$, $c = 9$<br><br><strong>Calcul du discriminant :</strong><br>$\\Delta = b^2 - 4ac = (-6)^2 - 4 \\times (-3) \\times 9$<br>$\\Delta = 36 - (-108)$<br>$\\Delta = 36 + 108$<br>$\\Delta = 144$<br><br><strong>Piège à éviter :</strong> Ne pas oublier que $b = -6$ donc $b^2 = (-6)^2 = 36$ (et non $-36$) !<br>Également, $4 \\times (-3) \\times 9 = -108$ donc $-4ac = -(-108) = +108$.",
+      "answer_fields": [
+        {
+          "id": "delta",
+          "label": "Valeur de $\\Delta$ :",
+          "type": "number",
+          "answer": 144,
+          "tolerance": 0
+        }
+      ],
+      "points": 4,
+      "difficulty": 2
+    },
+    {
+      "id": 6,
+      "section_id": 1,
+      "title": "Question de cours : Formules des racines",
+      "question": "On considère un trinôme $ax^2+bx+c$ avec $\\Delta > 0$.<br><br>Quelle est la formule correcte pour calculer la plus <strong>petite</strong> des deux racines ?",
+      "type": "theory",
+      "hint": "La plus petite racine est celle avec le signe $-$ devant la racine carrée. Faites attention à la position du $-b$ !",
+      "solution": "<strong>Formules des deux racines (quand $\\Delta > 0$) :</strong><br>$$x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a} \\quad \\text{et} \\quad x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}$$<br><br><strong>La plus petite racine est $x_1$ :</strong><br>$$x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}$$<br><br><strong>Piège à éviter :</strong> Certains écrivent $\\frac{-b \\pm \\sqrt{\\Delta}}{2a}$ mais attention : le signe $-$ donne la plus petite racine et le signe $+$ donne la plus grande !",
+      "answer_fields": [
+        {
+          "id": "formule",
+          "label": "Formule de la plus petite racine :",
+          "type": "select",
+          "options": [
+            "(-b-√Δ)/(2a)",
+            "(-b+√Δ)/(2a)",
+            "(b-√Δ)/(2a)",
+            "(-b)/(2a)"
+          ],
+          "answer": "(-b-√Δ)/(2a)"
+        }
+      ],
+      "points": 3,
+      "difficulty": 1
+    },
+    {
+      "id": 7,
+      "section_id": 1,
+      "title": "Piège : Racine double et factorisation",
+      "question": "Soit $g(x) = x^2 + 6x + 9$.<br><br>Ce trinôme admet-il des racines ? Si oui, donnez sa forme factorisée.",
+      "type": "calculation",
+      "hint": "Calculez le discriminant. Si $\\Delta = 0$, il y a une racine double $x_0 = -\\frac{b}{2a}$ et la forme factorisée est $a(x-x_0)^2$.",
+      "solution": "<strong>1. Calcul du discriminant :</strong><br>$a = 1$, $b = 6$, $c = 9$<br>$\\Delta = 6^2 - 4 \\times 1 \\times 9 = 36 - 36 = 0$<br><br><strong>2. Comme $\\Delta = 0$, une seule racine double :</strong><br>$x_0 = -\\frac{b}{2a} = -\\frac{6}{2 \\times 1} = -\\frac{6}{2} = -3$<br><br><strong>3. Forme factorisée :</strong><br>$g(x) = a(x - x_0)^2 = 1 \\times (x - (-3))^2 = (x + 3)^2$<br><br><strong>Piège à éviter :</strong> Avec une racine double, on a $(x-x_0)^2$ et non pas $2(x-x_0)$ !<br><strong>Remarque :</strong> On peut vérifier : $(x+3)^2 = x^2 + 6x + 9$ ✓",
+      "answer_fields": [
+        {
+          "id": "has_roots",
+          "label": "Le trinôme a-t-il des racines réelles ?",
+          "type": "select",
+          "options": ["Oui", "Non"],
+          "answer": "Oui"
+        },
+        {
+          "id": "factorisation",
+          "label": "Forme factorisée (écrire sans espaces) :",
+          "type": "text",
+          "answer": "(x+3)^2",
+          "alternatives": ["(x+3)^2", "(x+3)²", "(x+3)(x+3)"]
+        }
+      ],
+      "points": 5,
+      "difficulty": 2
+    },
+    {
+      "id": 8,
+      "section_id": 2,
+      "title": "Piège : Signe du trinôme et signe de a",
+      "question": "Soit $h(x) = -2x^2 + 5x - 2$. On donne : $\\Delta = 9 > 0$ donc le trinôme a deux racines $x_1 = \\frac{1}{2}$ et $x_2 = 2$.<br><br>Sur quel(s) intervalle(s) le trinôme $h(x)$ est-il <strong>positif</strong> ?",
+      "type": "reasoning",
+      "hint": "Attention ! Ici $a = -2 < 0$. Le trinôme est positif <strong>entre</strong> les racines (signe de $-a$) et négatif à l'extérieur.",
+      "solution": "<strong>Analyse du signe :</strong><br>$a = -2 < 0$ (coefficient de $x^2$ négatif)<br>Racines : $x_1 = \\frac{1}{2} = 0.5$ et $x_2 = 2$<br><br><strong>Tableau de signes :</strong><br><table border='1' style='border-collapse:collapse;text-align:center;'><tr><td>$x$</td><td>$-\\infty$</td><td></td><td>$\\frac{1}{2}$</td><td></td><td>$2$</td><td></td><td>$+\\infty$</td></tr><tr><td>$h(x)$</td><td></td><td>$-$</td><td>$0$</td><td>$+$</td><td>$0$</td><td>$-$</td><td></td></tr></table><br><strong>Règle :</strong> Quand $a < 0$, le trinôme est positif <strong>entre</strong> les racines.<br><br><strong>Réponse :</strong> $h(x) > 0$ sur $]\\frac{1}{2} ; 2[$<br>(ou $]0.5 ; 2[$)<br><br><strong>Piège évité :</strong> Si on oublie que $a < 0$, on pourrait croire à tort que le trinôme est positif à l'extérieur des racines !",
+      "answer_fields": [
+        {
+          "id": "intervalle_positif",
+          "label": "Intervalle où $h(x) > 0$ :",
+          "type": "text",
+          "answer": "]0.5;2[",
+          "alternatives": ["]0.5;2[", "]1/2;2[", "]0,5;2[", "(0.5;2)", "(1/2;2)"]
+        }
+      ],
+      "points": 5,
+      "difficulty": 3
+    },
+    {
+      "id": 9,
+      "section_id": 1,
+      "title": "Piège : Trinôme sans racine réelle",
+      "question": "Soit $f(x) = 2x^2 - 3x + 5$.<br><br>Ce trinôme est-il factorisable dans $\\mathbb{R}$ ? Justifiez.",
+      "type": "reasoning",
+      "hint": "Calculez le discriminant. Si $\\Delta < 0$, le trinôme n'a pas de racine réelle et n'est donc pas factorisable dans $\\mathbb{R}$.",
+      "solution": "<strong>Calcul du discriminant :</strong><br>$a = 2$, $b = -3$, $c = 5$<br>$\\Delta = (-3)^2 - 4 \\times 2 \\times 5 = 9 - 40 = -31$<br><br><strong>Conclusion :</strong><br>Comme $\\Delta = -31 < 0$, le trinôme n'a <strong>pas de racine réelle</strong>.<br><br>Par conséquent, $f(x) = 2x^2 - 3x + 5$ <strong>n'est pas factorisable</strong> dans $\\mathbb{R}$.<br><br><strong>Remarque :</strong> Le trinôme garde le signe de $a = 2 > 0$ sur tout $\\mathbb{R}$, donc $f(x) > 0$ pour tout $x \\in \\mathbb{R}$.",
+      "answer_fields": [
+        {
+          "id": "factorisable",
+          "label": "Le trinôme est-il factorisable dans ℝ ?",
+          "type": "select",
+          "options": ["Oui", "Non"],
+          "answer": "Non"
+        },
+        {
+          "id": "delta",
+          "label": "Valeur de $\\Delta$ :",
+          "type": "number",
+          "answer": -31,
+          "tolerance": 0
+        }
+      ],
+      "points": 4,
+      "difficulty": 2
+    },
+    {
+      "id": 10,
+      "section_id": 3,
+      "title": "Question de cours : Résolution d'équation",
+      "question": "On considère l'équation $ax^2 + bx + c = 0$ avec $a \\neq 0$.<br><br>Si le discriminant $\\Delta = 0$, combien de solution(s) l'équation a-t-elle ?<br>Donner également la formule de cette (ces) solution(s).",
+      "type": "theory",
+      "hint": "Quand $\\Delta = 0$, on parle de racine double ou solution double.",
+      "solution": "<strong>Cas où $\\Delta = 0$ :</strong><br><br>L'équation a <strong>une seule solution</strong> (on dit aussi « une solution double » ou « une racine double »).<br><br><strong>Formule de la solution :</strong><br>$$x_0 = -\\frac{b}{2a}$$<br><br><strong>Ensemble de solutions :</strong> $S = \\{x_0\\} = \\left\\{-\\frac{b}{2a}\\right\\}$<br><br><strong>Interprétation graphique :</strong> La parabole est tangente à l'axe des abscisses.",
+      "answer_fields": [
+        {
+          "id": "nombre_solutions",
+          "label": "Nombre de solution(s) :",
+          "type": "select",
+          "options": ["0", "1", "2", "Infinité"],
+          "answer": "1"
+        },
+        {
+          "id": "formule_solution",
+          "label": "Formule de la solution :",
+          "type": "select",
+          "options": [
+            "-b/(2a)",
+            "b/(2a)",
+            "(-b±√Δ)/(2a)",
+            "Il n'y a pas de solution"
+          ],
+          "answer": "-b/(2a)"
+        }
+      ],
+      "points": 3,
+      "difficulty": 1
+    },
+    {
+      "id": 11,
+      "section_id": 3,
+      "title": "Piège : Inéquation stricte vs large",
+      "question": "Soit $f(x) = x^2 - 4x + 4$. On sait que $\\Delta = 0$ et $x_0 = 2$.<br><br>Résoudre l'inéquation : $$x^2 - 4x + 4 \\leq 0$$<br><br>⚠️ Attention à l'inégalité large !",
+      "type": "reasoning",
+      "hint": "Quand $\\Delta = 0$, le trinôme touche l'axe en un seul point $x_0$ et garde le signe de $a$ partout ailleurs. Pour une inéquation large ($\\leq$ ou $\\geq$), on inclut le point où le trinôme s'annule.",
+      "solution": "<strong>Analyse :</strong><br>$a = 1 > 0$, $\\Delta = 0$, racine double : $x_0 = 2$<br><br>On peut remarquer que $f(x) = (x-2)^2$<br><br><strong>Signe du trinôme :</strong><br>Comme $a = 1 > 0$ et $\\Delta = 0$ :<br>- $f(x) > 0$ pour $x \\neq 2$<br>- $f(x) = 0$ pour $x = 2$<br><br><strong>Résolution de $f(x) \\leq 0$ :</strong><br>Le trinôme est strictement positif partout sauf en $x_0 = 2$ où il s'annule.<br><br>Donc $f(x) \\leq 0$ uniquement pour $x = 2$.<br><br><strong>Ensemble de solutions :</strong> $S = \\{2\\}$<br><br><strong>Piège évité :</strong> Si on avait eu $f(x) < 0$ (inéquation stricte), la solution aurait été $S = \\emptyset$ car le trinôme est toujours $\\geq 0$ !",
+      "answer_fields": [
+        {
+          "id": "solution_set",
+          "label": "Ensemble de solutions :",
+          "type": "text",
+          "answer": "{2}",
+          "alternatives": ["{2}", "2", "x=2"]
+        }
+      ],
+      "points": 5,
+      "difficulty": 3
+    },
+    {
+      "id": 12,
+      "section_id": 2,
+      "title": "Application : Signe d'un produit de trinômes",
+      "question": "On considère les deux fonctions :<br>$f(x) = x^2 - 1$ (racines : $-1$ et $1$)<br>$g(x) = -x^2 + 4$ (racines : $-2$ et $2$)<br><br>Sur quel intervalle le produit $f(x) \\times g(x)$ est-il <strong>strictement positif</strong> ?",
+      "type": "reasoning",
+      "hint": "Construisez le tableau de signes de $f(x)$, puis de $g(x)$, puis déduisez le signe de leur produit. Attention au signe de $a$ dans chaque trinôme !",
+      "solution": "<strong>1. Signe de $f(x) = x^2 - 1$ :</strong><br>$a = 1 > 0$, racines : $-1$ et $1$<br><table border='1' style='border-collapse:collapse;text-align:center;'><tr><td>$x$</td><td>$-\\infty$</td><td></td><td>$-1$</td><td></td><td>$1$</td><td></td><td>$+\\infty$</td></tr><tr><td>$f(x)$</td><td></td><td>$+$</td><td>$0$</td><td>$-$</td><td>$0$</td><td>$+$</td><td></td></tr></table><br><strong>2. Signe de $g(x) = -x^2 + 4$ :</strong><br>$a = -1 < 0$, racines : $-2$ et $2$<br><table border='1' style='border-collapse:collapse;text-align:center;'><tr><td>$x$</td><td>$-\\infty$</td><td></td><td>$-2$</td><td></td><td>$2$</td><td></td><td>$+\\infty$</td></tr><tr><td>$g(x)$</td><td></td><td>$-$</td><td>$0$</td><td>$+$</td><td>$0$</td><td>$-$</td><td></td></tr></table><br><strong>3. Signe du produit $f(x) \\times g(x)$ :</strong><br><table border='1' style='border-collapse:collapse;text-align:center;'><tr><td>$x$</td><td>$-\\infty$</td><td>$-2$</td><td></td><td>$-1$</td><td></td><td>$1$</td><td></td><td>$2$</td><td>$+\\infty$</td></tr><tr><td>$f(x)$</td><td>$+$</td><td>$+$</td><td>$+$</td><td>$0$</td><td>$-$</td><td>$0$</td><td>$+$</td><td>$+$</td><td>$+$</td></tr><tr><td>$g(x)$</td><td>$-$</td><td>$0$</td><td>$+$</td><td>$+$</td><td>$+$</td><td>$+$</td><td>$+$</td><td>$0$</td><td>$-$</td></tr><tr><td>$f \\times g$</td><td>$-$</td><td>$0$</td><td>$+$</td><td>$0$</td><td>$-$</td><td>$0$</td><td>$+$</td><td>$0$</td><td>$-$</td></tr></table><br><strong>Lecture :</strong> Le produit est strictement positif sur $]-2 ; -1[ \\cup ]1 ; 2[$<br><br><strong>Remarque :</strong> Les bornes sont exclues car on cherche où le produit est <strong>strictement</strong> positif.",
+      "answer_fields": [
+        {
+          "id": "solution_set",
+          "label": "Intervalle(s) où $f(x) \\times g(x) > 0$ :",
+          "type": "text",
+          "answer": "]-2;-1[∪]1;2[",
+          "alternatives": ["]-2;-1[∪]1;2[", "]-2;-1[U]1;2[", "(-2;-1)∪(1;2)", "(-2;-1)U(1;2)"]
+        }
+      ],
+      "points": 7,
+      "difficulty": 3
+    }
+  ]
+}

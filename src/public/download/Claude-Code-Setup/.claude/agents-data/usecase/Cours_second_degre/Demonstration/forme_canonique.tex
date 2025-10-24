@@ -1,0 +1,12 @@
+\begin{Demonstration}[Forme canonique]
+    Soit $f: x \mapsto ax^2 +bx + c$
+
+    Montrons que $f(x) = a ( x - \dfrac{-b}{2a} )^2 - \dfrac{b^2-4ac}{4a}$
+    \begin{align*}
+    f(x)&= a ( x - \dfrac{-b}{2a} )^2 - \dfrac{b^2-4ac}{4a} \\
+    f(x)&= a ( x^2 - 2\times 1 \times \dfrac{-b}{2a} + \dfrac{b^2}{4a^2} )  - \dfrac{b^2-4ac}{4a} & \text{Développer le carré}\\
+    &= a ( x^2 - \dfrac{-b}{a} + \dfrac{b^2}{4a^2} ) - \dfrac{b^2}{4a} + \dfrac{\cancel{4a}c}{\cancel{4a}} & \text{Réduire l'expression}\\
+    &= ax^2 +bx \underbrace{+ \dfrac{b^2}{4a} - \dfrac{b^2}{4a}}_{=0} + c & \text{Développer}\\
+    &= ax^2 + bx + c
+    \end{align*}
+\end{Demonstration}

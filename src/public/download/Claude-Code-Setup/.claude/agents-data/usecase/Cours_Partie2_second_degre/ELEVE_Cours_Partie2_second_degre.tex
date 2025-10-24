@@ -1,0 +1,84 @@
+\documentclass[a4paper,11pt,fleqn]{article}
+
+\usepackage[left=1cm,right=1cm,top=0.5cm,bottom=2cm]{geometry}
+
+\usepackage{bfcours}
+\usepackage{bfcours-fonts}
+%\usepackage{bfcours-fonts-dys}
+
+\def\rdifficulty{1}
+\setrdexo{%left skip=1cm,
+display exotitle,
+exo header = tcolorbox,
+%display tags,
+skin = bouyachakka,
+lower ={box=crep},
+display score,
+display level,
+save lower,
+score=\points,
+level=\rdifficulty,
+overlay={\node[inner sep=0pt,
+anchor=west,rotate=90, yshift=0.3cm]%,xshift=-3em], yshift=0.45cm
+at (frame.south west) {\thetags[0]} ;}
+]%obligatoire
+}
+
+\setrdcrep{correction=false, correction color=prop, correction font = \large\bfseries}
+\edef\currentseyesoption{\ifcorrection false\else true\fi}
+\setrdcrep{seyes=\currentseyesoption}
+
+\newcommand{\tikzinclude}[1]{%
+    \stepcounter{tikzfigcounter}%
+    \csname tikzfig#1\endcsname
+}
+\input{enonce_figures}
+
+\hypersetup{
+    pdfauthor={R.Deschamps},
+    pdfsubject={},
+    pdfkeywords={},
+    pdfproducer={LuaLaTeX},
+    pdfcreator={Boum Factory}
+}
+
+
+\input{macros_trinome.tex}
+\begin{document}
+
+\setcounter{pagecounter}{0}
+\setcounter{ExoMA}{0}
+
+
+
+\def\rdifficulty{1}
+\chapitre[
+    $\mathbf{1^{\text{ère}}}$% : $\mathbf{6^{\text{ème}}}$,$\mathbf{5^{\text{ème}}}$,$\mathbf{4^{\text{ème}}}$,$\mathbf{3^{\text{ème}}}$,$\mathbf{2^{\text{nde}}}$,$\mathbf{1^{\text{ère}}}$,$\mathbf{T^{\text{Le}}}$,
+    ]{
+    Factorisation des trinômes du second degré% : ,Equations
+    }{
+    Lycée% : Collège,Lycée
+    }{
+    Camille Claudel% : Amadis Jamyn,Eugène Belgrand
+    }{
+    % : ,\tableauPresenteEvalSixieme{}{10},\tableofcontents
+    }{
+    Cours :% : Cours :,Exercices
+    }
+
+    \tableofcontents
+    
+    \vfill
+    \tableaucompetence{
+        \competence{Calculer le discriminant associé à un polynôme de degré 2}
+        \competence{Connaître le lien entre discriminant et signe d'un polynôme de degré 2}
+        \competence{Dresser le tableau de signes d'une fonction polynôme de degré 2}
+        \competence{Résoudre des équations et des inéquations du second degré}
+    }
+    \vfill
+    \printvocindex
+    \vfill
+    \newpage
+\input{enonce}% : \input{enonce},
+
+\end{document}

@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Guide complet des commandes Claude Code disponibles pour la création et gestion de documents pédagogiques">
+  <title>Commandes Claude Code - Guide Pratique</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Theme personnalisé -->
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --text-color: #34495e;
+      --bg-light: #ecf0f1;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.6em;
+      margin-bottom: 0.8em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.3em;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      margin-top: 0.8em;
+    }
+
+    .reveal ul, .reveal ol {
+      margin: 1em 0;
+    }
+
+    .reveal li {
+      margin: 0.5em 0;
+      line-height: 1.5;
+    }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 1em;
+      max-height: 500px;
+      font-size: 0.85em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .reveal .success {
+      color: var(--success-color);
+      font-weight: 600;
+    }
+
+    .reveal .warning {
+      color: var(--warning-color);
+      font-weight: 600;
+    }
+
+    .reveal .box {
+      background: var(--bg-light);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning-color);
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: #e8f5e9;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon {
+      font-size: 1.2em;
+      margin-right: 0.3em;
+      vertical-align: middle;
+    }
+
+    .reveal section img {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: var(--secondary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .feature-list {
+      font-size: 0.9em;
+    }
+
+    .reveal .feature-list li {
+      margin: 0.4em 0;
+    }
+
+    .reveal .subtitle {
+      color: var(--secondary-color);
+      font-size: 0.7em;
+      margin-top: 0.5em;
+    }
+
+    .reveal .tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+
+    .reveal .tag.warning {
+      background: var(--warning-color);
+    }
+
+    .reveal .tag.success {
+      background: var(--success-color);
+    }
+
+    .reveal .tag.accent {
+      background: var(--accent-color);
+    }
+
+    .reveal .smaller {
+      font-size: 0.85em;
+    }
+
+    .reveal .nav-hint {
+      color: var(--secondary-color);
+      font-size: 0.8em;
+      margin-top: 1em;
+      font-style: italic;
+    }
+
+    .reveal .command-card {
+      background: linear-gradient(135deg, var(--bg-light) 0%, #d5dbdd 100%);
+      padding: 1.5em;
+      border-radius: 12px;
+      border-left: 6px solid var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    .reveal .command-title {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5em;
+    }
+
+    .reveal .command-desc {
+      font-size: 0.85em;
+      color: var(--text-color);
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fas fa-terminal icon"></i> Commandes Claude Code</h1>
+        <p class="subtitle">Guide Pratique des Slash Commands</p>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag">Formation GT IA & Maths</span>
+          <span class="tag success">LaTeX & Documents Pédagogiques</span>
+        </p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <h2>Au programme</h2>
+        <ol class="feature-list">
+          <li class="fragment" data-fragment-index="1"><i class="fas fa-question-circle icon"></i> Qu'est-ce qu'une commande ?</li>
+          <li class="fragment" data-fragment-index="2"><i class="fas fa-folder-open icon"></i> Commandes de création</li>
+          <li class="fragment" data-fragment-index="3"><i class="fas fa-edit icon"></i> Commandes de modification</li>
+          <li class="fragment" data-fragment-index="4"><i class="fas fa-database icon"></i> Commandes de gestion des connaissances</li>
+          <li class="fragment" data-fragment-index="5"><i class="fas fa-laptop-code icon"></i> Commandes d'applications</li>
+          <li class="fragment" data-fragment-index="6"><i class="fas fa-cog icon"></i> Commandes d'automatisation</li>
+          <li class="fragment" data-fragment-index="7"><i class="fas fa-lightbulb icon"></i> Comment utiliser une commande</li>
+          <li class="fragment" data-fragment-index="8"><i class="fas fa-graduation-cap icon"></i> Conseils pratiques</li>
+        </ol>
+      </section>
+
+      <!-- SLIDE 3 : QU'EST-CE QU'UNE COMMANDE ? -->
+      <section>
+        <h2>Qu'est-ce qu'une commande ?</h2>
+
+        <div class="box fragment">
+          <p><strong>Une slash command (/commande) est un raccourci pour automatiser des tâches complexes</strong></p>
+        </div>
+
+        <ul class="feature-list">
+          <li class="fragment"><i class="fas fa-bolt icon"></i> Lancée en tapant <code>/nom-commande</code> dans Claude Code</li>
+          <li class="fragment"><i class="fas fa-robot icon"></i> Déclenche automatiquement des <strong>agents spécialisés</strong></li>
+          <li class="fragment"><i class="fas fa-tools icon"></i> Utilise des <strong>skills experts</strong> pour chaque tâche</li>
+          <li class="fragment"><i class="fas fa-magic icon"></i> Produit des <strong>résultats prêts à l'emploi</strong></li>
+        </ul>
+
+        <div class="example-box fragment" style="font-size: 0.85em; margin-top: 1em;">
+          <p><strong>Exemple :</strong> Au lieu de créer manuellement un document LaTeX, vous tapez :<br>
+          <code>/createTex cours sur les vecteurs en seconde</code></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 : CATÉGORIES DE COMMANDES -->
+      <section>
+        <h2>Catégories de commandes</h2>
+
+        <div class="grid-2">
+          <div>
+            <div class="command-card fragment" data-fragment-index="1">
+              <div class="command-title"><i class="fas fa-folder-plus icon success"></i> Création</div>
+              <div class="command-desc">Créer de nouveaux documents LaTeX, présentations, applications</div>
+            </div>
+
+            <div class="command-card fragment" data-fragment-index="2">
+              <div class="command-title"><i class="fas fa-edit icon warning"></i> Modification</div>
+              <div class="command-desc">Adapter, modifier, optimiser des documents existants</div>
+            </div>
+
+            <div class="command-card fragment" data-fragment-index="3">
+              <div class="command-title"><i class="fas fa-brain icon secondary"></i> Connaissances</div>
+              <div class="command-desc">Charger les connaissances techniques nécessaires</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="command-card fragment" data-fragment-index="4">
+              <div class="command-title"><i class="fas fa-laptop-code icon accent"></i> Applications</div>
+              <div class="command-desc">Transformer des ressources en apps interactives</div>
+            </div>
+
+            <div class="command-card fragment" data-fragment-index="5">
+              <div class="command-title"><i class="fas fa-file-alt icon primary"></i> Documentation</div>
+              <div class="command-desc">Générer des documents explicatifs</div>
+            </div>
+
+            <div class="command-card fragment" data-fragment-index="6">
+              <div class="command-title"><i class="fas fa-cogs icon"></i> Automatisation</div>
+              <div class="command-desc">Investigation et auto-correction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION : COMMANDES DE CRÉATION -->
+      <section>
+        <section>
+          <h2><i class="fas fa-folder-plus icon success"></i> Commandes de Création</h2>
+          <p class="smaller fragment">4 commandes pour créer vos documents de zéro</p>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/createTex</code></strong><br>Documents LaTeX pédagogiques</p>
+            </div>
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/createBeamer</code></strong><br>Diaporamas Beamer</p>
+            </div>
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/createReveals</code></strong><br>Présentations reveal.js</p>
+            </div>
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/create-app</code></strong><br>Applications web interactives</p>
+            </div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque commande en détail</p>
+        </section>
+
+        <!-- /createTex -->
+        <section>
+          <section>
+            <h2><i class="fas fa-file-alt icon"></i> /createTex</h2>
+            <p class="subtitle">Création automatique de documents LaTeX pédagogiques</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/createTex &lt;description_du_document&gt;</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-info-circle icon"></i> <strong>Principe :</strong> Analyse votre demande pour identifier le type, le niveau, le thème et créer automatiquement le document dans la bonne arborescence</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /createTex</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <div class="step-number">1</div>
+              <div>Analyse de la requête : type, niveau, thème</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <div class="step-number">2</div>
+              <div>Vérification de l'arborescence existante</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <div class="step-number">3</div>
+              <div>Détermination du chemin de destination</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <div class="step-number">4</div>
+              <div>Création via skill tex-document-creator</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
+              <div class="step-number">5</div>
+              <div>Document prêt dans la bonne séquence</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemples /createTex</h3>
+
+            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Évaluation :</strong></p>
+              <pre><code class="language-bash">/createTex évaluation sur les vecteurs en seconde</code></pre>
+              <p class="success">→ Modèle Devoir, 2nde, Sequence-Vecteurs/Evaluation_vecteurs/</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Cours :</strong></p>
+              <pre><code class="language-bash">/createTex cours sur les fonctions affines en troisième</code></pre>
+              <p class="success">→ Modèle Cours, 3eme, Sequence-Fonctions_affines/Cours/</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em;">
+              <p><strong>Exercices :</strong></p>
+              <pre><code class="language-bash">/createTex exercices sur les probabilités en terminale</code></pre>
+              <p class="success">→ Modèle Exercices light, Terminale, Sequence-Probabilites/</p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Types de documents disponibles</h3>
+
+            <div class="grid-2">
+              <div>
+                <ul class="smaller">
+                  <li class="fragment"><code>Cours</code> - Cours complet</li>
+                  <li class="fragment"><code>Devoir</code> - Évaluation/DS</li>
+                  <li class="fragment"><code>Devoir_maison</code> - DM</li>
+                  <li class="fragment"><code>Exercices light</code> - Exercices rapides</li>
+                  <li class="fragment"><code>Exercices heavy</code> - Avec corrections</li>
+                  <li class="fragment"><code>Découverte</code> - Activité découverte</li>
+                </ul>
+              </div>
+              <div>
+                <ul class="smaller">
+                  <li class="fragment"><code>Plan sequence</code> - Planification</li>
+                  <li class="fragment"><code>Recap_seance</code> - Récapitulatif</li>
+                  <li class="fragment"><code>AP</code> - Accompagnement</li>
+                  <li class="fragment"><code>Groupe</code> - Travail de groupe</li>
+                  <li class="fragment"><code>Info</code> - Algo/Info</li>
+                  <li class="fragment"><code>Jeux</code> - Jeux mathématiques</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- /createBeamer -->
+        <section>
+          <section>
+            <h2><i class="fas fa-presentation icon"></i> /createBeamer</h2>
+            <p class="subtitle">Création de diaporamas Beamer de haute qualité</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/createBeamer --sujet "&lt;sujet&gt;" --duree &lt;minutes&gt; [--style &lt;collège|lycée|académique&gt;]</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-magic icon"></i> <strong>Autonome :</strong> Crée, compile, vérifie visuellement, corrige les bugs, nettoie les fichiers temporaires</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /createBeamer</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.75em;">
+              <div class="step-number">1</div>
+              <div>Analyse : style, sujet, durée, nb slides</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.75em;">
+              <div class="step-number">2</div>
+              <div>Création du contenu avec règles de densité</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.75em;">
+              <div class="step-number">3</div>
+              <div>Compilation avec LuaLaTeX</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.75em;">
+              <div class="step-number">4</div>
+              <div>Vérification visuelle (extraction PNG)</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.75em;">
+              <div class="step-number">5</div>
+              <div>Correction des bugs visuels détectés</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.75em;">
+              <div class="step-number">6</div>
+              <div>Nettoyage fichiers temporaires</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="7" style="font-size: 0.75em;">
+              <div class="step-number">7</div>
+              <div>PDF prêt à présenter ✓</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemples /createBeamer</h3>
+
+            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Présentation collège :</strong></p>
+              <pre><code class="language-bash">/createBeamer --sujet "Les nombres relatifs" --duree 20</code></pre>
+              <p class="success">→ 11 slides, style collège auto-détecté, 2 exercices, police 14pt</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Cours lycée :</strong></p>
+              <pre><code class="language-bash">/createBeamer --style lycée --sujet "Dérivation" --duree 55 \
+  --auteur "M. Dupont"</code></pre>
+              <p class="success">→ 25 slides, 4 exercices, métadonnées complètes</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em;">
+              <p><strong>Conférence académique :</strong></p>
+              <pre><code class="language-bash">/createBeamer --style académique \
+  --sujet "Analyse spectrale" --duree 30</code></pre>
+              <p class="success">→ 23 slides format 16:9, sobre et professionnel</p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Caractéristiques par style</h3>
+
+            <table style="font-size: 0.6em; width: 100%;">
+              <thead>
+                <tr style="background: var(--secondary-color); color: white;">
+                  <th>Critère</th>
+                  <th>Collège</th>
+                  <th>Lycée</th>
+                  <th>Académique</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Police</strong></td>
+                  <td>14pt</td>
+                  <td>12pt</td>
+                  <td>11pt</td>
+                </tr>
+                <tr>
+                  <td><strong>Densité max</strong></td>
+                  <td>60%</td>
+                  <td>70%</td>
+                  <td>70%</td>
+                </tr>
+                <tr>
+                  <td><strong>Items/slide</strong></td>
+                  <td>5 max</td>
+                  <td>6-7 max</td>
+                  <td>7 max</td>
+                </tr>
+                <tr>
+                  <td><strong>Animations</strong></td>
+                  <td>Fréquentes</td>
+                  <td>Modérées</td>
+                  <td>Rares</td>
+                </tr>
+                <tr>
+                  <td><strong>Couleurs</strong></td>
+                  <td>Vives</td>
+                  <td>Équilibrées</td>
+                  <td>Sobres</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <!-- /createReveals -->
+        <section>
+          <section>
+            <h2><i class="fas fa-globe icon"></i> /createReveals</h2>
+            <p class="subtitle">Création de présentations reveal.js interactives</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/createReveals --sujet "&lt;sujet&gt;" --duree &lt;minutes&gt; [--style &lt;collège|lycée|académique&gt;]</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-laptop icon"></i> <strong>Web :</strong> Présentation HTML/CSS/JS avec MathJax, fragments progressifs, navigation clavier</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /createReveals</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <div class="step-number">1</div>
+              <div>Analyse et choix du template</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <div class="step-number">2</div>
+              <div>Création contenu HTML avec fragments</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <div class="step-number">3</div>
+              <div>Configuration reveal.js et MathJax</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <div class="step-number">4</div>
+              <div>Test dans navigateur</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
+              <div class="step-number">5</div>
+              <div>Finalisation et rapport</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemples /createReveals</h3>
+
+            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Présentation collège :</strong></p>
+              <pre><code class="language-bash">/createReveals --sujet "Les nombres relatifs" --duree 20</code></pre>
+              <p class="success">→ 11 slides HTML, police 22px, couleurs vives, MathJax intégré</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Cours lycée :</strong></p>
+              <pre><code class="language-bash">/createReveals --style lycée --sujet "Dérivation" --duree 55</code></pre>
+              <p class="success">→ 25 slides avec fragments progressifs, mode présentation (S)</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em;">
+              <p><strong>Conférence académique :</strong></p>
+              <pre><code class="language-bash">/createReveals --style académique --sujet "Analyse" --duree 30</code></pre>
+              <p class="success">→ 23 slides sobres, transitions simples, export PDF possible</p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Avantages reveal.js</h3>
+
+            <div class="grid-2">
+              <div>
+                <ul class="smaller">
+                  <li class="fragment"><i class="fas fa-hand-pointer icon success"></i> <strong>Interactif</strong> : Navigation clavier/souris/tactile</li>
+                  <li class="fragment"><i class="fas fa-mobile-alt icon success"></i> <strong>Responsive</strong> : Mobile, tablette, desktop</li>
+                  <li class="fragment"><i class="fas fa-eye icon success"></i> <strong>Mode présentation</strong> : Speaker notes (touche S)</li>
+                  <li class="fragment"><i class="fas fa-th icon success"></i> <strong>Vue d'ensemble</strong> : Aperçu (Esc)</li>
+                </ul>
+              </div>
+              <div>
+                <ul class="smaller">
+                  <li class="fragment"><i class="fas fa-link icon success"></i> <strong>Partage facile</strong> : URL unique</li>
+                  <li class="fragment"><i class="fas fa-magic icon success"></i> <strong>Animations CSS</strong> : Personnalisables</li>
+                  <li class="fragment"><i class="fas fa-file-pdf icon success"></i> <strong>Export PDF</strong> : ?print-pdf</li>
+                  <li class="fragment"><i class="fas fa-bolt icon success"></i> <strong>Pas de compilation</strong> : Ouverture directe</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- /create-app -->
+        <section>
+          <section>
+            <h2><i class="fas fa-laptop-code icon"></i> /create-app</h2>
+            <p class="subtitle">Créer une application éducative interactive</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/create-app &lt;chemin_vers_ressource&gt; [--name &lt;nom&gt;] [--type &lt;type&gt;]</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-magic icon"></i> <strong>Transformation :</strong> Transforme n'importe quelle ressource (.tex, .pdf, dossier) en application Flask standalone (.exe)</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /create-app</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.7em;">
+              <div class="step-number">1</div>
+              <div>Analyse (30s) : type, niveau, métadonnées</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.7em;">
+              <div class="step-number">2</div>
+              <div>Questions (1 min max) : nom, type, fonctionnalités</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.7em;">
+              <div class="step-number">3</div>
+              <div>Génération (2-3 min) : Flask + frontend + tests + doc</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.7em;">
+              <div class="step-number">4</div>
+              <div>Tests (1 min) : pytest, routes, rendu</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.7em;">
+              <div class="step-number">5</div>
+              <div>Packaging (2-3 min) : build .exe avec PyInstaller</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.7em;">
+              <div class="step-number">6</div>
+              <div>Livraison : app complète + rapport + guide</div>
+            </div>
+
+            <p class="success fragment" style="margin-top: 1em; font-size: 0.9em;">⏱ Temps total : 5-10 minutes</p>
+          </section>
+
+          <section>
+            <h3>Exemples /create-app</h3>
+
+            <div class="example-box" style="font-size: 0.7em; margin-bottom: 0.8em;">
+              <p><strong>Exercices LaTeX :</strong></p>
+              <pre><code class="language-bash">/create-app ./2nde/Exercices_vecteurs.tex</code></pre>
+              <p class="success">→ App exerciseur + vérification auto + .exe distribuable</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.7em; margin-bottom: 0.8em;">
+              <p><strong>Cours PDF :</strong></p>
+              <pre><code class="language-bash">/create-app ./Cours_fonctions.pdf --name "CoursInteractifFonctions"</code></pre>
+              <p class="success">→ Visualiseur + navigation + recherche + formules MathJax</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.7em;">
+              <p><strong>Dossier complet :</strong></p>
+              <pre><code class="language-bash">/create-app ./1ere_spe/Sequence-Produit_scalaire/ --type mixte</code></pre>
+              <p class="success">→ App mixte (cours + exos) + tableau de bord progression</p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Types d'applications</h3>
+
+            <div class="grid-2">
+              <div class="box fragment" style="font-size: 0.75em;">
+                <h3 class="smaller"><i class="fas fa-pencil-alt icon"></i> Exerciseur</h3>
+                <ul class="smaller">
+                  <li>Vérification automatique</li>
+                  <li>Feedback immédiat</li>
+                  <li>Indices et solutions</li>
+                  <li>Barre de progression</li>
+                </ul>
+              </div>
+
+              <div class="box fragment" style="font-size: 0.75em;">
+                <h3 class="smaller"><i class="fas fa-book-reader icon"></i> Visualiseur</h3>
+                <ul class="smaller">
+                  <li>Navigation sections</li>
+                  <li>Recherche dans contenu</li>
+                  <li>Annotations perso</li>
+                  <li>Export PDF</li>
+                </ul>
+              </div>
+
+              <div class="box fragment" style="font-size: 0.75em;">
+                <h3 class="smaller"><i class="fas fa-question icon"></i> Quiz</h3>
+                <ul class="smaller">
+                  <li>QCM et questions ouvertes</li>
+                  <li>Timer configurable</li>
+                  <li>Correction immédiate</li>
+                  <li>Historique tentatives</li>
+                </ul>
+              </div>
+
+              <div class="box fragment" style="font-size: 0.75em;">
+                <h3 class="smaller"><i class="fas fa-star icon"></i> Mixte</h3>
+                <ul class="smaller">
+                  <li>Tout des 3 types</li>
+                  <li>Progression guidée</li>
+                  <li>Tableau de bord complet</li>
+                  <li>Statistiques d'apprentissage</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <!-- SECTION : COMMANDES DE MODIFICATION -->
+      <section>
+        <section>
+          <h2><i class="fas fa-edit icon warning"></i> Commandes de Modification</h2>
+          <p class="smaller fragment">3 commandes pour adapter et optimiser vos documents existants</p>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/adaptTex</code></strong><br>Adaptation conceptuelle vers bfcours</p>
+            </div>
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/modifyTex</code></strong><br>Modifications sur mesure</p>
+            </div>
+            <div class="box fragment" style="font-size: 0.85em;" colspan="2">
+              <p><strong><code>/formatTexBetter</code></strong><br>Optimisation d'espace et mise en page</p>
+            </div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque commande</p>
+        </section>
+
+        <!-- /adaptTex -->
+        <section>
+          <section>
+            <h2><i class="fas fa-exchange-alt icon"></i> /adaptTex</h2>
+            <p class="subtitle">Adaptation conceptuelle de documents LaTeX vers bfcours</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/adaptTex &lt;chemin_fichier_source&gt; [--output &lt;chemin_sortie&gt;] [--backup]</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-brain icon"></i> <strong>Approche conceptuelle :</strong> Mappe les environnements selon leur rôle pédagogique, pas leur nom syntaxique</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /adaptTex</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.8em;">
+              <div class="step-number">1</div>
+              <div>Lecture du document source</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.8em;">
+              <div class="step-number">2</div>
+              <div>Initialisation projet avec tex-document-creator</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.8em;">
+              <div class="step-number">3</div>
+              <div>Adaptation conceptuelle avec bfcours-latex</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.8em;">
+              <div class="step-number">4</div>
+              <div>Compilation et correction des erreurs</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.8em;">
+              <div class="step-number">5</div>
+              <div>Vérification PDF (skill pdf)</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.8em;">
+              <div class="step-number">6</div>
+              <div>Itération jusqu'à résultat parfait</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemple /adaptTex</h3>
+
+            <div class="example-box" style="font-size: 0.8em;">
+              <p><strong>Principe de mapping :</strong></p>
+              <ul class="smaller">
+                <li class="fragment"><code>\begin{definition}</code>, <code>\begin{def}</code>, <code>\begin{defi}</code> → <code>\begin{Definition}</code></li>
+                <li class="fragment"><code>\begin{exercise}</code>, <code>\begin{exo}</code>, <code>\begin{exer1}</code> → <code>\begin{EXO}</code></li>
+                <li class="fragment">Listes énumérées → <code>\begin{tcbenumerate}</code></li>
+                <li class="fragment">Listes à puces → <code>\begin{MultiColonnes}{2}</code></li>
+              </ul>
+            </div>
+
+            <div class="warning-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+              <p><i class="fas fa-exclamation-triangle icon"></i> <strong>Règle fondamentale :</strong> Tous les exercices doivent avoir une correction (implémentée automatiquement si absente)</p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Ce qui sera produit</h3>
+
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Document adapté bfcours :</strong></p>
+              <ul class="smaller">
+                <li class="fragment"><i class="fas fa-check icon success"></i> Environnements bfcours cohérents</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> Exercices avec corrections complètes</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> Mise en page optimisée (MultiColonnes)</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> Compilation réussie</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> PDF vérifié visuellement</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> Sauvegarde du fichier original</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <!-- /modifyTex -->
+        <section>
+          <section>
+            <h2><i class="fas fa-pen icon"></i> /modifyTex</h2>
+            <p class="subtitle">Modifier un document LaTeX existant</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/modifyTex &lt;description_modifications&gt;</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-cog icon"></i> <strong>Sur mesure :</strong> Applique vos modifications précises en respectant les conventions bfcours</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /modifyTex</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
+              <div class="step-number">1</div>
+              <div>Lecture du document à modifier</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
+              <div class="step-number">2</div>
+              <div>Application modifications (skill bfcours-latex)</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
+              <div class="step-number">3</div>
+              <div>Gestion des imports/annexes</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.9em;">
+              <div class="step-number">4</div>
+              <div>Compilation avec tex-compiling-skill</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.9em;">
+              <div class="step-number">5</div>
+              <div>Correction erreurs si nécessaire</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.9em;">
+              <div class="step-number">6</div>
+              <div>Validation utilisateur</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemple /modifyTex</h3>
+
+            <div class="example-box" style="font-size: 0.8em; margin-bottom: 1em;">
+              <p><strong>Exemple de demande :</strong></p>
+              <p style="font-style: italic;">"Ajoute un exercice sur le théorème de Pythagore après la section 2, avec 3 questions de difficulté croissante"</p>
+            </div>
+
+            <div class="fragment">
+              <p class="success" style="font-size: 0.85em; margin-bottom: 0.5em;"><i class="fas fa-arrow-right icon"></i> L'agent va :</p>
+              <ul class="smaller">
+                <li>Localiser la section 2</li>
+                <li>Créer un environnement <code>\begin{EXO}</code></li>
+                <li>Rédiger 3 questions progressives</li>
+                <li>Ajouter les corrections correspondantes</li>
+                <li>Compiler et vérifier</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h3>Ce qui sera produit</h3>
+
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Document modifié :</strong></p>
+              <ul class="smaller">
+                <li class="fragment"><i class="fas fa-check icon success"></i> Modifications appliquées précisément</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> Conventions bfcours respectées</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> Compilation réussie</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> Imports gérés automatiquement</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> Validation interactive avec vous</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <!-- /formatTexBetter -->
+        <section>
+          <section>
+            <h2><i class="fas fa-compress icon"></i> /formatTexBetter</h2>
+            <p class="subtitle">Optimisation d'espace et présentation compacte</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/formatTexBetter &lt;chemin_document&gt;</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-magic icon"></i> <strong>Optimisation :</strong> Maximise l'utilisation de l'espace sur chaque page sans changer le contenu</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /formatTexBetter</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.8em;">
+              <div class="step-number">1</div>
+              <div>Lecture du document source</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.8em;">
+              <div class="step-number">2</div>
+              <div>Extraction pages en images (skill pdf)</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.8em;">
+              <div class="step-number">3</div>
+              <div>Todolist d'optimisations par page</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.8em;">
+              <div class="step-number">4</div>
+              <div>Modification code avec bfcours-latex</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.8em;">
+              <div class="step-number">5</div>
+              <div>Double compilation (tcbraster nécessite 2 passes)</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.8em;">
+              <div class="step-number">6</div>
+              <div>Itération jusqu'à optimum</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="7" style="font-size: 0.8em;">
+              <div class="step-number">7</div>
+              <div>Nettoyage fichiers intermédiaires</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemple /formatTexBetter</h3>
+
+            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Avant optimisation :</strong></p>
+              <ul class="smaller">
+                <li>Liste verticale de 8 items → prend 50% de la page</li>
+                <li>3 exercices sur 3 pages → beaucoup d'espace vide</li>
+                <li>Énoncé long avec beaucoup de paragraphes</li>
+              </ul>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em;">
+              <p><strong>Après optimisation :</strong></p>
+              <ul class="smaller">
+                <li><code>\begin{MultiColonnes}{2}</code> → liste sur 2 colonnes, économie 25%</li>
+                <li><code>\begin{tcbraster}</code> → 2 exercices par page, économie 1 page</li>
+                <li>Paragraphes réorganisés en colonnes avec espacement optimal</li>
+              </ul>
+              <p class="success">→ Document passe de 5 pages à 3 pages, lisibilité conservée</p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Ce qui sera produit</h3>
+
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Document optimisé :</strong></p>
+              <ul class="smaller">
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Gain d'espace</strong> : 20-40% de pages en moins</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Lisibilité</strong> : Conservée voire améliorée</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>MultiColonnes</strong> : Listes et contenus compacts</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>tcbraster</strong> : Exercices en grille</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Compilation</strong> : Réussie et stable</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Propre</strong> : Fichiers temporaires nettoyés</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <!-- SECTION : GESTION DES CONNAISSANCES -->
+      <section>
+        <section>
+          <h2><i class="fas fa-database icon"></i> Commandes de Gestion des Connaissances</h2>
+          <p class="smaller fragment">2 commandes pour charger les connaissances techniques</p>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/loadTexKnowledge</code></strong><br>Connaissances LaTeX bfcours</p>
+            </div>
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/loadSkillKnowledge</code></strong><br>Documentation création de skills</p>
+            </div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque commande</p>
+        </section>
+
+        <!-- /loadTexKnowledge -->
+        <section>
+          <section>
+            <h2><i class="fas fa-book icon"></i> /loadTexKnowledge</h2>
+            <p class="subtitle">Chargement des connaissances LaTeX bfcours</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/loadTexKnowledge [--usecase &lt;type&gt;]</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-brain icon"></i> <strong>Objectif :</strong> Charger la documentation essentielle bfcours avant manipulation de code LaTeX</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /loadTexKnowledge</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
+              <div class="step-number">1</div>
+              <div>Lecture de main-latex-knowledge.md</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
+              <div class="step-number">2</div>
+              <div>Si --usecase spécifié : lecture des exemples correspondants</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
+              <div class="step-number">3</div>
+              <div>Connaissances chargées en mémoire</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.9em;">
+              <div class="step-number">4</div>
+              <div>Prêt à manipuler du code LaTeX</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemples /loadTexKnowledge</h3>
+
+            <div class="example-box" style="font-size: 0.8em; margin-bottom: 0.8em;">
+              <p><strong>Chargement basique :</strong></p>
+              <pre><code class="language-bash">/loadTexKnowledge</code></pre>
+              <p class="success">→ Connaissances essentielles bfcours chargées</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.8em; margin-bottom: 0.8em;">
+              <p><strong>Cours complexe :</strong></p>
+              <pre><code class="language-bash">/loadTexKnowledge --usecase cours-complexe</code></pre>
+              <p class="success">→ + Lecture Cours_second_degre/enonce.tex</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.8em;">
+              <p><strong>Fiche d'exercices :</strong></p>
+              <pre><code class="language-bash">/loadTexKnowledge --usecase exercices</code></pre>
+              <p class="success">→ + Lecture Exos_Partie_2_second_degre/enonce.tex + macros</p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Ce qui sera produit</h3>
+
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Connaissances chargées :</strong></p>
+              <ul class="smaller">
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Environnements bfcours</strong> : Definition, Theoreme, EXO, etc.</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Mise en page</strong> : MultiColonnes, tcbraster, espacement</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Bonnes pratiques</strong> : Structure, organisation, macros</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Exemples réels</strong> : Code produit en production (si --usecase)</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Prêt à produire</strong> : Code LaTeX de qualité professionnelle</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <!-- /loadSkillKnowledge -->
+        <section>
+          <section>
+            <h2><i class="fas fa-puzzle-piece icon"></i> /loadSkillKnowledge</h2>
+            <p class="subtitle">Documentation création de skills</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/loadSkillKnowledge</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-graduation-cap icon"></i> <strong>Formation :</strong> Se documenter sur la création de skills Claude Code</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /loadSkillKnowledge</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
+              <div class="step-number">1</div>
+              <div>Lecture documentation officielle Claude Code</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
+              <div class="step-number">2</div>
+              <div>Analyse des bonnes pratiques</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
+              <div class="step-number">3</div>
+              <div>Suggestions de 2 usages des skills</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.9em;">
+              <div class="step-number">4</div>
+              <div>Attente de vos instructions</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemple /loadSkillKnowledge</h3>
+
+            <div class="example-box" style="font-size: 0.8em;">
+              <p><strong>Commande :</strong></p>
+              <pre><code class="language-bash">/loadSkillKnowledge</code></pre>
+            </div>
+
+            <div class="fragment" style="margin-top: 1em;">
+              <p style="font-size: 0.85em; margin-bottom: 0.5em;"><strong>Réponse attendue :</strong></p>
+              <div class="box" style="font-size: 0.75em;">
+                <p>J'ai lu la documentation officielle Claude Code sur les skills.</p>
+                <p style="margin-top: 0.5em;"><strong>Suggestions d'usage :</strong></p>
+                <ul class="smaller">
+                  <li>1. Créer un skill pour automatiser la génération de QCM à partir d'un cours</li>
+                  <li>2. Créer un skill pour vérifier la cohérence d'une séquence pédagogique</li>
+                </ul>
+                <p class="success" style="margin-top: 0.5em;">Je suis prêt. Quelles sont vos instructions ?</p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Ce qui sera produit</h3>
+
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Connaissances acquises :</strong></p>
+              <ul class="smaller">
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Structure skills</strong> : SKILL.md, knowledge/, scripts/</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Bonnes pratiques</strong> : Documentation, exemples, tests</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Patterns</strong> : Workflow, gestion d'erreurs, résultats</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Suggestions</strong> : 2 idées d'utilisation concrètes</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Prêt</strong> : À créer vos propres skills</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <!-- SECTION : DOCUMENTATION -->
+      <section>
+        <section>
+          <h2><i class="fas fa-file-alt icon"></i> Commande de Documentation</h2>
+
+          <div class="command-card fragment">
+            <div class="command-title"><i class="fas fa-book-open icon"></i> /ficheTexnique</div>
+            <div class="command-desc">Produire un document explicatif succinct à partir d'une ressource pédagogique</div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir en détail</p>
+        </section>
+
+        <!-- /ficheTexnique -->
+        <section>
+          <section>
+            <h2><i class="fas fa-clipboard-list icon"></i> /ficheTexnique</h2>
+            <p class="subtitle">Document explicatif à partir d'une ressource</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/ficheTexnique &lt;dossier_ou_fichier&gt;</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-file-pdf icon"></i> <strong>Objectif :</strong> Analyser une ressource et produire un rapport explicatif .tex puis .pdf</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /ficheTexnique</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
+              <div class="step-number">1</div>
+              <div>Validation de la demande utilisateur</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
+              <div class="step-number">2</div>
+              <div>Questions contextuelles : perso, collègues, inspecteurs ?</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
+              <div class="step-number">3</div>
+              <div>Lancement agent fiche-technique-agent</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.9em;">
+              <div class="step-number">4</div>
+              <div>Production rapport .tex avec template skill</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.9em;">
+              <div class="step-number">5</div>
+              <div>Compilation et génération PDF</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemple /ficheTexnique</h3>
+
+            <div class="example-box" style="font-size: 0.8em; margin-bottom: 1em;">
+              <p><strong>Commande :</strong></p>
+              <pre><code class="language-bash">/ficheTexnique ./1. Cours/2nde/Sequence-Vecteurs/</code></pre>
+            </div>
+
+            <div class="fragment">
+              <p style="font-size: 0.85em; margin-bottom: 0.5em;"><strong>Questions posées :</strong></p>
+              <div class="box" style="font-size: 0.75em;">
+                <p>Pour qui est ce document ?</p>
+                <ul class="smaller">
+                  <li>Perso (auto-documentation)</li>
+                  <li>Collègues (partage de pratiques)</li>
+                  <li>Inspecteurs (justification pédagogique)</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Ce qui sera produit</h3>
+
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Fiche technique PDF :</strong></p>
+              <ul class="smaller">
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Analyse</strong> : Contenu de la ressource</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Structure</strong> : Organisation pédagogique</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Objectifs</strong> : Compétences visées</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Méthodes</strong> : Approches utilisées</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Contexte</strong> : Adapté à votre public (perso/collègues/inspection)</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Format</strong> : Document .tex et .pdf professionnel</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <!-- SECTION : AUTOMATISATION -->
+      <section>
+        <section>
+          <h2><i class="fas fa-cogs icon"></i> Commande d'Automatisation</h2>
+
+          <div class="command-card fragment">
+            <div class="command-title"><i class="fas fa-search icon"></i> /background</div>
+            <div class="command-desc">Investigation et auto-correction en arrière-plan</div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir en détail</p>
+        </section>
+
+        <!-- /background -->
+        <section>
+          <section>
+            <h2><i class="fas fa-bug icon"></i> /background</h2>
+            <p class="subtitle">Investigation et auto-correction automatique</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/background</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-robot icon"></i> <strong>Agent autonome :</strong> Analyse les logs d'erreurs et corrige automatiquement les problèmes de configuration</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Fonctionnement /background</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.75em;">
+              <div class="step-number">1</div>
+              <div>Hook PostToolUse : enregistre les erreurs automatiquement</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.75em;">
+              <div class="step-number">2</div>
+              <div>Agent error-investigator : analyse logs + conversation</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.75em;">
+              <div class="step-number">3</div>
+              <div>Identification des causes racines</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.75em;">
+              <div class="step-number">4</div>
+              <div>Corrections automatiques : validations, gestion erreurs</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.75em;">
+              <div class="step-number">5</div>
+              <div>Propositions (validation requise) : amelioration-proposals.md</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.75em;">
+              <div class="step-number">6</div>
+              <div>Prévention : anticipe erreurs similaires futures</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemple /background</h3>
+
+            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Scénario :</strong></p>
+              <p>Vous avez eu plusieurs erreurs de compilation LaTeX cette semaine.</p>
+            </div>
+
+            <div class="fragment">
+              <p style="font-size: 0.85em; margin-bottom: 0.5em;"><strong>Lancement :</strong></p>
+              <pre><code class="language-bash">/background</code></pre>
+            </div>
+
+            <div class="fragment" style="margin-top: 1em;">
+              <p class="success" style="font-size: 0.85em;">→ L'agent analyse tous les logs et identifie :</p>
+              <ul class="smaller">
+                <li>Erreur récurrente : package manquant</li>
+                <li>Correction auto : ajout validation package dans skill</li>
+                <li>Proposition : améliorer message d'erreur pour utilisateur</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h3>Ce qui sera produit</h3>
+
+            <div class="box" style="font-size: 0.75em;">
+              <p><strong>Rapport amelioration-proposals.md :</strong></p>
+              <ul class="smaller">
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Investigation détaillée</strong> : Chaque erreur analysée</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Causes racines</strong> : Identification précise</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Corrections auto</strong> : Implémentées avec diff</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Propositions</strong> : Nécessitant validation</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Recommandations</strong> : Prévention future</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Métriques</strong> : Taux de correction, erreurs résolues</li>
+              </ul>
+            </div>
+
+            <div class="warning-box fragment" style="font-size: 0.75em; margin-top: 0.8em;">
+              <p><i class="fas fa-shield-alt icon"></i> <strong>Sécurité :</strong> Ne modifie JAMAIS vos fichiers de travail (.tex, .pdf), seulement la configuration (.claude/)</p>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <!-- COMMENT UTILISER UNE COMMANDE -->
+      <section>
+        <h2>Comment utiliser une commande</h2>
+
+        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+          <div class="step-number">1</div>
+          <div>Ouvrir Claude Code dans votre projet</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+          <div class="step-number">2</div>
+          <div>Taper <code>/</code> pour voir la liste des commandes</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+          <div class="step-number">3</div>
+          <div>Sélectionner la commande ou taper son nom</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+          <div class="step-number">4</div>
+          <div>Ajouter les paramètres nécessaires</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
+          <div class="step-number">5</div>
+          <div>Appuyer sur Entrée</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.85em;">
+          <div class="step-number">6</div>
+          <div>L'agent prend le relais automatiquement ✓</div>
+        </div>
+      </section>
+
+      <!-- CONSEILS PRATIQUES -->
+      <section>
+        <h2><i class="fas fa-lightbulb icon"></i> Conseils pratiques</h2>
+
+        <div class="grid-2">
+          <div>
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-check icon success"></i> <strong>Soyez précis</strong></p>
+              <p class="smaller">Plus votre description est précise, meilleur sera le résultat</p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-robot icon success"></i> <strong>Laissez l'agent travailler</strong></p>
+              <p class="smaller">Les commandes sont autonomes, pas besoin d'intervention</p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-sync icon success"></i> <strong>Itérez si nécessaire</strong></p>
+              <p class="smaller">Vous pouvez relancer avec des ajustements</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-save icon success"></i> <strong>Vérifiez les résultats</strong></p>
+              <p class="smaller">Toujours vérifier le PDF ou HTML généré</p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-database icon success"></i> <strong>Chargez les connaissances</strong></p>
+              <p class="smaller">Utilisez /loadTexKnowledge avant modifications LaTeX</p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-history icon success"></i> <strong>Utilisez /background</strong></p>
+              <p class="smaller">Régulièrement pour auto-amélioration du système</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXEMPLE COMPLET DE WORKFLOW -->
+      <section>
+        <h2>Exemple complet de workflow</h2>
+
+        <div class="example-box" style="font-size: 0.75em;">
+          <p><strong>Scénario :</strong> Créer un cours sur les vecteurs en seconde et le présenter</p>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.7em; margin-top: 1em;">
+          <div class="step-number">1</div>
+          <div><code>/createTex cours sur les vecteurs en seconde</code> → Cours LaTeX créé</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.7em;">
+          <div class="step-number">2</div>
+          <div><code>/modifyTex ajouter 3 exercices d'application</code> → Exercices ajoutés</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.7em;">
+          <div class="step-number">3</div>
+          <div><code>/formatTexBetter ./Cours_vecteurs.tex</code> → Optimisation espace</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.7em;">
+          <div class="step-number">4</div>
+          <div><code>/createBeamer --sujet "Vecteurs 2nde" --duree 55</code> → Diaporama Beamer</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.7em;">
+          <div class="step-number">5</div>
+          <div><code>/create-app ./2nde/Sequence-Vecteurs/Exercices/ --type exerciseur</code> → App interactive</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.7em;">
+          <div class="step-number">6</div>
+          <div><code>/ficheTexnique ./2nde/Sequence-Vecteurs/</code> → Documentation pour collègues</div>
+        </div>
+
+        <p class="success fragment" style="margin-top: 1em; font-size: 0.85em;">⏱ Total : ~30 minutes pour une séquence complète !</p>
+      </section>
+
+      <!-- CONCLUSION -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> 11 commandes disponibles</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>4 pour créer (Tex, Beamer, Reveals, App)</li>
+              <li>3 pour modifier (adapt, modify, format)</li>
+              <li>2 pour connaissances (Tex, Skill)</li>
+              <li>1 pour documentation (fiche)</li>
+              <li>1 pour automatisation (background)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2"><i class="fas fa-rocket icon"></i> Bénéfices</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Gain de temps considérable</li>
+              <li>Qualité professionnelle garantie</li>
+              <li>Autonomie des agents</li>
+              <li>Résultats prêts à l'emploi</li>
+              <li>Auto-amélioration continue</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-magic icon"></i> Avec les slash commands, créez des ressources pédagogiques de qualité en quelques minutes !</strong></p>
+        </div>
+      </section>
+
+      <!-- RESSOURCES -->
+      <section>
+        <h2><i class="fas fa-book icon"></i> Ressources</h2>
+
+        <div class="grid-2">
+          <div class="box" style="font-size: 0.8em;">
+            <h3 class="smaller">Documentation locale</h3>
+            <ul class="smaller">
+              <li><code>.claude/commands/</code> - Toutes les commandes</li>
+              <li><code>.claude/skills/</code> - Skills disponibles</li>
+              <li><code>.claude/agents/</code> - Agents spécialisés</li>
+              <li><code>CLAUDE.md</code> - Instructions projet</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <h3 class="smaller">Aide en ligne</h3>
+            <ul class="smaller">
+              <li><i class="fas fa-globe icon"></i> docs.claude.com</li>
+              <li><i class="fas fa-book icon"></i> Documentation bfcours</li>
+              <li><i class="fas fa-terminal icon"></i> Taper <code>/</code> pour la liste</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
+          <i class="fas fa-question-circle icon"></i> <strong>Prêt à utiliser les commandes ?</strong>
+        </p>
+
+        <p class="fragment" style="margin-top: 1em; font-size: 0.9em;">
+          Tapez simplement <code>/</code> dans Claude Code pour commencer !
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation 2D
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+
+      // Transitions
+      transition: 'slide',
+      transitionSpeed: 'default',
+
+      // Behavior
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      shuffle: false,
+
+      // Fragments
+      fragments: true,
+      fragmentInURL: true,
+
+      // Keyboard
+      keyboard: true,
+      keyboardCondition: null,
+
+      // Plugins
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
+    let lastHorizontalIndex = 0;
+
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+
+      // Si on change de slide horizontale et qu'on n'est pas au top
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        // Revenir au top de la nouvelle slide
+        Reveal.slide(currentH, 0);
+      }
+
+      // Mettre à jour l'index horizontal
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>

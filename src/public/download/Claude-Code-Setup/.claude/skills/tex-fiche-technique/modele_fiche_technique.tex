@@ -1,0 +1,87 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{a4paper, margin=2cm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+% Couleurs sobres
+\definecolor{primarycolor}{RGB}{50,50,150}
+\definecolor{secondarycolor}{RGB}{100,100,100}
+
+% Personnalisation des sections
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{primarycolor}}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{secondarycolor}}
+  {\thesubsection}{1em}{}
+
+% Commandes personnalisées
+\newcommand{\ressourcetitle}[4]{%
+  \begin{center}
+    {\LARGE\bfseries\color{primarycolor} #1}\\[0.5em]
+    {\large #2 -- #3}\\[0.3em]
+    {\normalsize\textit{#4}}
+  \end{center}
+  \vspace{1em}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+\begin{document}
+
+% ============================================
+% EN-TÊTE DE LA RESSOURCE
+% ============================================
+\ressourcetitle{[TITRE DE LA RESSOURCE]}{[TYPE]}{[NIVEAU]}{[THÈME]}
+
+% ============================================
+% SECTION 1 : OBJECTIFS PÉDAGOGIQUES
+% ============================================
+\section{Objectifs pédagogiques}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Connaissances :} [Décrire les savoirs à acquérir]
+  \item \textbf{Compétences :} [Décrire les savoir-faire à développer]
+  \item \textbf{Méthodologie :} [Décrire les méthodes de travail mobilisées]
+\end{itemize}
+
+% ============================================
+% SECTION 2 : LIEN AVEC LES PROGRAMMES
+% ============================================
+\section{Lien avec les programmes}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Programmes officiels :} [Références précises au BO]
+  \item \textbf{Compétences du socle :} [Domaines et compétences du socle concernés]
+  \item \textbf{Capacités travaillées :} [Capacités mathématiques mobilisées]
+\end{itemize}
+
+% ============================================
+% SECTION 3 : CONTEXTE DE MISE EN ŒUVRE
+% ============================================
+\section{Contexte de mise en œuvre}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Durée indicative :} [Temps nécessaire en heures ou séances]
+  \item \textbf{Prérequis :} [Connaissances et compétences requises]
+  \item \textbf{Matériel :} [Ressources matérielles nécessaires]
+  \item \textbf{Organisation :} [Modalités pédagogiques suggérées]
+  \item \textbf{Positionnement :} [Place dans la progression annuelle]
+\end{itemize}
+
+% ============================================
+% SECTION 4 : REMARQUES SUR LA RESSOURCE
+% ============================================
+\section{Remarques sur la ressource}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Points d'attention :} [Éléments importants à considérer]
+  \item \textbf{Difficultés potentielles :} [Obstacles prévisibles pour les élèves]
+  \item \textbf{Adaptations :} [Possibilités de différenciation]
+  \item \textbf{Prolongements :} [Activités complémentaires envisageables]
+\end{itemize}
+
+\end{document}

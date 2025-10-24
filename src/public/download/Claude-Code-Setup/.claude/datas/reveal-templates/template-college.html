@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titre de la présentation</title>
+  <meta name="author" content="Nom de l'auteur">
+  <meta name="description" content="Description de la présentation">
+
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.css">
+
+  <!-- Custom styles pour collège -->
+  <style>
+    :root {
+      --main-color: #ff6b6b;
+      --secondary-color: #4ecdc4;
+      --accent-color: #ffe66d;
+      --background-color: #ffffff;
+      --text-color: #2d3436;
+    }
+
+    .reveal {
+      font-family: 'Comic Neue', 'Comic Sans MS', 'Arial', sans-serif;
+      font-size: 22px;
+      color: var(--text-color);
+    }
+
+    .reveal h1 {
+      font-size: 2.5em;
+      color: var(--main-color);
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 2em;
+      color: var(--secondary-color);
+      margin-bottom: 0.8em;
+      padding-bottom: 0.3em;
+      border-bottom: 4px solid var(--accent-color);
+    }
+
+    .reveal h3 {
+      font-size: 1.5em;
+      color: var(--main-color);
+    }
+
+    .reveal ul, .reveal ol {
+      margin-top: 1em;
+    }
+
+    .reveal li {
+      margin-bottom: 0.8em;
+      font-size: 1.1em;
+    }
+
+    /* Boxes avec dégradés colorés */
+    .box-info {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1.5em;
+      margin: 1em 0;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .box-warning {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 1.5em;
+      margin: 1em 0;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .box-success {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 1.5em;
+      margin: 1em 0;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .result-box {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      color: white;
+      padding: 1.5em;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      border-radius: 20px;
+      margin: 1em 0;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transform: scale(1);
+      transition: transform 0.3s ease;
+    }
+
+    .result-box:hover {
+      transform: scale(1.05);
+    }
+
+    /* Exercices avec style ludique */
+    .exercise {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      padding: 1.5em;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5em;
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    .difficulty {
+      color: #ff6b6b;
+      font-size: 1.3em;
+    }
+
+    .estimated-time {
+      color: #2d3436;
+      font-style: italic;
+      background-color: rgba(255,255,255,0.7);
+      padding: 0.3em 0.8em;
+      border-radius: 10px;
+    }
+
+    .statement {
+      background-color: white;
+      padding: 1.5em;
+      border-radius: 15px;
+      margin-bottom: 1.5em;
+      border: 3px solid var(--secondary-color);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Mise en forme ludique */
+    .highlight {
+      color: var(--main-color);
+      font-weight: bold;
+      background-color: var(--accent-color);
+      padding: 0.2em 0.5em;
+      border-radius: 5px;
+    }
+
+    .question {
+      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+      padding: 1.5em;
+      border-radius: 15px;
+      margin-bottom: 1.5em;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .answer {
+      background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+      padding: 1.5em;
+      border-radius: 15px;
+      margin-top: 1.5em;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Colonnes */
+    .two-columns {
+      display: flex;
+      gap: 2em;
+    }
+
+    .two-columns > div {
+      flex: 1;
+    }
+
+    /* Animations supplémentaires pour collège */
+    .reveal .fragment.bounce {
+      animation: bounce 0.5s ease;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Footer coloré */
+    .reveal .slide-number {
+      background: linear-gradient(135deg, var(--main-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    /* Emoji styling */
+    .emoji {
+      font-size: 1.5em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide de titre -->
+      <section>
+        <h1>Titre de la présentation 📚</h1>
+        <h3>Sous-titre</h3>
+        <p>
+          <small>Par <strong>Nom de l'auteur</strong></small><br>
+          <small>Établissement</small><br>
+          <small><em>Date</em></small>
+        </p>
+      </section>
+
+      <!-- Exemple de slide avec contenu coloré -->
+      <section>
+        <h2>Introduction 🎯</h2>
+        <p>Contenu de l'introduction...</p>
+      </section>
+
+      <!-- Exemple de slide avec liste progressive -->
+      <section>
+        <h2>Points clés ✨</h2>
+        <ul>
+          <li class="fragment fade-up">Premier point important</li>
+          <li class="fragment fade-up">Deuxième point important</li>
+          <li class="fragment fade-up">Troisième point important</li>
+        </ul>
+      </section>
+
+      <!-- Exemple d'exercice ludique -->
+      <section class="exercise">
+        <h2>Exercice : À toi de jouer ! 🎮</h2>
+
+        <div class="exercise-header">
+          <span class="difficulty">★☆☆</span>
+          <span class="estimated-time">⏱️ 5 minutes</span>
+        </div>
+
+        <div class="statement">
+          <p><strong>Énoncé :</strong> Résoudre l'équation suivante :</p>
+          <p>\[2x + 3 = 7\]</p>
+        </div>
+
+        <div class="fragment fade-in">
+          <p><strong>Solution :</strong></p>
+          <p>\begin{align}
+            2x + 3 &= 7 \\
+            2x &= 4 \\
+            x &= 2
+          \end{align}</p>
+        </div>
+
+        <div class="fragment">
+          <div class="result-box">
+            ✅ \(x = 2\)
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide avec box colorée -->
+      <section>
+        <h2>Point important 💡</h2>
+        <div class="fragment">
+          <div class="box-info">
+            <strong>À retenir :</strong> Message clé à mémoriser
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide de conclusion -->
+      <section>
+        <h2>Conclusion 🎉</h2>
+        <p>Résumé des points importants...</p>
+        <div class="fragment">
+          <div class="box-success">
+            <strong>Bravo !</strong> Tu as terminé cette leçon !
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Affichage
+      width: 1280,
+      height: 720,
+      margin: 0.1,
+
+      // Navigation
+      controls: true,
+      controlsLayout: 'bottom-right',
+      progress: true,
+      slideNumber: 'c/t',
+      hash: true,
+      navigationMode: 'default',
+
+      // Comportement (plus d'animations pour collège)
+      transition: 'slide',
+      transitionSpeed: 'fast',
+      backgroundTransition: 'fade',
+
+      // Math avec MathJax 3
+      math: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+        config: 'TeX-AMS_HTML-full',
+      },
+
+      // Plugins
+      plugins: [
+        RevealMath,
+        RevealNotes,
+        RevealHighlight,
+        RevealZoom
+      ]
+    });
+  </script>
+</body>
+</html>

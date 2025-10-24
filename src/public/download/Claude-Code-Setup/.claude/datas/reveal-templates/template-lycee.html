@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titre de la présentation</title>
+  <meta name="author" content="Nom de l'auteur">
+  <meta name="description" content="Description de la présentation">
+
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.css">
+
+  <!-- Custom styles pour lycée -->
+  <style>
+    :root {
+      --main-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --background-color: #ffffff;
+      --text-color: #333333;
+    }
+
+    .reveal {
+      font-family: 'Roboto', 'Arial', sans-serif;
+      font-size: 20px;
+      color: var(--text-color);
+    }
+
+    .reveal h1 {
+      font-size: 2.2em;
+      color: var(--main-color);
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.8em;
+      color: var(--main-color);
+      margin-bottom: 0.8em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.3em;
+    }
+
+    .reveal h3 {
+      font-size: 1.4em;
+      color: var(--secondary-color);
+    }
+
+    .reveal ul, .reveal ol {
+      margin-top: 1em;
+    }
+
+    .reveal li {
+      margin-bottom: 0.5em;
+    }
+
+    /* Boxes */
+    .box-info {
+      background-color: #ecf0f1;
+      border-left: 5px solid var(--secondary-color);
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+
+    .box-warning {
+      background-color: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+
+    .box-success {
+      background-color: #d4edda;
+      border-left: 5px solid #28a745;
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+
+    .result-box {
+      background-color: #f8f9fa;
+      border: 2px solid var(--main-color);
+      padding: 1em;
+      text-align: center;
+      font-size: 1.3em;
+      font-weight: bold;
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    /* Exercices */
+    .exercise {
+      background: linear-gradient(135deg, #fff9e6 0%, #fffaf0 100%);
+      padding: 1em;
+      border-radius: 10px;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1em;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    .difficulty {
+      color: #ff9800;
+    }
+
+    .estimated-time {
+      color: #666;
+      font-style: italic;
+    }
+
+    .statement {
+      background-color: white;
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+      border: 1px solid #ddd;
+    }
+
+    /* Mise en forme */
+    .highlight {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    .question {
+      background-color: #e8f4f8;
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+    }
+
+    .answer {
+      background-color: #e8f8f5;
+      padding: 1em;
+      border-radius: 8px;
+      margin-top: 1em;
+    }
+
+    /* Colonnes */
+    .two-columns {
+      display: flex;
+      gap: 2em;
+    }
+
+    .two-columns > div {
+      flex: 1;
+    }
+
+    /* Fragments personnalisés */
+    .reveal .fragment.highlight-current-custom {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .reveal .fragment.highlight-current-custom.current-fragment {
+      background-color: #ffeb3b;
+      padding: 0.2em 0.5em;
+      border-radius: 3px;
+    }
+
+    /* Footer */
+    .reveal .slide-number {
+      background-color: var(--main-color);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide de titre -->
+      <section>
+        <h1>Titre de la présentation</h1>
+        <h3>Sous-titre</h3>
+        <p>
+          <small>Par <strong>Nom de l'auteur</strong></small><br>
+          <small>Établissement</small><br>
+          <small><em>Date</em></small>
+        </p>
+      </section>
+
+      <!-- Slide de plan (optionnel) -->
+      <section>
+        <h2>Plan</h2>
+        <ol>
+          <li>Introduction</li>
+          <li>Section 1</li>
+          <li>Section 2</li>
+          <li>Conclusion</li>
+        </ol>
+      </section>
+
+      <!-- Exemple de slide avec contenu -->
+      <section>
+        <h2>Introduction</h2>
+        <p>Contenu de l'introduction...</p>
+      </section>
+
+      <!-- Exemple de slide avec liste progressive -->
+      <section>
+        <h2>Points clés</h2>
+        <ul>
+          <li class="fragment">Premier point</li>
+          <li class="fragment">Deuxième point</li>
+          <li class="fragment">Troisième point</li>
+        </ul>
+      </section>
+
+      <!-- Exemple d'exercice -->
+      <section class="exercise">
+        <h2>Exercice : Application</h2>
+
+        <div class="exercise-header">
+          <span class="difficulty">★★☆</span>
+          <span class="estimated-time">5 minutes</span>
+        </div>
+
+        <div class="statement">
+          <p><strong>Énoncé :</strong> Résoudre l'équation suivante :</p>
+          <p>\[2x + 3 = 7\]</p>
+        </div>
+
+        <div class="fragment">
+          <p><strong>Solution :</strong></p>
+          <p>\begin{align}
+            2x + 3 &= 7 \\
+            2x &= 4 \\
+            x &= 2
+          \end{align}</p>
+        </div>
+
+        <div class="fragment">
+          <div class="result-box">
+            \(x = 2\)
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide de conclusion -->
+      <section>
+        <h2>Conclusion</h2>
+        <p>Résumé des points importants...</p>
+        <div class="fragment">
+          <div class="box-success">
+            <strong>À retenir :</strong> Message clé
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Affichage
+      width: 1280,
+      height: 720,
+      margin: 0.1,
+
+      // Navigation
+      controls: true,
+      controlsLayout: 'bottom-right',
+      progress: true,
+      slideNumber: 'c/t',
+      hash: true,
+      navigationMode: 'default',
+
+      // Comportement
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+
+      // Math avec MathJax 3
+      math: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+        config: 'TeX-AMS_HTML-full',
+      },
+
+      // Plugins
+      plugins: [
+        RevealMath,
+        RevealNotes,
+        RevealHighlight,
+        RevealZoom
+      ]
+    });
+  </script>
+</body>
+</html>

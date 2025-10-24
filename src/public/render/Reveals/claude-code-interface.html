@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Enseignement">
+  <meta name="description" content="Claude Code - Interface moderne pour l'enseignement avec IA">
+  <title>Claude Code - Interface Moderne pour l'Enseignement</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Theme personnalisé professionnel -->
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --text-color: #34495e;
+      --bg-light: #ecf0f1;
+      --claude-purple: #8b5cf6;
+      --claude-dark: #5b21b6;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.6em;
+      margin-bottom: 0.8em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.3em;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      margin-top: 0.8em;
+    }
+
+    .reveal ul, .reveal ol {
+      margin: 1em 0;
+    }
+
+    .reveal li {
+      margin: 0.5em 0;
+      line-height: 1.5;
+    }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 1em;
+      max-height: 500px;
+      font-size: 0.85em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .reveal .success {
+      color: var(--success-color);
+      font-weight: 600;
+    }
+
+    .reveal .warning {
+      color: var(--warning-color);
+      font-weight: 600;
+    }
+
+    .reveal .box {
+      background: var(--bg-light);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning-color);
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: #e8f5e9;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+      margin: 1em 0;
+    }
+
+    .reveal .claude-box {
+      background: #f3e8ff;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--claude-purple);
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon {
+      font-size: 1.2em;
+      margin-right: 0.3em;
+      vertical-align: middle;
+    }
+
+    .reveal section img {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: var(--secondary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .feature-list {
+      font-size: 0.9em;
+    }
+
+    .reveal .feature-list li {
+      margin: 0.4em 0;
+    }
+
+    .reveal .tree-structure {
+      font-family: 'Consolas', monospace;
+      font-size: 0.65em;
+      text-align: left;
+      background: #f8f9fa;
+      padding: 1em;
+      border-radius: 8px;
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    .reveal .subtitle {
+      color: var(--secondary-color);
+      font-size: 0.7em;
+      margin-top: 0.5em;
+    }
+
+    .reveal .tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+
+    .reveal .tag.warning {
+      background: var(--warning-color);
+    }
+
+    .reveal .tag.success {
+      background: var(--success-color);
+    }
+
+    .reveal .tag.claude {
+      background: var(--claude-purple);
+    }
+
+    .reveal .smaller {
+      font-size: 0.85em;
+    }
+
+    .reveal .comparison-table {
+      font-size: 0.75em;
+      width: 100%;
+      margin: 1em 0;
+    }
+
+    .reveal .comparison-table td, .reveal .comparison-table th {
+      padding: 0.5em;
+      border: 1px solid #ddd;
+    }
+
+    .reveal .comparison-table th {
+      background: var(--secondary-color);
+      color: white;
+    }
+
+    .reveal .nav-hint {
+      color: var(--secondary-color);
+      font-size: 0.75em;
+      margin-top: 1em;
+    }
+
+    .reveal .vs-separator {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin: 0.5em 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fas fa-robot icon"></i> Claude Code</h1>
+        <h2 style="border: none; color: var(--claude-purple);">Interface Moderne pour l'Enseignement</h2>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag claude">Claude AI + VS Code</span>
+          <span class="tag success">Projets LaTeX Éducatifs</span>
+        </p>
+        <p class="subtitle fragment">Transformez votre façon de créer des ressources pédagogiques</p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <h2>Au programme</h2>
+        <ol class="feature-list">
+          <li class="fragment" data-fragment-index="1"><i class="fas fa-question-circle icon"></i> Qu'est-ce que Claude Code ?</li>
+          <li class="fragment" data-fragment-index="2"><i class="fas fa-puzzle-piece icon"></i> Concepts clés (Skills, Agents, Commandes, MCP)</li>
+          <li class="fragment" data-fragment-index="3"><i class="fas fa-route icon"></i> Workflow typique d'utilisation</li>
+          <li class="fragment" data-fragment-index="4"><i class="fas fa-folder-tree icon"></i> Organisation du projet</li>
+          <li class="fragment" data-fragment-index="5"><i class="fas fa-star icon"></i> Fonctionnalités clés</li>
+          <li class="fragment" data-fragment-index="6"><i class="fas fa-graduation-cap icon"></i> Avantages pour l'enseignant</li>
+          <li class="fragment" data-fragment-index="7"><i class="fas fa-lightbulb icon"></i> Exemples & Conseils pratiques</li>
+        </ol>
+      </section>
+
+      <!-- SLIDE 3 : QU'EST-CE QUE CLAUDE CODE ? -->
+      <section>
+        <section>
+          <h2>Qu'est-ce que Claude Code ?</h2>
+
+          <div class="claude-box fragment">
+            <p><strong>L'alliance parfaite entre VS Code et l'IA Claude</strong></p>
+          </div>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-code icon"></i> <strong>VS Code</strong> : Éditeur professionnel Microsoft</li>
+            <li class="fragment"><i class="fas fa-brain icon"></i> <strong>Claude AI</strong> : IA conversationnelle Anthropic (Sonnet 4.5)</li>
+            <li class="fragment"><i class="fas fa-comments icon"></i> <strong>Interface chat</strong> + outils puissants intégrés</li>
+            <li class="fragment"><i class="fas fa-file-pdf icon"></i> <strong>Spécialisé</strong> pour projets éducatifs LaTeX</li>
+          </ul>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir en détail</p>
+        </section>
+
+        <section>
+          <h3>Architecture Claude Code</h3>
+          <div class="workflow-step fragment" style="font-size: 0.9em;">
+            <div class="step-number">1</div>
+            <div><strong>VS Code</strong> : Environnement de développement intégré (IDE)</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.9em;">
+            <div class="step-number">2</div>
+            <div><strong>Extension Claude Code</strong> : Pont entre VS Code et l'IA</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.9em;">
+            <div class="step-number">3</div>
+            <div><strong>API Claude</strong> : Modèle Sonnet 4.5 (raisonnement avancé)</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.9em;">
+            <div class="step-number">4</div>
+            <div><strong>Outils intégrés</strong> : Lecture, écriture, compilation, génération...</div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Pourquoi Claude Code pour l'enseignement ?</h3>
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-infinity icon"></i> Contexte long</h3>
+              <p class="smaller">200k tokens = projets complets chargés en mémoire</p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-cogs icon"></i> Outils natifs</h3>
+              <p class="smaller">Lecture, édition, compilation, bash intégrés</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-puzzle-piece icon"></i> Extensible</h3>
+              <p class="smaller">Skills, agents, serveurs MCP personnalisés</p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-file-alt icon"></i> LaTeX natif</h3>
+              <p class="smaller">Gère complexité documents éducatifs</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 4 : CONCEPTS CLÉS -->
+      <section>
+        <section>
+          <h2>Concepts clés</h2>
+          <p class="smaller">4 piliers pour maîtriser Claude Code</p>
+
+          <div class="grid-2">
+            <div class="claude-box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-brain icon"></i> Skills</h3>
+              <p class="smaller">Compétences spécialisées</p>
+            </div>
+
+            <div class="claude-box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-user-tie icon"></i> Agents</h3>
+              <p class="smaller">Experts autonomes</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="claude-box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-terminal icon"></i> Commandes</h3>
+              <p class="smaller">Slash commands rapides</p>
+            </div>
+
+            <div class="claude-box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-server icon"></i> Serveurs MCP</h3>
+              <p class="smaller">Model Context Protocol</p>
+            </div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour détailler chaque concept</p>
+        </section>
+
+        <!-- SKILL -->
+        <section>
+          <h3><i class="fas fa-brain icon"></i> Skills : Compétences spécialisées</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Définition :</strong> Un skill est une expertise documentée dans un fichier <code>SKILL.md</code></p>
+          </div>
+
+          <ul class="smaller">
+            <li class="fragment"><i class="fas fa-file-alt icon"></i> Stocké dans <code>.claude/skills/nom-du-skill/</code></li>
+            <li class="fragment"><i class="fas fa-book icon"></i> Contient instructions, exemples, bonnes pratiques</li>
+            <li class="fragment"><i class="fas fa-robot icon"></i> Claude l'utilise automatiquement quand pertinent</li>
+          </ul>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <p><strong>Exemples :</strong></p>
+            <ul class="smaller">
+              <li><code>image-generator</code> : Génération d'images pédagogiques</li>
+              <li><code>reveals-presentation</code> : Création de diaporamas reveal.js</li>
+              <li><code>latex-beamer</code> : Cours Beamer professionnels</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- AGENT -->
+        <section>
+          <h3><i class="fas fa-user-tie icon"></i> Agents : Experts autonomes</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Définition :</strong> Un agent est un Claude spécialisé avec rôle, outils et connaissances précis</p>
+          </div>
+
+          <ul class="smaller">
+            <li class="fragment"><i class="fas fa-file-code icon"></i> Déclaré dans <code>.claude/agents/nom-agent.md</code></li>
+            <li class="fragment"><i class="fas fa-puzzle-piece icon"></i> Accès à des skills spécifiques</li>
+            <li class="fragment"><i class="fas fa-tasks icon"></i> Autonome : décide, exécute, rapporte</li>
+          </ul>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <p><strong>Exemples :</strong></p>
+            <ul class="smaller">
+              <li><code>image-user</code> : Génère images via skill image-generator</li>
+              <li><code>debug-tex-log</code> : Analyse logs LaTeX et corrige bugs</li>
+              <li><code>beamer-creator</code> : Crée cours Beamer complets</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- COMMANDES -->
+        <section>
+          <h3><i class="fas fa-terminal icon"></i> Commandes : Slash commands</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Définition :</strong> Raccourcis pour tâches fréquentes (taper <code>/</code> dans le chat)</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller">Commandes système</h3>
+              <ul class="smaller">
+                <li><code>/help</code> : Aide générale</li>
+                <li><code>/skills</code> : Lister skills</li>
+                <li><code>/agents</code> : Lister agents</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller">Commandes métier</h3>
+              <ul class="smaller">
+                <li><code>/compile-tex</code> : Compiler LaTeX</li>
+                <li><code>/generate-images</code> : Lancer génération</li>
+                <li><code>/create-beamer</code> : Nouveau cours</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="success fragment" style="margin-top: 1em;"><i class="fas fa-rocket icon"></i> Gain de temps massif pour actions répétitives !</p>
+        </section>
+
+        <!-- MCP -->
+        <section>
+          <h3><i class="fas fa-server icon"></i> Serveurs MCP : Model Context Protocol</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Définition :</strong> Serveurs qui exposent des outils externes à Claude (bases de données, APIs, etc.)</p>
+          </div>
+
+          <ul class="smaller">
+            <li class="fragment"><i class="fas fa-plug icon"></i> Permet à Claude d'interagir avec des systèmes externes</li>
+            <li class="fragment"><i class="fas fa-database icon"></i> Accès bases de données, APIs, fichiers spéciaux</li>
+            <li class="fragment"><i class="fas fa-code icon"></i> Scripts Python/Node.js lancés en arrière-plan</li>
+          </ul>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <p><strong>Exemples :</strong></p>
+            <ul class="smaller">
+              <li><code>mcp-google-vertex</code> : Génération d'images via Google Gemini</li>
+              <li><code>mcp-latex-compiler</code> : Compilation LaTeX distante</li>
+              <li><code>mcp-database</code> : Requêtes SQL sur base exercices</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SCHÉMA RÉCAPITULATIF -->
+        <section>
+          <h3>Récapitulatif : Comment tout s'articule</h3>
+
+          <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div><strong>Vous</strong> : Demande en langage naturel (ou slash command)</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div><strong>Claude</strong> : Identifie skill ou agent pertinent</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+            <div class="step-number">3</div>
+            <div><strong>Agent</strong> : Utilise ses skills + serveurs MCP</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+            <div class="step-number">4</div>
+            <div><strong>Résultat</strong> : Fichiers créés, compilés, livrés</div>
+          </div>
+
+          <p class="success fragment" data-fragment-index="5" style="margin-top: 1em;"><i class="fas fa-magic icon"></i> Vous ne codez jamais : Claude orchestre tout !</p>
+        </section>
+      </section>
+
+      <!-- SLIDE 5 : WORKFLOW TYPIQUE -->
+      <section>
+        <section>
+          <h2>Workflow typique d'utilisation</h2>
+          <p class="smaller">Du besoin à la ressource prête en quelques clics</p>
+
+          <div class="workflow-step fragment" style="font-size: 0.9em;">
+            <div class="step-number">1</div>
+            <div>Exprimer votre besoin en langage naturel</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.9em;">
+            <div class="step-number">2</div>
+            <div>Claude analyse et propose une solution</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.9em;">
+            <div class="step-number">3</div>
+            <div>Validation / Ajustements interactifs</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.9em;">
+            <div class="step-number">4</div>
+            <div>Génération automatique (LaTeX, images, etc.)</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.9em;">
+            <div class="step-number">5</div>
+            <div>Compilation et vérification finale</div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour un exemple concret</p>
+        </section>
+
+        <section>
+          <h3>Exemple concret : Créer une fiche d'exercices</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Vous dites :</strong></p>
+            <p><em>"Créer une fiche d'exercices sur les fractions niveau 4ème avec 5 exercices progressifs et des images thématiques médiévales"</em></p>
+          </div>
+
+          <div class="claude-box fragment" style="font-size: 0.8em;">
+            <p><strong>Claude répond :</strong></p>
+            <ul class="smaller">
+              <li>✓ Analyse le besoin (niveau, thème, nombre d'exercices)</li>
+              <li>✓ Propose une structure pédagogique cohérente</li>
+              <li>✓ Suggère des consignes variées</li>
+            </ul>
+          </div>
+
+          <p class="success fragment" style="margin-top: 1em;"><i class="fas fa-clock icon"></i> <strong>Temps total : 5-10 minutes</strong> (vs 2-3h manuellement)</p>
+        </section>
+
+        <section>
+          <h3>Exécution automatique</h3>
+
+          <div class="workflow-step" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div>Agent <code>image-user</code> génère 5 images médiévales</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div>Agent <code>latex-creator</code> rédige fichier LaTeX</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">3</div>
+            <div>Compilation automatique en PDF</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">4</div>
+            <div>Vérification erreurs + corrections si besoin</div>
+          </div>
+
+          <div class="example-box fragment" style="margin-top: 1em; font-size: 0.85em;">
+            <p><strong>Résultat :</strong> Fiche PDF prête à imprimer avec images optimisées !</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 6 : ORGANISATION DU PROJET -->
+      <section>
+        <section>
+          <h2>Organisation du projet</h2>
+          <p class="smaller">Structure standardisée <code>.claude/</code></p>
+
+          <div class="tree-structure fragment">
+.claude/
+├── agents/              # Experts autonomes (.md)
+│   ├── image-user.md
+│   ├── debug-tex-log.md
+│   └── beamer-creator.md
+├── skills/              # Compétences documentées
+│   ├── image-generator/
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   └── scripts/
+│   └── reveals-presentation/
+│       ├── SKILL.md
+│       └── references/
+├── commands/            # Slash commands personnalisés
+│   └── custom-commands.json
+├── mcp_servers/         # Serveurs Model Context Protocol
+│   └── google-vertex/
+└── datas/               # Données partagées (templates, configs)
+    ├── reveal-templates/
+    └── latex-templates/
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour détailler chaque dossier</p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-folder icon"></i> Dossier <code>agents/</code></h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Contenu :</strong> Fichiers <code>.md</code> décrivant chaque agent</p>
+          </div>
+
+          <ul class="smaller">
+            <li class="fragment"><i class="fas fa-file-alt icon"></i> Un fichier = un agent spécialisé</li>
+            <li class="fragment"><i class="fas fa-user-tie icon"></i> Rôle, expertise, outils, exemples</li>
+            <li class="fragment"><i class="fas fa-plug icon"></i> Référence aux skills qu'il utilise</li>
+          </ul>
+
+          <div class="example-box fragment" style="font-size: 0.8em;">
+            <p><strong>Exemple :</strong> <code>image-user.md</code></p>
+            <ul class="smaller">
+              <li>Rôle : Générer images pédagogiques</li>
+              <li>Skills : image-generator</li>
+              <li>Connaissances : Styles impression, prompting IA</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-folder icon"></i> Dossier <code>skills/</code></h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Contenu :</strong> Sous-dossiers avec expertise documentée</p>
+          </div>
+
+          <ul class="smaller">
+            <li class="fragment"><i class="fas fa-book-open icon"></i> <code>SKILL.md</code> : Instructions pour Claude</li>
+            <li class="fragment"><i class="fas fa-file-code icon"></i> <code>scripts/</code> : Scripts Python/Node.js</li>
+            <li class="fragment"><i class="fas fa-database icon"></i> <code>knowledge/</code> : Docs de référence</li>
+            <li class="fragment"><i class="fas fa-folder-open icon"></i> <code>examples/</code> : Cas pratiques</li>
+          </ul>
+
+          <div class="example-box fragment" style="font-size: 0.8em;">
+            <p><strong>Exemple :</strong> <code>skills/image-generator/</code></p>
+            <ul class="smaller">
+              <li>SKILL.md : Comment générer des images</li>
+              <li>scripts/generate_images.py : Script de génération</li>
+              <li>knowledge/styles.md : 5 styles documentés</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-file-alt icon"></i> Fichier <code>CLAUDE.md</code></h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Le chef d'orchestre du projet</strong></p>
+          </div>
+
+          <ul class="smaller">
+            <li class="fragment"><i class="fas fa-cog icon"></i> Placé à la <strong>racine du projet</strong></li>
+            <li class="fragment"><i class="fas fa-list-check icon"></i> Contient les <strong>instructions globales</strong> pour Claude</li>
+            <li class="fragment"><i class="fas fa-book icon"></i> Décrit rôle, agents disponibles, workflow</li>
+            <li class="fragment"><i class="fas fa-wrench icon"></i> Configure environnement (Python, Node, LaTeX...)</li>
+          </ul>
+
+          <div class="box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-info-circle icon"></i> <strong>Lu automatiquement</strong> par Claude à chaque session</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 7 : FONCTIONNALITÉS CLÉS -->
+      <section>
+        <section>
+          <h2>Fonctionnalités clés</h2>
+          <p class="smaller">Ce que Claude Code peut faire pour vous</p>
+
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-comments icon"></i> Chat intelligent</h3>
+              <p class="smaller">Dialogue naturel avec contexte projet</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-file-code icon"></i> Édition fichiers</h3>
+              <p class="smaller">Lecture, écriture, modification LaTeX</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-hammer icon"></i> Compilation LaTeX</h3>
+              <p class="smaller">PDF générés automatiquement</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-image icon"></i> Génération images</h3>
+              <p class="smaller">IA Gemini pour visuels pédagogiques</p>
+            </div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour plus de fonctionnalités</p>
+        </section>
+
+        <section>
+          <h3>Fonctionnalités avancées</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-bug icon"></i> Debug automatique</h3>
+              <ul class="smaller">
+                <li>Analyse logs LaTeX</li>
+                <li>Correction erreurs</li>
+                <li>Suggestions d'amélioration</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-chart-line icon"></i> Applications interactives</h3>
+              <ul class="smaller">
+                <li>HTML/CSS/JS générés</li>
+                <li>Graphiques dynamiques</li>
+                <li>Simulations pédagogiques</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-copy icon"></i> Templates réutilisables</h3>
+              <ul class="smaller">
+                <li>Fiches exercices</li>
+                <li>Cours Beamer</li>
+                <li>Diaporamas reveal.js</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-sync-alt icon"></i> Versioning Git</h3>
+              <ul class="smaller">
+                <li>Commits automatiques</li>
+                <li>Historique complet</li>
+                <li>Collaboration facilitée</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Création de ressources variées</h3>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-file-pdf icon"></i> <strong>Fiches d'exercices</strong> : Énoncés, corrections, barèmes</li>
+            <li class="fragment"><i class="fas fa-chalkboard-teacher icon"></i> <strong>Cours Beamer</strong> : Diaporamas pédagogiques animés</li>
+            <li class="fragment"><i class="fas fa-clipboard-check icon"></i> <strong>Évaluations</strong> : Contrôles, DS, brevet blanc</li>
+            <li class="fragment"><i class="fas fa-gamepad icon"></i> <strong>Escape games</strong> : Énigmes mathématiques illustrées</li>
+            <li class="fragment"><i class="fas fa-code icon"></i> <strong>Applications web</strong> : Outils interactifs (calculatrices, graphiques...)</li>
+            <li class="fragment"><i class="fas fa-presentation icon"></i> <strong>Diaporamas reveal.js</strong> : Présentations HTML modernes</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- SLIDE 8 : AVANTAGES POUR L'ENSEIGNANT -->
+      <section>
+        <section>
+          <h2>Avantages pour l'enseignant</h2>
+          <p class="smaller">Pourquoi adopter Claude Code ?</p>
+
+          <div class="grid-2">
+            <div class="success-box fragment" style="background: #d4edda; border-left-color: var(--success-color); font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-clock icon"></i> Gain de temps massif</h3>
+              <ul class="smaller">
+                <li>Fiche exercices : 10 min vs 2-3h</li>
+                <li>Cours Beamer : 30 min vs 5-6h</li>
+                <li>Images : 5 min vs 1-2h de recherche</li>
+              </ul>
+            </div>
+
+            <div class="success-box fragment" style="background: #d4edda; border-left-color: var(--success-color); font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-star icon"></i> Qualité professionnelle</h3>
+              <ul class="smaller">
+                <li>LaTeX soigné et cohérent</li>
+                <li>Mise en page harmonieuse</li>
+                <li>Visuels adaptés au public</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour plus d'avantages</p>
+        </section>
+
+        <section>
+          <h3>Plus d'avantages</h3>
+
+          <div class="grid-2">
+            <div class="success-box fragment" style="background: #d4edda; border-left-color: var(--success-color); font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-palette icon"></i> Cohérence visuelle</h3>
+              <ul class="smaller">
+                <li>Même style sur tous les docs</li>
+                <li>Charte graphique respectée</li>
+                <li>Personnages récurrents</li>
+              </ul>
+            </div>
+
+            <div class="success-box fragment" style="background: #d4edda; border-left-color: var(--success-color); font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-sync icon"></i> Automatisation</h3>
+              <ul class="smaller">
+                <li>Tâches répétitives éliminées</li>
+                <li>Workflows standardisés</li>
+                <li>Corrections automatiques</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="success-box fragment" style="background: #d4edda; border-left-color: var(--success-color); font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-lightbulb icon"></i> Créativité libérée</h3>
+              <ul class="smaller">
+                <li>Focus sur pédagogie</li>
+                <li>Expérimentation facile</li>
+                <li>Projets ambitieux possibles</li>
+              </ul>
+            </div>
+
+            <div class="success-box fragment" style="background: #d4edda; border-left-color: var(--success-color); font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-users icon"></i> Partage facilité</h3>
+              <ul class="smaller">
+                <li>Templates réutilisables</li>
+                <li>Collaboration entre profs</li>
+                <li>Documentation automatique</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Avant / Après Claude Code</h3>
+
+          <div class="grid-2">
+            <div class="warning-box" style="font-size: 0.8em;">
+              <h3 class="smaller"><i class="fas fa-times-circle icon"></i> Avant</h3>
+              <ul class="smaller">
+                <li>2-3h pour une fiche exercices</li>
+                <li>Recherche images : 1-2h</li>
+                <li>Bugs LaTeX : 30 min - 1h</li>
+                <li>Copier-coller templates</li>
+                <li>Incohérences visuelles</li>
+                <li>Burn-out documentaire</li>
+              </ul>
+            </div>
+
+            <div class="example-box" style="font-size: 0.8em;">
+              <h3 class="smaller"><i class="fas fa-check-circle icon"></i> Après</h3>
+              <ul class="smaller">
+                <li>10 min pour une fiche exercices</li>
+                <li>Génération images : 5 min</li>
+                <li>Debug auto : 30 secondes</li>
+                <li>Création automatique</li>
+                <li>Cohérence garantie</li>
+                <li>Énergie pour pédagogie !</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="success fragment" style="margin-top: 1em; font-size: 1.1em;">
+            <i class="fas fa-rocket icon"></i> <strong>ROI exceptionnel : x10 à x20 en productivité !</strong>
+          </p>
+        </section>
+      </section>
+
+      <!-- SLIDE 9 : EXEMPLES D'UTILISATION QUOTIDIENNE -->
+      <section>
+        <section>
+          <h2>Exemples d'utilisation quotidienne</h2>
+          <p class="smaller">Interactions typiques avec Claude Code</p>
+
+          <div class="example-box fragment" style="font-size: 0.85em;">
+            <p><i class="fas fa-user icon"></i> <strong>Vous :</strong> <em>"Génère 10 exercices sur le théorème de Pythagore niveau 4ème"</em></p>
+          </div>
+
+          <div class="claude-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-robot icon"></i> <strong>Claude :</strong></p>
+            <ul class="smaller">
+              <li>✓ Crée fichier LaTeX avec 10 exercices progressifs</li>
+              <li>✓ Ajoute schémas géométriques (TikZ)</li>
+              <li>✓ Compile en PDF</li>
+              <li>✓ Temps total : 3 minutes</li>
+            </ul>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour plus d'exemples</p>
+        </section>
+
+        <section>
+          <h3>Exemple 2 : Escape game thématique</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><i class="fas fa-user icon"></i> <strong>Vous :</strong> <em>"Créer un escape game médiéval sur les fractions avec 5 énigmes et des images économiques à imprimer"</em></p>
+          </div>
+
+          <div class="claude-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-robot icon"></i> <strong>Claude :</strong></p>
+            <ul class="smaller">
+              <li>✓ Lance agent <code>image-user</code> : 5 images style ligne claire N&B</li>
+              <li>✓ Rédige 5 énigmes mathématiques cohérentes</li>
+              <li>✓ Crée PDF A4 prêt à imprimer (30 copies)</li>
+              <li>✓ Temps total : 10 minutes</li>
+            </ul>
+          </div>
+
+          <p class="success fragment" style="margin-top: 1em;"><i class="fas fa-print icon"></i> Économie d'encre : ~85% vs images couleur</p>
+        </section>
+
+        <section>
+          <h3>Exemple 3 : Correction de bug LaTeX</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><i class="fas fa-user icon"></i> <strong>Vous :</strong> <em>"Mon fichier LaTeX ne compile pas, peux-tu trouver l'erreur ?"</em></p>
+          </div>
+
+          <div class="claude-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-robot icon"></i> <strong>Claude :</strong></p>
+            <ul class="smaller">
+              <li>✓ Lance agent <code>debug-tex-log</code></li>
+              <li>✓ Analyse le log de compilation</li>
+              <li>✓ Identifie : accolade manquante ligne 47</li>
+              <li>✓ Corrige automatiquement</li>
+              <li>✓ Recompile : succès !</li>
+              <li>✓ Temps total : 30 secondes</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Exemple 4 : Diaporama reveal.js</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><i class="fas fa-user icon"></i> <strong>Vous :</strong> <em>"Créer un diaporama reveal.js sur les fonctions affines niveau 2nde, 15 slides avec animations"</em></p>
+          </div>
+
+          <div class="claude-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-robot icon"></i> <strong>Claude :</strong></p>
+            <ul class="smaller">
+              <li>✓ Utilise skill <code>reveals-presentation</code></li>
+              <li>✓ Crée 15 slides HTML avec fragments progressifs</li>
+              <li>✓ Navigation 2D (détails optionnels)</li>
+              <li>✓ Formules MathJax intégrées</li>
+              <li>✓ Design lycée professionnel</li>
+              <li>✓ Temps total : 8 minutes</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Exemple 5 : Modification en masse</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><i class="fas fa-user icon"></i> <strong>Vous :</strong> <em>"Remplacer tous les 'exercice' par 'activité' dans mes 20 fiches du chapitre"</em></p>
+          </div>
+
+          <div class="claude-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-robot icon"></i> <strong>Claude :</strong></p>
+            <ul class="smaller">
+              <li>✓ Identifie les 20 fichiers .tex du chapitre</li>
+              <li>✓ Remplace avec respect de la casse</li>
+              <li>✓ Recompile tous les PDF</li>
+              <li>✓ Vérifie aucune erreur introduite</li>
+              <li>✓ Temps total : 2 minutes</li>
+            </ul>
+          </div>
+
+          <p class="success fragment" style="margin-top: 1em;"><i class="fas fa-magic icon"></i> Tâche impossible manuellement, triviale avec Claude !</p>
+        </section>
+      </section>
+
+      <!-- SLIDE 10 : CONSEILS PRATIQUES -->
+      <section>
+        <section>
+          <h2><i class="fas fa-lightbulb icon"></i> Conseils pratiques</h2>
+          <p class="smaller">Tirer le maximum de Claude Code</p>
+
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-comments icon"></i> Soyez précis</h3>
+              <ul class="smaller">
+                <li>✓ "5 exercices niveau 4ème"</li>
+                <li>✗ "Des exercices"</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-layer-group icon"></i> Itérez</h3>
+              <ul class="smaller">
+                <li>Demandez ajustements</li>
+                <li>Affinez progressivement</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour plus de conseils</p>
+        </section>
+
+        <section>
+          <h3>Bonnes pratiques (1/2)</h3>
+
+          <ul class="feature-list">
+            <li class="fragment">
+              <i class="fas fa-folder-open icon"></i> <strong>Organiser par chapitres</strong><br>
+              <span class="smaller">Structure claire = Claude efficace</span>
+            </li>
+            <li class="fragment">
+              <i class="fas fa-file-alt icon"></i> <strong>Documenter dans CLAUDE.md</strong><br>
+              <span class="smaller">Instructions globales = cohérence garantie</span>
+            </li>
+            <li class="fragment">
+              <i class="fas fa-save icon"></i> <strong>Sauvegarder régulièrement</strong><br>
+              <span class="smaller">Git automatique via Claude</span>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Bonnes pratiques (2/2)</h3>
+
+          <ul class="feature-list">
+            <li class="fragment">
+              <i class="fas fa-book-open icon"></i> <strong>Créer des templates</strong><br>
+              <span class="smaller">Réutilisables = gain de temps x10</span>
+            </li>
+            <li class="fragment">
+              <i class="fas fa-users icon"></i> <strong>Partager avec collègues</strong><br>
+              <span class="smaller">Skills, agents, templates mutualisés</span>
+            </li>
+            <li class="fragment">
+              <i class="fas fa-graduation-cap icon"></i> <strong>Former l'IA progressivement</strong><br>
+              <span class="smaller">Exemples = apprentissage du style</span>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Pièges à éviter</h3>
+
+          <div class="grid-2">
+            <div class="warning-box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-exclamation-triangle icon"></i> Demandes trop vagues</h3>
+              <p class="smaller">"Fais un truc sur les maths"<br>→ Résultat imprévisible</p>
+            </div>
+
+            <div class="warning-box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-exclamation-triangle icon"></i> Tout vouloir d'un coup</h3>
+              <p class="smaller">"20 chapitres complets"<br>→ Itérer progressivement</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="warning-box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-exclamation-triangle icon"></i> Oublier de tester</h3>
+              <p class="smaller">Toujours vérifier PDF avant impression</p>
+            </div>
+
+            <div class="warning-box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-exclamation-triangle icon"></i> Ne pas documenter</h3>
+              <p class="smaller">CLAUDE.md = mémoire du projet</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Astuces pour gagner du temps</h3>
+
+          <div class="example-box fragment" style="font-size: 0.85em;">
+            <p><i class="fas fa-terminal icon"></i> <strong>Utiliser les slash commands</strong></p>
+            <p class="smaller"><code>/compile-tex fichier.tex</code> plutôt que "Peux-tu compiler fichier.tex ?"</p>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.85em;">
+            <p><i class="fas fa-copy icon"></i> <strong>Créer des templates personnalisés</strong></p>
+            <p class="smaller">Stocker dans <code>.claude/datas/</code> pour réutilisation instantanée</p>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.85em;">
+            <p><i class="fas fa-history icon"></i> <strong>Reprendre une conversation</strong></p>
+            <p class="smaller">Claude se souvient du contexte : continuez d'affiner</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 11 : CONCLUSION -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Points forts</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Gain de temps massif (x10 à x20)</li>
+              <li>Qualité professionnelle garantie</li>
+              <li>Cohérence visuelle automatique</li>
+              <li>Automatisation tâches répétitives</li>
+              <li>Créativité pédagogique libérée</li>
+              <li>Courbe d'apprentissage douce</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment warning" data-fragment-index="2"><i class="fas fa-exclamation-triangle icon"></i> À garder en tête</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Toujours vérifier résultats</li>
+              <li>Être précis dans les demandes</li>
+              <li>Documenter dans CLAUDE.md</li>
+              <li>Itérer progressivement</li>
+              <li>Partager avec collègues</li>
+              <li>Former l'IA avec exemples</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="claude-box fragment" data-fragment-index="3" style="margin-top: 1em;">
+          <p style="font-size: 1.1em;"><strong><i class="fas fa-rocket icon"></i> Claude Code : L'assistant IA qui transforme votre pratique enseignante !</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 12 : RESSOURCES -->
+      <section>
+        <h2><i class="fas fa-book icon"></i> Ressources</h2>
+
+        <div class="grid-2">
+          <div class="box" style="font-size: 0.8em;">
+            <h3 class="smaller">Documentation</h3>
+            <ul class="smaller">
+              <li><code>CLAUDE.md</code> - Instructions projet</li>
+              <li><code>.claude/agents/</code> - Experts disponibles</li>
+              <li><code>.claude/skills/</code> - Compétences documentées</li>
+              <li><code>.claude/datas/</code> - Templates & configs</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <h3 class="smaller">Liens utiles</h3>
+            <ul class="smaller">
+              <li><i class="fas fa-globe icon"></i> claude.ai/claude-code</li>
+              <li><i class="fas fa-book icon"></i> Documentation officielle</li>
+              <li><i class="fas fa-users icon"></i> Communauté enseignants</li>
+              <li><i class="fas fa-video icon"></i> Tutoriels vidéo</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" style="margin-top: 1.5em;">
+          <p><strong><i class="fas fa-hands-helping icon"></i> Prêt à révolutionner votre création de ressources pédagogiques ?</strong></p>
+        </div>
+
+        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
+          <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation 2D
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+
+      // Transitions
+      transition: 'slide',
+      transitionSpeed: 'default',
+
+      // Behavior
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      shuffle: false,
+
+      // Fragments
+      fragments: true,
+      fragmentInURL: true,
+
+      // Keyboard
+      keyboard: true,
+      keyboardCondition: null,
+
+      // Plugins
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
+    let lastHorizontalIndex = 0;
+
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+
+      // Si on change de slide horizontale et qu'on n'est pas au top
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        // Revenir au top de la nouvelle slide
+        Reveal.slide(currentH, 0);
+      }
+
+      // Mettre à jour l'index horizontal
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>

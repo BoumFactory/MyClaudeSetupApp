@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Développement">
+  <meta name="description" content="Le système skill-creator : créer vos propres compétences IA">
+  <title>Skill Creator - Système de Création de Compétences IA</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Theme personnalisé -->
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --text-color: #34495e;
+      --bg-light: #ecf0f1;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.6em;
+      margin-bottom: 0.8em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.3em;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      margin-top: 0.8em;
+    }
+
+    .reveal ul, .reveal ol {
+      margin: 1em 0;
+    }
+
+    .reveal li {
+      margin: 0.5em 0;
+      line-height: 1.5;
+    }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 1em;
+      max-height: 500px;
+      font-size: 0.85em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .reveal .success {
+      color: var(--success-color);
+      font-weight: 600;
+    }
+
+    .reveal .warning {
+      color: var(--warning-color);
+      font-weight: 600;
+    }
+
+    .reveal .box {
+      background: var(--bg-light);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning-color);
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: #e8f5e9;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon {
+      font-size: 1.2em;
+      margin-right: 0.3em;
+      vertical-align: middle;
+    }
+
+    .reveal section img {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: var(--secondary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .feature-list {
+      font-size: 0.9em;
+    }
+
+    .reveal .feature-list li {
+      margin: 0.4em 0;
+    }
+
+    .reveal .tree-structure {
+      font-family: 'Consolas', monospace;
+      font-size: 0.65em;
+      text-align: left;
+      background: #f8f9fa;
+      padding: 1em;
+      border-radius: 8px;
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    .reveal .subtitle {
+      color: var(--secondary-color);
+      font-size: 0.7em;
+      margin-top: 0.5em;
+    }
+
+    .reveal .tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+
+    .reveal .tag.warning {
+      background: var(--warning-color);
+    }
+
+    .reveal .tag.success {
+      background: var(--success-color);
+    }
+
+    .reveal .tag.accent {
+      background: var(--accent-color);
+    }
+
+    .reveal .smaller {
+      font-size: 0.85em;
+    }
+
+    .reveal .nav-hint {
+      margin-top: 1em;
+      padding: 0.5em;
+      background: rgba(52, 152, 219, 0.1);
+      border-radius: 5px;
+      font-size: 0.8em;
+      color: var(--secondary-color);
+    }
+
+    .reveal .meta-highlight {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fas fa-magic icon"></i> Skill Creator</h1>
+        <p class="subtitle">Créer vos Propres Compétences IA</p>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag">Formation IA</span>
+          <span class="tag success">Système Modulaire</span>
+          <span class="tag accent">Méta-Skill</span>
+        </p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <h2>Au programme</h2>
+        <ol class="feature-list">
+          <li class="fragment" data-fragment-index="1"><i class="fas fa-puzzle-piece icon"></i> Qu'est-ce qu'un skill ?</li>
+          <li class="fragment" data-fragment-index="2"><i class="fas fa-toolbox icon"></i> Le skill skill-creator</li>
+          <li class="fragment" data-fragment-index="3"><i class="fas fa-route icon"></i> Workflow en 6 étapes</li>
+          <li class="fragment" data-fragment-index="4"><i class="fas fa-folder-tree icon"></i> Structure d'un skill</li>
+          <li class="fragment" data-fragment-index="5"><i class="fas fa-code icon"></i> Scripts disponibles</li>
+          <li class="fragment" data-fragment-index="6"><i class="fas fa-layer-group icon"></i> Progressive disclosure</li>
+          <li class="fragment" data-fragment-index="7"><i class="fas fa-check-circle icon"></i> Bonnes pratiques</li>
+          <li class="fragment" data-fragment-index="8"><i class="fas fa-rocket icon"></i> Exemples concrets</li>
+        </ol>
+      </section>
+
+      <!-- SLIDE 3 : QU'EST-CE QU'UN SKILL ? (avec slides DOWN) -->
+      <section>
+        <section>
+          <h2>Qu'est-ce qu'un skill ?</h2>
+
+          <div class="box fragment">
+            <p><strong>Un skill est un package modulaire qui étend les capacités de Claude</strong></p>
+          </div>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-brain icon"></i> Guides d'onboarding pour domaines spécifiques</li>
+            <li class="fragment"><i class="fas fa-cogs icon"></i> Transforme Claude en agent spécialisé</li>
+            <li class="fragment"><i class="fas fa-book icon"></i> Contient connaissances procédurales</li>
+            <li class="fragment"><i class="fas fa-puzzle-piece icon"></i> Modulaire et réutilisable</li>
+          </ul>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour voir les 4 types de ressources
+          </div>
+        </section>
+
+        <section>
+          <h3>4 types de ressources</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-list-ol icon"></i> 1. Workflows</h3>
+              <p class="smaller">Procédures multi-étapes pour domaines spécifiques</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-tools icon"></i> 2. Outils</h3>
+              <p class="smaller">Instructions pour formats de fichiers ou APIs</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> 3. Expertise</h3>
+              <p class="smaller">Connaissances spécifiques, schémas, logique métier</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-box icon"></i> 4. Ressources</h3>
+              <p class="smaller">Scripts, références, assets pour tâches complexes</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Anatomie d'un skill</h3>
+
+          <div class="tree-structure">
+skill-name/
+├── SKILL.md (requis)
+│   ├── YAML frontmatter (requis)
+│   │   ├── name: (requis)
+│   │   └── description: (requis)
+│   └── Instructions Markdown (requis)
+└── Bundled Resources (optionnel)
+    ├── scripts/          - Code exécutable
+    ├── references/       - Documentation
+    └── assets/           - Fichiers de sortie
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.85em; margin-top: 1em;">
+            <p><i class="fas fa-info-circle icon"></i> <strong>SKILL.md</strong> est le seul fichier obligatoire</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 4 : LE SKILL SKILL-CREATOR -->
+      <section>
+        <section>
+          <h2>Le skill <span class="meta-highlight">skill-creator</span></h2>
+
+          <div class="box fragment">
+            <p><strong>Un méta-skill pour créer d'autres skills</strong></p>
+          </div>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-lightbulb icon"></i> Guide pour créer des skills efficaces</li>
+            <li class="fragment"><i class="fas fa-book-open icon"></i> Documentation complète du processus</li>
+            <li class="fragment"><i class="fas fa-code icon"></i> Scripts d'initialisation et packaging</li>
+            <li class="fragment"><i class="fas fa-magic icon"></i> Templates prêts à l'emploi</li>
+          </ul>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour le principe de progressive disclosure
+          </div>
+        </section>
+
+        <section>
+          <h3>Progressive Disclosure</h3>
+
+          <p class="smaller">Système de chargement en 3 niveaux pour gérer efficacement le contexte :</p>
+
+          <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
+            <div class="step-number">1</div>
+            <div><strong>Métadonnées</strong> (name + description) → ~100 mots → Toujours en contexte</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
+            <div class="step-number">2</div>
+            <div><strong>SKILL.md</strong> → &lt;5k mots → Quand skill se déclenche</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
+            <div class="step-number">3</div>
+            <div><strong>Bundled resources</strong> → Illimité* → Au besoin par Claude</div>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;">
+            <i class="fas fa-info-circle icon"></i> *Illimité car les scripts peuvent être exécutés sans lecture dans la fenêtre de contexte
+          </p>
+        </section>
+      </section>
+
+      <!-- SLIDE 5 : WORKFLOW EN 6 ÉTAPES (avec slides DOWN détaillées) -->
+      <section>
+        <section>
+          <h2>Workflow en 6 étapes</h2>
+
+          <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div>Comprendre avec exemples concrets</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div>Planifier les ressources réutilisables</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+            <div class="step-number">3</div>
+            <div>Initialiser avec init_skill.py</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+            <div class="step-number">4</div>
+            <div>Éditer le skill (scripts, references, assets, SKILL.md)</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
+            <div class="step-number">5</div>
+            <div>Packager avec package_skill.py</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.85em;">
+            <div class="step-number">6</div>
+            <div>Itérer et améliorer</div>
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour les détails de chaque étape
+          </div>
+        </section>
+
+        <!-- ÉTAPE 1 : COMPRENDRE -->
+        <section>
+          <h3><i class="fas fa-lightbulb icon"></i> Étape 1 : Comprendre</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Objectif :</strong> Comprendre clairement comment le skill sera utilisé</p>
+          </div>
+
+          <ul class="smaller">
+            <li class="fragment">Collecter des exemples concrets d'utilisation</li>
+            <li class="fragment">Identifier les fonctionnalités attendues</li>
+            <li class="fragment">Comprendre les déclencheurs du skill</li>
+          </ul>
+
+          <div class="example-box fragment" style="font-size: 0.8em;">
+            <p><strong>Exemple :</strong> Skill image-editor</p>
+            <ul class="smaller">
+              <li>"Quelle fonctionnalité ? Édition, rotation, autre ?"</li>
+              <li>"Exemples d'usage : 'Enlever les yeux rouges', 'Pivoter l'image' ?"</li>
+              <li>"Qu'est-ce qui devrait déclencher ce skill ?"</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 2 : PLANIFIER -->
+        <section>
+          <h3><i class="fas fa-clipboard-list icon"></i> Étape 2 : Planifier</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Objectif :</strong> Identifier les ressources réutilisables</p>
+          </div>
+
+          <p class="smaller">Pour chaque exemple, se demander :</p>
+
+          <ul class="smaller">
+            <li class="fragment">Quel code est réécrit à chaque fois ? → <code>scripts/</code></li>
+            <li class="fragment">Quelle documentation est consultée ? → <code>references/</code></li>
+            <li class="fragment">Quels fichiers sont réutilisés ? → <code>assets/</code></li>
+          </ul>
+
+          <div class="grid-2 fragment" style="margin-top: 1em;">
+            <div class="example-box" style="font-size: 0.75em;">
+              <p><strong>pdf-editor</strong></p>
+              <p>Rotation PDF → <code>scripts/rotate_pdf.py</code></p>
+            </div>
+
+            <div class="example-box" style="font-size: 0.75em;">
+              <p><strong>frontend-webapp</strong></p>
+              <p>Boilerplate HTML → <code>assets/hello-world/</code></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 3 : INITIALISER -->
+        <section>
+          <h3><i class="fas fa-play icon"></i> Étape 3 : Initialiser</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Utiliser le script init_skill.py</strong></p>
+          </div>
+
+          <pre class="fragment"><code class="language-bash">python scripts/init_skill.py my-skill --path ./skills
+</code></pre>
+
+          <p class="smaller fragment">Le script génère :</p>
+
+          <ul class="smaller fragment">
+            <li><i class="fas fa-file icon success"></i> SKILL.md avec frontmatter et placeholders TODO</li>
+            <li><i class="fas fa-folder icon success"></i> Répertoires scripts/, references/, assets/</li>
+            <li><i class="fas fa-file-code icon success"></i> Fichiers exemples personnalisables</li>
+          </ul>
+
+          <div class="warning-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-info-circle icon"></i> Sauter cette étape uniquement si le skill existe déjà</p>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 4 : ÉDITER -->
+        <section>
+          <h3><i class="fas fa-edit icon"></i> Étape 4 : Éditer</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Développer le contenu du skill</strong></p>
+          </div>
+
+          <p class="smaller">Ordre recommandé :</p>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number" style="width: 30px; height: 30px; font-size: 0.9em;">1</div>
+            <div>Créer scripts/, references/, assets/</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number" style="width: 30px; height: 30px; font-size: 0.9em;">2</div>
+            <div>Supprimer fichiers exemples non nécessaires</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number" style="width: 30px; height: 30px; font-size: 0.9em;">3</div>
+            <div>Mettre à jour SKILL.md avec style impératif/infinitif</div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><strong>Style d'écriture :</strong> "To accomplish X, do Y" (pas "You should")</p>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 5 : PACKAGER -->
+        <section>
+          <h3><i class="fas fa-box icon"></i> Étape 5 : Packager</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Créer un fichier .zip distributable</strong></p>
+          </div>
+
+          <pre class="fragment"><code class="language-bash">python scripts/package_skill.py ./skills/my-skill
+</code></pre>
+
+          <p class="smaller fragment">Le script :</p>
+
+          <ul class="smaller fragment">
+            <li class="fragment"><i class="fas fa-check-circle icon success"></i> <strong>Valide</strong> automatiquement le skill</li>
+            <li class="fragment"><i class="fas fa-file-archive icon success"></i> <strong>Package</strong> en .zip si validation OK</li>
+            <li class="fragment"><i class="fas fa-times-circle icon warning"></i> <strong>Rapporte</strong> les erreurs si problème</li>
+          </ul>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-arrow-right icon"></i> Sortie : <code>my-skill.zip</code></p>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 6 : ITÉRER -->
+        <section>
+          <h3><i class="fas fa-sync-alt icon"></i> Étape 6 : Itérer</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Améliorer le skill après tests réels</strong></p>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <ul class="smaller fragment">
+                <li>Utiliser le skill sur tâches réelles</li>
+                <li>Noter difficultés et inefficacités</li>
+                <li>Identifier améliorations possibles</li>
+              </ul>
+            </div>
+
+            <div>
+              <ul class="smaller fragment">
+                <li>Mettre à jour SKILL.md</li>
+                <li>Ajuster bundled resources</li>
+                <li>Tester à nouveau</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-lightbulb icon"></i> L'amélioration continue fait la qualité d'un skill !</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 6 : STRUCTURE D'UN SKILL -->
+      <section>
+        <section>
+          <h2>Structure d'un skill</h2>
+
+          <div class="tree-structure">
+skill-name/
+├── SKILL.md                    # Fichier principal (requis)
+│   ├── Frontmatter YAML
+│   │   ├── name: skill-name
+│   │   └── description: ...
+│   └── Instructions markdown
+├── scripts/                    # Code exécutable (optionnel)
+│   ├── example.py
+│   └── helper.sh
+├── references/                 # Documentation (optionnel)
+│   ├── api_reference.md
+│   └── workflow_guide.md
+└── assets/                     # Fichiers de sortie (optionnel)
+    ├── template.html
+    └── logo.png
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour détails de chaque partie
+          </div>
+        </section>
+
+        <!-- SKILL.md -->
+        <section>
+          <h3><i class="fas fa-file-alt icon"></i> SKILL.md</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Fichier principal obligatoire</strong></p>
+          </div>
+
+          <pre class="fragment"><code class="language-yaml">---
+name: my-skill
+description: This skill should be used when users want to...
+---
+
+# My Skill
+
+## Overview
+[Description du skill]
+
+## Usage
+[Instructions d'utilisation]
+</code></pre>
+
+          <div class="warning-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-exclamation-triangle icon"></i> Métadonnées de qualité = déclenchement précis</p>
+          </div>
+        </section>
+
+        <!-- scripts/ -->
+        <section>
+          <h3><i class="fas fa-code icon"></i> scripts/</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Code exécutable (Python/Bash/etc.)</strong></p>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <p class="smaller fragment"><strong>Quand inclure ?</strong></p>
+              <ul class="smaller fragment">
+                <li>Code réécrit répétitivement</li>
+                <li>Fiabilité déterministe requise</li>
+                <li>Opérations complexes</li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="smaller fragment"><strong>Avantages :</strong></p>
+              <ul class="smaller fragment">
+                <li>Token-efficient</li>
+                <li>Déterministe</li>
+                <li>Exécutable sans lecture</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><strong>Exemple :</strong> <code>scripts/rotate_pdf.py</code> pour rotation PDF</p>
+          </div>
+        </section>
+
+        <!-- references/ -->
+        <section>
+          <h3><i class="fas fa-book icon"></i> references/</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Documentation chargée au besoin dans le contexte</strong></p>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <p class="smaller fragment"><strong>Quand inclure ?</strong></p>
+              <ul class="smaller fragment">
+                <li>Documentation détaillée</li>
+                <li>Schémas de données</li>
+                <li>Guides de workflow</li>
+                <li>Spécifications API</li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="smaller fragment"><strong>Avantages :</strong></p>
+              <ul class="smaller fragment">
+                <li>SKILL.md reste léger</li>
+                <li>Chargé uniquement si besoin</li>
+                <li>Information découvrable</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="warning-box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><i class="fas fa-info-circle icon"></i> Éviter duplication : info dans SKILL.md OU references/, pas les deux</p>
+          </div>
+        </section>
+
+        <!-- assets/ -->
+        <section>
+          <h3><i class="fas fa-box-open icon"></i> assets/</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Fichiers utilisés dans la sortie (non chargés en contexte)</strong></p>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <p class="smaller fragment"><strong>Quand inclure ?</strong></p>
+              <ul class="smaller fragment">
+                <li>Templates de documents</li>
+                <li>Images et icônes</li>
+                <li>Code boilerplate</li>
+                <li>Polices de caractères</li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="smaller fragment"><strong>Exemples :</strong></p>
+              <ul class="smaller fragment">
+                <li><code>logo.png</code></li>
+                <li><code>template.pptx</code></li>
+                <li><code>hello-world/</code></li>
+                <li><code>font.ttf</code></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><strong>Usage :</strong> Copiés ou modifiés dans la sortie finale</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 7 : SCRIPTS DISPONIBLES -->
+      <section>
+        <h2>Scripts disponibles</h2>
+
+        <div class="grid-2">
+          <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+            <h3 class="smaller"><i class="fas fa-plus-circle icon"></i> init_skill.py</h3>
+            <p class="smaller"><strong>Initialiser un nouveau skill</strong></p>
+            <pre style="margin-top: 0.5em;"><code class="language-bash" style="font-size: 0.7em;">init_skill.py my-skill \
+  --path ./skills</code></pre>
+            <ul class="smaller">
+              <li>Crée la structure complète</li>
+              <li>Génère SKILL.md avec TODOs</li>
+              <li>Ajoute fichiers exemples</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+            <h3 class="smaller"><i class="fas fa-file-archive icon"></i> package_skill.py</h3>
+            <p class="smaller"><strong>Packager en .zip</strong></p>
+            <pre style="margin-top: 0.5em;"><code class="language-bash" style="font-size: 0.7em;">package_skill.py \
+  ./skills/my-skill</code></pre>
+            <ul class="smaller">
+              <li>Valide automatiquement</li>
+              <li>Crée fichier .zip</li>
+              <li>Rapporte erreurs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em; margin-top: 1em;">
+          <h3 class="smaller"><i class="fas fa-check-circle icon"></i> validate_skill.py</h3>
+          <p class="smaller"><strong>Valider la structure (appelé par package_skill.py)</strong></p>
+          <ul class="smaller">
+            <li>Vérifier frontmatter YAML</li>
+            <li>Vérifier conventions de nommage</li>
+            <li>Vérifier structure de fichiers</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 : PROGRESSIVE DISCLOSURE DÉTAILLÉE -->
+      <section>
+        <section>
+          <h2>Progressive Disclosure</h2>
+
+          <div class="box fragment">
+            <p><strong>Principe de chargement progressif pour optimiser le contexte</strong></p>
+          </div>
+
+          <ul class="feature-list">
+            <li class="fragment">Évite de surcharger la fenêtre de contexte</li>
+            <li class="fragment">Charge uniquement ce qui est nécessaire</li>
+            <li class="fragment">Permet skills avec ressources illimitées</li>
+          </ul>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour voir les 3 niveaux
+          </div>
+        </section>
+
+        <!-- Niveau 1 -->
+        <section>
+          <h3>Niveau 1 : Métadonnées</h3>
+
+          <div class="workflow-step" style="font-size: 0.9em;">
+            <div class="step-number">1</div>
+            <div>name + description (~100 mots)</div>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <p><strong>Toujours en contexte</strong></p>
+          </div>
+
+          <pre class="fragment"><code class="language-yaml">---
+name: pdf-editor
+description: This skill should be used when users want to
+  manipulate PDF files (merge, split, rotate, extract text).
+---
+</code></pre>
+
+          <div class="example-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-lightbulb icon"></i> Ces métadonnées déterminent <strong>quand</strong> le skill se déclenche</p>
+          </div>
+        </section>
+
+        <!-- Niveau 2 -->
+        <section>
+          <h3>Niveau 2 : SKILL.md</h3>
+
+          <div class="workflow-step" style="font-size: 0.9em;">
+            <div class="step-number">2</div>
+            <div>Contenu markdown (&lt;5k mots)</div>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <p><strong>Chargé quand le skill se déclenche</strong></p>
+          </div>
+
+          <ul class="smaller fragment">
+            <li>Vue d'ensemble du skill</li>
+            <li>Instructions principales</li>
+            <li>Références aux bundled resources</li>
+            <li>Exemples d'utilisation</li>
+          </ul>
+
+          <div class="warning-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-exclamation-triangle icon"></i> Garder &lt;5k mots pour ne pas surcharger le contexte</p>
+          </div>
+        </section>
+
+        <!-- Niveau 3 -->
+        <section>
+          <h3>Niveau 3 : Bundled Resources</h3>
+
+          <div class="workflow-step" style="font-size: 0.9em;">
+            <div class="step-number">3</div>
+            <div>scripts/, references/, assets/ (illimité*)</div>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <p><strong>Chargé uniquement au besoin par Claude</strong></p>
+          </div>
+
+          <ul class="smaller fragment">
+            <li><code>scripts/</code> : Exécutables sans lecture (token-efficient)</li>
+            <li><code>references/</code> : Lus si Claude en a besoin</li>
+            <li><code>assets/</code> : Utilisés dans sortie (jamais chargés)</li>
+          </ul>
+
+          <div class="example-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-info-circle icon"></i> *Illimité car scripts exécutables sans consommer de tokens</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 9 : BONNES PRATIQUES -->
+      <section>
+        <section>
+          <h2>Bonnes pratiques</h2>
+
+          <div class="grid-2">
+            <div>
+              <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> À faire</h3>
+              <ul class="smaller fragment" data-fragment-index="1">
+                <li>Style impératif/infinitif</li>
+                <li>Métadonnées précises</li>
+                <li>SKILL.md &lt; 5k mots</li>
+                <li>Éviter duplication</li>
+                <li>Tester avant packaging</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="fragment warning" data-fragment-index="2"><i class="fas fa-times-circle icon"></i> À éviter</h3>
+              <ul class="smaller fragment" data-fragment-index="2">
+                <li>Style "You should"</li>
+                <li>Description vague</li>
+                <li>SKILL.md trop long</li>
+                <li>Info dupliquée</li>
+                <li>Packaging sans test</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour plus de détails
+          </div>
+        </section>
+
+        <!-- Style d'écriture -->
+        <section>
+          <h3>Style d'écriture</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Utiliser forme impérative/infinitive</strong></p>
+          </div>
+
+          <div class="grid-2">
+            <div class="fragment">
+              <p class="smaller success"><i class="fas fa-check icon"></i> <strong>BON</strong></p>
+              <pre><code class="language-markdown" style="font-size: 0.7em;">To rotate a PDF, use the
+rotate_pdf.py script.
+
+When working with images,
+consider the output format.</code></pre>
+            </div>
+
+            <div class="fragment">
+              <p class="smaller warning"><i class="fas fa-times icon"></i> <strong>MAUVAIS</strong></p>
+              <pre><code class="language-markdown" style="font-size: 0.7em;">You should use the
+rotate_pdf.py script to
+rotate PDFs.
+
+If you need to work with
+images, you should consider
+the format.</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Métadonnées de qualité -->
+        <section>
+          <h3>Métadonnées de qualité</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Description = Déclenchement du skill</strong></p>
+          </div>
+
+          <div class="fragment">
+            <p class="smaller success"><i class="fas fa-check icon"></i> <strong>BON</strong></p>
+            <pre><code class="language-yaml" style="font-size: 0.7em;">description: This skill should be used when users want to
+  create reveal.js presentations with progressive fragments,
+  2D navigation, and MathJax integration for educational content.</code></pre>
+          </div>
+
+          <div class="fragment">
+            <p class="smaller warning"><i class="fas fa-times icon"></i> <strong>MAUVAIS</strong></p>
+            <pre><code class="language-yaml" style="font-size: 0.7em;">description: Create presentations</code></pre>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-lightbulb icon"></i> Être spécifique sur <strong>quand</strong> utiliser le skill</p>
+          </div>
+        </section>
+
+        <!-- Éviter duplication -->
+        <section>
+          <h3>Éviter la duplication</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Information dans SKILL.md OU references/, pas les deux</strong></p>
+          </div>
+
+          <div class="grid-2">
+            <div class="fragment">
+              <p class="smaller success"><i class="fas fa-check icon"></i> <strong>BON</strong></p>
+              <p class="smaller"><strong>SKILL.md :</strong></p>
+              <pre><code class="language-markdown" style="font-size: 0.6em;">For detailed API docs,
+see references/api.md</code></pre>
+              <p class="smaller"><strong>references/api.md :</strong></p>
+              <pre><code class="language-markdown" style="font-size: 0.6em;">[Documentation complète]</code></pre>
+            </div>
+
+            <div class="fragment">
+              <p class="smaller warning"><i class="fas fa-times icon"></i> <strong>MAUVAIS</strong></p>
+              <p class="smaller"><strong>SKILL.md :</strong></p>
+              <pre><code class="language-markdown" style="font-size: 0.6em;">[Documentation complète]</code></pre>
+              <p class="smaller"><strong>references/api.md :</strong></p>
+              <pre><code class="language-markdown" style="font-size: 0.6em;">[Même documentation]</code></pre>
+            </div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-info-circle icon"></i> SKILL.md = vue d'ensemble, references/ = détails</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 10 : EXEMPLES CONCRETS DE SKILLS -->
+      <section>
+        <section>
+          <h2>Exemples concrets de skills</h2>
+
+          <div class="box fragment">
+            <p><strong>Le système compte déjà 15+ skills créés avec skill-creator</strong></p>
+          </div>
+
+          <div class="grid-2">
+            <div class="fragment">
+              <ul class="smaller">
+                <li><i class="fas fa-presentation icon"></i> beamer-presentation</li>
+                <li><i class="fas fa-file-alt icon"></i> bfcours-latex</li>
+                <li><i class="fas fa-mobile-alt icon"></i> educational-app-builder</li>
+                <li><i class="fas fa-chalkboard icon"></i> reveals-presentation</li>
+              </ul>
+            </div>
+
+            <div class="fragment">
+              <ul class="smaller">
+                <li><i class="fas fa-book icon"></i> programmes-officiels</li>
+                <li><i class="fas fa-file-pdf icon"></i> pdf</li>
+                <li><i class="fas fa-file-word icon"></i> docx</li>
+                <li><i class="fas fa-file-powerpoint icon"></i> pptx</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour voir des exemples détaillés
+          </div>
+        </section>
+
+        <!-- Exemple 1 : beamer-presentation -->
+        <section>
+          <h3>Exemple : beamer-presentation</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Skill pour créer des présentations LaTeX Beamer</strong></p>
+          </div>
+
+          <div class="tree-structure fragment">
+beamer-presentation/
+├── SKILL.md
+├── scripts/
+│   └── compile_beamer.sh
+├── references/
+│   ├── beamer_guide.md
+│   └── themes.md
+└── assets/
+    └── template_beamer.tex
+          </div>
+
+          <ul class="smaller fragment">
+            <li><strong>Scripts :</strong> Compilation automatique</li>
+            <li><strong>References :</strong> Guide Beamer détaillé</li>
+            <li><strong>Assets :</strong> Template de base</li>
+          </ul>
+        </section>
+
+        <!-- Exemple 2 : reveals-presentation -->
+        <section>
+          <h3>Exemple : reveals-presentation</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Skill pour créer des présentations reveal.js</strong></p>
+          </div>
+
+          <div class="tree-structure fragment">
+reveals-presentation/
+├── SKILL.md
+├── references/
+│   ├── fragments-reveals.md
+│   ├── navigation-2d.md
+│   ├── animations-transitions.md
+│   └── mathjax-integration.md
+└── assets/
+    └── templates/
+        ├── template-lycee.html
+        └── template-college.html
+          </div>
+
+          <ul class="smaller fragment">
+            <li><strong>References :</strong> Guides complets pour fragments, navigation 2D, MathJax</li>
+            <li><strong>Assets :</strong> Templates par niveau scolaire</li>
+          </ul>
+        </section>
+
+        <!-- Exemple 3 : educational-app-builder -->
+        <section>
+          <h3>Exemple : educational-app-builder</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Skill pour créer des applications pédagogiques</strong></p>
+          </div>
+
+          <div class="tree-structure fragment">
+educational-app-builder/
+├── SKILL.md
+├── scripts/
+│   ├── init_app.py
+│   └── build_app.sh
+├── references/
+│   ├── app_structure.md
+│   └── deployment_guide.md
+└── assets/
+    ├── html_boilerplate/
+    ├── css/
+    └── js/
+          </div>
+
+          <ul class="smaller fragment">
+            <li><strong>Scripts :</strong> Initialisation et build automatique</li>
+            <li><strong>References :</strong> Architecture et déploiement</li>
+            <li><strong>Assets :</strong> Boilerplate HTML/CSS/JS</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- SLIDE 11 : CRÉER UN AGENT ASSOCIÉ -->
+      <section>
+        <h2>Créer un agent associé (optionnel)</h2>
+
+        <div class="box fragment">
+          <p><strong>Un agent peut utiliser un skill de manière autonome</strong></p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment"><i class="fas fa-puzzle-piece icon"></i> Skill</h3>
+            <ul class="smaller fragment">
+              <li>Package de compétences</li>
+              <li>Workflows et ressources</li>
+              <li>Utilisable par tout agent</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment"><i class="fas fa-robot icon"></i> Agent</h3>
+            <ul class="smaller fragment">
+              <li>Instance Claude spécialisée</li>
+              <li>Charge un ou plusieurs skills</li>
+              <li>Personnalité et contexte</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" style="font-size: 0.85em; margin-top: 1em;">
+          <p><strong>Exemple :</strong> Agent "latex-expert" charge les skills beamer-presentation, bfcours-latex, tex-compiling-skill</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 12 : AVANTAGES DU SYSTÈME -->
+      <section>
+        <h2>Avantages du système</h2>
+
+        <div class="grid-2">
+          <div>
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-recycle icon"></i> Réutilisabilité</h3>
+              <p class="smaller">Skills partagés entre projets et agents</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-layer-group icon"></i> Modularité</h3>
+              <p class="smaller">Combiner plusieurs skills selon besoin</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-memory icon"></i> Contexte optimisé</h3>
+              <p class="smaller">Progressive disclosure évite surcharge</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-tachometer-alt icon"></i> Token-efficient</h3>
+              <p class="smaller">Scripts exécutables sans lecture</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="5" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-check-circle icon"></i> Qualité garantie</h3>
+              <p class="smaller">Validation automatique avant packaging</p>
+            </div>
+
+            <div class="box fragment" data-fragment-index="6" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> Apprentissage</h3>
+              <p class="smaller">Amélioration continue par itération</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 13 : CAS D'USAGE TYPIQUES -->
+      <section>
+        <h2>Cas d'usage typiques</h2>
+
+        <div class="grid-2">
+          <div>
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-file-code icon"></i> Automatisation</h3>
+              <ul class="smaller">
+                <li>Génération de documents</li>
+                <li>Manipulation de fichiers</li>
+                <li>Build et compilation</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-database icon"></i> Intégrations</h3>
+              <ul class="smaller">
+                <li>APIs spécifiques</li>
+                <li>Bases de données</li>
+                <li>Services cloud</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-book-open icon"></i> Expertise</h3>
+              <ul class="smaller">
+                <li>Guides métier</li>
+                <li>Standards entreprise</li>
+                <li>Politiques et règles</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-chalkboard-teacher icon"></i> Pédagogie</h3>
+              <ul class="smaller">
+                <li>Création de cours</li>
+                <li>Exercices interactifs</li>
+                <li>Ressources éducatives</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 14 : EXEMPLE COMPLET DE CRÉATION -->
+      <section>
+        <section>
+          <h2>Exemple complet : Créer un skill</h2>
+
+          <div class="example-box fragment">
+            <p><strong>Scénario :</strong> Créer un skill "markdown-converter" pour convertir Markdown en HTML/PDF</p>
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour suivre le processus complet
+          </div>
+        </section>
+
+        <!-- Étape 1 : Comprendre -->
+        <section>
+          <h3>1. Comprendre les besoins</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Questions à poser :</strong></p>
+          </div>
+
+          <ul class="smaller fragment">
+            <li>"Quels formats de sortie ? HTML, PDF, DOCX ?"</li>
+            <li>"Exemple d'utilisation : 'Convertir notes.md en PDF' ?"</li>
+            <li>"Quels styles de rendu ? Minimaliste, académique ?"</li>
+            <li>"Déclencheurs : 'convert markdown', 'md to pdf' ?"</li>
+          </ul>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-check icon"></i> Comprendre = base d'un skill efficace</p>
+          </div>
+        </section>
+
+        <!-- Étape 2 : Planifier -->
+        <section>
+          <h3>2. Planifier les ressources</h3>
+
+          <div class="grid-2">
+            <div class="fragment">
+              <p class="smaller"><strong>scripts/</strong></p>
+              <ul class="smaller">
+                <li><code>md_to_html.py</code></li>
+                <li><code>md_to_pdf.py</code></li>
+                <li><code>apply_styles.py</code></li>
+              </ul>
+            </div>
+
+            <div class="fragment">
+              <p class="smaller"><strong>references/</strong></p>
+              <ul class="smaller">
+                <li><code>markdown_syntax.md</code></li>
+                <li><code>styling_guide.md</code></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="fragment" style="margin-top: 1em;">
+            <p class="smaller"><strong>assets/</strong></p>
+            <ul class="smaller">
+              <li><code>templates/minimal.html</code></li>
+              <li><code>templates/academic.html</code></li>
+              <li><code>styles/print.css</code></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Étape 3 : Initialiser -->
+        <section>
+          <h3>3. Initialiser</h3>
+
+          <pre class="fragment"><code class="language-bash">python scripts/init_skill.py markdown-converter \
+  --path .claude/skills
+</code></pre>
+
+          <div class="box fragment" style="font-size: 0.85em; margin-top: 1em;">
+            <p><i class="fas fa-check-circle icon success"></i> Structure créée avec fichiers exemples</p>
+          </div>
+        </section>
+
+        <!-- Étape 4 : Éditer -->
+        <section>
+          <h3>4. Éditer</h3>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number" style="width: 30px; height: 30px; font-size: 0.9em;">1</div>
+            <div>Créer les scripts Python de conversion</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number" style="width: 30px; height: 30px; font-size: 0.9em;">2</div>
+            <div>Ajouter références (syntaxe Markdown, guide de styles)</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number" style="width: 30px; height: 30px; font-size: 0.9em;">3</div>
+            <div>Créer templates HTML et styles CSS</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number" style="width: 30px; height: 30px; font-size: 0.9em;">4</div>
+            <div>Mettre à jour SKILL.md avec instructions</div>
+          </div>
+        </section>
+
+        <!-- Étape 5 : Packager -->
+        <section>
+          <h3>5. Packager</h3>
+
+          <pre class="fragment"><code class="language-bash">python scripts/package_skill.py \
+  .claude/skills/markdown-converter
+</code></pre>
+
+          <div class="box fragment" style="font-size: 0.85em; margin-top: 1em;">
+            <p><i class="fas fa-check-circle icon success"></i> Validation réussie</p>
+            <p><i class="fas fa-file-archive icon success"></i> Fichier créé : <code>markdown-converter.zip</code></p>
+          </div>
+        </section>
+
+        <!-- Étape 6 : Itérer -->
+        <section>
+          <h3>6. Itérer</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Après tests :</strong></p>
+          </div>
+
+          <ul class="smaller fragment">
+            <li>Ajouter support pour tableaux complexes</li>
+            <li>Améliorer rendu des formules mathématiques</li>
+            <li>Ajouter template "présentation"</li>
+            <li>Optimiser vitesse de conversion</li>
+          </ul>
+
+          <div class="box fragment" style="font-size: 0.85em; margin-top: 1em;">
+            <p><i class="fas fa-sync-alt icon"></i> Ré-éditer → Re-packager → Tester</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 15 : ASPECT MÉTA-RÉFLEXIF -->
+      <section>
+        <h2><span class="meta-highlight">Méta-réflexivité</span></h2>
+
+        <div class="box fragment">
+          <p><strong>Le skill skill-creator a été créé... avec skill-creator !</strong></p>
+        </div>
+
+        <div class="grid-2">
+          <div class="fragment">
+            <h3 class="smaller"><i class="fas fa-infinity icon"></i> Récursivité</h3>
+            <ul class="smaller">
+              <li>Skill pour créer des skills</li>
+              <li>Auto-amélioration possible</li>
+              <li>Bootstrap du système</li>
+            </ul>
+          </div>
+
+          <div class="fragment">
+            <h3 class="smaller"><i class="fas fa-layer-group icon"></i> Système complet</h3>
+            <ul class="smaller">
+              <li>15+ skills créés</li>
+              <li>Agents spécialisés</li>
+              <li>Écosystème évolutif</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" style="font-size: 0.85em; margin-top: 1em;">
+          <p><i class="fas fa-magic icon"></i> Un skill qui génère tous les autres skills = fondation du système</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 16 : CONCLUSION -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Points clés</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Skills = packages modulaires pour Claude</li>
+              <li>SKILL.md obligatoire, ressources optionnelles</li>
+              <li>Workflow en 6 étapes guidées</li>
+              <li>Progressive disclosure optimise contexte</li>
+              <li>Scripts d'automatisation fournis</li>
+              <li>Validation automatique</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2"><i class="fas fa-lightbulb icon"></i> Bénéfices</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Réutilisabilité maximale</li>
+              <li>Modularité et flexibilité</li>
+              <li>Token-efficient</li>
+              <li>Qualité garantie</li>
+              <li>Amélioration continue</li>
+              <li>Écosystème évolutif</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-rocket icon"></i> Créez vos propres skills pour étendre Claude à l'infini !</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 17 : RESSOURCES -->
+      <section>
+        <h2><i class="fas fa-book icon"></i> Ressources</h2>
+
+        <div class="grid-2">
+          <div class="box" style="font-size: 0.8em;">
+            <h3 class="smaller">Documentation</h3>
+            <ul class="smaller">
+              <li><code>.claude/skills/skill-creator/SKILL.md</code></li>
+              <li><code>scripts/init_skill.py</code></li>
+              <li><code>scripts/package_skill.py</code></li>
+              <li><code>scripts/validate_skill.py</code></li>
+            </ul>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <h3 class="smaller">Exemples</h3>
+            <ul class="smaller">
+              <li><code>.claude/skills/beamer-presentation/</code></li>
+              <li><code>.claude/skills/reveals-presentation/</code></li>
+              <li><code>.claude/skills/educational-app-builder/</code></li>
+              <li><code>.claude/skills/bfcours-latex/</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
+          <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation 2D
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+
+      // Transitions
+      transition: 'slide',
+      transitionSpeed: 'default',
+
+      // Behavior
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      shuffle: false,
+
+      // Fragments
+      fragments: true,
+      fragmentInURL: true,
+
+      // Keyboard
+      keyboard: true,
+      keyboardCondition: null,
+
+      // Plugins
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
+    let lastHorizontalIndex = 0;
+
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+
+      // Si on change de slide horizontale et qu'on n'est pas au top
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        // Revenir au top de la nouvelle slide
+        Reveal.slide(currentH, 0);
+      }
+
+      // Mettre à jour l'index horizontal
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>

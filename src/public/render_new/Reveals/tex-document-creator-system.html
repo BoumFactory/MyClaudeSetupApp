@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Système de création automatique de projets LaTeX">
+  <title>Création Automatique de Projets LaTeX</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Theme personnalisé lycée -->
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --text-color: #34495e;
+      --bg-light: #ecf0f1;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.6em;
+      margin-bottom: 0.8em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.3em;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      margin-top: 0.8em;
+    }
+
+    .reveal ul, .reveal ol {
+      margin: 1em 0;
+    }
+
+    .reveal li {
+      margin: 0.5em 0;
+      line-height: 1.5;
+    }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 1em;
+      max-height: 500px;
+      font-size: 0.85em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .reveal .success {
+      color: var(--success-color);
+      font-weight: 600;
+    }
+
+    .reveal .warning {
+      color: var(--warning-color);
+      font-weight: 600;
+    }
+
+    .reveal .box {
+      background: var(--bg-light);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning-color);
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: #e8f5e9;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon {
+      font-size: 1.2em;
+      margin-right: 0.3em;
+      vertical-align: middle;
+    }
+
+    .reveal section img {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: var(--secondary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .feature-list {
+      font-size: 0.9em;
+    }
+
+    .reveal .feature-list li {
+      margin: 0.4em 0;
+    }
+
+    .reveal .tree-structure {
+      font-family: 'Consolas', monospace;
+      font-size: 0.65em;
+      text-align: left;
+      background: #f8f9fa;
+      padding: 1em;
+      border-radius: 8px;
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    .reveal .subtitle {
+      color: var(--secondary-color);
+      font-size: 0.7em;
+      margin-top: 0.5em;
+    }
+
+    .reveal .tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+
+    .reveal .tag.warning {
+      background: var(--warning-color);
+    }
+
+    .reveal .tag.success {
+      background: var(--success-color);
+    }
+
+    .reveal .smaller {
+      font-size: 0.85em;
+    }
+
+    .reveal .comparison-table {
+      font-size: 0.75em;
+      width: 100%;
+      margin: 1em 0;
+    }
+
+    .reveal .comparison-table td, .reveal .comparison-table th {
+      padding: 0.5em;
+      border: 1px solid #ddd;
+    }
+
+    .reveal .comparison-table th {
+      background: var(--secondary-color);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fas fa-file-alt icon"></i> Création Automatique de Projets LaTeX</h1>
+        <p class="subtitle">Le skill <code>tex-document-creator</code> et l'agent <code>document-creator-worker</code></p>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag">Formation GT IA & Maths</span>
+          <span class="tag success">Automatisation LaTeX</span>
+        </p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <h2>Au programme</h2>
+        <ol class="feature-list">
+          <li class="fragment" data-fragment-index="1"><i class="fas fa-info-circle icon"></i> Présentation du système</li>
+          <li class="fragment" data-fragment-index="2"><i class="fas fa-magic icon"></i> Le skill tex-document-creator</li>
+          <li class="fragment" data-fragment-index="3"><i class="fas fa-robot icon"></i> L'agent document-creator-worker</li>
+          <li class="fragment" data-fragment-index="4"><i class="fas fa-file-code icon"></i> Types de documents disponibles</li>
+          <li class="fragment" data-fragment-index="5"><i class="fas fa-route icon"></i> Workflow complet en 9 étapes</li>
+          <li class="fragment" data-fragment-index="6"><i class="fas fa-code icon"></i> Scripts Python disponibles</li>
+          <li class="fragment" data-fragment-index="7"><i class="fas fa-folder-tree icon"></i> Architecture de projet</li>
+          <li class="fragment" data-fragment-index="8"><i class="fas fa-graduation-cap icon"></i> Exemples pratiques</li>
+        </ol>
+      </section>
+
+      <!-- SLIDE 3 : PROBLÉMATIQUE -->
+      <section>
+        <h2>Le problème à résoudre</h2>
+
+        <div class="warning-box fragment">
+          <p><strong><i class="fas fa-exclamation-triangle icon"></i> Création manuelle de documents LaTeX</strong></p>
+        </div>
+
+        <ul class="feature-list">
+          <li class="fragment"><i class="fas fa-clock icon"></i> <strong>Temps</strong> : 15-30 min par document</li>
+          <li class="fragment"><i class="fas fa-copy icon"></i> <strong>Répétitif</strong> : copier-coller de templates</li>
+          <li class="fragment"><i class="fas fa-bug icon"></i> <strong>Erreurs</strong> : oublis de fichiers, structure incohérente</li>
+          <li class="fragment"><i class="fas fa-folder-open icon"></i> <strong>Organisation</strong> : arborescence à créer manuellement</li>
+          <li class="fragment"><i class="fas fa-edit icon"></i> <strong>Remplissage</strong> : champs à modifier un par un</li>
+        </ul>
+      </section>
+
+      <!-- SLIDE 4 : LA SOLUTION -->
+      <section>
+        <h2>La solution : Automatisation complète</h2>
+
+        <div class="example-box fragment">
+          <p><strong><i class="fas fa-rocket icon"></i> Créer un projet LaTeX complet en une seule commande</strong></p>
+        </div>
+
+        <div class="grid-2">
+          <div class="box fragment" style="font-size: 0.85em;">
+            <h3 class="smaller"><i class="fas fa-magic icon"></i> Le skill</h3>
+            <ul class="smaller">
+              <li>Modèles prédéfinis</li>
+              <li>Scripts Python automatisés</li>
+              <li>Structure cohérente</li>
+              <li>Remplissage intelligent</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <h3 class="smaller"><i class="fas fa-robot icon"></i> L'agent</h3>
+            <ul class="smaller">
+              <li>Analyse de requête</li>
+              <li>Choix du template</li>
+              <li>Placement intelligent</li>
+              <li>Rapport détaillé</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 : LE SKILL - PRÉSENTATION -->
+      <section>
+        <section>
+          <h2><i class="fas fa-magic icon"></i> Le skill tex-document-creator</h2>
+
+          <div class="box fragment">
+            <p><strong>Système expert pour l'initialisation automatique de projets LaTeX</strong></p>
+          </div>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-folder-tree icon"></i> Création de structure de dossiers</li>
+            <li class="fragment"><i class="fas fa-file-code icon"></i> Remplissage intelligent de templates</li>
+            <li class="fragment"><i class="fas fa-cogs icon"></i> Configuration initiale automatique</li>
+            <li class="fragment"><i class="fas fa-bolt icon"></i> Utilisation proactive lors de création</li>
+          </ul>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la règle critique</p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-exclamation-circle icon warning"></i> RÈGLE CRITIQUE</h3>
+
+          <div class="warning-box" style="font-size: 0.9em;">
+            <p><strong>NE JAMAIS créer manuellement des fichiers ou dossiers LaTeX</strong></p>
+            <p><strong>TOUJOURS utiliser les scripts Python via Bash</strong></p>
+          </div>
+
+          <div class="fragment" style="margin-top: 1.5em;">
+            <h3 class="smaller success"><i class="fas fa-check icon"></i> Pourquoi ?</h3>
+            <ul class="smaller">
+              <li>✅ Création automatique de tous fichiers/dossiers</li>
+              <li>✅ Remplissage correct des templates</li>
+              <li>✅ Structure cohérente garantie</li>
+              <li>✅ Rapport détaillé de création</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 6 : MODÈLES DISPONIBLES -->
+      <section>
+        <section>
+          <h2><i class="fas fa-file-code icon"></i> Types de documents disponibles</h2>
+
+          <div class="grid-2">
+            <div>
+              <h3 class="fragment" data-fragment-index="1" style="font-size: 1.1em;"><i class="fas fa-chalkboard-teacher icon"></i> Enseignement</h3>
+              <ul class="smaller fragment" data-fragment-index="1">
+                <li><code>Cours</code> - Cours avec sections</li>
+                <li><code>Exercices heavy</code> - Avec corrections</li>
+                <li><code>Exercices light</code> - Sans corrections</li>
+                <li><code>Découverte</code> - Activité investigation</li>
+                <li><code>AP</code> - Accompagnement personnalisé</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="fragment" data-fragment-index="2" style="font-size: 1.1em;"><i class="fas fa-clipboard-check icon"></i> Évaluation</h3>
+              <ul class="smaller fragment" data-fragment-index="2">
+                <li><code>Devoir</code> - DS / Contrôle</li>
+                <li><code>Devoir_maison</code> - DM avec date rendu</li>
+              </ul>
+
+              <h3 class="fragment" data-fragment-index="3" style="font-size: 1.1em;"><i class="fas fa-cogs icon"></i> Organisation</h3>
+              <ul class="smaller fragment" data-fragment-index="3">
+                <li><code>Plan sequence</code> - Planification</li>
+                <li><code>Recap_seance</code> - Récapitulatif</li>
+                <li><code>Rapport incident</code></li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir d'autres modèles</p>
+        </section>
+
+        <section>
+          <h3>Autres modèles disponibles</h3>
+
+          <div class="grid-2">
+            <div class="box" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-users icon"></i> Activités</h3>
+              <ul class="smaller">
+                <li><code>Groupe</code> - Travail de groupe</li>
+                <li><code>Jeux</code> - Jeux mathématiques</li>
+                <li><code>Info</code> - Activité algorithmique</li>
+              </ul>
+            </div>
+
+            <div class="box" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-folder-plus icon"></i> Divers</h3>
+              <ul class="smaller">
+                <li><code>SOUAP</code> - Documents spécifiques</li>
+                <li><code>Nouveau</code> - Document générique</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="example-box fragment" style="margin-top: 1em; font-size: 0.85em;">
+            <p><i class="fas fa-info-circle icon"></i> <strong>15 modèles disponibles</strong> couvrant tous les besoins pédagogiques</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 7 : SCRIPTS PYTHON -->
+      <section>
+        <section>
+          <h2><i class="fas fa-code icon"></i> Scripts Python disponibles</h2>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <p><strong>Localisation :</strong> <code>.claude/skills/tex-document-creator/scripts/</code></p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque script</p>
+        </section>
+
+        <!-- SLIDE DOWN 1 : Script principal -->
+        <section>
+          <h3><i class="fas fa-star icon"></i> 1. create_document.py</h3>
+          <div class="example-box" style="font-size: 0.8em;">
+            <p><strong>SCRIPT PRINCIPAL</strong> - Création automatique de documents LaTeX</p>
+          </div>
+
+          <pre class="fragment" style="font-size: 0.6em;"><code class="language-bash">python .claude/skills/tex-document-creator/scripts/create_document.py \
+  --destination "CHEMIN_ABSOLU" \
+  --name "Nom_Document" \
+  --template "Nom_Template" \
+  --field "niveau=..." \
+  --field "theme=..." \
+  [--create-sections] \
+  [--create-images] \
+  [--create-annexes]</code></pre>
+
+          <ul class="smaller fragment" style="font-size: 0.8em;">
+            <li><code>--field</code> : Format recommandé (répétable)</li>
+            <li><code>--fields '{"json":"..."}'</code> : Format legacy</li>
+          </ul>
+        </section>
+
+        <!-- SLIDE DOWN 2 : Scripts de consultation -->
+        <section>
+          <h3>2. Scripts de consultation</h3>
+
+          <div class="grid-2">
+            <div class="box" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>list_templates.py</code></h3>
+              <p class="smaller">Liste tous les templates disponibles</p>
+              <pre style="font-size: 0.75em;"><code>python list_templates.py</code></pre>
+            </div>
+
+            <div class="box" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>get_template_info.py</code></h3>
+              <p class="smaller">Informations sur un template</p>
+              <pre style="font-size: 0.75em;"><code>python get_template_info.py \
+  --template "Cours"</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE DOWN 3 : Scripts de préférences -->
+        <section>
+          <h3>3. Scripts de préférences</h3>
+
+          <ul class="smaller" style="font-size: 0.85em;">
+            <li><code>get_user_preferences.py</code> - Affiche les préférences</li>
+            <li><code>update_user_preferences.py</code> - Met à jour les préférences</li>
+            <li><code>add_user_habit.py</code> - Enregistre une habitude</li>
+            <li><code>remove_user_habit.py</code> - Supprime une habitude</li>
+          </ul>
+
+          <div class="example-box fragment" style="margin-top: 1em; font-size: 0.8em;">
+            <p><strong>Exemple :</strong> Enregistrer établissement par défaut</p>
+            <pre style="font-size: 0.7em;"><code>python update_user_preferences.py \
+  --preference "nom_etablissement" \
+  --value "Lycée Eugène Belgrand"</code></pre>
+          </div>
+        </section>
+
+        <!-- SLIDE DOWN 4 : Script d'aide -->
+        <section>
+          <h3>4. get_help.py</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Affiche l'aide générale du système</strong></p>
+            <pre style="font-size: 0.8em;"><code>python .claude/skills/tex-document-creator/scripts/get_help.py</code></pre>
+          </div>
+
+          <div class="fragment" style="margin-top: 1.5em;">
+            <p class="success"><i class="fas fa-info-circle icon"></i> <strong>8 scripts disponibles</strong> pour tous les besoins</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 8 : L'AGENT DOCUMENT-CREATOR-WORKER -->
+      <section>
+        <section>
+          <h2><i class="fas fa-robot icon"></i> L'agent document-creator-worker</h2>
+
+          <div class="box fragment">
+            <p><strong>Expert autonome pour la création de projets LaTeX</strong></p>
+          </div>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-search icon"></i> Analyse de requête utilisateur</li>
+            <li class="fragment"><i class="fas fa-lightbulb icon"></i> Choix du template approprié</li>
+            <li class="fragment"><i class="fas fa-server icon"></i> Création via serveur MCP</li>
+            <li class="fragment"><i class="fas fa-folder-tree icon"></i> Placement dans l'arborescence</li>
+            <li class="fragment"><i class="fas fa-clipboard-check icon"></i> Rapport détaillé</li>
+          </ul>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir comment il fonctionne</p>
+        </section>
+
+        <section>
+          <h3>Serveur MCP document-creator-server</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Interface entre l'agent et les scripts Python</strong></p>
+          </div>
+
+          <div class="grid-2" style="margin-top: 1em;">
+            <div class="fragment">
+              <h3 class="smaller"><i class="fas fa-plug icon"></i> Fonctions disponibles</h3>
+              <ul class="smaller" style="font-size: 0.8em;">
+                <li><code>list_templates()</code></li>
+                <li><code>get_template_info()</code></li>
+                <li><code>create_document()</code></li>
+                <li><code>get_user_preferences()</code></li>
+                <li><code>update_user_preferences()</code></li>
+              </ul>
+            </div>
+
+            <div class="fragment">
+              <h3 class="smaller"><i class="fas fa-check icon success"></i> Avantages</h3>
+              <ul class="smaller" style="font-size: 0.8em;">
+                <li>Appels directs depuis Claude</li>
+                <li>Pas de Bash nécessaire</li>
+                <li>Gestion d'erreurs intégrée</li>
+                <li>Retour structuré JSON</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Ce que l'agent fait automatiquement</h3>
+
+          <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div>Analyse : type, niveau, thème du document</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div>Vérifie l'arborescence existante (LS/Glob)</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+            <div class="step-number">3</div>
+            <div>Consulte les modèles disponibles (MCP)</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+            <div class="step-number">4</div>
+            <div>Remplit intelligemment les champs</div>
+          </div>
+
+          <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
+            <div class="step-number">5</div>
+            <div>Crée le projet via MCP</div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 9 : WORKFLOW COMPLET EN 9 ÉTAPES -->
+      <section>
+        <section>
+          <h2><i class="fas fa-route icon"></i> Workflow complet en 9 étapes</h2>
+
+          <div class="example-box fragment">
+            <p><strong>Exemple :</strong> "Je veux une évaluation sur les vecteurs en seconde"</p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour suivre le processus</p>
+        </section>
+
+        <!-- ÉTAPE 1 : Analyse de la requête -->
+        <section>
+          <h3>Étape 1 : Analyse de la requête</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-search icon"></i> Extraction</h3>
+              <ul class="smaller">
+                <li><strong>Type :</strong> Devoir</li>
+                <li><strong>Niveau :</strong> 2nde</li>
+                <li><strong>Thème :</strong> vecteurs</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-cogs icon"></i> Normalisation</h3>
+              <ul class="smaller">
+                <li>Modèle : <code>Devoir</code></li>
+                <li>Niveau : <code>2nde</code></li>
+                <li>Thème : <code>vecteurs</code></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 2 : Vérification arborescence -->
+        <section>
+          <h3>Étape 2 : Vérification de l'arborescence</h3>
+
+          <pre class="fragment" style="font-size: 0.7em;"><code class="language-bash"># L'agent vérifie avec LS ou Glob
+1. Cours/
+  └── 2nde/
+      ├── Sequence-Vecteurs/  # Existe ?
+      └── ...</code></pre>
+
+          <div class="fragment" style="margin-top: 1em;">
+            <div class="box" style="font-size: 0.85em;">
+              <p><strong><i class="fas fa-folder-open icon"></i> Si la séquence existe :</strong> Utiliser son nom exact</p>
+              <p><strong><i class="fas fa-folder-plus icon"></i> Sinon :</strong> Créer <code>Sequence-Vecteurs</code></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 3 : Consultation MCP -->
+        <section>
+          <h3>Étape 3 : Consultation MCP</h3>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div><code>list_templates()</code> - Lister les modèles</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div><code>get_template_info("Devoir")</code> - Champs requis</div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><strong>Champs retournés :</strong></p>
+            <ul class="smaller">
+              <li><code>niveau</code>, <code>theme</code>, <code>type_etablissement</code></li>
+              <li><code>nom_etablissement</code>, <code>duree</code></li>
+              <li><code>type_document_principal</code>, <code>contenu_principal</code></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 4 : Détermination du chemin -->
+        <section>
+          <h3>Étape 4 : Détermination du chemin</h3>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <p><strong>Chemin de base :</strong></p>
+            <code style="font-size: 0.9em;">C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\1. Cours\</code>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <div class="step-number">+</div>
+            <div>Niveau : <code>2nde</code></div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number">+</div>
+            <div>Séquence : <code>Sequence-Vecteurs</code></div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><strong>Résultat :</strong></p>
+            <code>...\1. Cours\2nde\Sequence-Vecteurs\</code><br>
+            <p style="margin-top: 0.5em;"><strong>Nom :</strong> <code>Evaluation_vecteurs</code></p>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 5 : Remplissage des champs -->
+        <section>
+          <h3>Étape 5 : Remplissage intelligent des champs</h3>
+
+          <div class="grid-2">
+            <div>
+              <h3 class="smaller fragment" data-fragment-index="1"><i class="fas fa-graduation-cap icon"></i> Champs communs</h3>
+              <ul class="smaller fragment" data-fragment-index="1" style="font-size: 0.75em;">
+                <li><code>niveau: "$\mathbf{2^{\text{nde}}}$"</code></li>
+                <li><code>theme: "Vecteurs"</code></li>
+                <li><code>type_etablissement: "Lycée"</code></li>
+                <li><code>nom_etablissement: ""</code></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="smaller fragment" data-fragment-index="2"><i class="fas fa-clock icon"></i> Champs spécifiques</h3>
+              <ul class="smaller fragment" data-fragment-index="2" style="font-size: 0.75em;">
+                <li><code>duree: "55"</code></li>
+                <li><code>type_document_principal: "Devoir :"</code></li>
+                <li><code>contenu_principal: "\input{enonce},"</code></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 6 : Options de création -->
+        <section>
+          <h3>Étape 6 : Options de création</h3>
+
+          <table class="comparison-table fragment">
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Valeur</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>create_folder</code></td>
+                <td><span class="success">true</span></td>
+                <td>Créer le dossier du document</td>
+              </tr>
+              <tr>
+                <td><code>create_sections_folder</code></td>
+                <td>false</td>
+                <td>Pour Cours uniquement</td>
+              </tr>
+              <tr>
+                <td><code>create_images_folder</code></td>
+                <td>false</td>
+                <td>Si demandé explicitement</td>
+              </tr>
+              <tr>
+                <td><code>create_figures_file</code></td>
+                <td><span class="success">true</span></td>
+                <td>Fichier enonce_figures.tex</td>
+              </tr>
+              <tr>
+                <td><code>include_claude_instructions</code></td>
+                <td><span class="success">true</span></td>
+                <td>Fichier CLAUDE.md</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ÉTAPE 7 : Création via MCP -->
+        <section>
+          <h3>Étape 7 : Création via MCP</h3>
+
+          <pre class="fragment" style="font-size: 0.55em;"><code class="language-python">create_document(
+    destination_path = "C:\\...\\1. Cours\\2nde\\Sequence-Vecteurs",
+    document_name = "Evaluation_vecteurs",
+    template_name = "Devoir",
+    field_values = {
+        "niveau": "$\\mathbf{2^{\\text{nde}}}$",
+        "theme": "Vecteurs",
+        "type_etablissement": "Lycée",
+        "nom_etablissement": "",
+        "duree": "55",
+        "type_document_principal": "Devoir :",
+        "contenu_principal": "\\input{enonce},"
+    },
+    create_folder = true,
+    create_figures_file = true,
+    include_claude_instructions = true
+)</code></pre>
+        </section>
+
+        <!-- ÉTAPE 8 : Enrichissement pédagogique -->
+        <section>
+          <h3>Étape 8 : Enrichissement pédagogique</h3>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <h3 class="smaller"><i class="fas fa-award icon"></i> Compétences associées</h3>
+            <p>Utilisation de <code>competences-server</code> pour identifier les compétences pertinentes</p>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><strong>Exemple pour "Vecteurs - 2nde" :</strong></p>
+            <ul class="smaller">
+              <li>Chercher : Coordonnées de vecteurs</li>
+              <li>Représenter : Vecteurs dans un repère</li>
+              <li>Calculer : Somme de vecteurs</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ÉTAPE 9 : Rapport de création -->
+        <section>
+          <h3>Étape 9 : Rapport de création</h3>
+
+          <div class="box" style="font-size: 0.7em; text-align: left;">
+            <p><strong>📄 DOCUMENT LATEX CRÉÉ AVEC SUCCÈS</strong></p>
+            <p>Type : Devoir | Niveau : 2nde | Thème : Vecteurs</p>
+            <p style="margin-top: 0.5em;"><strong>📂 EMPLACEMENT</strong></p>
+            <p>Dossier : <code>...\1. Cours\2nde\Sequence-Vecteurs\</code></p>
+            <p>Fichier : <code>Evaluation_vecteurs.tex</code></p>
+            <p style="margin-top: 0.5em;"><strong>✅ VÉRIFICATIONS</strong></p>
+            <ul class="smaller">
+              <li>✓ Encodage UTF-8 corrigé</li>
+              <li>✓ Structure complète créée</li>
+              <li>✓ Instructions Claude intégrées</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 10 : ARCHITECTURE DE PROJET -->
+      <section>
+        <section>
+          <h2><i class="fas fa-folder-tree icon"></i> Architecture de projet type</h2>
+
+          <div class="example-box fragment">
+            <p><strong>Exemple :</strong> Cours sur les vecteurs en 2nde</p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la structure</p>
+        </section>
+
+        <section>
+          <h3>Structure complète générée</h3>
+
+          <div class="tree-structure">
+Cours_Vecteurs/
+├── Cours_Vecteurs.tex              # Fichier maître
+├── enonce.tex                      # Contenu principal
+├── enonce_figures.tex              # Figures/images
+├── CLAUDE.md                       # Instructions pour Claude
+└── sections/                       # Sections du cours
+    ├── section_1.tex
+    ├── section_2.tex
+    └── section_3.tex
+          </div>
+
+          <div class="fragment" style="margin-top: 1em;">
+            <p class="success"><i class="fas fa-check icon"></i> <strong>Tout est créé automatiquement en une seule commande</strong></p>
+          </div>
+        </section>
+
+        <section>
+          <h3>Avec options supplémentaires</h3>
+
+          <div class="tree-structure">
+Evaluation_vecteurs/
+├── Evaluation_vecteurs.tex         # Fichier maître
+├── enonce.tex                      # Énoncé du devoir
+├── enonce_figures.tex              # Figures
+├── CLAUDE.md                       # Instructions
+├── images/                         # Si --create-images
+│   └── .gitkeep
+└── annexes/                        # Si --create-annexes
+    └── .gitkeep
+          </div>
+
+          <div class="fragment" style="margin-top: 1em;">
+            <p class="smaller"><i class="fas fa-info-circle icon"></i> Options activées selon le type de document</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 11 : EXEMPLES PRATIQUES -->
+      <section>
+        <section>
+          <h2><i class="fas fa-graduation-cap icon"></i> Exemples pratiques</h2>
+
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque exemple</p>
+        </section>
+
+        <!-- EXEMPLE 1 : Évaluation simple -->
+        <section>
+          <h3>Exemple 1 : Évaluation simple</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Requête :</strong> "Une évaluation sur les vecteurs en seconde, 55 minutes"</p>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number">1</div>
+            <div>Analyser : type=Devoir, niveau=2nde, theme=vecteurs, duree=55</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number">2</div>
+            <div>Vérifier répertoire : <code>1. Cours\2nde\Sequence-Vecteurs</code></div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number">3</div>
+            <div>Créer : <code>Evaluation_vecteurs</code></div>
+          </div>
+        </section>
+
+        <!-- EXEMPLE 2 : Cours avec sections -->
+        <section>
+          <h3>Exemple 2 : Cours avec sections</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Requête :</strong> "Nouveau cours sur les fonctions pour la première"</p>
+          </div>
+
+          <pre class="fragment" style="font-size: 0.55em;"><code class="language-bash">python create_document.py \
+  --destination "...\1. Cours\1ere_spe\Sequence-Fonctions" \
+  --name "Cours_Fonctions" \
+  --template "Cours" \
+  --field "niveau=$\\mathbf{1^{\\text{ère}}}$" \
+  --field "theme=Fonctions de référence" \
+  --field "type_etablissement=Lycée" \
+  --field "nom_etablissement=Amadis Jamyn" \
+  --field "type_document_principal=Cours :" \
+  --field "contenu_principal=\\input{enonce}," \
+  --create-sections</code></pre>
+        </section>
+
+        <!-- EXEMPLE 3 : DM complexe -->
+        <section>
+          <h3>Exemple 3 : DM complexe</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Requête :</strong> "Un DM sur le produit scalaire et les équations de droites en première"</p>
+          </div>
+
+          <div class="grid-2 fragment">
+            <div class="box" style="font-size: 0.75em;">
+              <h3 class="smaller">Analyse</h3>
+              <ul class="smaller">
+                <li>Type : <code>Devoir_maison</code></li>
+                <li>Niveau : <code>1ere_spe</code></li>
+                <li>Thème : <code>produit_scalaire</code></li>
+              </ul>
+            </div>
+
+            <div class="box" style="font-size: 0.75em;">
+              <h3 class="smaller">Champs spécifiques</h3>
+              <ul class="smaller">
+                <li><code>date_rendu: "lundi 20 janvier"</code></li>
+                <li><code>contenu_secondaire</code> pour solutions</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXEMPLE 4 : Exercices avec corrections -->
+        <section>
+          <h3>Exemple 4 : Exercices avec corrections</h3>
+
+          <div class="example-box" style="font-size: 0.85em;">
+            <p><strong>Requête :</strong> "Des exercices sur les probabilités en terminale avec corrections détaillées"</p>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number">1</div>
+            <div>Modèle : <code>Exercices heavy</code> (corrections détaillées)</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.8em;">
+            <div class="step-number">2</div>
+            <div>Champ : <code>contenu_secondaire: "\rdexocorrection[columns=1]{0},"</code></div>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.75em; margin-top: 1em;">
+            <p><i class="fas fa-lightbulb icon"></i> <strong>Astuce :</strong> Pour exercices simples sans corrections → <code>Exercices light</code></p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 12 : CHAMPS COMMUNS -->
+      <section>
+        <section>
+          <h2><i class="fas fa-edit icon"></i> Champs communs à tous les modèles</h2>
+
+          <p class="smaller fragment">Tous les modèles utilisent ces champs dans <code>\chapitre[]</code></p>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque champ</p>
+        </section>
+
+        <section>
+          <h3>Niveau et thème</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>niveau</code></h3>
+              <p class="smaller">Niveau LaTeX formaté</p>
+              <ul class="smaller">
+                <li>Sixième : <code>$\mathbf{6^{\text{ème}}}$</code></li>
+                <li>Seconde : <code>$\mathbf{2^{\text{nde}}}$</code></li>
+                <li>Première : <code>$\mathbf{1^{\text{ère}}}$</code></li>
+                <li>Terminale : <code>$\mathbf{T^{\text{Le}}}$</code></li>
+              </ul>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>theme</code></h3>
+              <p class="smaller">Thème du document</p>
+              <ul class="smaller">
+                <li>Vecteurs</li>
+                <li>Équations</li>
+                <li>Probabilités</li>
+                <li>Produit scalaire</li>
+                <li>etc.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Établissement</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>type_etablissement</code></h3>
+              <p class="smaller">Type d'établissement</p>
+              <ul class="smaller">
+                <li>"Collège" (6e-3e)</li>
+                <li>"Lycée" (2nde-Term)</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>nom_etablissement</code></h3>
+              <p class="smaller">Nom de l'établissement</p>
+              <ul class="smaller">
+                <li>"Amadis Jamyn"</li>
+                <li>"Eugène Belgrand"</li>
+                <li>"Othe et Vanne"</li>
+                <li>Ou vide <code>""</code></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Type et contenu</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>type_document_principal</code></h3>
+              <p class="smaller">Type affiché en en-tête</p>
+              <ul class="smaller">
+                <li>"Cours :"</li>
+                <li>"Devoir :"</li>
+                <li>"Exercices"</li>
+                <li>"Activité"</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>contenu_principal</code></h3>
+              <p class="smaller">Contenu du document</p>
+              <p class="smaller">Par défaut : <code>\input{enonce},</code></p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Supplément optionnel</h3>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <h3 class="smaller"><code>supplement</code></h3>
+            <p class="smaller">Éléments supplémentaires optionnels</p>
+          </div>
+
+          <div class="grid-2 fragment">
+            <div class="example-box" style="font-size: 0.75em;">
+              <p><strong>Pour cours :</strong></p>
+              <ul class="smaller">
+                <li><code>\tableofcontents</code></li>
+                <li><code>\tableauPresenteEvalSixieme{}{10}</code></li>
+              </ul>
+            </div>
+
+            <div class="box" style="font-size: 0.75em;">
+              <p><strong>Par défaut :</strong></p>
+              <p>Vide <code>""</code></p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 13 : CHAMPS SPÉCIFIQUES -->
+      <section>
+        <section>
+          <h2><i class="fas fa-sliders-h icon"></i> Champs spécifiques selon modèle</h2>
+
+          <p class="smaller fragment">Chaque modèle peut avoir des champs supplémentaires</p>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir par modèle</p>
+        </section>
+
+        <section>
+          <h3>Modèle Devoir</h3>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <h3 class="smaller"><code>duree</code></h3>
+            <p class="smaller">Durée en minutes de l'évaluation</p>
+          </div>
+
+          <div class="grid-2 fragment">
+            <div class="example-box" style="font-size: 0.8em;">
+              <p><strong>Valeurs courantes :</strong></p>
+              <ul class="smaller">
+                <li>10 minutes (contrôle rapide)</li>
+                <li>15 minutes</li>
+                <li>30 minutes</li>
+                <li>55 minutes (1 heure)</li>
+              </ul>
+            </div>
+
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Format dans template :</strong></p>
+              <p><code>\tableauEval{55}</code></p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Modèle Devoir_maison</h3>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <h3 class="smaller"><code>date_rendu</code></h3>
+            <p class="smaller">Date de rendu du DM</p>
+          </div>
+
+          <div class="grid-2 fragment">
+            <div class="example-box" style="font-size: 0.8em;">
+              <p><strong>Formats acceptés :</strong></p>
+              <ul class="smaller">
+                <li>"JJ/MM/AAAA"</li>
+                <li>"lundi 15 janvier"</li>
+                <li>"15 janvier 2025"</li>
+              </ul>
+            </div>
+
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Utilisation :</strong></p>
+              <p><code>\messageDevoir</code></p>
+              <p class="smaller">"Devoir à rendre pour le ..."</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Modèles Exercices heavy/light</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>type_document_secondaire</code></h3>
+              <p class="smaller">Pour la page de solutions</p>
+              <p class="smaller">Par défaut : <code>"Solution"</code></p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <h3 class="smaller"><code>contenu_secondaire</code></h3>
+              <p class="smaller">Contenu des solutions</p>
+              <ul class="smaller">
+                <li><code>\input{solutions}</code></li>
+                <li><code>\rdexocorrection[columns=1]{0}</code></li>
+                <li><code>\rdexocorrection[columns=2]{0}</code></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Modèle Cours</h3>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <p><strong>Le cours inclut automatiquement :</strong></p>
+            <ul class="smaller">
+              <li><code>\tableaucompetence{\competence{nobug}}</code></li>
+              <li><code>\printvocindex</code></li>
+              <li><code>\voc{nobug}</code></li>
+            </ul>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><strong>Option recommandée :</strong></p>
+            <p><code>--create-sections</code> pour créer le dossier sections/</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 14 : RÈGLES CRITIQUES -->
+      <section>
+        <h2><i class="fas fa-exclamation-triangle icon warning"></i> Règles critiques</h2>
+
+        <div class="grid-2">
+          <div>
+            <div class="warning-box fragment" data-fragment-index="1">
+              <p><i class="fas fa-ban icon"></i> <strong>JAMAIS de création manuelle</strong><br><span class="smaller">Toujours via scripts Python</span></p>
+            </div>
+
+            <div class="warning-box fragment" data-fragment-index="2">
+              <p><i class="fas fa-check icon"></i> <strong>Vérifier modèle existant</strong><br><span class="smaller">list_templates.py d'abord</span></p>
+            </div>
+
+            <div class="warning-box fragment" data-fragment-index="3">
+              <p><i class="fas fa-list icon"></i> <strong>Tous les champs requis</strong><br><span class="smaller">get_template_info.py avant</span></p>
+            </div>
+          </div>
+
+          <div>
+            <div class="warning-box fragment" data-fragment-index="4">
+              <p><i class="fas fa-folder icon"></i> <strong>Chemins absolus</strong><br><span class="smaller">Jamais de chemins relatifs</span></p>
+            </div>
+
+            <div class="warning-box fragment" data-fragment-index="5">
+              <p><i class="fas fa-font icon"></i> <strong>Corriger l'encodage</strong><br><span class="smaller">encoding-fixer après création</span></p>
+            </div>
+
+            <div class="warning-box fragment" data-fragment-index="6">
+              <p><i class="fas fa-save icon"></i> <strong>Confirmer avant écrasement</strong><br><span class="smaller">Ne jamais écraser sans demander</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 15 : AVANTAGES DU SYSTÈME -->
+      <section>
+        <section>
+          <h2><i class="fas fa-star icon"></i> Avantages du système</h2>
+
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir tous les avantages</p>
+        </section>
+
+        <section>
+          <h3>Gain de temps</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-clock icon"></i> Avant</h3>
+              <ul class="smaller">
+                <li>Créer dossiers : 2 min</li>
+                <li>Copier template : 3 min</li>
+                <li>Remplir champs : 5 min</li>
+                <li>Vérifier structure : 3 min</li>
+                <li>Créer fichiers auxiliaires : 2 min</li>
+              </ul>
+              <p class="warning"><strong>Total : 15 minutes</strong></p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-bolt icon"></i> Maintenant</h3>
+              <ul class="smaller">
+                <li>Demande à l'agent : 10 sec</li>
+                <li>Création automatique : 5 sec</li>
+                <li>Vérification : 1 min</li>
+              </ul>
+              <p class="success"><strong>Total : ~1-2 minutes</strong></p>
+              <p class="highlight"><strong>Gain : ~90%</strong></p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Qualité et cohérence</h3>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Structure garantie</strong> : tous les fichiers nécessaires</li>
+            <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Pas d'oublis</strong> : templates complets</li>
+            <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Cohérence</strong> : formatage identique</li>
+            <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Encodage correct</strong> : UTF-8 automatique</li>
+            <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Instructions Claude</strong> : CLAUDE.md inclus</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Flexibilité</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-palette icon"></i> Personnalisation</h3>
+              <ul class="smaller">
+                <li>Préférences utilisateur</li>
+                <li>Habitudes enregistrées</li>
+                <li>Templates personnalisables</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-expand icon"></i> Évolutivité</h3>
+              <ul class="smaller">
+                <li>Nouveaux modèles faciles</li>
+                <li>Champs ajustables</li>
+                <li>Scripts extensibles</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 16 : WORKFLOW TYPIQUE -->
+      <section>
+        <h2><i class="fas fa-route icon"></i> Workflow typique</h2>
+
+        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+          <div class="step-number">1</div>
+          <div>Demande à Claude : "Je veux un cours sur les suites en première"</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+          <div class="step-number">2</div>
+          <div>L'agent analyse → type=Cours, niveau=1ere_spe, theme=suites</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+          <div class="step-number">3</div>
+          <div>Vérification arborescence → Sequence-Suites existe ?</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+          <div class="step-number">4</div>
+          <div>Création via MCP → tous fichiers générés</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
+          <div class="step-number">5</div>
+          <div>Rapport détaillé → Vous commencez à remplir le contenu</div>
+        </div>
+
+        <div class="example-box fragment" data-fragment-index="6" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-rocket icon"></i> Simple, rapide, efficace !</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 17 : COMMANDE VAGUE → RÉSULTAT EXPERT -->
+      <section>
+        <section>
+          <h2><i class="fas fa-brain icon"></i> Commande vague → Résultat expert</h2>
+
+          <div class="grid-2">
+            <div class="example-box fragment">
+              <h3 class="smaller"><i class="fas fa-user icon"></i> Vous dites</h3>
+              <p style="font-style: italic; font-size: 0.85em;">"Je veux des exercices sur les fractions"</p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-robot icon"></i> L'agent comprend</h3>
+              <ul class="smaller">
+                <li>Type : Exercices light</li>
+                <li>Niveau : à préciser ?</li>
+                <li>Thème : fractions</li>
+                <li>Structure complète</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir le processus</p>
+        </section>
+
+        <section>
+          <h3>L'agent fait le travail pour vous</h3>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-search icon"></i> <strong>Analyse intelligente</strong> du besoin</li>
+            <li class="fragment"><i class="fas fa-lightbulb icon"></i> <strong>Choix optimal</strong> du modèle</li>
+            <li class="fragment"><i class="fas fa-magic icon"></i> <strong>Remplissage automatique</strong> des champs</li>
+            <li class="fragment"><i class="fas fa-folder-tree icon"></i> <strong>Placement cohérent</strong> dans l'arborescence</li>
+            <li class="fragment"><i class="fas fa-cogs icon"></i> <strong>Configuration adaptée</strong> (sections, images, etc.)</li>
+          </ul>
+
+          <div class="example-box fragment" style="margin-top: 1em;">
+            <p><strong><i class="fas fa-check icon"></i> Vous n'avez plus qu'à remplir le contenu pédagogique !</strong></p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 18 : STRUCTURE DU SKILL -->
+      <section>
+        <h2>Structure du skill</h2>
+
+        <div class="tree-structure">
+.claude/skills/tex-document-creator/
+├── SKILL.md                        # Instructions pour agents
+├── scripts/
+│   ├── create_document.py          # Script principal
+│   ├── list_templates.py           # Liste templates
+│   ├── get_template_info.py        # Info template
+│   ├── get_user_preferences.py     # Préférences
+│   ├── update_user_preferences.py  # MAJ préférences
+│   ├── add_user_habit.py           # Ajouter habitude
+│   ├── remove_user_habit.py        # Supprimer habitude
+│   └── get_help.py                 # Aide générale
+├── references/
+│   └── scripts_to_use.md           # Guide des scripts
+└── templates/
+    ├── Cours.tex
+    ├── Devoir.tex
+    ├── Devoir_maison.tex
+    ├── Exercices_heavy.tex
+    ├── Exercices_light.tex
+    └── ...
+        </div>
+      </section>
+
+      <!-- SLIDE 19 : SERVEUR MCP -->
+      <section>
+        <section>
+          <h2><i class="fas fa-server icon"></i> Serveur MCP document-creator</h2>
+
+          <div class="box fragment">
+            <p><strong>Interface entre l'agent et les scripts Python</strong></p>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les fonctions</p>
+        </section>
+
+        <section>
+          <h3>Fonctions MCP disponibles</h3>
+
+          <div class="grid-2">
+            <div>
+              <div class="box fragment" style="font-size: 0.8em;">
+                <h3 class="smaller"><code>list_templates()</code></h3>
+                <p class="smaller">Liste tous les modèles</p>
+              </div>
+
+              <div class="box fragment" style="font-size: 0.8em;">
+                <h3 class="smaller"><code>get_template_info()</code></h3>
+                <p class="smaller">Info détaillée sur un modèle</p>
+              </div>
+
+              <div class="box fragment" style="font-size: 0.8em;">
+                <h3 class="smaller"><code>create_document()</code></h3>
+                <p class="smaller">Création du projet</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="box fragment" style="font-size: 0.8em;">
+                <h3 class="smaller"><code>get_user_preferences()</code></h3>
+                <p class="smaller">Récupère préférences</p>
+              </div>
+
+              <div class="box fragment" style="font-size: 0.8em;">
+                <h3 class="smaller"><code>update_user_preferences()</code></h3>
+                <p class="smaller">MAJ préférences</p>
+              </div>
+
+              <div class="box fragment" style="font-size: 0.8em;">
+                <h3 class="smaller"><code>get_help()</code></h3>
+                <p class="smaller">Aide générale</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Avantages du serveur MCP</h3>
+
+          <ul class="feature-list">
+            <li class="fragment"><i class="fas fa-plug icon"></i> <strong>Appels directs</strong> depuis Claude</li>
+            <li class="fragment"><i class="fas fa-code icon"></i> <strong>Pas de Bash</strong> nécessaire</li>
+            <li class="fragment"><i class="fas fa-shield-alt icon"></i> <strong>Gestion d'erreurs</strong> intégrée</li>
+            <li class="fragment"><i class="fas fa-file-code icon"></i> <strong>Retour JSON</strong> structuré</li>
+            <li class="fragment"><i class="fas fa-sync icon"></i> <strong>Appels synchrones</strong> fiables</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- SLIDE 20 : RÉSULTATS TYPIQUES -->
+      <section>
+        <h2>Résultats typiques</h2>
+
+        <div class="grid-2">
+          <div class="fragment">
+            <h3><i class="fas fa-clock icon"></i> Temps de création</h3>
+            <ul class="smaller">
+              <li>Requête utilisateur : <strong>10 sec</strong></li>
+              <li>Analyse agent : <strong>5 sec</strong></li>
+              <li>Création projet : <strong>5 sec</strong></li>
+              <li>Vérification : <strong>1 min</strong></li>
+            </ul>
+            <p class="success"><strong>Total : ~1-2 minutes</strong></p>
+          </div>
+
+          <div class="fragment">
+            <h3><i class="fas fa-trophy icon"></i> Qualité</h3>
+            <ul class="smaller">
+              <li>Structure complète : <strong>100%</strong></li>
+              <li>Champs remplis : <strong>100%</strong></li>
+              <li>Encodage correct : <strong>100%</strong></li>
+              <li>Erreurs : <strong>0%</strong></li>
+            </ul>
+            <p class="success"><strong>Perfection garantie !</strong></p>
+          </div>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1em; font-size: 0.8em;">
+          <p><i class="fas fa-chart-line icon"></i> vs création manuelle : <strong>gain de temps de 90%</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 21 : CONCLUSION -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Points forts</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Création automatique complète</li>
+              <li>15 modèles prêts à l'emploi</li>
+              <li>Gain de temps : ~90%</li>
+              <li>Structure cohérente garantie</li>
+              <li>Agent intelligent</li>
+              <li>Serveur MCP intégré</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2" style="color: var(--secondary-color);"><i class="fas fa-lightbulb icon"></i> Conseils</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Toujours passer par les scripts</li>
+              <li>Vérifier l'arborescence avant</li>
+              <li>Utiliser get_template_info</li>
+              <li>Enregistrer vos préférences</li>
+              <li>Laisser l'agent travailler</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-rocket icon"></i> Concentrez-vous sur le contenu pédagogique, pas sur la structure technique !</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 22 : RESSOURCES -->
+      <section>
+        <h2><i class="fas fa-book icon"></i> Ressources</h2>
+
+        <div class="grid-2">
+          <div class="box" style="font-size: 0.8em;">
+            <h3 class="smaller">Documentation skill</h3>
+            <ul class="smaller">
+              <li><code>SKILL.md</code> - Instructions agents</li>
+              <li><code>references/scripts_to_use.md</code> - Guide scripts</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <h3 class="smaller">Documentation agent</h3>
+            <ul class="smaller">
+              <li><code>.claude/agents/document-creator-worker.md</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box fragment" style="font-size: 0.8em; margin-top: 1em;">
+          <h3 class="smaller">Scripts</h3>
+          <p><code>.claude/skills/tex-document-creator/scripts/</code></p>
+        </div>
+
+        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
+          <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation 2D
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+
+      // Transitions
+      transition: 'slide',
+      transitionSpeed: 'default',
+
+      // Behavior
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      shuffle: false,
+
+      // Fragments
+      fragments: true,
+      fragmentInURL: true,
+
+      // Keyboard
+      keyboard: true,
+      keyboardCondition: null,
+
+      // Plugins
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
+    let lastHorizontalIndex = 0;
+
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+
+      // Si on change de slide horizontale et qu'on n'est pas au top
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        // Revenir au top de la nouvelle slide
+        Reveal.slide(currentH, 0);
+      }
+
+      // Mettre à jour l'index horizontal
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>

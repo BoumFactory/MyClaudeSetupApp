@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Création d'applications éducatives interactives avec le skill educational-app-builder">
+  <title>Création d'Applications Éducatives Interactives</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Theme personnalisé lycée -->
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --text-color: #34495e;
+      --bg-light: #ecf0f1;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.6em;
+      margin-bottom: 0.8em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.3em;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      margin-top: 0.8em;
+    }
+
+    .reveal ul, .reveal ol {
+      margin: 1em 0;
+    }
+
+    .reveal li {
+      margin: 0.5em 0;
+      line-height: 1.5;
+    }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 1em;
+      max-height: 500px;
+      font-size: 0.85em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .reveal .success {
+      color: var(--success-color);
+      font-weight: 600;
+    }
+
+    .reveal .warning {
+      color: var(--warning-color);
+      font-weight: 600;
+    }
+
+    .reveal .box {
+      background: var(--bg-light);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning-color);
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: #e8f5e9;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon {
+      font-size: 1.2em;
+      margin-right: 0.3em;
+      vertical-align: middle;
+    }
+
+    .reveal section img {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: var(--secondary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .feature-list {
+      font-size: 0.9em;
+    }
+
+    .reveal .feature-list li {
+      margin: 0.4em 0;
+    }
+
+    .reveal .tree-structure {
+      font-family: 'Consolas', monospace;
+      font-size: 0.65em;
+      text-align: left;
+      background: #f8f9fa;
+      padding: 1em;
+      border-radius: 8px;
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    .reveal .subtitle {
+      color: var(--secondary-color);
+      font-size: 0.7em;
+      margin-top: 0.5em;
+    }
+
+    .reveal .tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+
+    .reveal .tag.warning {
+      background: var(--warning-color);
+    }
+
+    .reveal .tag.success {
+      background: var(--success-color);
+    }
+
+    .reveal .tag.accent {
+      background: var(--accent-color);
+    }
+
+    .reveal .smaller {
+      font-size: 0.85em;
+    }
+
+    .reveal .comparison-table {
+      font-size: 0.75em;
+      width: 100%;
+      margin: 1em 0;
+    }
+
+    .reveal .comparison-table td, .reveal .comparison-table th {
+      padding: 0.5em;
+      border: 1px solid #ddd;
+    }
+
+    .reveal .comparison-table th {
+      background: var(--secondary-color);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fas fa-flask icon"></i> Création d'Applications Éducatives Interactives</h1>
+        <p class="subtitle">Le système <code>educational-app-builder</code></p>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag">Formation GT IA & Maths</span>
+          <span class="tag success">Flask + Python</span>
+          <span class="tag accent">PyInstaller</span>
+        </p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <h2>Au programme</h2>
+        <ol class="feature-list">
+          <li class="fragment" data-fragment-index="1"><i class="fas fa-question-circle icon"></i> Qu'est-ce que le système ?</li>
+          <li class="fragment" data-fragment-index="2"><i class="fas fa-robot icon"></i> L'agent app-creator-agent</li>
+          <li class="fragment" data-fragment-index="3"><i class="fas fa-cogs icon"></i> Types d'applications</li>
+          <li class="fragment" data-fragment-index="4"><i class="fas fa-route icon"></i> Workflow en 8 phases</li>
+          <li class="fragment" data-fragment-index="5"><i class="fas fa-code icon"></i> Architecture technique</li>
+          <li class="fragment" data-fragment-index="6"><i class="fas fa-check-circle icon"></i> Checklist qualité</li>
+          <li class="fragment" data-fragment-index="7"><i class="fas fa-graduation-cap icon"></i> Résultats typiques</li>
+        </ol>
+      </section>
+
+      <!-- SLIDE 3 : QU'EST-CE QUE C'EST ? -->
+      <section>
+        <h2>Qu'est-ce que le système ?</h2>
+
+        <div class="box fragment">
+          <p><strong>Un système complet pour transformer vos ressources pédagogiques en applications web interactives</strong></p>
+        </div>
+
+        <ul class="feature-list">
+          <li class="fragment"><i class="fas fa-file-pdf icon"></i> Analyse <strong>LaTeX, PDF, Markdown</strong></li>
+          <li class="fragment"><i class="fas fa-code icon"></i> Génère <strong>Flask complet</strong> (backend + frontend)</li>
+          <li class="fragment"><i class="fas fa-check-circle icon"></i> Teste <strong>automatiquement</strong></li>
+          <li class="fragment"><i class="fas fa-download icon"></i> Package en <strong>exécutable standalone</strong></li>
+        </ul>
+
+        <div class="example-box fragment" style="margin-top: 1em;">
+          <p><i class="fas fa-rocket icon"></i> <strong>Résultat :</strong> Application prête à distribuer aux élèves (fichier .exe)</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 : L'AGENT -->
+      <section>
+        <h2><i class="fas fa-robot icon"></i> L'agent app-creator-agent</h2>
+
+        <div class="box fragment">
+          <p><strong>Expert autonome en développement Flask</strong></p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment" data-fragment-index="1"><i class="fas fa-brain icon"></i> Compétences</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Analyse contenu éducatif</li>
+              <li>Architecture Flask</li>
+              <li>Frontend HTML/CSS/JS</li>
+              <li>Tests automatisés (pytest)</li>
+              <li>Packaging PyInstaller</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2"><i class="fas fa-magic icon"></i> Autonomie</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Détecte le type optimal</li>
+              <li>Génère le code complet</li>
+              <li>Teste automatiquement</li>
+              <li>Livre un produit fini</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 : TYPES D'APPLICATIONS -->
+      <section>
+        <section>
+          <h2>Types d'applications</h2>
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque type en détail</p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-book-open icon"></i> Type A : Visualiseur de Cours</h3>
+          <ul class="smaller">
+            <li><strong>Usage :</strong> Affichage structuré du cours</li>
+            <li><strong>Fonctionnalités :</strong></li>
+            <ul class="smaller">
+              <li>Navigation par sections</li>
+              <li>Recherche dans le contenu</li>
+              <li>Annotations personnelles</li>
+              <li>Export PDF</li>
+            </ul>
+            <li><strong>Détection :</strong> > 70% de contenu théorique</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-pen icon"></i> Type B : Exerciseur Interactif</h3>
+          <ul class="smaller">
+            <li><strong>Usage :</strong> Pratique avec correction automatique</li>
+            <li><strong>Fonctionnalités :</strong></li>
+            <ul class="smaller">
+              <li>Affichage des exercices</li>
+              <li>Vérification automatique</li>
+              <li>Feedback immédiat</li>
+              <li>Suivi de progression</li>
+            </ul>
+            <li><strong>Détection :</strong> > 70% d'exercices/questions</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-question-circle icon"></i> Type C : Quiz Interactif</h3>
+          <ul class="smaller">
+            <li><strong>Usage :</strong> Évaluation chronométrée</li>
+            <li><strong>Fonctionnalités :</strong></li>
+            <ul class="smaller">
+              <li>Questions QCM/ouvertes</li>
+              <li>Timer configurable</li>
+              <li>Score final</li>
+              <li>Historique des tentatives</li>
+            </ul>
+            <li><strong>Détection :</strong> Questionnaire/évaluation</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-layer-group icon"></i> Type D : Application Mixte (Recommandé)</h3>
+          <ul class="smaller">
+            <li><strong>Usage :</strong> Parcours pédagogique complet</li>
+            <li><strong>Fonctionnalités :</strong></li>
+            <ul class="smaller">
+              <li>Cours + exercices intégrés</li>
+              <li>Progression guidée</li>
+              <li>Tableau de bord</li>
+              <li>Statistiques d'apprentissage</li>
+            </ul>
+            <li><strong>Détection :</strong> Contenu mixte (défaut)</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- SLIDE 6 : WORKFLOW GLOBAL -->
+      <section>
+        <h2>Workflow global en 8 phases</h2>
+
+        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+          <div class="step-number">1</div>
+          <div>Analyse de la ressource (LaTeX, PDF, MD)</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+          <div class="step-number">2</div>
+          <div>Questions minimales à l'utilisateur (3-4 max)</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+          <div class="step-number">3</div>
+          <div>Initialisation du projet Flask</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+          <div class="step-number">4</div>
+          <div>Génération du code (Backend + Frontend)</div>
+        </div>
+
+        <p class="smaller fragment" data-fragment-index="5" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les phases 5-8</p>
+      </section>
+
+      <!-- SLIDE 6bis : WORKFLOW SUITE -->
+      <section>
+        <h2>Workflow global en 8 phases (suite)</h2>
+
+        <div class="workflow-step" style="font-size: 0.85em;">
+          <div class="step-number">5</div>
+          <div>Tests automatisés (pytest)</div>
+        </div>
+
+        <div class="workflow-step" style="font-size: 0.85em;">
+          <div class="step-number">6</div>
+          <div>Packaging en exécutable (.exe)</div>
+        </div>
+
+        <div class="workflow-step" style="font-size: 0.85em;">
+          <div class="step-number">7</div>
+          <div>Documentation complète (README, guide)</div>
+        </div>
+
+        <div class="workflow-step" style="font-size: 0.85em;">
+          <div class="step-number">8</div>
+          <div>Rapport final et livraison</div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 : PHASE 1 ANALYSE -->
+      <section>
+        <section>
+          <h2>Phase 1 : Analyse de la ressource</h2>
+
+          <div class="example-box fragment" style="font-size: 0.85em;">
+            <p><strong>Exemple :</strong> Fichier LaTeX sur les vecteurs (Seconde)</p>
+          </div>
+
+          <ul class="feature-list" style="font-size: 0.9em;">
+            <li class="fragment"><i class="fas fa-file-code icon"></i> Lecture du fichier LaTeX</li>
+            <li class="fragment"><i class="fas fa-search icon"></i> Détection : sections, exercices, formules</li>
+            <li class="fragment"><i class="fas fa-tags icon"></i> Extraction : titre, niveau, thème</li>
+            <li class="fragment"><i class="fas fa-brain icon"></i> Choix automatique : Type B (Exerciseur)</li>
+          </ul>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir l'analyse détaillée</p>
+        </section>
+
+        <section>
+          <h3>Patterns LaTeX détectés</h3>
+          <pre class="fragment" style="font-size: 0.7em;"><code class="language-python">PATTERNS = {
+    'title': r'\\title\{(.*?)\}',
+    'section': r'\\section\{(.*?)\}',
+    'exercice': r'\\begin\{exercice\}(.*?)\\end\{exercice\}',
+    'question': r'\\question\{(.*?)\}',
+    'niveau': r'niveau.*?(\d+(?:ème|ere|nde)|Terminale)',
+    'theme': r'theme\{(.*?)\}'
+}</code></pre>
+        </section>
+      </section>
+
+      <!-- SLIDE 8 : PHASE 2 QUESTIONS -->
+      <section>
+        <h2>Phase 2 : Questions à l'utilisateur</h2>
+
+        <div class="warning-box fragment">
+          <p><i class="fas fa-exclamation-circle icon"></i> <strong>Maximum 3-4 questions ciblées</strong></p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment" data-fragment-index="1" style="font-size: 1.1em;">Questions essentielles</h3>
+            <ol class="smaller fragment" data-fragment-index="1">
+              <li>Nom de l'application ?</li>
+              <li>Confirmer le type détecté ?</li>
+              <li>Fonctionnalités optionnelles ?</li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2" style="font-size: 1.1em;">Valeurs par défaut</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li><strong>Nom :</strong> basé sur fichier</li>
+              <li><strong>Type :</strong> détecté automatiquement</li>
+              <li><strong>Style :</strong> bleu professionnel</li>
+              <li><strong>Fonctionnalités :</strong> standard</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="success fragment" style="margin-top: 1em; text-align: center;">
+          <p><i class="fas fa-check-circle icon"></i> Si pas de réponse : continuer avec les valeurs par défaut</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 9 : PHASE 3 INITIALISATION -->
+      <section>
+        <section>
+          <h2>Phase 3 : Initialisation du projet</h2>
+
+          <div class="box fragment">
+            <p><strong>Création de l'arborescence complète</strong></p>
+          </div>
+
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la structure</p>
+        </section>
+
+        <section>
+          <h3>Structure du projet Flask</h3>
+          <div class="tree-structure">
+app_&lt;nom&gt;/
+├── app.py                     # Application Flask principale
+├── config.py                  # Configuration
+├── requirements.txt           # Dépendances Python
+├── .env.example              # Variables d'environnement
+├── static/                   # Fichiers statiques
+│   ├── css/
+│   │   ├── main.css         # Styles principaux
+│   │   └── components.css   # Composants réutilisables
+│   ├── js/
+│   │   ├── main.js          # JavaScript principal
+│   │   ├── interactions.js  # Interactions
+│   │   └── utils.js         # Fonctions utilitaires
+│   └── images/              # Images
+├── templates/               # Templates Jinja2
+│   ├── base.html           # Template de base
+│   ├── index.html          # Page d'accueil
+│   └── components/         # Composants
+├── data/                   # Données
+│   └── content.json        # Contenu éducatif structuré
+├── tests/                  # Tests automatisés
+│   ├── test_app.py        # Tests de l'application
+│   └── test_routes.py     # Tests des routes
+├── build/                  # Scripts de build
+│   └── build_exe.py       # Script PyInstaller
+└── README.md              # Documentation
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 10 : PHASE 4 GÉNÉRATION CODE -->
+      <section>
+        <section>
+          <h2>Phase 4 : Génération du code</h2>
+
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-server icon"></i> Backend Flask</h3>
+              <ul class="smaller">
+                <li>Routes API</li>
+                <li>Logique métier</li>
+                <li>Gestion des données</li>
+                <li>Validation réponses</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-desktop icon"></i> Frontend</h3>
+              <ul class="smaller">
+                <li>Templates Jinja2</li>
+                <li>CSS moderne</li>
+                <li>JavaScript ES6+</li>
+                <li>Design responsive</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="smaller fragment" data-fragment-index="3" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir des exemples de code</p>
+        </section>
+
+        <section>
+          <h3>Exemple Backend : app.py</h3>
+          <pre style="font-size: 0.65em;"><code class="language-python">from flask import Flask, render_template, jsonify, request
+from config import Config
+import json
+
+app = Flask(__name__)
+app.config.from_object(Config)
+
+# Chargement du contenu éducatif
+def load_content():
+    with open('data/content.json', 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+CONTENT = load_content()
+
+@app.route('/')
+def index():
+    """Page principale"""
+    return render_template('index.html',
+                         title=CONTENT['metadata']['title'])
+
+@app.route('/api/check/<int:exercise_id>', methods=['POST'])
+def check_answer(exercise_id):
+    """Vérifier une réponse"""
+    data = request.get_json()
+    # Logique de vérification...
+    return jsonify({'correct': True, 'feedback': 'Bravo !'})</code></pre>
+        </section>
+
+        <section>
+          <h3>Exemple Frontend : CSS moderne</h3>
+          <pre style="font-size: 0.65em;"><code class="language-css">:root {
+    --primary-color: #4F46E5;
+    --success-color: #10B981;
+    --danger-color: #EF4444;
+    --background: #F9FAFB;
+    --surface: #FFFFFF;
+}
+
+.exercise-card {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.exercise-card:hover {
+    transform: translateY(-2px);
+}</code></pre>
+        </section>
+
+        <section>
+          <h3>Exemple Frontend : JavaScript ES6+</h3>
+          <pre style="font-size: 0.65em;"><code class="language-javascript">// API Client
+class ExerciseAPI {
+    constructor() {
+        this.baseURL = window.location.origin;
+    }
+
+    async checkAnswer(exerciseId, answer) {
+        const response = await fetch(
+            `${this.baseURL}/api/check/${exerciseId}`,
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ answer })
+            }
+        );
+        return await response.json();
+    }
+}
+
+const api = new ExerciseAPI();</code></pre>
+        </section>
+
+        <section>
+          <h3>Contenu structuré : content.json</h3>
+          <pre style="font-size: 0.65em;"><code class="language-json">{
+  "metadata": {
+    "title": "Exercices sur les Vecteurs",
+    "level": "Seconde",
+    "theme": "Vecteurs",
+    "type": "exercices"
+  },
+  "exercises": [
+    {
+      "id": 1,
+      "question": "Calculer les coordonnées du vecteur AB...",
+      "type": "input",
+      "answer": "(3; 4)",
+      "hint": "Utilisez la formule...",
+      "solution": "Détail de la solution...",
+      "feedback_correct": "Excellent !",
+      "feedback_wrong": "Revérifiez vos calculs."
+    }
+  ]
+}</code></pre>
+        </section>
+      </section>
+
+      <!-- SLIDE 11 : PHASE 5 TESTS -->
+      <section>
+        <section>
+          <h2>Phase 5 : Tests automatisés</h2>
+
+          <div class="box fragment">
+            <p><strong>Tests avec pytest</strong></p>
+          </div>
+
+          <ul class="feature-list fragment">
+            <li><i class="fas fa-check-circle icon"></i> Tests de routes</li>
+            <li><i class="fas fa-check-circle icon"></i> Tests des API</li>
+            <li><i class="fas fa-check-circle icon"></i> Tests de validation</li>
+            <li><i class="fas fa-check-circle icon"></i> Couverture de code > 80%</li>
+          </ul>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir un exemple de test</p>
+        </section>
+
+        <section>
+          <h3>Exemple : test_app.py</h3>
+          <pre style="font-size: 0.7em;"><code class="language-python">import pytest
+from app import app
+
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
+
+def test_index_page(client):
+    """Test de la page d'accueil"""
+    response = client.get('/')
+    assert response.status_code == 200
+    assert b'Application' in response.data
+
+def test_check_answer_correct(client):
+    """Test de vérification - réponse correcte"""
+    response = client.post('/api/check/1', json={
+        'answer': '(3; 4)'
+    })
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data['correct'] == True</code></pre>
+
+          <div class="success fragment" style="margin-top: 1em;">
+            <p><i class="fas fa-check-circle icon"></i> <strong>Tous les tests doivent passer avant packaging</strong></p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 12 : PHASE 6 PACKAGING -->
+      <section>
+        <section>
+          <h2>Phase 6 : Packaging en exécutable</h2>
+
+          <div class="box fragment">
+            <p><strong>PyInstaller : un seul fichier .exe</strong></p>
+          </div>
+
+          <ul class="feature-list fragment">
+            <li><i class="fas fa-download icon"></i> Exécutable standalone</li>
+            <li><i class="fas fa-folder icon"></i> Templates et static inclus</li>
+            <li><i class="fas fa-database icon"></i> Données embarquées</li>
+            <li><i class="fas fa-shield-alt icon"></i> Aucune dépendance externe</li>
+          </ul>
+
+          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir le script de build</p>
+        </section>
+
+        <section>
+          <h3>Script de build : build_exe.py</h3>
+          <pre style="font-size: 0.7em;"><code class="language-python">import PyInstaller.__main__
+import os
+import shutil
+
+APP_NAME = "EducationalApp"
+
+def build():
+    """Construire l'exécutable"""
+    args = [
+        'app.py',
+        '--name', APP_NAME,
+        '--onefile',  # Un seul fichier
+        '--add-data', 'templates;templates',
+        '--add-data', 'static;static',
+        '--add-data', 'data;data',
+        '--hidden-import', 'flask',
+        '--hidden-import', 'jinja2',
+        '--clean',
+    ]
+
+    PyInstaller.__main__.run(args)
+    print(f"✅ Build terminé : dist/{APP_NAME}.exe")
+
+if __name__ == '__main__':
+    build()</code></pre>
+        </section>
+
+        <section>
+          <h3>Utilisation</h3>
+          <pre class="fragment" style="font-size: 0.8em;"><code class="language-bash"># Construire l'exécutable
+python build/build_exe.py
+
+# L'exécutable sera dans dist/EducationalApp.exe
+</code></pre>
+
+          <div class="example-box fragment" style="margin-top: 1em;">
+            <p><strong>Distribution :</strong> Un seul fichier .exe à donner aux élèves</p>
+            <ul class="smaller">
+              <li>Double-clic pour lancer</li>
+              <li>Ouvre dans le navigateur</li>
+              <li>Pas d'installation nécessaire</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 13 : PHASE 7 DOCUMENTATION -->
+      <section>
+        <h2>Phase 7 : Documentation complète</h2>
+
+        <div class="grid-2">
+          <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+            <h3 class="smaller"><i class="fas fa-book icon"></i> README.md</h3>
+            <ul class="smaller">
+              <li>Description de l'application</li>
+              <li>Installation (sources + .exe)</li>
+              <li>Utilisation</li>
+              <li>Structure du projet</li>
+              <li>Support et licence</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+            <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> GUIDE_UTILISATION.md</h3>
+            <ul class="smaller">
+              <li>Démarrage rapide</li>
+              <li>Fonctionnalités détaillées</li>
+              <li>Raccourcis clavier</li>
+              <li>Dépannage</li>
+              <li>Conseils pédagogiques</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="success fragment" style="margin-top: 1em; text-align: center;">
+          <p><i class="fas fa-check-circle icon"></i> <strong>Documentation en français, claire et complète</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 14 : PHASE 8 RAPPORT -->
+      <section>
+        <h2>Phase 8 : Rapport final et livraison</h2>
+
+        <div class="example-box fragment" style="font-size: 0.85em;">
+          <p><strong>Rapport détaillé automatique</strong></p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment" data-fragment-index="1" style="font-size: 1.1em;">Statistiques</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Nombre d'exercices</li>
+              <li>Lignes de code</li>
+              <li>Tests : X / X passés</li>
+              <li>Couverture de code</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2" style="font-size: 1.1em;">Fichiers livrés</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Code source complet</li>
+              <li>Exécutable .exe</li>
+              <li>Documentation</li>
+              <li>Tests</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="success fragment" style="margin-top: 1em; text-align: center;">
+          <p><i class="fas fa-rocket icon"></i> <strong>Application 100% fonctionnelle et prête à l'emploi</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 15 : FONCTIONNALITÉS AVANCÉES -->
+      <section>
+        <section>
+          <h2>Fonctionnalités avancées</h2>
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque fonctionnalité</p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-square-root-alt icon"></i> Rendu LaTeX (MathJax)</h3>
+          <pre style="font-size: 0.7em;"><code class="language-html">&lt;!-- Dans base.html --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"&gt;&lt;/script&gt;
+
+&lt;!-- Configuration --&gt;
+&lt;script&gt;
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  }
+};
+&lt;/script&gt;</code></pre>
+          <div class="example-box fragment" style="margin-top: 1em;">
+            <p>Affichage parfait des formules mathématiques dans le navigateur</p>
+          </div>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-save icon"></i> Sauvegarde de progression (localStorage)</h3>
+          <pre style="font-size: 0.7em;"><code class="language-javascript">class ProgressManager {
+    constructor(appId) {
+        this.appId = appId;
+        this.storageKey = `edu_app_${appId}_progress`;
+    }
+
+    saveProgress(data) {
+        localStorage.setItem(this.storageKey, JSON.stringify(data));
+    }
+
+    loadProgress() {
+        const data = localStorage.getItem(this.storageKey);
+        return data ? JSON.parse(data) : null;
+    }
+}</code></pre>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-wifi icon"></i> Mode hors ligne (PWA)</h3>
+          <pre style="font-size: 0.7em;"><code class="language-javascript">// Service Worker basique
+const CACHE_NAME = 'edu-app-v1';
+const urlsToCache = [
+  '/',
+  '/static/css/main.css',
+  '/static/js/main.js'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
+  );
+});</code></pre>
+        </section>
+      </section>
+
+      <!-- SLIDE 16 : CHECKLIST QUALITÉ -->
+      <section>
+        <h2>Checklist de qualité</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment" data-fragment-index="1" style="font-size: 1.1em;"><i class="fas fa-code icon"></i> Code</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>✅ Application Flask démarre</li>
+              <li>✅ Tous les tests passent</li>
+              <li>✅ Code commenté en français</li>
+              <li>✅ Chemins portables (Win/Linux)</li>
+              <li>✅ Pas de données hardcodées</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2" style="font-size: 1.1em;"><i class="fas fa-desktop icon"></i> Frontend</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>✅ Design responsive</li>
+              <li>✅ Formules LaTeX affichées</li>
+              <li>✅ Interactions fluides</li>
+              <li>✅ Feedback clairs</li>
+              <li>✅ Accessibilité (WCAG)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1em; font-size: 0.85em;">
+          <h3 class="smaller"><i class="fas fa-download icon"></i> Packaging</h3>
+          <ul class="smaller">
+            <li>✅ Exécutable se construit sans erreur</li>
+            <li>✅ Exécutable fonctionne sur système propre</li>
+            <li>✅ README complet et clair</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SLIDE 17 : TECHNOLOGIES UTILISÉES -->
+      <section>
+        <h2>Technologies utilisées</h2>
+
+        <div class="grid-2">
+          <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+            <h3 class="smaller"><i class="fas fa-server icon"></i> Backend</h3>
+            <ul class="smaller">
+              <li><strong>Flask 3.0</strong> - Framework web</li>
+              <li><strong>Jinja2</strong> - Templates</li>
+              <li><strong>python-dotenv</strong> - Configuration</li>
+              <li><strong>pytest</strong> - Tests</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+            <h3 class="smaller"><i class="fas fa-desktop icon"></i> Frontend</h3>
+            <ul class="smaller">
+              <li><strong>HTML5</strong> - Structure</li>
+              <li><strong>CSS3</strong> - Styles modernes</li>
+              <li><strong>JavaScript ES6+</strong> - Interactions</li>
+              <li><strong>MathJax 3</strong> - Formules math</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1em; font-size: 0.85em;">
+          <h3 class="smaller"><i class="fas fa-download icon"></i> Packaging et outils</h3>
+          <ul class="smaller">
+            <li><strong>PyInstaller</strong> - Création d'exécutables</li>
+            <li><strong>pytest-cov</strong> - Couverture de code</li>
+            <li><strong>Flask-CORS</strong> - API externe (optionnel)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SLIDE 18 : EXEMPLE CONCRET -->
+      <section>
+        <section>
+          <h2>Exemple concret : Exercices sur les vecteurs</h2>
+
+          <div class="example-box fragment" style="font-size: 0.85em;">
+            <p><strong>Contexte :</strong> Fichier LaTeX avec 15 exercices sur les vecteurs (Seconde)</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="fragment">
+              <h3 style="font-size: 1.1em;">Entrée</h3>
+              <ul class="smaller">
+                <li>Fichier <code>vecteurs.tex</code></li>
+                <li>15 exercices</li>
+                <li>Formules mathématiques</li>
+                <li>Corrections incluses</li>
+              </ul>
+            </div>
+
+            <div class="fragment">
+              <h3 style="font-size: 1.1em;">Sortie</h3>
+              <ul class="smaller">
+                <li>Application complète</li>
+                <li>Vérification automatique</li>
+                <li>Progression sauvegardée</li>
+                <li>Fichier .exe de 25 Mo</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 1.5em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir le processus</p>
+        </section>
+
+        <section>
+          <h3>Processus automatique</h3>
+          <div class="workflow-step" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div>Analyse du fichier LaTeX : 15 exercices détectés</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div>Type choisi : Exerciseur interactif</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">3</div>
+            <div>Génération de content.json (15 exercices structurés)</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">4</div>
+            <div>Création du code Flask + Frontend</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">5</div>
+            <div>Tests : 12 / 12 passés ✅</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">6</div>
+            <div>Build exécutable : VecteursApp.exe (25 Mo)</div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Fonctionnalités de l'application</h3>
+          <div class="grid-2">
+            <div class="example-box" style="font-size: 0.85em;">
+              <h3 class="smaller">Interface utilisateur</h3>
+              <ul class="smaller">
+                <li>Liste des 15 exercices</li>
+                <li>Barre de progression</li>
+                <li>Champs de saisie</li>
+                <li>Boutons "Vérifier"</li>
+              </ul>
+            </div>
+
+            <div class="box" style="font-size: 0.85em;">
+              <h3 class="smaller">Fonctionnalités</h3>
+              <ul class="smaller">
+                <li>Vérification instantanée</li>
+                <li>Feedback correct/incorrect</li>
+                <li>Indices disponibles</li>
+                <li>Solutions détaillées</li>
+                <li>Score final</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 19 : RÉSULTATS TYPIQUES -->
+      <section>
+        <h2>Résultats typiques</h2>
+
+        <div class="grid-2">
+          <div class="fragment">
+            <h3><i class="fas fa-clock icon"></i> Temps de création</h3>
+            <ul class="smaller">
+              <li>Analyse ressource : <strong>1 min</strong></li>
+              <li>Questions utilisateur : <strong>2 min</strong></li>
+              <li>Génération code : <strong>3 min</strong></li>
+              <li>Tests automatiques : <strong>1 min</strong></li>
+              <li>Build exécutable : <strong>2 min</strong></li>
+            </ul>
+            <p class="success"><strong>Total : ~10 minutes</strong></p>
+          </div>
+
+          <div class="fragment">
+            <h3><i class="fas fa-code icon"></i> Code généré</h3>
+            <ul class="smaller">
+              <li>Fichiers Python : <strong>~500 lignes</strong></li>
+              <li>Templates HTML : <strong>~300 lignes</strong></li>
+              <li>CSS : <strong>~400 lignes</strong></li>
+              <li>JavaScript : <strong>~300 lignes</strong></li>
+              <li>Tests : <strong>~200 lignes</strong></li>
+            </ul>
+            <p class="success"><strong>Total : ~1700 lignes</strong></p>
+          </div>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1em; font-size: 0.8em;">
+          <p><i class="fas fa-chart-line icon"></i> vs développement manuel : <strong>gain de temps de 90%</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 20 : AVANTAGES -->
+      <section>
+        <h2>Avantages du système</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Pour l'enseignant</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Pas besoin de coder</li>
+              <li>Création ultra-rapide</li>
+              <li>Qualité professionnelle</li>
+              <li>Réutilisable et modifiable</li>
+              <li>Distribution facile (.exe)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment success" data-fragment-index="2"><i class="fas fa-user-graduate icon"></i> Pour l'élève</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Interface moderne</li>
+              <li>Feedback immédiat</li>
+              <li>Progression sauvegardée</li>
+              <li>Utilisation intuitive</li>
+              <li>Fonctionne hors ligne</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-rocket icon"></i> Transformer n'importe quelle ressource en application interactive en quelques minutes</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 21 : LIMITES -->
+      <section>
+        <h2><i class="fas fa-exclamation-triangle icon warning"></i> Limites et contraintes</h2>
+
+        <div class="grid-2">
+          <div>
+            <div class="warning-box fragment" data-fragment-index="1">
+              <p><i class="fas fa-desktop icon"></i> <strong>Windows uniquement</strong><br><span class="smaller">(exécutable .exe)</span></p>
+            </div>
+
+            <div class="warning-box fragment" data-fragment-index="2">
+              <p><i class="fas fa-network-wired icon"></i> <strong>Connexion requise</strong><br><span class="smaller">(pour MathJax)</span></p>
+            </div>
+
+            <div class="warning-box fragment" data-fragment-index="3">
+              <p><i class="fas fa-database icon"></i> <strong>Pas de base de données</strong><br><span class="smaller">(sauf si ajoutée manuellement)</span></p>
+            </div>
+          </div>
+
+          <div>
+            <div class="warning-box fragment" data-fragment-index="4">
+              <p><i class="fas fa-file-archive icon"></i> <strong>Taille exécutable</strong><br><span class="smaller">(20-50 Mo selon contenu)</span></p>
+            </div>
+
+            <div class="warning-box fragment" data-fragment-index="5">
+              <p><i class="fas fa-shield-alt icon"></i> <strong>Antivirus</strong><br><span class="smaller">(peut bloquer l'exe)</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 22 : CAS D'USAGE -->
+      <section>
+        <section>
+          <h2>Cas d'usage pédagogiques</h2>
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque cas</p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-calculator icon"></i> Mathématiques</h3>
+          <div class="grid-2">
+            <div class="box" style="font-size: 0.85em;">
+              <h3 class="smaller">Exerciseurs</h3>
+              <ul class="smaller">
+                <li>Calcul mental</li>
+                <li>Algèbre</li>
+                <li>Géométrie</li>
+                <li>Fonctions</li>
+              </ul>
+            </div>
+
+            <div class="box" style="font-size: 0.85em;">
+              <h3 class="smaller">Visualiseurs</h3>
+              <ul class="smaller">
+                <li>Cours interactifs</li>
+                <li>Démonstrations</li>
+                <li>Fiches méthodes</li>
+                <li>Formulaires</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-flask icon"></i> Sciences</h3>
+          <div class="box" style="font-size: 0.85em;">
+            <ul class="smaller">
+              <li>Protocoles expérimentaux</li>
+              <li>Quiz de révision</li>
+              <li>Exercices de chimie</li>
+              <li>Simulations simplifiées</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-language icon"></i> Langues</h3>
+          <div class="box" style="font-size: 0.85em;">
+            <ul class="smaller">
+              <li>Exercices de vocabulaire</li>
+              <li>Conjugaison interactive</li>
+              <li>Compréhension de texte</li>
+              <li>Quiz grammaticaux</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-book-open icon"></i> Histoire-Géo</h3>
+          <div class="box" style="font-size: 0.85em;">
+            <ul class="smaller">
+              <li>Frises chronologiques</li>
+              <li>Quiz historiques</li>
+              <li>Cartes interactives</li>
+              <li>Études de documents</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 23 : CONCLUSION -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Points forts</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Création automatique complète</li>
+              <li>Qualité professionnelle</li>
+              <li>Tests intégrés</li>
+              <li>Documentation auto-générée</li>
+              <li>Distribution facile (.exe)</li>
+              <li>Gain de temps considérable</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment warning" data-fragment-index="2"><i class="fas fa-exclamation-triangle icon"></i> À garder en tête</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Windows uniquement</li>
+              <li>Connexion internet (MathJax)</li>
+              <li>Taille exécutable (20-50 Mo)</li>
+              <li>Pas de base de données native</li>
+              <li>Antivirus peut bloquer</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-rocket icon"></i> Idéal pour créer rapidement des applications éducatives interactives de qualité professionnelle</strong></p>
+        </div>
+      </section>
+
+      <!-- SLIDE 24 : RESSOURCES -->
+      <section>
+        <h2><i class="fas fa-book icon"></i> Ressources et documentation</h2>
+
+        <div class="grid-2">
+          <div class="box" style="font-size: 0.8em;">
+            <h3 class="smaller">Documentation</h3>
+            <ul class="smaller">
+              <li><code>SKILL.md</code> - Instructions skill</li>
+              <li><code>app-creator-agent.md</code> - Agent dédié</li>
+              <li>Exemples de templates</li>
+              <li>Guides de référence</li>
+            </ul>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.8em;">
+            <h3 class="smaller">Technologies</h3>
+            <ul class="smaller">
+              <li><i class="fas fa-flask icon"></i> Flask Documentation</li>
+              <li><i class="fas fa-code icon"></i> Jinja2 Templates</li>
+              <li><i class="fas fa-download icon"></i> PyInstaller Manual</li>
+              <li><i class="fas fa-check-circle icon"></i> pytest Docs</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
+          <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation 2D
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+
+      // Transitions
+      transition: 'slide',
+      transitionSpeed: 'default',
+
+      // Behavior
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      shuffle: false,
+
+      // Fragments
+      fragments: true,
+      fragmentInURL: true,
+
+      // Keyboard
+      keyboard: true,
+      keyboardCondition: null,
+
+      // Plugins
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
+    let lastHorizontalIndex = 0;
+
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+
+      // Si on change de slide horizontale et qu'on n'est pas au top
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        // Revenir au top de la nouvelle slide
+        Reveal.slide(currentH, 0);
+      }
+
+      // Mettre à jour l'index horizontal
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>

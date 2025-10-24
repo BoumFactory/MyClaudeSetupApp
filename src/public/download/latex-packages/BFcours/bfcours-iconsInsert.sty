@@ -1,0 +1,128 @@
+% Nom du fichier : bfcours-environments.sty
+\ProvidesPackage{bfcours-iconsInsert}[2024/06/29 v1.0 Insertion d'icones pour bfcours]
+
+\newcommand{\dbiconpath}{C:/Users/Utilisateur/Documents/Professionnel/1. Reims 2023 - 2024/1. Cours/366_fonctionnement/365_Icones}
+\newcommand{\coverAnime}{C:/Users/Utilisateur/Documents/Professionnel/1. Reims 2023 - 2024/1. Cours/366_fonctionnement/365_Icones/Fun/covers_manga}
+
+% Fonction Lua pour sélectionner un icône aléatoire
+\begin{luacode*}
+function get_random_icon(path,subpath)
+  local lfs = require("lfs")
+  local entries = {}
+-- Construire le chemin complet en fonction de subpath
+  local full_path = path
+  if subpath and subpath ~= "" then
+    full_path = path .. "/" .. subpath
+  end
+  for entry in lfs.dir(full_path) do
+    if entry ~= "." and entry ~= ".." then
+      local full_path = full_path ..  "/" .. entry
+      local attr = lfs.attributes(full_path)
+      if attr.mode == "directory" then
+        table.insert(entries, {type="directory", name=entry})
+      elseif attr.mode == "file" then
+        if string.match(entry, "%.png$") or string.match(entry, "%.jpg$") or string.match(entry, "%.jpeg$") then
+          table.insert(entries, {type="file", name=entry})
+        end
+      end
+    end
+  end
+
+  if #entries == 0 then
+    return nil
+  end
+
+  math.randomseed(os.time() + tonumber(tostring(os.clock()):reverse():sub(1,6)))
+  local index = math.random(1, #entries)
+  local selected = entries[index]
+  local selected_path = full_path .. "/" .. selected.name
+
+  if selected.type == "directory" then
+    -- Appel récursif dans le sous-répertoire
+    return get_random_icon(selected_path, "")
+  else
+    -- Retourne le chemin du fichier image
+    return selected_path
+  end
+end
+\end{luacode*}
+
+% Définir un booléen pour activer ou désactiver l'insertion des icônes
+\newif\ifwantIconsInsert
+\wantIconsInsertfalse % Par défaut, désactive les icônes (mettre \wantIconsInserttrue pour activer)
+%\wantIconsInserttrue
+\NewDocumentCommand{\randominserticon}{ O{2cm} O{-0.5cm} O{-3mm} O{Assets} }{%
+  
+  \directlua{%
+    local icon_path = get_random_icon("\luaescapestring{\dbiconpath}","\luaescapestring{#4}")
+    if icon_path then
+      local xshift = [=[#2]=]
+      local yshift = [=[#3]=]
+      local height = [=[#1]=]
+      local tikz_code = "\\tikz[baseline,overlay]{\\node[anchor=base,xshift=" .. xshift .. ", yshift=" .. yshift .. "] {\\includegraphics[height=" .. height .. "]{" .. icon_path .. "}};}"
+      tex.print(tikz_code)
+    else
+      tex.print("Aucun icône trouvé dans : \\dbiconpath")
+    end
+  }%
+}
+\NewDocumentCommand{\randomincludegraphics}{ O{2cm} O{-0.5cm} O{-3mm} O{Assets} }{%
+  
+  \directlua{%
+    local icon_path = get_random_icon("\luaescapestring{\dbiconpath}","\luaescapestring{#4}")
+    if icon_path then
+      local xshift = [=[#2]=]
+      local yshift = [=[#3]=]
+      local height = [=[#1]=]
+      local tikz_code = "\\includegraphics[height=" .. height .. "]{" .. icon_path .. "}"
+      tex.print(tikz_code)
+    else
+      tex.print("Aucun icône trouvé dans : \\dbiconpath")
+    end
+  }%
+}
+\NewDocumentCommand{\getRandomIconPath}{O{Assets}}{%
+    \directlua{%
+        local icon_path = get_random_icon("\luaescapestring{\dbiconpath}","\luaescapestring{#1}")
+        if icon_path then
+            tex.print("\\xdef\\myiconpath{" .. icon_path .. "}") % Fixe globalement le chemin de l'image
+        else
+            tex.print("\\xdef\\myiconpath{Aucun icône trouvé}") % Valeur par défaut si aucune icône n'est trouvée
+        end
+    }
+}
+
+% Définition du chemin de base pour les images
+\newcommand{\imdbPath}{C:/Users/Utilisateur/Documents/Professionnel/1. Reims 2023 - 2024/1. Cours/366_fonctionnement/365_Icones}
+
+% Commande personnalisée pour insérer une image
+\NewDocumentCommand{\imdb}{ O{\imdbPath} m O{1cm} O{1cm} }{%
+    % Définition des chemins complets pour les extensions
+    \edef\imageJPG{#1/#2.jpg}%
+    \edef\imagePNG{#1/#2.png}%
+    \edef\imageJPEG{#1/#2.jpeg}%
+    \edef\imageErreur{#1/erreur_404.jpg} % Remplacez par le chemin de votre image 404
+    \raisebox{-0.4\height}{
+        \begin{tcolorbox}[hbox,nobeforeafter,colframe=white, colback=white, boxrule=0pt, left=0pt, right=0pt, top=0pt, bottom=0pt, boxsep=0pt, enlarge left by=-0.5pt, enlarge right by=-0.5pt]%
+    % Vérification de l'existence des fichiers et choix de l'image
+    \IfFileExists{\imagePNG}{%
+        \includegraphics[width=#3, height=#4, keepaspectratio]{\imagePNG}%
+    }{%
+        \IfFileExists{\imageJPG}{%
+            \includegraphics[width=#3, height=#4, keepaspectratio]{\imageJPG}%
+        }{%
+            \IfFileExists{\imageJPEG}{%
+                \includegraphics[width=#3, height=#4, keepaspectratio]{\imageJPEG}%
+            }{%
+                \includegraphics[width=#3, height=#4, keepaspectratio]{\imageErreur}%
+            }%
+        }%
+    }%
+	\end{tcolorbox}%
+    }
+}
+
+\newcommand{\imFonctionne}[1]{
+	\imdb{Fonctionner/#1}
+}
+\endinput{}
