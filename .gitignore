@@ -55,8 +55,8 @@ wheels/
 .installed.cfg
 *.egg
 
-# Claude config at root (but NOT in public/download/)
-/.claude/
+# Claude config seulement à la racine (sans le slash final, seulement le dossier à la racine)
+/.claude
 
 # IDE
 .vscode/
