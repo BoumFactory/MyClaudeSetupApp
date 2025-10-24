@@ -1,6 +1,8 @@
 import { Metadata } from "next"
 import { BarChart3, TrendingUp, Download, Eye, Activity } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { createAnalyticsTracker } from "@/lib/analytics-tracker"
+import { createDownloadRateLimiter } from "@/lib/rate-limiter"
 
 export const metadata: Metadata = {
   title: "Statistiques d'Utilisation",
@@ -14,27 +16,36 @@ export const dynamic = 'force-dynamic'
  * Page de statistiques publiques
  */
 export default async function StatsPage() {
-  // Fetch les données côté serveur
+  // Récupérer les données directement côté serveur (pas de fetch HTTP)
   let analyticsData = null
   let rateLimitData = null
   let error = null
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
-    const response = await fetch(`${baseUrl}/api/analytics`, {
-      cache: 'no-store', // Ne pas mettre en cache pour avoir des stats à jour
-    })
+    // Appel direct des fonctions (pas de fetch HTTP)
+    const tracker = createAnalyticsTracker()
+    analyticsData = await tracker.getStats()
 
-    if (response.ok) {
-      const data = await response.json()
-      analyticsData = data.analytics
-      rateLimitData = data.rateLimit
-    } else {
-      error = 'Impossible de récupérer les statistiques'
-    }
+    const rateLimiter = createDownloadRateLimiter()
+    rateLimitData = await rateLimiter.getStats()
   } catch (err) {
-    console.error('Erreur lors du fetch des stats:', err)
-    error = 'Erreur serveur'
+    console.error('Erreur lors de la récupération des stats:', err)
+    error = 'Statistiques non disponibles'
+
+    // Mode dégradé : données vides
+    analyticsData = {
+      totalEvents: 0,
+      eventsByType: {},
+      topResources: [],
+      dailyStats: [],
+      lastUpdated: new Date().toISOString()
+    }
+    rateLimitData = {
+      dailyNewIPs: 0,
+      maxDailyNewIPs: 20,
+      totalDownloadsToday: 0,
+      ipDownloads: []
+    }
   }
 
   // Fonction helper pour obtenir l'icône par type d'événement
