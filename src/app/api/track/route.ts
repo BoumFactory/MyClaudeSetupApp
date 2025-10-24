@@ -32,8 +32,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Enregistrer l'événement
-    const tracker = createAnalyticsTracker()
-    await tracker.trackEvent(ip, eventType, resource, metadata)
+    try {
+      const tracker = createAnalyticsTracker()
+      await tracker.trackEvent(ip, eventType, resource, metadata)
+    } catch (redisError) {
+      // Redis non disponible (ex: en dev local) - on continue sans tracker
+      console.warn('Analytics non disponible:', redisError)
+    }
 
     return NextResponse.json({
       success: true,

@@ -22,9 +22,25 @@ export async function GET() {
     })
   } catch (error) {
     console.error('Erreur lors de la récupération des statistiques:', error)
-    return NextResponse.json(
-      { error: 'Erreur serveur' },
-      { status: 500 }
-    )
+
+    // Mode dégradé : retourner des données vides au lieu d'une erreur
+    // (utile en dev local sans Redis)
+    return NextResponse.json({
+      analytics: {
+        totalEvents: 0,
+        eventsByType: {},
+        topResources: [],
+        dailyStats: [],
+        lastUpdated: new Date().toISOString()
+      },
+      rateLimit: {
+        dailyNewIPs: 0,
+        maxDailyNewIPs: 20,
+        totalDownloadsToday: 0,
+        ipDownloads: []
+      },
+      timestamp: new Date().toISOString(),
+      warning: 'Redis non disponible - données vides retournées'
+    })
   }
 }
