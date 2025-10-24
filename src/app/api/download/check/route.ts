@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
   try {
     // Récupérer l'IP du client
     const forwarded = request.headers.get('x-forwarded-for')
-    const ip = forwarded ? forwarded.split(',')[0] : request.ip || 'unknown'
+    const ip = forwarded ? forwarded.split(',')[0] : 'unknown'
 
     // Vérifier le rate limiting
     const rateLimiter = createDownloadRateLimiter()

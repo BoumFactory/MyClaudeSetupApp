@@ -84,8 +84,8 @@ export async function GET(request: NextRequest) {
     // Créer le nom du fichier ZIP
     const zipFilename = filename.replace('.html', '.zip')
 
-    // Retourner le ZIP
-    return new NextResponse(zipBuffer, {
+    // Retourner le ZIP (conversion en Uint8Array pour Next.js 15)
+    return new NextResponse(new Uint8Array(zipBuffer), {
       headers: {
         'Content-Type': 'application/zip',
         'Content-Disposition': `attachment; filename="${zipFilename}"`,

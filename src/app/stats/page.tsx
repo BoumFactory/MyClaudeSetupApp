@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   description: "Consultez les statistiques publiques d'utilisation du site : téléchargements, vues de présentations et ressources populaires.",
 }
 
+// Force le rendu dynamique (pas de pré-génération statique)
+export const dynamic = 'force-dynamic'
+
 /**
  * Page de statistiques publiques
  */
