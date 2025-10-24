@@ -208,26 +208,37 @@ export function FileExplorer({ files: initialFiles, basePath }: FileExplorerProp
       )}
 
       {/* Barre d'outils */}
-      <div className="glass-card rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
+      <div className="glass-card rounded-xl p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
           <Button
             onClick={handleToggleAll}
             variant="outline"
             size="sm"
-            className="gap-2"
+            className="gap-2 whitespace-nowrap"
           >
             {selectedCount > 0 ? (
               <CheckSquare className="w-4 h-4" />
             ) : (
               <Square className="w-4 h-4" />
             )}
-            {selectedCount > 0 ? "Tout désélectionner" : "Tout sélectionner"}
+            <span className="hidden sm:inline">
+              {selectedCount > 0 ? "Tout désélectionner" : "Tout sélectionner"}
+            </span>
+            <span className="sm:hidden">
+              {selectedCount > 0 ? "Désélect." : "Sélect."}
+            </span>
           </Button>
 
-          <div className="text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground text-center sm:text-left">
             {selectedCount} fichier{selectedCount > 1 ? "s" : ""} sélectionné
             {selectedCount > 1 ? "s" : ""}
-            {selectedCount > 0 && ` (${formatSize(totalSize)})`}
+            {selectedCount > 0 && (
+              <>
+                <br className="sm:hidden" />
+                <span className="hidden sm:inline"> </span>
+                <span className="text-xs sm:text-sm">({formatSize(totalSize)})</span>
+              </>
+            )}
           </div>
         </div>
 
@@ -235,12 +246,17 @@ export function FileExplorer({ files: initialFiles, basePath }: FileExplorerProp
           onClick={handleDownload}
           disabled={selectedCount === 0 || isDownloading}
           variant="cosmic"
-          className="gap-2"
+          className="gap-2 w-full sm:w-auto"
         >
           <Download className="w-4 h-4" />
-          {isDownloading
-            ? "Génération en cours..."
-            : "Télécharger la sélection"}
+          <span className="hidden sm:inline">
+            {isDownloading
+              ? "Génération en cours..."
+              : "Télécharger la sélection"}
+          </span>
+          <span className="sm:hidden">
+            {isDownloading ? "Génération..." : "Télécharger"}
+          </span>
         </Button>
       </div>
 
