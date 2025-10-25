@@ -308,32 +308,33 @@ export default async function StatsPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Activity className="w-5 h-5 text-cosmic-400" />
-                Détails Rate Limiting (Aujourd'hui)
+                Statistiques de Téléchargement (Aujourd'hui)
               </CardTitle>
-              <CardDescription>Téléchargements par IP (anonymisées)</CardDescription>
+              <CardDescription>Résumé des téléchargements et utilisateurs uniques</CardDescription>
             </CardHeader>
             <CardContent>
-              {rateLimitData?.ipDownloads && rateLimitData.ipDownloads.length > 0 ? (
-                <div className="space-y-2">
-                  {rateLimitData.ipDownloads.map(
-                    (item: { ip: string; count: number }, index: number) => (
-                      <div
-                        key={`${item.ip}-${index}`}
-                        className="flex items-center justify-between p-2 rounded-lg bg-cosmic-900/20"
-                      >
-                        <span className="text-sm font-mono text-muted-foreground">
-                          {item.ip}
-                        </span>
-                        <span className="text-sm font-medium">{item.count} téléchargement(s)</span>
-                      </div>
-                    )
-                  )}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 rounded-lg bg-cosmic-900/20">
+                  <div className="text-sm text-muted-foreground mb-1">Utilisateurs uniques</div>
+                  <div className="text-2xl font-bold text-cosmic-400">
+                    {rateLimitData?.dailyNewIPs || 0}
+                  </div>
                 </div>
-              ) : (
-                <p className="text-muted-foreground text-center py-8">
-                  Aucun téléchargement aujourd'hui
-                </p>
-              )}
+                <div className="p-4 rounded-lg bg-cosmic-900/20">
+                  <div className="text-sm text-muted-foreground mb-1">Téléchargements totaux</div>
+                  <div className="text-2xl font-bold text-purple-400">
+                    {rateLimitData?.totalDownloadsToday || 0}
+                  </div>
+                </div>
+                <div className="p-4 rounded-lg bg-cosmic-900/20">
+                  <div className="text-sm text-muted-foreground mb-1">Moyenne par utilisateur</div>
+                  <div className="text-2xl font-bold text-green-400">
+                    {rateLimitData?.dailyNewIPs && rateLimitData.dailyNewIPs > 0
+                      ? (rateLimitData.totalDownloadsToday / rateLimitData.dailyNewIPs).toFixed(1)
+                      : '0'}
+                  </div>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
