@@ -96,7 +96,7 @@ export default function BfcoursSetupPage() {
           Avant de commencer, assurez-vous d'avoir les éléments suivants :
         </p>
 
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
           <Card className="glass-card border-cosmic-700/30">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
@@ -131,25 +131,6 @@ export default function BfcoursSetupPage() {
                 <Link href="/claude-code/tutorials/vscode-miktex" prefetch={false}>
                   Configuration VS Code
                 </Link>
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="glass-card border-cosmic-700/30">
-            <CardHeader>
-              <CardTitle className="text-lg flex items-center gap-2">
-                <FolderGit className="w-5 h-5 text-cosmic-400" />
-                Git
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground mb-3">
-                Git installé pour cloner le repository
-              </p>
-              <Button asChild variant="outline" size="sm" className="w-full">
-                <a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">
-                  Télécharger Git
-                </a>
               </Button>
             </CardContent>
           </Card>
@@ -430,6 +411,7 @@ export default function BfcoursSetupPage() {
                     <code className="text-sm">
 {`\\documentclass{article}
 \\usepackage{bfcours}
+\\usepackage{bfcours-fonts}
 
 \\begin{document}
 

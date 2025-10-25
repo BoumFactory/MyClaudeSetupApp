@@ -47,8 +47,8 @@ export default function VSCodeMikTeXPage() {
           Installation de VS Code et MikTeX
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Configurez un environnement professionnel pour LaTeX avec VS Code et MikTeX.
-          Abandonnez Overleaf et gagnez en liberté !
+          Configurez un environnement de qualité pour LaTeX avec VS Code et MikTeX.
+          Vous pouvez également utiliser TeX Live ou TeXStudio.
         </p>
       </section>
 

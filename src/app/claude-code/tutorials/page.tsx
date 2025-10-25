@@ -57,7 +57,7 @@ export default function TutorialsPage() {
                   Installation VS Code & MikTeX
                 </CardTitle>
                 <CardDescription>
-                  <strong className="text-cosmic-400">La fondation</strong> : configurez un environnement professionnel pour LaTeX sans Overleaf.
+                  <strong className="text-cosmic-400">La fondation</strong> : configurez un environnement de qualité pour LaTeX.
                   Installation complète avec extensions et compilation automatique.
                 </CardDescription>
               </CardHeader>

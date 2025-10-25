@@ -292,16 +292,16 @@ export function MainNav() {
             <button
               onClick={cycleAnimation}
               className="group relative flex items-center gap-2 px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30 border border-transparent hover:border-cosmic-700/50 flex-shrink-0"
-              title={currentAnimationInfo ? `Animation: ${currentAnimationInfo.name}` : 'Changer l\'animation'}
+              title={""}
             >
               <Shuffle className="w-4 h-4 transition-transform group-hover:rotate-180 duration-500" />
               <span className="hidden lg:inline-block text-xs whitespace-nowrap">Animation</span>
 
               {/* Tooltip avec le nom de l'animation */}
               {currentAnimationInfo && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-3 py-2 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
-                  <div className="text-xs font-medium text-cosmic-300">{currentAnimationInfo.name}</div>
-                  <div className="text-[10px] text-muted-foreground mt-0.5">{currentAnimationInfo.secret}</div>
+                <div className="absolute left-1/2 -translate-x-1/4 top-full mt-2 px-3 py-2 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+                  <div className="text-xs font-medium text-cosmic-300">Animation : {currentAnimationInfo.name}</div>
+                  <div className="text-[10px] text-muted-foreground mt">{currentAnimationInfo.secret}</div>
                 </div>
               )}
             </button>
