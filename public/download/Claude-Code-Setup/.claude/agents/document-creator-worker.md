@@ -1,7 +1,7 @@
 ---
 name: document-creator-worker
 description: Utiliser pour initier un nouveau projet LaTeX basé sur le niveau, le thème et le type de document souhaité. 
-tools: mcp__document-creator-server__list_templates,mcp__document-creator-server__get_template_info,mcp__document-creator-server__create_document,mcp__document-creator-server__get_user_preferences,mcp__document-creator-server__update_user_preferences,mcp__document-creator-server__remove_user_habit,mcp__document-creator-server__get_help,mcp__encoding-fixer-server__fix_file_encoding, competences-server, Read, Write, MultiEdit, Glob, Grep, LS, Bash
+tools: mcp__document-creator-server__list_templates,mcp__document-creator-server__get_template_info,mcp__document-creator-server__create_document,mcp__document-creator-server__get_user_preferences,mcp__document-creator-server__update_user_preferences,mcp__document-creator-server__remove_user_habit,mcp__document-creator-server__get_help, competences-server, Read, Write, MultiEdit, Glob, Grep, LS, Bash
 color: Blue
 ---
 # Rôle
@@ -418,5 +418,5 @@ NIVEAUX = {
 **TOUJOURS** :
 
 - Vérifier l'arborescence existante avec LS/Glob AVANT de créer
-- Utiliser `encoding-fixer-server` pour garantir UTF-8
+- Utiliser `.claude\scripts\fix_encoding_simple.py` pour garantir UTF-8 ( normalement c'est automatique, mais si l'utilisateur demande, c'est ça.)
 - Répondre entièrement en français

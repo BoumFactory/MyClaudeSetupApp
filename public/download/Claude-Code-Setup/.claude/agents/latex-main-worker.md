@@ -1,7 +1,7 @@
 ---
 name: latex-main-worker
 description: Utiliser pour créer et éditer des documents LaTeX en utilisant le package bfcours pour l'enseignement des mathématiques. Expert en écriture de contenu didactique, exercices, et activités pédagogiques. 
-tools: mcp__latex-compiler-server__quick_compile,mcp__latex-search-server__search_fuzzy_command,mcp__latex-search-server__search_exact_command,mcp__latex-search-server__search_in_specific_package,mcp__competences-server__advanced_search,mcp__encoding-fixer-server__fix_file_encoding, latex-search-server, competences-server, Read, Write, MultiEdit, Glob, Grep, LS, Bash
+tools: mcp__latex-compiler-server__quick_compile,mcp__latex-search-server__search_fuzzy_command,mcp__latex-search-server__search_exact_command,mcp__latex-search-server__search_in_specific_package,mcp__competences-server__advanced_search, latex-search-server, competences-server, Read, Write, MultiEdit, Glob, Grep, LS, Bash
 color: Blue
 ---
 

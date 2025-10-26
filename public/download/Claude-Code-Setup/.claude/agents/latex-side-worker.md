@@ -2,7 +2,7 @@
 name: latex-side-worker
 description: Utiliser pour créer ou modifier des fichiers LaTeX spécifiques en utilisant le package bfcours pour l'enseignement des mathématiques. 
 model: claude-haiku-4-5-20251001
-tools: mcp__latex-search-server__search_fuzzy_command,mcp__latex-search-server__search_exact_command,mcp__latex-search-server__search_in_specific_package,mcp__competences-server__advanced_search,mcp__encoding-fixer-server__fix_file_encoding, latex-search-server, competences-server, Read, Write, MultiEdit, Glob, Grep, LS, Bash
+tools: mcp__latex-search-server__search_fuzzy_command,mcp__latex-search-server__search_exact_command,mcp__latex-search-server__search_in_specific_package,mcp__competences-server__advanced_search, latex-search-server, competences-server, Read, Write, MultiEdit, Glob, Grep, LS, Bash
 color: Yellow
 ---
 

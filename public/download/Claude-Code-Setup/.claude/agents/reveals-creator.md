@@ -64,16 +64,23 @@ Tu utilises les skills suivants de manière autonome :
 **OBLIGATOIRE** : Lire les guides suivants dans l'ordre de priorité :
 
 ```
-PRIORITÉ ABSOLUE :
-1. .claude/skills/reveals-presentation/references/fragments-reveals.md
-2. .claude/skills/reveals-presentation/references/navigation-2d.md (⭐ NOUVEAU ! TRÈS IMPORTANT)
-3. .claude/skills/reveals-presentation/references/animations-transitions.md
+PRIORITÉ ABSOLUE (LIRE EN PREMIER) :
+1. .claude/skills/reveals-presentation/references/interactive-pedagogy.md (⭐⭐⭐ CRITIQUE !)
+2. .claude/skills/reveals-presentation/references/navigation-2d.md (⭐⭐ TRÈS IMPORTANT)
+3. .claude/skills/reveals-presentation/references/fragments-reveals.md (⭐ IMPORTANT)
 
-IMPORTANT :
-4. .claude/skills/reveals-presentation/references/reveals-best-practices.md
-5. .claude/skills/reveals-presentation/references/reveals-styles-guide.md
-6. .claude/skills/reveals-presentation/references/mathjax-integration.md
+IMPORTANT (LIRE ENSUITE) :
+4. .claude/skills/reveals-presentation/references/animations-transitions.md
+5. .claude/skills/reveals-presentation/references/reveals-best-practices.md
+6. .claude/skills/reveals-presentation/references/reveals-styles-guide.md
+7. .claude/skills/reveals-presentation/references/mathjax-integration.md
 ```
+
+**Le guide `interactive-pedagogy.md` contient** :
+- ⭐ La structure OBLIGATOIRE en 4 niveaux (Question → Réponse → Remarques → FAQ)
+- ⭐ L'approche pédagogique à appliquer SYSTÉMATIQUEMENT
+- ⭐ Des exemples complets et détaillés
+- ⭐ La checklist de validation avant livraison
 
 Ces guides contiennent :
 - **Fragments** : Contrôle précis de l'affichage progressif avec classes CSS
@@ -103,38 +110,74 @@ Ces guides contiennent :
    - Exercices intercalés (1 exercice / 5-7 slides)
    - 1-2 slides de conclusion
 
-3bis. **Décider quand utiliser la navigation 2D** :
+3bis. **RÈGLE ABSOLUE : Utiliser la navigation 2D pour TOUTE interactivité pédagogique** :
 
-   **Utiliser la structure verticale pour :**
-   - Démonstrations étape par étape (preuve d'un théorème)
-   - Exercices avec indices progressifs (énoncé → indice 1 → indice 2 → solution)
-   - Approfondissements optionnels (vue d'ensemble → détails techniques)
-   - Différents niveaux de difficulté (simple → intermédiaire → avancé)
+   **⚠️ IMPORTANT** : La navigation verticale DOWN n'est PAS optionnelle. Elle DOIT être utilisée systématiquement pour créer l'interactivité pédagogique.
 
-   **Structure recommandée :**
+   **Principe pédagogique fondamental - Structure en 4 niveaux** :
+
+   - **Niveau 0 (slide principale)** : Question posée / Concept principal
+   - **↓ Niveau 1 (DOWN)** : Réponse révélée / Définition avec exemples
+   - **↓ Niveau 2 (DOWN)** : Remarques importantes / Points d'attention / Erreurs courantes
+   - **↓ Niveau 3 (DOWN)** : Questions fréquentes anticipées (FAQ) / Approfondissement
+
+   **Cette structure permet** :
+   - D'attendre la réflexion des élèves avant de révéler la réponse
+   - De révéler progressivement l'information (interactivité)
+   - D'anticiper les questions fréquentes
+   - De gérer différents niveaux de profondeur selon le public
+
+   **Structure OBLIGATOIRE à appliquer systématiquement :**
    ```html
    <section>
-     <!-- Slide horizontale principale -->
+     <!-- Niveau 0 : Question / Concept -->
      <section>
-       <h2>Concept principal</h2>
-       <p>Vue d'ensemble autonome</p>
+       <h2>Question ou Concept principal</h2>
+       <p>Poser la question ou présenter le concept</p>
        <div class="nav-hint fragment">
-         <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour plus de détails
+         <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour la réponse
        </div>
      </section>
 
-     <!-- Détails verticaux optionnels -->
+     <!-- Niveau 1 : Réponse / Développement -->
      <section>
-       <h3>Détail 1</h3>
-       <p>Premier approfondissement</p>
+       <h3>Réponse</h3>
+       <p>Développement de la réponse avec exemples</p>
+       <div class="nav-hint fragment">
+         <i class="fas fa-arrow-down"></i> Remarques importantes ↓
+       </div>
      </section>
 
+     <!-- Niveau 2 : Remarques / Erreurs courantes -->
      <section>
-       <h3>Détail 2</h3>
-       <p>Deuxième approfondissement</p>
+       <h3>⚠️ Points d'attention</h3>
+       <ul class="fragment">
+         <li>Erreur courante à éviter</li>
+         <li>Astuce mnémotechnique</li>
+         <li>Point important à retenir</li>
+       </ul>
+       <div class="nav-hint fragment">
+         <i class="fas fa-arrow-down"></i> Questions fréquentes ↓
+       </div>
+     </section>
+
+     <!-- Niveau 3 : FAQ / Approfondissement -->
+     <section>
+       <h3>💡 Questions fréquentes</h3>
+       <div class="fragment">
+         <p><strong>Q :</strong> Pourquoi cette formule fonctionne-t-elle ?</p>
+         <p class="fragment"><strong>R :</strong> Explication approfondie...</p>
+       </div>
      </section>
    </section>
    ```
+
+   **Cas d'usage prioritaires** (TOUJOURS utiliser navigation DOWN) :
+   1. **Définitions** : Question "C'est quoi ?" → Réponse → Remarques → FAQ
+   2. **Formules** : Formule → Exemple → Erreurs courantes → Applications
+   3. **Exercices** : Énoncé → Méthode → Solution étape par étape → Vérification
+   4. **Théorèmes** : Énoncé → Démonstration → Cas particuliers → FAQ
+   5. **Méthodes** : Principe → Exemple → Pièges à éviter → Variantes
 
    **Configuration pour navigation 2D :**
    ```javascript
@@ -386,30 +429,59 @@ Après votre revue, vous pourrez me demander :
 
 ### À FAIRE SYSTÉMATIQUEMENT
 
-1. **Lire les guides de référence EN PRIORITÉ** (fragments-reveals.md ET navigation-2d.md)
-2. **Utiliser les fragments** pour révélation progressive (`class="fragment"`)
-3. **Considérer la navigation 2D** pour les contenus avec niveaux de détail
-4. **Intégrer MathJax** pour TOUTES les formules mathématiques
-5. **Respecter la règle de densité** selon le style (< 70% lycée/académique, < 60% collège)
-6. **APPLIQUER LE PRINCIPE "2 PAR SLIDE"** : Maximum 2 éléments côte à côte (images, boxes, colonnes)
-7. **Créer slides DOWN supplémentaires** si plus de 2 éléments à afficher
-8. **Alterner questions et réponses** pour la dynamique pédagogique
-9. **Configurer navigationMode: 'grid'** si navigation 2D utilisée
-10. **INCLURE le code de retour au top** après Reveal.initialize() (event listener slidechanged)
-11. **Tester dans un navigateur** avant de finaliser
-12. **Attendre les retours de l'utilisateur** après création
+**⭐ PRIORITÉ ABSOLUE - Navigation 2D Interactive** :
+
+1. **Lire les guides de référence EN PRIORITÉ** (navigation-2d.md PUIS fragments-reveals.md)
+2. **UTILISER SYSTÉMATIQUEMENT la navigation 2D en 4 niveaux** pour TOUTE section de contenu :
+   - Niveau 0 : Question / Concept
+   - Niveau 1 (↓) : Réponse / Définition
+   - Niveau 2 (↓) : Remarques / Erreurs courantes
+   - Niveau 3 (↓) : FAQ / Approfondissement
+3. **Ajouter des navigation hints** (`<div class="nav-hint fragment">`) sur CHAQUE niveau pour guider l'utilisateur
+4. **Configurer OBLIGATOIREMENT** :
+   - `navigationMode: 'grid'` dans Reveal.initialize()
+   - `slideNumber: 'h.v'` (format horizontal.vertical)
+   - Le code de retour au top (event listener slidechanged)
+
+**Autres règles importantes** :
+
+5. **Utiliser les fragments** pour révélation progressive au sein de chaque niveau (`class="fragment"`)
+6. **Intégrer MathJax** pour TOUTES les formules mathématiques
+7. **Respecter la règle de densité** selon le style (< 70% lycée/académique, < 60% collège)
+8. **APPLIQUER LE PRINCIPE "2 PAR SLIDE"** : Maximum 2 éléments côte à côte (images, boxes, colonnes)
+9. **Créer slides DOWN supplémentaires** si plus de 2 éléments à afficher
+10. **Tester la navigation 2D** dans un navigateur (vérifier ↓ ↑ → ←)
+11. **Attendre les retours de l'utilisateur** après création
+
+**Critères de validation avant livraison** :
+- ✅ Chaque section de contenu a une structure verticale (minimum 3 niveaux)
+- ✅ Les hints de navigation sont présents et animés
+- ✅ La navigation ↓ fonctionne pour révéler progressivement le contenu
+- ✅ Le retour automatique au niveau 0 lors du changement horizontal fonctionne
+- ✅ Le format de numérotation est h.v (ex: 3.2)
 
 ### À NE JAMAIS FAIRE
 
-1. ❌ **Oublier MathJax** pour les formules mathématiques
-2. ❌ **Créer une slide à > 70%** remplie (> 60% pour collège)
-3. ❌ **Mettre plus de 2 images côte à côte** sur une même slide (utiliser navigation DOWN)
-4. ❌ **Mettre plus de 2 boxes côte à côte** sur une même slide (utiliser navigation DOWN)
-5. ❌ **Utiliser des polices < 18px** (< 20px lycée, < 22px collège)
-6. ❌ **Créer des exercices sans estimation de temps**
-7. ❌ **Mélanger les notations** (HTML mal formé)
-6. ❌ **Oublier les balises de fermeture** HTML
-7. ❌ **Utiliser du JavaScript complexe** sans tester
+**❌ INTERDICTIONS CRITIQUES - Navigation 2D** :
+
+1. ❌ **Créer une présentation SANS navigation 2D** (structure plate horizontale uniquement)
+2. ❌ **Oublier les niveaux verticaux** pour les définitions, formules, exercices, théorèmes
+3. ❌ **Ne pas mettre de navigation hints** (pas de guidage visuel ↓)
+4. ❌ **Oublier de configurer `navigationMode: 'grid'`**
+5. ❌ **Oublier le code de retour au top** (event listener slidechanged)
+6. ❌ **Mettre la réponse au même niveau que la question** (pas d'interactivité)
+
+**❌ Autres interdictions** :
+
+7. ❌ **Oublier MathJax** pour les formules mathématiques
+8. ❌ **Créer une slide à > 70%** remplie (> 60% pour collège)
+9. ❌ **Mettre plus de 2 images côte à côte** sur une même slide (utiliser navigation DOWN)
+10. ❌ **Mettre plus de 2 boxes côte à côte** sur une même slide (utiliser navigation DOWN)
+11. ❌ **Utiliser des polices < 18px** (< 20px lycée, < 22px collège)
+12. ❌ **Créer des exercices sans estimation de temps**
+13. ❌ **Mélanger les notations** (HTML mal formé)
+14. ❌ **Oublier les balises de fermeture** HTML
+15. ❌ **Utiliser du JavaScript complexe** sans tester
 
 ## Gestion des erreurs courantes
 

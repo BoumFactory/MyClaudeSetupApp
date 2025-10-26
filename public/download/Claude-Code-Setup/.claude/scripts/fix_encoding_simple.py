@@ -81,8 +81,8 @@ JAVASCRIPT_PATTERNS_CHECK = [
 ]
 
 def try_read_file(file_path):
-    """Essaie de lire le fichier avec différents encodages"""
-    # D'abord, lecture en mode binaire pour analyse
+    """Essaie de lire le fichier avec différents encodages (optimisé)"""
+    # Lecture en mode binaire
     try:
         with open(file_path, 'rb') as f:
             raw_content = f.read()
@@ -90,19 +90,65 @@ def try_read_file(file_path):
         print(f"[ERREUR] Impossible de lire le fichier en mode binaire: {e}")
         return None, None, None
 
+    # Pour l'analyse, utiliser un échantillon (premiers 8KB ou tout si plus petit)
+    # Cela évite de traiter tout le fichier pour la détection
+    sample_size = min(len(raw_content), 8192)
+    raw_sample = raw_content[:sample_size]
+
     # Essayer de décoder avec différents encodages
+    # On garde tous les candidats valides pour choisir le meilleur
+    candidates = []
+
     for encoding in ENCODAGES_COURANTS:
         try:
-            content = raw_content.decode(encoding)
+            # Décodage de l'échantillon seulement
+            sample_content = raw_sample.decode(encoding)
 
             # Vérifier que le contenu est cohérent
             # Moins de 1% de caractères de remplacement invalides
-            if content.count('�') < len(content) * 0.01:
-                return content, encoding, raw_content
+            if sample_content.count('�') < len(sample_content) * 0.01:
+                # Calculer un score de confiance basé sur :
+                # 1. Nombre de caractères accentués français valides
+                # 2. Absence de séquences suspectes
+                french_accents = sum(1 for c in sample_content if c in 'éèêëàâäôöùûüçîïÉÈÊËÀÂÄÔÖÙÛÜÇÎÏœ')
+
+                # Patterns suspects de double encodage UTF-8->CP1252
+                # é devient Ã©, è devient Ã¨, etc.
+                suspicious_patterns = (
+                    sample_content.count('Ã©') + sample_content.count('Ã¨') +
+                    sample_content.count('Ãª') + sample_content.count('Ã ') +
+                    sample_content.count('Ã§') + sample_content.count('Ã´') +
+                    sample_content.count('Ã»') + sample_content.count('Ã®') +
+                    sample_content.count('Ã¯') + sample_content.count('Ã‰') +
+                    sample_content.count('Ã€')
+                )
+
+                # Pénaliser les séquences "Ã" (pattern typique double encodage)
+                suspicious_a_tilde = sample_content.count('Ã')
+
+                # Score: favoriser encodages avec plus d'accents français et moins de patterns suspects
+                score = french_accents - (suspicious_patterns * 100) - (suspicious_a_tilde * 5)
+
+                candidates.append((encoding, score))
         except (UnicodeDecodeError, UnicodeError):
             continue
 
-    return None, None, None
+    if not candidates:
+        return None, None, None
+
+    # Trier les candidats par score décroissant
+    candidates.sort(key=lambda x: x[1], reverse=True)
+
+    # Prendre le meilleur candidat
+    best_encoding, best_score = candidates[0]
+
+    # Maintenant décoder TOUT le fichier avec le meilleur encodage
+    try:
+        best_content = raw_content.decode(best_encoding)
+        return best_content, best_encoding, raw_content
+    except (UnicodeDecodeError, UnicodeError) as e:
+        print(f"[ERREUR] Echec decodage complet avec {best_encoding}: {e}")
+        return None, None, None
 
 def clean_problematic_characters(content):
     """Nettoie les caractères problématiques pour LaTeX et HTML"""
