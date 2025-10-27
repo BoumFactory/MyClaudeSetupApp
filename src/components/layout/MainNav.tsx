@@ -19,7 +19,11 @@ import {
   BarChart3,
   Video,
   Shuffle,
-  FileVideo2
+  FileVideo2,
+  FileText,
+  History,
+  Settings,
+  AlignJustify
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useBackgroundAnimation } from "@/contexts/BackgroundAnimationContext"
@@ -39,6 +43,27 @@ export function MainNav() {
   const currentAnimationInfo = animations.find(a => a.id === currentAnimation)
 
   const navItems = [
+    {
+      title: "Formations",
+      href: "/formations",
+      icon: FileText,
+      featured: true, // Item mis en avant
+      submenu: [
+        {
+          title: "Formation IA & LaTeX",
+          href: "/formations/ia-latex",
+          icon: Sparkles,
+          description: "Document formatif sur les bases avec claude code"
+        },
+        {
+          title: "Formation LaTeX",
+          href: "/formations/latex",
+          icon: BookOpen,
+          description: "Document formatif sur LaTeX pour l'enseignement"
+        },
+        
+      ]
+    },
     {
       title: "Vidéos",
       href: "/claude-code/videos",
@@ -197,7 +222,7 @@ export function MainNav() {
     {
       title: "Applications",
       href: "/claude-code/applications",
-      icon: Sparkles,
+      icon: Settings,
       submenu: [
         {
           title: "Applications Éducatives",
@@ -228,9 +253,23 @@ export function MainNav() {
       ]
     },
     {
-      title: "Qui suis-je ?",
+      title: "Divers",
       href: "/about",
-      icon: BookOpen,
+      icon: AlignJustify,
+      submenu: [
+        {
+          title: "Qui suis-je ?",
+          href: "/about",
+          icon: BookOpen,
+          description: "À propos de moi et de ce projet"
+        },
+        {
+          title: "Changelog",
+          href: "/changelog",
+          icon: History,
+          description: "Historique des modifications"
+        },
+      ]
     },
   ]
 
@@ -299,9 +338,9 @@ export function MainNav() {
 
               {/* Tooltip avec le nom de l'animation */}
               {currentAnimationInfo && (
-                <div className="absolute left-1/2 -translate-x-1/4 top-full mt-2 px-3 py-2 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+                <div className="absolute left-0 top-full mt-2 px-3 py-2 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
                   <div className="text-xs font-medium text-cosmic-300">Animation : {currentAnimationInfo.name}</div>
-                  <div className="text-[10px] text-muted-foreground mt">{currentAnimationInfo.secret}</div>
+                  <div className="text-[10px] text-muted-foreground mt-0.5">{currentAnimationInfo.secret}</div>
                 </div>
               )}
             </button>
@@ -313,32 +352,36 @@ export function MainNav() {
             onMouseLeave={handleNavLeave}
           >
             <nav className="flex items-center gap-1">
-            {navItems.map((item) => {
+            {navItems.map((item, itemIndex) => {
               const Icon = item.icon
               const isActive = pathname === item.href ||
                                (item.href !== "/" && pathname.startsWith(item.href))
               const hasSubmenu = item.submenu && item.submenu.length > 0
               const isFeatured = (item as any).featured
 
+              // Déterminer si on est dans les derniers éléments (pour positionner à droite)
+              const isLastItems = itemIndex >= navItems.length - 2
+              const isFirstItems = itemIndex <= 2
+
               return (
                 <div
                   key={item.href}
-                  className="relative"
+                  className="relative group"
                   onMouseEnter={() => hasSubmenu && handleMenuEnter(item.title)}
                 >
                   <Link
                     href={item.href}
                     className={cn(
-                      "inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200",
+                      "inline-flex items-center gap-1 p-2 rounded-md text-sm font-medium transition-all duration-200 relative",
                       isActive
                         ? "bg-cosmic-900/50 text-cosmic-300 border border-cosmic-700"
                         : isFeatured
                         ? "text-foreground border border-cosmic-600/40 hover:border-cosmic-500/60 hover:bg-cosmic-900/30 hover:shadow-[0_0_12px_rgba(139,92,246,0.15)]"
                         : "text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30"
                     )}
+                    title={item.title}
                   >
-                    <Icon className={cn("w-4 h-4", isFeatured && "text-cosmic-400")} />
-                    <span>{item.title}</span>
+                    <Icon className={cn("w-5 h-5", isFeatured && "text-cosmic-400")} />
                     {hasSubmenu && (
                       <ChevronDown
                         className={cn(
@@ -347,17 +390,35 @@ export function MainNav() {
                         )}
                       />
                     )}
+
+                    {/* Tooltip au survol */}
+                    {!hasSubmenu && (
+                      <span className="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-2 py-1 bg-background/95 backdrop-blur-sm rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-cosmic-700/50">
+                        {item.title}
+                      </span>
+                    )}
                   </Link>
 
                   {/* Submenu Dropdown */}
                   {hasSubmenu && openMenu === item.title && (
                     <div
-                      className="absolute top-full left-0 pt-2"
+                      className={cn(
+                        "absolute top-full pt-2",
+                        isLastItems ? "right-0" : "left-0"
+                      )}
                     >
                       <div className={cn(
                         "w-72 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 p-2 animate-in fade-in slide-in-from-top-2 duration-150",
                         (item as any).isMultiLevel ? "" : "max-h-[80vh] overflow-y-auto"
                       )}>
+                      {/* Header du dropdown avec le titre de la catégorie */}
+                      <div className="px-3 py-2 mb-2 border-b border-cosmic-800/50">
+                        <div className="flex items-center gap-2">
+                          <Icon className={cn("w-5 h-5", isFeatured && "text-cosmic-400")} />
+                          <span className="font-semibold text-foreground">{item.title}</span>
+                        </div>
+                      </div>
+
                       {(item as any).isMultiLevel ? (
                         // Menu à 2 niveaux pour les présentations
                         <>
@@ -384,15 +445,15 @@ export function MainNav() {
                                       {category.description}
                                     </div>
                                   </div>
-                                  <ChevronDown className="w-4 h-4 mt-1 -rotate-90 flex-shrink-0" />
+                                  <ChevronDown className="w-4 h-4 mt-1 rotate-90 flex-shrink-0" />
                                 </div>
 
                                 {/* Sous-menu latéral pour les présentations de la catégorie */}
                                 {openCategory === category.title && category.presentations && (
                                   <div
-                                    className="absolute left-full top-0 pl-2"
+                                    className="absolute right-full top-0 pr-2"
                                   >
-                                    <div className="w-72 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 p-2 animate-in fade-in slide-in-from-left-2 duration-150 max-h-[80vh] overflow-y-auto z-[100]">
+                                    <div className="w-72 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 p-2 animate-in fade-in slide-in-from-right-2 duration-150 max-h-[80vh] overflow-y-auto z-[100]">
 
                                     {category.presentations.map((presentation: any) => {
                                       const PresIcon = presentation.icon

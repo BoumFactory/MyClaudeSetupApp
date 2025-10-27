@@ -4,6 +4,7 @@ import { scanDirectory } from "@/lib/file-scanner-server"
 import { createGitignoreParser } from "@/lib/gitignore-parser"
 import { FileExplorer } from "@/components/downloads/FileExplorer"
 import { Breadcrumb } from "@/components/layout/Breadcrumb"
+import { ChangelogSection } from "@/components/changelog/ChangelogSection"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -56,43 +57,8 @@ export default async function DownloadsPage() {
         </p>
       </section>
 
-      {/* Dernières modifications */}
-      <div className="glass-card rounded-xl p-6 space-y-4 border-l-4 border-nebula-500">
-        <div className="flex items-start gap-3">
-          <div className="space-y-3 flex-1">
-            <div className="flex items-baseline gap-3">
-              <h3 className="font-semibold text-nebula-400">Dernières modifications</h3>
-              <span className="text-xs text-muted-foreground">26 octobre 2025</span>
-            </div>
-            <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
-              <li>
-                Fixé le script de gestion des problèmes d'encodage
-                <span className="text-xs ml-2 text-cosmic-400">
-                  (.claude/scripts/fix_encoding_simple.py)
-                </span>
-              </li>
-              <li>
-                Ajouté l'agent next-js-worker qui a permis de créer ce site
-                <span className="text-xs ml-2 text-cosmic-400">
-                  (.claude/agents/react-nextjs-worker.md - version basique non retravaillée)
-                </span>
-              </li>
-              <li>
-                Versions différentes de CLAUDE.md disponibles
-                <span className="text-xs ml-2 text-cosmic-400">
-                  (CLAUDE-simple.md, CLAUDE-autoAmelioration.md)
-                </span>
-              </li>
-              <li>
-                <span className="text-amber-400">⚡ En cours de stabilisation :</span> Auto-amélioration des agents
-              </li>
-              <li>
-                Améliorations du workflow des agents LaTeX
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      {/* Dernières modifications - Changelog */}
+      <ChangelogSection category="downloads" limit={1} compact={false} />
 
       {/* Catégories disponibles */}
       <div className="glass-card rounded-xl p-6 space-y-4">

@@ -4,6 +4,9 @@ export function useDragonCurve() {
     y: number;
   }
 
+  // Angle aléatoire fixe pour cette instance
+  const randomRotation = Math.random() * Math.PI * 2;
+
   // Générer la courbe du dragon de manière itérative
   const generateDragonCurve = (iterations: number): string => {
     let sequence = 'R'; // R = tourner à droite, L = tourner à gauche
@@ -26,8 +29,7 @@ export function useDragonCurve() {
     startX: number,
     startY: number,
     length: number,
-    angle: number,
-    time: number
+    angle: number
   ) => {
     let x = startX;
     let y = startY;
@@ -48,15 +50,14 @@ export function useDragonCurve() {
       }
     }
 
-    // Dessiner les segments avec des couleurs changeantes
+    // Dessiner les segments avec des couleurs statiques et plus lumineuses
     for (let i = 1; i < points.length; i++) {
       const age = i / points.length;
-      const hue = (age * 360 + time * 50) % 360;
-      const alpha = 0.2 + age * 0.3;
-      const pulsation = Math.sin(time * 0.6 + i * 0.01) * 0.3 + 0.7;
+      const hue = age * 360;
+      const alpha = 0.5 + age * 0.4;
 
-      ctx.strokeStyle = `hsla(${hue}, 75%, 60%, ${alpha * pulsation})`;
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = `hsla(${hue}, 85%, 70%, ${alpha})`;
+      ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(points[i - 1].x, points[i - 1].y);
       ctx.lineTo(points[i].x, points[i].y);
@@ -64,15 +65,14 @@ export function useDragonCurve() {
     }
 
     // Ajouter des points lumineux aux extrémités
-    const vertexPulsation = Math.sin(time * 0.9) * 0.5 + 0.5;
     [0, Math.floor(points.length / 2), points.length - 1].forEach((index, i) => {
       if (index < points.length) {
         const point = points[index];
-        const hue = (i * 120 + time * 40) % 360;
+        const hue = i * 120;
 
         // Halo
         const gradient = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 20);
-        gradient.addColorStop(0, `hsla(${hue}, 85%, 65%, ${0.5 * vertexPulsation})`);
+        gradient.addColorStop(0, `hsla(${hue}, 90%, 70%, 0.7)`);
         gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -80,7 +80,7 @@ export function useDragonCurve() {
         ctx.fill();
 
         // Point central
-        ctx.fillStyle = `hsla(${hue}, 90%, 70%, ${vertexPulsation})`;
+        ctx.fillStyle = `hsla(${hue}, 95%, 75%, 0.9)`;
         ctx.beginPath();
         ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
         ctx.fill();
@@ -88,16 +88,36 @@ export function useDragonCurve() {
     });
   };
 
+  // Cache pour l'image statique
+  let cachedCanvas: HTMLCanvasElement | null = null;
+  let cachedWidth = 0;
+  let cachedHeight = 0;
+
   return (ctx: CanvasRenderingContext2D, width: number, height: number, time: number) => {
+    // Si l'image est déjà en cache et que la taille n'a pas changé, la réutiliser
+    if (cachedCanvas && cachedWidth === width && cachedHeight === height) {
+      ctx.drawImage(cachedCanvas, 0, 0);
+      return;
+    }
+
+    // Créer un nouveau canvas pour le cache
+    cachedCanvas = document.createElement('canvas');
+    cachedCanvas.width = width;
+    cachedCanvas.height = height;
+    cachedWidth = width;
+    cachedHeight = height;
+
+    const cacheCtx = cachedCanvas.getContext('2d');
+    if (!cacheCtx) return;
+
     const centerX = width / 2;
     const centerY = height / 2;
 
-    ctx.save();
-    ctx.translate(centerX, centerY);
+    cacheCtx.save();
+    cacheCtx.translate(centerX, centerY);
 
-    // Rotation
-    const rotation = time * 0.12;
-    ctx.rotate(rotation);
+    // Rotation aléatoire fixe
+    cacheCtx.rotate(randomRotation);
 
     // Générer la courbe du dragon (nombre d'itérations ajusté pour performance/détail)
     const iterations = 12;
@@ -109,8 +129,11 @@ export function useDragonCurve() {
     const segmentLength = desiredTotalLength / Math.sqrt(totalSegments);
 
     // Dessiner la courbe
-    drawDragonCurve(ctx, sequence, 0, 0, segmentLength, 0, time);
+    drawDragonCurve(cacheCtx, sequence, 0, 0, segmentLength, 0);
 
-    ctx.restore();
+    cacheCtx.restore();
+
+    // Dessiner le canvas caché sur le canvas principal
+    ctx.drawImage(cachedCanvas, 0, 0);
   };
 }

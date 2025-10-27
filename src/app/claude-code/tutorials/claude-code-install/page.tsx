@@ -660,7 +660,7 @@ export default function ClaudeCodeInstallPage() {
 
           <div className="grid md:grid-cols-3 gap-4">
             <a
-              href="https://docs.claude.com/claude-code"
+              href="https://docs.claude.com/en/docs/claude-code/overview"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
@@ -678,7 +678,7 @@ export default function ClaudeCodeInstallPage() {
             </a>
 
             <a
-              href="https://docs.claude.com/tutorials"
+              href="https://docs.claude.com/en/resources/overview"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
@@ -686,17 +686,14 @@ export default function ClaudeCodeInstallPage() {
               <Code2 className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors flex items-center gap-1">
-                  Tutoriels
+                  Ressources anthropic
                   <ExternalLink className="w-3 h-3" />
                 </h4>
-                <p className="text-xs text-muted-foreground">
-                  Guides pas à pas
-                </p>
               </div>
             </a>
 
             <a
-              href="https://community.anthropic.com"
+              href="https://www.anthropic.com/learn"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
@@ -704,12 +701,9 @@ export default function ClaudeCodeInstallPage() {
               <Sparkles className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors flex items-center gap-1">
-                  Forum communautaire
+                  Tutoriels d'apptrentissage anthropic
                   <ExternalLink className="w-3 h-3" />
                 </h4>
-                <p className="text-xs text-muted-foreground">
-                  Échanges et support
-                </p>
               </div>
             </a>
           </div>

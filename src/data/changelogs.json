@@ -1,0 +1,76 @@
+{
+  "changelogs": [
+    {
+      "id": "2025-10-27",
+      "date": "2025-10-27",
+      "title": "Ajout de la section Formations",
+      "categories": ["formations"],
+      "changes": [
+        {
+          "title": "Nouvelle section Formations dans la navigation",
+          "details": "Catégorie mise en avant avec deux formations PDF consultables en ligne",
+          "type": "feature"
+        },
+        {
+          "title": "Formation LaTeX pour l'enseignement",
+          "details": "/formations/latex - Document formatif complet sur LaTeX",
+          "type": "feature"
+        },
+        {
+          "title": "Formation IA & LaTeX avec Claude Code",
+          "details": "/formations/ia-latex - Guide d'automatisation avec l'IA",
+          "type": "feature"
+        },
+        {
+          "title": "Viewer PDF intégré",
+          "details": "Visualisation en ligne avec téléchargement direct et mode plein écran",
+          "type": "feature"
+        },
+        {
+          "title": "Refonte navigation : catégorie Divers",
+          "details": "Nouvelle catégorie regroupant 'Qui suis-je ?' et 'Changelog'",
+          "type": "improvement"
+        },
+        {
+          "title": "Système de changelog modulaire",
+          "details": "Affichage des modifications filtrées par catégorie sur différentes pages",
+          "type": "feature"
+        }
+      ]
+    },
+    {
+      "id": "2025-10-26",
+      "date": "2025-10-26",
+      "title": "Amélioration des agents",
+      "categories": ["downloads"],
+      "changes": [
+        {
+          "title": "Fixé le script de gestion des problèmes d'encodage",
+          "details": ".claude/scripts/fix_encoding_simple.py",
+          "type": "fix"
+        },
+        {
+          "title": "Ajouté l'agent next-js-worker qui a permis de créer ce site",
+          "details": ".claude/agents/react-nextjs-worker.md - version basique non retravaillée",
+          "type": "feature"
+        },
+        {
+          "title": "Versions différentes de CLAUDE.md disponibles",
+          "details": "CLAUDE-simple.md, CLAUDE-autoAmelioration.md",
+          "type": "feature"
+        },
+        {
+          "title": "Auto-amélioration des agents",
+          "details": "En cours de stabilisation",
+          "type": "wip",
+          "highlight": true
+        },
+        {
+          "title": "Améliorations du workflow des agents LaTeX",
+          "details": null,
+          "type": "improvement"
+        }
+      ]
+    }
+  ]
+}
