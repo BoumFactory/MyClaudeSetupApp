@@ -5,6 +5,21 @@ import { ChangelogFilters } from "./ChangelogFilters"
 import { ChangelogEntry } from "./ChangelogEntry"
 import changelogsData from "@/data/changelogs.json"
 
+interface Change {
+  title: string
+  details: string | null
+  type: "fix" | "feature" | "improvement" | "wip"
+  highlight?: boolean
+}
+
+interface Changelog {
+  id: string
+  date: string
+  title: string
+  categories: string[]
+  changes: Change[]
+}
+
 /**
  * Liste de changelogs avec filtres interactifs
  * Composant client qui gère l'état des filtres
@@ -13,7 +28,7 @@ export function ChangelogListFiltered() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
   // Filtrer les changelogs
-  let changelogs = changelogsData.changelogs
+  let changelogs = changelogsData.changelogs as Changelog[]
 
   if (selectedCategories.length > 0) {
     changelogs = changelogs.filter((changelog) =>

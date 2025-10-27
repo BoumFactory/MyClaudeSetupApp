@@ -1,6 +1,21 @@
 import { ChangelogEntry } from "./ChangelogEntry"
 import changelogsData from "@/data/changelogs.json"
 
+interface Change {
+  title: string
+  details: string | null
+  type: "fix" | "feature" | "improvement" | "wip"
+  highlight?: boolean
+}
+
+interface Changelog {
+  id: string
+  date: string
+  title: string
+  categories: string[]
+  changes: Change[]
+}
+
 interface ChangelogListProps {
   category?: string // Filtrer par catégorie (ex: "downloads", "general")
   limit?: number // Limiter le nombre d'entrées affichées
@@ -13,7 +28,7 @@ interface ChangelogListProps {
  */
 export function ChangelogList({ category, limit, compact = false }: ChangelogListProps) {
   // Filtrer les changelogs par catégorie si spécifiée
-  let changelogs = changelogsData.changelogs
+  let changelogs = changelogsData.changelogs as Changelog[]
 
   if (category) {
     changelogs = changelogs.filter(changelog =>

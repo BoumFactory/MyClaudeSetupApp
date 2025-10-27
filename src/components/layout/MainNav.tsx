@@ -338,7 +338,7 @@ export function MainNav() {
 
               {/* Tooltip avec le nom de l'animation */}
               {currentAnimationInfo && (
-                <div className="absolute left-0 top-full mt-2 px-3 py-2 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-3 py-2 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
                   <div className="text-xs font-medium text-cosmic-300">Animation : {currentAnimationInfo.name}</div>
                   <div className="text-[10px] text-muted-foreground mt-0.5">{currentAnimationInfo.secret}</div>
                 </div>
