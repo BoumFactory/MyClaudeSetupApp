@@ -1,4 +1,4 @@
-import { FileText, ExternalLink, Code2, GraduationCap } from "lucide-react"
+import { FileText, ExternalLink, Code2, GraduationCap, Play, BookOpen, Download } from "lucide-react"
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
  * Page des applications éducatives créées avec Claude Code
  */
 export default function ApplicationsEducativesPage() {
-  // Exemple d'application - À remplacer par un scan automatique
+  // Applications Flask
   const applications = [
     {
       id: "second-degre",
@@ -21,7 +21,39 @@ export default function ApplicationsEducativesPage() {
       description:
         "Application interactive pour l'apprentissage des équations du second degré (signe, tableau de variations, extremum)",
       technologies: ["Python", "Flask", "HTML/CSS", "JavaScript"],
-      path: "/download/ClaudeCode/Applications_educatives/app_second_degre_partie2",
+      path: "/download/Applications_educatives/app_second_degre_partie2",
+    },
+  ]
+
+  // Animations interactives
+  const animations = [
+    {
+      id: "produit-scalaire",
+      title: "Produit Scalaire",
+      description: "Animation interactive pour visualiser et comprendre le produit scalaire de deux vecteurs",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      viewPath: "/download/Applications_educatives/animations/produit_scalaire.html",
+      downloadPath: "/download/Applications_educatives/animations/produit_scalaire.html",
+    },
+    {
+      id: "trigo",
+      title: "Trigonométrie",
+      description: "Animation du cercle trigonométrique avec visualisation des fonctions sin, cos et tan",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      viewPath: "/download/Applications_educatives/animations/animation_trigo.html",
+      downloadPath: "/download/Applications_educatives/animations/animation_trigo.html",
+    },
+  ]
+
+  // Notebooks Jupyter
+  const notebooks = [
+    {
+      id: "python-lycee",
+      title: "Python pour le Lycée",
+      description: "Notebook Jupyter pour apprendre Python dans le contexte des mathématiques au lycée",
+      technologies: ["Python", "Jupyter", "NumPy", "Matplotlib"],
+      viewPath: "/download/Applications_educatives/notebooks/python-lycee.html",
+      downloadPath: "/download/Applications_educatives/notebooks/python-lycee.html",
     },
   ]
 
@@ -58,10 +90,10 @@ export default function ApplicationsEducativesPage() {
         </div>
       </section>
 
-      {/* Liste des applications */}
-      {applications.length > 0 ? (
+      {/* Liste des applications Flask */}
+      {applications.length > 0 && (
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold">Applications disponibles</h2>
+          <h2 className="text-2xl font-bold">Applications Flask</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {applications.map((app) => (
               <Card key={app.id} className="glass-card hover:scale-105 transition-all duration-300">
@@ -75,7 +107,6 @@ export default function ApplicationsEducativesPage() {
                   <CardDescription>{app.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  {/* Technologies */}
                   <div className="flex flex-wrap gap-2">
                     {app.technologies.map((tech) => (
                       <span
@@ -86,8 +117,6 @@ export default function ApplicationsEducativesPage() {
                       </span>
                     ))}
                   </div>
-
-                  {/* Actions */}
                   <div className="flex gap-2">
                     <Button asChild variant="cosmic" className="flex-1">
                       <Link href="/claude-code/downloads">
@@ -101,15 +130,113 @@ export default function ApplicationsEducativesPage() {
             ))}
           </div>
         </section>
-      ) : (
-        <section className="text-center py-12 glass-card rounded-xl">
-          <FileText className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
-          <h3 className="text-xl font-semibold mb-2">
-            Applications à venir
-          </h3>
+      )}
+
+      {/* Animations interactives */}
+      {animations.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <Play className="w-6 h-6 text-cosmic-400" />
+            Animations Interactives
+          </h2>
           <p className="text-muted-foreground">
-            De nouvelles applications seront ajoutées prochainement
+            Animations HTML/CSS/JS autonomes pour visualiser des concepts mathématiques.
+            <span className="block mt-1 text-cosmic-400">
+              Produites par les agents disponibles dans la configuration Claude Code de ce site.
+            </span>
           </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {animations.map((anim) => (
+              <Card key={anim.id} className="glass-card hover:scale-105 transition-all duration-300">
+                <CardHeader>
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0 mb-2">
+                    <Play className="w-6 h-6 text-white" />
+                  </div>
+                  <CardTitle className="text-lg">{anim.title}</CardTitle>
+                  <CardDescription className="text-sm">{anim.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    {anim.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs rounded-md bg-green-900/30 border border-green-700 text-green-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-2">
+                    <Button asChild variant="outline" size="sm" className="flex-1">
+                      <a href={anim.viewPath} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-1" />
+                        Voir
+                      </a>
+                    </Button>
+                    <Button asChild variant="ghost" size="sm">
+                      <a href={anim.downloadPath} download>
+                        <Download className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Notebooks Jupyter */}
+      {notebooks.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <BookOpen className="w-6 h-6 text-orange-400" />
+            Notebooks Jupyter
+          </h2>
+          <p className="text-muted-foreground">
+            Notebooks interactifs pour apprendre Python et les mathématiques.
+            <span className="block mt-1 text-orange-400">
+              Produits par les agents disponibles dans la configuration Claude Code de ce site.
+            </span>
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {notebooks.map((nb) => (
+              <Card key={nb.id} className="glass-card hover:scale-105 transition-all duration-300">
+                <CardHeader>
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center flex-shrink-0 mb-2">
+                    <BookOpen className="w-6 h-6 text-white" />
+                  </div>
+                  <CardTitle className="text-lg">{nb.title}</CardTitle>
+                  <CardDescription className="text-sm">{nb.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    {nb.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs rounded-md bg-orange-900/30 border border-orange-700 text-orange-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-2">
+                    <Button asChild variant="outline" size="sm" className="flex-1">
+                      <a href={nb.viewPath} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-1" />
+                        Voir
+                      </a>
+                    </Button>
+                    <Button asChild variant="ghost" size="sm">
+                      <a href={nb.downloadPath} download>
+                        <Download className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </section>
       )}
     </div>

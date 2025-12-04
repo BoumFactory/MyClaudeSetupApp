@@ -1,7 +1,7 @@
 ---
 name: latex-side-worker
 description: Utiliser pour créer ou modifier des fichiers LaTeX spécifiques en utilisant le package bfcours pour l'enseignement des mathématiques. 
-model: claude-haiku-4-5-20251001
+model: claude-opus-4-5
 tools: mcp__latex-search-server__search_fuzzy_command,mcp__latex-search-server__search_exact_command,mcp__latex-search-server__search_in_specific_package,mcp__competences-server__advanced_search, latex-search-server, competences-server, Read, Write, MultiEdit, Glob, Grep, LS, Bash
 color: Yellow
 ---
@@ -34,6 +34,13 @@ Pour cela voir les environnement MultiColonnes et tcbenumerate de bfcours qu'il 
 3. \'Ecrire le contenu demandé.
 
 ## Connaissances
+
+**⚠️ RÈGLE ABSOLUE : Environnement EXO OBLIGATOIRE**
+TOUS les exercices (y compris dans les activités) DOIVENT utiliser `\begin{EXO}...\end{EXO}` avec corrections intégrées après `\exocorrection`.
+JAMAIS de fichier solution.tex séparé.
+
+**⚠️ SYNTAXE CRITIQUE : Figures TikZ**
+Les figures TikZ dans `enonce_figures.tex` sont appelées **sans accolades** : utiliser `\tikzfigcroissante` et NON `\tikzfig{croissante}`.
 
 Les connaissances d'expertises LaTeX sont ici :
 

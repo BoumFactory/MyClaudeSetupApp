@@ -1,0 +1,381 @@
+/* ==============================================
+   MODE INTERACTIF - BULLE DÉPLIABLE
+   Style minimaliste pour exploration libre
+   ============================================== */
+
+/* ==============================================
+   BULLE DE CONTRÔLES
+   ============================================== */
+.controls-bubble {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+}
+
+/* Bouton toggle (toujours visible) */
+.bubble-toggle {
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: var(--bg-glass);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-fast);
+}
+
+.bubble-toggle:hover {
+    background: var(--bg-panel);
+    transform: scale(1.05);
+}
+
+.bubble-icon {
+    font-size: 22px;
+    color: var(--text-primary);
+    transition: transform var(--transition-normal);
+}
+
+.controls-bubble:not(.collapsed) .bubble-icon {
+    transform: rotate(90deg);
+}
+
+/* Contenu de la bulle */
+.bubble-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 280px;
+    background: var(--bg-glass);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transform-origin: top right;
+    transition: all var(--transition-normal);
+}
+
+.controls-bubble.collapsed .bubble-content {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+.controls-bubble:not(.collapsed) .bubble-toggle {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Header de la bulle */
+.bubble-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-panel);
+}
+
+.bubble-header span {
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+}
+
+.bubble-close {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+}
+
+.bubble-close:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Corps de la bulle */
+.bubble-body {
+    padding: 0.75rem;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.bubble-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.bubble-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.bubble-body::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+/* ==============================================
+   SECTIONS DE CONTRÔLES
+   ============================================== */
+.control-section {
+    margin-bottom: 0.5rem;
+}
+
+.control-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-main);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.section-header:hover {
+    color: var(--text-primary);
+}
+
+.section-toggle {
+    font-size: 10px;
+    transition: transform var(--transition-fast);
+}
+
+.control-section.collapsed .section-toggle {
+    transform: rotate(-90deg);
+}
+
+.section-content {
+    padding: 0.75rem;
+    display: block;
+}
+
+.control-section.collapsed .section-content {
+    display: none;
+}
+
+/* ==============================================
+   CONTRÔLES
+   ============================================== */
+.control-group {
+    margin-bottom: 0.75rem;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+}
+
+.control-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+}
+
+/* Checkbox */
+.checkbox-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+}
+
+.checkbox-control input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.checkbox-control:hover {
+    color: var(--color-primary-light);
+}
+
+/* Slider */
+.slider-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.slider-control input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.slider-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    color: var(--color-primary-light);
+    text-align: right;
+}
+
+/* Select */
+.select-control select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--font-size-sm);
+    font-family: inherit;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    cursor: pointer;
+    outline: none;
+}
+
+.select-control select:focus {
+    border-color: var(--color-primary);
+}
+
+/* Number input */
+.number-control input[type="number"] {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--font-size-sm);
+    font-family: var(--font-mono);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    outline: none;
+}
+
+.number-control input[type="number"]:focus {
+    border-color: var(--color-primary);
+}
+
+/* ==============================================
+   OVERLAY D'INFORMATIONS
+   ============================================== */
+.info-overlay {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: var(--bg-glass);
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1rem;
+    min-width: 180px;
+    max-width: 300px;
+    box-shadow: var(--shadow-md);
+}
+
+.info-overlay:empty {
+    display: none;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 0;
+    font-size: var(--font-size-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item .label {
+    color: var(--text-secondary);
+}
+
+.info-item .value {
+    font-family: var(--font-mono);
+    color: var(--color-primary-light);
+    font-weight: 500;
+}
+
+/* Valeurs colorées selon le contexte */
+.info-item .value.positive {
+    color: var(--color-success);
+}
+
+.info-item .value.negative {
+    color: var(--color-error);
+}
+
+.info-item .value.zero {
+    color: var(--color-accent);
+}
+
+/* ==============================================
+   INSTRUCTIONS AU SURVOL
+   ============================================== */
+.hover-hint {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--bg-glass);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    pointer-events: none;
+}
+
+.canvas-wrapper:hover .hover-hint {
+    opacity: 1;
+}
+
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
+@media (max-width: 768px) {
+    .controls-bubble {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .bubble-toggle {
+        width: 44px;
+        height: 44px;
+    }
+
+    .bubble-content {
+        width: 260px;
+    }
+
+    .info-overlay {
+        bottom: 0.5rem;
+        left: 0.5rem;
+        font-size: var(--font-size-sm);
+    }
+}

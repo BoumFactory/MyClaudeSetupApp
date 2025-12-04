@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation - Cercle Trigonométrique et Signaux</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .main-container {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 0;
+        }
+        .tab {
+            padding: 12px 30px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .tab:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .tab.active {
+            background: white;
+            color: #667eea;
+        }
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: 0 15px 15px 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        canvas {
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            background: white;
+            display: block;
+            margin: 0 auto;
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #667eea;
+            color: white;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        input[type="range"] {
+            width: 200px;
+            cursor: pointer;
+        }
+        label {
+            font-weight: bold;
+            color: #667eea;
+        }
+        .info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .presets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .preset-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+        .preset-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: #667eea;
+        }
+        .preset-card.active {
+            border-color: #2ecc71;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+        }
+        .preset-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .preset-formula {
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #333;
+        }
+        .preset-description {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .preset-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Animation Interactive - Signaux Trigonométriques</h1>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('animation')">📊 Animation</button>
+            <button class="tab" onclick="switchTab('presets')">⚙️ Presets</button>
+            <button class="tab" onclick="switchTab('custom')">🎛️ Personnaliser</button>
+        </div>
+
+        <!-- Onglet Animation -->
+        <div id="animation-tab" class="tab-content active">
+            <canvas id="canvas" width="1400" height="600"></canvas>
+            <div class="controls">
+                <button id="playPause">▶ Lecture / ⏸ Pause</button>
+                <button id="reset">↺ Réinitialiser</button>
+                <div class="slider-container">
+                    <label for="speed">Vitesse:</label>
+                    <input type="range" id="speed" min="0.5" max="5" step="0.5" value="1">
+                    <span id="speedValue">1x</span>
+                </div>
+                <div class="slider-container">
+                    <label for="manualTime">Position manuelle (x):</label>
+                    <input type="range" id="manualTime" min="0" max="6.28318530718" step="0.01" value="0">
+                    <span id="manualTimeValue">0.00 rad</span>
+                </div>
+            </div>
+            <div class="info">
+                Temps: <span id="timeValue">0.00</span> rad (<span id="timeDegrees">0.0</span>°) |
+                Signal: <span id="signalValue">0.000</span>
+            </div>
+        </div>
+
+        <!-- Onglet Presets -->
+        <div id="presets-tab" class="tab-content">
+            <div class="preset-header">Choisissez un preset de signal</div>
+            <div class="presets-grid" id="presetsGrid"></div>
+        </div>
+
+        <!-- Onglet Personnaliser -->
+        <div id="custom-tab" class="tab-content">
+            <canvas id="customCanvas" width="1400" height="600"></canvas>
+            <div class="controls">
+                <button id="customPlayPause">▶ Lecture / ⏸ Pause</button>
+                <button id="customReset">↺ Réinitialiser</button>
+                <div class="slider-container">
+                    <label for="customSpeed">Vitesse:</label>
+                    <input type="range" id="customSpeed" min="0.5" max="5" step="0.5" value="1">
+                    <span id="customSpeedValue">1x</span>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; background: #f8f9fa; padding: 30px; border-radius: 15px;">
+                <!-- Contrôles pour Sinus -->
+                <div style="background: white; padding: 20px; border-radius: 10px; border: 3px solid #3498db;">
+                    <h3 style="color: #3498db; text-align: center; margin-bottom: 20px;">y = A·sin(ω·t + φ)</h3>
+                    <div class="slider-container" style="margin-bottom: 15px;">
+                        <label for="sinA">Amplitude A:</label>
+                        <input type="range" id="sinA" min="0.1" max="3" step="0.1" value="1">
+                        <span id="sinAValue">1.0</span>
+                    </div>
+                    <div class="slider-container" style="margin-bottom: 15px;">
+                        <label for="sinOmega">Pulsation ω:</label>
+                        <input type="range" id="sinOmega" min="0.1" max="5" step="0.1" value="1">
+                        <span id="sinOmegaValue">1.0</span>
+                    </div>
+                    <div class="slider-container">
+                        <label for="sinPhi">Phase φ (rad):</label>
+                        <input type="range" id="sinPhi" min="0" max="6.28318530718" step="0.1" value="0">
+                        <span id="sinPhiValue">0.0</span>
+                    </div>
+                    <div class="info" style="margin-top: 15px;">
+                        <span id="sinFormula">y = 1.0·sin(1.0·t + 0.0)</span>
+                    </div>
+                </div>
+
+                <!-- Contrôles pour Cosinus -->
+                <div style="background: white; padding: 20px; border-radius: 10px; border: 3px solid #e74c3c;">
+                    <h3 style="color: #e74c3c; text-align: center; margin-bottom: 20px;">y = A·cos(ω·t + φ)</h3>
+                    <div class="slider-container" style="margin-bottom: 15px;">
+                        <label for="cosA">Amplitude A:</label>
+                        <input type="range" id="cosA" min="0.1" max="3" step="0.1" value="1">
+                        <span id="cosAValue">1.0</span>
+                    </div>
+                    <div class="slider-container" style="margin-bottom: 15px;">
+                        <label for="cosOmega">Pulsation ω:</label>
+                        <input type="range" id="cosOmega" min="0.1" max="5" step="0.1" value="1">
+                        <span id="cosOmegaValue">1.0</span>
+                    </div>
+                    <div class="slider-container">
+                        <label for="cosPhi">Phase φ (rad):</label>
+                        <input type="range" id="cosPhi" min="0" max="6.28318530718" step="0.1" value="1.5707963">
+                        <span id="cosPhiValue">1.57</span>
+                    </div>
+                    <div class="info" style="margin-top: 15px;">
+                        <span id="cosFormula">y = 1.0·cos(1.0·t + 1.57)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                Temps: <span id="customTimeValue">0.00</span> rad (<span id="customTimeDegrees">0.0</span>°)
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let isPlaying = true;
+        let speed = 1;
+        let time = 0;
+        let currentPreset = null;
+
+        // Presets de signaux
+        const presets = [
+            {
+                id: 'simple-sin',
+                name: 'Sinus Simple',
+                description: 'Signal sinusoïdal de base, fréquence unitaire',
+                formula: 'y = sin(t)',
+                components: [
+                    { amplitude: 1, omega: 1, phi: 0, color: '#3498db' }
+                ]
+            },
+            {
+                id: 'simple-cos',
+                name: 'Cosinus Simple',
+                description: 'Signal cosinusoïdal (sinus déphasé de π/2)',
+                formula: 'y = cos(t) = sin(t + π/2)',
+                components: [
+                    { amplitude: 1, omega: 1, phi: Math.PI/2, color: '#e74c3c' }
+                ]
+            },
+            {
+                id: 'sin-cos',
+                name: 'Sinus + Cosinus',
+                description: 'Visualisation simultanée des deux fonctions de base (courbes séparées)',
+                formula: 'y₁ = sin(t) et y₂ = cos(t)',
+                noSum: true,  // Ne pas sommer, afficher séparément
+                components: [
+                    { amplitude: 1, omega: 1, phi: 0, color: '#3498db' },
+                    { amplitude: 1, omega: 1, phi: Math.PI/2, color: '#e74c3c' }
+                ]
+            },
+            {
+                id: 'sin2-cos2',
+                name: 'Identité sin² + cos² = 1',
+                description: 'Visualisation de l\'identité trigonométrique fondamentale',
+                formula: 'sin²(t) + cos²(t) = 1',
+                special: 'sin2cos2',  // Type spécial
+                components: [
+                    { amplitude: 1, omega: 1, phi: 0, color: '#3498db', label: 'sin²(t)' },
+                    { amplitude: 1, omega: 1, phi: Math.PI/2, color: '#e74c3c', label: 'cos²(t)' }
+                ]
+            },
+            {
+                id: 'dephasage',
+                name: 'Déphasage π/4',
+                description: 'Sinus avec déphasage de 45°',
+                formula: 'y = sin(t + π/4)',
+                components: [
+                    { amplitude: 1, omega: 1, phi: Math.PI/4, color: '#9b59b6' }
+                ]
+            },
+            {
+                id: 'double-freq',
+                name: 'Fréquence Double',
+                description: 'Signal à fréquence doublée (période divisée par 2)',
+                formula: 'y = sin(2t)',
+                components: [
+                    { amplitude: 1, omega: 2, phi: 0, color: '#e67e22' }
+                ]
+            },
+            {
+                id: 'half-freq',
+                name: 'Fréquence Moitié',
+                description: 'Signal à fréquence divisée par 2 (période doublée)',
+                formula: 'y = sin(0.5t)',
+                components: [
+                    { amplitude: 1, omega: 0.5, phi: 0, color: '#1abc9c' }
+                ]
+            },
+            {
+                id: 'amplitude',
+                name: 'Amplitude Modifiée',
+                description: 'Signal avec amplitude de 1.5',
+                formula: 'y = 1.5·sin(t)',
+                components: [
+                    { amplitude: 1.5, omega: 1, phi: 0, color: '#34495e' }
+                ]
+            },
+            {
+                id: 'somme-simple',
+                name: 'Somme de Deux Sinus',
+                description: 'Addition de deux signaux de fréquences différentes',
+                formula: 'y = sin(t) + 0.6·sin(2t)',
+                components: [
+                    { amplitude: 1, omega: 1, phi: 0, color: '#3498db' },
+                    { amplitude: 0.6, omega: 2, phi: 0, color: '#e74c3c' }
+                ]
+            },
+            {
+                id: 'battements',
+                name: 'Battements',
+                description: 'Phénomène de battement (fréquences proches)',
+                formula: 'y = sin(t) + sin(1.1t)',
+                components: [
+                    { amplitude: 1, omega: 1, phi: 0, color: '#3498db' },
+                    { amplitude: 1, omega: 1.1, phi: 0, color: '#e74c3c' }
+                ]
+            },
+            {
+                id: 'harmoniques',
+                name: 'Série Harmonique',
+                description: 'Fondamentale + harmoniques (approximation onde carrée)',
+                formula: 'y = sin(t) + 0.5·sin(2t) + 0.3·sin(3t)',
+                components: [
+                    { amplitude: 1, omega: 1, phi: 0, color: '#3498db' },
+                    { amplitude: 0.5, omega: 2, phi: 0, color: '#e74c3c' },
+                    { amplitude: 0.3, omega: 3, phi: 0, color: '#2ecc71' }
+                ]
+            },
+            {
+                id: 'interference',
+                name: 'Interférence Constructive',
+                description: 'Deux signaux identiques en phase',
+                formula: 'y = sin(t) + sin(t)',
+                components: [
+                    { amplitude: 1, omega: 1, phi: 0, color: '#3498db' },
+                    { amplitude: 1, omega: 1, phi: 0, color: '#e74c3c' }
+                ]
+            },
+            {
+                id: 'interference-dest',
+                name: 'Interférence Destructive',
+                description: 'Deux signaux identiques en opposition de phase',
+                formula: 'y = sin(t) - sin(t)',
+                components: [
+                    { amplitude: 1, omega: 1, phi: 0, color: '#3498db' },
+                    { amplitude: -1, omega: 1, phi: 0, color: '#e74c3c' }
+                ]
+            },
+            {
+                id: 'complexe',
+                name: 'Signal Complexe',
+                description: 'Somme de 5 harmoniques',
+                formula: 'y = sin(t) + 0.7·sin(2t) + 0.5·sin(3t) + 0.3·sin(4t) + 0.2·sin(5t)',
+                components: [
+                    { amplitude: 1, omega: 1, phi: 0, color: '#3498db' },
+                    { amplitude: 0.7, omega: 2, phi: 0, color: '#e74c3c' },
+                    { amplitude: 0.5, omega: 3, phi: 0, color: '#2ecc71' },
+                    { amplitude: 0.3, omega: 4, phi: 0, color: '#f39c12' },
+                    { amplitude: 0.2, omega: 5, phi: 0, color: '#9b59b6' }
+                ]
+            }
+        ];
+
+        // Positions et tailles
+        const circle = {
+            x: 250,
+            y: 300,
+            radius: 180
+        };
+
+        const graph = {
+            x: 600,
+            y: 300,
+            width: 750,
+            height: 220,
+            scaleY: 150  // pixels per unit (fixe)
+            // scaleX sera calculé dynamiquement selon la période
+        };
+
+        // Fonction pour calculer la période d'affichage d'un preset
+        function getDisplayPeriod(preset) {
+            if (!preset) return 2 * Math.PI;
+
+            // Si le preset définit explicitement sa période d'affichage
+            if (preset.displayPeriod) return preset.displayPeriod;
+
+            // Sinon, calculer depuis les composantes
+            // Période = 2π / ω, on prend la plus grande période (ω le plus petit)
+            const minOmega = Math.min(...preset.components.map(c => Math.abs(c.omega)));
+            const period = 2 * Math.PI / minOmega;
+
+            // Pour les battements, afficher plusieurs périodes pour voir le phénomène
+            if (preset.id === 'battements') return 4 * Math.PI;
+
+            return period;
+        }
+
+        // Fonction pour générer les graduations adaptées à la période
+        function getGraduations(period) {
+            const graduations = [];
+            const step = period / 4; // 5 graduations (0, T/4, T/2, 3T/4, T)
+
+            for (let i = 0; i <= 4; i++) {
+                const value = i * step;
+                let label;
+
+                // Formater le label en fonction de π
+                const piMultiple = value / Math.PI;
+                if (Math.abs(piMultiple) < 0.01) {
+                    label = '0';
+                } else if (Math.abs(piMultiple - 0.5) < 0.01) {
+                    label = 'π/2';
+                } else if (Math.abs(piMultiple - 1) < 0.01) {
+                    label = 'π';
+                } else if (Math.abs(piMultiple - 1.5) < 0.01) {
+                    label = '3π/2';
+                } else if (Math.abs(piMultiple - 2) < 0.01) {
+                    label = '2π';
+                } else if (Math.abs(piMultiple - 3) < 0.01) {
+                    label = '3π';
+                } else if (Math.abs(piMultiple - 4) < 0.01) {
+                    label = '4π';
+                } else if (Math.abs(piMultiple % 1) < 0.01) {
+                    label = Math.round(piMultiple) + 'π';
+                } else {
+                    label = piMultiple.toFixed(1) + 'π';
+                }
+
+                graduations.push({ value, label });
+            }
+
+            return graduations;
+        }
+
+        // Fonction pour calculer le signal à un instant t
+        function calculateSignal(t, preset) {
+            if (!preset) return Math.sin(t);
+
+            // Cas spécial : sin² + cos²
+            if (preset.special === 'sin2cos2') {
+                return 1; // sin²(t) + cos²(t) = 1 toujours
+            }
+
+            // Si noSum, retourner 0 (pas de somme à afficher)
+            if (preset.noSum) return 0;
+
+            let sum = 0;
+            for (let comp of preset.components) {
+                sum += comp.amplitude * Math.sin(comp.omega * t + comp.phi);
+            }
+            return sum;
+        }
+
+        // Fonction pour calculer une composante individuelle (ou son carré)
+        function calculateComponent(t, comp, squared = false) {
+            const value = comp.amplitude * Math.sin(comp.omega * t + comp.phi);
+            return squared ? value * value : value;
+        }
+
+        // Fonction pour dessiner le cercle trigonométrique
+        function drawCircle() {
+            // Cercle
+            ctx.strokeStyle = '#34495e';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Axes
+            ctx.strokeStyle = '#7f8c8d';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(circle.x - circle.radius - 20, circle.y);
+            ctx.lineTo(circle.x + circle.radius + 20, circle.y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(circle.x, circle.y - circle.radius - 20);
+            ctx.lineTo(circle.x, circle.y + circle.radius + 20);
+            ctx.stroke();
+
+            // Labels
+            ctx.fillStyle = '#34495e';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('x', circle.x + circle.radius + 30, circle.y + 5);
+            ctx.fillText('y', circle.x - 5, circle.y - circle.radius - 25);
+            ctx.fillText('O', circle.x - 20, circle.y + 20);
+
+            // Graduations
+            ctx.font = '12px Arial';
+            ctx.fillText('1', circle.x + circle.radius + 5, circle.y - 5);
+            ctx.fillText('1', circle.x + 5, circle.y - circle.radius - 5);
+        }
+
+        // Fonction pour dessiner les points sur le cercle
+        function drawPoints() {
+            if (!currentPreset) return;
+
+            // Utiliser le temps modulé pour cohérence avec le graphique
+            const displayPeriod = getDisplayPeriod(currentPreset);
+            const moduloTime = time % displayPeriod;
+
+            for (let i = 0; i < currentPreset.components.length; i++) {
+                const comp = currentPreset.components[i];
+                const angle = comp.omega * moduloTime + comp.phi;
+                const x = circle.x + Math.cos(angle) * circle.radius;
+                const y = circle.y - Math.sin(angle) * circle.radius;
+
+                // Projections (côtés) - en pointillés fins
+                ctx.strokeStyle = comp.color;
+                ctx.lineWidth = 1.5;
+                ctx.globalAlpha = 0.5;
+                ctx.setLineDash([3, 3]);
+
+                // Projection verticale (vers axe x) - montre cos
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x, circle.y);
+                ctx.stroke();
+
+                // Projection horizontale (vers axe y) - montre sin
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(circle.x, y);
+                ctx.stroke();
+
+                ctx.globalAlpha = 1;
+                ctx.setLineDash([]);
+
+                // Rayon vers le point
+                ctx.strokeStyle = comp.color;
+                ctx.lineWidth = 2;
+                ctx.setLineDash(i === 0 ? [] : [5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(circle.x, circle.y);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Point
+                ctx.fillStyle = comp.color;
+                ctx.beginPath();
+                ctx.arc(x, y, 6, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = comp.color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            // Afficher le point résultant pour les sommes (sauf si noSum)
+            if (currentPreset.components.length > 1 && !currentPreset.noSum && !currentPreset.special) {
+                const signal = calculateSignal(moduloTime, currentPreset);
+                const resultY = circle.y - signal * circle.radius;
+
+                ctx.fillStyle = '#2ecc71';
+                ctx.beginPath();
+                ctx.arc(circle.x + circle.radius + 40, resultY, 8, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#27ae60';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                ctx.fillStyle = '#2ecc71';
+                ctx.font = 'bold 14px Arial';
+                ctx.fillText('Σ', circle.x + circle.radius + 35, resultY - 15);
+            }
+        }
+
+        // Fonction pour dessiner les graphiques
+        function drawGraphs() {
+            // Calculer la période d'affichage dynamique
+            const displayPeriod = getDisplayPeriod(currentPreset);
+            const scaleX = graph.width / displayPeriod;
+
+            // Axes
+            ctx.strokeStyle = '#7f8c8d';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(graph.x, graph.y);
+            ctx.lineTo(graph.x + graph.width, graph.y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(graph.x, graph.y - graph.height);
+            ctx.lineTo(graph.x, graph.y + graph.height);
+            ctx.stroke();
+
+            // Labels
+            ctx.fillStyle = '#34495e';
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText('t (radians)', graph.x + graph.width - 80, graph.y + 25);
+
+            // Graduations Y - Échelle FIXE pour que la courbe change visuellement avec l'amplitude
+            ctx.font = '12px Arial';
+            const displayScale = 3;  // Échelle fixe (max des sliders = 3)
+
+            ctx.fillText(displayScale.toString(), graph.x - 20, graph.y - graph.scaleY + 5);
+            ctx.fillText((-displayScale).toString(), graph.x - 25, graph.y + graph.scaleY + 5);
+            ctx.fillText('0', graph.x - 15, graph.y + 5);
+
+            // Graduations X - adaptées à la période
+            const graduations = getGraduations(displayPeriod);
+
+            ctx.strokeStyle = '#bdc3c7';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([3, 3]);
+
+            for (let grad of graduations) {
+                const x = graph.x + grad.value * scaleX;
+                ctx.beginPath();
+                ctx.moveTo(x, graph.y - graph.height);
+                ctx.lineTo(x, graph.y + graph.height);
+                ctx.stroke();
+                ctx.fillStyle = '#34495e';
+                ctx.fillText(grad.label, x - 10, graph.y + 20);
+            }
+            ctx.setLineDash([]);
+
+            // Cas spécial : sin² + cos²
+            if (currentPreset && currentPreset.special === 'sin2cos2') {
+                // Dessiner sin²(t)
+                ctx.strokeStyle = currentPreset.components[0].color;
+                ctx.lineWidth = 2.5;
+                ctx.beginPath();
+                for (let t = 0; t <= displayPeriod; t += 0.05) {
+                    const x = graph.x + t * scaleX;
+                    const val = calculateComponent(t, currentPreset.components[0], true);
+                    const y = graph.y - val * graph.scaleY;
+                    if (t === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // Dessiner cos²(t)
+                ctx.strokeStyle = currentPreset.components[1].color;
+                ctx.beginPath();
+                for (let t = 0; t <= displayPeriod; t += 0.05) {
+                    const x = graph.x + t * scaleX;
+                    const val = calculateComponent(t, currentPreset.components[1], true);
+                    const y = graph.y - val * graph.scaleY;
+                    if (t === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // Dessiner la somme = 1 (ligne horizontale)
+                ctx.strokeStyle = '#2ecc71';
+                ctx.lineWidth = 3;
+                ctx.setLineDash([10, 5]);
+                ctx.beginPath();
+                ctx.moveTo(graph.x, graph.y - graph.scaleY);
+                ctx.lineTo(graph.x + graph.width, graph.y - graph.scaleY);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Points actuels - utiliser temps modulé pour rester sur la courbe
+                const moduloTime = time % displayPeriod;
+                const currentX = graph.x + moduloTime * scaleX;
+
+                const sin2Val = calculateComponent(moduloTime, currentPreset.components[0], true);
+                ctx.fillStyle = currentPreset.components[0].color;
+                ctx.beginPath();
+                ctx.arc(currentX, graph.y - sin2Val * graph.scaleY, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                const cos2Val = calculateComponent(moduloTime, currentPreset.components[1], true);
+                ctx.fillStyle = currentPreset.components[1].color;
+                ctx.beginPath();
+                ctx.arc(currentX, graph.y - cos2Val * graph.scaleY, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Point sur la ligne = 1
+                ctx.fillStyle = '#2ecc71';
+                ctx.beginPath();
+                ctx.arc(currentX, graph.y - graph.scaleY, 7, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Projections sur le graphique pour le point = 1
+                ctx.strokeStyle = '#95a5a6';
+                ctx.lineWidth = 1;
+                ctx.globalAlpha = 0.6;
+                ctx.setLineDash([3, 3]);
+
+                // Vers axe Y
+                ctx.beginPath();
+                ctx.moveTo(currentX, graph.y - graph.scaleY);
+                ctx.lineTo(graph.x, graph.y - graph.scaleY);
+                ctx.stroke();
+
+                // Vers axe X
+                ctx.beginPath();
+                ctx.moveTo(currentX, graph.y - graph.scaleY);
+                ctx.lineTo(currentX, graph.y);
+                ctx.stroke();
+
+                ctx.setLineDash([]);
+                ctx.globalAlpha = 1;
+
+                // Afficher les valeurs discrètement
+                ctx.fillStyle = '#555';
+                ctx.font = '11px Arial';
+                ctx.fillText('t = ' + moduloTime.toFixed(2), currentX - 25, graph.y + 35);
+                ctx.fillText('1.00', graph.x - 35, graph.y - graph.scaleY + 5);
+
+            } else if (currentPreset) {
+                // Dessiner les composantes individuelles
+                const isNoSum = currentPreset.noSum;
+                const opacity = isNoSum ? 1 : 0.3;
+                const lineWidth = isNoSum ? 2.5 : 1.5;
+
+                if (currentPreset.components.length > 1) {
+                    for (let comp of currentPreset.components) {
+                        ctx.strokeStyle = comp.color;
+                        ctx.globalAlpha = opacity;
+                        ctx.lineWidth = lineWidth;
+                        ctx.beginPath();
+
+                        for (let t = 0; t <= displayPeriod; t += 0.05) {
+                            const x = graph.x + t * scaleX;
+                            const val = comp.amplitude * Math.sin(comp.omega * t + comp.phi);
+                            const y = graph.y - (val / displayScale) * graph.scaleY;
+
+                            if (t === 0) ctx.moveTo(x, y);
+                            else ctx.lineTo(x, y);
+                        }
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+
+                        // Points actuels pour chaque composante (si noSum)
+                        if (isNoSum) {
+                            const moduloTime = time % displayPeriod;
+                            const currentX = graph.x + moduloTime * scaleX;
+                            const val = comp.amplitude * Math.sin(comp.omega * moduloTime + comp.phi);
+                            const currentY = graph.y - (val / displayScale) * graph.scaleY;
+
+                            ctx.fillStyle = comp.color;
+                            ctx.beginPath();
+                            ctx.arc(currentX, currentY, 6, 0, Math.PI * 2);
+                            ctx.fill();
+
+                            // Projections pour chaque point
+                            ctx.strokeStyle = '#95a5a6';
+                            ctx.lineWidth = 1;
+                            ctx.globalAlpha = 0.5;
+                            ctx.setLineDash([3, 3]);
+
+                            // Vers axe Y
+                            ctx.beginPath();
+                            ctx.moveTo(currentX, currentY);
+                            ctx.lineTo(graph.x, currentY);
+                            ctx.stroke();
+
+                            // Vers axe X
+                            ctx.beginPath();
+                            ctx.moveTo(currentX, currentY);
+                            ctx.lineTo(currentX, graph.y);
+                            ctx.stroke();
+
+                            ctx.setLineDash([]);
+                            ctx.globalAlpha = 1;
+
+                            // Afficher les valeurs discrètement
+                            ctx.fillStyle = '#555';
+                            ctx.font = '10px Arial';
+                            ctx.fillText(val.toFixed(2), graph.x - 35, currentY + 4);
+                        }
+                    }
+                }
+
+                // Dessiner le signal résultant (si pas noSum)
+                if (!isNoSum) {
+                    ctx.strokeStyle = '#2ecc71';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+
+                    for (let t = 0; t <= displayPeriod; t += 0.05) {
+                        const x = graph.x + t * scaleX;
+                        const val = calculateSignal(t, currentPreset);
+                        const y = graph.y - (val / displayScale) * graph.scaleY;
+
+                        if (t === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.stroke();
+
+                    // Point actuel sur la courbe - utiliser temps modulé pour rester sur la courbe
+                    const moduloTime = time % displayPeriod;
+                    const currentX = graph.x + moduloTime * scaleX;
+                    const currentSignal = calculateSignal(moduloTime, currentPreset);
+                    const currentY = graph.y - (currentSignal / displayScale) * graph.scaleY;
+
+                    ctx.fillStyle = '#2ecc71';
+                    ctx.beginPath();
+                    ctx.arc(currentX, currentY, 7, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = '#27ae60';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    // Projections sur le graphique
+                    ctx.strokeStyle = '#95a5a6';
+                    ctx.lineWidth = 1;
+                    ctx.globalAlpha = 0.6;
+                    ctx.setLineDash([3, 3]);
+
+                    // Vers axe Y
+                    ctx.beginPath();
+                    ctx.moveTo(currentX, currentY);
+                    ctx.lineTo(graph.x, currentY);
+                    ctx.stroke();
+
+                    // Vers axe X
+                    ctx.beginPath();
+                    ctx.moveTo(currentX, currentY);
+                    ctx.lineTo(currentX, graph.y);
+                    ctx.stroke();
+
+                    ctx.setLineDash([]);
+                    ctx.globalAlpha = 1;
+
+                    // Afficher les valeurs discrètement
+                    ctx.fillStyle = '#555';
+                    ctx.font = '11px Arial';
+                    ctx.fillText('t = ' + moduloTime.toFixed(2), currentX - 25, graph.y + 35);
+                    ctx.fillText(currentSignal.toFixed(2), graph.x - 35, currentY + 4);
+                }
+
+                // Ligne verticale pour marquer la position actuelle
+                const finalModuloTime = time % displayPeriod;
+                const currentX = graph.x + finalModuloTime * scaleX;
+                ctx.strokeStyle = '#95a5a6';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(currentX, graph.y - graph.height);
+                ctx.lineTo(currentX, graph.y + graph.height);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            // Légende
+            if (currentPreset) {
+                ctx.fillStyle = '#2ecc71';
+                ctx.font = 'bold 16px Arial';
+                ctx.fillText(currentPreset.name, graph.x + 20, 40);
+
+                ctx.font = '12px monospace';
+                ctx.fillStyle = '#34495e';
+                ctx.fillText(currentPreset.formula, graph.x + 20, 60);
+            }
+        }
+
+        // Fonction d'animation
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawCircle();
+            drawPoints();
+            drawGraphs();
+
+            // Calculer la période d'affichage
+            const displayPeriod = getDisplayPeriod(currentPreset);
+            const moduloTime = time % displayPeriod;
+
+            // Mise à jour des valeurs affichées
+            document.getElementById('timeValue').textContent = moduloTime.toFixed(2);
+            document.getElementById('timeDegrees').textContent = (moduloTime * 180 / Math.PI).toFixed(1);
+
+            const signalValue = currentPreset ? calculateSignal(moduloTime, currentPreset) : 0;
+            document.getElementById('signalValue').textContent = signalValue.toFixed(3);
+
+            // Mise à jour du temps
+            if (isPlaying) {
+                time += 0.02 * speed;
+                // Mettre à jour le slider manuel pendant l'animation
+                const manualSlider = document.getElementById('manualTime');
+                manualSlider.max = displayPeriod;
+                manualSlider.value = moduloTime;
+                document.getElementById('manualTimeValue').textContent = moduloTime.toFixed(2) + ' rad';
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // Initialiser les presets
+        function initPresets() {
+            const grid = document.getElementById('presetsGrid');
+            grid.innerHTML = '';
+
+            presets.forEach(preset => {
+                const card = document.createElement('div');
+                card.className = 'preset-card';
+                card.innerHTML = `
+                    <div class="preset-title">${preset.name}</div>
+                    <div class="preset-formula">${preset.formula}</div>
+                    <div class="preset-description">${preset.description}</div>
+                `;
+                card.onclick = () => selectPreset(preset.id);
+                grid.appendChild(card);
+            });
+
+            // Sélectionner le premier preset par défaut
+            selectPreset('simple-sin');
+        }
+
+        // Sélectionner un preset
+        function selectPreset(id) {
+            currentPreset = presets.find(p => p.id === id);
+
+            // Mettre à jour l'interface
+            document.querySelectorAll('.preset-card').forEach((card, index) => {
+                card.classList.toggle('active', presets[index].id === id);
+            });
+
+            // Réinitialiser l'animation
+            time = 0;
+        }
+
+        // Gestion des onglets
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+
+        // Event listeners
+        document.getElementById('playPause').addEventListener('click', () => {
+            isPlaying = !isPlaying;
+        });
+
+        document.getElementById('reset').addEventListener('click', () => {
+            time = 0;
+            isPlaying = false;
+            document.getElementById('manualTime').value = 0;
+            document.getElementById('manualTimeValue').textContent = '0.00 rad';
+        });
+
+        document.getElementById('speed').addEventListener('input', (e) => {
+            speed = parseFloat(e.target.value);
+            document.getElementById('speedValue').textContent = speed + 'x';
+        });
+
+        document.getElementById('manualTime').addEventListener('input', (e) => {
+            const value = parseFloat(e.target.value);
+            time = value;
+            document.getElementById('manualTimeValue').textContent = value.toFixed(2) + ' rad';
+            // Mettre en pause automatiquement lors de l'utilisation manuelle
+            isPlaying = false;
+        });
+
+        // ========== CODE POUR L'ONGLET PERSONNALISÉ ==========
+        const customCanvas = document.getElementById('customCanvas');
+        const customCtx = customCanvas.getContext('2d');
+        let customIsPlaying = true;
+        let customSpeed = 1;
+        let customTime = 0;
+
+        // Paramètres personnalisables
+        let sinA = 1, sinOmega = 1, sinPhi = 0;
+        let cosA = 1, cosOmega = 1, cosPhi = Math.PI/2;
+
+        // Fonction pour dessiner l'onglet personnalisé
+        function drawCustomCircle() {
+            customCtx.strokeStyle = '#34495e';
+            customCtx.lineWidth = 3;
+            customCtx.beginPath();
+            customCtx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+            customCtx.stroke();
+
+            customCtx.strokeStyle = '#7f8c8d';
+            customCtx.lineWidth = 2;
+            customCtx.beginPath();
+            customCtx.moveTo(circle.x - circle.radius - 20, circle.y);
+            customCtx.lineTo(circle.x + circle.radius + 20, circle.y);
+            customCtx.stroke();
+            customCtx.beginPath();
+            customCtx.moveTo(circle.x, circle.y - circle.radius - 20);
+            customCtx.lineTo(circle.x, circle.y + circle.radius + 20);
+            customCtx.stroke();
+
+            customCtx.fillStyle = '#34495e';
+            customCtx.font = 'bold 16px Arial';
+            customCtx.fillText('x', circle.x + circle.radius + 30, circle.y + 5);
+            customCtx.fillText('y', circle.x - 5, circle.y - circle.radius - 25);
+            customCtx.fillText('O', circle.x - 20, circle.y + 20);
+
+            customCtx.font = '12px Arial';
+            customCtx.fillText('1', circle.x + circle.radius + 5, circle.y - 5);
+            customCtx.fillText('1', circle.x + 5, circle.y - circle.radius - 5);
+        }
+
+        function drawCustomPoints() {
+            // Période adaptative cohérente avec le graphique
+            const sinPeriod = 2 * Math.PI / Math.abs(sinOmega);
+            const cosPeriod = 2 * Math.PI / Math.abs(cosOmega);
+            const displayPeriod = Math.max(sinPeriod, cosPeriod);
+            const moduloTime = customTime % displayPeriod;
+
+            // Point sinus
+            const sinAngle = sinOmega * moduloTime + sinPhi;
+            const sinX = circle.x + Math.cos(sinAngle) * circle.radius;
+            const sinY = circle.y - Math.sin(sinAngle) * circle.radius;
+
+            customCtx.strokeStyle = '#3498db';
+            customCtx.lineWidth = 1.5;
+            customCtx.globalAlpha = 0.5;
+            customCtx.setLineDash([3, 3]);
+            customCtx.beginPath();
+            customCtx.moveTo(sinX, sinY);
+            customCtx.lineTo(sinX, circle.y);
+            customCtx.stroke();
+            customCtx.beginPath();
+            customCtx.moveTo(sinX, sinY);
+            customCtx.lineTo(circle.x, sinY);
+            customCtx.stroke();
+            customCtx.globalAlpha = 1;
+            customCtx.setLineDash([]);
+
+            customCtx.strokeStyle = '#3498db';
+            customCtx.lineWidth = 2;
+            customCtx.beginPath();
+            customCtx.moveTo(circle.x, circle.y);
+            customCtx.lineTo(sinX, sinY);
+            customCtx.stroke();
+
+            customCtx.fillStyle = '#3498db';
+            customCtx.beginPath();
+            customCtx.arc(sinX, sinY, 6, 0, Math.PI * 2);
+            customCtx.fill();
+
+            // Point cosinus
+            const cosAngle = cosOmega * moduloTime + cosPhi;
+            const cosX = circle.x + Math.cos(cosAngle) * circle.radius;
+            const cosY = circle.y - Math.sin(cosAngle) * circle.radius;
+
+            customCtx.strokeStyle = '#e74c3c';
+            customCtx.lineWidth = 1.5;
+            customCtx.globalAlpha = 0.5;
+            customCtx.setLineDash([3, 3]);
+            customCtx.beginPath();
+            customCtx.moveTo(cosX, cosY);
+            customCtx.lineTo(cosX, circle.y);
+            customCtx.stroke();
+            customCtx.beginPath();
+            customCtx.moveTo(cosX, cosY);
+            customCtx.lineTo(circle.x, cosY);
+            customCtx.stroke();
+            customCtx.globalAlpha = 1;
+            customCtx.setLineDash([]);
+
+            customCtx.strokeStyle = '#e74c3c';
+            customCtx.lineWidth = 2;
+            customCtx.setLineDash([5, 5]);
+            customCtx.beginPath();
+            customCtx.moveTo(circle.x, circle.y);
+            customCtx.lineTo(cosX, cosY);
+            customCtx.stroke();
+            customCtx.setLineDash([]);
+
+            customCtx.fillStyle = '#e74c3c';
+            customCtx.beginPath();
+            customCtx.arc(cosX, cosY, 6, 0, Math.PI * 2);
+            customCtx.fill();
+        }
+
+        function drawCustomGraphs() {
+            // Échelle Y FIXE pour que la courbe change visuellement avec l'amplitude
+            const displayScale = 3;  // Échelle fixe (max des sliders = 3)
+
+            // Période adaptative : afficher au moins une période de chaque fonction
+            const sinPeriod = 2 * Math.PI / Math.abs(sinOmega);
+            const cosPeriod = 2 * Math.PI / Math.abs(cosOmega);
+            const displayPeriod = Math.max(sinPeriod, cosPeriod);
+            const scaleX = graph.width / displayPeriod;
+
+            // Axes
+            customCtx.strokeStyle = '#7f8c8d';
+            customCtx.lineWidth = 2;
+            customCtx.beginPath();
+            customCtx.moveTo(graph.x, graph.y);
+            customCtx.lineTo(graph.x + graph.width, graph.y);
+            customCtx.stroke();
+            customCtx.beginPath();
+            customCtx.moveTo(graph.x, graph.y - graph.height);
+            customCtx.lineTo(graph.x, graph.y + graph.height);
+            customCtx.stroke();
+
+            customCtx.fillStyle = '#34495e';
+            customCtx.font = 'bold 14px Arial';
+            customCtx.fillText('t (radians)', graph.x + graph.width - 80, graph.y + 25);
+
+            // Graduations Y
+            customCtx.font = '12px Arial';
+            customCtx.fillText(displayScale.toString(), graph.x - 20, graph.y - graph.scaleY + 5);
+            customCtx.fillText((-displayScale).toString(), graph.x - 25, graph.y + graph.scaleY + 5);
+            customCtx.fillText('0', graph.x - 15, graph.y + 5);
+
+            // Graduations X - adaptées à la période
+            const graduations = getGraduations(displayPeriod);
+
+            customCtx.strokeStyle = '#bdc3c7';
+            customCtx.lineWidth = 1;
+            customCtx.setLineDash([3, 3]);
+
+            for (let grad of graduations) {
+                const x = graph.x + grad.value * scaleX;
+                customCtx.beginPath();
+                customCtx.moveTo(x, graph.y - graph.height);
+                customCtx.lineTo(x, graph.y + graph.height);
+                customCtx.stroke();
+                customCtx.fillStyle = '#34495e';
+                customCtx.fillText(grad.label, x - 10, graph.y + 20);
+            }
+            customCtx.setLineDash([]);
+
+            // Dessiner courbe sinus
+            customCtx.strokeStyle = '#3498db';
+            customCtx.lineWidth = 2.5;
+            customCtx.beginPath();
+            for (let t = 0; t <= displayPeriod; t += 0.05) {
+                const x = graph.x + t * scaleX;
+                const val = sinA * Math.sin(sinOmega * t + sinPhi);
+                const y = graph.y - (val / displayScale) * graph.scaleY;
+                if (t === 0) customCtx.moveTo(x, y);
+                else customCtx.lineTo(x, y);
+            }
+            customCtx.stroke();
+
+            // Dessiner courbe cosinus
+            customCtx.strokeStyle = '#e74c3c';
+            customCtx.lineWidth = 2.5;
+            customCtx.beginPath();
+            for (let t = 0; t <= displayPeriod; t += 0.05) {
+                const x = graph.x + t * scaleX;
+                const val = cosA * Math.sin(cosOmega * t + cosPhi);
+                const y = graph.y - (val / displayScale) * graph.scaleY;
+                if (t === 0) customCtx.moveTo(x, y);
+                else customCtx.lineTo(x, y);
+            }
+            customCtx.stroke();
+
+            // Points actuels - utiliser le temps modulé pour rester sur la courbe affichée
+            const moduloTime = customTime % displayPeriod;
+            const currentX = graph.x + moduloTime * scaleX;
+
+            const sinVal = sinA * Math.sin(sinOmega * moduloTime + sinPhi);
+            const sinCurrentY = graph.y - (sinVal / displayScale) * graph.scaleY;
+            customCtx.fillStyle = '#3498db';
+            customCtx.beginPath();
+            customCtx.arc(currentX, sinCurrentY, 6, 0, Math.PI * 2);
+            customCtx.fill();
+
+            const cosVal = cosA * Math.sin(cosOmega * moduloTime + cosPhi);
+            const cosCurrentY = graph.y - (cosVal / displayScale) * graph.scaleY;
+            customCtx.fillStyle = '#e74c3c';
+            customCtx.beginPath();
+            customCtx.arc(currentX, cosCurrentY, 6, 0, Math.PI * 2);
+            customCtx.fill();
+
+            // Ligne verticale
+            customCtx.strokeStyle = '#95a5a6';
+            customCtx.lineWidth = 2;
+            customCtx.setLineDash([5, 5]);
+            customCtx.beginPath();
+            customCtx.moveTo(currentX, graph.y - graph.height);
+            customCtx.lineTo(currentX, graph.y + graph.height);
+            customCtx.stroke();
+            customCtx.setLineDash([]);
+
+            // Légende
+            customCtx.fillStyle = '#3498db';
+            customCtx.font = 'bold 14px Arial';
+            customCtx.fillText(`y = ${sinA.toFixed(1)}·sin(${sinOmega.toFixed(1)}·t + ${sinPhi.toFixed(2)})`, graph.x + 20, 40);
+
+            customCtx.fillStyle = '#e74c3c';
+            customCtx.fillText(`y = ${cosA.toFixed(1)}·sin(${cosOmega.toFixed(1)}·t + ${cosPhi.toFixed(2)})`, graph.x + 20, 60);
+        }
+
+        function animateCustom() {
+            customCtx.clearRect(0, 0, customCanvas.width, customCanvas.height);
+
+            drawCustomCircle();
+            drawCustomPoints();
+            drawCustomGraphs();
+
+            // Période adaptative pour l'affichage
+            const sinPeriod = 2 * Math.PI / Math.abs(sinOmega);
+            const cosPeriod = 2 * Math.PI / Math.abs(cosOmega);
+            const displayPeriod = Math.max(sinPeriod, cosPeriod);
+            const moduloTime = customTime % displayPeriod;
+
+            document.getElementById('customTimeValue').textContent = moduloTime.toFixed(2);
+            document.getElementById('customTimeDegrees').textContent = (moduloTime * 180 / Math.PI).toFixed(1);
+
+            if (customIsPlaying) {
+                customTime += 0.02 * customSpeed;
+            }
+
+            requestAnimationFrame(animateCustom);
+        }
+
+        // Event listeners pour l'onglet personnalisé
+        document.getElementById('customPlayPause').addEventListener('click', () => {
+            customIsPlaying = !customIsPlaying;
+        });
+
+        document.getElementById('customReset').addEventListener('click', () => {
+            customTime = 0;
+            customIsPlaying = false;
+        });
+
+        document.getElementById('customSpeed').addEventListener('input', (e) => {
+            customSpeed = parseFloat(e.target.value);
+            document.getElementById('customSpeedValue').textContent = customSpeed + 'x';
+        });
+
+        // Contrôles Sinus
+        document.getElementById('sinA').addEventListener('input', (e) => {
+            sinA = parseFloat(e.target.value);
+            document.getElementById('sinAValue').textContent = sinA.toFixed(1);
+            document.getElementById('sinFormula').textContent = `y = ${sinA.toFixed(1)}·sin(${sinOmega.toFixed(1)}·t + ${sinPhi.toFixed(2)})`;
+        });
+
+        document.getElementById('sinOmega').addEventListener('input', (e) => {
+            sinOmega = parseFloat(e.target.value);
+            document.getElementById('sinOmegaValue').textContent = sinOmega.toFixed(1);
+            document.getElementById('sinFormula').textContent = `y = ${sinA.toFixed(1)}·sin(${sinOmega.toFixed(1)}·t + ${sinPhi.toFixed(2)})`;
+        });
+
+        document.getElementById('sinPhi').addEventListener('input', (e) => {
+            sinPhi = parseFloat(e.target.value);
+            document.getElementById('sinPhiValue').textContent = sinPhi.toFixed(2);
+            document.getElementById('sinFormula').textContent = `y = ${sinA.toFixed(1)}·sin(${sinOmega.toFixed(1)}·t + ${sinPhi.toFixed(2)})`;
+        });
+
+        // Contrôles Cosinus
+        document.getElementById('cosA').addEventListener('input', (e) => {
+            cosA = parseFloat(e.target.value);
+            document.getElementById('cosAValue').textContent = cosA.toFixed(1);
+            document.getElementById('cosFormula').textContent = `y = ${cosA.toFixed(1)}·cos(${cosOmega.toFixed(1)}·t + ${cosPhi.toFixed(2)})`;
+        });
+
+        document.getElementById('cosOmega').addEventListener('input', (e) => {
+            cosOmega = parseFloat(e.target.value);
+            document.getElementById('cosOmegaValue').textContent = cosOmega.toFixed(1);
+            document.getElementById('cosFormula').textContent = `y = ${cosA.toFixed(1)}·cos(${cosOmega.toFixed(1)}·t + ${cosPhi.toFixed(2)})`;
+        });
+
+        document.getElementById('cosPhi').addEventListener('input', (e) => {
+            cosPhi = parseFloat(e.target.value);
+            document.getElementById('cosPhiValue').textContent = cosPhi.toFixed(2);
+            document.getElementById('cosFormula').textContent = `y = ${cosA.toFixed(1)}·cos(${cosOmega.toFixed(1)}·t + ${cosPhi.toFixed(2)})`;
+        });
+
+        // Démarrer
+        initPresets();
+        animate();
+        animateCustom();
+    </script>
+</body>
+</html>

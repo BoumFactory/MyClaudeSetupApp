@@ -3,6 +3,45 @@
 Le package bfcours charge toutes les extensions latex nécessaires à la production de documents.
 Il est nécessaire de respecter les conventions de nommage, de formatage et de structure du contenu LaTeX pour exploiter le package à son plein potentiel.
 
+## ⚠️ RÈGLES CRITIQUES : Caractères interdits dans LaTeX
+
+**NE JAMAIS utiliser de symboles Unicode dans les fichiers .tex** - ils causent des erreurs de compilation !
+
+### Symboles absolument interdits :
+
+- ❌ **Émojis et symboles décoratifs** : ✓ ✔ ✅ ❌ ⚠ ⚡ 🎯 🎉 📝 📋 📄 📁 📂 🔧 🧹 💡 ⭐
+- ❌ **Flèches Unicode** : → ← ↑ ↓ ⟵ ⟶
+- ❌ **Symboles mathématiques Unicode** : ≠ ≤ ≥ × ÷ ∞ ∑ ∏ ∫ √ ∈ ∉ ⊂ ⊃ ∪ ∩ ∀ ∃ ∅ ∂ ∇
+
+### Remplacements obligatoires :
+
+**Ligatures** :
+- `œ` → **`\oe `** (CRITIQUE - erreur de compilation sinon !)
+- `Œ` → **`\OE `**
+- `æ` → **`\ae `**
+- `Æ` → **`\AE `**
+
+**Symboles mathématiques** :
+- `≠` → `\neq`
+- `≤` → `\leq`
+- `≥` → `\geq`
+- `×` → `\times`
+- `÷` → `\div`
+- `∞` → `\infty`
+- `√` → `\sqrt`
+- `∈` → `\in`
+- `°` → `$^{\circ}$`
+
+**Mots typiques contenant œ** :
+- c\oe ur, n\oe ud, \oe il, s\oe ur, b\oe uf, v\oe u, \oe uvre
+
+### ✅ Utiliser à la place :
+
+Pour les emphases visuelles dans LaTeX, utiliser :
+- `\acc{texte}` pour l'emphase colorée
+- `\textbf{texte}` pour le gras (mais préférer `\acc{}`)
+- Texte simple pour les explications
+
 ## Environnements de structure
 
 Il s'agit des environnements pour présenter en colonne, centrer, énumérer et les tableaux.
@@ -388,6 +427,25 @@ Les verbes d'action élèves doivent être en acc. \acc{Calculer} ... \acc{Déte
 
 ## Environnement EXO
 
+**⚠️ RÈGLE ABSOLUE : Environnement EXO OBLIGATOIRE pour TOUS les exercices**
+
+L'environnement `EXO` est **OBLIGATOIRE** pour créer des exercices, quelle que soit la nature du document :
+
+- Feuilles d'exercices : Utiliser EXO
+- Exercices dans les activités (environnement Activite) : Utiliser EXO
+- Exercices dans les évaluations : Utiliser EXO
+- Devoirs maison : Utiliser EXO
+
+**Principe fondamental** :
+1. Tout exercice DOIT être encapsulé dans `\begin{EXO}...\end{EXO}`
+2. Les corrections sont TOUJOURS intégrées après `\exocorrection` dans le même environnement
+3. JAMAIS de fichier `solution.tex` séparé - les corrections font partie intégrante de l'environnement EXO
+
+Cette règle permet :
+- La gestion automatique des compétences
+- L'affichage conditionnel des corrections (versions élève/professeur)
+- Le calcul automatique des scores via `\tcbitempoint`
+
 C'est l'environnement dédié aux exercices. C'est lui qui est lié au système de compétences.
 
 - La définition de \rdifficulty gère l'affichage de la difficulté pour cet exercice ( nombre décimal entre 1 et 3 - 1.5 accepté par exemple ).
@@ -710,3 +768,70 @@ Variante pour les figures :
 ```
 
 **Note critique** : Utiliser systématiquement ces environnements pour accueillir les réponses élèves.
+
+## Styles TikZ pour la géométrie
+
+Les documents bfcours incluent des presets TikZ pour la géométrie. Ces styles sont définis dans le fichier principal et doivent être utilisés pour assurer la cohérence visuelle.
+
+### Commande Vecteur
+
+```latex
+\newcommand{\Vecteur}[1]{\overrightarrow{#1}}
+```
+
+### Styles TikZ disponibles
+
+```latex
+\tikzset{
+    quadrillage/.style={help lines, gray!40},
+    epais/.style={thick, line width=1.2pt},
+    axe/.style={->, >=stealth, thick, black},
+    % Points avec croix droites visibles
+    point/.style={cross out, draw, minimum size=5pt, line width=0.8pt, inner sep=0pt},
+    point correction/.style={cross out, draw, minimum size=5pt, line width=1.2pt, inner sep=0pt, red},
+    % Segments standard
+    segment/.style={thick},
+    % Vecteurs avec flèches
+    vecteur/.style={->, >=stealth, thick},
+    % Couleurs standard pour différencier
+    couleur1/.style={blue},
+    couleur2/.style={red},
+    couleur3/.style={green!60!black},
+    prop/.style={blue!60!cyan},
+    % Labels de points
+    label point/.style={font=\normalsize},
+}
+```
+
+### Commandes de géométrie
+
+**Axes** :
+```latex
+\XAxe{xmin}{xmax}{liste graduations}  % Axe des abscisses
+\YAxe{ymin}{ymax}{liste graduations}  % Axe des ordonnées
+\origine                               % Point O à l'origine
+```
+
+**Points** :
+```latex
+\pointC{x}{y}{Label}{position}           % Point standard (croix)
+\pointCorrection{x}{y}{Label}{position}  % Point en rouge pour corrections
+```
+
+### Exemple d'utilisation
+
+```latex
+\begin{tikzpicture}[scale=0.7]
+% Droites
+\draw[gray,thin] (-0.5,-0.17) -- (3.5,1.17);
+% Vecteurs
+\draw[vecteur,blue] (3,1) -- (0,0) node[midway,below] {$\Vecteur{AB}$};
+% Points avec le style point
+\node[point] at (0,0) {}; \node[below left] at (0,0) {$A$};
+\node[point] at (3,1) {}; \node[below right] at (3,1) {$B$};
+% Ou avec la commande pointC
+\pointC{0.5}{1.5}{E}{above left}
+\end{tikzpicture}
+```
+
+**Note** : Toujours utiliser `node[point]` ou `\pointC` pour placer des points, jamais `\fill ... circle`.

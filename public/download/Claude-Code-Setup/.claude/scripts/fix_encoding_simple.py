@@ -15,13 +15,13 @@ import json
 from pathlib import Path
 
 # Encodages courants à essayer (par ordre de probabilité)
+# UTF-8 EN PREMIER pour détecter les fichiers déjà corrects !
 ENCODAGES_COURANTS = [
-    'utf-8',
-    'utf-8-sig',  # UTF-8 avec BOM
+    'utf-8',   # TOUJOURS tester UTF-8 d'abord
+    'cp850',   # DOS Western European
+    'cp1252',  # Windows Western European
     'latin-1',
     'iso-8859-1',
-    'cp1252',  # Windows Western European
-    'cp850',   # DOS Western European
 ]
 
 # Patterns de vérification par type de fichier
@@ -139,8 +139,15 @@ def try_read_file(file_path):
     # Trier les candidats par score décroissant
     candidates.sort(key=lambda x: x[1], reverse=True)
 
-    # Prendre le meilleur candidat
-    best_encoding, best_score = candidates[0]
+    # PRIORITÉ ABSOLUE À UTF-8 : Si UTF-8 décode sans erreur, l'utiliser TOUJOURS
+    utf8_candidate = next((enc for enc, score in candidates if enc.lower().startswith('utf')), None)
+    if utf8_candidate:
+        best_encoding = utf8_candidate
+        best_score = max(score for enc, score in candidates if enc == utf8_candidate)
+        print(f"[INFO] UTF-8 detecte et selectionne (priorite)")
+    else:
+        # Prendre le meilleur candidat
+        best_encoding, best_score = candidates[0]
 
     # Maintenant décoder TOUT le fichier avec le meilleur encodage
     try:
@@ -150,10 +157,69 @@ def try_read_file(file_path):
         print(f"[ERREUR] Echec decodage complet avec {best_encoding}: {e}")
         return None, None, None
 
-def clean_problematic_characters(content):
-    """Nettoie les caractères problématiques pour LaTeX et HTML"""
+def load_latex_character_mapping():
+    """Charge la table de mapping des caractères LaTeX depuis le fichier JSON"""
+    script_dir = Path(__file__).parent
+    mapping_file = script_dir / 'latex_character_mapping.json'
+
+    # Valeurs par défaut si le fichier n'existe pas
+    default_mapping = {
+        'forbidden_unicode_symbols': {},
+        'math_symbol_replacements': {},
+        'ligature_replacements': {
+            'œ': r'\oe ',
+            'Œ': r'\OE ',
+        }
+    }
+
+    if not mapping_file.exists():
+        print(f"[WARN] Fichier de mapping introuvable: {mapping_file}")
+        return default_mapping
+
+    try:
+        with open(mapping_file, 'r', encoding='utf-8') as f:
+            mapping = json.load(f)
+        return mapping
+    except Exception as e:
+        print(f"[WARN] Erreur lecture mapping: {e}")
+        return default_mapping
+
+def clean_latex_specific_characters(content):
+    """Nettoie les caractères spécifiques problématiques pour LaTeX"""
     cleaned = content
     changes = []
+
+    # Charger la table de mapping depuis le fichier JSON
+    mapping = load_latex_character_mapping()
+
+    forbidden_unicode_symbols = mapping.get('forbidden_unicode_symbols', {})
+    math_symbols = mapping.get('math_symbol_replacements', {})
+    latex_replacements = mapping.get('ligature_replacements', {})
+    typography_fixes = mapping.get('typography_fixes', {})
+
+    # Appliquer tous les remplacements : symboles interdits + symboles math + ligatures + typographie
+    all_replacements = {**forbidden_unicode_symbols, **math_symbols, **latex_replacements, **typography_fixes}
+
+    for symbol, replacement in all_replacements.items():
+        if symbol in cleaned:
+            count = cleaned.count(symbol)
+            cleaned = cleaned.replace(symbol, replacement)
+            if replacement:
+                changes.append(f"  - [LATEX] {count}x '{symbol}' -> '{replacement}'")
+            else:
+                changes.append(f"  - [LATEX] {count}x '{symbol}' SUPPRIMÉ (symbole Unicode interdit)")
+
+    return cleaned, changes
+
+def clean_problematic_characters(content):
+    """Nettoie les caractères problématiques pour LaTeX et HTML
+
+    Returns:
+        tuple: (cleaned_content, changes_list, warnings_list)
+    """
+    cleaned = content
+    changes = []
+    warnings = []
 
     # Normaliser en forme NFC (composition canonique)
     cleaned = unicodedata.normalize('NFC', cleaned)
@@ -183,10 +249,11 @@ def clean_problematic_characters(content):
             else:
                 changes.append(f"  - {count}x U+{ord(old_char):04X} supprimé")
 
-    # Détecter les caractères invalides ou de remplacement
+    # Détecter les caractères invalides ou de remplacement (WARNING, pas un changement)
     if '�' in cleaned:
         count = cleaned.count('�')
-        changes.append(f"  - ATTENTION: {count}x caractère de remplacement � détecté")
+        warnings.append(f"  - ATTENTION: {count}x caractère de remplacement U+FFFD détecté")
+        warnings.append(f"    -> Le fichier est déjà corrompu, impossible de restaurer automatiquement")
 
     # Vérifier qu'il n'y a pas de caractères de contrôle (sauf \n, \r, \t)
     control_chars = []
@@ -195,11 +262,11 @@ def clean_problematic_characters(content):
             control_chars.append((i, char, ord(char)))
 
     if control_chars:
-        changes.append(f"  - ATTENTION: {len(control_chars)} caractères de contrôle détectés")
+        warnings.append(f"  - ATTENTION: {len(control_chars)} caractères de contrôle détectés")
         for i, char, code in control_chars[:5]:  # Montrer les 5 premiers
-            changes.append(f"    Position {i}: U+{code:04X}")
+            warnings.append(f"    Position {i}: U+{code:04X}")
 
-    return cleaned, changes
+    return cleaned, changes, warnings
 
 def get_patterns_for_file(file_path):
     """Détermine les patterns de vérification selon l'extension du fichier"""
@@ -242,8 +309,15 @@ def verify_syntax_preservation(original_content, new_content, file_path):
 
     return issues
 
-def fix_encoding_simple(input_file, output_file=None):
-    """Corrige l'encodage d'un fichier en préservant sa syntaxe (.tex, .md, .py, .html, .js, .json)"""
+def fix_encoding_simple(input_file, output_file=None, dry_run=False, create_backup=True):
+    """Corrige l'encodage d'un fichier en préservant sa syntaxe (.tex, .md, .py, .html, .js, .json)
+
+    Args:
+        input_file: Fichier à traiter
+        output_file: Fichier de sortie (None = écraser l'original)
+        dry_run: Si True, simule sans modifier les fichiers
+        create_backup: Si True, crée un backup avant modification
+    """
     input_path = Path(input_file)
 
     if not input_path.exists():
@@ -251,6 +325,8 @@ def fix_encoding_simple(input_file, output_file=None):
         return False
 
     print(f"[INFO] Analyse de: {input_path.name}")
+    if dry_run:
+        print("[INFO] Mode DRY-RUN: aucun fichier ne sera modifie")
 
     # Tentative de lecture
     content, detected_encoding, raw_content = try_read_file(input_path)
@@ -263,40 +339,72 @@ def fix_encoding_simple(input_file, output_file=None):
 
     # Nettoyer les caractères problématiques (TOUJOURS, même si déjà UTF-8)
     print("[INFO] Nettoyage des caracteres problematiques...")
-    cleaned_content, changes = clean_problematic_characters(content)
+    cleaned_content, changes, warnings = clean_problematic_characters(content)
 
-    if changes:
-        print("[INFO] Modifications effectuees:")
-        for change in changes:
-            print(change)
+    # Nettoyage spécifique LaTeX pour les fichiers .tex
+    latex_changes = []
+    if input_path.suffix.lower() == '.tex':
+        print("[INFO] Nettoyage specifique LaTeX...")
+        cleaned_content, latex_changes = clean_latex_specific_characters(cleaned_content)
+
+    # Combiner tous les changements
+    all_changes = changes + latex_changes
+
+    # Afficher les changements effectués
+    if all_changes:
+        print("[INFO] Modifications a effectuer:")
+        for change in all_changes:
+            try:
+                print(change)
+            except UnicodeEncodeError:
+                safe_change = change.encode('ascii', 'backslashreplace').decode('ascii')
+                print(safe_change)
     else:
-        print("[INFO] Aucun caractere problematique detecte")
+        print("[INFO] Aucune modification necessaire")
+
+    # Afficher les warnings séparément
+    if warnings:
+        print("[WARN] Problemes detectes (non corrigeables automatiquement):")
+        for warning in warnings:
+            try:
+                print(warning)
+            except UnicodeEncodeError:
+                safe_warning = warning.encode('ascii', 'backslashreplace').decode('ascii')
+                print(safe_warning)
 
     # Si le fichier est déjà UTF-8 et qu'aucun nettoyage n'a été fait, ne rien faire
-    if detected_encoding.startswith('utf-8') and not changes:
+    if detected_encoding.startswith('utf-8') and not all_changes:
         print("[INFO] Le fichier est deja en UTF-8 propre, aucune correction necessaire")
+        if warnings:
+            print("[INFO] Des warnings ont ete detectes mais aucune modification n'est possible")
         return True
 
     # Utiliser le contenu nettoyé
     content = cleaned_content
 
+    # Si mode dry-run, s'arrêter ici
+    if dry_run:
+        print("[INFO] Mode DRY-RUN: simulation terminee, aucun fichier modifie")
+        return True
+
     # Déterminer le fichier de sortie
     if output_file is None:
-        # Créer backup et écraser l'original
-        backup_path = input_path.with_suffix(input_path.suffix + '.backup')
-        if backup_path.exists():
-            print(f"[WARN] Backup existe deja: {backup_path.name}")
-        else:
-            try:
-                # Copier le fichier original en backup
-                with open(backup_path, 'wb') as f_out:
-                    f_out.write(raw_content)
-                print(f"[INFO] Backup cree: {backup_path.name}")
-            except Exception as e:
-                print(f"[WARN] Impossible de creer le backup: {e}")
         output_path = input_path
     else:
         output_path = Path(output_file)
+
+    # Créer un backup si demandé et qu'on écrase l'original
+    if create_backup and output_path == input_path:
+        backup_path = input_path.with_suffix(input_path.suffix + '.backup')
+        try:
+            import shutil
+            shutil.copy2(input_path, backup_path)
+            print(f"[INFO] Backup cree: {backup_path.name}")
+        except Exception as e:
+            print(f"[WARN] Impossible de creer le backup: {e}")
+            print("[WARN] Continuer sans backup ? (Ctrl+C pour annuler)")
+            import time
+            time.sleep(2)
 
     # Écriture en UTF-8 (mode binaire pour contrôle total)
     try:
@@ -307,8 +415,17 @@ def fix_encoding_simple(input_file, output_file=None):
         with open(output_path, 'wb') as f:
             f.write(utf8_content)
 
-        print(f"[OK] Fichier converti: {output_path.name}")
-        print(f"     {detected_encoding} -> UTF-8")
+        # Message adapté selon le cas
+        if detected_encoding.lower().startswith('utf'):
+            if all_changes:
+                print(f"[OK] Fichier nettoye: {output_path.name}")
+                print(f"     Encodage UTF-8 preserve, {len(all_changes)} modifications appliquees")
+            else:
+                print(f"[OK] Fichier verifie: {output_path.name}")
+                print(f"     Deja en UTF-8, aucune modification necessaire")
+        else:
+            print(f"[OK] Fichier converti: {output_path.name}")
+            print(f"     {detected_encoding} -> UTF-8")
 
         # Vérification complète
         with open(output_path, 'rb') as f:
@@ -358,34 +475,46 @@ def fix_encoding_simple(input_file, output_file=None):
         return False
 
 def main():
-    if len(sys.argv) < 2:
-        print("="*50)
-        print("   Correction automatique d'encodage")
-        print("   (Preserve la syntaxe du fichier)")
-        print("   + Nettoyage caracteres problematiques")
-        print("="*50)
-        print("\nTypes de fichiers supportes:")
-        print("  .tex, .md, .py, .html, .js, .json")
-        print("\nUsage:")
-        print("  python fix_encoding_simple.py <fichier>")
-        print("  python fix_encoding_simple.py <source> <sortie>")
-        print("\nExemples:")
-        print("  python fix_encoding_simple.py cours.tex")
-        print("  python fix_encoding_simple.py README.md")
-        print("  python fix_encoding_simple.py script.py")
-        print("  python fix_encoding_simple.py config.json")
-        print("\nLe script:")
-        print("  - Detecte et corrige l'encodage vers UTF-8")
-        print("  - Nettoie les caracteres problematiques (espaces insecables, apostrophes, etc.)")
-        print("  - Preserve la syntaxe selon le type de fichier")
-        print("  - Valide la structure JSON pour les fichiers .json")
-        sys.exit(1)
+    import argparse
 
-    input_file = sys.argv[1]
-    output_file = sys.argv[2] if len(sys.argv) > 2 else None
+    parser = argparse.ArgumentParser(
+        description='Correction automatique d\'encodage pour fichiers texte',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog='''
+Exemples:
+  python fix_encoding_simple.py cours.tex
+  python fix_encoding_simple.py --dry-run cours.tex
+  python fix_encoding_simple.py --no-backup script.py
+  python fix_encoding_simple.py cours.tex cours_fixed.tex
+
+Types de fichiers supportés:
+  .tex, .md, .py, .html, .js, .json
+
+Le script:
+  - Detecte et corrige l'encodage vers UTF-8
+  - Nettoie les caracteres problematiques (espaces insecables, apostrophes, etc.)
+  - Preserve la syntaxe selon le type de fichier
+  - Cree un backup automatique avant modification (sauf --no-backup)
+        '''
+    )
+
+    parser.add_argument('input_file', help='Fichier a traiter')
+    parser.add_argument('output_file', nargs='?', default=None,
+                        help='Fichier de sortie (par defaut: ecrase l\'original)')
+    parser.add_argument('--dry-run', action='store_true',
+                        help='Simule sans modifier les fichiers')
+    parser.add_argument('--no-backup', action='store_true',
+                        help='Ne pas creer de backup avant modification')
+
+    args = parser.parse_args()
 
     print("="*50)
-    success = fix_encoding_simple(input_file, output_file)
+    success = fix_encoding_simple(
+        args.input_file,
+        args.output_file,
+        dry_run=args.dry_run,
+        create_backup=not args.no_backup
+    )
     print("="*50)
 
     sys.exit(0 if success else 1)

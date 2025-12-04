@@ -195,4 +195,3 @@ python .claude/skills/tex-document-creator/scripts/get_help.py
 2. **TOUJOURS** vérifier que le template existe avec `list_templates.py` avant de créer
 3. **TOUJOURS** obtenir les champs requis avec `get_template_info.py` avant de remplir
 4. **TOUJOURS** utiliser des chemins absolus pour `--destination`
-5. **TOUJOURS** corriger l'encodage après création avec `encoding-fixer-server`

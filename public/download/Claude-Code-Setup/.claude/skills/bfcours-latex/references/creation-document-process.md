@@ -245,12 +245,7 @@ create_document(
    - Identifier les compétences pertinentes
    - Les intégrer dans le document créé
 
-2. **Correction d'encodage** (CRITIQUE) :
-   - **OBLIGATOIRE** : Utiliser `encoding-fixer-server`
-   - `fix_file_encoding(file_path)` sur tous les fichiers créés
-   - Garantir l'UTF-8 pour éviter les caractères corrompus
-
-3. **Compilation de test** :
+2. **Compilation de test** :
    - **OBLIGATOIRE** : Tester avec `latex-compiler-server`
    - `quick_compile(file_path)` pour vérifier que tout compile
    - Corriger les erreurs éventuelles
@@ -283,7 +278,6 @@ Structure     : <liste des dossiers/fichiers créés>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ VÉRIFICATIONS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✓ Encodage UTF-8 corrigé
 ✓ Compilation testée avec succès
 ✓ Instructions Claude intégrées (CLAUDE.md)
 ✓ Fichier enonce_figures.tex créé

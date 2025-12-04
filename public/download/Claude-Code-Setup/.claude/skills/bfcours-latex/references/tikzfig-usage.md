@@ -1,5 +1,37 @@
 # Utilisation des figures TikZ avec tikzinclude
 
+## ⚠️ ATTENTION : Deux systèmes possibles
+
+Il existe **DEUX systèmes différents** pour gérer les figures TikZ dans bfcours. Ne pas les confondre !
+
+### Système 1 : Appel direct (système simplifié)
+
+- **Définition** : `\def\tikzfigNOM{...}` dans enonce_figures.tex
+- **Appel** : `\tikzfigNOM` (sans accolades, directement comme une commande)
+- **Exemple** : `\tikzfigcroissante`, `\tikzfigdecroissante`
+
+### Système 2 : Avec tikzinclude (système avec compteur)
+
+- **Définition** : `\newcommand{\tikzfigNOM}{...}` dans enonce_figures.tex
+- **Appel** : `\tikzinclude{NOM}` (avec accolades, passe le nom sans préfixe)
+- **Exemple** : `\tikzinclude{croissante}`, `\tikzinclude{decroissante}`
+
+**❌ ERREUR CRITIQUE À ÉVITER** :
+NE JAMAIS utiliser `\tikzfig{NOM}` avec accolades - **cette syntaxe n'existe pas** et affichera le nom en texte au lieu de la figure !
+
+```latex
+% ❌ INCORRECT (affichera "croissante" en texte)
+\tikzfig{croissante}
+
+% ✅ CORRECT (appel direct sans accolades)
+\tikzfigcroissante
+
+% ✅ CORRECT (avec tikzinclude, si système 2)
+\tikzinclude{croissante}
+```
+
+---
+
 ## Principe de fonctionnement
 
 Le système de figures TikZ dans les documents bfcours utilise un mécanisme de définition/appel en deux parties :

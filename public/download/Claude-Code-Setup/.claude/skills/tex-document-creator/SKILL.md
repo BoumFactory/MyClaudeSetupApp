@@ -142,7 +142,6 @@ python .claude/skills/tex-document-creator/scripts/create_document.py \
    **⚠️ NOTE IMPORTANTE** : Le nouveau format `--field` est **fortement recommandé** car il évite tous les problèmes d'échappement des caractères spéciaux LaTeX (backslashes, accolades, etc.). Le format JSON `--fields` est conservé pour compatibilité mais peut causer des erreurs avec les caractères LaTeX complexes.
 
 6. **Post-traitement** (optionnel) :
-   - Corriger l'encodage avec `encoding-fixer-server`
    - Créer des fichiers auxiliaires supplémentaires
    - Initialiser un dépôt git si demandé
 
@@ -167,8 +166,7 @@ python .claude/skills/tex-document-creator/scripts/create_document.py \
   --template "Devoir" \
   --fields '{"niveau": "$\\mathbf{2^{\\text{nde}}}$", "theme": "Vecteurs", "type_etablissement": "Lycée", "nom_etablissement": "Eugène Belgrand", "duree": "55", "type_document_principal": "Devoir :"}'
 
-6. Corriger l'encodage des fichiers créés
-7. Rapporter succès
+6. Rapporter succès
 ```
 
 ### Exemple 2 : Créer un cours avec sections
@@ -187,8 +185,7 @@ python .claude/skills/tex-document-creator/scripts/create_document.py \
   --fields '{"niveau": "$\\mathbf{1^{\\text{ère}}}$", "theme": "Fonctions de référence", "type_etablissement": "Lycée", "nom_etablissement": "Amadis Jamyn", "supplement": "", "type_document_principal": "Cours :", "contenu_principal": "\\input{enonce},"}' \
   --create-sections
 
-4. Corriger l'encodage
-5. Rapporter avec chemins et prochaines étapes
+4. Rapporter avec chemins et prochaines étapes
 ```
 
 ### Exemple 3 : Commande complète pour un cours (Produit scalaire)
@@ -202,10 +199,55 @@ python .claude/skills/tex-document-creator/scripts/create_document.py \
   --create-sections
 ```
 
+## Bonnes Pratiques : Fichier CLAUDE.md
+
+**RÈGLE IMPORTANTE** : Toujours créer un fichier CLAUDE.md dans chaque projet LaTeX.
+
+### Pourquoi créer CLAUDE.md ?
+
+Le fichier `CLAUDE.md` sert de **mémoire de projet** pour les agents qui travailleront sur le document. Il permet :
+- De savoir quel modèle a été utilisé
+- De connaître les paramètres du document (niveau, thème, type)
+- De comprendre la structure du projet
+- D'avoir les instructions de compilation
+- De tracker l'état d'avancement du projet
+
+### Comment créer CLAUDE.md ?
+
+**Lors de la création du projet** : Utiliser l'option `--claude-instructions`
+
+```bash
+python .claude/skills/tex-document-creator/scripts/create_document.py \
+  --destination "chemin/vers/projet" \
+  --name "Mon_Document" \
+  --template "Cours" \
+  --field "niveau=..." \
+  --field "theme=..." \
+  --claude-instructions  # ← Cette option crée le fichier CLAUDE.md
+```
+
+### Contenu type de CLAUDE.md
+
+Le script génère automatiquement un fichier avec :
+- Modèle utilisé et date de création
+- Paramètres du document (tous les champs remplis)
+- Structure du projet (fichiers générés)
+- Instructions de compilation
+
+### Mise à jour de CLAUDE.md
+
+**IMPORTANT** : Les agents qui modifient le projet doivent mettre à jour CLAUDE.md pour refléter :
+- Les modifications apportées
+- L'état de compilation actuel
+- Les problèmes rencontrés et résolus
+- Les étapes suivantes suggérées
+
+Voir aussi : **`tex-compiling-skill`** qui contient les bonnes pratiques pour maintenir CLAUDE.md à jour après compilation.
+
 ## Rappels Critiques
 
 - TOUJOURS vérifier que le modèle existe avant de créer
 - TOUJOURS fournir tous les champs requis par le template
 - TOUJOURS utiliser des chemins absolus
-- TOUJOURS corriger l'encodage après création
+- TOUJOURS créer un fichier CLAUDE.md avec `--claude-instructions`
 - NE JAMAIS écraser un document existant sans confirmation

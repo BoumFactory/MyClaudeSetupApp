@@ -35,27 +35,25 @@ Lors de l'édition de documents existants nécessitant une validation par compil
 
 4. **Écrire/éditer le contenu** en utilisant les environnements didactiques bfcours (voir conventions ci-dessous)
 
-5. **Corriger l'encodage** : Utiliser `encoding-fixer-server: fix_file_encoding()` sans backup
-
-6. **Compiler pour valider** : Déléguer au skill `tex-compiling-skill` :
+5. **Compiler pour valider** : Déléguer au skill `tex-compiling-skill` :
 
    ```
    Utiliser tex-compiling-skill pour quick_compile()
 
    ```
 
-7. **Corriger les erreurs de compilation de manière itérative** si nécessaire :
+6. **Corriger les erreurs de compilation de manière itérative** si nécessaire :
    - Analyser les messages d'erreur (via tex-compiling-skill)
    - Corriger les problèmes dans le contenu
    - Re-compiler
 
-8. **Valider la sortie PDF** : Utiliser `pdf-analyzer-server: analyze_pdf()` pour vérifier le contenu rendu
+7. **Valider la sortie PDF** : Utiliser `pdf-analyzer-server: analyze_pdf()` pour vérifier le contenu rendu
 
-9. **Vérifier les erreurs mathématiques** dans le PDF qui peuvent ne pas être visibles dans le code LaTeX
+8. **Vérifier les erreurs mathématiques** dans le PDF qui peuvent ne pas être visibles dans le code LaTeX
 
-10. **Effectuer les corrections finales** si nécessaire
+9. **Effectuer les corrections finales** si nécessaire
 
-11. **Finaliser le fichier principal** (pour les documents de type Cours uniquement) :
+10. **Finaliser le fichier principal** (pour les documents de type Cours uniquement) :
    - Lire le fichier principal du projet (généralement `Nom_projet.tex`)
    - **Compléter le tableau des compétences travaillées** juste après `\tableofcontents` avec les vraies compétences identifiées dans le contenu
    - **Supprimer les placeholders** : retirer `\voc{nobug}` et `\competence{nobug}` qui ne sont que des marqueurs temporaires
@@ -75,9 +73,7 @@ Lors de l'édition d'un fichier de contenu LaTeX autonome sans besoin de compila
 
 4. **Écrire le contenu** en suivant les standards bfcours
 
-5. **Corriger l'encodage** : Utiliser `encoding-fixer-server: fix_file_encoding()` sans backup
-
-6. **NE PAS compiler** (focus uniquement sur la création de contenu)
+5. **NE PAS compiler** (focus uniquement sur la création de contenu)
 
 ## Architecture de Projet
 
@@ -171,6 +167,16 @@ contenu avec \acc{emphase} et \voc{vocabulaire}
 
 ### Environnement Exercice (EXO)
 
+**⚠️ RÈGLE ABSOLUE : Environnement EXO OBLIGATOIRE**
+
+L'environnement `EXO` est OBLIGATOIRE pour **TOUS les exercices**, y compris :
+- Les exercices dans les feuilles d'exercices
+- Les exercices dans les activités (environnement Activite)
+- Les exercices dans les évaluations
+- Les devoirs maison
+
+**Principe fondamental** : Les corrections sont **toujours** intégrées après `\exocorrection` dans le même environnement EXO, **jamais dans un fichier séparé**.
+
 **Critique pour tous les exercices** :
 
 ```latex
@@ -219,13 +225,6 @@ Contenu de la solution suivant la structure de l'énoncé.
   - `get_competence_by_code(code)` : Obtenir les détails d'une compétence spécifique
   - `filter_by_niveau(niveau)` : Lister les compétences pour un niveau
 
-- **encoding-fixer-server** : Correction d'encodage UTF-8 (CRITIQUE)
-  - `fix_file_encoding(file_path, create_backup=false)` : Corriger les problèmes d'encodage
-  - Toujours utiliser sans backup dans les workflows bfcours
-
-- **pdf-analyzer-server** : Analyse du PDF compilé
-  - Pour vérifier les informations du fichier compilé et détecter des erreurs visuelles
-
 ### Serveurs délégués à d'autres skills
 
 - **document-creator-server** → Skill `tex-document-creator`
@@ -250,26 +249,24 @@ Niveaux du système éducatif français :
 
 1. **Toujours utiliser les environnements bfcours** : Ne jamais utiliser les environnements LaTeX standard enumerate, itemize ou tabular. Utiliser tcbenumerate, MultiColonnes et tcbtab.
 
-2. **L'encodage est critique** : Toujours exécuter `encoding-fixer-server` sur les fichiers créés/édités pour éviter les problèmes UTF-8 avec les accents français.
-
-3. **Chargement progressif** :
+2. **Chargement progressif** :
    - Lire `references/bfcours-conventions.md` pour les conventions essentielles
    - Lire `references/exemples-usecases.md` pour des exemples professionnels si nécessaire
    - Utiliser Grep pour chercher des patterns spécifiques dans les exemples
 
-4. **Validation par compilation** : Pour les documents complets, utiliser le skill `tex-compiling-skill` pour compiler et valider la sortie PDF.
+3. **Validation par compilation** : Pour les documents complets, utiliser le skill `tex-compiling-skill` pour compiler et valider la sortie PDF.
 
-5. **Intégration des compétences** : Toujours chercher et intégrer les compétences pertinentes depuis `competences-server` pour les exercices et évaluations.
+4. **Intégration des compétences** : Toujours chercher et intégrer les compétences pertinentes depuis `competences-server` pour les exercices et évaluations.
 
-6. **Emphase du vocabulaire** : Dans les cours (documents Cours), TOUJOURS utiliser `\voc{mot}` pour la première occurrence des termes de vocabulaire.
+5. **Emphase du vocabulaire** : Dans les cours (documents Cours), TOUJOURS utiliser `\voc{mot}` pour la première occurrence des termes de vocabulaire.
 
-7. **Accentuation du texte** : Remplacer tous les `\textbf{}` par `\acc{}` pour une emphase colorée adaptative.
+6. **Accentuation du texte** : Remplacer tous les `\textbf{}` par `\acc{}` pour une emphase colorée adaptative.
 
-8. **Verbes d'action** : Les verbes d'action élève doivent être mis en emphase : `\acc{Calculer}`, `\acc{Déterminer}`, etc.
+7. **Verbes d'action** : Les verbes d'action élève doivent être mis en emphase : `\acc{Calculer}`, `\acc{Déterminer}`, etc.
 
-9. **Première ligne des tableaux** : Dans `tcbtab`, la première ligne EST l'en-tête (pas de `\hline` initial nécessaire, contrairement à tabular).
+8. **Première ligne des tableaux** : Dans `tcbtab`, la première ligne EST l'en-tête (pas de `\hline` initial nécessaire, contrairement à tabular).
 
-10. **Attribution des points** : Être réfléchi avec `\tcbitempoint{}` pour refléter avec précision la complexité de la tâche.
+9. **Attribution des points** : Être réfléchi avec `\tcbitempoint{}` pour refléter avec précision la complexité de la tâche.
 
 ## Références de la Base de Connaissances
 
@@ -292,10 +289,9 @@ Workflow : Éditer un Document Complet avec Validation
 2. Charger bfcours-conventions.md
 3. Écrire une nouvelle section avec environnements Definition, Propriete, Exemple
 4. Utiliser \voc{} pour le vocabulaire, \acc{} pour l'emphase
-5. Corriger l'encodage
-6. Déléguer compilation au skill tex-compiling-skill
-7. Vérifier les erreurs mathématiques dans le PDF via pdf-analyzer
-8. Effectuer corrections finales si nécessaire
+5. Déléguer compilation au skill tex-compiling-skill
+6. Vérifier les erreurs mathématiques dans le PDF via pdf-analyzer
+7. Effectuer corrections finales si nécessaire
 ```
 
 ### Exemple 2 : Édition rapide de fichier
@@ -308,8 +304,7 @@ Workflow : Éditer un Fichier Unique (Sans Compilation)
 2. Lire enonce.tex s'il existe
 3. Chercher compétences pertinentes avec competences-server
 4. Écrire les exercices en utilisant l'environnement EXO avec \tcbitempoint
-5. Corriger l'encodage
-6. Terminé (pas de compilation)
+5. Terminé (pas de compilation)
 ```
 
 ### Exemple 3 : Enrichir un document avec compétences
@@ -321,8 +316,7 @@ Utilisateur : "Ajoute les codes de compétences aux exercices sur les vecteurs e
 2. Utiliser competences-server: advanced_search("vecteurs", "1ere_spe")
 3. Identifier les compétences pertinentes
 4. Éditer chaque environnement EXO pour ajouter le code compétence
-5. Corriger l'encodage
-6. Valider avec compilation (déléguer à tex-compiling-skill)
+5. Valider avec compilation (déléguer à tex-compiling-skill)
 ```
 
 ## Rappels Critiques
@@ -330,7 +324,6 @@ Utilisateur : "Ajoute les codes de compétences aux exercices sur les vecteurs e
 - JAMAIS utiliser les environnements LaTeX standard `enumerate`, `itemize` ou `tabular`
 - TOUJOURS utiliser `\acc{}` au lieu de `\textbf{}`
 - TOUJOURS utiliser `\voc{}` pour la première occurrence de vocabulaire dans les cours
-- TOUJOURS corriger l'encodage après création/modification de fichier
 - TOUJOURS déléguer la compilation au skill `tex-compiling-skill`
 - TOUJOURS vérifier les exemples usecases en cas de doute sur l'utilisation bfcours
 - TOUJOURS intégrer les compétences pertinentes pour les exercices/évaluations

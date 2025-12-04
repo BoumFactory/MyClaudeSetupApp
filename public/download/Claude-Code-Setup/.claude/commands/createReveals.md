@@ -2,20 +2,47 @@
 
 ## Description
 
-Crée automatiquement une présentation reveal.js interactive et stylée de haute qualité adaptée au contexte (collège, lycée, académique). Gère la création, test et finalisation de manière autonome via l'agent reveals-creator.
+Crée automatiquement une présentation reveal.js interactive et stylée de haute qualité adaptée au contexte (collège, lycée, académique).
+
+**PAR DÉFAUT : Contenu EXHAUSTIF** - La présentation contient TOUT le contenu du document source (tous les exercices, toutes les sections, tous les exemples). Rien n'est omis sauf instruction explicite contraire.
+
+Gère la création, test et finalisation de manière autonome via l'agent reveals-creator.
 
 ## Philosophie
 
 **PRINCIPE FONDAMENTAL** : Produire une présentation **complète**, **interactive** et **élégante**, prête à être présentée en classe ou en conférence.
 
+**RÈGLE D'OR : Templates prédéfinis avec CSS fixe**
+
+Les présentations sont générées à partir de templates validés stockés dans `.claude/datas/reveal-templates/` :
+- `template-college.html` : Style collège (couleurs vives, police 22px)
+- `template-lycee.html` : Style lycée (équilibré, police 20px)
+- `template-academique.html` : Style académique (sobre, police 18px)
+
+**Le CSS et le design sont FIXES** - l'agent ne fait que remplir le contenu HTML.
+
 Le système :
 - Analyse le public cible et choisit le style approprié
+- **Traite TOUT le contenu source de manière exhaustive**
+- Détecte automatiquement si le contenu est volumineux et adapte sa stratégie
 - Crée le contenu HTML/CSS/JS avec alternance pédagogique question/réponse
 - Respecte les règles de densité et d'espacement
 - Intègre MathJax pour les formules mathématiques
 - Utilise les fragments pour révélation progressive
 - Teste dans un navigateur
 - Finalise et nettoie
+
+## Gestion du contenu volumineux
+
+**Stratégie adaptative automatique** :
+
+| Taille du document source | Stratégie |
+|---------------------------|-----------|
+| < 500 lignes | Traitement direct par l'agent reveals-creator |
+| 500-1000 lignes | Traitement séquentiel par sections |
+| > 1000 lignes | Délégation à plusieurs agents en parallèle + assemblage |
+
+**L'agent principal est autonome** : Il détermine lui-même s'il doit déléguer ou traiter directement. L'utilisateur n'a PAS besoin de redemander des compléments.
 
 ## Usage
 
@@ -49,6 +76,18 @@ Le système :
 L'agent reveals-creator est appelé avec le skill :
 - **reveals-presentation** : Expertise reveal.js complète
 
+**⚠️ IMPORTANT - Gestion du contexte .claude** :
+
+Tu es lancé dans un répertoire de projet qui contient un dossier `.claude` local avec toutes les ressources nécessaires (templates, skills, serveurs MCP, configuration). Tu peux y accéder directement.
+
+**RÈGLE OBLIGATOIRE** : Si tu appelles des sous-agents avec le Task tool, tu DOIS leur transmettre le chemin absolu vers ce dossier `.claude` dans ton prompt, sinon ils chercheront dans le `.claude` à la racine (qui est vide) et échoueront.
+
+**Comment faire** :
+1. Détermine le chemin absolu du répertoire courant  Pour obtenir le chemin absolu au format Windows :  `pwd -W`ou Si PowerShell : `(Get-Location).Path`
+
+2. Construis le chemin `.claude` : `<chemin_courant>\.claude`
+3. Dans chaque prompt de sous-agent, inclus explicitement : "Utilise le dossier .claude situé à : `<chemin_absolu>`"
+
 ### Étapes automatiques
 
 1. **Analyse de la demande**
@@ -57,8 +96,11 @@ L'agent reveals-creator est appelé avec le skill :
    - Choisir le template approprié
 
 2. **Création du contenu HTML**
-   - Copier le template (collège/lycée/académique)
-   - Remplir les métadonnées
+   - Charger le template prédéfini (collège/lycée/académique) depuis `.claude/datas/reveal-templates/`
+   - Conserver INTÉGRALEMENT le CSS et la configuration Reveal.js
+   - Remplir UNIQUEMENT le contenu HTML entre `<div class="slides">` et `</div>`
+   - Utiliser les classes CSS prédéfinies du template
+   - Remplir les métadonnées (titre, auteur, description)
    - Structurer le contenu :
      - Titre + plan
      - Sections thématiques
@@ -66,27 +108,22 @@ L'agent reveals-creator est appelé avec le skill :
      - Alternance question/réponse
      - Conclusion
    - Respecter les règles de densité (60% collège, 70% lycée/académique)
-   - Intégrer MathJax pour les formules mathématiques
+   - Intégrer MathJax pour les formules mathématiques (délimiteurs `\(...\)` et `\[...\]`)
    - Utiliser les fragments pour révélation progressive
 
-3. **Configuration reveal.js**
-   - Paramétrer les transitions
-   - Activer les plugins (Math, Notes, Highlight, Zoom)
-   - Définir les options de navigation
-
-4. **Test**
+3. **Test**
    - Lancer un serveur local (Python ou Node.js)
    - Ouvrir dans le navigateur
    - Vérifier navigation, fragments, formules
    - Tester responsive (mobile/tablette)
    - Vérifier mode présentation (touche S)
 
-5. **Finalisation**
+4. **Finalisation**
    - Corriger les bugs détectés
    - Optimiser la mise en page
    - Valider le responsive design
 
-6. **Rapport final**
+5. **Rapport final**
    - Résumé de la présentation
    - Nombre de slides
    - Exercices intégrés

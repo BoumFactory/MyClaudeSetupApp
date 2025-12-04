@@ -83,6 +83,20 @@ Cette commande lance l'agent spécialisé `app-creator-agent` qui :
 
 ## Workflow Automatique
 
+**⚠️ IMPORTANT - Gestion du contexte .claude** :
+
+Tu es lancé dans un répertoire de projet qui contient un dossier `.claude` local avec toutes les ressources nécessaires (templates, skills, serveurs MCP, configuration). Tu peux y accéder directement.
+
+**RÈGLE OBLIGATOIRE** : Si tu appelles des sous-agents avec le Task tool, tu DOIS leur transmettre le chemin absolu vers ce dossier `.claude` dans ton prompt, sinon ils chercheront dans le `.claude` à la racine (qui est vide) et échoueront.
+
+**Comment faire** :
+1. Détermine le chemin absolu du répertoire courant  Pour obtenir le chemin absolu au format Windows :  `pwd -W`ou Si PowerShell : `(Get-Location).Path`
+
+2. Construis le chemin `.claude` : `<chemin_courant>\.claude`
+3. Dans chaque prompt de sous-agent, inclus explicitement : "Utilise le dossier .claude situé à : `<chemin_absolu>`"
+
+---
+
 Lorsque vous lancez `/create-app`, l'agent :
 
 ### Phase 1 : Analyse (30 secondes)

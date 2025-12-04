@@ -1,7 +1,7 @@
 ---
 name: programme-officiel-extractor
 description: Agent spécialisé pour extraire et structurer les programmes officiels de mathématiques depuis les PDF du BO. Produit des fichiers JSON avec les compétences atomiques par niveau.
-model: claude-haiku-4-5-20251001
+model: claude-opus-4-5
 tools:
   - Read
   - Write

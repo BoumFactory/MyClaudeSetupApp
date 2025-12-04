@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation - Le Produit Scalaire</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <!-- MathJax pour le rendu LaTeX -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 1.2
+            },
+            startup: {
+                ready: () => {
+                    MathJax.startup.defaultReady();
+                    window.MathJaxReady = true;
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+    <!-- ============================================
+         BARRE DE MENU PRINCIPALE
+         ============================================ -->
+    <nav class="menubar">
+        <div class="menu-left">
+            <span class="app-title">Le Produit Scalaire</span>
+        </div>
+        <div class="menu-center">
+            <span class="menu-title">Animation</span>
+        </div>
+        <div class="menu-right">
+            <button id="btn-fullscreen" class="menu-btn" title="Plein écran">⛶</button>
+            <button id="btn-reset" class="menu-btn" title="Réinitialiser">↺</button>
+            <button id="btn-help" class="menu-btn" title="Aide">?</button>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         CONTENEUR PRINCIPAL
+         ============================================ -->
+    <main class="main-container">
+
+        <!-- ========================================
+             MODE ANIMATION (Capsule vidéo)
+             ======================================== -->
+        <div class="mode-container active" id="mode-animation">
+            <div class="canvas-wrapper">
+                <canvas id="animation-canvas"></canvas>
+                <!-- Overlay pour le rendu MathJax -->
+                <div id="math-overlay" class="math-overlay"></div>
+                <!-- Overlay de transition entre scènes -->
+                <div id="scene-transition" class="scene-transition hidden">
+                    <div class="transition-content"></div>
+                </div>
+            </div>
+
+            <!-- Barre de contrôle timeline -->
+            <div class="timeline-bar">
+                <div class="timeline-controls">
+                    <button class="tl-btn" id="tl-prev-scene" title="Scène précédente">⏮</button>
+                    <button class="tl-btn" id="tl-step-back" title="Reculer">◀◀</button>
+                    <button class="tl-btn tl-btn-play" id="tl-play" title="Lecture/Pause">▶</button>
+                    <button class="tl-btn" id="tl-step-forward" title="Avancer">▶▶</button>
+                    <button class="tl-btn" id="tl-next-scene" title="Scène suivante">⏭</button>
+                </div>
+
+                <div class="timeline-progress">
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                        <div class="progress-handle" id="progress-handle"></div>
+                        <!-- Marqueurs de scènes ajoutés dynamiquement -->
+                    </div>
+                    <div class="time-display">
+                        <span id="time-current">0:00</span>
+                        <span>/</span>
+                        <span id="time-total">0:00</span>
+                    </div>
+                </div>
+
+                <div class="timeline-speed">
+                    <button class="speed-btn" data-speed="0.5">0.5x</button>
+                    <button class="speed-btn active" data-speed="1">1x</button>
+                    <button class="speed-btn" data-speed="2">2x</button>
+                </div>
+            </div>
+
+            <!-- Chapitres/Scènes -->
+            <div class="scenes-bar" id="scenes-bar">
+                <!-- Boutons de scènes générés dynamiquement -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============================================
+         MODAL D'AIDE
+         ============================================ -->
+    <div class="modal hidden" id="help-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Aide</h2>
+                <button class="modal-close" id="modal-close">×</button>
+            </div>
+            <div class="modal-body" id="help-content">
+                <h3>Controles</h3>
+                <p>Utilisez les controles pour naviguer dans l'animation :</p>
+                <ul>
+                    <li><strong>▶/⏸</strong> : Lecture/Pause</li>
+                    <li><strong>◀◀/▶▶</strong> : Reculer/Avancer</li>
+                    <li><strong>⏮/⏭</strong> : Scene precedente/suivante</li>
+                    <li><strong>Barre de progression</strong> : Cliquez pour naviguer</li>
+                    <li><strong>Chapitres</strong> : Cliquez pour aller a une scene</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <!-- Core -->
+    <script src="js/math-utils.js"></script>
+    <script src="js/canvas-renderer.js"></script>
+    <script src="js/animation-core.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/render-helpers.js"></script>
+
+    <!-- Scènes (dans js/scenarios/) -->
+    <script src="js/scenarios/index.js"></script>
+    <script src="js/scenarios/01-intro.js"></script>
+    <script src="js/scenarios/02-norme.js"></script>
+    <script src="js/scenarios/03-deux-vecteurs.js"></script>
+    <script src="js/scenarios/04-angle.js"></script>
+    <script src="js/scenarios/05-calcul-geometrique.js"></script>
+    <script src="js/scenarios/06-projection.js"></script>
+    <script src="js/scenarios/07-analytique.js"></script>
+    <script src="js/scenarios/08-orthogonalite.js"></script>
+    <script src="js/scenarios/09-signe.js"></script>
+    <script src="js/scenarios/10-recap.js"></script>
+    <script src="js/scenarios/11-exemple-avance.js"></script>
+    <script src="js/scenarios/12-qcm-methodes.js"></script>
+
+    <!-- Chargement des scènes et démarrage -->
+    <script src="js/scenes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

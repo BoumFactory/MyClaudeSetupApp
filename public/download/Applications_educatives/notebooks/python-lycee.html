@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activités Python - Lycée</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196F3;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            color: #1976D2;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #424242;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notebooks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .notebook-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .notebook-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .notebook-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .notebook-card p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .notebook-card .meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+
+        .badge.time {
+            background: #FFC107;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-basthon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-basthon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-download {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-download:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            color: #666;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .stat-card .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .notebooks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐍 Activités Python pour le Lycée</h1>
+        <p class="subtitle">Notebooks interactifs avec Basthon</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number">31</div>
+                <div class="label">Notebooks</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">3</div>
+                <div class="label">Niveaux</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">150+</div>
+                <div class="label">Exercices</div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📌 Comment utiliser ?</h3>
+            <p>
+                Cliquez sur un notebook pour l'ouvrir directement dans Basthon.
+                <br><br>
+                ✨ <strong>Aucune installation nécessaire !</strong> Tous les notebooks sont intégrés dans cette page.
+                Vous pouvez exécuter le code Python directement dans votre navigateur.
+            </p>
+        </div>
+
+        <!-- SECONDE -->
+        <div class="section">
+            <h2><span class="emoji">📘</span> Niveau Seconde</h2>
+            <div class="notebooks-grid">
+                <div class="notebook-card">
+                    <h3>🔢 Calculs et découverte de Python</h3>
+                    <p>Découvrir les calculs de base, les variables et les opérations arithmétiques en Python.</p>
+                    <div class="meta">
+                        <span class="badge">Algorithmique</span>
+                        <span class="badge time">30-45 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/seconde_calculs_decouverte_python.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/seconde_calculs_decouverte_python.ipynb" download="seconde_calculs_decouverte_python.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>✅ Conditions if/else</h3>
+                    <p>Apprendre à utiliser les structures conditionnelles pour prendre des décisions en Python.</p>
+                    <div class="meta">
+                        <span class="badge">Algorithmique</span>
+                        <span class="badge time">40-50 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/seconde_conditions_if_else.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/seconde_conditions_if_else.ipynb" download="seconde_conditions_if_else.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🔁 Boucles for et range()</h3>
+                    <p>Automatiser des calculs répétitifs avec les boucles for et la fonction range().</p>
+                    <div class="meta">
+                        <span class="badge">Fonctions</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/seconde_boucles_for_range.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/seconde_boucles_for_range.ipynb" download="seconde_boucles_for_range.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>📚 Manipuler des listes</h3>
+                    <p>Découvrir les listes Python : création, accès aux éléments, parcours et modifications.</p>
+                    <div class="meta">
+                        <span class="badge">Structures de données</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/seconde_listes.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/seconde_listes.ipynb" download="seconde_listes.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🎲 Nombres aléatoires</h3>
+                    <p>Générer des nombres aléatoires avec le module random et simuler des expériences.</p>
+                    <div class="meta">
+                        <span class="badge">Probabilités</span>
+                        <span class="badge time">40-50 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/seconde_aleatoire_random.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/seconde_aleatoire_random.ipynb" download="seconde_aleatoire_random.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>📊 Graphiques avec matplotlib</h3>
+                    <p>Tracer des courbes de fonctions avec matplotlib et numpy.linspace().</p>
+                    <div class="meta">
+                        <span class="badge">Fonctions</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/seconde_graphiques_matplotlib.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/seconde_graphiques_matplotlib.ipynb" download="seconde_graphiques_matplotlib.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🔍 Algorithmes de recherche</h3>
+                    <p>Rechercher le maximum et le minimum dans une liste de données.</p>
+                    <div class="meta">
+                        <span class="badge">Algorithmique</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/seconde_algorithmes_recherche.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/seconde_algorithmes_recherche.ipynb" download="seconde_algorithmes_recherche.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🐢 Dessiner avec la Tortue</h3>
+                    <p>Programmation graphique avec turtle : déplacements, rotations, dessins géométriques et motifs répétitifs.</p>
+                    <div class="meta">
+                        <span class="badge">Graphique</span>
+                        <span class="badge time">60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/seconde_turtle_dessin_basthon.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/seconde_turtle_dessins.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREMIÈRE -->
+        <div class="section">
+            <h2><span class="emoji">📗</span> Niveau Première</h2>
+            <div class="notebooks-grid">
+                <div class="notebook-card">
+                    <h3>🔄 Boucles while et détermination de seuil</h3>
+                    <p>Utiliser les boucles while pour déterminer un seuil avec des suites numériques.</p>
+                    <div class="meta">
+                        <span class="badge">Algorithmique</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/premiere_seuil_while.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/premiere_seuil_while.ipynb" download="premiere_seuil_while.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🔢 Suites numériques et récurrence</h3>
+                    <p>Définir et calculer les termes de suites arithmétiques, géométriques et récurrentes.</p>
+                    <div class="meta">
+                        <span class="badge">Suites</span>
+                        <span class="badge time">50-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/premiere_suites_recurrence.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/premiere_suites_recurrence.ipynb" download="premiere_suites_recurrence.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>📐 Taux d'accroissement</h3>
+                    <p>Calculer le taux d'accroissement et approcher le nombre dérivé d'une fonction.</p>
+                    <div class="meta">
+                        <span class="badge">Dérivation</span>
+                        <span class="badge time">50-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/premiere_taux_accroissement.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/premiere_taux_accroissement.ipynb" download="premiere_taux_accroissement.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>📈 Variations de fonction</h3>
+                    <p>Étudier les variations d'une fonction avec Python (croissance, décroissance).</p>
+                    <div class="meta">
+                        <span class="badge">Fonctions</span>
+                        <span class="badge time">50-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/premiere_variations_fonction.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/premiere_variations_fonction.ipynb" download="premiere_variations_fonction.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>↗️ Produit scalaire</h3>
+                    <p>Calculer le produit scalaire de vecteurs et vérifier l'orthogonalité.</p>
+                    <div class="meta">
+                        <span class="badge">Géométrie</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/premiere_produit_scalaire.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/premiere_produit_scalaire.ipynb" download="premiere_produit_scalaire.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>📊 Statistiques descriptives</h3>
+                    <p>Calculer moyenne, médiane, écart-type et analyser des séries de données.</p>
+                    <div class="meta">
+                        <span class="badge">Statistiques</span>
+                        <span class="badge time">50-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/premiere_statistiques_descriptives.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/premiere_statistiques_descriptives.ipynb" download="premiere_statistiques_descriptives.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🎲 Simulation d'expériences aléatoires</h3>
+                    <p>Utiliser le module random pour simuler des expériences aléatoires et calculer des fréquences.</p>
+                    <div class="meta">
+                        <span class="badge">Probabilités</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/premiere_probabilites_simulation.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/premiere_probabilites_simulation.ipynb" download="premiere_probabilites_simulation.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>📊 Estimer une probabilité par simulation</h3>
+                    <p>Répéter des expériences aléatoires pour estimer des probabilités et observer la loi des grands nombres.</p>
+                    <div class="meta">
+                        <span class="badge">Probabilités</span>
+                        <span class="badge time">60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/premiere_probabilites_estimation.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/premiere_probabilites_estimation.ipynb" download="premiere_probabilites_estimation.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PLUS D'ACTIVITÉS -->
+        <div class="section">
+            <h2><span class="emoji">🎯</span> Plus d'activités (niveau avancé)</h2>
+            <p style="margin-bottom: 20px; color: #666; font-style: italic;">
+                Activités adaptées d'Eduscol pour élèves autonomes ayant déjà des bases en Python.
+                Les exercices sont progressifs avec des corrections intégrées.
+            </p>
+
+            <h3 style="color: #667eea; margin: 20px 0 10px 0; font-size: 1.2em;">📘 Niveau Seconde</h3>
+            <div class="notebooks-grid">
+                <div class="notebook-card">
+                    <h3>🎿 Tremplin de ski</h3>
+                    <p>Géométrie analytique : alignement, équation de droite, distances, longueur d'arc.</p>
+                    <div class="meta">
+                        <span class="badge">Géométrie</span>
+                        <span class="badge time">60-75 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act1_tremplin_ski.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act1_tremplin_ski.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🔢 Encadrement de √2</h3>
+                    <p>Approximations par balayage : tracé de fonction, recherche de zéro, convergence.</p>
+                    <div class="meta">
+                        <span class="badge">Fonctions</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act2_encadrement_racine2.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act2_encadrement_racine2.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>💯 Nombre de chiffres</h3>
+                    <p>Puissances de 10 : déterminer le nombre de chiffres d'un entier, application aux puissances de 2.</p>
+                    <div class="meta">
+                        <span class="badge">Puissances</span>
+                        <span class="badge time">30-45 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act3_nombre_chiffres.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act3_nombre_chiffres.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🎲 Jeu de dés</h3>
+                    <p>Probabilités : peut-on former un triangle ? Dénombrement, simulation, loi des grands nombres.</p>
+                    <div class="meta">
+                        <span class="badge">Probabilités</span>
+                        <span class="badge time">60-75 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act4_jeu_des.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act4_jeu_des.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: #667eea; margin: 20px 0 10px 0; font-size: 1.2em;">📗 Niveau Première</h3>
+            <div class="notebooks-grid">
+                <div class="notebook-card">
+                    <h3>📈 Approximation de la dérivée</h3>
+                    <p>Dérivation numérique : taux d'accroissement, convergence, comparaison avec formules théoriques.</p>
+                    <div class="meta">
+                        <span class="badge">Dérivation</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act6_derivee_fonction.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act6_derivee_fonction.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>📱 Suite et réseaux sociaux</h3>
+                    <p>Modélisation de la croissance d'un réseau social : suites arithmétiques vs géométriques.</p>
+                    <div class="meta">
+                        <span class="badge">Suites</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act7_suite_reseaux_sociaux.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act7_suite_reseaux_sociaux.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🎲 Loi de Bernoulli</h3>
+                    <p>Simulation d'épreuves de Bernoulli et loi binomiale avec visualisation d'histogrammes.</p>
+                    <div class="meta">
+                        <span class="badge">Probabilités</span>
+                        <span class="badge time">30-45 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act8_simulation_bernoulli.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act8_simulation_bernoulli.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🎫 Loterie et espérance</h3>
+                    <p>Simuler une loterie, calculer l'espérance de gain, notion de jeu équitable.</p>
+                    <div class="meta">
+                        <span class="badge">Probabilités</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act9_loterie.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act9_loterie.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: #667eea; margin: 20px 0 10px 0; font-size: 1.2em;">📙 Niveau Terminale</h3>
+            <div class="notebooks-grid">
+                <div class="notebook-card">
+                    <h3>📐 Méthode d'Archimède</h3>
+                    <p>Approximation de π par polygones inscrits et circonscrits, observation de la convergence.</p>
+                    <div class="meta">
+                        <span class="badge">Géométrie</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act10_archimede.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act10_archimede.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🎯 Méthode de Monte-Carlo</h3>
+                    <p>Estimation de π par simulation aléatoire de points dans un carré, visualisation graphique.</p>
+                    <div class="meta">
+                        <span class="badge">Probabilités</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act11_monte_carlo.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act11_monte_carlo.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🧮 Méthode d'Euler</h3>
+                    <p>Résolution numérique d'équations différentielles : y' = f(t,y), applications variées.</p>
+                    <div class="meta">
+                        <span class="badge">Équations diff.</span>
+                        <span class="badge time">60-75 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act12_methode_euler.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act12_methode_euler.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🪂 Chute libre avec frottements</h3>
+                    <p>Simulation physique : équations différentielles, vitesse limite, parachutiste à deux phases.</p>
+                    <div class="meta">
+                        <span class="badge">Physique & EDO</span>
+                        <span class="badge time">60-75 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/more_activites/act13_chute_libre.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/more_activites/act13_chute_libre.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIVERS -->
+        <div class="section">
+            <h2><span class="emoji">📦</span> Divers</h2>
+            <div class="notebooks-grid">
+                <div class="notebook-card">
+                    <h3>📝 Définir des fonctions</h3>
+                    <p>Créer ses propres fonctions pour organiser et réutiliser du code efficacement.</p>
+                    <div class="meta">
+                        <span class="badge">Fonctions</span>
+                        <span class="badge time">45-60 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/seconde_fonctions_def_return.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/seconde_fonctions_def_return.ipynb" download="seconde_fonctions_def_return.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+                <div class="notebook-card">
+                    <h3>🎓 Introduction aux classes en Python</h3>
+                    <p>Découvrir la programmation orientée objet appliquée aux mathématiques : points, vecteurs, fractions.</p>
+                    <div class="meta">
+                        <span class="badge">POO</span>
+                        <span class="badge time">60-90 min</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://notebook.basthon.fr/?from=https://raw.githubusercontent.com/BoumFactory/notebooks/master/premiere_classes_introduction.ipynb" target="_blank" class="btn btn-basthon">
+                            🚀 Ouvrir dans Basthon
+                        </a>
+                        <a href="https://github.com/BoumFactory/notebooks/blob/master/premiere_classes_introduction.ipynb" class="btn btn-download">
+                            💾 Télécharger
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- POUR ALLER PLUS LOIN -->
+        <div class="section">
+            <h2><span class="emoji">🚀</span> Pour aller plus loin</h2>
+            <div class="info-box" style="background-color: #f3e5f5; border-left-color: #9c27b0;">
+                <h3 style="color: #7b1fa2;">🎨 Galerie Basthon</h3>
+                <p>
+                    Découvrez de nombreux exemples Python interactifs : spirales avec Turtle, fractales,
+                    graphiques Matplotlib, cartes avec Folium, et bien plus encore !
+                </p>
+                <p style="margin-top: 15px;">
+                    <a href="https://basthon.fr/galerie/" target="_blank" class="btn btn-basthon" style="display: inline-block; width: auto;">
+                        🌟 Explorer la galerie Basthon
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>🎓 Activités Python pour l'enseignement des mathématiques au lycée</strong></p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                Notebooks interactifs chargés depuis GitHub
+            </p>
+            <p style="margin-top: 15px; font-size: 0.85em; color: #999;">
+                Généré automatiquement • <a href="https://github.com/BoumFactory/notebooks" target="_blank" style="color: #667eea;">GitHub</a> • Basthon • Python 3
+            </p>
+        </div>
+    </div>
+</body>
+</html>
