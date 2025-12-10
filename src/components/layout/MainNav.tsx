@@ -204,6 +204,44 @@ export function MainNav() {
           ]
         },
         {
+          title: "Skills expérimentaux",
+          isCategory: true,
+          icon: Package,
+          description: "Skills disponibles dans Claude-Code-Setup",
+          presentations: [
+            {
+              title: "Jupyter Notebook",
+              href: "/claude-code/presentations/jupyter-notebook-skill",
+              icon: Presentation,
+              description: "Notebooks pédagogiques Python"
+            },
+            {
+              title: "Interactive Animation",
+              href: "/claude-code/presentations/interactive-animation-skill",
+              icon: Presentation,
+              description: "Animations mathématiques HTML/JS"
+            },
+            {
+              title: "QCM Creator",
+              href: "/claude-code/presentations/qcm-creator-skill",
+              icon: Presentation,
+              description: "QCM mathématiques rdmcq"
+            },
+            {
+              title: "Infography Generator",
+              href: "/claude-code/presentations/infography-generator-skill",
+              icon: Presentation,
+              description: "Infographies éducatives Gemini 3 Pro"
+            },
+            {
+              title: "Blueprint Eval",
+              href: "/claude-code/presentations/blueprint-eval-skill",
+              icon: Presentation,
+              description: "Fiches de révision interactives"
+            },
+          ]
+        },
+        {
           title: "Outils LaTeX",
           isCategory: true,
           icon: BookOpen,

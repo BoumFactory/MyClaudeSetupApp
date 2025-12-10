@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprint - Nombre dérivé et Fonctions trigonométriques</title>
+
+    <!-- MathJax -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.4;
+            background: #f5f5f5;
+        }
+
+        .header {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .header h1 { font-size: 1.4em; margin-bottom: 8px; }
+        .header .info { display: flex; justify-content: center; gap: 25px; font-size: 0.9em; flex-wrap: wrap; }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .tab {
+            padding: 10px 18px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        .tab:hover { background: #d0d0d0; }
+        .tab.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 18px;
+            border: 2px solid #667eea;
+            border-radius: 0 10px 10px 10px;
+            background: white;
+        }
+        .tab-content.active { display: block; }
+        .tab-content h3 { color: #667eea; margin-bottom: 12px; border-bottom: 2px solid #667eea; padding-bottom: 5px; }
+
+        .structure-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+        .structure-table th, .structure-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .structure-table th { background: #667eea; color: white; }
+        .structure-table tr:nth-child(even) { background: #f9f9f9; }
+
+        .competence {
+            background: white;
+            padding: 12px;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .competence h4 { color: #667eea; margin-bottom: 6px; font-size: 1em; }
+        .competence ul { margin-left: 18px; margin-top: 5px; }
+        .competence li { margin: 3px 0; }
+        .niveau { color: #f59e0b; font-weight: 500; margin-top: 5px; }
+
+        .question {
+            background: #fffbeb;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+        }
+        .question summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #92400e;
+            list-style: none;
+        }
+        .question summary::-webkit-details-marker { display: none; }
+        .question summary::before { content: "▶ "; font-size: 0.8em; }
+        .question[open] summary::before { content: "▼ "; }
+        .question .reponse {
+            margin-top: 10px;
+            padding: 10px;
+            background: #d1fae5;
+            border-radius: 5px;
+            font-style: italic;
+            color: #065f46;
+        }
+
+        .exercice-fleche {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #10b981;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .exercice-fleche .notion { font-weight: 600; color: #059669; }
+        .exercice-fleche .numeros { color: #6b7280; font-size: 0.9em; }
+        .priorite {
+            font-size: 0.85em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+        }
+        .prio-haute { background: #fee2e2; color: #dc2626; }
+        .prio-moyenne { background: #fef3c7; color: #d97706; }
+
+        .conseil {
+            padding: 10px 12px;
+            margin: 8px 0;
+            background: #eff6ff;
+            border-radius: 6px;
+            border-left: 3px solid #3b82f6;
+        }
+        .conseil::before { content: "💡 "; }
+        .conseil.warning { background: #fef2f2; border-left-color: #ef4444; }
+        .conseil.warning::before { content: "⚠️ "; }
+
+        .priorite-haute { border-left-color: #dc2626 !important; }
+        .priorite-moyenne { border-left-color: #f59e0b !important; }
+
+        .formula-box {
+            background: #f0f4ff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin: 5px 0;
+            border-left: 3px solid #667eea;
+        }
+
+        @media print {
+            .tabs { display: none; }
+            .tab-content {
+                display: block !important;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+                margin-bottom: 15px;
+            }
+            body { font-size: 11px; background: white; }
+            .header { background: #667eea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 Blueprint - Nombre dérivé et Fonctions trigonométriques</h1>
+        <div class="info">
+            <span>⏱️ 55 min</span>
+            <span>📊 20 points</span>
+            <span>🧮 Calculatrice autorisée</span>
+            <span>📅 1ère Spécialité</span>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('structure')">📋 Structure</button>
+        <button class="tab" onclick="showTab('competences')">🎯 Compétences</button>
+        <button class="tab" onclick="showTab('questions')">❓ Quiz révision</button>
+        <button class="tab" onclick="showTab('exercices')">📝 Exercices types</button>
+        <button class="tab" onclick="showTab('conseils')">💡 Conseils</button>
+    </div>
+
+    <!-- ONGLET 1 : Structure -->
+    <div id="structure" class="tab-content active">
+        <h3>📋 Structure du contrôle</h3>
+        <table class="structure-table">
+            <tr>
+                <th>Partie</th>
+                <th>Type</th>
+                <th>Points</th>
+                <th>Durée conseillée</th>
+            </tr>
+            <tr>
+                <td><strong>Partie 1</strong></td>
+                <td>QCM Automatismes (6 questions)</td>
+                <td>3 pts</td>
+                <td>~8 min</td>
+            </tr>
+            <tr>
+                <td><strong>Exercice 1</strong></td>
+                <td>Calcul et démonstration (nombre dérivé)</td>
+                <td>7 pts</td>
+                <td>~18 min</td>
+            </tr>
+            <tr>
+                <td><strong>Exercice 2</strong></td>
+                <td>Étude de fonctions trigonométriques</td>
+                <td>6 pts</td>
+                <td>~15 min</td>
+            </tr>
+            <tr>
+                <td><strong>Exercice 3</strong></td>
+                <td>Problème de synthèse (2 parties)</td>
+                <td>4 pts</td>
+                <td>~10 min</td>
+            </tr>
+        </table>
+        <p style="margin-top: 12px; color: #6b7280; font-size: 0.9em;">
+            ⏰ <strong>Conseil de gestion du temps :</strong> Ne reste pas bloqué(e) plus de 5 min sur une question. Passe à la suite et reviens ensuite.
+        </p>
+    </div>
+
+    <!-- ONGLET 2 : Compétences -->
+    <div id="competences" class="tab-content">
+        <h3>🎯 Ce que tu dois maîtriser</h3>
+
+        <div class="competence priorite-haute">
+            <h4>📌 Nombre dérivé - Définition et calcul</h4>
+            <ul>
+                <li>Calculer le taux de variation d'une fonction entre deux valeurs</li>
+                <li>Exprimer le taux de variation entre $a$ et $a+h$</li>
+                <li>Déterminer la limite du taux de variation quand $h \to 0$</li>
+                <li>Conclure sur la dérivabilité et donner $f'(a)$</li>
+            </ul>
+            <p class="niveau">Niveau attendu : ⭐⭐⭐ (Démonstration complète)</p>
+        </div>
+
+        <div class="competence priorite-haute">
+            <h4>📌 Équation de tangente</h4>
+            <ul>
+                <li>Connaître la formule : $y = f'(a)(x - a) + f(a)$</li>
+                <li>Calculer $f(a)$ et $f'(a)$ pour déterminer l'équation</li>
+                <li>Vérifier si un point appartient à une tangente</li>
+            </ul>
+            <p class="niveau">Niveau attendu : ⭐⭐ (Application directe)</p>
+        </div>
+
+        <div class="competence priorite-haute">
+            <h4>📌 Parité d'une fonction</h4>
+            <ul>
+                <li>Vérifier que l'ensemble de définition est symétrique par rapport à $0$</li>
+                <li>Calculer $f(-x)$ et le comparer à $f(x)$</li>
+                <li>Conclure : paire si $f(-x) = f(x)$, impaire si $f(-x) = -f(x)$</li>
+                <li>En déduire la propriété géométrique de la courbe</li>
+            </ul>
+            <p class="niveau">Niveau attendu : ⭐⭐⭐ (Démonstration)</p>
+        </div>
+
+        <div class="competence priorite-moyenne">
+            <h4>📌 Périodicité d'une fonction</h4>
+            <ul>
+                <li>Montrer que $f(x + T) = f(x)$ pour tout $x$</li>
+                <li>Utiliser $\sin(x + 2\pi) = \sin(x)$ et $\cos(x + 2\pi) = \cos(x)$</li>
+            </ul>
+            <p class="niveau">Niveau attendu : ⭐⭐ (Application)</p>
+        </div>
+
+        <div class="competence priorite-moyenne">
+            <h4>📌 Angles associés</h4>
+            <ul>
+                <li>Connaître $\cos(\pi - x) = -\cos(x)$ et $\sin(\pi - x) = \sin(x)$</li>
+                <li>Connaître $\cos(\pi + x) = -\cos(x)$ et $\sin(\pi + x) = -\sin(x)$</li>
+                <li>Calculer des valeurs exactes à partir d'angles connus</li>
+            </ul>
+            <p class="niveau">Niveau attendu : ⭐⭐ (Application)</p>
+        </div>
+
+        <div class="competence">
+            <h4>📌 Automatismes (QCM)</h4>
+            <ul>
+                <li>Identités remarquables : $(a-b)^2 = a^2 - 2ab + b^2$</li>
+                <li>Pourcentages : coefficient multiplicateur</li>
+                <li>Coefficient directeur d'une droite</li>
+                <li>Racines d'un polynôme du second degré factorisé</li>
+                <li>Résolution de $x^2 = k$</li>
+            </ul>
+            <p class="niveau">Niveau attendu : ⭐ (Calcul mental/rapide)</p>
+        </div>
+    </div>
+
+    <!-- ONGLET 3 : Questions de compréhension -->
+    <div id="questions" class="tab-content">
+        <h3>❓ Vérifie ta compréhension du cours</h3>
+        <p style="color: #6b7280; margin-bottom: 15px;"><em>Clique sur chaque question pour voir la réponse</em></p>
+
+        <details class="question">
+            <summary>1. Quelle est la définition du nombre dérivé $f'(a)$ ?</summary>
+            <div class="reponse">Le nombre dérivé $f'(a)$ est la limite du taux de variation $\displaystyle\frac{f(a+h) - f(a)}{h}$ quand $h$ tend vers $0$, si cette limite existe et est finie.</div>
+        </details>
+
+        <details class="question">
+            <summary>2. Quelle est l'équation de la tangente à la courbe de $f$ au point d'abscisse $a$ ?</summary>
+            <div class="reponse">$$y = f'(a)(x - a) + f(a)$$ Le coefficient directeur est $f'(a)$ et la tangente passe par le point $(a\,;\,f(a))$.</div>
+        </details>
+
+        <details class="question">
+            <summary>3. Comment démontrer qu'une fonction est paire ?</summary>
+            <div class="reponse">1) Vérifier que l'ensemble de définition est symétrique par rapport à $0$.<br>2) Calculer $f(-x)$.<br>3) Montrer que $f(-x) = f(x)$ pour tout $x$ du domaine.</div>
+        </details>
+
+        <details class="question">
+            <summary>4. Quelle est la conséquence géométrique d'une fonction paire ? impaire ?</summary>
+            <div class="reponse"><strong>Fonction paire :</strong> la courbe admet l'axe des ordonnées comme axe de symétrie.<br><strong>Fonction impaire :</strong> la courbe admet l'origine comme centre de symétrie.</div>
+        </details>
+
+        <details class="question">
+            <summary>5. Quelle est la période de la fonction $\sin(2x)$ ?</summary>
+            <div class="reponse">La période est $\pi$. En effet, $\sin(2(x+\pi)) = \sin(2x + 2\pi) = \sin(2x)$ car sinus est $2\pi$-périodique.</div>
+        </details>
+
+        <details class="question">
+            <summary>6. Que valent $\cos(\pi - x)$ et $\sin(\pi + x)$ ?</summary>
+            <div class="reponse">$$\cos(\pi - x) = -\cos(x)$$ (symétrie par rapport à l'axe $Oy$)<br>$$\sin(\pi + x) = -\sin(x)$$ (symétrie par rapport à l'origine $O$)</div>
+        </details>
+
+        <details class="question">
+            <summary>7. La fonction $x \mapsto x \cdot \sin(x)$ est-elle paire ou impaire ?</summary>
+            <div class="reponse">Elle est <strong>paire</strong> !<br>$f(-x) = (-x) \cdot \sin(-x) = (-x) \cdot (-\sin(x)) = x \cdot \sin(x) = f(x)$<br>Produit de deux fonctions impaires = fonction paire.</div>
+        </details>
+    </div>
+
+    <!-- ONGLET 4 : Exercices fléchés -->
+    <div id="exercices" class="tab-content">
+        <h3>📝 Exercices à travailler en priorité</h3>
+        <p style="color: #6b7280; margin-bottom: 15px;">Références aux fiches d'exercices de la séquence</p>
+
+        <h4 style="color: #667eea; margin: 15px 0 10px 0;">🔢 Nombre dérivé et tangente</h4>
+
+        <div class="exercice-fleche">
+            <span class="notion">Taux de variation avec paramètre $h$</span>
+            <span class="numeros">Fiche Nombre dérivé : Ex. 5, 6 <span class="priorite prio-haute">Prioritaire</span></span>
+        </div>
+
+        <div class="exercice-fleche">
+            <span class="notion">Démontrer la dérivabilité</span>
+            <span class="numeros">Fiche Nombre dérivé : Ex. 10, 11 <span class="priorite prio-haute">Prioritaire</span></span>
+        </div>
+
+        <div class="exercice-fleche">
+            <span class="notion">Équation de tangente</span>
+            <span class="numeros">Fiche Nombre dérivé : Ex. 15, 17, 18 <span class="priorite prio-haute">Prioritaire</span></span>
+        </div>
+
+        <h4 style="color: #667eea; margin: 15px 0 10px 0;">📐 Fonctions trigonométriques</h4>
+
+        <div class="exercice-fleche">
+            <span class="notion">Parité d'une fonction</span>
+            <span class="numeros">Fiche Trigo série 2 : Ex. 8, 9, 10 <span class="priorite prio-haute">Prioritaire</span></span>
+        </div>
+
+        <div class="exercice-fleche">
+            <span class="notion">Périodicité de $\sin(kx)$</span>
+            <span class="numeros">Fiche Trigo série 2 : Ex. 4, 5 <span class="priorite prio-moyenne">Recommandé</span></span>
+        </div>
+
+        <div class="exercice-fleche">
+            <span class="notion">Angles associés - valeurs exactes</span>
+            <span class="numeros">Fiche Trigo série 2 : Ex. 1, 2, 3 <span class="priorite prio-moyenne">Recommandé</span></span>
+        </div>
+
+        <h4 style="color: #667eea; margin: 15px 0 10px 0;">🧮 Automatismes QCM</h4>
+
+        <div class="exercice-fleche">
+            <span class="notion">Identités remarquables</span>
+            <span class="numeros">Réviser $(a-b)^2$, $(a+b)^2$, $a^2-b^2$</span>
+        </div>
+
+        <div class="exercice-fleche">
+            <span class="notion">Coefficient directeur</span>
+            <span class="numeros">Fiche Nombre dérivé : Ex. 4 (lecture graphique)</span>
+        </div>
+    </div>
+
+    <!-- ONGLET 5 : Conseils -->
+    <div id="conseils" class="tab-content">
+        <h3>💡 Conseils de révision</h3>
+
+        <div class="conseil">
+            <strong>Ordre de révision recommandé :</strong> Commence par les démonstrations de dérivabilité (calcul du taux de variation, limite) car c'est la compétence la plus valorisée (7 pts). Ensuite révise la parité/périodicité.
+        </div>
+
+        <div class="conseil">
+            <strong>Méthode pour le nombre dérivé :</strong> Toujours écrire les 3 étapes :<br>
+            1) Calcul de $f(a+h) - f(a)$<br>
+            2) Division par $h$ et simplification<br>
+            3) Limite quand $h \to 0$<br>
+            Rédige chaque étape !
+        </div>
+
+        <div class="conseil warning">
+            <strong>Erreur fréquente (parité) :</strong> Ne pas confondre « $f(-x) = f(x)$ » (paire) et « $f(-x) = -f(x)$ » (impaire). Pour $x \cdot \sin(x)$, on a $(-x) \cdot (-\sin(x)) = +x \cdot \sin(x)$, donc <strong>PAIRE</strong> !
+        </div>
+
+        <div class="conseil warning">
+            <strong>Erreur fréquente (tangente) :</strong> Dans $y = f'(a)(x-a) + f(a)$, ne pas oublier le « $-a$ » dans la parenthèse. Ce n'est <strong>PAS</strong> $y = f'(a) \cdot x + f(a)$ !
+        </div>
+
+        <div class="conseil">
+            <strong>Pour les angles associés :</strong> Dessine rapidement le cercle trigonométrique et place les symétries.<br>
+            $\dfrac{3\pi}{4} = \pi - \dfrac{\pi}{4}$ (symétrie / axe $Oy$)<br>
+            $\dfrac{5\pi}{4} = \pi + \dfrac{\pi}{4}$ (symétrie / origine)
+        </div>
+
+        <div class="conseil">
+            <strong>Si tu manques de temps :</strong> Privilégie l'exercice 1 (7 pts) et l'exercice 3 (4 pts faciles). Le QCM peut être fait rapidement à la fin.
+        </div>
+
+        <div class="conseil">
+            <strong>Formules à connaître absolument :</strong>
+            <div class="formula-box" style="margin-top: 8px;">
+                <ul style="margin-left: 20px;">
+                    <li>Taux de variation : $\displaystyle\frac{f(a+h) - f(a)}{h}$</li>
+                    <li>Tangente : $y = f'(a)(x - a) + f(a)$</li>
+                    <li>$\sin(-x) = -\sin(x)$ et $\cos(-x) = \cos(x)$</li>
+                    <li>$\sin(\pi+x) = -\sin(x)$ et $\cos(\pi+x) = -\cos(x)$</li>
+                    <li>$\sin(\pi-x) = \sin(x)$ et $\cos(\pi-x) = -\cos(x)$</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+            // Rerender MathJax pour le nouvel onglet
+            if (typeof MathJax !== 'undefined' && MathJax.typeset) {
+                MathJax.typeset();
+            }
+        }
+    </script>
+
+    <footer style="text-align: center; margin-top: 20px; color: #9ca3af; font-size: 0.8em;">
+        Blueprint généré pour le contrôle de 1ère Spé - Lycée Camille Claudel
+    </footer>
+</body>
+</html>

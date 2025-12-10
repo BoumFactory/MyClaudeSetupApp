@@ -1,6 +1,49 @@
 {
   "changelogs": [
     {
+      "id": "2025-12-10",
+      "date": "2025-12-10",
+      "title": "Nouvelles présentations Skills",
+      "categories": ["downloads", "presentations"],
+      "changes": [
+        {
+          "title": "Présentation Jupyter Notebook Skill",
+          "details": "Documentation du skill pour créer des notebooks pédagogiques Python structurés",
+          "type": "feature"
+        },
+        {
+          "title": "Présentation Interactive Animation Skill",
+          "details": "Documentation du skill pour créer des animations mathématiques HTML/JS avec Canvas",
+          "type": "feature"
+        },
+        {
+          "title": "Présentation QCM Creator Skill",
+          "details": "Documentation du skill pour générer des QCM mathématiques avec rdmcq et BFCours",
+          "type": "feature"
+        },
+        {
+          "title": "Présentation Infography Generator Skill",
+          "details": "Documentation du skill pour créer des infographies éducatives avec Gemini 3 Pro",
+          "type": "feature"
+        },
+        {
+          "title": "Présentation Blueprint Eval Skill",
+          "details": "Documentation du skill pour générer des fiches de révision interactives HTML",
+          "type": "feature"
+        },
+        {
+          "title": "Nouvelle catégorie 'Skills expérimentaux'",
+          "details": "Ajout d'une catégorie dédiée dans le menu Présentations pour les skills partagés",
+          "type": "feature"
+        },
+        {
+          "title": "Exemples interactifs dans les présentations",
+          "details": "Liens vers les animations et blueprints de démonstration (Ctrl+clic pour ouvrir)",
+          "type": "improvement"
+        }
+      ]
+    },
+    {
       "id": "2025-12-04",
       "date": "2025-12-04",
       "title": "Agents animations et Jupyter",

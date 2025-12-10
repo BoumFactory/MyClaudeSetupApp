@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Développement">
+  <meta name="description" content="Skill make-blueprint-eval : générer des fiches de révision interactives HTML">
+  <title>Blueprint Eval - Fiches de Révision Interactives</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #667eea;
+      --accent-color: #764ba2;
+      --success-color: #28a745;
+      --warning-color: #ffc107;
+      --danger-color: #dc3545;
+      --text-color: #34495e;
+      --bg-light: #f0f4ff;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 { font-size: 2.2em; margin-bottom: 0.5em; }
+    .reveal h2 { font-size: 1.6em; margin-bottom: 0.8em; border-bottom: 3px solid var(--secondary-color); padding-bottom: 0.3em; }
+    .reveal h3 { font-size: 1.3em; color: var(--secondary-color); margin-top: 0.8em; }
+
+    .reveal ul, .reveal ol { margin: 1em 0; }
+    .reveal li { margin: 0.5em 0; line-height: 1.5; }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 1em;
+      max-height: 420px;
+      font-size: 0.7em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight { color: var(--accent-color); font-weight: 600; }
+    .reveal .success { color: var(--success-color); font-weight: 600; }
+    .reveal .warning { color: var(--warning-color); font-weight: 600; }
+
+    .reveal .box {
+      background: linear-gradient(135deg, var(--bg-light) 0%, #e8eeff 100%);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning-color);
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon { font-size: 1.2em; margin-right: 0.3em; vertical-align: middle; }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .smaller { font-size: 0.85em; }
+    .reveal .subtitle { color: var(--secondary-color); font-size: 0.7em; margin-top: 0.5em; }
+
+    .reveal .tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+    .reveal .tag.success { background: var(--success-color); }
+    .reveal .tag.warning { background: var(--warning-color); color: #333; }
+
+    .reveal .nav-hint {
+      margin-top: 1em;
+      padding: 0.5em;
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 5px;
+      font-size: 0.8em;
+      color: var(--secondary-color);
+    }
+
+    .reveal .tab-demo {
+      display: inline-block;
+      padding: 0.4em 1em;
+      background: #e0e0e0;
+      border-radius: 8px 8px 0 0;
+      font-size: 0.8em;
+      margin-right: 3px;
+    }
+    .reveal .tab-demo.active {
+      background: var(--secondary-color);
+      color: white;
+    }
+
+    .reveal .priority-badge {
+      display: inline-block;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      font-size: 0.75em;
+      font-weight: 600;
+    }
+    .reveal .priority-haute { background: #f8d7da; color: #721c24; border-left: 3px solid var(--danger-color); }
+    .reveal .priority-moyenne { background: #fff3cd; color: #856404; border-left: 3px solid var(--warning-color); }
+    .reveal .priority-basse { background: #d4edda; color: #155724; border-left: 3px solid var(--success-color); }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fas fa-clipboard-list icon"></i> Blueprint Eval</h1>
+        <p class="subtitle">Fiches de Révision Interactives HTML</p>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag">HTML autonome</span>
+          <span class="tag success">Onglets interactifs</span>
+          <span class="tag warning">Imprimable A4</span>
+        </p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <h2>Au programme</h2>
+        <ol class="feature-list">
+          <li class="fragment"><i class="fas fa-bullseye icon"></i> Qu'est-ce qu'un blueprint ?</li>
+          <li class="fragment"><i class="fas fa-folder-open icon"></i> Prérequis</li>
+          <li class="fragment"><i class="fas fa-th-large icon"></i> Les 5 onglets</li>
+          <li class="fragment"><i class="fas fa-route icon"></i> Protocole de génération</li>
+          <li class="fragment"><i class="fas fa-exclamation-triangle icon"></i> Règles de confidentialité</li>
+          <li class="fragment"><i class="fas fa-check-circle icon"></i> Bonnes pratiques</li>
+        </ol>
+      </section>
+
+      <!-- SLIDE 3 : EXEMPLE LIVE -->
+      <section>
+        <h2><i class="fas fa-eye icon" style="color: var(--secondary-color);"></i> Exemple : Dérivation & Trigo</h2>
+
+        <div class="box fragment">
+          <p><strong>Blueprint interactif généré avec ce skill</strong></p>
+          <p class="smaller" style="margin-top: 0.5em;">5 onglets, quiz dépliables, exercices fléchés, conseils</p>
+        </div>
+
+        <div class="fragment" style="margin-top: 1.5em;">
+          <a href="/render/html/blueprint_fonctions_derivation_trigo.html" target="_blank" rel="noopener"
+             style="display: inline-block; padding: 1em 2em; background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 1.1em; box-shadow: 0 4px 15px rgba(102,126,234,0.4); transition: transform 0.2s;">
+            <i class="fas fa-external-link-alt icon"></i> Voir le blueprint en plein écran
+          </a>
+        </div>
+
+        <p class="smaller fragment" style="margin-top: 1em; color: #666;">
+          <i class="fas fa-keyboard icon"></i> <strong>Ctrl + clic</strong> pour ouvrir dans un nouvel onglet
+        </p>
+        <p class="smaller fragment" style="margin-top: 0.3em; color: #666;">
+          <i class="fas fa-info-circle icon"></i> Cliquez sur les onglets et dépliez les questions pour tester l'interactivité
+        </p>
+      </section>
+
+      <!-- SLIDE 4 : QU'EST-CE QU'UN BLUEPRINT -->
+      <section>
+        <h2>Qu'est-ce qu'un blueprint ?</h2>
+
+        <div class="box fragment">
+          <p><strong>Un "exosquelette pédagogique" de l'évaluation</strong></p>
+          <p class="smaller" style="margin-top: 0.5em;">Page HTML interactive pour aider les élèves à réviser efficacement</p>
+        </div>
+
+        <ul class="smaller">
+          <li class="fragment"><i class="fas fa-sitemap icon"></i> <strong>Structure</strong> du contrôle (types, barème, durée)</li>
+          <li class="fragment"><i class="fas fa-bullseye icon"></i> <strong>Compétences</strong> évaluées avec niveaux de priorité</li>
+          <li class="fragment"><i class="fas fa-question-circle icon"></i> <strong>Quiz</strong> de compréhension du cours</li>
+          <li class="fragment"><i class="fas fa-link icon"></i> <strong>Fléchage</strong> vers les exercices types de la fiche</li>
+          <li class="fragment"><i class="fas fa-lightbulb icon"></i> <strong>Conseils</strong> de révision personnalisés</li>
+        </ul>
+      </section>
+
+      <!-- SLIDE 4 : PRÉREQUIS -->
+      <section>
+        <h2>Prérequis</h2>
+
+        <div class="box fragment" style="font-size: 0.85em;">
+          <p><strong>Disposer de la séquence complète :</strong></p>
+        </div>
+
+        <ul class="smaller">
+          <li class="fragment"><i class="fas fa-file-alt icon"></i> <strong>Sujet d'évaluation</strong> (<code>enonce.tex</code>)</li>
+          <li class="fragment"><i class="fas fa-file-code icon"></i> <strong>Synthèse</strong> (<code>synthese_evaluation.md</code>)</li>
+          <li class="fragment"><i class="fas fa-book icon"></i> <strong>Cours du chapitre</strong></li>
+          <li class="fragment"><i class="fas fa-tasks icon"></i> <strong>Fiche d'exercices</strong></li>
+          <li class="fragment"><i class="fas fa-puzzle-piece icon"></i> <strong>Activités</strong> (si disponibles)</li>
+        </ul>
+
+        <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+          <p><i class="fas fa-info-circle icon"></i> Le skill analyse <strong>toute la séquence</strong> pour créer un fléchage intelligent</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 : LES 5 ONGLETS -->
+      <section>
+        <section>
+          <h2>Les 5 onglets</h2>
+
+          <div style="margin: 1em 0;">
+            <span class="tab-demo active">📋 Structure</span>
+            <span class="tab-demo">🎯 Compétences</span>
+            <span class="tab-demo">❓ Quiz</span>
+            <span class="tab-demo">📝 Exercices</span>
+            <span class="tab-demo">💡 Conseils</span>
+          </div>
+
+          <div class="box fragment" style="font-size: 0.85em;">
+            <p><strong>Interface à onglets</strong> : navigation intuitive pour les élèves</p>
+            <p class="smaller" style="margin-top: 0.5em;">À l'impression : tous les onglets visibles sur une page A4</p>
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Détails de chaque onglet ↓
+          </div>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-clipboard-list icon"></i> Onglet Structure</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Vue d'ensemble du contrôle</strong> (sans révéler le contenu)</p>
+          </div>
+
+          <table class="smaller" style="width: 100%; margin-top: 1em; border-collapse: collapse;">
+            <tr style="background: var(--secondary-color); color: white;">
+              <th style="padding: 0.5em;">Partie</th>
+              <th style="padding: 0.5em;">Type</th>
+              <th style="padding: 0.5em;">Points</th>
+              <th style="padding: 0.5em;">Durée</th>
+            </tr>
+            <tr class="fragment" style="background: #f5f5f5;">
+              <td style="padding: 0.5em;">Exercice 1</td>
+              <td>QCM (6 questions)</td>
+              <td>3 pts</td>
+              <td>10 min</td>
+            </tr>
+            <tr class="fragment">
+              <td style="padding: 0.5em;">Exercice 2</td>
+              <td>Calculs</td>
+              <td>8 pts</td>
+              <td>25 min</td>
+            </tr>
+            <tr class="fragment" style="background: #f5f5f5;">
+              <td style="padding: 0.5em;">Exercice 3</td>
+              <td>Problème guidé</td>
+              <td>9 pts</td>
+              <td>20 min</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-bullseye icon"></i> Onglet Compétences</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Savoirs et savoir-faire attendus</strong> avec priorités</p>
+          </div>
+
+          <div class="grid-2" style="margin-top: 1em;">
+            <div class="fragment priority-haute" style="padding: 0.8em; border-radius: 5px;">
+              <strong>📌 Produit scalaire</strong>
+              <ul class="smaller">
+                <li>Calculer avec les 3 formules</li>
+                <li>Orthogonalité</li>
+              </ul>
+              <p class="smaller">Niveau : ⭐⭐⭐</p>
+            </div>
+
+            <div class="fragment priority-basse" style="padding: 0.8em; border-radius: 5px;">
+              <strong>📌 Norme d'un vecteur</strong>
+              <ul class="smaller">
+                <li>Calculer une norme</li>
+              </ul>
+              <p class="smaller">Niveau : ⭐</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-question-circle icon"></i> Onglet Quiz</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>5-8 questions de compréhension</strong> avec réponses cachées</p>
+          </div>
+
+          <div class="fragment" style="background: #fff3cd; padding: 0.8em; border-radius: 8px; border-left: 4px solid var(--warning-color); margin-top: 1em;">
+            <details>
+              <summary style="cursor: pointer; font-weight: 500;">1. Quelle est la formule du produit scalaire avec l'angle ?</summary>
+              <div style="margin-top: 0.5em; padding: 0.5em; background: #d4edda; border-radius: 5px; font-style: italic;">
+                u⃗ · v⃗ = ||u⃗|| × ||v⃗|| × cos(θ)
+              </div>
+            </details>
+          </div>
+
+          <div class="fragment" style="background: #fff3cd; padding: 0.8em; border-radius: 8px; border-left: 4px solid var(--warning-color); margin-top: 0.5em;">
+            <details>
+              <summary style="cursor: pointer; font-weight: 500;">2. Comment prouver que deux vecteurs sont orthogonaux ?</summary>
+              <div style="margin-top: 0.5em; padding: 0.5em; background: #d4edda; border-radius: 5px; font-style: italic;">
+                Vérifier que u⃗ · v⃗ = 0
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-link icon"></i> Onglet Exercices fléchés</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Correspondance compétence → exercices de la fiche</strong></p>
+          </div>
+
+          <div class="fragment" style="display: flex; justify-content: space-between; padding: 0.6em; margin: 0.5em 0; background: white; border-radius: 5px; border: 1px solid var(--success-color); font-size: 0.85em;">
+            <span style="font-weight: 500; color: var(--success-color);">⚡ Produit scalaire (coordonnées)</span>
+            <span style="color: #666;">Ex. 12, 14, 17 (a,b)</span>
+          </div>
+
+          <div class="fragment" style="display: flex; justify-content: space-between; padding: 0.6em; margin: 0.5em 0; background: white; border-radius: 5px; border: 1px solid var(--success-color); font-size: 0.85em;">
+            <span style="font-weight: 500; color: var(--success-color);">✓ Orthogonalité</span>
+            <span style="color: #666;">Ex. 8, 21</span>
+          </div>
+
+          <div class="fragment" style="display: flex; justify-content: space-between; padding: 0.6em; margin: 0.5em 0; background: white; border-radius: 5px; border: 1px solid var(--success-color); font-size: 0.85em;">
+            <span style="font-weight: 500; color: var(--success-color);">○ Projection orthogonale</span>
+            <span style="color: #666;">Ex. 25</span>
+          </div>
+
+          <p class="smaller fragment" style="margin-top: 0.5em;">⚡ prioritaire | ✓ recommandé | ○ optionnel</p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-lightbulb icon"></i> Onglet Conseils</h3>
+
+          <div class="box" style="font-size: 0.85em;">
+            <p><strong>Parcours de révision optimisé</strong></p>
+          </div>
+
+          <div class="fragment" style="padding: 0.6em; margin: 0.5em 0; background: #e7f3ff; border-radius: 5px; font-size: 0.85em;">
+            💡 Révise d'abord les <strong>formules du produit scalaire</strong> avant les applications géométriques
+          </div>
+
+          <div class="fragment" style="padding: 0.6em; margin: 0.5em 0; background: #e7f3ff; border-radius: 5px; font-size: 0.85em;">
+            💡 <strong>Erreur fréquente :</strong> Oublier de vérifier que le repère est orthonormé avant d'utiliser les coordonnées
+          </div>
+
+          <div class="fragment" style="padding: 0.6em; margin: 0.5em 0; background: #e7f3ff; border-radius: 5px; font-size: 0.85em;">
+            💡 Si tu manques de temps, concentre-toi sur les <strong>exercices 12-14</strong>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 6 : PROTOCOLE -->
+      <section>
+        <h2>Protocole de génération</h2>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">1</div>
+          <div><strong>Analyser la séquence</strong> — Cours, fiche d'exercices, sujet</div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">2</div>
+          <div><strong>Construire le mapping</strong> — Compétences → Exercices types</div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">3</div>
+          <div><strong>Générer les questions</strong> — 5-8 questions de compréhension</div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">4</div>
+          <div><strong>Créer le HTML</strong> — <code>blueprint.html</code> autonome</div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">5</div>
+          <div><strong>Valider</strong> — Taille A4, onglets fonctionnels, confidentialité</div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 : CONFIDENTIALITÉ -->
+      <section>
+        <h2><i class="fas fa-lock icon"></i> Règles de confidentialité</h2>
+
+        <div class="warning-box fragment">
+          <p><strong><i class="fas fa-exclamation-triangle icon"></i> Le blueprint ne doit JAMAIS révéler le contenu exact du contrôle</strong></p>
+        </div>
+
+        <div class="grid-2" style="margin-top: 1em;">
+          <div>
+            <h4 class="fragment success"><i class="fas fa-check icon"></i> OK</h4>
+            <ul class="smaller fragment">
+              <li>"Exercice 1 : QCM (6 questions)"</li>
+              <li>"Calculs sur le produit scalaire"</li>
+              <li>"Problème guidé"</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="fragment" style="color: var(--danger-color);"><i class="fas fa-times icon"></i> INTERDIT</h4>
+            <ul class="smaller fragment">
+              <li>"L'exercice 2 demande de calculer AB · AC"</li>
+              <li>"Le triangle ABC a pour sommets..."</li>
+              <li>"Démontrer que ABCD est un losange"</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 : BONNES PRATIQUES -->
+      <section>
+        <h2>Bonnes pratiques</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> À faire</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>HTML <strong>autonome</strong> (CSS/JS intégrés)</li>
+              <li>Tenir sur <strong>une page A4</strong></li>
+              <li>Fléchage <strong>précis</strong> (numéros + questions)</li>
+              <li>Priorités <strong>cohérentes</strong> avec le barème</li>
+              <li>Conseils <strong>actionables</strong></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2" style="color: var(--danger-color);"><i class="fas fa-times-circle icon"></i> À éviter</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Dépendances externes (CDN)</li>
+              <li>Contenu trop long</li>
+              <li>Fléchage vague ("revoir le cours")</li>
+              <li>Toutes les compétences en priorité haute</li>
+              <li>Conseils génériques</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9 : RÉSUMÉ -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div class="fragment">
+            <h3 class="smaller"><i class="fas fa-clipboard-list icon"></i> Le skill</h3>
+            <ul class="smaller">
+              <li>Fiche de révision HTML interactive</li>
+              <li>5 onglets thématiques</li>
+              <li>Fléchage intelligent vers exercices</li>
+              <li>Autonome et imprimable</li>
+            </ul>
+          </div>
+
+          <div class="fragment">
+            <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> L'objectif</h3>
+            <ul class="smaller">
+              <li>Guider les révisions des élèves</li>
+              <li>Ne pas spoiler le contrôle</li>
+              <li>Optimiser le temps de révision</li>
+              <li>Identifier les priorités</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-bullseye icon"></i> Un blueprint bien construit = des élèves mieux préparés !</strong></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      fragments: true,
+      fragmentInURL: true,
+      keyboard: true,
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    let lastHorizontalIndex = 0;
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        Reveal.slide(currentH, 0);
+      }
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>

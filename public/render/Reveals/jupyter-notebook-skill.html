@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Développement">
+  <meta name="description" content="Skill jupyter-notebook : créer des notebooks pédagogiques Python structurés">
+  <title>Jupyter Notebook Skill - Notebooks Pédagogiques Python</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #f39c12;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --text-color: #34495e;
+      --bg-light: #fef9e7;
+      --jupyter-orange: #F37626;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 { font-size: 2.2em; margin-bottom: 0.5em; }
+    .reveal h2 { font-size: 1.6em; margin-bottom: 0.8em; border-bottom: 3px solid var(--jupyter-orange); padding-bottom: 0.3em; }
+    .reveal h3 { font-size: 1.3em; color: var(--jupyter-orange); margin-top: 0.8em; }
+
+    .reveal ul, .reveal ol { margin: 1em 0; }
+    .reveal li { margin: 0.5em 0; line-height: 1.5; }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 1em;
+      max-height: 500px;
+      font-size: 0.75em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight { color: var(--accent-color); font-weight: 600; }
+    .reveal .success { color: var(--success-color); font-weight: 600; }
+    .reveal .warning { color: var(--warning-color); font-weight: 600; }
+
+    .reveal .box {
+      background: var(--bg-light);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--jupyter-orange);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--warning-color);
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: #e8f5e9;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon { font-size: 1.2em; margin-right: 0.3em; vertical-align: middle; }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: var(--jupyter-orange);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .smaller { font-size: 0.85em; }
+    .reveal .subtitle { color: var(--jupyter-orange); font-size: 0.7em; margin-top: 0.5em; }
+
+    .reveal .tag {
+      display: inline-block;
+      background: var(--jupyter-orange);
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+    .reveal .tag.success { background: var(--success-color); }
+    .reveal .tag.accent { background: var(--accent-color); }
+    .reveal .tag.primary { background: var(--primary-color); }
+
+    .reveal .nav-hint {
+      margin-top: 1em;
+      padding: 0.5em;
+      background: rgba(243, 118, 38, 0.1);
+      border-radius: 5px;
+      font-size: 0.8em;
+      color: var(--jupyter-orange);
+    }
+
+    .reveal .structure-card {
+      background: white;
+      border: 2px solid var(--jupyter-orange);
+      border-radius: 10px;
+      padding: 1em;
+      margin: 0.5em 0;
+      text-align: center;
+    }
+
+    .reveal .structure-card h4 {
+      margin: 0 0 0.5em 0;
+      color: var(--jupyter-orange);
+      font-size: 1em;
+    }
+
+    .reveal .structure-card p {
+      margin: 0;
+      font-size: 0.8em;
+      color: var(--text-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fab fa-python icon"></i> Jupyter Notebook Skill</h1>
+        <p class="subtitle">Notebooks Pédagogiques Python Structurés</p>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag">Notebooks .ipynb</span>
+          <span class="tag success">Structure Pédagogique</span>
+          <span class="tag primary">Python</span>
+        </p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <h2>Au programme</h2>
+        <ol class="feature-list">
+          <li class="fragment"><i class="fas fa-bullseye icon"></i> Objectif du skill</li>
+          <li class="fragment"><i class="fas fa-layer-group icon"></i> Structure pédagogique en 6 blocs</li>
+          <li class="fragment"><i class="fas fa-tools icon"></i> Outils de navigation</li>
+          <li class="fragment"><i class="fas fa-route icon"></i> Workflow de modification</li>
+          <li class="fragment"><i class="fas fa-graduation-cap icon"></i> Approches selon le niveau</li>
+          <li class="fragment"><i class="fas fa-check-circle icon"></i> Bonnes pratiques</li>
+        </ol>
+      </section>
+
+      <!-- SLIDE 3 : OBJECTIF -->
+      <section>
+        <section>
+          <h2>Objectif du skill</h2>
+
+          <div class="box fragment">
+            <p><strong>Créer des notebooks Jupyter pédagogiques structurés selon un protocole quasi-systématique</strong></p>
+          </div>
+
+          <ul class="smaller">
+            <li class="fragment"><i class="fas fa-book icon"></i> Activités Python pour <strong>Seconde, Première, Terminale</strong></li>
+            <li class="fragment"><i class="fas fa-brain icon"></i> Progression cognitive : comprendre → appliquer → créer</li>
+            <li class="fragment"><i class="fas fa-check-double icon"></i> Auto-évaluation intégrée avec QCM</li>
+            <li class="fragment"><i class="fas fa-puzzle-piece icon"></i> Exercices à complétion progressive</li>
+          </ul>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour voir les domaines couverts
+          </div>
+        </section>
+
+        <section>
+          <h3>Thèmes par niveau</h3>
+
+          <div class="grid-2">
+            <div class="fragment">
+              <h4 style="color: var(--jupyter-orange);"><i class="fas fa-seedling icon"></i> Seconde</h4>
+              <ul class="smaller">
+                <li>Variables, conditions, boucles</li>
+                <li>Fonctions, listes</li>
+                <li>Aléatoire, graphiques</li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <h4 style="color: var(--jupyter-orange);"><i class="fas fa-tree icon"></i> Première</h4>
+              <ul class="smaller">
+                <li>Boucle while, suites</li>
+                <li>Statistiques, probabilités</li>
+                <li>Variations de fonctions</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="fragment" style="margin-top: 1em;">
+            <h4 style="color: var(--jupyter-orange);"><i class="fas fa-mountain icon"></i> Terminale</h4>
+            <ul class="smaller">
+              <li>Méthodes numériques, équations différentielles, Monte-Carlo</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 4 : STRUCTURE EN 6 BLOCS -->
+      <section>
+        <section>
+          <h2>Structure pédagogique</h2>
+          <p class="smaller">Chaque notion suit un protocole en <strong>6 blocs</strong></p>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">1</div>
+            <div><strong>Cours</strong> — Explication théorique avec syntaxe</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">2</div>
+            <div><strong>Exemple corrigé</strong> — Code exécutable commenté</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">3</div>
+            <div><strong>QCM vérification</strong> — 3 questions de validation</div>
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Suite des blocs ↓
+          </div>
+        </section>
+
+        <section>
+          <h3>Structure (suite)</h3>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">4</div>
+            <div><strong>Exercice d'analyse</strong> — Comprendre un programme existant</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">5</div>
+            <div><strong>Exercice d'application</strong> — Compléter/écrire du code</div>
+          </div>
+
+          <div class="workflow-step fragment" style="font-size: 0.85em;">
+            <div class="step-number">6</div>
+            <div><strong>Boîte Outils</strong> — Rappels de notions externes (si besoin)</div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-lightbulb icon"></i> Cette structure garantit une <strong>progression cognitive</strong> optimale</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 5 : OUTILS DE NAVIGATION -->
+      <section>
+        <section>
+          <h2>Outils de navigation</h2>
+
+          <div class="box fragment">
+            <p><strong>Script Python pour explorer et valider les notebooks AVANT modification</strong></p>
+          </div>
+
+          <p class="smaller fragment">Localisation : <code>.claude/skills/jupyter-notebook/notebook_tools.py</code></p>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Voir les commandes disponibles ↓
+          </div>
+        </section>
+
+        <section>
+          <h3>Commandes disponibles</h3>
+
+          <pre class="fragment"><code class="language-bash"># Lister toutes les cellules avec aperçu
+python notebook_tools.py list mon_notebook.ipynb
+
+# Rechercher une cellule par contenu
+python notebook_tools.py find mon_notebook.ipynb --pattern "Monte-Carlo"
+
+# Valider la structure (balises HTML, types)
+python notebook_tools.py validate mon_notebook.ipynb
+
+# Sortie JSON pour traitement
+python notebook_tools.py list mon_notebook.ipynb --json</code></pre>
+        </section>
+
+        <section>
+          <h3>Exemple de sortie <code>list</code></h3>
+
+          <pre><code class="language-text">IDX  ID           TYPE       TITRE/APERCU
+--------------------------------------------------------------------------------
+0    cell-0       [M] markdown Estimer une probabilite par simulation
+1    cell-1       [M] markdown Notion 1 : Principe de la simulation...
+2    cell-2       [C] code     import random nb_face = 0 nb_simulations...
+3    cell-3       [M] markdown Verification : QCM</code></pre>
+
+          <div class="example-box fragment" style="font-size: 0.8em;">
+            <p><code>[M]</code> = markdown, <code>[C]</code> = code</p>
+          </div>
+        </section>
+
+        <section>
+          <h3>Exemple de sortie <code>validate</code></h3>
+
+          <pre><code class="language-text">Statut: [!!] INVALIDE
+Nombre de cellules: 25
+
+[ERREURS] (1):
+  - [cell-12] HTML detecte dans une cellule CODE (devrait etre markdown)
+
+[AVERTISSEMENTS] (2):
+  - [cell-5] Cellule vide
+  - [cell-18] Balises &lt;div&gt; non equilibrees</code></pre>
+
+          <div class="warning-box fragment" style="font-size: 0.8em;">
+            <p><i class="fas fa-exclamation-triangle icon"></i> Toujours valider avant de finaliser !</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 6 : WORKFLOW DE MODIFICATION -->
+      <section>
+        <h2>Workflow de modification</h2>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">1</div>
+          <div><strong>Explorer</strong> — <code>list</code> pour voir la structure</div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">2</div>
+          <div><strong>Cibler</strong> — <code>find --pattern</code> pour localiser</div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">3</div>
+          <div><strong>Noter</strong> — Relever les <code>cell_id</code></div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">4</div>
+          <div><strong>Modifier</strong> — <code>NotebookEdit</code> avec les IDs</div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.8em;">
+          <div class="step-number">5</div>
+          <div><strong>Valider</strong> — <code>validate</code> pour vérifier</div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 : APPROCHES SELON LE NIVEAU -->
+      <section>
+        <section>
+          <h2>Approches pédagogiques</h2>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-pencil-alt icon"></i> Code COMPLET</h3>
+              <p class="smaller">L'élève écrit <strong>tout le code</strong> dans une cellule vide</p>
+              <p class="smaller success">Pour : <strong>Seconde</strong> (notions fondamentales)</p>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-puzzle-piece icon"></i> Code à COMPLÉTER</h3>
+              <p class="smaller">Structure fournie, l'élève complète les <code>...</code></p>
+              <p class="smaller success">Pour : <strong>1ère/Tale</strong> (concepts mathématiques)</p>
+            </div>
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Voir des exemples concrets ↓
+          </div>
+        </section>
+
+        <section>
+          <h3>Exemple : Code à compléter</h3>
+
+          <div class="box" style="font-size: 0.8em;">
+            <p><strong>Principe :</strong> L'élève reste <strong>actif</strong> même sur les exemples de cours</p>
+          </div>
+
+          <pre class="fragment"><code class="language-python">import random
+
+nb_somme_10 = 0
+nb_simulations = 20000
+
+for i in range(nb_simulations):
+    de1 = random.randint(1, 6)
+    de2 = random.randint(1, 6)
+    somme = ...                     # À compléter
+    if somme == 10:
+        nb_somme_10 = ...           # À compléter
+
+frequence = ...                     # À compléter
+print(f"Estimation : {frequence:.4f}")</code></pre>
+
+          <p class="smaller fragment">L'élève doit réfléchir aux <strong>formules mathématiques</strong>, pas à la syntaxe Python</p>
+        </section>
+      </section>
+
+      <!-- SLIDE 8 : INDICES ET CORRECTIONS -->
+      <section>
+        <h2>Indices minimalistes</h2>
+
+        <div class="warning-box fragment">
+          <p><strong>RÈGLE :</strong> Les indices sont <strong>minimalistes</strong>. L'élève doit chercher !</p>
+        </div>
+
+        <div class="grid-2" style="margin-top: 1em;">
+          <div class="fragment">
+            <p class="smaller success"><i class="fas fa-check icon"></i> <strong>Ce qu'on rappelle</strong></p>
+            <ul class="smaller">
+              <li>Fonction Python vue pour la 1ère fois</li>
+              <li>Format d'affichage imposé</li>
+              <li>Module spécial à importer</li>
+            </ul>
+          </div>
+
+          <div class="fragment">
+            <p class="smaller warning"><i class="fas fa-times icon"></i> <strong>Ce qu'on NE rappelle JAMAIS</strong></p>
+            <ul class="smaller">
+              <li>Structures algo (for, if, while)</li>
+              <li>Liste des variables</li>
+              <li>Fonctions déjà vues</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9 : BONNES PRATIQUES -->
+      <section>
+        <h2>Bonnes pratiques</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> À faire</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li><code>plt.clf()</code> avant matplotlib</li>
+              <li>Commentaires dans le code</li>
+              <li>Cellules ≤ 15-20 lignes</li>
+              <li>Corrections dans <code>&lt;details&gt;</code></li>
+              <li>QCM avec 3 questions exactement</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment warning" data-fragment-index="2"><i class="fas fa-times-circle icon"></i> À éviter</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Cellules trop longues</li>
+              <li>HTML dans cellules CODE</li>
+              <li>Énoncés vagues</li>
+              <li>Indices trop guidants</li>
+              <li>Corrections qui spoilent</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10 : VALIDATION FINALE -->
+      <section>
+        <h2>Checklist finale</h2>
+
+        <ul class="smaller">
+          <li class="fragment"><i class="fas fa-check-square icon success"></i> Toutes les cellules de code sont <strong>exécutables</strong></li>
+          <li class="fragment"><i class="fas fa-check-square icon success"></i> Les corrections sont dans des <code>&lt;details&gt;</code></li>
+          <li class="fragment"><i class="fas fa-check-square icon success"></i> Les QCM ont exactement <strong>3 questions</strong></li>
+          <li class="fragment"><i class="fas fa-check-square icon success"></i> La progression est <strong>logique</strong></li>
+          <li class="fragment"><i class="fas fa-check-square icon success"></i> Les cellules markdown ne contiennent <strong>pas d'émojis dans &lt;summary&gt;</strong></li>
+          <li class="fragment"><i class="fas fa-check-square icon success"></i> L'en-tête est complète (niveau, durée, objectifs)</li>
+        </ul>
+
+        <div class="example-box fragment" style="margin-top: 1em;">
+          <p><i class="fas fa-rocket icon"></i> <strong>Kernel → Restart & Run All</strong> pour tester l'exécution</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 11 : RÉSUMÉ -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div class="fragment">
+            <h3 class="smaller"><i class="fab fa-python icon"></i> Le skill</h3>
+            <ul class="smaller">
+              <li>Structure en 6 blocs pédagogiques</li>
+              <li>Script de navigation intégré</li>
+              <li>Approche adaptée au niveau</li>
+              <li>Indices minimalistes</li>
+            </ul>
+          </div>
+
+          <div class="fragment">
+            <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> L'objectif</h3>
+            <ul class="smaller">
+              <li>Notebooks de qualité professionnelle</li>
+              <li>Progression cognitive garantie</li>
+              <li>Auto-évaluation intégrée</li>
+              <li>Élève actif, pas passif</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-lightbulb icon"></i> Un notebook bien structuré = un apprentissage efficace !</strong></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      fragments: true,
+      fragmentInURL: true,
+      keyboard: true,
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    let lastHorizontalIndex = 0;
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        Reveal.slide(currentH, 0);
+      }
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>

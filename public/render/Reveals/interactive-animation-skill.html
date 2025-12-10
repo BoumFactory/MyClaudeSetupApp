@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Développement">
+  <meta name="description" content="Skill interactive-animation : créer des animations mathématiques interactives HTML/JS">
+  <title>Interactive Animation Skill - Animations Mathématiques</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #1a1a2e;
+      --secondary-color: #16213e;
+      --accent-color: #e94560;
+      --success-color: #0f3460;
+      --highlight-color: #00d9ff;
+      --text-color: #34495e;
+      --bg-light: #f0f4f8;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    .reveal h1 { font-size: 2.2em; margin-bottom: 0.5em; }
+    .reveal h2 { font-size: 1.6em; margin-bottom: 0.8em; border-bottom: 3px solid var(--accent-color); padding-bottom: 0.3em; }
+    .reveal h3 { font-size: 1.3em; color: var(--accent-color); margin-top: 0.8em; }
+
+    .reveal ul, .reveal ol { margin: 1em 0; }
+    .reveal li { margin: 0.5em 0; line-height: 1.5; }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: var(--accent-color);
+    }
+
+    .reveal pre {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .reveal pre code {
+      background: #1a1a2e;
+      color: #abb2bf;
+      padding: 1em;
+      max-height: 450px;
+      font-size: 0.7em;
+      line-height: 1.4;
+    }
+
+    .reveal .highlight { color: var(--accent-color); font-weight: 600; }
+    .reveal .success { color: var(--success-color); font-weight: 600; }
+    .reveal .cyan { color: var(--highlight-color); font-weight: 600; }
+
+    .reveal .box {
+      background: linear-gradient(135deg, var(--bg-light) 0%, #e8f4f8 100%);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent-color);
+      margin: 1em 0;
+    }
+
+    .reveal .warning-box {
+      background: #fff3cd;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid #f39c12;
+      margin: 1em 0;
+    }
+
+    .reveal .example-box {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      border-left: 4px solid #27ae60;
+      margin: 1em 0;
+    }
+
+    .reveal .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      align-items: start;
+    }
+
+    .reveal .icon { font-size: 1.2em; margin-right: 0.3em; vertical-align: middle; }
+
+    .reveal .workflow-step {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.8em;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    .reveal .workflow-step .step-number {
+      background: var(--accent-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1em;
+      flex-shrink: 0;
+    }
+
+    .reveal .smaller { font-size: 0.85em; }
+    .reveal .subtitle { color: var(--accent-color); font-size: 0.7em; margin-top: 0.5em; }
+
+    .reveal .tag {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.7em;
+      font-weight: 600;
+      margin: 0.2em;
+    }
+    .reveal .tag.cyan { background: var(--highlight-color); color: #1a1a2e; }
+    .reveal .tag.dark { background: var(--primary-color); }
+
+    .reveal .nav-hint {
+      margin-top: 1em;
+      padding: 0.5em;
+      background: rgba(233, 69, 96, 0.1);
+      border-radius: 5px;
+      font-size: 0.8em;
+      color: var(--accent-color);
+    }
+
+    .reveal .tree-structure {
+      font-family: 'Consolas', monospace;
+      font-size: 0.6em;
+      text-align: left;
+      background: #1a1a2e;
+      color: #abb2bf;
+      padding: 1em;
+      border-radius: 8px;
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    .reveal .api-card {
+      background: white;
+      border: 2px solid var(--accent-color);
+      border-radius: 10px;
+      padding: 0.8em;
+      margin: 0.3em 0;
+    }
+
+    .reveal .api-card h4 {
+      margin: 0 0 0.3em 0;
+      color: var(--accent-color);
+      font-size: 0.9em;
+    }
+
+    .reveal .api-card code {
+      font-size: 0.75em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 : TITRE -->
+      <section>
+        <h1><i class="fas fa-film icon"></i> Interactive Animation</h1>
+        <p class="subtitle">Animations Mathématiques pour l'Enseignement</p>
+        <p class="fragment" style="margin-top: 2em;">
+          <span class="tag">HTML/JS</span>
+          <span class="tag cyan">Canvas 2D</span>
+          <span class="tag dark">Timeline</span>
+        </p>
+      </section>
+
+      <!-- SLIDE 2 : SOMMAIRE -->
+      <section>
+        <h2>Au programme</h2>
+        <ol class="feature-list">
+          <li class="fragment"><i class="fas fa-bullseye icon"></i> Concept : Mode Animation</li>
+          <li class="fragment"><i class="fas fa-folder-tree icon"></i> Architecture du template</li>
+          <li class="fragment"><i class="fas fa-route icon"></i> Protocole de création</li>
+          <li class="fragment"><i class="fas fa-code icon"></i> API des scènes</li>
+          <li class="fragment"><i class="fas fa-paint-brush icon"></i> API du CanvasRenderer</li>
+          <li class="fragment"><i class="fas fa-magic icon"></i> Helpers d'animation</li>
+        </ol>
+      </section>
+
+      <!-- SLIDE 3 : EXEMPLE LIVE -->
+      <section>
+        <h2><i class="fas fa-play-circle icon" style="color: var(--accent-color);"></i> Exemple : Produit Scalaire</h2>
+
+        <div class="box fragment">
+          <p><strong>Animation interactive générée avec ce skill</strong></p>
+          <p class="smaller" style="margin-top: 0.5em;">Timeline, scènes, formules animées, vecteurs dynamiques</p>
+        </div>
+
+        <div class="fragment" style="margin-top: 1.5em;">
+          <a href="/render/html/animation_produit_scalaire.html" target="_blank" rel="noopener"
+             style="display: inline-block; padding: 1em 2em; background: linear-gradient(135deg, var(--accent-color), #ff4757); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 1.1em; box-shadow: 0 4px 15px rgba(233,69,96,0.4); transition: transform 0.2s;">
+            <i class="fas fa-external-link-alt icon"></i> Voir l'animation en plein écran
+          </a>
+        </div>
+
+        <p class="smaller fragment" style="margin-top: 1em; color: #666;">
+          <i class="fas fa-keyboard icon"></i> <strong>Ctrl + clic</strong> pour ouvrir dans un nouvel onglet
+        </p>
+        <p class="smaller fragment" style="margin-top: 0.3em; color: #666;">
+          <i class="fas fa-info-circle icon"></i> Contrôles : Play/Pause, navigation par scènes, barre de progression
+        </p>
+      </section>
+
+      <!-- SLIDE 4 : CONCEPT -->
+      <section>
+        <section>
+          <h2>Mode Animation</h2>
+
+          <div class="box fragment">
+            <p><strong>Animations séquentielles comme une capsule vidéo ou Manim</strong></p>
+          </div>
+
+          <ul class="smaller">
+            <li class="fragment"><i class="fas fa-play icon"></i> <strong>Timeline</strong> avec lecture, pause, navigation</li>
+            <li class="fragment"><i class="fas fa-film icon"></i> <strong>Scènes</strong> = chapitres de l'animation</li>
+            <li class="fragment"><i class="fas fa-clock icon"></i> Informations apparaissent <strong>au bon moment</strong></li>
+            <li class="fragment"><i class="fas fa-eye icon"></i> L'utilisateur <strong>regarde</strong> et contrôle le flux</li>
+          </ul>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Cas d'usage typiques ↓
+          </div>
+        </section>
+
+        <section>
+          <h3>Cas d'usage</h3>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h4 style="color: var(--accent-color);"><i class="fas fa-vector-square icon"></i> Géométrie</h4>
+              <ul class="smaller">
+                <li>Produit scalaire</li>
+                <li>Transformations</li>
+                <li>Constructions</li>
+              </ul>
+            </div>
+            <div class="box fragment" style="font-size: 0.85em;">
+              <h4 style="color: var(--accent-color);"><i class="fas fa-chart-line icon"></i> Analyse</h4>
+              <ul class="smaller">
+                <li>Limites, dérivées</li>
+                <li>Suites, séries</li>
+                <li>Intégrales</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="example-box fragment" style="font-size: 0.85em; margin-top: 1em;">
+            <p><i class="fas fa-lightbulb icon"></i> Idéal pour visualiser des concepts <strong>progressifs</strong></p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 4 : ARCHITECTURE -->
+      <section>
+        <section>
+          <h2>Architecture du template</h2>
+
+          <div class="tree-structure">
+animation-name/
+├── index.html              # Structure HTML
+├── css/
+│   ├── main.css           # Base, variables, layout
+│   └── timeline.css       # Timeline, chapitres
+├── js/
+│   ├── math-utils.js      # Utilitaires + easings
+│   ├── canvas-renderer.js # Rendu canvas mathématique
+│   ├── animation-core.js  # Boucle d'animation
+│   ├── timeline.js        # Gestion timeline
+│   ├── render-helpers.js  # drawTextBox, drawMathBox
+│   ├── scenarios/         # ⭐ UN FICHIER PAR SCÈNE
+│   │   ├── index.js       # Registre des scènes
+│   │   ├── 01-intro.js
+│   │   └── 02-xxx.js
+│   └── main.js            # Point d'entrée
+└── build_monolith.py      # Génération fichier unique
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Détails des composants ↓
+          </div>
+        </section>
+
+        <section>
+          <h3>Composants clés</h3>
+
+          <div class="grid-2">
+            <div class="api-card fragment">
+              <h4><i class="fas fa-calculator icon"></i> math-utils.js</h4>
+              <p class="smaller">Fonctions trigo, vecteurs, interpolations, <strong>30+ easings</strong></p>
+            </div>
+
+            <div class="api-card fragment">
+              <h4><i class="fas fa-paint-brush icon"></i> canvas-renderer.js</h4>
+              <p class="smaller">Repère orthonormé, points, vecteurs, fonctions, textes</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="api-card fragment">
+              <h4><i class="fas fa-film icon"></i> scenarios/</h4>
+              <p class="smaller">Un fichier JS par scène pour modularité</p>
+            </div>
+
+            <div class="api-card fragment">
+              <h4><i class="fas fa-file-archive icon"></i> build_monolith.py</h4>
+              <p class="smaller">Génère un <strong>fichier HTML unique</strong> distribuable</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 5 : PROTOCOLE DE CRÉATION -->
+      <section>
+        <h2>Protocole de création</h2>
+
+        <div class="workflow-step fragment" style="font-size: 0.85em;">
+          <div class="step-number">1</div>
+          <div><strong>Copier le template</strong> depuis <code>assets/template/</code></div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.85em;">
+          <div class="step-number">2</div>
+          <div><strong>Personnaliser</strong> <code>index.html</code> (titre)</div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.85em;">
+          <div class="step-number">3</div>
+          <div><strong>Implémenter les scènes</strong> dans <code>js/scenarios/</code></div>
+        </div>
+
+        <div class="workflow-step fragment" style="font-size: 0.85em;">
+          <div class="step-number">4</div>
+          <div><strong>Générer le monolithe</strong> : <code>python build_monolith.py -o animation.html</code></div>
+        </div>
+
+        <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+          <p><i class="fas fa-book icon"></i> Lire les exemples dans <code>assets/examples/</code> avant de commencer !</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 : API DES SCÈNES -->
+      <section>
+        <section>
+          <h2>API des scènes</h2>
+
+          <div class="box fragment">
+            <p><strong>Chaque scène est un objet avec <code>id</code>, <code>title</code>, <code>duration</code> et <code>animate()</code></strong></p>
+          </div>
+
+          <pre class="fragment"><code class="language-javascript">const SCENES = [{
+  id: 'intro',
+  title: 'Introduction',
+  duration: 5000, // 5 secondes
+
+  animate(localTime, progress, renderer, state) {
+    // localTime : temps depuis début scène (ms)
+    // progress : ratio 0 à 1
+    // renderer : instance CanvasRenderer
+    // state : état partagé entre scènes
+  }
+}];</code></pre>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple complet de scène ↓
+          </div>
+        </section>
+
+        <section>
+          <h3>Exemple : Scène en phases</h3>
+
+          <pre><code class="language-javascript">animate(localTime, progress, renderer, state) {
+  // Phase 1 (0-30%) : Apparition vecteur u
+  if (progress < 0.3) {
+    const p = progress / 0.3;
+    const len = MathUtils.lerpEase(0, 4, p, 'easeOutQuad');
+    renderer.drawVector(0, 0, len, 0, { color: '#ef4444', label: 'u' });
+
+  // Phase 2 (30-60%) : Apparition vecteur v
+  } else if (progress < 0.6) {
+    const p = (progress - 0.3) / 0.3;
+    renderer.drawVector(0, 0, 4, 0, { color: '#ef4444', label: 'u' });
+    const angle = MathUtils.lerpEase(0, Math.PI/4, p, 'easeOutQuad');
+    const vx = 3 * Math.cos(angle);
+    const vy = 3 * Math.sin(angle);
+    renderer.drawVector(0, 0, vx, vy, { color: '#3b82f6', label: 'v' });
+
+  // Phase 3 (60-100%) : Formule
+  } else {
+    // ... afficher les vecteurs complets + formule
+  }
+}</code></pre>
+        </section>
+      </section>
+
+      <!-- SLIDE 7 : API CANVASRENDERER -->
+      <section>
+        <section>
+          <h2>API CanvasRenderer</h2>
+
+          <div class="grid-2">
+            <div class="api-card fragment">
+              <h4><i class="fas fa-circle icon"></i> Dessin géométrique</h4>
+              <code class="smaller">drawPoint(x, y, options)</code><br>
+              <code class="smaller">drawSegment(x1, y1, x2, y2, opt)</code><br>
+              <code class="smaller">drawVector(x1, y1, x2, y2, opt)</code><br>
+              <code class="smaller">drawCircle(cx, cy, r, opt)</code>
+            </div>
+
+            <div class="api-card fragment">
+              <h4><i class="fas fa-chart-line icon"></i> Fonctions & texte</h4>
+              <code class="smaller">drawFunction(fn, options)</code><br>
+              <code class="smaller">drawText(text, x, y, opt)</code><br>
+              <code class="smaller">drawArc(cx, cy, r, a1, a2)</code><br>
+              <code class="smaller">drawPolygon(points, opt)</code>
+            </div>
+          </div>
+
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Méthodes de viewport ↓
+          </div>
+        </section>
+
+        <section>
+          <h3>Viewport & Helpers</h3>
+
+          <div class="grid-2">
+            <div class="api-card fragment">
+              <h4><i class="fas fa-expand icon"></i> Viewport</h4>
+              <code class="smaller">clear()</code><br>
+              <code class="smaller">drawGrid()</code><br>
+              <code class="smaller">drawAxes()</code><br>
+              <code class="smaller">zoom(factor, cx, cy)</code>
+            </div>
+
+            <div class="api-card fragment">
+              <h4><i class="fas fa-text-height icon"></i> Helpers texte</h4>
+              <code class="smaller">drawTextBox(text, x, y, opt)</code><br>
+              <code class="smaller">drawMathBox(latex, x, y)</code><br>
+              <code class="smaller">drawMathResult(expr, x, y)</code>
+            </div>
+          </div>
+
+          <div class="warning-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-exclamation-triangle icon"></i> <strong>Zone gauche (x=-9)</strong> pour textes, <strong>centre</strong> pour animation</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 8 : HELPERS D'ANIMATION -->
+      <section>
+        <h2>Helpers d'animation</h2>
+
+        <div class="grid-2">
+          <div class="fragment">
+            <h4 style="color: var(--accent-color);"><i class="fas fa-bezier-curve icon"></i> Interpolation</h4>
+            <pre style="font-size: 0.7em;"><code class="language-javascript">// Interpolation avec easing
+MathUtils.lerp(a, b, t)
+MathUtils.ease(t, 'easeOutQuad')
+MathUtils.lerpEase(a, b, t, 'easeInOutCubic')</code></pre>
+          </div>
+
+          <div class="fragment">
+            <h4 style="color: var(--accent-color);"><i class="fas fa-layer-group icon"></i> Séquences</h4>
+            <pre style="font-size: 0.7em;"><code class="language-javascript">// Animation séquencée
+AnimationHelpers.sequence(progress, [
+  { duration: 1, fn: (p) => ... },
+  { duration: 2, fn: (p) => ... }
+])</code></pre>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 1em;">
+          <div class="fragment">
+            <h4 style="color: var(--accent-color);"><i class="fas fa-eye icon"></i> Fade</h4>
+            <pre style="font-size: 0.7em;"><code class="language-javascript">AnimationHelpers.fadeIn(p, 0, 0.3)
+AnimationHelpers.fadeOut(p, 0.7, 1)</code></pre>
+          </div>
+
+          <div class="fragment">
+            <h4 style="color: var(--accent-color);"><i class="fas fa-keyboard icon"></i> Typewriter</h4>
+            <pre style="font-size: 0.7em;"><code class="language-javascript">AnimationHelpers.typewriter('Texte', p)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9 : EASINGS DISPONIBLES -->
+      <section>
+        <h2>30+ Easings disponibles</h2>
+
+        <div class="box fragment" style="font-size: 0.85em;">
+          <p><strong>Familles d'easing :</strong></p>
+        </div>
+
+        <div class="grid-2">
+          <div class="fragment">
+            <ul class="smaller">
+              <li><code>linear</code></li>
+              <li><code>easeInQuad</code>, <code>easeOutQuad</code>, <code>easeInOutQuad</code></li>
+              <li><code>easeInCubic</code>, <code>easeOutCubic</code>, <code>easeInOutCubic</code></li>
+              <li><code>easeInQuart</code>, <code>easeOutQuart</code>, <code>easeInOutQuart</code></li>
+            </ul>
+          </div>
+
+          <div class="fragment">
+            <ul class="smaller">
+              <li><code>easeInSine</code>, <code>easeOutSine</code>, <code>easeInOutSine</code></li>
+              <li><code>easeInElastic</code>, <code>easeOutElastic</code></li>
+              <li><code>easeInBounce</code>, <code>easeOutBounce</code></li>
+              <li><code>easeInBack</code>, <code>easeOutBack</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+          <p><i class="fas fa-star icon"></i> <strong>easeOutQuad</strong> et <strong>easeInOutCubic</strong> = les plus utilisés</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 10 : BONNES PRATIQUES -->
+      <section>
+        <h2>Bonnes pratiques</h2>
+
+        <div class="grid-2">
+          <div>
+            <h3 class="fragment" data-fragment-index="1" style="color: #27ae60;"><i class="fas fa-check-circle icon"></i> À faire</h3>
+            <ul class="smaller fragment" data-fragment-index="1">
+              <li>Découper en <strong>phases</strong> (if/else sur progress)</li>
+              <li>Toujours utiliser des <strong>easings</strong></li>
+              <li>Textes dans <strong>zones dédiées</strong> (x=-9)</li>
+              <li>3-5s pour notion simple, 8-15s pour complexe</li>
+              <li>Fond blanc semi-transparent pour textes</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="fragment" data-fragment-index="2" style="color: #e74c3c;"><i class="fas fa-times-circle icon"></i> À éviter</h3>
+            <ul class="smaller fragment" data-fragment-index="2">
+              <li>Allocations dans <code>animate()</code></li>
+              <li>Chevauchement texte/animation</li>
+              <li>Transitions linéaires (sans easing)</li>
+              <li>Scènes trop longues (>20s)</li>
+              <li>Oublier le monolithe final</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11 : RÉSUMÉ -->
+      <section>
+        <h2>En résumé</h2>
+
+        <div class="grid-2">
+          <div class="fragment">
+            <h3 class="smaller"><i class="fas fa-film icon"></i> Le skill</h3>
+            <ul class="smaller">
+              <li>Animations timeline comme Manim</li>
+              <li>Template modulaire prêt à l'emploi</li>
+              <li>API Canvas riche (géométrie, fonctions)</li>
+              <li>30+ easings pour transitions fluides</li>
+            </ul>
+          </div>
+
+          <div class="fragment">
+            <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> L'objectif</h3>
+            <ul class="smaller">
+              <li>Visualiser concepts mathématiques</li>
+              <li>Animations de qualité professionnelle</li>
+              <li>Export monolithique distribuable</li>
+              <li>Projection en classe optimisée</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1em;">
+          <p><strong><i class="fas fa-magic icon"></i> Une animation vaut mille explications !</strong></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      navigationMode: 'grid',
+      controls: true,
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+      progress: true,
+      slideNumber: 'h.v',
+      hash: true,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      embedded: false,
+      overview: true,
+      center: true,
+      touch: true,
+      fragments: true,
+      fragmentInURL: true,
+      keyboard: true,
+      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+    });
+
+    let lastHorizontalIndex = 0;
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        Reveal.slide(currentH, 0);
+      }
+      lastHorizontalIndex = currentH;
+    });
+  </script>
+</body>
+</html>
