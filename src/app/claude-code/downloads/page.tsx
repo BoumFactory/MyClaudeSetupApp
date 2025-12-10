@@ -21,18 +21,20 @@ export const revalidate = 86400
  */
 export default async function DownloadsPage() {
   // Scanner le dossier public/download avec toutes les catégories
+  const projectRoot = process.cwd()
   const downloadPath = path.join(
-    process.cwd(),
+    projectRoot,
     'public',
     'download'
   )
 
   // Charger le parser .gitignore depuis la racine du projet
-  const gitignorePath = path.join(process.cwd(), '.gitignore')
+  const gitignorePath = path.join(projectRoot, '.gitignore')
   const gitignoreParser = await createGitignoreParser(gitignorePath)
 
   // Scanner les fichiers en respectant le .gitignore
-  const files = await scanDirectory(downloadPath, downloadPath, gitignoreParser)
+  // projectRoot est passé pour que les patterns commençant par / soient correctement interprétés
+  const files = await scanDirectory(downloadPath, downloadPath, gitignoreParser, Infinity, 0, projectRoot)
 
   return (
     <div className="space-y-8">

@@ -104,6 +104,7 @@ export async function scanPresentations(
  * @param gitignoreParser - Parser .gitignore (optionnel)
  * @param maxDepth - Profondeur maximale de scan (optionnel, par défaut illimitée)
  * @param currentDepth - Profondeur actuelle (pour usage interne)
+ * @param projectRoot - Chemin racine du projet (où se trouve le .gitignore)
  * @returns Arbre de fichiers
  */
 export async function scanDirectory(
@@ -111,7 +112,8 @@ export async function scanDirectory(
   basePath: string = dirPath,
   gitignoreParser?: GitignoreParser,
   maxDepth: number = Infinity,
-  currentDepth: number = 0
+  currentDepth: number = 0,
+  projectRoot: string = ''
 ): Promise<DownloadableItem[]> {
   const items: DownloadableItem[] = []
 
@@ -131,7 +133,7 @@ export async function scanDirectory(
 
         // Vérifier si le fichier doit être ignoré AVANT de traiter
         const isIgnored = gitignoreParser
-          ? gitignoreParser.shouldIgnore(fullPath, basePath)
+          ? gitignoreParser.shouldIgnore(fullPath, basePath, projectRoot)
           : false
 
         // Court-circuiter les dossiers ignorés pour éviter de descendre dedans
@@ -153,7 +155,8 @@ export async function scanDirectory(
             basePath,
             gitignoreParser,
             maxDepth,
-            currentDepth + 1
+            currentDepth + 1,
+            projectRoot
           )
 
           return {

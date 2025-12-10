@@ -49,24 +49,34 @@ export class GitignoreParser {
   /**
    * Vérifier si un chemin doit être ignoré
    * @param filePath - Chemin du fichier à vérifier
-   * @param basePath - Chemin de base pour la comparaison
+   * @param basePath - Chemin de base pour la comparaison (dossier scanné)
+   * @param projectRoot - Chemin racine du projet (où se trouve le .gitignore)
    * @returns true si le fichier doit être ignoré
    */
-  shouldIgnore(filePath: string, basePath: string = ''): boolean {
+  shouldIgnore(filePath: string, basePath: string = '', projectRoot: string = ''): boolean {
     const relativePath = basePath
       ? path.relative(basePath, filePath).replace(/\\/g, '/')
       : filePath.replace(/\\/g, '/')
 
+    // Chemin relatif depuis la racine du projet (pour les patterns commençant par /)
+    const relativeFromProjectRoot = projectRoot
+      ? path.relative(projectRoot, filePath).replace(/\\/g, '/')
+      : relativePath
+
     // Vérifier d'abord les patterns de négation
     for (const negPattern of this.negativePatterns) {
-      if (this.matchPattern(relativePath, negPattern)) {
+      // Pour les patterns commençant par /, utiliser le chemin depuis la racine du projet
+      const pathToCheck = negPattern.startsWith('/') ? relativeFromProjectRoot : relativePath
+      if (this.matchPattern(pathToCheck, negPattern)) {
         return false
       }
     }
 
     // Vérifier les patterns normaux
     for (const pattern of this.patterns) {
-      if (this.matchPattern(relativePath, pattern)) {
+      // Pour les patterns commençant par /, utiliser le chemin depuis la racine du projet
+      const pathToCheck = pattern.startsWith('/') ? relativeFromProjectRoot : relativePath
+      if (this.matchPattern(pathToCheck, pattern)) {
         return true
       }
     }
