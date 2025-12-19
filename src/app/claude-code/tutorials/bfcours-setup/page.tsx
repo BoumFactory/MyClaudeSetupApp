@@ -150,65 +150,32 @@ export default function BfcoursSetupPage() {
                 Récupérer le package bfcours
               </h2>
               <p className="text-muted-foreground">
-                Vous avez deux méthodes pour obtenir le package bfcours et ses dépendances.
+                Téléchargez le package depuis notre page de téléchargements.
               </p>
             </div>
 
-            {/* Méthode 1 : Téléchargement direct */}
+            {/* Téléchargement */}
             <Card className="glass-card border-cosmic-700/30">
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Package className="w-5 h-5 text-cosmic-400" />
-                  Méthode 1 : Téléchargement direct (recommandé)
+                  Télécharger le package
                 </CardTitle>
                 <CardDescription>
                   Téléchargez directement l'archive ZIP depuis ce site
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-4">
+                <Button asChild variant="cosmic" size="lg" className="w-full">
+                  <Link href="/claude-code/downloads" prefetch={false}>
+                    <Package className="w-5 h-5 mr-2" />
+                    Accéder aux téléchargements
+                  </Link>
+                </Button>
                 <ol className="text-sm text-muted-foreground space-y-2 list-decimal ml-4">
-                  <li>
-                    Rendez-vous sur la page de téléchargement :
-                    <Button asChild variant="outline" size="sm" className="ml-2">
-                      <Link href="/claude-code/downloads" prefetch={false}>
-                        Téléchargements
-                      </Link>
-                    </Button>
-                  </li>
                   <li>Dans la section "Packages LaTeX", téléchargez <strong className="text-foreground">bfcours - profDeleuze</strong></li>
                   <li>Extrayez l'archive ZIP dans un emplacement permanent (voir ci-dessous)</li>
                 </ol>
-              </CardContent>
-            </Card>
-
-            {/* Méthode 2 : GitHub */}
-            <Card className="glass-card border-cosmic-700/30">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <FolderGit className="w-5 h-5 text-cosmic-400" />
-                  Méthode 2 : Clone GitHub
-                </CardTitle>
-                <CardDescription>
-                  Pour les utilisateurs avancés qui souhaitent accéder au code source
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="bg-cosmic-900/20 border border-cosmic-700/30 rounded-lg p-4 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-cosmic-300">Commande Git</span>
-                    <Copy className="w-4 h-4 text-muted-foreground cursor-pointer hover:text-cosmic-400" />
-                  </div>
-                  <pre className="bg-black/30 rounded p-3 overflow-x-auto">
-                    <code className="text-sm text-green-400">
-                      git clone https://github.com/Romain1099/BFCours.git localtexmf
-                    </code>
-                  </pre>
-                </div>
-                <Button asChild variant="outline" size="sm" className="w-full">
-                  <a href="https://github.com/Romain1099/BFCours.git" target="_blank" rel="noopener noreferrer">
-                    Voir le repository GitHub
-                  </a>
-                </Button>
               </CardContent>
             </Card>
 
@@ -218,7 +185,7 @@ export default function BfcoursSetupPage() {
               <div className="space-y-1">
                 <p className="text-sm font-semibold text-amber-300">Important - Emplacement permanent</p>
                 <p className="text-sm text-muted-foreground">
-                  Quelle que soit la méthode choisie, placez le dossier <code className="bg-black/30 px-1.5 py-0.5 rounded text-xs">localtexmf</code> dans
+                  Placez le dossier <code className="bg-black/30 px-1.5 py-0.5 rounded text-xs">localtexmf</code> dans
                   un emplacement <strong>permanent</strong>, car MikTeX devra y accéder régulièrement.
                 </p>
                 <p className="text-sm text-muted-foreground">
