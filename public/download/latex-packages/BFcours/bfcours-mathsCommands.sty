@@ -79,4 +79,128 @@
 % en effet, mes commandse Crochet sont des crochets mieux gérés en taille, et crochet d est tourné vers la gauche, crochet g est tourné vers la droite.
 
 \newcommand{\Rep}{\left(O \, ;\, I \, ; \, J \right)}
+
+\newcommand{\Vecteur}[1]{\overrightarrow{#1}} 
+
+\tikzset{
+    % ===== STYLES EXISTANTS =====
+    quadrillage/.style={help lines, gray!40},
+    epais/.style={thick, line width=1.2pt},
+    axe/.style={->, >=stealth, thick, black},
+    % Points avec croix droites visibles
+    point/.style={cross out, draw, minimum size=5pt, line width=0.8pt, inner sep=0pt},
+    point correction/.style={cross out, draw, minimum size=5pt, line width=1.2pt, inner sep=0pt,red},
+    % Segments standard
+    segment/.style={thick},
+    % Vecteurs avec flèches
+    vecteur/.style={->, >=stealth, thick},
+    % Couleurs standard pour différencier
+    couleur1/.style={blue},
+    couleur2/.style={red},
+    couleur3/.style={green!60!black},
+    prop/.style={blue!60!cyan},
+    % Labels de points
+    label point/.style={font=\normalsize, inner sep=2pt},
+    % Style général qui regroupe tout
+    general/.style={point, segment, couleur1},
+    %
+    % ===== NOUVEAUX STYLES AJOUTÉS =====
+    % Cercles
+    cercle/.style={draw, thick},
+    cercle epais/.style={draw, line width=1.2pt},
+    cercle pointille/.style={draw, thick, dashed},
+    % Angles
+    angle/.style={draw, thick},
+    angle droit/.style={draw, thick},
+    % Codages géométriques
+    codage segment/.style={decoration={markings, mark=at position 0.5 with {\draw[-] (0,-2pt) -- (0,2pt);}}, postaction={decorate}},
+    codage segment double/.style={decoration={markings, mark=at position 0.5 with {\draw[-] (-1pt,-2pt) -- (-1pt,2pt); \draw[-] (1pt,-2pt) -- (1pt,2pt);}}, postaction={decorate}},
+    codage segment triple/.style={decoration={markings, mark=at position 0.5 with {\draw[-] (-2pt,-2pt) -- (-2pt,2pt); \draw[-] (0,-2pt) -- (0,2pt); \draw[-] (2pt,-2pt) -- (2pt,2pt);}}, postaction={decorate}},
+    % Médiatrice / Bissectrice
+    mediatrice/.style={thick, dashed, gray},
+    bissectrice/.style={thick, dotted, blue!60},
+    % Hauteur / Médiane
+    hauteur/.style={thick, dotted, red!60},
+    mediane/.style={thick, dotted, green!60!black},
+}
+
+% ===== COMMANDES EXISTANTES =====
+\newcommand{\XAxe}[3]{
+    \draw[->, thick] (#1-0.5,0) -- (#2+0.5,0) node[right] {$x$};
+    \foreach \x in {#3} {
+        \draw (\x,0.1) -- (\x,-0.1) node[below] {$\x$};
+    }
+}
+\newcommand{\YAxe}[3]{
+    \draw[->, thick] (0,#1-0.5) -- (0,#2+0.5) node[right] {$y$};
+    \foreach \y in {#3} {
+        \draw (0.1,\y) -- (-0.1,\y) node[left] {$\y$};
+    }
+}
+\newcommand{\origine}{
+    \fill (0,0) circle (2pt) node[below left] {O};
+}
+\newcommand{\point}[4]{
+    \node[point] (#3-point) at (#1,#2) {};
+    \node[label point,#4=2mm of #3-point] {#3};
+}
+\newcommand{\pointCorrection}[4]{
+    \node[point correction] (#3-point) at (#1,#2) {};
+    \node[label point,#4=2mm of #3-point] {#3};
+}
+
+% ===== NOUVELLES COMMANDES AJOUTÉES =====
+% Angle droit (marque)
+% Usage: \angleDroit[orientation]{sommet}{taille}
+% orientation (optionnel, défaut=1) :
+%   1 = en haut à droite (0°)
+%   2 = en haut à gauche (90°)
+%   3 = en bas à gauche (180°)
+%   4 = en bas à droite (270°)
+% sommet : coordonnées du sommet de l'angle droit
+% taille : taille du symbole (ex: 0.3)
+\newcommand{\angleDroit}[3][1]{
+    \ifcase#1\relax
+        % Cas 0 (ne devrait pas arriver)
+        \draw (#2) -- ++(0:#3) -- ++(90:#3) -- ++(180:#3);
+    \or
+        % Cas 1: en haut à droite (0°)
+        \draw (#2) -- ++(0:#3) -- ++(90:#3) -- ++(180:#3);
+    \or
+        % Cas 2: en haut à gauche (90°)
+        \draw (#2) -- ++(90:#3) -- ++(180:#3) -- ++(270:#3);
+    \or
+        % Cas 3: en bas à gauche (180°)
+        \draw (#2) -- ++(180:#3) -- ++(270:#3) -- ++(0:#3);
+    \or
+        % Cas 4: en bas à droite (270°)
+        \draw (#2) -- ++(270:#3) -- ++(0:#3) -- ++(90:#3);
+    \fi
+}
+
+
+ % \affMonome{coeff}{degré} : 3x², x, -x, 5
+  \newcommand{\affMonome}[2]{%
+    \ifnum#2=0 \num{#1}\else
+      \ifnum#1=1 x\ifnum#2>1^{#2}\fi%
+      \else\ifnum#1=-1 -x\ifnum#2>1^{#2}\fi%
+      \else\num{#1}x\ifnum#2>1^{#2}\fi\fi\fi\fi}
+
+  % \affBinome{a}{b} : 2x-3, x+5
+  \newcommand{\affBinome}[2]{\affMonome{#1}{1}\ifnum#2<0\num{#2}\else+\num{#2}\fi}
+
+  % \affBinomeColor{a}{b}{col1}{col2}
+  \newcommand{\affBinomeColor}[4]{{\color{#3}\affMonome{#1}{1}}\ifnum#2<0{\color{#4}\num{#2}}\else+{\color{#4}\num{#2}}\fi}
+
+  % \affSigne{n} : +5 ou -3
+  \newcommand{\affSigne}[1]{\ifnum#1<0\num{#1}\else+\num{#1}\fi}
+
+  % \affTermeSigne{coeff}{var}{couleur}
+  \newcommand{\affTermeSigne}[3]{\ifnum#1<0{\color{#3}\num{#1}#2}\else{\color{#3}+\num{#1}#2}\fi}
+
+  % \affPolyDeux{a}{b}{c} : 5x²-x-4
+  \newcommand{\affPolyDeux}[3]{%
+    \affMonome{#1}{2}%
+    \ifnum#2=0\else\ifnum#2=1 +x\else\ifnum#2=-1 -x\else\ifnum#2<0\num{#2}x\else+\num{#2}x\fi\fi\fi\fi%
+    \ifnum#3=0\else\ifnum#3<0\num{#3}\else+\num{#3}\fi\fi}
 \endinput
