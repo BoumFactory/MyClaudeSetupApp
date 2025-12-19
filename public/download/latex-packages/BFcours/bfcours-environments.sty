@@ -144,6 +144,41 @@ fonttitle=\bfseries\large,
         }%
     \fi
 }
+\NewDocumentCommand{\dystcbitempoint}{m O{-0pt} O{2cm}}{%
+    \stepcounter{itempointcounter}% Incrémentation du compteur
+	%code d'indexation à mettre ici
+	%\addtocounter{totalpoints}{#1}% Ajout au total des points
+	\pgfmathparse{\totalpoints + #1}%
+    \xdef\totalpoints{\pgfmathresult} % Mise à jour de totalpoints
+	\pgfmathparse{\exopoints + #1}%
+    \xdef\exopoints{\pgfmathresult} % Mise à jour de totalpoints
+	%\addtocounter{exopoints}{#1}% Ajout au total des points
+    \tikzmark{mylabel\theitempointcounter}% Placement du marqueur avec identifiant unique
+	\ifdisplayitempoints% Condition sur l'affichage
+     \tikz[remember picture, overlay]{% Overlay pour superposer la boîte
+            \node[anchor=base, draw=black, fill=purple!10, rounded corners, inner sep=3pt, outer sep=0pt, minimum width=1cm, align=center] at ($(pic cs:mylabel\theitempointcounter) + (\linewidth - 1.6cm-#3, #2)$) { % Placement de la boîte avec décalage en X
+                %$\ifdim #1pt = 1pt 1 \,\text{pt} \else \num{#1} \,\text{pts} \fi$%
+			%$\num{#1} \,\text{pts}$
+			\pgfmathparse{#1} % Parse la valeur pour la manipuler en décimal
+			    \let\value=\pgfmathresult
+			    % Condition pour afficher "pt" ou "pts" en fonction de la comparaison avec 1
+			    \ifdim \value pt < 1pt
+			        % Si \value est inférieur à 1, affiche en singulier avec décimales
+			        \num{\value} \,\text{pt}%
+			    \else
+			        \ifdim \value pt = 1pt
+			            % Si \value est exactement 1, affiche en singulier sans décimales
+			            1 \,\text{pt}%
+			        \else
+			            % Si \value est supérieur à 1, affiche en pluriel
+			            \pgfmathparse{int(\value)==\value ? int(\value) : \value}%
+			            \num{\pgfmathresult} \,\text{pts}%
+			        \fi
+			    \fi
+            };
+        }%
+    \fi
+}
 % Définition de la commande \tcbitempoint (tout-en-un avec compteur et booléen)
 \NewDocumentCommand{\infotcbitempoint}{m O{-0pt} O{0cm}}{%
     \stepcounter{infoitempointcounter}% Incrémentation du compteur
