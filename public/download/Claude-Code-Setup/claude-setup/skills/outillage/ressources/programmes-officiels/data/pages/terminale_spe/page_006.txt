@@ -1,0 +1,50 @@
+L’étude générale des systèmes linéaires n’est pas un objectif du programme mais des
+exemples seront traités dans le contexte de la géométrie repérée : décomposition de
+vecteurs, intersections de plans, etc.
+ Histoire des mathématiques
+Véritable porte d’entrée sur l’infini, le raisonnement par récurrence a été formalisé comme
+principe fondamental de raisonnement par Pascal, et surtout par Peano et ses collaborateurs
+et avait été anticipé comme mode de démonstration par les mathématiciens anciens
+(nombres latéraux et diagonaux), médiévaux (al-Karaji, As-Samaw’al, Fibonacci) et
+renaissants (Maurolico).
+Des propriétés arithmétiques du Triangle de Pascal étaient présentes dans les travaux
+combinatoires des mathématiques indiennes et chinoises. La combinatoire était un objet de
+prédilection des récréations mathématiques dès l’Antiquité et est encore présente chez des
+arithméticiens du XIXe siècle (Lucas, Delannoy, Laisant). Il est par ailleurs pertinent de
+souligner le développement récent des « mathématiques discrètes », motivé notamment par
+l'informatique et l’intelligence artificielle.
+Les concepts sous-jacents à la notion de vecteur apparaissent comme modèles physiques
+dynamiques longtemps avant leur formalisation. On trouve un concept de force et la
+composition des forces chez Newton ; ces notions, comme celles de vitesse, sont présentes
+dans le calcul géométrique de Leibniz. Au XIXe siècle, la notion de vecteur va émerger
+comme objet algébrique et géométrique, comme transformation ou comme outil de repérage.
+Hamilton construit les vecteurs par une approche algébrique. Dans sa théorie des forces et
+des marées de 1839, Grassmann propose une approche géométrique qui étend à l’espace la
+notion de vecteur et lui associe des règles de calcul algébrique, notamment un « produit
+linéaire » utilisant la projection orthogonale et qui deviendra notre produit scalaire. À la fin du
+siècle, des auteurs proches des mathématiques comme de la physique (Maxwell, Gibbs,
+Heaviside ou Peano) dégagent les principes du calcul vectoriel à trois dimensions ou plus, lui
+donnant une dimension dynamique tout en établissant la structure d’espace vectoriel.
+ Combinatoire et dénombrement
+Les ensembles considérés dans cette section sont finis mais on introduit dans le cas général
+(ensembles quelconques) les notions suivantes : couple, triplet, k-uplet (ou k-liste) ; produit
+cartésien de deux, trois, k ensembles ; ensemble Ak des k-uplets d’éléments d’un
+ensemble A.
+Contenus
+ Principe additif : nombre d’éléments d’une réunion d’ensembles deux à deux
+disjoints.
+ Principe multiplicatif : nombre d’éléments d’un produit cartésien. Nombre de k-uplets
+(ou k-listes) d’un ensemble à n éléments.
+ Nombre des parties d’un ensemble à n éléments. Lien avec les n-uplets de {0,1}, les
+mots de longueur n sur un alphabet à deux éléments, les chemins dans un arbre, les
+issues dans une succession de n épreuves de Bernoulli.
+ Nombre des k-uplets d’éléments distincts d’un ensemble à n éléments. Définition de
+n! Nombre de permutations d’un ensemble fini à n éléments.
+ Combinaisons de k éléments d’un ensemble à n éléments : parties à k éléments de
+l’ensemble. Représentation en termes de mots ou de chemins.
+n n(n1)(nk 1) n!
+ Pour 0 ⩽ k ⩽ n, formules :    .
+ 
+k k! (nk)!k!
+ Explicitation pour k = 0, 1, 2. Symétrie. Relation et triangle de Pascal.
+© Ministère de l'Éducation nationale et de la Jeunesse > www.education.gouv.fr

@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Statistiques
+   Palette Rouge/Corail - Données, graphiques
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #e74c3c;
+    --theme-secondary: #ec7063;
+    --theme-accent: #c0392b;
+
+    /* Couleurs des blocs */
+    --color-definition: #e74c3c;
+    --color-theoreme: #c0392b;
+    --color-propriete: #ec7063;
+    --color-exemple: #f1948a;
+    --color-methode: #f5b7b1;
+    --color-remarque: #f9e0dd;
+    --color-exercice: #fadbd8;
+
+    /* Backgrounds */
+    --bg-definition: #fdedec;
+    --bg-theoreme: #f9ebea;
+    --bg-propriete: #fdf2f0;
+    --bg-exemple: #fef5f4;
+    --bg-methode: #fef8f7;
+    --bg-remarque: #fffafa;
+    --bg-exercice: #fffcfc;
+}
+
+/* Titres */
+h1 { color: #922b21; }
+h2 { color: #a93226; }
+h3 { color: #b9372a; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

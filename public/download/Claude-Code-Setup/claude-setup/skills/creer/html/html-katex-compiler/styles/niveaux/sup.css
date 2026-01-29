@@ -1,0 +1,77 @@
+/* ===========================================
+   NIVEAU: Supérieur
+   Dense, académique, sobre
+   =========================================== */
+
+:root {
+    --content-width: 760px;
+    --content-padding: 1.5rem;
+    --bloc-padding: 0.8rem 1.2rem;
+    --bloc-radius: 4px;
+    --bloc-border-width: 3px;
+}
+
+body {
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 1.7rem;
+}
+
+h2 {
+    font-size: 1.35rem;
+    margin-top: 1.25rem;
+}
+
+h3 {
+    font-size: 1.05rem;
+}
+
+p, li {
+    font-size: 0.9rem;
+}
+
+/* Blocs */
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice, .demonstration {
+    padding: 0.75rem 1.2rem;
+    margin: 1rem 0;
+}
+
+/* Labels */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before,
+.exercice::before, .demonstration::before {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Démonstrations plus visibles en sup */
+.demonstration {
+    font-style: italic;
+}
+
+/* KaTeX */
+.katex {
+    font-size: 1em;
+}
+
+.katex-display {
+    margin: 0.75rem 0;
+}
+
+/* Listes */
+ul, ol {
+    margin: 0.75rem 0;
+}
+
+li {
+    margin: 0.15rem 0;
+}
+
+/* Numérotation théorèmes (style académique) */
+.theoreme, .definition, .propriete {
+    counter-increment: theorem;
+}

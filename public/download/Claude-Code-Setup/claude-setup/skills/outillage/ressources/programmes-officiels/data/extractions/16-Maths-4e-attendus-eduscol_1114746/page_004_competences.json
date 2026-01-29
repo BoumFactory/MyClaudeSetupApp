@@ -1,0 +1,298 @@
+{
+  "source": {
+    "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+    "page": 4,
+    "text_length": 1456
+  },
+  "extraction": {
+    "date": "2026-01-03T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "4E-NB-201",
+      "intitule": "Simplifier une fraction",
+      "fingerprint": "simplifier_fraction",
+      "niveau": "4E",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Fractions",
+      "type": "capacite",
+      "description_detaillee": "Simplifier une fraction en divisant le numerateur et le denominateur par un diviseur commun, jusqu'a obtenir une fraction irreductible",
+      "formulation_bo": "Il simplifie (140/135)",
+      "connaissances_associees": [
+        "simplification de fraction"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-NB-202",
+      "intitule": "Resoudre un probleme de partage equitable par recherche de diviseurs communs",
+      "fingerprint": "resoudre_probleme_partage_diviseurs_communs",
+      "niveau": "4E",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Divisibilite",
+      "type": "capacite",
+      "description_detaillee": "Determiner toutes les facons de repartir des quantites en groupes identiques en utilisant les diviseurs communs",
+      "formulation_bo": "Un fleuriste doit realiser des bouquets tous identiques. Il dispose pour cela de 434 roses et 620 tulipes. Quelles sont toutes les compositions de bouquets possibles ?",
+      "connaissances_associees": [
+        "diviseurs communs",
+        "PGCD",
+        "decomposition en facteurs premiers"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-203",
+      "intitule": "Identifier la structure d'une expression litterale comme une somme",
+      "fingerprint": "identifier_structure_expression_somme",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Calcul litteral",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre qu'une expression litterale est une somme de termes (ex: 3x + 12 est une somme)",
+      "formulation_bo": "Il identifie la structure d'une expression litterale (somme, produit)",
+      "connaissances_associees": [
+        "vocabulaire algebrique",
+        "termes d'une somme"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-204",
+      "intitule": "Identifier la structure d'une expression litterale comme un produit",
+      "fingerprint": "identifier_structure_expression_produit",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Calcul litteral",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre qu'une expression litterale est un produit de facteurs (ex: 3(x + 4) est un produit)",
+      "formulation_bo": "Il identifie la structure d'une expression litterale (somme, produit)",
+      "connaissances_associees": [
+        "vocabulaire algebrique",
+        "facteurs d'un produit"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-205",
+      "intitule": "Developper un produit en utilisant la distributivite simple",
+      "fingerprint": "developper_produit_distributivite_simple",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Calcul litteral",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la propriete k(a + b) = ka + kb pour transformer un produit en somme. Exemples : 3(4x - 2), 3x(4 + 8x)",
+      "formulation_bo": "Il utilise la propriete de distributivite simple pour developper un produit",
+      "connaissances_associees": [
+        "distributivite",
+        "produit",
+        "somme"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-206",
+      "intitule": "Factoriser une somme en utilisant la distributivite simple",
+      "fingerprint": "factoriser_somme_distributivite_simple",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Calcul litteral",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la propriete ka + kb = k(a + b) pour transformer une somme en produit. Exemples : 12x - 30, 15x^2 + 18x, 27x^2 + 3",
+      "formulation_bo": "Il utilise la propriete de distributivite simple pour factoriser une somme",
+      "connaissances_associees": [
+        "distributivite",
+        "facteur commun",
+        "factorisation"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-207",
+      "intitule": "Reduire une expression litterale",
+      "fingerprint": "reduire_expression_litterale",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Calcul litteral",
+      "type": "capacite",
+      "description_detaillee": "Regrouper les termes semblables pour simplifier une expression litterale. Exemples : 17x + 4x(5 - x), 6(3 - 1,5x) - 9x",
+      "formulation_bo": "Il utilise la propriete de distributivite simple pour reduire une expression litterale",
+      "connaissances_associees": [
+        "termes semblables",
+        "addition de termes en x",
+        "addition de termes en x^2"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-208",
+      "intitule": "Demontrer l'equivalence de deux programmes de calcul",
+      "fingerprint": "demontrer_equivalence_programmes_calcul",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Calcul litteral",
+      "type": "demonstration",
+      "description_detaillee": "Traduire deux programmes de calcul en expressions litterales et montrer par calcul algebrique qu'elles sont egales",
+      "formulation_bo": "Il demontre l'equivalence de deux programmes de calcul",
+      "connaissances_associees": [
+        "expression litterale",
+        "developpement",
+        "reduction"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-209",
+      "intitule": "Introduire une lettre pour designer une valeur inconnue",
+      "fingerprint": "introduire_lettre_valeur_inconnue",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Equations",
+      "type": "capacite",
+      "description_detaillee": "Choisir une lettre (souvent x) pour representer une grandeur inconnue dans un probleme",
+      "formulation_bo": "Il introduit une lettre pour designer une valeur inconnue",
+      "connaissances_associees": [
+        "variable",
+        "inconnue",
+        "modelisation"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-210",
+      "intitule": "Mettre un probleme en equation",
+      "fingerprint": "mettre_probleme_en_equation",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Equations",
+      "type": "capacite",
+      "description_detaillee": "Traduire les conditions d'un probleme en une equation mathematique a resoudre",
+      "formulation_bo": "Il introduit une lettre pour designer une valeur inconnue et met un probleme en equation",
+      "connaissances_associees": [
+        "expression litterale",
+        "egalite",
+        "traduction mathematique"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-211",
+      "intitule": "Tester si un nombre est solution d'une equation",
+      "fingerprint": "tester_nombre_solution_equation",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Equations",
+      "type": "capacite",
+      "description_detaillee": "Substituer une valeur numerique a l'inconnue et verifier si l'egalite est vraie. Exemples : tester si 4 est solution de 3x + 2 = 8, 5x - 6 = 3x + 2, x^2 - 9 = 3x - 5",
+      "formulation_bo": "Il teste si un nombre est solution d'une equation",
+      "connaissances_associees": [
+        "substitution",
+        "calcul numerique",
+        "verification"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-212",
+      "intitule": "Resoudre algebriquement une equation du premier degre a une inconnue",
+      "fingerprint": "resoudre_equation_premier_degre",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Equations",
+      "type": "capacite",
+      "description_detaillee": "Resoudre des equations du type ax + b = 0, ax + b = c, ax + b = cx + d en isolant l'inconnue. Exemples : 4x + 2 = 0, 5x - 7 = 3, 2x + 5 = -x - 4",
+      "formulation_bo": "Il resout algebriquement une equation du premier degre",
+      "connaissances_associees": [
+        "operations sur les egalites",
+        "transposition",
+        "isolation de l'inconnue"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "4E-AL-213",
+      "intitule": "Traduire un programme de calcul en expression litterale",
+      "fingerprint": "traduire_programme_calcul_expression_litterale",
+      "niveau": "4E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Calcul litteral",
+      "type": "capacite",
+      "description_detaillee": "Convertir les instructions d'un programme de calcul (choisir un nombre, le tripler, ajouter 15...) en une expression algebrique",
+      "formulation_bo": "Compare les programmes de calcul suivants : choisir un nombre, le tripler puis ajouter 15 au resultat ; choisir un nombre, lui ajouter 5 puis multiplier le resultat par 3",
+      "connaissances_associees": [
+        "expression litterale",
+        "variable",
+        "operations"
+      ],
+      "source": {
+        "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+        "page": 4
+      }
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "by_type": {
+      "capacite": 12,
+      "demonstration": 1
+    },
+    "by_domaine": {
+      "NOMBRES": 2,
+      "ALGEBRE": 11
+    },
+    "fingerprints": [
+      "simplifier_fraction",
+      "resoudre_probleme_partage_diviseurs_communs",
+      "identifier_structure_expression_somme",
+      "identifier_structure_expression_produit",
+      "developper_produit_distributivite_simple",
+      "factoriser_somme_distributivite_simple",
+      "reduire_expression_litterale",
+      "demontrer_equivalence_programmes_calcul",
+      "introduire_lettre_valeur_inconnue",
+      "mettre_probleme_en_equation",
+      "tester_nombre_solution_equation",
+      "resoudre_equation_premier_degre",
+      "traduire_programme_calcul_expression_litterale"
+    ]
+  },
+  "_last_modified": "2026-01-10T15:19:48.605594"
+}

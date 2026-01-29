@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Analyse
+   Palette Vert/Émeraude - Courbes, limites, dérivées
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #27ae60;
+    --theme-secondary: #2ecc71;
+    --theme-accent: #1e8449;
+
+    /* Couleurs des blocs */
+    --color-definition: #27ae60;
+    --color-theoreme: #1e8449;
+    --color-propriete: #2ecc71;
+    --color-exemple: #58d68d;
+    --color-methode: #82e0aa;
+    --color-remarque: #7dcea0;
+    --color-exercice: #a9dfbf;
+
+    /* Backgrounds */
+    --bg-definition: #e9f7ef;
+    --bg-theoreme: #d4efdf;
+    --bg-propriete: #d5f5e3;
+    --bg-exemple: #eafaf1;
+    --bg-methode: #e8f8f5;
+    --bg-remarque: #e8f6f3;
+    --bg-exercice: #eafaf1;
+}
+
+/* Titres */
+h1 { color: #145a32; }
+h2 { color: #196f3d; }
+h3 { color: #1e8449; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

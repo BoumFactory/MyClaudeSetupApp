@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Arithmétique
+   Palette Jaune/Or - Nombres, divisibilité
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #f1c40f;
+    --theme-secondary: #f4d03f;
+    --theme-accent: #d4ac0d;
+
+    /* Couleurs des blocs */
+    --color-definition: #d4ac0d;
+    --color-theoreme: #b7950b;
+    --color-propriete: #f1c40f;
+    --color-exemple: #f4d03f;
+    --color-methode: #f7dc6f;
+    --color-remarque: #f9e79f;
+    --color-exercice: #fcf3cf;
+
+    /* Backgrounds */
+    --bg-definition: #fef9e7;
+    --bg-theoreme: #fcf3cf;
+    --bg-propriete: #fef5cd;
+    --bg-exemple: #fef9e0;
+    --bg-methode: #fffbeb;
+    --bg-remarque: #fffcf0;
+    --bg-exercice: #fffef5;
+}
+
+/* Titres */
+h1 { color: #7d6608; }
+h2 { color: #9a7d0a; }
+h3 { color: #b7950b; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

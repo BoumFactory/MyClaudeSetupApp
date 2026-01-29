@@ -1,0 +1,463 @@
+{
+  "source": {
+    "pdf": "TG_comp.pdf",
+    "page": 8,
+    "text_length": 2289
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TG-PR-401",
+      "intitule": "Appliquer la formule de Bayes pour inverser un conditionnement",
+      "fingerprint": "appliquer_formule_bayes_inversion_conditionnement",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la formule P_B(A) = [P_A(B) × P(A)] / P(B) pour calculer une probabilité a posteriori à partir des probabilités a priori et conditionnelles",
+      "formulation_bo": "La formule de Bayes P_B(A) = P_A(B)P(A) / P(B) permet d'exprimer la probabilité a posteriori lorsque l'expression du second membre est évaluable",
+      "connaissances_associees": ["probabilité conditionnelle", "probabilité a priori", "probabilité a posteriori", "inversion du conditionnement"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-402",
+      "intitule": "Distinguer les probabilités conditionnelles P_B(A) et P_A(B)",
+      "fingerprint": "distinguer_probabilites_conditionnelles_ordre_conditionnement",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Comprendre et distinguer l'asymétrie entre P_B(A) et P_A(B), reconnaître que l'inversion du conditionnement change la probabilité",
+      "formulation_bo": "Bien comprendre la distinction essentielle entre P_B(A) et P_A(B) est un objectif majeur",
+      "connaissances_associees": ["probabilité conditionnelle", "propriétés du conditionnement"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-403",
+      "intitule": "Interpréter et calculer les probabilités a priori et a posteriori",
+      "fingerprint": "interpreter_calculer_probabilites_a_priori_posteriori",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre qu'une probabilité a priori P(A) est remplacée par une probabilité a posteriori P_B(A) après observation d'un événement B, et interpréter cette mise à jour probabiliste",
+      "formulation_bo": "L'observation d'un événement B conduit à remplacer la probabilité a priori P(A) par la probabilité conditionnelle P_B(A), dite a posteriori",
+      "connaissances_associees": ["probabilité a priori", "probabilité a posteriori", "événements", "observation probabiliste"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-404",
+      "intitule": "Appliquer le raisonnement bayésien à des tests diagnostiques binaires",
+      "fingerprint": "appliquer_raisonnement_bayesien_tests_diagnostiques",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le raisonnement bayésien pour analyser les tests diagnostiques médicaux, comprendre les vrais/faux positifs et négatifs",
+      "formulation_bo": "Tests binaires pour le diagnostic médical. Notion de vrais/faux positifs et négatifs, sensibilité, spécificité, valeurs prédictives positive (diagnostique) et négative, lien avec les probabilités conditionnelles",
+      "connaissances_associees": ["test diagnostique", "faux positif", "faux négatif", "vrai positif", "vrai négatif", "probabilités conditionnelles"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-405",
+      "intitule": "Définir et calculer la sensibilité d'un test",
+      "fingerprint": "definir_calculer_sensibilite_test",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître que la sensibilité est la probabilité que le test soit positif chez une personne malade, et la calculer à partir des données",
+      "formulation_bo": "Notion de vrais/faux positifs et négatifs, sensibilité, spécificité, valeurs prédictives positive (diagnostique) et négative",
+      "connaissances_associees": ["test diagnostique", "vrai positif", "faux négatif", "proportion de malades"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-406",
+      "intitule": "Définir et calculer la spécificité d'un test",
+      "fingerprint": "definir_calculer_specificite_test",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître que la spécificité est la probabilité que le test soit négatif chez une personne saine, et la calculer à partir des données",
+      "formulation_bo": "Notion de vrais/faux positifs et négatifs, sensibilité, spécificité, valeurs prédictives positive (diagnostique) et négative",
+      "connaissances_associees": ["test diagnostique", "vrai négatif", "faux positif", "proportion de sains"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-407",
+      "intitule": "Calculer la valeur prédictive positive d'un test diagnostique",
+      "fingerprint": "calculer_valeur_predictive_positive_test",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Déterminer la probabilité qu'une personne soit réellement malade sachant que son test est positif, en fonction de la sensibilité, spécificité et prévalence de la maladie",
+      "formulation_bo": "Valeurs prédictives positive (diagnostique) et négative, lien avec les probabilités conditionnelles",
+      "connaissances_associees": ["probabilité a posteriori", "formule de Bayes", "sensibilité", "spécificité", "prévalence"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-408",
+      "intitule": "Calculer la valeur prédictive négative d'un test diagnostique",
+      "fingerprint": "calculer_valeur_predictive_negative_test",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Déterminer la probabilité qu'une personne soit réellement saine sachant que son test est négatif, en fonction de la sensibilité, spécificité et prévalence de la maladie",
+      "formulation_bo": "Valeurs prédictives positive (diagnostique) et négative, lien avec les probabilités conditionnelles",
+      "connaissances_associees": ["probabilité a posteriori", "formule de Bayes", "sensibilité", "spécificité", "prévalence"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-409",
+      "intitule": "Analyser l'évolution des valeurs prédictives en fonction de la prévalence de la maladie",
+      "fingerprint": "analyser_evolution_valeurs_predictives_prevalence",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Étudier comment les valeurs prédictives positive et négative varient en fonction de la proportion de malades dans la population",
+      "formulation_bo": "Tests de dépistage de sensibilité et de spécificité données : étude des valeurs prédictives en fonction de la proportion de malades et interprétation",
+      "connaissances_associees": ["valeur prédictive positive", "valeur prédictive négative", "prévalence", "formule de Bayes"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-410",
+      "intitule": "Interpréter les valeurs prédictives d'un test diagnostique",
+      "fingerprint": "interpreter_valeurs_predictives_test",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Donner du sens aux résultats des valeurs prédictives, notamment comprendre l'impact du taux de prévalence sur la fiabilité du test",
+      "formulation_bo": "Tests de dépistage de sensibilité et de spécificité données : étude des valeurs prédictives en fonction de la proportion de malades et interprétation",
+      "connaissances_associees": ["valeur prédictive positive", "valeur prédictive négative", "sensibilité", "spécificité", "prévalence"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-411",
+      "intitule": "Résoudre des problèmes d'inférence bayésienne de type 'De quelle urne vient la boule'",
+      "fingerprint": "resoudre_probleme_urne_inversion_conditionnement",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Appliquer le raisonnement bayésien et la formule de Bayes pour déterminer l'urne (cause) à partir de l'observation d'une boule (effet)",
+      "formulation_bo": "Exemples de problèmes du type : « De quelle urne vient la boule ? »",
+      "connaissances_associees": ["formule de Bayes", "probabilité a priori", "probabilité a posteriori", "inversion du conditionnement"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-412",
+      "intitule": "Définir et utiliser les probabilités conditionnelles",
+      "fingerprint": "definir_utiliser_probabilites_conditionnelles",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la définition de la probabilité conditionnelle P_B(A) et l'utiliser dans les calculs de probabilité",
+      "formulation_bo": "Probabilités conditionnelles, inversion du conditionnement, formule de Bayes",
+      "connaissances_associees": ["événements", "probabilité", "formule de la probabilité conditionnelle"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-413",
+      "intitule": "Comprendre l'inversion du conditionnement",
+      "fingerprint": "comprendre_inversion_conditionnement",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître que P_B(A) et P_A(B) ne sont pas égales, et comprendre comment passer de l'une à l'autre via la formule de Bayes",
+      "formulation_bo": "Probabilités conditionnelles, inversion du conditionnement, formule de Bayes",
+      "connaissances_associees": ["probabilité conditionnelle", "formule de Bayes", "asymétrie du conditionnement"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-AN-414",
+      "intitule": "Étudier une fonction en lien avec l'inférence bayésienne",
+      "fingerprint": "etudier_fonction_inversion_conditionnement",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Étude de fonction",
+      "type": "capacite",
+      "description_detaillee": "Analyser une fonction associée à la probabilité a posteriori ou aux valeurs prédictives pour comprendre le comportement du raisonnement bayésien",
+      "formulation_bo": "Contenus associés : Étude de fonction",
+      "connaissances_associees": ["étude de fonction", "probabilité a posteriori", "dérivation", "variation"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-415",
+      "intitule": "Modéliser la répétition d'expériences aléatoires indépendantes",
+      "fingerprint": "modeliser_repetition_experiences_aleatoires_independantes",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Répétition d'expériences indépendantes, échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Traduire une situation de répétition d'expériences aléatoires indépendantes en utilisant le modèle probabiliste approprié",
+      "formulation_bo": "Ce thème vise à illustrer le modèle probabiliste de la répétition d'expériences aléatoires indépendantes et de l'échantillonnage",
+      "connaissances_associees": ["expérience aléatoire", "indépendance", "probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-416",
+      "intitule": "Modéliser l'échantillonnage et ses applications à l'inférence statistique",
+      "fingerprint": "modeliser_echantillonnage_inference_statistique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Répétition d'expériences indépendantes, échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le modèle de l'échantillonnage pour induire les propriétés d'une population à partir de l'observation d'un échantillon",
+      "formulation_bo": "Ce thème vise à illustrer le modèle probabiliste de la répétition d'expériences aléatoires indépendantes et de l'échantillonnage ainsi que ses applications à l'inférence statistique",
+      "connaissances_associees": ["échantillon", "population", "inférence statistique", "représentativité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-417",
+      "intitule": "Comprendre le schéma de Bernoulli",
+      "fingerprint": "comprendre_schema_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Répétition d'expériences indépendantes, échantillonnage",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître une situation de schéma de Bernoulli : répétition d'une même expérience aléatoire à deux issues avec probabilité de succès constante",
+      "formulation_bo": "Le schéma de Bernoulli et la loi binomiale forment un cas fondamental",
+      "connaissances_associees": ["expérience aléatoire", "succès et échec", "probabilité constante", "indépendance"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-418",
+      "intitule": "Définir et utiliser la loi binomiale",
+      "fingerprint": "definir_utiliser_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Répétition d'expériences indépendantes, échantillonnage",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître une situation décrite par une loi binomiale B(n,p) et l'utiliser pour calculer des probabilités",
+      "formulation_bo": "Le schéma de Bernoulli et la loi binomiale forment un cas fondamental",
+      "connaissances_associees": ["schéma de Bernoulli", "nombre de répétitions", "probabilité de succès", "variable aléatoire"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-419",
+      "intitule": "Distinguer probabilités théoriques et fréquences observées",
+      "fingerprint": "distinguer_probabilites_frequences_observees",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Répétition d'expériences indépendantes, échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître la différence entre la probabilité théorique (issue du modèle) et la fréquence observée (issue d'une expérience), et comprendre leur convergence",
+      "formulation_bo": "On considère d'une part des probabilités ou proportions théoriques, et d'autre part des fréquences observées",
+      "connaissances_associees": ["probabilité", "fréquence", "loi des grands nombres", "loi binomiale"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-AG-420",
+      "intitule": "Simuler des expériences aléatoires indépendantes",
+      "fingerprint": "simuler_experiences_aleatoires_independantes",
+      "niveau": "TG",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation probabiliste",
+      "type": "capacite",
+      "description_detaillee": "Écrire un algorithme ou un programme pour simuler la répétition d'expériences aléatoires indépendantes et étudier la distribution des résultats",
+      "formulation_bo": "La réalisation de simulations est indispensable",
+      "connaissances_associees": ["expérience aléatoire", "nombre aléatoire", "boucle de répétition", "statistiques"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-AG-421",
+      "intitule": "Utiliser la loi uniforme sur [0,1] pour simuler d'autres lois",
+      "fingerprint": "utiliser_loi_uniforme_01_simulation",
+      "niveau": "TG",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation probabiliste",
+      "type": "capacite",
+      "description_detaillee": "Appliquer les techniques de simulation utilisant la loi uniforme sur [0,1] pour générer des échantillons de lois uniformes discrètes et binomiales",
+      "formulation_bo": "C'est l'occasion de montrer l'intérêt de la loi uniforme sur [0,1] pour simuler d'autres lois parmi lesquelles les lois uniformes discrètes et les lois binomiales",
+      "connaissances_associees": ["loi uniforme continue", "loi uniforme discrète", "loi binomiale", "génération de nombres aléatoires"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-422",
+      "intitule": "Simuler des tirages aléatoires avec remise dans une urne",
+      "fingerprint": "simuler_tirages_aleatoires_remise_urne",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Répétition d'expériences indépendantes, échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Réaliser et étudier une simulation de tirages aléatoires avec remise d'une boule dans une urne contenant des boules de deux couleurs différentes",
+      "formulation_bo": "Tirages aléatoires avec remise d'une boule dans une urne contenant des boules de deux couleurs différentes. Simulations. Calculs de probabilité",
+      "connaissances_associees": ["tirage avec remise", "indépendance", "loi binomiale", "simulation"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-423",
+      "intitule": "Calculer la probabilité pour un tirage avec remise dans une urne",
+      "fingerprint": "calculer_probabilite_tirage_remise_urne",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Répétition d'expériences indépendantes, échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les probabilités associées aux tirages aléatoires avec remise dans une urne à deux couleurs",
+      "formulation_bo": "Tirages aléatoires avec remise d'une boule dans une urne contenant des boules de deux couleurs différentes. Simulations. Calculs de probabilité",
+      "connaissances_associees": ["tirage avec remise", "loi binomiale", "probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-424",
+      "intitule": "Tester une pièce en construisant un intervalle de confiance",
+      "fingerprint": "tester_piece_intervalle_confiance",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Répétition d'expériences indépendantes, échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Construire un intervalle I centré en n/2 tel que P(X ∈ I) ≥ 1 - α pour une variable aléatoire X suivant B(n, 1/2), afin de tester si une pièce est équilibrée",
+      "formulation_bo": "Test d'une pièce, par construction d'un intervalle I centré en n/2 tel que P(X ∈ I) ≥ 1 - α où X est une variable aléatoire suivant la loi binomiale B(n, 1/2)",
+      "connaissances_associees": ["loi binomiale", "intervalle de confiance", "hypothèse nulle", "test statistique"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TG-PR-425",
+      "intitule": "Analyser le problème de surréservation avec la loi binomiale",
+      "fingerprint": "analyser_surreservation_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Répétition d'expériences indépendantes, échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Construire un intervalle I de la forme [0,k] tel que P(X ∈ I) ≥ 1 - α pour une variable aléatoire X suivant B(n,p), dans un contexte de surréservation",
+      "formulation_bo": "Surréservation. Construction d'un intervalle I de la forme [0,k] tel que P(X ∈ I) ≥ 1 - α où X est une variable aléatoire suivant la loi binomiale B(n,p)",
+      "connaissances_associees": ["loi binomiale", "intervalle de confiance", "inégalité de concentration", "problème d'optimisation"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 8
+      }
+    }
+  ],
+  "summary": {
+    "total": 25,
+    "by_type": {
+      "contenu": 4,
+      "capacite": 21
+    },
+    "by_domaine": {
+      "PROBABILITES": 21,
+      "ANALYSE": 1,
+      "ALGORITHMIQUE": 2
+    },
+    "by_niveau": {
+      "TG": 25
+    },
+    "by_sous_domaine": {
+      "Inférence bayésienne": 12,
+      "Répétition d'expériences indépendantes, échantillonnage": 11,
+      "Étude de fonction": 1,
+      "Simulation probabiliste": 2
+    },
+    "fingerprints": [
+      "appliquer_formule_bayes_inversion_conditionnement",
+      "distinguer_probabilites_conditionnelles_ordre_conditionnement",
+      "interpreter_calculer_probabilites_a_priori_posteriori",
+      "appliquer_raisonnement_bayesien_tests_diagnostiques",
+      "definir_calculer_sensibilite_test",
+      "definir_calculer_specificite_test",
+      "calculer_valeur_predictive_positive_test",
+      "calculer_valeur_predictive_negative_test",
+      "analyser_evolution_valeurs_predictives_prevalence",
+      "interpreter_valeurs_predictives_test",
+      "resoudre_probleme_urne_inversion_conditionnement",
+      "definir_utiliser_probabilites_conditionnelles",
+      "comprendre_inversion_conditionnement",
+      "etudier_fonction_inversion_conditionnement",
+      "modeliser_repetition_experiences_aleatoires_independantes",
+      "modeliser_echantillonnage_inference_statistique",
+      "comprendre_schema_bernoulli",
+      "definir_utiliser_loi_binomiale",
+      "distinguer_probabilites_frequences_observees",
+      "simuler_experiences_aleatoires_independantes",
+      "utiliser_loi_uniforme_01_simulation",
+      "simuler_tirages_aleatoires_remise_urne",
+      "calculer_probabilite_tirage_remise_urne",
+      "tester_piece_intervalle_confiance",
+      "analyser_surreservation_loi_binomiale"
+    ]
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "source": {
+    "pdf": "premiere_ens_sci.pdf",
+    "page": 1,
+    "text_length": 4287
+  },
+  "extraction": {
+    "date": "2026-01-02T10:30:00",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "notes": "Page de preambule - Objectifs generaux de formation, pas de competences mathematiques specifiques"
+  },
+  "competences": [
+    {
+      "code": "1ENSSCI-LO-001",
+      "intitule": "Exercer un jugement critique face aux informations scientifiques",
+      "fingerprint": "exercer_jugement_critique_informations_scientifiques",
+      "niveau": "1ENSSCI",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Esprit critique",
+      "type": "capacite",
+      "description_detaillee": "Etre capable d'analyser de maniere critique les informations a caractere scientifique, identifier les fausses informations et les rumeurs, distinguer les faits des opinions",
+      "formulation_bo": "contribuer au developpement en chaque eleve d'un esprit rationnel, autonome et eclaire, capable d'exercer une analyse critique face aux fausses informations et aux rumeurs",
+      "connaissances_associees": ["methode scientifique", "sources fiables", "biais cognitifs"],
+      "source": {"pdf": "premiere_ens_sci.pdf", "page": 1}
+    },
+    {
+      "code": "1ENSSCI-LO-002",
+      "intitule": "Pratiquer une demarche scientifique",
+      "fingerprint": "pratiquer_demarche_scientifique",
+      "niveau": "1ENSSCI",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Methodologie scientifique",
+      "type": "capacite",
+      "description_detaillee": "Mettre en oeuvre les etapes d'une demarche scientifique : observation, questionnement, formulation d'hypotheses, experimentation, analyse des resultats, conclusion",
+      "formulation_bo": "La pratique veritable d'une demarche scientifique (y compris dans sa dimension concrete)",
+      "connaissances_associees": ["methode experimentale", "raisonnement hypothetico-deductif", "protocole experimental"],
+      "source": {"pdf": "premiere_ens_sci.pdf", "page": 1}
+    },
+    {
+      "code": "1ENSSCI-LO-003",
+      "intitule": "Comprendre le mode de construction des savoirs scientifiques",
+      "fingerprint": "comprendre_construction_savoirs_scientifiques",
+      "niveau": "1ENSSCI",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Histoire des sciences",
+      "type": "contenu",
+      "description_detaillee": "Connaitre les caracteristiques de la construction collective du savoir scientifique : raisonnement rationnel, recherche de causes materielles, confrontation aux faits, evolution historique",
+      "formulation_bo": "Le savoir scientifique est une construction collective qui a une histoire. Il est fonde sur le raisonnement rationnel et la recherche de causes materielles",
+      "connaissances_associees": ["histoire des sciences", "epistemologie", "evolution des theories"],
+      "source": {"pdf": "premiere_ens_sci.pdf", "page": 1}
+    },
+    {
+      "code": "1ENSSCI-LO-004",
+      "intitule": "Analyser les consequences des actions humaines sur l'environnement",
+      "fingerprint": "analyser_consequences_actions_environnement",
+      "niveau": "1ENSSCI",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Enjeux societaux",
+      "type": "capacite",
+      "description_detaillee": "Identifier et analyser les impacts des activites humaines sur l'environnement : utilisation des ressources naturelles, production de dechets, modifications des equilibres planetaires",
+      "formulation_bo": "Les activites humaines utilisent massivement des ressources naturelles et produisent des dechets. Elles peuvent modifier les equilibres a l'echelle de la planete (biodiversite, climat, etc.)",
+      "connaissances_associees": ["developpement durable", "biodiversite", "changement climatique"],
+      "source": {"pdf": "premiere_ens_sci.pdf", "page": 1}
+    },
+    {
+      "code": "1ENSSCI-LO-005",
+      "intitule": "Pratiquer un raisonnement scientifique de maniere autonome",
+      "fingerprint": "pratiquer_raisonnement_scientifique_autonome",
+      "niveau": "1ENSSCI",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Methodologie scientifique",
+      "type": "capacite",
+      "description_detaillee": "Etre capable de mener un raisonnement scientifique de facon independante dans des contextes varies, en s'appuyant sur les methodes et concepts scientifiques",
+      "formulation_bo": "fournissant les elements d'une pratique autonome du raisonnement scientifique, dans des contextes varies",
+      "connaissances_associees": ["logique", "argumentation", "transfert de connaissances"],
+      "source": {"pdf": "premiere_ens_sci.pdf", "page": 1}
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "by_type": {"capacite": 4, "contenu": 1},
+    "by_domaine": {"LOGIQUE": 5},
+    "fingerprints": [
+      "exercer_jugement_critique_informations_scientifiques",
+      "pratiquer_demarche_scientifique",
+      "comprendre_construction_savoirs_scientifiques",
+      "analyser_consequences_actions_environnement",
+      "pratiquer_raisonnement_scientifique_autonome"
+    ],
+    "notes": "Page de preambule - competences transversales et methodologiques uniquement, pas de contenu mathematique specifique"
+  }
+}

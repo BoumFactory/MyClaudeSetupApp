@@ -1,0 +1,226 @@
+{
+  "source": {
+    "pdf": "1ere_techno.pdf",
+    "page": 14,
+    "text_length": 1897
+  },
+  "extraction": {
+    "date": "2026-01-02T10:30:00",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "1TECHNO-ST-701",
+      "intitule": "Definir un tableau croise d'effectifs",
+      "fingerprint": "definir_tableau_croise_effectifs",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Croisement de variables categorielles",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la structure et l'organisation d'un tableau croise d'effectifs representant deux variables categorielles",
+      "formulation_bo": "Tableau croise d'effectifs.",
+      "connaissances_associees": ["variable categorielle", "effectif"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-ST-702",
+      "intitule": "Definir une frequence conditionnelle",
+      "fingerprint": "definir_frequence_conditionnelle",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Croisement de variables categorielles",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition d'une frequence conditionnelle comme frequence d'une modalite sachant qu'une autre modalite est realisee",
+      "formulation_bo": "Frequence conditionnelle, frequence marginale.",
+      "connaissances_associees": ["frequence", "tableau croise"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-ST-703",
+      "intitule": "Definir une frequence marginale",
+      "fingerprint": "definir_frequence_marginale",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Croisement de variables categorielles",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition d'une frequence marginale comme frequence totale d'une modalite (somme en ligne ou colonne)",
+      "formulation_bo": "Frequence conditionnelle, frequence marginale.",
+      "connaissances_associees": ["frequence", "tableau croise"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-ST-704",
+      "intitule": "Calculer une frequence conditionnelle a partir d'un tableau croise",
+      "fingerprint": "calculer_frequence_conditionnelle_tableau_croise",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Croisement de variables categorielles",
+      "type": "capacite",
+      "description_detaillee": "A partir d'un tableau croise d'effectifs, calculer la frequence d'une modalite sachant qu'une autre est realisee",
+      "formulation_bo": "Calculer des frequences conditionnelles et des frequences marginales.",
+      "connaissances_associees": ["tableau croise", "frequence conditionnelle", "division"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-ST-705",
+      "intitule": "Calculer une frequence marginale a partir d'un tableau croise",
+      "fingerprint": "calculer_frequence_marginale_tableau_croise",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Croisement de variables categorielles",
+      "type": "capacite",
+      "description_detaillee": "A partir d'un tableau croise d'effectifs, calculer la frequence totale d'une modalite (somme en ligne ou colonne divisee par l'effectif total)",
+      "formulation_bo": "Calculer des frequences conditionnelles et des frequences marginales.",
+      "connaissances_associees": ["tableau croise", "frequence marginale", "somme", "division"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-ST-706",
+      "intitule": "Completer un tableau croise par raisonnement sur les effectifs",
+      "fingerprint": "completer_tableau_croise_effectifs",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Croisement de variables categorielles",
+      "type": "capacite",
+      "description_detaillee": "Retrouver des effectifs manquants dans un tableau croise en utilisant les proprietes de somme des lignes et colonnes",
+      "formulation_bo": "Completer un tableau croise par des raisonnements sur les effectifs ou en utilisant des frequences conditionnelles.",
+      "connaissances_associees": ["tableau croise", "somme", "effectif total"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-ST-707",
+      "intitule": "Completer un tableau croise en utilisant des frequences conditionnelles",
+      "fingerprint": "completer_tableau_croise_frequences_conditionnelles",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Croisement de variables categorielles",
+      "type": "capacite",
+      "description_detaillee": "Retrouver des effectifs manquants dans un tableau croise a partir de frequences conditionnelles connues",
+      "formulation_bo": "Completer un tableau croise par des raisonnements sur les effectifs ou en utilisant des frequences conditionnelles.",
+      "connaissances_associees": ["tableau croise", "frequence conditionnelle", "calcul inverse"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-AG-708",
+      "intitule": "Filtrer un sous-ensemble d'individus repondant a un critere",
+      "fingerprint": "filtrer_individus_critere_algorithmique",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Traitement de donnees",
+      "type": "algorithme",
+      "description_detaillee": "A partir de deux listes representant deux caracteres d'individus, ecrire un algorithme pour determiner un sous-ensemble repondant a un critere avec les operateurs logiques ET, OU, NON",
+      "formulation_bo": "A partir de deux listes representant deux caracteres d'individus, determiner un sous-ensemble d'individus repondant a un critere (filtre, utilisation des ET, OU, NON).",
+      "connaissances_associees": ["listes", "operateurs logiques", "boucles", "conditions"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-AG-709",
+      "intitule": "Dresser un tableau croise de deux variables categorielles par algorithme",
+      "fingerprint": "dresser_tableau_croise_algorithme",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Traitement de donnees",
+      "type": "algorithme",
+      "description_detaillee": "A partir d'un fichier d'individus, ecrire un algorithme pour construire le tableau croise de deux variables categorielles",
+      "formulation_bo": "Dresser le tableau croise de deux variables categorielles a partir du fichier des individus et calculer des frequences conditionnelles ou marginales.",
+      "connaissances_associees": ["fichier de donnees", "comptage", "dictionnaires ou tableaux 2D"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-AG-710",
+      "intitule": "Calculer des frequences conditionnelles ou marginales par algorithme",
+      "fingerprint": "calculer_frequences_algorithme",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Traitement de donnees",
+      "type": "algorithme",
+      "description_detaillee": "A partir d'un tableau croise genere algorithmiquement, calculer les frequences conditionnelles ou marginales",
+      "formulation_bo": "Dresser le tableau croise de deux variables categorielles a partir du fichier des individus et calculer des frequences conditionnelles ou marginales.",
+      "connaissances_associees": ["tableau croise", "division", "boucles"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-PR-711",
+      "intitule": "Definir une probabilite conditionnelle",
+      "fingerprint": "definir_probabilite_conditionnelle",
+      "niveau": "1TECHNO",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition de la probabilite conditionnelle P_A(B) = Card(A inter B) / Card(A)",
+      "formulation_bo": "Probabilite conditionnelle ; notation P (B). A",
+      "connaissances_associees": ["probabilite", "intersection d'evenements", "cardinal"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-PR-712",
+      "intitule": "Utiliser la notation P_A(B) pour une probabilite conditionnelle",
+      "fingerprint": "utiliser_notation_probabilite_conditionnelle",
+      "niveau": "1TECHNO",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles",
+      "type": "contenu",
+      "description_detaillee": "Connaitre et utiliser correctement la notation P_A(B) pour designer la probabilite de B sachant A",
+      "formulation_bo": "Probabilite conditionnelle ; notation P (B). A",
+      "connaissances_associees": ["probabilite conditionnelle", "notation mathematique"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-PR-713",
+      "intitule": "Calculer une probabilite conditionnelle a partir d'un tableau croise d'effectifs",
+      "fingerprint": "calculer_probabilite_conditionnelle_tableau_croise",
+      "niveau": "1TECHNO",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles",
+      "type": "capacite",
+      "description_detaillee": "Lorsque les evenements sont presentes sous forme de tableau croise d'effectifs, calculer P_A(B) = Card(A inter B) / Card(A)",
+      "formulation_bo": "Calculer des probabilites conditionnelles lorsque les evenements sont presentes sous forme de tableau croise d'effectifs.",
+      "connaissances_associees": ["tableau croise", "probabilite conditionnelle", "cardinal intersection"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    },
+    {
+      "code": "1TECHNO-PR-714",
+      "intitule": "Interpreter le vocabulaire des tests diagnostiques",
+      "fingerprint": "interpreter_vocabulaire_tests_diagnostiques",
+      "niveau": "1TECHNO",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles",
+      "type": "capacite",
+      "description_detaillee": "Comprendre et utiliser le vocabulaire des tests diagnostiques : faux positifs, faux negatifs, specificite et sensibilite d'un test",
+      "formulation_bo": "Ce travail permet notamment de donner du sens au vocabulaire des tests diagnostiques : faux positifs, faux negatifs, specificite et sensibilite d'un test.",
+      "connaissances_associees": ["probabilite conditionnelle", "test diagnostique", "faux positif", "faux negatif", "sensibilite", "specificite"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 14}
+    }
+  ],
+  "summary": {
+    "total": 14,
+    "by_type": {
+      "contenu": 5,
+      "capacite": 6,
+      "algorithme": 3
+    },
+    "by_domaine": {
+      "STATISTIQUES": 7,
+      "ALGORITHMIQUE": 3,
+      "PROBABILITES": 4
+    },
+    "fingerprints": [
+      "definir_tableau_croise_effectifs",
+      "definir_frequence_conditionnelle",
+      "definir_frequence_marginale",
+      "calculer_frequence_conditionnelle_tableau_croise",
+      "calculer_frequence_marginale_tableau_croise",
+      "completer_tableau_croise_effectifs",
+      "completer_tableau_croise_frequences_conditionnelles",
+      "filtrer_individus_critere_algorithmique",
+      "dresser_tableau_croise_algorithme",
+      "calculer_frequences_algorithme",
+      "definir_probabilite_conditionnelle",
+      "utiliser_notation_probabilite_conditionnelle",
+      "calculer_probabilite_conditionnelle_tableau_croise",
+      "interpreter_vocabulaire_tests_diagnostiques"
+    ]
+  }
+}

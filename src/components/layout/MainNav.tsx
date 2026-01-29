@@ -114,6 +114,12 @@ export function MainNav() {
           description: "L'outil IA principal pour automatiser"
         },
         {
+          title: "Configuration de Claude Code",
+          href: "/claude-code/tutorials/claude-code-config",
+          icon: Settings,
+          description: "Configurer avec mes outils personnalisés"
+        },
+        {
           title: "Configuration de l'API Google",
           href: "/claude-code/tutorials/google-api-setup",
           icon: Image,

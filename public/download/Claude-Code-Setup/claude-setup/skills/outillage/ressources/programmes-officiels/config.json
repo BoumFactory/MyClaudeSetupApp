@@ -1,0 +1,24 @@
+{
+  "viewer": {
+    "default": "vscode",
+    "preferences": [
+      "vscode",
+      "edge",
+      "chrome"
+    ],
+    "commands": {
+      "vscode": "code",
+      "edge": "start msedge",
+      "chrome": "start chrome",
+      "default_pdf": "start"
+    }
+  },
+  "paths": {
+    "pages_dir": "data/pages",
+    "pdf_dir": "pdf"
+  },
+  "options": {
+    "open_in_vscode_pdf_preview": true,
+    "fallback_to_system_default": true
+  }
+}

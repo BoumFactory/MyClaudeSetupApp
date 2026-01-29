@@ -1,0 +1,392 @@
+{
+  "source": {
+    "pdf": "Tle_techno.pdf",
+    "page": 11,
+    "text_length": 2847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TTC-GE-550",
+      "intitule": "Determiner l'equation reduite d'une droite a partir de deux points",
+      "fingerprint": "determiner_equation_reduite_droite_deux_points",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Droites et equations",
+      "type": "capacite",
+      "description_detaillee": "A partir des coordonnees de deux points distincts, determiner l'equation reduite (y = mx + p) de la droite passant par ces points.",
+      "formulation_bo": "determiner l'equation reduite d'une droite a partir des coordonnees de deux de ses points",
+      "connaissances_associees": ["coordonnees de points", "coefficient directeur", "ordonnee a l'origine"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-GE-551",
+      "intitule": "Determiner graphiquement le coefficient directeur d'une tangente a une courbe",
+      "fingerprint": "determiner_graphiquement_coefficient_tangente",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Fonctions et courbes",
+      "type": "capacite",
+      "description_detaillee": "A partir d'une representation graphique, determiner le coefficient directeur (pente) d'une tangente a une courbe.",
+      "formulation_bo": "determiner graphiquement le coefficient directeur d'une tangente a une courbe",
+      "connaissances_associees": ["tangente a une courbe", "coefficient directeur", "lecture graphique"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-ST-552",
+      "intitule": "Lire un graphique ou histogramme",
+      "fingerprint": "lire_graphique_histogramme",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Representations graphiques",
+      "type": "capacite",
+      "description_detaillee": "Lire et interpreter un graphique ou un histogramme en reperage l'origine du repere, les unites de graduations et les echelles.",
+      "formulation_bo": "lire un graphique, un histogramme, un diagramme en barres ou circulaire, un diagramme en boîte ou toute autre representation (reperer l'origine du repere, les unites de graduations ou les echelles…)",
+      "connaissances_associees": ["repere", "graduations", "echelles", "axes"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-ST-553",
+      "intitule": "Lire un diagramme en barres",
+      "fingerprint": "lire_diagramme_barres",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Representations graphiques",
+      "type": "capacite",
+      "description_detaillee": "Lire et interpreter un diagramme en barres en reperage les echelles et les valeurs associees.",
+      "formulation_bo": "lire un graphique, un histogramme, un diagramme en barres ou circulaire, un diagramme en boîte ou toute autre representation",
+      "connaissances_associees": ["echelle", "frequences", "categories"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-ST-554",
+      "intitule": "Lire un diagramme circulaire",
+      "fingerprint": "lire_diagramme_circulaire",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Representations graphiques",
+      "type": "capacite",
+      "description_detaillee": "Lire et interpreter un diagramme circulaire (camembert) en identifiant les angles ou les pourcentages associes aux categories.",
+      "formulation_bo": "lire un graphique, un histogramme, un diagramme en barres ou circulaire, un diagramme en boîte ou toute autre representation",
+      "connaissances_associees": ["angles", "pourcentages", "categories", "proportions"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-ST-555",
+      "intitule": "Lire un diagramme en boite",
+      "fingerprint": "lire_diagramme_boite",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Representations graphiques",
+      "type": "capacite",
+      "description_detaillee": "Lire et interpreter un diagramme en boite (boite a moustaches) en identifiant les quartiles, la mediane et les valeurs extremes.",
+      "formulation_bo": "lire un graphique, un histogramme, un diagramme en barres ou circulaire, un diagramme en boîte ou toute autre representation",
+      "connaissances_associees": ["quartiles", "mediane", "valeurs extremes", "dispersion"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-ST-556",
+      "intitule": "Passer du graphique aux donnees et vice versa",
+      "fingerprint": "passer_graphique_donnees",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Representations graphiques",
+      "type": "capacite",
+      "description_detaillee": "Convertir des donnees chiffrees en representation graphique et inversement, en conservant l'information et en respectant les echelles.",
+      "formulation_bo": "passer du graphique aux donnees et vice versa",
+      "connaissances_associees": ["representation graphique", "donnees chiffrees", "tableau de valeurs"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-557",
+      "intitule": "Definir la moyenne arithmetique de deux nombres",
+      "fingerprint": "definir_moyenne_arithmetique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "contenu",
+      "description_detaillee": "Connaitre et utiliser la definition de la moyenne arithmetique de deux nombres : m = (a + b)/2.",
+      "formulation_bo": "moyenne arithmetique de deux nombres",
+      "connaissances_associees": ["addition", "division par 2", "nombre"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-558",
+      "intitule": "Calculer le terme general d'une suite arithmetique en fonction de n",
+      "fingerprint": "calculer_terme_general_suite_arithmetique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "A partir du premier terme et de la raison, exprimer le terme de rang n d'une suite arithmetique sous la forme u_n = u_0 + n*r ou u_n = u_1 + (n-1)*r.",
+      "formulation_bo": "expression en fonction de n du terme de rang n",
+      "connaissances_associees": ["suite arithmetique", "raison", "premier terme"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-559",
+      "intitule": "Calculer la somme des n premiers termes d'une suite arithmetique",
+      "fingerprint": "calculer_somme_termes_suite_arithmetique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Calculer la somme S_n = u_0 + u_1 + ... + u_(n-1) ou S_n = (nombre de termes) * (premier terme + dernier terme) / 2 pour une suite arithmetique.",
+      "formulation_bo": "somme des n premiers termes d'une suite arithmetique ; notation Σ",
+      "connaissances_associees": ["suite arithmetique", "somme", "notation sigma"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-560",
+      "intitule": "Definir la moyenne geometrique de deux nombres positifs",
+      "fingerprint": "definir_moyenne_geometrique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "contenu",
+      "description_detaillee": "Connaitre et utiliser la definition de la moyenne geometrique de deux nombres positifs : m = √(a*b).",
+      "formulation_bo": "moyenne geometrique de deux nombres positifs",
+      "connaissances_associees": ["racine carree", "produit", "nombres positifs"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-561",
+      "intitule": "Calculer le terme general d'une suite geometrique en fonction de n",
+      "fingerprint": "calculer_terme_general_suite_geometrique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "A partir du premier terme et de la raison, exprimer le terme de rang n d'une suite geometrique sous la forme u_n = u_0 * q^n ou u_n = u_1 * q^(n-1).",
+      "formulation_bo": "expression en fonction de n du terme de rang n",
+      "connaissances_associees": ["suite geometrique", "raison", "premier terme", "puissance"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-562",
+      "intitule": "Calculer la somme des n premiers termes d'une suite geometrique",
+      "fingerprint": "calculer_somme_termes_suite_geometrique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Calculer la somme S_n = u_0 + u_1 + ... + u_(n-1) pour une suite geometrique de raison q, avec la formule S_n = u_0 * (1 - q^n) / (1 - q) si q ≠ 1.",
+      "formulation_bo": "somme des n premiers termes d'une suite geometrique ; notation Σ",
+      "connaissances_associees": ["suite geometrique", "somme", "raison", "notation sigma", "puissance"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-563",
+      "intitule": "Prouver que trois nombres sont termes consecutifs d'une suite arithmetique",
+      "fingerprint": "prouver_termes_consecutifs_suite_arithmetique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Verifier que trois nombres a, b, c sont les termes consecutifs d'une suite arithmetique en testant la condition : 2b = a + c (propriete de la moyenne arithmetique).",
+      "formulation_bo": "Prouver que trois nombres sont (ou ne sont pas) les termes consecutifs d'une suite arithmetique ou geometrique",
+      "connaissances_associees": ["suite arithmetique", "terme consecutif", "moyenne arithmetique", "raison"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-564",
+      "intitule": "Prouver que trois nombres ne sont pas termes consecutifs d'une suite arithmetique",
+      "fingerprint": "prouver_non_termes_consecutifs_suite_arithmetique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Verifier que trois nombres a, b, c ne sont pas les termes consecutifs d'une suite arithmetique en testant que 2b ≠ a + c.",
+      "formulation_bo": "Prouver que trois nombres sont (ou ne sont pas) les termes consecutifs d'une suite arithmetique ou geometrique",
+      "connaissances_associees": ["suite arithmetique", "terme consecutif", "moyenne arithmetique"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-565",
+      "intitule": "Prouver que trois nombres positifs sont termes consecutifs d'une suite geometrique",
+      "fingerprint": "prouver_termes_consecutifs_suite_geometrique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Verifier que trois nombres positifs a, b, c sont les termes consecutifs d'une suite geometrique en testant la condition : b² = a * c (propriete de la moyenne geometrique).",
+      "formulation_bo": "Prouver que trois nombres sont (ou ne sont pas) les termes consecutifs d'une suite arithmetique ou geometrique",
+      "connaissances_associees": ["suite geometrique", "terme consecutif", "moyenne geometrique", "raison"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-566",
+      "intitule": "Prouver que trois nombres ne sont pas termes consecutifs d'une suite geometrique",
+      "fingerprint": "prouver_non_termes_consecutifs_suite_geometrique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Verifier que trois nombres ne sont pas les termes consecutifs d'une suite geometrique en testant que b² ≠ a * c.",
+      "formulation_bo": "Prouver que trois nombres sont (ou ne sont pas) les termes consecutifs d'une suite arithmetique ou geometrique",
+      "connaissances_associees": ["suite geometrique", "terme consecutif", "moyenne geometrique"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-567",
+      "intitule": "Determiner la raison d'une suite arithmetique modelisant une evolution",
+      "fingerprint": "determiner_raison_suite_arithmetique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "A partir des donnees d'une situation d'evolution, determiner la raison r d'une suite arithmetique qui la modelise.",
+      "formulation_bo": "Determiner la raison d'une suite arithmetique ou geometrique modelisant une evolution",
+      "connaissances_associees": ["suite arithmetique", "raison", "modelisation", "evolution", "croissance"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-568",
+      "intitule": "Determiner la raison d'une suite geometrique modelisant une evolution",
+      "fingerprint": "determiner_raison_suite_geometrique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "A partir des donnees d'une situation d'evolution, determiner la raison q d'une suite geometrique qui la modelise.",
+      "formulation_bo": "Determiner la raison d'une suite arithmetique ou geometrique modelisant une evolution",
+      "connaissances_associees": ["suite geometrique", "raison", "modelisation", "evolution", "croissance exponentielle"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-569",
+      "intitule": "Reconnaitre une situation relevant du calcul de somme de suite arithmetique",
+      "fingerprint": "reconnaitre_somme_suite_arithmetique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Identifier dans un probleme si le contexte necessite de calculer la somme des n premiers termes d'une suite arithmetique (par exemple, economies avec versements reguliers constants).",
+      "formulation_bo": "Reconnaitre une situation relevant du calcul d'une somme de termes consecutifs d'une suite arithmetique ou geometrique",
+      "connaissances_associees": ["suite arithmetique", "somme", "contexte economique"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TTC-AN-570",
+      "intitule": "Reconnaitre une situation relevant du calcul de somme de suite geometrique",
+      "fingerprint": "reconnaitre_somme_suite_geometrique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Identifier dans un probleme si le contexte necessite de calculer la somme des n premiers termes d'une suite geometrique (par exemple, placements a interets composes avec versements reguliers).",
+      "formulation_bo": "Reconnaitre une situation relevant du calcul d'une somme de termes consecutifs d'une suite arithmetique ou geometrique",
+      "connaissances_associees": ["suite geometrique", "somme", "interets composes", "placements financiers"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 11
+      }
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "by_type": {
+      "capacite": 15,
+      "contenu": 2,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "ANALYSE": 14,
+      "GEOMETRIE": 2,
+      "STATISTIQUES": 4
+    },
+    "by_niveau": {
+      "TTC": 20
+    },
+    "fingerprints": [
+      "determiner_equation_reduite_droite_deux_points",
+      "determiner_graphiquement_coefficient_tangente",
+      "lire_graphique_histogramme",
+      "lire_diagramme_barres",
+      "lire_diagramme_circulaire",
+      "lire_diagramme_boite",
+      "passer_graphique_donnees",
+      "definir_moyenne_arithmetique",
+      "calculer_terme_general_suite_arithmetique",
+      "calculer_somme_termes_suite_arithmetique",
+      "definir_moyenne_geometrique",
+      "calculer_terme_general_suite_geometrique",
+      "calculer_somme_termes_suite_geometrique",
+      "prouver_termes_consecutifs_suite_arithmetique",
+      "prouver_non_termes_consecutifs_suite_arithmetique",
+      "prouver_termes_consecutifs_suite_geometrique",
+      "prouver_non_termes_consecutifs_suite_geometrique",
+      "determiner_raison_suite_arithmetique",
+      "determiner_raison_suite_geometrique",
+      "reconnaitre_somme_suite_arithmetique",
+      "reconnaitre_somme_suite_geometrique"
+    ]
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "source": {
+    "pdf": "2STHR.pdf",
+    "page": 4,
+    "text_length": 2847
+  },
+  "extraction": {
+    "date": "2026-01-02T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page introductive sur les modalites pedagogiques - pas de competences mathematiques specifiques au programme"
+  },
+  "competences": [
+    {
+      "code": "2STH-LO-201",
+      "intitule": "Chercher des informations et des strategies pour resoudre un probleme",
+      "fingerprint": "chercher_informations_strategies_probleme",
+      "niveau": "2STH",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Competence transversale d'investigation et de recherche de strategies face a un probleme mathematique",
+      "formulation_bo": "chercher",
+      "connaissances_associees": ["methodes de resolution", "strategies de recherche"],
+      "source": {"pdf": "2STHR.pdf", "page": 4}
+    },
+    {
+      "code": "2STH-LO-202",
+      "intitule": "Modeliser une situation par un objet mathematique adapte",
+      "fingerprint": "modeliser_situation_objet_mathematique",
+      "niveau": "2STH",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Traduire une situation concrete en langage mathematique en choisissant le modele adapte",
+      "formulation_bo": "modeliser",
+      "connaissances_associees": ["representation mathematique", "abstraction"],
+      "source": {"pdf": "2STHR.pdf", "page": 4}
+    },
+    {
+      "code": "2STH-LO-203",
+      "intitule": "Representer un objet mathematique sous differentes formes",
+      "fingerprint": "representer_objet_mathematique_formes",
+      "niveau": "2STH",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Utiliser differents registres de representation (graphique, algebrique, numerique) pour un meme objet",
+      "formulation_bo": "representer",
+      "connaissances_associees": ["registres de representation", "changement de registre"],
+      "source": {"pdf": "2STHR.pdf", "page": 4}
+    },
+    {
+      "code": "2STH-LO-204",
+      "intitule": "Raisonner de maniere logique et argumentee",
+      "fingerprint": "raisonner_logique_argumentation",
+      "niveau": "2STH",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Construire un raisonnement mathematique en enchainant des arguments logiques",
+      "formulation_bo": "raisonner",
+      "connaissances_associees": ["logique", "demonstration", "argumentation"],
+      "source": {"pdf": "2STHR.pdf", "page": 4}
+    },
+    {
+      "code": "2STH-NB-205",
+      "intitule": "Calculer de maniere efficace et justifiee",
+      "fingerprint": "calculer_efficace_justifie",
+      "niveau": "2STH",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Effectuer des calculs (mentaux, ecrits, instrumentes) de maniere efficace et en justifiant les etapes",
+      "formulation_bo": "calculer",
+      "connaissances_associees": ["calcul mental", "calcul litteral", "automatismes"],
+      "source": {"pdf": "2STHR.pdf", "page": 4}
+    },
+    {
+      "code": "2STH-LO-206",
+      "intitule": "Communiquer a l'ecrit et a l'oral en utilisant le langage mathematique",
+      "fingerprint": "communiquer_ecrit_oral_langage_mathematique",
+      "niveau": "2STH",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Exprimer une demarche, un resultat en utilisant le langage naturel et symbolique mathematique",
+      "formulation_bo": "communiquer",
+      "connaissances_associees": ["langage mathematique", "redaction", "expression orale"],
+      "source": {"pdf": "2STHR.pdf", "page": 4}
+    },
+    {
+      "code": "2STH-AG-207",
+      "intitule": "Utiliser des outils numeriques pour visualiser et experimenter",
+      "fingerprint": "utiliser_outils_numeriques_visualisation_experimentation",
+      "niveau": "2STH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Outils numeriques",
+      "type": "capacite",
+      "description_detaillee": "Exploiter des logiciels de visualisation, calcul, simulation ou programmation pour experimenter et conjecturer",
+      "formulation_bo": "L'utilisation d'outils numeriques de visualisation et de representation, de calcul, de simulation ou de programmation developpe la possibilite d'experimenter",
+      "connaissances_associees": ["logiciels mathematiques", "simulation", "experimentation"],
+      "source": {"pdf": "2STHR.pdf", "page": 4}
+    },
+    {
+      "code": "2STH-LO-208",
+      "intitule": "Argumenter pour convaincre a l'oral",
+      "fingerprint": "argumenter_convaincre_oral",
+      "niveau": "2STH",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Preciser sa pensee et expliciter son raisonnement de maniere a convaincre lors d'echanges oraux",
+      "formulation_bo": "Celle-ci conduit a preciser sa pensee et a expliciter son raisonnement de maniere a convaincre",
+      "connaissances_associees": ["argumentation", "expression orale", "justification"],
+      "source": {"pdf": "2STHR.pdf", "page": 4}
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "by_type": {
+      "capacite": 8
+    },
+    "by_domaine": {
+      "LOGIQUE": 5,
+      "NOMBRES": 1,
+      "ALGORITHMIQUE": 1
+    },
+    "fingerprints": [
+      "chercher_informations_strategies_probleme",
+      "modeliser_situation_objet_mathematique",
+      "representer_objet_mathematique_formes",
+      "raisonner_logique_argumentation",
+      "calculer_efficace_justifie",
+      "communiquer_ecrit_oral_langage_mathematique",
+      "utiliser_outils_numeriques_visualisation_experimentation",
+      "argumenter_convaincre_oral"
+    ],
+    "note": "Cette page contient les 6 competences mathematiques transversales (chercher, modeliser, representer, raisonner, calculer, communiquer) plus 2 competences complementaires sur les outils numeriques et l'argumentation orale. Pas de contenu mathematique specifique."
+  }
+}

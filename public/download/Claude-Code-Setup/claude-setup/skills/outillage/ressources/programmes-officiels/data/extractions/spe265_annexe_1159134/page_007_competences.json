@@ -1,0 +1,698 @@
+{
+  "source": {
+    "pdf": "spe265_annexe_1159134.pdf",
+    "page": 7,
+    "text_length": 1687
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-GR-351",
+      "intitule": "Calculer l'aire d'un triangle",
+      "fingerprint": "calculer_aire_triangle",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes usuelles",
+      "type": "contenu",
+      "description_detaillee": "Calcul de l'aire d'une surface triangulaire à partir de ses dimensions géométriques.",
+      "formulation_bo": "aires des figures planes usuelles : triangles, trapèzes, rectangles, carrés et disques",
+      "connaissances_associees": ["définition triangle", "hauteur triangle", "base triangle"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-352",
+      "intitule": "Calculer l'aire d'un trapèze",
+      "fingerprint": "calculer_aire_trapeze",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes usuelles",
+      "type": "contenu",
+      "description_detaillee": "Calcul de l'aire d'une surface trapézoïdale à partir de ses dimensions géométriques.",
+      "formulation_bo": "aires des figures planes usuelles : triangles, trapèzes, rectangles, carrés et disques",
+      "connaissances_associees": ["définition trapèze", "bases trapèze", "hauteur trapèze"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-353",
+      "intitule": "Calculer l'aire d'un rectangle",
+      "fingerprint": "calculer_aire_rectangle",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes usuelles",
+      "type": "contenu",
+      "description_detaillee": "Calcul de l'aire d'une surface rectangulaire à partir de ses dimensions géométriques.",
+      "formulation_bo": "aires des figures planes usuelles : triangles, trapèzes, rectangles, carrés et disques",
+      "connaissances_associees": ["définition rectangle", "longueur rectangle", "largeur rectangle"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-354",
+      "intitule": "Calculer l'aire d'un carré",
+      "fingerprint": "calculer_aire_carre",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes usuelles",
+      "type": "contenu",
+      "description_detaillee": "Calcul de l'aire d'une surface carrée à partir de la longueur de ses côtés.",
+      "formulation_bo": "aires des figures planes usuelles : triangles, trapèzes, rectangles, carrés et disques",
+      "connaissances_associees": ["définition carré", "côté carré"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-355",
+      "intitule": "Calculer l'aire d'un disque",
+      "fingerprint": "calculer_aire_disque",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes usuelles",
+      "type": "contenu",
+      "description_detaillee": "Calcul de l'aire d'une surface circulaire à partir de son rayon.",
+      "formulation_bo": "aires des figures planes usuelles : triangles, trapèzes, rectangles, carrés et disques",
+      "connaissances_associees": ["définition disque", "rayon disque", "nombre pi"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-356",
+      "intitule": "Appliquer la propriété d'additivité des aires",
+      "fingerprint": "appliquer_additivite_aires",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Propriétés des aires",
+      "type": "capacite",
+      "description_detaillee": "Décomposer une figure complexe en figures simples et calculer l'aire totale comme somme des aires partielles.",
+      "formulation_bo": "utilisation de propriétés classiques : additivité, invariance par symétrie et translation",
+      "connaissances_associees": ["décomposition de figures", "somme d'aires"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-357",
+      "intitule": "Appliquer l'invariance des aires par symétrie",
+      "fingerprint": "appliquer_invariance_aire_symetrie",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Propriétés des aires",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître que la symétrie d'une figure ne change pas son aire et utiliser cette propriété dans les calculs.",
+      "formulation_bo": "utilisation de propriétés classiques : additivité, invariance par symétrie et translation",
+      "connaissances_associees": ["symétrie", "invariance", "propriétés de transformation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-358",
+      "intitule": "Appliquer l'invariance des aires par translation",
+      "fingerprint": "appliquer_invariance_aire_translation",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Propriétés des aires",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître que la translation d'une figure ne change pas son aire et utiliser cette propriété dans les calculs.",
+      "formulation_bo": "utilisation de propriétés classiques : additivité, invariance par symétrie et translation",
+      "connaissances_associees": ["translation", "invariance", "propriétés de transformation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AN-359",
+      "intitule": "Approximer l'aire sous une courbe par la méthode des rectangles",
+      "fingerprint": "approximer_aire_sous_courbe_rectangles",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la méthode des rectangles pour obtenir une valeur approchée de l'aire sous la courbe d'une fonction dont on ne connaît pas les primitives.",
+      "formulation_bo": "Approximation de l'aire sous la courbe de la fonction exponentielle sur [0,1] par la méthode des rectangles",
+      "connaissances_associees": ["subdivision d'un intervalle", "fonction exponentielle", "notion d'intégrale"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AN-360",
+      "intitule": "Approximer une aire par la méthode de Monte-Carlo",
+      "fingerprint": "approximer_aire_monte_carlo",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la méthode probabiliste de Monte-Carlo pour estimer l'aire sous une courbe par simulation aléatoire.",
+      "formulation_bo": "Estimation de l'aire sous une courbe par la méthode de Monte-Carlo",
+      "connaissances_associees": ["nombres aléatoires", "probabilités", "simulation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-361",
+      "intitule": "Approximer le nombre pi par le calcul d'une aire circulaire",
+      "fingerprint": "approximer_pi_aire_disque",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Calcul d'aires",
+      "type": "capacite",
+      "description_detaillee": "Utiliser des méthodes d'approximation d'aires pour obtenir une valeur approchée de pi.",
+      "formulation_bo": "Approximation de π et aire d'un disque",
+      "connaissances_associees": ["aire disque", "nombre pi", "méthodes d'approximation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-362",
+      "intitule": "Résoudre la quadrature de la parabole par la méthode d'Archimède",
+      "fingerprint": "resoudre_quadrature_parabole_archimede",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Calcul d'aires",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer la méthode historique d'Archimède pour déterminer l'aire sous une parabole par approximations successives.",
+      "formulation_bo": "Quadrature de la parabole par la méthode d'Archimède",
+      "connaissances_associees": ["parabole", "approximations successives", "limites de suites"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-363",
+      "intitule": "Résoudre la quadrature de l'hyperbole par la méthode de Brouncker",
+      "fingerprint": "resoudre_quadrature_hyperbole_brouncker",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Calcul d'aires",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer la méthode de Brouncker pour déterminer l'aire sous une hyperbole.",
+      "formulation_bo": "Quadrature de l'hyperbole par une ou deux méthodes (Brouncker, Grégoire de Saint-Vincent)",
+      "connaissances_associees": ["hyperbole", "fonction inverse", "approximations", "limites"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-364",
+      "intitule": "Résoudre la quadrature de l'hyperbole par la méthode de Grégoire de Saint-Vincent",
+      "fingerprint": "resoudre_quadrature_hyperbole_saint_vincent",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Calcul d'aires",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer la méthode de Grégoire de Saint-Vincent pour déterminer l'aire sous une hyperbole.",
+      "formulation_bo": "Quadrature de l'hyperbole par une ou deux méthodes (Brouncker, Grégoire de Saint-Vincent)",
+      "connaissances_associees": ["hyperbole", "fonction inverse", "approximations", "limites"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-365",
+      "intitule": "Calculer le volume d'un cylindre",
+      "fingerprint": "calculer_volume_cylindre",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Volumes de solides de révolution",
+      "type": "contenu",
+      "description_detaillee": "Calcul du volume d'un solide cylindrique à partir du rayon de sa base et de sa hauteur.",
+      "formulation_bo": "calculs de volumes notamment pour des solides de révolution (cylindre, cône, sphère, paraboloïde de révolution)",
+      "connaissances_associees": ["solide de révolution", "aire de la base", "hauteur"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-366",
+      "intitule": "Calculer le volume d'un cône",
+      "fingerprint": "calculer_volume_cone",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Volumes de solides de révolution",
+      "type": "contenu",
+      "description_detaillee": "Calcul du volume d'un solide conique à partir du rayon de sa base et de sa hauteur.",
+      "formulation_bo": "calculs de volumes notamment pour des solides de révolution (cylindre, cône, sphère, paraboloïde de révolution)",
+      "connaissances_associees": ["solide de révolution", "aire de la base", "hauteur"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-367",
+      "intitule": "Calculer le volume d'une sphère",
+      "fingerprint": "calculer_volume_sphere",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Volumes de solides de révolution",
+      "type": "contenu",
+      "description_detaillee": "Calcul du volume d'une sphère à partir de son rayon.",
+      "formulation_bo": "calculs de volumes notamment pour des solides de révolution (cylindre, cône, sphère, paraboloïde de révolution)",
+      "connaissances_associees": ["sphère", "rayon", "solide de révolution"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-GR-368",
+      "intitule": "Calculer le volume d'un paraboloïde de révolution",
+      "fingerprint": "calculer_volume_paraboloide_revolution",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Volumes de solides de révolution",
+      "type": "contenu",
+      "description_detaillee": "Calcul du volume d'un paraboloïde obtenu par rotation d'une parabole autour d'un axe.",
+      "formulation_bo": "calculs de volumes notamment pour des solides de révolution (cylindre, cône, sphère, paraboloïde de révolution)",
+      "connaissances_associees": ["paraboloïde", "solide de révolution", "intégration"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AG-369",
+      "intitule": "Coder un algorithme pour calculer un terme de rang donné d'une suite",
+      "fingerprint": "coder_algorithme_terme_suite",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes numériques",
+      "type": "algorithme",
+      "description_detaillee": "Concevoir et implémenter un programme pour calculer un terme de rang spécifique d'une suite donnée (arithmétique, géométrique ou récurrente).",
+      "formulation_bo": "Calcul d'un terme de rang donné d'une suite",
+      "connaissances_associees": ["suites", "récurrence", "programmation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AG-370",
+      "intitule": "Coder un algorithme pour rechercher une valeur approchée de précision donnée",
+      "fingerprint": "coder_algorithme_valeur_approchee_precision",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes numériques",
+      "type": "algorithme",
+      "description_detaillee": "Concevoir et implémenter un programme qui itère jusqu'à obtenir une approximation d'une valeur avec une précision spécifiée.",
+      "formulation_bo": "Recherche d'une valeur approchée de précision donnée",
+      "connaissances_associees": ["approximations", "critère de convergence", "boucles conditionnelles"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AN-371",
+      "intitule": "Determiner les limites d'une suite",
+      "fingerprint": "determiner_limites_suite",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites de suites",
+      "type": "contenu",
+      "description_detaillee": "Analyser le comportement d'une suite pour déterminer sa limite lorsque n tend vers l'infini.",
+      "formulation_bo": "Limites de suites",
+      "connaissances_associees": ["convergence", "divergence", "définition limite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AN-372",
+      "intitule": "Calculer l'intégrale d'une fonction continue et positive",
+      "fingerprint": "calculer_integrale_fonction_continue_positive",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "contenu",
+      "description_detaillee": "Déterminer l'intégrale d'une fonction continue et positive sur un intervalle donné.",
+      "formulation_bo": "Intégrale d'une fonction continue et positive",
+      "connaissances_associees": ["aire sous courbe", "fonction continue", "primitives"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AN-373",
+      "intitule": "Determiner les primitives d'une fonction",
+      "fingerprint": "determiner_primitives_fonction",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "contenu",
+      "description_detaillee": "Trouver une fonction F dont la dérivée est une fonction donnée f.",
+      "formulation_bo": "Primitives",
+      "connaissances_associees": ["dérivation", "intégration", "théorème fondamental du calcul"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AN-374",
+      "intitule": "Appliquer les théorèmes de continuité",
+      "fingerprint": "appliquer_theoremes_continuite",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité et dérivation",
+      "type": "contenu",
+      "description_detaillee": "Utiliser les propriétés et théorèmes relatifs à la continuité des fonctions.",
+      "formulation_bo": "Continuité et dérivation",
+      "connaissances_associees": ["définition continuité", "théorèmes", "limites"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AN-375",
+      "intitule": "Appliquer les théorèmes de dérivation",
+      "fingerprint": "appliquer_theoremes_derivation",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité et dérivation",
+      "type": "contenu",
+      "description_detaillee": "Utiliser les propriétés et théorèmes relatifs à la dérivabilité des fonctions.",
+      "formulation_bo": "Continuité et dérivation",
+      "connaissances_associees": ["définition dérivée", "théorèmes", "primitives"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-PR-376",
+      "intitule": "Appliquer les concepts de probabilités au contexte du calcul d'aires",
+      "fingerprint": "appliquer_probabilites_calcul_aires",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilités géométriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les notions de probabilités (notamment la méthode de Monte-Carlo) pour approximer des aires.",
+      "formulation_bo": "Probabilités",
+      "connaissances_associees": ["loi uniforme", "simulation", "nombres aléatoires"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-377",
+      "intitule": "Calculer les caractéristiques de dispersion d'une distribution : médiane",
+      "fingerprint": "calculer_mediane_distribution",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique descriptive",
+      "type": "contenu",
+      "description_detaillee": "Déterminer la valeur médiane d'une série de données.",
+      "formulation_bo": "Statistique descriptive : caractéristiques de dispersion (médiane, quartiles, déciles, rapport interdécile)",
+      "connaissances_associees": ["définition médiane", "classement des données"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-378",
+      "intitule": "Calculer les caractéristiques de dispersion d'une distribution : quartiles",
+      "fingerprint": "calculer_quartiles_distribution",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique descriptive",
+      "type": "contenu",
+      "description_detaillee": "Déterminer les valeurs qui divisent une série de données en quatre parties égales.",
+      "formulation_bo": "Statistique descriptive : caractéristiques de dispersion (médiane, quartiles, déciles, rapport interdécile)",
+      "connaissances_associees": ["définition quartiles", "positionnement dans les données"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-379",
+      "intitule": "Calculer les caractéristiques de dispersion d'une distribution : déciles",
+      "fingerprint": "calculer_deciles_distribution",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique descriptive",
+      "type": "contenu",
+      "description_detaillee": "Déterminer les valeurs qui divisent une série de données en dix parties égales.",
+      "formulation_bo": "Statistique descriptive : caractéristiques de dispersion (médiane, quartiles, déciles, rapport interdécile)",
+      "connaissances_associees": ["définition déciles", "positionnement dans les données"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-380",
+      "intitule": "Calculer le rapport interdécile",
+      "fingerprint": "calculer_rapport_interdecile",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique descriptive",
+      "type": "contenu",
+      "description_detaillee": "Déterminer le rapport entre le neuvième et le premier décile pour mesurer la dispersion des données.",
+      "formulation_bo": "Statistique descriptive : caractéristiques de dispersion (médiane, quartiles, déciles, rapport interdécile)",
+      "connaissances_associees": ["déciles", "inégalités", "mesure de dispersion"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-381",
+      "intitule": "Tracer et interpréter la courbe de Lorenz",
+      "fingerprint": "tracer_interpreter_courbe_lorenz",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Répartition des richesses",
+      "type": "capacite",
+      "description_detaillee": "Construire la représentation graphique de la courbe de Lorenz à partir des données et l'interpréter dans le contexte de la répartition des richesses.",
+      "formulation_bo": "Courbe de Lorenz : sur des données réelles, présentation, définition, lecture, construction d'une ligne polygonale à partir des quantiles, interprétation",
+      "connaissances_associees": ["quantiles", "représentation graphique", "inégalités", "richesses"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-382",
+      "intitule": "Construire une ligne polygonale à partir des quantiles de la courbe de Lorenz",
+      "fingerprint": "construire_ligne_polygonale_quantiles_lorenz",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Répartition des richesses",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les quantiles d'une distribution et les utiliser pour construire la ligne polygonale de Lorenz.",
+      "formulation_bo": "construction d'une ligne polygonale à partir des quantiles",
+      "connaissances_associees": ["quantiles", "distributions", "segments polygonaux"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AN-383",
+      "intitule": "Modéliser la courbe de Lorenz par une fonction continue, croissante et convexe",
+      "fingerprint": "modeliser_courbe_lorenz_fonction_continue_convexe",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Trouver une fonction continue, croissante et convexe de [0,1] dans [0,1] avec 0 et 1 comme points fixes pour modéliser la courbe de Lorenz.",
+      "formulation_bo": "Modélisation par la courbe représentative d'une fonction continue, croissante, convexe de [0,1] dans [0,1] et ayant 0 et 1 comme points fixes",
+      "connaissances_associees": ["fonctions continues", "monotonie", "convexité", "points fixes"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-384",
+      "intitule": "Interpreter la position de la courbe de Lorenz par rapport à la première bissectrice",
+      "fingerprint": "interpreter_position_lorenz_bissectrice",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Répartition des richesses",
+      "type": "capacite",
+      "description_detaillee": "Analyser la courbe de Lorenz et ses écarts par rapport à la diagonale (première bissectrice) pour en déduire le niveau d'inégalité.",
+      "formulation_bo": "Position par rapport à la première bissectrice",
+      "connaissances_associees": ["inégalités", "répartition équitable", "écart graphique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-385",
+      "intitule": "Calculer l'indice de Gini",
+      "fingerprint": "calculer_indice_gini",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Répartition des richesses",
+      "type": "capacite",
+      "description_detaillee": "Déterminer l'indice de Gini à partir de la courbe de Lorenz pour mesurer le degré d'inégalité d'une répartition.",
+      "formulation_bo": "Indice de Gini : définition, calcul, interprétation comme mesure du degré d'inégalité d'une répartition",
+      "connaissances_associees": ["courbe de Lorenz", "aire", "mesure d'inégalité"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-386",
+      "intitule": "Interpréter l'indice de Gini comme mesure du degré d'inégalité",
+      "fingerprint": "interpreter_indice_gini_inegalite",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Répartition des richesses",
+      "type": "capacite",
+      "description_detaillee": "Donner du sens à la valeur de l'indice de Gini dans le contexte de la répartition des richesses et des inégalités.",
+      "formulation_bo": "Indice de Gini : interprétation comme mesure du degré d'inégalité d'une répartition",
+      "connaissances_associees": ["inégalités", "mesures statistiques", "contexte socio-économique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-387",
+      "intitule": "Comparer plusieurs répartitions à partir de leur indice de Gini",
+      "fingerprint": "comparer_repartitions_indice_gini",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Répartition des richesses",
+      "type": "capacite",
+      "description_detaillee": "Analyser et comparer les niveaux d'inégalité de plusieurs distributions en utilisant leurs indices de Gini respectifs.",
+      "formulation_bo": "Comparaison de plusieurs répartitions",
+      "connaissances_associees": ["indice de Gini", "inégalités", "analyse comparative"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-ST-388",
+      "intitule": "Analyser l'évolution de l'indice de Gini sur une période",
+      "fingerprint": "analyser_evolution_indice_gini",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Répartition des richesses",
+      "type": "capacite",
+      "description_detaillee": "Étudier comment l'indice de Gini varie dans le temps pour une population ou région donnée.",
+      "formulation_bo": "Évolution de l'indice sur une période",
+      "connaissances_associees": ["séries temporelles", "indice de Gini", "tendances"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TSPE-AN-389",
+      "intitule": "Appliquer les propriétés des fonctions d'une variable au contexte économique",
+      "fingerprint": "appliquer_fonctions_variable_economique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les outils d'analyse des fonctions (continuité, dérivation, intégration) pour étudier des phénomènes économiques comme la répartition des richesses.",
+      "formulation_bo": "fonctions d'une variable (notamment des fonctions de répartition)",
+      "connaissances_associees": ["dérivation", "intégration", "croissance", "convexité"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 7
+      }
+    }
+  ],
+  "summary": {
+    "total": 39,
+    "by_type": {
+      "contenu": 13,
+      "capacite": 18,
+      "approfondissement": 3,
+      "algorithme": 2,
+      "demonstration": 0
+    },
+    "by_domaine": {
+      "GRANDEURS": 8,
+      "ANALYSE": 8,
+      "STATISTIQUES": 11,
+      "ALGORITHMIQUE": 2,
+      "PROBABILITES": 1,
+      "NOMBRES": 0
+    },
+    "fingerprints": [
+      "calculer_aire_triangle",
+      "calculer_aire_trapeze",
+      "calculer_aire_rectangle",
+      "calculer_aire_carre",
+      "calculer_aire_disque",
+      "appliquer_additivite_aires",
+      "appliquer_invariance_aire_symetrie",
+      "appliquer_invariance_aire_translation",
+      "approximer_aire_sous_courbe_rectangles",
+      "approximer_aire_monte_carlo",
+      "approximer_pi_aire_disque",
+      "resoudre_quadrature_parabole_archimede",
+      "resoudre_quadrature_hyperbole_brouncker",
+      "resoudre_quadrature_hyperbole_saint_vincent",
+      "calculer_volume_cylindre",
+      "calculer_volume_cone",
+      "calculer_volume_sphere",
+      "calculer_volume_paraboloide_revolution",
+      "coder_algorithme_terme_suite",
+      "coder_algorithme_valeur_approchee_precision",
+      "determiner_limites_suite",
+      "calculer_integrale_fonction_continue_positive",
+      "determiner_primitives_fonction",
+      "appliquer_theoremes_continuite",
+      "appliquer_theoremes_derivation",
+      "appliquer_probabilites_calcul_aires",
+      "calculer_mediane_distribution",
+      "calculer_quartiles_distribution",
+      "calculer_deciles_distribution",
+      "calculer_rapport_interdecile",
+      "tracer_interpreter_courbe_lorenz",
+      "construire_ligne_polygonale_quantiles_lorenz",
+      "modeliser_courbe_lorenz_fonction_continue_convexe",
+      "interpreter_position_lorenz_bissectrice",
+      "calculer_indice_gini",
+      "interpreter_indice_gini_inegalite",
+      "comparer_repartitions_indice_gini",
+      "analyser_evolution_indice_gini",
+      "appliquer_fonctions_variable_economique"
+    ]
+  }
+}

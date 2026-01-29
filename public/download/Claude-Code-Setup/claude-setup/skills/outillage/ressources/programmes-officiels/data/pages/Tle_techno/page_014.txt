@@ -1,0 +1,48 @@
+ Le comportement de la fonction inverse aux bornes de son ensemble de définition est
+mis en lien avec, d’une part, l’ordre de grandeur d’inverses de petits ou grands
+nombres, d’autre part, l’allure de la courbe.
+ Aucune définition de l’asymptote n’est attendue ; on s’en tient à une approche
+intuitive.
+Statistique et probabilités
+Alors que le programme de la classe de première est consacré, dans sa partie relative aux
+statistiques, à l’étude de couples de variables catégorielles, celui de la classe terminale
+aborde l’étude de variables quantitatives, représentées par des nuages de points. On
+procède à la recherche d’ajustements pertinents, affines ou non, de ces nuages, dans le but
+de réaliser des interpolations ou des extrapolations.
+La notion de probabilité conditionnelle, introduite en classe de première, est formalisée et
+permet de définir l’indépendance de deux événements. De même, la répétition de 𝑛
+épreuves aléatoires identiques et indépendantes de Bernoulli, déjà connue des élèves, mène
+à la définition des coefficients binomiaux et de la loi binomiale.
+Des activités de programmation, au tableur ou en langage Python, permettent d’automatiser
+certains calculs et d’obtenir des résultats inaccessibles à la main.
+ Séries statistiques à deux variables quantitatives
+Contenus
+ Nuage de points associé à une série statistique à deux variables quantitatives.
+ Ajustement affine.
+Capacités attendues
+ Représenter un nuage de points.
+ Déterminer et utiliser un ajustement affine pour interpoler ou extrapoler des valeurs
+inconnues.
+ Représenter un nuage de points en effectuant un changement de variable donné (par
+1 1
+exemple u2, , , log(y)…) afin de conjecturer une relation de linéarité entre de
+t n
+nouvelles variables.
+Commentaires
+ Les ajustements affines peuvent être réalisés graphiquement « au jugé ».
+L’appréciation de leur qualité peut faire l’objet d’une discussion au sein de la classe.
+ La méthode des moindres carrés est présentée : recherche d’une droite d’équation
+y = ax + b réalisant le minimum de 𝚺 (y - (ax+b))2 pour le nuage de points (x,y).
+i i i i i
+ Les situations ou contextes réels, en lien notamment avec les enseignements de
+spécialité, sont privilégiés :
+- données issues des domaines de la santé, de l’économie, de la gestion, des
+sciences sociales… ;
+- mesures expérimentales de grandeurs liées par une relation linéaire en
+physique-chimie (intensité et tension ; droite d’étalonnage d’une
+concentration…), en biotechnologies ou en sciences de l’ingénieur dans tous
+les domaines (industriels, génie civil…).
+ Les élèves sont entraînés à exercer leur esprit critique sur la pertinence, au regard
+des données et de la situation étudiée, d’une modélisation par ajustement affine et
+sur les limites des extrapolations faites dans ce cadre.
+© Ministère de l'Éducation nationale et de la Jeunesse > www.education.gouv.fr

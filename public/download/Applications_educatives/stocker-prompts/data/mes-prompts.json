@@ -1,0 +1,77 @@
+{
+  "prompts": [],
+  "settings": {
+    "defaultLevel": "2nde",
+    "enabledSubjects": [
+      "maths",
+      "francais",
+      "histoire",
+      "geo",
+      "physique",
+      "svt",
+      "anglais",
+      "autre"
+    ],
+    "enabledActions": [
+      "creer",
+      "reviser",
+      "expliquer",
+      "corriger",
+      "resumer",
+      "comparer",
+      "traduire",
+      "reformuler",
+      "simplifier",
+      "approfondir",
+      "illustrer",
+      "debattre",
+      "analyser",
+      "synthetiser",
+      "memoriser",
+      "pratiquer",
+      "definir",
+      "demontrer",
+      "contextualiser",
+      "vulgariser",
+      "critiquer",
+      "planifier",
+      "structurer",
+      "evaluer",
+      "questionner",
+      "rediger"
+    ],
+    "theme": "light"
+  },
+  "customBricks": [
+    {
+      "id": "custom_mkeaz9ly2g9lq",
+      "label": "dys",
+      "category": "contexte",
+      "template": "J'ai un trouble qu'il faut prendre en compte : {PAP}",
+      "params": [
+        "PAP"
+      ],
+      "enabled": true,
+      "isCustom": true
+    }
+  ],
+  "customStructures": [
+    {
+      "id": "custom_mkeb1f7xfjp0m",
+      "label": "Générer des exemples pour moi",
+      "description": "Prend en compte mes troubles dys",
+      "icon": "📋",
+      "bricks": [
+        "context_eleve",
+        "context_cours",
+        "custom_mkeaz9ly2g9lq",
+        "demande_exemples",
+        "format_simple",
+        "format_etapes",
+        "contrainte_sans_calculatrice"
+      ],
+      "enabled": true,
+      "isCustom": true
+    }
+  ]
+}

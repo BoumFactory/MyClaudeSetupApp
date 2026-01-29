@@ -1,0 +1,523 @@
+{
+  "source": {
+    "pdf": "Tle_techno.pdf",
+    "page": 7,
+    "text_length": 2143
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TTECH-AG-001",
+      "intitule": "Utiliser un générateur de nombres aléatoires pour simuler une loi de Bernoulli",
+      "fingerprint": "utiliser_aleatoire_bernoulli",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Variables et simulation",
+      "type": "capacite",
+      "description_detaillee": "Utiliser un générateur de nombres aléatoires entre 0 et 1 pour créer une simulation d'une loi de Bernoulli de paramètre p, permettant de générer des valeurs binaires (succès/échec) avec une probabilité p.",
+      "formulation_bo": "utiliser un générateur de nombres aléatoires entre 0 et 1 pour simuler une loi de Bernoulli de paramètre p",
+      "connaissances_associees": [
+        "loi de Bernoulli",
+        "paramètre p",
+        "nombres aléatoires",
+        "probabilités"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-002",
+      "intitule": "Utiliser un compteur dans un programme",
+      "fingerprint": "utiliser_compteur",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Variables",
+      "type": "capacite",
+      "description_detaillee": "Implémenter et utiliser un compteur pour mémoriser le nombre de fois qu'un événement se produit lors de l'exécution d'un programme.",
+      "formulation_bo": "utiliser la notion de compteur",
+      "connaissances_associees": [
+        "variable",
+        "affectation",
+        "incrémentation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-003",
+      "intitule": "Appliquer le principe d'accumulateur pour calculer une somme",
+      "fingerprint": "appliquer_accumulateur_somme",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Variables",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le principe d'accumulateur : initialiser une variable à 0, puis ajouter successivement des valeurs pour obtenir une somme finale.",
+      "formulation_bo": "utiliser le principe d'accumulateur pour calculer une somme",
+      "connaissances_associees": [
+        "variable",
+        "affectation",
+        "accumulation",
+        "addition"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-004",
+      "intitule": "Appliquer le principe d'accumulateur pour calculer un produit",
+      "fingerprint": "appliquer_accumulateur_produit",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Variables",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le principe d'accumulateur : initialiser une variable à 1, puis multiplier successivement par des valeurs pour obtenir un produit final.",
+      "formulation_bo": "utiliser le principe d'accumulateur pour calculer un produit",
+      "connaissances_associees": [
+        "variable",
+        "affectation",
+        "accumulation",
+        "multiplication"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-005",
+      "intitule": "Identifier les entrées d'une fonction",
+      "fingerprint": "identifier_entrees_fonction",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Analyser une fonction pour déterminer quels sont les paramètres ou données qu'elle reçoit en entrée.",
+      "formulation_bo": "identifier les entrées et les sorties d'une fonction",
+      "connaissances_associees": [
+        "fonction",
+        "paramètres",
+        "arguments",
+        "signature de fonction"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-006",
+      "intitule": "Identifier les sorties d'une fonction",
+      "fingerprint": "identifier_sorties_fonction",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Analyser une fonction pour déterminer quels sont les résultats ou valeurs de retour qu'elle produit en sortie.",
+      "formulation_bo": "identifier les entrées et les sorties d'une fonction",
+      "connaissances_associees": [
+        "fonction",
+        "valeur de retour",
+        "résultat",
+        "signature de fonction"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-007",
+      "intitule": "Structurer un programme en utilisant des fonctions",
+      "fingerprint": "structurer_programme_fonctions",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la programmation modulaire pour découper une tâche complexe en sous-tâches simples en définissant et appelant des fonctions appropriées.",
+      "formulation_bo": "structurer un programme en ayant recours aux fonctions",
+      "connaissances_associees": [
+        "fonction",
+        "modularité",
+        "programmation",
+        "décomposition de problème"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-008",
+      "intitule": "Générer une liste en extension",
+      "fingerprint": "generer_liste_extension",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Créer une liste en énumérant explicitement tous ses éléments entre crochets, par exemple [1, 2, 3, 4].",
+      "formulation_bo": "générer une liste (en extension, par ajouts successifs, en compréhension)",
+      "connaissances_associees": [
+        "liste",
+        "énumération",
+        "syntaxe Python"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-009",
+      "intitule": "Générer une liste par ajouts successifs",
+      "fingerprint": "generer_liste_ajouts_successifs",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Créer une liste en commençant par une liste vide, puis ajouter des éléments un par un à l'aide de la méthode append().",
+      "formulation_bo": "générer une liste (en extension, par ajouts successifs, en compréhension)",
+      "connaissances_associees": [
+        "liste",
+        "append",
+        "boucle",
+        "itération"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-010",
+      "intitule": "Générer une liste en compréhension",
+      "fingerprint": "generer_liste_comprehension",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Créer une liste de manière concise en utilisant la syntaxe de compréhension de listes (list comprehension), avec ou sans condition.",
+      "formulation_bo": "générer une liste (en extension, par ajouts successifs, en compréhension)",
+      "connaissances_associees": [
+        "liste",
+        "compréhension de liste",
+        "syntaxe Python",
+        "ensemble"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-011",
+      "intitule": "Ajouter un élément à une liste",
+      "fingerprint": "ajouter_element_liste",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Insérer un nouvel élément dans une liste en utilisant les méthodes disponibles (append, insert).",
+      "formulation_bo": "manipuler des éléments d'une liste (ajouter, supprimer…) et leurs indices",
+      "connaissances_associees": [
+        "liste",
+        "append",
+        "insert",
+        "manipulation de liste"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-012",
+      "intitule": "Supprimer un élément d'une liste",
+      "fingerprint": "supprimer_element_liste",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Retirer un élément d'une liste en utilisant les méthodes disponibles (remove, pop, del).",
+      "formulation_bo": "manipuler des éléments d'une liste (ajouter, supprimer…) et leurs indices",
+      "connaissances_associees": [
+        "liste",
+        "remove",
+        "pop",
+        "del",
+        "manipulation de liste"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-013",
+      "intitule": "Accéder à un élément d'une liste par son indice",
+      "fingerprint": "acceder_element_indice_liste",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Récupérer un élément d'une liste en utilisant son indice (position) dans la liste, notamment comprendre l'indexation à partir de 0.",
+      "formulation_bo": "manipuler des éléments d'une liste (ajouter, supprimer…) et leurs indices",
+      "connaissances_associees": [
+        "liste",
+        "indice",
+        "indexation",
+        "accès"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-014",
+      "intitule": "Itérer sur les éléments d'une liste",
+      "fingerprint": "iterer_elements_liste",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Parcourir tous les éléments d'une liste en utilisant une boucle for ou while pour effectuer une action sur chaque élément.",
+      "formulation_bo": "itérer sur les éléments d'une liste",
+      "connaissances_associees": [
+        "liste",
+        "boucle for",
+        "boucle while",
+        "itération"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-015",
+      "intitule": "Traiter un fichier de données réelles pour extraire de l'information",
+      "fingerprint": "traiter_fichier_donnees_extraire",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Sélection de données",
+      "type": "capacite",
+      "description_detaillee": "Lire et analyser un fichier contenant des données réelles pour en extraire les informations pertinentes selon un critère donné.",
+      "formulation_bo": "traiter un fichier contenant des données réelles pour en extraire de l'information et l'analyser",
+      "connaissances_associees": [
+        "fichier",
+        "lecture de données",
+        "parsing",
+        "filtrage"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-016",
+      "intitule": "Analyser un fichier de données réelles",
+      "fingerprint": "analyser_fichier_donnees",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Sélection de données",
+      "type": "capacite",
+      "description_detaillee": "Examiner et interpréter les données extraites d'un fichier pour en tirer des conclusions ou des statistiques.",
+      "formulation_bo": "traiter un fichier contenant des données réelles pour en extraire de l'information et l'analyser",
+      "connaissances_associees": [
+        "fichier",
+        "données",
+        "statistiques",
+        "interprétation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-AG-017",
+      "intitule": "Réaliser un tableau croisé de données sur deux critères",
+      "fingerprint": "realiser_tableau_croise_deux_criteres",
+      "niveau": "TTECH",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Sélection de données",
+      "type": "capacite",
+      "description_detaillee": "Construire un tableau croisé dynamique à partir de données brutes en croisant deux critères de classification différents, permettant de visualiser les relations entre deux variables.",
+      "formulation_bo": "réaliser un tableau croisé de données sur deux critères à partir de données brutes",
+      "connaissances_associees": [
+        "tableau croisé",
+        "données brutes",
+        "critères",
+        "tabulaire",
+        "statistiques"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-GE-018",
+      "intitule": "Étudier l'intersection d'un cône avec un plan",
+      "fingerprint": "etudier_intersection_cone_plan",
+      "niveau": "TTECH",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Coniques (STD2A uniquement)",
+      "type": "capacite",
+      "description_detaillee": "Analyser les différentes courbes obtenues en intersectant un cône avec un plan selon la position et l'orientation du plan, et identifier les coniques résultantes (cercle, ellipse, parabole, hyperbole).",
+      "formulation_bo": "étudier l'intersection d'un cône avec un plan suivant la position de celui-ci, retrouver des courbes déjà connues et les regrouper sous la dénomination de coniques",
+      "connaissances_associees": [
+        "cône",
+        "plan",
+        "coniques",
+        "ellipse",
+        "parabole",
+        "hyperbole",
+        "géométrie 3D"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-GE-019",
+      "intitule": "Reconnaitre les courbes obtenues par intersection cône-plan",
+      "fingerprint": "reconnaitre_courbes_intersection_cone",
+      "niveau": "TTECH",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Coniques (STD2A uniquement)",
+      "type": "capacite",
+      "description_detaillee": "Identifier et nommer les différentes courbes (coniques) obtenues par intersection d'un cône avec un plan : cercle, ellipse, parabole, hyperbole.",
+      "formulation_bo": "étudier l'intersection d'un cône avec un plan suivant la position de celui-ci, retrouver des courbes déjà connues et les regrouper sous la dénomination de coniques",
+      "connaissances_associees": [
+        "coniques",
+        "courbes",
+        "propriétés géométriques",
+        "classification"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-GE-020",
+      "intitule": "Utiliser la perspective centrale pour représenter des objets de l'espace",
+      "fingerprint": "utiliser_perspective_centrale",
+      "niveau": "TTECH",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Représentation plane (STD2A uniquement)",
+      "type": "capacite",
+      "description_detaillee": "Enrichir les représentations planes d'objets tridimensionnels en utilisant la perspective centrale pour créer des dessins réalistes.",
+      "formulation_bo": "enrichir les représentations planes des objets de l'espace par l'introduction de la perspective centrale",
+      "connaissances_associees": [
+        "perspective centrale",
+        "géométrie projective",
+        "représentation 3D en 2D",
+        "art et design"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-GE-021",
+      "intitule": "Décomposer une composition artistique ou architecturale en solides simples",
+      "fingerprint": "decomposer_composition_en_solides",
+      "niveau": "TTECH",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie de l'art et du design (STD2A uniquement)",
+      "type": "capacite",
+      "description_detaillee": "Analyser une composition artistique ou architecturale et la décomposer en solides géométriques simples pour mieux la comprendre et la reproduire.",
+      "formulation_bo": "analyser des compositions artistiques ou architecturales et décomposer des scènes de l'espace en solides simples, afin de les reproduire ou de les représenter dans le plan",
+      "connaissances_associees": [
+        "solides géométriques",
+        "composition",
+        "analyse",
+        "décomposition",
+        "art et architecture"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TTECH-GE-022",
+      "intitule": "Représenter dans le plan une composition artistique ou architecturale",
+      "fingerprint": "representer_composition_plan",
+      "niveau": "TTECH",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie de l'art et du design (STD2A uniquement)",
+      "type": "capacite",
+      "description_detaillee": "Reproduire ou représenter graphiquement dans le plan une scène tridimensionnelle composée de solides simples en utilisant les outils de représentation géométrique appropriés.",
+      "formulation_bo": "analyser des compositions artistiques ou architecturales et décomposer des scènes de l'espace en solides simples, afin de les reproduire ou de les représenter dans le plan",
+      "connaissances_associees": [
+        "représentation graphique",
+        "solides",
+        "plan",
+        "projection",
+        "art et architecture"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 7
+      }
+    }
+  ],
+  "summary": {
+    "total": 22,
+    "by_type": {
+      "capacite": 22,
+      "contenu": 0,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "ALGORITHMIQUE": 17,
+      "GEOMETRIE": 5
+    },
+    "by_niveau": {
+      "TTECH": 22
+    },
+    "fingerprints": [
+      "utiliser_aleatoire_bernoulli",
+      "utiliser_compteur",
+      "appliquer_accumulateur_somme",
+      "appliquer_accumulateur_produit",
+      "identifier_entrees_fonction",
+      "identifier_sorties_fonction",
+      "structurer_programme_fonctions",
+      "generer_liste_extension",
+      "generer_liste_ajouts_successifs",
+      "generer_liste_comprehension",
+      "ajouter_element_liste",
+      "supprimer_element_liste",
+      "acceder_element_indice_liste",
+      "iterer_elements_liste",
+      "traiter_fichier_donnees_extraire",
+      "analyser_fichier_donnees",
+      "realiser_tableau_croise_deux_criteres",
+      "etudier_intersection_cone_plan",
+      "reconnaitre_courbes_intersection_cone",
+      "utiliser_perspective_centrale",
+      "decomposer_composition_en_solides",
+      "representer_composition_plan"
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "source": {
+    "pdf": "premiere_ens_sci.pdf",
+    "page": 13,
+    "text_length": 2450
+  },
+  "extraction": {
+    "date": "2026-01-09T15:30:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "1TES-GR-651",
+      "intitule": "Justifier le choix des paramètres de numérisation d'un son",
+      "fingerprint": "justifier_parametres_numerisation_son",
+      "niveau": "1TES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et mesures - Numérisation",
+      "type": "capacite",
+      "description_detaillee": "Justifier le choix de la fréquence d'échantillonnage et du niveau de quantification en fonction de la fidélité souhaitée et de la taille du fichier audio résultant",
+      "formulation_bo": "Justifier le choix des paramètres de numérisation d'un son.",
+      "connaissances_associees": ["échantillonnage", "quantification", "fréquence d'échantillonnage", "discrétisation de signal"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "1TES-GR-652",
+      "intitule": "Estimer la taille d'un fichier audio",
+      "fingerprint": "estimer_taille_fichier_audio",
+      "niveau": "1TES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et mesures - Numérisation",
+      "type": "capacite",
+      "description_detaillee": "Calculer ou estimer la taille d'un fichier audio en fonction de la fréquence d'échantillonnage, du niveau de quantification (nombre de bits) et de la durée de l'enregistrement",
+      "formulation_bo": "Estimer la taille d'un fichier audio.",
+      "connaissances_associees": ["échantillonnage", "quantification", "puissances de 2", "calcul de taille en octets"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "1TES-GR-653",
+      "intitule": "Comparer la relation entre fréquence d'échantillonnage, quantification et fidélité audio",
+      "fingerprint": "comparer_fidelite_parametres_echantillonnage",
+      "niveau": "1TES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et mesures - Numérisation",
+      "type": "capacite",
+      "description_detaillee": "Analyser et comparer comment une fréquence d'échantillonnage plus élevée et une quantification plus fine améliorent la fidélité de numérisation mais augmentent la taille du fichier",
+      "formulation_bo": "Plus la fréquence d'échantillonnage est élevée et la quantification est fine, plus la numérisation est fidèle, mais plus la taille du fichier audio est grande.",
+      "connaissances_associees": ["échantillonnage", "quantification", "discrétisation de signal", "critères de fidélité"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "1TES-GR-654",
+      "intitule": "Calculer un taux de compression",
+      "fingerprint": "calculer_taux_compression",
+      "niveau": "1TES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et mesures - Compression",
+      "type": "capacite",
+      "description_detaillee": "Calculer le taux de compression d'un fichier audio, généralement exprimé en pourcentage, en comparant la taille du fichier compressé à la taille du fichier original",
+      "formulation_bo": "Calculer un taux de compression.",
+      "connaissances_associees": ["compression de fichiers", "pourcentages", "proportions", "ratio de compression"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "1TES-GR-655",
+      "intitule": "Comparer des caractéristiques de fichiers audio compressés",
+      "fingerprint": "comparer_caracteristiques_fichiers_comprimes",
+      "niveau": "1TES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et mesures - Compression",
+      "type": "capacite",
+      "description_detaillee": "Comparer et analyser les caractéristiques (taille, taux de compression, perte d'information) de plusieurs fichiers audio en formats compressés différents",
+      "formulation_bo": "Comparer des caractéristiques de fichiers audio compressés.",
+      "connaissances_associees": ["compression avec perte", "formats audio", "tailles de fichiers", "caractéristiques de qualité"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "1TES-GR-656",
+      "intitule": "Discuter de la problématique énergétique des échanges de fichiers numériques",
+      "fingerprint": "discuter_impact_energetique_fichiers_numeriques",
+      "niveau": "1TES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et mesures - Environnement numérique",
+      "type": "capacite",
+      "description_detaillee": "Analyser et discuter l'impact énergétique et environnemental des échanges massifs de fichiers audio et vidéo, en considérant les enjeux de stockage et de transmission",
+      "formulation_bo": "Discuter de la problématique des échanges de fichiers numériques audio, mais aussi vidéo d'un point de vue énergétique.",
+      "connaissances_associees": ["proportions", "pourcentages", "grandeurs de stockage", "consommation énergétique"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 13
+      }
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "by_type": {
+      "capacite": 6
+    },
+    "by_domaine": {
+      "GRANDEURS": 6
+    },
+    "by_niveau": {
+      "1TES": 6
+    },
+    "fingerprints": [
+      "justifier_parametres_numerisation_son",
+      "estimer_taille_fichier_audio",
+      "comparer_fidelite_parametres_echantillonnage",
+      "calculer_taux_compression",
+      "comparer_caracteristiques_fichiers_comprimes",
+      "discuter_impact_energetique_fichiers_numeriques"
+    ]
+  }
+}

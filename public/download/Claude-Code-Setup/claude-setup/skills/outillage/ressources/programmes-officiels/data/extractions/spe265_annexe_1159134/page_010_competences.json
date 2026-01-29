@@ -1,0 +1,319 @@
+{
+  "source": {
+    "pdf": "spe265_annexe_1159134.pdf",
+    "page": 10,
+    "text_length": 1847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-PR-501",
+      "intitule": "Simuler une variable aléatoire de loi géométrique à partir du schéma de Bernoulli",
+      "fingerprint": "simuler_variable_aleatoire_loi_geometrique",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois de probabilité discrètes",
+      "type": "algorithme",
+      "description_detaillee": "Implémenter un algorithme qui simule une variable aléatoire suivant une loi géométrique en utilisant le schéma de Bernoulli comme base de construction.",
+      "formulation_bo": "Simulation d'une variable aléatoire de loi géométrique à partir du schéma de Bernoulli.",
+      "connaissances_associees": ["loi géométrique", "schéma de Bernoulli", "variable aléatoire", "simulation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-PR-502",
+      "intitule": "Simuler une variable aléatoire de loi exponentielle à partir d'une loi uniforme",
+      "fingerprint": "simuler_variable_aleatoire_loi_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois de probabilité continues",
+      "type": "algorithme",
+      "description_detaillee": "Implémenter un algorithme qui simule une variable aléatoire suivant une loi exponentielle en utilisant le théorème d'inversion avec une loi uniforme.",
+      "formulation_bo": "Simulation d'une loi exponentielle à partir d'une loi uniforme.",
+      "connaissances_associees": ["loi exponentielle", "loi uniforme", "théorème d'inversion", "simulation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-PR-503",
+      "intitule": "Calculer la demi-vie d'un échantillon de grande taille d'atomes radioactifs",
+      "fingerprint": "calculer_demi_vie_echantillon_radioactif",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Applications des lois de probabilité",
+      "type": "algorithme",
+      "description_detaillee": "Simuler ou calculer la demi-vie d'un grand échantillon d'atomes radioactifs pour vérifier les lois théoriques à partir de données empiriques.",
+      "formulation_bo": "Demi-vie d'un échantillon de grande taille d'atomes radioactifs.",
+      "connaissances_associees": ["désintégration radioactive", "loi exponentielle", "demi-vie", "simulation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-ST-504",
+      "intitule": "Évaluer la corrélation entre deux variables statistiques",
+      "fingerprint": "evaluer_correlation_deux_variables",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Corrélation et régression",
+      "type": "capacite",
+      "description_detaillee": "À partir d'une série statistique à deux variables, calculer et interpréter un coefficient de corrélation pour évaluer la force de la relation linéaire entre les deux variables.",
+      "formulation_bo": "Évaluer une corrélation entre deux phénomènes.",
+      "connaissances_associees": ["séries statistiques à deux variables", "coefficient de corrélation", "covariance"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-ST-505",
+      "intitule": "Distinguer corrélation et causalité",
+      "fingerprint": "distinguer_correlation_causalite",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Corrélation et régression",
+      "type": "capacite",
+      "description_detaillee": "Développer une réflexion critique pour reconnaître que deux variables peuvent être corrélées sans qu'une soit cause de l'autre, et identifier des causes possibles (variables confondantes, hasard).",
+      "formulation_bo": "Distinguer corrélation et causalité.",
+      "connaissances_associees": ["corrélation", "causalité", "variables confondantes", "biais statistique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-ST-506",
+      "intitule": "Déterminer la droite de régression d'une série statistique à deux variables",
+      "fingerprint": "determiner_droite_regression_series_deux_variables",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Corrélation et régression",
+      "type": "capacite",
+      "description_detaillee": "Calculer la droite de régression linéaire au sens des moindres carrés pour une série statistique à deux variables.",
+      "formulation_bo": "Travailler sur la droite de régression, et faire percevoir le sens de l'expression « moindres carrés ».",
+      "connaissances_associees": ["série statistique à deux variables", "moindres carrés", "régression linéaire"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-ST-507",
+      "intitule": "Effectuer des interpolations avec une droite de régression",
+      "fingerprint": "effectuer_interpolation_droite_regression",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Corrélation et régression",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une droite de régression pour estimer des valeurs intermédiaires (interpolation) en portant un regard critique sur la validité de ces estimations.",
+      "formulation_bo": "Des ajustements affines permettent des interpolations.",
+      "connaissances_associees": ["droite de régression", "interpolation", "validité des estimations"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-ST-508",
+      "intitule": "Effectuer des extrapolations avec une droite de régression",
+      "fingerprint": "effectuer_extrapolation_droite_regression",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Corrélation et régression",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une droite de régression pour estimer des valeurs au-delà du domaine observé (extrapolation) en développant un sens critique sur la fiabilité de ces prédictions.",
+      "formulation_bo": "Des ajustements affines permettent des extrapolations, sur lesquelles l'élève porte un regard critique.",
+      "connaissances_associees": ["droite de régression", "extrapolation", "incertitude", "risque de dérive"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-ST-509",
+      "intitule": "Appliquer un changement de variable pour transformer une corrélation en ajustement affine",
+      "fingerprint": "appliquer_changement_variable_correlation_affine",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Corrélation et régression",
+      "type": "capacite",
+      "description_detaillee": "Utiliser un changement de variable pour ramener une relation non-linéaire à une relation affine, permettant d'appliquer la méthode des moindres carrés.",
+      "formulation_bo": "Des ajustements affines ou s'y ramenant à l'aide d'un changement de variable permettent des interpolations et des extrapolations.",
+      "connaissances_associees": ["changement de variable", "transformation de données", "ajustement non-linéaire"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-AN-510",
+      "intitule": "Consolider les connaissances sur les suites numériques",
+      "fingerprint": "consolider_connaissances_suites_numeriques",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "contenu",
+      "description_detaillee": "Approfondir et enrichir les connaissances sur les suites, notamment les suites géométriques et arithmético-géométriques, avec une attention particulière à la notion de limite en approche intuitive.",
+      "formulation_bo": "Consolider et enrichir ses connaissances et compétences sur les suites.",
+      "connaissances_associees": ["suites géométriques", "suites arithmético-géométriques", "limite de suite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-AN-511",
+      "intitule": "Consolider les connaissances sur les fonctions",
+      "fingerprint": "consolider_connaissances_fonctions",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "contenu",
+      "description_detaillee": "Approfondir et enrichir les connaissances sur les fonctions pour être capable de modéliser et d'étudier une grande diversité de phénomènes continus.",
+      "formulation_bo": "Consolider et enrichir ses connaissances et compétences sur les fonctions.",
+      "connaissances_associees": ["fonctions usuelles", "limite de fonction", "continuité"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-AN-512",
+      "intitule": "Modéliser des phénomènes discrets avec des suites",
+      "fingerprint": "modeliser_phenomenes_discrets_suites",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "Traduire une situation discrète (phénomène évolutif par étapes) sous forme de suite pour l'étudier mathématiquement.",
+      "formulation_bo": "Modéliser et étudier une grande diversité de phénomènes discrets.",
+      "connaissances_associees": ["suites numériques", "modélisation", "phénomènes discrets"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-AN-513",
+      "intitule": "Modéliser des phénomènes continus avec des fonctions",
+      "fingerprint": "modeliser_phenomenes_continus_fonctions",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Traduire une situation continue (phénomène évolutif graduel) sous forme de fonction pour l'étudier mathématiquement.",
+      "formulation_bo": "Modéliser et étudier une grande diversité de phénomènes continus.",
+      "connaissances_associees": ["fonctions numériques", "modélisation", "phénomènes continus"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-AN-514",
+      "intitule": "Comprendre la notion de limite d'une suite de manière intuitive",
+      "fingerprint": "comprendre_limite_suite_intuitive",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites",
+      "type": "contenu",
+      "description_detaillee": "Développer une compréhension intuitive du comportement d'une suite pour des valeurs de n très grandes, sans définition formelle d'epsilon.",
+      "formulation_bo": "La notion de limite est un objectif important, qui fait l'objet d'une approche intuitive.",
+      "connaissages_associees": ["convergence", "divergence", "limite infinie"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-AN-515",
+      "intitule": "Étudier les suites géométriques",
+      "fingerprint": "etudier_suites_geometriques",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "contenu",
+      "description_detaillee": "Analyser les propriétés et le comportement asymptotique des suites géométriques de la forme u_n = u_0 * q^n.",
+      "formulation_bo": "Les suites géométriques sont étudiées spécifiquement.",
+      "connaissances_associees": ["raison", "terme général", "convergence", "série géométrique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-AN-516",
+      "intitule": "Étudier les suites arithmético-géométriques",
+      "fingerprint": "etudier_suites_arithmetico_geometriques",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "contenu",
+      "description_detaillee": "Analyser les propriétés et le comportement des suites arithmético-géométriques de la forme u_{n+1} = a*u_n + b.",
+      "formulation_bo": "Les suites arithmético-géométriques sont étudiées spécifiquement.",
+      "connaissances_associees": ["suite arithmético-géométrique", "point fixe", "convergence"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TSPE-AN-517",
+      "intitule": "Introduire la continuité d'une fonction",
+      "fingerprint": "introduire_continuite_fonction",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité",
+      "type": "contenu",
+      "description_detaillee": "Développer la notion de fonction continue en liaison avec le théorème des valeurs intermédiaires, sans définition formelle.",
+      "formulation_bo": "Introduire la notion de continuité en liaison avec le théorème des valeurs intermédiaires.",
+      "connaissances_associees": ["fonction continue", "théorème des valeurs intermédiaires", "discontinuité"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 10
+      }
+    }
+  ],
+  "summary": {
+    "total": 17,
+    "by_type": {
+      "capacite": 8,
+      "contenu": 6,
+      "algorithme": 3
+    },
+    "by_domaine": {
+      "PROBABILITES": 3,
+      "STATISTIQUES": 6,
+      "ANALYSE": 8
+    },
+    "fingerprints": [
+      "simuler_variable_aleatoire_loi_geometrique",
+      "simuler_variable_aleatoire_loi_exponentielle",
+      "calculer_demi_vie_echantillon_radioactif",
+      "evaluer_correlation_deux_variables",
+      "distinguer_correlation_causalite",
+      "determiner_droite_regression_series_deux_variables",
+      "effectuer_interpolation_droite_regression",
+      "effectuer_extrapolation_droite_regression",
+      "appliquer_changement_variable_correlation_affine",
+      "consolider_connaissances_suites_numeriques",
+      "consolider_connaissances_fonctions",
+      "modeliser_phenomenes_discrets_suites",
+      "modeliser_phenomenes_continus_fonctions",
+      "comprendre_limite_suite_intuitive",
+      "etudier_suites_geometriques",
+      "etudier_suites_arithmetico_geometriques",
+      "introduire_continuite_fonction"
+    ]
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "source": {
+    "pdf": "premiere_ens_sci.pdf",
+    "page": 15,
+    "text_length": 652
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page 15 : Contenu méthodologique sur les projets expérimentaux et numériques. Extraction limitée aux compétences mathématiques transversales."
+  },
+  "competences": [
+    {
+      "code": "1ES-ST-750",
+      "intitule": "Traiter mathématiquement des données expérimentales",
+      "fingerprint": "traiter_mathematiquement_donnees_experimentales",
+      "niveau": "1ES",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Traitement et analyse de données",
+      "type": "capacite",
+      "description_detaillee": "Appliquer des méthodes mathématiques pour traiter, analyser et interpréter des données expérimentales acquises ou fournies",
+      "formulation_bo": "traitement mathématique, représentation et interprétation de ces données",
+      "connaissances_associees": ["acquisition de données", "représentation de données", "interprétation statistique"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "1ES-ST-751",
+      "intitule": "Représenter graphiquement des données expérimentales",
+      "fingerprint": "representer_graphiquement_donnees_experimentales",
+      "niveau": "1ES",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Représentation graphique",
+      "type": "capacite",
+      "description_detaillee": "Créer des représentations visuelles (graphiques, tableaux) pour visualiser et communiquer des données expérimentales",
+      "formulation_bo": "représentation et interprétation de ces données",
+      "connaissances_associees": ["lecture graphique", "organisation de données", "visualisation de données"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "1ES-ST-752",
+      "intitule": "Interpréter des données expérimentales",
+      "fingerprint": "interpreter_donnees_experimentales",
+      "niveau": "1ES",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Analyse et interprétation",
+      "type": "capacite",
+      "description_detaillee": "Analyser critiquement les résultats de mesures et donner du sens aux données obtenues dans le contexte expérimental",
+      "formulation_bo": "analyse critique des résultats",
+      "connaissances_associees": ["statistiques descriptives", "analyse de résultats", "démarche scientifique"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "1ES-AG-753",
+      "intitule": "Utiliser un tableur pour traiter des données",
+      "fingerprint": "utiliser_tableur_traiter_donnees",
+      "niveau": "1ES",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Outils numériques",
+      "type": "capacite",
+      "description_detaillee": "Employer un logiciel tableur (type Excel, Calc) pour organiser, calculer et analyser des données expérimentales",
+      "formulation_bo": "utilisation de matériels (capteur éventuellement associé à un microcontrôleur) et/ou de logiciels (tableur, environnement de programmation)",
+      "connaissances_associees": ["fonctions tableur", "formules de calcul", "organisation de données", "graphiques"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "1ES-AG-754",
+      "intitule": "Programmer pour analyser des données",
+      "fingerprint": "programmer_analyser_donnees",
+      "niveau": "1ES",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation",
+      "type": "capacite",
+      "description_detaillee": "Écrire un programme (en environnement de programmation) pour automatiser le traitement et l'analyse de données expérimentales",
+      "formulation_bo": "environnement de programmation",
+      "connaissances_associees": ["algorithmes", "structures de données", "boucles", "conditions"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 15
+      }
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "by_type": {
+      "capacite": 5
+    },
+    "by_domaine": {
+      "STATISTIQUES": 3,
+      "ALGORITHMIQUE": 2
+    },
+    "by_niveau": {
+      "1ES": 5
+    },
+    "fingerprints": [
+      "traiter_mathematiquement_donnees_experimentales",
+      "representer_graphiquement_donnees_experimentales",
+      "interpreter_donnees_experimentales",
+      "utiliser_tableur_traiter_donnees",
+      "programmer_analyser_donnees"
+    ],
+    "remarques": "Page 15 est principalement une page méthodologique décrivant le cadre des projets expérimentaux et numériques. Les compétences extraites concernent les aspects mathématiques transversaux liés au traitement et à l'analyse de données, qui sont des éléments clés mentionnés dans le texte."
+  }
+}

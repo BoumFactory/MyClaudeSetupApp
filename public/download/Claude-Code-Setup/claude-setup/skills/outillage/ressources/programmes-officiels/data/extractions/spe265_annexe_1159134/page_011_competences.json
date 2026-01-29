@@ -1,0 +1,286 @@
+{
+  "source": {
+    "pdf": "spe265_annexe_1159134.pdf",
+    "page": 11,
+    "text_length": 2156
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AN-551",
+      "intitule": "Comprendre l'approche intuitive de la notion de limite finie d'une suite",
+      "fingerprint": "comprendre_limite_finie_suite",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "contenu",
+      "description_detaillee": "Approche intuitive de la notion de limite finie d'une suite, permettant de comprendre le comportement asymptotique d'une suite numérique.",
+      "formulation_bo": "Approche intuitive de la notion de limite, finie ou infinie, d'une suite",
+      "connaissances_associees": [
+        "notion de suite numérique",
+        "comportement asymptotique"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-552",
+      "intitule": "Comprendre l'approche intuitive de la notion de limite infinie d'une suite",
+      "fingerprint": "comprendre_limite_infinie_suite",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "contenu",
+      "description_detaillee": "Approche intuitive de la notion de limite infinie d'une suite, permettant de caractériser les suites divergentes vers +∞ ou -∞.",
+      "formulation_bo": "Approche intuitive de la notion de limite, finie ou infinie, d'une suite",
+      "connaissances_associees": [
+        "notion de suite numérique",
+        "divergence",
+        "infini"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-553",
+      "intitule": "Appliquer les opérations sur les limites de suites",
+      "fingerprint": "appliquer_operations_limites_suites",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "contenu",
+      "description_detaillee": "Opérations sur les limites : somme, produit, quotient de limites pour déterminer la limite de suites composées.",
+      "formulation_bo": "opérations sur les limites",
+      "connaissances_associees": [
+        "limite d'une suite",
+        "limites finies et infinies",
+        "indéterminations"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-554",
+      "intitule": "Appliquer le passage à la limite dans les inégalités",
+      "fingerprint": "appliquer_limite_inegalites",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "contenu",
+      "description_detaillee": "Conservation des inégalités par passage à la limite : si un ≤ vn pour tout n et lim un = L, lim vn = L', alors L ≤ L'.",
+      "formulation_bo": "passage à la limite dans les inégalités",
+      "connaissances_associees": [
+        "limite d'une suite",
+        "inégalités",
+        "propriétés de l'ordre"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-555",
+      "intitule": "Appliquer le théorème des gendarmes",
+      "fingerprint": "appliquer_theoreme_gendarmes",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "contenu",
+      "description_detaillee": "Théorème des gendarmes : si un ≤ wn ≤ vn pour tout n et lim un = lim vn = L, alors lim wn = L.",
+      "formulation_bo": "théorème des gendarmes",
+      "connaissances_associees": [
+        "limite d'une suite",
+        "encadrement",
+        "convergence"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-556",
+      "intitule": "Déterminer la limite d'une suite géométrique de raison positive",
+      "fingerprint": "determiner_limite_suite_geometrique_raison_positive",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "contenu",
+      "description_detaillee": "Limite d'une suite géométrique de raison positive q : si 0 < q < 1, lim qn = 0 ; si q = 1, lim qn = 1 ; si q > 1, lim qn = +∞.",
+      "formulation_bo": "Limite d'une suite géométrique de raison positive",
+      "connaissances_associees": [
+        "suite géométrique",
+        "raison d'une suite",
+        "limite",
+        "convergence et divergence"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-557",
+      "intitule": "Calculer la limite de la somme des termes d'une suite géométrique de raison positive et strictement inférieure à 1",
+      "fingerprint": "calculer_limite_somme_suite_geometrique_raison_inferieure_1",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "contenu",
+      "description_detaillee": "Limite de la somme S = u0 + u1 + ... + un d'une suite géométrique de raison 0 < q < 1 : lim Sn = u0/(1-q).",
+      "formulation_bo": "Limite de la somme des termes d'une suite géométrique de raison positive strictement inférieure à 1",
+      "connaissances_associees": [
+        "suite géométrique",
+        "somme des termes",
+        "série géométrique",
+        "convergence"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-558",
+      "intitule": "Reconnaître une suite arithmético-géométrique",
+      "fingerprint": "reconnaitre_suite_arithmetico_geometrique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "contenu",
+      "description_detaillee": "Suite arithmético-géométrique définie par une relation de récurrence de la forme un+1 = a·un + b avec a ≠ 1 et b ≠ 0.",
+      "formulation_bo": "Suites arithmético-géométriques",
+      "connaissances_associees": [
+        "suite arithmétique",
+        "suite géométrique",
+        "relation de récurrence",
+        "suite définie par récurrence"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-559",
+      "intitule": "Modéliser un problème par une suite donnée par une formule explicite",
+      "fingerprint": "modeliser_probleme_suite_formule_explicite",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "capacite",
+      "description_detaillee": "Traduire une situation réelle (croissance, décroissance, intérêts composés, etc.) en suite numérique définie par une formule explicite un = f(n).",
+      "formulation_bo": "Modéliser un problème par une suite donnée par une formule explicite ou une relation de récurrence",
+      "connaissances_associees": [
+        "modélisation mathématique",
+        "suite numérique",
+        "formule explicite"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-560",
+      "intitule": "Modéliser un problème par une suite définie par une relation de récurrence",
+      "fingerprint": "modeliser_probleme_suite_recurrence",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "capacite",
+      "description_detaillee": "Traduire une situation réelle en suite numérique définie par une relation de récurrence un+1 = f(un).",
+      "formulation_bo": "Modéliser un problème par une suite donnée par une formule explicite ou une relation de récurrence",
+      "connaissances_associees": [
+        "modélisation mathématique",
+        "suite numérique",
+        "relation de récurrence"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-561",
+      "intitule": "Calculer la limite d'une suite géométrique",
+      "fingerprint": "calculer_limite_suite_geometrique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "capacite",
+      "description_detaillee": "Déterminer numériquement la limite d'une suite géométrique de raison positive, en appliquant les formules et théorèmes appropriés.",
+      "formulation_bo": "Calculer une limite de suite géométrique",
+      "connaissances_associees": [
+        "suite géométrique",
+        "raison d'une suite",
+        "limite",
+        "seuil de convergence"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "TSPE-AN-562",
+      "intitule": "Calculer la somme des termes d'une suite géométrique de raison positive et strictement inférieure à 1",
+      "fingerprint": "calculer_somme_suite_geometrique_raison_inferieure_1",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques et limites",
+      "type": "capacite",
+      "description_detaillee": "Déterminer la somme finie Sn = u0 + u1 + ... + un ou la limite de cette somme pour une suite géométrique de raison 0 < q < 1.",
+      "formulation_bo": "Calculer de la somme des termes d'une suite géométrique de raison positive et strictement inférieure à 1",
+      "connaissances_associees": [
+        "suite géométrique",
+        "formule de la somme",
+        "série géométrique",
+        "calcul numérique"
+      ],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 11
+      }
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "by_type": {
+      "contenu": 8,
+      "capacite": 4
+    },
+    "by_domaine": {
+      "ANALYSE": 12
+    },
+    "by_sous_domaine": {
+      "Suites numériques et limites": 12
+    },
+    "fingerprints": [
+      "comprendre_limite_finie_suite",
+      "comprendre_limite_infinie_suite",
+      "appliquer_operations_limites_suites",
+      "appliquer_limite_inegalites",
+      "appliquer_theoreme_gendarmes",
+      "determiner_limite_suite_geometrique_raison_positive",
+      "calculer_limite_somme_suite_geometrique_raison_inferieure_1",
+      "reconnaitre_suite_arithmetico_geometrique",
+      "modeliser_probleme_suite_formule_explicite",
+      "modeliser_probleme_suite_recurrence",
+      "calculer_limite_suite_geometrique",
+      "calculer_somme_suite_geometrique_raison_inferieure_1"
+    ]
+  }
+}

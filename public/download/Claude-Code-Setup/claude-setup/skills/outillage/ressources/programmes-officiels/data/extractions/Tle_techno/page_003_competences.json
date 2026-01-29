@@ -1,0 +1,119 @@
+{
+  "source": {
+    "pdf": "Tle_techno.pdf",
+    "page": 3,
+    "text_length": 2847
+  },
+  "extraction": {
+    "date": "2026-01-02T00:00:00",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page d'introduction pédagogique - Peu de compétences atomiques spécifiques identifiables. Les éléments extraits sont des orientations transversales et des capacités générales mentionnées dans le texte."
+  },
+  "competences": [
+    {
+      "code": "TTECHNO-LO-001",
+      "intitule": "Développer l'abstraction mathématique",
+      "fingerprint": "developper_abstraction_mathematique",
+      "niveau": "TTECHNO",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement et abstraction",
+      "type": "capacite",
+      "description_detaillee": "Acquérir la capacité à s'élever vers l'abstraction mathématique, essentielle pour la poursuite d'études supérieures.",
+      "formulation_bo": "Au-delà de ces compétences disciplinaires, l'enseignement des mathématiques contribue à développer des aptitudes transversales, notamment l'abstraction, qui sont essentielles pour la poursuite d'études supérieures.",
+      "connaissances_associees": ["concepts mathématiques", "formalisation abstraite"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "TTECHNO-AG-002",
+      "intitule": "Mobiliser l'outil informatique dans la résolution de problèmes",
+      "fingerprint": "mobiliser_outil_informatique_resolution_problemes",
+      "niveau": "TTECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Outils numériques et informatiques",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser l'outil informatique (logiciels de calcul, géométrie dynamique, programmation) comme moyen de résolution de problèmes mathématiques.",
+      "formulation_bo": "L'aptitude à mobiliser l'outil informatique dans le cadre de la résolution de problèmes doit tout particulièrement être évaluée.",
+      "connaissances_associees": ["logiciels de calcul", "géométrie dynamique", "programmation"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "TTECHNO-LO-003",
+      "intitule": "Utiliser la programmation pour faciliter l'approche inductive",
+      "fingerprint": "utiliser_programmation_approche_inductive",
+      "niveau": "TTECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation et exploration",
+      "type": "capacite",
+      "description_detaillee": "Employer la programmation comme outil pour explorer des concepts mathématiques et développer une compréhension inductive.",
+      "formulation_bo": "Le recours à des logiciels de calcul, de géométrie dynamique ou la pratique de la programmation facilitent cette approche inductive.",
+      "connaissances_associees": ["induction", "exploration mathématique", "programmation"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "TTECHNO-LO-004",
+      "intitule": "Conjecturer à partir de situations problématiques",
+      "fingerprint": "conjecturer_situations_problematiques",
+      "niveau": "TTECHNO",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Démarche mathématique",
+      "type": "capacite",
+      "description_detaillee": "Formuler des conjectures en réponse à des questionnements ou des problèmes mathématiques avant leur formalisation abstraite.",
+      "formulation_bo": "Les nouveaux concepts gagnent à être introduits par un questionnement ou un problème qui conduit à des conjectures et donne sens à leur formalisation abstraite.",
+      "connaissances_associees": ["questionnement", "problématisation", "formalisation"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "TTECHNO-LO-005",
+      "intitule": "Mobiliser les connaissances mathématiques dans d'autres disciplines",
+      "fingerprint": "mobiliser_connaissances_mathematiques_autres_disciplines",
+      "niveau": "TTECHNO",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Transfert et contextualisation",
+      "type": "capacite",
+      "description_detaillee": "Consolider la compréhension des notions mathématiques en les utilisant dans des contextes issus d'autres disciplines de la filière technologique.",
+      "formulation_bo": "Au-delà du cours de mathématiques, l'élève consolide sa compréhension des notions enseignées en les mobilisant dans des situations issues des autres disciplines de sa filière.",
+      "connaissances_associees": ["interdisciplinarité", "contextes applicatifs", "filière technologique"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 3
+      }
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "page_type": "Introduction - Orientations pédagogiques",
+    "note": "Cette page ne contient pas de contenu mathématique spécifique à extraire. Elle présente les principes pédagogiques généraux guidant l'enseignement des mathématiques. Les compétences identifiées sont transversales et métacognitives.",
+    "by_type": {
+      "capacite": 5,
+      "contenu": 0,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "LOGIQUE": 3,
+      "ALGORITHMIQUE": 2
+    },
+    "fingerprints": [
+      "developper_abstraction_mathematique",
+      "mobiliser_outil_informatique_resolution_problemes",
+      "utiliser_programmation_approche_inductive",
+      "conjecturer_situations_problematiques",
+      "mobiliser_connaissances_mathematiques_autres_disciplines"
+    ]
+  }
+}

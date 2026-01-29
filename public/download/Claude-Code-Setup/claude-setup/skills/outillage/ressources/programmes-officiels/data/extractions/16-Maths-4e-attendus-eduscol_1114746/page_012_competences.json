@@ -1,0 +1,194 @@
+{
+  "source": {
+    "pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+    "page": 12,
+    "text_length": 1147
+  },
+  "extraction": {
+    "date": "2026-01-03T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "4E-AG-601",
+      "intitule": "Produire un programme de construction d'un triangle equilateral avec une boucle",
+      "fingerprint": "produire_programme_triangle_equilateral_boucle",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Construction geometrique",
+      "type": "capacite",
+      "description_detaillee": "Ecrire un script Scratch utilisant une boucle pour tracer un triangle equilateral (3 repetitions d'avancer + tourner de 120 degres)",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre ou d'un rectangle en utilisant la boucle",
+      "connaissances_associees": ["boucle repetitive", "angles du triangle equilateral", "lutin Scratch"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-602",
+      "intitule": "Produire un programme de construction d'un carre avec une boucle",
+      "fingerprint": "produire_programme_carre_boucle",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Construction geometrique",
+      "type": "capacite",
+      "description_detaillee": "Ecrire un script Scratch utilisant une boucle pour tracer un carre (4 repetitions d'avancer + tourner de 90 degres)",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre ou d'un rectangle en utilisant la boucle",
+      "connaissances_associees": ["boucle repetitive", "angles droits", "lutin Scratch"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-603",
+      "intitule": "Produire un programme de construction d'un rectangle avec une boucle",
+      "fingerprint": "produire_programme_rectangle_boucle",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Construction geometrique",
+      "type": "capacite",
+      "description_detaillee": "Ecrire un script Scratch utilisant une boucle pour tracer un rectangle (alternance de deux longueurs avec des angles de 90 degres)",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre ou d'un rectangle en utilisant la boucle",
+      "connaissances_associees": ["boucle repetitive", "angles droits", "alternance de mesures", "lutin Scratch"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-604",
+      "intitule": "Gerer l'interaction entre deux lutins par detection de contact",
+      "fingerprint": "gerer_interaction_lutins_contact",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Evenements",
+      "type": "capacite",
+      "description_detaillee": "Programmer une reaction d'un lutin (par exemple dire une phrase) lorsqu'un autre lutin le touche, en utilisant les blocs de detection de contact",
+      "formulation_bo": "Il gere l'interaction entre deux lutins, par exemple en faisant dire une phrase a l'un lorsque l'autre le touche",
+      "connaissances_associees": ["blocs de detection", "evenements conditionnels", "lutins multiples"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-605",
+      "intitule": "Produire un programme de construction d'un parallelogramme avec saisie utilisateur",
+      "fingerprint": "produire_programme_parallelogramme_saisie",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Construction geometrique",
+      "type": "capacite",
+      "description_detaillee": "Ecrire un script Scratch permettant de tracer un parallelogramme dont au moins une dimension est saisie par l'utilisateur via le bloc 'demander'",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre, d'un rectangle ou d'un parallelogramme dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+      "connaissances_associees": ["boucle repetitive", "saisie utilisateur", "variable", "proprietes du parallelogramme"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-606",
+      "intitule": "Produire un programme de construction avec saisie utilisateur de la longueur",
+      "fingerprint": "produire_programme_construction_saisie_longueur",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Entrees/Sorties",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le bloc 'demander' et stocker la reponse dans une variable pour parametrer une construction geometrique",
+      "formulation_bo": "Il produit seul un programme de construction [...] dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+      "connaissances_associees": ["bloc demander", "variable", "conversion texte/nombre"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-607",
+      "intitule": "Reproduire une frise avec un bloc personnalise",
+      "fingerprint": "reproduire_frise_bloc_personnalise",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Modularite",
+      "type": "capacite",
+      "description_detaillee": "Creer un bloc personnalise (procedure) pour definir un motif, puis l'appeler plusieurs fois pour construire une frise",
+      "formulation_bo": "Il reproduit une frise donnee reproduisant un motif grace a un bloc personnalise",
+      "connaissances_associees": ["bloc personnalise", "procedure", "repetition de motif", "modularite"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-608",
+      "intitule": "Produire un programme realisant une figure geometrique complexe",
+      "fingerprint": "produire_programme_figure_complexe",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Construction geometrique",
+      "type": "capacite",
+      "description_detaillee": "Combiner boucles, blocs personnalises et calculs pour realiser des figures geometriques elaborees (spirales, rosaces, etc.)",
+      "formulation_bo": "Il produit un programme realisant une figure du type",
+      "connaissances_associees": ["boucles imbriquees", "blocs personnalises", "calculs de position"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-609",
+      "intitule": "Programmer la simulation d'une experience aleatoire",
+      "fingerprint": "programmer_simulation_experience_aleatoire",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Probabilites",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le bloc 'nombre aleatoire' pour simuler une experience aleatoire et compter les occurrences de chaque resultat",
+      "formulation_bo": "Il utilise un logiciel de programmation pour realiser la simulation d'une experience aleatoire",
+      "connaissances_associees": ["nombre aleatoire", "compteur", "boucle", "experience aleatoire"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-610",
+      "intitule": "Compter les occurrences dans une simulation aleatoire",
+      "fingerprint": "compter_occurrences_simulation_aleatoire",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Variables",
+      "type": "capacite",
+      "description_detaillee": "Utiliser des variables compteurs pour denombrer les resultats d'une simulation (par exemple compter les 0 et les 1 sur 100 tirages)",
+      "formulation_bo": "Programmer un lutin pour qu'il enonce 100 nombres aleatoires '0' ou '1' et qu'il compte le nombre de '0' et de '1' obtenus",
+      "connaissances_associees": ["variable compteur", "incrementation", "conditionnelle"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-611",
+      "intitule": "Programmer un jeu avec plusieurs lutins en parallele",
+      "fingerprint": "programmer_jeu_lutins_parallele",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Parallelisme",
+      "type": "capacite",
+      "description_detaillee": "Creer un jeu interactif avec au moins 2 lutins ayant chacun leurs propres scripts qui s'executent en parallele",
+      "formulation_bo": "Il programme un jeu avec un logiciel de programmation par blocs utilisant au moins 2 lutins avec des scripts en parallele",
+      "connaissances_associees": ["scripts paralleles", "lutins multiples", "synchronisation", "evenements"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    },
+    {
+      "code": "4E-AG-612",
+      "intitule": "Mobiliser des capacites de programmation de niveaux anterieurs dans un projet",
+      "fingerprint": "mobiliser_capacites_programmation_projet",
+      "niveau": "4E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Integration",
+      "type": "capacite",
+      "description_detaillee": "Integrer dans un projet de jeu les competences acquises aux niveaux 1, 2 et 3 : boucles, conditionnelles, variables, interactions, blocs personnalises",
+      "formulation_bo": "Il mobilise des capacites acquises precedemment dans les niveaux 1, 2 et 3",
+      "connaissances_associees": ["boucles", "conditionnelles", "variables", "evenements", "blocs personnalises"],
+      "source": {"pdf": "16-Maths-4e-attendus-eduscol_1114746.pdf", "page": 12}
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "by_type": {
+      "capacite": 12
+    },
+    "by_domaine": {
+      "ALGORITHMIQUE": 12
+    },
+    "fingerprints": [
+      "produire_programme_triangle_equilateral_boucle",
+      "produire_programme_carre_boucle",
+      "produire_programme_rectangle_boucle",
+      "gerer_interaction_lutins_contact",
+      "produire_programme_parallelogramme_saisie",
+      "produire_programme_construction_saisie_longueur",
+      "reproduire_frise_bloc_personnalise",
+      "produire_programme_figure_complexe",
+      "programmer_simulation_experience_aleatoire",
+      "compter_occurrences_simulation_aleatoire",
+      "programmer_jeu_lutins_parallele",
+      "mobiliser_capacites_programmation_projet"
+    ]
+  }
+}

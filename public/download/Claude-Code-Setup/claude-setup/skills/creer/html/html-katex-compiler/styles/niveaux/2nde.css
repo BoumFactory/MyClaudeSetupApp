@@ -1,0 +1,67 @@
+/* ===========================================
+   NIVEAU: Seconde
+   Style lycée standard, police moyenne
+   =========================================== */
+
+:root {
+    --content-width: 800px;
+    --content-padding: 2rem;
+    --bloc-padding: 1rem 1.5rem;
+    --bloc-radius: 8px;
+    --bloc-border-width: 4px;
+}
+
+body {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+p, li {
+    font-size: 1rem;
+}
+
+/* Blocs */
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+}
+
+/* Labels */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before,
+.exercice::before {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* KaTeX */
+.katex {
+    font-size: 1.1em;
+}
+
+.katex-display {
+    margin: 1rem 0;
+}
+
+/* Listes */
+ul, ol {
+    margin: 1rem 0;
+}
+
+li {
+    margin: 0.3rem 0;
+}

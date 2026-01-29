@@ -1,0 +1,229 @@
+{
+  "source": {
+    "pdf": "TG_spe.pdf",
+    "page": 5,
+    "text_length": 2654
+  },
+  "extraction": {
+    "date": "2026-01-02T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page d'introduction et objectifs generaux - peu de competences atomiques directement extractibles"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AL-251",
+      "intitule": "Manipuler la notion de produit cartesien",
+      "fingerprint": "manipuler_produit_cartesien",
+      "niveau": "TSPE",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Combinatoire et denombrement",
+      "type": "contenu",
+      "description_detaillee": "Connaitre et utiliser la notion de produit cartesien d'ensembles, comprendre la structure des couples et k-uplets",
+      "formulation_bo": "manipuler quelques notions ensemblistes, notamment celles de produit cartesien, de couple, de liste ou k-uplet",
+      "connaissances_associees": ["notion d'ensemble", "notion de couple", "notion de k-uplet"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-AL-252",
+      "intitule": "Manipuler la notion de couple",
+      "fingerprint": "manipuler_couple_ensembliste",
+      "niveau": "TSPE",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Combinatoire et denombrement",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et utiliser la notion de couple ordonne dans un contexte ensembliste",
+      "formulation_bo": "manipuler quelques notions ensemblistes, notamment celles de produit cartesien, de couple, de liste ou k-uplet",
+      "connaissances_associees": ["notion d'ensemble", "notion de produit cartesien"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-AL-253",
+      "intitule": "Manipuler la notion de liste ou k-uplet",
+      "fingerprint": "manipuler_liste_kuplet",
+      "niveau": "TSPE",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Combinatoire et denombrement",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et utiliser la notion de liste (k-uplet) comme suite ordonnee de k elements",
+      "formulation_bo": "manipuler quelques notions ensemblistes, notamment celles de produit cartesien, de couple, de liste ou k-uplet",
+      "connaissances_associees": ["notion d'ensemble", "notion de couple"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-AL-254",
+      "intitule": "Denombrer des listes d'elements",
+      "fingerprint": "denombrer_listes_elements",
+      "niveau": "TSPE",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Combinatoire et denombrement",
+      "type": "capacite",
+      "description_detaillee": "Calculer le nombre de listes (k-uplets) possibles a partir d'un ensemble donne",
+      "formulation_bo": "denombrer quelques objets combinatoires de base (listes d'elements, combinaisons, permutations)",
+      "connaissances_associees": ["notion de liste", "principe multiplicatif"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-AL-255",
+      "intitule": "Denombrer des combinaisons",
+      "fingerprint": "denombrer_combinaisons",
+      "niveau": "TSPE",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Combinatoire et denombrement",
+      "type": "capacite",
+      "description_detaillee": "Calculer le nombre de combinaisons (choix non ordonnes) de k elements parmi n",
+      "formulation_bo": "denombrer quelques objets combinatoires de base (listes d'elements, combinaisons, permutations)",
+      "connaissances_associees": ["coefficient binomial", "parties d'un ensemble"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-AL-256",
+      "intitule": "Denombrer des permutations",
+      "fingerprint": "denombrer_permutations",
+      "niveau": "TSPE",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Combinatoire et denombrement",
+      "type": "capacite",
+      "description_detaillee": "Calculer le nombre de permutations (arrangements ordonnes) de n elements",
+      "formulation_bo": "denombrer quelques objets combinatoires de base (listes d'elements, combinaisons, permutations)",
+      "connaissances_associees": ["factorielle", "notion de bijection"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-AL-257",
+      "intitule": "Representer un denombrement par un arbre",
+      "fingerprint": "representer_denombrement_arbre",
+      "niveau": "TSPE",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Combinatoire et denombrement",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une representation arborescente pour denombrer des chemins ou des configurations",
+      "formulation_bo": "objets combinatoires pouvant etre representes diversement : parties d'un ensemble, mots, chemins dans un arbre",
+      "connaissances_associees": ["arbre de choix", "principe multiplicatif"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-LO-258",
+      "intitule": "Appliquer un raisonnement par recurrence",
+      "fingerprint": "appliquer_raisonnement_recurrence",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement mathematique",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le principe de recurrence pour demontrer une propriete portant sur les entiers naturels",
+      "formulation_bo": "travailler le raisonnement par recurrence",
+      "connaissances_associees": ["principe de recurrence", "initialisation", "heredite"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-GE-259",
+      "intitule": "Reconnaitre qu'un vecteur non nul engendre une direction de droites",
+      "fingerprint": "reconnaitre_vecteur_direction_droite",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Geometrie dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Comprendre qu'un vecteur non nul definit une direction de droites dans l'espace",
+      "formulation_bo": "un vecteur non nul engendre une direction de droites",
+      "connaissances_associees": ["vecteur directeur", "droite dans l'espace"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-GE-260",
+      "intitule": "Reconnaitre que deux vecteurs non colineaires engendrent une direction de plan",
+      "fingerprint": "reconnaitre_vecteurs_direction_plan",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Geometrie dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que deux vecteurs non colineaires definissent une direction de plan dans l'espace",
+      "formulation_bo": "deux vecteurs non colineaires engendrent une direction de plan",
+      "connaissances_associees": ["vecteurs directeurs d'un plan", "colinearite"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-GE-261",
+      "intitule": "Reconnaitre que trois vecteurs non coplanaires engendrent les vecteurs de l'espace",
+      "fingerprint": "reconnaitre_vecteurs_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Geometrie dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que trois vecteurs non coplanaires forment une famille generatrice de l'espace vectoriel",
+      "formulation_bo": "trois vecteurs non coplanaires engendrent les vecteurs de l'espace",
+      "connaissances_associees": ["coplanarité", "base de l'espace"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-GE-262",
+      "intitule": "Reconnaitre qu'un vecteur directeur et deux vecteurs non colineaires du plan forment une base",
+      "fingerprint": "reconnaitre_base_droite_plan_secants",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Geometrie dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Si une droite et un plan sont secants, comprendre qu'un vecteur directeur de la droite et deux vecteurs non colineaires de la direction du plan forment une base de l'espace",
+      "formulation_bo": "si une droite et un plan sont secants, un vecteur directeur de cette droite et deux vecteurs non colineaires de la direction de ce plan forment une base de l'espace",
+      "connaissances_associees": ["droite et plan secants", "base de l'espace", "vecteur directeur"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-GE-263",
+      "intitule": "Decomposer un vecteur d'un plan suivant deux vecteurs non colineaires",
+      "fingerprint": "decomposer_vecteur_plan_base",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Geometrie dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Exprimer un vecteur d'un plan comme combinaison lineaire de deux vecteurs non colineaires de ce plan",
+      "formulation_bo": "La decomposition d'un vecteur d'un plan suivant deux vecteurs non colineaires de ce plan",
+      "connaissances_associees": ["combinaison lineaire", "vecteurs non colineaires", "coordonnees dans une base"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    },
+    {
+      "code": "TSPE-GE-264",
+      "intitule": "Decomposer un vecteur de l'espace suivant trois vecteurs non coplanaires",
+      "fingerprint": "decomposer_vecteur_espace_base",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Geometrie dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Exprimer un vecteur de l'espace comme combinaison lineaire de trois vecteurs non coplanaires",
+      "formulation_bo": "celle d'un vecteur de l'espace suivant trois vecteurs non coplanaires",
+      "connaissances_associees": ["combinaison lineaire", "vecteurs non coplanaires", "coordonnees dans une base"],
+      "source": {"pdf": "TG_spe.pdf", "page": 5}
+    }
+  ],
+  "summary": {
+    "total": 14,
+    "by_type": {
+      "contenu": 7,
+      "capacite": 7,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "ALGEBRE": 7,
+      "GEOMETRIE": 6,
+      "LOGIQUE": 1
+    },
+    "fingerprints": [
+      "manipuler_produit_cartesien",
+      "manipuler_couple_ensembliste",
+      "manipuler_liste_kuplet",
+      "denombrer_listes_elements",
+      "denombrer_combinaisons",
+      "denombrer_permutations",
+      "representer_denombrement_arbre",
+      "appliquer_raisonnement_recurrence",
+      "reconnaitre_vecteur_direction_droite",
+      "reconnaitre_vecteurs_direction_plan",
+      "reconnaitre_vecteurs_espace",
+      "reconnaitre_base_droite_plan_secants",
+      "decomposer_vecteur_plan_base",
+      "decomposer_vecteur_espace_base"
+    ]
+  }
+}

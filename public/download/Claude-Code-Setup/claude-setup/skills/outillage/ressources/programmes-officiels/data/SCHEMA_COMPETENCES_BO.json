@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Schema des competences officielles extraites du BO",
+  "description": "Format JSON pour stocker les competences atomiques extraites des programmes officiels de mathematiques",
+
+  "definitions": {
+    "competence_atomique": {
+      "type": "object",
+      "required": ["code", "intitule", "niveau", "domaine", "type"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Code unique de la competence (format: [NIVEAU]-[DOMAINE]-[NUM])",
+          "pattern": "^[A-Z0-9]+-[A-Z]+-[0-9]{3}$",
+          "examples": ["1SPE-AN-001", "2GT-GEO-015", "TSPE-PR-008"]
+        },
+        "intitule": {
+          "type": "string",
+          "description": "Enonce court de la competence (1 phrase)"
+        },
+        "niveau": {
+          "type": "string",
+          "enum": ["CYCLE3", "6EME", "5EME", "4EME", "3EME", "2GT", "2STHR", "1SPE", "1TC", "1ENS_SCI", "TSPE", "TTC", "TENS_SCI", "TEXPERTES", "TCOMP"],
+          "description": "Niveau scolaire"
+        },
+        "domaine": {
+          "type": "string",
+          "enum": ["NOMBRES", "ALGEBRE", "ANALYSE", "GEOMETRIE", "PROBABILITES", "STATISTIQUES", "ALGORITHMIQUE", "TRIGONOMETRIE", "GRANDEURS", "LOGIQUE"],
+          "description": "Domaine mathematique principal"
+        },
+        "sous_domaine": {
+          "type": "string",
+          "description": "Sous-theme plus precis (ex: Suites numeriques, Second degre, Derivation)"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["contenu", "capacite", "demonstration", "algorithme", "approfondissement"],
+          "description": "Type d'element du programme"
+        },
+        "description_detaillee": {
+          "type": "string",
+          "description": "Description complete de ce qui est attendu"
+        },
+        "connaissances_associees": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Notions et definitions a connaitre"
+        },
+        "capacites_attendues": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Ce que l'eleve doit savoir faire"
+        },
+        "demonstrations_exigibles": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Demonstrations que l'eleve doit savoir refaire"
+        },
+        "exemples_algorithmes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Algorithmes mentionnes dans le programme"
+        },
+        "approfondissements": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Elements d'approfondissement non exigibles"
+        },
+        "liens_transversaux": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Liens avec d'autres domaines ou disciplines"
+        },
+        "prerequis": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Codes des competences prerequises"
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "pdf": {"type": "string", "description": "Nom du PDF source"},
+            "page": {"type": "integer", "description": "Numero de page dans le PDF"},
+            "bo_reference": {"type": "string", "description": "Reference du BO (ex: BO special n5 du 22/01/2019)"}
+          }
+        },
+        "extraction_meta": {
+          "type": "object",
+          "properties": {
+            "date": {"type": "string", "format": "date-time"},
+            "agent_version": {"type": "string"},
+            "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+            "verified": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "niveau": {"type": "string"},
+        "titre_programme": {"type": "string"},
+        "bo_reference": {"type": "string"},
+        "date_publication": {"type": "string"},
+        "url_officielle": {"type": "string"},
+        "extraction_date": {"type": "string", "format": "date-time"},
+        "total_competences": {"type": "integer"}
+      }
+    },
+    "domaines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nom": {"type": "string"},
+          "code": {"type": "string"},
+          "objectifs": {"type": "string"},
+          "competences": {
+            "type": "array",
+            "items": {"$ref": "#/definitions/competence_atomique"}
+          }
+        }
+      }
+    }
+  },
+
+  "examples": {
+    "competence_exemple": {
+      "code": "1SPE-AN-007",
+      "intitule": "Calculer le terme general d'une suite arithmetique",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Pour une suite arithmetique de premier terme u0 et de raison r, calculer le terme general un = u0 + n*r",
+      "connaissances_associees": [
+        "Definition d'une suite arithmetique",
+        "Notion de raison",
+        "Formule du terme general"
+      ],
+      "capacites_attendues": [
+        "Calculer le terme general d'une suite arithmetique",
+        "Determiner la raison connaissant deux termes",
+        "Modeliser une situation de croissance lineaire"
+      ],
+      "demonstrations_exigibles": [
+        "Calcul du terme general d'une suite arithmetique"
+      ],
+      "exemples_algorithmes": [
+        "Calcul de termes d'une suite",
+        "Calcul de sommes de termes"
+      ],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 7,
+        "bo_reference": "BO special n1 du 22/01/2019"
+      }
+    }
+  }
+}

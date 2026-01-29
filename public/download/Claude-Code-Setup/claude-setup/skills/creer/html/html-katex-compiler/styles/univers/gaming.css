@@ -1,0 +1,526 @@
+/* ===========================================
+   UNIVERS: GAMING / E-SPORT
+   Énergique, RGB, achievements
+   Support Light/Dark automatique
+   =========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Oxanium:wght@400;600;700;800&display=swap');
+
+/* ===========================================
+   VARIABLES - MODE CLAIR (défaut)
+   =========================================== */
+:root {
+    /* Palette Gaming adaptée pour fond clair */
+    --rgb-red: #d32f2f;
+    --rgb-green: #388e3c;
+    --rgb-blue: #1976d2;
+    --rgb-cyan: #0097a7;
+    --rgb-magenta: #7b1fa2;
+    --rgb-yellow: #f9a825;
+
+    /* Couleurs gaming */
+    --gaming-bg: #f5f7fa;
+    --gaming-surface: #e8ecf1;
+    --gaming-card: #ffffff;
+    --gaming-text: #1a2a3a;
+    --gaming-text-muted: #5a6a7a;
+    --gaming-gold: #ff8f00;
+    --gaming-xp: #2e7d32;
+    --gaming-hp: #c62828;
+    --gaming-mana: #1565c0;
+
+    /* Gradient RGB */
+    --rgb-gradient: linear-gradient(90deg,
+        var(--rgb-red), var(--rgb-yellow), var(--rgb-green),
+        var(--rgb-cyan), var(--rgb-blue), var(--rgb-magenta), var(--rgb-red));
+
+    /* Blocs */
+    --gaming-def-bg: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    --gaming-theo-bg: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    --gaming-prop-bg: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    --gaming-ex-bg: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+    --gaming-meth-bg: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%);
+    --gaming-rem-bg: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+    --gaming-exo-bg: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+}
+
+/* ===========================================
+   VARIABLES - MODE SOMBRE
+   =========================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Palette RGB vive pour dark */
+        --rgb-red: #ff5252;
+        --rgb-green: #69f0ae;
+        --rgb-blue: #448aff;
+        --rgb-cyan: #18ffff;
+        --rgb-magenta: #e040fb;
+        --rgb-yellow: #ffff00;
+
+        /* Couleurs gaming */
+        --gaming-bg: #0d0d1a;
+        --gaming-surface: #151528;
+        --gaming-card: #1e1e3a;
+        --gaming-text: #e8e8e8;
+        --gaming-text-muted: #888;
+        --gaming-gold: #ffd700;
+        --gaming-xp: #00ff88;
+        --gaming-hp: #ff4444;
+        --gaming-mana: #4488ff;
+
+        /* Blocs - versions sombres */
+        --gaming-def-bg: linear-gradient(135deg, rgba(68,136,255,0.15) 0%, rgba(68,136,255,0.05) 100%);
+        --gaming-theo-bg: linear-gradient(135deg, rgba(255,215,0,0.15) 0%, rgba(255,215,0,0.05) 100%);
+        --gaming-prop-bg: linear-gradient(135deg, rgba(0,255,136,0.15) 0%, rgba(0,255,136,0.05) 100%);
+        --gaming-ex-bg: linear-gradient(135deg, rgba(224,64,251,0.15) 0%, rgba(224,64,251,0.05) 100%);
+        --gaming-meth-bg: linear-gradient(135deg, rgba(255,255,0,0.15) 0%, rgba(255,255,0,0.05) 100%);
+        --gaming-rem-bg: linear-gradient(135deg, rgba(24,255,255,0.15) 0%, rgba(24,255,255,0.05) 100%);
+        --gaming-exo-bg: linear-gradient(135deg, rgba(255,68,68,0.15) 0%, rgba(255,68,68,0.05) 100%);
+    }
+}
+
+/* ===========================================
+   STYLES DE BASE
+   =========================================== */
+body {
+    font-family: 'Oxanium', 'Segoe UI', sans-serif;
+    background: var(--gaming-bg);
+    color: var(--gaming-text);
+    min-height: 100vh;
+    position: relative;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* === EFFET RGB BORDER ANIMÉE === */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--rgb-gradient);
+    background-size: 200% 100%;
+    animation: rgbFlow 3s linear infinite;
+    z-index: 9999;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--rgb-gradient);
+    background-size: 200% 100%;
+    animation: rgbFlow 3s linear infinite reverse;
+    z-index: 9999;
+}
+
+@keyframes rgbFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* ===========================================
+   TITRES GAMING
+   =========================================== */
+
+h1 {
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 1.8rem !important;
+    color: var(--gaming-text);
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 var(--gaming-surface);
+    border: none;
+    background: var(--gaming-card);
+    padding: 2rem !important;
+    border-radius: 0 !important;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Barre de progression XP */
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg,
+        var(--gaming-xp) 0%,
+        var(--gaming-xp) 75%,
+        var(--gaming-surface) 75%);
+    animation: xpFill 2s ease-out;
+}
+
+@keyframes xpFill {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+/* Badge LEVEL */
+h1::before {
+    content: 'LVL UP';
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    font-size: 0.5rem;
+    background: var(--gaming-gold);
+    color: #000;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    animation: levelPulse 2s ease-in-out infinite;
+}
+
+@keyframes levelPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+h2 {
+    font-family: 'Oxanium', sans-serif !important;
+    font-size: 1.6rem !important;
+    font-weight: 800;
+    color: var(--rgb-cyan);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 1rem 1.5rem !important;
+    background: var(--gaming-surface);
+    border-left: 5px solid var(--rgb-cyan);
+    margin-top: 3rem;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 98% 100%, 0 100%);
+}
+
+h2::before {
+    content: '▶';
+    margin-right: 10px;
+    color: var(--gaming-xp);
+    animation: playIcon 0.8s ease-in-out infinite;
+}
+
+@keyframes playIcon {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+h3 {
+    font-family: 'Oxanium', sans-serif !important;
+    font-size: 1.3rem !important;
+    color: var(--gaming-xp);
+    font-weight: 700;
+    padding-left: 1.5rem;
+    border-left: 4px solid var(--gaming-xp);
+    background: linear-gradient(90deg, rgba(0,255,136,0.1), transparent);
+}
+
+/* ===========================================
+   BLOCS - STYLE CARTE DE JEU
+   =========================================== */
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    background: var(--gaming-card) !important;
+    border: 2px solid !important;
+    border-radius: 0 !important;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    margin: 2rem 0;
+}
+
+.definition:hover, .theoreme:hover, .propriete:hover,
+.exemple:hover, .methode:hover, .remarque:hover, .exercice:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+}
+
+/* Coin coupé décoratif */
+.definition::after, .theoreme::after, .propriete::after,
+.exemple::after, .methode::after, .remarque::after, .exercice::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 15px;
+    border-style: solid;
+    border-color: var(--gaming-bg) var(--gaming-bg) transparent transparent;
+}
+
+/* === BADGES ACHIEVEMENT STYLE === */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before, .exercice::before {
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 0.55rem !important;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0 !important;
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+}
+
+/* === COULEURS PAR TYPE (Cartes rareté) === */
+
+/* DÉFINITION - Bleu (Rare) */
+.definition {
+    background: var(--gaming-def-bg) !important;
+    border-color: var(--gaming-mana) !important;
+}
+.definition::before {
+    background: linear-gradient(135deg, var(--gaming-mana), #2255aa) !important;
+    content: '📖 DÉFINITION' !important;
+}
+
+/* THÉORÈME - Or (Légendaire) */
+.theoreme {
+    background: var(--gaming-theo-bg) !important;
+    border-color: var(--gaming-gold) !important;
+}
+.theoreme::before {
+    background: linear-gradient(135deg, var(--gaming-gold), #cc9900) !important;
+    color: #000 !important;
+    content: '⭐ THÉORÈME' !important;
+}
+
+/* PROPRIÉTÉ - Vert (Épique) */
+.propriete {
+    background: var(--gaming-prop-bg) !important;
+    border-color: var(--gaming-xp) !important;
+}
+.propriete::before {
+    background: linear-gradient(135deg, var(--gaming-xp), #00aa55) !important;
+    color: #000 !important;
+    content: '✨ PROPRIÉTÉ' !important;
+}
+
+/* EXEMPLE - Violet (Rare) */
+.exemple {
+    background: var(--gaming-ex-bg) !important;
+    border-color: var(--rgb-magenta) !important;
+}
+.exemple::before {
+    background: linear-gradient(135deg, var(--rgb-magenta), #aa00aa) !important;
+    content: '💡 EXEMPLE' !important;
+}
+
+/* MÉTHODE - Jaune (Rare) */
+.methode {
+    background: var(--gaming-meth-bg) !important;
+    border-color: var(--rgb-yellow) !important;
+}
+.methode::before {
+    background: linear-gradient(135deg, var(--rgb-yellow), #ccaa00) !important;
+    color: #000 !important;
+    content: '🎯 MÉTHODE' !important;
+}
+
+/* REMARQUE - Cyan */
+.remarque {
+    background: var(--gaming-rem-bg) !important;
+    border-color: var(--rgb-cyan) !important;
+}
+.remarque::before {
+    background: linear-gradient(135deg, var(--rgb-cyan), #00aaaa) !important;
+    color: #000 !important;
+    content: '💬 REMARQUE' !important;
+}
+
+/* EXERCICE - Rouge (Quête) */
+.exercice {
+    background: var(--gaming-exo-bg) !important;
+    border-color: var(--gaming-hp) !important;
+}
+.exercice::before {
+    background: linear-gradient(135deg, var(--gaming-hp), #aa2222) !important;
+    content: '⚔️ EXERCICE' !important;
+}
+
+/* ===========================================
+   LISTES
+   =========================================== */
+
+ul li::before {
+    content: '▸' !important;
+    background: none !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    color: var(--gaming-xp);
+    font-size: 1.2rem;
+}
+
+ol li::before {
+    background: linear-gradient(135deg, var(--gaming-mana), #2255aa) !important;
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 0.5rem !important;
+    border-radius: 3px !important;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+}
+
+/* ===========================================
+   KaTeX
+   =========================================== */
+
+.katex-display {
+    background: var(--gaming-surface) !important;
+    border: 2px solid var(--gaming-gold) !important;
+    border-left: 5px solid var(--gaming-gold) !important;
+    border-radius: 0 !important;
+    position: relative;
+    padding: 1.5rem 2rem !important;
+    overflow-x: auto;
+    overflow-y: visible;
+    /* clip-path desactive pour eviter de couper le texte */
+}
+
+.katex-display::before {
+    content: '📐 FORMULE';
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.4rem;
+    color: var(--gaming-gold);
+    opacity: 0.7;
+}
+
+/* ===========================================
+   TABLEAUX
+   =========================================== */
+
+table {
+    border: 2px solid var(--gaming-mana) !important;
+    border-radius: 0 !important;
+    overflow: hidden;
+}
+
+th {
+    background: var(--gaming-surface) !important;
+    color: var(--rgb-cyan) !important;
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 0.55rem !important;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--gaming-mana) !important;
+    text-transform: uppercase;
+}
+
+td {
+    border-color: var(--gaming-surface) !important;
+    font-family: 'Oxanium', sans-serif;
+    background: var(--gaming-card);
+}
+
+tr:nth-child(even) td {
+    background: var(--gaming-surface);
+}
+
+tr:hover td {
+    background: rgba(0,255,136,0.1) !important;
+}
+
+/* ===========================================
+   LIENS
+   =========================================== */
+
+a {
+    color: var(--rgb-cyan) !important;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: var(--gaming-xp) !important;
+}
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+
+.footer {
+    text-align: center;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    color: var(--gaming-text-muted);
+    padding: 2rem;
+    border-top: 2px solid var(--gaming-surface);
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.1));
+}
+
+.footer::before {
+    content: '★ ';
+    color: var(--gaming-gold);
+}
+
+.footer::after {
+    content: ' ★ GAME ON!';
+    color: var(--gaming-gold);
+}
+
+/* ===========================================
+   SCROLLBAR RGB
+   =========================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gaming-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--rgb-gradient);
+    background-size: 200% 100%;
+    animation: rgbFlow 3s linear infinite;
+    border-radius: 5px;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.1rem !important;
+        padding: 1.5rem !important;
+    }
+
+    h1::before {
+        display: none;
+    }
+}
+
+/* ===========================================
+   PRINT
+   =========================================== */
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    body::before, body::after {
+        display: none !important;
+    }
+
+    h1, h2 {
+        clip-path: none;
+        background: #f5f5f5 !important;
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+
+    .definition, .theoreme, .propriete, .exemple,
+    .methode, .remarque, .exercice {
+        clip-path: none;
+        background: #f9f9f9 !important;
+        box-shadow: none !important;
+    }
+}

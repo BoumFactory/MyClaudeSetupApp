@@ -1,0 +1,161 @@
+{
+  "source": {
+    "pdf": "1ere_techno.pdf",
+    "page": 16,
+    "text_length": 876
+  },
+  "extraction": {
+    "date": "2026-01-02T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "1TECHNO-ST-801",
+      "intitule": "Constater que l'ecart-type des frequences observees est de l'ordre de 1/sqrt(n)",
+      "fingerprint": "constater_ecart_type_frequences_ordre_1_racine_n",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Echantillonnage et fluctuation",
+      "type": "contenu",
+      "description_detaillee": "Sur des simulations, observer que la serie des frequences observees des 1 dans N echantillons de taille n d'une loi de Bernoulli a un ecart-type de l'ordre de 1/sqrt(n)",
+      "formulation_bo": "Sur des simulations, on constate que la serie des frequences observees des 1 dans N echantillons de taille n d'une loi de Bernoulli a un ecart-type de l'ordre de 1/sqrt(n)",
+      "connaissances_associees": ["loi de Bernoulli", "ecart-type", "frequence observee", "echantillon"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 16}
+    },
+    {
+      "code": "1TECHNO-ST-802",
+      "intitule": "Representer graphiquement la relation entre 1/sqrt(n) et l'ecart-type des frequences",
+      "fingerprint": "representer_relation_1_racine_n_ecart_type",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Echantillonnage et fluctuation",
+      "type": "capacite",
+      "description_detaillee": "Pour plusieurs valeurs de n, representer en abscisse 1/sqrt(n) et en ordonnee l'ecart-type s des frequences observees des 1 dans N echantillons de taille n",
+      "formulation_bo": "Pour plusieurs valeurs de n on represente en abscisse 1/sqrt(n) et, en ordonnee, l'ecart-type s des frequences observees des 1 dans N echantillons de taille n",
+      "connaissances_associees": ["representation graphique", "nuage de points", "ecart-type", "frequence"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 16}
+    },
+    {
+      "code": "1TECHNO-ST-803",
+      "intitule": "Interpreter que diviser la dispersion par k necessite de multiplier la taille par k2",
+      "fingerprint": "interpreter_dispersion_k_taille_k2",
+      "niveau": "1TECHNO",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Echantillonnage et fluctuation",
+      "type": "capacite",
+      "description_detaillee": "Commenter le resultat graphique en observant que pour diviser la dispersion par k il faut multiplier la taille de l'echantillon par k^2",
+      "formulation_bo": "On peut commenter ce resultat en observant que pour diviser la dispersion par k il faut multiplier la taille de l'echantillon par k2",
+      "connaissances_associees": ["dispersion", "taille d'echantillon", "proportionnalite quadratique"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 16}
+    },
+    {
+      "code": "1TECHNO-AG-804",
+      "intitule": "Simuler des echantillons de taille n d'une loi de Bernoulli",
+      "fingerprint": "simuler_echantillons_bernoulli_generateur_aleatoire",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et echantillonnage",
+      "type": "algorithme",
+      "description_detaillee": "A partir d'un generateur de nombres aleatoires entre 0 et 1, simuler des echantillons de taille n d'une loi de Bernoulli de parametre p",
+      "formulation_bo": "Simuler des echantillons de taille n d'une loi de Bernoulli a partir d'un generateur de nombres aleatoires entre 0 et 1",
+      "connaissances_associees": ["loi de Bernoulli", "generateur aleatoire", "simulation", "echantillon"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 16},
+      "exclusion": "sauf serie STD2A"
+    },
+    {
+      "code": "1TECHNO-AG-805",
+      "intitule": "Representer par un histogramme les frequences observees dans N echantillons",
+      "fingerprint": "representer_histogramme_frequences_echantillons",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et echantillonnage",
+      "type": "algorithme",
+      "description_detaillee": "Creer un algorithme qui represente par un histogramme les frequences observees des 1 dans N echantillons de taille n d'une loi de Bernoulli",
+      "formulation_bo": "Representer par un histogramme ou par un nuage de points les frequences observees des 1 dans N echantillons de taille n d'une loi de Bernoulli",
+      "connaissances_associees": ["histogramme", "frequence", "echantillon", "representation graphique"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 16},
+      "exclusion": "sauf serie STD2A"
+    },
+    {
+      "code": "1TECHNO-AG-806",
+      "intitule": "Representer par un nuage de points les frequences observees dans N echantillons",
+      "fingerprint": "representer_nuage_points_frequences_echantillons",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et echantillonnage",
+      "type": "algorithme",
+      "description_detaillee": "Creer un algorithme qui represente par un nuage de points les frequences observees des 1 dans N echantillons de taille n d'une loi de Bernoulli",
+      "formulation_bo": "Representer par un histogramme ou par un nuage de points les frequences observees des 1 dans N echantillons de taille n d'une loi de Bernoulli",
+      "connaissances_associees": ["nuage de points", "frequence", "echantillon", "representation graphique"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 16},
+      "exclusion": "sauf serie STD2A"
+    },
+    {
+      "code": "1TECHNO-AG-807",
+      "intitule": "Compter le nombre de valeurs dans un intervalle [p-ks ; p+ks] pour k=1",
+      "fingerprint": "compter_valeurs_intervalle_k1_ecart_type",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et echantillonnage",
+      "type": "algorithme",
+      "description_detaillee": "Creer un algorithme qui compte le nombre de valeurs situees dans l'intervalle [p-s ; p+s] (k=1)",
+      "formulation_bo": "Compter le nombre de valeurs situees dans un intervalle de la forme [p - ks ; p + ks] pour k in {1;2;3}",
+      "connaissances_associees": ["intervalle", "ecart-type", "comptage", "distribution"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 16},
+      "exclusion": "sauf serie STD2A"
+    },
+    {
+      "code": "1TECHNO-AG-808",
+      "intitule": "Compter le nombre de valeurs dans un intervalle [p-ks ; p+ks] pour k=2",
+      "fingerprint": "compter_valeurs_intervalle_k2_ecart_type",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et echantillonnage",
+      "type": "algorithme",
+      "description_detaillee": "Creer un algorithme qui compte le nombre de valeurs situees dans l'intervalle [p-2s ; p+2s] (k=2)",
+      "formulation_bo": "Compter le nombre de valeurs situees dans un intervalle de la forme [p - ks ; p + ks] pour k in {1;2;3}",
+      "connaissances_associees": ["intervalle", "ecart-type", "comptage", "distribution"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 16},
+      "exclusion": "sauf serie STD2A"
+    },
+    {
+      "code": "1TECHNO-AG-809",
+      "intitule": "Compter le nombre de valeurs dans un intervalle [p-ks ; p+ks] pour k=3",
+      "fingerprint": "compter_valeurs_intervalle_k3_ecart_type",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et echantillonnage",
+      "type": "algorithme",
+      "description_detaillee": "Creer un algorithme qui compte le nombre de valeurs situees dans l'intervalle [p-3s ; p+3s] (k=3)",
+      "formulation_bo": "Compter le nombre de valeurs situees dans un intervalle de la forme [p - ks ; p + ks] pour k in {1;2;3}",
+      "connaissances_associees": ["intervalle", "ecart-type", "comptage", "distribution", "regle des 3 sigma"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 16},
+      "exclusion": "sauf serie STD2A"
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "by_type": {
+      "contenu": 1,
+      "capacite": 2,
+      "algorithme": 6
+    },
+    "by_domaine": {
+      "STATISTIQUES": 3,
+      "ALGORITHMIQUE": 6
+    },
+    "fingerprints": [
+      "constater_ecart_type_frequences_ordre_1_racine_n",
+      "representer_relation_1_racine_n_ecart_type",
+      "interpreter_dispersion_k_taille_k2",
+      "simuler_echantillons_bernoulli_generateur_aleatoire",
+      "representer_histogramme_frequences_echantillons",
+      "representer_nuage_points_frequences_echantillons",
+      "compter_valeurs_intervalle_k1_ecart_type",
+      "compter_valeurs_intervalle_k2_ecart_type",
+      "compter_valeurs_intervalle_k3_ecart_type"
+    ]
+  }
+}

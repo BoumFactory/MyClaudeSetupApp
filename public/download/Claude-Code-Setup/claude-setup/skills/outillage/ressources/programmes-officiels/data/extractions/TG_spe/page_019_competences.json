@@ -1,0 +1,251 @@
+{
+  "source": {
+    "pdf": "TG_spe.pdf",
+    "page": 19,
+    "text_length": 2487
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-PR-951",
+      "intitule": "Enoncer l'inégalité de Bienaymé-Tchebychev",
+      "fingerprint": "enoncer_inegalite_bienaymeé_tchebychev",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "contenu",
+      "description_detaillee": "Pour une variable aléatoire X d'espérance µ et de variance V, connaître que pour tout réel strictement positif α : P(|X - µ| ≥ α) ≤ V/α²",
+      "formulation_bo": "Inégalité de Bienaymé-Tchebychev. Pour une variable aléatoire X d'espérance µ et de variance V, et quel que soit le réel strictement positif α : P (│X - µ│⩾ α ) ⩽ V/α²",
+      "connaissances_associees": [
+        "espérance d'une variable aléatoire",
+        "variance d'une variable aléatoire",
+        "écart-type comme mesure de dispersion"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    },
+    {
+      "code": "TSPE-PR-952",
+      "intitule": "Interpréter l'écart-type comme unité naturelle de dispersion",
+      "fingerprint": "interpreter_ecart_type_dispersion",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que l'écart-type σ d'une variable aléatoire X est l'unité naturelle pour étudier la dispersion de X autour de son espérance µ, et que des écarts de quelques σ deviennent improbables",
+      "formulation_bo": "L'écart type σ d'une variable aléatoire X est l'unité naturelle pour étudier la dispersion de X autour de son espérance µ ; par construction, il est naturel d'observer des écarts de X à µ en deçà ou au-delà de σ. L'inégalité de Bienaymé-Tchebychev montre qu'en revanche des écarts de X à µ de quelques σ deviennent improbables.",
+      "connaissances_associees": [
+        "définition de l'écart-type",
+        "variance d'une variable aléatoire",
+        "espérance d'une variable aléatoire"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    },
+    {
+      "code": "TSPE-PR-953",
+      "intitule": "Enoncer l'inégalité de concentration",
+      "fingerprint": "enoncer_inegalite_concentration",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "contenu",
+      "description_detaillee": "Pour M_n, variable aléatoire moyenne d'un échantillon de taille n d'une variable aléatoire d'espérance µ et de variance V, connaître que pour tout α > 0 : P(|M_n - µ| ≥ α) ≤ V/(n·α²)",
+      "formulation_bo": "Inégalité de concentration. Si M_n est la variable aléatoire moyenne d'un échantillon de taille n d'une variable aléatoire d'espérance µ et de variance V, alors pour tout α > 0, P (│M_n - µ│⩾ α ) ⩽ V/(n·α²)",
+      "connaissances_associees": [
+        "inégalité de Bienaymé-Tchebychev",
+        "moyenne empirique",
+        "variance d'une variable aléatoire",
+        "espérance d'une variable aléatoire"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    },
+    {
+      "code": "TSPE-PR-954",
+      "intitule": "Enoncer la loi des grands nombres",
+      "fingerprint": "enoncer_loi_grands_nombres",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que l'écart entre la moyenne d'un échantillon d'une variable aléatoire et l'espérance de cette variable ne dépasse une valeur donnée à l'avance qu'avec une probabilité qui tend vers zéro quand la taille de l'échantillon tend vers l'infini",
+      "formulation_bo": "Loi des grands nombres, selon laquelle l'écart entre la moyenne d'un échantillon d'une variable aléatoire et l'espérance de cette variable ne dépasse une valeur donnée à l'avance qu'avec une probabilité qui tend vers zéro quand la taille de l'échantillon tend vers l'infini.",
+      "connaissances_associees": [
+        "espérance d'une variable aléatoire",
+        "inégalité de concentration",
+        "notion de limite",
+        "convergence en probabilité"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    },
+    {
+      "code": "TSPE-PR-955",
+      "intitule": "Appliquer l'inégalité de Bienaymé-Tchebychev pour définir une taille d'échantillon",
+      "fingerprint": "appliquer_inegalite_bienaymé_tchebychev_taille_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "capacite",
+      "description_detaillee": "Utiliser l'inégalité de Bienaymé-Tchebychev pour déterminer une taille d'échantillon suffisante en fonction d'une précision et d'un risque donnés",
+      "formulation_bo": "Appliquer l'inégalité de Bienaymé-Tchebychev pour définir une taille d'échantillon, en fonction de la précision et du risque choisi.",
+      "connaissances_associees": [
+        "inégalité de Bienaymé-Tchebychev",
+        "espérance d'une variable aléatoire",
+        "variance d'une variable aléatoire",
+        "notion de risque et précision en statistique"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    },
+    {
+      "code": "TSPE-PR-956",
+      "intitule": "Calculer la probabilité associée à une loi binomiale et la comparer avec l'inégalité de Bienaymé-Tchebychev",
+      "fingerprint": "calculer_probabilite_loi_binomiale_comparer_bienaymé",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "algorithme",
+      "description_detaillee": "Pour une variable aléatoire S_n suivant une loi binomiale B(n,p), calculer P(|S_n - pn| > kσ_n) et comparer le résultat avec la majoration fournie par l'inégalité de Bienaymé-Tchebychev",
+      "formulation_bo": "Calculer la probabilité de (│S_n - pn│ > kσ_n), où S_n est une variable aléatoire qui suit une loi binomiale B(n,p). Comparer avec l'inégalité de Bienaymé-Tchebychev.",
+      "connaissances_associees": [
+        "loi binomiale",
+        "espérance et variance d'une loi binomiale",
+        "inégalité de Bienaymé-Tchebychev",
+        "programmation (simulation)"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    },
+    {
+      "code": "TSPE-PR-957",
+      "intitule": "Simuler une marche aléatoire",
+      "fingerprint": "simuler_marche_aleatoire",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "algorithme",
+      "description_detaillee": "Mettre en place une simulation informatique d'une marche aléatoire (déplacement aléatoire pas à pas)",
+      "formulation_bo": "Simulation d'une marche aléatoire.",
+      "connaissances_associees": [
+        "notion de marche aléatoire",
+        "probabilités discrètes",
+        "programmation (Python ou autre)"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    },
+    {
+      "code": "TSPE-PR-958",
+      "intitule": "Simuler des échantillons d'une variable aléatoire et calculer l'écart-type de leurs moyennes",
+      "fingerprint": "simuler_echantillons_calculer_ecart_type_moyennes",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "algorithme",
+      "description_detaillee": "Générer N échantillons de taille n d'une variable aléatoire X d'espérance µ et d'écart-type σ. Calculer l'écart-type s de la série des moyennes de ces N échantillons et le comparer à σ/√n",
+      "formulation_bo": "Simuler N échantillons de taille n d'une variable aléatoire d'espérance µ et d'écart type σ. Calculer l'écart type s de la série des moyennes des échantillons observés, à comparer à σ / √n.",
+      "connaissances_associees": [
+        "échantillonnage",
+        "moyenne empirique",
+        "écart-type empirique",
+        "programmation (simulation)",
+        "théorème central limite"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    },
+    {
+      "code": "TSPE-PR-959",
+      "intitule": "Calculer la proportion d'échantillons dans des intervalles de concentration",
+      "fingerprint": "calculer_proportion_echantillons_intervalles_concentration",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "algorithme",
+      "description_detaillee": "Pour N échantillons de taille n d'une variable aléatoire d'espérance µ et d'écart-type σ, calculer la proportion d'échantillons pour lesquels l'écart entre la moyenne et µ est inférieur ou égal à k·s (où s est l'écart-type des moyennes) ou à k·σ/√n, pour k = 1, 2, 3",
+      "formulation_bo": "Calculer la proportion des échantillons pour lesquels l'écart entre la moyenne et µ est inférieur ou égal à ks, ou à k·σ/√n, pour k = 1, 2, 3.",
+      "connaissances_associees": [
+        "échantillonnage",
+        "moyenne empirique",
+        "écart-type empirique",
+        "inégalité de concentration",
+        "programmation (simulation)"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    },
+    {
+      "code": "TSPE-PR-960",
+      "intitule": "Connaitre les approfondissements possibles : estimation, marche aléatoire, applications interdisciplinaires",
+      "fingerprint": "connaitre_approfondissements_estimation_marche_applications",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires et concentration",
+      "type": "approfondissement",
+      "description_detaillee": "Comprendre que des approfondissements sont possibles sur l'estimation, la marche aléatoire, et des exemples d'application issus d'autres disciplines (sondage avec n=1000, étude du sex ratio avec n=10^6, demi-vie d'atomes radioactifs avec n=10^23)",
+      "formulation_bo": "Approfondissements possibles : Estimation. Marche aléatoire. Exemples d'application issus d'autres disciplines pour diverses valeurs de n : sondage (par exemple n = 1 000), étude du sex ratio (par exemple n = 10^6), demi-vie d'atomes radioactifs (n = 10^23).",
+      "connaissances_associees": [
+        "estimation statistique",
+        "marche aléatoire",
+        "applications interdisciplinaires des probabilités"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 19
+      }
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "by_type": {
+      "contenu": 4,
+      "capacite": 1,
+      "algorithme": 3,
+      "approfondissement": 1,
+      "demonstration": 0
+    },
+    "by_domaine": {
+      "PROBABILITES": 10
+    },
+    "by_sous_domaine": {
+      "Variables aléatoires et concentration": 10
+    },
+    "fingerprints": [
+      "enoncer_inegalite_bienaymeé_tchebychev",
+      "interpreter_ecart_type_dispersion",
+      "enoncer_inegalite_concentration",
+      "enoncer_loi_grands_nombres",
+      "appliquer_inegalite_bienaymé_tchebychev_taille_echantillon",
+      "calculer_probabilite_loi_binomiale_comparer_bienaymé",
+      "simuler_marche_aleatoire",
+      "simuler_echantillons_calculer_ecart_type_moyennes",
+      "calculer_proportion_echantillons_intervalles_concentration",
+      "connaitre_approfondissements_estimation_marche_applications"
+    ]
+  }
+}

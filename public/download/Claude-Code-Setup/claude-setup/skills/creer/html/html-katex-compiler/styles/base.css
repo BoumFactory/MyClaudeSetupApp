@@ -1,0 +1,498 @@
+/* ===========================================
+   BASE.CSS - Fondations communes VIVANTES
+   Structure, marges, interactivité
+   =========================================== */
+
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    line-height: 1.7;
+}
+
+/* ===========================================
+   CONTENEUR PRINCIPAL - VRAIES MARGES
+   =========================================== */
+
+.cours-container {
+    max-width: var(--content-width, 900px);
+    margin: 0 auto;
+    padding: var(--content-padding, 3rem 4rem);
+}
+
+/* Pour les écrans moyens */
+@media (max-width: 1000px) {
+    .cours-container {
+        padding: 2rem 3rem;
+    }
+}
+
+/* Pour mobile */
+@media (max-width: 600px) {
+    .cours-container {
+        padding: 1.5rem 1.5rem;
+    }
+}
+
+/* ===========================================
+   TITRES - AVEC STYLE
+   =========================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background: var(--theme-primary, #3498db);
+    border-radius: 2px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--theme-secondary, #e0e0e0);
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 4px solid var(--theme-accent, #2ecc71);
+}
+
+/* ===========================================
+   BLOCS PÉDAGOGIQUES - VIVANTS
+   =========================================== */
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice, .demonstration,
+.attention, .rappel, .astuce {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    border-radius: var(--bloc-radius, 12px);
+    border-left: 5px solid;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Effet hover sur les blocs */
+.definition:hover, .theoreme:hover, .propriete:hover, .exemple:hover,
+.methode:hover, .remarque:hover, .exercice:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Labels des blocs - en badge */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before,
+.exercice::before, .demonstration::before, .attention::before,
+.rappel::before, .astuce::before {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+/* Contenu des labels */
+.definition::before { content: "Définition"; }
+.theoreme::before { content: "Théorème"; }
+.propriete::before { content: "Propriété"; }
+.exemple::before { content: "Exemple"; }
+.methode::before { content: "Méthode"; }
+.remarque::before { content: "Remarque"; }
+.exercice::before { content: "Exercice"; }
+.demonstration::before { content: "Démonstration"; }
+.attention::before { content: "Attention"; }
+.rappel::before { content: "Rappel"; }
+.astuce::before { content: "Astuce"; }
+
+/* ===========================================
+   CLASSES DE VOCABULAIRE (sans infobulles CSS)
+   Les infobulles sont gérées par vocabulary-tooltips.js
+   =========================================== */
+
+/*
+   CATÉGORIES DISPONIBLES (stylisation uniquement) :
+   - .tip-def      : Définitions (rouge rubis)
+   - .tip-formule  : Formules à retenir (orange)
+   - .tip-prop     : Propriétés importantes (vert émeraude)
+   - .tip-attention: Points d'attention (rouge vif)
+   - .tip-astuce   : Astuces et conseils (cyan)
+   - .tip-lien     : Liens vers autres notions (bleu)
+*/
+
+/* === 1. DÉFINITIONS (rouge rubis) === */
+.tip-def {
+    font-weight: 700;
+    color: #dc2626;
+    border-bottom: 2px dotted #dc2626;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+.tip-def:hover {
+    color: #b91c1c;
+}
+
+/* === 2. FORMULES (orange) === */
+.tip-formule {
+    font-weight: 700;
+    color: #ea580c;
+    border-bottom: 2px dashed #ea580c;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+.tip-formule:hover {
+    color: #c2410c;
+}
+
+/* === 3. PROPRIÉTÉS (vert émeraude) === */
+.tip-prop {
+    font-weight: 700;
+    color: #059669;
+    border-bottom: 2px dotted #059669;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+.tip-prop:hover {
+    color: #047857;
+}
+
+/* === 4. ATTENTION (rouge vif) === */
+.tip-attention {
+    font-weight: 700;
+    color: #dc2626;
+    border-bottom: 2px wavy #dc2626;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+.tip-attention:hover {
+    color: #b91c1c;
+}
+
+/* === 5. ASTUCES (cyan) === */
+.tip-astuce {
+    font-weight: 700;
+    color: #0891b2;
+    border-bottom: 2px dotted #0891b2;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+.tip-astuce:hover {
+    color: #0e7490;
+}
+
+/* === 6. LIENS (bleu) === */
+.tip-lien {
+    font-weight: 700;
+    color: #2563eb;
+    border-bottom: 2px solid #2563eb;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+.tip-lien:hover {
+    color: #1d4ed8;
+}
+
+/* === RÉTROCOMPATIBILITÉ .vocab (style uniquement) === */
+.vocab {
+    font-weight: 700;
+    color: #dc2626;
+    border-bottom: 2px dotted #dc2626;
+    cursor: help;
+    transition: color 0.2s;
+}
+.vocab:hover {
+    color: #b91c1c;
+}
+
+/* ===========================================
+   FORMULES ENCADRÉES
+   =========================================== */
+
+.formule, .boxed {
+    background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+    border: 2px solid #f9a825;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    display: inline-block;
+    box-shadow: 0 2px 8px rgba(249, 168, 37, 0.3);
+}
+
+/* ===========================================
+   KaTeX
+   =========================================== */
+
+.katex-display {
+    margin: 1.5rem 0;
+    padding: 1.5rem 2rem;
+    background: rgba(0,0,0,0.02);
+    border-radius: 8px;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+.katex {
+    font-size: 1.15em;
+}
+
+/* ===========================================
+   TABLEAUX - STYLÉS
+   =========================================== */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.5rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background: var(--theme-primary, #3498db);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(even) {
+    background: rgba(0,0,0,0.02);
+}
+
+tr:hover {
+    background: rgba(var(--theme-primary-rgb, 52, 152, 219), 0.08);
+}
+
+/* ===========================================
+   LISTES
+   =========================================== */
+
+ul, ol {
+    margin: 1.2rem 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+ul li, ol li {
+    margin: 0.6rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 8px;
+    height: 8px;
+    background: var(--theme-primary, #3498db);
+    border-radius: 50%;
+}
+
+ol {
+    counter-reset: item;
+}
+
+ol li::before {
+    content: counter(item);
+    counter-increment: item;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--theme-primary, #3498db);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sous-listes */
+ul ul, ol ol, ul ol, ol ul {
+    margin: 0.5rem 0;
+}
+
+/* ===========================================
+   LIENS
+   =========================================== */
+
+a {
+    color: var(--theme-primary, #3498db);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+a:hover {
+    color: var(--theme-accent, #2980b9);
+    border-bottom-color: var(--theme-accent, #2980b9);
+}
+
+/* ===========================================
+   IMAGES ET FIGURES
+   =========================================== */
+
+figure {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+figcaption {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+
+.footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e0e0e0;
+    color: #888;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* ===========================================
+   UTILITAIRES
+   =========================================== */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.highlight {
+    background: linear-gradient(180deg, transparent 60%, #fef08a 60%);
+    padding: 0 0.2rem;
+}
+
+.important {
+    font-weight: 700;
+    color: var(--theme-primary, #e74c3c);
+}
+
+/* ===========================================
+   ANIMATIONS
+   =========================================== */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* ===========================================
+   SCROLLBAR CUSTOM
+   =========================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--theme-primary, #3498db);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-accent, #2980b9);
+}
+
+/* ===========================================
+   PRINT
+   =========================================== */
+
+@media print {
+    body {
+        font-size: 11pt;
+    }
+
+    .definition, .theoreme, .propriete, .exemple,
+    .methode, .remarque, .exercice {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    h2, h3 {
+        break-after: avoid;
+    }
+
+    .vocab::after, .vocab::before {
+        display: none;
+    }
+}

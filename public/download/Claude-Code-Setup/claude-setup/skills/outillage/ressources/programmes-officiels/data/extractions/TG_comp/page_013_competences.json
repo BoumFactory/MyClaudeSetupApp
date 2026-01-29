@@ -1,0 +1,622 @@
+{
+  "source": {
+    "pdf": "TG_comp.pdf",
+    "page": 13,
+    "text_length": 2245
+  },
+  "extraction": {
+    "date": "2026-01-09T",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TG-AN-001",
+      "intitule": "Démontrer la relation ln(ab) = ln(a) + ln(b)",
+      "fingerprint": "demontrer_propriete_logarithme_produit",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Logarithmes et exponentielle",
+      "type": "demonstration",
+      "description_detaillee": "Justifier algébriquement que le logarithme du produit de deux nombres positifs égale la somme de leurs logarithmes.",
+      "formulation_bo": "Relations ln (ab) = ln a + ln b",
+      "connaissances_associees": [
+        "definition du logarithme naturel",
+        "proprietes de l'exponentielle",
+        "algebra des reels"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-002",
+      "intitule": "Démontrer la relation ln(a/b) = ln(a) - ln(b)",
+      "fingerprint": "demontrer_propriete_logarithme_quotient",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Logarithmes et exponentielle",
+      "type": "demonstration",
+      "description_detaillee": "Justifier algébriquement que le logarithme du quotient de deux nombres positifs égale la différence de leurs logarithmes. Déduction : ln(1/a) = -ln(a).",
+      "formulation_bo": "Relations ln ( ) = - ln a (quotient et inverse)",
+      "connaissances_associees": [
+        "logarithme du produit",
+        "proprietes algebriques"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-003",
+      "intitule": "Calculer la fonction dérivée de ln(x)",
+      "fingerprint": "calculer_derivee_logarithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Déterminer que la dérivée de ln(x) est 1/x sur ]0, +∞[. Calcul admettant la dérivabilité du logarithme.",
+      "formulation_bo": "Calcul de la fonction dérivée du logarithme, en admettant sa dérivabilité",
+      "connaissances_associees": [
+        "definition de la derivee",
+        "fonction logarithme",
+        "calcul differentiel"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-004",
+      "intitule": "Calculer la fonction dérivée de ln(u) où u est une fonction",
+      "fingerprint": "calculer_derivee_logarithme_composee",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule de dérivation d'une fonction composée pour calculer (ln u)' = u'/u.",
+      "formulation_bo": "Calcul de la fonction dérivée de ln u",
+      "connaissances_associees": [
+        "derivation d'une fonction composee",
+        "derivee du logarithme",
+        "regles de derivation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-005",
+      "intitule": "Calculer la fonction dérivée de exp(u) où u est une fonction",
+      "fingerprint": "calculer_derivee_exponentielle_composee",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule de dérivation d'une fonction composée pour calculer (exp u)' = u' × exp(u).",
+      "formulation_bo": "Calcul de la fonction dérivée de exp u",
+      "connaissances_associees": [
+        "derivation d'une fonction composee",
+        "derivee de l'exponentielle",
+        "regles de derivation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-006",
+      "intitule": "Appliquer la méthode de balayage pour approcher une solution d'équation",
+      "fingerprint": "appliquer_methode_balayage_solution",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Résolution numériques",
+      "type": "algorithme",
+      "description_detaillee": "Implémenter l'algorithme de balayage pour rechercher une valeur approchée de x tel que f(x) = k, en utilisant un pas de subdivision de l'intervalle.",
+      "formulation_bo": "Méthodes de recherche de valeurs approchées d'une solution d'équation du type ƒ(x) = k : balayage",
+      "connaissances_associees": [
+        "notion de solution d'equation",
+        "algorithme iteratif",
+        "programmation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-007",
+      "intitule": "Appliquer la méthode de dichotomie pour approcher une solution d'équation",
+      "fingerprint": "appliquer_methode_dichotomie_solution",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Résolution numériques",
+      "type": "algorithme",
+      "description_detaillee": "Implémenter l'algorithme de dichotomie (bisection) pour rechercher une valeur approchée de x tel que f(x) = k, en divisant répétitivement l'intervalle.",
+      "formulation_bo": "Méthodes de recherche de valeurs approchées d'une solution d'équation du type ƒ(x) = k : dichotomie",
+      "connaissances_associees": [
+        "notion de solution d'equation",
+        "algorithme iteratif",
+        "propriete des fonctions continues"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-008",
+      "intitule": "Appliquer la méthode de Newton pour approcher une solution d'équation",
+      "fingerprint": "appliquer_methode_newton_solution",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Résolution numériques",
+      "type": "algorithme",
+      "description_detaillee": "Implémenter la méthode de Newton (itération sur la tangente) pour rechercher une valeur approchée de x tel que f(x) = k.",
+      "formulation_bo": "Méthodes de recherche de valeurs approchées d'une solution d'équation du type ƒ(x) = k : méthode de Newton",
+      "connaissances_associees": [
+        "notion de solution d'equation",
+        "derivee et tangente",
+        "algorithme iteratif"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-009",
+      "intitule": "Appliquer l'algorithme de Briggs pour calculer des logarithmes",
+      "fingerprint": "appliquer_algorithme_briggs_logarithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Logarithmes et exponentielle",
+      "type": "algorithme",
+      "description_detaillee": "Mettre en œuvre l'algorithme historique de Briggs utilisant la suite de racines successives pour calculer des valeurs approchées de logarithmes.",
+      "formulation_bo": "Algorithme de Briggs pour le calcul de logarithmes",
+      "connaissances_associees": [
+        "logarithme naturel",
+        "calcul numerique",
+        "algorithme iteratif"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-010",
+      "intitule": "Définir une solution d'équation différentielle sur des exemples",
+      "fingerprint": "definir_solution_equation_differentielle",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et illustrer sur des exemples concrets la notion de fonction solution d'une équation différentielle (relation entre la fonction et ses dérivées).",
+      "formulation_bo": "Sur des exemples, notion d'une solution d'équation différentielle",
+      "connaissances_associees": [
+        "derivee d'une fonction",
+        "equation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-011",
+      "intitule": "Définir la notion de primitive d'une fonction",
+      "fingerprint": "definir_notion_primitive",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles et intégration",
+      "type": "contenu",
+      "description_detaillee": "Comprendre qu'une primitive d'une fonction f est une fonction F telle que F'(x) = f(x). Lien avec l'équation différentielle y' = f.",
+      "formulation_bo": "Notion de primitive, en liaison avec l'équation différentielle y' = ƒ",
+      "connaissances_associees": [
+        "derivee",
+        "equation differentielle"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-012",
+      "intitule": "Démontrer que deux primitives d'une fonction continue diffèrent d'une constante",
+      "fingerprint": "demontrer_primitives_different_constante",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles et intégration",
+      "type": "demonstration",
+      "description_detaillee": "Justifier que si F et G sont deux primitives d'une même fonction continue sur un intervalle, alors F - G est une constante (application du théorème des accroissements finis).",
+      "formulation_bo": "Deux primitives d'une même fonction continue sur un intervalle diffèrent d'une constante",
+      "connaissances_associees": [
+        "notion de primitive",
+        "theoreme des accroissements finis",
+        "fonction continue"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-013",
+      "intitule": "Calculer les primitives d'une fonction de référence donnée",
+      "fingerprint": "calculer_primitives_fonction_reference",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles et intégration",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître une fonction usuelle parmi x^n, exp, sin, cos, 1/x et déterminer ses primitives en utilisant le formulaire.",
+      "formulation_bo": "Déterminer les primitives d'une fonction, en reconnaissant la dérivée d'une fonction de référence",
+      "connaissances_associees": [
+        "fonctions de reference",
+        "derivees usuelles",
+        "notion de primitive"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-014",
+      "intitule": "Calculer les primitives de 2uu'",
+      "fingerprint": "calculer_primitives_2uu_prime",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles et intégration",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître et appliquer la formule : primitive de 2u·u' est u² (avec constante d'intégration).",
+      "formulation_bo": "Déterminer les primitives d'une fonction de la forme 2uu'",
+      "connaissances_associees": [
+        "derivation d'une fonction composee",
+        "fonction carree",
+        "primitive"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-015",
+      "intitule": "Calculer les primitives de e^u·u'",
+      "fingerprint": "calculer_primitives_exp_u_prime",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles et intégration",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître et appliquer la formule : primitive de e^u · u' est e^u (avec constante d'intégration).",
+      "formulation_bo": "Déterminer les primitives d'une fonction de la forme euu'",
+      "connaissances_associees": [
+        "derivation d'une fonction composee",
+        "fonction exponentielle",
+        "primitive"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-016",
+      "intitule": "Calculer les primitives de u'/u",
+      "fingerprint": "calculer_primitives_u_prime_sur_u",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles et intégration",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître et appliquer la formule : primitive de u'/u est ln|u| (avec constante d'intégration).",
+      "formulation_bo": "Déterminer les primitives d'une fonction de la forme u'/u",
+      "connaissances_associees": [
+        "derivation d'une fonction composee",
+        "logarithme",
+        "primitive"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-017",
+      "intitule": "Vérifier qu'une fonction donnée est solution d'une équation différentielle",
+      "fingerprint": "verifier_solution_equation_differentielle",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "capacite",
+      "description_detaillee": "Étant donné une fonction et une équation différentielle, calculer la dérivée et vérifier que l'équation est satisfaite en tout point du domaine.",
+      "formulation_bo": "Vérifier qu'une fonction donnée est solution d'une équation différentielle",
+      "connaissances_associees": [
+        "derivee",
+        "equation differentielle",
+        "substitution"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-018",
+      "intitule": "Résoudre une équation différentielle y' = ay",
+      "fingerprint": "resoudre_equation_differentielle_y_ay",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "capacite",
+      "description_detaillee": "Déterminer la solution générale de y' = ay (où a est une constante) : y(x) = C·e^(ax). Appliquer une condition initiale pour déterminer la constante C.",
+      "formulation_bo": "Résoudre une équation différentielle y' = ay",
+      "connaissances_associees": [
+        "exponentielle",
+        "equation differentielle lineaire",
+        "condition initiale"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-019",
+      "intitule": "Déterminer une solution particulière constante de y' = ay + b",
+      "fingerprint": "determiner_solution_particuliere_constante_y_ay_b",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "capacite",
+      "description_detaillee": "Chercher une solution particulière de la forme y = k (constante) pour l'équation y' = ay + b, ce qui donne k = -b/a si a ≠ 0.",
+      "formulation_bo": "Pour une équation différentielle y' = ay + b : déterminer une solution particulière constante",
+      "connaissances_associees": [
+        "equation differentielle",
+        "resolution d'equation",
+        "methode de substitution"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-020",
+      "intitule": "Déterminer la solution générale de y' = ay + b à partir d'une solution particulière",
+      "fingerprint": "determiner_solution_generale_y_ay_b",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une solution particulière constante y_p = -b/a pour obtenir la solution générale y(x) = C·e^(ax) - b/a, puis appliquer une condition initiale si nécessaire.",
+      "formulation_bo": "Pour une équation différentielle y' = ay + b : utiliser cette solution pour déterminer la solution générale",
+      "connaissances_associees": [
+        "equation differentielle lineaire non homogene",
+        "solution particuliere",
+        "solution homogene"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-021",
+      "intitule": "Démontrer la résolution de l'équation différentielle y' = ay",
+      "fingerprint": "demontrer_resolution_y_ay",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "demonstration",
+      "description_detaillee": "Justifier que y(x) = C·e^(ax) est la solution générale de y' = ay, en vérifiant que cette fonction satisfait l'équation et que c'est l'unique forme des solutions.",
+      "formulation_bo": "Résolution de l'équation différentielle y' = ay",
+      "connaissances_associees": [
+        "derivee de l'exponentielle",
+        "equation differentielle",
+        "raisonnement par substitution"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-022",
+      "intitule": "Appliquer la méthode d'Euler pour résoudre une équation différentielle",
+      "fingerprint": "appliquer_methode_euler_equation_differentielle",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "algorithme",
+      "description_detaillee": "Implémenter la méthode d'Euler (construction par étapes avec pas h) pour obtenir une approximation numérique de la solution d'une équation différentielle y' = f(x, y) avec condition initiale.",
+      "formulation_bo": "Sur des exemples, résolution approchée d'une équation différentielle par la méthode d'Euler",
+      "connaissances_associees": [
+        "equation differentielle",
+        "approximation numerique",
+        "algorithme iteratif",
+        "derivee"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-023",
+      "intitule": "Calculer la dérivée seconde d'une fonction",
+      "fingerprint": "calculer_derivee_seconde",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Déterminer la dérivée seconde f''(x) en appliquant deux fois les règles de dérivation (dérivée de la dérivée).",
+      "formulation_bo": "Dérivée seconde d'une fonction",
+      "connaissances_associees": [
+        "derivee",
+        "regles de derivation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-024",
+      "intitule": "Définir une fonction convexe par position relative des sécantes",
+      "fingerprint": "definir_fonction_convexe_secantes",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions convexes",
+      "type": "contenu",
+      "description_detaillee": "Comprendre qu'une fonction est convexe sur un intervalle si sa courbe représentative se situe en dessous de ses sécantes (ou sur la sécante). Lien avec l'inégalité de Jensen.",
+      "formulation_bo": "Fonction convexe sur un intervalle : définition par la position relative de la courbe représentative et des sécantes",
+      "connaissances_associees": [
+        "courbe representative",
+        "secante",
+        "fonction"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-025",
+      "intitule": "Caractériser une fonction convexe par la position relative des tangentes",
+      "fingerprint": "caracteriser_fonction_convexe_tangentes",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions convexes",
+      "type": "contenu",
+      "description_detaillee": "Comprendre l'équivalence admise : pour une fonction dérivable, la convexité est caractérisée par le fait que la courbe se situe au-dessus de ses tangentes (équivalence avec la définition par les sécantes).",
+      "formulation_bo": "Fonction convexe sur un intervalle : équivalence admise, lorsque ƒ est dérivable, avec la position par rapport aux tangentes",
+      "connaissances_associees": [
+        "derivee",
+        "tangente",
+        "convexite"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-026",
+      "intitule": "Caractériser la convexité par la croissance de la dérivée f'",
+      "fingerprint": "caracteriser_convexite_croissance_derivee",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions convexes",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la caractérisation admise : une fonction dérivable est convexe sur un intervalle si et seulement si sa dérivée f' est croissante sur cet intervalle.",
+      "formulation_bo": "Caractérisation admise par la croissance de ƒ'",
+      "connaissances_associees": [
+        "derivee",
+        "fonction croissante",
+        "convexite"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-027",
+      "intitule": "Caractériser la convexité par la positivité de la dérivée seconde f''",
+      "fingerprint": "caracteriser_convexite_positivite_derivee_seconde",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions convexes",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la caractérisation admise : une fonction deux fois dérivable est convexe sur un intervalle si et seulement si sa dérivée seconde f''(x) ≥ 0 sur cet intervalle.",
+      "formulation_bo": "Caractérisation admise par la positivité de ƒ''",
+      "connaissances_associees": [
+        "derivee seconde",
+        "fonction positive",
+        "convexite"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TG-AN-028",
+      "intitule": "Définir et identifier un point d'inflexion",
+      "fingerprint": "definir_point_inflexion",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions convexes",
+      "type": "contenu",
+      "description_detaillee": "Comprendre qu'un point d'inflexion est un point où la courbe change de concavité, ce qui correspond à un changement de signe de la dérivée seconde f''.",
+      "formulation_bo": "Point d'inflexion",
+      "connaissances_associees": [
+        "derivee seconde",
+        "concavite",
+        "courbe representative"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 13
+      }
+    }
+  ],
+  "summary": {
+    "total": 28,
+    "by_type": {
+      "capacite": 12,
+      "contenu": 7,
+      "demonstration": 4,
+      "algorithme": 5
+    },
+    "by_domaine": {
+      "ANALYSE": 28
+    },
+    "by_sous_domaine": {
+      "Logarithmes et exponentielle": 3,
+      "Dérivation": 3,
+      "Résolution numériques": 3,
+      "Équations différentielles et intégration": 8,
+      "Équations différentielles": 4,
+      "Fonctions convexes": 5
+    },
+    "fingerprints": [
+      "demontrer_propriete_logarithme_produit",
+      "demontrer_propriete_logarithme_quotient",
+      "calculer_derivee_logarithme",
+      "calculer_derivee_logarithme_composee",
+      "calculer_derivee_exponentielle_composee",
+      "appliquer_methode_balayage_solution",
+      "appliquer_methode_dichotomie_solution",
+      "appliquer_methode_newton_solution",
+      "appliquer_algorithme_briggs_logarithme",
+      "definir_solution_equation_differentielle",
+      "definir_notion_primitive",
+      "demontrer_primitives_different_constante",
+      "calculer_primitives_fonction_reference",
+      "calculer_primitives_2uu_prime",
+      "calculer_primitives_exp_u_prime",
+      "calculer_primitives_u_prime_sur_u",
+      "verifier_solution_equation_differentielle",
+      "resoudre_equation_differentielle_y_ay",
+      "determiner_solution_particuliere_constante_y_ay_b",
+      "determiner_solution_generale_y_ay_b",
+      "demontrer_resolution_y_ay",
+      "appliquer_methode_euler_equation_differentielle",
+      "calculer_derivee_seconde",
+      "definir_fonction_convexe_secantes",
+      "caracteriser_fonction_convexe_tangentes",
+      "caracteriser_convexite_croissance_derivee",
+      "caracteriser_convexite_positivite_derivee_seconde",
+      "definir_point_inflexion"
+    ]
+  }
+}

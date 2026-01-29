@@ -1,0 +1,570 @@
+/* ===========================================
+   UNIVERS: RÉTRO / VINTAGE
+   Machine à écrire, vieux papier, tampons
+   Nostalgique, années 50-70
+   Support automatique Light/Dark mode
+   =========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+/* ===========================================
+   VARIABLES - MODE CLAIR (défaut)
+   =========================================== */
+:root {
+    /* Palette Rétro - Light */
+    --retro-sepia: #f4e4bc;
+    --retro-paper: #faf3e3;
+    --retro-ink: #2c2416;
+    --retro-brown: #6b4423;
+    --retro-rust: #8b4513;
+    --retro-gold: #c9a227;
+    --retro-red: #8b0000;
+    --retro-blue: #1e3a5f;
+    --retro-green: #2e5a2e;
+
+    /* Backgrounds */
+    --retro-bg: var(--retro-paper);
+    --retro-text: var(--retro-ink);
+
+    /* Corner fold colors */
+    --retro-fold-light: #e8e0d0;
+
+    /* Shadows */
+    --retro-shadow: rgba(44, 36, 22, 0.15);
+
+    /* Coffee stain */
+    --retro-coffee: rgba(139, 90, 43, 0.15);
+    --retro-coffee-light: rgba(139, 90, 43, 0.08);
+}
+
+/* ===========================================
+   VARIABLES - MODE SOMBRE
+   =========================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Palette Rétro - Dark (bureau de nuit, lampe de lecture) */
+        --retro-sepia: #3a3020;
+        --retro-paper: #1e1a14;
+        --retro-ink: #e8dcc8;
+        --retro-brown: #c4956a;
+        --retro-rust: #d4845f;
+        --retro-gold: #e8c455;
+        --retro-red: #c45050;
+        --retro-blue: #6a9fd4;
+        --retro-green: #6aaa6a;
+
+        /* Backgrounds */
+        --retro-bg: #1e1a14;
+        --retro-text: #e8dcc8;
+
+        /* Corner fold colors */
+        --retro-fold-light: #2a241c;
+
+        /* Shadows */
+        --retro-shadow: rgba(0, 0, 0, 0.4);
+
+        /* Coffee stain */
+        --retro-coffee: rgba(100, 70, 40, 0.25);
+        --retro-coffee-light: rgba(100, 70, 40, 0.15);
+    }
+}
+
+body {
+    font-family: 'IM Fell English', 'Times New Roman', serif;
+    background: var(--retro-bg);
+    color: var(--retro-text);
+    position: relative;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* === EFFET VIEUX PAPIER USAGÉ === */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 20% 20%, var(--retro-coffee-light) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, var(--retro-coffee-light) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(44, 36, 22, 0.08) 100%);
+    z-index: -1;
+}
+
+/* === TACHES DE CAFÉ === */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 100px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse,
+        var(--retro-coffee) 0%,
+        var(--retro-coffee-light) 40%,
+        transparent 70%);
+    transform: rotate(-15deg) scale(1.2, 1);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ===========================================
+   TITRES VINTAGE
+   =========================================== */
+
+h1 {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 2.8rem !important;
+    font-weight: 700;
+    color: var(--retro-brown);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    border: double 5px var(--retro-brown);
+    padding: 1.5rem 2rem !important;
+    margin-bottom: 2rem;
+    position: relative;
+    background: var(--retro-bg);
+}
+
+/* Coins décoratifs */
+h1::before, h1::after {
+    content: '❦';
+    position: absolute;
+    font-size: 1.5rem;
+    color: var(--retro-gold);
+}
+
+h1::before {
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h1::after {
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+}
+
+h2 {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.8rem !important;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--retro-rust);
+    border-bottom: none;
+    padding-bottom: 0.5rem;
+    margin-top: 3rem;
+    position: relative;
+}
+
+h2::before {
+    content: '§';
+    margin-right: 0.8rem;
+    color: var(--retro-gold);
+    font-style: normal;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg,
+        var(--retro-brown),
+        var(--retro-brown) 3px,
+        transparent 3px,
+        transparent 6px);
+}
+
+h3 {
+    font-family: 'Special Elite', monospace !important;
+    font-size: 1.3rem !important;
+    color: var(--retro-text);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* ===========================================
+   BLOCS - STYLE DOCUMENT ANCIEN
+   =========================================== */
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    position: relative;
+    border: 2px solid !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0 var(--retro-shadow);
+    margin: 2.5rem 0;
+    padding: 2rem !important;
+    transition: all 0.2s ease;
+    background: linear-gradient(180deg, var(--retro-bg) 0%, var(--retro-sepia) 100%) !important;
+}
+
+/* Effet coin plié */
+.definition::after, .theoreme::after, .propriete::after,
+.exemple::after, .methode::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 25px;
+    border-style: solid;
+}
+
+.definition:hover, .theoreme:hover, .propriete:hover,
+.exemple:hover, .methode:hover, .remarque:hover, .exercice:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0 var(--retro-shadow);
+}
+
+/* === LABELS STYLE TAMPON === */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before, .exercice::before {
+    font-family: 'Special Elite', monospace !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 0.5rem 1rem !important;
+    border: 3px solid;
+    border-radius: 3px !important;
+    transform: rotate(-2deg);
+    box-shadow: 2px 2px 0 var(--retro-shadow);
+    background: var(--retro-bg) !important;
+}
+
+/* === COULEURS VINTAGE === */
+
+/* DÉFINITION - Bleu encre */
+.definition {
+    border-color: var(--retro-blue) !important;
+}
+.definition::before {
+    color: var(--retro-blue) !important;
+    border-color: var(--retro-blue) !important;
+}
+.definition::after {
+    border-color: var(--retro-fold-light) var(--retro-fold-light) var(--retro-blue) var(--retro-blue);
+}
+
+/* THÉORÈME - Rouge officiel */
+.theoreme {
+    border-color: var(--retro-red) !important;
+}
+.theoreme::before {
+    color: var(--retro-red) !important;
+    border-color: var(--retro-red) !important;
+}
+.theoreme::after {
+    border-color: var(--retro-fold-light) var(--retro-fold-light) var(--retro-red) var(--retro-red);
+}
+
+/* PROPRIÉTÉ - Vert vintage */
+.propriete {
+    border-color: var(--retro-green) !important;
+}
+.propriete::before {
+    color: var(--retro-green) !important;
+    border-color: var(--retro-green) !important;
+}
+.propriete::after {
+    border-color: var(--retro-fold-light) var(--retro-fold-light) var(--retro-green) var(--retro-green);
+}
+
+/* EXEMPLE - Or/Bronze */
+.exemple {
+    border-color: var(--retro-gold) !important;
+}
+.exemple::before {
+    color: var(--retro-gold) !important;
+    border-color: var(--retro-gold) !important;
+}
+.exemple::after {
+    border-color: var(--retro-fold-light) var(--retro-fold-light) var(--retro-gold) var(--retro-gold);
+}
+
+/* MÉTHODE - Brun */
+.methode {
+    border-color: var(--retro-brown) !important;
+}
+.methode::before {
+    color: var(--retro-brown) !important;
+    border-color: var(--retro-brown) !important;
+}
+.methode::after {
+    border-color: var(--retro-fold-light) var(--retro-fold-light) var(--retro-brown) var(--retro-brown);
+}
+
+/* REMARQUE - Rouille */
+.remarque {
+    border-color: var(--retro-rust) !important;
+}
+.remarque::before {
+    color: var(--retro-rust) !important;
+    border-color: var(--retro-rust) !important;
+}
+
+/* EXERCICE - Encre */
+.exercice {
+    border-color: var(--retro-ink) !important;
+}
+.exercice::before {
+    color: var(--retro-ink) !important;
+    border-color: var(--retro-ink) !important;
+}
+
+/* ===========================================
+   LISTES - STYLE MACHINE À ÉCRIRE
+   =========================================== */
+
+ul li::before {
+    content: '●' !important;
+    background: none !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    font-size: 0.8rem;
+    color: var(--retro-brown);
+}
+
+ul li:nth-child(2)::before { content: '○' !important; }
+ul li:nth-child(3)::before { content: '●' !important; }
+
+ol li::before {
+    background: var(--retro-bg) !important;
+    border: 2px solid var(--retro-brown) !important;
+    color: var(--retro-brown) !important;
+    font-family: 'Special Elite', monospace !important;
+}
+
+/* ===========================================
+   KaTeX - FORMULES ENCADRÉES
+   =========================================== */
+
+.katex-display {
+    background: var(--retro-sepia) !important;
+    border: 3px double var(--retro-brown) !important;
+    border-radius: 0 !important;
+    position: relative;
+    padding: 1.5rem !important;
+    margin-top: 1.5rem !important;
+    overflow: visible !important;
+}
+
+.katex-display::before {
+    content: '— Formule —';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--retro-brown);
+    background: var(--retro-bg);
+    padding: 0 1rem;
+}
+
+/* ===========================================
+   TABLEAUX - STYLE REGISTRE
+   =========================================== */
+
+table {
+    border: 3px double var(--retro-brown) !important;
+    border-radius: 0 !important;
+    overflow: hidden;
+    box-shadow: 4px 4px 0 var(--retro-shadow);
+}
+
+th {
+    background: var(--retro-sepia) !important;
+    color: var(--retro-brown) !important;
+    font-family: 'Playfair Display', serif;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--retro-brown) !important;
+}
+
+td {
+    border-color: var(--retro-shadow) !important;
+    font-family: 'IM Fell English', serif;
+    color: var(--retro-text);
+}
+
+tr:nth-child(even) {
+    background: rgba(107, 68, 35, 0.08);
+}
+
+tr:hover {
+    background: rgba(201, 162, 39, 0.15) !important;
+}
+
+/* ===========================================
+   LIENS
+   =========================================== */
+
+a {
+    color: var(--retro-blue) !important;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: var(--retro-red) !important;
+    text-decoration-style: solid;
+}
+
+/* ===========================================
+   FOOTER VINTAGE
+   =========================================== */
+
+.footer {
+    text-align: center;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.9rem;
+    color: var(--retro-brown);
+    padding: 2rem;
+    border-top: 3px double var(--retro-brown);
+    background: linear-gradient(180deg, transparent, var(--retro-sepia));
+    letter-spacing: 2px;
+}
+
+.footer::before {
+    content: '— ';
+}
+
+.footer::after {
+    content: ' —';
+}
+
+/* ===========================================
+   ÉLÉMENTS DÉCORATIFS VINTAGE
+   =========================================== */
+
+/* Numéro de page style ancien */
+.cours-container::after {
+    content: '— № —';
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    color: var(--retro-brown);
+    opacity: 0.5;
+}
+
+/* ===========================================
+   BLOCKQUOTE VINTAGE
+   =========================================== */
+
+blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    border-left: 4px double var(--retro-gold);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    color: var(--retro-brown);
+}
+
+blockquote::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--retro-gold);
+    float: left;
+    margin-right: 0.5rem;
+    line-height: 0.8;
+    font-family: 'Playfair Display', serif;
+}
+
+/* ===========================================
+   SCROLLBAR VINTAGE
+   =========================================== */
+
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--retro-bg);
+    border-left: 1px solid var(--retro-brown);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg,
+        var(--retro-sepia),
+        var(--retro-brown),
+        var(--retro-sepia));
+    border: 2px solid var(--retro-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--retro-brown);
+}
+
+/* ===========================================
+   SELECTION
+   =========================================== */
+
+::selection {
+    background: var(--retro-gold);
+    color: var(--retro-bg);
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem !important;
+        letter-spacing: 3px;
+    }
+
+    h1::before, h1::after {
+        display: none;
+    }
+
+    body::after {
+        display: none;
+    }
+
+    .cours-container::after {
+        display: none;
+    }
+}
+
+/* ===========================================
+   PRINT
+   =========================================== */
+
+@media print {
+    body::before,
+    body::after,
+    .cours-container::after {
+        display: none !important;
+    }
+
+    h1 {
+        border-width: 2px;
+    }
+
+    .definition, .theoreme, .propriete, .exemple,
+    .methode, .remarque, .exercice {
+        box-shadow: none !important;
+    }
+
+    .definition::after, .theoreme::after, .propriete::after,
+    .exemple::after, .methode::after {
+        display: none !important;
+    }
+}

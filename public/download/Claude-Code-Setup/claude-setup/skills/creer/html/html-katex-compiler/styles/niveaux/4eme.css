@@ -1,0 +1,67 @@
+/* ===========================================
+   NIVEAU: 4ème
+   Équilibre lisibilité et densité
+   =========================================== */
+
+:root {
+    --content-width: 820px;
+    --content-padding: 2rem;
+    --bloc-padding: 1.1rem 1.5rem;
+    --bloc-radius: 9px;
+    --bloc-border-width: 4px;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+    margin-top: 2.5rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+p, li {
+    font-size: 1rem;
+}
+
+/* Blocs */
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    padding: 1.25rem 1.6rem;
+    margin: 1.5rem 0;
+}
+
+/* Labels */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before,
+.exercice::before {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* KaTeX */
+.katex {
+    font-size: 1.2em;
+}
+
+.katex-display {
+    margin: 1.1rem 0;
+}
+
+/* Listes */
+ul, ol {
+    margin: 1.1rem 0;
+}
+
+li {
+    margin: 0.35rem 0;
+}

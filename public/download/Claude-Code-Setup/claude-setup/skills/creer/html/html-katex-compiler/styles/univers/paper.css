@@ -1,0 +1,599 @@
+/* ===========================================
+   UNIVERS: PAPER / CAHIER D'ÉCOLIER
+   Effet cahier avec lignes, annotations manuscrites
+   Post-its, surligneurs, style étudiant
+   Support automatique Light/Dark mode (tableau noir en dark)
+   =========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&family=Kalam:wght@400;700&display=swap');
+
+/* ===========================================
+   VARIABLES - MODE CLAIR (cahier classique)
+   =========================================== */
+:root {
+    /* Palette Cahier - Light */
+    --paper-bg: #fff;
+    --paper-line: #c5d4e8;
+    --paper-margin: #ffcccb;
+    --paper-ink-blue: #1a4480;
+    --paper-ink-black: #2c3e50;
+    --paper-red: #e74c3c;
+    --paper-green: #27ae60;
+    --paper-orange: #e67e22;
+    --paper-purple: #9b59b6;
+    --paper-yellow: #f1c40f;
+    --paper-pink: #fd79a8;
+
+    /* Highlighters */
+    --paper-highlighter-yellow: rgba(255, 255, 0, 0.4);
+    --paper-highlighter-pink: rgba(255, 105, 180, 0.3);
+    --paper-highlighter-green: rgba(0, 255, 127, 0.3);
+    --paper-highlighter-blue: rgba(0, 191, 255, 0.3);
+
+    /* Bloc backgrounds */
+    --paper-def-bg: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    --paper-thm-bg: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+    --paper-prop-bg: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    --paper-ex-bg: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+    --paper-meth-bg: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    --paper-rem-bg: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    --paper-exo-bg: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+
+    /* Holes */
+    --paper-holes: #f0f0f0;
+    --paper-holes-border: #ddd;
+
+    /* Tape */
+    --paper-tape: rgba(200,200,200,0.5);
+}
+
+/* ===========================================
+   VARIABLES - MODE SOMBRE (tableau noir)
+   =========================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Palette Tableau Noir - Dark */
+        --paper-bg: #1a2530;
+        --paper-line: #2a3a4a;
+        --paper-margin: #4a3035;
+        --paper-ink-blue: #6ab0ff;
+        --paper-ink-black: #e8e8e8;
+        --paper-red: #ff6b6b;
+        --paper-green: #5ce08a;
+        --paper-orange: #ffaa5c;
+        --paper-purple: #c98aff;
+        --paper-yellow: #ffe066;
+        --paper-pink: #ff8ac4;
+
+        /* Highlighters - plus subtils en dark */
+        --paper-highlighter-yellow: rgba(255, 224, 102, 0.25);
+        --paper-highlighter-pink: rgba(255, 138, 196, 0.2);
+        --paper-highlighter-green: rgba(92, 224, 138, 0.2);
+        --paper-highlighter-blue: rgba(106, 176, 255, 0.2);
+
+        /* Bloc backgrounds - craie sur tableau */
+        --paper-def-bg: linear-gradient(135deg, #1e3040 0%, #253848 100%);
+        --paper-thm-bg: linear-gradient(135deg, #352530 0%, #402a35 100%);
+        --paper-prop-bg: linear-gradient(135deg, #1e3528 0%, #254030 100%);
+        --paper-ex-bg: linear-gradient(135deg, #2a2035 0%, #352840 100%);
+        --paper-meth-bg: linear-gradient(135deg, #352a1e 0%, #403520 100%);
+        --paper-rem-bg: linear-gradient(135deg, #351e2a 0%, #402530 100%);
+        --paper-exo-bg: linear-gradient(135deg, #35331e 0%, #403e25 100%);
+
+        /* Holes */
+        --paper-holes: #0d1520;
+        --paper-holes-border: #3a4a5a;
+
+        /* Tape */
+        --paper-tape: rgba(100,120,140,0.5);
+    }
+}
+
+body {
+    font-family: 'Patrick Hand', 'Comic Sans MS', cursive;
+    background: var(--paper-bg);
+    color: var(--paper-ink-black);
+    position: relative;
+    font-size: 1.15rem;
+    line-height: 28px; /* Aligné sur les lignes */
+}
+
+/* === LIGNES DE CAHIER === */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image:
+        repeating-linear-gradient(
+            var(--paper-bg),
+            var(--paper-bg) 27px,
+            var(--paper-line) 27px,
+            var(--paper-line) 28px
+        );
+    z-index: -2;
+}
+
+/* === MARGE ROUGE === */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 90px;
+    width: 2px;
+    height: 100%;
+    background: var(--paper-margin);
+    z-index: -1;
+}
+
+/* === TROUS DE CLASSEUR === */
+.cours-container::before {
+    content: '';
+    position: fixed;
+    left: 30px;
+    top: 100px;
+    width: 20px;
+    height: 20px;
+    background: var(--paper-holes);
+    border-radius: 50%;
+    box-shadow:
+        0 150px 0 var(--paper-holes),
+        0 300px 0 var(--paper-holes),
+        0 450px 0 var(--paper-holes);
+    border: 1px solid var(--paper-holes-border);
+}
+
+/* Container avec marge */
+.cours-container {
+    margin-left: 100px !important;
+    padding-left: 20px !important;
+}
+
+/* ===========================================
+   TITRES MANUSCRITS
+   =========================================== */
+
+h1 {
+    font-family: 'Caveat', cursive !important;
+    font-size: 3.5rem !important;
+    font-weight: 700;
+    color: var(--paper-red);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--paper-red);
+    text-underline-offset: 8px;
+    border: none;
+    background: none;
+    padding: 0.5rem 0 !important;
+    position: relative;
+    display: inline-block;
+}
+
+/* Étoiles décoratives */
+h1::before {
+    content: '★';
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--paper-yellow);
+}
+
+h1::after {
+    content: '★';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--paper-yellow);
+}
+
+h2 {
+    font-family: 'Kalam', cursive !important;
+    font-size: 2rem !important;
+    font-weight: 700;
+    color: var(--paper-ink-blue);
+    text-decoration: underline;
+    text-decoration-color: var(--paper-ink-blue);
+    border: none;
+    margin-top: 2rem;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+h2::before {
+    content: '▶';
+    margin-right: 0.5rem;
+    color: var(--paper-orange);
+}
+
+h3 {
+    font-family: 'Patrick Hand', cursive !important;
+    font-size: 1.5rem !important;
+    color: var(--paper-green);
+    font-weight: 400;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+h3::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--paper-green);
+}
+
+/* ===========================================
+   BLOCS - STYLE POST-IT ET ENCADRÉS
+   =========================================== */
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    position: relative;
+    border-radius: 3px !important;
+    margin: 2rem 0;
+    padding: 1.5rem !important;
+    transform: rotate(-0.5deg);
+    transition: all 0.2s ease;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+}
+
+.definition:nth-child(even), .theoreme:nth-child(even),
+.propriete:nth-child(even), .exemple:nth-child(even) {
+    transform: rotate(0.5deg);
+}
+
+.definition:hover, .theoreme:hover, .propriete:hover,
+.exemple:hover, .methode:hover, .remarque:hover, .exercice:hover {
+    transform: rotate(0) translateY(-3px);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+
+/* === LABELS MANUSCRITS === */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before, .exercice::before {
+    font-family: 'Caveat', cursive !important;
+    font-size: 1.2rem !important;
+    font-weight: 700;
+    padding: 0.3rem 0.8rem !important;
+    border-radius: 3px !important;
+    transform: rotate(-3deg);
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+/* === COULEURS POST-IT === */
+
+/* DÉFINITION - Post-it Bleu */
+.definition {
+    background: var(--paper-def-bg) !important;
+    border: 2px solid var(--paper-ink-blue) !important;
+    border-left: 5px solid var(--paper-ink-blue) !important;
+}
+.definition::before {
+    background: var(--paper-ink-blue) !important;
+    color: #fff !important;
+    content: '📘 Définition' !important;
+}
+
+/* THÉORÈME - Post-it Rouge */
+.theoreme {
+    background: var(--paper-thm-bg) !important;
+    border: 2px solid var(--paper-red) !important;
+    border-left: 5px solid var(--paper-red) !important;
+}
+.theoreme::before {
+    background: var(--paper-red) !important;
+    color: #fff !important;
+    content: '⚡ Théorème' !important;
+}
+
+/* PROPRIÉTÉ - Post-it Vert */
+.propriete {
+    background: var(--paper-prop-bg) !important;
+    border: 2px solid var(--paper-green) !important;
+    border-left: 5px solid var(--paper-green) !important;
+}
+.propriete::before {
+    background: var(--paper-green) !important;
+    color: #fff !important;
+    content: '✓ Propriété' !important;
+}
+
+/* EXEMPLE - Post-it Violet */
+.exemple {
+    background: var(--paper-ex-bg) !important;
+    border: 2px solid var(--paper-purple) !important;
+    border-left: 5px solid var(--paper-purple) !important;
+}
+.exemple::before {
+    background: var(--paper-purple) !important;
+    color: #fff !important;
+    content: '💡 Exemple' !important;
+}
+
+/* MÉTHODE - Post-it Orange */
+.methode {
+    background: var(--paper-meth-bg) !important;
+    border: 2px solid var(--paper-orange) !important;
+    border-left: 5px solid var(--paper-orange) !important;
+}
+.methode::before {
+    background: var(--paper-orange) !important;
+    color: #fff !important;
+    content: '📝 Méthode' !important;
+}
+
+/* REMARQUE - Post-it Rose */
+.remarque {
+    background: var(--paper-rem-bg) !important;
+    border: 2px solid var(--paper-pink) !important;
+    border-left: 5px solid var(--paper-pink) !important;
+}
+.remarque::before {
+    background: var(--paper-pink) !important;
+    color: #fff !important;
+    content: '💬 Remarque' !important;
+}
+
+/* EXERCICE - Post-it Jaune (vrai post-it) */
+.exercice {
+    background: var(--paper-exo-bg) !important;
+    border: none !important;
+    border-left: none !important;
+    box-shadow:
+        0 3px 6px rgba(0,0,0,0.15),
+        inset 0 -3px 10px rgba(0,0,0,0.08);
+    transform: rotate(1deg);
+}
+.exercice::before {
+    background: linear-gradient(135deg, var(--paper-yellow), #f9a825) !important;
+    color: #333 !important;
+    content: '✏️ Exercice' !important;
+}
+/* Effet collé */
+.exercice::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 20px;
+    background: var(--paper-tape);
+    border-radius: 2px;
+}
+
+/* ===========================================
+   LISTES - STYLE MANUSCRIT
+   =========================================== */
+
+ul li::before {
+    content: '•' !important;
+    background: none !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    font-size: 1.5rem;
+    color: var(--paper-ink-blue);
+    line-height: 1;
+}
+
+ul li:nth-child(2)::before { content: '○' !important; color: var(--paper-red); }
+ul li:nth-child(3)::before { content: '◆' !important; color: var(--paper-green); }
+ul li:nth-child(4)::before { content: '★' !important; color: var(--paper-orange); }
+
+ol li::before {
+    background: var(--paper-ink-blue) !important;
+    font-family: 'Caveat', cursive !important;
+    font-size: 1rem !important;
+    font-weight: 700;
+}
+
+/* ===========================================
+   KaTeX - FORMULES ENCADRÉES
+   =========================================== */
+
+.katex-display {
+    background: var(--paper-highlighter-yellow) !important;
+    border: 2px dashed var(--paper-orange) !important;
+    border-left: 4px solid var(--paper-orange) !important;
+    border-radius: 5px !important;
+    position: relative;
+    margin: 2rem 0 1.5rem 0;
+    overflow: visible !important;
+}
+
+.katex-display::before {
+    content: '📐 À retenir !';
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--paper-orange);
+    background: var(--paper-bg);
+    padding: 0 0.5rem;
+}
+
+/* ===========================================
+   TEXTE SURLIGNÉ
+   =========================================== */
+
+.highlight, strong {
+    background: var(--paper-highlighter-yellow);
+    padding: 0 3px;
+}
+
+em {
+    background: var(--paper-highlighter-pink);
+    font-style: normal;
+    padding: 0 3px;
+}
+
+/* ===========================================
+   TABLEAUX - STYLE CAHIER
+   =========================================== */
+
+table {
+    border: 2px solid var(--paper-ink-blue) !important;
+    border-radius: 0 !important;
+    transform: rotate(-0.3deg);
+}
+
+th {
+    background: var(--paper-ink-blue) !important;
+    color: #fff !important;
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+td {
+    border-color: var(--paper-line) !important;
+    font-family: 'Patrick Hand', cursive;
+    color: var(--paper-ink-black);
+}
+
+tr:nth-child(even) {
+    background: rgba(197, 212, 232, 0.2);
+}
+
+/* ===========================================
+   LIENS
+   =========================================== */
+
+a {
+    color: var(--paper-ink-blue) !important;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+a:hover {
+    color: var(--paper-red) !important;
+}
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+
+.footer {
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    color: var(--paper-ink-blue);
+    text-align: center;
+    padding: 2rem;
+    transform: rotate(-1deg);
+}
+
+.footer::before {
+    content: '~ ';
+}
+
+.footer::after {
+    content: ' ~  ✨';
+}
+
+/* ===========================================
+   ANNOTATIONS MARGINALES
+   =========================================== */
+
+/* Flèche annotation */
+.important::after {
+    content: ' ← important!';
+    font-family: 'Caveat', cursive;
+    font-size: 0.9rem;
+    color: var(--paper-red);
+    font-weight: 700;
+}
+
+/* ===========================================
+   SCROLLBAR CAHIER
+   =========================================== */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--paper-bg);
+    border-left: 1px solid var(--paper-line);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg,
+        var(--paper-ink-blue),
+        #3498db,
+        var(--paper-ink-blue));
+    border-radius: 6px;
+    border: 2px solid var(--paper-bg);
+}
+
+/* ===========================================
+   SELECTION
+   =========================================== */
+
+::selection {
+    background: var(--paper-highlighter-yellow);
+    color: var(--paper-ink-black);
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 768px) {
+    body::after {
+        left: 30px;
+    }
+
+    .cours-container {
+        margin-left: 40px !important;
+        padding-left: 10px !important;
+    }
+
+    .cours-container::before {
+        display: none;
+    }
+
+    h1 {
+        font-size: 2.5rem !important;
+    }
+
+    h1::before, h1::after {
+        display: none;
+    }
+}
+
+/* ===========================================
+   PRINT
+   =========================================== */
+
+@media print {
+    body::before,
+    body::after,
+    .cours-container::before {
+        display: none !important;
+    }
+
+    .cours-container {
+        margin-left: 0 !important;
+    }
+
+    .definition, .theoreme, .propriete, .exemple,
+    .methode, .remarque, .exercice {
+        transform: none !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+
+    .exercice::after {
+        display: none !important;
+    }
+}

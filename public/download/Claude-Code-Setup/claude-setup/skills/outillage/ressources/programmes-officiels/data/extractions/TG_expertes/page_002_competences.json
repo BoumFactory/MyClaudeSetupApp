@@ -1,0 +1,113 @@
+{
+  "source": {
+    "pdf": "TG_expertes.pdf",
+    "page": 2,
+    "text_length": 2287
+  },
+  "extraction": {
+    "date": "2026-01-02T00:00:00.000Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "notes": "Page de preambule - competences transversales generiques extraites"
+  },
+  "competences": [
+    {
+      "code": "TEXP-LO-101",
+      "intitule": "Chercher et experimenter a l'aide d'outils logiciels",
+      "fingerprint": "chercher_experimenter_outils_logiciels",
+      "niveau": "TEXP",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Developper une demarche de recherche et d'experimentation mathematique, notamment en utilisant des outils numeriques et logiciels adaptes",
+      "formulation_bo": "chercher, experimenter, en particulier a l'aide d'outils logiciels",
+      "connaissances_associees": ["utilisation de logiciels mathematiques", "demarche d'investigation"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 2}
+    },
+    {
+      "code": "TEXP-LO-102",
+      "intitule": "Modeliser une situation et valider ou invalider un modele",
+      "fingerprint": "modeliser_valider_invalider_modele",
+      "niveau": "TEXP",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Traduire une situation reelle en modele mathematique, effectuer une simulation et evaluer la pertinence du modele choisi",
+      "formulation_bo": "modeliser, faire une simulation, valider ou invalider un modele",
+      "connaissances_associees": ["modelisation mathematique", "simulation", "validation de modele"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 2}
+    },
+    {
+      "code": "TEXP-LO-103",
+      "intitule": "Representer et changer de registre (numerique, algebrique, geometrique)",
+      "fingerprint": "representer_changer_registre",
+      "niveau": "TEXP",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Choisir un cadre de representation adapte (numerique, algebrique, geometrique) et passer d'un registre a un autre pour resoudre un probleme",
+      "formulation_bo": "representer, choisir un cadre (numerique, algebrique, geometrique ...), changer de registre",
+      "connaissances_associees": ["representation numerique", "representation algebrique", "representation geometrique"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 2}
+    },
+    {
+      "code": "TEXP-LO-104",
+      "intitule": "Raisonner et demontrer en trouvant des resultats partiels",
+      "fingerprint": "raisonner_demontrer_resultats_partiels",
+      "niveau": "TEXP",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Conduire un raisonnement mathematique structure, identifier des resultats partiels et les articuler dans une demonstration complete",
+      "formulation_bo": "raisonner, demontrer, trouver des resultats partiels et les mettre en perspective",
+      "connaissances_associees": ["logique mathematique", "techniques de demonstration", "structuration du raisonnement"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 2}
+    },
+    {
+      "code": "TEXP-LO-105",
+      "intitule": "Calculer en appliquant des techniques et en mettant en oeuvre des algorithmes",
+      "fingerprint": "calculer_techniques_algorithmes",
+      "niveau": "TEXP",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Effectuer des calculs numeriques ou litteraux en utilisant des techniques appropriees et en implementant des algorithmes",
+      "formulation_bo": "calculer, appliquer des techniques et mettre en oeuvre des algorithmes",
+      "connaissances_associees": ["techniques de calcul", "algorithmique", "calcul mental et reflechi"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 2}
+    },
+    {
+      "code": "TEXP-LO-106",
+      "intitule": "Communiquer un resultat mathematique par oral ou par ecrit",
+      "fingerprint": "communiquer_resultat_oral_ecrit",
+      "niveau": "TEXP",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Presenter clairement un resultat mathematique et expliquer la demarche suivie, a l'oral comme a l'ecrit",
+      "formulation_bo": "communiquer un resultat par oral ou par ecrit, expliquer une demarche",
+      "connaissances_associees": ["redaction mathematique", "argumentation", "communication scientifique"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 2}
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "by_type": {
+      "capacite": 6
+    },
+    "by_domaine": {
+      "LOGIQUE": 6
+    },
+    "fingerprints": [
+      "chercher_experimenter_outils_logiciels",
+      "modeliser_valider_invalider_modele",
+      "representer_changer_registre",
+      "raisonner_demontrer_resultats_partiels",
+      "calculer_techniques_algorithmes",
+      "communiquer_resultat_oral_ecrit"
+    ],
+    "page_type": "preambule",
+    "notes": "Les 6 grandes competences transversales du programme de mathematiques expertes. Ces competences sont communes a tous les domaines mathematiques et constituent le cadre de reference pour l'evaluation."
+  }
+}

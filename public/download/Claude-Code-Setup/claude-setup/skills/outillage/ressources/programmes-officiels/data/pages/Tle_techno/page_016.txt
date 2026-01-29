@@ -1,0 +1,45 @@
+- calculer la probabilité de l’événement {X = k} à l’aide des coefficients
+binomiaux.
+Commentaires
+ La loi binomiale formalise le travail fait en classe de première sur la répétition
+d’épreuves indépendantes selon une même loi de Bernoulli. La valeur de l’espérance
+est admise.
+ Pour des valeurs de n inférieures ou égales à 4, comme en classe de première, la
+représentation de l’arbre permet de dénombrer les chemins et de calculer les
+probabilités correspondantes.
+ Pour des valeurs de n plus grandes, l’arbre sert d’image mentale et le nombre de
+chemins associés à l’événement est donné ou déterminé à l’aide du triangle de
+Pascal.
+n
+ Le coefficient binomial   est défini comme le nombre de chemins associés à
+ 
+k
+l’événement {X = k} dans un arbre représentant un schéma de Bernoulli de taille n.
+n n1 n1
+ La formule de Pascal      est établie à partir d’un raisonnement
+     
+k k 1  k 
+sur le nombre de chemins dans l’arbre.
+Situations algorithmiques
+ Générer un triangle de Pascal de taille n donnée.
+ Représenter par un diagramme en bâtons la loi de probabilité d’une loi binomiale
+(n,p). Faire le lien avec l’histogramme des fréquences observées des 1 lors de la
+simulation de N échantillons de taille n d'une loi de Bernoulli de paramètre p faite en
+classe de première.
+ Calculer l’espérance 𝚺xp d’une variable aléatoire suivant une loi de probabilité
+i i
+donnée ; cas particulier d’une variable aléatoire suivant la loi binomiale B(n,p).
+ Représenter graphiquement l’espérance de lois binomiales B(n,p) à p fixé et n
+variable, à n fixé et p variable puis faire le lien avec l’expression admise de
+l’espérance.
+Thèmes d’étude
+L’étude des thèmes proposés ci-après s’appuie sur la résolution de problèmes. Elle privilégie
+la modélisation ou la simulation tout en mobilisant des contenus et des capacités figurant au
+programme. Les apports théoriques sont limités au strict nécessaire et introduits au fil des
+situations proposées.
+ Liste indicative de thèmes :
+ optimisation linéaire et régionnement du plan ;
+ méthode de Monte-Carlo ;
+ simulation de marches aléatoires ;
+ initiation aux graphes ; ordonnancement.
+© Ministère de l'Éducation nationale et de la Jeunesse > www.education.gouv.fr

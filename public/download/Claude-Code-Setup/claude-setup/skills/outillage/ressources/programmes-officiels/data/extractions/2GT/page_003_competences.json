@@ -1,0 +1,145 @@
+{
+  "source": {
+    "pdf": "2GT.pdf",
+    "page": 3,
+    "text_length": 3248
+  },
+  "extraction": {
+    "date": "2026-01-02T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page pedagogique generale - peu de competences mathematiques specifiques, mais identification des 6 competences transversales du programme"
+  },
+  "competences": [
+    {
+      "code": "2GT-LO-151",
+      "intitule": "Chercher des strategies pour resoudre un probleme mathematique",
+      "fingerprint": "chercher_strategies_resolution_probleme",
+      "niveau": "2GT",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Explorer differentes pistes de resolution, experimenter, conjecturer, tester des hypotheses face a un probleme mathematique",
+      "formulation_bo": "les six competences mathematiques : chercher, modeliser, representer, raisonner, calculer, communiquer",
+      "connaissances_associees": ["resolution de problemes", "prise d'initiative"],
+      "source": {"pdf": "2GT.pdf", "page": 3}
+    },
+    {
+      "code": "2GT-LO-152",
+      "intitule": "Modeliser une situation par un objet mathematique",
+      "fingerprint": "modeliser_situation_objet_mathematique",
+      "niveau": "2GT",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Traduire une situation reelle en langage mathematique, identifier les variables et les relations",
+      "formulation_bo": "les six competences mathematiques : chercher, modeliser, representer, raisonner, calculer, communiquer",
+      "connaissances_associees": ["traduction mathematique", "abstraction"],
+      "source": {"pdf": "2GT.pdf", "page": 3}
+    },
+    {
+      "code": "2GT-LO-153",
+      "intitule": "Representer un objet mathematique sous differentes formes",
+      "fingerprint": "representer_objet_mathematique_formes",
+      "niveau": "2GT",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Passer d'un registre de representation a un autre (graphique, algebrique, numerique, geometrique)",
+      "formulation_bo": "les six competences mathematiques : chercher, modeliser, representer, raisonner, calculer, communiquer",
+      "connaissances_associees": ["registres de representation", "changement de cadre"],
+      "source": {"pdf": "2GT.pdf", "page": 3}
+    },
+    {
+      "code": "2GT-LO-154",
+      "intitule": "Raisonner logiquement pour demontrer une propriete",
+      "fingerprint": "raisonner_logiquement_demontrer",
+      "niveau": "2GT",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Utiliser des regles de logique, construire une argumentation, justifier chaque etape d'un raisonnement",
+      "formulation_bo": "les six competences mathematiques : chercher, modeliser, representer, raisonner, calculer, communiquer",
+      "connaissances_associees": ["logique", "demonstration", "argumentation"],
+      "source": {"pdf": "2GT.pdf", "page": 3}
+    },
+    {
+      "code": "2GT-NB-155",
+      "intitule": "Calculer mentalement ou de maniere reflechie",
+      "fingerprint": "calculer_mental_reflechi",
+      "niveau": "2GT",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Calcul",
+      "type": "capacite",
+      "description_detaillee": "Effectuer des calculs numeriques ou litteraux de maniere automatisee ou reflechie, sans necessairement recourir a la calculatrice",
+      "formulation_bo": "L'installation de ces automatismes est favorisee par la mise en place d'activites rituelles, notamment de calcul (mental ou reflechi, numerique ou litteral)",
+      "connaissances_associees": ["calcul mental", "calcul litteral", "automatismes"],
+      "source": {"pdf": "2GT.pdf", "page": 3}
+    },
+    {
+      "code": "2GT-LO-156",
+      "intitule": "Communiquer un resultat mathematique a l'oral",
+      "fingerprint": "communiquer_resultat_oral",
+      "niveau": "2GT",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Verbaliser une demarche, reformuler un enonce, argumenter pour convaincre, expliciter son raisonnement oralement",
+      "formulation_bo": "les mathematiques contribuent au developpement des competences orales, notamment a travers la pratique de l'argumentation",
+      "connaissances_associees": ["argumentation", "langage mathematique", "expression orale"],
+      "source": {"pdf": "2GT.pdf", "page": 3}
+    },
+    {
+      "code": "2GT-LO-157",
+      "intitule": "Communiquer un resultat mathematique a l'ecrit",
+      "fingerprint": "communiquer_resultat_ecrit",
+      "niveau": "2GT",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Competences transversales",
+      "type": "capacite",
+      "description_detaillee": "Rediger une solution, produire une trace ecrite claire et structuree, utiliser le langage naturel et symbolique",
+      "formulation_bo": "Disposer d'une trace de cours claire, explicite et structuree est une aide essentielle a l'apprentissage des mathematiques",
+      "connaissances_associees": ["redaction mathematique", "langage symbolique", "mise en forme"],
+      "source": {"pdf": "2GT.pdf", "page": 3}
+    },
+    {
+      "code": "2GT-AG-158",
+      "intitule": "Utiliser un logiciel pour experimenter en mathematiques",
+      "fingerprint": "utiliser_logiciel_experimenter",
+      "niveau": "2GT",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Outils numeriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une calculatrice ou un ordinateur pour visualiser, representer, calculer ou simuler dans un contexte mathematique",
+      "formulation_bo": "L'utilisation de logiciels (calculatrice ou ordinateur), d'outils de visualisation et de representation, de calcul (numerique ou formel), de simulation, de programmation developpe la possibilite d'experimenter",
+      "connaissances_associees": ["logiciels mathematiques", "calculatrice", "simulation"],
+      "source": {"pdf": "2GT.pdf", "page": 3}
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "by_type": {
+      "capacite": 8,
+      "contenu": 0,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "LOGIQUE": 5,
+      "NOMBRES": 1,
+      "ALGORITHMIQUE": 2
+    },
+    "fingerprints": [
+      "chercher_strategies_resolution_probleme",
+      "modeliser_situation_objet_mathematique",
+      "representer_objet_mathematique_formes",
+      "raisonner_logiquement_demontrer",
+      "calculer_mental_reflechi",
+      "communiquer_resultat_oral",
+      "communiquer_resultat_ecrit",
+      "utiliser_logiciel_experimenter"
+    ]
+  }
+}

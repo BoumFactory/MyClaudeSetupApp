@@ -1,0 +1,212 @@
+{
+  "source": {
+    "pdf": "terminale_spe.pdf",
+    "page": 19,
+    "text_length": 2890
+  },
+  "extraction": {
+    "date": "2026-01-02T00:00:00",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-PR-951",
+      "intitule": "Enoncer l'inegalite de Bienayme-Tchebychev",
+      "fingerprint": "enoncer_inegalite_bienayme_tchebychev",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Concentration et loi des grands nombres",
+      "type": "contenu",
+      "description_detaillee": "Connaitre et enoncer l'inegalite de Bienayme-Tchebychev : pour une variable aleatoire X d'esperance mu et de variance V, et pour tout reel delta strictement positif : P(|X - mu| >= delta) <= V(X)/delta^2",
+      "formulation_bo": "Inegalite de Bienayme-Tchebychev. Pour une variable aleatoire X d'esperance mu et de variance V, et quel que soit le reel strictement positif delta : P(|X - mu| >= delta) <= V(X)/delta^2",
+      "connaissances_associees": ["esperance d'une variable aleatoire", "variance d'une variable aleatoire", "ecart-type"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-PR-952",
+      "intitule": "Interpreter l'ecart-type comme unite naturelle de dispersion",
+      "fingerprint": "interpreter_ecart_type_unite_dispersion",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Concentration et loi des grands nombres",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que l'ecart-type sigma d'une variable aleatoire X est l'unite naturelle pour etudier la dispersion de X autour de son esperance mu. Il est naturel d'observer des ecarts de X a mu en deca ou au-dela de sigma, mais des ecarts de quelques sigma deviennent improbables.",
+      "formulation_bo": "l'ecart type sigma d'une variable aleatoire X est l'unite naturelle pour etudier la dispersion de X autour de son esperance mu",
+      "connaissances_associees": ["ecart-type", "esperance", "dispersion"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-PR-953",
+      "intitule": "Enoncer l'inegalite de concentration",
+      "fingerprint": "enoncer_inegalite_concentration",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Concentration et loi des grands nombres",
+      "type": "contenu",
+      "description_detaillee": "Connaitre l'inegalite de concentration : si Mn est la variable aleatoire moyenne d'un echantillon de taille n d'une variable aleatoire d'esperance mu et de variance V, alors pour tout delta > 0 : P(|Mn - mu| >= delta) <= V/(n*delta^2)",
+      "formulation_bo": "Inegalite de concentration. Si Mn est la variable aleatoire moyenne d'un echantillon de taille n d'une variable aleatoire d'esperance mu et de variance V, alors pour tout delta > 0, P(|Mn - mu| >= delta) <= V/(n*delta^2)",
+      "connaissances_associees": ["moyenne d'echantillon", "esperance", "variance", "inegalite de Bienayme-Tchebychev"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-PR-954",
+      "intitule": "Enoncer la loi des grands nombres",
+      "fingerprint": "enoncer_loi_grands_nombres",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Concentration et loi des grands nombres",
+      "type": "contenu",
+      "description_detaillee": "Connaitre et enoncer la loi des grands nombres : l'ecart entre la moyenne d'un echantillon d'une variable aleatoire et l'esperance de cette variable ne depasse une valeur donnee a l'avance qu'avec une probabilite qui tend vers zero quand la taille de l'echantillon tend vers l'infini.",
+      "formulation_bo": "Loi des grands nombres.",
+      "connaissances_associees": ["moyenne d'echantillon", "esperance", "inegalite de concentration", "limite"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-PR-955",
+      "intitule": "Appliquer l'inegalite de Bienayme-Tchebychev pour determiner une taille d'echantillon",
+      "fingerprint": "appliquer_bienayme_tchebychev_taille_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Concentration et loi des grands nombres",
+      "type": "capacite",
+      "description_detaillee": "Utiliser l'inegalite de Bienayme-Tchebychev pour determiner la taille minimale d'un echantillon en fonction d'une precision (delta) et d'un risque (probabilite) choisis. C'est un raisonnement par condition suffisante.",
+      "formulation_bo": "Appliquer l'inegalite de Bienayme-Tchebychev pour definir une taille d'echantillon, en fonction de la precision et du risque choisi.",
+      "connaissances_associees": ["inegalite de Bienayme-Tchebychev", "inegalite de concentration", "taille d'echantillon"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-PR-956",
+      "intitule": "Reconnaitre un raisonnement par condition suffisante dans le contexte des echantillons",
+      "fingerprint": "reconnaitre_condition_suffisante_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Concentration et loi des grands nombres",
+      "type": "capacite",
+      "description_detaillee": "Identifier qu'un raisonnement utilisant l'inegalite de Bienayme-Tchebychev pour majorer une probabilite est un raisonnement par condition suffisante, et comprendre que l'inegalite n'est pas optimale.",
+      "formulation_bo": "mettre en evidence des cas de raisonnement par conditions suffisantes, par exemple la recherche d'une taille d'echantillon pour majorer une probabilite",
+      "connaissances_associees": ["condition suffisante", "majoration", "inegalite de Bienayme-Tchebychev"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-AG-957",
+      "intitule": "Calculer algorithmiquement la probabilite P(|Sn - pn| > racine(n)) pour une loi binomiale",
+      "fingerprint": "calculer_proba_ecart_binomiale_algorithme",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Probabilites et statistiques",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un algorithme qui calcule la probabilite P(|Sn - pn| > sqrt(n)) ou Sn suit une loi binomiale B(n,p), puis comparer ce resultat avec la majoration donnee par l'inegalite de Bienayme-Tchebychev.",
+      "formulation_bo": "Calculer la probabilite de (|Sn - pn| > sqrt(n)), ou Sn est une variable aleatoire qui suit une loi binomiale B(n,p). Comparer avec l'inegalite de Bienayme-Tchebychev.",
+      "connaissances_associees": ["loi binomiale", "inegalite de Bienayme-Tchebychev", "programmation Python"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-AG-958",
+      "intitule": "Simuler une marche aleatoire",
+      "fingerprint": "simuler_marche_aleatoire",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Probabilites et statistiques",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un algorithme de simulation d'une marche aleatoire, c'est-a-dire une suite de positions dont chaque deplacement est aleatoire.",
+      "formulation_bo": "Simulation d'une marche aleatoire.",
+      "connaissances_associees": ["simulation", "variables aleatoires", "boucles", "programmation Python"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-AG-959",
+      "intitule": "Simuler N echantillons et calculer l'ecart-type des moyennes",
+      "fingerprint": "simuler_echantillons_ecart_type_moyennes",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Probabilites et statistiques",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un algorithme qui simule N echantillons de taille n d'une variable aleatoire d'esperance mu et d'ecart-type sigma, calcule l'ecart-type s de la serie des moyennes des echantillons observes, et compare a sigma/sqrt(n).",
+      "formulation_bo": "Simuler N echantillons de taille n d'une variable aleatoire d'esperance mu et d'ecart type sigma. Calculer l'ecart type s de la serie des moyennes des echantillons observes, a comparer a sigma/sqrt(n).",
+      "connaissances_associees": ["simulation", "moyenne d'echantillon", "ecart-type", "programmation Python"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-AG-960",
+      "intitule": "Calculer la proportion d'echantillons dont la moyenne est proche de l'esperance",
+      "fingerprint": "calculer_proportion_echantillons_moyenne_proche_esperance",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Probabilites et statistiques",
+      "type": "algorithme",
+      "description_detaillee": "A partir de la simulation de N echantillons, calculer la proportion des echantillons pour lesquels l'ecart entre la moyenne et mu est inferieur ou egal a k*s ou k*sigma/sqrt(n), pour k = 1, 2, 3.",
+      "formulation_bo": "Calculer la proportion des echantillons pour lesquels l'ecart entre la moyenne et mu est inferieur ou egal a ks, ou a k*sigma/sqrt(n), pour k = 1, 2, 3.",
+      "connaissances_associees": ["simulation", "moyenne d'echantillon", "ecart-type", "programmation Python"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-PR-961",
+      "intitule": "Explorer les notions d'estimation",
+      "fingerprint": "explorer_estimation",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Concentration et loi des grands nombres",
+      "type": "approfondissement",
+      "description_detaillee": "Approfondir les notions liees a l'estimation statistique, en lien avec la loi des grands nombres et les intervalles de confiance.",
+      "formulation_bo": "Estimation.",
+      "connaissances_associees": ["loi des grands nombres", "moyenne d'echantillon", "intervalle de confiance"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-PR-962",
+      "intitule": "Approfondir l'etude des marches aleatoires",
+      "fingerprint": "approfondir_marches_aleatoires",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Concentration et loi des grands nombres",
+      "type": "approfondissement",
+      "description_detaillee": "Etudier de maniere approfondie les marches aleatoires, leurs proprietes et applications.",
+      "formulation_bo": "Marche aleatoire.",
+      "connaissances_associees": ["simulation", "loi des grands nombres", "suites aleatoires"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    },
+    {
+      "code": "TSPE-PR-963",
+      "intitule": "Appliquer la loi des grands nombres a des exemples concrets",
+      "fingerprint": "appliquer_loi_grands_nombres_exemples_concrets",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Concentration et loi des grands nombres",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer la loi des grands nombres a des exemples issus d'autres disciplines avec differentes valeurs de n : sondages (n = 1000), etude du sex ratio (n = 10^6), demi-vie d'atomes radioactifs (n = 10^23).",
+      "formulation_bo": "Exemples d'application issus d'autres disciplines pour diverses valeurs de n : sondage (par exemple n = 1000), etude du sex ratio (par exemple n = 10^6), demi-vie d'atomes radioactifs (n = 10^23).",
+      "connaissances_associees": ["loi des grands nombres", "applications interdisciplinaires", "ordres de grandeur"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 19}
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "by_type": {
+      "contenu": 4,
+      "capacite": 2,
+      "algorithme": 4,
+      "approfondissement": 3
+    },
+    "by_domaine": {
+      "PROBABILITES": 9,
+      "ALGORITHMIQUE": 4
+    },
+    "fingerprints": [
+      "enoncer_inegalite_bienayme_tchebychev",
+      "interpreter_ecart_type_unite_dispersion",
+      "enoncer_inegalite_concentration",
+      "enoncer_loi_grands_nombres",
+      "appliquer_bienayme_tchebychev_taille_echantillon",
+      "reconnaitre_condition_suffisante_echantillon",
+      "calculer_proba_ecart_binomiale_algorithme",
+      "simuler_marche_aleatoire",
+      "simuler_echantillons_ecart_type_moyennes",
+      "calculer_proportion_echantillons_moyenne_proche_esperance",
+      "explorer_estimation",
+      "approfondir_marches_aleatoires",
+      "appliquer_loi_grands_nombres_exemples_concrets"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+ Concentration, loi des grands nombres
+L’objectif de cette section est d’une part d’approfondir le sens de l’écart-type comme mesure
+de dispersion, d’autre part de couronner la partie « Probabilités » par la loi des grands
+nombres, qui est le premier résultat fondamental de la théorie des probabilités et dont les
+implications sont considérables.
+Pour cela, l’outil employé est l’inégalité de Bienaymé-Tchebychev dont l’idée fondamentale
+est mise en valeur : l’écart type  d’une variable aléatoire X est l’unité naturelle pour étudier
+la dispersion de X autour de son espérance  ; par construction, il est naturel d’observer des
+écarts de X à  en deçà ou au-delà de . L’inégalité de Bienaymé-Tchebychev montre qu’en
+revanche des écarts de X à  de quelques  deviennent improbables. Ce résultat, d’une
+importance majeure en lui-même, permet de plus d’établir la loi des grands nombres, selon
+laquelle l’écart entre la moyenne d’un échantillon d’une variable aléatoire et l’espérance de
+cette variable ne dépasse une valeur donnée à l’avance qu’avec une probabilité qui tend
+vers zéro quand la taille de l’échantillon tend vers l’infini.
+Il est utile de faire remarquer aux élèves que le caractère universel de l’inégalité de
+Bienaymé-Tchebychev a pour contrepartie le fait qu’elle est loin d’être optimale : ainsi, elle
+montre qu’un écart à  supérieur à 2 est de probabilité inférieure ou égale à 1/4 alors que
+les élèves ont découvert par simulation que cette probabilité est souvent majorée par 0,05.
+En avoir conscience ne diminue pas l’intérêt théorique de l’inégalité de Bienaymé-
+Tchebychev, et permet de mettre en évidence des cas de raisonnement par conditions
+suffisantes, par exemple la recherche d’une taille d’échantillon pour majorer une probabilité.
+Contenus
+ Inégalité de Bienaymé-Tchebychev. Pour une variable aléatoire X d’espérance  et
+V(X)
+de variance V, et quel que soit le réel strictement positif  : P (│X - │⩾  ) ⩽ .
+2
+ Inégalité de concentration. Si M est la variable aléatoire moyenne d’un échantillon de
+n
+taille n d’une variable aléatoire d’espérance  et de variance V, alors pour tout  > 0,
+V
+P (│M - │⩾  ) ⩽
+n n2
+ Loi des grands nombres.
+Capacité attendue
+ Appliquer l’inégalité de Bienaymé-Tchebychev pour définir une taille d’échantillon, en
+fonction de la précision et du risque choisi.
+Exemples d’algorithme
+ Calculer la probabilité de (│S - pn│ > n ), où S est une variable aléatoire qui suit
+n n
+une loi binomiale ℬ(n,p). Comparer avec l’inégalité de Bienaymé-Tchebychev.
+ Simulation d’une marche aléatoire.
+ Simuler N échantillons de taille n d’une variable aléatoire d’espérance  et d’écart
+type . Calculer l’écart type s de la série des moyennes des échantillons observés, à
+comparer à / n . Calculer la proportion des échantillons pour lesquels l’écart entre
+la moyenne et  est inférieur ou égal à ks, ou à k/ n, pour k = 1, 2, 3.
+Approfondissements possibles
+ Estimation.
+ Marche aléatoire.
+ Exemples d’application issus d’autres disciplines pour diverses valeurs de n :
+sondage (par exemple n = 1 000), étude du sex ratio (par exemple n = 106), demi-vie
+d’atomes radioactifs (n = 1023).
+© Ministère de l'Éducation nationale et de la Jeunesse > www.education.gouv.fr

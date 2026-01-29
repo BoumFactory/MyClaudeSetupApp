@@ -1,0 +1,511 @@
+{
+  "source": {
+    "pdf": "spe265_annexe_1159134.pdf",
+    "page": 13,
+    "text_length": 2145
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AN-651",
+      "intitule": "Demontrer la propriete ln(ab) = ln(a) + ln(b)",
+      "fingerprint": "demontrer_propriete_logarithme_produit",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Logarithme et exponentielle",
+      "type": "demonstration",
+      "description_detaillee": "Demonstration de la relation ln(ab) = ln(a) + ln(b) pour les proprietes fondamentales du logarithme neperien",
+      "formulation_bo": "Relations ln(ab) = ln(a) + ln(b), ln(1/a) = -ln(a)",
+      "connaissances_associees": ["definition logarithme neperien", "proprietes de l'exponentielle"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-652",
+      "intitule": "Demontrer la propriete ln(1/a) = -ln(a)",
+      "fingerprint": "demontrer_propriete_logarithme_inverse",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Logarithme et exponentielle",
+      "type": "demonstration",
+      "description_detaillee": "Demonstration de la relation ln(1/a) = -ln(a) pour les proprietes fondamentales du logarithme neperien",
+      "formulation_bo": "Relations ln(ab) = ln(a) + ln(b), ln(1/a) = -ln(a)",
+      "connaissances_associees": ["definition logarithme neperien", "proprietes de l'exponentielle"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-653",
+      "intitule": "Calculer la fonction derivee du logarithme neperien",
+      "fingerprint": "calculer_derivee_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Derivation",
+      "type": "capacite",
+      "description_detaillee": "Calculer la derivee de la fonction ln(x), en admettant sa derivabilite. Resultat: (ln(x))' = 1/x",
+      "formulation_bo": "Calcul de la fonction derivee du logarithme, en admettant sa derivabilite.",
+      "connaissances_associees": ["concept de derivee", "continuity et derivabilite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-654",
+      "intitule": "Calculer la fonction derivee de ln(u)",
+      "fingerprint": "calculer_derivee_logarithme_composee",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Derivation",
+      "type": "capacite",
+      "description_detaillee": "Calculer la derivee d'une fonction composee de type ln(u) ou u est une fonction derivable. Resultat: (ln(u))' = u'/u",
+      "formulation_bo": "Calcul de la fonction derivee de ln u, de exp u.",
+      "connaissances_associees": ["derivee de fonction composee", "regle de la chaine"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-655",
+      "intitule": "Calculer la fonction derivee de exp(u)",
+      "fingerprint": "calculer_derivee_exponentielle_composee",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Derivation",
+      "type": "capacite",
+      "description_detaillee": "Calculer la derivee d'une fonction composee de type exp(u) ou u est une fonction derivable. Resultat: (exp(u))' = u'*exp(u)",
+      "formulation_bo": "Calcul de la fonction derivee de ln u, de exp u.",
+      "connaissances_associees": ["derivee de fonction composee", "regle de la chaine"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AG-656",
+      "intitule": "Appliquer la methode de balayage pour rechercher une valeur approchee d'une solution",
+      "fingerprint": "appliquer_balayage_equation",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Methodes numeriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la methode de balayage pour trouver une valeur approchee d'une solution de l'equation f(x) = k",
+      "formulation_bo": "Methodes de recherche de valeurs approchees d'une solution d'equation du type f(x) = k : balayage, dichotomie, methode de Newton.",
+      "connaissances_associees": ["resolution d'equations", "approximation numerique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AG-657",
+      "intitule": "Appliquer la methode de dichotomie pour rechercher une valeur approchee d'une solution",
+      "fingerprint": "appliquer_dichotomie_equation",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Methodes numeriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la methode de dichotomie pour trouver une valeur approchee d'une solution de l'equation f(x) = k",
+      "formulation_bo": "Methodes de recherche de valeurs approchees d'une solution d'equation du type f(x) = k : balayage, dichotomie, methode de Newton.",
+      "connaissances_associees": ["resolution d'equations", "approximation numerique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AG-658",
+      "intitule": "Appliquer la methode de Newton pour rechercher une valeur approchee d'une solution",
+      "fingerprint": "appliquer_newton_equation",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Methodes numeriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la methode de Newton pour trouver une valeur approchee d'une solution de l'equation f(x) = k",
+      "formulation_bo": "Methodes de recherche de valeurs approchees d'une solution d'equation du type f(x) = k : balayage, dichotomie, methode de Newton.",
+      "connaissances_associees": ["resolution d'equations", "approximation numerique", "derivee"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AG-659",
+      "intitule": "Appliquer l'algorithme de Briggs pour calculer des logarithmes",
+      "fingerprint": "appliquer_briggs_logarithmes",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Methodes numeriques",
+      "type": "algorithme",
+      "description_detaillee": "Utiliser l'algorithme de Briggs pour calculer des valeurs approchees de logarithmes",
+      "formulation_bo": "Algorithme de Briggs pour le calcul de logarithmes.",
+      "connaissances_associees": ["logarithme neperien", "algorithme"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-660",
+      "intitule": "Definir la notion de solution d'une equation differentielle",
+      "fingerprint": "definir_solution_equation_differentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre qu'une solution d'une equation differentielle est une fonction verifiant la relation donnee. Exemples concrets d'equations differentielles et leurs solutions",
+      "formulation_bo": "Sur des exemples, notion d'une solution d'equation differentielle.",
+      "connaissances_associees": ["equation differentielle", "fonction solution"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-661",
+      "intitule": "Definir la notion de primitive en liaison avec l'equation differentielle y' = f",
+      "fingerprint": "definir_primitive_equation_differentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que les primitives d'une fonction f sont les solutions de l'equation differentielle y' = f. Deux primitives d'une meme fonction continue sur un intervalle different d'une constante.",
+      "formulation_bo": "Notion de primitive, en liaison avec l'equation differentielle y' = f. Deux primitives d'une meme fonction continue sur un intervalle different d'une constante. Exemples.",
+      "connaissances_associees": ["primitive", "equation differentielle", "continuite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-662",
+      "intitule": "Demontrer que deux primitives d'une fonction continue different d'une constante",
+      "fingerprint": "demontrer_unicite_primitive_constante",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "demonstration",
+      "description_detaillee": "Demonstration que si F et G sont deux primitives d'une meme fonction f continue sur un intervalle I, alors F(x) - G(x) = constante pour tout x dans I",
+      "formulation_bo": "Deux primitives d'une meme fonction continue sur un intervalle different d'une constante.",
+      "connaissances_associees": ["primitive", "continuite", "derivee"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-663",
+      "intitule": "Definir l'equation differentielle y' = ay + b",
+      "fingerprint": "definir_equation_differentielle_lineaire",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre les equations differentielles lineaires du premier ordre a coefficients constants de la forme y' = ay + b, ou a et b sont des reels. Etudier l'allure des courbes solutions.",
+      "formulation_bo": "Equation differentielle y' = ay + b, ou a et b sont des reels ; allure des courbes.",
+      "connaissances_associees": ["equation differentielle lineaire", "courbes integrales"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-664",
+      "intitule": "Verifier qu'une fonction est solution d'une equation differentielle",
+      "fingerprint": "verifier_solution_equation_differentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Verifier qu'une fonction proposee est solution d'une equation differentielle en la substituant dans l'equation et en verifiant l'egalite",
+      "formulation_bo": "Verifier qu'une fonction donnee est solution d'une equation differentielle.",
+      "connaissances_associees": ["solution d'equation differentielle", "derivee"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-665",
+      "intitule": "Determiner les primitives d'une fonction en reconnaissant une derivee de reference",
+      "fingerprint": "determiner_primitives_derivee_reference",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Determiner les primitives d'une fonction en reconnaissant qu'elle est la derivee d'une fonction de reference (polynome, exponentielle, logarithme, etc.)",
+      "formulation_bo": "Determiner les primitives d'une fonction, en reconnaissant la derivee d'une fonction de reference ou une fonction de la forme 2u*u', e^u*u' ou u'/u.",
+      "connaissances_associees": ["primitive", "derivees de reference"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-666",
+      "intitule": "Determiner les primitives d'une fonction de la forme 2u*u'",
+      "fingerprint": "determiner_primitives_2u_prime",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Determiner les primitives d'une fonction de la forme 2u*u', qui est la derivee de u^2",
+      "formulation_bo": "Determiner les primitives d'une fonction, en reconnaissant la derivee d'une fonction de reference ou une fonction de la forme 2u*u', e^u*u' ou u'/u.",
+      "connaissances_associees": ["primitive", "regle de la chaine", "fonction composee"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-667",
+      "intitule": "Determiner les primitives d'une fonction de la forme e^u*u'",
+      "fingerprint": "determiner_primitives_exp_u_prime",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Determiner les primitives d'une fonction de la forme e^u*u', qui est la derivee de e^u",
+      "formulation_bo": "Determiner les primitives d'une fonction, en reconnaissant la derivee d'une fonction de reference ou une fonction de la forme 2u*u', e^u*u' ou u'/u.",
+      "connaissances_associees": ["primitive", "exponentielle", "regle de la chaine"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-668",
+      "intitule": "Determiner les primitives d'une fonction de la forme u'/u",
+      "fingerprint": "determiner_primitives_u_prime_u",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Determiner les primitives d'une fonction de la forme u'/u, qui est la derivee de ln|u|",
+      "formulation_bo": "Determiner les primitives d'une fonction, en reconnaissant la derivee d'une fonction de reference ou une fonction de la forme 2u*u', e^u*u' ou u'/u.",
+      "connaissances_associees": ["primitive", "logarithme", "regle de la chaine"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-669",
+      "intitule": "Resoudre l'equation differentielle y' = ay",
+      "fingerprint": "resoudre_equation_differentielle_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Resoudre completement l'equation differentielle y' = ay ou a est une constante reelle. La solution generale est y(x) = C*e^(ax)",
+      "formulation_bo": "Resoudre une equation differentielle y' = ay. Pour une equation differentielle y' = ay + b : determiner une solution particuliere constante ; utiliser cette solution pour determiner la solution generale.",
+      "connaissances_associees": ["equation differentielle lineaire", "exponentielle"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-670",
+      "intitule": "Determiner une solution particuliere constante de y' = ay + b",
+      "fingerprint": "determiner_solution_particuliere_constante",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Pour l'equation y' = ay + b, chercher une solution particuliere de la forme y_p = k (constante). On trouve y_p = -b/a si a ≠ 0",
+      "formulation_bo": "Pour une equation differentielle y' = ay + b : determiner une solution particuliere constante ; utiliser cette solution pour determiner la solution generale.",
+      "connaissances_associees": ["equation differentielle lineaire", "solution particuliere"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-671",
+      "intitule": "Resoudre l'equation differentielle y' = ay + b en utilisant une solution particuliere",
+      "fingerprint": "resoudre_equation_differentielle_affine",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une solution particuliere constante de y' = ay + b pour determiner la solution generale en resolvant y' = a(y - y_p)",
+      "formulation_bo": "Pour une equation differentielle y' = ay + b : determiner une solution particuliere constante ; utiliser cette solution pour determiner la solution generale.",
+      "connaissances_associees": ["equation differentielle lineaire", "solution particuliere", "solution generale"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-672",
+      "intitule": "Demontrer la resolution de l'equation differentielle y' = ay",
+      "fingerprint": "demontrer_resolution_equation_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "demonstration",
+      "description_detaillee": "Demonstration que la solution generale de y' = ay est y(x) = C*e^(ax) pour toute constante C",
+      "formulation_bo": "Resolution de l'equation differentielle y' = ay.",
+      "connaissances_associees": ["equation differentielle", "exponentielle", "derivee"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AG-673",
+      "intitule": "Resoudre une equation differentielle par approximation avec la methode d'Euler",
+      "fingerprint": "appliquer_euler_equation_differentielle",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Methodes numeriques",
+      "type": "algorithme",
+      "description_detaillee": "Utiliser la methode d'Euler pour trouver une solution approchee d'une equation differentielle par pas successifs. Approche numerique de la resolution approchee.",
+      "formulation_bo": "Sur des exemples, resolution approchee d'une equation differentielle par la methode d'Euler.",
+      "connaissances_associees": ["equation differentielle", "methode numerique", "algorithme"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-674",
+      "intitule": "Calculer la derivee seconde d'une fonction",
+      "fingerprint": "calculer_derivee_seconde",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Derivation",
+      "type": "capacite",
+      "description_detaillee": "Calculer la derivee seconde f'' d'une fonction f en derivant successivement deux fois",
+      "formulation_bo": "Derivee seconde d'une fonction.",
+      "connaissances_associees": ["derivee", "fonction deux fois derivable"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-675",
+      "intitule": "Definir une fonction convexe par la position relative de la courbe et des secantes",
+      "fingerprint": "definir_convexite_secantes",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Etude de fonctions",
+      "type": "contenu",
+      "description_detaillee": "Une fonction est convexe sur un intervalle si sa courbe representative est situee en dessous de toute secante. Pour une fonction derivable, equivalence admise avec la position relative par rapport aux tangentes.",
+      "formulation_bo": "Fonction convexe sur un intervalle : definition par la position relative de la courbe representative et des secantes, equivalence admise, lorsque f est derivable, avec la position par rapport aux tangentes.",
+      "connaissances_associees": ["courbe representative", "secante", "tangente"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-676",
+      "intitule": "Caracteriser la convexite par la croissance de la derivee premiere",
+      "fingerprint": "caracteriser_convexite_croissance_derivee",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Etude de fonctions",
+      "type": "contenu",
+      "description_detaillee": "Une fonction f est convexe si et seulement si sa derivee f' est croissante sur l'intervalle",
+      "formulation_bo": "Caracterisation admise par la croissance de f', la positivite de f''.",
+      "connaissances_associees": ["convexite", "derivee premiere", "fonction croissante"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-677",
+      "intitule": "Caracteriser la convexite par la positivite de la derivee seconde",
+      "fingerprint": "caracteriser_convexite_derivee_seconde",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Etude de fonctions",
+      "type": "contenu",
+      "description_detaillee": "Une fonction f deux fois derivable est convexe si et seulement si f''(x) >= 0 sur l'intervalle",
+      "formulation_bo": "Caracterisation admise par la croissance de f', la positivite de f''.",
+      "connaissances_associees": ["convexite", "derivee seconde", "positivite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-678",
+      "intitule": "Definir et identifier un point d'inflexion",
+      "fingerprint": "definir_point_inflexion",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Etude de fonctions",
+      "type": "contenu",
+      "description_detaillee": "Un point d'inflexion est un point de la courbe ou la convexite change. C'est generalement un point ou la derivee seconde s'annule en changeant de signe.",
+      "formulation_bo": "Point d'inflexion.",
+      "connaissances_associees": ["convexite", "derivee seconde", "courbe representative"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 13
+      }
+    }
+  ],
+  "summary": {
+    "total": 28,
+    "by_type": {
+      "contenu": 7,
+      "capacite": 14,
+      "demonstration": 5,
+      "algorithme": 2
+    },
+    "by_domaine": {
+      "ANALYSE": 21,
+      "ALGORITHMIQUE": 3,
+      "AUTRES": 4
+    },
+    "by_niveau": {
+      "TSPE": 28
+    },
+    "fingerprints": [
+      "demontrer_propriete_logarithme_produit",
+      "demontrer_propriete_logarithme_inverse",
+      "calculer_derivee_logarithme",
+      "calculer_derivee_logarithme_composee",
+      "calculer_derivee_exponentielle_composee",
+      "appliquer_balayage_equation",
+      "appliquer_dichotomie_equation",
+      "appliquer_newton_equation",
+      "appliquer_briggs_logarithmes",
+      "definir_solution_equation_differentielle",
+      "definir_primitive_equation_differentielle",
+      "demontrer_unicite_primitive_constante",
+      "definir_equation_differentielle_lineaire",
+      "verifier_solution_equation_differentielle",
+      "determiner_primitives_derivee_reference",
+      "determiner_primitives_2u_prime",
+      "determiner_primitives_exp_u_prime",
+      "determiner_primitives_u_prime_u",
+      "resoudre_equation_differentielle_exponentielle",
+      "determiner_solution_particuliere_constante",
+      "resoudre_equation_differentielle_affine",
+      "demontrer_resolution_equation_exponentielle",
+      "appliquer_euler_equation_differentielle",
+      "calculer_derivee_seconde",
+      "definir_convexite_secantes",
+      "caracteriser_convexite_croissance_derivee",
+      "caracteriser_convexite_derivee_seconde",
+      "definir_point_inflexion"
+    ]
+  },
+  "notes": "Extraction complete de la page 13 du programme de Terminale Specialisee. Le contenu couvre les logarithmes et exponentielles, les methodes numeriques, les equations differentielles lineaires du premier ordre, et les fonctions convexes. Tous les elements des sections Contenus, Capacites, Demonstrations et Exemples d'algorithmes ont ete atomises."
+}

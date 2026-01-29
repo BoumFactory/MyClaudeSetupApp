@@ -1,0 +1,484 @@
+/* ===========================================
+   UNIVERS: MINIMAL / ÉPURÉ
+   Design suisse, beaucoup de blanc, typographie raffinée
+   Micro-interactions subtiles, espace négatif intentionnel
+   Support automatique Light/Dark mode
+   =========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap');
+
+/* ===========================================
+   VARIABLES - MODE CLAIR (défaut)
+   =========================================== */
+:root {
+    /* Palette Minimale - Light */
+    --minimal-white: #ffffff;
+    --minimal-bg: #fafafa;
+    --minimal-gray-50: #fafafa;
+    --minimal-gray-100: #f5f5f5;
+    --minimal-gray-200: #eeeeee;
+    --minimal-gray-300: #e0e0e0;
+    --minimal-gray-400: #bdbdbd;
+    --minimal-gray-500: #9e9e9e;
+    --minimal-gray-600: #757575;
+    --minimal-gray-700: #616161;
+    --minimal-gray-800: #424242;
+    --minimal-gray-900: #212121;
+    --minimal-black: #0a0a0a;
+    --minimal-accent: #000000;
+    --minimal-accent-subtle: #333333;
+
+    /* Text colors */
+    --minimal-text: var(--minimal-gray-800);
+    --minimal-text-secondary: var(--minimal-gray-600);
+    --minimal-text-muted: var(--minimal-gray-500);
+
+    /* Borders */
+    --minimal-border: var(--minimal-gray-300);
+    --minimal-border-light: var(--minimal-gray-200);
+
+    /* Backgrounds */
+    --minimal-surface: var(--minimal-white);
+    --minimal-surface-hover: var(--minimal-gray-100);
+
+    /* KaTeX */
+    --minimal-formula-bg: var(--minimal-gray-100);
+}
+
+/* ===========================================
+   VARIABLES - MODE SOMBRE
+   =========================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Palette Minimale - Dark (élégant, noir profond) */
+        --minimal-white: #0a0a0a;
+        --minimal-bg: #0f0f0f;
+        --minimal-gray-50: #121212;
+        --minimal-gray-100: #1a1a1a;
+        --minimal-gray-200: #242424;
+        --minimal-gray-300: #333333;
+        --minimal-gray-400: #4a4a4a;
+        --minimal-gray-500: #6a6a6a;
+        --minimal-gray-600: #8a8a8a;
+        --minimal-gray-700: #a8a8a8;
+        --minimal-gray-800: #c8c8c8;
+        --minimal-gray-900: #e8e8e8;
+        --minimal-black: #f5f5f5;
+        --minimal-accent: #ffffff;
+        --minimal-accent-subtle: #cccccc;
+
+        /* Text colors */
+        --minimal-text: var(--minimal-gray-800);
+        --minimal-text-secondary: var(--minimal-gray-600);
+        --minimal-text-muted: var(--minimal-gray-500);
+
+        /* Borders */
+        --minimal-border: var(--minimal-gray-300);
+        --minimal-border-light: var(--minimal-gray-200);
+
+        /* Backgrounds */
+        --minimal-surface: var(--minimal-gray-100);
+        --minimal-surface-hover: var(--minimal-gray-200);
+
+        /* KaTeX */
+        --minimal-formula-bg: var(--minimal-gray-200);
+    }
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--minimal-white);
+    color: var(--minimal-text);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.8;
+}
+
+/* === CONTENEUR LARGE AVEC BEAUCOUP D'ESPACE === */
+.cours-container {
+    max-width: 720px !important;
+    padding: 5rem 2rem !important;
+}
+
+/* ===========================================
+   TITRES - TYPOGRAPHIE RAFFINÉE
+   =========================================== */
+
+h1 {
+    font-family: 'DM Serif Display', serif !important;
+    font-size: 3.5rem !important;
+    font-weight: 400;
+    color: var(--minimal-black);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    border: none;
+    background: none;
+    padding: 0 !important;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background: var(--minimal-black);
+}
+
+h2 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.5rem !important;
+    font-weight: 500;
+    color: var(--minimal-black);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    border: none;
+    background: none;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    padding: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+h2::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--minimal-gray-400);
+}
+
+h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 500;
+    color: var(--minimal-text-secondary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: none;
+    background: none;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+}
+
+/* ===========================================
+   BLOCS - SUBTILS ET ÉLÉGANTS
+   =========================================== */
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    background: transparent !important;
+    border: none !important;
+    border-left: 1px solid var(--minimal-border) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 3rem 0;
+    padding: 0 0 0 2rem !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.definition:hover, .theoreme:hover, .propriete:hover,
+.exemple:hover, .methode:hover, .remarque:hover, .exercice:hover {
+    border-left-color: var(--minimal-black) !important;
+    transform: none;
+    box-shadow: none !important;
+}
+
+/* === LABELS DISCRETS === */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before, .exercice::before {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.65rem !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--minimal-text-muted) !important;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* === TOUTES LES COULEURS EN GRIS === */
+.definition::before { content: 'Définition' !important; }
+.theoreme::before { content: 'Théorème' !important; }
+.propriete::before { content: 'Propriété' !important; }
+.exemple::before { content: 'Exemple' !important; }
+.methode::before { content: 'Méthode' !important; }
+.remarque::before { content: 'Remarque' !important; }
+.exercice::before { content: 'Exercice' !important; }
+
+/* Variation subtile des bordures */
+.definition { border-left-color: var(--minimal-gray-400) !important; }
+.theoreme { border-left-color: var(--minimal-gray-500) !important; }
+.propriete { border-left-color: var(--minimal-gray-400) !important; }
+.exemple { border-left-color: var(--minimal-border) !important; }
+.methode { border-left-color: var(--minimal-gray-400) !important; }
+.remarque { border-left-color: var(--minimal-border) !important; }
+.exercice { border-left-color: var(--minimal-gray-500) !important; }
+
+/* ===========================================
+   LISTES - SIMPLES
+   =========================================== */
+
+ul li::before {
+    content: '' !important;
+    width: 4px !important;
+    height: 4px !important;
+    background: var(--minimal-gray-400) !important;
+    border-radius: 50% !important;
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+}
+
+ol li::before {
+    background: transparent !important;
+    color: var(--minimal-text-muted) !important;
+    font-weight: 400;
+    font-size: 0.85rem;
+    border: none !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* ===========================================
+   KaTeX - FORMULES ÉLÉGANTES
+   =========================================== */
+
+.katex-display {
+    background: var(--minimal-formula-bg) !important;
+    border: none !important;
+    border-radius: 2px !important;
+    padding: 2rem !important;
+    margin: 2.5rem 0;
+}
+
+.katex {
+    font-size: 1.1em !important;
+}
+
+/* ===========================================
+   TABLEAUX - MINIMALISTES
+   =========================================== */
+
+table {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 100%;
+}
+
+th {
+    background: transparent !important;
+    color: var(--minimal-text-secondary) !important;
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--minimal-border) !important;
+    padding: 1rem 0 !important;
+    text-align: left;
+}
+
+td {
+    border-bottom: 1px solid var(--minimal-border-light) !important;
+    padding: 1rem 0 !important;
+    color: var(--minimal-text);
+}
+
+tr:last-child td {
+    border-bottom: none !important;
+}
+
+tr:hover {
+    background: var(--minimal-surface-hover) !important;
+}
+
+/* ===========================================
+   LIENS - SUBTILS
+   =========================================== */
+
+a {
+    color: var(--minimal-black) !important;
+    text-decoration: none;
+    border-bottom: 1px solid var(--minimal-border);
+    transition: border-color 0.3s ease;
+}
+
+a:hover {
+    border-bottom-color: var(--minimal-black);
+}
+
+/* ===========================================
+   FOOTER - DISCRET
+   =========================================== */
+
+.footer {
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--minimal-text-muted);
+    padding: 3rem 0;
+    border-top: 1px solid var(--minimal-border-light);
+    margin-top: 5rem;
+}
+
+/* ===========================================
+   CITATIONS
+   =========================================== */
+
+blockquote {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--minimal-text-secondary);
+    border-left: none;
+    padding: 0;
+    margin: 3rem 0;
+    position: relative;
+    padding-left: 2rem;
+}
+
+blockquote::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 3rem;
+    color: var(--minimal-border);
+    line-height: 1;
+    font-family: 'DM Serif Display', serif;
+}
+
+/* ===========================================
+   SÉPARATEUR
+   =========================================== */
+
+hr {
+    border: none;
+    height: 1px;
+    background: var(--minimal-border-light);
+    margin: 4rem 0;
+}
+
+/* ===========================================
+   TEXTE IMPORTANT
+   =========================================== */
+
+strong {
+    font-weight: 500;
+    color: var(--minimal-black);
+}
+
+.important {
+    font-weight: 500 !important;
+    color: var(--minimal-black) !important;
+}
+
+.highlight {
+    background: var(--minimal-surface-hover);
+    padding: 0.1rem 0.3rem;
+}
+
+/* ===========================================
+   SCROLLBAR - INVISIBLE MAIS FONCTIONNELLE
+   =========================================== */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--minimal-border);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--minimal-gray-400);
+}
+
+/* ===========================================
+   SELECTION
+   =========================================== */
+
+::selection {
+    background: var(--minimal-black);
+    color: var(--minimal-white);
+}
+
+/* ===========================================
+   ANIMATIONS SUBTILES
+   =========================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 768px) {
+    .cours-container {
+        padding: 3rem 1.5rem !important;
+    }
+
+    h1 {
+        font-size: 2.5rem !important;
+    }
+
+    h2 {
+        font-size: 1.2rem !important;
+        margin-top: 3rem;
+    }
+}
+
+/* ===========================================
+   PRINT - ENCORE PLUS MINIMAL
+   =========================================== */
+
+@media print {
+    body {
+        font-size: 11pt;
+    }
+
+    .cours-container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    h1::after {
+        display: none;
+    }
+
+    .definition, .theoreme, .propriete, .exemple,
+    .methode, .remarque, .exercice {
+        border-left: 1px solid #ccc !important;
+        page-break-inside: avoid;
+    }
+}

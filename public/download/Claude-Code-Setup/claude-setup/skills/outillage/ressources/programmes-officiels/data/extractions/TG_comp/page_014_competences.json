@@ -1,0 +1,597 @@
+{
+  "source": {
+    "pdf": "TG_comp.pdf",
+    "page": 14,
+    "text_length": 2287
+  },
+  "extraction": {
+    "date": "2026-01-09T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AN-701",
+      "intitule": "Reconnaitre une fonction convexe sur une representation graphique",
+      "fingerprint": "reconnaitre_fonction_convexe_graphique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Convexite et concavite",
+      "type": "capacite",
+      "description_detaillee": "Identifier visuellement sur un graphique une fonction qui est convexe (situation ou la courbe reste au-dessus de ses tangentes)",
+      "formulation_bo": "Reconnaitre sur une representation graphique une fonction convexe",
+      "connaissances_associees": [
+        "notion de fonction",
+        "representation graphique",
+        "definition de convexite"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-702",
+      "intitule": "Reconnaitre une fonction concave sur une representation graphique",
+      "fingerprint": "reconnaitre_fonction_concave_graphique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Convexite et concavite",
+      "type": "capacite",
+      "description_detaillee": "Identifier visuellement sur un graphique une fonction qui est concave (situation ou la courbe reste au-dessous de ses tangentes)",
+      "formulation_bo": "Reconnaitre sur une representation graphique une fonction concave",
+      "connaissances_associees": [
+        "notion de fonction",
+        "representation graphique",
+        "definition de concavite"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-703",
+      "intitule": "Reconnaitre un point d'inflexion sur une representation graphique",
+      "fingerprint": "reconnaitre_point_inflexion_graphique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Convexite et concavite",
+      "type": "capacite",
+      "description_detaillee": "Identifier sur un graphique un point d'inflexion (point ou la courbe change de concavite)",
+      "formulation_bo": "Reconnaitre sur une representation graphique un point d'inflexion",
+      "connaissances_associees": [
+        "notion de fonction",
+        "representation graphique",
+        "definition point d'inflexion",
+        "convexite",
+        "concavite"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-704",
+      "intitule": "Etudier la convexite d'une fonction deux fois derivable",
+      "fingerprint": "etudier_convexite_fonction_derivable",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Convexite et concavite",
+      "type": "capacite",
+      "description_detaillee": "Pour une fonction deux fois derivable sur un intervalle, analyser le signe de sa derivee seconde pour determiner les intervals de convexite",
+      "formulation_bo": "Etudier la convexite d'une fonction deux fois derivable sur un intervalle",
+      "connaissances_associees": [
+        "fonction derivable",
+        "derivee seconde",
+        "etude du signe",
+        "notion de convexite"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-705",
+      "intitule": "Etudier la concavite d'une fonction deux fois derivable",
+      "fingerprint": "etudier_concavite_fonction_derivable",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Convexite et concavite",
+      "type": "capacite",
+      "description_detaillee": "Pour une fonction deux fois derivable sur un intervalle, analyser le signe de sa derivee seconde pour determiner les intervals de concavite",
+      "formulation_bo": "Etudier la concavite d'une fonction deux fois derivable sur un intervalle",
+      "connaissances_associees": [
+        "fonction derivable",
+        "derivee seconde",
+        "etude du signe",
+        "notion de concavite"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-706",
+      "intitule": "Definir l'integrale d'une fonction continue et positive sur [a,b] comme aire sous la courbe",
+      "fingerprint": "definir_integrale_aire_sous_courbe",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "contenu",
+      "description_detaillee": "L'integrale d'une fonction continue et positive sur [a,b] represente l'aire sous la courbe. Notation: integrale de a a b de f(x)dx",
+      "formulation_bo": "Definition de l'integrale d'une fonction continue et positive sur [a,b] comme aire sous la courbe. Notation integrale de a a b de f(x)dx",
+      "connaissances_associees": [
+        "fonction continue",
+        "fonction positive",
+        "notion d'aire",
+        "representation graphique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-707",
+      "intitule": "Appliquer la relation de Chasles pour les integrales",
+      "fingerprint": "appliquer_relation_chasles_integrales",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "contenu",
+      "description_detaillee": "Utiliser la relation de Chasles: integrale(a a c) = integrale(a a b) + integrale(b a c)",
+      "formulation_bo": "Notation integrale de a a b de f(x)dx. Relation de Chasles",
+      "connaissances_associees": [
+        "integrale",
+        "propriete des integrales",
+        "additivite des integrales"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-708",
+      "intitule": "Definir la valeur moyenne d'une fonction continue sur [a,b]",
+      "fingerprint": "definir_valeur_moyenne_fonction",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "contenu",
+      "description_detaillee": "La valeur moyenne d'une fonction continue sur [a,b] est egale a 1/(b-a) * integrale de a a b de f(x)dx. Elle est comprise entre le minimum et le maximum de la fonction sur [a,b]",
+      "formulation_bo": "Valeur moyenne d'une fonction continue sur [a,b]. Approche graphique et numerique. La valeur moyenne est comprise entre les bornes de la fonction",
+      "connaissances_associees": [
+        "fonction continue",
+        "integrale",
+        "notion de moyenne"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-709",
+      "intitule": "Approximer une integrale par la methode des rectangles",
+      "fingerprint": "approximer_integrale_methode_rectangles",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la methode des rectangles pour estimer numeriquement la valeur d'une integrale en subdivisant l'intervalle [a,b]",
+      "formulation_bo": "Approximation d'une integrale par la methode des rectangles",
+      "connaissances_associees": [
+        "integrale",
+        "subdivision d'intervalle",
+        "algorithme numerique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-710",
+      "intitule": "Etendre la definition de l'integrale aux fonctions continues de signe quelconque",
+      "fingerprint": "etendre_integrale_signe_quelconque",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "contenu",
+      "description_detaillee": "Presenter l'integrale des fonctions continues pouvant prendre des valeurs negatives. L'integrale compte l'aire algebrique (positive si f>0, negative si f<0)",
+      "formulation_bo": "Presentation de l'integrale des fonctions continues de signe quelconque",
+      "connaissances_associees": [
+        "fonction continue",
+        "integrale",
+        "aire algebrique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-711",
+      "intitule": "Appliquer le theoreme fondamental de l'analyse reliant integrales et derivees",
+      "fingerprint": "appliquer_theoreme_fondamental_analyse",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "contenu",
+      "description_detaillee": "Si f est continue sur [a,b], alors la fonction F(x) = integrale de a a x de f(t)dt est derivable sur [a,b] et F'(x) = f(x)",
+      "formulation_bo": "Theoreme: si f est continue sur [a,b], la fonction F definie sur [a,b] par F(x) = integrale de a a x de f(t)dt est derivable sur [a,b] et a pour derivee f",
+      "connaissances_associees": [
+        "fonction continue",
+        "integrale",
+        "fonction derivable",
+        "derivee"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-712",
+      "intitule": "Calculer une integrale a l'aide de primitives",
+      "fingerprint": "calculer_integrale_primitives",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la formule: si F est une primitive de f, alors integrale de a a b de f(x)dx = F(b) - F(a)",
+      "formulation_bo": "Calcul d'integrales a l'aide de primitives: si F est une primitive de f, alors integrale de a a b de f(x)dx = F(b) - F(a)",
+      "connaissances_associees": [
+        "integrale",
+        "primitive",
+        "derivee",
+        "fonction"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-713",
+      "intitule": "Estimer graphiquement une integrale",
+      "fingerprint": "estimer_graphiquement_integrale",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "A partir d'une representation graphique d'une fonction, estimer visuellement l'aire sous la courbe (integrale)",
+      "formulation_bo": "Estimer graphiquement ou encadrer une integrale, une valeur moyenne",
+      "connaissances_associees": [
+        "integrale",
+        "aire",
+        "representation graphique",
+        "lecture graphique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-714",
+      "intitule": "Encadrer une integrale",
+      "fingerprint": "encadrer_integrale",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Determiner des bornes inferieure et superieure pour une integrale, notamment en utilisant les variations de la fonction",
+      "formulation_bo": "Estimer graphiquement ou encadrer une integrale, une valeur moyenne",
+      "connaissances_associees": [
+        "integrale",
+        "majorant",
+        "minorant",
+        "variations de fonction"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-715",
+      "intitule": "Estimer graphiquement une valeur moyenne",
+      "fingerprint": "estimer_graphiquement_valeur_moyenne",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "A partir d'une representation graphique d'une fonction, estimer visuellement sa valeur moyenne sur un intervalle",
+      "formulation_bo": "Estimer graphiquement ou encadrer une integrale, une valeur moyenne",
+      "connaissances_associees": [
+        "valeur moyenne",
+        "integrale",
+        "representation graphique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-716",
+      "intitule": "Encadrer une valeur moyenne",
+      "fingerprint": "encadrer_valeur_moyenne",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Determiner des bornes inferieure et superieure pour la valeur moyenne d'une fonction sur un intervalle",
+      "formulation_bo": "Estimer graphiquement ou encadrer une integrale, une valeur moyenne",
+      "connaissances_associees": [
+        "valeur moyenne",
+        "majorant",
+        "minorant",
+        "variations de fonction"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-717",
+      "intitule": "Calculer une integrale",
+      "fingerprint": "calculer_integrale",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Determiner la valeur exacte d'une integrale, notamment en utilisant le theoreme fondamental de l'analyse et les primitives",
+      "formulation_bo": "Calculer une integrale, une valeur moyenne",
+      "connaissances_associees": [
+        "integrale",
+        "primitive",
+        "theoreme fondamental"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-718",
+      "intitule": "Calculer la valeur moyenne d'une fonction",
+      "fingerprint": "calculer_valeur_moyenne_fonction",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Calculer la valeur moyenne d'une fonction continue sur [a,b] en utilisant la formule: (1/(b-a)) * integrale de a a b de f(x)dx",
+      "formulation_bo": "Calculer une integrale, une valeur moyenne",
+      "connaissances_associees": [
+        "valeur moyenne",
+        "integrale",
+        "formule de la moyenne"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-719",
+      "intitule": "Calculer l'aire sous une courbe",
+      "fingerprint": "calculer_aire_sous_courbe",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Determiner l'aire entre une courbe et l'axe des abscisses (pour une fonction positive) ou l'aire algebrique en utilisant l'integrale",
+      "formulation_bo": "Calculer l'aire sous une courbe ou entre deux courbes",
+      "connaissances_associees": [
+        "integrale",
+        "aire",
+        "fonction positive"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-720",
+      "intitule": "Calculer l'aire entre deux courbes",
+      "fingerprint": "calculer_aire_entre_deux_courbes",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Determiner l'aire entre les courbes de deux fonctions en utilisant la difference de leurs integrales",
+      "formulation_bo": "Calculer l'aire sous une courbe ou entre deux courbes",
+      "connaissances_associees": [
+        "integrale",
+        "aire",
+        "comparaison de fonctions"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-721",
+      "intitule": "Interpreter une integrale dans un contexte issu d'une autre discipline",
+      "fingerprint": "interpreter_integrale_contexte_interdisciplinaire",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Donner du sens a une integrale en contexte (par exemple: distance parcourue comme integrale de la vitesse, travail comme integrale de la force)",
+      "formulation_bo": "Interpreter une integrale, une valeur moyenne dans un contexte issu d'une autre discipline",
+      "connaissances_associees": [
+        "integrale",
+        "interpretation physique",
+        "grandeurs interdisciplinaires"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-722",
+      "intitule": "Interpreter une valeur moyenne dans un contexte issu d'une autre discipline",
+      "fingerprint": "interpreter_valeur_moyenne_contexte_interdisciplinaire",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "capacite",
+      "description_detaillee": "Donner du sens a la valeur moyenne d'une fonction dans un contexte concret (par exemple: temperature moyenne, vitesse moyenne)",
+      "formulation_bo": "Interpreter une integrale, une valeur moyenne dans un contexte issu d'une autre discipline",
+      "connaissances_associees": [
+        "valeur moyenne",
+        "interpretation physique",
+        "grandeurs interdisciplinaires"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-723",
+      "intitule": "Demontrer la derivee de la fonction x mapsto integrale de a a x de f(t)dt (fonction croissante positive)",
+      "fingerprint": "demontrer_derivee_integrale_fonction_croissante",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Integration",
+      "type": "demonstration",
+      "description_detaillee": "Demontrer que la derivee de F(x) = integrale de a a x de f(t)dt est f(x), lorsque f est une fonction continue, positive et croissante",
+      "formulation_bo": "Derivee de x mapsto integrale de a a x de f(t)dt lorsque f est une fonction continue positive croissante",
+      "connaissances_associees": [
+        "derivee",
+        "integrale",
+        "theoreme fondamental",
+        "limite",
+        "fonction croissante"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AG-724",
+      "intitule": "Implémenter la méthode des rectangles pour approximer une integrale",
+      "fingerprint": "implementer_methode_rectangles",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Methodes numeriques",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un algorithme (par exemple en Python) utilisant la methode des rectangles pour estimer numeriquement une integrale",
+      "formulation_bo": "Methode des rectangles, des trapèzes",
+      "connaissances_associees": [
+        "integrale",
+        "subdivision",
+        "programmation",
+        "boucle"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AG-725",
+      "intitule": "Implémenter la méthode des trapèzes pour approximer une integrale",
+      "fingerprint": "implementer_methode_trapezes",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Methodes numeriques",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un algorithme (par exemple en Python) utilisant la methode des trapèzes pour estimer numeriquement une integrale",
+      "formulation_bo": "Methode des rectangles, des trapèzes",
+      "connaissances_associees": [
+        "integrale",
+        "subdivision",
+        "programmation",
+        "boucle"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AG-726",
+      "intitule": "Implémenter la méthode de Monte-Carlo pour estimer une aire",
+      "fingerprint": "implementer_methode_monte_carlo",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Methodes numeriques",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un algorithme (par exemple en Python) utilisant la methode de Monte-Carlo avec nombres aleatoires pour estimer une aire (et par extension, une integrale)",
+      "formulation_bo": "Methode de Monte-Carlo pour un calcul d'aire",
+      "connaissances_associees": [
+        "aire",
+        "integrale",
+        "nombres aleatoires",
+        "probabilites",
+        "programmation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 14
+      }
+    }
+  ],
+  "summary": {
+    "total": 27,
+    "by_type": {
+      "capacite": 16,
+      "contenu": 6,
+      "demonstration": 1,
+      "algorithme": 3
+    },
+    "by_domaine": {
+      "ANALYSE": 23,
+      "ALGORITHMIQUE": 3
+    },
+    "by_sous_domaine": {
+      "Convexite et concavite": 5,
+      "Integration": 18,
+      "Methodes numeriques": 3
+    },
+    "fingerprints": [
+      "reconnaitre_fonction_convexe_graphique",
+      "reconnaitre_fonction_concave_graphique",
+      "reconnaitre_point_inflexion_graphique",
+      "etudier_convexite_fonction_derivable",
+      "etudier_concavite_fonction_derivable",
+      "definir_integrale_aire_sous_courbe",
+      "appliquer_relation_chasles_integrales",
+      "definir_valeur_moyenne_fonction",
+      "approximer_integrale_methode_rectangles",
+      "etendre_integrale_signe_quelconque",
+      "appliquer_theoreme_fondamental_analyse",
+      "calculer_integrale_primitives",
+      "estimer_graphiquement_integrale",
+      "encadrer_integrale",
+      "estimer_graphiquement_valeur_moyenne",
+      "encadrer_valeur_moyenne",
+      "calculer_integrale",
+      "calculer_valeur_moyenne_fonction",
+      "calculer_aire_sous_courbe",
+      "calculer_aire_entre_deux_courbes",
+      "interpreter_integrale_contexte_interdisciplinaire",
+      "interpreter_valeur_moyenne_contexte_interdisciplinaire",
+      "demontrer_derivee_integrale_fonction_croissante",
+      "implementer_methode_rectangles",
+      "implementer_methode_trapezes",
+      "implementer_methode_monte_carlo"
+    ]
+  }
+}

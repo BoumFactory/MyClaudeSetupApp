@@ -1,0 +1,215 @@
+{
+  "source": {
+    "pdf": "1GT.pdf",
+    "page": 5,
+    "text_length": 2847
+  },
+  "extraction": {
+    "date": "2026-01-02T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page d'objectifs pedagogiques - competences implicites extraites des orientations"
+  },
+  "competences": [
+    {
+      "code": "1SPE-AN-251",
+      "intitule": "Definir une suite par une formule explicite u_n = f(n)",
+      "fingerprint": "definir_suite_formule_explicite",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et utiliser la definition d'une suite donnee par une formule explicite ou le terme general u_n est exprime directement en fonction de l'indice n",
+      "formulation_bo": "par une formule explicite u = f(n)",
+      "connaissances_associees": ["notion de suite", "fonction de N dans R"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AN-252",
+      "intitule": "Definir une suite par une relation de recurrence u_{n+1} = f(u_n)",
+      "fingerprint": "definir_suite_relation_recurrence",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et utiliser la definition d'une suite donnee par une relation de recurrence ou chaque terme est calcule a partir du precedent",
+      "formulation_bo": "par une relation de recurrence u = f(u )",
+      "connaissances_associees": ["notion de suite", "premier terme", "relation de recurrence"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AN-253",
+      "intitule": "Definir une suite par un motif geometrique ou combinatoire",
+      "fingerprint": "definir_suite_motif_geometrique_combinatoire",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "contenu",
+      "description_detaillee": "Reconnaitre et definir une suite a partir de motifs geometriques (nombres figures) ou combinatoires (denombrement d'elements dans une configuration)",
+      "formulation_bo": "par des motifs geometriques ou combinatoires, par exemple suite de nombres figures, suite decrivant le nombre d'elements dans une configuration dependant d'un entier naturel",
+      "connaissances_associees": ["nombres figures", "configurations geometriques", "denombrement"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AN-254",
+      "intitule": "Passer d'un mode de generation d'une suite a un autre",
+      "fingerprint": "convertir_mode_generation_suite",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Convertir une suite definie par recurrence en formule explicite ou inversement, notamment pour les suites arithmetiques et geometriques",
+      "formulation_bo": "on peut s'interesser au passage d'un mode de generation a un autre, et notamment a la recherche d'une formule explicite pour une suite definie d'une autre facon",
+      "connaissances_associees": ["definition explicite", "definition par recurrence", "suites arithmetiques", "suites geometriques"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AN-255",
+      "intitule": "Modeliser une evolution a taux fixe par une suite geometrique",
+      "fingerprint": "modeliser_evolution_taux_fixe_suite_geometrique",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre qu'une evolution a taux d'evolution constant (capital, population, decroissance radioactive) se modelise par une suite geometrique",
+      "formulation_bo": "L'eleve doit automatiser le fait qu'une evolution a taux fixe est modelisee par une suite geometrique",
+      "connaissances_associees": ["taux d'evolution", "suite geometrique", "raison", "pourcentages"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AN-256",
+      "intitule": "Calculer le rapport de deux termes consecutifs d'une suite",
+      "fingerprint": "calculer_rapport_termes_consecutifs_suite",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Calculer le rapport u_{n+1}/u_n pour identifier la nature d'une suite (geometrique si rapport constant) ou etudier son evolution",
+      "formulation_bo": "percevoir l'interet de considerer le rapport de deux termes consecutifs",
+      "connaissances_associees": ["suite geometrique", "raison", "quotient"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AN-257",
+      "intitule": "Modeliser une evolution de capital par une suite",
+      "fingerprint": "modeliser_evolution_capital_suite",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une suite pour modeliser l'evolution ou l'actualisation d'un capital dans le temps",
+      "formulation_bo": "evolution ou actualisation d'un capital",
+      "connaissances_associees": ["suite geometrique", "taux d'interet", "capitalisation"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AN-258",
+      "intitule": "Modeliser une evolution de population par une suite",
+      "fingerprint": "modeliser_evolution_population_suite",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une suite pour modeliser l'evolution d'une population au cours du temps",
+      "formulation_bo": "evolution d'une population",
+      "connaissances_associees": ["suite arithmetique", "suite geometrique", "modele discret"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AN-259",
+      "intitule": "Modeliser une decroissance radioactive par une suite",
+      "fingerprint": "modeliser_decroissance_radioactive_suite",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une suite geometrique pour modeliser la decroissance radioactive d'une quantite de matiere",
+      "formulation_bo": "decroissance radioactive",
+      "connaissances_associees": ["suite geometrique", "raison inferieure a 1", "demi-vie"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AN-260",
+      "intitule": "Developper une intuition de la notion de limite sur des exemples",
+      "fingerprint": "intuition_limite_suite_exemples",
+      "niveau": "1SPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "capacite",
+      "description_detaillee": "A partir de calculs numeriques et d'algorithmes de recherche de seuil, developper une intuition du comportement a l'infini d'une suite sans formalisation",
+      "formulation_bo": "sensibilisation a l'idee de limite [...] en developpant une intuition en s'appuyant sur des calculs numeriques, des algorithmes de recherche de seuil",
+      "connaissances_associees": ["comportement asymptotique", "seuil", "convergence intuitive"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AG-261",
+      "intitule": "Utiliser un algorithme de recherche de seuil pour une suite",
+      "fingerprint": "algorithme_recherche_seuil_suite",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Suites numeriques",
+      "type": "algorithme",
+      "description_detaillee": "Programmer et utiliser un algorithme qui determine a partir de quel rang une suite depasse (ou passe sous) un seuil donne",
+      "formulation_bo": "algorithmes de recherche de seuil",
+      "connaissances_associees": ["boucle while", "condition d'arret", "suite", "seuil"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AL-262",
+      "intitule": "Resoudre un probleme geometrique a l'aide d'une equation du second degre",
+      "fingerprint": "resoudre_probleme_geometrique_equation_second_degre",
+      "niveau": "1SPE",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Fonctions polynomes du second degre",
+      "type": "capacite",
+      "description_detaillee": "Traduire un probleme geometrique en equation du second degre et resoudre cette equation pour repondre au probleme",
+      "formulation_bo": "problemes varies, notamment d'origine geometrique, se ramenant a une equation du second degre",
+      "connaissances_associees": ["equation du second degre", "discriminant", "modelisation"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    },
+    {
+      "code": "1SPE-AL-263",
+      "intitule": "Resoudre un probleme d'optimisation avec une fonction polynome du second degre",
+      "fingerprint": "optimisation_fonction_polynome_second_degre",
+      "niveau": "1SPE",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Fonctions polynomes du second degre",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les proprietes d'une fonction polynome du second degre (extremum au sommet de la parabole) pour resoudre un probleme d'optimisation",
+      "formulation_bo": "etude d'une fonction polynome du second degre (optimisation, variations)",
+      "connaissances_associees": ["parabole", "sommet", "maximum", "minimum", "variations"],
+      "source": {"pdf": "1GT.pdf", "page": 5}
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "by_type": {
+      "contenu": 3,
+      "capacite": 9,
+      "algorithme": 1,
+      "demonstration": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "ANALYSE": 10,
+      "ALGORITHMIQUE": 1,
+      "ALGEBRE": 2
+    },
+    "fingerprints": [
+      "definir_suite_formule_explicite",
+      "definir_suite_relation_recurrence",
+      "definir_suite_motif_geometrique_combinatoire",
+      "convertir_mode_generation_suite",
+      "modeliser_evolution_taux_fixe_suite_geometrique",
+      "calculer_rapport_termes_consecutifs_suite",
+      "modeliser_evolution_capital_suite",
+      "modeliser_evolution_population_suite",
+      "modeliser_decroissance_radioactive_suite",
+      "intuition_limite_suite_exemples",
+      "algorithme_recherche_seuil_suite",
+      "resoudre_probleme_geometrique_equation_second_degre",
+      "optimisation_fonction_polynome_second_degre"
+    ]
+  }
+}

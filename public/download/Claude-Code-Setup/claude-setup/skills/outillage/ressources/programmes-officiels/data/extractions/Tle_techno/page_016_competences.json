@@ -1,0 +1,401 @@
+{
+  "source": {
+    "pdf": "Tle_techno.pdf",
+    "page": 16,
+    "text_length": 1987
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TTC-PR-801",
+      "intitule": "Calculer la probabilité de l'événement {X = k} à l'aide des coefficients binomiaux",
+      "fingerprint": "calculer_probabilite_binomiale_coeff",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les coefficients binomiaux C(n,k) pour calculer P(X = k) dans une loi binomiale B(n,p), où X est le nombre de succès en n épreuves indépendantes de Bernoulli.",
+      "formulation_bo": "calculer la probabilité de l'événement {X = k} à l'aide des coefficients binomiaux",
+      "connaissances_associees": [
+        "définition de la loi binomiale",
+        "coefficient binomial",
+        "épreuve de Bernoulli",
+        "indépendance des épreuves",
+        "répétition d'épreuves"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-802",
+      "intitule": "Définir le coefficient binomial comme nombre de chemins dans un arbre de Bernoulli",
+      "fingerprint": "definir_coefficient_binomial_arbre_bernoulli",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que le coefficient binomial C(n,k) représente le nombre de chemins associés à l'événement {X = k} dans un arbre représentant un schéma de Bernoulli de taille n.",
+      "formulation_bo": "Le coefficient binomial C(n,k) est défini comme le nombre de chemins associés à l'événement {X = k} dans un arbre représentant un schéma de Bernoulli de taille n",
+      "connaissances_associees": [
+        "schéma de Bernoulli",
+        "arbre de probabilités",
+        "dénombrement de chemins",
+        "structure combinatoire"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-803",
+      "intitule": "Dénombrer les chemins dans un arbre de Bernoulli pour n ≤ 4",
+      "fingerprint": "denombrer_chemins_arbre_bernoulli_petit_n",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "Pour des valeurs de n inférieures ou égales à 4, utiliser la représentation arborescente pour dénombrer les chemins et calculer les probabilités correspondantes à un événement donné.",
+      "formulation_bo": "Pour des valeurs de n inférieures ou égales à 4, la représentation de l'arbre permet de dénombrer les chemins et de calculer les probabilités correspondantes",
+      "connaissances_associees": [
+        "arbre de probabilités",
+        "schéma de Bernoulli",
+        "dénombrement élémentaire",
+        "petit n (≤4)"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-804",
+      "intitule": "Déterminer le nombre de chemins à l'aide du triangle de Pascal pour n > 4",
+      "fingerprint": "determiner_chemins_triangle_pascal_grand_n",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "Pour des valeurs de n supérieures à 4, utiliser le triangle de Pascal ou la formule des coefficients binomiaux pour déterminer le nombre de chemins associés à un événement {X = k}.",
+      "formulation_bo": "Pour des valeurs de n plus grandes, le triangle de Pascal permet de déterminer le nombre de chemins associés à l'événement",
+      "connaissances_associees": [
+        "triangle de Pascal",
+        "coefficient binomial",
+        "schéma de Bernoulli",
+        "grand n (>4)"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-805",
+      "intitule": "Appliquer la formule de Pascal pour les coefficients binomiaux",
+      "fingerprint": "appliquer_formule_pascal_binomial",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la relation de récurrence C(n,k) = C(n-1,k-1) + C(n-1,k) pour calculer ou vérifier des coefficients binomiaux à partir du raisonnement sur le nombre de chemins dans un arbre.",
+      "formulation_bo": "La formule de Pascal C(n,k) = C(n-1,k-1) + C(n-1,k) est établie à partir d'un raisonnement sur le nombre de chemins dans l'arbre",
+      "connaissances_associees": [
+        "coefficient binomial",
+        "récurrence",
+        "triangle de Pascal",
+        "arbre de probabilités"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-AG-806",
+      "intitule": "Générer un triangle de Pascal de taille n donnée",
+      "fingerprint": "generer_triangle_pascal",
+      "niveau": "TTC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes et programmation",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme ou un programme pour construire et afficher un triangle de Pascal jusqu'à la ligne n en utilisant la relation de récurrence C(n,k) = C(n-1,k-1) + C(n-1,k).",
+      "formulation_bo": "Générer un triangle de Pascal de taille n donnée",
+      "connaissances_associees": [
+        "triangle de Pascal",
+        "coefficient binomial",
+        "boucles imbriquées",
+        "listes/tableaux",
+        "programmation Python"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-807",
+      "intitule": "Représenter par un diagramme en bâtons la loi de probabilité d'une loi binomiale B(n,p)",
+      "fingerprint": "representer_diagramme_batons_loi_binomiale",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "Tracer un diagramme en bâtons montrant la distribution de probabilité P(X = k) pour une loi binomiale B(n,p) donnée, avec les valeurs de k en abscisse et les probabilités en ordonnée.",
+      "formulation_bo": "Représenter par un diagramme en bâtons la loi de probabilité d'une loi binomiale (n,p)",
+      "connaissances_associees": [
+        "loi binomiale",
+        "diagramme en bâtons",
+        "probabilité",
+        "représentation graphique"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-ST-808",
+      "intitule": "Faire le lien entre loi binomiale théorique et histogramme empirique de fréquences",
+      "fingerprint": "lien_loi_binomiale_histogramme_frequences",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Loi binomiale et simulation",
+      "type": "capacite",
+      "description_detaillee": "Simuler N échantillons de taille n d'une loi de Bernoulli de paramètre p, construire l'histogramme des fréquences observées des succès, et vérifier la convergence vers la loi binomiale théorique B(n,p).",
+      "formulation_bo": "Représenter par un diagramme en bâtons la loi binomiale et faire le lien avec l'histogramme des fréquences observées des succès lors de la simulation de N échantillons de taille n d'une loi de Bernoulli de paramètre p",
+      "connaissances_associees": [
+        "loi binomiale",
+        "simulation",
+        "loi de Bernoulli",
+        "fréquence empirique",
+        "convergence",
+        "loi des grands nombres"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-809",
+      "intitule": "Calculer l'espérance d'une variable aléatoire suivant une loi de probabilité donnée",
+      "fingerprint": "calculer_esperance_variable_aleatoire",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Espérance et loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule E(X) = Σ(xi × pi) pour calculer l'espérance d'une variable aléatoire discrète suivant une loi de probabilité quelconque.",
+      "formulation_bo": "Calculer l'espérance Σ(xi × pi) d'une variable aléatoire suivant une loi de probabilité donnée",
+      "connaissances_associees": [
+        "espérance mathématique",
+        "variable aléatoire",
+        "loi de probabilité",
+        "moyenne pondérée"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-810",
+      "intitule": "Calculer l'espérance d'une variable aléatoire suivant une loi binomiale B(n,p)",
+      "fingerprint": "calculer_esperance_loi_binomiale",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Espérance et loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule E(X) = n × p pour calculer l'espérance d'une variable aléatoire suivant une loi binomiale B(n,p). Cette formule est admise.",
+      "formulation_bo": "Calculer l'espérance d'une variable aléatoire suivant la loi binomiale B(n,p) avec E(X) = n × p",
+      "connaissances_associees": [
+        "loi binomiale",
+        "espérance",
+        "propriété linéaire de l'espérance",
+        "formule admise"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-811",
+      "intitule": "Représenter graphiquement l'espérance de lois binomiales à p fixé et n variable",
+      "fingerprint": "representer_esperance_binomiale_p_fixe",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Espérance et loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "Tracer le graphique de l'espérance E(X) = n × p en fonction de n pour une probabilité p fixée, en observant la relation linéaire et en faisant le lien avec la formule théorique.",
+      "formulation_bo": "Représenter graphiquement l'espérance de lois binomiales B(n,p) à p fixé et n variable puis faire le lien avec l'expression admise de l'espérance",
+      "connaissances_associees": [
+        "loi binomiale",
+        "espérance",
+        "graphique",
+        "fonction linéaire",
+        "proportionnalité"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-812",
+      "intitule": "Représenter graphiquement l'espérance de lois binomiales à n fixé et p variable",
+      "fingerprint": "representer_esperance_binomiale_n_fixe",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Espérance et loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "Tracer le graphique de l'espérance E(X) = n × p en fonction de p pour un nombre d'épreuves n fixé, en observant la relation linéaire et en faisant le lien avec la formule théorique.",
+      "formulation_bo": "Représenter graphiquement l'espérance de lois binomiales B(n,p) à n fixé et p variable puis faire le lien avec l'expression admise de l'espérance",
+      "connaissances_associees": [
+        "loi binomiale",
+        "espérance",
+        "graphique",
+        "fonction linéaire",
+        "proportionnalité"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-813",
+      "intitule": "Reconnaître un problème d'optimisation linéaire",
+      "fingerprint": "reconnaitre_probleme_optimisation_lineaire",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Thèmes d'étude",
+      "type": "contenu",
+      "description_detaillee": "Identifier une situation qui peut être modélisée par une optimisation linéaire, impliquant la maximisation ou minimisation d'une fonction objective linéaire sous contraintes linéaires.",
+      "formulation_bo": "Thème d'étude : optimisation linéaire et régionnement du plan",
+      "connaissances_associees": [
+        "programmation linéaire",
+        "fonction objective",
+        "contraintes",
+        "région admissible"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-814",
+      "intitule": "Appliquer la méthode de Monte-Carlo à un problème de probabilité",
+      "fingerprint": "appliquer_methode_monte_carlo",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Thèmes d'étude",
+      "type": "contenu",
+      "description_detaillee": "Utiliser la méthode de Monte-Carlo (simulation d'événements aléatoires) pour estimer une probabilité ou résoudre un problème numérique.",
+      "formulation_bo": "Thème d'étude : méthode de Monte-Carlo",
+      "connaissances_associees": [
+        "simulation aléatoire",
+        "approximation numérique",
+        "loi des grands nombres",
+        "programmation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-PR-815",
+      "intitule": "Simuler une marche aléatoire",
+      "fingerprint": "simuler_marche_aleatoire",
+      "niveau": "TTC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Thèmes d'étude",
+      "type": "contenu",
+      "description_detaillee": "Programmer la simulation d'une marche aléatoire (succession de pas aléatoires) et analyser son comportement probabiliste.",
+      "formulation_bo": "Thème d'étude : simulation de marches aléatoires",
+      "connaissances_associees": [
+        "marche aléatoire",
+        "simulation",
+        "mouvement aléatoire",
+        "programmation Python"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TTC-AG-816",
+      "intitule": "Appliquer la théorie des graphes à un problème d'ordonnancement",
+      "fingerprint": "appliquer_graphes_ordonnancement",
+      "niveau": "TTC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Thèmes d'étude",
+      "type": "contenu",
+      "description_detaillee": "Utiliser les graphes et les algorithmes associés pour modéliser et résoudre un problème d'ordonnancement de tâches.",
+      "formulation_bo": "Thème d'étude : initiation aux graphes ; ordonnancement",
+      "connaissances_associees": [
+        "graphe",
+        "sommet",
+        "arête",
+        "chemin critique",
+        "algorithme de tri topologique",
+        "ordonnancement"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 16
+      }
+    }
+  ],
+  "summary": {
+    "total": 16,
+    "by_type": {
+      "capacite": 10,
+      "contenu": 3,
+      "algorithme": 2,
+      "demonstration": 0
+    },
+    "by_domaine": {
+      "PROBABILITES": 10,
+      "ALGORITHMIQUE": 2,
+      "STATISTIQUES": 1,
+      "NB": 0,
+      "ANALYSE": 0,
+      "ALGEBRE": 0,
+      "GEOMETRIE": 0,
+      "TRIGONOMETRIE": 0,
+      "GRANDEURS": 0,
+      "LOGIQUE": 0
+    },
+    "by_niveau": {
+      "TTC": 16
+    },
+    "fingerprints": [
+      "calculer_probabilite_binomiale_coeff",
+      "definir_coefficient_binomial_arbre_bernoulli",
+      "denombrer_chemins_arbre_bernoulli_petit_n",
+      "determiner_chemins_triangle_pascal_grand_n",
+      "appliquer_formule_pascal_binomial",
+      "generer_triangle_pascal",
+      "representer_diagramme_batons_loi_binomiale",
+      "lien_loi_binomiale_histogramme_frequences",
+      "calculer_esperance_variable_aleatoire",
+      "calculer_esperance_loi_binomiale",
+      "representer_esperance_binomiale_p_fixe",
+      "representer_esperance_binomiale_n_fixe",
+      "reconnaitre_probleme_optimisation_lineaire",
+      "appliquer_methode_monte_carlo",
+      "simuler_marche_aleatoire",
+      "appliquer_graphes_ordonnancement"
+    ]
+  }
+}

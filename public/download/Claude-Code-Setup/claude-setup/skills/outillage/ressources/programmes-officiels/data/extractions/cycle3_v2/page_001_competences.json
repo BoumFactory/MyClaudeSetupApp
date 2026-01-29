@@ -1,0 +1,88 @@
+{
+  "source": {
+    "pdf": "cycle3_v2.pdf",
+    "page": 1,
+    "text_length": 1247,
+    "page_type": "sommaire"
+  },
+  "extraction": {
+    "date": "2026-01-02T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page de sommaire - extraction des competences transversales et identification des domaines"
+  },
+  "competences": [],
+  "domaines_identifies": [
+    {
+      "domaine": "NOMBRES",
+      "sous_domaines": [
+        "Les nombres entiers",
+        "Les fractions",
+        "Les nombres decimaux"
+      ]
+    },
+    {
+      "domaine": "CALCUL",
+      "sous_domaines": [
+        "Le calcul mental",
+        "Les quatre operations"
+      ]
+    },
+    {
+      "domaine": "ALGEBRE",
+      "sous_domaines": [
+        "Algebre"
+      ]
+    },
+    {
+      "domaine": "GRANDEURS",
+      "sous_domaines": [
+        "Les longueurs",
+        "Les masses",
+        "Les contenances",
+        "Les aires",
+        "Les angles",
+        "Les volumes",
+        "Le reperage dans le temps et les durees"
+      ]
+    },
+    {
+      "domaine": "GEOMETRIE",
+      "sous_domaines": [
+        "La geometrie plane",
+        "Les solides",
+        "Le reperage dans l'espace"
+      ]
+    }
+  ],
+  "niveaux_identifies": [
+    "CM1",
+    "CM2",
+    "6E"
+  ],
+  "summary": {
+    "total": 6,
+    "by_type": {
+      "capacite": 6,
+      "contenu": 0,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "LOGIQUE": 5,
+      "ALGORITHMIQUE": 1
+    },
+    "fingerprints": [
+      "resoudre_problemes_mathematiques_cycle3",
+      "memoriser_faits_procedures_mathematiques",
+      "communiquer_oral_mathematiques",
+      "rediger_ecrits_mathematiques",
+      "developper_pensee_algebrique",
+      "developper_pensee_informatique"
+    ],
+    "note": "Page de sommaire - les competences specifiques seront extraites des pages suivantes"
+  },
+  "_last_modified": "2026-01-10T15:19:29.674065"
+}

@@ -1,0 +1,461 @@
+{
+  "source": {
+    "pdf": "TG_spe.pdf",
+    "page": 18,
+    "text_length": 1876
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-PR-901",
+      "intitule": "Définir la somme de deux variables aléatoires",
+      "fingerprint": "definir_somme_deux_variables_aleatoires",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et pouvoir définir la somme de deux variables aléatoires X + Y et ses propriétés.",
+      "formulation_bo": "Somme de deux variables aléatoires.",
+      "connaissances_associees": ["variables aléatoires", "espérance", "variance"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-902",
+      "intitule": "Appliquer la linéarité de l'espérance E(X + Y) = E(X) + E(Y)",
+      "fingerprint": "appliquer_linearite_esperance_somme",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriété de linéarité de l'espérance pour calculer E(X + Y) = E(X) + E(Y).",
+      "formulation_bo": "Linéarité de l'espérance : E(X + Y) = E(X) + E(Y)",
+      "connaissances_associees": ["définition espérance", "variables aléatoires"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-903",
+      "intitule": "Appliquer la linéarité de l'espérance E(aX) = aE(X)",
+      "fingerprint": "appliquer_linearite_esperance_multiplication_scalaire",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriété de linéarité de l'espérance pour calculer E(aX) = aE(X) où a est un scalaire.",
+      "formulation_bo": "Linéarité de l'espérance : E(aX) = aE(X)",
+      "connaissances_associees": ["définition espérance", "variables aléatoires"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-904",
+      "intitule": "Définir l'indépendance de variables aléatoires dans le cadre d'épreuves indépendantes",
+      "fingerprint": "definir_independance_variables_aleatoires",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la notion d'indépendance de variables aléatoires X et Y dans le contexte de la succession d'épreuves indépendantes.",
+      "formulation_bo": "Dans le cadre de la succession d'épreuves indépendantes, exemples de variables indépendantes X,Y",
+      "connaissances_associees": ["succession d'épreuves indépendantes", "variables aléatoires", "lois de probabilité"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-905",
+      "intitule": "Appliquer l'additivité de la variance V(X + Y) = V(X) + V(Y) pour variables indépendantes",
+      "fingerprint": "appliquer_additivite_variance_somme",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriété d'additivité de la variance : V(X + Y) = V(X) + V(Y) lorsque X et Y sont indépendantes.",
+      "formulation_bo": "Relation d'additivité V(X + Y) = V(X) + V(Y)",
+      "connaissances_associees": ["variance", "indépendance de variables", "variables aléatoires"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-906",
+      "intitule": "Appliquer la relation V(aX) = a²V(X)",
+      "fingerprint": "appliquer_variance_multiplication_scalaire",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "capacite",
+      "description_detaillee": "Calculer la variance d'une variable aléatoire multipliée par un scalaire : V(aX) = a²V(X).",
+      "formulation_bo": "Relation V(aX) = a²V(X)",
+      "connaissances_associees": ["variance", "variables aléatoires"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-907",
+      "intitule": "Calculer l'espérance de la loi binomiale",
+      "fingerprint": "calculer_esperance_loi_binomiale",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "À partir des paramètres n et p, calculer l'espérance E(X) = np pour une variable suivant une loi binomiale B(n,p).",
+      "formulation_bo": "Application à l'espérance, la variance et l'écart type de la loi binomiale",
+      "connaissances_associees": ["loi binomiale", "espérance", "paramètres n et p"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-908",
+      "intitule": "Calculer la variance de la loi binomiale",
+      "fingerprint": "calculer_variance_loi_binomiale",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "À partir des paramètres n et p, calculer la variance V(X) = np(1-p) pour une variable suivant une loi binomiale B(n,p).",
+      "formulation_bo": "Application à l'espérance, la variance et l'écart type de la loi binomiale",
+      "connaissances_associees": ["loi binomiale", "variance", "paramètres n et p"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-909",
+      "intitule": "Calculer l'écart-type de la loi binomiale",
+      "fingerprint": "calculer_ecart_type_loi_binomiale",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "capacite",
+      "description_detaillee": "À partir des paramètres n et p, calculer l'écart-type σ(X) = √(np(1-p)) pour une variable suivant une loi binomiale B(n,p).",
+      "formulation_bo": "Application à l'espérance, la variance et l'écart type de la loi binomiale",
+      "connaissances_associees": ["loi binomiale", "écart-type", "variance", "paramètres n et p"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-910",
+      "intitule": "Définir un échantillon de taille n d'une loi de probabilité",
+      "fingerprint": "definir_echantillon_taille_n",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Échantillonnage",
+      "type": "contenu",
+      "description_detaillee": "Comprendre qu'un échantillon de taille n d'une loi de probabilité est une liste (X₁, ..., Xₙ) de variables indépendantes identiques suivant cette loi.",
+      "formulation_bo": "Échantillon de taille n d'une loi de probabilité : liste (X₁, …, Xₙ) de variables indépendantes identiques suivant cette loi",
+      "connaissances_associees": ["variables aléatoires", "indépendance", "lois de probabilité"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-911",
+      "intitule": "Calculer l'espérance de la somme Sₙ = X₁ + ... + Xₙ d'un échantillon",
+      "fingerprint": "calculer_esperance_somme_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'espérance de la somme des variables d'un échantillon Sₙ = X₁ + ... + Xₙ en utilisant la linéarité de l'espérance.",
+      "formulation_bo": "Espérance, variance, écart type de la somme Sₙ = X₁ + … + Xₙ",
+      "connaissances_associees": ["échantillon", "linéarité espérance", "variables indépendantes identiques"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-912",
+      "intitule": "Calculer la variance de la somme Sₙ = X₁ + ... + Xₙ d'un échantillon",
+      "fingerprint": "calculer_variance_somme_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Calculer la variance de la somme des variables d'un échantillon Sₙ = X₁ + ... + Xₙ en utilisant l'additivité de la variance pour variables indépendantes.",
+      "formulation_bo": "Espérance, variance, écart type de la somme Sₙ = X₁ + … + Xₙ",
+      "connaissances_associees": ["échantillon", "additivité variance", "variables indépendantes identiques"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-913",
+      "intitule": "Calculer l'écart-type de la somme Sₙ = X₁ + ... + Xₙ d'un échantillon",
+      "fingerprint": "calculer_ecart_type_somme_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'écart-type de la somme des variables d'un échantillon σ(Sₙ) = √(V(Sₙ)) en utilisant la variance de la somme.",
+      "formulation_bo": "Espérance, variance, écart type de la somme Sₙ = X₁ + … + Xₙ",
+      "connaissances_associees": ["échantillon", "écart-type", "variance", "somme de variables"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-914",
+      "intitule": "Calculer l'espérance de la moyenne Mₙ = Sₙ/n d'un échantillon",
+      "fingerprint": "calculer_esperance_moyenne_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'espérance de la moyenne empirique Mₙ = Sₙ/n d'un échantillon en utilisant la linéarité de l'espérance.",
+      "formulation_bo": "Espérance, variance, écart type de la moyenne Mₙ = Sₙ/n",
+      "connaissances_associees": ["échantillon", "moyenne empirique", "espérance", "linéarité"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-915",
+      "intitule": "Calculer la variance de la moyenne Mₙ = Sₙ/n d'un échantillon",
+      "fingerprint": "calculer_variance_moyenne_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Calculer la variance de la moyenne empirique Mₙ = Sₙ/n d'un échantillon en utilisant V(Mₙ) = V(Sₙ)/n².",
+      "formulation_bo": "Espérance, variance, écart type de la moyenne Mₙ = Sₙ/n",
+      "connaissances_associees": ["échantillon", "moyenne empirique", "variance", "relation variance scalaire"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-916",
+      "intitule": "Calculer l'écart-type de la moyenne Mₙ = Sₙ/n d'un échantillon",
+      "fingerprint": "calculer_ecart_type_moyenne_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'écart-type de la moyenne empirique σ(Mₙ) = σ(Sₙ)/n d'un échantillon.",
+      "formulation_bo": "Espérance, variance, écart type de la moyenne Mₙ = Sₙ/n",
+      "connaissances_associees": ["échantillon", "moyenne empirique", "écart-type", "variance"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-917",
+      "intitule": "Représenter une variable aléatoire comme somme de variables plus simples",
+      "fingerprint": "representer_variable_comme_somme_variables",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "capacite",
+      "description_detaillee": "Décomposer une variable aléatoire complexe en somme de variables aléatoires plus simples (par exemple, loi binomiale comme somme de variables de Bernoulli).",
+      "formulation_bo": "Représenter une variable comme somme de variables aléatoires plus simples",
+      "connaissances_associees": ["variables aléatoires", "variables de Bernoulli", "loi binomiale", "schéma de Bernoulli"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-918",
+      "intitule": "Calculer l'espérance d'une variable aléatoire quelconque",
+      "fingerprint": "calculer_esperance_variable_quelconque",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'espérance d'une variable aléatoire X en utilisant la définition comme moyenne pondérée des valeurs par leurs probabilités.",
+      "formulation_bo": "Calculer l'espérance d'une variable aléatoire, notamment en utilisant la propriété de linéarité",
+      "connaissances_associees": ["espérance", "moyenne pondérée", "loi de probabilité"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-919",
+      "intitule": "Calculer l'espérance d'une variable aléatoire en utilisant la linéarité",
+      "fingerprint": "calculer_esperance_par_linearite",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la linéarité de l'espérance (E(aX + bY) = aE(X) + bE(Y)) pour calculer l'espérance d'une combinaison linéaire de variables aléatoires.",
+      "formulation_bo": "Calculer l'espérance d'une variable aléatoire, notamment en utilisant la propriété de linéarité",
+      "connaissances_associees": ["linéarité espérance", "variables aléatoires", "combinaison linéaire"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-920",
+      "intitule": "Calculer la variance d'une variable aléatoire quelconque",
+      "fingerprint": "calculer_variance_variable_quelconque",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "capacite",
+      "description_detaillee": "Calculer la variance d'une variable aléatoire X en utilisant la définition V(X) = E((X - E(X))²) ou la formule V(X) = E(X²) - (E(X))².",
+      "formulation_bo": "Calculer la variance d'une variable aléatoire, notamment en l'exprimant comme somme de variables aléatoires indépendantes",
+      "connaissances_associees": ["variance", "espérance", "variable aléatoire"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-921",
+      "intitule": "Calculer la variance en exprimant la variable comme somme de variables indépendantes",
+      "fingerprint": "calculer_variance_par_somme_independantes",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "capacite",
+      "description_detaillee": "Décomposer une variable aléatoire en somme de variables indépendantes pour utiliser l'additivité de la variance et simplifier le calcul.",
+      "formulation_bo": "Calculer la variance d'une variable aléatoire, notamment en l'exprimant comme somme de variables aléatoires indépendantes",
+      "connaissances_associees": ["additivité variance", "indépendance", "décomposition de variables"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-922",
+      "intitule": "Démontrer la formule de l'espérance de la loi binomiale",
+      "fingerprint": "demontrer_esperance_loi_binomiale",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que pour une variable suivant B(n,p), l'espérance E(X) = np en utilisant la décomposition comme somme de variables de Bernoulli et la linéarité de l'espérance.",
+      "formulation_bo": "Espérance et variance de la loi binomiale",
+      "connaissances_associees": ["loi binomiale", "variables de Bernoulli", "linéarité espérance", "schéma de Bernoulli"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-923",
+      "intitule": "Démontrer la formule de la variance de la loi binomiale",
+      "fingerprint": "demontrer_variance_loi_binomiale",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Loi binomiale",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que pour une variable suivant B(n,p), la variance V(X) = np(1-p) en utilisant la décomposition comme somme de variables de Bernoulli indépendantes et l'additivité de la variance.",
+      "formulation_bo": "Espérance et variance de la loi binomiale",
+      "connaissances_associees": ["loi binomiale", "variables de Bernoulli", "additivité variance", "indépendance"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-924",
+      "intitule": "Appliquer la relation E(XY) = E(X)E(Y) pour variables indépendantes",
+      "fingerprint": "appliquer_esperance_produit_independantes",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Approfondissements",
+      "type": "approfondissement",
+      "description_detaillee": "Utiliser la propriété que pour des variables aléatoires indépendantes X et Y, E(XY) = E(X)E(Y). Cette propriété dépasse les exigences du programme de base mais peut être explorée.",
+      "formulation_bo": "Relation E(XY) = E(X)E(Y) pour des variables aléatoires indépendantes X,Y",
+      "connaissances_associees": ["indépendance", "espérance", "produit de variables", "variables aléatoires"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    },
+    {
+      "code": "TSPE-PR-925",
+      "intitule": "Appliquer la relation E(XY) = E(X)E(Y) pour calculer la variance de X + Y",
+      "fingerprint": "appliquer_independance_produit_variance_somme",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Approfondissements",
+      "type": "approfondissement",
+      "description_detaillee": "Utiliser la propriété E(XY) = E(X)E(Y) pour des variables indépendantes afin de dériver ou de comprendre la formule d'additivité de la variance V(X+Y) = V(X) + V(Y).",
+      "formulation_bo": "Application à la variance de X + Y",
+      "connaissances_associees": ["indépendance", "additivité variance", "espérance du produit", "variables aléatoires indépendantes"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 18
+      }
+    }
+  ],
+  "summary": {
+    "total": 25,
+    "by_type": {
+      "contenu": 3,
+      "capacite": 17,
+      "demonstration": 2,
+      "approfondissement": 2
+    },
+    "by_domaine": {
+      "PROBABILITES": 25
+    },
+    "by_sous_domaine": {
+      "Variables aléatoires": 9,
+      "Loi binomiale": 6,
+      "Échantillonnage": 6,
+      "Approfondissements": 2,
+      "Nombres et calculs": 0
+    },
+    "fingerprints": [
+      "definir_somme_deux_variables_aleatoires",
+      "appliquer_linearite_esperance_somme",
+      "appliquer_linearite_esperance_multiplication_scalaire",
+      "definir_independance_variables_aleatoires",
+      "appliquer_additivite_variance_somme",
+      "appliquer_variance_multiplication_scalaire",
+      "calculer_esperance_loi_binomiale",
+      "calculer_variance_loi_binomiale",
+      "calculer_ecart_type_loi_binomiale",
+      "definir_echantillon_taille_n",
+      "calculer_esperance_somme_echantillon",
+      "calculer_variance_somme_echantillon",
+      "calculer_ecart_type_somme_echantillon",
+      "calculer_esperance_moyenne_echantillon",
+      "calculer_variance_moyenne_echantillon",
+      "calculer_ecart_type_moyenne_echantillon",
+      "representer_variable_comme_somme_variables",
+      "calculer_esperance_variable_quelconque",
+      "calculer_esperance_par_linearite",
+      "calculer_variance_variable_quelconque",
+      "calculer_variance_par_somme_independantes",
+      "demontrer_esperance_loi_binomiale",
+      "demontrer_variance_loi_binomiale",
+      "appliquer_esperance_produit_independantes",
+      "appliquer_independance_produit_variance_somme"
+    ]
+  }
+}

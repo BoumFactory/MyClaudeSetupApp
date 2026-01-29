@@ -1,0 +1,104 @@
+{
+  "course_fullname": "Mathematiques Premiere - Exemple",
+  "course_shortname": "MATH1-EXEMPLE",
+  "output": "cours_exemple.mbz",
+
+  "settings": {
+    "format": "topics",
+    "summary": "<p>Cours de mathematiques genere automatiquement</p>",
+    "visible": true,
+    "category": "Mathematiques",
+    "enable_completion": false,
+    "show_grades": true
+  },
+
+  "sections": [
+    {
+      "name": "Introduction",
+      "summary": "<p>Presentation du cours</p>",
+      "visible": false,
+      "activities": [
+        {
+          "type": "page",
+          "name": "Bienvenue",
+          "content": "<h2>Bienvenue dans ce cours</h2><p>Contenu de la page d'accueil.</p>",
+          "visible": false
+        }
+      ]
+    },
+    {
+      "name": "Chapitre 1 - Le cours",
+      "summary": "<p>Documents de cours</p>",
+      "visible": false,
+      "activities": [
+        {
+          "type": "file",
+          "name": "Cours complet",
+          "path": "C:/chemin/vers/cours.pdf",
+          "description": "Document de cours avec demonstrations",
+          "visible": false
+        }
+      ]
+    },
+    {
+      "name": "Chapitre 2 - Exercices",
+      "summary": "<p>Exercices d'entrainement</p>",
+      "visible": false,
+      "activities": [
+        {
+          "type": "file",
+          "name": "Fiche d'exercices",
+          "path": "C:/chemin/vers/exercices.pdf",
+          "description": "Exercices varies",
+          "visible": false
+        },
+        {
+          "type": "quiz",
+          "name": "Quiz de verification",
+          "intro": "<p>Testez vos connaissances</p>",
+          "visible": false,
+          "questions": [
+            {
+              "type": "multichoice",
+              "name": "Q1 - Question exemple",
+              "text": "Quelle est la reponse correcte ? {#1}",
+              "options": ["Option A", "Option B (correcte)", "Option C", "Option D"],
+              "correct_index": 1,
+              "feedbacks": ["Non A", "Correct !", "Non C", "Non D"],
+              "general_feedback": "Explication de la bonne reponse."
+            },
+            {
+              "type": "shortanswer",
+              "name": "Q2 - Reponse texte",
+              "text": "Completez: 2 + 2 = {#1}",
+              "correct_answers": ["4", "quatre"],
+              "general_feedback": "La somme de 2 et 2 est 4."
+            },
+            {
+              "type": "numerical",
+              "name": "Q3 - Calcul numerique",
+              "text": "Calculez: 3 x 7 = {#1}",
+              "correct_value": 21,
+              "tolerance": 0,
+              "general_feedback": "3 x 7 = 21"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Evaluation",
+      "summary": "<p><strong>Reserve au professeur</strong></p>",
+      "visible": false,
+      "activities": [
+        {
+          "type": "file",
+          "name": "Sujet d'evaluation",
+          "path": "C:/chemin/vers/evaluation.pdf",
+          "description": "Sujet + corrige",
+          "visible": false
+        }
+      ]
+    }
+  ]
+}

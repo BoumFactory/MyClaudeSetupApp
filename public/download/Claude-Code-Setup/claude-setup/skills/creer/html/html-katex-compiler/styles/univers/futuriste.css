@@ -1,0 +1,482 @@
+/* ===========================================
+   UNIVERS: FUTURISTE / CYBERPUNK
+   High-tech, néon, hologrammes
+   Support Light/Dark automatique
+   =========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;700&display=swap');
+
+/* ===========================================
+   VARIABLES - MODE CLAIR (défaut)
+   =========================================== */
+:root {
+    /* Couleurs néon adaptées pour fond clair */
+    --neon-cyan: #0097a7;
+    --neon-pink: #c2185b;
+    --neon-blue: #0277bd;
+    --neon-purple: #7b1fa2;
+    --neon-green: #00897b;
+    --neon-yellow: #f9a825;
+    --neon-orange: #ef6c00;
+    --neon-red: #c62828;
+
+    /* Couleurs de fond et texte */
+    --cyber-bg: #f5f7fa;
+    --cyber-surface: #e8ecf1;
+    --cyber-card: #ffffff;
+    --cyber-text: #1a2a3a;
+    --cyber-text-muted: #5a6a7a;
+    --cyber-border: rgba(0, 151, 167, 0.3);
+    --cyber-glow: rgba(0, 151, 167, 0.15);
+
+    /* Blocs */
+    --cyber-def-bg: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+    --cyber-theo-bg: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    --cyber-prop-bg: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+    --cyber-ex-bg: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+    --cyber-meth-bg: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%);
+    --cyber-rem-bg: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    --cyber-exo-bg: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+
+    /* Grille */
+    --grid-color: rgba(0, 151, 167, 0.05);
+}
+
+/* ===========================================
+   VARIABLES - MODE SOMBRE
+   =========================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Couleurs néon vives pour dark */
+        --neon-cyan: #00e5ff;
+        --neon-pink: #ff4081;
+        --neon-blue: #40c4ff;
+        --neon-purple: #e040fb;
+        --neon-green: #69f0ae;
+        --neon-yellow: #ffff00;
+        --neon-orange: #ffab40;
+        --neon-red: #ff5252;
+
+        /* Couleurs de fond et texte */
+        --cyber-bg: #0a0a1a;
+        --cyber-surface: #12122a;
+        --cyber-card: #1a1a3e;
+        --cyber-text: #e0e8f0;
+        --cyber-text-muted: #8899aa;
+        --cyber-border: rgba(0, 229, 255, 0.3);
+        --cyber-glow: rgba(0, 229, 255, 0.1);
+
+        /* Blocs - versions sombres */
+        --cyber-def-bg: linear-gradient(135deg, rgba(0,229,255,0.08) 0%, rgba(0,229,255,0.04) 100%);
+        --cyber-theo-bg: linear-gradient(135deg, rgba(255,171,64,0.08) 0%, rgba(255,171,64,0.04) 100%);
+        --cyber-prop-bg: linear-gradient(135deg, rgba(105,240,174,0.08) 0%, rgba(105,240,174,0.04) 100%);
+        --cyber-ex-bg: linear-gradient(135deg, rgba(224,64,251,0.08) 0%, rgba(224,64,251,0.04) 100%);
+        --cyber-meth-bg: linear-gradient(135deg, rgba(255,255,0,0.08) 0%, rgba(255,255,0,0.04) 100%);
+        --cyber-rem-bg: linear-gradient(135deg, rgba(255,64,129,0.08) 0%, rgba(255,64,129,0.04) 100%);
+        --cyber-exo-bg: linear-gradient(135deg, rgba(64,196,255,0.08) 0%, rgba(64,196,255,0.04) 100%);
+
+        /* Grille */
+        --grid-color: rgba(0, 229, 255, 0.03);
+    }
+}
+
+/* ===========================================
+   STYLES DE BASE
+   =========================================== */
+body {
+    font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+    background: var(--cyber-bg);
+    color: var(--cyber-text);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* === GRILLE SUBTILE === */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(var(--grid-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -2;
+}
+
+/* === EFFET VIGNETTE === */
+.cours-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 0%, var(--cyber-bg) 100%);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* ===========================================
+   TITRES TECH
+   =========================================== */
+
+h1 {
+    font-family: 'Orbitron', monospace !important;
+    font-size: 2.8rem !important;
+    font-weight: 900;
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-shadow: 0 0 10px var(--cyber-glow);
+    border: none;
+    background: transparent;
+    padding: 2rem 0 !important;
+    position: relative;
+}
+
+h1::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--neon-cyan),
+        var(--neon-pink),
+        var(--neon-cyan),
+        transparent);
+}
+
+h1::after {
+    content: '//';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--neon-pink);
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
+
+h2 {
+    font-family: 'Orbitron', monospace !important;
+    font-size: 1.6rem !important;
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--cyber-glow);
+    border-bottom: 2px solid var(--cyber-border);
+    padding-bottom: 0.8rem;
+    margin-top: 3rem;
+    position: relative;
+    letter-spacing: 3px;
+}
+
+h2::before {
+    content: '>';
+    margin-right: 10px;
+    color: var(--neon-green);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+h3 {
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 1.3rem !important;
+    color: var(--neon-green);
+    border-left: 4px solid var(--neon-green);
+    padding-left: 1rem;
+    letter-spacing: 2px;
+}
+
+/* ===========================================
+   BLOCS - STYLE HOLOGRAMME
+   =========================================== */
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    background: var(--cyber-card) !important;
+    border: 1px solid var(--cyber-border) !important;
+    border-left: 4px solid !important;
+    border-radius: 0 12px 12px 0 !important;
+    box-shadow: 0 4px 20px var(--cyber-glow);
+    position: relative;
+    overflow: hidden;
+    margin: 2rem 0;
+    transition: all 0.3s ease;
+}
+
+/* Effet de scan au survol */
+.definition::after, .theoreme::after, .propriete::after,
+.exemple::after, .methode::after, .remarque::after, .exercice::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255,255,255,0.05),
+        transparent);
+    transition: left 0.5s ease;
+}
+
+.definition:hover::after, .theoreme:hover::after, .propriete:hover::after,
+.exemple:hover::after, .methode:hover::after, .remarque:hover::after,
+.exercice:hover::after {
+    left: 100%;
+}
+
+.definition:hover, .theoreme:hover, .propriete:hover,
+.exemple:hover, .methode:hover, .remarque:hover, .exercice:hover {
+    box-shadow: 0 6px 25px var(--cyber-glow);
+    transform: translateY(-2px);
+}
+
+/* === LABELS TECH === */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before, .exercice::before {
+    font-family: 'Orbitron', monospace !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 3px;
+    padding: 0.4rem 1rem !important;
+    border-radius: 0 0 8px 0 !important;
+    background: var(--cyber-surface) !important;
+    border: 1px solid;
+}
+
+/* === COULEURS PAR TYPE === */
+.definition {
+    background: var(--cyber-def-bg) !important;
+    border-left-color: var(--neon-cyan) !important;
+}
+.definition::before { color: var(--neon-cyan) !important; border-color: var(--neon-cyan); }
+
+.theoreme {
+    background: var(--cyber-theo-bg) !important;
+    border-left-color: var(--neon-orange) !important;
+}
+.theoreme::before { color: var(--neon-orange) !important; border-color: var(--neon-orange); }
+
+.propriete {
+    background: var(--cyber-prop-bg) !important;
+    border-left-color: var(--neon-green) !important;
+}
+.propriete::before { color: var(--neon-green) !important; border-color: var(--neon-green); }
+
+.exemple {
+    background: var(--cyber-ex-bg) !important;
+    border-left-color: var(--neon-purple) !important;
+}
+.exemple::before { color: var(--neon-purple) !important; border-color: var(--neon-purple); }
+
+.methode {
+    background: var(--cyber-meth-bg) !important;
+    border-left-color: var(--neon-yellow) !important;
+}
+.methode::before { color: var(--neon-yellow) !important; border-color: var(--neon-yellow); }
+
+.remarque {
+    background: var(--cyber-rem-bg) !important;
+    border-left-color: var(--neon-pink) !important;
+}
+.remarque::before { color: var(--neon-pink) !important; border-color: var(--neon-pink); }
+
+.exercice {
+    background: var(--cyber-exo-bg) !important;
+    border-left-color: var(--neon-blue) !important;
+}
+.exercice::before { color: var(--neon-blue) !important; border-color: var(--neon-blue); }
+
+/* ===========================================
+   LISTES
+   =========================================== */
+
+ul li::before {
+    content: '▹' !important;
+    background: none !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    color: var(--neon-cyan);
+    font-size: 1rem;
+}
+
+ol li::before {
+    background: transparent !important;
+    border: 1px solid var(--neon-cyan) !important;
+    color: var(--neon-cyan) !important;
+    font-family: 'Orbitron', monospace;
+}
+
+/* ===========================================
+   KaTeX
+   =========================================== */
+
+.katex-display {
+    background: var(--cyber-surface) !important;
+    border: 1px solid var(--cyber-border) !important;
+    border-left: 4px solid var(--neon-cyan) !important;
+    border-radius: 8px !important;
+    position: relative;
+    padding: 1.5rem 2rem !important;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+.katex-display::before {
+    content: '// FORMULA';
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.6rem;
+    color: var(--neon-cyan);
+    opacity: 0.5;
+    letter-spacing: 2px;
+}
+
+/* ===========================================
+   TABLEAUX
+   =========================================== */
+
+table {
+    border: 1px solid var(--cyber-border) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 15px var(--cyber-glow);
+}
+
+th {
+    background: var(--cyber-surface) !important;
+    color: var(--neon-cyan) !important;
+    font-family: 'Orbitron', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--cyber-border) !important;
+}
+
+td {
+    border-color: var(--cyber-border) !important;
+    background: var(--cyber-card);
+}
+
+tr:nth-child(even) td {
+    background: var(--cyber-surface);
+}
+
+tr:hover td {
+    background: var(--cyber-glow) !important;
+}
+
+/* ===========================================
+   LIENS
+   =========================================== */
+
+a {
+    color: var(--neon-cyan) !important;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--neon-pink) !important;
+}
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+
+.footer {
+    border-top: 1px solid var(--cyber-border);
+    color: var(--cyber-text-muted);
+    font-family: 'Orbitron', monospace;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.footer::before {
+    content: '[ ';
+}
+
+.footer::after {
+    content: ' ] // END';
+}
+
+/* ===========================================
+   SCROLLBAR
+   =========================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cyber-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));
+    border-radius: 4px;
+}
+
+/* ===========================================
+   SELECTION
+   =========================================== */
+
+::selection {
+    background: var(--neon-pink);
+    color: #fff;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem !important;
+        letter-spacing: 4px;
+    }
+}
+
+/* ===========================================
+   PRINT
+   =========================================== */
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    body::before, .cours-container::before {
+        display: none !important;
+    }
+
+    h1, h2, h3 {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+
+    .definition, .theoreme, .propriete, .exemple,
+    .methode, .remarque, .exercice {
+        background: #f5f5f5 !important;
+        box-shadow: none !important;
+    }
+}

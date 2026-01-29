@@ -1,0 +1,47 @@
+ Le lien est fait entre les suites arithmétiques (respectivement géométriques) et
+l’expression « croissance linéaire » (respectivement « croissance exponentielle ») du
+langage courant.
+ La notation 𝚺 est travaillée sur des exemples variés (somme de carrés, de cubes,
+d’inverses…).
+Situations algorithmiques
+ Écrire en langage Python une fonction qui calcule la somme des n premiers carrés,
+des n premiers cubes ou des n premiers inverses ; établir le lien entre l’écriture de la
+somme à l’aide du symbole 𝚺, et les composantes de l’algorithme (initialisation, sortie
+de boucle, accumulateur, compteur).
+ Fonctions exponentielles
+Contenus
+Les fonctions x ↦ ax (a > 0) comme modèle continu d’évolution relative constante :
+ définition de la fonction x ↦ ax pour x positif comme prolongement à des valeurs non
+entières positives de la suite géométrique (an) ; extension à ℝ_ en posant
+n∈ℕ
+1
+ax  ;
+ax
+ sens de variation selon les valeurs de a ;
+ allure de la courbe représentative selon les valeurs de a ;
+ax
+ propriétés algébriques : ax + y = axay ;axy  ; anx = (ax)n pour n entier relatif ;
+ay
+1
+ cas particulier de l’exposant pour calculer un taux d’évolution moyen équivalent à
+n
+n évolutions successives.
+Capacités attendues
+ Connaître et utiliser le sens de variation des fonctions de la forme x ↦ kax, selon le
+signe de k et les valeurs de a.
+ Connaître les propriétés algébriques des fonctions exponentielles et les utiliser pour
+transformer des écritures numériques ou littérales.
+ Calculer le taux d’évolution moyen équivalent à des évolutions successives.
+Commentaires
+ Les propriétés algébriques de la fonction x ↦ ax sont admises, par extension des
+propriétés des puissances entières. Le lien est fait avec les suites géométriques.
+ Le parallèle est fait entre le sens de variation de la fonction x ↦ ax et celui des suites
+géométriques.
+ Le calcul du taux d’évolution moyen se fait dans des contextes variés (taux mensuel
+équivalent à un taux annuel, évolution moyenne d’une population sur une période…).
+Situations algorithmiques
+ Intercaler entre deux points déjà construits un troisième point ayant pour abscisse
+(respectivement pour ordonnée) la moyenne arithmétique (respectivement
+géométrique) des abscisses (respectivement des ordonnées) des deux points
+initiaux.
+© Ministère de l'Éducation nationale et de la Jeunesse > www.education.gouv.fr

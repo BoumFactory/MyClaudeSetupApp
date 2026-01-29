@@ -1,0 +1,4168 @@
+{
+  "meta": {
+    "niveau": "TEXP",
+    "source_folder": "TG_expertes",
+    "generated": "2026-01-09T13:09:02.250397",
+    "total_competences": 207,
+    "duplicates_count": 3,
+    "organization": "domaine > sous_domaine > competences"
+  },
+  "stats": {
+    "by_domaine": {
+      "LOGIQUE": 7,
+      "NOMBRES": 65,
+      "GEOMETRIE": 41,
+      "ALGEBRE": 57,
+      "TRIGONOMETRIE": 8,
+      "ANALYSE": 5,
+      "ALGORITHMIQUE": 7,
+      "PROBABILITES": 17
+    },
+    "by_type": {
+      "capacite": 74,
+      "contenu": 79,
+      "demonstration": 19,
+      "approfondissement": 31,
+      "algorithme": 4
+    }
+  },
+  "competences_by_theme": {
+    "LOGIQUE": {
+      "Competences transversales": [
+        {
+          "code": "TEXP-LO-101",
+          "intitule": "Chercher et experimenter a l'aide d'outils logiciels",
+          "fingerprint": "chercher_experimenter_outils_logiciels",
+          "niveau": "TEXP",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Developper une demarche de recherche et d'experimentation mathematique, notamment en utilisant des outils numeriques et logiciels adaptes",
+          "formulation_bo": "chercher, experimenter, en particulier a l'aide d'outils logiciels",
+          "connaissances_associees": [
+            "utilisation de logiciels mathematiques",
+            "demarche d'investigation"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "TEXP-LO-102",
+          "intitule": "Modeliser une situation et valider ou invalider un modele",
+          "fingerprint": "modeliser_valider_invalider_modele",
+          "niveau": "TEXP",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation reelle en modele mathematique, effectuer une simulation et evaluer la pertinence du modele choisi",
+          "formulation_bo": "modeliser, faire une simulation, valider ou invalider un modele",
+          "connaissances_associees": [
+            "modelisation mathematique",
+            "simulation",
+            "validation de modele"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "TEXP-LO-103",
+          "intitule": "Representer et changer de registre (numerique, algebrique, geometrique)",
+          "fingerprint": "representer_changer_registre",
+          "niveau": "TEXP",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Choisir un cadre de representation adapte (numerique, algebrique, geometrique) et passer d'un registre a un autre pour resoudre un probleme",
+          "formulation_bo": "representer, choisir un cadre (numerique, algebrique, geometrique ...), changer de registre",
+          "connaissances_associees": [
+            "representation numerique",
+            "representation algebrique",
+            "representation geometrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "TEXP-LO-104",
+          "intitule": "Raisonner et demontrer en trouvant des resultats partiels",
+          "fingerprint": "raisonner_demontrer_resultats_partiels",
+          "niveau": "TEXP",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Conduire un raisonnement mathematique structure, identifier des resultats partiels et les articuler dans une demonstration complete",
+          "formulation_bo": "raisonner, demontrer, trouver des resultats partiels et les mettre en perspective",
+          "connaissances_associees": [
+            "logique mathematique",
+            "techniques de demonstration",
+            "structuration du raisonnement"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "TEXP-LO-105",
+          "intitule": "Calculer en appliquant des techniques et en mettant en oeuvre des algorithmes",
+          "fingerprint": "calculer_techniques_algorithmes",
+          "niveau": "TEXP",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Effectuer des calculs numeriques ou litteraux en utilisant des techniques appropriees et en implementant des algorithmes",
+          "formulation_bo": "calculer, appliquer des techniques et mettre en oeuvre des algorithmes",
+          "connaissances_associees": [
+            "techniques de calcul",
+            "algorithmique",
+            "calcul mental et reflechi"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "TEXP-LO-106",
+          "intitule": "Communiquer un resultat mathematique par oral ou par ecrit",
+          "fingerprint": "communiquer_resultat_oral_ecrit",
+          "niveau": "TEXP",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Presenter clairement un resultat mathematique et expliquer la demarche suivie, a l'oral comme a l'ecrit",
+          "formulation_bo": "communiquer un resultat par oral ou par ecrit, expliquer une demarche",
+          "connaissances_associees": [
+            "redaction mathematique",
+            "argumentation",
+            "communication scientifique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "Raisonnement mathematique": [
+        {
+          "code": "TEXP-LO-207",
+          "intitule": "Distinguer le statut des enonces mathematiques",
+          "fingerprint": "distinguer_statut_enonces",
+          "niveau": "TEXP",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Raisonnement mathematique",
+          "type": "contenu",
+          "description_detaillee": "Identifier et distinguer les differents types d'enonces : conjecture, definition, propriete (admise ou demontree), demonstration, theoreme",
+          "formulation_bo": "bien distinguer le statut des enonces : conjecture, definition, propriete (admise ou demontree) demonstration, theoreme",
+          "connaissances_associees": [
+            "conjecture",
+            "definition",
+            "propriete",
+            "demonstration",
+            "theoreme"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 4
+          }
+        }
+      ]
+    },
+    "NOMBRES": {
+      "Nombres complexes": [
+        {
+          "code": "TEXP-NB-201",
+          "intitule": "Connaitre les nombres complexes comme objets algebriques",
+          "fingerprint": "connaitre_complexes_objets_algebriques",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes",
+          "type": "contenu",
+          "description_detaillee": "Connaitre les proprietes algebriques des nombres complexes : operations, conjugue, module, forme algebrique",
+          "formulation_bo": "les nombres complexes, vus comme objets algebriques et geometriques",
+          "connaissances_associees": [
+            "operations sur les complexes",
+            "forme algebrique",
+            "conjugue",
+            "module"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "TEXP-NB-338",
+          "intitule": "Demontrer l'inegalite triangulaire pour deux nombres complexes",
+          "fingerprint": "demontrer_inegalite_triangulaire_complexes",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes",
+          "type": "approfondissement",
+          "description_detaillee": "Demontrer que |z + z'| <= |z| + |z'| et caracteriser le cas d'egalite",
+          "formulation_bo": "Inégalité triangulaire pour deux nombres complexes ; cas d'égalité.",
+          "connaissances_associees": [
+            "module",
+            "interpretation geometrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        }
+      ],
+      "Structures algebriques": [
+        {
+          "code": "TEXP-NB-203",
+          "intitule": "Connaitre le corps des nombres complexes",
+          "fingerprint": "connaitre_corps_complexes",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Structures algebriques",
+          "type": "contenu",
+          "description_detaillee": "Reconnaitre que l'ensemble des nombres complexes muni de l'addition et de la multiplication forme un corps",
+          "formulation_bo": "corps des nombres complexes",
+          "connaissances_associees": [
+            "notion de corps",
+            "lois de composition interne",
+            "element neutre",
+            "inverse"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "TEXP-NB-204",
+          "intitule": "Connaitre le groupe des nombres complexes de module 1",
+          "fingerprint": "connaitre_groupe_module_1",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Structures algebriques",
+          "type": "contenu",
+          "description_detaillee": "Reconnaitre que l'ensemble des nombres complexes de module 1 muni de la multiplication forme un groupe",
+          "formulation_bo": "groupes des nombres complexes de module 1",
+          "connaissances_associees": [
+            "notion de groupe",
+            "cercle unite",
+            "forme exponentielle"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "TEXP-NB-205",
+          "intitule": "Connaitre le groupe des racines n-iemes de l'unite",
+          "fingerprint": "connaitre_groupe_racines_n_iemes",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Structures algebriques",
+          "type": "contenu",
+          "description_detaillee": "Reconnaitre que l'ensemble des racines n-iemes de l'unite forme un groupe pour la multiplication",
+          "formulation_bo": "groupes [...] des racines n-iemes de l'unite",
+          "connaissances_associees": [
+            "racines de l'unite",
+            "groupe cyclique",
+            "generateur"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "TEXP-NB-206",
+          "intitule": "Connaitre l'anneau des entiers relatifs",
+          "fingerprint": "connaitre_anneau_entiers_relatifs",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Structures algebriques",
+          "type": "contenu",
+          "description_detaillee": "Reconnaitre que l'ensemble des entiers relatifs muni de l'addition et de la multiplication forme un anneau",
+          "formulation_bo": "anneau des entiers relatifs",
+          "connaissances_associees": [
+            "notion d'anneau",
+            "divisibilite",
+            "arithmetique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 4
+          }
+        }
+      ],
+      "Nombres complexes - point de vue algebrique": [
+        {
+          "code": "TEXP-NB-301",
+          "intitule": "Definir l'ensemble C des nombres complexes",
+          "fingerprint": "definir_ensemble_C_nombres_complexes",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition de l'ensemble C des nombres complexes comme extension de R avec l'element imaginaire i tel que i^2 = -1",
+          "formulation_bo": "Ensemble C des nombres complexes.",
+          "connaissances_associees": [
+            "ensemble R des reels",
+            "notion d'extension de corps"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-302",
+          "intitule": "Identifier la partie reelle d'un nombre complexe",
+          "fingerprint": "identifier_partie_reelle_complexe",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "contenu",
+          "description_detaillee": "Pour z = a + ib, identifier a comme la partie reelle de z, notee Re(z)",
+          "formulation_bo": "Partie reelle et partie imaginaire.",
+          "connaissances_associees": [
+            "forme algebrique d'un complexe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-303",
+          "intitule": "Identifier la partie imaginaire d'un nombre complexe",
+          "fingerprint": "identifier_partie_imaginaire_complexe",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "contenu",
+          "description_detaillee": "Pour z = a + ib, identifier b comme la partie imaginaire de z, notee Im(z)",
+          "formulation_bo": "Partie reelle et partie imaginaire.",
+          "connaissances_associees": [
+            "forme algebrique d'un complexe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-304",
+          "intitule": "Connaitre les operations sur les nombres complexes",
+          "fingerprint": "connaitre_operations_complexes",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre les regles d'addition et de multiplication des nombres complexes",
+          "formulation_bo": "Opérations.",
+          "connaissances_associees": [
+            "addition",
+            "multiplication",
+            "i^2 = -1"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-305",
+          "intitule": "Definir le conjugue d'un nombre complexe",
+          "fingerprint": "definir_conjugue_complexe",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "contenu",
+          "description_detaillee": "Pour z = a + ib, definir le conjugue z_barre = a - ib",
+          "formulation_bo": "Conjugaison.",
+          "connaissances_associees": [
+            "forme algebrique d'un complexe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-306",
+          "intitule": "Connaitre les proprietes algebriques de la conjugaison",
+          "fingerprint": "connaitre_proprietes_conjugaison",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre les proprietes : conjugue d'une somme, d'un produit, d'un quotient",
+          "formulation_bo": "Propriétés algébriques.",
+          "connaissances_associees": [
+            "conjugue",
+            "operations sur C"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-307",
+          "intitule": "Calculer l'inverse d'un nombre complexe non nul",
+          "fingerprint": "calculer_inverse_complexe",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "contenu",
+          "description_detaillee": "Pour z non nul, calculer 1/z en utilisant le conjugue : 1/z = z_barre / |z|^2",
+          "formulation_bo": "Inverse d'un nombre complexe non nul.",
+          "connaissances_associees": [
+            "conjugue",
+            "module"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-308",
+          "intitule": "Appliquer la formule du binome dans C",
+          "fingerprint": "appliquer_binome_complexes",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "contenu",
+          "description_detaillee": "Developper (a+b)^n pour a, b complexes en utilisant la formule du binome de Newton",
+          "formulation_bo": "Formule du binôme dans C.",
+          "connaissances_associees": [
+            "coefficients binomiaux",
+            "puissances"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-309",
+          "intitule": "Effectuer des calculs algebriques avec des nombres complexes",
+          "fingerprint": "effectuer_calculs_algebriques_complexes",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "capacite",
+          "description_detaillee": "Calculer sommes, produits, quotients, puissances de nombres complexes en forme algebrique",
+          "formulation_bo": "Effectuer des calculs algébriques avec des nombres complexes.",
+          "connaissances_associees": [
+            "operations sur C",
+            "forme algebrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-312",
+          "intitule": "Demontrer la formule du conjugue d'un produit",
+          "fingerprint": "demontrer_conjugue_produit",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que le conjugue de z*z' est egal au produit des conjugues",
+          "formulation_bo": "Conjugué d'un produit, d'un inverse, d'une puissance entière.",
+          "connaissances_associees": [
+            "definition du conjugue",
+            "operations sur C"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-313",
+          "intitule": "Demontrer la formule du conjugue d'un inverse",
+          "fingerprint": "demontrer_conjugue_inverse",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que le conjugue de 1/z est egal a 1/z_barre",
+          "formulation_bo": "Conjugué d'un produit, d'un inverse, d'une puissance entière.",
+          "connaissances_associees": [
+            "definition du conjugue",
+            "inverse d'un complexe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-314",
+          "intitule": "Demontrer la formule du conjugue d'une puissance entiere",
+          "fingerprint": "demontrer_conjugue_puissance",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que le conjugue de z^n est egal a (z_barre)^n pour n entier",
+          "formulation_bo": "Conjugué d'un produit, d'un inverse, d'une puissance entière.",
+          "connaissances_associees": [
+            "definition du conjugue",
+            "raisonnement par recurrence"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-NB-315",
+          "intitule": "Demontrer la formule du binome",
+          "fingerprint": "demontrer_formule_binome",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes - point de vue algebrique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer la formule (a+b)^n = somme des C(n,k)*a^k*b^(n-k)",
+          "formulation_bo": "Formule du binôme.",
+          "connaissances_associees": [
+            "coefficients binomiaux",
+            "raisonnement par recurrence"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        }
+      ],
+      "Nombres complexes et trigonometrie": [
+        {
+          "code": "TEXP-NB-353",
+          "intitule": "Definir l'exponentielle imaginaire e^(i*theta)",
+          "fingerprint": "definir_exponentielle_imaginaire",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la notation e^(i*theta) = cos(theta) + i*sin(theta) et sa relation fonctionnelle e^(i*(a+b)) = e^(i*a) * e^(i*b)",
+          "formulation_bo": "Exponentielle imaginaire, notation ei. Relation fonctionnelle. Forme exponentielle d'un nombre complexe.",
+          "connaissances_associees": [
+            "nombres complexes",
+            "forme trigonometrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-NB-354",
+          "intitule": "Ecrire un nombre complexe sous forme exponentielle",
+          "fingerprint": "ecrire_complexe_forme_exponentielle",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Exprimer z = r*e^(i*theta) ou r est le module et theta l'argument",
+          "formulation_bo": "Forme exponentielle d'un nombre complexe.",
+          "connaissances_associees": [
+            "module",
+            "argument",
+            "exponentielle imaginaire"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-NB-357",
+          "intitule": "Appliquer la formule de Moivre",
+          "fingerprint": "appliquer_formule_moivre",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Utiliser (cos(theta) + i*sin(theta))^n = cos(n*theta) + i*sin(n*theta)",
+          "formulation_bo": "Formule de Moivre : cos(n*theta) + i*sin(n*theta) = (cos(theta) + i*sin(theta))^n.",
+          "connaissances_associees": [
+            "forme trigonometrique",
+            "puissances"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-NB-358",
+          "intitule": "Passer de la forme algebrique a la forme trigonometrique d'un nombre complexe",
+          "fingerprint": "convertir_algebrique_vers_trigonometrique",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "capacite",
+          "description_detaillee": "Convertir z = a + ib en z = r(cos(theta) + i*sin(theta)) en calculant module et argument",
+          "formulation_bo": "Passer de la forme algebrique d'un nombre complexe a sa forme trigonometrique ou exponentielle et inversement.",
+          "connaissances_associees": [
+            "module",
+            "argument",
+            "forme algebrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-NB-359",
+          "intitule": "Passer de la forme algebrique a la forme exponentielle d'un nombre complexe",
+          "fingerprint": "convertir_algebrique_vers_exponentielle",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "capacite",
+          "description_detaillee": "Convertir z = a + ib en z = r*e^(i*theta) en calculant module et argument",
+          "formulation_bo": "Passer de la forme algebrique d'un nombre complexe a sa forme trigonometrique ou exponentielle et inversement.",
+          "connaissances_associees": [
+            "module",
+            "argument",
+            "exponentielle imaginaire"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-NB-360",
+          "intitule": "Passer de la forme trigonometrique a la forme algebrique d'un nombre complexe",
+          "fingerprint": "convertir_trigonometrique_vers_algebrique",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "capacite",
+          "description_detaillee": "Convertir z = r(cos(theta) + i*sin(theta)) en z = a + ib en developpant",
+          "formulation_bo": "Passer de la forme algebrique d'un nombre complexe a sa forme trigonometrique ou exponentielle et inversement.",
+          "connaissances_associees": [
+            "forme trigonometrique",
+            "cosinus",
+            "sinus"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-NB-361",
+          "intitule": "Passer de la forme exponentielle a la forme algebrique d'un nombre complexe",
+          "fingerprint": "convertir_exponentielle_vers_algebrique",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "capacite",
+          "description_detaillee": "Convertir z = r*e^(i*theta) en z = a + ib en utilisant e^(i*theta) = cos(theta) + i*sin(theta)",
+          "formulation_bo": "Passer de la forme algebrique d'un nombre complexe a sa forme trigonometrique ou exponentielle et inversement.",
+          "connaissances_associees": [
+            "forme exponentielle",
+            "formule d'Euler"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-NB-362",
+          "intitule": "Choisir la forme adaptee pour effectuer des calculs sur les nombres complexes",
+          "fingerprint": "choisir_forme_adaptee_calculs_complexes",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "capacite",
+          "description_detaillee": "Identifier quelle forme (algebrique, trigonometrique, exponentielle) est la plus adaptee selon le calcul a effectuer",
+          "formulation_bo": "Effectuer des calculs sur des nombres complexes en choisissant une forme adaptee, en particulier dans le cadre de la resolution de problemes.",
+          "connaissances_associees": [
+            "formes des nombres complexes",
+            "operations"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-NB-364",
+          "intitule": "Utiliser la formule de Moivre pour calculer des puissances de nombres complexes",
+          "fingerprint": "utiliser_moivre_puissances_complexes",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "capacite",
+          "description_detaillee": "Calculer z^n en utilisant la forme trigonometrique et la formule de Moivre",
+          "formulation_bo": "calculer des puissances de nombres complexes.",
+          "connaissances_associees": [
+            "formule de Moivre",
+            "forme trigonometrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Equations polynomiales": [
+        {
+          "code": "TEXP-NB-376",
+          "intitule": "Calculer les racines carrees d'un nombre complexe",
+          "fingerprint": "calculer_racines_carrees_complexe",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Equations polynomiales",
+          "type": "approfondissement",
+          "description_detaillee": "Determiner les deux nombres complexes z tels que z^2 = w pour w complexe donne",
+          "formulation_bo": "Racines carrees d'un nombre complexe",
+          "connaissances_associees": [
+            "forme algebrique",
+            "systeme d'equations"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Arithmetique": [
+        {
+          "code": "TEXP-NB-451",
+          "intitule": "Definir la divisibilite dans Z",
+          "fingerprint": "definir_divisibilite_Z",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et utiliser la definition de la divisibilite d'un entier relatif par un autre : a divise b si et seulement s'il existe un entier k tel que b = ka",
+          "formulation_bo": "Divisibilite dans Z.",
+          "connaissances_associees": [
+            "entiers relatifs",
+            "multiplication dans Z"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-452",
+          "intitule": "Effectuer une division euclidienne dans Z",
+          "fingerprint": "effectuer_division_euclidienne_Z",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Realiser la division euclidienne d'un entier relatif par un entier naturel non nul, obtenir le quotient et le reste",
+          "formulation_bo": "Division euclidienne d'un element de Z par un element de N*.",
+          "connaissances_associees": [
+            "entiers relatifs",
+            "entiers naturels",
+            "quotient",
+            "reste"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-453",
+          "intitule": "Definir les congruences dans Z",
+          "fingerprint": "definir_congruences_Z",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition de la congruence modulo n : a est congru a b modulo n si n divise (a-b)",
+          "formulation_bo": "Congruences dans Z.",
+          "connaissances_associees": [
+            "divisibilite",
+            "reste de division euclidienne"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-454",
+          "intitule": "Appliquer la compatibilite des congruences avec les operations",
+          "fingerprint": "appliquer_compatibilite_congruences_operations",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Utiliser les proprietes de compatibilite des congruences avec l'addition, la soustraction et la multiplication",
+          "formulation_bo": "Compatibilite des congruences avec les operations.",
+          "connaissances_associees": [
+            "congruences",
+            "operations dans Z"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-455",
+          "intitule": "Definir le PGCD de deux entiers",
+          "fingerprint": "definir_PGCD_deux_entiers",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition du plus grand commun diviseur de deux entiers comme le plus grand entier divisant les deux",
+          "formulation_bo": "PGCD de deux entiers.",
+          "connaissances_associees": [
+            "divisibilite",
+            "diviseurs communs"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-456",
+          "intitule": "Appliquer l'algorithme d'Euclide pour calculer un PGCD",
+          "fingerprint": "appliquer_algorithme_Euclide_PGCD",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Utiliser l'algorithme d'Euclide base sur les divisions euclidiennes successives pour calculer le PGCD de deux entiers",
+          "formulation_bo": "Algorithme d'Euclide.",
+          "connaissances_associees": [
+            "division euclidienne",
+            "PGCD"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-457",
+          "intitule": "Definir des entiers premiers entre eux",
+          "fingerprint": "definir_entiers_premiers_entre_eux",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition : deux entiers sont premiers entre eux si leur PGCD vaut 1",
+          "formulation_bo": "Couples d'entiers premiers entre eux.",
+          "connaissances_associees": [
+            "PGCD",
+            "divisibilite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-458",
+          "intitule": "Enoncer le theoreme de Bezout",
+          "fingerprint": "enoncer_theoreme_Bezout",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre le theoreme de Bezout : a et b sont premiers entre eux si et seulement s'il existe (u,v) dans Z^2 tel que au + bv = 1",
+          "formulation_bo": "Theoreme de Bezout.",
+          "connaissances_associees": [
+            "PGCD",
+            "entiers premiers entre eux",
+            "combinaison lineaire"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-459",
+          "intitule": "Enoncer le theoreme de Gauss",
+          "fingerprint": "enoncer_theoreme_Gauss",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre le theoreme de Gauss : si a divise bc et a est premier avec b, alors a divise c",
+          "formulation_bo": "Theoreme de Gauss.",
+          "connaissances_associees": [
+            "divisibilite",
+            "entiers premiers entre eux"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-460",
+          "intitule": "Definir un nombre premier",
+          "fingerprint": "definir_nombre_premier",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition d'un nombre premier : entier naturel superieur ou egal a 2 ayant exactement deux diviseurs positifs",
+          "formulation_bo": "Nombres premiers.",
+          "connaissances_associees": [
+            "divisibilite",
+            "diviseurs"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-461",
+          "intitule": "Savoir que l'ensemble des nombres premiers est infini",
+          "fingerprint": "savoir_ensemble_premiers_infini",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et admettre ou demontrer que l'ensemble des nombres premiers est infini",
+          "formulation_bo": "Leur ensemble est infini.",
+          "connaissances_associees": [
+            "nombres premiers"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-462",
+          "intitule": "Enoncer l'existence et l'unicite de la decomposition en facteurs premiers",
+          "fingerprint": "enoncer_decomposition_facteurs_premiers",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre le theoreme fondamental de l'arithmetique : tout entier >= 2 se decompose de maniere unique en produit de facteurs premiers",
+          "formulation_bo": "Existence et unicite de la decomposition d'un entier en produit de facteurs premiers.",
+          "connaissances_associees": [
+            "nombres premiers",
+            "divisibilite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-463",
+          "intitule": "Enoncer le petit theoreme de Fermat",
+          "fingerprint": "enoncer_petit_theoreme_Fermat",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre le petit theoreme de Fermat : si p est premier et a non divisible par p, alors a^(p-1) est congru a 1 modulo p",
+          "formulation_bo": "Petit theoreme de Fermat.",
+          "connaissances_associees": [
+            "congruences",
+            "nombres premiers",
+            "puissances"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-464",
+          "intitule": "Determiner les diviseurs d'un entier",
+          "fingerprint": "determiner_diviseurs_entier",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Lister tous les diviseurs positifs et negatifs d'un entier donne",
+          "formulation_bo": "Determiner les diviseurs d'un entier, le PGCD de deux entiers.",
+          "connaissances_associees": [
+            "divisibilite",
+            "decomposition en facteurs premiers"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-465",
+          "intitule": "Calculer le PGCD de deux entiers",
+          "fingerprint": "calculer_PGCD_deux_entiers",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Calculer le PGCD de deux entiers par l'algorithme d'Euclide ou par decomposition en facteurs premiers",
+          "formulation_bo": "Determiner les diviseurs d'un entier, le PGCD de deux entiers.",
+          "connaissances_associees": [
+            "algorithme d'Euclide",
+            "decomposition en facteurs premiers"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-466",
+          "intitule": "Resoudre une congruence lineaire ax = b [n]",
+          "fingerprint": "resoudre_congruence_lineaire",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Trouver les solutions entieres de l'equation ax est congru a b modulo n",
+          "formulation_bo": "Resoudre une congruence ax ≡ b [n].",
+          "connaissances_associees": [
+            "congruences",
+            "inverse modulaire",
+            "PGCD"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-467",
+          "intitule": "Determiner un inverse modulaire",
+          "fingerprint": "determiner_inverse_modulaire",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Trouver l'inverse de a modulo n lorsque a et n sont premiers entre eux, en utilisant l'algorithme d'Euclide etendu ou Bezout",
+          "formulation_bo": "Determiner un inverse de a modulo n lorsque a et n sont premiers entre eux.",
+          "connaissances_associees": [
+            "theoreme de Bezout",
+            "algorithme d'Euclide etendu",
+            "entiers premiers entre eux"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-468",
+          "intitule": "Etablir un test de divisibilite",
+          "fingerprint": "etablir_test_divisibilite",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Demontrer et utiliser des criteres de divisibilite (par 2, 3, 4, 5, 9, 11...)",
+          "formulation_bo": "Etablir et utiliser des tests de divisibilite",
+          "connaissances_associees": [
+            "congruences",
+            "ecriture decimale"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-469",
+          "intitule": "Etudier la primalite d'un nombre",
+          "fingerprint": "etudier_primalite_nombre",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Determiner si un entier donne est premier ou non en utilisant des criteres ou tests de primalite",
+          "formulation_bo": "etudier la primalite de certains nombres",
+          "connaissances_associees": [
+            "nombres premiers",
+            "divisibilite",
+            "crible d'Eratosthene"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-470",
+          "intitule": "Etudier un probleme de chiffrement",
+          "fingerprint": "etudier_probleme_chiffrement",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Analyser et resoudre des problemes de cryptographie bases sur l'arithmetique modulaire",
+          "formulation_bo": "etudier des problemes de chiffrement.",
+          "connaissances_associees": [
+            "congruences",
+            "inverse modulaire",
+            "petit theoreme de Fermat"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-471",
+          "intitule": "Resoudre une equation diophantienne simple",
+          "fingerprint": "resoudre_equation_diophantienne_simple",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Trouver les solutions entieres d'equations du type ax + by = c en utilisant le theoreme de Bezout",
+          "formulation_bo": "Resoudre des equations diophantiennes simples.",
+          "connaissances_associees": [
+            "PGCD",
+            "theoreme de Bezout",
+            "algorithme d'Euclide etendu"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-472",
+          "intitule": "Demontrer l'identite de Bezout pour le PGCD",
+          "fingerprint": "demontrer_identite_Bezout_PGCD",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que le PGCD de a et b peut s'ecrire sous la forme ax + by avec (x,y) dans Z^2",
+          "formulation_bo": "Ecriture du PGCD de a et b sous la forme ax + by, (x,y) ∈ Z^2.",
+          "connaissances_associees": [
+            "PGCD",
+            "algorithme d'Euclide etendu"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-473",
+          "intitule": "Demontrer le theoreme de Gauss",
+          "fingerprint": "demontrer_theoreme_Gauss",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que si a divise bc et a est premier avec b, alors a divise c",
+          "formulation_bo": "Theoreme de Gauss.",
+          "connaissances_associees": [
+            "theoreme de Bezout",
+            "entiers premiers entre eux",
+            "divisibilite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-474",
+          "intitule": "Demontrer que l'ensemble des nombres premiers est infini",
+          "fingerprint": "demontrer_ensemble_premiers_infini",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer par l'absurde (methode d'Euclide) qu'il existe une infinite de nombres premiers",
+          "formulation_bo": "L'ensemble des nombres premiers est infini.",
+          "connaissances_associees": [
+            "nombres premiers",
+            "raisonnement par l'absurde"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-479",
+          "intitule": "Determiner les racines rationnelles d'un polynome a coefficients entiers",
+          "fingerprint": "determiner_racines_rationnelles_polynome_entier",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Utiliser le theoreme des racines rationnelles pour trouver les candidats racines rationnelles p/q d'un polynome",
+          "formulation_bo": "Determination des racines rationnelles d'un polynome a coefficients entiers.",
+          "connaissances_associees": [
+            "divisibilite",
+            "polynomes",
+            "PGCD"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-480",
+          "intitule": "Appliquer le lemme chinois",
+          "fingerprint": "appliquer_lemme_chinois",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Resoudre des systemes de congruences a l'aide du theoreme des restes chinois",
+          "formulation_bo": "Lemme chinois et applications a des situations concretes.",
+          "connaissances_associees": [
+            "congruences",
+            "PGCD",
+            "entiers premiers entre eux"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-481",
+          "intitule": "Demontrer le petit theoreme de Fermat",
+          "fingerprint": "demontrer_petit_theoreme_Fermat",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Demontrer que pour p premier et a non divisible par p, a^(p-1) est congru a 1 modulo p",
+          "formulation_bo": "Demonstrations du petit theoreme de Fermat.",
+          "connaissances_associees": [
+            "congruences",
+            "nombres premiers",
+            "recurrence"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-482",
+          "intitule": "Etudier des problemes de codage",
+          "fingerprint": "etudier_problemes_codage",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Analyser des systemes de verification comme les codes barres, ISBN, cle RIB, code Insee",
+          "formulation_bo": "Problemes de codage (codes barres, code ISBN, cle du Rib, code Insee).",
+          "connaissances_associees": [
+            "congruences",
+            "arithmetique modulaire"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-483",
+          "intitule": "Etudier des tests de primalite",
+          "fingerprint": "etudier_tests_primalite",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Comprendre les notions de temoin de primalite et les nombres de Carmichael",
+          "formulation_bo": "Etude de tests de primalite : notion de temoin, nombres de Carmichael.",
+          "connaissances_associees": [
+            "petit theoreme de Fermat",
+            "nombres premiers"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-484",
+          "intitule": "Analyser des methodes de chiffrement",
+          "fingerprint": "analyser_methodes_chiffrement",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Etudier les chiffrements affine, Vigenere, Hill et RSA",
+          "formulation_bo": "Problemes de chiffrement (affine, Vigenere, Hill, RSA).",
+          "connaissances_associees": [
+            "congruences",
+            "inverse modulaire",
+            "matrices"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-485",
+          "intitule": "Rechercher des nombres premiers particuliers",
+          "fingerprint": "rechercher_nombres_premiers_particuliers",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Etudier les nombres premiers de Mersenne (2^p - 1) et de Fermat (2^(2^n) + 1)",
+          "formulation_bo": "Recherche de nombres premiers particuliers (Mersenne, Fermat).",
+          "connaissances_associees": [
+            "nombres premiers",
+            "puissances de 2"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-486",
+          "intitule": "Etudier des codes correcteurs simples",
+          "fingerprint": "etudier_codes_correcteurs_simples",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Comprendre les principes des codes correcteurs d'erreurs",
+          "formulation_bo": "Exemples simples de codes correcteurs.",
+          "connaissances_associees": [
+            "arithmetique modulaire",
+            "matrices"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-487",
+          "intitule": "Etudier le systeme cryptographique RSA",
+          "fingerprint": "etudier_systeme_RSA",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Comprendre le fonctionnement du chiffrement RSA : generation des cles, chiffrement et dechiffrement",
+          "formulation_bo": "Etude du systeme cryptographique RSA.",
+          "connaissances_associees": [
+            "petit theoreme de Fermat",
+            "inverse modulaire",
+            "nombres premiers"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-488",
+          "intitule": "Determiner les triplets pythagoriciens",
+          "fingerprint": "determiner_triplets_pythagoriciens",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Trouver et caracteriser les triplets (a,b,c) d'entiers verifiant a^2 + b^2 = c^2",
+          "formulation_bo": "Determination des triplets pythagoriciens.",
+          "connaissances_associees": [
+            "equations diophantiennes",
+            "PGCD",
+            "parite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-489",
+          "intitule": "Etudier les sommes de deux carres par les entiers de Gauss",
+          "fingerprint": "etudier_sommes_deux_carres_entiers_Gauss",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Utiliser les entiers de Gauss (a + ib) pour etudier quels entiers sont somme de deux carres",
+          "formulation_bo": "Etude des sommes de deux carres par les entiers de Gauss.",
+          "connaissances_associees": [
+            "nombres complexes",
+            "norme",
+            "arithmetique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-NB-490",
+          "intitule": "Etudier l'equation de Pell-Fermat",
+          "fingerprint": "etudier_equation_Pell_Fermat",
+          "niveau": "TEXP",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "approfondissement",
+          "description_detaillee": "Etudier les solutions entieres de l'equation x^2 - Dy^2 = 1",
+          "formulation_bo": "Etude de l'equation de Pell-Fermat.",
+          "connaissances_associees": [
+            "equations diophantiennes",
+            "fractions continues"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        }
+      ]
+    },
+    "GEOMETRIE": {
+      "Nombres complexes": [
+        {
+          "code": "TEXP-GE-202",
+          "intitule": "Connaitre les nombres complexes comme objets geometriques",
+          "fingerprint": "connaitre_complexes_objets_geometriques",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes",
+          "type": "contenu",
+          "description_detaillee": "Connaitre l'interpretation geometrique des nombres complexes : affixe, representation dans le plan, transformations",
+          "formulation_bo": "les nombres complexes, vus comme objets algebriques et geometriques",
+          "connaissances_associees": [
+            "affixe d'un point",
+            "plan complexe",
+            "interpretation geometrique du module et de l'argument"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 4
+          }
+        }
+      ],
+      "Nombres complexes - Representation geometrique": [
+        {
+          "code": "TEXP-GE-256",
+          "intitule": "Identifier le plan euclidien R2 a l'ensemble des nombres complexes",
+          "fingerprint": "identifier_R2_ensemble_complexes",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - Representation geometrique",
+          "type": "contenu",
+          "description_detaillee": "Associer a chaque point M(x,y) du plan le nombre complexe z = x + iy et reciproquement",
+          "formulation_bo": "Le plan euclidien R2 peut etre vu comme l'ensemble des nombres complexes",
+          "connaissances_associees": [
+            "plan cartesien",
+            "affixe d'un point",
+            "nombre complexe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "TEXP-GE-257",
+          "intitule": "Interpreter des notions de geometrie plane en termes de nombres complexes",
+          "fingerprint": "interpreter_geometrie_plane_complexes",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - Representation geometrique",
+          "type": "capacite",
+          "description_detaillee": "Traduire des proprietes geometriques (distance, alignement, orthogonalite, angles) en langage des nombres complexes",
+          "formulation_bo": "de nombreuses notions de geometrie plane s'interpretent en termes de nombres complexes",
+          "connaissances_associees": [
+            "module",
+            "argument",
+            "affixe",
+            "distance",
+            "angle"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Nombres complexes - Applications geometriques": [
+        {
+          "code": "TEXP-GE-258",
+          "intitule": "Utiliser le calcul dans C pour resoudre des problemes de geometrie plane",
+          "fingerprint": "utiliser_calcul_C_geometrie",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - Applications geometriques",
+          "type": "capacite",
+          "description_detaillee": "Resoudre des problemes geometriques (lieux, constructions, proprietes) par des calculs sur les nombres complexes",
+          "formulation_bo": "On peut ainsi utiliser le calcul dans C pour resoudre de nombreuses questions de geometrie",
+          "connaissances_associees": [
+            "operations sur les complexes",
+            "module",
+            "argument",
+            "affixe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Nombres complexes - Racines de l'unite": [
+        {
+          "code": "TEXP-GE-261",
+          "intitule": "Representer geometriquement les racines n-iemes de l'unite",
+          "fingerprint": "representer_geometriquement_racines_niemes_unite",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - Racines de l'unite",
+          "type": "capacite",
+          "description_detaillee": "Placer les racines n-iemes de l'unite sur le cercle trigonometrique, reconnaitre qu'elles forment un polygone regulier a n cotes",
+          "formulation_bo": "Les racines n-iemes de l'unite fournissent par ailleurs un pont interessant entre equations polynomiales et geometrie",
+          "connaissances_associees": [
+            "cercle trigonometrique",
+            "polygone regulier",
+            "racines de l'unite",
+            "argument"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Nombres complexes - point de vue geometrique": [
+        {
+          "code": "TEXP-GE-316",
+          "intitule": "Representer un nombre complexe par un point du plan",
+          "fingerprint": "representer_complexe_point_plan",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Associer au nombre complexe z = a + ib le point M(a, b) du plan complexe",
+          "formulation_bo": "Image d'un nombre complexe.",
+          "connaissances_associees": [
+            "repere orthonorme",
+            "coordonnees"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-317",
+          "intitule": "Determiner l'image du conjugue d'un nombre complexe",
+          "fingerprint": "determiner_image_conjugue",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Savoir que l'image de z_barre est le symetrique de l'image de z par rapport a l'axe des reels",
+          "formulation_bo": "Image du conjugué.",
+          "connaissances_associees": [
+            "image d'un complexe",
+            "symetrie axiale"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-318",
+          "intitule": "Determiner l'affixe d'un point",
+          "fingerprint": "determiner_affixe_point",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Pour un point M(a, b), determiner son affixe z = a + ib",
+          "formulation_bo": "Affixe d'un point, d'un vecteur.",
+          "connaissances_associees": [
+            "coordonnees d'un point",
+            "forme algebrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-319",
+          "intitule": "Determiner l'affixe d'un vecteur",
+          "fingerprint": "determiner_affixe_vecteur",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Pour un vecteur de coordonnees (a, b), determiner son affixe z = a + ib",
+          "formulation_bo": "Affixe d'un point, d'un vecteur.",
+          "connaissances_associees": [
+            "coordonnees d'un vecteur",
+            "forme algebrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-320",
+          "intitule": "Definir le module d'un nombre complexe",
+          "fingerprint": "definir_module_complexe",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Pour z = a + ib, definir |z| = sqrt(a^2 + b^2)",
+          "formulation_bo": "Module d'un nombre complexe.",
+          "connaissances_associees": [
+            "forme algebrique",
+            "racine carree"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-321",
+          "intitule": "Interpreter geometriquement le module",
+          "fingerprint": "interpreter_module_geometriquement",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Savoir que |z| represente la distance de l'image de z a l'origine",
+          "formulation_bo": "Interprétation géométrique.",
+          "connaissances_associees": [
+            "module",
+            "distance dans le plan"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-322",
+          "intitule": "Connaitre la relation |z|^2 = z*z_barre",
+          "fingerprint": "connaitre_relation_module_carre_conjugue",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et utiliser la formule |z|^2 = z*z_barre",
+          "formulation_bo": "Relation |z|^2 = zz.",
+          "connaissances_associees": [
+            "module",
+            "conjugue"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-323",
+          "intitule": "Calculer le module d'un produit de nombres complexes",
+          "fingerprint": "calculer_module_produit",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Appliquer la formule |z*z'| = |z|*|z'|",
+          "formulation_bo": "Module d'un produit, d'un inverse.",
+          "connaissances_associees": [
+            "module",
+            "produit de complexes"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-324",
+          "intitule": "Calculer le module d'un inverse",
+          "fingerprint": "calculer_module_inverse",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Appliquer la formule |1/z| = 1/|z|",
+          "formulation_bo": "Module d'un produit, d'un inverse.",
+          "connaissances_associees": [
+            "module",
+            "inverse d'un complexe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-325",
+          "intitule": "Definir l'ensemble U des nombres complexes de module 1",
+          "fingerprint": "definir_ensemble_U_module_1",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Definir U = {z dans C : |z| = 1} et reconnaitre que c'est le cercle unite",
+          "formulation_bo": "Ensemble U des nombres complexes de module 1.",
+          "connaissances_associees": [
+            "module",
+            "cercle unite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-326",
+          "intitule": "Connaitre la stabilite de U par produit et inverse",
+          "fingerprint": "connaitre_stabilite_U_produit_inverse",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Savoir que le produit de deux elements de U est dans U, et l'inverse d'un element de U est dans U",
+          "formulation_bo": "Stabilité de U par produit et passage à l'inverse.",
+          "connaissances_associees": [
+            "ensemble U",
+            "module d'un produit",
+            "module d'un inverse"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-327",
+          "intitule": "Definir les arguments d'un nombre complexe non nul",
+          "fingerprint": "definir_arguments_complexe",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Definir un argument de z non nul comme une mesure de l'angle (Ox, OM) ou M est l'image de z",
+          "formulation_bo": "Arguments d'un nombre complexe non nul.",
+          "connaissances_associees": [
+            "angles orientes",
+            "mesure d'angle"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-328",
+          "intitule": "Interpreter geometriquement les arguments",
+          "fingerprint": "interpreter_arguments_geometriquement",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Comprendre qu'un argument de z represente l'angle entre l'axe des reels positifs et le vecteur OM",
+          "formulation_bo": "Interprétation géométrique.",
+          "connaissances_associees": [
+            "argument",
+            "angle oriente"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-329",
+          "intitule": "Ecrire un nombre complexe sous forme trigonometrique",
+          "fingerprint": "ecrire_forme_trigonometrique",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "contenu",
+          "description_detaillee": "Ecrire z = |z|(cos(theta) + i*sin(theta)) ou theta est un argument de z",
+          "formulation_bo": "Forme trigonométrique.",
+          "connaissances_associees": [
+            "module",
+            "argument",
+            "cosinus",
+            "sinus"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-330",
+          "intitule": "Determiner le module d'un nombre complexe",
+          "fingerprint": "determiner_module_complexe",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "capacite",
+          "description_detaillee": "Calculer |z| a partir de la forme algebrique ou trigonometrique de z",
+          "formulation_bo": "Déterminer le module et les arguments d'un nombre complexe.",
+          "connaissances_associees": [
+            "definition du module",
+            "forme algebrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-331",
+          "intitule": "Determiner les arguments d'un nombre complexe",
+          "fingerprint": "determiner_arguments_complexe",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "capacite",
+          "description_detaillee": "Calculer un argument de z a partir de sa forme algebrique ou le lire sur sa forme trigonometrique",
+          "formulation_bo": "Déterminer le module et les arguments d'un nombre complexe.",
+          "connaissances_associees": [
+            "definition de l'argument",
+            "angles remarquables"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-332",
+          "intitule": "Representer un nombre complexe par un point du plan",
+          "fingerprint": "representer_complexe_par_point",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "capacite",
+          "description_detaillee": "Placer dans le plan complexe le point M d'affixe z = a + ib",
+          "formulation_bo": "Représenter un nombre complexe par un point.",
+          "connaissances_associees": [
+            "plan complexe",
+            "coordonnees"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-333",
+          "intitule": "Determiner l'affixe d'un point donne",
+          "fingerprint": "determiner_affixe_point_donne",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "capacite",
+          "description_detaillee": "A partir des coordonnees d'un point du plan, determiner son affixe complexe",
+          "formulation_bo": "Déterminer l'affixe d'un point.",
+          "connaissances_associees": [
+            "coordonnees",
+            "forme algebrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-334",
+          "intitule": "Demontrer la formule |z|^2 = z*z_barre",
+          "fingerprint": "demontrer_formule_module_carre",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que pour z = a + ib, on a z*z_barre = a^2 + b^2 = |z|^2",
+          "formulation_bo": "Formule |z|^2 = zz.",
+          "connaissances_associees": [
+            "forme algebrique",
+            "conjugue",
+            "module"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-335",
+          "intitule": "Demontrer la formule du module d'un produit",
+          "fingerprint": "demontrer_module_produit",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que |z*z'| = |z|*|z'|",
+          "formulation_bo": "Module d'un produit.",
+          "connaissances_associees": [
+            "module",
+            "formule |z|^2 = z*z_barre"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-GE-336",
+          "intitule": "Demontrer la formule du module d'une puissance",
+          "fingerprint": "demontrer_module_puissance",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes - point de vue geometrique",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que |z^n| = |z|^n pour n entier naturel",
+          "formulation_bo": "Module d'une puissance.",
+          "connaissances_associees": [
+            "module d'un produit",
+            "recurrence"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        }
+      ],
+      "Nombres complexes et geometrie": [
+        {
+          "code": "TEXP-GE-401",
+          "intitule": "Interpreter geometriquement le module du quotient de deux nombres complexes",
+          "fingerprint": "interpreter_module_quotient_complexes_geometrie",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes et geometrie",
+          "type": "contenu",
+          "description_detaillee": "Interpreter geometriquement le module de (c-a)/(b-a) comme le rapport des distances AC/AB",
+          "formulation_bo": "Interpretation geometrique du module et d'un argument de (c-a)/(b-a)",
+          "connaissances_associees": [
+            "module d'un nombre complexe",
+            "affixe d'un point",
+            "distance entre deux points"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-GE-402",
+          "intitule": "Interpreter geometriquement un argument du quotient de deux nombres complexes",
+          "fingerprint": "interpreter_argument_quotient_complexes_geometrie",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes et geometrie",
+          "type": "contenu",
+          "description_detaillee": "Interpreter geometriquement un argument de (c-a)/(b-a) comme l'angle oriente (AB, AC)",
+          "formulation_bo": "Interpretation geometrique du module et d'un argument de (c-a)/(b-a)",
+          "connaissances_associees": [
+            "argument d'un nombre complexe",
+            "angle oriente",
+            "affixe d'un point"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-GE-405",
+          "intitule": "Representer geometriquement les racines n-iemes de l'unite",
+          "fingerprint": "representer_geometriquement_racines_niemes_unite",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes et geometrie",
+          "type": "contenu",
+          "description_detaillee": "Placer les racines n-iemes de l'unite sur le cercle trigonometrique, formant un polygone regulier a n cotes",
+          "formulation_bo": "Representation geometrique.",
+          "connaissances_associees": [
+            "cercle trigonometrique",
+            "polygone regulier",
+            "affixe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-GE-409",
+          "intitule": "Demontrer un alignement de points a l'aide des nombres complexes",
+          "fingerprint": "demontrer_alignement_points_complexes",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes et geometrie",
+          "type": "capacite",
+          "description_detaillee": "Utiliser l'argument du quotient (c-a)/(b-a) pour demontrer que trois points sont alignes (argument = 0 ou pi)",
+          "formulation_bo": "Utiliser les nombres complexes pour etudier des configurations du plan : demontrer un alignement",
+          "connaissances_associees": [
+            "argument d'un quotient",
+            "alignement de trois points"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-GE-410",
+          "intitule": "Demontrer une orthogonalite a l'aide des nombres complexes",
+          "fingerprint": "demontrer_orthogonalite_complexes",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes et geometrie",
+          "type": "capacite",
+          "description_detaillee": "Utiliser l'argument du quotient (c-a)/(b-a) pour demontrer que deux droites sont perpendiculaires (argument = +/-pi/2)",
+          "formulation_bo": "Utiliser les nombres complexes pour etudier des configurations du plan : demontrer une orthogonalite",
+          "connaissances_associees": [
+            "argument d'un quotient",
+            "perpendicularite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-GE-411",
+          "intitule": "Calculer des longueurs a l'aide des nombres complexes",
+          "fingerprint": "calculer_longueurs_complexes",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes et geometrie",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le module de la difference d'affixes pour calculer des distances entre points",
+          "formulation_bo": "Utiliser les nombres complexes pour etudier des configurations du plan : calculer des longueurs",
+          "connaissances_associees": [
+            "module d'un nombre complexe",
+            "distance entre deux points"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-GE-412",
+          "intitule": "Calculer des angles a l'aide des nombres complexes",
+          "fingerprint": "calculer_angles_complexes",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes et geometrie",
+          "type": "capacite",
+          "description_detaillee": "Utiliser l'argument d'un quotient de nombres complexes pour calculer des angles orientes",
+          "formulation_bo": "Utiliser les nombres complexes pour etudier des configurations du plan : calculer des angles",
+          "connaissances_associees": [
+            "argument d'un nombre complexe",
+            "angle oriente"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-GE-413",
+          "intitule": "Determiner des ensembles de points a l'aide des nombres complexes",
+          "fingerprint": "determiner_ensembles_points_complexes",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes et geometrie",
+          "type": "capacite",
+          "description_detaillee": "Caracteriser un ensemble de points du plan par une equation sur les affixes (cercle, droite, etc.)",
+          "formulation_bo": "Utiliser les nombres complexes pour etudier des configurations du plan : determiner des ensembles de points",
+          "connaissances_associees": [
+            "affixe d'un point",
+            "module",
+            "argument",
+            "lieux geometriques"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-GE-414",
+          "intitule": "Utiliser les racines de l'unite pour etudier des polygones reguliers",
+          "fingerprint": "utiliser_racines_unite_polygones_reguliers",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Nombres complexes et geometrie",
+          "type": "capacite",
+          "description_detaillee": "Exploiter la representation des racines n-iemes de l'unite pour etudier des proprietes des polygones reguliers inscrits dans un cercle",
+          "formulation_bo": "Utiliser les racines de l'unite dans l'etude de configurations liees aux polygones reguliers.",
+          "connaissances_associees": [
+            "racines n-iemes de l'unite",
+            "polygone regulier",
+            "cercle trigonometrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Constructions geometriques": [
+        {
+          "code": "TEXP-GE-417",
+          "intitule": "Construire le pentagone regulier a la regle et au compas",
+          "fingerprint": "construire_pentagone_regulier_regle_compas",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Constructions geometriques",
+          "type": "approfondissement",
+          "description_detaillee": "Realiser la construction geometrique du pentagone regulier en utilisant les proprietes des racines 5-iemes de l'unite",
+          "formulation_bo": "construction du pentagone regulier a la regle et au compas",
+          "connaissances_associees": [
+            "racines 5-iemes de l'unite",
+            "cos(2*pi/5)",
+            "constructions a la regle et au compas"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Graphes et matrices": [
+        {
+          "code": "TEXP-GE-519",
+          "intitule": "Representer une transformation geometrique du plan par une matrice",
+          "fingerprint": "representer_transformation_geometrique_matrice",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Associer a une transformation geometrique (rotation, symetrie, homothetie) sa matrice dans un repere",
+          "formulation_bo": "transformations geometriques du plan",
+          "connaissances_associees": [
+            "matrice carree 2x2",
+            "coordonnees",
+            "transformations"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        }
+      ],
+      "Graphes": [
+        {
+          "code": "TEXP-GE-551",
+          "intitule": "Modeliser une situation par un graphe",
+          "fingerprint": "modeliser_situation_graphe",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Graphes",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation concrete (reseau, relations, connexions) en un graphe oriente ou non oriente avec sommets et aretes",
+          "formulation_bo": "Modeliser une situation par un graphe.",
+          "connaissances_associees": [
+            "definition graphe",
+            "sommets",
+            "aretes",
+            "graphe oriente"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-GE-559",
+          "intitule": "Calculer le nombre de chemins de longueur donnee entre deux sommets d'un graphe",
+          "fingerprint": "calculer_nombre_chemins_longueur_graphe",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Graphes",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la puissance n-ieme de la matrice d'adjacence pour determiner le nombre de chemins de longueur n entre deux sommets",
+          "formulation_bo": "utiliser le calcul matriciel [...] pour calculer le nombre de chemins de longueur donnee entre deux sommets d'un graphe",
+          "connaissances_associees": [
+            "matrice d'adjacence",
+            "puissances de matrices",
+            "chemin dans un graphe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-GE-562",
+          "intitule": "Demontrer l'expression du nombre de chemins a l'aide de la puissance de la matrice d'adjacence",
+          "fingerprint": "demontrer_nombre_chemins_matrice_adjacence",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Graphes",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que le coefficient (i,j) de A^n donne le nombre de chemins de longueur n du sommet i au sommet j",
+          "formulation_bo": "Expression du nombre de chemins de longueur n reliant deux sommets d'un graphe a l'aide de la puissance n-ieme de la matrice d'adjacence.",
+          "connaissances_associees": [
+            "matrice d'adjacence",
+            "produit matriciel",
+            "raisonnement par recurrence"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-GE-565",
+          "intitule": "Etudier un graphe eulerien",
+          "fingerprint": "etudier_graphe_eulerien",
+          "niveau": "TEXP",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Graphes",
+          "type": "approfondissement",
+          "description_detaillee": "Determiner si un graphe admet un chemin ou un cycle eulerien en etudiant le degre des sommets",
+          "formulation_bo": "Etude de graphes euleriens.",
+          "connaissances_associees": [
+            "graphe",
+            "degre d'un sommet",
+            "chemin eulerien",
+            "cycle eulerien"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        }
+      ]
+    },
+    "ALGEBRE": {
+      "Nombres complexes - Equations polynomiales": [
+        {
+          "code": "TEXP-AL-251",
+          "intitule": "Resoudre une equation de degre 2 a coefficients reels avec discriminant negatif",
+          "fingerprint": "resoudre_equation_degre2_discriminant_negatif",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes - Equations polynomiales",
+          "type": "capacite",
+          "description_detaillee": "Utiliser les nombres complexes pour resoudre les equations du second degre lorsque le discriminant est negatif, en exprimant les solutions sous forme a + ib",
+          "formulation_bo": "les nombres complexes permettent de resoudre les equations de degre 2 a coefficients reels lorsque le discriminant est negatif",
+          "connaissances_associees": [
+            "definition nombre complexe",
+            "discriminant",
+            "equation second degre",
+            "racine carree de nombre negatif"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "TEXP-AL-252",
+          "intitule": "Factoriser un polynome a partir d'une racine connue",
+          "fingerprint": "factoriser_polynome_racine_connue",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes - Equations polynomiales",
+          "type": "capacite",
+          "description_detaillee": "Effectuer la factorisation d'un polynome par (x - a) lorsque a est une racine du polynome",
+          "formulation_bo": "On met en evidence, dans un cadre general, la factorisation associee a une racine",
+          "connaissances_associees": [
+            "racine d'un polynome",
+            "division euclidienne polynomes",
+            "factorisation"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "TEXP-AL-253",
+          "intitule": "Demontrer que le nombre de solutions d'une equation polynomiale est majore par son degre",
+          "fingerprint": "demontrer_nb_solutions_majore_degre",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes - Equations polynomiales",
+          "type": "demonstration",
+          "description_detaillee": "Etablir par recurrence ou factorisation successive qu'un polynome de degre n a au plus n racines dans C",
+          "formulation_bo": "etablissant que le nombre de solutions d'une equation est majore par son degre",
+          "connaissances_associees": [
+            "degre d'un polynome",
+            "factorisation",
+            "raisonnement par recurrence"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Nombres complexes - Relations coefficients-racines": [
+        {
+          "code": "TEXP-AL-254",
+          "intitule": "Determiner la somme des racines d'un polynome a partir de ses coefficients",
+          "fingerprint": "determiner_somme_racines_polynome",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes - Relations coefficients-racines",
+          "type": "capacite",
+          "description_detaillee": "Pour un polynome P(x) = ax^n + bx^(n-1) + ..., determiner que la somme des racines vaut -b/a",
+          "formulation_bo": "somme et produit des racines d'un polynome se lisent sur le polynome",
+          "connaissances_associees": [
+            "relations de Viete",
+            "coefficients polynome",
+            "racines polynome"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "TEXP-AL-255",
+          "intitule": "Determiner le produit des racines d'un polynome a partir de ses coefficients",
+          "fingerprint": "determiner_produit_racines_polynome",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes - Relations coefficients-racines",
+          "type": "capacite",
+          "description_detaillee": "Pour un polynome P(x) = ax^n + ... + c, determiner que le produit des racines vaut (-1)^n * c/a",
+          "formulation_bo": "somme et produit des racines d'un polynome se lisent sur le polynome",
+          "connaissances_associees": [
+            "relations de Viete",
+            "coefficients polynome",
+            "racines polynome"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Nombres complexes - Racines de l'unite": [
+        {
+          "code": "TEXP-AL-260",
+          "intitule": "Determiner les racines n-iemes de l'unite",
+          "fingerprint": "determiner_racines_niemes_unite",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes - Racines de l'unite",
+          "type": "capacite",
+          "description_detaillee": "Trouver tous les nombres complexes z tels que z^n = 1, les exprimer sous forme exponentielle et les representer geometriquement",
+          "formulation_bo": "Les racines n-iemes de l'unite fournissent par ailleurs un pont interessant entre equations polynomiales et geometrie",
+          "connaissances_associees": [
+            "forme exponentielle",
+            "equation z^n = 1",
+            "polygone regulier"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Nombres complexes - Polynomes reels": [
+        {
+          "code": "TEXP-AL-262",
+          "intitule": "Factoriser un polynome reel en utilisant des techniques d'analyse",
+          "fingerprint": "factoriser_polynome_reel_analyse",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes - Polynomes reels",
+          "type": "capacite",
+          "description_detaillee": "Utiliser des outils d'analyse (theoreme des valeurs intermediaires, derivee, variations) pour localiser ou demontrer l'existence de racines reelles d'un polynome",
+          "formulation_bo": "On peut par ailleurs revenir sur le cas des polynomes reels, en utilisant des techniques d'analyse",
+          "connaissances_associees": [
+            "theoreme des valeurs intermediaires",
+            "derivation",
+            "etude de fonctions",
+            "racines reelles"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Equations dans C": [
+        {
+          "code": "TEXP-AL-310",
+          "intitule": "Resoudre une equation lineaire az = b dans C",
+          "fingerprint": "resoudre_equation_lineaire_complexe",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations dans C",
+          "type": "capacite",
+          "description_detaillee": "Pour a et b complexes avec a non nul, resoudre l'equation az = b",
+          "formulation_bo": "Résoudre une équation linéaire az = b.",
+          "connaissances_associees": [
+            "inverse d'un complexe",
+            "operations sur C"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-AL-311",
+          "intitule": "Resoudre une equation faisant intervenir z et son conjugue",
+          "fingerprint": "resoudre_equation_z_conjugue",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations dans C",
+          "type": "capacite",
+          "description_detaillee": "Resoudre des equations simples du type az + b*z_barre = c en utilisant les parties reelle et imaginaire",
+          "formulation_bo": "Résoudre une équation simple faisant intervenir z et z.",
+          "connaissances_associees": [
+            "conjugue",
+            "partie reelle",
+            "partie imaginaire"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        }
+      ],
+      "Equations polynomiales": [
+        {
+          "code": "TEXP-AL-366",
+          "intitule": "Determiner les solutions complexes d'une equation du second degre a coefficients reels",
+          "fingerprint": "determiner_solutions_complexes_equation_second_degre",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "contenu",
+          "description_detaillee": "Calculer les racines complexes lorsque le discriminant est negatif",
+          "formulation_bo": "Solutions complexes d'une equation du second degre a coefficients reels.",
+          "connaissances_associees": [
+            "discriminant",
+            "racine carree de negatif",
+            "i"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-367",
+          "intitule": "Factoriser z^n - a^n par z - a",
+          "fingerprint": "factoriser_zn_moins_an",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et utiliser la factorisation z^n - a^n = (z-a)(z^(n-1) + z^(n-2)*a + ... + a^(n-1))",
+          "formulation_bo": "Factorisation de zn - an par z - a.",
+          "connaissances_associees": [
+            "somme geometrique",
+            "identites remarquables"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-368",
+          "intitule": "Factoriser un polynome P par (z - a) lorsque P(a) = 0",
+          "fingerprint": "factoriser_polynome_par_racine",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "contenu",
+          "description_detaillee": "Si a est racine de P, alors P(z) = (z-a)*Q(z) ou Q est un polynome de degre n-1",
+          "formulation_bo": "Si P est un polynome et P(a) = 0, factorisation de P par z - a.",
+          "connaissances_associees": [
+            "racine d'un polynome",
+            "division euclidienne"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-369",
+          "intitule": "Demontrer qu'un polynome de degre n admet au plus n racines",
+          "fingerprint": "demontrer_polynome_degre_n_au_plus_n_racines",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et justifier que le nombre de racines d'un polynome est majore par son degre",
+          "formulation_bo": "Un polynome de degre n admet au plus n racines.",
+          "connaissances_associees": [
+            "degre d'un polynome",
+            "factorisation"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-370",
+          "intitule": "Resoudre une equation polynomiale de degre 2 a coefficients reels",
+          "fingerprint": "resoudre_equation_degre_2_coefficients_reels",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "capacite",
+          "description_detaillee": "Resoudre az^2 + bz + c = 0 avec a,b,c reels en donnant les solutions complexes",
+          "formulation_bo": "Resoudre une equation polynomiale de degre 2 a coefficients reels.",
+          "connaissances_associees": [
+            "discriminant",
+            "formule quadratique",
+            "nombres complexes"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-371",
+          "intitule": "Resoudre une equation de degre 3 a coefficients reels dont une racine est connue",
+          "fingerprint": "resoudre_equation_degre_3_racine_connue",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "capacite",
+          "description_detaillee": "Factoriser par (z-a) puis resoudre l'equation de degre 2 restante",
+          "formulation_bo": "Resoudre une equation de degre 3 a coefficients reels dont une racine est connue.",
+          "connaissances_associees": [
+            "factorisation par racine",
+            "division polynomiale"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-372",
+          "intitule": "Factoriser un polynome dont une racine est connue",
+          "fingerprint": "factoriser_polynome_racine_connue",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "capacite",
+          "description_detaillee": "Effectuer la division euclidienne de P par (z-a) pour obtenir P = (z-a)*Q(z)",
+          "formulation_bo": "Factoriser un polynome dont une racine est connue.",
+          "connaissances_associees": [
+            "division euclidienne polynomiale",
+            "identification coefficients"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-373",
+          "intitule": "Demontrer la factorisation de z^n - a^n par (z - a)",
+          "fingerprint": "demontrer_factorisation_zn_an",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "demonstration",
+          "description_detaillee": "Prouver que z^n - a^n = (z-a)(z^(n-1) + z^(n-2)*a + ... + a^(n-1)) par developpement ou recurrence",
+          "formulation_bo": "Factorisation de zn - an par z - a.",
+          "connaissances_associees": [
+            "somme geometrique",
+            "developpement"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-374",
+          "intitule": "Demontrer la factorisation de P(z) par (z - a) si P(a) = 0",
+          "fingerprint": "demontrer_factorisation_polynome_racine",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "demonstration",
+          "description_detaillee": "Prouver que si P(a) = 0 alors il existe Q tel que P(z) = (z-a)*Q(z)",
+          "formulation_bo": "Factorisation de P(z) par z - a si P(a) = 0.",
+          "connaissances_associees": [
+            "division euclidienne",
+            "reste de division"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-375",
+          "intitule": "Demontrer que le nombre de solutions d'une equation polynomiale est inferieur ou egal a son degre",
+          "fingerprint": "demontrer_nombre_solutions_inferieur_degre",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "demonstration",
+          "description_detaillee": "Prouver par recurrence ou factorisation successive qu'un polynome de degre n a au plus n racines",
+          "formulation_bo": "Le nombre de solutions d'une equation polynomiale est inferieur ou egal a son degre.",
+          "connaissances_associees": [
+            "recurrence",
+            "factorisation",
+            "degre"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-377",
+          "intitule": "Resoudre une equation du second degre a coefficients complexes",
+          "fingerprint": "resoudre_equation_degre_2_coefficients_complexes",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "approfondissement",
+          "description_detaillee": "Resoudre az^2 + bz + c = 0 avec a,b,c complexes en calculant une racine carree du discriminant",
+          "formulation_bo": "equation du second degre a coefficients complexes.",
+          "connaissances_associees": [
+            "racine carree complexe",
+            "discriminant complexe"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-378",
+          "intitule": "Appliquer les formules de Viete",
+          "fingerprint": "appliquer_formules_viete",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "approfondissement",
+          "description_detaillee": "Utiliser les relations entre coefficients et racines d'un polynome (somme et produit des racines)",
+          "formulation_bo": "Formules de Viete.",
+          "connaissances_associees": [
+            "somme des racines",
+            "produit des racines",
+            "coefficients"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-AL-379",
+          "intitule": "Resoudre par radicaux une equation de degre 3",
+          "fingerprint": "resoudre_radicaux_equation_degre_3",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations polynomiales",
+          "type": "approfondissement",
+          "description_detaillee": "Appliquer la methode de Cardan pour resoudre x^3 + px + q = 0",
+          "formulation_bo": "Resolution par radicaux de l'equation de degre 3.",
+          "connaissances_associees": [
+            "methode de Cardan",
+            "changement de variable",
+            "racines cubiques"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Nombres complexes": [
+        {
+          "code": "TEXP-AL-403",
+          "intitule": "Definir les racines n-iemes de l'unite",
+          "fingerprint": "definir_racines_niemes_unite",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes",
+          "type": "contenu",
+          "description_detaillee": "Definir l'ensemble Un des racines n-iemes de l'unite comme l'ensemble des solutions de z^n = 1",
+          "formulation_bo": "Racines n-iemes de l'unite. Description de l'ensemble Un des racines n-iemes de l'unite.",
+          "connaissances_associees": [
+            "nombre complexe",
+            "equation polynomiale",
+            "forme exponentielle"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-AL-404",
+          "intitule": "Decrire l'ensemble des racines n-iemes de l'unite",
+          "fingerprint": "decrire_ensemble_racines_niemes_unite",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes",
+          "type": "contenu",
+          "description_detaillee": "Exprimer les n racines n-iemes de l'unite sous la forme e^(2ik*pi/n) pour k de 0 a n-1",
+          "formulation_bo": "Description de l'ensemble Un des racines n-iemes de l'unite.",
+          "connaissances_associees": [
+            "forme exponentielle",
+            "argument principal"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-AL-406",
+          "intitule": "Determiner les racines carrees de l'unite",
+          "fingerprint": "determiner_racines_carrees_unite",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes",
+          "type": "contenu",
+          "description_detaillee": "Identifier U2 = {1, -1} comme ensemble des racines carrees de l'unite",
+          "formulation_bo": "Cas particuliers : n = 2, 3, 4.",
+          "connaissances_associees": [
+            "racines n-iemes de l'unite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-AL-407",
+          "intitule": "Determiner les racines cubiques de l'unite",
+          "fingerprint": "determiner_racines_cubiques_unite",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes",
+          "type": "contenu",
+          "description_detaillee": "Identifier U3 = {1, j, j^2} avec j = e^(2i*pi/3) comme ensemble des racines cubiques de l'unite",
+          "formulation_bo": "Cas particuliers : n = 2, 3, 4.",
+          "connaissances_associees": [
+            "racines n-iemes de l'unite",
+            "forme exponentielle"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-AL-408",
+          "intitule": "Determiner les racines quatriemes de l'unite",
+          "fingerprint": "determiner_racines_quatriemes_unite",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes",
+          "type": "contenu",
+          "description_detaillee": "Identifier U4 = {1, i, -1, -i} comme ensemble des racines quatriemes de l'unite",
+          "formulation_bo": "Cas particuliers : n = 2, 3, 4.",
+          "connaissances_associees": [
+            "racines n-iemes de l'unite",
+            "nombre i"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-AL-415",
+          "intitule": "Demontrer la determination de l'ensemble des racines n-iemes de l'unite",
+          "fingerprint": "demontrer_determination_ensemble_racines_niemes",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que les racines n-iemes de l'unite sont les e^(2ik*pi/n) pour k de 0 a n-1",
+          "formulation_bo": "Determination de l'ensemble Un.",
+          "connaissances_associees": [
+            "equation z^n = 1",
+            "forme exponentielle",
+            "argument"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-AL-418",
+          "intitule": "Calculer la somme des racines n-iemes de l'unite",
+          "fingerprint": "calculer_somme_racines_niemes_unite",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes",
+          "type": "approfondissement",
+          "description_detaillee": "Demontrer que la somme des racines n-iemes de l'unite est nulle pour n >= 2",
+          "formulation_bo": "Somme des racines n-iemes de l'unite.",
+          "connaissances_associees": [
+            "racines n-iemes de l'unite",
+            "somme de suite geometrique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-AL-419",
+          "intitule": "Determiner les racines n-iemes d'un nombre complexe quelconque",
+          "fingerprint": "determiner_racines_niemes_complexe_quelconque",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes",
+          "type": "approfondissement",
+          "description_detaillee": "Etendre la notion de racines n-iemes a un nombre complexe non nul z quelconque en resolvant w^n = z",
+          "formulation_bo": "Racines n-iemes d'un nombre complexe.",
+          "connaissances_associees": [
+            "racines n-iemes de l'unite",
+            "forme exponentielle",
+            "module et argument"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "TEXP-AL-420",
+          "intitule": "Appliquer la transformation de Fourier discrete",
+          "fingerprint": "appliquer_transformation_fourier_discrete",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Nombres complexes",
+          "type": "approfondissement",
+          "description_detaillee": "Decouvrir et appliquer la transformation de Fourier discrete utilisant les racines n-iemes de l'unite",
+          "formulation_bo": "Transformation de Fourier discrete.",
+          "connaissances_associees": [
+            "racines n-iemes de l'unite",
+            "matrices",
+            "signal discret"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Graphes et matrices": [
+        {
+          "code": "TEXP-AL-501",
+          "intitule": "Definir un graphe avec ses sommets et aretes",
+          "fingerprint": "definir_graphe_sommets_aretes",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition d'un graphe comme ensemble de sommets relies par des aretes",
+          "formulation_bo": "Graphe, sommets, aretes.",
+          "connaissances_associees": [
+            "ensembles",
+            "relations"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-502",
+          "intitule": "Definir et construire un graphe complet",
+          "fingerprint": "definir_graphe_complet",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition d'un graphe complet (tous les sommets relies entre eux) et savoir le construire",
+          "formulation_bo": "Exemple du graphe complet.",
+          "connaissances_associees": [
+            "graphe",
+            "sommets",
+            "aretes"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-503",
+          "intitule": "Definir des sommets adjacents dans un graphe",
+          "fingerprint": "definir_sommets_adjacents",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition de sommets adjacents (relies par une arete)",
+          "formulation_bo": "Sommets adjacents",
+          "connaissances_associees": [
+            "graphe",
+            "aretes"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-504",
+          "intitule": "Determiner le degre d'un sommet dans un graphe",
+          "fingerprint": "determiner_degre_sommet_graphe",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Calculer le nombre d'aretes incidentes a un sommet donne",
+          "formulation_bo": "degre",
+          "connaissances_associees": [
+            "graphe",
+            "sommets",
+            "aretes"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-505",
+          "intitule": "Determiner l'ordre d'un graphe",
+          "fingerprint": "determiner_ordre_graphe",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Calculer le nombre de sommets d'un graphe",
+          "formulation_bo": "ordre d'un graphe",
+          "connaissances_associees": [
+            "graphe",
+            "sommets"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-506",
+          "intitule": "Definir une chaine dans un graphe",
+          "fingerprint": "definir_chaine_graphe",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition d'une chaine comme suite de sommets consecutivement adjacents",
+          "formulation_bo": "chaine",
+          "connaissances_associees": [
+            "graphe",
+            "sommets adjacents"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-507",
+          "intitule": "Determiner la longueur d'une chaine",
+          "fingerprint": "determiner_longueur_chaine_graphe",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Calculer le nombre d'aretes parcourues dans une chaine",
+          "formulation_bo": "longueur d'une chaine",
+          "connaissances_associees": [
+            "chaine",
+            "aretes"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-508",
+          "intitule": "Reconnaitre un graphe connexe",
+          "fingerprint": "reconnaitre_graphe_connexe",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Identifier si un graphe est connexe (tous les sommets sont relies par au moins une chaine)",
+          "formulation_bo": "graphe connexe",
+          "connaissances_associees": [
+            "graphe",
+            "chaine"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-509",
+          "intitule": "Definir une matrice comme tableau de nombres reels",
+          "fingerprint": "definir_matrice_tableau_reels",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition d'une matrice comme tableau rectangulaire de nombres reels avec lignes et colonnes",
+          "formulation_bo": "Notion de matrice (tableau de nombres reels).",
+          "connaissances_associees": [
+            "nombres reels"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-510",
+          "intitule": "Reconnaitre une matrice carree",
+          "fingerprint": "reconnaitre_matrice_carree",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Identifier une matrice dont le nombre de lignes egale le nombre de colonnes",
+          "formulation_bo": "Matrice carree",
+          "connaissances_associees": [
+            "matrice"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-511",
+          "intitule": "Reconnaitre une matrice colonne",
+          "fingerprint": "reconnaitre_matrice_colonne",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Identifier une matrice a une seule colonne",
+          "formulation_bo": "matrice colonne",
+          "connaissances_associees": [
+            "matrice"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-512",
+          "intitule": "Reconnaitre une matrice ligne",
+          "fingerprint": "reconnaitre_matrice_ligne",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Identifier une matrice a une seule ligne",
+          "formulation_bo": "matrice ligne",
+          "connaissances_associees": [
+            "matrice"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-513",
+          "intitule": "Calculer la somme de deux matrices",
+          "fingerprint": "calculer_somme_matrices",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Additionner deux matrices de meme dimension en additionnant les coefficients correspondants",
+          "formulation_bo": "Operations.",
+          "connaissances_associees": [
+            "matrice",
+            "addition"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-514",
+          "intitule": "Calculer le produit d'une matrice par un scalaire",
+          "fingerprint": "calculer_produit_matrice_scalaire",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Multiplier chaque coefficient d'une matrice par un nombre reel",
+          "formulation_bo": "Operations.",
+          "connaissances_associees": [
+            "matrice",
+            "multiplication scalaire"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-515",
+          "intitule": "Calculer le produit de deux matrices",
+          "fingerprint": "calculer_produit_matrices",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Multiplier deux matrices en utilisant la formule du produit matriciel (lignes par colonnes)",
+          "formulation_bo": "Operations.",
+          "connaissances_associees": [
+            "matrice",
+            "produit scalaire"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-516",
+          "intitule": "Determiner l'inverse d'une matrice carree",
+          "fingerprint": "determiner_inverse_matrice_carree",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Trouver la matrice inverse d'une matrice carree inversible telle que A*A^(-1) = I",
+          "formulation_bo": "Inverse",
+          "connaissances_associees": [
+            "matrice carree",
+            "matrice identite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-517",
+          "intitule": "Calculer les puissances d'une matrice carree",
+          "fingerprint": "calculer_puissances_matrice_carree",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Calculer A^n pour une matrice carree A par produits successifs ou formule explicite",
+          "formulation_bo": "puissances d'une matrice carree",
+          "connaissances_associees": [
+            "matrice carree",
+            "produit matriciel"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-518",
+          "intitule": "Construire la matrice d'adjacence d'un graphe",
+          "fingerprint": "construire_matrice_adjacence_graphe",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Representer un graphe par sa matrice d'adjacence (1 si aretes, 0 sinon)",
+          "formulation_bo": "matrice d'adjacence d'un graphe",
+          "connaissances_associees": [
+            "graphe",
+            "matrice carree",
+            "sommets adjacents"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-520",
+          "intitule": "Representer un systeme lineaire sous forme matricielle",
+          "fingerprint": "representer_systeme_lineaire_matriciel",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Ecrire un systeme d'equations lineaires sous la forme AX = B avec A matrice, X et B vecteurs colonnes",
+          "formulation_bo": "systemes lineaires",
+          "connaissances_associees": [
+            "systeme d'equations",
+            "matrice",
+            "matrice colonne"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-522",
+          "intitule": "Calculer les puissances d'une matrice carree d'ordre 2",
+          "fingerprint": "calculer_puissances_matrice_ordre_2",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Calculer A^n pour une matrice 2x2 en utilisant des techniques specifiques (diagonalisation, recurrence)",
+          "formulation_bo": "Exemples de calcul de puissances de matrices carrees d'ordre 2 ou 3.",
+          "connaissances_associees": [
+            "matrice 2x2",
+            "produit matriciel"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AL-523",
+          "intitule": "Calculer les puissances d'une matrice carree d'ordre 3",
+          "fingerprint": "calculer_puissances_matrice_ordre_3",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Calculer A^n pour une matrice 3x3 en utilisant des techniques specifiques",
+          "formulation_bo": "Exemples de calcul de puissances de matrices carrees d'ordre 2 ou 3.",
+          "connaissances_associees": [
+            "matrice 3x3",
+            "produit matriciel"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        }
+      ],
+      "Matrices": [
+        {
+          "code": "TEXP-AL-552",
+          "intitule": "Modeliser une situation par une matrice",
+          "fingerprint": "modeliser_situation_matrice",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Matrices",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation concrete en une matrice (systeme lineaire, transformation, donnees tabulaires)",
+          "formulation_bo": "Modeliser une situation par une matrice.",
+          "connaissances_associees": [
+            "definition matrice",
+            "coefficients",
+            "dimensions"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-AL-555",
+          "intitule": "Calculer l'inverse d'une matrice carree",
+          "fingerprint": "calculer_inverse_matrice_carree",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Matrices",
+          "type": "capacite",
+          "description_detaillee": "Determiner la matrice inverse A^(-1) d'une matrice carree A inversible, verifier que AA^(-1) = I",
+          "formulation_bo": "Calculer l'inverse, les puissances d'une matrice carree.",
+          "connaissances_associees": [
+            "matrice carree",
+            "matrice identite",
+            "determinant",
+            "inversibilite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-AL-556",
+          "intitule": "Calculer les puissances d'une matrice carree",
+          "fingerprint": "calculer_puissances_matrice_carree",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Matrices",
+          "type": "capacite",
+          "description_detaillee": "Calculer A^n pour une matrice carree A et un entier n, eventuellement par diagonalisation ou recurrence",
+          "formulation_bo": "Calculer l'inverse, les puissances d'une matrice carree.",
+          "connaissances_associees": [
+            "matrice carree",
+            "produit matriciel",
+            "diagonalisation"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        }
+      ],
+      "Systemes lineaires": [
+        {
+          "code": "TEXP-AL-557",
+          "intitule": "Resoudre un systeme lineaire a l'aide du calcul matriciel",
+          "fingerprint": "resoudre_systeme_lineaire_calcul_matriciel",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Systemes lineaires",
+          "type": "capacite",
+          "description_detaillee": "Ecrire un systeme lineaire sous forme matricielle AX = B et le resoudre en utilisant l'inverse de A : X = A^(-1)B",
+          "formulation_bo": "utiliser le calcul matriciel, notamment l'inverse et les puissances d'une matrice carree, pour resoudre un systeme lineaire",
+          "connaissances_associees": [
+            "systeme lineaire",
+            "ecriture matricielle",
+            "matrice inverse"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        }
+      ],
+      "Polynomes": [
+        {
+          "code": "TEXP-AL-566",
+          "intitule": "Realiser une interpolation polynomiale",
+          "fingerprint": "realiser_interpolation_polynomiale",
+          "niveau": "TEXP",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Polynomes",
+          "type": "approfondissement",
+          "description_detaillee": "Determiner un polynome passant par des points donnes en resolvant un systeme matriciel",
+          "formulation_bo": "Interpolation polynomiale.",
+          "connaissances_associees": [
+            "polynome",
+            "systeme lineaire",
+            "matrice de Vandermonde"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        }
+      ]
+    },
+    "TRIGONOMETRIE": {
+      "Nombres complexes - Applications trigonometriques": [
+        {
+          "code": "TEXP-TR-259",
+          "intitule": "Utiliser le calcul dans C pour resoudre des problemes de trigonometrie",
+          "fingerprint": "utiliser_calcul_C_trigonometrie",
+          "niveau": "TEXP",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Nombres complexes - Applications trigonometriques",
+          "type": "capacite",
+          "description_detaillee": "Utiliser les nombres complexes (notamment la forme exponentielle) pour etablir des formules trigonometriques ou resoudre des equations trigonometriques",
+          "formulation_bo": "On peut ainsi utiliser le calcul dans C pour resoudre de nombreuses questions [...] de trigonometrie",
+          "connaissances_associees": [
+            "forme exponentielle",
+            "formule de Moivre",
+            "cos et sin",
+            "argument"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Nombres complexes et trigonometrie": [
+        {
+          "code": "TEXP-TR-351",
+          "intitule": "Demontrer les formules d'addition a partir du produit scalaire",
+          "fingerprint": "demontrer_formules_addition_produit_scalaire",
+          "niveau": "TEXP",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Etablir les formules d'addition cos(a+b), sin(a+b) en utilisant le produit scalaire de vecteurs",
+          "formulation_bo": "Formules d'addition et de duplication a partir du produit scalaire.",
+          "connaissances_associees": [
+            "produit scalaire",
+            "vecteurs",
+            "trigonometrie"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-TR-352",
+          "intitule": "Demontrer les formules de duplication a partir du produit scalaire",
+          "fingerprint": "demontrer_formules_duplication_produit_scalaire",
+          "niveau": "TEXP",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Etablir les formules cos(2a), sin(2a) a partir des formules d'addition",
+          "formulation_bo": "Formules d'addition et de duplication a partir du produit scalaire.",
+          "connaissances_associees": [
+            "formules d'addition",
+            "produit scalaire"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-TR-355",
+          "intitule": "Appliquer les formules d'Euler pour cos(theta)",
+          "fingerprint": "appliquer_euler_cosinus",
+          "niveau": "TEXP",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Utiliser cos(theta) = (1/2)(e^(i*theta) + e^(-i*theta))",
+          "formulation_bo": "Formules d'Euler : cos(theta) = 1/2 (e^(i*theta)+e^(-i*theta))",
+          "connaissances_associees": [
+            "exponentielle imaginaire",
+            "cosinus"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-TR-356",
+          "intitule": "Appliquer les formules d'Euler pour sin(theta)",
+          "fingerprint": "appliquer_euler_sinus",
+          "niveau": "TEXP",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Utiliser sin(theta) = (1/2i)(e^(i*theta) - e^(-i*theta))",
+          "formulation_bo": "sin(theta) = 1/2i (e^(i*theta)-e^(-i*theta))",
+          "connaissances_associees": [
+            "exponentielle imaginaire",
+            "sinus"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-TR-363",
+          "intitule": "Utiliser les formules d'Euler pour transformer des expressions trigonometriques",
+          "fingerprint": "utiliser_euler_transformer_expressions_trigo",
+          "niveau": "TEXP",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "capacite",
+          "description_detaillee": "Lineariser des expressions comme cos^n(theta), sin^n(theta) ou les transformer pour integration",
+          "formulation_bo": "Utiliser les formules d'Euler et de Moivre pour transformer des expressions trigonometriques, dans des contextes divers (integration, suites, etc.)",
+          "connaissances_associees": [
+            "formules d'Euler",
+            "linearisation"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "TEXP-TR-365",
+          "intitule": "Demontrer une des formules d'addition trigonometriques",
+          "fingerprint": "demontrer_formule_addition_trigonometrique",
+          "niveau": "TEXP",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Nombres complexes et trigonometrie",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer par exemple cos(a+b) = cos(a)cos(b) - sin(a)sin(b) a partir du produit scalaire",
+          "formulation_bo": "Demonstration d'une des formules d'addition.",
+          "connaissances_associees": [
+            "produit scalaire",
+            "vecteurs unitaires"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Valeurs remarquables": [
+        {
+          "code": "TEXP-TR-416",
+          "intitule": "Calculer les lignes trigonometriques de 2*pi/5",
+          "fingerprint": "calculer_lignes_trigonometriques_2pi_5",
+          "niveau": "TEXP",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Valeurs remarquables",
+          "type": "approfondissement",
+          "description_detaillee": "Determiner les valeurs exactes de cos(2*pi/5) et sin(2*pi/5) a l'aide des racines 5-iemes de l'unite",
+          "formulation_bo": "Lignes trigonometriques de 2*pi/5",
+          "connaissances_associees": [
+            "racines 5-iemes de l'unite",
+            "equations du second degre"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 8
+          }
+        }
+      ]
+    },
+    "ANALYSE": {
+      "Suites de nombres complexes": [
+        {
+          "code": "TEXP-AN-337",
+          "intitule": "Etudier une suite de nombres complexes definie par z_{n+1} = az_n + b",
+          "fingerprint": "etudier_suite_complexe_affine",
+          "niveau": "TEXP",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites de nombres complexes",
+          "type": "approfondissement",
+          "description_detaillee": "Etudier le comportement d'une suite de nombres complexes definie par une relation de recurrence affine",
+          "formulation_bo": "Suite de nombres complexes définie par z = az + b.\nn+1 n",
+          "connaissances_associees": [
+            "suites recurrentes",
+            "point fixe",
+            "comportement asymptotique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        }
+      ],
+      "Graphes et matrices": [
+        {
+          "code": "TEXP-AN-521",
+          "intitule": "Representer une suite recurrente sous forme matricielle",
+          "fingerprint": "representer_suite_recurrente_matricielle",
+          "niveau": "TEXP",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "capacite",
+          "description_detaillee": "Exprimer une relation de recurrence lineaire sous forme de produit matriciel",
+          "formulation_bo": "suites recurrentes",
+          "connaissances_associees": [
+            "suite recurrente",
+            "matrice",
+            "produit matriciel"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-AN-524",
+          "intitule": "Definir une suite de matrices colonnes verifiant U(n+1) = A*U(n) + C",
+          "fingerprint": "definir_suite_matrices_colonnes_recurrence",
+          "niveau": "TEXP",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et manipuler une suite de vecteurs colonnes definie par recurrence matricielle affine",
+          "formulation_bo": "Suite de matrices colonnes (Un) verifiant une relation de recurrence du type Un+1 = AUn + C.",
+          "connaissances_associees": [
+            "suite recurrente",
+            "matrice",
+            "matrice colonne"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        }
+      ],
+      "Suites": [
+        {
+          "code": "TEXP-AN-558",
+          "intitule": "Etudier une suite recurrente lineaire a l'aide du calcul matriciel",
+          "fingerprint": "etudier_suite_recurrente_lineaire_matriciel",
+          "niveau": "TEXP",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites",
+          "type": "capacite",
+          "description_detaillee": "Exprimer une suite recurrente lineaire sous forme matricielle et utiliser les puissances de matrices pour determiner le terme general",
+          "formulation_bo": "utiliser le calcul matriciel [...] pour etudier une suite recurrente lineaire",
+          "connaissances_associees": [
+            "suite recurrente lineaire",
+            "ecriture matricielle",
+            "puissances de matrices"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-AN-569",
+          "intitule": "Etudier un modele proie-predateur discretise",
+          "fingerprint": "etudier_modele_proie_predateur_discretise",
+          "niveau": "TEXP",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites",
+          "type": "approfondissement",
+          "description_detaillee": "Analyser l'evolution couplee de deux suites recurrentes modelisant les populations de proies et predateurs",
+          "formulation_bo": "Modele proie-predateur discretise : evolution couplee de deux suites recurrentes.",
+          "connaissances_associees": [
+            "suites couplees",
+            "systeme matriciel",
+            "modelisation"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        }
+      ]
+    },
+    "ALGORITHMIQUE": {
+      "Fractales": [
+        {
+          "code": "TEXP-AG-339",
+          "intitule": "Etudier experimentalement l'ensemble de Mandelbrot",
+          "fingerprint": "etudier_ensemble_mandelbrot",
+          "niveau": "TEXP",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Fractales",
+          "type": "approfondissement",
+          "description_detaillee": "Explorer par programmation l'ensemble de Mandelbrot defini par la suite z_{n+1} = z_n^2 + c",
+          "formulation_bo": "Étude expérimentale de l'ensemble de Mandelbrot, d'ensembles de Julia.",
+          "connaissances_associees": [
+            "suites complexes",
+            "module",
+            "programmation"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "TEXP-AG-340",
+          "intitule": "Etudier experimentalement des ensembles de Julia",
+          "fingerprint": "etudier_ensembles_julia",
+          "niveau": "TEXP",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Fractales",
+          "type": "approfondissement",
+          "description_detaillee": "Explorer par programmation les ensembles de Julia associes a differentes valeurs de c",
+          "formulation_bo": "Étude expérimentale de l'ensemble de Mandelbrot, d'ensembles de Julia.",
+          "connaissances_associees": [
+            "suites complexes",
+            "module",
+            "programmation"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 6
+          }
+        }
+      ],
+      "Arithmetique algorithmique": [
+        {
+          "code": "TEXP-AG-475",
+          "intitule": "Programmer l'algorithme d'Euclide pour le PGCD",
+          "fingerprint": "programmer_algorithme_Euclide_PGCD",
+          "niveau": "TEXP",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Arithmetique algorithmique",
+          "type": "algorithme",
+          "description_detaillee": "Implementer l'algorithme d'Euclide en Python pour calculer le PGCD de deux entiers",
+          "formulation_bo": "Algorithme d'Euclide de calcul du PGCD de deux nombres",
+          "connaissances_associees": [
+            "division euclidienne",
+            "boucle while",
+            "recursivite"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-AG-476",
+          "intitule": "Programmer le calcul des coefficients de Bezout",
+          "fingerprint": "programmer_coefficients_Bezout",
+          "niveau": "TEXP",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Arithmetique algorithmique",
+          "type": "algorithme",
+          "description_detaillee": "Implementer l'algorithme d'Euclide etendu pour calculer un couple (u,v) tel que au + bv = PGCD(a,b)",
+          "formulation_bo": "calcul d'un couple de Bezout.",
+          "connaissances_associees": [
+            "algorithme d'Euclide",
+            "identite de Bezout"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-AG-477",
+          "intitule": "Programmer le crible d'Eratosthene",
+          "fingerprint": "programmer_crible_Eratosthene",
+          "niveau": "TEXP",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Arithmetique algorithmique",
+          "type": "algorithme",
+          "description_detaillee": "Implementer le crible d'Eratosthene pour lister tous les nombres premiers jusqu'a n",
+          "formulation_bo": "Crible d'Eratosthene.",
+          "connaissances_associees": [
+            "nombres premiers",
+            "listes Python",
+            "boucles imbriquees"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "TEXP-AG-478",
+          "intitule": "Programmer la decomposition en facteurs premiers",
+          "fingerprint": "programmer_decomposition_facteurs_premiers",
+          "niveau": "TEXP",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Arithmetique algorithmique",
+          "type": "algorithme",
+          "description_detaillee": "Implementer un algorithme de decomposition d'un entier en produit de facteurs premiers",
+          "formulation_bo": "Decomposition en facteurs premiers.",
+          "connaissances_associees": [
+            "nombres premiers",
+            "division",
+            "boucles"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 9
+          }
+        }
+      ],
+      "Graphes et matrices": [
+        {
+          "code": "TEXP-AG-570",
+          "intitule": "Appliquer l'algorithme PageRank",
+          "fingerprint": "appliquer_algorithme_pagerank",
+          "niveau": "TEXP",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Graphes et matrices",
+          "type": "approfondissement",
+          "description_detaillee": "Comprendre et appliquer l'algorithme PageRank comme application des chaines de Markov au classement de pages web",
+          "formulation_bo": "Algorithme PageRank.",
+          "connaissances_associees": [
+            "chaine de Markov",
+            "graphe oriente",
+            "distribution stationnaire",
+            "puissances de matrices"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        }
+      ]
+    },
+    "PROBABILITES": {
+      "Chaines de Markov": [
+        {
+          "code": "TEXP-PR-525",
+          "intitule": "Construire le graphe oriente pondere associe a une chaine de Markov",
+          "fingerprint": "construire_graphe_oriente_pondere_markov",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "capacite",
+          "description_detaillee": "Representer une chaine de Markov par un graphe oriente avec probabilites de transition sur les aretes",
+          "formulation_bo": "Graphe oriente pondere associe a une chaine de Markov a deux ou trois etats.",
+          "connaissances_associees": [
+            "graphe oriente",
+            "probabilites de transition"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-PR-526",
+          "intitule": "Definir une chaine de Markov a deux etats",
+          "fingerprint": "definir_chaine_markov_deux_etats",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition d'une chaine de Markov a deux etats avec ses probabilites de transition",
+          "formulation_bo": "Chaine de Markov a deux ou trois etats.",
+          "connaissances_associees": [
+            "probabilites",
+            "etats"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-PR-527",
+          "intitule": "Definir une chaine de Markov a trois etats",
+          "fingerprint": "definir_chaine_markov_trois_etats",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition d'une chaine de Markov a trois etats avec ses probabilites de transition",
+          "formulation_bo": "Chaine de Markov a deux ou trois etats.",
+          "connaissances_associees": [
+            "probabilites",
+            "etats"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-PR-528",
+          "intitule": "Definir la distribution initiale d'une chaine de Markov",
+          "fingerprint": "definir_distribution_initiale_markov",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "contenu",
+          "description_detaillee": "Representer la distribution initiale comme une matrice ligne pi_0",
+          "formulation_bo": "Distribution initiale, representee par une matrice ligne pi0.",
+          "connaissances_associees": [
+            "matrice ligne",
+            "probabilites"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-PR-529",
+          "intitule": "Definir la matrice de transition d'une chaine de Markov",
+          "fingerprint": "definir_matrice_transition_markov",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la matrice de transition P ou P(i,j) est la probabilite de passer de l'etat i a l'etat j",
+          "formulation_bo": "Matrice de transition, graphe pondere associe.",
+          "connaissances_associees": [
+            "matrice carree",
+            "probabilites de transition"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-PR-530",
+          "intitule": "Interpreter le coefficient (i,j) de P^n dans une chaine de Markov",
+          "fingerprint": "interpreter_coefficient_puissance_matrice_markov",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "capacite",
+          "description_detaillee": "Comprendre que le coefficient (i,j) de P^n represente la probabilite de passer de l'etat i a l'etat j en n transitions",
+          "formulation_bo": "Pour une chaine de Markov a deux ou trois etats de matrice P, interpretation du coefficient (i,j) de Pn.",
+          "connaissances_associees": [
+            "puissances de matrices",
+            "probabilites de transition"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-PR-531",
+          "intitule": "Calculer la distribution apres n transitions d'une chaine de Markov",
+          "fingerprint": "calculer_distribution_n_transitions_markov",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "capacite",
+          "description_detaillee": "Calculer pi_0 * P^n pour obtenir la distribution de probabilite apres n etapes",
+          "formulation_bo": "Distribution apres n transitions, representee comme la matrice ligne pi0 Pn.",
+          "connaissances_associees": [
+            "distribution initiale",
+            "puissances de matrices",
+            "produit matriciel"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-PR-532",
+          "intitule": "Determiner une distribution invariante d'une chaine de Markov a deux etats",
+          "fingerprint": "determiner_distribution_invariante_markov_deux_etats",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "capacite",
+          "description_detaillee": "Trouver une distribution pi telle que pi * P = pi (vecteur propre a gauche associe a la valeur propre 1)",
+          "formulation_bo": "Distributions invariantes d'une chaine de Markov a deux ou trois etats.",
+          "connaissances_associees": [
+            "systeme lineaire",
+            "matrice de transition",
+            "valeur propre"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-PR-533",
+          "intitule": "Determiner une distribution invariante d'une chaine de Markov a trois etats",
+          "fingerprint": "determiner_distribution_invariante_markov_trois_etats",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "capacite",
+          "description_detaillee": "Trouver une distribution pi telle que pi * P = pi pour une chaine a trois etats",
+          "formulation_bo": "Distributions invariantes d'une chaine de Markov a deux ou trois etats.",
+          "connaissances_associees": [
+            "systeme lineaire",
+            "matrice de transition 3x3"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "TEXP-PR-553",
+          "intitule": "Associer un graphe oriente pondere a une chaine de Markov a deux etats",
+          "fingerprint": "associer_graphe_chaine_markov_2_etats",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "capacite",
+          "description_detaillee": "Representer une chaine de Markov a deux etats sous forme d'un graphe oriente avec les probabilites de transition comme poids",
+          "formulation_bo": "Associer un graphe oriente pondere a une chaine de Markov a deux ou trois etats.",
+          "connaissances_associees": [
+            "graphe oriente",
+            "graphe pondere",
+            "chaine de Markov",
+            "probabilites de transition"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-PR-554",
+          "intitule": "Associer un graphe oriente pondere a une chaine de Markov a trois etats",
+          "fingerprint": "associer_graphe_chaine_markov_3_etats",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "capacite",
+          "description_detaillee": "Representer une chaine de Markov a trois etats sous forme d'un graphe oriente avec les probabilites de transition comme poids",
+          "formulation_bo": "Associer un graphe oriente pondere a une chaine de Markov a deux ou trois etats.",
+          "connaissances_associees": [
+            "graphe oriente",
+            "graphe pondere",
+            "chaine de Markov",
+            "probabilites de transition"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-PR-560",
+          "intitule": "Calculer des probabilites dans une chaine de Markov a deux ou trois etats",
+          "fingerprint": "calculer_probabilites_chaine_markov",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le calcul matriciel pour calculer des probabilites de transition apres n etapes dans une chaine de Markov",
+          "formulation_bo": "etudier une chaine de Markov a deux ou trois etats (calculer des probabilites, determiner une probabilite invariante)",
+          "connaissances_associees": [
+            "chaine de Markov",
+            "matrice de transition",
+            "puissances de matrices"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-PR-561",
+          "intitule": "Determiner une probabilite invariante d'une chaine de Markov",
+          "fingerprint": "determiner_probabilite_invariante_markov",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "capacite",
+          "description_detaillee": "Trouver la distribution stationnaire pi telle que pi*M = pi pour la matrice de transition M",
+          "formulation_bo": "etudier une chaine de Markov a deux ou trois etats (calculer des probabilites, determiner une probabilite invariante)",
+          "connaissances_associees": [
+            "chaine de Markov",
+            "distribution stationnaire",
+            "systeme lineaire"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-PR-563",
+          "intitule": "Demontrer l'expression de la probabilite de transition en n etapes dans une chaine de Markov",
+          "fingerprint": "demontrer_probabilite_transition_n_etapes_markov",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que la probabilite de passer de l'etat i a l'etat j en n transitions est le coefficient (i,j) de M^n",
+          "formulation_bo": "Pour une chaine de Markov, expression de la probabilite de passer de l'etat i a l'etat j en n transitions",
+          "connaissances_associees": [
+            "chaine de Markov",
+            "matrice de transition",
+            "puissances de matrices"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-PR-564",
+          "intitule": "Demontrer l'expression de la distribution apres n transitions dans une chaine de Markov",
+          "fingerprint": "demontrer_distribution_n_transitions_markov",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que la matrice ligne representant la distribution apres n transitions est pi_0 * M^n",
+          "formulation_bo": "Pour une chaine de Markov [...] de la matrice ligne representant la distribution apres n transitions.",
+          "connaissances_associees": [
+            "chaine de Markov",
+            "distribution initiale",
+            "matrice de transition"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-PR-567",
+          "intitule": "Etudier une marche aleatoire sur un graphe",
+          "fingerprint": "etudier_marche_aleatoire_graphe",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "approfondissement",
+          "description_detaillee": "Modeliser une marche aleatoire sur un graphe comme une chaine de Markov et en etudier le comportement asymptotique",
+          "formulation_bo": "Marche aleatoire sur un graphe. Etude asymptotique.",
+          "connaissances_associees": [
+            "marche aleatoire",
+            "graphe",
+            "chaine de Markov",
+            "convergence"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "TEXP-PR-568",
+          "intitule": "Etudier le modele de diffusion d'Ehrenfest",
+          "fingerprint": "etudier_modele_ehrenfest",
+          "niveau": "TEXP",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Chaines de Markov",
+          "type": "approfondissement",
+          "description_detaillee": "Analyser le modele d'Ehrenfest comme exemple de chaine de Markov modelisant la diffusion",
+          "formulation_bo": "Modele de diffusion d'Ehrenfest.",
+          "connaissances_associees": [
+            "chaine de Markov",
+            "diffusion",
+            "equilibre thermodynamique"
+          ],
+          "source": {
+            "pdf": "TG_expertes.pdf",
+            "page": 11
+          }
+        }
+      ]
+    }
+  }
+}

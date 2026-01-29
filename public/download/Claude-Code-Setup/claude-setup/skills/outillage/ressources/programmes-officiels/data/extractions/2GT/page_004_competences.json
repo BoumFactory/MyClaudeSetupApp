@@ -1,0 +1,77 @@
+{
+  "source": {
+    "pdf": "2GT.pdf",
+    "page": 4,
+    "text_length": 3247
+  },
+  "extraction": {
+    "date": "2026-01-02T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "page_type": "introductive",
+  "page_description": "Page methodologique sur les pratiques d'enseignement (trace ecrite, travail personnel, lignes directrices). Contient l'organisation du programme mais pas de contenus mathematiques specifiques.",
+  "competences": [
+    {
+      "code": "2GT-LO-201",
+      "intitule": "Distinguer le statut des enonces mathematiques (conjecture, definition, propriete, demonstration, theoreme)",
+      "fingerprint": "distinguer_statut_enonces_mathematiques",
+      "niveau": "2GT",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement mathematique",
+      "type": "capacite",
+      "description_detaillee": "Savoir identifier si un enonce est une conjecture (hypothese non demontree), une definition (description d'un objet), une propriete (admise ou demontree), une demonstration (preuve) ou un theoreme (resultat important demontre).",
+      "formulation_bo": "il est essentiel de bien distinguer le statut des enonces (conjecture, definition, propriete - admise ou demontree -, demonstration, theoreme)",
+      "connaissances_associees": ["notion de conjecture", "notion de definition", "notion de propriete", "notion de demonstration", "notion de theoreme"],
+      "source": {"pdf": "2GT.pdf", "page": 4}
+    },
+    {
+      "code": "2GT-LO-202",
+      "intitule": "S'engager dans une recherche mathematique",
+      "fingerprint": "engager_recherche_mathematique",
+      "niveau": "2GT",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Demarche de recherche",
+      "type": "capacite",
+      "description_detaillee": "Etre capable de s'engager dans une recherche mathematique, individuellement ou en equipe, en cherchant, essayant des pistes, prenant le risque de se tromper.",
+      "formulation_bo": "L'eleve doit etre incite a s'engager dans une recherche mathematique, individuellement ou en equipe",
+      "connaissances_associees": ["demarche de resolution de probleme", "travail collaboratif"],
+      "source": {"pdf": "2GT.pdf", "page": 4}
+    },
+    {
+      "code": "2GT-LO-203",
+      "intitule": "Analyser une erreur pour en tirer profit",
+      "fingerprint": "analyser_erreur_tirer_profit",
+      "niveau": "2GT",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Metacognition",
+      "type": "capacite",
+      "description_detaillee": "Etre capable d'identifier, analyser et comprendre ses erreurs pour en tirer profit dans la construction de ses apprentissages.",
+      "formulation_bo": "Il ne doit pas craindre l'erreur, mais en tirer profit grace au professeur, qui l'aide a l'identifier, a l'analyser et la comprendre",
+      "connaissances_associees": ["analyse d'erreurs", "metacognition"],
+      "source": {"pdf": "2GT.pdf", "page": 4}
+    }
+  ],
+  "organisation_programme": {
+    "parties": [
+      "Nombres et calculs",
+      "Geometrie",
+      "Fonctions",
+      "Statistiques et probabilites",
+      "Algorithmique et programmation"
+    ],
+    "note": "Ces cinq parties structurent le programme de 2GT et seront detaillees dans les pages suivantes."
+  },
+  "summary": {
+    "total": 3,
+    "by_type": {"capacite": 3},
+    "by_domaine": {"LOGIQUE": 3},
+    "fingerprints": [
+      "distinguer_statut_enonces_mathematiques",
+      "engager_recherche_mathematique",
+      "analyser_erreur_tirer_profit"
+    ],
+    "note": "Page principalement methodologique - competences transversales extraites"
+  }
+}

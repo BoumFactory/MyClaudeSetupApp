@@ -1,0 +1,762 @@
+{
+  "source": {
+    "pdf": "terminale_spe.pdf",
+    "page": 8,
+    "text_length": 1842
+  },
+  "extraction": {
+    "date": "2026-01-02T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "notes": "Page couvrant la fin de la section vecteurs/espace (capacites et approfondissements) et le debut de la section orthogonalite et distances dans l'espace (contenus, capacites, demonstration, approfondissements). Interpretation : uv2 = (u+v)^2, formules de polarisation."
+  },
+  "competences": [
+    {
+      "code": "TSPE-GE-401",
+      "intitule": "Lire sur une figure la decomposition d'un vecteur dans une base",
+      "fingerprint": "lire_decomposition_vecteur_base_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Vecteurs de l'espace",
+      "type": "capacite",
+      "description_detaillee": "A partir d'une representation graphique dans l'espace, identifier les composantes d'un vecteur exprime dans une base donnee (i, j, k) en lisant les coordonnees sur la figure",
+      "formulation_bo": "Lire sur une figure la decomposition d'un vecteur dans une base.",
+      "connaissances_associees": ["base de l'espace", "coordonnees d'un vecteur", "representation graphique 3D"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-402",
+      "intitule": "Etudier l'alignement de points dans l'espace",
+      "fingerprint": "etudier_alignement_points_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Vecteurs de l'espace",
+      "type": "capacite",
+      "description_detaillee": "Determiner si trois points ou plus sont alignes dans l'espace en utilisant la colinearite des vecteurs correspondants",
+      "formulation_bo": "Etudier geometriquement des problemes simples de configurations dans l'espace (alignement, colinearite, parallelisme, coplanarité).",
+      "connaissances_associees": ["colinearite de vecteurs", "coordonnees dans l'espace"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-403",
+      "intitule": "Etudier la colinearite de vecteurs dans l'espace",
+      "fingerprint": "etudier_colinearite_vecteurs_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Vecteurs de l'espace",
+      "type": "capacite",
+      "description_detaillee": "Determiner si deux vecteurs de l'espace sont colineaires en utilisant leurs coordonnees ou des proprietes geometriques",
+      "formulation_bo": "Etudier geometriquement des problemes simples de configurations dans l'espace (alignement, colinearite, parallelisme, coplanarité).",
+      "connaissances_associees": ["vecteurs de l'espace", "proportionnalite des coordonnees"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-404",
+      "intitule": "Etudier le parallelisme de droites dans l'espace",
+      "fingerprint": "etudier_parallelisme_droites_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Vecteurs de l'espace",
+      "type": "capacite",
+      "description_detaillee": "Determiner si deux droites de l'espace sont paralleles en etudiant la colinearite de leurs vecteurs directeurs",
+      "formulation_bo": "Etudier geometriquement des problemes simples de configurations dans l'espace (alignement, colinearite, parallelisme, coplanarité).",
+      "connaissances_associees": ["vecteur directeur", "colinearite", "droites de l'espace"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-405",
+      "intitule": "Etudier la coplanarité de points ou vecteurs dans l'espace",
+      "fingerprint": "etudier_coplanarite_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Vecteurs de l'espace",
+      "type": "capacite",
+      "description_detaillee": "Determiner si des points sont coplanaires ou si des vecteurs sont coplanaires en utilisant la decomposition dans une base ou les coordonnees",
+      "formulation_bo": "Etudier geometriquement des problemes simples de configurations dans l'espace (alignement, colinearite, parallelisme, coplanarité).",
+      "connaissances_associees": ["base de l'espace", "combinaison lineaire", "plans"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-406",
+      "intitule": "Definir le barycentre d'un systeme pondere de points",
+      "fingerprint": "definir_barycentre_systeme_pondere",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Barycentres",
+      "type": "approfondissement",
+      "description_detaillee": "Connaitre la definition du barycentre d'un systeme pondere de deux, trois ou quatre points et sa caracterisation vectorielle",
+      "formulation_bo": "Barycentre d'une famille d'un systeme pondere de deux, trois ou quatre points.",
+      "connaissances_associees": ["vecteurs", "coefficients de ponderation", "centre de gravite"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-407",
+      "intitule": "Utiliser les barycentres pour resoudre des problemes de geometrie",
+      "fingerprint": "utiliser_barycentres_problemes_geometrie",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Barycentres",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer les proprietes des barycentres, notamment l'associativite, pour resoudre des problemes geometriques",
+      "formulation_bo": "Exemples d'utilisation des barycentres, en particulier de la propriete d'associativite, pour resoudre des problemes de geometrie.",
+      "connaissances_associees": ["barycentre", "associativite", "reduction de vecteurs"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-408",
+      "intitule": "Connaitre la fonction vectorielle de Leibniz",
+      "fingerprint": "connaitre_fonction_vectorielle_leibniz",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Barycentres",
+      "type": "approfondissement",
+      "description_detaillee": "Connaitre et utiliser la fonction vectorielle de Leibniz associee a un systeme pondere de points",
+      "formulation_bo": "Fonction vectorielle de Leibniz.",
+      "connaissances_associees": ["barycentre", "fonction vectorielle", "systeme pondere"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-409",
+      "intitule": "Definir le produit scalaire de deux vecteurs de l'espace",
+      "fingerprint": "definir_produit_scalaire_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition du produit scalaire de deux vecteurs de l'espace comme extension du produit scalaire du plan",
+      "formulation_bo": "Produit scalaire de deux vecteurs de l'espace.",
+      "connaissances_associees": ["vecteurs de l'espace", "produit scalaire plan", "norme"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-410",
+      "intitule": "Reconnaitre la bilinearite du produit scalaire",
+      "fingerprint": "reconnaitre_bilinearite_produit_scalaire",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Connaitre et utiliser la propriete de bilinearite du produit scalaire : (au+bv).w = a(u.w) + b(v.w) et u.(av+bw) = a(u.v) + b(u.w)",
+      "formulation_bo": "Bilinearite, symetrie.",
+      "connaissances_associees": ["produit scalaire", "linearite", "operations sur les vecteurs"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-411",
+      "intitule": "Reconnaitre la symetrie du produit scalaire",
+      "fingerprint": "reconnaitre_symetrie_produit_scalaire",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Connaitre et utiliser la propriete de symetrie du produit scalaire : u.v = v.u",
+      "formulation_bo": "Bilinearite, symetrie.",
+      "connaissances_associees": ["produit scalaire", "commutativite"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-412",
+      "intitule": "Definir l'orthogonalite de deux vecteurs par le produit scalaire",
+      "fingerprint": "definir_orthogonalite_vecteurs_produit_scalaire",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Deux vecteurs sont orthogonaux si et seulement si leur produit scalaire est nul : u perpendiculaire v si et seulement si u.v = 0",
+      "formulation_bo": "Orthogonalite de deux vecteurs. Caracterisation par le produit scalaire.",
+      "connaissances_associees": ["produit scalaire", "orthogonalite", "perpendicularite"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-413",
+      "intitule": "Definir une base orthonormee de l'espace",
+      "fingerprint": "definir_base_orthonormee_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Une base orthonormee (i, j, k) est une base de l'espace formee de trois vecteurs deux a deux orthogonaux et de norme 1",
+      "formulation_bo": "Base orthonormee, repere orthonorme.",
+      "connaissances_associees": ["base de l'espace", "orthogonalite", "norme"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-414",
+      "intitule": "Definir un repere orthonorme de l'espace",
+      "fingerprint": "definir_repere_orthonorme_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Un repere orthonorme (O; i, j, k) est constitue d'un point origine O et d'une base orthonormee (i, j, k)",
+      "formulation_bo": "Base orthonormee, repere orthonorme.",
+      "connaissances_associees": ["repere de l'espace", "base orthonormee", "origine"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-415",
+      "intitule": "Exprimer les coordonnees d'un vecteur dans une base orthonormee",
+      "fingerprint": "exprimer_coordonnees_vecteur_base_orthonormee",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Determiner les coordonnees (x, y, z) d'un vecteur u dans une base orthonormee (i, j, k) : u = xi + yj + zk",
+      "formulation_bo": "Coordonnees d'un vecteur dans une base orthonormee.",
+      "connaissances_associees": ["base orthonormee", "decomposition vectorielle"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-416",
+      "intitule": "Calculer le produit scalaire avec les coordonnees dans une base orthonormee",
+      "fingerprint": "calculer_produit_scalaire_coordonnees_orthonormee",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Si u(x, y, z) et v(x', y', z') dans une base orthonormee, alors u.v = xx' + yy' + zz'",
+      "formulation_bo": "Expressions du produit scalaire et de la norme.",
+      "connaissances_associees": ["produit scalaire", "coordonnees", "base orthonormee"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-417",
+      "intitule": "Calculer la norme d'un vecteur avec les coordonnees",
+      "fingerprint": "calculer_norme_vecteur_coordonnees_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Si u(x, y, z) dans une base orthonormee, alors ||u|| = sqrt(x^2 + y^2 + z^2)",
+      "formulation_bo": "Expressions du produit scalaire et de la norme.",
+      "connaissances_associees": ["norme", "coordonnees", "racine carree"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-418",
+      "intitule": "Calculer la distance entre deux points dans l'espace",
+      "fingerprint": "calculer_distance_deux_points_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Si A(xA, yA, zA) et B(xB, yB, zB), alors AB = sqrt((xB-xA)^2 + (yB-yA)^2 + (zB-zA)^2)",
+      "formulation_bo": "Expression de la distance entre deux points.",
+      "connaissances_associees": ["distance", "coordonnees", "norme d'un vecteur"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-419",
+      "intitule": "Developper (u+v)^2 avec le produit scalaire",
+      "fingerprint": "developper_carre_somme_vecteurs",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Developper ||u+v||^2 = ||u||^2 + 2u.v + ||v||^2 en utilisant les proprietes du produit scalaire",
+      "formulation_bo": "Developpement de (u+v)^2, formules de polarisation.",
+      "connaissances_associees": ["produit scalaire", "norme", "identites remarquables"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-420",
+      "intitule": "Appliquer les formules de polarisation",
+      "fingerprint": "appliquer_formules_polarisation",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Utiliser les formules de polarisation pour exprimer le produit scalaire : u.v = (1/2)(||u+v||^2 - ||u||^2 - ||v||^2) ou u.v = (1/4)(||u+v||^2 - ||u-v||^2)",
+      "formulation_bo": "Developpement de (u+v)^2, formules de polarisation.",
+      "connaissances_associees": ["produit scalaire", "norme", "identites"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-421",
+      "intitule": "Definir l'orthogonalite de deux droites dans l'espace",
+      "fingerprint": "definir_orthogonalite_deux_droites_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Deux droites de l'espace sont orthogonales si leurs vecteurs directeurs sont orthogonaux (produit scalaire nul)",
+      "formulation_bo": "Orthogonalite de deux droites, d'un plan et d'une droite.",
+      "connaissances_associees": ["vecteur directeur", "produit scalaire", "orthogonalite"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-422",
+      "intitule": "Definir l'orthogonalite d'une droite et d'un plan",
+      "fingerprint": "definir_orthogonalite_droite_plan",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Une droite est orthogonale a un plan si son vecteur directeur est orthogonal a tous les vecteurs du plan (ou colineaire au vecteur normal du plan)",
+      "formulation_bo": "Orthogonalite de deux droites, d'un plan et d'une droite.",
+      "connaissances_associees": ["vecteur directeur", "vecteur normal", "perpendicularite"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-423",
+      "intitule": "Definir un vecteur normal a un plan",
+      "fingerprint": "definir_vecteur_normal_plan",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Un vecteur n non nul est normal a un plan P s'il est orthogonal a tous les vecteurs de P, c'est-a-dire orthogonal a deux vecteurs non colineaires du plan",
+      "formulation_bo": "Vecteur normal a un plan.",
+      "connaissances_associees": ["orthogonalite", "plan", "perpendicularite"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-424",
+      "intitule": "Determiner le plan passant par un point et normal a un vecteur",
+      "fingerprint": "determiner_plan_point_vecteur_normal",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Etant donnes un point A et un vecteur n non nul, determiner l'unique plan passant par A et ayant n pour vecteur normal",
+      "formulation_bo": "Etant donnes un point A et un vecteur non nul n, plan passant par A et normal a n.",
+      "connaissances_associees": ["vecteur normal", "equation de plan", "caracterisation d'un plan"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-425",
+      "intitule": "Definir le projete orthogonal d'un point sur une droite",
+      "fingerprint": "definir_projete_orthogonal_point_droite",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Le projete orthogonal d'un point M sur une droite D est le point H de D tel que MH est orthogonal a D",
+      "formulation_bo": "Projete orthogonal d'un point sur une droite, sur un plan.",
+      "connaissances_associees": ["projection orthogonale", "orthogonalite", "droite"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-426",
+      "intitule": "Definir le projete orthogonal d'un point sur un plan",
+      "fingerprint": "definir_projete_orthogonal_point_plan",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "contenu",
+      "description_detaillee": "Le projete orthogonal d'un point M sur un plan P est le point H de P tel que MH est orthogonal a P (MH colineaire au vecteur normal)",
+      "formulation_bo": "Projete orthogonal d'un point sur une droite, sur un plan.",
+      "connaissances_associees": ["projection orthogonale", "vecteur normal", "plan"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-427",
+      "intitule": "Utiliser le produit scalaire pour demontrer une orthogonalite dans l'espace",
+      "fingerprint": "utiliser_produit_scalaire_demontrer_orthogonalite_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Demontrer que deux vecteurs, deux droites, ou une droite et un plan sont orthogonaux en calculant le produit scalaire et en montrant qu'il est nul",
+      "formulation_bo": "Utiliser le produit scalaire pour demontrer une orthogonalite, pour calculer un angle, une longueur dans l'espace.",
+      "connaissances_associees": ["produit scalaire", "orthogonalite", "demonstration"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-428",
+      "intitule": "Utiliser le produit scalaire pour calculer un angle dans l'espace",
+      "fingerprint": "utiliser_produit_scalaire_calculer_angle_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'angle entre deux vecteurs u et v en utilisant cos(u,v) = (u.v)/(||u|| x ||v||)",
+      "formulation_bo": "Utiliser le produit scalaire pour demontrer une orthogonalite, pour calculer un angle, une longueur dans l'espace.",
+      "connaissances_associees": ["produit scalaire", "norme", "cosinus", "angle"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-429",
+      "intitule": "Utiliser le produit scalaire pour calculer une longueur dans l'espace",
+      "fingerprint": "utiliser_produit_scalaire_calculer_longueur_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Calculer des longueurs dans l'espace en utilisant les proprietes du produit scalaire (norme, formules de polarisation)",
+      "formulation_bo": "Utiliser le produit scalaire pour demontrer une orthogonalite, pour calculer un angle, une longueur dans l'espace.",
+      "connaissances_associees": ["produit scalaire", "norme", "distance"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-430",
+      "intitule": "Utiliser la projection orthogonale pour calculer la distance d'un point a une droite",
+      "fingerprint": "utiliser_projection_distance_point_droite",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Calculer la distance d'un point M a une droite D en determinant le projete orthogonal H de M sur D, puis en calculant MH",
+      "formulation_bo": "Utiliser la projection orthogonale pour determiner la distance d'un point a une droite ou a un plan.",
+      "connaissances_associees": ["projection orthogonale", "distance", "droite"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-431",
+      "intitule": "Utiliser la projection orthogonale pour calculer la distance d'un point a un plan",
+      "fingerprint": "utiliser_projection_distance_point_plan",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Calculer la distance d'un point M a un plan P en determinant le projete orthogonal H de M sur P, puis en calculant MH",
+      "formulation_bo": "Utiliser la projection orthogonale pour determiner la distance d'un point a une droite ou a un plan.",
+      "connaissances_associees": ["projection orthogonale", "distance", "plan", "vecteur normal"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-432",
+      "intitule": "Calculer une longueur dans un probleme de l'espace",
+      "fingerprint": "calculer_longueur_probleme_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Grandeurs et mesures dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Resoudre des problemes impliquant le calcul de longueurs dans l'espace (aretes, diagonales, distances)",
+      "formulation_bo": "Resoudre des problemes impliquant des grandeurs et mesures : longueur, angle, aire, volume.",
+      "connaissances_associees": ["distance", "norme", "coordonnees"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-433",
+      "intitule": "Calculer un angle dans un probleme de l'espace",
+      "fingerprint": "calculer_angle_probleme_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Grandeurs et mesures dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Resoudre des problemes impliquant le calcul d'angles dans l'espace (angle entre droites, entre plans, diedres)",
+      "formulation_bo": "Resoudre des problemes impliquant des grandeurs et mesures : longueur, angle, aire, volume.",
+      "connaissances_associees": ["angle", "produit scalaire", "cosinus"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-434",
+      "intitule": "Calculer une aire dans un probleme de l'espace",
+      "fingerprint": "calculer_aire_probleme_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Grandeurs et mesures dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Resoudre des problemes impliquant le calcul d'aires dans l'espace (faces de polyedres, sections)",
+      "formulation_bo": "Resoudre des problemes impliquant des grandeurs et mesures : longueur, angle, aire, volume.",
+      "connaissances_associees": ["aire", "triangles", "polygones"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-435",
+      "intitule": "Calculer un volume dans un probleme de l'espace",
+      "fingerprint": "calculer_volume_probleme_espace",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Grandeurs et mesures dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Resoudre des problemes impliquant le calcul de volumes dans l'espace (polyedres, solides de revolution)",
+      "formulation_bo": "Resoudre des problemes impliquant des grandeurs et mesures : longueur, angle, aire, volume.",
+      "connaissances_associees": ["volume", "formules de volumes", "geometrie dans l'espace"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-436",
+      "intitule": "Etudier l'orthogonalite de deux droites dans un probleme de configuration",
+      "fingerprint": "etudier_orthogonalite_deux_droites_configuration",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Configurations dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Dans un probleme de configuration, determiner si deux droites sont orthogonales en utilisant le produit scalaire de leurs vecteurs directeurs",
+      "formulation_bo": "Etudier des problemes de configuration dans l'espace : orthogonalite de deux droites, d'une droite et d'un plan.",
+      "connaissances_associees": ["orthogonalite", "vecteur directeur", "produit scalaire"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-437",
+      "intitule": "Etudier l'orthogonalite d'une droite et d'un plan dans un probleme de configuration",
+      "fingerprint": "etudier_orthogonalite_droite_plan_configuration",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Configurations dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Dans un probleme de configuration, determiner si une droite est orthogonale a un plan en verifiant que son vecteur directeur est colineaire au vecteur normal du plan",
+      "formulation_bo": "Etudier des problemes de configuration dans l'espace : orthogonalite de deux droites, d'une droite et d'un plan.",
+      "connaissances_associees": ["orthogonalite", "vecteur directeur", "vecteur normal"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-438",
+      "intitule": "Determiner un plan mediateur de deux points",
+      "fingerprint": "determiner_plan_mediateur_deux_points",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Lieux geometriques dans l'espace",
+      "type": "capacite",
+      "description_detaillee": "Determiner le plan mediateur de deux points A et B comme l'ensemble des points equidistants de A et B, plan passant par le milieu de [AB] et perpendiculaire a (AB)",
+      "formulation_bo": "Lieux geometriques simples, par exemple plan mediateur de deux points.",
+      "connaissances_associees": ["plan mediateur", "equidistance", "milieu", "perpendicularite"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-439",
+      "intitule": "Demontrer que le projete orthogonal d'un point sur un plan est le point du plan le plus proche",
+      "fingerprint": "demontrer_projete_orthogonal_point_plan_plus_proche",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Orthogonalite et distances dans l'espace",
+      "type": "demonstration",
+      "description_detaillee": "Demontrer que si H est le projete orthogonal de M sur un plan P, alors pour tout point P de P, MH <= MP, avec egalite si et seulement si P = H",
+      "formulation_bo": "Le projete orthogonal d'un point M sur un plan P est le point de P le plus proche de M.",
+      "connaissances_associees": ["projection orthogonale", "distance minimale", "theoreme de Pythagore"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-440",
+      "intitule": "Determiner l'intersection d'une sphere et d'un plan",
+      "fingerprint": "determiner_intersection_sphere_plan",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Sphere et plan",
+      "type": "approfondissement",
+      "description_detaillee": "Determiner la nature de l'intersection d'une sphere et d'un plan selon la position relative : vide, point (tangence), ou cercle",
+      "formulation_bo": "Intersection d'une sphere et d'un plan, plan tangent a une sphere en un point.",
+      "connaissances_associees": ["sphere", "plan", "distance centre-plan", "cercle"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-441",
+      "intitule": "Determiner le plan tangent a une sphere en un point",
+      "fingerprint": "determiner_plan_tangent_sphere_point",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Sphere et plan",
+      "type": "approfondissement",
+      "description_detaillee": "Determiner l'equation du plan tangent a une sphere en un point A de la sphere, plan passant par A et perpendiculaire au rayon OA",
+      "formulation_bo": "Intersection d'une sphere et d'un plan, plan tangent a une sphere en un point.",
+      "connaissances_associees": ["sphere", "plan tangent", "vecteur normal", "rayon"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-442",
+      "intitule": "Determiner la sphere circonscrite a un tetraedre",
+      "fingerprint": "determiner_sphere_circonscrite_tetraedre",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Sphere et tetraedre",
+      "type": "approfondissement",
+      "description_detaillee": "Determiner le centre et le rayon de la sphere passant par les quatre sommets d'un tetraedre",
+      "formulation_bo": "Sphere circonscrite a un tetraedre.",
+      "connaissances_associees": ["sphere", "tetraedre", "equidistance", "systeme d'equations"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-GE-443",
+      "intitule": "Connaitre la fonction scalaire de Leibniz",
+      "fingerprint": "connaitre_fonction_scalaire_leibniz",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Barycentres et fonctions de Leibniz",
+      "type": "approfondissement",
+      "description_detaillee": "Connaitre et utiliser la fonction scalaire de Leibniz f(M) = somme des (ai x MA_i^2) associee a un systeme pondere de points",
+      "formulation_bo": "Fonction scalaire de Leibniz.",
+      "connaissances_associees": ["barycentre", "fonction scalaire", "minimum", "lieu geometrique"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 8
+      }
+    }
+  ],
+  "summary": {
+    "total": 43,
+    "by_type": {
+      "capacite": 17,
+      "contenu": 18,
+      "demonstration": 1,
+      "algorithme": 0,
+      "approfondissement": 7
+    },
+    "by_domaine": {
+      "GEOMETRIE": 43
+    },
+    "fingerprints": [
+      "lire_decomposition_vecteur_base_espace",
+      "etudier_alignement_points_espace",
+      "etudier_colinearite_vecteurs_espace",
+      "etudier_parallelisme_droites_espace",
+      "etudier_coplanarite_espace",
+      "definir_barycentre_systeme_pondere",
+      "utiliser_barycentres_problemes_geometrie",
+      "connaitre_fonction_vectorielle_leibniz",
+      "definir_produit_scalaire_espace",
+      "reconnaitre_bilinearite_produit_scalaire",
+      "reconnaitre_symetrie_produit_scalaire",
+      "definir_orthogonalite_vecteurs_produit_scalaire",
+      "definir_base_orthonormee_espace",
+      "definir_repere_orthonorme_espace",
+      "exprimer_coordonnees_vecteur_base_orthonormee",
+      "calculer_produit_scalaire_coordonnees_orthonormee",
+      "calculer_norme_vecteur_coordonnees_espace",
+      "calculer_distance_deux_points_espace",
+      "developper_carre_somme_vecteurs",
+      "appliquer_formules_polarisation",
+      "definir_orthogonalite_deux_droites_espace",
+      "definir_orthogonalite_droite_plan",
+      "definir_vecteur_normal_plan",
+      "determiner_plan_point_vecteur_normal",
+      "definir_projete_orthogonal_point_droite",
+      "definir_projete_orthogonal_point_plan",
+      "utiliser_produit_scalaire_demontrer_orthogonalite_espace",
+      "utiliser_produit_scalaire_calculer_angle_espace",
+      "utiliser_produit_scalaire_calculer_longueur_espace",
+      "utiliser_projection_distance_point_droite",
+      "utiliser_projection_distance_point_plan",
+      "calculer_longueur_probleme_espace",
+      "calculer_angle_probleme_espace",
+      "calculer_aire_probleme_espace",
+      "calculer_volume_probleme_espace",
+      "etudier_orthogonalite_deux_droites_configuration",
+      "etudier_orthogonalite_droite_plan_configuration",
+      "determiner_plan_mediateur_deux_points",
+      "demontrer_projete_orthogonal_point_plan_plus_proche",
+      "determiner_intersection_sphere_plan",
+      "determiner_plan_tangent_sphere_point",
+      "determiner_sphere_circonscrite_tetraedre",
+      "connaitre_fonction_scalaire_leibniz"
+    ]
+  }
+}

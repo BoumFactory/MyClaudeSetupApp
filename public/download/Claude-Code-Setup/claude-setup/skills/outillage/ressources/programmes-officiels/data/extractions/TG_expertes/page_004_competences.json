@@ -1,0 +1,134 @@
+{
+  "source": {
+    "pdf": "TG_expertes.pdf",
+    "page": 4,
+    "text_length": 2287
+  },
+  "extraction": {
+    "date": "2026-01-02T00:00:00.000Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "notes": "Page introductive et methodologique presentant l'organisation du programme. Competences extraites des structures algebriques mentionnees."
+  },
+  "competences": [
+    {
+      "code": "TEXP-NB-201",
+      "intitule": "Connaitre les nombres complexes comme objets algebriques",
+      "fingerprint": "connaitre_complexes_objets_algebriques",
+      "niveau": "TEXP",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Nombres complexes",
+      "type": "contenu",
+      "description_detaillee": "Connaitre les proprietes algebriques des nombres complexes : operations, conjugue, module, forme algebrique",
+      "formulation_bo": "les nombres complexes, vus comme objets algebriques et geometriques",
+      "connaissances_associees": ["operations sur les complexes", "forme algebrique", "conjugue", "module"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 4}
+    },
+    {
+      "code": "TEXP-GE-202",
+      "intitule": "Connaitre les nombres complexes comme objets geometriques",
+      "fingerprint": "connaitre_complexes_objets_geometriques",
+      "niveau": "TEXP",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Nombres complexes",
+      "type": "contenu",
+      "description_detaillee": "Connaitre l'interpretation geometrique des nombres complexes : affixe, representation dans le plan, transformations",
+      "formulation_bo": "les nombres complexes, vus comme objets algebriques et geometriques",
+      "connaissances_associees": ["affixe d'un point", "plan complexe", "interpretation geometrique du module et de l'argument"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 4}
+    },
+    {
+      "code": "TEXP-NB-203",
+      "intitule": "Connaitre le corps des nombres complexes",
+      "fingerprint": "connaitre_corps_complexes",
+      "niveau": "TEXP",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Structures algebriques",
+      "type": "contenu",
+      "description_detaillee": "Reconnaitre que l'ensemble des nombres complexes muni de l'addition et de la multiplication forme un corps",
+      "formulation_bo": "corps des nombres complexes",
+      "connaissances_associees": ["notion de corps", "lois de composition interne", "element neutre", "inverse"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 4}
+    },
+    {
+      "code": "TEXP-NB-204",
+      "intitule": "Connaitre le groupe des nombres complexes de module 1",
+      "fingerprint": "connaitre_groupe_module_1",
+      "niveau": "TEXP",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Structures algebriques",
+      "type": "contenu",
+      "description_detaillee": "Reconnaitre que l'ensemble des nombres complexes de module 1 muni de la multiplication forme un groupe",
+      "formulation_bo": "groupes des nombres complexes de module 1",
+      "connaissances_associees": ["notion de groupe", "cercle unite", "forme exponentielle"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 4}
+    },
+    {
+      "code": "TEXP-NB-205",
+      "intitule": "Connaitre le groupe des racines n-iemes de l'unite",
+      "fingerprint": "connaitre_groupe_racines_n_iemes",
+      "niveau": "TEXP",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Structures algebriques",
+      "type": "contenu",
+      "description_detaillee": "Reconnaitre que l'ensemble des racines n-iemes de l'unite forme un groupe pour la multiplication",
+      "formulation_bo": "groupes [...] des racines n-iemes de l'unite",
+      "connaissances_associees": ["racines de l'unite", "groupe cyclique", "generateur"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 4}
+    },
+    {
+      "code": "TEXP-NB-206",
+      "intitule": "Connaitre l'anneau des entiers relatifs",
+      "fingerprint": "connaitre_anneau_entiers_relatifs",
+      "niveau": "TEXP",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Structures algebriques",
+      "type": "contenu",
+      "description_detaillee": "Reconnaitre que l'ensemble des entiers relatifs muni de l'addition et de la multiplication forme un anneau",
+      "formulation_bo": "anneau des entiers relatifs",
+      "connaissances_associees": ["notion d'anneau", "divisibilite", "arithmetique"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 4}
+    },
+    {
+      "code": "TEXP-LO-207",
+      "intitule": "Distinguer le statut des enonces mathematiques",
+      "fingerprint": "distinguer_statut_enonces",
+      "niveau": "TEXP",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement mathematique",
+      "type": "contenu",
+      "description_detaillee": "Identifier et distinguer les differents types d'enonces : conjecture, definition, propriete (admise ou demontree), demonstration, theoreme",
+      "formulation_bo": "bien distinguer le statut des enonces : conjecture, definition, propriete (admise ou demontree) demonstration, theoreme",
+      "connaissances_associees": ["conjecture", "definition", "propriete", "demonstration", "theoreme"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 4}
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "by_type": {
+      "contenu": 7
+    },
+    "by_domaine": {
+      "NOMBRES": 5,
+      "GEOMETRIE": 1,
+      "LOGIQUE": 1
+    },
+    "fingerprints": [
+      "connaitre_complexes_objets_algebriques",
+      "connaitre_complexes_objets_geometriques",
+      "connaitre_corps_complexes",
+      "connaitre_groupe_module_1",
+      "connaitre_groupe_racines_n_iemes",
+      "connaitre_anneau_entiers_relatifs",
+      "distinguer_statut_enonces"
+    ],
+    "page_type": "introduction_methodologique",
+    "themes_identifies": [
+      "Nombres complexes",
+      "Arithmetique",
+      "Matrices et graphes",
+      "Structures algebriques"
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+/* ===========================================
+   NIVEAU: Première
+   Plus dense, vocabulaire technique
+   =========================================== */
+
+:root {
+    --content-width: 800px;
+    --content-padding: 1.75rem;
+    --bloc-padding: 0.9rem 1.4rem;
+    --bloc-radius: 7px;
+    --bloc-border-width: 4px;
+}
+
+body {
+    font-size: 14.5px;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 1.9rem;
+}
+
+h2 {
+    font-size: 1.45rem;
+    margin-top: 1.75rem;
+}
+
+h3 {
+    font-size: 1.15rem;
+}
+
+p, li {
+    font-size: 0.95rem;
+}
+
+/* Blocs */
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    padding: 0.9rem 1.4rem;
+    margin: 1.25rem 0;
+}
+
+/* Labels */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before,
+.exercice::before {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+}
+
+/* KaTeX */
+.katex {
+    font-size: 1.1em;
+}
+
+.katex-display {
+    margin: 0.9rem 0;
+}
+
+/* Listes */
+ul, ol {
+    margin: 0.9rem 0;
+}
+
+li {
+    margin: 0.25rem 0;
+}

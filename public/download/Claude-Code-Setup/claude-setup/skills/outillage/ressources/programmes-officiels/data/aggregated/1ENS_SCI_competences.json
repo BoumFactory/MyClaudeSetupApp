@@ -1,0 +1,3281 @@
+{
+  "meta": {
+    "niveau": "1ENS_SCI",
+    "source_folder": "Mathematiques_integrees_EnsSci_1reG",
+    "generated": "2026-01-09T13:09:02.162905",
+    "total_competences": 163,
+    "duplicates_count": 1,
+    "organization": "domaine > sous_domaine > competences"
+  },
+  "stats": {
+    "by_domaine": {
+      "LOGIQUE": 26,
+      "NOMBRES": 16,
+      "ALGORITHMIQUE": 10,
+      "STATISTIQUES": 9,
+      "PROBABILITES": 16,
+      "ANALYSE": 77,
+      "ALGEBRE": 4,
+      "GRANDEURS": 5
+    },
+    "by_type": {
+      "contenu": 43,
+      "capacite": 120
+    }
+  },
+  "competences_by_theme": {
+    "LOGIQUE": {
+      "Attitudes et demarches": [
+        {
+          "code": "1ENSSCI_MATHS-LO-001",
+          "intitule": "Faire preuve de perseverance dans la recherche d'une solution",
+          "fingerprint": "perseverer_recherche_solution",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Attitudes et demarches",
+          "type": "contenu",
+          "description_detaillee": "Developper une attitude de perseverance face a un probleme mathematique, en explorant differentes pistes sans abandonner face aux difficultes",
+          "formulation_bo": "la perseverance dans la recherche d'une solution",
+          "connaissances_associees": [
+            "resolution de problemes",
+            "demarche d'investigation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 1
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-002",
+          "intitule": "Exercer son esprit critique face a une affirmation ou un resultat",
+          "fingerprint": "exercer_esprit_critique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Attitudes et demarches",
+          "type": "contenu",
+          "description_detaillee": "Questionner la validite d'une affirmation, verifier la coherence d'un resultat, identifier les hypotheses implicites",
+          "formulation_bo": "l'esprit critique",
+          "connaissances_associees": [
+            "raisonnement logique",
+            "verification"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 1
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-003",
+          "intitule": "S'engager de maniere reflechie dans un debat scientifique",
+          "fingerprint": "engager_debat_scientifique_reflechi",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Attitudes et demarches",
+          "type": "contenu",
+          "description_detaillee": "Participer a un echange argumente sur une question scientifique en apportant des arguments fondes et en ecoutant les positions adverses",
+          "formulation_bo": "l'engagement reflechi dans un debat",
+          "connaissances_associees": [
+            "argumentation",
+            "communication scientifique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 1
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-007",
+          "intitule": "Collaborer efficacement dans un travail d'equipe",
+          "fingerprint": "collaborer_travail_equipe",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Attitudes et demarches",
+          "type": "contenu",
+          "description_detaillee": "Travailler en groupe sur un probleme mathematique en partageant les idees, en repartissant les taches et en construisant collectivement une solution",
+          "formulation_bo": "l'esprit de collaboration dans un travail d'equipe",
+          "connaissances_associees": [
+            "travail collaboratif",
+            "communication"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 1
+          }
+        }
+      ],
+      "Raisonnement": [
+        {
+          "code": "1ENSSCI_MATHS-LO-004",
+          "intitule": "Argumenter sa pensee par un raisonnement logique",
+          "fingerprint": "argumenter_raisonnement_logique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Raisonnement",
+          "type": "capacite",
+          "description_detaillee": "Construire une argumentation structuree en utilisant des connecteurs logiques, des hypotheses et des conclusions clairement identifiees",
+          "formulation_bo": "le souci d'argumenter sa pensee par un raisonnement logique",
+          "connaissances_associees": [
+            "logique propositionnelle",
+            "implication",
+            "equivalence"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 1
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-161",
+          "intitule": "Distinguer definition, propriete et demonstration",
+          "fingerprint": "distinguer_definition_propriete_demonstration",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Raisonnement",
+          "type": "contenu",
+          "description_detaillee": "Reconnaitre et distinguer le statut des differents enonces mathematiques : definition, propriete (admise ou demontree), demonstration",
+          "formulation_bo": "il est essentiel de bien distinguer le statut des enonces (definition, propriete - admise ou demontree -, demonstration)",
+          "connaissances_associees": [
+            "logique",
+            "structure du cours de mathematiques"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Communication": [
+        {
+          "code": "1ENSSCI_MATHS-LO-005",
+          "intitule": "S'exprimer avec qualite a l'ecrit sur un sujet mathematique",
+          "fingerprint": "exprimer_qualite_ecrit_mathematique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Communication",
+          "type": "capacite",
+          "description_detaillee": "Rediger des reponses claires, structurees et rigoureuses en utilisant le vocabulaire mathematique approprie",
+          "formulation_bo": "la qualite d'expression ecrite",
+          "connaissances_associees": [
+            "vocabulaire mathematique",
+            "redaction de solutions"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 1
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-006",
+          "intitule": "S'exprimer avec qualite a l'oral sur un sujet mathematique",
+          "fingerprint": "exprimer_qualite_oral_mathematique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Communication",
+          "type": "capacite",
+          "description_detaillee": "Presenter oralement un raisonnement, une solution ou un resultat mathematique de maniere claire et convaincante",
+          "formulation_bo": "la qualite d'expression orale",
+          "connaissances_associees": [
+            "vocabulaire mathematique",
+            "presentation orale"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 1
+          }
+        }
+      ],
+      "Competences transversales": [
+        {
+          "code": "1ENSSCI_MATHS-LO-101",
+          "intitule": "Chercher et experimenter a l'aide d'outils logiciels",
+          "fingerprint": "chercher_experimenter_outils_logiciels",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Utiliser des outils logiciels (tableur, logiciel de geometrie dynamique, programmation) pour explorer, tester des conjectures et experimenter des situations mathematiques",
+          "formulation_bo": "chercher, experimenter, en particulier a l'aide d'outils logiciels",
+          "connaissances_associees": [
+            "utilisation tableur",
+            "logiciel geometrie dynamique",
+            "programmation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrates_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-102",
+          "intitule": "Modeliser une situation par un modele mathematique",
+          "fingerprint": "modeliser_situation_modele_mathematique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation reelle en langage mathematique, construire ou adapter un modele adapte a la situation etudiee",
+          "formulation_bo": "modeliser, faire une simulation, valider ou invalider un modele",
+          "connaissances_associees": [
+            "notion de modele",
+            "simulation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-103",
+          "intitule": "Valider ou invalider un modele mathematique",
+          "fingerprint": "valider_invalider_modele",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Verifier la pertinence d'un modele donne en confrontant ses predictions aux donnees reelles, identifier ses limites",
+          "formulation_bo": "modeliser, faire une simulation, valider ou invalider un modele",
+          "connaissances_associees": [
+            "notion de modele",
+            "confrontation modele-realite"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-104",
+          "intitule": "Choisir un cadre de representation adapte (numerique, algebrique, geometrique)",
+          "fingerprint": "choisir_cadre_representation",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Identifier le cadre le plus adapte pour representer un probleme : numerique, algebrique ou geometrique",
+          "formulation_bo": "representer, choisir un cadre (numerique, algebrique, geometrique), changer de registre",
+          "connaissances_associees": [
+            "registres de representation",
+            "conversion entre registres"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-105",
+          "intitule": "Changer de registre de representation",
+          "fingerprint": "changer_registre_representation",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Passer d'un registre de representation a un autre (graphique vers algebrique, tableau vers formule, etc.)",
+          "formulation_bo": "representer, choisir un cadre (numerique, algebrique, geometrique), changer de registre",
+          "connaissances_associees": [
+            "registres de representation",
+            "equivalence des representations"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-106",
+          "intitule": "Raisonner et demontrer un resultat mathematique",
+          "fingerprint": "raisonner_demontrer_resultat",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Conduire un raisonnement logique pour etablir un resultat mathematique, en enchainant les etapes de maniere coherente",
+          "formulation_bo": "raisonner, demontrer, trouver des resultats partiels et les mettre en perspective",
+          "connaissances_associees": [
+            "logique mathematique",
+            "types de raisonnement"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-107",
+          "intitule": "Trouver des resultats partiels et les mettre en perspective",
+          "fingerprint": "trouver_resultats_partiels_perspective",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Decomposer un probleme complexe en sous-problemes, obtenir des resultats intermediaires et les articuler pour construire la solution globale",
+          "formulation_bo": "raisonner, demontrer, trouver des resultats partiels et les mettre en perspective",
+          "connaissances_associees": [
+            "decomposition de problemes",
+            "synthese"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-110",
+          "intitule": "Communiquer un resultat mathematique par oral",
+          "fingerprint": "communiquer_resultat_oral",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Presenter oralement un resultat mathematique de maniere claire, structuree et comprehensible",
+          "formulation_bo": "communiquer un resultat par oral ou par ecrit, expliquer une demarche",
+          "connaissances_associees": [
+            "expression orale",
+            "vocabulaire mathematique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-111",
+          "intitule": "Communiquer un resultat mathematique par ecrit",
+          "fingerprint": "communiquer_resultat_ecrit",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Rediger un resultat mathematique de maniere claire, structuree et rigoureuse",
+          "formulation_bo": "communiquer un resultat par oral ou par ecrit, expliquer une demarche",
+          "connaissances_associees": [
+            "redaction mathematique",
+            "notation mathematique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-112",
+          "intitule": "Expliquer une demarche de resolution",
+          "fingerprint": "expliquer_demarche_resolution",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Expliciter les etapes et les choix effectues lors de la resolution d'un probleme mathematique",
+          "formulation_bo": "communiquer un resultat par oral ou par ecrit, expliquer une demarche",
+          "connaissances_associees": [
+            "metacognition",
+            "argumentation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "Resolution de problemes": [
+        {
+          "code": "1ENSSCI_MATHS-LO-113",
+          "intitule": "Resoudre un probleme sans methode indiquee (prise d'initiative)",
+          "fingerprint": "resoudre_probleme_prise_initiative",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Resolution de problemes",
+          "type": "capacite",
+          "description_detaillee": "Face a un probleme dont l'enonce n'indique pas la methode de resolution, elaborer et mettre en oeuvre une strategie appropriee",
+          "formulation_bo": "problemes avec prise d'initiative permettent de travailler la competence chercher et de renforcer la capacite a resoudre un probleme dont l'enonce n'indique pas la methode de resolution",
+          "connaissances_associees": [
+            "strategies de resolution",
+            "autonomie"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-114",
+          "intitule": "Proceder par analogie pour rattacher une situation a une classe de problemes",
+          "fingerprint": "proceder_analogie_classe_problemes",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Resolution de problemes",
+          "type": "capacite",
+          "description_detaillee": "Identifier les similitudes entre une situation nouvelle et une classe de problemes deja connus pour transferer une methode de resolution",
+          "formulation_bo": "l'eleve procede par analogie en rattachant une situation particuliere a une classe plus generale de problemes ou en adaptant une methode connue a la situation etudiee",
+          "connaissances_associees": [
+            "raisonnement par analogie",
+            "classification de problemes"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-115",
+          "intitule": "Adapter une methode connue a une situation nouvelle",
+          "fingerprint": "adapter_methode_situation_nouvelle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Resolution de problemes",
+          "type": "capacite",
+          "description_detaillee": "Modifier ou ajuster une methode de resolution connue pour l'appliquer a un contexte ou des donnees differentes",
+          "formulation_bo": "l'eleve procede par analogie en rattachant une situation particuliere a une classe plus generale de problemes ou en adaptant une methode connue a la situation etudiee",
+          "connaissances_associees": [
+            "transfert de connaissances",
+            "flexibilite cognitive"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-117",
+          "intitule": "Schematiser les donnees d'un probleme",
+          "fingerprint": "schematiser_donnees_probleme",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Resolution de problemes",
+          "type": "capacite",
+          "description_detaillee": "Realiser un schema, un dessin ou un diagramme pour visualiser et organiser les donnees d'un probleme",
+          "formulation_bo": "La competence representer, en vue de schematiser les donnees d'un probleme, facilite la recherche d'une strategie efficace pour sa resolution",
+          "connaissances_associees": [
+            "representation graphique",
+            "organisation des donnees"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "Demarche mathematique": [
+        {
+          "code": "1ENSSCI_MATHS-LO-157",
+          "intitule": "Modeliser une situation et interpreter les resultats",
+          "fingerprint": "modeliser_situation_interpreter_resultats",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Demarche mathematique",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation en langage mathematique puis interpreter les resultats obtenus dans le contexte initial",
+          "formulation_bo": "le recours a un outil de calcul permet de se liberer de contraintes techniques afin de mieux se concentrer sur l'activite de modelisation de la situation et d'interpretation des resultats obtenus",
+          "connaissances_associees": [
+            "modelisation",
+            "interpretation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Communication mathematique": [
+        {
+          "code": "1ENSSCI_MATHS-LO-158",
+          "intitule": "Argumenter a l'oral pour convaincre",
+          "fingerprint": "argumenter_oral_convaincre",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Communication mathematique",
+          "type": "capacite",
+          "description_detaillee": "Pratiquer l'argumentation orale en mathematiques pour preciser sa reflexion et expliciter sa demarche",
+          "formulation_bo": "les mathematiques contribuent au developpement des competences orales, notamment a travers la pratique de l'argumentation. Celle-ci conduit a preciser sa reflexion et a expliciter sa demarche de maniere a convaincre",
+          "connaissances_associees": [
+            "argumentation",
+            "demonstration",
+            "communication"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-159",
+          "intitule": "Reformuler un enonce ou une demarche mathematique",
+          "fingerprint": "reformuler_enonce_demarche",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Communication mathematique",
+          "type": "capacite",
+          "description_detaillee": "Etre capable de reformuler avec ses propres mots un enonce mathematique ou une demarche de resolution",
+          "formulation_bo": "la reformulation par l'eleve d'un enonce ou d'une demarche",
+          "connaissances_associees": [
+            "comprehension",
+            "expression orale"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-LO-160",
+          "intitule": "Utiliser le langage naturel et le langage symbolique a l'oral",
+          "fingerprint": "utiliser_langage_naturel_symbolique_oral",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "LOGIQUE",
+          "sous_domaine": "Communication mathematique",
+          "type": "capacite",
+          "description_detaillee": "Articuler a l'oral le langage naturel avec le langage mathematique symbolique (graphiques, formules, calculs)",
+          "formulation_bo": "En mathematiques, l'oral mobilise a la fois le langage naturel et le langage symbolique dans ses differents registres (graphiques, formules, calculs)",
+          "connaissances_associees": [
+            "langage mathematique",
+            "registres semiotiques"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        }
+      ]
+    },
+    "NOMBRES": {
+      "Competences transversales": [
+        {
+          "code": "1ENSSCI_MATHS-NB-108",
+          "intitule": "Appliquer des techniques de calcul",
+          "fingerprint": "appliquer_techniques_calcul",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Mettre en oeuvre les techniques de calcul appropriees pour obtenir un resultat numerique ou algebrique",
+          "formulation_bo": "calculer, appliquer des techniques et mettre en oeuvre des algorithmes",
+          "connaissances_associees": [
+            "calcul numerique",
+            "calcul algebrique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "Automatismes": [
+        {
+          "code": "1ENSSCI_MATHS-NB-116",
+          "intitule": "Lire et traiter une information chiffree",
+          "fingerprint": "lire_traiter_information_chiffree",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Extraire, interpreter et utiliser des donnees numeriques presentes dans un texte, un tableau ou un graphique",
+          "formulation_bo": "ritualisation [...] d'activites courtes consacrees au calcul ou a la lecture et au traitement de l'information chiffree",
+          "connaissances_associees": [
+            "lecture de donnees",
+            "interpretation numerique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-165",
+          "intitule": "Lire et produire des graphiques (automatisme)",
+          "fingerprint": "lire_produire_graphiques_automatisme",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Partie transversale : maitriser la lecture et la production de graphiques comme automatisme",
+          "formulation_bo": "automatismes (lecture et production de graphiques, traitement de donnees, calcul numerique et algebrique)",
+          "connaissances_associees": [
+            "representation graphique",
+            "lecture de graphiques"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-167",
+          "intitule": "Maitriser le calcul numerique (automatisme)",
+          "fingerprint": "maitriser_calcul_numerique_automatisme",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Partie transversale : maitriser le calcul numerique comme automatisme",
+          "formulation_bo": "automatismes (lecture et production de graphiques, traitement de donnees, calcul numerique et algebrique)",
+          "connaissances_associees": [
+            "calcul numerique",
+            "operations"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Traitement de donnees - Automatismes": [
+        {
+          "code": "1ENSSCI_MATHS-NB-380",
+          "intitule": "Appliquer un pourcentage d'augmentation",
+          "fingerprint": "appliquer_pourcentage_augmentation",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Traitement de donnees - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Calculer une nouvelle valeur apres augmentation d'un pourcentage donne (multiplier par 1 + t/100)",
+          "formulation_bo": "Appliquer un pourcentage d'augmentation ou de diminution.",
+          "connaissances_associees": [
+            "pourcentage",
+            "coefficient multiplicateur"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-381",
+          "intitule": "Appliquer un pourcentage de diminution",
+          "fingerprint": "appliquer_pourcentage_diminution",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Traitement de donnees - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Calculer une nouvelle valeur apres diminution d'un pourcentage donne (multiplier par 1 - t/100)",
+          "formulation_bo": "Appliquer un pourcentage d'augmentation ou de diminution.",
+          "connaissances_associees": [
+            "pourcentage",
+            "coefficient multiplicateur"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-382",
+          "intitule": "Calculer un taux d'evolution global a partir de taux successifs",
+          "fingerprint": "calculer_taux_evolution_global_taux_successifs",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Traitement de donnees - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Determiner le taux d'evolution global correspondant a plusieurs evolutions successives en multipliant les coefficients multiplicateurs",
+          "formulation_bo": "Calculer un taux d'evolution global a partir de taux d'evolution successifs, calculer un taux d'evolution reciproque.",
+          "connaissances_associees": [
+            "taux d'evolution",
+            "coefficient multiplicateur"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-383",
+          "intitule": "Calculer un taux d'evolution reciproque",
+          "fingerprint": "calculer_taux_evolution_reciproque",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Traitement de donnees - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Determiner le taux d'evolution permettant de revenir a la valeur initiale apres une evolution donnee",
+          "formulation_bo": "Calculer un taux d'evolution global a partir de taux d'evolution successifs, calculer un taux d'evolution reciproque.",
+          "connaissances_associees": [
+            "taux d'evolution",
+            "coefficient multiplicateur",
+            "inverse"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Calcul numerique - Automatismes": [
+        {
+          "code": "1ENSSCI_MATHS-NB-384",
+          "intitule": "Effectuer mentalement des calculs simples avec des nombres decimaux",
+          "fingerprint": "calculer_mentalement_nombres_decimaux",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Realiser de tete des operations simples (addition, soustraction, multiplication, division) avec des nombres decimaux",
+          "formulation_bo": "Effectuer mentalement des calculs simples mettant en jeu des nombres decimaux, des fractions et des pourcentages.",
+          "connaissances_associees": [
+            "calcul mental",
+            "nombres decimaux"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-385",
+          "intitule": "Effectuer mentalement des calculs simples avec des fractions",
+          "fingerprint": "calculer_mentalement_fractions",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Realiser de tete des operations simples avec des fractions (fractions usuelles, simplifications evidentes)",
+          "formulation_bo": "Effectuer mentalement des calculs simples mettant en jeu des nombres decimaux, des fractions et des pourcentages.",
+          "connaissances_associees": [
+            "calcul mental",
+            "fractions"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-386",
+          "intitule": "Effectuer mentalement des calculs simples avec des pourcentages",
+          "fingerprint": "calculer_mentalement_pourcentages",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Realiser de tete des calculs de pourcentages simples (10%, 50%, 25%, etc.)",
+          "formulation_bo": "Effectuer mentalement des calculs simples mettant en jeu des nombres decimaux, des fractions et des pourcentages.",
+          "connaissances_associees": [
+            "calcul mental",
+            "pourcentages"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-387",
+          "intitule": "Passer d'une ecriture decimale a une ecriture fractionnaire",
+          "fingerprint": "convertir_decimal_fraction",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Convertir un nombre decimal en fraction equivalente",
+          "formulation_bo": "Passer d'une ecriture d'un nombre a une autre (decimale, fractionnaire, sous forme de pourcentage).",
+          "connaissances_associees": [
+            "nombres decimaux",
+            "fractions",
+            "conversion"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-388",
+          "intitule": "Passer d'une ecriture fractionnaire a une ecriture decimale",
+          "fingerprint": "convertir_fraction_decimal",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Convertir une fraction en nombre decimal (quand c'est possible avec un nombre fini de decimales)",
+          "formulation_bo": "Passer d'une ecriture d'un nombre a une autre (decimale, fractionnaire, sous forme de pourcentage).",
+          "connaissances_associees": [
+            "fractions",
+            "nombres decimaux",
+            "conversion"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-389",
+          "intitule": "Passer d'un pourcentage a une ecriture decimale ou fractionnaire",
+          "fingerprint": "convertir_pourcentage_decimal_fraction",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Convertir un pourcentage en nombre decimal ou en fraction",
+          "formulation_bo": "Passer d'une ecriture d'un nombre a une autre (decimale, fractionnaire, sous forme de pourcentage).",
+          "connaissances_associees": [
+            "pourcentages",
+            "nombres decimaux",
+            "fractions",
+            "conversion"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-390",
+          "intitule": "Passer d'une ecriture decimale ou fractionnaire a un pourcentage",
+          "fingerprint": "convertir_decimal_fraction_pourcentage",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Convertir un nombre decimal ou une fraction en pourcentage",
+          "formulation_bo": "Passer d'une ecriture d'un nombre a une autre (decimale, fractionnaire, sous forme de pourcentage).",
+          "connaissances_associees": [
+            "nombres decimaux",
+            "fractions",
+            "pourcentages",
+            "conversion"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-NB-391",
+          "intitule": "Utiliser un ordre de grandeur pour controler un resultat",
+          "fingerprint": "utiliser_ordre_grandeur_controle_resultat",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Estimer un ordre de grandeur avant ou apres un calcul pour verifier la coherence du resultat obtenu",
+          "formulation_bo": "Utiliser un ordre de grandeur pour controler un resultat.",
+          "connaissances_associees": [
+            "ordre de grandeur",
+            "estimation",
+            "verification"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ]
+    },
+    "ALGORITHMIQUE": {
+      "Competences transversales": [
+        {
+          "code": "1ENSSCI_MATHS-AG-109",
+          "intitule": "Mettre en oeuvre des algorithmes",
+          "fingerprint": "mettre_oeuvre_algorithmes",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Competences transversales",
+          "type": "capacite",
+          "description_detaillee": "Executer un algorithme donne ou le traduire dans un langage de programmation pour obtenir un resultat",
+          "formulation_bo": "calculer, appliquer des techniques et mettre en oeuvre des algorithmes",
+          "connaissances_associees": [
+            "algorithmique",
+            "programmation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "Outils numeriques": [
+        {
+          "code": "1ENSSCI_MATHS-AG-151",
+          "intitule": "Utiliser un tableur pour traiter des donnees",
+          "fingerprint": "utiliser_tableur_traitement_donnees",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Outils numeriques",
+          "type": "capacite",
+          "description_detaillee": "Maitriser les fonctionnalites de base d'un tableur pour traiter des donnees dans un contexte mathematique ou scientifique",
+          "formulation_bo": "Cette dimension s'inscrit de maniere transversale dans le cours de mathematiques et repose sur la connaissance d'un nombre limite d'elements de syntaxe et de fonctions specifiques a l'outil utilise",
+          "connaissances_associees": [
+            "syntaxe tableur",
+            "fonctions tableur"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AG-153",
+          "intitule": "Utiliser un logiciel de geometrie dynamique",
+          "fingerprint": "utiliser_logiciel_geometrie_dynamique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Outils numeriques",
+          "type": "capacite",
+          "description_detaillee": "Utiliser un logiciel de geometrie dynamique pour illustrer ou simuler des concepts mathematiques",
+          "formulation_bo": "l'utilisation d'un logiciel de geometrie dynamique enrichit le cours de mathematiques d'illustrations ou de simulations propices a l'appropriation des concepts",
+          "connaissances_associees": [
+            "outils de construction geometrique",
+            "manipulation d'objets dynamiques"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AG-154",
+          "intitule": "Utiliser un logiciel de calcul numerique",
+          "fingerprint": "utiliser_logiciel_calcul_numerique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Outils numeriques",
+          "type": "capacite",
+          "description_detaillee": "Utiliser un logiciel integrant des fonctionnalites de calcul numerique pour resoudre des problemes",
+          "formulation_bo": "L'utilisation d'un logiciel integrant des fonctionnalites graphiques, de calcul numerique ou d'outils statistiques participe a l'appropriation des concepts",
+          "connaissances_associees": [
+            "calcul numerique",
+            "outils logiciels"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AG-155",
+          "intitule": "Utiliser un logiciel graphique pour representer des fonctions",
+          "fingerprint": "utiliser_logiciel_graphique_fonctions",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Outils numeriques",
+          "type": "capacite",
+          "description_detaillee": "Utiliser un logiciel pour tracer des representations graphiques de fonctions",
+          "formulation_bo": "L'utilisation d'un logiciel integrant des fonctionnalites graphiques",
+          "connaissances_associees": [
+            "representation graphique",
+            "fonctions"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AG-156",
+          "intitule": "Utiliser un outil statistique logiciel",
+          "fingerprint": "utiliser_outil_statistique_logiciel",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Outils numeriques",
+          "type": "capacite",
+          "description_detaillee": "Utiliser les fonctionnalites statistiques d'un logiciel pour analyser des donnees",
+          "formulation_bo": "L'utilisation d'un logiciel integrant [...] d'outils statistiques participe a l'appropriation des concepts",
+          "connaissances_associees": [
+            "statistiques descriptives",
+            "outils logiciels"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Programmation": [
+        {
+          "code": "1ENSSCI_MATHS-AG-152",
+          "intitule": "Utiliser un logiciel de programmation",
+          "fingerprint": "utiliser_logiciel_programmation",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation",
+          "type": "capacite",
+          "description_detaillee": "Maitriser un environnement de programmation pour resoudre des problemes mathematiques",
+          "formulation_bo": "le recours au tableur ou a un logiciel de programmation offre aussi une voie de differenciation",
+          "connaissances_associees": [
+            "syntaxe programmation",
+            "structures algorithmiques"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Tableur": [
+        {
+          "code": "1ENSSCI_MATHS-AG-208",
+          "intitule": "Utiliser un tableur pour representer des donnees sous forme de tableau",
+          "fingerprint": "utiliser_tableur_representer_tableau",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Tableur",
+          "type": "capacite",
+          "description_detaillee": "Maitriser les fonctionnalites d'un tableur pour organiser des donnees en tableau",
+          "formulation_bo": "Utiliser un tableur pour representer des donnees sous forme de tableau ou de diagramme",
+          "connaissances_associees": [
+            "tableur",
+            "cellule",
+            "formule"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AG-209",
+          "intitule": "Utiliser un tableur pour representer des donnees sous forme de diagramme",
+          "fingerprint": "utiliser_tableur_representer_diagramme",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Tableur",
+          "type": "capacite",
+          "description_detaillee": "Maitriser les fonctionnalites d'un tableur pour creer des diagrammes a partir de donnees",
+          "formulation_bo": "Utiliser un tableur pour representer des donnees sous forme de tableau ou de diagramme",
+          "connaissances_associees": [
+            "tableur",
+            "graphique",
+            "diagramme"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        }
+      ],
+      "Simulation": [
+        {
+          "code": "1ENSSCI_MATHS-AG-221",
+          "intitule": "Simuler une succession de tirages aleatoires independants",
+          "fingerprint": "simuler_tirages_aleatoires_independants",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Simulation",
+          "type": "capacite",
+          "description_detaillee": "Utiliser des outils numeriques pour simuler des tirages avec remise dans une urne",
+          "formulation_bo": "Grace a des outils numeriques, on simule une succession de tirages aleatoires independants (par exemple, des tirages avec remise dans une urne)",
+          "connaissances_associees": [
+            "tirage aleatoire",
+            "independance",
+            "simulation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        }
+      ]
+    },
+    "STATISTIQUES": {
+      "Analyse de l'information chiffree": [
+        {
+          "code": "1ENSSCI_MATHS-ST-162",
+          "intitule": "Analyser une information chiffree (statistiques)",
+          "fingerprint": "analyser_information_chiffree_statistiques",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Analyse de l'information chiffree",
+          "type": "contenu",
+          "description_detaillee": "Partie thematique du programme : analyser des informations chiffrees dans un contexte statistique",
+          "formulation_bo": "analyse de l'information chiffree (statistiques)",
+          "connaissances_associees": [
+            "statistiques descriptives"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-ST-201",
+          "intitule": "Definir l'analyse statistique bivariee",
+          "fingerprint": "definir_analyse_statistique_bivariee",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Analyse de l'information chiffree",
+          "type": "contenu",
+          "description_detaillee": "Comprendre que l'analyse bivariee etudie les relations entre deux caracteres statistiques",
+          "formulation_bo": "L'analyse bivariee cherche a etudier les eventuelles relations entre deux caracteres",
+          "connaissances_associees": [
+            "caractere statistique",
+            "indicateurs statistiques de seconde"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-ST-202",
+          "intitule": "Construire un tableau croise d'effectifs",
+          "fingerprint": "construire_tableau_croise_effectifs",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Analyse de l'information chiffree",
+          "type": "contenu",
+          "description_detaillee": "Organiser les donnees de deux caracteres dans un tableau a double entree",
+          "formulation_bo": "Tableau croise d'effectifs",
+          "connaissances_associees": [
+            "effectif",
+            "caractere statistique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-ST-203",
+          "intitule": "Representer un nuage de points",
+          "fingerprint": "representer_nuage_points",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Analyse de l'information chiffree",
+          "type": "contenu",
+          "description_detaillee": "Representer graphiquement le croisement de deux caracteres par un nuage de points",
+          "formulation_bo": "representation graphique (nuage de points, diagrammes en barres, diagrammes circulaires)",
+          "connaissances_associees": [
+            "repere cartesien",
+            "coordonnees"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-ST-204",
+          "intitule": "Representer des donnees par un diagramme en barres",
+          "fingerprint": "representer_diagramme_barres",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Analyse de l'information chiffree",
+          "type": "contenu",
+          "description_detaillee": "Representer graphiquement le croisement de deux caracteres par un diagramme en barres",
+          "formulation_bo": "representation graphique (nuage de points, diagrammes en barres, diagrammes circulaires)",
+          "connaissances_associees": [
+            "effectif",
+            "frequence"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-ST-205",
+          "intitule": "Representer des donnees par un diagramme circulaire",
+          "fingerprint": "representer_diagramme_circulaire",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Analyse de l'information chiffree",
+          "type": "contenu",
+          "description_detaillee": "Representer graphiquement le croisement de deux caracteres par un diagramme circulaire",
+          "formulation_bo": "representation graphique (nuage de points, diagrammes en barres, diagrammes circulaires)",
+          "connaissances_associees": [
+            "angle",
+            "proportion",
+            "frequence"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-ST-206",
+          "intitule": "Filtrer un fichier de donnees avec les operateurs logiques ET, OU, NON",
+          "fingerprint": "filtrer_fichier_donnees_operateurs_logiques",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Analyse de l'information chiffree",
+          "type": "contenu",
+          "description_detaillee": "Determiner dans un fichier de donnees un sous-ensemble d'individus repondant a un critere en utilisant les operateurs logiques",
+          "formulation_bo": "Determination dans un fichier de donnees d'un sous-ensemble d'individus repondant a un sous-caractere (filtre, utilisation des ET, OU, NON)",
+          "connaissances_associees": [
+            "operateurs logiques",
+            "base de donnees"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-ST-207",
+          "intitule": "Dresser un tableau croise de deux caracteres a partir d'un fichier de donnees",
+          "fingerprint": "dresser_tableau_croise_fichier_donnees",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Analyse de l'information chiffree",
+          "type": "capacite",
+          "description_detaillee": "A partir d'un fichier brut de donnees, construire un tableau croise d'effectifs pour deux caracteres",
+          "formulation_bo": "Dresser un tableau croise de deux caracteres a partir d'un fichier de donnees",
+          "connaissances_associees": [
+            "tableau croise",
+            "caractere statistique",
+            "effectif"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        }
+      ],
+      "Automatismes": [
+        {
+          "code": "1ENSSCI_MATHS-ST-166",
+          "intitule": "Traiter des donnees (automatisme)",
+          "fingerprint": "traiter_donnees_automatisme",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Partie transversale : maitriser le traitement de donnees comme automatisme",
+          "formulation_bo": "automatismes (lecture et production de graphiques, traitement de donnees, calcul numerique et algebrique)",
+          "connaissances_associees": [
+            "donnees",
+            "statistiques"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        }
+      ]
+    },
+    "PROBABILITES": {
+      "Phenomenes aleatoires": [
+        {
+          "code": "1ENSSCI_MATHS-PR-163",
+          "intitule": "Etudier des phenomenes aleatoires (probabilites conditionnelles)",
+          "fingerprint": "etudier_phenomenes_aleatoires_probabilites_conditionnelles",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "contenu",
+          "description_detaillee": "Partie thematique du programme : etudier des phenomenes aleatoires en utilisant les probabilites conditionnelles",
+          "formulation_bo": "phenomenes aleatoires (probabilites conditionnelles)",
+          "connaissances_associees": [
+            "probabilites",
+            "probabilites conditionnelles"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-210",
+          "intitule": "Definir la frequence conditionnelle",
+          "fingerprint": "definir_frequence_conditionnelle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "contenu",
+          "description_detaillee": "Comprendre la notion de frequence conditionnelle dans le cadre de l'analyse bivariee",
+          "formulation_bo": "Frequence conditionnelle, frequence marginale",
+          "connaissances_associees": [
+            "frequence",
+            "tableau croise"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-211",
+          "intitule": "Definir la frequence marginale",
+          "fingerprint": "definir_frequence_marginale",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "contenu",
+          "description_detaillee": "Comprendre la notion de frequence marginale dans un tableau croise",
+          "formulation_bo": "Frequence conditionnelle, frequence marginale",
+          "connaissances_associees": [
+            "frequence",
+            "tableau croise",
+            "somme"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-212",
+          "intitule": "Definir la probabilite conditionnelle",
+          "fingerprint": "definir_probabilite_conditionnelle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition et la notation de la probabilite conditionnelle P(A|B)",
+          "formulation_bo": "Probabilite conditionnelle : definition, notation, calcul a partir d'un tableau croise d'effectifs ou d'un arbre de probabilites",
+          "connaissances_associees": [
+            "probabilite",
+            "evenement"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-213",
+          "intitule": "Calculer une probabilite conditionnelle a partir d'un tableau croise d'effectifs",
+          "fingerprint": "calculer_probabilite_conditionnelle_tableau",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "capacite",
+          "description_detaillee": "Determiner P(A|B) en utilisant les effectifs d'un tableau croise",
+          "formulation_bo": "Probabilite conditionnelle : definition, notation, calcul a partir d'un tableau croise d'effectifs ou d'un arbre de probabilites",
+          "connaissances_associees": [
+            "tableau croise",
+            "effectif",
+            "probabilite conditionnelle"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-214",
+          "intitule": "Calculer une probabilite conditionnelle a partir d'un arbre de probabilites",
+          "fingerprint": "calculer_probabilite_conditionnelle_arbre",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "capacite",
+          "description_detaillee": "Determiner P(A|B) en utilisant un arbre de probabilites",
+          "formulation_bo": "Probabilite conditionnelle : definition, notation, calcul a partir d'un tableau croise d'effectifs ou d'un arbre de probabilites",
+          "connaissances_associees": [
+            "arbre de probabilites",
+            "probabilite conditionnelle"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-215",
+          "intitule": "Definir l'independance de deux evenements",
+          "fingerprint": "definir_independance_deux_evenements",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "contenu",
+          "description_detaillee": "Comprendre que A et B sont independants si P(A|B) = P(A) (quand P(B) non nulle)",
+          "formulation_bo": "Independance de deux evenements",
+          "connaissances_associees": [
+            "probabilite conditionnelle",
+            "evenement"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-216",
+          "intitule": "Modeliser une succession d'evenements independants",
+          "fingerprint": "modeliser_succession_evenements_independants",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "contenu",
+          "description_detaillee": "Comprendre et utiliser le modele de succession d'evenements independants, equiprobables ou non",
+          "formulation_bo": "Succession d'evenements independants, equiprobables ou non",
+          "connaissances_associees": [
+            "independance",
+            "equiprobabilite",
+            "tirage avec remise"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-217",
+          "intitule": "Construire un tableau croise d'effectifs associe a un phenomene aleatoire",
+          "fingerprint": "construire_tableau_croise_phenomene_aleatoire",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "capacite",
+          "description_detaillee": "A partir d'un phenomene aleatoire, construire le tableau croise d'effectifs correspondant",
+          "formulation_bo": "Construire un tableau croise d'effectifs ou un arbre de probabilite associe a un phenomene aleatoire",
+          "connaissances_associees": [
+            "tableau croise",
+            "effectif",
+            "phenomene aleatoire"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-218",
+          "intitule": "Construire un arbre de probabilite associe a un phenomene aleatoire",
+          "fingerprint": "construire_arbre_probabilite_phenomene_aleatoire",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "capacite",
+          "description_detaillee": "A partir d'un phenomene aleatoire, construire l'arbre de probabilites correspondant",
+          "formulation_bo": "Construire un tableau croise d'effectifs ou un arbre de probabilite associe a un phenomene aleatoire",
+          "connaissances_associees": [
+            "arbre de probabilites",
+            "phenomene aleatoire"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-219",
+          "intitule": "Calculer des frequences conditionnelles a partir d'un tableau croise d'effectifs",
+          "fingerprint": "calculer_frequences_conditionnelles_tableau",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "capacite",
+          "description_detaillee": "Determiner les frequences conditionnelles en utilisant les effectifs d'un tableau croise",
+          "formulation_bo": "Calculer des frequences conditionnelles et des frequences marginales a partir d'un tableau croise d'effectifs",
+          "connaissances_associees": [
+            "frequence conditionnelle",
+            "tableau croise",
+            "effectif"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-220",
+          "intitule": "Calculer des frequences marginales a partir d'un tableau croise d'effectifs",
+          "fingerprint": "calculer_frequences_marginales_tableau",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "capacite",
+          "description_detaillee": "Determiner les frequences marginales en utilisant les effectifs d'un tableau croise",
+          "formulation_bo": "Calculer des frequences conditionnelles et des frequences marginales a partir d'un tableau croise d'effectifs",
+          "connaissances_associees": [
+            "frequence marginale",
+            "tableau croise",
+            "effectif"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-222",
+          "intitule": "Interpreter la loi des grands nombres par simulation",
+          "fingerprint": "interpreter_loi_grands_nombres_simulation",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Phenomenes aleatoires",
+          "type": "capacite",
+          "description_detaillee": "Observer et interpreter la stabilisation des frequences vers la probabilite theorique lors de simulations",
+          "formulation_bo": "poursuivre l'approche vulgarisee de la loi des grands nombres initiee en classe de seconde",
+          "connaissances_associees": [
+            "loi des grands nombres",
+            "frequence",
+            "probabilite"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 4
+          }
+        }
+      ],
+      "Probabilites conditionnelles": [
+        {
+          "code": "1ENSSCI_MATHS-PR-251",
+          "intitule": "Interpreter un tableau croise en utilisant des frequences conditionnelles",
+          "fingerprint": "interpreter_tableau_croise_frequences_conditionnelles",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Probabilites conditionnelles",
+          "type": "capacite",
+          "description_detaillee": "Savoir lire et interpreter les donnees d'un tableau croise en calculant et utilisant les frequences conditionnelles pour comprendre les relations entre variables",
+          "formulation_bo": "Interpreter un tableau croise en utilisant des frequences conditionnelles.",
+          "connaissances_associees": [
+            "tableau croise",
+            "frequence conditionnelle",
+            "frequence marginale"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-252",
+          "intitule": "Calculer des probabilites conditionnelles a l'aide d'un tableau croise d'effectifs",
+          "fingerprint": "calculer_probabilites_conditionnelles_tableau_croise",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Probabilites conditionnelles",
+          "type": "capacite",
+          "description_detaillee": "A partir d'un tableau croise d'effectifs, determiner les probabilites conditionnelles P(A|B) en utilisant la formule appropriee",
+          "formulation_bo": "Calculer des probabilites conditionnelles a l'aide d'un tableau croise d'effectifs ou d'un arbre pondere.",
+          "connaissances_associees": [
+            "probabilite conditionnelle",
+            "tableau croise",
+            "effectifs"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-PR-253",
+          "intitule": "Calculer des probabilites conditionnelles a l'aide d'un arbre pondere",
+          "fingerprint": "calculer_probabilites_conditionnelles_arbre_pondere",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Probabilites conditionnelles",
+          "type": "capacite",
+          "description_detaillee": "A partir d'un arbre pondere, determiner les probabilites conditionnelles en lisant les branches et en appliquant les regles de calcul",
+          "formulation_bo": "Calculer des probabilites conditionnelles a l'aide d'un tableau croise d'effectifs ou d'un arbre pondere.",
+          "connaissances_associees": [
+            "probabilite conditionnelle",
+            "arbre pondere",
+            "regle du produit"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        }
+      ]
+    },
+    "ANALYSE": {
+      "Phenomenes d'evolution": [
+        {
+          "code": "1ENSSCI_MATHS-AN-164",
+          "intitule": "Etudier des phenomenes d'evolution (suites, fonctions, exponentielles, derivee)",
+          "fingerprint": "etudier_phenomenes_evolution_analyse",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Phenomenes d'evolution",
+          "type": "contenu",
+          "description_detaillee": "Partie thematique du programme : etudier des phenomenes d'evolution a l'aide des outils d'analyse (suites, fonctions, exponentielles, derivee)",
+          "formulation_bo": "phenomenes d'evolution (analyse : suites, fonctions, exponentielles, derivee)",
+          "connaissances_associees": [
+            "suites",
+            "fonctions",
+            "exponentielle",
+            "derivation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Suites arithmetiques": [
+        {
+          "code": "1ENSSCI_MATHS-AN-254",
+          "intitule": "Definir une suite arithmetique par sa relation de recurrence",
+          "fingerprint": "definir_suite_arithmetique_recurrence",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites arithmetiques",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et utiliser la definition d'une suite arithmetique par la relation u(n+1) = u(n) + r, avec u(0) donne et r la raison",
+          "formulation_bo": "Definition par la relation de recurrence.",
+          "connaissances_associees": [
+            "suite arithmetique",
+            "relation de recurrence",
+            "raison"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-255",
+          "intitule": "Expliciter le terme de rang n d'une suite arithmetique",
+          "fingerprint": "expliciter_terme_rang_n_suite_arithmetique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites arithmetiques",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et utiliser la formule explicite u(n) = u(0) + n*r pour une suite arithmetique",
+          "formulation_bo": "Explicitation du terme de rang n.",
+          "connaissances_associees": [
+            "suite arithmetique",
+            "terme general",
+            "formule explicite"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-256",
+          "intitule": "Determiner le sens de variation d'une suite arithmetique",
+          "fingerprint": "determiner_variation_suite_arithmetique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites arithmetiques",
+          "type": "contenu",
+          "description_detaillee": "Determiner si une suite arithmetique est croissante (r > 0), decroissante (r < 0) ou constante (r = 0) a partir du signe de sa raison",
+          "formulation_bo": "Sens de variation.",
+          "connaissances_associees": [
+            "suite arithmetique",
+            "raison",
+            "monotonie"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-257",
+          "intitule": "Realiser la representation graphique d'une suite arithmetique",
+          "fingerprint": "representer_graphiquement_suite_arithmetique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites arithmetiques",
+          "type": "contenu",
+          "description_detaillee": "Tracer le nuage de points (n, u(n)) d'une suite arithmetique et reconnaitre l'alignement des points",
+          "formulation_bo": "Representation graphique.",
+          "connaissances_associees": [
+            "suite arithmetique",
+            "nuage de points",
+            "representation graphique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-265",
+          "intitule": "Calculer un terme de rang donne d'une suite arithmetique definie par une relation fonctionnelle",
+          "fingerprint": "calculer_terme_suite_arithmetique_fonctionnelle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites arithmetiques",
+          "type": "capacite",
+          "description_detaillee": "A partir de la formule explicite u(n) = u(0) + n*r, calculer la valeur d'un terme pour un rang n donne",
+          "formulation_bo": "Calculer un terme de rang donne d'une suite arithmetique definie par une relation fonctionnelle ou une relation de recurrence.",
+          "connaissances_associees": [
+            "suite arithmetique",
+            "formule explicite",
+            "calcul de terme"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-266",
+          "intitule": "Calculer un terme de rang donne d'une suite arithmetique definie par une relation de recurrence",
+          "fingerprint": "calculer_terme_suite_arithmetique_recurrence",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites arithmetiques",
+          "type": "capacite",
+          "description_detaillee": "A partir de la relation u(n+1) = u(n) + r et du premier terme, calculer iterativement les termes successifs jusqu'au rang demande",
+          "formulation_bo": "Calculer un terme de rang donne d'une suite arithmetique definie par une relation fonctionnelle ou une relation de recurrence.",
+          "connaissances_associees": [
+            "suite arithmetique",
+            "relation de recurrence",
+            "calcul iteratif"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrites_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-267",
+          "intitule": "Realiser la representation graphique des termes d'une suite arithmetique",
+          "fingerprint": "realiser_representation_graphique_suite_arithmetique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites arithmetiques",
+          "type": "capacite",
+          "description_detaillee": "Construire le nuage de points (n, u(n)) pour une suite arithmetique donnee",
+          "formulation_bo": "Realiser et exploiter la representation graphique des termes d'une suite arithmetique ou d'une fonction affine.",
+          "connaissances_associees": [
+            "suite arithmetique",
+            "representation graphique",
+            "nuage de points"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-268",
+          "intitule": "Exploiter la representation graphique des termes d'une suite arithmetique",
+          "fingerprint": "exploiter_representation_graphique_suite_arithmetique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites arithmetiques",
+          "type": "capacite",
+          "description_detaillee": "A partir du nuage de points d'une suite arithmetique, lire des valeurs, determiner la raison, le sens de variation",
+          "formulation_bo": "Realiser et exploiter la representation graphique des termes d'une suite arithmetique ou d'une fonction affine.",
+          "connaissances_associees": [
+            "suite arithmetique",
+            "representation graphique",
+            "lecture graphique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-271",
+          "intitule": "Resoudre un probleme de seuil dans le cas d'une croissance lineaire",
+          "fingerprint": "resoudre_probleme_seuil_croissance_lineaire",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites arithmetiques",
+          "type": "capacite",
+          "description_detaillee": "Determiner a partir de quel rang une suite arithmetique depasse ou atteint un seuil donne, par calcul ou graphiquement",
+          "formulation_bo": "Resoudre un probleme de seuil dans le cas d'une croissance lineaire.",
+          "connaissances_associees": [
+            "suite arithmetique",
+            "inequation",
+            "probleme de seuil"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Fonctions affines": [
+        {
+          "code": "1ENSSCI_MATHS-AN-258",
+          "intitule": "Tracer la representation graphique d'une fonction affine",
+          "fingerprint": "tracer_representation_fonction_affine",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions affines",
+          "type": "contenu",
+          "description_detaillee": "Tracer la droite representative d'une fonction affine f(x) = mx + p a partir de son coefficient directeur et de son ordonnee a l'origine",
+          "formulation_bo": "L'objectif est de remobiliser les connaissances abordees en classe de seconde : representation graphique, sens de variation, lien entre le taux d'accroissement et le coefficient directeur de la droite representative.",
+          "connaissances_associees": [
+            "fonction affine",
+            "droite",
+            "coefficient directeur",
+            "ordonnee a l'origine"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-259",
+          "intitule": "Determiner le sens de variation d'une fonction affine",
+          "fingerprint": "determiner_variation_fonction_affine",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions affines",
+          "type": "contenu",
+          "description_detaillee": "Determiner si une fonction affine f(x) = mx + p est croissante (m > 0), decroissante (m < 0) ou constante (m = 0) a partir du signe de m",
+          "formulation_bo": "L'objectif est de remobiliser les connaissances abordees en classe de seconde : representation graphique, sens de variation, lien entre le taux d'accroissement et le coefficient directeur de la droite representative.",
+          "connaissances_associees": [
+            "fonction affine",
+            "coefficient directeur",
+            "monotonie"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-260",
+          "intitule": "Faire le lien entre taux d'accroissement et coefficient directeur d'une fonction affine",
+          "fingerprint": "lien_taux_accroissement_coefficient_directeur",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions affines",
+          "type": "contenu",
+          "description_detaillee": "Comprendre que le coefficient directeur m d'une fonction affine represente le taux d'accroissement constant de la fonction",
+          "formulation_bo": "L'objectif est de remobiliser les connaissances abordees en classe de seconde : representation graphique, sens de variation, lien entre le taux d'accroissement et le coefficient directeur de la droite representative.",
+          "connaissances_associees": [
+            "fonction affine",
+            "taux d'accroissement",
+            "coefficient directeur"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-269",
+          "intitule": "Realiser la representation graphique d'une fonction affine",
+          "fingerprint": "realiser_representation_graphique_fonction_affine",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions affines",
+          "type": "capacite",
+          "description_detaillee": "Tracer la droite representative d'une fonction affine dans un repere adapte",
+          "formulation_bo": "Realiser et exploiter la representation graphique des termes d'une suite arithmetique ou d'une fonction affine.",
+          "connaissances_associees": [
+            "fonction affine",
+            "droite",
+            "representation graphique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-270",
+          "intitule": "Exploiter la representation graphique d'une fonction affine",
+          "fingerprint": "exploiter_representation_graphique_fonction_affine",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions affines",
+          "type": "capacite",
+          "description_detaillee": "A partir de la droite representative d'une fonction affine, lire des valeurs, determiner le coefficient directeur, l'ordonnee a l'origine",
+          "formulation_bo": "Realiser et exploiter la representation graphique des termes d'une suite arithmetique ou d'une fonction affine.",
+          "connaissances_associees": [
+            "fonction affine",
+            "droite",
+            "lecture graphique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Modelisation": [
+        {
+          "code": "1ENSSCI_MATHS-AN-261",
+          "intitule": "Reconnaitre un phenomene discret de croissance lineaire",
+          "fingerprint": "reconnaitre_phenomene_discret_croissance_lineaire",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Modelisation",
+          "type": "capacite",
+          "description_detaillee": "Identifier dans un contexte donne qu'une grandeur discrete evolue avec un accroissement constant et donc suit une croissance lineaire",
+          "formulation_bo": "Reconnaitre un phenomene discret ou continu de croissance lineaire et savoir le modeliser.",
+          "connaissances_associees": [
+            "croissance lineaire",
+            "suite arithmetique",
+            "accroissement constant"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-262",
+          "intitule": "Reconnaitre un phenomene continu de croissance lineaire",
+          "fingerprint": "reconnaitre_phenomene_continu_croissance_lineaire",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Modelisation",
+          "type": "capacite",
+          "description_detaillee": "Identifier dans un contexte donne qu'une grandeur continue evolue avec un taux d'accroissement constant et donc suit une croissance lineaire",
+          "formulation_bo": "Reconnaitre un phenomene discret ou continu de croissance lineaire et savoir le modeliser.",
+          "connaissances_associees": [
+            "croissance lineaire",
+            "fonction affine",
+            "taux constant"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-263",
+          "intitule": "Modeliser un phenomene discret de croissance lineaire par une suite arithmetique",
+          "fingerprint": "modeliser_phenomene_discret_suite_arithmetique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Modelisation",
+          "type": "capacite",
+          "description_detaillee": "Traduire un phenomene d'evolution discrete a accroissement constant par une suite arithmetique en identifiant le premier terme et la raison",
+          "formulation_bo": "Reconnaitre un phenomene discret ou continu de croissance lineaire et savoir le modeliser.",
+          "connaissances_associees": [
+            "modelisation",
+            "suite arithmetique",
+            "croissance lineaire"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-264",
+          "intitule": "Modeliser un phenomene continu de croissance lineaire par une fonction affine",
+          "fingerprint": "modeliser_phenomene_continu_fonction_affine",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Modelisation",
+          "type": "capacite",
+          "description_detaillee": "Traduire un phenomene d'evolution continue a taux constant par une fonction affine en identifiant le coefficient directeur et l'ordonnee a l'origine",
+          "formulation_bo": "Reconnaitre un phenomene discret ou continu de croissance lineaire et savoir le modeliser.",
+          "connaissances_associees": [
+            "modelisation",
+            "fonction affine",
+            "croissance lineaire"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Suites geometriques": [
+        {
+          "code": "1ENSSCI_MATHS-AN-272",
+          "intitule": "Definir une suite geometrique par sa relation de recurrence",
+          "fingerprint": "definir_suite_geometrique_recurrence",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et utiliser la definition d'une suite geometrique par la relation u(n+1) = q*u(n), avec u(0) donne et q la raison",
+          "formulation_bo": "Les suites geometriques modelisent des grandeurs discretes dont le taux d'evolution est constant.",
+          "connaissances_associees": [
+            "suite geometrique",
+            "relation de recurrence",
+            "raison"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-273",
+          "intitule": "Reconnaitre qu'une suite geometrique modelise un taux d'evolution constant",
+          "fingerprint": "reconnaitre_suite_geometrique_taux_evolution_constant",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "contenu",
+          "description_detaillee": "Comprendre que dans une suite geometrique, le rapport entre deux termes consecutifs est constant et correspond a un taux d'evolution",
+          "formulation_bo": "Les suites geometriques modelisent des grandeurs discretes dont le taux d'evolution est constant.",
+          "connaissances_associees": [
+            "suite geometrique",
+            "taux d'evolution",
+            "raison"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-301",
+          "intitule": "Definir une suite geometrique par une relation de recurrence",
+          "fingerprint": "definir_suite_geometrique_recurrence",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et utiliser la definition d'une suite geometrique par la relation u(n+1) = q * u(n) avec q la raison",
+          "formulation_bo": "Suites geometriques a termes strictement positifs. Definition par relation de recurrence.",
+          "connaissances_associees": [
+            "notion de suite",
+            "relation de recurrence"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-302",
+          "intitule": "Expliciter le terme de rang n d'une suite geometrique",
+          "fingerprint": "expliciter_terme_rang_n_suite_geometrique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et utiliser la formule explicite u(n) = u(0) * q^n pour une suite geometrique",
+          "formulation_bo": "Explicitation du terme de rang n.",
+          "connaissances_associees": [
+            "definition suite geometrique",
+            "puissances"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-303",
+          "intitule": "Determiner le sens de variation d'une suite geometrique",
+          "fingerprint": "determiner_variation_suite_geometrique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "contenu",
+          "description_detaillee": "Etudier le sens de variation d'une suite geometrique selon la valeur de la raison q (q > 1 croissante, 0 < q < 1 decroissante pour termes positifs)",
+          "formulation_bo": "Sens de variation.",
+          "connaissances_associees": [
+            "definition suite geometrique",
+            "comparaison de termes"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-304",
+          "intitule": "Representer graphiquement les termes d'une suite geometrique",
+          "fingerprint": "representer_graphique_suite_geometrique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "contenu",
+          "description_detaillee": "Tracer la representation graphique des termes d'une suite geometrique dans un repere (nuage de points)",
+          "formulation_bo": "Representation graphique.",
+          "connaissances_associees": [
+            "terme general suite geometrique",
+            "coordonnees dans un repere"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-311",
+          "intitule": "Reconnaitre un phenomene discret de croissance exponentielle",
+          "fingerprint": "reconnaitre_phenomene_discret_croissance_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "capacite",
+          "description_detaillee": "Identifier dans une situation concrete (denombrement, interet compose, etc.) un phenomene modelisable par une suite geometrique",
+          "formulation_bo": "Reconnaitre un phenomene discret ou continu de croissance exponentielle et savoir le modeliser.",
+          "connaissances_associees": [
+            "suite geometrique",
+            "croissance exponentielle"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-313",
+          "intitule": "Modeliser un phenomene discret par une suite geometrique",
+          "fingerprint": "modeliser_phenomene_discret_suite_geometrique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation concrete en termes de suite geometrique en identifiant le premier terme et la raison",
+          "formulation_bo": "Reconnaitre un phenomene discret ou continu de croissance exponentielle et savoir le modeliser.",
+          "connaissances_associees": [
+            "definition suite geometrique",
+            "modelisation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-315",
+          "intitule": "Calculer un terme de rang donne d'une suite geometrique definie par formule explicite",
+          "fingerprint": "calculer_terme_suite_geometrique_explicite",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la formule u(n) = u(0) * q^n pour calculer un terme particulier",
+          "formulation_bo": "Calculer un terme de rang donne d'une suite geometrique definie par une relation fonctionnelle ou une relation de recurrence.",
+          "connaissances_associees": [
+            "formule explicite suite geometrique",
+            "calcul de puissances"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-316",
+          "intitule": "Calculer un terme de rang donne d'une suite geometrique definie par recurrence",
+          "fingerprint": "calculer_terme_suite_geometrique_recurrence",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la relation u(n+1) = q * u(n) de maniere iterative pour calculer un terme particulier",
+          "formulation_bo": "Calculer un terme de rang donne d'une suite geometrique definie par une relation fonctionnelle ou une relation de recurrence.",
+          "connaissances_associees": [
+            "definition suite geometrique par recurrence",
+            "iteration"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-318",
+          "intitule": "Realiser la representation graphique des termes d'une suite geometrique",
+          "fingerprint": "realiser_representation_graphique_suite_geometrique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "capacite",
+          "description_detaillee": "Construire le nuage de points (n, u(n)) pour une suite geometrique",
+          "formulation_bo": "Realiser et exploiter la representation graphique des termes d'une suite geometrique ou d'une fonction exponentielle.",
+          "connaissances_associees": [
+            "termes d'une suite geometrique",
+            "coordonnees dans un repere"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-320",
+          "intitule": "Exploiter la representation graphique d'une suite geometrique",
+          "fingerprint": "exploiter_representation_graphique_suite_geometrique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Suites geometriques",
+          "type": "capacite",
+          "description_detaillee": "Lire et interpreter des informations sur la representation graphique d'une suite geometrique (tendance, valeurs)",
+          "formulation_bo": "Realiser et exploiter la representation graphique des termes d'une suite geometrique ou d'une fonction exponentielle.",
+          "connaissances_associees": [
+            "representation graphique suite geometrique",
+            "lecture graphique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        }
+      ],
+      "Fonctions exponentielles": [
+        {
+          "code": "1ENSSCI_MATHS-AN-274",
+          "intitule": "Comprendre la fonction exponentielle comme prolongement continu d'une suite geometrique",
+          "fingerprint": "comprendre_exponentielle_prolongement_suite_geometrique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "contenu",
+          "description_detaillee": "Comprendre que la fonction exponentielle de base a prolonge les valeurs d'une suite geometrique de raison a positive a des valeurs non entieres positives",
+          "formulation_bo": "Les fonctions exponentielles sont presentees comme un prolongement des suites geometriques de raison positive a des valeurs non entieres positives.",
+          "connaissances_associees": [
+            "fonction exponentielle",
+            "suite geometrique",
+            "prolongement"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-275",
+          "intitule": "Utiliser la calculatrice pour calculer a^x pour tout reel positif x",
+          "fingerprint": "utiliser_calculatrice_puissance_reel_positif",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "capacite",
+          "description_detaillee": "Savoir utiliser la calculatrice pour obtenir la valeur de a^x ou a est un reel positif et x un reel positif quelconque",
+          "formulation_bo": "de se limiter au recours a la calculatrice pour obtenir la valeur de a x pour tout reel positif x",
+          "connaissances_associees": [
+            "puissance",
+            "calculatrice",
+            "fonction exponentielle"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-305",
+          "intitule": "Definir la fonction exponentielle de base a",
+          "fingerprint": "definir_fonction_exponentielle_base_a",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la fonction x -> a^x pour a > 0 et x >= 0",
+          "formulation_bo": "Introduction de la fonction x -> a^x (a > 0, x >= 0).",
+          "connaissances_associees": [
+            "puissances entieres",
+            "notion de fonction"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-306",
+          "intitule": "Appliquer les proprietes algebriques des fonctions exponentielles",
+          "fingerprint": "appliquer_proprietes_algebriques_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "contenu",
+          "description_detaillee": "Utiliser les proprietes a^(x+y) = a^x * a^y, a^(x-y) = a^x / a^y, (a^x)^y = a^(xy) par extension des puissances entieres",
+          "formulation_bo": "Proprietes algebriques (admises, par extension des proprietes des puissances entieres).",
+          "connaissances_associees": [
+            "proprietes des puissances entieres"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-307",
+          "intitule": "Determiner le sens de variation d'une fonction exponentielle",
+          "fingerprint": "determiner_variation_fonction_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "contenu",
+          "description_detaillee": "Etudier les variations de x -> a^x selon la valeur de a (croissante si a > 1, decroissante si 0 < a < 1)",
+          "formulation_bo": "Variations.",
+          "connaissances_associees": [
+            "definition fonction exponentielle base a"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-308",
+          "intitule": "Representer graphiquement une fonction exponentielle",
+          "fingerprint": "representer_graphique_fonction_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "contenu",
+          "description_detaillee": "Tracer la courbe representative de la fonction x -> a^x pour differentes valeurs de a",
+          "formulation_bo": "Representation graphique.",
+          "connaissances_associees": [
+            "definition fonction exponentielle",
+            "notion de courbe representative"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-309",
+          "intitule": "Calculer une racine n-ieme a l'aide de l'exposant 1/n",
+          "fingerprint": "calculer_racine_nieme_exposant",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "contenu",
+          "description_detaillee": "Comprendre et utiliser a^(1/n) comme racine n-ieme de a",
+          "formulation_bo": "Cas particulier de l'exposant 1/n.",
+          "connaissances_associees": [
+            "proprietes des exposants",
+            "notion de racine"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-310",
+          "intitule": "Calculer un taux d'evolution moyen correspondant a n evolutions successives",
+          "fingerprint": "calculer_taux_evolution_moyen",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "contenu",
+          "description_detaillee": "Determiner le taux d'evolution moyen t tel que (1+t)^n = coefficient multiplicateur global",
+          "formulation_bo": "Taux d'evolution moyen correspondant a n evolutions successives.",
+          "connaissances_associees": [
+            "taux d'evolution",
+            "racine n-ieme",
+            "coefficient multiplicateur"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-312",
+          "intitule": "Reconnaitre un phenomene continu de croissance exponentielle",
+          "fingerprint": "reconnaitre_phenomene_continu_croissance_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "capacite",
+          "description_detaillee": "Identifier dans une situation concrete (radioactivite, propagation, etc.) un phenomene modelisable par une fonction exponentielle",
+          "formulation_bo": "Reconnaitre un phenomene discret ou continu de croissance exponentielle et savoir le modeliser.",
+          "connaissances_associees": [
+            "fonction exponentielle",
+            "croissance exponentielle"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-314",
+          "intitule": "Modeliser un phenomene continu par une fonction exponentielle",
+          "fingerprint": "modeliser_phenomene_continu_fonction_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation concrete en termes de fonction exponentielle en identifiant la base et les parametres",
+          "formulation_bo": "Reconnaitre un phenomene discret ou continu de croissance exponentielle et savoir le modeliser.",
+          "connaissances_associees": [
+            "definition fonction exponentielle",
+            "modelisation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-317",
+          "intitule": "Calculer un taux d'evolution moyen",
+          "fingerprint": "calculer_taux_evolution_moyen_capacite",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "capacite",
+          "description_detaillee": "Determiner le taux d'evolution moyen a partir de n evolutions successives en utilisant la racine n-ieme",
+          "formulation_bo": "Calculer un taux d'evolution moyen.",
+          "connaissances_associees": [
+            "taux d'evolution",
+            "racine n-ieme",
+            "coefficient multiplicateur global"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-319",
+          "intitule": "Realiser la representation graphique d'une fonction exponentielle",
+          "fingerprint": "realiser_representation_graphique_fonction_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "capacite",
+          "description_detaillee": "Tracer la courbe representative de x -> a^x pour une valeur de a donnee",
+          "formulation_bo": "Realiser et exploiter la representation graphique des termes d'une suite geometrique ou d'une fonction exponentielle.",
+          "connaissances_associees": [
+            "fonction exponentielle",
+            "courbe representative"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-321",
+          "intitule": "Exploiter la representation graphique d'une fonction exponentielle",
+          "fingerprint": "exploiter_representation_graphique_fonction_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "capacite",
+          "description_detaillee": "Lire et interpreter des informations sur la courbe d'une fonction exponentielle (tendance, valeurs, comparaisons)",
+          "formulation_bo": "Realiser et exploiter la representation graphique des termes d'une suite geometrique ou d'une fonction exponentielle.",
+          "connaissances_associees": [
+            "courbe fonction exponentielle",
+            "lecture graphique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-322",
+          "intitule": "Resoudre un probleme de seuil par le calcul pour une croissance exponentielle",
+          "fingerprint": "resoudre_probleme_seuil_calcul_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "capacite",
+          "description_detaillee": "Determiner le rang n tel que u(n) depasse un seuil donne, par resolution algebrique",
+          "formulation_bo": "Resoudre un probleme de seuil dans le cas d'une croissance exponentielle par le calcul, a l'aide d'une representation graphique ou en utilisant un outil numerique.",
+          "connaissances_associees": [
+            "suite geometrique",
+            "resolution d'inequations"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-323",
+          "intitule": "Resoudre un probleme de seuil graphiquement pour une croissance exponentielle",
+          "fingerprint": "resoudre_probleme_seuil_graphique_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "capacite",
+          "description_detaillee": "Determiner le rang n tel que u(n) depasse un seuil donne, par lecture graphique",
+          "formulation_bo": "Resoudre un probleme de seuil dans le cas d'une croissance exponentielle par le calcul, a l'aide d'une representation graphique ou en utilisant un outil numerique.",
+          "connaissances_associees": [
+            "representation graphique suite geometrique",
+            "lecture graphique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-324",
+          "intitule": "Resoudre un probleme de seuil numeriquement pour une croissance exponentielle",
+          "fingerprint": "resoudre_probleme_seuil_numerique_exponentielle",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions exponentielles",
+          "type": "capacite",
+          "description_detaillee": "Determiner le rang n tel que u(n) depasse un seuil donne, en utilisant un tableur ou une calculatrice",
+          "formulation_bo": "Resoudre un probleme de seuil dans le cas d'une croissance exponentielle par le calcul, a l'aide d'une representation graphique ou en utilisant un outil numerique.",
+          "connaissances_associees": [
+            "suite geometrique",
+            "utilisation tableur/calculatrice"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        }
+      ],
+      "Variation instantanee": [
+        {
+          "code": "1ENSSCI_MATHS-AN-325",
+          "intitule": "Definir la tangente a une courbe en un point",
+          "fingerprint": "definir_tangente_courbe_point",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Variation instantanee",
+          "type": "contenu",
+          "description_detaillee": "Comprendre la tangente comme position limite des secantes passant par le point considere",
+          "formulation_bo": "Tangente a une courbe en un point.",
+          "connaissances_associees": [
+            "notion de courbe",
+            "secante"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-326",
+          "intitule": "Definir le nombre derive comme coefficient directeur de la tangente",
+          "fingerprint": "definir_nombre_derive_coefficient_directeur",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Variation instantanee",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition du nombre derive f'(a) comme coefficient directeur de la tangente a la courbe au point d'abscisse a",
+          "formulation_bo": "Nombre derive comme coefficient directeur de la tangente.",
+          "connaissances_associees": [
+            "tangente a une courbe",
+            "coefficient directeur"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 6
+          }
+        }
+      ],
+      "Derivation - Applications physique-chimie": [
+        {
+          "code": "1ENSSCI_MATHS-AN-351",
+          "intitule": "Calculer la vitesse d'apparition d'un produit dans une reaction chimique",
+          "fingerprint": "calculer_vitesse_apparition_produit_reaction_chimique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation - Applications physique-chimie",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le nombre derive pour calculer la vitesse instantanee d'apparition d'un produit lors d'une reaction chimique",
+          "formulation_bo": "Vitesse d'apparition d'un produit ou de disparition d'un reactif dans une reaction chimique.",
+          "connaissances_associees": [
+            "nombre derive",
+            "taux de variation",
+            "fonction"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-352",
+          "intitule": "Calculer la vitesse de disparition d'un reactif dans une reaction chimique",
+          "fingerprint": "calculer_vitesse_disparition_reactif_reaction_chimique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation - Applications physique-chimie",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le nombre derive pour calculer la vitesse instantanee de disparition d'un reactif lors d'une reaction chimique",
+          "formulation_bo": "Vitesse d'apparition d'un produit ou de disparition d'un reactif dans une reaction chimique.",
+          "connaissances_associees": [
+            "nombre derive",
+            "taux de variation",
+            "fonction"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Derivation - Applications economie": [
+        {
+          "code": "1ENSSCI_MATHS-AN-353",
+          "intitule": "Definir le cout marginal comme derivee du cout total",
+          "fingerprint": "definir_cout_marginal_derivee_cout_total",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation - Applications economie",
+          "type": "contenu",
+          "description_detaillee": "Comprendre que le cout marginal (variation du cout total pour une unite supplementaire) est modelise par la derivee du cout total",
+          "formulation_bo": "Cout marginal defini comme la variation du cout total induite par la production et la vente d'une unite supplementaire, et modelise par la derivee du cout total.",
+          "connaissances_associees": [
+            "fonction derivee",
+            "interpretation economique"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-354",
+          "intitule": "Modeliser le cout de production d'une entreprise par une fonction",
+          "fingerprint": "modeliser_cout_production_fonction",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation - Applications economie",
+          "type": "capacite",
+          "description_detaillee": "Traduire mathematiquement le cout de production d'une entreprise par une fonction adaptee",
+          "formulation_bo": "Modelisation par une fonction du cout de production et du chiffre d'affaires d'une entreprise, etude du benefice.",
+          "connaissances_associees": [
+            "fonction",
+            "modelisation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-355",
+          "intitule": "Modeliser le chiffre d'affaires d'une entreprise par une fonction",
+          "fingerprint": "modeliser_chiffre_affaires_fonction",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation - Applications economie",
+          "type": "capacite",
+          "description_detaillee": "Traduire mathematiquement le chiffre d'affaires d'une entreprise par une fonction adaptee",
+          "formulation_bo": "Modelisation par une fonction du cout de production et du chiffre d'affaires d'une entreprise, etude du benefice.",
+          "connaissances_associees": [
+            "fonction",
+            "modelisation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-356",
+          "intitule": "Etudier le benefice d'une entreprise a l'aide de fonctions",
+          "fingerprint": "etudier_benefice_entreprise_fonctions",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation - Applications economie",
+          "type": "capacite",
+          "description_detaillee": "Calculer et analyser le benefice (chiffre d'affaires moins cout de production) a partir des fonctions modelisant une situation economique",
+          "formulation_bo": "Modelisation par une fonction du cout de production et du chiffre d'affaires d'une entreprise, etude du benefice.",
+          "connaissances_associees": [
+            "fonction",
+            "operations sur les fonctions"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Derivation - Optimisation": [
+        {
+          "code": "1ENSSCI_MATHS-AN-357",
+          "intitule": "Optimiser les dimensions d'un emballage pour minimiser le cout",
+          "fingerprint": "optimiser_dimensions_emballage_minimiser_cout",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation - Optimisation",
+          "type": "capacite",
+          "description_detaillee": "Utiliser l'etude des variations d'une fonction pour determiner les dimensions optimales d'un emballage minimisant son cout",
+          "formulation_bo": "Optimisation des dimensions d'un emballage pour en reduire le cout.",
+          "connaissances_associees": [
+            "fonction derivee",
+            "extremum",
+            "sens de variation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Derivation": [
+        {
+          "code": "1ENSSCI_MATHS-AN-358",
+          "intitule": "Connaitre la fonction derivee",
+          "fingerprint": "connaitre_fonction_derivee",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition et les proprietes de la fonction derivee d'une fonction",
+          "formulation_bo": "Fonction derivee.",
+          "connaissances_associees": [
+            "nombre derive",
+            "taux de variation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-359",
+          "intitule": "Determiner le sens de variation d'une fonction a partir du signe de sa derivee",
+          "fingerprint": "determiner_variation_fonction_signe_derivee",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le lien entre le signe de la derivee sur un intervalle et le sens de variation de la fonction sur cet intervalle",
+          "formulation_bo": "Sens de variation d'une fonction, lien avec le signe de la fonction derivee sur un intervalle.",
+          "connaissances_associees": [
+            "fonction derivee",
+            "signe d'une fonction"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-360",
+          "intitule": "Calculer la derivee d'une fonction constante",
+          "fingerprint": "calculer_derivee_fonction_constante",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Savoir que la derivee d'une fonction constante est nulle",
+          "formulation_bo": "Derivee des fonctions constante, identite, carre et cube.",
+          "connaissances_associees": [
+            "fonction constante",
+            "derivation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-361",
+          "intitule": "Calculer la derivee de la fonction identite",
+          "fingerprint": "calculer_derivee_fonction_identite",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Savoir que la derivee de la fonction identite x -> x est la fonction constante egale a 1",
+          "formulation_bo": "Derivee des fonctions constante, identite, carre et cube.",
+          "connaissances_associees": [
+            "fonction identite",
+            "derivation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-362",
+          "intitule": "Calculer la derivee de la fonction carre",
+          "fingerprint": "calculer_derivee_fonction_carre",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Savoir que la derivee de la fonction carre x -> x^2 est la fonction x -> 2x",
+          "formulation_bo": "Derivee des fonctions constante, identite, carre et cube.",
+          "connaissances_associees": [
+            "fonction carre",
+            "derivation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-363",
+          "intitule": "Calculer la derivee de la fonction cube",
+          "fingerprint": "calculer_derivee_fonction_cube",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Savoir que la derivee de la fonction cube x -> x^3 est la fonction x -> 3x^2",
+          "formulation_bo": "Derivee des fonctions constante, identite, carre et cube.",
+          "connaissances_associees": [
+            "fonction cube",
+            "derivation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-364",
+          "intitule": "Calculer la derivee d'une somme de fonctions",
+          "fingerprint": "calculer_derivee_somme_fonctions",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la regle (u+v)' = u' + v' pour calculer la derivee d'une somme de fonctions",
+          "formulation_bo": "Derivee d'une somme, du produit par un nombre reel.",
+          "connaissances_associees": [
+            "derivation",
+            "operations sur les fonctions"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-365",
+          "intitule": "Calculer la derivee du produit d'une fonction par un nombre reel",
+          "fingerprint": "calculer_derivee_produit_fonction_scalaire",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la regle (k*u)' = k*u' pour calculer la derivee du produit d'une fonction par un scalaire",
+          "formulation_bo": "Derivee d'une somme, du produit par un nombre reel.",
+          "connaissances_associees": [
+            "derivation",
+            "operations sur les fonctions"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-366",
+          "intitule": "Calculer la derivee d'un polynome de degre inferieur ou egal a 3",
+          "fingerprint": "calculer_derivee_polynome_degre_3",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Appliquer les regles de derivation pour calculer la derivee d'un polynome de degre au plus 3",
+          "formulation_bo": "Application a la derivee d'un polynome de degre inferieur ou egal a 3.",
+          "connaissances_associees": [
+            "derivation",
+            "polynome",
+            "regles de derivation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-367",
+          "intitule": "Construire un tableau de variation d'une fonction",
+          "fingerprint": "construire_tableau_variation_fonction",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Dresser le tableau de variation d'une fonction a partir de l'etude du signe de sa derivee, eventuellement a l'aide d'un logiciel de calcul formel",
+          "formulation_bo": "Tableau de variation, a l'aide si besoin d'un logiciel de calcul formel.",
+          "connaissances_associees": [
+            "derivation",
+            "signe de la derivee",
+            "sens de variation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-368",
+          "intitule": "Interpreter le nombre derive dans un modele d'evolution",
+          "fingerprint": "interpreter_nombre_derive_modele_evolution",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Donner du sens au nombre derive comme vitesse instantanee de variation dans un contexte d'evolution temporelle ou autre",
+          "formulation_bo": "Interpreter le nombre derive dans le cadre d'un modele d'evolution.",
+          "connaissances_associees": [
+            "nombre derive",
+            "modelisation",
+            "taux de variation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-369",
+          "intitule": "Interpreter geometriquement le nombre derive comme coefficient directeur de la tangente",
+          "fingerprint": "interpreter_nombre_derive_coefficient_directeur_tangente",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Comprendre que le nombre derive en un point represente la pente de la tangente a la courbe en ce point",
+          "formulation_bo": "Interpreter geometriquement le nombre derive comme coefficient directeur de la tangente.",
+          "connaissances_associees": [
+            "nombre derive",
+            "tangente",
+            "coefficient directeur"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-370",
+          "intitule": "Decrire les variations d'un phenomene en mobilisant la derivee",
+          "fingerprint": "decrire_variations_phenomene_derivee",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la derivee d'une fonction modelisant un phenomene pour en decrire les phases de croissance et decroissance",
+          "formulation_bo": "Decrire les variations d'un phenomene en mobilisant la derivee d'une fonction.",
+          "connaissances_associees": [
+            "fonction derivee",
+            "sens de variation",
+            "modelisation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-371",
+          "intitule": "Determiner le sens de variation d'une fonction polynomiale de degre inferieur ou egal a 3",
+          "fingerprint": "determiner_variation_polynome_degre_3",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Calculer la derivee d'un polynome de degre au plus 3, etudier son signe (forme factorisee pouvant etre donnee), et en deduire le sens de variation",
+          "formulation_bo": "Determiner le sens de variation d'une fonction polynomiale de degre inferieur ou egal a trois (la forme factorisee de la derivee pourra etre donnee).",
+          "connaissances_associees": [
+            "derivation",
+            "polynome",
+            "signe de la derivee"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-372",
+          "intitule": "Prevoir l'evolution d'un phenomene grace a l'etude de la derivee",
+          "fingerprint": "prevoir_evolution_phenomene_derivee",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Derivation",
+          "type": "capacite",
+          "description_detaillee": "Utiliser l'etude de la derivee d'une fonction pour anticiper l'evolution future d'un phenomene modelise",
+          "formulation_bo": "Prevoir l'evolution d'un phenomene grace a l'etude de la derivee d'une fonction.",
+          "connaissances_associees": [
+            "fonction derivee",
+            "sens de variation",
+            "modelisation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Representations graphiques - Automatismes": [
+        {
+          "code": "1ENSSCI_MATHS-AN-374",
+          "intitule": "Lire sur un graphique les variations d'une grandeur (croissance ou decroissance)",
+          "fingerprint": "lire_graphique_variations_croissance_decroissance",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Representations graphiques - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Identifier visuellement sur un graphique les intervalles de croissance et de decroissance d'une grandeur",
+          "formulation_bo": "Lire sur un graphique les variations d'une grandeur : croissance ou decroissance, doublement regulier, acceleration ou ralentissement de la croissance.",
+          "connaissances_associees": [
+            "lecture de graphique",
+            "sens de variation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-375",
+          "intitule": "Reconnaitre un doublement regulier sur un graphique",
+          "fingerprint": "reconnaitre_doublement_regulier_graphique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Representations graphiques - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Identifier visuellement sur un graphique un phenomene de doublement regulier (caracteristique d'une croissance exponentielle)",
+          "formulation_bo": "Lire sur un graphique les variations d'une grandeur : croissance ou decroissance, doublement regulier, acceleration ou ralentissement de la croissance.",
+          "connaissances_associees": [
+            "lecture de graphique",
+            "croissance exponentielle"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-376",
+          "intitule": "Reconnaitre une acceleration ou un ralentissement de la croissance sur un graphique",
+          "fingerprint": "reconnaitre_acceleration_ralentissement_croissance_graphique",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Representations graphiques - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Identifier visuellement sur un graphique si la croissance s'accelere (concavite vers le haut) ou ralentit (concavite vers le bas)",
+          "formulation_bo": "Lire sur un graphique les variations d'une grandeur : croissance ou decroissance, doublement regulier, acceleration ou ralentissement de la croissance.",
+          "connaissances_associees": [
+            "lecture de graphique",
+            "concavite"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-377",
+          "intitule": "Estimer graphiquement une valeur atteinte par une fonction",
+          "fingerprint": "estimer_graphiquement_valeur_atteinte",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Representations graphiques - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Lire approximativement sur un graphique l'ordonnee d'un point de la courbe (image d'une valeur)",
+          "formulation_bo": "Estimer graphiquement une valeur atteinte, un antecedent, un seuil.",
+          "connaissances_associees": [
+            "lecture de graphique",
+            "image"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-378",
+          "intitule": "Estimer graphiquement un antecedent",
+          "fingerprint": "estimer_graphiquement_antecedent",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Representations graphiques - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Lire approximativement sur un graphique l'abscisse d'un point de la courbe correspondant a une ordonnee donnee",
+          "formulation_bo": "Estimer graphiquement une valeur atteinte, un antecedent, un seuil.",
+          "connaissances_associees": [
+            "lecture de graphique",
+            "antecedent"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AN-379",
+          "intitule": "Estimer graphiquement un seuil",
+          "fingerprint": "estimer_graphiquement_seuil",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Representations graphiques - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Determiner graphiquement a partir de quelle valeur une fonction depasse ou descend sous un seuil donne",
+          "formulation_bo": "Estimer graphiquement une valeur atteinte, un antecedent, un seuil.",
+          "connaissances_associees": [
+            "lecture de graphique",
+            "inequation"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ]
+    },
+    "ALGEBRE": {
+      "Automatismes": [
+        {
+          "code": "1ENSSCI_MATHS-AL-168",
+          "intitule": "Maitriser le calcul algebrique (automatisme)",
+          "fingerprint": "maitriser_calcul_algebrique_automatisme",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Partie transversale : maitriser le calcul algebrique comme automatisme",
+          "formulation_bo": "automatismes (lecture et production de graphiques, traitement de donnees, calcul numerique et algebrique)",
+          "connaissances_associees": [
+            "calcul algebrique",
+            "expressions litterales"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Calcul algebrique - Automatismes": [
+        {
+          "code": "1ENSSCI_MATHS-AL-396",
+          "intitule": "Resoudre une equation du premier degre de type ax + b = cx + d",
+          "fingerprint": "resoudre_equation_premier_degre_ax_b_cx_d",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Calcul algebrique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Resoudre une equation du premier degre a une inconnue avec des termes en x des deux cotes",
+          "formulation_bo": "Resoudre une equation du premier degre du type ax + b = cx + d ou a / x = b ou une equation du second degre du type x^2 = a.",
+          "connaissances_associees": [
+            "equation",
+            "premier degre",
+            "resolution"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AL-397",
+          "intitule": "Resoudre une equation de type a/x = b",
+          "fingerprint": "resoudre_equation_a_sur_x_egal_b",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Calcul algebrique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Resoudre une equation avec l'inconnue au denominateur, en verifiant que x est non nul",
+          "formulation_bo": "Resoudre une equation du premier degre du type ax + b = cx + d ou a / x = b ou une equation du second degre du type x^2 = a.",
+          "connaissances_associees": [
+            "equation",
+            "inverse",
+            "resolution"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-AL-398",
+          "intitule": "Resoudre une equation du second degre de type x^2 = a",
+          "fingerprint": "resoudre_equation_x_carre_egal_a",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Calcul algebrique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Resoudre une equation du type x^2 = a en distinguant les cas a > 0 (deux solutions), a = 0 (une solution) et a < 0 (pas de solution reelle)",
+          "formulation_bo": "Resoudre une equation du premier degre du type ax + b = cx + d ou a / x = b ou une equation du second degre du type x^2 = a.",
+          "connaissances_associees": [
+            "equation",
+            "second degre",
+            "racine carree"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ]
+    },
+    "GRANDEURS": {
+      "Representations graphiques - Automatismes": [
+        {
+          "code": "1ENSSCI_MATHS-GR-373",
+          "intitule": "Preciser sur un graphique les grandeurs en jeu, les unites et les echelles",
+          "fingerprint": "preciser_graphique_grandeurs_unites_echelles",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Representations graphiques - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Identifier et indiquer clairement sur un graphique les grandeurs representees, leurs unites et les echelles utilisees sur chaque axe",
+          "formulation_bo": "Preciser sur un graphique les grandeurs en jeu, les unites et les echelles.",
+          "connaissances_associees": [
+            "lecture de graphique",
+            "unites",
+            "echelles"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Calcul numerique - Automatismes": [
+        {
+          "code": "1ENSSCI_MATHS-GR-392",
+          "intitule": "Effectuer une application numerique d'une formule de longueur",
+          "fingerprint": "appliquer_formule_longueur_numeriquement",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Remplacer les variables par leurs valeurs numeriques dans une formule de longueur et calculer le resultat",
+          "formulation_bo": "Effectuer une application numerique d'une formule mathematique (longueurs, aires, volumes) ou d'une formule simple provenant d'une autre discipline.",
+          "connaissances_associees": [
+            "formules",
+            "calcul numerique",
+            "longueurs"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-GR-393",
+          "intitule": "Effectuer une application numerique d'une formule d'aire",
+          "fingerprint": "appliquer_formule_aire_numeriquement",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Remplacer les variables par leurs valeurs numeriques dans une formule d'aire et calculer le resultat",
+          "formulation_bo": "Effectuer une application numerique d'une formule mathematique (longueurs, aires, volumes) ou d'une formule simple provenant d'une autre discipline.",
+          "connaissances_associees": [
+            "formules",
+            "calcul numerique",
+            "aires"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-GR-394",
+          "intitule": "Effectuer une application numerique d'une formule de volume",
+          "fingerprint": "appliquer_formule_volume_numeriquement",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Remplacer les variables par leurs valeurs numeriques dans une formule de volume et calculer le resultat",
+          "formulation_bo": "Effectuer une application numerique d'une formule mathematique (longueurs, aires, volumes) ou d'une formule simple provenant d'une autre discipline.",
+          "connaissances_associees": [
+            "formules",
+            "calcul numerique",
+            "volumes"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "1ENSSCI_MATHS-GR-395",
+          "intitule": "Effectuer une application numerique d'une formule interdisciplinaire",
+          "fingerprint": "appliquer_formule_interdisciplinaire_numeriquement",
+          "niveau": "1ENSSCI_MATHS",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Calcul numerique - Automatismes",
+          "type": "capacite",
+          "description_detaillee": "Remplacer les variables par leurs valeurs numeriques dans une formule provenant d'une autre discipline (physique, SVT, economie) et calculer le resultat",
+          "formulation_bo": "Effectuer une application numerique d'une formule mathematique (longueurs, aires, volumes) ou d'une formule simple provenant d'une autre discipline.",
+          "connaissances_associees": [
+            "formules",
+            "calcul numerique",
+            "interdisciplinarite"
+          ],
+          "source": {
+            "pdf": "Mathematiques_integrees_EnsSci_1reG.pdf",
+            "page": 7
+          }
+        }
+      ]
+    }
+  }
+}

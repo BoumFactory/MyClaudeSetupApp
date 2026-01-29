@@ -1,0 +1,387 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "description": "Base de données de vocabulaire mathématique avec définitions pour infobulles",
+    "lastUpdated": "2025-01-23"
+  },
+  "terms": {
+    "vecteur": {
+      "definition": "Un vecteur est un objet mathématique caractérisé par une direction, un sens et une norme (longueur).",
+      "formula": "\\vec{AB}",
+      "category": "geometrie",
+      "niveau": ["2nde", "1ere", "tle"],
+      "synonyms": ["vecteurs"]
+    },
+    "norme": {
+      "definition": "La norme d'un vecteur est sa longueur. Elle se note avec des doubles barres.",
+      "formula": "\\|\\vec{u}\\| = \\sqrt{x^2 + y^2}",
+      "category": "geometrie",
+      "niveau": ["2nde", "1ere", "tle"],
+      "synonyms": ["normes"]
+    },
+    "colinéaire": {
+      "definition": "Deux vecteurs sont colinéaires s'ils ont la même direction (parallèles). L'un est un multiple de l'autre.",
+      "formula": "\\vec{u} = k \\cdot \\vec{v}",
+      "category": "geometrie",
+      "niveau": ["2nde", "1ere"],
+      "synonyms": ["colinéaires", "colinearité"]
+    },
+    "coordonnées": {
+      "definition": "Les coordonnées d'un vecteur sont les nombres qui le représentent dans un repère.",
+      "formula": "\\vec{u}\\begin{pmatrix} x \\\\ y \\end{pmatrix}",
+      "category": "geometrie",
+      "niveau": ["2nde", "1ere", "tle"],
+      "synonyms": ["coordonnée"]
+    },
+    "repère": {
+      "definition": "Un repère est un système de référence composé d'un point origine et de vecteurs de base.",
+      "formula": "(O; \\vec{i}, \\vec{j})",
+      "category": "geometrie",
+      "niveau": ["2nde", "1ere", "tle"],
+      "synonyms": ["repères"]
+    },
+    "milieu": {
+      "definition": "Le milieu d'un segment est le point qui divise ce segment en deux parties égales.",
+      "formula": "M = \\frac{A + B}{2}",
+      "category": "geometrie",
+      "niveau": ["6eme", "5eme", "4eme", "3eme", "2nde"],
+      "synonyms": []
+    },
+    "translation": {
+      "definition": "Une translation est une transformation géométrique qui déplace tous les points d'une même direction et d'une même distance.",
+      "formula": "M' = M + \\vec{u}",
+      "category": "geometrie",
+      "niveau": ["2nde", "1ere"],
+      "synonyms": ["translations"]
+    },
+    "fonction": {
+      "definition": "Une fonction est une relation qui associe à chaque élément d'un ensemble de départ un unique élément d'un ensemble d'arrivée.",
+      "formula": "f: x \\mapsto f(x)",
+      "category": "analyse",
+      "niveau": ["3eme", "2nde", "1ere", "tle"],
+      "synonyms": ["fonctions"]
+    },
+    "dérivée": {
+      "definition": "La dérivée d'une fonction en un point mesure le taux de variation instantané de cette fonction.",
+      "formula": "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}",
+      "category": "analyse",
+      "niveau": ["1ere", "tle"],
+      "synonyms": ["dérivées", "dériver"]
+    },
+    "primitive": {
+      "definition": "Une primitive d'une fonction f est une fonction F dont la dérivée est égale à f.",
+      "formula": "F'(x) = f(x)",
+      "category": "analyse",
+      "niveau": ["tle"],
+      "synonyms": ["primitives"]
+    },
+    "intégrale": {
+      "definition": "L'intégrale d'une fonction sur un intervalle représente l'aire sous la courbe.",
+      "formula": "\\int_a^b f(x)\\,dx",
+      "category": "analyse",
+      "niveau": ["tle"],
+      "synonyms": ["intégrales", "intégrer"]
+    },
+    "probabilité": {
+      "definition": "La probabilité d'un événement est un nombre entre 0 et 1 qui mesure la chance que cet événement se produise.",
+      "formula": "P(A) = \\frac{\\text{cas favorables}}{\\text{cas possibles}}",
+      "category": "probabilites",
+      "niveau": ["3eme", "2nde", "1ere", "tle"],
+      "synonyms": ["probabilités"]
+    },
+    "espérance": {
+      "definition": "L'espérance d'une variable aléatoire est sa valeur moyenne théorique.",
+      "formula": "E(X) = \\sum_{i} x_i \\cdot P(X = x_i)",
+      "category": "probabilites",
+      "niveau": ["1ere", "tle"],
+      "synonyms": []
+    },
+    "variance": {
+      "definition": "La variance mesure la dispersion des valeurs autour de l'espérance.",
+      "formula": "V(X) = E(X^2) - E(X)^2",
+      "category": "probabilites",
+      "niveau": ["1ere", "tle"],
+      "synonyms": []
+    },
+    "écart-type": {
+      "definition": "L'écart-type est la racine carrée de la variance. Il mesure la dispersion dans la même unité que les données.",
+      "formula": "\\sigma = \\sqrt{V(X)}",
+      "category": "statistiques",
+      "niveau": ["2nde", "1ere", "tle"],
+      "synonyms": ["écart type", "écarts-types"]
+    },
+    "médiane": {
+      "definition": "La médiane est la valeur qui partage une série ordonnée en deux parties de même effectif.",
+      "formula": null,
+      "category": "statistiques",
+      "niveau": ["5eme", "4eme", "3eme", "2nde"],
+      "synonyms": ["médianes"]
+    },
+    "moyenne": {
+      "definition": "La moyenne est la somme des valeurs divisée par le nombre de valeurs.",
+      "formula": "\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i",
+      "category": "statistiques",
+      "niveau": ["6eme", "5eme", "4eme", "3eme", "2nde", "1ere", "tle"],
+      "synonyms": ["moyennes"]
+    },
+    "équation": {
+      "definition": "Une équation est une égalité contenant une ou plusieurs inconnues.",
+      "formula": "ax + b = 0",
+      "category": "algebre",
+      "niveau": ["4eme", "3eme", "2nde", "1ere", "tle"],
+      "synonyms": ["équations"]
+    },
+    "inéquation": {
+      "definition": "Une inéquation est une inégalité contenant une ou plusieurs inconnues.",
+      "formula": "ax + b > 0",
+      "category": "algebre",
+      "niveau": ["3eme", "2nde", "1ere"],
+      "synonyms": ["inéquations"]
+    },
+    "polynôme": {
+      "definition": "Un polynôme est une expression formée d'une somme de termes, chaque terme étant le produit d'un coefficient et d'une puissance de la variable.",
+      "formula": "P(x) = a_n x^n + ... + a_1 x + a_0",
+      "category": "algebre",
+      "niveau": ["2nde", "1ere", "tle"],
+      "synonyms": ["polynômes", "polynomial"]
+    },
+    "suite": {
+      "definition": "Une suite est une fonction définie sur les entiers naturels.",
+      "formula": "(u_n)_{n \\in \\mathbb{N}}",
+      "category": "analyse",
+      "niveau": ["1ere", "tle"],
+      "synonyms": ["suites"]
+    },
+    "limite": {
+      "definition": "La limite d'une suite ou d'une fonction décrit son comportement quand la variable tend vers une certaine valeur.",
+      "formula": "\\lim_{n \\to +\\infty} u_n = L",
+      "category": "analyse",
+      "niveau": ["tle"],
+      "synonyms": ["limites"]
+    },
+    "convergente": {
+      "definition": "Une suite est convergente si elle admet une limite finie.",
+      "formula": "\\exists L \\in \\mathbb{R}, \\lim_{n \\to +\\infty} u_n = L",
+      "category": "analyse",
+      "niveau": ["tle"],
+      "synonyms": ["convergentes", "converge", "convergence"]
+    },
+    "divergente": {
+      "definition": "Une suite est divergente si elle n'admet pas de limite finie.",
+      "formula": null,
+      "category": "analyse",
+      "niveau": ["tle"],
+      "synonyms": ["divergentes", "diverge", "divergence"]
+    },
+    "exponentielle": {
+      "definition": "La fonction exponentielle est la fonction qui est sa propre dérivée et qui vaut 1 en 0.",
+      "formula": "\\exp'(x) = \\exp(x), \\quad \\exp(0) = 1",
+      "category": "analyse",
+      "niveau": ["tle"],
+      "synonyms": ["exponentielles"]
+    },
+    "logarithme": {
+      "definition": "Le logarithme népérien est la fonction réciproque de l'exponentielle.",
+      "formula": "\\ln(e^x) = x, \\quad e^{\\ln(x)} = x",
+      "category": "analyse",
+      "niveau": ["tle"],
+      "synonyms": ["logarithmes", "ln"]
+    },
+    "cosinus": {
+      "definition": "Le cosinus d'un angle est l'abscisse du point associé sur le cercle trigonométrique.",
+      "formula": "\\cos(\\theta)",
+      "category": "trigonometrie",
+      "niveau": ["3eme", "2nde", "1ere", "tle"],
+      "synonyms": ["cos"]
+    },
+    "sinus": {
+      "definition": "Le sinus d'un angle est l'ordonnée du point associé sur le cercle trigonométrique.",
+      "formula": "\\sin(\\theta)",
+      "category": "trigonometrie",
+      "niveau": ["3eme", "2nde", "1ere", "tle"],
+      "synonyms": ["sin"]
+    },
+    "tangente": {
+      "definition": "La tangente d'un angle est le rapport du sinus par le cosinus.",
+      "formula": "\\tan(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)}",
+      "category": "trigonometrie",
+      "niveau": ["1ere", "tle"],
+      "synonyms": ["tan"]
+    },
+    "nombre complexe": {
+      "definition": "Un nombre complexe est un nombre de la forme a + ib, où a et b sont réels et i² = -1.",
+      "formula": "z = a + ib, \\quad i^2 = -1",
+      "category": "complexes",
+      "niveau": ["tle"],
+      "synonyms": ["nombres complexes", "complexe", "complexes"]
+    },
+    "module": {
+      "definition": "Le module d'un nombre complexe est sa distance à l'origine dans le plan complexe.",
+      "formula": "|z| = \\sqrt{a^2 + b^2}",
+      "category": "complexes",
+      "niveau": ["tle"],
+      "synonyms": ["modules"]
+    },
+    "argument": {
+      "definition": "L'argument d'un nombre complexe non nul est l'angle qu'il forme avec l'axe des réels positifs.",
+      "formula": "\\arg(z) = \\theta",
+      "category": "complexes",
+      "niveau": ["tle"],
+      "synonyms": ["arguments"]
+    },
+    "conjugué": {
+      "definition": "Le conjugué d'un nombre complexe z = a + ib est le nombre z̄ = a - ib.",
+      "formula": "\\overline{z} = a - ib",
+      "category": "complexes",
+      "niveau": ["tle"],
+      "synonyms": ["conjugués"]
+    },
+    "produit scalaire": {
+      "definition": "Le produit scalaire de deux vecteurs est un nombre qui mesure à quel point ils pointent dans la même direction.",
+      "formula": "\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\times \\|\\vec{v}\\| \\times \\cos(\\theta)",
+      "category": "geometrie",
+      "niveau": ["1ere", "tle"],
+      "synonyms": ["produits scalaires"]
+    },
+    "orthogonal": {
+      "definition": "Deux vecteurs sont orthogonaux si leur produit scalaire est nul (ils sont perpendiculaires).",
+      "formula": "\\vec{u} \\perp \\vec{v} \\Leftrightarrow \\vec{u} \\cdot \\vec{v} = 0",
+      "category": "geometrie",
+      "niveau": ["1ere", "tle"],
+      "synonyms": ["orthogonaux", "orthogonale", "orthogonales", "perpendiculaire", "perpendiculaires"]
+    },
+    "hypoténuse": {
+      "definition": "Côté le plus long d'un triangle rectangle, situé face à l'angle droit.",
+      "formula": "c = \\sqrt{a^2 + b^2}",
+      "category": "geometrie",
+      "niveau": ["4eme", "3eme", "2nde", "1ere"],
+      "synonyms": ["hypotenuse"]
+    },
+    "médiatrice": {
+      "definition": "Droite perpendiculaire à un segment en son milieu. Tout point de la médiatrice est équidistant des extrémités du segment.",
+      "formula": null,
+      "category": "geometrie",
+      "niveau": ["6eme", "5eme", "4eme", "3eme", "2nde"],
+      "synonyms": ["médiatrices"]
+    },
+    "équidistant": {
+      "definition": "Se dit de points situés à la même distance d'un point ou d'une droite de référence.",
+      "formula": "MA = MB",
+      "category": "geometrie",
+      "niveau": ["5eme", "4eme", "3eme", "2nde"],
+      "synonyms": ["équidistants", "équidistante", "équidistantes"]
+    },
+    "triangle rectangle": {
+      "definition": "Triangle possédant un angle droit (90°). Le côté opposé à l'angle droit s'appelle l'hypoténuse.",
+      "formula": null,
+      "category": "geometrie",
+      "niveau": ["5eme", "4eme", "3eme", "2nde", "1ere"],
+      "synonyms": ["triangles rectangles", "rectangle en"]
+    },
+    "triangle isocèle": {
+      "definition": "Triangle ayant deux côtés de même longueur. Les deux angles à la base sont égaux.",
+      "formula": null,
+      "category": "geometrie",
+      "niveau": ["6eme", "5eme", "4eme", "3eme"],
+      "synonyms": ["triangles isocèles", "isocèle"]
+    },
+    "triangle équilatéral": {
+      "definition": "Triangle dont les trois côtés ont la même longueur. Ses trois angles mesurent chacun 60°.",
+      "formula": null,
+      "category": "geometrie",
+      "niveau": ["6eme", "5eme", "4eme", "3eme"],
+      "synonyms": ["triangles équilatéraux", "équilatéral"]
+    },
+    "sécante": {
+      "definition": "Deux droites sécantes se coupent en un seul point.",
+      "formula": null,
+      "category": "geometrie",
+      "niveau": ["5eme", "4eme", "3eme", "2nde"],
+      "synonyms": ["sécantes"]
+    },
+    "parallèle": {
+      "definition": "Deux droites parallèles ne se rencontrent jamais. Elles gardent toujours le même écart.",
+      "formula": "(d_1) \\parallel (d_2)",
+      "category": "geometrie",
+      "niveau": ["6eme", "5eme", "4eme", "3eme", "2nde"],
+      "synonyms": ["parallèles"]
+    },
+    "tangente au cercle": {
+      "definition": "Droite qui touche le cercle en un seul point. Elle est perpendiculaire au rayon en ce point.",
+      "formula": null,
+      "category": "geometrie",
+      "niveau": ["3eme", "2nde"],
+      "synonyms": ["tangente à un cercle", "tangentes au cercle"]
+    },
+    "cercle": {
+      "definition": "Ensemble des points situés à une même distance (le rayon) d'un point fixe (le centre).",
+      "formula": "(x-a)^2 + (y-b)^2 = r^2",
+      "category": "geometrie",
+      "niveau": ["6eme", "5eme", "4eme", "3eme", "2nde"],
+      "synonyms": ["cercles"]
+    },
+    "diamètre": {
+      "definition": "Segment reliant deux points du cercle et passant par le centre. Sa longueur vaut deux fois le rayon.",
+      "formula": "d = 2r",
+      "category": "geometrie",
+      "niveau": ["6eme", "5eme", "4eme", "3eme", "2nde"],
+      "synonyms": ["diamètres"]
+    },
+    "angle droit": {
+      "definition": "Angle dont la mesure est exactement 90° (ou π/2 radians).",
+      "formula": "90° = \\frac{\\pi}{2}",
+      "category": "geometrie",
+      "niveau": ["6eme", "5eme", "4eme", "3eme", "2nde"],
+      "synonyms": ["angles droits"]
+    },
+    "angle aigu": {
+      "definition": "Angle dont la mesure est strictement comprise entre 0° et 90°.",
+      "formula": "0° < \\alpha < 90°",
+      "category": "geometrie",
+      "niveau": ["6eme", "5eme", "4eme", "3eme", "2nde"],
+      "synonyms": ["angles aigus"]
+    },
+    "angle inscrit": {
+      "definition": "Angle dont le sommet est sur un cercle et dont les côtés coupent ce cercle.",
+      "formula": null,
+      "category": "geometrie",
+      "niveau": ["3eme", "2nde"],
+      "synonyms": ["angles inscrits"]
+    },
+    "projeté orthogonal": {
+      "definition": "Point d'une droite le plus proche d'un point donné. La distance entre les deux est la plus courte distance à la droite.",
+      "formula": null,
+      "category": "geometrie",
+      "niveau": ["3eme", "2nde", "1ere"],
+      "synonyms": ["projetés orthogonaux", "projection orthogonale"]
+    },
+    "côté adjacent": {
+      "definition": "Dans un triangle rectangle, côté de l'angle considéré qui n'est pas l'hypoténuse.",
+      "formula": "\\cos(\\alpha) = \\frac{\\text{adjacent}}{\\text{hypoténuse}}",
+      "category": "trigonometrie",
+      "niveau": ["3eme", "2nde", "1ere"],
+      "synonyms": ["côtés adjacents", "adjacent"]
+    },
+    "côté opposé": {
+      "definition": "Dans un triangle rectangle, côté qui ne touche pas l'angle considéré.",
+      "formula": "\\sin(\\alpha) = \\frac{\\text{opposé}}{\\text{hypoténuse}}",
+      "category": "trigonometrie",
+      "niveau": ["3eme", "2nde", "1ere"],
+      "synonyms": ["côtés opposés", "opposé"]
+    },
+    "théorème de Pythagore": {
+      "definition": "Dans un triangle rectangle, le carré de l'hypoténuse égale la somme des carrés des deux autres côtés.",
+      "formula": "a^2 + b^2 = c^2",
+      "category": "geometrie",
+      "niveau": ["4eme", "3eme", "2nde"],
+      "synonyms": ["Pythagore"]
+    },
+    "théorème de Thalès": {
+      "definition": "Configuration de deux droites sécantes coupées par deux droites parallèles, permettant de calculer des longueurs proportionnelles.",
+      "formula": "\\frac{AM}{AB} = \\frac{AN}{AC} = \\frac{MN}{BC}",
+      "category": "geometrie",
+      "niveau": ["3eme", "2nde"],
+      "synonyms": ["Thalès"]
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "source": {
+    "pdf": "1GT.pdf",
+    "page": 15,
+    "text_length": 1543
+  },
+  "extraction": {
+    "date": "2026-01-05T14:40:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "1SPE-AG-641",
+      "intitule": "Simuler une variable aleatoire avec Python",
+      "fingerprint": "simuler_variable_aleatoire_python",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Experimentations probabilites",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un programme Python pour simuler une variable aleatoire, en utilisant le module random",
+      "formulation_bo": "Simuler une variable aleatoire avec Python",
+      "connaissances_associees": ["Python", "random", "simulation", "variable aleatoire"],
+      "source": {"pdf": "1GT.pdf", "page": 15}
+    },
+    {
+      "code": "1SPE-AG-642",
+      "intitule": "Ecrire une fonction Python renvoyant la moyenne d'un echantillon",
+      "fingerprint": "fonction_python_moyenne_echantillon",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Experimentations probabilites",
+      "type": "algorithme",
+      "description_detaillee": "Lire, comprendre et ecrire une fonction Python qui genere n realisations d'une variable aleatoire et renvoie leur moyenne",
+      "formulation_bo": "Lire, comprendre et ecrire une fonction Python renvoyant la moyenne d'un echantillon de taille n d'une variable aleatoire",
+      "connaissances_associees": ["fonction Python", "echantillon", "moyenne", "taille n"],
+      "source": {"pdf": "1GT.pdf", "page": 15}
+    },
+    {
+      "code": "1SPE-AG-643",
+      "intitule": "Etudier la distance entre moyenne d'echantillon et esperance",
+      "fingerprint": "etudier_distance_moyenne_esperance",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Experimentations probabilites",
+      "type": "algorithme",
+      "description_detaillee": "Sur des exemples, calculer et analyser l'ecart entre la moyenne d'un echantillon simule de taille n et l'esperance theorique de la variable aleatoire",
+      "formulation_bo": "Etudier sur des exemples la distance entre la moyenne d'un echantillon simule de taille n d'une variable aleatoire et l'esperance de cette variable aleatoire",
+      "connaissances_associees": ["ecart", "convergence", "loi des grands nombres"],
+      "source": {"pdf": "1GT.pdf", "page": 15}
+    },
+    {
+      "code": "1SPE-AG-644",
+      "intitule": "Simuler N echantillons et calculer la proportion dans l'intervalle 2sigma/racine(n)",
+      "fingerprint": "simuler_n_echantillons_proportion_intervalle",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Experimentations probabilites",
+      "type": "algorithme",
+      "description_detaillee": "Simuler N echantillons de taille n d'une variable aleatoire d'esperance mu et d'ecart type sigma, et calculer la proportion des cas ou |m - mu| <= 2*sigma/racine(n)",
+      "formulation_bo": "Simuler, avec Python ou un tableur, N echantillons de taille n d'une variable aleatoire, d'esperance mu et d'ecart type sigma. Si m designe la moyenne d'un echantillon, calculer la proportion des cas ou l'ecart entre m et mu est inferieur ou egal a 2*sigma/racine(n)",
+      "connaissances_associees": ["simulation", "intervalle de confiance", "fluctuation", "echantillonnage"],
+      "source": {"pdf": "1GT.pdf", "page": 15}
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "by_type": {
+      "algorithme": 4
+    },
+    "by_domaine": {
+      "ALGORITHMIQUE": 4
+    },
+    "by_sous_domaine": {
+      "Experimentations probabilites": 4
+    },
+    "fingerprints": [
+      "simuler_variable_aleatoire_python",
+      "fonction_python_moyenne_echantillon",
+      "etudier_distance_moyenne_esperance",
+      "simuler_n_echantillons_proportion_intervalle"
+    ]
+  }
+}

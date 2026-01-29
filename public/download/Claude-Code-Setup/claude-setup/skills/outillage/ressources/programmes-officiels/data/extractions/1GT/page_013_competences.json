@@ -1,0 +1,243 @@
+{
+  "source": {
+    "pdf": "1GT.pdf",
+    "page": 13,
+    "text_length": 2845
+  },
+  "extraction": {
+    "date": "2026-01-05T14:30:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "1SPE-PR-601",
+      "intitule": "Definir la probabilite conditionnelle P_A(B)",
+      "fingerprint": "definir_probabilite_conditionnelle",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition de la probabilite conditionnelle de B sachant A : P_A(B) = P(A inter B) / P(A) pour P(A) non nulle",
+      "formulation_bo": "Probabilite conditionnelle d'un evenement B sachant un evenement A de probabilite non nulle. Notation P_A(B)",
+      "connaissances_associees": ["probabilite", "evenement", "intersection", "quotient"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-602",
+      "intitule": "Definir l'independance de deux evenements",
+      "fingerprint": "definir_independance_evenements",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition de l'independance de deux evenements A et B : P_A(B) = P(B) ou de maniere equivalente P(A inter B) = P(A) x P(B)",
+      "formulation_bo": "Independance de deux evenements",
+      "connaissances_associees": ["independance", "produit de probabilites"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-603",
+      "intitule": "Construire et utiliser un arbre pondere",
+      "fingerprint": "construire_utiliser_arbre_pondere",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "contenu",
+      "description_detaillee": "Savoir construire un arbre pondere a deux niveaux avec les probabilites conditionnelles et utiliser la regle du produit pour calculer P(A inter B)",
+      "formulation_bo": "Arbres ponderes et calcul de probabilites : regle du produit, de la somme",
+      "connaissances_associees": ["arbre pondere", "regle du produit", "regle de la somme", "branches"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-604",
+      "intitule": "Connaitre la notion de partition de l'univers",
+      "fingerprint": "connaitre_partition_univers",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "contenu",
+      "description_detaillee": "Savoir qu'une partition de l'univers est un systeme complet d'evenements : evenements deux a deux disjoints dont la reunion est l'univers",
+      "formulation_bo": "Partition de l'univers (systemes complets d'evenements)",
+      "connaissances_associees": ["partition", "evenements disjoints", "systeme complet"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-605",
+      "intitule": "Connaitre et appliquer la formule des probabilites totales",
+      "fingerprint": "connaitre_appliquer_probabilites_totales",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la formule P(B) = P(A) x P_A(B) + P(A barre) x P_{A barre}(B) et savoir la generaliser a une partition quelconque",
+      "formulation_bo": "Formule des probabilites totales",
+      "connaissances_associees": ["probabilites totales", "partition", "decomposition"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-606",
+      "intitule": "Modeliser une succession de deux epreuves independantes",
+      "fingerprint": "modeliser_succession_epreuves_independantes",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "contenu",
+      "description_detaillee": "Savoir representer la succession de deux epreuves independantes par un arbre pondere ou un tableau a double entree",
+      "formulation_bo": "Succession de deux epreuves independantes. Representation par un arbre ou un tableau",
+      "connaissances_associees": ["epreuves independantes", "arbre", "tableau", "tirage avec remise"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-607",
+      "intitule": "Construire un arbre pondere ou un tableau en lien avec une situation",
+      "fingerprint": "construire_arbre_tableau_situation",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "capacite",
+      "description_detaillee": "Savoir traduire une situation en arbre pondere ou tableau, en passant du registre de la langue naturelle au registre symbolique",
+      "formulation_bo": "Construire un arbre pondere ou un tableau en lien avec une situation donnee. Passer du registre de la langue naturelle au registre symbolique et inversement",
+      "connaissances_associees": ["modelisation", "registre symbolique", "langue naturelle"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-608",
+      "intitule": "Utiliser un arbre pondere ou un tableau pour calculer une probabilite",
+      "fingerprint": "utiliser_arbre_tableau_calculer_probabilite",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "capacite",
+      "description_detaillee": "Calculer des probabilites en utilisant un arbre pondere (produit des probabilites le long d'un chemin) ou un tableau",
+      "formulation_bo": "Utiliser un arbre pondere ou un tableau pour calculer une probabilite",
+      "connaissances_associees": ["calcul de probabilite", "chemin", "produit"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-609",
+      "intitule": "Calculer des probabilites conditionnelles a partir d'un tableau croise d'effectifs",
+      "fingerprint": "calculer_probabilites_tableau_croise",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "capacite",
+      "description_detaillee": "A partir d'un tableau croise d'effectifs, calculer des probabilites conditionnelles par tirage au sort avec equiprobabilite",
+      "formulation_bo": "Calculer des probabilites conditionnelles lorsque les evenements sont presentes sous forme de tableau croise d'effectifs (tirage au sort avec equiprobabilite d'un individu dans une population)",
+      "connaissances_associees": ["tableau croise", "effectifs", "equiprobabilite", "frequence conditionnelle"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-610",
+      "intitule": "Calculer une probabilite avec la formule des probabilites totales",
+      "fingerprint": "calculer_probabilite_formule_totales",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "capacite",
+      "description_detaillee": "Dans des cas simples, appliquer la formule des probabilites totales pour calculer une probabilite",
+      "formulation_bo": "Dans des cas simples, calculer une probabilite a l'aide de la formule des probabilites totales",
+      "connaissances_associees": ["probabilites totales", "decomposition", "partition"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-611",
+      "intitule": "Distinguer P_A(B) et P_B(A)",
+      "fingerprint": "distinguer_pa_b_pb_a",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "capacite",
+      "description_detaillee": "Savoir que P_A(B) et P_B(A) sont generalement differentes, notamment dans les situations de type faux positifs",
+      "formulation_bo": "Distinguer en situation P_A(B) et P_B(A), par exemple dans des situations de type faux positifs",
+      "connaissances_associees": ["faux positifs", "tests", "distinction"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-612",
+      "intitule": "Representer une repetition de deux epreuves independantes",
+      "fingerprint": "representer_repetition_epreuves_independantes",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "capacite",
+      "description_detaillee": "Construire un arbre ou un tableau pour representer la repetition de deux epreuves independantes identiques",
+      "formulation_bo": "Representer une repetition de deux epreuves independantes par un arbre ou un tableau",
+      "connaissances_associees": ["repetition", "epreuves identiques", "independance"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-AG-613",
+      "intitule": "Programmer la methode de Monte-Carlo",
+      "fingerprint": "programmer_methode_monte_carlo",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "algorithme",
+      "description_detaillee": "Implementer la methode de Monte-Carlo pour estimer l'aire sous la parabole ou le nombre pi",
+      "formulation_bo": "Methode de Monte-Carlo : estimation de l'aire sous la parabole, estimation du nombre pi",
+      "connaissances_associees": ["simulation", "estimation", "aire", "pi"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-614",
+      "intitule": "Etudier des successions de plusieurs epreuves independantes",
+      "fingerprint": "etudier_successions_plusieurs_epreuves",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "approfondissement",
+      "description_detaillee": "Generaliser a plus de deux epreuves independantes successives",
+      "formulation_bo": "Exemples de succession de plusieurs epreuves independantes",
+      "connaissances_associees": ["plusieurs epreuves", "generalisation"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    },
+    {
+      "code": "1SPE-PR-615",
+      "intitule": "Etudier des exemples de marches aleatoires",
+      "fingerprint": "etudier_marches_aleatoires",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilites conditionnelles et independance",
+      "type": "approfondissement",
+      "description_detaillee": "Modeliser et etudier des marches aleatoires simples",
+      "formulation_bo": "Exemples de marches aleatoires",
+      "connaissances_associees": ["marche aleatoire", "deplacement", "hasard"],
+      "source": {"pdf": "1GT.pdf", "page": 13}
+    }
+  ],
+  "summary": {
+    "total": 15,
+    "by_type": {
+      "contenu": 6,
+      "capacite": 6,
+      "algorithme": 1,
+      "approfondissement": 2
+    },
+    "by_domaine": {
+      "PROBABILITES": 14,
+      "ALGORITHMIQUE": 1
+    },
+    "by_sous_domaine": {
+      "Probabilites conditionnelles et independance": 15
+    },
+    "fingerprints": [
+      "definir_probabilite_conditionnelle",
+      "definir_independance_evenements",
+      "construire_utiliser_arbre_pondere",
+      "connaitre_partition_univers",
+      "connaitre_appliquer_probabilites_totales",
+      "modeliser_succession_epreuves_independantes",
+      "construire_arbre_tableau_situation",
+      "utiliser_arbre_tableau_calculer_probabilite",
+      "calculer_probabilites_tableau_croise",
+      "calculer_probabilite_formule_totales",
+      "distinguer_pa_b_pb_a",
+      "representer_repetition_epreuves_independantes",
+      "programmer_methode_monte_carlo",
+      "etudier_successions_plusieurs_epreuves",
+      "etudier_marches_aleatoires"
+    ]
+  }
+}

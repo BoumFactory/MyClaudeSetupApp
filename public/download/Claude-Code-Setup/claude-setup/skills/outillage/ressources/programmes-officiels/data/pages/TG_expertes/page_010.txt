@@ -1,0 +1,49 @@
+Graphes et matrices
+Prenant appui sur la résolution de problème et la modélisation, cette partie a pour objectif
+d’introduire les notions de graphes et de matrices en soulignant l’intérêt de les appliquer à
+d’autres disciplines, notamment les sciences économiques et sociales, les sciences de la vie
+et de la Terre, la physique-chimie, l’informatique etc.
+Les matrices sont étudiées sous divers points de vue : modélisation de problèmes issus des
+autres disciplines, systèmes linéaires, transformations géométriques. Il s’agit de mettre en
+valeur l’efficacité du calcul matriciel pour représenter et résoudre des problèmes.
+La notion de graphe est fondamentale pour les mathématiques discrètes et a des
+applications dans de nombreux domaines. Le programme la fait interagir avec les matrices.
+Une illustration exemplaire dans le domaine des probabilités, les chaînes de Markov, fait
+l’objet d’un développement spécifique.
+ Histoire des mathématiques
+L’histoire de cette partie combine trois thèmes très contemporains : les graphes, outils
+fondamentaux des mathématiques discrètes, les matrices et les chaînes de Markov. Les
+liens mis en évidence soulignent l’unité et l’efficacité des mathématiques.
+L’histoire des graphes remonte au moins à Euler, par exemple à travers le problème des
+ponts de Königsberg. Des applications plus récentes en intelligence artificielle, concernant
+notamment les réseaux, soulignent la pertinence et l'actualité de la modélisation à l'aide de
+graphes et matrices.
+La considération de tableaux de nombres en liaison avec les systèmes linéaires est très
+ancienne, mais l’introduction par Cayley des matrices comme objets de calcul représentant
+des transformations linéaires date du milieu du XIXe siècle, et leur importance ne sera
+clairement reconnue qu’au XXe siècle.
+L’étude des chaînes de Markov, qui remonte au début du XXe siècle, donne une belle
+utilisation du formalisme matriciel.
+Contenus
+ Graphe, sommets, arêtes. Exemple du graphe complet.
+ Sommets adjacents, degré, ordre d’un graphe, chaîne, longueur d’une chaîne,
+graphe connexe.
+ Notion de matrice (tableau de nombres réels). Matrice carrée, matrice colonne,
+matrice ligne. Opérations. Inverse, puissances d’une matrice carrée.
+ Exemples de représentations matricielles : matrice d’adjacence d’un graphe ;
+transformations géométriques du plan ; systèmes linéaires ; suites récurrentes.
+ Exemples de calcul de puissances de matrices carrées d’ordre 2 ou 3.
+ Suite de matrices colonnes (U ) vérifiant une relation de récurrence du type
+n
+U = AU + C.
+n+1 n
+ Graphe orienté pondéré associé à une chaîne de Markov à deux ou trois états.
+ Chaîne de Markov à deux ou trois états. Distribution initiale, représentée par une
+matrice ligne π . Matrice de transition, graphe pondéré associé.
+0
+ Pour une chaîne de Markov à deux ou trois états de matrice P, interprétation du
+coefficient (i,j) de P n. Distribution après n transitions, représentée comme la matrice
+ligne π P n.
+0
+ Distributions invariantes d’une chaîne de Markov à deux ou trois états.
+© Ministère de l'Éducation nationale et de la Jeunesse > www.education.gouv.fr

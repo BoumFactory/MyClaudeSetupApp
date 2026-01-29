@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Algèbre
+   Palette Violet/Mauve - Équations, structures
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #8e44ad;
+    --theme-secondary: #9b59b6;
+    --theme-accent: #6c3483;
+
+    /* Couleurs des blocs */
+    --color-definition: #8e44ad;
+    --color-theoreme: #6c3483;
+    --color-propriete: #9b59b6;
+    --color-exemple: #af7ac5;
+    --color-methode: #bb8fce;
+    --color-remarque: #c39bd3;
+    --color-exercice: #d2b4de;
+
+    /* Backgrounds */
+    --bg-definition: #f5eef8;
+    --bg-theoreme: #ebdef0;
+    --bg-propriete: #f4ecf7;
+    --bg-exemple: #f9f2fb;
+    --bg-methode: #faf5fc;
+    --bg-remarque: #f8f4fa;
+    --bg-exercice: #fdfaff;
+}
+
+/* Titres */
+h1 { color: #4a235a; }
+h2 { color: #5b2c6f; }
+h3 { color: #6c3483; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Vecteurs
+   Palette Bleu marine - Flèches, translations
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #34495e;
+    --theme-secondary: #5d6d7e;
+    --theme-accent: #2c3e50;
+
+    /* Couleurs des blocs */
+    --color-definition: #34495e;
+    --color-theoreme: #2c3e50;
+    --color-propriete: #5d6d7e;
+    --color-exemple: #85929e;
+    --color-methode: #aab7b8;
+    --color-remarque: #bfc9ca;
+    --color-exercice: #d5dbdb;
+
+    /* Backgrounds */
+    --bg-definition: #ebedef;
+    --bg-theoreme: #e2e4e6;
+    --bg-propriete: #eef0f1;
+    --bg-exemple: #f2f4f4;
+    --bg-methode: #f7f8f8;
+    --bg-remarque: #f9fafa;
+    --bg-exercice: #fbfcfc;
+}
+
+/* Titres */
+h1 { color: #1a252f; }
+h2 { color: #212f3c; }
+h3 { color: #283747; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

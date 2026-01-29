@@ -1,0 +1,255 @@
+% Template de Fiche Technique - Format Collègues/Personnel
+% Utilisation : Document de partage entre collègues ou notes personnelles
+% Style : Sobre, pratique, concis
+
+\documentclass[10pt,a4paper]{article}
+
+% ============================================
+% PACKAGES
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{mdframed}
+
+% ============================================
+% CONFIGURATION DE LA PAGE
+% ============================================
+\geometry{
+    a4paper,
+    top=2cm,
+    bottom=2cm,
+    left=2cm,
+    right=2cm,
+    headheight=1.5cm,
+    headsep=0.5cm
+}
+
+% ============================================
+% COULEURS
+% ============================================
+\definecolor{bleu-principal}{RGB}{41,128,185}  % Bleu moderne
+\definecolor{gris-titre}{RGB}{52,73,94}        % Gris foncé
+\definecolor{gris-clair}{RGB}{236,240,241}     % Gris très clair
+\definecolor{vert-info}{RGB}{39,174,96}        % Vert pour infos pratiques
+
+% ============================================
+% EN-TÊTE ET PIED DE PAGE
+% ============================================
+\pagestyle{fancy}
+\fancyhf{}
+
+% En-tête simple
+\fancyhead[L]{%
+    \textbf{\color{bleu-principal}Fiche technique :} \textit{%TITRE_COURT%}
+}
+\fancyhead[R]{%
+    \small %NIVEAU% -- %ANNEE_SCOLAIRE%
+}
+
+% Pied de page
+\fancyfoot[L]{\small %AUTEUR%}
+\fancyfoot[C]{\small Page \thepage}
+\fancyfoot[R]{\small %DATE%}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% ============================================
+% STYLE DES TITRES
+% ============================================
+\titleformat{\section}
+    {\Large\bfseries\color{bleu-principal}}
+    {}{0em}{}
+    [\vspace{-0.3em}\textcolor{bleu-principal}{\titlerule[1pt]}]
+
+\titleformat{\subsection}
+    {\large\bfseries\color{gris-titre}}
+    {}{0em}{}
+
+\titleformat{\subsubsection}
+    {\normalsize\bfseries\color{gris-titre}}
+    {}{0em}{}
+
+% Espacement des titres réduit
+\titlespacing*{\section}{0pt}{1ex plus 0.5ex minus .2ex}{0.8ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1ex plus 0.5ex minus .2ex}{0.5ex plus .2ex}
+
+% ============================================
+% STYLE DES LISTES
+% ============================================
+\setlist[itemize,1]{label=\textcolor{bleu-principal}{$\bullet$}, leftmargin=1.2em, itemsep=0pt}
+\setlist[itemize,2]{label=\textcolor{gris-titre}{--}, leftmargin=1.5em, itemsep=0pt}
+\setlist[enumerate]{leftmargin=1.2em, itemsep=0pt}
+
+% ============================================
+% ENVIRONNEMENTS PERSONNALISÉS
+% ============================================
+
+% Encadré pour informations rapides
+\mdfdefinestyle{inforapide}{
+    backgroundcolor=gris-clair,
+    linecolor=bleu-principal,
+    linewidth=2pt,
+    topline=true,
+    bottomline=true,
+    leftline=false,
+    rightline=false,
+    innertopmargin=8pt,
+    innerbottommargin=8pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt
+}
+
+\newenvironment{inforapide}{%
+    \begin{mdframed}[style=inforapide]
+}{%
+    \end{mdframed}
+}
+
+% Encadré pour conseils pratiques
+\mdfdefinestyle{conseil}{
+    backgroundcolor=white,
+    linecolor=vert-info,
+    linewidth=2pt,
+    topline=false,
+    bottomline=false,
+    leftline=true,
+    rightline=false,
+    innertopmargin=5pt,
+    innerbottommargin=5pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt
+}
+
+\newenvironment{conseil}{%
+    \begin{mdframed}[style=conseil]
+    \textbf{\color{vert-info}Conseil pratique :}
+}{%
+    \end{mdframed}
+}
+
+% ============================================
+% CONFIGURATION HYPERREF
+% ============================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bleu-principal,
+    urlcolor=bleu-principal,
+    citecolor=bleu-principal,
+    pdfborder={0 0 0}
+}
+
+% Espacement entre les paragraphes
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+% ============================================
+% DÉBUT DU DOCUMENT
+% ============================================
+\begin{document}
+
+% ============================================
+% EN-TÊTE PRINCIPAL
+% ============================================
+{\centering
+    {\LARGE\bfseries\color{bleu-principal} %TITRE_RESSOURCE%}\\[0.3cm]
+    {\large %NIVEAU% -- %THEME%}\\[0.5cm]
+}
+
+% Informations rapides
+\begin{inforapide}
+    \begin{tabularx}{\textwidth}{>{\bfseries}l X}
+        Type : & %TYPE_RESSOURCE% \\
+        Durée : & %DUREE% \\
+        Organisation : & %ORGANISATION% \\
+        Matériel : & %MATERIEL%
+    \end{tabularx}
+\end{inforapide}
+
+\vspace{0.5cm}
+
+% ============================================
+% SECTION 1 : EN BREF
+% ============================================
+\section*{En bref}
+
+%RESUME%
+
+% ============================================
+% SECTION 2 : OBJECTIFS
+% ============================================
+\section*{Objectifs}
+
+\textbf{Notions travaillées :} %NOTIONS%
+
+\textbf{Compétences :} %COMPETENCES%
+
+% ============================================
+% SECTION 3 : ACTIVITÉS DES ÉLÈVES
+% ============================================
+\section*{Ce que font les élèves}
+
+%ACTIVITES_ELEVES%
+
+% ============================================
+% SECTION 4 : PRÉREQUIS
+% ============================================
+\section*{Prérequis}
+
+%PREREQUIS%
+
+% ============================================
+% SECTION 5 : DÉROULEMENT
+% ============================================
+\section*{Déroulement}
+
+%DEROULEMENT%
+
+% ============================================
+% SECTION 6 : POINTS D'ATTENTION
+% ============================================
+\section*{Points d'attention}
+
+\subsection*{Difficultés prévisibles}
+%DIFFICULTES%
+
+\subsection*{Différenciation}
+%DIFFERENCIATION%
+
+% ============================================
+% SECTION 7 : CONSEILS PRATIQUES (optionnel)
+% ============================================
+%CONSEILS_PRATIQUES%
+
+% ============================================
+% SECTION 8 : LIEN AVEC LE PROGRAMME
+% ============================================
+\section*{Lien avec le programme}
+
+%LIEN_PROGRAMME%
+
+% ============================================
+% SECTION 9 : POUR ALLER PLUS LOIN (optionnel)
+% ============================================
+\section*{Prolongements possibles}
+
+%PROLONGEMENTS%
+
+\vfill
+
+% ============================================
+% BAS DE PAGE : NOTES
+% ============================================
+\hrule
+\vspace{0.3cm}
+{\small\textit{Notes personnelles :}}
+
+\end{document}

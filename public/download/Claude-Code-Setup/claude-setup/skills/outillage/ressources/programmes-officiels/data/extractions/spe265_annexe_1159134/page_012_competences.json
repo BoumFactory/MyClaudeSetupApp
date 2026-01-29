@@ -1,0 +1,756 @@
+{
+  "source": {
+    "pdf": "spe265_annexe_1159134.pdf",
+    "page": 12,
+    "text_length": 1547
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AN-601",
+      "intitule": "Tracer une suite définie par récurrence u_n+1 = f(u_n) avec f continue",
+      "fingerprint": "tracer_suite_recurrence_graphique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "Représenter graphiquement une suite donnée par une relation de récurrence u_n+1 = f(u_n) où f est une fonction continue d'un intervalle I dans lui-même.",
+      "formulation_bo": "Représenter graphiquement une suite donnée par une relation de récurrence u = ƒ(u ) où ƒ est une fonction continue d'un intervalle I dans lui-même.",
+      "connaissances_associees": ["fonction continue", "suite récurrente", "représentation graphique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-602",
+      "intitule": "Conjecturer le comportement global d'une suite définie par récurrence",
+      "fingerprint": "conjecturer_comportement_suite_recurrence_global",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "À partir de la représentation graphique ou du calcul de termes, conjecturer le comportement global (monotonie, convergence) d'une suite u_n+1 = f(u_n).",
+      "formulation_bo": "Conjecturer le comportement global ou asymptotique d'une telle suite.",
+      "connaissances_associees": ["suite récurrente", "limite", "convergence"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-603",
+      "intitule": "Conjecturer le comportement asymptotique d'une suite définie par récurrence",
+      "fingerprint": "conjecturer_comportement_suite_recurrence_asymptotique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "À partir de la représentation graphique ou du calcul de termes, conjecturer le comportement asymptotique (limite, divergence) d'une suite u_n+1 = f(u_n) quand n tend vers l'infini.",
+      "formulation_bo": "Conjecturer le comportement global ou asymptotique d'une telle suite.",
+      "connaissances_associees": ["suite récurrente", "limite", "asymptote"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-604",
+      "intitule": "Rechercher une suite constante solution pour une récurrence arithmético-géométrique",
+      "fingerprint": "rechercher_suite_constante_recurrence_arithmetico_geometrique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "Pour une récurrence arithmético-géométrique u_n+1 = a*u_n + b, trouver la suite constante solution particulière.",
+      "formulation_bo": "Pour une récurrence arithmético-géométrique : recherche d'une suite constante solution particulière.",
+      "connaissances_associees": ["suite arithmético-géométrique", "suite constante", "solution particulière"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-605",
+      "intitule": "Déterminer toutes les solutions d'une récurrence arithmético-géométrique",
+      "fingerprint": "determiner_solutions_recurrence_arithmetico_geometrique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "Pour une récurrence arithmético-géométrique u_n+1 = a*u_n + b, utiliser la suite constante pour déterminer toutes les solutions.",
+      "formulation_bo": "Utilisation de cette suite pour déterminer toutes les solutions.",
+      "connaissances_associees": ["suite arithmético-géométrique", "suite constante", "forme générale"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-606",
+      "intitule": "Démontrer la limite des sommes d'une suite géométrique de raison strictement inférieure à 1",
+      "fingerprint": "demontrer_limite_somme_suite_geometrique_raison_inferieure_1",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "demonstration",
+      "description_detaillee": "Démontrer que la somme S_n = 1 + q + q² + ... + q^n tend vers 1/(1-q) quand n tend vers l'infini pour 0 < q < 1.",
+      "formulation_bo": "Limite des sommes des termes d'une suite géométrique de raison positive strictement inférieure à 1.",
+      "connaissances_associees": ["suite géométrique", "somme", "limite", "raison"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AG-607",
+      "intitule": "Programmer la recherche de seuils pour une suite",
+      "fingerprint": "programmer_recherche_seuils_suite",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Suites numériques",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme (en Python ou autre) pour déterminer le plus petit entier n tel que u_n dépasse un seuil donné.",
+      "formulation_bo": "Recherche de seuils.",
+      "connaissances_associees": ["suite numérique", "algorithme", "boucle", "condition"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AG-608",
+      "intitule": "Programmer le calcul des termes successifs d'une suite récurrente",
+      "fingerprint": "programmer_calcul_termes_suite_recurrence",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Suites numériques",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme pour calculer les n premiers termes d'une suite définie par u_n+1 = f(u_n) à partir d'une valeur initiale u_0.",
+      "formulation_bo": "Pour une suite récurrente u = ƒ(u ), calcul des termes successifs.",
+      "connaissances_associees": ["suite récurrente", "algorithme", "boucle itérative"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AG-609",
+      "intitule": "Programmer le calcul d'une valeur approchée de π",
+      "fingerprint": "programmer_valeur_approchee_pi",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes numériques",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme itératif pour déterminer une valeur approchée de la constante mathématique π (par exemple via la suite de Machin ou une série convergente).",
+      "formulation_bo": "Recherche de valeurs approchées de constantes mathématiques, par exemple π.",
+      "connaissances_associees": ["suite convergente", "algorithme itératif", "approximation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AG-610",
+      "intitule": "Programmer le calcul d'une valeur approchée de ln(2)",
+      "fingerprint": "programmer_valeur_approchee_ln2",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes numériques",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme itératif pour déterminer une valeur approchée de ln(2) (par exemple via la série de Taylor ou une suite convergente).",
+      "formulation_bo": "Recherche de valeurs approchées de constantes mathématiques, par exemple ln2.",
+      "connaissances_associees": ["suite convergente", "logarithme", "algorithme itératif"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AG-611",
+      "intitule": "Programmer le calcul d'une valeur approchée de √2",
+      "fingerprint": "programmer_valeur_approchee_racine_2",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes numériques",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme itératif pour déterminer une valeur approchée de √2 (par exemple via la méthode de Newton ou une suite récurrente).",
+      "formulation_bo": "Recherche de valeurs approchées de constantes mathématiques, par exemple √2.",
+      "connaissances_associees": ["suite convergente", "racine carrée", "algorithme itératif"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-612",
+      "intitule": "Comprendre la notion de limite d'une fonction",
+      "fingerprint": "comprendre_notion_limite_fonction",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "contenu",
+      "description_detaillee": "Approche intuitive de la notion de limite d'une fonction en un point ou en l'infini, sans formalisation epsilon-delta.",
+      "formulation_bo": "Notion de limite. Lien avec la continuité et les asymptotes horizontales ou verticales.",
+      "connaissances_associees": ["asymptote", "continuité", "comportement asymptotique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-613",
+      "intitule": "Identifier les asymptotes horizontales d'une courbe",
+      "fingerprint": "identifier_asymptotes_horizontales",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître et déterminer les asymptotes horizontales d'une fonction à partir de ses limites en l'infini.",
+      "formulation_bo": "Lien avec la continuité et les asymptotes horizontales ou verticales.",
+      "connaissances_associees": ["limite à l'infini", "asymptote", "fonction"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-614",
+      "intitule": "Identifier les asymptotes verticales d'une courbe",
+      "fingerprint": "identifier_asymptotes_verticales",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître et déterminer les asymptotes verticales d'une fonction à partir de ses limites infinies.",
+      "formulation_bo": "Lien avec la continuité et les asymptotes horizontales ou verticales.",
+      "connaissances_associees": ["limite infinie", "asymptote", "domaine de définition"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-615",
+      "intitule": "Calculer la limite d'une fonction carrée",
+      "fingerprint": "calculer_limite_fonction_carre",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de f(x) = x² en un point ou en l'infini.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": ["fonction carrée", "limite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-616",
+      "intitule": "Calculer la limite d'une fonction cube",
+      "fingerprint": "calculer_limite_fonction_cube",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de f(x) = x³ en un point ou en l'infini.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": ["fonction cube", "limite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-617",
+      "intitule": "Calculer la limite d'une fonction racine carrée",
+      "fingerprint": "calculer_limite_fonction_racine_carree",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de f(x) = √x en un point ou en l'infini.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": ["fonction racine carrée", "limite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-618",
+      "intitule": "Calculer la limite d'une fonction inverse",
+      "fingerprint": "calculer_limite_fonction_inverse",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de f(x) = 1/x en un point ou en l'infini.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": ["fonction inverse", "limite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-619",
+      "intitule": "Calculer la limite d'une fonction exponentielle",
+      "fingerprint": "calculer_limite_fonction_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de f(x) = e^x en un point ou en l'infini.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": ["fonction exponentielle", "limite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-620",
+      "intitule": "Calculer la limite d'une fonction logarithme",
+      "fingerprint": "calculer_limite_fonction_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de f(x) = ln(x) en un point ou en l'infini.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": ["fonction logarithme", "limite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-621",
+      "intitule": "Appliquer le théorème des valeurs intermédiaires",
+      "fingerprint": "appliquer_theoreme_valeurs_intermediaires",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le théorème des valeurs intermédiaires pour justifier l'existence d'une solution à une équation f(x) = k.",
+      "formulation_bo": "Théorème des valeurs intermédiaires (admis). Cas des fonctions strictement monotones.",
+      "connaissances_associees": ["fonction continue", "fonction monotone"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-622",
+      "intitule": "Exploiter le théorème des valeurs intermédiaires pour les fonctions strictement monotones",
+      "fingerprint": "exploiter_tvi_fonction_monotone",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Pour une fonction continue et strictement monotone sur un intervalle, déterminer l'unicité d'une solution à f(x) = k.",
+      "formulation_bo": "Théorème des valeurs intermédiaires (admis). Cas des fonctions strictement monotones.",
+      "connaissances_associees": ["théorème des valeurs intermédiaires", "monotonie", "unicité"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-623",
+      "intitule": "Définir la fonction réciproque d'une fonction continue et strictement monotone",
+      "fingerprint": "definir_fonction_reciproque_monotone",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "contenu",
+      "description_detaillee": "Comprendre intuitivement la notion de fonction réciproque pour une fonction continue et strictement monotone sur un intervalle.",
+      "formulation_bo": "Réciproque d'une fonction continue strictement monotone sur un intervalle, représentation graphique.",
+      "connaissances_associees": ["fonction bijective", "monotonie", "symétrie par rapport à la droite y=x"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-624",
+      "intitule": "Tracer la courbe réciproque d'une fonction continue strictement monotone",
+      "fingerprint": "tracer_courbe_reciproque_monotone",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Représenter graphiquement la fonction réciproque d'une fonction continue et strictement monotone (symétrie par rapport à y=x).",
+      "formulation_bo": "Réciproque d'une fonction continue strictement monotone sur un intervalle, représentation graphique.",
+      "connaissances_associees": ["fonction réciproque", "symétrie", "graphique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-625",
+      "intitule": "Comprendre la fonction logarithme comme réciproque de l'exponentielle",
+      "fingerprint": "comprendre_ln_reciproque_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions de référence",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître que ln est la fonction réciproque de exp, avec domaine et codomaine appropriés.",
+      "formulation_bo": "Fonction logarithme népérien : réciproque de la fonction exponentielle. Limites, représentation graphique.",
+      "connaissances_associees": ["fonction exponentielle", "fonction réciproque", "bijectivité"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-626",
+      "intitule": "Calculer les limites de la fonction logarithme népérien",
+      "fingerprint": "calculer_limites_logarithme_nepierien",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions de référence",
+      "type": "capacite",
+      "description_detaillee": "Déterminer lim(x→0+) ln(x) = -∞ et lim(x→+∞) ln(x) = +∞.",
+      "formulation_bo": "Fonction logarithme népérien : réciproque de la fonction exponentielle. Limites, représentation graphique.",
+      "connaissances_associees": ["fonction logarithme", "limite", "comportement asymptotique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-627",
+      "intitule": "Tracer la courbe représentative de la fonction logarithme népérien",
+      "fingerprint": "tracer_courbe_logarithme_nepierien",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions de référence",
+      "type": "capacite",
+      "description_detaillee": "Représenter graphiquement la fonction ln(x) en tenant compte de ses limites et de ses propriétés.",
+      "formulation_bo": "Fonction logarithme népérien : réciproque de la fonction exponentielle. Limites, représentation graphique.",
+      "connaissances_associees": ["fonction logarithme", "graphique", "asymptote"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-628",
+      "intitule": "Utiliser l'équation fonctionnelle de la fonction exponentielle",
+      "fingerprint": "utiliser_equation_fonctionnelle_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions de référence",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la propriété e^(a+b) = e^a · e^b pour transformer des écritures ou résoudre des équations/inéquations.",
+      "formulation_bo": "Équation fonctionnelle. Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour transformer une écriture, résoudre une équation, une inéquation.",
+      "connaissances_associees": ["fonction exponentielle", "propriétés algébriques"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-629",
+      "intitule": "Utiliser l'équation fonctionnelle de la fonction logarithme",
+      "fingerprint": "utiliser_equation_fonctionnelle_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions de référence",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la propriété ln(ab) = ln(a) + ln(b) pour transformer des écritures ou résoudre des équations/inéquations.",
+      "formulation_bo": "Équation fonctionnelle. Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour transformer une écriture, résoudre une équation, une inéquation.",
+      "connaissances_associees": ["fonction logarithme", "propriétés algébriques"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-630",
+      "intitule": "Calculer la fonction dérivée de x ↦ f(ax+b)",
+      "fingerprint": "calculer_derivee_fonction_affine_composee",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la règle de dérivation des fonctions composées pour calculer f'(x) quand f(x) = g(ax+b).",
+      "formulation_bo": "Fonction dérivée de x↦ ƒ(ax+b), x ↦ eu(x), x ↦ lnu(x), x ↦ u(x)2.",
+      "connaissances_associees": ["dérivation", "composition de fonctions", "règle de chaîne"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-631",
+      "intitule": "Calculer la fonction dérivée de x ↦ e^(u(x))",
+      "fingerprint": "calculer_derivee_exponentielle_composee",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la règle de dérivation pour calculer la dérivée de la fonction composée exponentielle: (e^(u(x)))' = u'(x)·e^(u(x)).",
+      "formulation_bo": "Fonction dérivée de x↦ ƒ(ax+b), x ↦ eu(x), x ↦ lnu(x), x ↦ u(x)2.",
+      "connaissances_associees": ["dérivation", "exponentielle", "composition de fonctions"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-632",
+      "intitule": "Calculer la fonction dérivée de x ↦ ln(u(x))",
+      "fingerprint": "calculer_derivee_logarithme_composee",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la règle de dérivation pour calculer la dérivée de la fonction composée logarithme: (ln(u(x)))' = u'(x)/u(x).",
+      "formulation_bo": "Fonction dérivée de x↦ ƒ(ax+b), x ↦ eu(x), x ↦ lnu(x), x ↦ u(x)2.",
+      "connaissances_associees": ["dérivation", "logarithme", "composition de fonctions"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-633",
+      "intitule": "Calculer la fonction dérivée de x ↦ (u(x))²",
+      "fingerprint": "calculer_derivee_carre_fonction_composee",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la règle de dérivation pour calculer la dérivée du carré d'une fonction: ((u(x))²)' = 2·u(x)·u'(x).",
+      "formulation_bo": "Fonction dérivée de x↦ ƒ(ax+b), x ↦ eu(x), x ↦ lnu(x), x ↦ u(x)2.",
+      "connaissances_associees": ["dérivation", "composition de fonctions", "règle du produit"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-634",
+      "intitule": "Calculer une fonction dérivée",
+      "fingerprint": "calculer_fonction_derivee",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer les règles de dérivation (somme, produit, quotient, composition) pour obtenir la dérivée d'une fonction donnée.",
+      "formulation_bo": "Calculer une fonction dérivée, calculer des limites.",
+      "connaissances_associees": ["dérivation", "règles de dérivation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-635",
+      "intitule": "Calculer des limites de fonctions",
+      "fingerprint": "calculer_limites_fonctions",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites d'une fonction donnée en un point ou en l'infini en utilisant les opérations sur les limites et les théorèmes.",
+      "formulation_bo": "Calculer une fonction dérivée, calculer des limites.",
+      "connaissances_associees": ["limite", "opérations sur les limites", "théorème de composition"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-636",
+      "intitule": "Dresser un tableau de variation d'une fonction",
+      "fingerprint": "dresser_tableau_variation_fonction",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "À partir de la dérivée, déterminer les intervalles de monotonie et construire le tableau de variation complet d'une fonction.",
+      "formulation_bo": "Calculer une fonction dérivée, calculer des limites. Dresser un tableau de variation.",
+      "connaissances_associees": ["dérivée", "monotonie", "extrema"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-637",
+      "intitule": "Utiliser les courbes de référence pour résoudre un problème",
+      "fingerprint": "utiliser_courbes_reference_resolution_probleme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions de référence",
+      "type": "capacite",
+      "description_detaillee": "Dans le cadre de la résolution de problème, analyser et utiliser les allures des courbes des fonctions inverse, carré, cube, racine carrée, exponentielle et logarithme.",
+      "formulation_bo": "Dans le cadre de la résolution de problème, utiliser le calcul des limites, l'allure des courbes représentatives des fonctions inverse, carré, cube, racine carrée, exponentielle et logarithme.",
+      "connaissances_associees": ["fonctions de référence", "graphique", "limite"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-638",
+      "intitule": "Exploiter le tableau de variation pour déterminer le nombre de solutions",
+      "fingerprint": "exploiter_tableau_variation_nombre_solutions",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "À partir du tableau de variation, déterminer combien de solutions possède l'équation f(x) = k pour une constante k donnée.",
+      "formulation_bo": "Exploiter le tableau de variation pour déterminer le nombre de solutions d'une équation du type ƒ(x) = k.",
+      "connaissances_associees": ["tableau de variation", "équation", "image d'une fonction"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-639",
+      "intitule": "Exploiter le tableau de variation pour résoudre une inéquation",
+      "fingerprint": "exploiter_tableau_variation_inegalite",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "À partir du tableau de variation, déterminer l'ensemble des solutions de l'inéquation f(x) ≤ k.",
+      "formulation_bo": "Exploiter le tableau de variation pour déterminer le nombre de solutions d'une équation du type ƒ(x) = k, pour résoudre une inéquation du type ƒ(x) ⩽ k.",
+      "connaissances_associees": ["tableau de variation", "inéquation", "ensemble solution"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-640",
+      "intitule": "Déterminer une valeur approchée d'une solution d'équation",
+      "fingerprint": "determiner_valeur_approchee_solution_equation",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Résolution numérique",
+      "type": "capacite",
+      "description_detaillee": "Utiliser des méthodes numériques pour trouver une approximation d'une solution de f(x) = k.",
+      "formulation_bo": "Déterminer des valeurs approchées, un encadrement d'une solution d'une équation du type ƒ(x) = k.",
+      "connaissances_associees": ["résolution numérique", "approximation", "encadrement"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-641",
+      "intitule": "Déterminer un encadrement d'une solution d'équation",
+      "fingerprint": "determiner_encadrement_solution_equation",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Résolution numérique",
+      "type": "capacite",
+      "description_detaillee": "Trouver deux valeurs qui encadrent une solution de f(x) = k avec une précision donnée.",
+      "formulation_bo": "Déterminer des valeurs approchées, un encadrement d'une solution d'une équation du type ƒ(x) = k.",
+      "connaissances_associees": ["encadrement", "dichotomie", "théorème des valeurs intermédiaires"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TSPE-AN-642",
+      "intitule": "Appliquer la relation ln(q^n) = n·ln(q) pour déterminer un seuil",
+      "fingerprint": "appliquer_relation_ln_puissance_seuil",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions de référence",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriété logarithmique ln(q^n) = n·ln(q) pour résoudre des inéquations exponentielles ou trouver des seuils.",
+      "formulation_bo": "Utiliser la relation lnq n = n lnq pour déterminer un seuil.",
+      "connaissances_associees": ["fonction logarithme", "propriété logarithmique", "seuil"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 12
+      }
+    }
+  ],
+  "summary": {
+    "total": 42,
+    "by_type": {
+      "capacite": 30,
+      "contenu": 4,
+      "demonstration": 1,
+      "algorithme": 5,
+      "approfondissement": 2
+    },
+    "by_domaine": {
+      "ANALYSE": 33,
+      "ALGORITHMIQUE": 5,
+      "GEOMETRIE": 0,
+      "PROBABILITES": 0,
+      "STATISTIQUES": 0
+    },
+    "by_sous_domaine": {
+      "Suites numériques": 7,
+      "Limites et continuité": 8,
+      "Dérivation": 10,
+      "Fonctions de référence": 9,
+      "Algorithmes numériques": 3,
+      "Résolution numérique": 2
+    },
+    "fingerprints": [
+      "tracer_suite_recurrence_graphique",
+      "conjecturer_comportement_suite_recurrence_global",
+      "conjecturer_comportement_suite_recurrence_asymptotique",
+      "rechercher_suite_constante_recurrence_arithmetico_geometrique",
+      "determiner_solutions_recurrence_arithmetico_geometrique",
+      "demontrer_limite_somme_suite_geometrique_raison_inferieure_1",
+      "programmer_recherche_seuils_suite",
+      "programmer_calcul_termes_suite_recurrence",
+      "programmer_valeur_approchee_pi",
+      "programmer_valeur_approchee_ln2",
+      "programmer_valeur_approchee_racine_2",
+      "comprendre_notion_limite_fonction",
+      "identifier_asymptotes_horizontales",
+      "identifier_asymptotes_verticales",
+      "calculer_limite_fonction_carre",
+      "calculer_limite_fonction_cube",
+      "calculer_limite_fonction_racine_carree",
+      "calculer_limite_fonction_inverse",
+      "calculer_limite_fonction_exponentielle",
+      "calculer_limite_fonction_logarithme",
+      "appliquer_theoreme_valeurs_intermediaires",
+      "exploiter_tvi_fonction_monotone",
+      "definir_fonction_reciproque_monotone",
+      "tracer_courbe_reciproque_monotone",
+      "comprendre_ln_reciproque_exponentielle",
+      "calculer_limites_logarithme_nepierien",
+      "tracer_courbe_logarithme_nepierien",
+      "utiliser_equation_fonctionnelle_exponentielle",
+      "utiliser_equation_fonctionnelle_logarithme",
+      "calculer_derivee_fonction_affine_composee",
+      "calculer_derivee_exponentielle_composee",
+      "calculer_derivee_logarithme_composee",
+      "calculer_derivee_carre_fonction_composee",
+      "calculer_fonction_derivee",
+      "calculer_limites_fonctions",
+      "dresser_tableau_variation_fonction",
+      "utiliser_courbes_reference_resolution_probleme",
+      "exploiter_tableau_variation_nombre_solutions",
+      "exploiter_tableau_variation_inegalite",
+      "determiner_valeur_approchee_solution_equation",
+      "determiner_encadrement_solution_equation",
+      "appliquer_relation_ln_puissance_seuil"
+    ]
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "source": {
+    "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+    "page": 6,
+    "text_length": 1026
+  },
+  "extraction": {
+    "date": "2026-01-03T10:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "3E-AN-301",
+      "intitule": "Determiner l'antecedent d'un nombre par une fonction affine a l'aide d'une equation",
+      "fingerprint": "determiner_antecedent_fonction_affine_equation",
+      "niveau": "3E",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Resoudre une equation du type ax + b = k pour trouver l'antecedent de k par la fonction f(x) = ax + b",
+      "formulation_bo": "Determine a l'aide d'une equation : l'antecedent de 10 par la fonction f definie par f(x) = -3x - 4",
+      "connaissances_associees": ["notion d'antecedent", "fonction affine", "resolution d'equation du premier degre"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AN-302",
+      "intitule": "Determiner les antecedents de zero par une fonction produit",
+      "fingerprint": "determiner_antecedents_zero_fonction_produit",
+      "niveau": "3E",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Resoudre une equation produit nul du type (ax + b)(cx + d) = 0 pour trouver les antecedents de 0",
+      "formulation_bo": "les antecedents de 0 par la fonction g definie par g(x) = (3x + 6)(x - 9)",
+      "connaissances_associees": ["equation produit nul", "notion d'antecedent", "factorisation"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AN-303",
+      "intitule": "Representer graphiquement une fonction lineaire",
+      "fingerprint": "representer_graphiquement_fonction_lineaire",
+      "niveau": "3E",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Tracer la droite representant une fonction lineaire f(x) = ax passant par l'origine",
+      "formulation_bo": "Il represente graphiquement les fonctions f : x -> 5x - 1 et g : x -> 3x",
+      "connaissances_associees": ["fonction lineaire", "droite passant par l'origine", "coefficient directeur"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AN-304",
+      "intitule": "Representer graphiquement une fonction affine",
+      "fingerprint": "representer_graphiquement_fonction_affine",
+      "niveau": "3E",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Tracer la droite representant une fonction affine f(x) = ax + b a partir de deux points ou du coefficient directeur et de l'ordonnee a l'origine",
+      "formulation_bo": "Il represente graphiquement les fonctions f : x -> 5x - 1 et g : x -> 3x",
+      "connaissances_associees": ["fonction affine", "coefficient directeur", "ordonnee a l'origine"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AN-305",
+      "intitule": "Determiner le signe du coefficient directeur d'une fonction affine a partir de son graphe",
+      "fingerprint": "determiner_signe_coefficient_directeur_graphe",
+      "niveau": "3E",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "A partir de l'allure d'une droite (croissante ou decroissante), deduire si le coefficient directeur est positif ou negatif",
+      "formulation_bo": "A partir de l'allure de la representation graphique d'une fonction affine, il determine le signe du coefficient directeur",
+      "connaissances_associees": ["fonction affine", "coefficient directeur", "sens de variation"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AN-306",
+      "intitule": "Determiner le signe de l'ordonnee a l'origine d'une fonction affine a partir de son graphe",
+      "fingerprint": "determiner_signe_ordonnee_origine_graphe",
+      "niveau": "3E",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "A partir de la position de l'intersection de la droite avec l'axe des ordonnees, deduire si l'ordonnee a l'origine est positive ou negative",
+      "formulation_bo": "A partir de l'allure de la representation graphique d'une fonction affine, il determine le signe [...] de l'ordonnee a l'origine",
+      "connaissances_associees": ["fonction affine", "ordonnee a l'origine", "lecture graphique"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AN-307",
+      "intitule": "Modeliser une situation geometrique par une fonction",
+      "fingerprint": "modeliser_situation_geometrique_fonction",
+      "niveau": "3E",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Exprimer une grandeur geometrique (aire, perimetre) en fonction d'une variable, traduisant une contrainte geometrique",
+      "formulation_bo": "Complete : l'aire d'un rectangle dont le perimetre est egal a 30 cm et dont un cote a pour longueur x est donne par la fonction A : x -> ...",
+      "connaissances_associees": ["notion de fonction", "aire du rectangle", "perimetre du rectangle", "mise en equation"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AN-308",
+      "intitule": "Modeliser une situation de mouvement uniforme par une fonction lineaire",
+      "fingerprint": "modeliser_mouvement_uniforme_fonction_lineaire",
+      "niveau": "3E",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Traduire une situation de deplacement a vitesse constante par une fonction lineaire f(x) = vx ou v est la vitesse et x le temps",
+      "formulation_bo": "Un mobile se deplace a 5 m/s. L'eleve modelise la situation par la fonction f definie par f(x) = 5x ou x est le temps exprime en secondes et f(x) la distance parcourue",
+      "connaissances_associees": ["fonction lineaire", "proportionnalite", "vitesse constante", "distance"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AN-309",
+      "intitule": "Resoudre un probleme d'optimisation geometrique par mise en equation",
+      "fingerprint": "resoudre_probleme_optimisation_geometrique_equation",
+      "niveau": "3E",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "capacite",
+      "description_detaillee": "Determiner une dimension inconnue dans un probleme geometrique en mettant en equation la contrainte et en resolvant l'equation obtenue",
+      "formulation_bo": "On enleve quatre carres identiques aux quatre coins d'un rectangle de 20 cm de longueur et 13 cm de largeur. Determine la longueur du cote de ces carres qui correspond a une aire restante de 208,16 cm²",
+      "connaissances_associees": ["mise en equation", "resolution d'equation", "aire", "calcul algebrique"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AL-310",
+      "intitule": "Resoudre une equation du premier degre a une inconnue",
+      "fingerprint": "resoudre_equation_premier_degre",
+      "niveau": "3E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Equations",
+      "type": "capacite",
+      "description_detaillee": "Isoler l'inconnue dans une equation du type ax + b = c pour determiner sa valeur",
+      "formulation_bo": "Determine a l'aide d'une equation : l'antecedent de 10 par la fonction f definie par f(x) = -3x - 4",
+      "connaissances_associees": ["operations sur les equations", "regles de transposition"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    },
+    {
+      "code": "3E-AL-311",
+      "intitule": "Resoudre une equation produit nul",
+      "fingerprint": "resoudre_equation_produit_nul",
+      "niveau": "3E",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Equations",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriete 'un produit est nul si et seulement si l'un des facteurs est nul' pour resoudre une equation du type (ax + b)(cx + d) = 0",
+      "formulation_bo": "les antecedents de 0 par la fonction g definie par g(x) = (3x + 6)(x - 9)",
+      "connaissances_associees": ["produit nul", "resolution d'equations du premier degre"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 6}
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "by_type": {
+      "capacite": 11,
+      "contenu": 0,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "ANALYSE": 9,
+      "ALGEBRE": 2
+    },
+    "fingerprints": [
+      "determiner_antecedent_fonction_affine_equation",
+      "determiner_antecedents_zero_fonction_produit",
+      "representer_graphiquement_fonction_lineaire",
+      "representer_graphiquement_fonction_affine",
+      "determiner_signe_coefficient_directeur_graphe",
+      "determiner_signe_ordonnee_origine_graphe",
+      "modeliser_situation_geometrique_fonction",
+      "modeliser_mouvement_uniforme_fonction_lineaire",
+      "resoudre_probleme_optimisation_geometrique_equation",
+      "resoudre_equation_premier_degre",
+      "resoudre_equation_produit_nul"
+    ]
+  }
+}

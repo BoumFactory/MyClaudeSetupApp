@@ -1,0 +1,2149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Développements et Factorisations - Exercices 2nde</title>
+	<meta name="author" content="Lycée Camille Claudel">
+	<meta name="description" content="Session d'exercices sur les développements et factorisations pour la classe de 2nde">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<style>
+		:root {
+			--primary-color: #3498db;
+			--secondary-color: #e74c3c;
+			--accent-color: #2ecc71;
+			--warning-color: #f39c12;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		.reveal {
+			font-size: 22px;
+		}
+
+		.reveal h1, .reveal h2, .reveal h3 {
+			text-transform: none;
+			font-weight: 700;
+			letter-spacing: 0.02em;
+			margin-bottom: 20px;
+		}
+
+		.reveal h1 {
+			font-size: 3em;
+			color: var(--primary-color);
+		}
+
+		.reveal h2 {
+			font-size: 2.2em;
+			color: var(--primary-color);
+		}
+
+		.reveal h3 {
+			font-size: 1.8em;
+			color: var(--secondary-color);
+		}
+
+		.reveal p {
+			margin: 15px 0;
+			line-height: 1.6;
+		}
+
+		.reveal ul, .reveal ol {
+			margin: 20px 0;
+			line-height: 1.8;
+		}
+
+		.reveal li {
+			margin: 12px 0;
+		}
+
+		/* Slide Title */
+		.slide-title {
+			background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+			padding: 80px 40px;
+			text-align: center;
+			border-radius: 10px;
+			margin: 40px 0;
+		}
+
+		.slide-title h1 {
+			color: white;
+			margin-bottom: 20px;
+			font-size: 3.5em;
+		}
+
+		.slide-title p {
+			color: rgba(255, 255, 255, 0.9);
+			font-size: 1.3em;
+		}
+
+		/* Exercise Header - NEW FORMAT: ligne / durée .. titre .. difficulté */
+		.exercise-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 12px 20px;
+			background-color: rgba(52, 152, 219, 0.15);
+			border-left: 4px solid var(--primary-color);
+			margin: 15px 0 25px 0;
+			border-radius: 4px;
+			gap: 15px;
+			flex-wrap: wrap;
+		}
+
+		.exercise-line {
+			color: var(--accent-color);
+			font-weight: 700;
+			font-size: 0.9em;
+			white-space: nowrap;
+		}
+
+		.exercise-name {
+			flex: 1;
+			text-align: center;
+			font-weight: 700;
+			font-size: 1.2em;
+			color: var(--light-text);
+			min-width: 200px;
+		}
+
+		.difficulty {
+			color: var(--warning-color);
+			font-weight: 700;
+			font-size: 1em;
+		}
+
+		.estimated-time {
+			color: var(--secondary-color);
+			font-weight: 600;
+			font-size: 0.9em;
+		}
+
+		/* Question Header */
+		.question-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 12px 20px;
+			background-color: rgba(46, 204, 113, 0.15);
+			border-left: 4px solid var(--accent-color);
+			margin: 15px 0 20px 0;
+			border-radius: 4px;
+			gap: 10px;
+		}
+
+		.question-number {
+			font-weight: 700;
+			color: var(--accent-color);
+			font-size: 1.1em;
+		}
+
+		.question-time {
+			color: var(--warning-color);
+			font-weight: 600;
+			font-size: 0.9em;
+		}
+
+		/* Questions Overview */
+		.questions-overview {
+			background-color: rgba(52, 152, 219, 0.1);
+			padding: 30px;
+			border-radius: 8px;
+			margin: 20px 0;
+		}
+
+		.questions-overview h3 {
+			color: var(--primary-color);
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+		.questions-overview ul {
+			list-style: none;
+			padding-left: 0;
+		}
+
+		.questions-overview li {
+			padding-left: 30px;
+			position: relative;
+			margin: 10px 0;
+		}
+
+		.questions-overview li:before {
+			content: "▶";
+			position: absolute;
+			left: 0;
+			color: var(--primary-color);
+			font-weight: bold;
+		}
+
+		/* Question Recall */
+		.question-recall {
+			background-color: rgba(46, 204, 113, 0.1);
+			padding: 20px;
+			border-radius: 6px;
+			margin: 15px 0 20px 0;
+			border-left: 3px solid var(--accent-color);
+		}
+
+		.question-recall strong {
+			color: var(--accent-color);
+		}
+
+		/* Statement */
+		.statement {
+			background-color: rgba(52, 152, 219, 0.08);
+			padding: 20px;
+			border-radius: 6px;
+			margin: 20px 0;
+			line-height: 1.7;
+		}
+
+		.statement strong {
+			color: var(--primary-color);
+		}
+
+		/* Resolution Steps */
+		.resolution {
+			margin: 25px 0;
+		}
+
+		.step {
+			margin: 20px 0;
+			padding: 15px;
+			background-color: rgba(52, 152, 219, 0.08);
+			border-radius: 4px;
+		}
+
+		.step p {
+			margin: 10px 0;
+		}
+
+		.step .step-label {
+			color: var(--primary-color);
+			font-weight: 700;
+		}
+
+		/* Result Box */
+		.result-box {
+			background: linear-gradient(135deg, var(--accent-color) 0%, #27ae60 100%);
+			color: white;
+			padding: 25px;
+			border-radius: 8px;
+			margin: 25px 0;
+			text-align: center;
+			font-size: 1.15em;
+			font-weight: 600;
+			box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+		}
+
+		/* Fragments */
+		.fragment {
+			opacity: 0;
+		}
+
+		.fragment.visible {
+			opacity: 1;
+		}
+
+		.fragment.current-fragment {
+			opacity: 1;
+		}
+
+		/* Navigation Hints */
+		.nav-hint {
+			color: var(--primary-color);
+			font-style: italic;
+			font-size: 0.9em;
+			margin-top: 15px;
+		}
+
+		.nav-hint i {
+			margin-right: 8px;
+		}
+
+		/* Plan Slide */
+		.plan-slide {
+			background-color: rgba(52, 152, 219, 0.1);
+			padding: 40px;
+			border-radius: 8px;
+		}
+
+		.plan-slide h2 {
+			margin-top: 0;
+		}
+
+		.plan-slide ol {
+			list-style-position: inside;
+			line-height: 2;
+		}
+
+		.plan-slide li {
+			font-size: 1.1em;
+		}
+
+		/* Utilities */
+		.text-center {
+			text-align: center;
+		}
+
+		.highlight {
+			color: var(--accent-color);
+			font-weight: 700;
+		}
+
+		/* MathJax */
+		.MathJax {
+			color: var(--light-text) !important;
+		}
+
+		/* Section separator */
+		.section-separator {
+			height: 2px;
+			background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+			margin: 30px 0;
+			border-radius: 1px;
+		}
+
+		@media (max-width: 768px) {
+			.reveal h1 {
+				font-size: 2em;
+			}
+
+			.reveal h2 {
+				font-size: 1.6em;
+			}
+
+			.exercise-header {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<!-- ========== SLIDE TITRE (modulaire 2D) ========== -->
+			<section>
+				<!-- Niveau 0 : Titre principal -->
+				<section>
+					<div class="slide-title">
+						<h1>Développements et Factorisations</h1>
+						<p style="font-size: 1.3em; margin-top: 30px;">Exercices 2nde</p>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Informations ↓
+					</div>
+				</section>
+
+				<!-- Niveau 1 : Informations établissement -->
+				<section>
+					<h2>Informations</h2>
+					<div style="margin-top: 50px; text-align: center;">
+						<p style="font-size: 1.2em;"><i class="fas fa-school"></i> Lycée Camille Claudel</p>
+						<p style="font-size: 1.1em; margin-top: 30px;"><i class="fas fa-users"></i> Classe de 2nde</p>
+						<p style="font-size: 1em; margin-top: 30px; color: #999;"><i class="fas fa-calendar"></i> Année 2025-2026</p>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Durée ↓
+					</div>
+				</section>
+
+				<!-- Niveau 2 : Durée et organisation -->
+				<section>
+					<h2>Durée et organisation</h2>
+					<div style="margin-top: 50px;">
+						<div class="box-info" style="font-size: 1.1em;">
+							<p><i class="fas fa-clock"></i> <strong>Durée totale :</strong> ~2h</p>
+						</div>
+						<div class="box-success" style="margin-top: 30px; font-size: 1.05em;">
+							<p><strong>11 exercices</strong> répartis en 2 sections :</p>
+							<ul style="margin-top: 15px;">
+								<li>Section 1 : Développements (3 exercices, 25 min)</li>
+								<li>Section 2 : Factorisations (8 exercices, 95 min)</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== SLIDE PLAN (modulaire 2D) ========== -->
+			<section>
+				<!-- Niveau 0 : Plan général -->
+				<section>
+					<h2>Plan de la session</h2>
+					<div style="margin-top: 50px;">
+						<div class="box-info" style="font-size: 1.1em;">
+							<p><strong>2 sections principales</strong></p>
+							<ul style="margin-top: 15px; list-style-type: none;">
+								<li>📐 Section 1 : Développements (3 exercices, 25 min)</li>
+								<li>🔧 Section 2 : Factorisations (8 exercices, 95 min)</li>
+							</ul>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Détail Section 1 ↓
+					</div>
+				</section>
+
+				<!-- Niveau 1 : Détail Section Développement -->
+				<section>
+					<h2>📐 Section 1 : Développements</h2>
+					<div class="plan-slide" style="margin-top: 40px;">
+						<p style="font-size: 1.1em; margin-bottom: 20px;"><strong>3 exercices • 25 minutes</strong></p>
+						<ol style="font-size: 1.05em; line-height: 1.8;">
+							<li>Développements simples (5 min)</li>
+							<li>Développements avec facteurs communs (8 min)</li>
+							<li>Développements avec identités remarquables (12 min)</li>
+						</ol>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Détail Section 2 ↓
+					</div>
+				</section>
+
+				<!-- Niveau 2 : Détail Section Factorisation -->
+				<section>
+					<h2>🔧 Section 2 : Factorisations</h2>
+					<div class="plan-slide" style="margin-top: 40px;">
+						<p style="font-size: 1.1em; margin-bottom: 20px;"><strong>8 exercices • 95 minutes</strong></p>
+						<ol start="4" style="font-size: 0.95em; line-height: 1.6;">
+							<li>Factorisation de base (8 min)</li>
+							<li>Factorisation avec identités remarquables (10 min)</li>
+							<li>Repérer et factoriser par facteur commun (8 min)</li>
+							<li>Factorisation complexe (14 min)</li>
+							<li>Différence de deux carrés (10 min)</li>
+							<li>Reconnaître identités remarquables (6 min)</li>
+							<li>Application Pythagore (5 min)</li>
+							<li>Calcul avec fractions algébriques (20 min)</li>
+						</ol>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-right"></i> Commencer →
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== SECTION 1 : DÉVELOPPEMENTS ========== -->
+			<section>
+				<h2 style="color: var(--primary-color);">Section 1 : Développements</h2>
+				<p style="font-size: 1.1em; margin-top: 30px;">3 exercices • 25 minutes</p>
+				<div class="section-separator"></div>
+				<p style="color: #666;">Utilisez les techniques de développement pour simplifier les expressions algébriques</p>
+				<div class="nav-hint fragment">
+					<i class="fas fa-arrow-down"></i> Exercice 1 ↓
+				</div>
+			</section>
+
+			<!-- ========== EXERCICE 1 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 1</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 5 min</span>
+						<span class="exercise-name">Développements simples</span>
+						<span class="difficulty">★☆☆</span>
+					</div>
+					<div class="statement">
+						<p><strong>Développer et réduire</strong> les expressions suivantes :</p>
+						<ul style="margin-top: 15px;">
+							<li>\(S = -4(-5x+2)\)</li>
+							<li>\(A = -3(2x-3)+4(-22x+5)\)</li>
+							<li>\(M = -x(15x+7)-2(12x+5)\)</li>
+							<li>\(U = 3x(11x+8)-3x(12x+4)\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 1 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer et réduire :</strong> \(S = -4(-5x+2)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[S = -4 \times (-5x) + (-4) \times 2 = 20x - 8\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(S = 20x - 8\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question b) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question b)</span>
+						<span class="question-time">⏱ 1 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer et réduire :</strong> \(A = -3(2x-3)+4(-22x+5)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[\begin{align}
+							A &= -6x + 9 - 88x + 20 \\
+							  &= -94x + 29
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(A = -94x + 29\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question c) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question c)</span>
+						<span class="question-time">⏱ 1,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer et réduire :</strong> \(M = -x(15x+7)-2(12x+5)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[\begin{align}
+							M &= -15x^2 - 7x - 24x - 10 \\
+							  &= -15x^2 - 31x - 10
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(M = -15x^2 - 31x - 10\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question d) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question d)</span>
+						<span class="question-time">⏱ 1,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer et réduire :</strong> \(U = 3x(11x+8)-3x(12x+4)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[\begin{align}
+							U &= 33x^2 + 24x - 36x^2 - 12x \\
+							  &= -3x^2 + 12x
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(U = -3x^2 + 12x\)</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== EXERCICE 2 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 2</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 8 min</span>
+						<span class="exercise-name">Facteurs communs</span>
+						<span class="difficulty">★★☆</span>
+					</div>
+					<div class="statement">
+						<p><strong>Développer et réduire</strong> les expressions suivantes :</p>
+						<ul style="margin-top: 15px; font-size: 0.95em;">
+							<li>\(A = (2x-3)(24x-3)+(2x-3)(-22x+5)\)</li>
+							<li>\(M = (15x+7)(3-x)+(15x+7)(12x+5)\)</li>
+							<li>\(E = (7x-26)(11x+8)-(7x-26)(12x+4)\)</li>
+							<li>\(L = (13x+5)(-5x+2)-(13x+5)(8x-15)\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(A = (2x-3)(24x-3)+(2x-3)(-22x+5)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[\begin{align}
+							A &= 48x^2 - 6x - 72x + 9 - 44x^2 + 10x + 66x - 15 \\
+							  &= 4x^2 - 2x - 6
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(A = 4x^2 - 2x - 6\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question b) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question b)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(M = (15x+7)(3-x)+(15x+7)(12x+5)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[\begin{align}
+							M &= 45x - 15x^2 + 21 - 7x + 180x^2 + 75x + 84x + 35 \\
+							  &= 165x^2 + 197x + 56
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(M = 165x^2 + 197x + 56\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Questions c) et d) ↓
+					</div>
+				</section>
+
+				<section>
+					<h3>Questions c) et d)</h3>
+					<div class="fragment" data-fragment-index="1">
+						<p><strong>c)</strong> \(E = (7x-26)(11x+8)-(7x-26)(12x+4)\)</p>
+						<p>\[\begin{align}
+						E &= 77x^2 + 56x - 286x - 208 - 84x^2 - 28x + 312x + 104 \\
+						  &= -7x^2 + 54x - 104
+						\end{align}\]</p>
+					</div>
+					<div class="fragment" data-fragment-index="2">
+						<p><strong>d)</strong> \(L = (13x+5)(-5x+2)-(13x+5)(8x-15)\)</p>
+						<p>\[\begin{align}
+						L &= -65x^2 + 26x - 25x + 10 - 104x^2 + 195x - 40x + 75 \\
+						  &= -169x^2 + 156x + 85
+						\end{align}\]</p>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== EXERCICE 3 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 3</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 12 min</span>
+						<span class="exercise-name">Identités remarquables</span>
+						<span class="difficulty">★★★</span>
+					</div>
+					<div class="statement">
+						<p><strong>Développer et réduire</strong> en utilisant les identités remarquables :</p>
+						<ul style="margin-top: 15px; font-size: 0.85em;">
+							<li>\(F = (x+2)^2\)</li>
+							<li>\(M = (16x+13)^2\)</li>
+							<li>\(O = (-14x+5)^2\)</li>
+							<li>\(A = (x-3)(x+3)\)</li>
+							<li>\(I = (3x+1)(-7x+1)+(2x+3)^2\)</li>
+							<li>\(R = (3x-14)(5x-1)-(3x-1)^2\)</li>
+							<li>\(E = (8-18x)^2+(16x-3)(8-18x)\)</li>
+							<li>\(C = (8-2x)^2+(2x-11)(2x+11)\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 1 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(F = (x+2)^2\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Identité : \((a+b)^2 = a^2 + 2ab + b^2\)</em></p>
+							<p>\[F = x^2 + 4x + 4\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(F = x^2 + 4x + 4\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question b) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question b)</span>
+						<span class="question-time">⏱ 1 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(M = (16x+13)^2\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Identité : \((a+b)^2 = a^2 + 2ab + b^2\)</em></p>
+							<p>\[\begin{align}
+							M &= (16x)^2 + 2 \times 16x \times 13 + 13^2 \\
+							  &= 256x^2 + 416x + 169
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(M = 256x^2 + 416x + 169\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question c) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question c)</span>
+						<span class="question-time">⏱ 1 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(O = (-14x+5)^2\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Identité : \((a+b)^2 = a^2 + 2ab + b^2\)</em></p>
+							<p>\[\begin{align}
+							O &= (-14x)^2 + 2 \times (-14x) \times 5 + 5^2 \\
+							  &= 196x^2 - 140x + 25
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(O = 196x^2 - 140x + 25\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question d) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question d)</span>
+						<span class="question-time">⏱ 1 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(A = (x-3)(x+3)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Identité : \((a-b)(a+b) = a^2 - b^2\)</em></p>
+							<p>\[A = x^2 - 9\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(A = x^2 - 9\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question e) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question e)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(I = (3x+1)(-7x+1)+(2x+3)^2\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[\begin{align}
+							I &= -21x^2 + 3x - 7x + 1 + 4x^2 + 12x + 9 \\
+							  &= -17x^2 + 8x + 10
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(I = -17x^2 + 8x + 10\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question f) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question f)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(R = (3x-14)(5x-1)-(3x-1)^2\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[\begin{align}
+							R &= 15x^2 - 3x - 70x + 14 - (9x^2 - 6x + 1) \\
+							  &= 15x^2 - 73x + 14 - 9x^2 + 6x - 1 \\
+							  &= 6x^2 - 67x + 13
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(R = 6x^2 - 67x + 13\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question g) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question g)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(E = (8-18x)^2+(16x-3)(8-18x)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><strong>Méthode 1 :</strong> Développer directement</p>
+							<p>\[\begin{align}
+							E &= 64 - 288x + 324x^2 + (128x - 288x^2 - 24 + 54x) \\
+							  &= 36x^2 - 106x + 40
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<p><strong>Méthode 2 :</strong> Factoriser puis développer</p>
+							<p>\[\begin{align}
+							E &= (8-18x)[(8-18x)+(16x-3)] \\
+							  &= (8-18x)(5-2x) = 36x^2 - 106x + 40
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="3">
+							<div class="result-box">\(E = 36x^2 - 106x + 40\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question h) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question h)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Développer :</strong> \(C = (8-2x)^2+(2x-11)(2x+11)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Utiliser \((a-b)^2\) et \((a-b)(a+b)\) :</em></p>
+							<p>\[\begin{align}
+							C &= 64 - 32x + 4x^2 + 4x^2 - 121 \\
+							  &= 8x^2 - 32x - 57
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(C = 8x^2 - 32x - 57\)</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== SECTION 2 : FACTORISATIONS ========== -->
+			<section>
+				<h2 style="color: var(--secondary-color);">Section 2 : Factorisations</h2>
+				<p style="font-size: 1.1em; margin-top: 30px;">8 exercices • 95 minutes</p>
+				<div class="section-separator"></div>
+				<p style="color: #666;">Mettez en évidence les facteurs communs et utilisez les identités remarquables</p>
+				<div class="nav-hint fragment">
+					<i class="fas fa-arrow-down"></i> Exercice 4 ↓
+				</div>
+			</section>
+
+			<!-- ========== EXERCICE 4 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 4</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 8 min</span>
+						<span class="exercise-name">Factorisation de base</span>
+						<span class="difficulty">★☆☆</span>
+					</div>
+					<div class="statement">
+						<p><strong>Factoriser</strong> les expressions suivantes :</p>
+						<ul style="margin-top: 15px; font-size: 0.9em;">
+							<li>\(A = \dfrac{2}{5}x - \dfrac{7}{5}x\)</li>
+							<li>\(B = -\dfrac{7}{12}x^2 - \dfrac{8}{18}x^2\)</li>
+							<li>\(C = \dfrac{1}{3}x^2 - 3x + 6 - \dfrac{2}{3} - \dfrac{5}{6}x^2 - 15\)</li>
+							<li>\(D = -5\sqrt{2} + 10{,}5\sqrt{7} - 15\sqrt{2} - 18{,}3\sqrt{7} + \dfrac{2}{9}\sqrt{2}\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 1 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(A = \dfrac{2}{5}x - \dfrac{7}{5}x\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[A = \left(\dfrac{2}{5} - \dfrac{7}{5}\right)x = -\dfrac{5}{5}x = -x\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(A = -x\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question b) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question b)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(B = -\dfrac{7}{12}x^2 - \dfrac{8}{18}x^2\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[\begin{align}
+							B &= -\dfrac{7}{12}x^2 - \dfrac{4}{9}x^2 \\
+							  &= -\dfrac{21}{36}x^2 - \dfrac{16}{36}x^2 \\
+							  &= -\dfrac{37}{36}x^2
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(B = -\dfrac{37}{36}x^2\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question c) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question c)</span>
+						<span class="question-time">⏱ 3 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(C = \dfrac{1}{3}x^2 - 3x + 6 - \dfrac{2}{3} - \dfrac{5}{6}x^2 - 15\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Étape 1 : Réduire l'expression</em></p>
+							<p>\[\begin{align}
+							C &= \left(\dfrac{2}{6} - \dfrac{5}{6}\right)x^2 - 3x + \left(6 - \dfrac{2}{3} - 15\right) \\
+							  &= -\dfrac{1}{2}x^2 - 3x - \dfrac{29}{3}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<p><em>Étape 2 : Factoriser</em></p>
+							<p>\[C = -\dfrac{1}{6}\left(3x^2 + 18x + 58\right)\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="3">
+							<div class="result-box">\(C = -\dfrac{1}{6}\left(3x^2 + 18x + 58\right)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question d) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question d)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(D = -5\sqrt{2} + 10{,}5\sqrt{7} - 15\sqrt{2} - 18{,}3\sqrt{7} + \dfrac{2}{9}\sqrt{2}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Regrouper par racine :</em></p>
+							<p>\[\begin{align}
+							D &= \left(-5 - 15 + \dfrac{2}{9}\right)\sqrt{2} + (10{,}5 - 18{,}3)\sqrt{7} \\
+							  &= -\dfrac{178}{9}\sqrt{2} - 7{,}8\sqrt{7}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(D = -\dfrac{178}{9}\sqrt{2} - 7{,}8\sqrt{7}\)</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== EXERCICE 5 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 5</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 10 min</span>
+						<span class="exercise-name">Identités remarquables</span>
+						<span class="difficulty">★★☆</span>
+					</div>
+					<div class="statement">
+						<p><strong>Factoriser</strong> les expressions suivantes :</p>
+						<ul style="margin-top: 15px; font-size: 0.9em;">
+							<li>\(A = 7x^2 - 28\)</li>
+							<li>\(B = \dfrac{4}{9}x^2 - \dfrac{49}{81}\)</li>
+							<li>\(C = 18x^2 - 48x + 32\)</li>
+							<li>\(D = \sqrt{3}x^2 + 2\sqrt{3}x + \sqrt{3}\)</li>
+							<li>\(E = 5(3x-2) - \dfrac{5}{6}(3x-2)\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 1,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(A = 7x^2 - 28\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Factoriser par 7 puis utiliser \(a^2-b^2\) :</em></p>
+							<p>\[A = 7(x^2 - 4) = 7(x-2)(x+2)\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(A = 7(x-2)(x+2)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question b) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question b)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(B = \dfrac{4}{9}x^2 - \dfrac{49}{81}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Reconnaître \(a^2-b^2\) :</em></p>
+							<p>\[B = \left(\dfrac{2}{3}x\right)^2 - \left(\dfrac{7}{9}\right)^2 = \left(\dfrac{2}{3}x - \dfrac{7}{9}\right)\left(\dfrac{2}{3}x + \dfrac{7}{9}\right)\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(B = \left(\dfrac{2}{3}x - \dfrac{7}{9}\right)\left(\dfrac{2}{3}x + \dfrac{7}{9}\right)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question c) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question c)</span>
+						<span class="question-time">⏱ 2,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(C = 18x^2 - 48x + 32\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Factoriser par 2 :</em></p>
+							<p>\[\begin{align}
+							C &= 2(9x^2 - 24x + 16) \\
+							  &= 2(3x - 4)^2
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(C = 2(3x - 4)^2\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question d) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question d)</span>
+						<span class="question-time">⏱ 2,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(D = \sqrt{3}x^2 + 2\sqrt{3}x + \sqrt{3}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Factoriser par \(\sqrt{3}\) :</em></p>
+							<p>\[\begin{align}
+							D &= \sqrt{3}(x^2 + 2x + 1) \\
+							  &= \sqrt{3}(x+1)^2
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(D = \sqrt{3}(x+1)^2\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question e) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question e)</span>
+						<span class="question-time">⏱ 1,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(E = 5(3x-2) - \dfrac{5}{6}(3x-2)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Factoriser par \((3x-2)\) :</em></p>
+							<p>\[\begin{align}
+							E &= (3x-2)\left(5 - \dfrac{5}{6}\right) \\
+							  &= (3x-2) \times \dfrac{25}{6} \\
+							  &= \dfrac{25}{6}(3x-2)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(E = \dfrac{25}{6}(3x-2)\)</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== EXERCICE 6 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 6</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 8 min</span>
+						<span class="exercise-name">Repérer facteur commun</span>
+						<span class="difficulty">★★☆</span>
+					</div>
+					<div class="statement">
+						<p><strong>Souligner</strong> le facteur commun puis <strong>écrire</strong> la factorisation :</p>
+						<ul style="margin-top: 15px; font-size: 0.85em;">
+							<li>\(A = (2x-3)(24x-3)+(2x-3)(-22x+5)\)</li>
+							<li>\(M = (15x+7)(3-x)+(15x+7)(12x+5)\)</li>
+							<li>\(U = (7x-26)(11x+8)-(7x-26)(12x+4)\)</li>
+							<li>\(S = (13x+5)(-5x+2)-(13x+5)(8x-15)\)</li>
+							<li>\(E = 8x^2y - 4y^2x + 6xy\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 1,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(A = (2x-3)(24x-3)+(2x-3)(-22x+5)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \((2x-3)\) :</em></p>
+							<p>\[\begin{align}
+							A &= (2x-3)[(24x-3)+(-22x+5)] \\
+							  &= (2x-3)(2x+2) \\
+							  &= 2(2x-3)(x+1)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(A = 2(2x-3)(x+1)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question b) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question b)</span>
+						<span class="question-time">⏱ 1,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(M = (15x+7)(3-x)+(15x+7)(12x+5)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \((15x+7)\) :</em></p>
+							<p>\[\begin{align}
+							M &= (15x+7)[(3-x)+(12x+5)] \\
+							  &= (15x+7)(11x+8)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(M = (15x+7)(11x+8)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question c) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question c)</span>
+						<span class="question-time">⏱ 1,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(U = (7x-26)(11x+8)-(7x-26)(12x+4)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \((7x-26)\) :</em></p>
+							<p>\[\begin{align}
+							U &= (7x-26)[(11x+8)-(12x+4)] \\
+							  &= (7x-26)(-x+4)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(U = (7x-26)(-x+4)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question d) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question d)</span>
+						<span class="question-time">⏱ 1,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(S = (13x+5)(-5x+2)-(13x+5)(8x-15)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \((13x+5)\) :</em></p>
+							<p>\[\begin{align}
+							S &= (13x+5)[(-5x+2)-(8x-15)] \\
+							  &= (13x+5)(-13x+17)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(S = (13x+5)(-13x+17)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question e) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question e)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(E = 8x^2y - 4y^2x + 6xy\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \(2xy\) :</em></p>
+							<p>\[\begin{align}
+							E &= 2xy(4x - 2y + 3)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(E = 2xy(4x - 2y + 3)\)</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== EXERCICE 7 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 7</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 14 min</span>
+						<span class="exercise-name">Factorisation complexe</span>
+						<span class="difficulty">★★★</span>
+					</div>
+					<div class="statement">
+						<p>En mettant en évidence un <strong>facteur commun</strong>, <strong>factoriser</strong> les expressions suivantes :</p>
+						<ul style="margin-top: 15px; font-size: 0.85em;">
+							<li>\(M = (23x+1)(-17x+1)+(23x+1)^2\)</li>
+							<li>\(A = (13x-14)(25x-11)-(13x-14)^2\)</li>
+							<li>\(N = (8-18x)^2-(16x-3)(8-18x)\)</li>
+							<li>\(U = (11-2x)(9-7x)+(2x-11)(11x+2)\)</li>
+							<li>\(E = (6x+23)(6x-5)-(19x-6)(5-6x)\)</li>
+							<li>\(L = (16x+13)(21x-3)+(16x+13)\)</li>
+							<li>\(S = (-14x+5)-(4x-7)(-14x+5)\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(M = (23x+1)(-17x+1)+(23x+1)^2\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \((23x+1)\) :</em></p>
+							<p>\[\begin{align}
+							M &= (23x+1)[(-17x+1)+(23x+1)] \\
+							  &= (23x+1)(6x+2) \\
+							  &= 2(23x+1)(3x+1)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(M = 2(23x+1)(3x+1)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question b) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question b)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(A = (13x-14)(25x-11)-(13x-14)^2\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \((13x-14)\) :</em></p>
+							<p>\[\begin{align}
+							A &= (13x-14)[(25x-11)-(13x-14)] \\
+							  &= (13x-14)(12x+3) \\
+							  &= 3(13x-14)(4x+1)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(A = 3(13x-14)(4x+1)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question c) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question c)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(N = (8-18x)^2-(16x-3)(8-18x)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \((8-18x)\) :</em></p>
+							<p>\[\begin{align}
+							N &= (8-18x)[(8-18x)-(16x-3)] \\
+							  &= (8-18x)(11-34x)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(N = (8-18x)(11-34x)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question d) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question d)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(U = (11-2x)(9-7x)+(2x-11)(11x+2)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Remarque : \((2x-11) = -(11-2x)\)</em></p>
+							<p>\[\begin{align}
+							U &= (11-2x)(9-7x)-(11-2x)(11x+2) \\
+							  &= (11-2x)[(9-7x)-(11x+2)] \\
+							  &= (11-2x)(7-18x)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(U = (11-2x)(7-18x)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question e) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question e)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(E = (6x+23)(6x-5)-(19x-6)(5-6x)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Remarque : \((5-6x) = -(6x-5)\)</em></p>
+							<p>\[\begin{align}
+							E &= (6x+23)(6x-5)+(19x-6)(6x-5) \\
+							  &= (6x-5)[(6x+23)+(19x-6)] \\
+							  &= (6x-5)(25x+17)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(E = (6x-5)(25x+17)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question f) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question f)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(L = (16x+13)(21x-3)+(16x+13)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \((16x+13)\), penser à écrire \(1 = (1)\) :</em></p>
+							<p>\[\begin{align}
+							L &= (16x+13)[(21x-3)+1] \\
+							  &= (16x+13)(21x-2)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(L = (16x+13)(21x-2)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question g) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question g)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(S = (-14x+5)-(4x-7)(-14x+5)\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Le facteur commun est \((-14x+5)\) :</em></p>
+							<p>\[\begin{align}
+							S &= (-14x+5)[1-(4x-7)] \\
+							  &= (-14x+5)(8-4x) \\
+							  &= 4(-14x+5)(2-x)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(S = 4(-14x+5)(2-x)\)</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== EXERCICE 8 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 8</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 10 min</span>
+						<span class="exercise-name">Différence de deux carrés</span>
+						<span class="difficulty">★★★</span>
+					</div>
+					<div class="statement">
+						<p><strong>Factoriser</strong> en mettant en évidence une différence de deux carrés :</p>
+						<ul style="margin-top: 15px; font-size: 0.9em;">
+							<li>\(H = x^2 - 121\)</li>
+							<li>\(E = (x-4)^2 - 36\)</li>
+							<li>\(R = x^2 - 5\)</li>
+							<li>\(T = 25 - (2-x)^2\)</li>
+							<li>\(Z = (x+3)^2 - (2x+4)^2\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 1 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(H = x^2 - 121\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[H = x^2 - 11^2 = (x-11)(x+11)\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(H = (x-11)(x+11)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question b) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question b)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(E = (x-4)^2 - 36\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[\begin{align}
+							E &= (x-4)^2 - 6^2 \\
+							  &= (x-4-6)(x-4+6) \\
+							  &= (x-10)(x+2)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(E = (x-10)(x+2)\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Questions c), d) et e) ↓
+					</div>
+				</section>
+
+				<section>
+					<h3>Questions c), d) et e)</h3>
+					<div class="fragment" data-fragment-index="1">
+						<p><strong>c)</strong> \(R = x^2 - (\sqrt{5})^2 = (x-\sqrt{5})(x+\sqrt{5})\)</p>
+					</div>
+					<div class="fragment" data-fragment-index="2">
+						<p><strong>d)</strong> \(T = 5^2 - (2-x)^2 = (3+x)(7-x)\)</p>
+					</div>
+					<div class="fragment" data-fragment-index="3">
+						<p><strong>e)</strong> \(Z = [(x+3)-(2x+4)][(x+3)+(2x+4)] = (-x-1)(3x+7)\)</p>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== EXERCICE 9 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 9</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 6 min</span>
+						<span class="exercise-name">Trinômes parfaits</span>
+						<span class="difficulty">★★★</span>
+					</div>
+					<div class="statement">
+						<p><strong>Factoriser</strong> en reconnaissant une identité remarquable :</p>
+						<ul style="margin-top: 15px; font-size: 0.9em;">
+							<li>\(T = 9x^2 + 12x + 4\)</li>
+							<li>\(H = x^2 + 169 - 26x\)</li>
+							<li>\(E = 9x^2 - 24x + 16\)</li>
+							<li>\(S = 121x^2 - 22x + 1\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 1 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Factoriser :</strong> \(T = 9x^2 + 12x + 4\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p>\[T = (3x)^2 + 2(3x)(2) + 2^2 = (3x+2)^2\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(T = (3x+2)^2\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Questions b), c) et d) ↓
+					</div>
+				</section>
+
+				<section>
+					<h3>Questions b), c) et d)</h3>
+					<div class="fragment" data-fragment-index="1">
+						<p><strong>b)</strong> \(H = x^2 - 26x + 169 = (x-13)^2\)</p>
+					</div>
+					<div class="fragment" data-fragment-index="2">
+						<p><strong>c)</strong> \(E = 9x^2 - 24x + 16 = (3x-4)^2\)</p>
+					</div>
+					<div class="fragment" data-fragment-index="3">
+						<p><strong>d)</strong> \(S = 121x^2 - 22x + 1 = (11x-1)^2\)</p>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== EXERCICE 10 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 10</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N12-1</span>
+						<span class="estimated-time">⏱ 5 min</span>
+						<span class="exercise-name">Application Pythagore</span>
+						<span class="difficulty">★★★</span>
+					</div>
+					<div class="statement">
+						<p>ABC est un triangle rectangle en A tel que \(BC = x+7\) et \(AC = 5\) où \(x\) désigne un nombre positif.</p>
+						<p style="margin-top: 1.5em;"><strong>Exprimer</strong> \(AB^2\) en fonction de \(x\) sous forme <strong>factorisée</strong>.</p>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Résolution ↓
+					</div>
+				</section>
+
+				<section>
+					<h3>Résolution</h3>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Théorème de Pythagore :</em> \(BC^2 = AB^2 + AC^2\)</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<p>\[\begin{align}
+							AB^2 &= BC^2 - AC^2 \\
+							     &= (x+7)^2 - 5^2
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="3">
+							<p><em>Différence de deux carrés :</em></p>
+							<p>\[\begin{align}
+							AB^2 &= (x+7-5)(x+7+5) \\
+							     &= (x+2)(x+12)
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="4">
+							<div class="result-box">\(AB^2 = (x+2)(x+12)\)</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== EXERCICE 11 ========== -->
+			<section>
+				<section>
+					<h2>Exercice 11</h2>
+					<div class="exercise-header">
+						<span class="exercise-line">C2N22-1</span>
+						<span class="estimated-time">⏱ 20 min</span>
+						<span class="exercise-name">Fractions algébriques</span>
+						<span class="difficulty">★★★</span>
+					</div>
+					<div class="statement">
+						<p><strong>Écrire</strong> sous la forme d'une seule fraction de la manière la plus simple possible :</p>
+						<ul style="margin-top: 15px; font-size: 0.8em;">
+							<li>\(P = \dfrac{1}{x+1} + \dfrac{2}{x-1}\)</li>
+							<li>\(V = \dfrac{5}{2x-1} + 1\)</li>
+							<li>\(L = \dfrac{4}{x} + \dfrac{x-1}{3x+5}\)</li>
+							<li>\(I = \dfrac{x}{1-5x} + \dfrac{2}{x+1}\)</li>
+							<li>\(U = \dfrac{3x-2}{5x-3} - \dfrac{2-3x}{7x-2}\)</li>
+							<li>\(T = \dfrac{5-12x}{3x-5} + \dfrac{-60x+25}{-6x-13}\)</li>
+							<li>\(S = \dfrac{3x+4}{2x-9} \times \dfrac{4x^2-36x+81}{9x^2-16}\)</li>
+							<li>\(E = \dfrac{x^2-2x+1}{(23x-5)^2} \times \dfrac{46x-10}{1-x}\)</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question a) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question a)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Simplifier :</strong> \(P = \dfrac{1}{x+1} + \dfrac{2}{x-1}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Mettre au même dénominateur \((x+1)(x-1)\) :</em></p>
+							<p>\[\begin{align}
+							P &= \dfrac{x-1}{(x+1)(x-1)} + \dfrac{2(x+1)}{(x+1)(x-1)} \\
+							  &= \dfrac{x-1+2x+2}{(x+1)(x-1)} \\
+							  &= \dfrac{3x+1}{x^2-1}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(P = \dfrac{3x+1}{x^2-1}\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question b) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question b)</span>
+						<span class="question-time">⏱ 2 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Simplifier :</strong> \(V = \dfrac{5}{2x-1} + 1\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Mettre au même dénominateur \(2x-1\) :</em></p>
+							<p>\[\begin{align}
+							V &= \dfrac{5 + 2x-1}{2x-1} \\
+							  &= \dfrac{2x+4}{2x-1}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(V = \dfrac{2x+4}{2x-1}\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question c) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question c)</span>
+						<span class="question-time">⏱ 2,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Simplifier :</strong> \(L = \dfrac{4}{x} + \dfrac{x-1}{3x+5}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Mettre au même dénominateur \(x(3x+5)\) :</em></p>
+							<p>\[\begin{align}
+							L &= \dfrac{4(3x+5)}{x(3x+5)} + \dfrac{x(x-1)}{x(3x+5)} \\
+							  &= \dfrac{12x+20+x^2-x}{x(3x+5)} \\
+							  &= \dfrac{x^2+11x+20}{x(3x+5)}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(L = \dfrac{x^2+11x+20}{x(3x+5)}\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question d) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question d)</span>
+						<span class="question-time">⏱ 2,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Simplifier :</strong> \(I = \dfrac{x}{1-5x} + \dfrac{2}{x+1}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Mettre au même dénominateur \((1-5x)(x+1)\) :</em></p>
+							<p>\[\begin{align}
+							I &= \dfrac{x(x+1)}{(1-5x)(x+1)} + \dfrac{2(1-5x)}{(1-5x)(x+1)} \\
+							  &= \dfrac{x^2+x+2-10x}{(1-5x)(x+1)} \\
+							  &= \dfrac{x^2-9x+2}{(1-5x)(x+1)}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(I = \dfrac{x^2-9x+2}{(1-5x)(x+1)}\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question e) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question e)</span>
+						<span class="question-time">⏱ 3 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Simplifier :</strong> \(U = \dfrac{3x-2}{5x-3} - \dfrac{2-3x}{7x-2}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Mettre au même dénominateur \((5x-3)(7x-2)\) :</em></p>
+							<p style="font-size: 0.9em;">\[\begin{align}
+							U &= \dfrac{(3x-2)(7x-2)-(2-3x)(5x-3)}{(5x-3)(7x-2)} \\
+							  &= \dfrac{21x^2-20x+4-(10x-6-15x^2+9x)}{(5x-3)(7x-2)} \\
+							  &= \dfrac{36x^2-39x+10}{(5x-3)(7x-2)}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(U = \dfrac{36x^2-39x+10}{(5x-3)(7x-2)}\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question f) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question f)</span>
+						<span class="question-time">⏱ 3 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Simplifier :</strong> \(T = \dfrac{5-12x}{3x-5} + \dfrac{-60x+25}{-6x-13}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Remarque : \(-60x+25 = -5(12x-5)\) et \(3x-5 = -(5-3x)\)</em></p>
+							<p style="font-size: 0.85em;">\[\begin{align}
+							T &= \dfrac{12x-5}{5-3x} + \dfrac{5(12x-5)}{6x+13} \\
+							  &= \dfrac{(12x-5)[(6x+13)+5(5-3x)]}{(5-3x)(6x+13)} \\
+							  &= \dfrac{(12x-5)(38-9x)}{(5-3x)(6x+13)}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(T = \dfrac{(12x-5)(38-9x)}{(5-3x)(6x+13)}\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question g) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question g)</span>
+						<span class="question-time">⏱ 2,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Simplifier :</strong> \(S = \dfrac{3x+4}{2x-9} \times \dfrac{4x^2-36x+81}{9x^2-16}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Factoriser puis simplifier :</em></p>
+							<p>\[\begin{align}
+							S &= \dfrac{3x+4}{2x-9} \times \dfrac{(2x-9)^2}{(3x-4)(3x+4)} \\
+							  &= \dfrac{2x-9}{3x-4}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(S = \dfrac{2x-9}{3x-4}\)</div>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Question h) ↓
+					</div>
+				</section>
+
+				<section>
+					<div class="question-header">
+						<span class="question-number">Question h)</span>
+						<span class="question-time">⏱ 2,5 min</span>
+					</div>
+					<div class="question-recall">
+						<p><strong>Simplifier :</strong> \(E = \dfrac{x^2-2x+1}{(23x-5)^2} \times \dfrac{46x-10}{1-x}\)</p>
+					</div>
+					<div class="resolution">
+						<div class="fragment" data-fragment-index="1">
+							<p><em>Factoriser puis simplifier :</em></p>
+							<p>\[\begin{align}
+							E &= \dfrac{(x-1)^2}{(23x-5)^2} \times \dfrac{2(23x-5)}{-(x-1)} \\
+							  &= \dfrac{-2(x-1)}{23x-5}
+							\end{align}\]</p>
+						</div>
+						<div class="fragment" data-fragment-index="2">
+							<div class="result-box">\(E = \dfrac{-2(x-1)}{23x-5}\)</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ========== CONCLUSION ========== -->
+			<!-- ========== SLIDE CONCLUSION (modulaire 2D) ========== -->
+			<section>
+				<!-- Niveau 0 : Conclusion générale -->
+				<section>
+					<h2 style="color: var(--accent-color);">Conclusion</h2>
+					<div style="margin-top: 50px; text-align: center;">
+						<div class="box-success" style="font-size: 1.2em;">
+							<p><i class="fas fa-check-circle"></i> <strong>Vous avez complété 11 exercices !</strong></p>
+						</div>
+						<p style="margin-top: 40px; font-size: 1.1em;">Vous maîtrisez maintenant :</p>
+						<ul style="margin-top: 20px; list-style-type: none; font-size: 1.05em;">
+							<li>✅ Les techniques de développement</li>
+							<li>✅ Les techniques de factorisation</li>
+							<li>✅ Les identités remarquables</li>
+							<li>✅ Les fractions algébriques</li>
+						</ul>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Récap développement ↓
+					</div>
+				</section>
+
+				<!-- Niveau 1 : Récap Développement -->
+				<section>
+					<h2 style="color: var(--primary-color);">Bilan : Développement</h2>
+					<div class="plan-slide" style="margin-top: 40px;">
+						<p style="font-size: 1.1em; margin-bottom: 30px;"><strong>3 techniques maîtrisées :</strong></p>
+						<div class="box-info" style="text-align: left; margin-bottom: 20px;">
+							<h4>1. Distributivité simple</h4>
+							<p style="margin-top: 10px;">Développer \(a(b+c) = ab + ac\)</p>
+							<p style="font-size: 0.9em; color: #666;">Exemple : \(-4(-5x+2) = 20x-8\)</p>
+						</div>
+						<div class="box-info" style="text-align: left; margin-bottom: 20px;">
+							<h4>2. Facteurs communs</h4>
+							<p style="margin-top: 10px;">Développer \((a+b)(c+d)\)</p>
+							<p style="font-size: 0.9em; color: #666;">Avec factorisation préalable possible</p>
+						</div>
+						<div class="box-info" style="text-align: left;">
+							<h4>3. Identités remarquables</h4>
+							<p style="margin-top: 10px;">\((a+b)^2\), \((a-b)^2\), \((a-b)(a+b)\)</p>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Récap factorisation ↓
+					</div>
+				</section>
+
+				<!-- Niveau 2 : Récap Factorisation -->
+				<section>
+					<h2 style="color: var(--secondary-color);">Bilan : Factorisation</h2>
+					<div class="plan-slide" style="margin-top: 40px;">
+						<p style="font-size: 1.1em; margin-bottom: 30px;"><strong>3 techniques maîtrisées :</strong></p>
+						<div class="box-success" style="text-align: left; margin-bottom: 20px;">
+							<h4>1. Réduction et regroupement</h4>
+							<p style="margin-top: 10px;">Mettre en évidence les facteurs communs</p>
+							<p style="font-size: 0.9em; color: #666;">Exemple : \(7x^2-28 = 7(x^2-4)\)</p>
+						</div>
+						<div class="box-success" style="text-align: left; margin-bottom: 20px;">
+							<h4>2. Différence de deux carrés</h4>
+							<p style="margin-top: 10px;">\(a^2-b^2 = (a-b)(a+b)\)</p>
+							<p style="font-size: 0.9em; color: #666;">Exemple : \(x^2-121 = (x-11)(x+11)\)</p>
+						</div>
+						<div class="box-success" style="text-align: left;">
+							<h4>3. Trinômes parfaits</h4>
+							<p style="margin-top: 10px;">Reconnaître \((a±b)^2 = a^2 ± 2ab + b^2\)</p>
+							<p style="font-size: 0.9em; color: #666;">Exemple : \(9x^2+12x+4 = (3x+2)^2\)</p>
+						</div>
+					</div>
+					<div class="nav-hint fragment">
+						<i class="fas fa-arrow-down"></i> Pour aller plus loin ↓
+					</div>
+				</section>
+
+				<!-- Niveau 3 : Conseils et pratique -->
+				<section>
+					<h2>Pour progresser</h2>
+					<div style="margin-top: 50px;">
+						<div class="box-warning">
+							<h3 style="margin-top: 0;"><i class="fas fa-lightbulb"></i> Conseils pour maîtriser le calcul littéral</h3>
+							<p style="margin-top: 20px; font-size: 1.05em;">Points clés à retenir :</p>
+							<ul style="margin-top: 15px; text-align: left; font-size: 0.95em;">
+								<li><strong>Développer :</strong> Penser à la distributivité et aux identités remarquables</li>
+								<li><strong>Factoriser :</strong> Chercher d'abord les facteurs communs</li>
+								<li><strong>Fractions :</strong> Toujours factoriser avant de simplifier</li>
+								<li><strong>Vérification :</strong> Tester avec des valeurs numériques</li>
+							</ul>
+						</div>
+						<p style="margin-top: 40px; font-size: 1em; color: var(--primary-color);">
+							<i class="fas fa-graduation-cap"></i> La pratique régulière est la clé de la réussite !
+						</p>
+					</div>
+				</section>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/math/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/zoom/zoom.min.js"></script>
+
+	<script>
+		Reveal.initialize({
+			// Navigation 2D pour structure verticale
+			navigationMode: 'grid',
+			controls: true,
+			controlsLayout: 'edges',
+			controlsBackArrows: 'visible',
+			controlsTutorial: true,
+
+			// Progression
+			progress: true,
+			slideNumber: 'h.v',
+			hash: true,
+
+			// Transitions
+			transition: 'slide',
+			transitionSpeed: 'default',
+
+			// Math (MathJax)
+			math: {
+				mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+				config: 'TeX-AMS_HTML-full',
+				tex: {
+					inlineMath: [['\\(', '\\)']],
+					displayMath: [['\\[', '\\]']]
+				}
+			},
+
+			// Plugins
+			plugins: [RevealMath, RevealNotes, RevealHighlight, RevealZoom]
+		});
+
+		// Force retour au niveau 0 lors de navigation horizontale
+		let lastHorizontalIndex = 0;
+
+		Reveal.on('slidechanged', event => {
+			const currentH = event.indexh;
+			const currentV = event.indexv;
+
+			if (currentH !== lastHorizontalIndex && currentV !== 0) {
+				Reveal.slide(currentH, 0);
+			}
+
+			lastHorizontalIndex = currentH;
+		});
+
+		// Système de zoom avec CTRL +/-
+		let currentZoom = 100; // Pourcentage de zoom par défaut
+		const minZoom = 70;
+		const maxZoom = 200;
+		const zoomStep = 10;
+
+		document.addEventListener('keydown', function(e) {
+			// CTRL + Plus (ou =)
+			if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '=')) {
+				e.preventDefault();
+				if (currentZoom < maxZoom) {
+					currentZoom += zoomStep;
+					applyZoom();
+				}
+			}
+			// CTRL + Moins
+			else if ((e.ctrlKey || e.metaKey) && (e.key === '-' || e.key === '_')) {
+				e.preventDefault();
+				if (currentZoom > minZoom) {
+					currentZoom -= zoomStep;
+					applyZoom();
+				}
+			}
+			// CTRL + 0 (réinitialiser)
+			else if ((e.ctrlKey || e.metaKey) && e.key === '0') {
+				e.preventDefault();
+				currentZoom = 100;
+				applyZoom();
+			}
+		});
+
+		function applyZoom() {
+			document.querySelector('.reveal').style.fontSize = currentZoom + '%';
+			// Afficher temporairement le niveau de zoom
+			showZoomLevel();
+		}
+
+		function showZoomLevel() {
+			// Créer ou récupérer l'indicateur de zoom
+			let indicator = document.getElementById('zoom-indicator');
+			if (!indicator) {
+				indicator = document.createElement('div');
+				indicator.id = 'zoom-indicator';
+				indicator.style.cssText = `
+					position: fixed;
+					top: 20px;
+					left: 50%;
+					transform: translateX(-50%);
+					background: rgba(0, 0, 0, 0.8);
+					color: white;
+					padding: 10px 20px;
+					border-radius: 8px;
+					font-size: 16px;
+					z-index: 9999;
+					transition: opacity 0.3s;
+				`;
+				document.body.appendChild(indicator);
+			}
+
+			indicator.textContent = `Zoom : ${currentZoom}%`;
+			indicator.style.opacity = '1';
+
+			// Masquer après 1 seconde
+			setTimeout(() => {
+				indicator.style.opacity = '0';
+			}, 1000);
+		}
+	</script>
+</body>
+</html>

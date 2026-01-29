@@ -500,13 +500,38 @@ export default function ClaudeCodeInstallPage() {
                 <div>
                   <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
                     <Terminal className="w-5 h-5 text-cosmic-400" />
-                    Installer Claude Code CLI
+                    Installer Claude Code
                   </h4>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Ouvrez votre terminal et exécutez la commande suivante :
+                    Choisissez la méthode d'installation adaptée à votre système :
                   </p>
 
-                  <CodeBlock code="npm install -g @anthropic-ai/claude-code" language="bash" />
+                  <div className="space-y-4">
+                    {/* macOS / Linux / WSL */}
+                    <div className="p-4 bg-slate-950/50 rounded-lg border border-slate-800">
+                      <p className="text-sm font-semibold text-cosmic-300 mb-2">macOS / Linux / WSL :</p>
+                      <CodeBlock code="curl -fsSL https://claude.ai/install.sh | bash" language="bash" />
+                    </div>
+
+                    {/* Windows PowerShell */}
+                    <div className="p-4 bg-slate-950/50 rounded-lg border border-slate-800">
+                      <p className="text-sm font-semibold text-cosmic-300 mb-2">Windows PowerShell :</p>
+                      <CodeBlock code="irm https://claude.ai/install.ps1 | iex" language="powershell" />
+                    </div>
+
+                    {/* Windows CMD */}
+                    <div className="p-4 bg-slate-950/50 rounded-lg border border-slate-800">
+                      <p className="text-sm font-semibold text-cosmic-300 mb-2">Windows CMD :</p>
+                      <CodeBlock code="curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd" language="batch" />
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2 bg-emerald-950/30 border border-emerald-800 rounded-lg p-3 mt-4">
+                    <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-emerald-300">
+                      Les installations natives se mettent à jour automatiquement en arrière-plan.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -553,12 +578,21 @@ export default function ClaudeCodeInstallPage() {
                     Testez que tout fonctionne :
                   </p>
 
-                  <CodeBlock code="claude-code --version" language="bash" />
+                  <CodeBlock code="claude --version" language="bash" />
 
                   <div className="flex items-start gap-2 bg-emerald-950/30 border border-emerald-800 rounded-lg p-3 mt-3">
                     <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                     <p className="text-sm text-emerald-300">
                       Si vous voyez le numéro de version, c'est bon !
+                    </p>
+                  </div>
+
+                  <div className="mt-4 p-3 bg-cosmic-950/30 border border-cosmic-800 rounded-lg">
+                    <p className="text-sm text-muted-foreground">
+                      <strong className="text-cosmic-300">Documentation officielle :</strong>{" "}
+                      <a href="https://code.claude.com/docs/" target="_blank" rel="noopener noreferrer" className="text-cosmic-400 hover:underline inline-flex items-center gap-1">
+                        code.claude.com/docs <ExternalLink className="w-3 h-3" />
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -607,40 +641,34 @@ export default function ClaudeCodeInstallPage() {
       </section>
 
       {/* Personnaliser */}
-      <section className="glass-card rounded-xl p-8 space-y-6">
+      <section className="glass-card rounded-xl p-8 space-y-6 border-2 border-nebula-500/30">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg nebula-gradient flex items-center justify-center">
-            <Play className="w-5 h-5 text-white" />
+            <Settings className="w-5 h-5 text-white" />
           </div>
-          <h2 className="text-2xl font-bold">Personnalisation</h2>
+          <h2 className="text-2xl font-bold">Personnalisation avec mes outils</h2>
         </div>
 
         <div className="space-y-4">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Lancer VS Code</h3>
-            <p className="text-sm text-muted-foreground mb-3">
-              Ouvrez, dans VS Code, votre répertoire de travail principal ( ou de tests ).
-            </p>
-            <p>
-              Collez le contenu du fichier ".claude" à la racine de ce répertoire.
-            </p>
-            <p className="text-sm text-muted-foreground mt-3">
-              Coller également le contenu du fichier "CLAUDE.md"
-            </p>
-          </div>
+          <p className="text-muted-foreground">
+            Une fois Claude Code installé, vous pouvez le configurer avec mes outils personnalisés
+            (agents, skills, commandes) pour automatiser la création de vos ressources pédagogiques.
+          </p>
 
-          <div className="border-t border-border pt-4">
-            <h3 className="text-lg font-semibold mb-2">Ouvrir un terminal "cmd prompt"</h3>
-            <div className="bg-slate-950 rounded-lg p-4 font-mono text-sm border border-slate-800 space-y-2">
-              <div>
-                <span className="text-cosmic-300">claude</span>
-              </div>
-              <div className="text-muted-foreground">
-                <span className="text-cosmic-300">Est-ce que tu peux me montrer rapidement ce dont tu es capable avec tes skills disponibles ?</span>
-              </div>
-              <div className="text-muted-foreground italic">
-                [Claude se chargera de vous expliquer le fonctionnement de ses fonctionnalités.]
-              </div>
+          <div className="flex items-start gap-3 p-4 rounded-lg bg-nebula-950/30 border border-nebula-800">
+            <Settings className="w-5 h-5 text-nebula-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold mb-1">Configuration de Claude Code</h4>
+              <p className="text-sm text-muted-foreground mb-3">
+                Téléchargez et installez mes configurations personnalisées pour profiter des agents,
+                skills et commandes spécialisés pour l'enseignement.
+              </p>
+              <Button asChild variant="nebula" size="sm">
+                <Link href="/claude-code/tutorials/claude-code-config" className="flex items-center gap-2" prefetch={false}>
+                  <ArrowRight className="w-4 h-4" />
+                  Voir le tutoriel de configuration
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -660,7 +688,7 @@ export default function ClaudeCodeInstallPage() {
 
           <div className="grid md:grid-cols-3 gap-4">
             <a
-              href="https://docs.claude.com/en/docs/claude-code/overview"
+              href="https://code.claude.com/docs/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
@@ -668,7 +696,7 @@ export default function ClaudeCodeInstallPage() {
               <BookOpen className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors flex items-center gap-1">
-                  Documentation complète
+                  Documentation Claude Code
                   <ExternalLink className="w-3 h-3" />
                 </h4>
                 <p className="text-xs text-muted-foreground">
@@ -678,7 +706,7 @@ export default function ClaudeCodeInstallPage() {
             </a>
 
             <a
-              href="https://docs.claude.com/en/resources/overview"
+              href="https://docs.anthropic.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
@@ -686,9 +714,12 @@ export default function ClaudeCodeInstallPage() {
               <Code2 className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors flex items-center gap-1">
-                  Ressources anthropic
+                  Documentation Anthropic
                   <ExternalLink className="w-3 h-3" />
                 </h4>
+                <p className="text-xs text-muted-foreground">
+                  API et ressources
+                </p>
               </div>
             </a>
 
@@ -701,9 +732,12 @@ export default function ClaudeCodeInstallPage() {
               <Sparkles className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors flex items-center gap-1">
-                  Tutoriels d'apptrentissage anthropic
+                  Tutoriels Anthropic
                   <ExternalLink className="w-3 h-3" />
                 </h4>
+                <p className="text-xs text-muted-foreground">
+                  Guides d'apprentissage
+                </p>
               </div>
             </a>
           </div>
@@ -752,27 +786,32 @@ export default function ClaudeCodeInstallPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <p className="text-sm font-semibold text-cosmic-300">Lancer Claude Code</p>
-            <CodeBlock code="claude-code" language="bash" />
+            <CodeBlock code="claude" language="bash" />
           </div>
 
           <div className="space-y-2">
             <p className="text-sm font-semibold text-cosmic-300">Voir l'aide</p>
-            <CodeBlock code="claude-code --help" language="bash" />
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-sm font-semibold text-cosmic-300">Mettre à jour</p>
-            <CodeBlock code="npm update -g @anthropic-ai/claude-code" language="bash" />
+            <CodeBlock code="claude --help" language="bash" />
           </div>
 
           <div className="space-y-2">
             <p className="text-sm font-semibold text-cosmic-300">Vérifier la version</p>
-            <CodeBlock code="claude-code --version" language="bash" />
+            <CodeBlock code="claude --version" language="bash" />
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-sm font-semibold text-cosmic-300">Vérifier l'installation</p>
+            <CodeBlock code="claude doctor" language="bash" />
           </div>
 
           <div className="space-y-2">
             <p className="text-sm font-semibold text-cosmic-300">Se déconnecter</p>
-            <CodeBlock code="claude-code logout" language="bash" />
+            <CodeBlock code="claude logout" language="bash" />
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-sm font-semibold text-cosmic-300">Mettre à jour (si installé via npm)</p>
+            <CodeBlock code="npm update -g @anthropic-ai/claude-code" language="bash" />
           </div>
         </div>
       </section>
@@ -838,8 +877,8 @@ export default function ClaudeCodeInstallPage() {
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-6">
               <li>Vérifiez que votre abonnement est actif</li>
               <li>Essayez de vous déconnecter puis reconnecter :
-                <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300 ml-1">claude-code logout</code> puis
-                <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300 ml-1">claude-code auth</code>
+                <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300 ml-1">claude logout</code> puis relancez
+                <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300 ml-1">claude</code>
               </li>
             </ul>
           </div>
@@ -851,9 +890,9 @@ export default function ClaudeCodeInstallPage() {
               Commande non trouvée
             </h3>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-6">
-              <li>Vérifiez que Node.js est installé : <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">node --version</code></li>
-              <li>Réinstallez Claude Code : <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">npm install -g @anthropic-ai/claude-code</code></li>
-              <li>Redémarrez votre terminal</li>
+              <li>Redémarrez votre terminal après l'installation</li>
+              <li>Vérifiez l'installation : <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">claude doctor</code></li>
+              <li>Réinstallez avec la méthode native (voir étape 2 ci-dessus)</li>
             </ul>
           </div>
 
@@ -866,7 +905,7 @@ export default function ClaudeCodeInstallPage() {
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-6">
               <li>Soyez plus précis dans vos demandes</li>
               <li>Vérifiez que vous avez des tokens disponibles</li>
-              <li>Consultez les logs : <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">claude-code --verbose</code></li>
+              <li>Consultez la documentation : <a href="https://code.claude.com/docs/" target="_blank" rel="noopener noreferrer" className="text-cosmic-400 hover:underline">code.claude.com/docs</a></li>
             </ul>
           </div>
         </div>

@@ -1,0 +1,51 @@
+ Convexité.
+ Calcul intégral.
+Inférence bayésienne
+Descriptif
+Le raisonnement bayésien est à la base de nombreux algorithmes de décision et se retrouve
+dans de nombreux domaines pratiques : sport, médecine, justice, etc. où l’on doit raisonner à
+partir de probabilités et d’informations incomplètes. Il s’agit ici de décrire et mettre en œuvre
+les principes du calcul utilisant des probabilités conditionnelles et notamment la formule de
+Bayes pour l’inversion des conditionnements.
+La question d’intérêt est représentée par un événement A de probabilité P(A), dite probabilité
+a priori. L’observation d’un événement B conduit à remplacer la probabilité a priori P(A) par
+la probabilité conditionnelle P (A), dite a posteriori. La formule de Bayes P (A) =
+PA(B)P(A)
+B B
+P(B)
+permet d’exprimer la probabilité a posteriori lorsque l’expression du second membre est
+évaluable. Elle montre la distinction essentielle entre P (A) et P (B). Bien comprendre cette
+B A
+distinction est un objectif majeur.
+Problèmes possibles
+ Tests binaires pour le diagnostic médical. Notion de vrais/faux positifs et négatifs,
+sensibilité, spécificité, valeurs prédictives positive (diagnostique) et négative, lien
+avec les probabilités conditionnelles. Tests de dépistage de sensibilité et de
+spécificité données : étude des valeurs prédictives en fonction de la proportion de
+malades et interprétation.
+ Exemples de problèmes du type : « De quelle urne vient la boule ? ».
+Contenus associés
+ Probabilités conditionnelles, inversion du conditionnement, formule de Bayes.
+ Étude de fonction.
+Répétition d’expériences indépendantes, échantillonnage
+Descriptif
+Ce thème vise à illustrer le modèle probabiliste de la répétition d’expériences aléatoires
+indépendantes et de l’échantillonnage ainsi que ses applications à l’inférence statistique, où
+il s’agit, à partir de l’observation d’un échantillon, d’induire des propriétés de la population
+dont il est issu.
+Le schéma de Bernoulli et la loi binomiale forment un cas fondamental, où il s’agit de
+considérer d’une part des probabilités ou proportions théoriques, et d’autre part des
+fréquences observées.
+La réalisation de simulations est indispensable. C’est l’occasion de montrer l’intérêt de la loi
+uniforme sur [0,1] pour simuler d’autres lois parmi lesquelles les lois uniformes discrètes et
+les lois binomiales.
+Problèmes possibles
+ Tirages aléatoires avec remise d’une boule dans une urne contenant des boules de
+deux couleurs différentes. Simulations. Calculs de probabilité.
+ Test d’une pièce, par construction d’un intervalle I centré en n/2 tel que
+1
+P(X ∈ I ) ⩾ 1 - α où X est une variable aléatoire suivant la loi binomiale ℬ(n, )
+2
+ Surréservation. Construction d’un intervalle I de la forme [0,k] tel que P(X ∈ I ) ⩾ 1 - α
+où X est une variable aléatoire suivant la loi binomiale ℬ(n,p).
+© Ministère de l'Éducation nationale et de la Jeunesse > www.education.gouv.fr

@@ -1,0 +1,255 @@
+{
+  "source": {
+    "pdf": "premiere_ens_sci.pdf",
+    "page": 12,
+    "text_length": 1847,
+    "section": "4.1 — Son et musique"
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "1ES-TR-601",
+      "intitule": "Reconnaitre une fonction sinusoidale comme representation d'un son pur",
+      "fingerprint": "reconnaitre_fonction_sinusoidale_son_pur",
+      "niveau": "1ES",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Fonctions sinusoidales et applications",
+      "type": "contenu",
+      "description_detaillee": "Comprendre qu'un son pur est associe a un signal dependant du temps de facon sinusoidale. Identifier la representation mathematique d'un son pur par une fonction sinus ou cosinus.",
+      "formulation_bo": "Un son pur est associe a un signal dependant du temps de facon sinusoidale.",
+      "connaissances_associees": [
+        "definition fonction sinusoidale",
+        "signal periodique",
+        "notion de temps"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "1ES-AN-602",
+      "intitule": "Utiliser un logiciel pour visualiser le spectre d'un son",
+      "fingerprint": "utiliser_logiciel_visualiser_spectre_son",
+      "niveau": "1ES",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Representations graphiques et interpretation",
+      "type": "capacite",
+      "description_detaillee": "Maitriser l'utilisation d'un logiciel permettant de visualiser le spectre d'un son. Savoir interpreter les representations graphiques du spectre en frequences.",
+      "formulation_bo": "Utiliser un logiciel permettant de visualiser le spectre d'un son.",
+      "connaissances_associees": [
+        "spectre d'un son",
+        "representation graphique",
+        "logiciels d'analyse spectrale"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "1ES-AL-603",
+      "intitule": "Decomposer un signal periodique en somme de signaux sinusoidaux",
+      "fingerprint": "decomposer_signal_periodique_somme_sinusoidaux",
+      "niveau": "1ES",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Decompositions et combinaisons",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la decomposition d'un signal periodique de frequence f en une somme de signaux sinusoidaux de frequences multiples entieres de f. Identifier la frequence fondamentale et les harmoniques.",
+      "formulation_bo": "Un signal periodique de frequence f se decompose en une somme de signaux sinusoidaux de frequences multiples entieres de f.",
+      "connaissances_associees": [
+        "signal periodique",
+        "frequence fondamentale",
+        "harmoniques",
+        "multiples entiers"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "1ES-NB-604",
+      "intitule": "Identifier la frequence fondamentale et les harmoniques d'un son compose",
+      "fingerprint": "identifier_frequence_fondamentale_harmoniques",
+      "niveau": "1ES",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Proprietes de frequences et ratios",
+      "type": "capacite",
+      "description_detaillee": "Pour un son compose, identifier la frequence fondamentale (plus petite frequence) et les harmoniques (multiples entiers de la frequence fondamentale). Savoir distinguer ces differentes composantes.",
+      "formulation_bo": "f est appelee frequence fondamentale, les autres frequences sont appelees harmoniques.",
+      "connaissances_associees": [
+        "son compose",
+        "frequence fondamentale",
+        "harmoniques",
+        "multiples entiers de frequence"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "1ES-GR-605",
+      "intitule": "Interpre ter l'intensite sonore et son niveau en decibels",
+      "fingerprint": "interpreter_intensite_sonore_decibels",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et echelles logarithmiques",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que l'intensite est la puissance par unite de surface transportee par une onde sonore. Savoir que le niveau d'intensite sonore est exprime en decibels selon une echelle logarithmique.",
+      "formulation_bo": "La puissance par unite de surface transportee par une onde sonore est quantifiee par son intensite. Son niveau d'intensite sonore est exprime en decibels selon une echelle logarithmique.",
+      "connaissances_associees": [
+        "puissance",
+        "unite de surface",
+        "decibels",
+        "echelle logarithmique",
+        "onde sonore"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "1ES-GR-606",
+      "intitule": "Utiliser l'echelle logarithmique pour relier l'intensite sonore au niveau d'intensite",
+      "fingerprint": "utiliser_echelle_logarithmique_intensite_sonore",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et echelles logarithmiques",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser l'echelle logarithmique de niveau d'intensite sonore pour convertir ou relier les valeurs d'intensite sonore (en W/m²) aux niveaux d'intensite sonore (en dB).",
+      "formulation_bo": "Utiliser l'echelle logarithmique de niveau d'intensite sonore pour relier l'intensite sonore au niveau d'intensite sonore.",
+      "connaissances_associees": [
+        "echelle logarithmique",
+        "decibels",
+        "intensite sonore",
+        "fonction logarithme"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "1ES-TR-607",
+      "intitule": "Relier la frequence fondamentale d'une corde vibrante a ses caracteristiques",
+      "fingerprint": "relier_frequence_fondamentale_corde_caracteristiques",
+      "niveau": "1ES",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Applications des fonctions periodiques",
+      "type": "capacite",
+      "description_detaillee": "Etablir qualitativement la relation entre la frequence fondamentale du signal emis par une corde vibrante et ses caracteristiques (longueur, tension, masse par unite de longueur). Comprendre les variations qualitatives.",
+      "formulation_bo": "Relier qualitativement la frequence fondamentale du signal emis aux caracteristiques d'une corde vibrante.",
+      "connaissances_associees": [
+        "frequence fondamentale",
+        "corde vibrante",
+        "longueur de corde",
+        "tension",
+        "masse lineique"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "1ES-AN-608",
+      "intitule": "Identifier deux notes a l'octave a partir de leur spectre",
+      "fingerprint": "identifier_notes_octave_spectre",
+      "niveau": "1ES",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Lecture et interpretation de spectres",
+      "type": "capacite",
+      "description_detaillee": "A partir de la representation spectrale de deux sons, savoir identifier si ces deux notes sont a l'octave l'une de l'autre. Verifier que les frequences sont dans le rapport 2/1.",
+      "formulation_bo": "Identifier deux notes a l'octave a l'aide de leur spectre.",
+      "connaissances_associees": [
+        "octave",
+        "spectre",
+        "frequence fondamentale",
+        "rapport de frequences",
+        "note musicale"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "1ES-NB-609",
+      "intitule": "Comprendre le rapport de frequences pour definir un intervalle musical",
+      "fingerprint": "comprendre_rapport_frequences_intervalle_musical",
+      "niveau": "1ES",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Rapports et proportions",
+      "type": "contenu",
+      "description_detaillee": "Savoir que en musique, un intervalle entre deux sons est defini par le rapport de leurs frequences fondamentales. Utiliser cette definition pour comparer les sons.",
+      "formulation_bo": "En musique, un intervalle entre deux sons est defini par le rapport de leurs frequences fondamentales.",
+      "connaissances_associees": [
+        "intervalle musical",
+        "frequence fondamentale",
+        "rapport",
+        "proportion"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "1ES-NB-610",
+      "intitule": "Reconnaître la relation d'octave entre deux notes (rapport 2/1 de frequences)",
+      "fingerprint": "reconnaitre_octave_rapport_2_1_frequences",
+      "niveau": "1ES",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Rapports et proportions",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que deux sons dont les frequences sont dans le rapport 2/1 correspondent a une meme note a deux hauteurs differentes (octave). Identifier cette relation comme caracterisant l'intervalle d'octave.",
+      "formulation_bo": "Deux sons dont les frequences sont dans le rapport 2/1 correspondent a une meme note, a deux hauteurs differentes. L'intervalle qui les separe s'appelle une octave.",
+      "connaissances_associees": [
+        "octave",
+        "frequence",
+        "rapport 2/1",
+        "note musicale",
+        "hauteur sonore",
+        "intervalle musical"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 12
+      }
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "by_type": {
+      "contenu": 4,
+      "capacite": 6
+    },
+    "by_domaine": {
+      "TRIGONOMETRIE": 2,
+      "ANALYSE": 2,
+      "ALGEBRE": 1,
+      "NOMBRES": 3,
+      "GRANDEURS": 2
+    },
+    "fingerprints": [
+      "reconnaitre_fonction_sinusoidale_son_pur",
+      "utiliser_logiciel_visualiser_spectre_son",
+      "decomposer_signal_periodique_somme_sinusoidaux",
+      "identifier_frequence_fondamentale_harmoniques",
+      "interpreter_intensite_sonore_decibels",
+      "utiliser_echelle_logarithmique_intensite_sonore",
+      "relier_frequence_fondamentale_corde_caracteristiques",
+      "identifier_notes_octave_spectre",
+      "comprendre_rapport_frequences_intervalle_musical",
+      "reconnaitre_octave_rapport_2_1_frequences"
+    ]
+  }
+}

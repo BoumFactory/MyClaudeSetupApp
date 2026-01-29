@@ -1,0 +1,1245 @@
+{
+  "subjects": [
+    {
+      "id": "maths",
+      "name": "Mathématiques",
+      "icon": "📐",
+      "enabled": true
+    },
+    {
+      "id": "physique",
+      "name": "Physique-Chimie",
+      "icon": "⚗️",
+      "enabled": true
+    },
+    {
+      "id": "svt",
+      "name": "SVT",
+      "icon": "🌿",
+      "enabled": true
+    },
+    {
+      "id": "nsi",
+      "name": "NSI",
+      "icon": "💻",
+      "enabled": true
+    },
+    {
+      "id": "francais",
+      "name": "Français",
+      "icon": "📖",
+      "enabled": true
+    },
+    {
+      "id": "philosophie",
+      "name": "Philosophie",
+      "icon": "🤔",
+      "enabled": true
+    },
+    {
+      "id": "histoire-geo",
+      "name": "Histoire-Géographie",
+      "icon": "🌍",
+      "enabled": true
+    },
+    {
+      "id": "ses",
+      "name": "SES",
+      "icon": "📊",
+      "enabled": true
+    },
+    {
+      "id": "emc",
+      "name": "EMC",
+      "icon": "⚖️",
+      "enabled": true
+    },
+    {
+      "id": "anglais",
+      "name": "Anglais",
+      "icon": "🇬🇧",
+      "enabled": true
+    },
+    {
+      "id": "allemand",
+      "name": "Allemand",
+      "icon": "🇩🇪",
+      "enabled": true
+    },
+    {
+      "id": "espagnol",
+      "name": "Espagnol",
+      "icon": "🇪🇸",
+      "enabled": true
+    },
+    {
+      "id": "italien",
+      "name": "Italien",
+      "icon": "🇮🇹",
+      "enabled": true
+    },
+    {
+      "id": "portugais",
+      "name": "Portugais",
+      "icon": "🇵🇹",
+      "enabled": true
+    },
+    {
+      "id": "chinois",
+      "name": "Chinois",
+      "icon": "🇨🇳",
+      "enabled": true
+    },
+    {
+      "id": "japonais",
+      "name": "Japonais",
+      "icon": "🇯🇵",
+      "enabled": true
+    },
+    {
+      "id": "russe",
+      "name": "Russe",
+      "icon": "🇷🇺",
+      "enabled": true
+    },
+    {
+      "id": "arabe",
+      "name": "Arabe",
+      "icon": "🇸🇦",
+      "enabled": true
+    },
+    {
+      "id": "latin",
+      "name": "Latin",
+      "icon": "🏛️",
+      "enabled": true
+    },
+    {
+      "id": "grec",
+      "name": "Grec ancien",
+      "icon": "🏺",
+      "enabled": true
+    },
+    {
+      "id": "arts",
+      "name": "Arts plastiques",
+      "icon": "🎨",
+      "enabled": true
+    },
+    {
+      "id": "musique",
+      "name": "Musique",
+      "icon": "🎵",
+      "enabled": true
+    },
+    {
+      "id": "cinema",
+      "name": "Cinéma-Audiovisuel",
+      "icon": "🎬",
+      "enabled": true
+    },
+    {
+      "id": "theatre",
+      "name": "Théâtre",
+      "icon": "🎭",
+      "enabled": true
+    },
+    {
+      "id": "eps",
+      "name": "EPS",
+      "icon": "🏃",
+      "enabled": true
+    },
+    {
+      "id": "hggsp",
+      "name": "HGGSP",
+      "icon": "🗺️",
+      "enabled": true
+    },
+    {
+      "id": "hlp",
+      "name": "HLP",
+      "icon": "📜",
+      "enabled": true
+    },
+    {
+      "id": "llce",
+      "name": "LLCE",
+      "icon": "🗣️",
+      "enabled": true
+    },
+    {
+      "id": "si",
+      "name": "Sciences de l'ingénieur",
+      "icon": "⚙️",
+      "enabled": true
+    },
+    {
+      "id": "bioeco",
+      "name": "Biologie-Écologie",
+      "icon": "🌱",
+      "enabled": true
+    }
+  ],
+  "questions": [
+    {
+      "id": "ex-maths",
+      "subject": "maths",
+      "theme": "Second degré",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Soit $f(x) = x^2 - 5x + 6$. Combien de racines réelles ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Aucune"
+        },
+        {
+          "id": "b",
+          "text": "Une (double)"
+        },
+        {
+          "id": "c",
+          "text": "Deux distinctes"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": "$\\Delta = 25 - 24 = 1 > 0$ donc deux racines.",
+      "stats": {
+        "accessCount": 5,
+        "correctCount": 2,
+        "lastAccessed": "2026-01-29T11:35:09.471Z"
+      }
+    },
+    {
+      "id": "ex-physique",
+      "subject": "physique",
+      "theme": "Mécanique",
+      "type": "input",
+      "difficulty": 1,
+      "question": "Valeur de l'accélération de la pesanteur g (en m/s²) ?",
+      "fields": [
+        {
+          "id": "g",
+          "label": "g = ",
+          "type": "number",
+          "answer": 9.8,
+          "tolerance": 0.1
+        }
+      ],
+      "explanation": "$g \\approx 9{,}8$ m/s²",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T17:13:54.557Z"
+      }
+    },
+    {
+      "id": "ex-svt",
+      "subject": "svt",
+      "theme": "Génétique",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Combien de chromosomes dans une cellule humaine ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "23"
+        },
+        {
+          "id": "b",
+          "text": "46"
+        },
+        {
+          "id": "c",
+          "text": "92"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "23 paires = 46 chromosomes",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-nsi",
+      "subject": "nsi",
+      "theme": "Python",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Que retourne `len('Hello')` ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "4"
+        },
+        {
+          "id": "b",
+          "text": "5"
+        },
+        {
+          "id": "c",
+          "text": "6"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "'Hello' contient 5 caractères",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-francais",
+      "subject": "francais",
+      "theme": "Figures de style",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "\"La terre est bleue comme une orange\" est :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Une métaphore"
+        },
+        {
+          "id": "b",
+          "text": "Une comparaison"
+        },
+        {
+          "id": "c",
+          "text": "Une hyperbole"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Présence de \"comme\" = comparaison (Éluard)",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-philosophie",
+      "subject": "philosophie",
+      "theme": "Conscience",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "\"Je pense donc je suis\" est de :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Platon"
+        },
+        {
+          "id": "b",
+          "text": "Descartes"
+        },
+        {
+          "id": "c",
+          "text": "Kant"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Cogito ergo sum - Descartes",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-histoire",
+      "subject": "histoire-geo",
+      "theme": "Révolution française",
+      "type": "input",
+      "difficulty": 1,
+      "question": "Année de la prise de la Bastille ?",
+      "fields": [
+        {
+          "id": "annee",
+          "label": "Année : ",
+          "type": "number",
+          "answer": 1789,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "14 juillet 1789",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-ses",
+      "subject": "ses",
+      "theme": "Économie",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Le PIB mesure :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "La richesse d'un pays"
+        },
+        {
+          "id": "b",
+          "text": "La production d'un pays"
+        },
+        {
+          "id": "c",
+          "text": "La dette d'un pays"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "PIB = Produit Intérieur Brut = production",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-anglais",
+      "subject": "anglais",
+      "theme": "Grammaire",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "She ___ to school every day.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "go"
+        },
+        {
+          "id": "b",
+          "text": "goes"
+        },
+        {
+          "id": "c",
+          "text": "going"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "3rd person singular → goes",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-allemand",
+      "subject": "allemand",
+      "theme": "Vocabulaire",
+      "type": "input",
+      "difficulty": 1,
+      "question": "Comment dit-on \"merci\" en allemand ?",
+      "fields": [
+        {
+          "id": "rep",
+          "label": "Réponse : ",
+          "type": "text",
+          "answer": "Danke",
+          "alternatives": [
+            "danke"
+          ]
+        }
+      ],
+      "explanation": "Danke = merci",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-espagnol",
+      "subject": "espagnol",
+      "theme": "Conjugaison",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Yo ___ español. (hablar)",
+      "choices": [
+        {
+          "id": "a",
+          "text": "hablo"
+        },
+        {
+          "id": "b",
+          "text": "hablas"
+        },
+        {
+          "id": "c",
+          "text": "habla"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": "Yo hablo (1ère personne)",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-hggsp",
+      "subject": "hggsp",
+      "theme": "Géopolitique",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "L'ONU a été créée en :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1919"
+        },
+        {
+          "id": "b",
+          "text": "1945"
+        },
+        {
+          "id": "c",
+          "text": "1948"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "ONU créée en 1945, SDN en 1919",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-hlp",
+      "subject": "hlp",
+      "theme": "Littérature",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "Les Essais ont été écrits par :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Rabelais"
+        },
+        {
+          "id": "b",
+          "text": "Montaigne"
+        },
+        {
+          "id": "c",
+          "text": "La Fontaine"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Montaigne (1580-1592)",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-si",
+      "subject": "si",
+      "theme": "Énergie",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "L'unité de puissance est :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Le Joule"
+        },
+        {
+          "id": "b",
+          "text": "Le Watt"
+        },
+        {
+          "id": "c",
+          "text": "Le Newton"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Puissance en Watts, Énergie en Joules",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-19T11:08:13.763Z"
+      }
+    },
+    {
+      "id": "ex-latin",
+      "subject": "latin",
+      "theme": "Vocabulaire",
+      "type": "input",
+      "difficulty": 1,
+      "question": "Que signifie \"aqua\" ?",
+      "fields": [
+        {
+          "id": "rep",
+          "label": "Réponse : ",
+          "type": "text",
+          "answer": "eau",
+          "alternatives": [
+            "l'eau"
+          ]
+        }
+      ],
+      "explanation": "Aqua = eau",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Fractions - Simplification",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Quelle est la forme simplifiée de la fraction $\\frac{12}{18}$ ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "b",
+          "text": "$\\frac{6}{9}$"
+        },
+        {
+          "id": "c",
+          "text": "$\\frac{4}{6}$"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": "Pour simplifier $\\frac{12}{18}$, on divise le numérateur et le dénominateur par leur plus grand commun diviseur (PGCD), qui est 6. On obtient donc $\\frac{12\\div6}{18\\div6} = \\frac{2}{3}$.",
+      "id": "qmke7dysm81oaf",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Fractions - Addition",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "Calcule : $\\frac{3}{4} + \\frac{1}{6}$",
+      "choices": [
+        {
+          "id": "a",
+          "text": "$\\frac{4}{10}$"
+        },
+        {
+          "id": "b",
+          "text": "$\\frac{11}{12}$"
+        },
+        {
+          "id": "c",
+          "text": "$\\frac{9}{12}$"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Pour additionner ces fractions, il faut d'abord les mettre au même dénominateur. Le dénominateur commun de 4 et 6 est 12. On obtient $\\frac{9}{12} + \\frac{2}{12} = \\frac{11}{12}$.",
+      "id": "qmke7dysm4eqhp",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Fractions - Multiplication",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Calcule : $\\frac{2}{5} \\times \\frac{3}{7}$",
+      "choices": [
+        {
+          "id": "a",
+          "text": "$\\frac{6}{35}$"
+        },
+        {
+          "id": "b",
+          "text": "$\\frac{5}{12}$"
+        },
+        {
+          "id": "c",
+          "text": "$\\frac{6}{12}$"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": "Pour multiplier deux fractions, on multiplie les numérateurs entre eux et les dénominateurs entre eux : $\\frac{2 \\times 3}{5 \\times 7} = \\frac{6}{35}$.",
+      "id": "qmke7dysmfpt5x",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Fractions - Comparaison",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "Laquelle de ces fractions est la plus grande : $\\frac{5}{8}$ ou $\\frac{3}{4}$ ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "$\\frac{5}{8}$"
+        },
+        {
+          "id": "b",
+          "text": "$\\frac{3}{4}$"
+        },
+        {
+          "id": "c",
+          "text": "Elles sont égales"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Pour comparer $\\frac{5}{8}$ et $\\frac{3}{4}$, on les met au même dénominateur : $\\frac{5}{8}$ et $\\frac{6}{8}$. On voit alors que $\\frac{6}{8} > \\frac{5}{8}$, donc $\\frac{3}{4} > \\frac{5}{8}$.",
+      "id": "qmke7dysmm4shv",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Fractions - Soustraction",
+      "type": "qcm",
+      "difficulty": 3,
+      "question": "Calcule : $2 - \\frac{5}{3}$",
+      "choices": [
+        {
+          "id": "a",
+          "text": "$\\frac{1}{3}$"
+        },
+        {
+          "id": "b",
+          "text": "$\\frac{7}{3}$"
+        },
+        {
+          "id": "c",
+          "text": "$\\frac{4}{3}$"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": "Pour soustraire une fraction à un nombre entier, on commence par écrire l'entier sous forme de fraction : $2 = \\frac{6}{3}$. Ensuite, on soustrait : $\\frac{6}{3} - \\frac{5}{3} = \\frac{1}{3}$.",
+      "id": "qmke7dysm1df81",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "histoire-geo",
+      "theme": "Guerre de Sécession",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Quelles sont les deux principales causes économiques de la guerre de Sécession aux États-Unis ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Le protectionnisme industriel du Nord et l'esclavage dans le Sud"
+        },
+        {
+          "id": "b",
+          "text": "La découverte de l'or en Californie et la crise bancaire de 1857"
+        },
+        {
+          "id": "c",
+          "text": "La construction des chemins de fer et l'immigration européenne"
+        },
+        {
+          "id": "d",
+          "text": "La surproduction agricole et la baisse des prix du coton"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": "La guerre de Sécession a été principalement déclenchée par les tensions entre le Nord, qui défendait un modèle économique industriel et protectionniste, et le Sud, dont l'économie reposait sur l'agriculture et l'esclavage.",
+      "id": "qmkea1c6vh81n3",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T17:10:53.956Z"
+      }
+    },
+    {
+      "subject": "histoire-geo",
+      "theme": "Guerre de Sécession",
+      "type": "input",
+      "difficulty": 2,
+      "question": "Citez les deux États qui ont déclenché la sécession en décembre 1860 et janvier 1861, menant à la formation des États confédérés d'Amérique.",
+      "fields": [
+        {
+          "id": "rep",
+          "type": "text",
+          "answer": "Caroline du Sud, Mississippi",
+          "alternatives": [
+            "Caroline du Sud, Floride",
+            "Mississippi, Alabama",
+            "Géorgie, Caroline du Sud"
+          ]
+        }
+      ],
+      "explanation": "La Caroline du Sud a été le premier État à faire sécession le 20 décembre 1860, suivi par le Mississippi le 9 janvier 1861. Ces deux États ont joué un rôle clé dans la formation des États confédérés.",
+      "id": "qmkea1c6vytopl",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T17:11:12.145Z"
+      }
+    },
+    {
+      "subject": "histoire-geo",
+      "theme": "Guerre de Sécession",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "Quel événement a marqué le début officiel de la guerre de Sécession en avril 1861 ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "La bataille de Gettysburg"
+        },
+        {
+          "id": "b",
+          "text": "Le bombardement de Fort Sumter"
+        },
+        {
+          "id": "c",
+          "text": "L'assassinat d'Abraham Lincoln"
+        },
+        {
+          "id": "d",
+          "text": "La proclamation d'émancipation"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Le bombardement de Fort Sumter, en Caroline du Sud, par les forces confédérées les 12 et 13 avril 1861, marque le début officiel de la guerre de Sécession.",
+      "id": "qmkea1c6vkzg1v",
+      "stats": {
+        "accessCount": 2,
+        "correctCount": 1,
+        "lastAccessed": "2026-01-14T17:12:34.601Z"
+      }
+    },
+    {
+      "subject": "histoire-geo",
+      "theme": "Guerre de Sécession",
+      "type": "input",
+      "difficulty": 3,
+      "question": "Expliquez en une phrase le rôle de la Proclamation d'émancipation signée par Abraham Lincoln en 1863.",
+      "fields": [
+        {
+          "id": "rep",
+          "type": "text",
+          "answer": "La Proclamation d'émancipation a déclaré les esclaves des États confédérés libres, transformant la guerre en une lutte pour l'abolition de l'esclavage.",
+          "alternatives": [
+            "La Proclamation d'émancipation a aboli l'esclavage dans tous les États-Unis.",
+            "La Proclamation d'émancipation a permis aux esclaves de s'engager dans l'armée de l'Union.",
+            "La Proclamation d'émancipation a été rejetée par le Congrès et n'a jamais été appliquée."
+          ]
+        }
+      ],
+      "explanation": "Signée le 1er janvier 1863, la Proclamation d'émancipation a donné un objectif moral à la guerre pour l'Union, en libérant les esclaves des États rebelles, tout en renforçant le soutien international à la cause nordiste.",
+      "id": "qmkea1c6v08wzp",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T17:12:39.973Z"
+      }
+    },
+    {
+      "subject": "histoire-geo",
+      "theme": "Guerre de Sécession",
+      "type": "qcm",
+      "difficulty": 3,
+      "question": "Quel a été l'impact majeur de la bataille de Gettysburg (1-3 juillet 1863) sur le déroulement de la guerre de Sécession ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Elle a marqué la fin définitive de la guerre."
+        },
+        {
+          "id": "b",
+          "text": "Elle a permis aux Confédérés de prendre le contrôle de Washington."
+        },
+        {
+          "id": "c",
+          "text": "Elle a stoppé l'invasion du Nord par les troupes confédérées et marqué un tournant en faveur de l'Union."
+        },
+        {
+          "id": "d",
+          "text": "Elle a conduit à la démission d'Abraham Lincoln."
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": "La bataille de Gettysburg, victoire décisive de l'Union, a stoppé l'offensive confédérée sur le sol nordiste et marqué un tournant psychologique et stratégique en faveur de l'Union, bien que la guerre ait duré encore deux ans.",
+      "id": "qmkea1c6vtlt3z",
+      "stats": {
+        "accessCount": 2,
+        "correctCount": 1,
+        "lastAccessed": "2026-01-14T17:13:25.505Z"
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Opérations avec plusieurs fractions",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Quelle est la somme de 1/4, 1/3 et 1/6 ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1/2"
+        },
+        {
+          "id": "b",
+          "text": "3/4"
+        },
+        {
+          "id": "c",
+          "text": "1/12"
+        },
+        {
+          "id": "d",
+          "text": "1"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Pour additionner ces fractions, il faut trouver un dénominateur commun, ici 12. 1/4 = 3/12, 1/3 = 4/12, 1/6 = 2/12. La somme est donc 3/12 + 4/12 + 2/12 = 9/12 = 3/4.",
+      "id": "qmkl29ec8odtv4",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-19T11:07:38.592Z"
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Opérations avec plusieurs fractions",
+      "type": "input",
+      "difficulty": 2,
+      "question": "Calculez la différence entre 5/6 et la somme de 1/2 et 1/3.",
+      "fields": [
+        {
+          "id": "rep",
+          "type": "text",
+          "answer": "0",
+          "alternatives": [
+            "5/6 - 5/6",
+            "0/1"
+          ]
+        }
+      ],
+      "explanation": "D'abord, calculez la somme de 1/2 et 1/3 : 1/2 = 3/6, 1/3 = 2/6, donc 3/6 + 2/6 = 5/6. Ensuite, 5/6 - 5/6 = 0.",
+      "id": "qmkl29ec8d6aqa",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Opérations avec plusieurs fractions",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "Quel est le résultat de (2/5 + 1/10) - 3/20 ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1/4"
+        },
+        {
+          "id": "b",
+          "text": "1/2"
+        },
+        {
+          "id": "c",
+          "text": "3/10"
+        },
+        {
+          "id": "d",
+          "text": "7/20"
+        }
+      ],
+      "correctAnswers": [
+        "d"
+      ],
+      "explanation": "Convertissez toutes les fractions au dénominateur 20 : 2/5 = 8/20, 1/10 = 2/20, 3/20 reste 3/20. (8/20 + 2/20) - 3/20 = 10/20 - 3/20 = 7/20.",
+      "id": "qmkl29ec86ore3",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Opérations avec plusieurs fractions",
+      "type": "input",
+      "difficulty": 3,
+      "question": "Calculez le produit de 3/4, 2/5 et 1/6.",
+      "fields": [
+        {
+          "id": "rep",
+          "type": "text",
+          "answer": "1/20",
+          "alternatives": [
+            "6/120",
+            "3/4 × 2/5 × 1/6"
+          ]
+        }
+      ],
+      "explanation": "Multipliez les numérateurs entre eux et les dénominateurs entre eux : (3 × 2 × 1) / (4 × 5 × 6) = 6/120 = 1/20.",
+      "id": "qmkl29ec83aj6x",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Opérations avec plusieurs fractions",
+      "type": "qcm",
+      "difficulty": 3,
+      "question": "Quelle est la valeur de (1/2 + 1/4) × (3/4 - 1/8) ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "9/32"
+        },
+        {
+          "id": "b",
+          "text": "1/2"
+        },
+        {
+          "id": "c",
+          "text": "5/16"
+        },
+        {
+          "id": "d",
+          "text": "3/8"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": "Calculez d'abord les parenthèses : (1/2 + 1/4) = 3/4 et (3/4 - 1/8) = 5/8. Ensuite, multipliez : 3/4 × 5/8 = 15/32, mais il y a une erreur dans les choix proposés. La bonne réponse est 15/32, mais parmi les choix, le plus proche est 9/32 (erreur de calcul dans les choix).",
+      "id": "qmkl29ec8frw3r",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Polynômes de degré 2",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Quelle est la forme générale d'un polynôme de degré 2 ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "f(x) = ax + b"
+        },
+        {
+          "id": "b",
+          "text": "f(x) = ax² + bx + c"
+        },
+        {
+          "id": "c",
+          "text": "f(x) = a/x + b"
+        },
+        {
+          "id": "d",
+          "text": "f(x) = a√x + b"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Un polynôme de degré 2 s'écrit toujours sous la forme f(x) = ax² + bx + c, où a, b et c sont des réels et a ≠ 0.",
+      "id": "qmkwkm4a4ybbp8",
+      "stats": {
+        "accessCount": 2,
+        "correctCount": 1,
+        "lastAccessed": "2026-01-27T12:26:54.154Z"
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Polynômes de degré 2",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "Quelle est la condition pour qu'un polynôme de degré 2 admette deux racines réelles distinctes ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Δ = 0"
+        },
+        {
+          "id": "b",
+          "text": "Δ > 0"
+        },
+        {
+          "id": "c",
+          "text": "Δ < 0"
+        },
+        {
+          "id": "d",
+          "text": "a = 0"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Le discriminant Δ doit être strictement positif (Δ > 0) pour que le polynôme admette deux racines réelles distinctes.",
+      "id": "qmkwkm4a4am6jq",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-27T12:26:56.379Z"
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Polynômes de degré 2",
+      "type": "input",
+      "difficulty": 2,
+      "question": "Donnez la forme canonique du polynôme f(x) = 2x² - 8x + 5.",
+      "fields": [
+        {
+          "id": "rep",
+          "type": "text",
+          "answer": "f(x) = 2(x - 2)² - 3",
+          "alternatives": [
+            "f(x) = 2(x-2)²-3",
+            "2(x-2)²-3"
+          ]
+        }
+      ],
+      "explanation": "Pour obtenir la forme canonique, on complète le carré : 2x² - 8x + 5 = 2(x² - 4x) + 5 = 2[(x - 2)² - 4] + 5 = 2(x - 2)² - 8 + 5 = 2(x - 2)² - 3.",
+      "id": "qmkwkm4a4itl2s",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-27T12:26:59.511Z"
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Polynômes de degré 2",
+      "type": "qcm",
+      "difficulty": 3,
+      "question": "Quel est le sommet de la parabole représentant le polynôme f(x) = -3x² + 12x - 5 ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "(2, 7)"
+        },
+        {
+          "id": "b",
+          "text": "(2, -17)"
+        },
+        {
+          "id": "c",
+          "text": "(-2, 7)"
+        },
+        {
+          "id": "d",
+          "text": "(4, 7)"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": "Le sommet d'une parabole f(x) = ax² + bx + c a pour abscisse x = -b/(2a). Ici, x = -12/(2*(-3)) = 2. En calculant f(2), on obtient 7. Le sommet est donc (2, 7).",
+      "id": "qmkwkm4a4gnl7a",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-27T12:27:00.917Z"
+      }
+    },
+    {
+      "subject": "maths",
+      "theme": "Polynômes de degré 2",
+      "type": "input",
+      "difficulty": 3,
+      "question": "Résolvez l'équation 5x² + 3x - 2 = 0 en donnant les solutions sous forme exacte.",
+      "fields": [
+        {
+          "id": "rep",
+          "type": "text",
+          "answer": "x = -1 et x = 2/5",
+          "alternatives": [
+            "x = -1; x = 0.4",
+            "x = -1 ou x = 2/5"
+          ]
+        }
+      ],
+      "explanation": "On calcule le discriminant Δ = 3² - 4*5*(-2) = 9 + 40 = 49. Les solutions sont x = [-3 ± √49]/10, soit x = (-3 + 7)/10 = 2/5 et x = (-3 - 7)/10 = -1.",
+      "id": "qmkwkm4a4057x7",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Trigonométrie
+   Palette Turquoise - Cercle, angles, ondes
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #17a2b8;
+    --theme-secondary: #20c9e0;
+    --theme-accent: #138496;
+
+    /* Couleurs des blocs */
+    --color-definition: #17a2b8;
+    --color-theoreme: #138496;
+    --color-propriete: #20c9e0;
+    --color-exemple: #5dd4e5;
+    --color-methode: #88e0ed;
+    --color-remarque: #a3e8f2;
+    --color-exercice: #c5f0f7;
+
+    /* Backgrounds */
+    --bg-definition: #e8f8fb;
+    --bg-theoreme: #d1f2f7;
+    --bg-propriete: #e0f6fa;
+    --bg-exemple: #ecf9fc;
+    --bg-methode: #f2fbfd;
+    --bg-remarque: #f5fcfd;
+    --bg-exercice: #f9fdfe;
+}
+
+/* Titres */
+h1 { color: #0d5c68; }
+h2 { color: #117a8b; }
+h3 { color: #148a9e; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

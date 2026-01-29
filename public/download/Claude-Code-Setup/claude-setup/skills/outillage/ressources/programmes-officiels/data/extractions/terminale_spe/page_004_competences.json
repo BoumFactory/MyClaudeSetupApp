@@ -1,0 +1,99 @@
+{
+  "source": {
+    "pdf": "terminale_spe.pdf",
+    "page": 4,
+    "text_length": 2287
+  },
+  "extraction": {
+    "date": "2026-01-02T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "notes": "Page de preambule pedagogique - recommandations sur la trace ecrite, le travail personnel et les lignes directrices. Quelques competences transversales complementaires extraites."
+  },
+  "competences": [
+    {
+      "code": "TSPE-LO-201",
+      "intitule": "Distinguer le statut des enonces mathematiques",
+      "fingerprint": "distinguer_statut_enonces_mathematiques",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement et logique",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre et distinguer les differents statuts d'un enonce mathematique : conjecture (hypothese non demontree), definition (introduction d'un concept), propriete (resultat admis ou demontre), demonstration (preuve), theoreme (resultat majeur demontre)",
+      "formulation_bo": "il est essentiel de bien distinguer le statut des enonces : conjecture, definition, propriete (admise ou demontree) demonstration, theoreme",
+      "connaissances_associees": ["conjecture", "definition", "propriete", "demonstration", "theoreme", "logique mathematique"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "TSPE-LO-202",
+      "intitule": "Identifier et analyser une erreur de raisonnement",
+      "fingerprint": "identifier_analyser_erreur_raisonnement",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement et logique",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre une erreur dans un raisonnement mathematique, l'analyser pour comprendre sa nature et en tirer profit pour consolider les apprentissages",
+      "formulation_bo": "Il ne doit pas craindre l'erreur, car il sait qu'il peut en tirer profit [...] l'aide a l'identifier, a l'analyser et la comprendre. Ce travail sur l'erreur participe a la construction de ses apprentissages",
+      "connaissances_associees": ["detection d'erreurs", "analyse de raisonnement", "metacognition"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "TSPE-LO-203",
+      "intitule": "S'engager dans une recherche mathematique individuelle ou collective",
+      "fingerprint": "engager_recherche_mathematique",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Demarche de recherche",
+      "type": "capacite",
+      "description_detaillee": "Prendre l'initiative de chercher des pistes de resolution, essayer differentes approches, accepter le risque de se tromper, travailler individuellement ou en equipe sur un probleme mathematique",
+      "formulation_bo": "L'eleve doit etre incite a s'engager dans une recherche mathematique, individuellement ou en equipe [...] Il cherche, essaie des pistes, prend le risque de se tromper",
+      "connaissances_associees": ["demarche exploratoire", "travail collaboratif", "prise d'initiative"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "TSPE-LO-204",
+      "intitule": "Resoudre des problemes issus de contextes varies",
+      "fingerprint": "resoudre_problemes_contextes_varies",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Resolution de problemes",
+      "type": "capacite",
+      "description_detaillee": "Aborder des problemes de nature diverse : internes aux mathematiques, issus de l'histoire des mathematiques, provenant d'autres disciplines ou du monde reel",
+      "formulation_bo": "Les problemes proposes aux eleves peuvent etre internes aux mathematiques, provenir de l'histoire des mathematiques, etre issus des autres disciplines ou du monde reel",
+      "connaissances_associees": ["interdisciplinarite", "histoire des mathematiques", "applications concretes"],
+      "source": {
+        "pdf": "terminale_spe.pdf",
+        "page": 4
+      }
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "by_type": {
+      "capacite": 4,
+      "contenu": 0,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "LOGIQUE": 4
+    },
+    "fingerprints": [
+      "distinguer_statut_enonces_mathematiques",
+      "identifier_analyser_erreur_raisonnement",
+      "engager_recherche_mathematique",
+      "resoudre_problemes_contextes_varies"
+    ]
+  }
+}

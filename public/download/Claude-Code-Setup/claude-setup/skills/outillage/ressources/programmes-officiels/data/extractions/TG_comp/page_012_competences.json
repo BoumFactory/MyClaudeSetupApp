@@ -1,0 +1,1038 @@
+{
+  "source": {
+    "pdf": "TG_comp.pdf",
+    "page": 12,
+    "text_length": 1847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TG-AN-601",
+      "intitule": "Représenter graphiquement une suite donnée par une relation de récurrence",
+      "fingerprint": "representer_suite_recurrence_graphique",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "Pour une suite définie par u(n+1) = f(u(n)) où f est une fonction continue d'un intervalle I dans lui-même, tracer la représentation graphique de la suite en utilisant la courbe de f.",
+      "formulation_bo": "Représenter graphiquement une suite donnée par une relation de récurrence u(n+1) = f(u(n)) où f est une fonction continue d'un intervalle I dans lui-même.",
+      "connaissances_associees": [
+        "relation de récurrence",
+        "fonction continue",
+        "représentation graphique de fonction"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-602",
+      "intitule": "Conjecturer le comportement global d'une suite récurrente",
+      "fingerprint": "conjecturer_comportement_suite_recurrence",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "À partir de la représentation graphique ou du calcul de termes, émettre une hypothèse sur le comportement global (croissance, décroissance, convergence) d'une suite définie par u(n+1) = f(u(n)).",
+      "formulation_bo": "Conjecturer le comportement global ou asymptotique d'une telle suite.",
+      "connaissances_associees": [
+        "suite récurrente",
+        "convergence de suite",
+        "comportement asymptotique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-603",
+      "intitule": "Conjecturer le comportement asymptotique d'une suite récurrente",
+      "fingerprint": "conjecturer_comportement_asymptotique_suite",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "Pour une suite définie par récurrence u(n+1) = f(u(n)), formuler une hypothèse sur le comportement limite (limite finie, limite infinie, oscillation) de la suite.",
+      "formulation_bo": "Conjecturer le comportement global ou asymptotique d'une telle suite.",
+      "connaissances_associees": [
+        "suite récurrente",
+        "limite de suite",
+        "point fixe"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-604",
+      "intitule": "Rechercher une suite constante solution particulière d'une récurrence arithmético-géométrique",
+      "fingerprint": "rechercher_suite_constante_recurrence_arithmetico_geometrique",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "Pour une suite définie par u(n+1) = au(n) + b avec a ≠ 1, déterminer la suite constante u(n) = l telle que l = al + b.",
+      "formulation_bo": "Pour une récurrence arithmético-géométrique : recherche d'une suite constante solution particulière.",
+      "connaissances_associees": [
+        "récurrence arithmético-géométrique",
+        "suite constante",
+        "point fixe"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-605",
+      "intitule": "Déterminer toutes les solutions d'une récurrence arithmético-géométrique",
+      "fingerprint": "determiner_solutions_recurrence_arithmetico_geometrique",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "capacite",
+      "description_detaillee": "Pour une suite définie par u(n+1) = au(n) + b, utiliser la suite constante particulière pour déterminer l'expression générale de tous les termes de la suite.",
+      "formulation_bo": "Utilisation de cette suite pour déterminer toutes les solutions.",
+      "connaissances_associees": [
+        "récurrence arithmético-géométrique",
+        "suite constante",
+        "suite géométrique",
+        "changement de variable"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-606",
+      "intitule": "Démontrer la limite des sommes de termes d'une suite géométrique de raison positive inférieure à 1",
+      "fingerprint": "demontrer_limite_somme_suite_geometrique_raison_positive",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "demonstration",
+      "description_detaillee": "Démontrer que pour une suite géométrique de premier terme a et de raison q avec 0 < q < 1, la somme S(n) = a(1-q^(n+1))/(1-q) converge vers a/(1-q) quand n tend vers l'infini.",
+      "formulation_bo": "Limite des sommes des termes d'une suite géométrique de raison positive strictement inférieure à 1.",
+      "connaissances_associees": [
+        "suite géométrique",
+        "somme de suite géométrique",
+        "limite",
+        "convergence"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-607",
+      "intitule": "Rechercher un seuil pour une suite",
+      "fingerprint": "rechercher_seuil_suite",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "algorithme",
+      "description_detaillee": "Concevoir un algorithme permettant de déterminer le rang n à partir duquel les termes d'une suite dépassent ou restent inférieurs à un seuil donné.",
+      "formulation_bo": "Recherche de seuils.",
+      "connaissances_associees": [
+        "suite",
+        "terme de suite",
+        "inégalité",
+        "programmation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-608",
+      "intitule": "Calculer les termes successifs d'une suite récurrente par algorithme",
+      "fingerprint": "calculer_termes_suite_recurrence_algorithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "algorithme",
+      "description_detaillee": "Programmer un algorithme qui calcule et affiche les termes u(0), u(1), u(2), ... d'une suite définie par u(n+1) = f(u(n)) jusqu'à un terme donné ou jusqu'à un certain rang.",
+      "formulation_bo": "Pour une suite récurrente u(n+1) = f(u(n)), calcul des termes successifs.",
+      "connaissances_associees": [
+        "suite récurrente",
+        "programmation",
+        "boucle itérative",
+        "variable d'itération"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-609",
+      "intitule": "Rechercher une valeur approchée de π par algorithme",
+      "fingerprint": "rechercher_approximation_pi_algorithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "algorithme",
+      "description_detaillee": "Concevoir un algorithme itératif pour obtenir des valeurs approchées du nombre π avec une précision croissante.",
+      "formulation_bo": "Recherche de valeurs approchées de constantes mathématiques, par exemple π.",
+      "connaissances_associees": [
+        "suite convergente",
+        "approximation",
+        "précision",
+        "programmation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-610",
+      "intitule": "Rechercher une valeur approchée de ln(2) par algorithme",
+      "fingerprint": "rechercher_approximation_ln2_algorithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "algorithme",
+      "description_detaillee": "Concevoir un algorithme itératif pour obtenir des valeurs approchées de ln(2) avec une précision croissante.",
+      "formulation_bo": "Recherche de valeurs approchées de constantes mathématiques, par exemple ln(2).",
+      "connaissances_associees": [
+        "logarithme",
+        "suite convergente",
+        "approximation",
+        "programmation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-611",
+      "intitule": "Rechercher une valeur approchée de √2 par algorithme",
+      "fingerprint": "rechercher_approximation_racine2_algorithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "algorithme",
+      "description_detaillee": "Concevoir un algorithme itératif pour obtenir des valeurs approchées de √2 avec une précision croissante.",
+      "formulation_bo": "Recherche de valeurs approchées de constantes mathématiques, par exemple √2.",
+      "connaissances_associees": [
+        "racine carrée",
+        "suite convergente",
+        "approximation",
+        "programmation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-612",
+      "intitule": "Comprendre la notion de limite d'une fonction",
+      "fingerprint": "comprendre_notion_limite_fonction",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "contenu",
+      "description_detaillee": "Approche intuitive de la notion de limite : la formalisation n'est pas un attendu. Les opérations sur les limites sont admises.",
+      "formulation_bo": "Notion de limite. Lien avec la continuité et les asymptotes horizontales ou verticales.",
+      "connaissances_associees": [
+        "fonction",
+        "comportement aux bornes",
+        "continuité"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-613",
+      "intitule": "Reconnaître le lien entre limite et continuité",
+      "fingerprint": "reconnaitre_lien_limite_continuite",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "contenu",
+      "description_detaillee": "Identifier que si une fonction admet une limite finie en un point, elle est continue en ce point.",
+      "formulation_bo": "Notion de limite. Lien avec la continuité et les asymptotes horizontales ou verticales.",
+      "connaissances_associees": [
+        "limite",
+        "continuité",
+        "fonction"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-614",
+      "intitule": "Identifier les asymptotes horizontales ou verticales d'une fonction",
+      "fingerprint": "identifier_asymptotes_fonction",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "À partir de la limite d'une fonction quand x tend vers +∞, -∞ ou vers un point où elle n'est pas définie, reconnaître et tracer les asymptotes horizontales ou verticales.",
+      "formulation_bo": "Notion de limite. Lien avec la continuité et les asymptotes horizontales ou verticales.",
+      "connaissances_associees": [
+        "limite",
+        "asymptote",
+        "représentation graphique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-615",
+      "intitule": "Calculer la limite d'une fonction carré",
+      "fingerprint": "calculer_limite_fonction_carre",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de la fonction x ↦ x² quand x tend vers +∞, -∞, ou en tout point de son domaine.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": [
+        "fonction carré",
+        "limite",
+        "fonction polynome"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-616",
+      "intitule": "Calculer la limite d'une fonction cube",
+      "fingerprint": "calculer_limite_fonction_cube",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de la fonction x ↦ x³ quand x tend vers +∞, -∞, ou en tout point de son domaine.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": [
+        "fonction cube",
+        "limite",
+        "fonction polynome"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-617",
+      "intitule": "Calculer la limite d'une fonction racine carrée",
+      "fingerprint": "calculer_limite_fonction_racine_carree",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de la fonction x ↦ √x quand x tend vers 0⁺, +∞, ou en tout point de son domaine [0, +∞).",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": [
+        "fonction racine carrée",
+        "limite",
+        "domaine de définition"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-618",
+      "intitule": "Calculer la limite d'une fonction inverse",
+      "fingerprint": "calculer_limite_fonction_inverse",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de la fonction x ↦ 1/x quand x tend vers 0⁻, 0⁺, +∞, -∞.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": [
+        "fonction inverse",
+        "limite",
+        "asymptote verticale"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-619",
+      "intitule": "Calculer la limite d'une fonction exponentielle",
+      "fingerprint": "calculer_limite_fonction_exponentielle",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de la fonction x ↦ eˣ quand x tend vers -∞, +∞, ou en tout point de ℝ.",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": [
+        "fonction exponentielle",
+        "limite",
+        "croissance exponentielle"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-620",
+      "intitule": "Calculer la limite d'une fonction logarithme",
+      "fingerprint": "calculer_limite_fonction_logarithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les limites de la fonction x ↦ ln(x) quand x tend vers 0⁺, +∞, ou en tout point de son domaine ]0, +∞).",
+      "formulation_bo": "Limites des fonctions de référence (carré, cube, racine carrée, inverse, exponentielle, logarithme).",
+      "connaissances_associees": [
+        "fonction logarithme",
+        "limite",
+        "domaine de définition"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-621",
+      "intitule": "Appliquer le théorème des valeurs intermédiaires",
+      "fingerprint": "appliquer_theoreme_valeurs_intermediaires",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le théorème des valeurs intermédiaires (admis) pour montrer l'existence d'une solution à une équation ou déterminer un intervalle contenant une solution.",
+      "formulation_bo": "Théorème des valeurs intermédiaires (admis). Cas des fonctions strictement monotones.",
+      "connaissances_associees": [
+        "théorème des valeurs intermédiaires",
+        "continuité",
+        "équation",
+        "solution"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-622",
+      "intitule": "Appliquer le théorème des valeurs intermédiaires pour une fonction strictement monotone",
+      "fingerprint": "appliquer_tvi_fonction_strictement_monotone",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "capacite",
+      "description_detaillee": "Pour une fonction continue et strictement monotone sur un intervalle, utiliser le théorème des valeurs intermédiaires pour assurer l'existence et l'unicité d'une solution à une équation.",
+      "formulation_bo": "Théorème des valeurs intermédiaires (admis). Cas des fonctions strictement monotones.",
+      "connaissances_associees": [
+        "théorème des valeurs intermédiaires",
+        "monotonie",
+        "unicité de solution"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-623",
+      "intitule": "Déterminer la réciproque d'une fonction continue strictement monotone",
+      "fingerprint": "determiner_reciproque_fonction_continue_monotone",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction réciproque",
+      "type": "capacite",
+      "description_detaillee": "Pour une fonction continue et strictement monotone sur un intervalle I, déterminer sa fonction réciproque sur l'intervalle image f(I).",
+      "formulation_bo": "Réciproque d'une fonction continue strictement monotone sur un intervalle, représentation graphique.",
+      "connaissances_associees": [
+        "fonction continue",
+        "stricte monotonie",
+        "bijection",
+        "fonction réciproque"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-624",
+      "intitule": "Tracer la représentation graphique d'une fonction réciproque",
+      "fingerprint": "tracer_graphique_fonction_reciproque",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction réciproque",
+      "type": "capacite",
+      "description_detaillee": "À partir de la courbe de f, construire la courbe de f⁻¹ en utilisant la symétrie par rapport à la droite y = x.",
+      "formulation_bo": "Réciproque d'une fonction continue strictement monotone sur un intervalle, représentation graphique.",
+      "connaissances_associees": [
+        "fonction réciproque",
+        "symétrie",
+        "représentation graphique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-625",
+      "intitule": "Reconnaître la fonction logarithme comme réciproque de la fonction exponentielle",
+      "fingerprint": "reconnaitre_logarithme_reciproque_exponentielle",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "Identifier que la fonction logarithme népérien est la fonction réciproque de la fonction exponentielle et en déduire les propriétés.",
+      "formulation_bo": "Fonction logarithme népérien : réciproque de la fonction exponentielle. Limites, représentation graphique. Équation fonctionnelle. Fonction dérivée.",
+      "connaissances_associees": [
+        "fonction exponentielle",
+        "fonction réciproque",
+        "logarithme"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-626",
+      "intitule": "Calculer les limites de la fonction logarithme",
+      "fingerprint": "calculer_limites_logarithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Déterminer lim(x→0⁺) ln(x) = -∞ et lim(x→+∞) ln(x) = +∞.",
+      "formulation_bo": "Fonction logarithme népérien : réciproque de la fonction exponentielle. Limites, représentation graphique.",
+      "connaissances_associees": [
+        "logarithme",
+        "limite",
+        "fonction réciproque"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-627",
+      "intitule": "Tracer la représentation graphique de la fonction logarithme",
+      "fingerprint": "tracer_graphique_logarithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Construire le graphe de la fonction ln sur son domaine de définition ]0, +∞) en utilisant ses propriétés et ses limites.",
+      "formulation_bo": "Fonction logarithme népérien : réciproque de la fonction exponentielle. Limites, représentation graphique.",
+      "connaissances_associees": [
+        "logarithme",
+        "domaine de définition",
+        "limite"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-628",
+      "intitule": "Appliquer l'équation fonctionnelle du logarithme",
+      "fingerprint": "appliquer_equation_fonctionnelle_logarithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriété ln(ab) = ln(a) + ln(b) pour transformer des écritures ou résoudre des équations impliquant des logarithmes.",
+      "formulation_bo": "Équation fonctionnelle. Fonction dérivée.",
+      "connaissances_associees": [
+        "logarithme",
+        "propriétés algébriques",
+        "équation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-629",
+      "intitule": "Calculer la dérivée de la fonction logarithme",
+      "fingerprint": "calculer_derivee_logarithme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "contenu",
+      "description_detaillee": "Connaître que (ln(x))' = 1/x et appliquer cette formule.",
+      "formulation_bo": "Fonction logarithme népérien : réciproque de la fonction exponentielle. Limites, représentation graphique. Équation fonctionnelle. Fonction dérivée.",
+      "connaissances_associees": [
+        "dérivée",
+        "logarithme",
+        "fonction composée"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-630",
+      "intitule": "Calculer la dérivée de la fonction composée x ↦ f(ax+b)",
+      "fingerprint": "calculer_derivee_fonction_composee_affine",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule (f(ax+b))' = a·f'(ax+b) pour calculer la dérivée d'une fonction composée avec une fonction affine.",
+      "formulation_bo": "Fonction dérivée de x ↦ f(ax+b).",
+      "connaissances_associees": [
+        "dérivée",
+        "fonction composée",
+        "fonction affine"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-631",
+      "intitule": "Calculer la dérivée de la fonction composée x ↦ e^(u(x))",
+      "fingerprint": "calculer_derivee_exponentielle_composee",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule (e^(u(x)))' = u'(x)·e^(u(x)) pour calculer la dérivée d'une exponentielle composée.",
+      "formulation_bo": "Fonction dérivée de x ↦ e^(u(x)).",
+      "connaissances_associees": [
+        "dérivée",
+        "fonction composée",
+        "exponentielle"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-632",
+      "intitule": "Calculer la dérivée de la fonction composée x ↦ ln(u(x))",
+      "fingerprint": "calculer_derivee_logarithme_composee",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule (ln(u(x)))' = u'(x)/u(x) pour calculer la dérivée d'un logarithme composé.",
+      "formulation_bo": "Fonction dérivée de x ↦ ln(u(x)).",
+      "connaissances_associees": [
+        "dérivée",
+        "fonction composée",
+        "logarithme"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-633",
+      "intitule": "Calculer la dérivée de la fonction composée x ↦ (u(x))²",
+      "fingerprint": "calculer_derivee_fonction_au_carre",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule ((u(x))²)' = 2·u(x)·u'(x) pour calculer la dérivée d'une fonction au carré.",
+      "formulation_bo": "Fonction dérivée de x ↦ (u(x))².",
+      "connaissances_associees": [
+        "dérivée",
+        "fonction composée",
+        "règle du produit"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-634",
+      "intitule": "Calculer une fonction dérivée",
+      "fingerprint": "calculer_fonction_derivee",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation",
+      "type": "capacite",
+      "description_detaillee": "Déterminer la dérivée d'une fonction en utilisant les formules de dérivation (dérivée d'une somme, d'un produit, d'un quotient, de fonctions composées).",
+      "formulation_bo": "Calculer une fonction dérivée, calculer des limites. Dresser un tableau de variation.",
+      "connaissances_associees": [
+        "dérivée",
+        "fonction",
+        "calcul algébrique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-635",
+      "intitule": "Calculer une limite",
+      "fingerprint": "calculer_limite",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites",
+      "type": "capacite",
+      "description_detaillee": "Déterminer la limite d'une fonction en un point, à l'infini, en utilisant les opérations sur les limites (admises) ou des techniques de transformation algébrique.",
+      "formulation_bo": "Calculer une fonction dérivée, calculer des limites.",
+      "connaissances_associees": [
+        "limite",
+        "fonction",
+        "infini"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-636",
+      "intitule": "Dresser un tableau de variation d'une fonction",
+      "fingerprint": "dresser_tableau_variation",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Analyse de fonction",
+      "type": "capacite",
+      "description_detaillee": "À partir de l'étude du signe de la dérivée, construire le tableau de variation d'une fonction en indiquant les intervalles de croissance/décroissance, les extrema et les limites.",
+      "formulation_bo": "Calculer une fonction dérivée, calculer des limites. Dresser un tableau de variation.",
+      "connaissances_associees": [
+        "dérivée",
+        "variation de fonction",
+        "extrema"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-637",
+      "intitule": "Utiliser les courbes de fonctions de référence pour résoudre un problème",
+      "fingerprint": "utiliser_courbes_reference_probleme",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Analyse de fonction",
+      "type": "capacite",
+      "description_detaillee": "Dans le cadre de la résolution d'un problème, exploiter l'allure des courbes représentatives des fonctions inverse, carré, cube, racine carrée, exponentielle et logarithme et utiliser le calcul des limites pour analyser le comportement global.",
+      "formulation_bo": "Dans le cadre de la résolution de problème, utiliser le calcul des limites, l'allure des courbes représentatives des fonctions inverse, carré, cube, racine carrée, exponentielle et logarithme.",
+      "connaissances_associees": [
+        "fonction de référence",
+        "représentation graphique",
+        "limite",
+        "résolution de problème"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-638",
+      "intitule": "Exploiter un tableau de variation pour déterminer le nombre de solutions d'une équation",
+      "fingerprint": "exploiter_variation_nombre_solutions_equation",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Analyse de fonction",
+      "type": "capacite",
+      "description_detaillee": "À partir du tableau de variation d'une fonction f, déterminer combien de solutions admet l'équation f(x) = k pour une valeur k donnée.",
+      "formulation_bo": "Exploiter le tableau de variation pour déterminer le nombre de solutions d'une équation du type f(x) = k.",
+      "connaissances_associees": [
+        "tableau de variation",
+        "équation",
+        "nombre de solutions"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-639",
+      "intitule": "Exploiter un tableau de variation pour résoudre une inéquation",
+      "fingerprint": "exploiter_variation_resoudre_inequation",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Analyse de fonction",
+      "type": "capacite",
+      "description_detaillee": "À partir du tableau de variation d'une fonction f, déterminer l'ensemble des solutions de l'inéquation f(x) ≤ k (ou f(x) ≥ k).",
+      "formulation_bo": "Exploiter le tableau de variation pour résoudre une inéquation du type f(x) ≤ k.",
+      "connaissances_associees": [
+        "tableau de variation",
+        "inéquation",
+        "ensemble de solutions"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-640",
+      "intitule": "Déterminer une valeur approchée ou un encadrement d'une solution d'équation",
+      "fingerprint": "determiner_valeur_approchee_solution_equation",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Analyse de fonction",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une calculatrice ou un algorithme numérique (dichotomie, Newton) pour obtenir une approximation ou un encadrement d'une solution de l'équation f(x) = k.",
+      "formulation_bo": "Déterminer des valeurs approchées, un encadrement d'une solution d'une équation du type f(x) = k.",
+      "connaissances_associees": [
+        "équation",
+        "approximation",
+        "encadrement",
+        "algorithme numérique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-641",
+      "intitule": "Appliquer l'équation fonctionnelle de l'exponentielle pour transformer une écriture",
+      "fingerprint": "appliquer_equation_fonctionnelle_exponentielle",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction exponentielle",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriété e^(a+b) = e^a · e^b pour simplifier des expressions ou résoudre des équations impliquant l'exponentielle.",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour transformer une écriture.",
+      "connaissances_associees": [
+        "exponentielle",
+        "équation fonctionnelle",
+        "propriétés algébriques"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-642",
+      "intitule": "Appliquer l'équation fonctionnelle de l'exponentielle pour résoudre une équation",
+      "fingerprint": "appliquer_equation_exponentielle_resoudre",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction exponentielle",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriété e^(a+b) = e^a · e^b et l'injectivité de l'exponentielle pour résoudre une équation de la forme e^(f(x)) = k.",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour résoudre une équation.",
+      "connaissances_associees": [
+        "exponentielle",
+        "équation",
+        "injectivité"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-643",
+      "intitule": "Appliquer l'équation fonctionnelle de l'exponentielle pour résoudre une inéquation",
+      "fingerprint": "appliquer_equation_exponentielle_resoudre_inequation",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction exponentielle",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriété e^(a+b) = e^a · e^b et la monotonie de l'exponentielle pour résoudre une inéquation de la forme e^(f(x)) ≤ k.",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour résoudre une inéquation.",
+      "connaissances_associees": [
+        "exponentielle",
+        "inéquation",
+        "monotonie"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-644",
+      "intitule": "Appliquer l'équation fonctionnelle du logarithme pour transformer une écriture",
+      "fingerprint": "appliquer_equation_logarithme_transformer",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les propriétés ln(ab) = ln(a) + ln(b), ln(a^n) = n·ln(a), ln(1/a) = -ln(a) pour simplifier des expressions.",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour transformer une écriture.",
+      "connaissances_associees": [
+        "logarithme",
+        "propriétés algébriques",
+        "simplification"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-645",
+      "intitule": "Appliquer l'équation fonctionnelle du logarithme pour résoudre une équation",
+      "fingerprint": "appliquer_equation_logarithme_resoudre",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les propriétés du logarithme et son injectivité pour résoudre une équation de la forme ln(f(x)) = k ou ln(f(x)) = ln(g(x)).",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour résoudre une équation.",
+      "connaissances_associees": [
+        "logarithme",
+        "équation",
+        "injectivité"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-646",
+      "intitule": "Appliquer l'équation fonctionnelle du logarithme pour résoudre une inéquation",
+      "fingerprint": "appliquer_equation_logarithme_resoudre_inequation",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les propriétés du logarithme et sa monotonie pour résoudre une inéquation de la forme ln(f(x)) ≤ k ou ln(f(x)) ≤ ln(g(x)).",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour résoudre une inéquation.",
+      "connaissances_associees": [
+        "logarithme",
+        "inéquation",
+        "monotonie"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TG-AN-647",
+      "intitule": "Utiliser la relation ln(q^n) = n·ln(q) pour déterminer un seuil",
+      "fingerprint": "utiliser_relation_logarithme_seuil",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Pour une suite géométrique de raison q > 0, utiliser la formule ln(q^n) = n·ln(q) pour déterminer le rang n à partir duquel q^n dépasse un seuil donné.",
+      "formulation_bo": "Utiliser la relation ln(q^n) = n·ln(q) pour déterminer un seuil.",
+      "connaissances_associees": [
+        "logarithme",
+        "suite géométrique",
+        "inéquation exponentielle"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 12
+      }
+    }
+  ],
+  "summary": {
+    "total": 47,
+    "by_type": {
+      "capacite": 34,
+      "contenu": 5,
+      "demonstration": 1,
+      "algorithme": 4,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "ANALYSE": 47
+    },
+    "by_sous_domaine": {
+      "Suites numériques": 8,
+      "Limites et continuité": 11,
+      "Fonction réciproque": 2,
+      "Fonction logarithme": 10,
+      "Dérivation": 5,
+      "Analyse de fonction": 6,
+      "Fonction exponentielle": 3,
+      "Limites": 1
+    },
+    "fingerprints": [
+      "representer_suite_recurrence_graphique",
+      "conjecturer_comportement_suite_recurrence",
+      "conjecturer_comportement_asymptotique_suite",
+      "rechercher_suite_constante_recurrence_arithmetico_geometrique",
+      "determiner_solutions_recurrence_arithmetico_geometrique",
+      "demontrer_limite_somme_suite_geometrique_raison_positive",
+      "rechercher_seuil_suite",
+      "calculer_termes_suite_recurrence_algorithme",
+      "rechercher_approximation_pi_algorithme",
+      "rechercher_approximation_ln2_algorithme",
+      "rechercher_approximation_racine2_algorithme",
+      "comprendre_notion_limite_fonction",
+      "reconnaitre_lien_limite_continuite",
+      "identifier_asymptotes_fonction",
+      "calculer_limite_fonction_carre",
+      "calculer_limite_fonction_cube",
+      "calculer_limite_fonction_racine_carree",
+      "calculer_limite_fonction_inverse",
+      "calculer_limite_fonction_exponentielle",
+      "calculer_limite_fonction_logarithme",
+      "appliquer_theoreme_valeurs_intermediaires",
+      "appliquer_tvi_fonction_strictement_monotone",
+      "determiner_reciproque_fonction_continue_monotone",
+      "tracer_graphique_fonction_reciproque",
+      "reconnaitre_logarithme_reciproque_exponentielle",
+      "calculer_limites_logarithme",
+      "tracer_graphique_logarithme",
+      "appliquer_equation_fonctionnelle_logarithme",
+      "calculer_derivee_logarithme",
+      "calculer_derivee_fonction_composee_affine",
+      "calculer_derivee_exponentielle_composee",
+      "calculer_derivee_logarithme_composee",
+      "calculer_derivee_fonction_au_carre",
+      "calculer_fonction_derivee",
+      "calculer_limite",
+      "dresser_tableau_variation",
+      "utiliser_courbes_reference_probleme",
+      "exploiter_variation_nombre_solutions_equation",
+      "exploiter_variation_resoudre_inequation",
+      "determiner_valeur_approchee_solution_equation",
+      "appliquer_equation_fonctionnelle_exponentielle",
+      "appliquer_equation_exponentielle_resoudre",
+      "appliquer_equation_exponentielle_resoudre_inequation",
+      "appliquer_equation_logarithme_transformer",
+      "appliquer_equation_logarithme_resoudre",
+      "appliquer_equation_logarithme_resoudre_inequation",
+      "utiliser_relation_logarithme_seuil"
+    ]
+  }
+}

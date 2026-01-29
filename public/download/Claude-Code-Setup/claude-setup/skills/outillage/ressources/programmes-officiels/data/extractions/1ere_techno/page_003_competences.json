@@ -1,0 +1,127 @@
+{
+  "source": {
+    "pdf": "1ere_techno.pdf",
+    "page": 3,
+    "text_length": 3847
+  },
+  "extraction": {
+    "date": "2026-01-02T10:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page introductive et methodologique - peu de competences atomiques specifiques"
+  },
+  "competences": [
+    {
+      "code": "1TECHNO-AG-151",
+      "intitule": "Utiliser un logiciel de calcul pour resoudre un probleme",
+      "fingerprint": "utiliser_logiciel_calcul_resolution_probleme",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Outils numeriques",
+      "type": "capacite",
+      "description_detaillee": "Mobiliser l'outil informatique (logiciel de calcul) dans le cadre de la resolution de problemes mathematiques",
+      "formulation_bo": "L'aptitude a mobiliser l'outil informatique dans le cadre de la resolution de problemes doit tout particulierement etre evaluee.",
+      "connaissances_associees": ["logiciels de calcul", "resolution de problemes"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 3}
+    },
+    {
+      "code": "1TECHNO-AG-152",
+      "intitule": "Utiliser un logiciel de geometrie dynamique pour conjecturer",
+      "fingerprint": "utiliser_geometrie_dynamique_conjecture",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Outils numeriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser un logiciel de geometrie dynamique pour explorer une situation et formuler des conjectures avant formalisation abstraite",
+      "formulation_bo": "Le recours a des logiciels de calcul, de geometrie dynamique ou la pratique de la programmation facilitent cette approche inductive.",
+      "connaissances_associees": ["geometrie dynamique", "conjecture", "approche inductive"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 3}
+    },
+    {
+      "code": "1TECHNO-AG-153",
+      "intitule": "Connaitre les elements de syntaxe du langage Python",
+      "fingerprint": "connaitre_syntaxe_python",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation",
+      "type": "contenu",
+      "description_detaillee": "Connaitre un nombre limite d'elements de syntaxe specifiques au langage Python pour la programmation",
+      "formulation_bo": "Cette dimension [...] repose sur la connaissance d'un nombre limite d'elements de syntaxe et de fonctions specifiques a l'outil utilise (langage Python, tableur).",
+      "connaissances_associees": ["syntaxe Python", "programmation"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 3}
+    },
+    {
+      "code": "1TECHNO-AG-154",
+      "intitule": "Connaitre les fonctions specifiques du tableur",
+      "fingerprint": "connaitre_fonctions_tableur",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Tableur",
+      "type": "contenu",
+      "description_detaillee": "Connaitre un nombre limite de fonctions specifiques au tableur pour les calculs et analyses",
+      "formulation_bo": "Cette dimension [...] repose sur la connaissance d'un nombre limite d'elements de syntaxe et de fonctions specifiques a l'outil utilise (langage Python, tableur).",
+      "connaissances_associees": ["tableur", "fonctions tableur"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 3}
+    },
+    {
+      "code": "1TECHNO-AG-155",
+      "intitule": "Pratiquer la programmation en Python",
+      "fingerprint": "pratiquer_programmation_python",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation",
+      "type": "capacite",
+      "description_detaillee": "Pratiquer de maniere effective et reguliere la programmation en langage Python",
+      "formulation_bo": "Cela suppose, d'une part, un enseignement explicite par le professeur, d'autre part, une pratique effective et reguliere des eleves.",
+      "connaissances_associees": ["Python", "programmation", "algorithmique"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 3}
+    },
+    {
+      "code": "1TECHNO-AG-156",
+      "intitule": "Utiliser le tableur pour resoudre un probleme",
+      "fingerprint": "utiliser_tableur_resolution_probleme",
+      "niveau": "1TECHNO",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Tableur",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le tableur comme outil de calcul et d'analyse dans le cadre de la resolution de problemes",
+      "formulation_bo": "une composante informatique qui recouvre l'algorithmique, la programmation et la pratique du tableur",
+      "connaissances_associees": ["tableur", "resolution de problemes"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 3}
+    },
+    {
+      "code": "1TECHNO-LO-151",
+      "intitule": "Formuler une conjecture a partir d'observations",
+      "fingerprint": "formuler_conjecture_observations",
+      "niveau": "1TECHNO",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Demarche mathematique",
+      "type": "capacite",
+      "description_detaillee": "A partir d'un questionnement ou d'un probleme, formuler des conjectures avant leur formalisation abstraite",
+      "formulation_bo": "Les nouveaux concepts gagnent a etre introduits par un questionnement ou un probleme qui conduit a des conjectures et donne sens a leur formalisation abstraite.",
+      "connaissances_associees": ["conjecture", "raisonnement inductif", "formalisation"],
+      "source": {"pdf": "1ere_techno.pdf", "page": 3}
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "by_type": {
+      "capacite": 5,
+      "contenu": 2
+    },
+    "by_domaine": {
+      "ALGORITHMIQUE": 6,
+      "LOGIQUE": 1
+    },
+    "fingerprints": [
+      "utiliser_logiciel_calcul_resolution_probleme",
+      "utiliser_geometrie_dynamique_conjecture",
+      "connaitre_syntaxe_python",
+      "connaitre_fonctions_tableur",
+      "pratiquer_programmation_python",
+      "utiliser_tableur_resolution_probleme",
+      "formuler_conjecture_observations"
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "source": {
+    "pdf": "premiere_ens_sci.pdf",
+    "page": 9,
+    "text_length": 2847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "1ES-GR-451",
+      "intitule": "Calculer une proportion",
+      "fingerprint": "calculer_proportion",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Proportions et rapports",
+      "type": "capacite",
+      "description_detaillee": "Determiner le rapport d'une partie au tout, exprimer une proportion numeriquement",
+      "formulation_bo": "Proportions, pourcentages",
+      "connaissances_associees": ["notion de rapport", "fraction"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "1ES-GR-452",
+      "intitule": "Calculer un pourcentage",
+      "fingerprint": "calculer_pourcentage",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Proportions et rapports",
+      "type": "capacite",
+      "description_detaillee": "Determiner le pourcentage d'une valeur par rapport a un total, exprimer une proportion en pourcentage",
+      "formulation_bo": "Proportions, pourcentages",
+      "connaissances_associees": ["proportion", "fraction", "multiplication"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "1ES-GR-453",
+      "intitule": "Appliquer une grandeur quotient",
+      "fingerprint": "appliquer_grandeur_quotient",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs composees",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une grandeur definie comme le quotient de deux autres grandeurs (ex: pouvoir calorifique en kJ/kg)",
+      "formulation_bo": "Grandeurs et mesures. Grandeurs quotients",
+      "connaissances_associees": ["quotient", "unites composees", "division"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "1ES-GR-454",
+      "intitule": "Comparer des pouvoirs calorifiques par unite de masse",
+      "fingerprint": "comparer_pouvoirs_calorifiques_masse",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs composees",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les grandeurs quotients (energie/masse) pour comparer differents combustibles ou biomasses selon leur pouvoir calorifique",
+      "formulation_bo": "Comparer differents pouvoirs calorifiques par unite de masse suivant la nature de la biomasse",
+      "connaissances_associees": ["grandeur quotient", "pouvoir calorifique", "comparaison de nombres"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "1ES-NB-455",
+      "intitule": "Utiliser les puissances de 10 pour exprimer une grandeur",
+      "fingerprint": "utiliser_puissances_10",
+      "niveau": "1ES",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Puissances et notation scientifique",
+      "type": "capacite",
+      "description_detaillee": "Exprimer des grandeurs (comme les durées geologiques ou les energies) en puissances de 10, notation scientifique",
+      "formulation_bo": "Puissances de 10",
+      "connaissances_associees": ["puissances", "notation scientifique", "ordres de grandeur"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "1ES-GR-456",
+      "intitule": "Mesurer une grandeur (pouvoir calorifique)",
+      "fingerprint": "mesurer_pouvoir_calorifique",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et mesures",
+      "type": "capacite",
+      "description_detaillee": "Evaluer le pouvoir calorifique d'une substance par experimentation, exprimer le resultat avec son unite (kJ/g, kJ/kg, etc.)",
+      "formulation_bo": "Evaluer le pouvoir calorifique d'une substance",
+      "connaissances_associees": ["pouvoir calorifique", "calorimetre", "grandeur quotient", "unites energetiques"],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 9
+      }
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "by_type": {
+      "capacite": 6
+    },
+    "by_domaine": {
+      "GRANDEURS": 4,
+      "NOMBRES": 1,
+      "GRANDEURS": 1
+    },
+    "by_niveau": {
+      "1ES": 6
+    },
+    "fingerprints": [
+      "calculer_proportion",
+      "calculer_pourcentage",
+      "appliquer_grandeur_quotient",
+      "comparer_pouvoirs_calorifiques_masse",
+      "utiliser_puissances_10",
+      "mesurer_pouvoir_calorifique"
+    ]
+  }
+}

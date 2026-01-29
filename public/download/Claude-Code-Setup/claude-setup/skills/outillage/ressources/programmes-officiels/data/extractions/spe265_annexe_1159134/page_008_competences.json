@@ -1,0 +1,271 @@
+{
+  "source": {
+    "pdf": "spe265_annexe_1159134.pdf",
+    "page": 8,
+    "text_length": 2847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-PR-401",
+      "intitule": "Definir les probabilites a priori et a posteriori",
+      "fingerprint": "definir_probabilites_priori_posteriori",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la distinction essentielle entre P(A) (probabilité a priori) et P_B(A) (probabilité a posteriori, probabilité conditionnelle après observation d'un événement B).",
+      "formulation_bo": "La question d'intérêt est représentée par un événement A de probabilité P(A), dite probabilité a priori. L'observation d'un événement B conduit à remplacer la probabilité a priori P(A) par la probabilité conditionnelle P_B(A), dite a posteriori.",
+      "connaissances_associees": ["probabilités conditionnelles", "événements", "formule de Bayes"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-402",
+      "intitule": "Appliquer la formule de Bayes pour l'inversion des conditionnements",
+      "fingerprint": "appliquer_formule_bayes_inversion",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la formule de Bayes P_B(A) = P_A(B)P(A)/P(B) pour exprimer la probabilité a posteriori et inverser les conditionnements, notamment pour distinguer P_B(A) de P_A(B).",
+      "formulation_bo": "La formule de Bayes P_B(A) = P_A(B)P(A)/P(B) permet d'exprimer la probabilité a posteriori lorsque l'expression du second membre est évaluable. Elle montre la distinction essentielle entre P_B(A) et P_A(B).",
+      "connaissances_associees": ["probabilités conditionnelles", "formule de Bayes", "inversion des conditionnements"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-403",
+      "intitule": "Calculer les probabilites conditionnelles dans un contexte bayésien",
+      "fingerprint": "calculer_probabilites_conditionnelles_bayes",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Calculer P_A(B) et P_B(A) en contexte bayésien pour résoudre des problèmes d'inférence et appliquer le raisonnement bayésien.",
+      "formulation_bo": "Le raisonnement bayésien est à la base de nombreux algorithmes de décision et se retrouve dans de nombreux domaines pratiques : sport, médecine, justice, etc. où l'on doit raisonner à partir de probabilités et d'informations incomplètes.",
+      "connaissances_associees": ["formule de Bayes", "probabilités conditionnelles", "événements"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-404",
+      "intitule": "Analyser les tests binaires de diagnostic médical",
+      "fingerprint": "analyser_tests_binaires_diagnostic_medical",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Identifier et calculer la sensibilité, la spécificité, les valeurs prédictives positive et négative, ainsi que les taux de vrais/faux positifs et négatifs dans un test de diagnostic médical.",
+      "formulation_bo": "Tests binaires pour le diagnostic médical. Notion de vrais/faux positifs et négatifs, sensibilité, spécificité, valeurs prédictives positive (diagnostique) et négative, lien avec les probabilités conditionnelles.",
+      "connaissances_associees": ["probabilités conditionnelles", "formule de Bayes", "inférence bayésienne"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-405",
+      "intitule": "Etudier les valeurs prédictives en fonction de la prévalence",
+      "fingerprint": "etudier_valeurs_predictives_prevalence",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Analyser comment les valeurs prédictives positive et négative d'un test de dépistage varient en fonction de la proportion de malades (prévalence) dans la population, avec sensibilité et spécificité données.",
+      "formulation_bo": "Tests de dépistage de sensibilité et de spécificité données : étude des valeurs prédictives en fonction de la proportion de malades et interprétation.",
+      "connaissances_associees": ["valeurs prédictives", "sensibilité", "spécificité", "probabilités conditionnelles"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-406",
+      "intitule": "Resoudre des problemes d'inférence de type 'De quelle urne vient la boule'",
+      "fingerprint": "resoudre_probleme_urne_boule",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inférence bayésienne",
+      "type": "capacite",
+      "description_detaillee": "Appliquer le raisonnement bayésien pour identifier l'origine d'un événement observé parmi plusieurs possibilités, à partir de probabilités a priori et de probabilités conditionnelles.",
+      "formulation_bo": "Exemples de problèmes du type : « De quelle urne vient la boule ? ».",
+      "connaissances_associees": ["formule de Bayes", "probabilités conditionnelles", "probabilités a priori et posteriori"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-407",
+      "intitule": "Definir le schema de Bernoulli et la loi binomiale",
+      "fingerprint": "definir_schema_bernoulli_loi_binomiale",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois de probabilité",
+      "type": "contenu",
+      "description_detaillee": "Comprendre le schéma de Bernoulli comme modèle de répétition d'expériences aléatoires indépendantes et la loi binomiale comme cas fondamental associé.",
+      "formulation_bo": "Le schéma de Bernoulli et la loi binomiale forment un cas fondamental, où il s'agit de considérer d'une part des probabilités ou proportions théoriques, et d'autre part des fréquences observées.",
+      "connaissances_associees": ["expériences aléatoires indépendantes", "répétition d'expériences", "probabilités"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-408",
+      "intitule": "Simuler des lois uniformes discrètes et des lois binomiales",
+      "fingerprint": "simuler_lois_uniformes_binomiales",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois de probabilité",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la loi uniforme sur [0,1] pour générer des simulations de lois uniformes discrètes et de lois binomiales, notamment pour illustrer le comportement des fréquences observées.",
+      "formulation_bo": "La réalisation de simulations est indispensable. C'est l'occasion de montrer l'intérêt de la loi uniforme sur [0,1] pour simuler d'autres lois parmi lesquelles les lois uniformes discrètes et les lois binomiales.",
+      "connaissances_associees": ["loi uniforme", "loi binomiale", "simulation", "génération de nombres aléatoires"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-409",
+      "intitule": "Calculer des probabilites de tirages avec remise dans une urne",
+      "fingerprint": "calculer_probabilites_tirages_remise_urne",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois de probabilité",
+      "type": "capacite",
+      "description_detaillee": "Calculer les probabilités pour des tirages aléatoires avec remise d'une boule dans une urne contenant des boules de deux couleurs différentes, avec simulations.",
+      "formulation_bo": "Tirages aléatoires avec remise d'une boule dans une urne contenant des boules de deux couleurs différentes. Simulations. Calculs de probabilité.",
+      "connaissances_associees": ["loi binomiale", "schéma de Bernoulli", "probabilités", "simulation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-410",
+      "intitule": "Construire un intervalle de test pour une piece equilibree",
+      "fingerprint": "construire_intervalle_test_piece_equilibree",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Tests statistiques",
+      "type": "capacite",
+      "description_detaillee": "Construire un intervalle I centré en n/2 tel que P(X ∈ I) ⩾ 1 - α où X suit la loi binomiale B(n, 1/2), pour tester l'équilibre d'une pièce de monnaie.",
+      "formulation_bo": "Test d'une pièce, par construction d'un intervalle I centré en n/2 tel que P(X ∈ I) ⩾ 1 - α où X est une variable aléatoire suivant la loi binomiale B(n, 1/2).",
+      "connaissances_associees": ["loi binomiale", "intervalle de confiance", "test statistique", "niveau de confiance"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-411",
+      "intitule": "Construire un intervalle de controle pour la surreservation",
+      "fingerprint": "construire_intervalle_surreservation",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Tests statistiques",
+      "type": "capacite",
+      "description_detaillee": "Construire un intervalle I de la forme [0,k] tel que P(X ∈ I) ⩾ 1 - α où X suit la loi binomiale B(n,p), pour résoudre un problème de surréservation.",
+      "formulation_bo": "Surréservation. Construction d'un intervalle I de la forme [0,k] tel que P(X ∈ I) ⩾ 1 - α où X est une variable aléatoire suivant la loi binomiale B(n,p).",
+      "connaissances_associees": ["loi binomiale", "intervalle", "test statistique", "optimisation décisionnelle"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-AN-412",
+      "intitule": "Etudier une fonction dans un contexte d'inférence bayésienne",
+      "fingerprint": "etudier_fonction_inference_bayesienne",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Étude de fonction",
+      "type": "contenu",
+      "description_detaillee": "Analyser et étudier des fonctions intervenant dans des modèles probabilistes et des calculs d'inférence bayésienne, notamment pour comprendre le comportement des probabilités a posteriori.",
+      "formulation_bo": "Étude de fonction.",
+      "connaissances_associees": ["étude de fonction", "analyse", "probabilités", "inférence bayésienne"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-PR-413",
+      "intitule": "Modeliser l'echantillonnage par la repetition d'experiences independantes",
+      "fingerprint": "modeliser_echantillonnage_repetition",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Échantillonnage et inférence",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le modèle probabiliste de la répétition d'expériences aléatoires indépendantes pour modéliser l'échantillonnage et les processus d'inférence statistique.",
+      "formulation_bo": "Ce thème vise à illustrer le modèle probabiliste de la répétition d'expériences aléatoires indépendantes et de l'échantillonnage ainsi que ses applications à l'inférence statistique, où il s'agit, à partir de l'observation d'un échantillon, d'induire des propriétés de la population dont il est issu.",
+      "connaissances_associees": ["expériences aléatoires indépendantes", "échantillonnage", "inférence statistique", "population"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TSPE-ST-414",
+      "intitule": "Interpreter la frequence observee par rapport a la probabilite theorique",
+      "fingerprint": "interpreter_frequence_probabilite",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Inférence statistique",
+      "type": "capacite",
+      "description_detaillee": "Comparer les fréquences observées dans un échantillon aux probabilités ou proportions théoriques dans la population, dans le contexte du schéma de Bernoulli et de la loi binomiale.",
+      "formulation_bo": "Le schéma de Bernoulli et la loi binomiale forment un cas fondamental, où il s'agit de considérer d'une part des probabilités ou proportions théoriques, et d'autre part des fréquences observées.",
+      "connaissances_associees": ["fréquence observée", "probabilité théorique", "échantillonnage", "loi binomiale"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 8
+      }
+    }
+  ],
+  "summary": {
+    "total": 14,
+    "by_type": {
+      "contenu": 3,
+      "capacite": 11
+    },
+    "by_domaine": {
+      "PROBABILITES": 9,
+      "ANALYSE": 1,
+      "STATISTIQUES": 1,
+      "AUTRES": 3
+    },
+    "by_niveau": {
+      "TSPE": 14
+    },
+    "fingerprints": [
+      "definir_probabilites_priori_posteriori",
+      "appliquer_formule_bayes_inversion",
+      "calculer_probabilites_conditionnelles_bayes",
+      "analyser_tests_binaires_diagnostic_medical",
+      "etudier_valeurs_predictives_prevalence",
+      "resoudre_probleme_urne_boule",
+      "definir_schema_bernoulli_loi_binomiale",
+      "simuler_lois_uniformes_binomiales",
+      "calculer_probabilites_tirages_remise_urne",
+      "construire_intervalle_test_piece_equilibree",
+      "construire_intervalle_surreservation",
+      "etudier_fonction_inference_bayesienne",
+      "modeliser_echantillonnage_repetition",
+      "interpreter_frequence_probabilite"
+    ]
+  }
+}

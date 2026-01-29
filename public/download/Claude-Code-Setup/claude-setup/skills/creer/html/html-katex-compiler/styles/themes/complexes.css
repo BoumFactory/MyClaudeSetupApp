@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Nombres complexes
+   Palette Indigo - Plan complexe, spirales
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #5c6bc0;
+    --theme-secondary: #7986cb;
+    --theme-accent: #3949ab;
+
+    /* Couleurs des blocs */
+    --color-definition: #5c6bc0;
+    --color-theoreme: #3949ab;
+    --color-propriete: #7986cb;
+    --color-exemple: #9fa8da;
+    --color-methode: #c5cae9;
+    --color-remarque: #d1d7ed;
+    --color-exercice: #e8eaf6;
+
+    /* Backgrounds */
+    --bg-definition: #eef0f9;
+    --bg-theoreme: #e3e7f5;
+    --bg-propriete: #eceef8;
+    --bg-exemple: #f1f3fa;
+    --bg-methode: #f5f6fb;
+    --bg-remarque: #f8f9fc;
+    --bg-exercice: #fbfbfd;
+}
+
+/* Titres */
+h1 { color: #283593; }
+h2 { color: #303f9f; }
+h3 { color: #3949ab; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

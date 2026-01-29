@@ -1,0 +1,67 @@
+/* ===========================================
+   NIVEAU: 3ème
+   Préparation lycée, un peu plus compact
+   =========================================== */
+
+:root {
+    --content-width: 810px;
+    --content-padding: 2rem;
+    --bloc-padding: 1rem 1.4rem;
+    --bloc-radius: 8px;
+    --bloc-border-width: 4px;
+}
+
+body {
+    font-size: 15.5px;
+    line-height: 1.65;
+}
+
+h1 {
+    font-size: 2.1rem;
+}
+
+h2 {
+    font-size: 1.55rem;
+    margin-top: 2.25rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p, li {
+    font-size: 1rem;
+}
+
+/* Blocs */
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    padding: 1.15rem 1.5rem;
+    margin: 1.4rem 0;
+}
+
+/* Labels */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before,
+.exercice::before {
+    font-size: 1.05rem;
+    margin-bottom: 0.45rem;
+}
+
+/* KaTeX */
+.katex {
+    font-size: 1.15em;
+}
+
+.katex-display {
+    margin: 1rem 0;
+}
+
+/* Listes */
+ul, ol {
+    margin: 1rem 0;
+}
+
+li {
+    margin: 0.3rem 0;
+}

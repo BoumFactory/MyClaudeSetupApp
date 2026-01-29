@@ -1,0 +1,417 @@
+{
+  "source": {
+    "pdf": "Tle_techno.pdf",
+    "page": 12,
+    "text_length": 1847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TTC-AN-601",
+      "intitule": "Definir la fonction exponentielle x ↦ a^x comme extension d'une suite geometrique",
+      "fingerprint": "definir_fonction_exponentielle_extension_suite_geometrique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et definir la fonction x ↦ a^x (a > 0) comme prolongement continu de la suite geometrique (a^n) pour des valeurs non-entieres et positives, avec extension a R en posant a^(-x) = 1/(a^x).",
+      "formulation_bo": "definition de la fonction x ↦ a^x pour x positif comme prolongement a des valeurs non-entieres positives de la suite geometrique (a^n) ; extension a R_ en posant a^(-x) = 1/(a^x)",
+      "connaissances_associees": [
+        "suite geometrique",
+        "puissances entieres",
+        "nombre reel positif"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-602",
+      "intitule": "Interpreter la fonction exponentielle comme modele continu d'evolution relative constante",
+      "fingerprint": "interpreter_fonction_exponentielle_evolution_relative",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre les fonctions x ↦ a^x (a > 0) comme modele mathematique decrivant une croissance exponentielle avec un taux d'evolution relatif constant.",
+      "formulation_bo": "Les fonctions x ↦ a^x (a > 0) comme modele continu d'evolution relative constante",
+      "connaissances_associees": [
+        "croissance exponentielle",
+        "taux d'evolution",
+        "modele continu"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-603",
+      "intitule": "Determiner le sens de variation de la fonction x ↦ a^x selon les valeurs de a",
+      "fingerprint": "determiner_variation_fonction_exponentielle_base_a",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "capacite",
+      "description_detaillee": "Analyser et determiner si la fonction x ↦ a^x est croissante ou decroissante selon que a > 1 ou 0 < a < 1.",
+      "formulation_bo": "sens de variation selon les valeurs de a",
+      "connaissances_associees": [
+        "fonction exponentielle",
+        "sens de variation",
+        "base exponentielle",
+        "croissance exponentielle"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-604",
+      "intitule": "Decrire l'allure de la courbe representative d'une fonction x ↦ a^x selon les valeurs de a",
+      "fingerprint": "decrire_allure_courbe_exponentielle",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "capacite",
+      "description_detaillee": "Caracteriser graphiquement les fonctions exponentielles en decrivant leur allure, comportement asymptotique et proprietes selon que a > 1 ou 0 < a < 1.",
+      "formulation_bo": "allure de la courbe representative selon les valeurs de a",
+      "connaissances_associees": [
+        "representation graphique",
+        "fonction exponentielle",
+        "asymptote",
+        "comportement limite"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-605",
+      "intitule": "Connaitre le sens de variation de la fonction x ↦ ka^x selon le signe de k et les valeurs de a",
+      "fingerprint": "connaitre_variation_fonction_ka_exposant_x",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "capacite",
+      "description_detaillee": "Determiner si la fonction x ↦ ka^x est croissante ou decroissante en fonction du signe du coefficient k (positif ou negatif) et de la base a (a > 1 ou 0 < a < 1).",
+      "formulation_bo": "Connaitre et utiliser le sens de variation des fonctions de la forme x ↦ ka^x, selon le signe de k et les valeurs de a.",
+      "connaissances_associees": [
+        "fonction exponentielle",
+        "coefficient multiplicatif",
+        "sens de variation",
+        "transformation de fonction"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-606",
+      "intitule": "Appliquer la propriete a^(x+y) = a^x * a^y",
+      "fingerprint": "appliquer_propriete_exponentielle_somme_exposants",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriete algebrique a^(x+y) = a^x * a^y pour simplifier ou transformer des expressions exponentielles.",
+      "formulation_bo": "proprietes algebriques : a^(x+y) = a^x * a^y",
+      "connaissances_associees": [
+        "fonction exponentielle",
+        "proprietes algebriques",
+        "operations sur les exposants"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-607",
+      "intitule": "Appliquer la propriete a^(xy) = (a^x)^y",
+      "fingerprint": "appliquer_propriete_exponentielle_produit_exposants",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriete algebrique a^(xy) = (a^x)^y pour simplifier ou transformer des expressions exponentielles avec exposants composes.",
+      "formulation_bo": "proprietes algebriques : a^(xy) = (a^x)^y",
+      "connaissances_associees": [
+        "fonction exponentielle",
+        "proprietes algebriques",
+        "operations sur les exposants",
+        "puissance d'une puissance"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-608",
+      "intitule": "Appliquer la propriete a^(nx) = (a^x)^n pour n entier relatif",
+      "fingerprint": "appliquer_propriete_exponentielle_entier_relatif",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriete algebrique a^(nx) = (a^x)^n valide pour n entier relatif pour simplifier ou transformer des expressions exponentielles.",
+      "formulation_bo": "proprietes algebriques : a^(nx) = (a^x)^n pour n entier relatif",
+      "connaissances_associees": [
+        "fonction exponentielle",
+        "proprietes algebriques",
+        "entier relatif",
+        "operations sur les exposants"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-609",
+      "intitule": "Transformer des ecritures numeriques ou litterales avec les proprietes algebriques des fonctions exponentielles",
+      "fingerprint": "transformer_ecritures_proprietes_exponentielles",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "capacite",
+      "description_detaillee": "Utiliser l'ensemble des proprietes algebriques des fonctions exponentielles (a^(x+y) = a^x * a^y, a^(xy) = (a^x)^y, a^(nx) = (a^x)^n) pour simplifier, developper ou reorganiser des expressions numeriques ou litterales complexes.",
+      "formulation_bo": "Connaitre les proprietes algebriques des fonctions exponentielles et les utiliser pour transformer des ecritures numeriques ou litterales.",
+      "connaissances_associees": [
+        "fonction exponentielle",
+        "proprietes algebriques",
+        "simplification algebrique",
+        "transformation d'expressions"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-610",
+      "intitule": "Calculer un taux d'evolution moyen equivalent a des evolutions successives",
+      "fingerprint": "calculer_taux_evolution_moyen_evolutions_successives",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "capacite",
+      "description_detaillee": "Determiner le taux d'evolution constant (moyen) qui, applique n fois successivement, donne le meme resultat qu'une suite d'evolutions successives differentes. Utiliser l'exposant fractionnaire 1/n pour resoudre ce probleme.",
+      "formulation_bo": "Calculer le taux d'evolution moyen equivalent a des evolutions successives",
+      "connaissances_associees": [
+        "taux d'evolution",
+        "fonction exponentielle",
+        "exposant fractionnaire",
+        "croissance geometrique",
+        "evolution successive"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-611",
+      "intitule": "Ecrire en Python une fonction calculant la somme des n premiers carres",
+      "fingerprint": "ecrire_fonction_python_somme_carres",
+      "niveau": "TTC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation et algorithmes",
+      "type": "capacite",
+      "description_detaillee": "Creer une fonction Python qui, a partir d'un entier n, calcule et retourne la somme 1^2 + 2^2 + ... + n^2 en utilisant une boucle avec initialisation, accumulateur et compteur.",
+      "formulation_bo": "Ecrire en langage Python une fonction qui calcule la somme des n premiers carres",
+      "connaissances_associees": [
+        "Python",
+        "fonction",
+        "boucle",
+        "accumulateur",
+        "compteur",
+        "notation sigma"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-612",
+      "intitule": "Ecrire en Python une fonction calculant la somme des n premiers cubes",
+      "fingerprint": "ecrire_fonction_python_somme_cubes",
+      "niveau": "TTC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation et algorithmes",
+      "type": "capacite",
+      "description_detaillee": "Creer une fonction Python qui, a partir d'un entier n, calcule et retourne la somme 1^3 + 2^3 + ... + n^3 en utilisant une boucle avec initialisation, accumulateur et compteur.",
+      "formulation_bo": "Ecrire en langage Python une fonction qui calcule la somme des n premiers cubes",
+      "connaissances_associees": [
+        "Python",
+        "fonction",
+        "boucle",
+        "accumulateur",
+        "compteur",
+        "notation sigma"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-613",
+      "intitule": "Ecrire en Python une fonction calculant la somme des n premiers inverses",
+      "fingerprint": "ecrire_fonction_python_somme_inverses",
+      "niveau": "TTC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation et algorithmes",
+      "type": "capacite",
+      "description_detaillee": "Creer une fonction Python qui, a partir d'un entier n, calcule et retourne la somme 1/1 + 1/2 + ... + 1/n en utilisant une boucle avec initialisation, accumulateur et compteur.",
+      "formulation_bo": "Ecrire en langage Python une fonction qui calcule la somme des n premiers inverses",
+      "connaissances_associees": [
+        "Python",
+        "fonction",
+        "boucle",
+        "accumulateur",
+        "compteur",
+        "notation sigma",
+        "fractions"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-614",
+      "intitule": "Etablir le lien entre la notation Sigma et les composantes d'un algorithme de somme",
+      "fingerprint": "etablir_lien_notation_sigma_algorithme_somme",
+      "niveau": "TTC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation et algorithmes",
+      "type": "capacite",
+      "description_detaillee": "Comprendre et expliquer la correspondance entre la notation mathematique Sigma (∑) et les elements d'un algorithme iteratif : initialisation de l'accumulateur, condition de sortie de boucle, mise a jour de l'accumulateur et du compteur.",
+      "formulation_bo": "etablir le lien entre l'ecriture de la somme a l'aide du symbole Σ, et les composantes de l'algorithme (initialisation, sortie de boucle, accumulateur, compteur)",
+      "connaissances_associees": [
+        "notation sigma",
+        "algorithme",
+        "boucle",
+        "accumulateur",
+        "compteur",
+        "Python"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-615",
+      "intitule": "Intercaler un point entre deux points deja construits en utilisant la moyenne arithmetique des abscisses",
+      "fingerprint": "intercaler_point_moyenne_arithmetique_abscisses",
+      "niveau": "TTC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation et algorithmes",
+      "type": "capacite",
+      "description_detaillee": "Construire un point intermediaire entre deux points deja construits en choisissant comme abscisse la moyenne arithmetique des abscisses des deux points initiaux.",
+      "formulation_bo": "Intercaler entre deux points deja construits un troisieme point ayant pour abscisse la moyenne arithmetique des abscisses des deux points initiaux",
+      "connaissances_associees": [
+        "moyenne arithmetique",
+        "representation graphique",
+        "fonction exponentielle",
+        "algorithme d'interpolation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-616",
+      "intitule": "Intercaler un point entre deux points deja construits en utilisant la moyenne geometrique des ordonnees",
+      "fingerprint": "intercaler_point_moyenne_geometrique_ordonnees",
+      "niveau": "TTC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation et algorithmes",
+      "type": "capacite",
+      "description_detaillee": "Construire un point intermediaire entre deux points deja construits en choisissant comme ordonnee la moyenne geometrique des ordonnees des deux points initiaux, ce qui est coherent avec la nature exponentielle de la fonction.",
+      "formulation_bo": "Intercaler entre deux points deja construits un troisieme point ayant pour ordonnee la moyenne geometrique des ordonnees des deux points initiaux",
+      "connaissances_associees": [
+        "moyenne geometrique",
+        "representation graphique",
+        "fonction exponentielle",
+        "algorithme d'interpolation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    },
+    {
+      "code": "TTC-AN-617",
+      "intitule": "Etablir le lien entre les fonctions exponentielles et les suites geometriques",
+      "fingerprint": "etablir_lien_fonction_exponentielle_suite_geometrique",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la continuite conceptuelle entre les suites geometriques (domaine discret N) et les fonctions exponentielles (domaine continu R), en particulier le lien entre la raison q d'une suite geometrique et la base a d'une fonction exponentielle.",
+      "formulation_bo": "Le lien est fait avec les suites geometriques",
+      "connaissances_associees": [
+        "suite geometrique",
+        "fonction exponentielle",
+        "domaine discret",
+        "domaine continu",
+        "raison d'une suite",
+        "base d'une exponentielle"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 12
+      }
+    }
+  ],
+  "summary": {
+    "total": 17,
+    "by_type": {
+      "contenu": 3,
+      "capacite": 12,
+      "demonstration": 0,
+      "algorithme": 2
+    },
+    "by_domaine": {
+      "ANALYSE": 11,
+      "ALGORITHMIQUE": 6
+    },
+    "by_sous_domaine": {
+      "Fonctions exponentielles": 11,
+      "Programmation et algorithmes": 6
+    },
+    "fingerprints": [
+      "definir_fonction_exponentielle_extension_suite_geometrique",
+      "interpreter_fonction_exponentielle_evolution_relative",
+      "determiner_variation_fonction_exponentielle_base_a",
+      "decrire_allure_courbe_exponentielle",
+      "connaitre_variation_fonction_ka_exposant_x",
+      "appliquer_propriete_exponentielle_somme_exposants",
+      "appliquer_propriete_exponentielle_produit_exposants",
+      "appliquer_propriete_exponentielle_entier_relatif",
+      "transformer_ecritures_proprietes_exponentielles",
+      "calculer_taux_evolution_moyen_evolutions_successives",
+      "ecrire_fonction_python_somme_carres",
+      "ecrire_fonction_python_somme_cubes",
+      "ecrire_fonction_python_somme_inverses",
+      "etablir_lien_notation_sigma_algorithme_somme",
+      "intercaler_point_moyenne_arithmetique_abscisses",
+      "intercaler_point_moyenne_geometrique_ordonnees",
+      "etablir_lien_fonction_exponentielle_suite_geometrique"
+    ]
+  }
+}

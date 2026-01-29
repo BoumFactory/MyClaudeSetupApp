@@ -1,0 +1,59 @@
+{
+  "description": "Mascottes mathematiques pour infographies educatives. Chaque mascotte represente un domaine des maths et peut etre utilisee en bas a droite des infographies pour eviter les erreurs de generation dans cette zone.",
+  "usage": "Inclure la description de la mascotte appropriee dans le prompt principal, en precisant qu'elle doit apparaitre en bas a droite, petit format, faisant un geste positif (pouce leve, clin d'oeil, check, etc.)",
+  "mascots": {
+    "geometrie": {
+      "name": "Gaia",
+      "domain": "Geometrie (plane, espace, vecteurs, transformations)",
+      "appearance": "Young Black girl with short curly hair, wearing a blue t-shirt with a triangle pattern. She has a compass tucked behind her ear and holds a small ruler. Bright curious eyes. Athletic build suggesting movement in space.",
+      "personality": "Precise, spatial thinker, loves shapes and symmetry",
+      "signature_pose": "Making an 'OK' hand sign forming a circle, winking",
+      "prompt_snippet": "Small manga-style mascot in bottom right corner: a young Black girl named Gaia with short curly hair, blue t-shirt with triangle patterns, compass behind her ear, making an OK hand sign and winking cheerfully. Cute chibi/kawaii style, simple background."
+    },
+    "analyse": {
+      "name": "Alex",
+      "domain": "Analyse (fonctions, derivees, limites, calcul litteral)",
+      "appearance": "East Asian teenage boy with messy black hair and thin glasses. Wears a green hoodie with a subtle integral symbol. Always has a pencil in hand, looks thoughtful but friendly. Slim build.",
+      "personality": "Deep thinker, sees patterns and change, philosophical",
+      "signature_pose": "Thumbs up with a satisfied smile, slight head tilt",
+      "prompt_snippet": "Small manga-style mascot in bottom right corner: an East Asian teenage boy named Alex with messy black hair, thin glasses, green hoodie with integral symbol, giving a thumbs up with a satisfied smile. Cute chibi/kawaii style, simple background."
+    },
+    "probabilites": {
+      "name": "Priya",
+      "domain": "Probabilites et Statistiques (chances, lois, echantillons)",
+      "appearance": "South Asian young woman with long dark braided hair, wearing a purple shirt with dice patterns. Has a playful mysterious smile. Holds lucky dice in one hand. Medium build, expressive hands.",
+      "personality": "Playful, loves uncertainty and games, lucky charm",
+      "signature_pose": "Rolling dice gesture with a mischievous wink",
+      "prompt_snippet": "Small manga-style mascot in bottom right corner: a South Asian young woman named Priya with long dark braided hair, purple shirt with dice patterns, rolling dice with a mischievous wink and playful smile. Cute chibi/kawaii style, simple background."
+    },
+    "arithmetique": {
+      "name": "Nabil",
+      "domain": "Arithmetique (nombres, divisibilite, PGCD, premiers)",
+      "appearance": "North African boy with short dark hair and warm brown eyes. Wears an orange shirt with prime number spiral pattern. Has a small notebook. Sturdy build, grounded posture.",
+      "personality": "Methodical, loves patterns in numbers, reliable",
+      "signature_pose": "Counting on fingers with a big proud smile",
+      "prompt_snippet": "Small manga-style mascot in bottom right corner: a North African boy named Nabil with short dark hair, warm brown eyes, orange shirt with number spiral pattern, counting on fingers with a big proud smile. Cute chibi/kawaii style, simple background."
+    },
+    "algebre": {
+      "name": "Sofia",
+      "domain": "Algebre (equations, systemes, polynomes, complexes)",
+      "appearance": "Latina teenage girl with wavy brown hair in a ponytail, wearing a red t-shirt with X and Y variables design. Sharp focused eyes, confident posture. Has a small whiteboard marker.",
+      "personality": "Problem solver, loves puzzles, determined",
+      "signature_pose": "Victory V sign with both hands, triumphant grin",
+      "prompt_snippet": "Small manga-style mascot in bottom right corner: a Latina teenage girl named Sofia with wavy brown hair in ponytail, red t-shirt with X and Y variables design, making victory V signs with both hands and a triumphant grin. Cute chibi/kawaii style, simple background."
+    },
+    "suites": {
+      "name": "Sven",
+      "domain": "Suites (recurrence, convergence, series)",
+      "appearance": "Scandinavian young man with blonde hair and light blue eyes. Wears a teal sweater with fibonacci spiral pattern. Tall and lean, patient expression. Has a small infinity pendant.",
+      "personality": "Patient, sees long-term patterns, calm and wise",
+      "signature_pose": "Peace sign transitioning to infinity gesture, serene smile",
+      "prompt_snippet": "Small manga-style mascot in bottom right corner: a Scandinavian young man named Sven with blonde hair, light blue eyes, teal sweater with spiral pattern, making a peace sign with a serene calm smile. Cute chibi/kawaii style, simple background."
+    }
+  },
+  "generation_settings": {
+    "style": "Manga/anime chibi kawaii style, simple clean lines, expressive face, small cute proportions (big head, small body), friendly and approachable",
+    "format": "Square or slightly vertical, transparent or simple solid color background preferred",
+    "size_hint": "Will be placed in corner of infographic, should be recognizable at small size"
+  }
+}

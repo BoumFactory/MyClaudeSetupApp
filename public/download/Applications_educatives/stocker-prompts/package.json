@@ -1,0 +1,28 @@
+{
+  "name": "prompt-manager",
+  "version": "1.0.0",
+  "description": "Gestionnaire de prompts pour élèves - Stockage, fabrication et organisation de prompts IA",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npx http-server src -p 3000 -o",
+    "watch": "nodemon --watch src -e js,css,html --exec \"node build.js\"",
+    "tauri": "tauri",
+    "tauri:dev": "node build.js && tauri dev",
+    "tauri:build": "node build.js && tauri build"
+  },
+  "keywords": [
+    "prompts",
+    "ia",
+    "education",
+    "eleves",
+    "tauri"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.0.1"
+  }
+}

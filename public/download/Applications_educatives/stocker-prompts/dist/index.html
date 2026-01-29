@@ -1,0 +1,6088 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Manager - Gestionnaire de Prompts pour Élèves</title>
+  <meta name="description" content="Application pour gérer, créer et organiser vos prompts IA">
+  <style>
+/**
+ * Styles principaux de l'application Prompt Manager
+ */
+
+/* ===== Variables CSS ===== */
+:root {
+  --primary: #4361ee;
+  --primary-hover: #3651d4;
+  --secondary: #6c757d;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+  --warning: #f39c12;
+
+  --bg-main: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --bg-hover: #f1f3f5;
+
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-muted: #adb5bd;
+
+  --border: #dee2e6;
+  --border-focus: var(--primary);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --transition: 0.2s ease;
+}
+
+/* Thème sombre */
+[data-theme="dark"] {
+  --bg-main: #1a1d21;
+  --bg-card: #2d3136;
+  --bg-input: #3d4147;
+  --bg-hover: #3d4147;
+
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --text-muted: #6c757d;
+
+  --border: #495057;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
+
+/* ===== Layout Principal ===== */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.db-status {
+  background: rgba(255,255,255,0.2);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: help;
+  white-space: nowrap;
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-btn {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.nav-btn.active {
+  background: white;
+  color: var(--primary);
+}
+
+.app-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== Boutons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--border);
+}
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+  background: #27ae60;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #c0392b;
+}
+
+.btn-small {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+/* ===== Wizard ===== */
+.wizard {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.wizard-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.wizard-step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-hover);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+}
+
+.wizard-step.active {
+  background: var(--primary);
+  color: white;
+}
+
+.wizard-step.completed {
+  background: var(--success);
+  color: white;
+}
+
+.wizard-step-connector {
+  width: 2rem;
+  height: 2px;
+  background: var(--border);
+}
+
+.step-number {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.wizard-content {
+  min-height: 300px;
+}
+
+.wizard-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.wizard-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.wizard-actions-top {
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  z-index: 10;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.wizard-actions-bottom {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Actions Grid */
+.action-categories {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.action-category h4 {
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--bg-hover);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.action-btn:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.action-btn.selected {
+  background: rgba(67, 97, 238, 0.1);
+  border-color: var(--primary);
+}
+
+.action-emoji {
+  font-size: 1.5rem;
+}
+
+.action-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Subject Grid */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.subject-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-hover);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.subject-btn:hover {
+  border-color: var(--primary);
+}
+
+.subject-btn.selected {
+  background: rgba(67, 97, 238, 0.1);
+  border-color: var(--primary);
+}
+
+.subject-emoji {
+  font-size: 1.5rem;
+}
+
+.subject-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Level Grid */
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  justify-content: center;
+}
+
+.level-btn {
+  padding: 1rem 1.5rem;
+  background: var(--bg-hover);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.level-btn:hover {
+  border-color: var(--primary);
+}
+
+.level-btn.selected {
+  background: rgba(67, 97, 238, 0.1);
+  border-color: var(--primary);
+}
+
+/* Theme Input */
+.theme-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.theme-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.theme-suggestions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.suggestion-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.suggestion-btn {
+  padding: 0.4rem 0.8rem;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--transition);
+  color: var(--text-primary);
+}
+
+.suggestion-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.hint {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* ===== Prompt List ===== */
+.prompt-list-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.prompt-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.prompt-list-header h2 {
+  font-size: 1.5rem;
+}
+
+.prompt-count {
+  background: var(--primary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.prompt-filters {
+  background: var(--bg-card);
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.search-box {
+  margin-bottom: 1rem;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  background: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.filter-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-row select {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.prompt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.prompt-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.prompt-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.prompt-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.prompt-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  padding: 0.25rem 0.6rem;
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.tag-action {
+  background: rgba(67, 97, 238, 0.1);
+  color: var(--primary);
+}
+
+.tag-subject {
+  background: rgba(46, 204, 113, 0.1);
+  color: var(--success);
+}
+
+.tag-level {
+  background: rgba(243, 156, 18, 0.1);
+  color: var(--warning);
+}
+
+.prompt-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.prompt-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.prompt-theme {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.prompt-preview {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.prompt-description {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.prompt-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* ===== Builder Panel ===== */
+.builder-panel {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.builder-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.builder-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.structure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.structure-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  background: var(--bg-hover);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.structure-btn:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.structure-icon {
+  font-size: 2rem;
+}
+
+.structure-label {
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.brick-categories {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.brick-category h4 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.brick-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.brick-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.brick-item:hover {
+  background: var(--border);
+}
+
+.brick-item.selected {
+  background: rgba(67, 97, 238, 0.1);
+}
+
+.brick-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+
+.brick-label {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.params-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.param-field label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+}
+
+.param-field input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  background: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.param-field input:focus,
+.param-field select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.param-select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.preview-box {
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin: 1rem 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.preview-box pre {
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.builder-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+/* ===== Concatenation Panel ===== */
+.concatenation-panel {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.concat-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.concat-header h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.concat-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.concat-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.variant-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.variant-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  background: var(--bg-hover);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.variant-btn:hover {
+  border-color: var(--primary);
+}
+
+.variant-btn.selected {
+  background: rgba(67, 97, 238, 0.1);
+  border-color: var(--primary);
+}
+
+.variant-btn strong {
+  color: var(--text-primary);
+}
+
+.variant-btn span {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.prompt-display {
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.prompt-display pre {
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.concat-actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.instruction-list {
+  list-style: none;
+}
+
+.instruction-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.instruction-list li:last-child {
+  border-bottom: none;
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  padding-top: 3px;
+}
+
+.tip-box {
+  background: rgba(243, 156, 18, 0.1);
+  border-left: 4px solid var(--warning);
+}
+
+.tip-box h4 {
+  color: var(--warning);
+  margin-bottom: 0.5rem;
+}
+
+.tip-box p {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.tip-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Settings Panel ===== */
+.settings-panel {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  margin-bottom: 2rem;
+}
+
+.settings-header h2 {
+  font-size: 1.75rem;
+}
+
+.settings-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.settings-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.settings-section select {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  margin-top: 0.5rem;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+
+.checkbox-item span {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.settings-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.theme-selector {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.theme-btn {
+  flex: 1;
+  max-width: 150px;
+  padding: 1rem;
+  background: var(--bg-hover);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: var(--transition);
+  color: var(--text-primary);
+}
+
+.theme-btn:hover {
+  border-color: var(--primary);
+}
+
+.theme-btn.selected {
+  background: rgba(67, 97, 238, 0.1);
+  border-color: var(--primary);
+}
+
+.danger-zone {
+  border: 2px solid var(--danger);
+  background: rgba(231, 76, 60, 0.05);
+}
+
+.danger-zone h3 {
+  color: var(--danger);
+}
+
+.danger-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* ===== Modal ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-large {
+  max-width: 800px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h3 {
+  font-size: 1.25rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.prompt-content-full {
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 1rem 0;
+}
+
+.prompt-content-full pre {
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.prompt-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Save Modal */
+.save-modal-content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.prompt-preview-section h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.prompt-preview-box {
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.prompt-preview-box pre {
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.finalize-form h4 {
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.selection-summary {
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+
+.selection-summary h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.summary-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.finalize-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--text-primary);
+  color: var(--bg-card);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 2000;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .app-nav {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-btn {
+    flex-shrink: 0;
+  }
+
+  .app-content {
+    padding: 1rem;
+  }
+
+  .wizard {
+    padding: 1.25rem;
+  }
+
+  .wizard-progress {
+    flex-direction: column;
+  }
+
+  .wizard-step-connector {
+    width: 2px;
+    height: 1rem;
+  }
+
+  .action-grid,
+  .subject-grid,
+  .level-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .builder-actions {
+    flex-direction: column;
+  }
+
+  .danger-actions {
+    flex-direction: column;
+  }
+
+  .danger-actions .btn {
+    width: 100%;
+  }
+}
+
+/* ===== Custom Items (Briques et Structures personnalisées) ===== */
+.custom-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.custom-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-hover);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.custom-item:hover {
+  border-color: var(--primary);
+}
+
+.custom-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.custom-item-info strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.custom-item-category {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.custom-item-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.custom-item-preview {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  word-break: break-word;
+}
+
+.custom-item-bricks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.custom-item-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.empty-hint {
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Mini tags pour les briques dans les structures */
+.mini-tag {
+  display: inline-block;
+  padding: 0.15rem 0.4rem;
+  background: rgba(67, 97, 238, 0.1);
+  color: var(--primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+}
+
+/* Params preview */
+.params-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  min-height: 40px;
+}
+
+.param-tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-family: monospace;
+}
+
+/* Brick selector dans modal structure */
+.brick-selector {
+  display: grid;
+  gap: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: var(--bg-hover);
+  border-radius: var(--radius-md);
+}
+
+.brick-selector-category h4 {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.brick-selector-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+}
+
+.brick-selector-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.brick-selector-item:hover {
+  border-color: var(--primary);
+}
+
+.brick-selector-item input {
+  accent-color: var(--primary);
+}
+
+.custom-badge {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.3rem;
+  background: var(--success);
+  color: white;
+  border-radius: 3px;
+  margin-left: auto;
+}
+
+.selected-bricks-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  min-height: 40px;
+}
+
+/* Form row pour structure modal */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+/* Modal select styling */
+.modal select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  background: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.modal select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.modal small {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.modal small code {
+  background: var(--bg-hover);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+  </style>
+</head>
+<body>
+  <script>
+(function() {
+  'use strict';
+
+
+// ============ config/actions.js ============
+/**
+ * Configuration des actions disponibles dans l'application
+ * Les actions "enabled: true" sont affichées par défaut dans le wizard
+ */
+
+const ACTIONS = [
+  // Actions de base (activées par défaut)
+  { id: 'creer', label: 'Créer', emoji: '✨', description: 'Générer du nouveau contenu', enabled: true, category: 'production' },
+  { id: 'reviser', label: 'Réviser', emoji: '📚', description: 'Revoir et mémoriser des notions', enabled: true, category: 'apprentissage' },
+  { id: 'expliquer', label: 'Expliquer', emoji: '💡', description: 'Obtenir des explications claires', enabled: true, category: 'comprehension' },
+  { id: 'corriger', label: 'Corriger', emoji: '✏️', description: 'Faire corriger un travail', enabled: true, category: 'amelioration' },
+  { id: 'resumer', label: 'Résumer', emoji: '📝', description: 'Condenser une information', enabled: true, category: 'synthese' },
+  { id: 'comparer', label: 'Comparer', emoji: '⚖️', description: 'Mettre en parallèle des concepts', enabled: true, category: 'analyse' },
+
+  // Actions supplémentaires (désactivées par défaut)
+  { id: 'traduire', label: 'Traduire', emoji: '🌍', description: 'Traduire dans une autre langue', enabled: false, category: 'langue' },
+  { id: 'reformuler', label: 'Reformuler', emoji: '🔄', description: 'Dire autrement', enabled: false, category: 'amelioration' },
+  { id: 'simplifier', label: 'Simplifier', emoji: '🎯', description: 'Rendre plus accessible', enabled: false, category: 'comprehension' },
+  { id: 'approfondir', label: 'Approfondir', emoji: '🔬', description: 'Aller plus loin dans un sujet', enabled: false, category: 'comprehension' },
+  { id: 'illustrer', label: 'Illustrer', emoji: '🎨', description: 'Donner des exemples concrets', enabled: false, category: 'comprehension' },
+  { id: 'debattre', label: 'Débattre', emoji: '💬', description: 'Argumenter pour/contre', enabled: false, category: 'reflexion' },
+  { id: 'analyser', label: 'Analyser', emoji: '🔍', description: 'Décortiquer en détail', enabled: false, category: 'analyse' },
+  { id: 'synthetiser', label: 'Synthétiser', emoji: '🧩', description: 'Rassembler des informations', enabled: false, category: 'synthese' },
+  { id: 'memoriser', label: 'Mémoriser', emoji: '🧠', description: 'Créer des moyens mnémotechniques', enabled: false, category: 'apprentissage' },
+  { id: 'pratiquer', label: 'Pratiquer', emoji: '🏋️', description: 'S\'exercer avec des exemples', enabled: false, category: 'apprentissage' },
+  { id: 'definir', label: 'Définir', emoji: '📖', description: 'Obtenir une définition précise', enabled: false, category: 'comprehension' },
+  { id: 'demontrer', label: 'Démontrer', emoji: '📐', description: 'Prouver pas à pas', enabled: false, category: 'raisonnement' },
+  { id: 'contextualiser', label: 'Contextualiser', emoji: '🗺️', description: 'Situer dans un contexte', enabled: false, category: 'comprehension' },
+  { id: 'vulgariser', label: 'Vulgariser', emoji: '👶', description: 'Expliquer simplement', enabled: false, category: 'comprehension' },
+  { id: 'critiquer', label: 'Critiquer', emoji: '🎭', description: 'Analyser forces et faiblesses', enabled: false, category: 'reflexion' },
+  { id: 'planifier', label: 'Planifier', emoji: '📅', description: 'Organiser un travail', enabled: false, category: 'organisation' },
+  { id: 'structurer', label: 'Structurer', emoji: '🏗️', description: 'Organiser des idées', enabled: false, category: 'organisation' },
+  { id: 'evaluer', label: 'Évaluer', emoji: '📊', description: 'Estimer la qualité', enabled: false, category: 'analyse' },
+  { id: 'questionner', label: 'Questionner', emoji: '❓', description: 'Générer des questions', enabled: false, category: 'reflexion' },
+  { id: 'rediger', label: 'Rédiger', emoji: '✍️', description: 'Écrire un texte complet', enabled: false, category: 'production' }
+];
+
+const ACTION_CATEGORIES = {
+  production: { label: 'Production', color: '#4CAF50' },
+  apprentissage: { label: 'Apprentissage', color: '#2196F3' },
+  comprehension: { label: 'Compréhension', color: '#9C27B0' },
+  amelioration: { label: 'Amélioration', color: '#FF9800' },
+  synthese: { label: 'Synthèse', color: '#00BCD4' },
+  analyse: { label: 'Analyse', color: '#E91E63' },
+  reflexion: { label: 'Réflexion', color: '#673AB7' },
+  raisonnement: { label: 'Raisonnement', color: '#3F51B5' },
+  organisation: { label: 'Organisation', color: '#795548' },
+  langue: { label: 'Langue', color: '#607D8B' }
+};
+
+// ============ config/subjects.js ============
+/**
+ * Configuration des matières disponibles
+ * Modifiable via les paramètres de l'application
+ */
+
+const DEFAULT_SUBJECTS = [
+  { id: 'maths', label: 'Mathématiques', emoji: '🔢', enabled: true },
+  { id: 'francais', label: 'Français', emoji: '📜', enabled: true },
+  { id: 'histoire', label: 'Histoire', emoji: '🏛️', enabled: true },
+  { id: 'geo', label: 'Géographie', emoji: '🌍', enabled: true },
+  { id: 'physique', label: 'Physique-Chimie', emoji: '⚗️', enabled: true },
+  { id: 'svt', label: 'SVT', emoji: '🌿', enabled: true },
+  { id: 'anglais', label: 'Anglais', emoji: '🇬🇧', enabled: true },
+  { id: 'espagnol', label: 'Espagnol', emoji: '🇪🇸', enabled: false },
+  { id: 'allemand', label: 'Allemand', emoji: '🇩🇪', enabled: false },
+  { id: 'philo', label: 'Philosophie', emoji: '🤔', enabled: false },
+  { id: 'ses', label: 'SES', emoji: '📈', enabled: false },
+  { id: 'nsi', label: 'NSI', emoji: '💻', enabled: false },
+  { id: 'art', label: 'Arts', emoji: '🎨', enabled: false },
+  { id: 'musique', label: 'Musique', emoji: '🎵', enabled: false },
+  { id: 'eps', label: 'EPS', emoji: '⚽', enabled: false },
+  { id: 'autre', label: 'Autre', emoji: '📁', enabled: true }
+];
+
+const DEFAULT_LEVELS = [
+  { id: '6eme', label: '6ème', enabled: true },
+  { id: '5eme', label: '5ème', enabled: true },
+  { id: '4eme', label: '4ème', enabled: true },
+  { id: '3eme', label: '3ème', enabled: true },
+  { id: '2nde', label: '2nde', enabled: true },
+  { id: '1ere', label: '1ère', enabled: true },
+  { id: 'term', label: 'Terminale', enabled: true },
+  { id: 'sup', label: 'Supérieur', enabled: false }
+];
+
+// ============ config/bricks.js ============
+/**
+ * Briques de construction pour le fabricateur de prompts
+ * Chaque brique est un élément textuel paramétrable
+ */
+
+const DEFAULT_BRICKS = [
+  // Briques de contexte
+  {
+    id: 'context_eleve',
+    category: 'contexte',
+    label: 'Je suis élève',
+    template: 'Je suis un élève de {niveau} en {matiere}.',
+    params: ['niveau', 'matiere'],
+    enabled: true
+  },
+  {
+    id: 'context_cours',
+    category: 'contexte',
+    label: 'J\'étudie un chapitre',
+    template: 'J\'étudie actuellement le chapitre sur {theme}.',
+    params: ['theme'],
+    enabled: true
+  },
+  {
+    id: 'context_difficulte',
+    category: 'contexte',
+    label: 'J\'ai des difficultés',
+    template: 'J\'ai des difficultés avec {sujet_difficile}.',
+    params: ['sujet_difficile'],
+    enabled: true
+  },
+
+  // Briques de demande
+  {
+    id: 'demande_explication',
+    category: 'demande',
+    label: 'Explique-moi',
+    template: 'Peux-tu m\'expliquer {concept} de manière simple ?',
+    params: ['concept'],
+    enabled: true
+  },
+  {
+    id: 'demande_exemples',
+    category: 'demande',
+    label: 'Donne-moi des exemples',
+    template: 'Donne-moi {nombre} exemples concrets de {sujet}.',
+    params: ['nombre', 'sujet'],
+    enabled: true
+  },
+  {
+    id: 'demande_exercices',
+    category: 'demande',
+    label: 'Propose des exercices',
+    template: 'Propose-moi {nombre} exercices sur {theme} de niveau {difficulte}.',
+    params: ['nombre', 'theme', 'difficulte'],
+    enabled: true
+  },
+  {
+    id: 'demande_correction',
+    category: 'demande',
+    label: 'Corrige mon travail',
+    template: 'Peux-tu corriger ce travail et m\'expliquer mes erreurs ?',
+    params: [],
+    enabled: true
+  },
+  {
+    id: 'demande_resume',
+    category: 'demande',
+    label: 'Fais un résumé',
+    template: 'Fais-moi un résumé clair de {sujet} en {longueur}.',
+    params: ['sujet', 'longueur'],
+    enabled: true
+  },
+  {
+    id: 'demande_fiche',
+    category: 'demande',
+    label: 'Crée une fiche',
+    template: 'Crée-moi une fiche de révision sur {theme} avec les points essentiels.',
+    params: ['theme'],
+    enabled: true
+  },
+
+  // Briques de format
+  {
+    id: 'format_simple',
+    category: 'format',
+    label: 'Langage simple',
+    template: 'Utilise un langage simple et accessible pour un élève de {niveau}.',
+    params: ['niveau'],
+    enabled: true
+  },
+  {
+    id: 'format_structure',
+    category: 'format',
+    label: 'Réponse structurée',
+    template: 'Structure ta réponse avec des titres et des puces.',
+    params: [],
+    enabled: true
+  },
+  {
+    id: 'format_etapes',
+    category: 'format',
+    label: 'Étape par étape',
+    template: 'Explique-moi étape par étape.',
+    params: [],
+    enabled: true
+  },
+  {
+    id: 'format_court',
+    category: 'format',
+    label: 'Réponse courte',
+    template: 'Fais une réponse concise, pas plus de {lignes} lignes.',
+    params: ['lignes'],
+    enabled: true
+  },
+
+  // Briques de contrainte
+  {
+    id: 'contrainte_niveau',
+    category: 'contrainte',
+    label: 'Adapté à mon niveau',
+    template: 'N\'utilise que des notions vues en {niveau}.',
+    params: ['niveau'],
+    enabled: true
+  },
+  {
+    id: 'contrainte_temps',
+    category: 'contrainte',
+    label: 'Temps limité',
+    template: 'J\'ai {temps} pour comprendre/faire cela.',
+    params: ['temps'],
+    enabled: true
+  },
+  {
+    id: 'contrainte_sans_calculatrice',
+    category: 'contrainte',
+    label: 'Sans calculatrice',
+    template: 'Les calculs doivent être faisables sans calculatrice.',
+    params: [],
+    enabled: true
+  }
+];
+
+const BRICK_CATEGORIES = {
+  contexte: { label: 'Contexte', color: '#2196F3', icon: '📍' },
+  demande: { label: 'Demande', color: '#4CAF50', icon: '❓' },
+  format: { label: 'Format', color: '#FF9800', icon: '📐' },
+  contrainte: { label: 'Contrainte', color: '#E91E63', icon: '⚠️' }
+};
+
+// ============ config/structures.js ============
+/**
+ * Structures de prompts prédéfinies
+ * Combinaisons de briques pour des cas d'usage fréquents
+ */
+
+const DEFAULT_STRUCTURES = [
+  {
+    id: 'revision_chapitre',
+    label: 'Réviser un chapitre',
+    description: 'Pour revoir un chapitre avant une évaluation',
+    bricks: ['context_eleve', 'context_cours', 'demande_resume', 'demande_fiche', 'format_structure'],
+    icon: '📚',
+    enabled: true
+  },
+  {
+    id: 'comprendre_notion',
+    label: 'Comprendre une notion',
+    description: 'Quand tu ne comprends pas quelque chose',
+    bricks: ['context_eleve', 'context_difficulte', 'demande_explication', 'demande_exemples', 'format_simple', 'format_etapes'],
+    icon: '💡',
+    enabled: true
+  },
+  {
+    id: 'faire_exercices',
+    label: 'S\'entraîner avec des exercices',
+    description: 'Pour pratiquer sur un thème',
+    bricks: ['context_eleve', 'context_cours', 'demande_exercices', 'contrainte_niveau'],
+    icon: '🏋️',
+    enabled: true
+  },
+  {
+    id: 'corriger_travail',
+    label: 'Faire corriger un travail',
+    description: 'Pour avoir un retour sur ton travail',
+    bricks: ['context_eleve', 'demande_correction', 'format_structure'],
+    icon: '✏️',
+    enabled: true
+  },
+  {
+    id: 'preparer_controle',
+    label: 'Préparer un contrôle',
+    description: 'Révision complète avant un contrôle',
+    bricks: ['context_eleve', 'context_cours', 'demande_resume', 'demande_exercices', 'format_structure', 'contrainte_temps'],
+    icon: '📝',
+    enabled: true
+  },
+  {
+    id: 'aide_rapide',
+    label: 'Aide rapide',
+    description: 'Question rapide sur un point précis',
+    bricks: ['demande_explication', 'format_court'],
+    icon: '⚡',
+    enabled: true
+  },
+  {
+    id: 'approfondir_sujet',
+    label: 'Approfondir un sujet',
+    description: 'Aller plus loin dans la compréhension',
+    bricks: ['context_eleve', 'context_cours', 'demande_explication', 'demande_exemples', 'format_structure'],
+    icon: '🔬',
+    enabled: true
+  },
+  {
+    id: 'methode_resolution',
+    label: 'Méthode de résolution',
+    description: 'Apprendre une méthode pas à pas',
+    bricks: ['context_eleve', 'demande_explication', 'format_etapes', 'demande_exemples'],
+    icon: '🎯',
+    enabled: true
+  }
+];
+
+// ============ config/concatenation-prompt.js ============
+/**
+ * Prompt prédéfini pour demander à une IA de concaténer les messages utilisateur
+ */
+
+const CONCATENATION_PROMPT = `Tu es un assistant qui aide à résumer et organiser des demandes.
+
+**Ta mission :** Analyse tous les messages que je t'ai envoyés pendant cette conversation et crée UN SEUL prompt qui résume tout ce que j'ai demandé.
+
+**Instructions :**
+1. Relis tous mes messages depuis le début de cette conversation
+2. Identifie l'objectif principal de ma demande
+3. Note tous les détails, précisions et modifications que j'ai apportés
+4. Rédige un prompt unique et complet qui intègre tout
+
+**Format de ta réponse :**
+
+---
+**📋 PROMPT RÉSUMÉ**
+
+[Le prompt complet qui résume toute ma demande, prêt à être copié et réutilisé]
+
+---
+
+**Ce prompt doit être :**
+- Autonome (compréhensible sans contexte)
+- Complet (tous les détails importants)
+- Clair (bien structuré)
+- Réutilisable (je peux le coller dans une nouvelle conversation)`;
+
+const CONCATENATION_VARIANTS = [
+  {
+    id: 'standard',
+    label: 'Standard',
+    description: 'Résumé complet de la conversation',
+    prompt: CONCATENATION_PROMPT
+  },
+  {
+    id: 'court',
+    label: 'Version courte',
+    description: 'Résumé condensé',
+    prompt: `Fais-moi un résumé très court de tout ce que je t'ai demandé dans cette conversation. Donne-moi juste le prompt essentiel en 2-3 phrases maximum.`
+  },
+  {
+    id: 'structure',
+    label: 'Version structurée',
+    description: 'Avec sections claires',
+    prompt: `Analyse notre conversation et crée un prompt structuré avec :
+- **Contexte :** [qui je suis, ma situation]
+- **Objectif :** [ce que je veux obtenir]
+- **Détails :** [précisions importantes]
+- **Format souhaité :** [comment je veux la réponse]
+
+Rends ce prompt réutilisable dans une nouvelle conversation.`
+  }
+];
+
+// ============ core/database.js ============
+/**
+ * Module de gestion de la base de données JSON
+ * Mode Tauri : gestion multi-fichiers dans le dossier data/
+ */
+
+class Database {
+  constructor() {
+    this.data = {
+      prompts: [],
+      settings: {},
+      customBricks: [],
+      customStructures: [],
+      brickOverrides: {},      // Modifications des briques par défaut (id -> override)
+      structureOverrides: {}   // Modifications des structures par défaut (id -> override)
+    };
+    this.currentFile = null;
+    this.dataDirectory = null;
+    this.initialized = false;
+    this.isTauri = false;
+  }
+
+  /**
+   * Détecte si on est dans Tauri
+   */
+  detectTauri() {
+    return window.__TAURI__ && window.__TAURI__.core;
+  }
+
+  /**
+   * Initialise la connexion (vérifie Tauri, récupère le chemin data/)
+   */
+  async init() {
+    if (this.initialized) return;
+
+    this.isTauri = this.detectTauri();
+
+    if (!this.isTauri) {
+      throw new Error('Cette application nécessite Tauri pour fonctionner.');
+    }
+
+    try {
+      const { invoke } = window.__TAURI__.core;
+      this.dataDirectory = await invoke('get_data_directory');
+      console.log('Dossier data:', this.dataDirectory);
+      this.initialized = true;
+    } catch (err) {
+      console.error('Erreur init Tauri:', err);
+      throw new Error('Impossible d\'initialiser le dossier data/');
+    }
+  }
+
+  /**
+   * Liste tous les fichiers JSON disponibles dans data/
+   */
+  async listFiles() {
+    if (!this.isTauri) throw new Error('Tauri requis');
+
+    const { invoke } = window.__TAURI__.core;
+    return await invoke('list_databases');
+  }
+
+  /**
+   * Charge un fichier spécifique
+   */
+  async loadFile(filename) {
+    if (!this.isTauri) throw new Error('Tauri requis');
+
+    const { invoke } = window.__TAURI__.core;
+    const content = await invoke('load_database', { filename });
+
+    this.data = JSON.parse(content);
+    this.currentFile = filename;
+
+    // Assurer la structure de base
+    this.data.prompts = this.data.prompts || [];
+    this.data.settings = this.data.settings || this._getDefaultSettings();
+    this.data.customBricks = this.data.customBricks || [];
+    this.data.customStructures = this.data.customStructures || [];
+    this.data.brickOverrides = this.data.brickOverrides || {};
+    this.data.structureOverrides = this.data.structureOverrides || {};
+
+    console.log('Fichier chargé:', filename, '-', this.data.prompts.length, 'prompts');
+    return this.data;
+  }
+
+  /**
+   * Crée un nouveau fichier
+   */
+  async createFile(filename) {
+    if (!this.isTauri) throw new Error('Tauri requis');
+
+    const { invoke } = window.__TAURI__.core;
+    await invoke('create_database', { filename });
+
+    // Charger le nouveau fichier
+    return await this.loadFile(filename.endsWith('.json') ? filename : `${filename}.json`);
+  }
+
+  /**
+   * Supprime un fichier
+   */
+  async deleteFile(filename) {
+    if (!this.isTauri) throw new Error('Tauri requis');
+
+    const { invoke } = window.__TAURI__.core;
+    await invoke('delete_database', { filename });
+
+    // Si c'était le fichier actif, le décharger
+    if (this.currentFile === filename) {
+      this.currentFile = null;
+      this.data = {
+        prompts: [],
+        settings: this._getDefaultSettings(),
+        customBricks: [],
+        customStructures: []
+      };
+    }
+  }
+
+  /**
+   * Renomme un fichier
+   */
+  async renameFile(oldName, newName) {
+    if (!this.isTauri) throw new Error('Tauri requis');
+
+    const { invoke } = window.__TAURI__.core;
+    await invoke('rename_database', { oldName, newName });
+
+    // Mettre à jour le nom si c'était le fichier actif
+    if (this.currentFile === oldName) {
+      this.currentFile = newName.endsWith('.json') ? newName : `${newName}.json`;
+    }
+  }
+
+  _getDefaultSettings() {
+    return {
+      defaultLevel: null,
+      enabledSubjects: ['maths', 'francais', 'histoire', 'geo', 'physique', 'svt', 'anglais', 'autre'],
+      enabledActions: ['creer', 'reviser', 'expliquer', 'corriger', 'resumer', 'comparer'],
+      theme: 'light'
+    };
+  }
+
+  /**
+   * Sauvegarde la base de données dans le fichier actif
+   */
+  async save() {
+    if (!this.currentFile) {
+      throw new Error('Aucun fichier sélectionné');
+    }
+
+    const { invoke } = window.__TAURI__.core;
+    const content = JSON.stringify(this.data, null, 2);
+    await invoke('save_database', { filename: this.currentFile, content });
+  }
+
+  // ===== PROMPTS =====
+
+  addPrompt(prompt) {
+    const newPrompt = {
+      id: this._generateId(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      ...prompt
+    };
+    this.data.prompts.push(newPrompt);
+    this.save();
+    return newPrompt;
+  }
+
+  updatePrompt(id, updates) {
+    const index = this.data.prompts.findIndex(p => p.id === id);
+    if (index === -1) return null;
+
+    this.data.prompts[index] = {
+      ...this.data.prompts[index],
+      ...updates,
+      updatedAt: new Date().toISOString()
+    };
+    this.save();
+    return this.data.prompts[index];
+  }
+
+  deletePrompt(id) {
+    const index = this.data.prompts.findIndex(p => p.id === id);
+    if (index === -1) return false;
+
+    this.data.prompts.splice(index, 1);
+    this.save();
+    return true;
+  }
+
+  getAllPrompts() {
+    return [...this.data.prompts];
+  }
+
+  getPrompts(filters = {}) {
+    let prompts = [...this.data.prompts];
+
+    if (filters.action) {
+      prompts = prompts.filter(p => p.action === filters.action);
+    }
+    if (filters.subject) {
+      prompts = prompts.filter(p => p.subject === filters.subject);
+    }
+    if (filters.level) {
+      prompts = prompts.filter(p => p.level === filters.level);
+    }
+    if (filters.theme) {
+      prompts = prompts.filter(p =>
+        p.theme && p.theme.toLowerCase().includes(filters.theme.toLowerCase())
+      );
+    }
+    if (filters.search) {
+      const searchLower = filters.search.toLowerCase();
+      prompts = prompts.filter(p =>
+        p.title?.toLowerCase().includes(searchLower) ||
+        p.content?.toLowerCase().includes(searchLower) ||
+        p.description?.toLowerCase().includes(searchLower)
+      );
+    }
+
+    return prompts;
+  }
+
+  getPromptById(id) {
+    return this.data.prompts.find(p => p.id === id) || null;
+  }
+
+  // ===== SETTINGS =====
+
+  getSettings() {
+    return { ...this.data.settings };
+  }
+
+  updateSettings(updates) {
+    this.data.settings = { ...this.data.settings, ...updates };
+    this.save();
+    return this.data.settings;
+  }
+
+  // ===== CUSTOM BRICKS =====
+
+  addCustomBrick(brick) {
+    const newBrick = {
+      id: 'custom_' + this._generateId(),
+      ...brick,
+      isCustom: true
+    };
+    this.data.customBricks.push(newBrick);
+    this.save();
+    return newBrick;
+  }
+
+  getCustomBricks() {
+    return [...this.data.customBricks];
+  }
+
+  deleteCustomBrick(id) {
+    const index = this.data.customBricks.findIndex(b => b.id === id);
+    if (index === -1) return false;
+    this.data.customBricks.splice(index, 1);
+    this.save();
+    return true;
+  }
+
+  // ===== CUSTOM STRUCTURES =====
+
+  addCustomStructure(structure) {
+    const newStructure = {
+      id: 'custom_' + this._generateId(),
+      ...structure,
+      isCustom: true
+    };
+    this.data.customStructures.push(newStructure);
+    this.save();
+    return newStructure;
+  }
+
+  getCustomStructures() {
+    return [...this.data.customStructures];
+  }
+
+  deleteCustomStructure(id) {
+    const index = this.data.customStructures.findIndex(s => s.id === id);
+    if (index === -1) return false;
+    this.data.customStructures.splice(index, 1);
+    this.save();
+    return true;
+  }
+
+  // ===== BRICK OVERRIDES (modifications des briques par défaut) =====
+
+  setBrickOverride(brickId, override) {
+    this.data.brickOverrides[brickId] = {
+      ...override,
+      modifiedAt: new Date().toISOString()
+    };
+    this.save();
+    return this.data.brickOverrides[brickId];
+  }
+
+  getBrickOverride(brickId) {
+    return this.data.brickOverrides[brickId] || null;
+  }
+
+  getAllBrickOverrides() {
+    return { ...this.data.brickOverrides };
+  }
+
+  deleteBrickOverride(brickId) {
+    if (!this.data.brickOverrides[brickId]) return false;
+    delete this.data.brickOverrides[brickId];
+    this.save();
+    return true;
+  }
+
+  resetAllBrickOverrides() {
+    this.data.brickOverrides = {};
+    this.save();
+  }
+
+  // ===== STRUCTURE OVERRIDES (modifications des structures par défaut) =====
+
+  setStructureOverride(structureId, override) {
+    this.data.structureOverrides[structureId] = {
+      ...override,
+      modifiedAt: new Date().toISOString()
+    };
+    this.save();
+    return this.data.structureOverrides[structureId];
+  }
+
+  getStructureOverride(structureId) {
+    return this.data.structureOverrides[structureId] || null;
+  }
+
+  getAllStructureOverrides() {
+    return { ...this.data.structureOverrides };
+  }
+
+  deleteStructureOverride(structureId) {
+    if (!this.data.structureOverrides[structureId]) return false;
+    delete this.data.structureOverrides[structureId];
+    this.save();
+    return true;
+  }
+
+  resetAllStructureOverrides() {
+    this.data.structureOverrides = {};
+    this.save();
+  }
+
+  // ===== RESET COMPLET BRIQUES/STRUCTURES =====
+
+  resetAllBricksAndStructures() {
+    this.data.customBricks = [];
+    this.data.customStructures = [];
+    this.data.brickOverrides = {};
+    this.data.structureOverrides = {};
+    this.save();
+  }
+
+  // ===== EXPORT / IMPORT BRIQUES/STRUCTURES =====
+
+  exportBricksAndStructures() {
+    return JSON.stringify({
+      customBricks: this.data.customBricks,
+      customStructures: this.data.customStructures,
+      brickOverrides: this.data.brickOverrides,
+      structureOverrides: this.data.structureOverrides
+    }, null, 2);
+  }
+
+  importBricksAndStructures(jsonString, merge = false) {
+    try {
+      const imported = JSON.parse(jsonString);
+
+      if (merge) {
+        if (imported.customBricks) {
+          this.data.customBricks = [...this.data.customBricks, ...imported.customBricks];
+        }
+        if (imported.customStructures) {
+          this.data.customStructures = [...this.data.customStructures, ...imported.customStructures];
+        }
+        if (imported.brickOverrides) {
+          this.data.brickOverrides = { ...this.data.brickOverrides, ...imported.brickOverrides };
+        }
+        if (imported.structureOverrides) {
+          this.data.structureOverrides = { ...this.data.structureOverrides, ...imported.structureOverrides };
+        }
+      } else {
+        this.data.customBricks = imported.customBricks || [];
+        this.data.customStructures = imported.customStructures || [];
+        this.data.brickOverrides = imported.brickOverrides || {};
+        this.data.structureOverrides = imported.structureOverrides || {};
+      }
+
+      this.save();
+      return true;
+    } catch (e) {
+      console.error('Erreur d\'import briques/structures:', e);
+      return false;
+    }
+  }
+
+  // ===== EXPORT / IMPORT =====
+
+  exportAll() {
+    return JSON.stringify(this.data, null, 2);
+  }
+
+  exportPrompts() {
+    return JSON.stringify(this.data.prompts, null, 2);
+  }
+
+  importData(jsonString, merge = false) {
+    try {
+      const imported = JSON.parse(jsonString);
+
+      if (merge) {
+        if (imported.prompts) {
+          this.data.prompts = [...this.data.prompts, ...imported.prompts];
+        }
+        if (imported.customBricks) {
+          this.data.customBricks = [...this.data.customBricks, ...imported.customBricks];
+        }
+        if (imported.customStructures) {
+          this.data.customStructures = [...this.data.customStructures, ...imported.customStructures];
+        }
+      } else {
+        this.data = imported;
+      }
+
+      this.save();
+      return true;
+    } catch (e) {
+      console.error('Erreur d\'import:', e);
+      return false;
+    }
+  }
+
+  // ===== UTILS =====
+
+  _generateId() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+  }
+
+  clear() {
+    this.data = {
+      prompts: [],
+      settings: this._getDefaultSettings(),
+      customBricks: [],
+      customStructures: []
+    };
+    this.save();
+  }
+
+  /**
+   * Retourne le nom du fichier actuellement utilisé
+   */
+  getCurrentFile() {
+    return this.currentFile;
+  }
+
+  /**
+   * Retourne le chemin du dossier data/
+   */
+  getDataDirectory() {
+    return this.dataDirectory;
+  }
+
+  /**
+   * Retourne le statut
+   */
+  getStatus() {
+    return {
+      initialized: this.initialized,
+      currentFile: this.currentFile,
+      dataDirectory: this.dataDirectory,
+      promptCount: this.data.prompts.length
+    };
+  }
+}
+
+// Export singleton
+const db = new Database();
+
+// ============ core/prompt-builder.js ============
+/**
+ * Module de construction de prompts à partir de briques
+ */
+
+
+
+
+class PromptBuilder {
+  constructor() {
+    this.selectedBricks = [];
+    this.paramValues = {};
+  }
+
+  /**
+   * Récupère toutes les briques disponibles (par défaut avec overrides + personnalisées)
+   */
+  getAllBricks() {
+    const customBricks = db.getCustomBricks();
+    const brickOverrides = db.getAllBrickOverrides();
+
+    // Appliquer les overrides aux briques par défaut
+    const defaultBricksWithOverrides = DEFAULT_BRICKS.map(brick => {
+      const override = brickOverrides[brick.id];
+      if (override) {
+        return { ...brick, ...override, isOverridden: true };
+      }
+      return brick;
+    });
+
+    return [...defaultBricksWithOverrides, ...customBricks];
+  }
+
+  /**
+   * Récupère les briques par catégorie
+   */
+  getBricksByCategory(category) {
+    return this.getAllBricks().filter(b => b.category === category && b.enabled !== false);
+  }
+
+  /**
+   * Récupère toutes les structures disponibles (par défaut avec overrides + personnalisées)
+   */
+  getAllStructures() {
+    const customStructures = db.getCustomStructures();
+    const structureOverrides = db.getAllStructureOverrides();
+
+    // Appliquer les overrides aux structures par défaut
+    const defaultStructuresWithOverrides = DEFAULT_STRUCTURES.map(structure => {
+      const override = structureOverrides[structure.id];
+      if (override) {
+        return { ...structure, ...override, isOverridden: true };
+      }
+      return structure;
+    });
+
+    return [...defaultStructuresWithOverrides, ...customStructures];
+  }
+
+  /**
+   * Sélectionne une brique
+   */
+  selectBrick(brickId) {
+    if (!this.selectedBricks.includes(brickId)) {
+      this.selectedBricks.push(brickId);
+    }
+  }
+
+  /**
+   * Désélectionne une brique
+   */
+  unselectBrick(brickId) {
+    const index = this.selectedBricks.indexOf(brickId);
+    if (index > -1) {
+      this.selectedBricks.splice(index, 1);
+    }
+  }
+
+  /**
+   * Applique une structure (sélectionne toutes ses briques)
+   */
+  applyStructure(structureId) {
+    const structure = this.getAllStructures().find(s => s.id === structureId);
+    if (structure) {
+      this.selectedBricks = [...structure.bricks];
+    }
+  }
+
+  /**
+   * Définit une valeur de paramètre
+   */
+  setParam(paramName, value) {
+    this.paramValues[paramName] = value;
+  }
+
+  /**
+   * Récupère tous les paramètres requis par les briques sélectionnées
+   */
+  getRequiredParams() {
+    const allBricks = this.getAllBricks();
+    const params = new Set();
+
+    for (const brickId of this.selectedBricks) {
+      const brick = allBricks.find(b => b.id === brickId);
+      if (brick && brick.params) {
+        brick.params.forEach(p => params.add(p));
+      }
+    }
+
+    return Array.from(params);
+  }
+
+  /**
+   * Vérifie si tous les paramètres requis sont remplis
+   */
+  hasAllParams() {
+    const required = this.getRequiredParams();
+    return required.every(p => this.paramValues[p] && this.paramValues[p].trim() !== '');
+  }
+
+  /**
+   * Génère le prompt final
+   */
+  build() {
+    const allBricks = this.getAllBricks();
+    const parts = [];
+
+    // Trier les briques par catégorie pour un ordre logique
+    const categoryOrder = ['contexte', 'demande', 'format', 'contrainte'];
+    const sortedBricks = this.selectedBricks
+      .map(id => allBricks.find(b => b.id === id))
+      .filter(Boolean)
+      .sort((a, b) => {
+        const aOrder = categoryOrder.indexOf(a.category);
+        const bOrder = categoryOrder.indexOf(b.category);
+        return aOrder - bOrder;
+      });
+
+    for (const brick of sortedBricks) {
+      let text = brick.template;
+
+      // Remplacer les paramètres
+      for (const param of (brick.params || [])) {
+        const value = this.paramValues[param] || `[${param}]`;
+        text = text.replace(`{${param}}`, value);
+      }
+
+      parts.push(text);
+    }
+
+    return parts.join('\n\n');
+  }
+
+  /**
+   * Réinitialise le builder
+   */
+  reset() {
+    this.selectedBricks = [];
+    this.paramValues = {};
+  }
+
+  /**
+   * Prévisualise le prompt avec les paramètres actuels
+   */
+  preview() {
+    return this.build();
+  }
+}
+
+const promptBuilder = new PromptBuilder();
+
+// ============ ui/components/wizard.js ============
+/**
+ * Composant Wizard - Arbre décisionnel pour catégoriser un prompt
+ * Structure: Action → Matière → Niveau → Thème
+ */
+
+
+
+
+class Wizard {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.currentStep = 0;
+    this.steps = ['action', 'subject', 'level', 'theme'];
+    this.selection = {
+      action: null,
+      subject: null,
+      level: null,
+      theme: ''
+    };
+    this.onComplete = null;
+    this.onCancel = null;
+  }
+
+  /**
+   * Démarre le wizard
+   * @param {Object} options - Options du wizard
+   * @param {Function} options.onComplete - Callback à la fin
+   * @param {Function} options.onCancel - Callback annulation
+   * @param {Object} options.prefill - Valeurs pré-remplies {level, subject, theme}
+   */
+  start(options = {}) {
+    this.onComplete = options.onComplete || (() => {});
+    this.onCancel = options.onCancel || (() => {});
+    this.currentStep = 0;
+
+    // Initialiser avec les valeurs pré-remplies
+    const prefill = options.prefill || {};
+    this.selection = {
+      action: null,
+      subject: prefill.subject || null,
+      level: prefill.level || null,
+      theme: prefill.theme || ''
+    };
+
+    this.render();
+  }
+
+  /**
+   * Rendu principal
+   */
+  render() {
+    const step = this.steps[this.currentStep];
+    const settings = db.getSettings();
+
+    // Vérifier si l'étape peut être sautée
+    const canSkip = this.canSkipStep(step, settings);
+
+    // Générer les boutons de navigation
+    const navButtons = this.renderNavButtons(canSkip);
+
+    let html = `
+      <div class="wizard">
+        <div class="wizard-progress">
+          ${this.steps.map((s, i) => `
+            <div class="wizard-step ${i === this.currentStep ? 'active' : ''} ${i < this.currentStep ? 'completed' : ''}">
+              <span class="step-number">${i + 1}</span>
+              <span class="step-label">${this.getStepLabel(s)}</span>
+            </div>
+          `).join('<div class="wizard-step-connector"></div>')}
+        </div>
+
+        <!-- Boutons en haut (sticky) -->
+        <div class="wizard-actions wizard-actions-top">
+          ${navButtons}
+        </div>
+
+        <div class="wizard-content">
+    `;
+
+    switch (step) {
+      case 'action':
+        html += this.renderActionStep(settings);
+        break;
+      case 'subject':
+        html += this.renderSubjectStep(settings);
+        break;
+      case 'level':
+        html += this.renderLevelStep(settings);
+        break;
+      case 'theme':
+        html += this.renderThemeStep();
+        break;
+    }
+
+    html += `
+        </div>
+
+        <!-- Boutons en bas -->
+        <div class="wizard-actions wizard-actions-bottom">
+          ${navButtons}
+        </div>
+      </div>
+    `;
+
+    this.container.innerHTML = html;
+    this.bindEvents();
+  }
+
+  /**
+   * Vérifie si l'étape peut être sautée
+   */
+  canSkipStep(step, settings) {
+    switch (step) {
+      case 'level':
+        // On peut sauter si un niveau par défaut est défini ou déjà pré-rempli
+        return !!(settings.defaultLevel || this.selection.level);
+      case 'theme':
+        // Le thème est toujours optionnel
+        return true;
+      case 'subject':
+        // On peut sauter si déjà pré-rempli
+        return !!this.selection.subject;
+      default:
+        return false;
+    }
+  }
+
+  /**
+   * Génère les boutons de navigation
+   */
+  renderNavButtons(canSkip) {
+    const isLastStep = this.currentStep >= this.steps.length - 1;
+
+    let buttons = '';
+
+    // Bouton Retour/Annuler
+    if (this.currentStep > 0) {
+      buttons += '<button class="btn btn-secondary wizard-back">← Retour</button>';
+    } else {
+      buttons += '<button class="btn btn-secondary wizard-cancel">Annuler</button>';
+    }
+
+    // Bouton Passer (si disponible)
+    if (canSkip && !isLastStep) {
+      buttons += '<button class="btn btn-outline wizard-skip">Passer ⏭</button>';
+    }
+
+    // Bouton Suivant/Terminer
+    if (!isLastStep) {
+      buttons += '<button class="btn btn-primary wizard-next" disabled>Suivant →</button>';
+    } else {
+      buttons += '<button class="btn btn-success wizard-finish" disabled>Terminer ✓</button>';
+    }
+
+    return buttons;
+  }
+
+  getStepLabel(step) {
+    const labels = {
+      action: 'Action',
+      subject: 'Matière',
+      level: 'Niveau',
+      theme: 'Thème'
+    };
+    return labels[step] || step;
+  }
+
+  renderActionStep(settings) {
+    const enabledActions = settings.enabledActions || [];
+    const actions = ACTIONS.filter(a => enabledActions.includes(a.id));
+
+    // Grouper par catégorie
+    const byCategory = {};
+    actions.forEach(a => {
+      if (!byCategory[a.category]) byCategory[a.category] = [];
+      byCategory[a.category].push(a);
+    });
+
+    let html = '<h3>Que veux-tu faire ?</h3><div class="action-categories">';
+
+    for (const [catId, catActions] of Object.entries(byCategory)) {
+      const cat = ACTION_CATEGORIES[catId];
+      html += `
+        <div class="action-category">
+          <h4 style="color: ${cat.color}">${cat.label}</h4>
+          <div class="action-grid">
+            ${catActions.map(a => `
+              <button class="action-btn ${this.selection.action === a.id ? 'selected' : ''}"
+                      data-action="${a.id}" title="${a.description}">
+                <span class="action-emoji">${a.emoji}</span>
+                <span class="action-label">${a.label}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    html += '</div>';
+    return html;
+  }
+
+  renderSubjectStep(settings) {
+    const enabledSubjects = settings.enabledSubjects || [];
+    const subjects = DEFAULT_SUBJECTS.filter(s => enabledSubjects.includes(s.id));
+
+    return `
+      <h3>Pour quelle matière ?</h3>
+      <div class="subject-grid">
+        ${subjects.map(s => `
+          <button class="subject-btn ${this.selection.subject === s.id ? 'selected' : ''}"
+                  data-subject="${s.id}">
+            <span class="subject-emoji">${s.emoji}</span>
+            <span class="subject-label">${s.label}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  renderLevelStep(settings) {
+    const defaultLevel = settings.defaultLevel;
+    const levels = DEFAULT_LEVELS.filter(l => l.enabled);
+
+    // Si un niveau par défaut est défini, le présélectionner
+    if (defaultLevel && !this.selection.level) {
+      this.selection.level = defaultLevel;
+    }
+
+    return `
+      <h3>Quel niveau ?</h3>
+      ${defaultLevel ? `<p class="hint">Niveau par défaut : ${DEFAULT_LEVELS.find(l => l.id === defaultLevel)?.label || defaultLevel}</p>` : ''}
+      <div class="level-grid">
+        ${levels.map(l => `
+          <button class="level-btn ${this.selection.level === l.id ? 'selected' : ''}"
+                  data-level="${l.id}">
+            ${l.label}
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  renderThemeStep() {
+    return `
+      <h3>Quel thème ou chapitre ?</h3>
+      <p class="hint">Décris en quelques mots le sujet (optionnel mais recommandé)</p>
+      <input type="text" id="theme-input" class="theme-input"
+             placeholder="Ex: Théorème de Pythagore, La Révolution française..."
+             value="${this.selection.theme}">
+      <div class="theme-suggestions">
+        <span class="suggestion-label">Suggestions :</span>
+        <button class="suggestion-btn" data-theme="Équations">Équations</button>
+        <button class="suggestion-btn" data-theme="Fonctions">Fonctions</button>
+        <button class="suggestion-btn" data-theme="Géométrie">Géométrie</button>
+        <button class="suggestion-btn" data-theme="Statistiques">Statistiques</button>
+      </div>
+    `;
+  }
+
+  bindEvents() {
+    // Actions
+    this.container.querySelectorAll('.action-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.selection.action = btn.dataset.action;
+        this.container.querySelectorAll('.action-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        this.updateNextButton();
+      });
+    });
+
+    // Subjects
+    this.container.querySelectorAll('.subject-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.selection.subject = btn.dataset.subject;
+        this.container.querySelectorAll('.subject-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        this.updateNextButton();
+      });
+    });
+
+    // Levels
+    this.container.querySelectorAll('.level-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.selection.level = btn.dataset.level;
+        this.container.querySelectorAll('.level-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        this.updateNextButton();
+      });
+    });
+
+    // Theme input
+    const themeInput = this.container.querySelector('#theme-input');
+    if (themeInput) {
+      themeInput.addEventListener('input', (e) => {
+        this.selection.theme = e.target.value;
+        this.updateNextButton();
+      });
+    }
+
+    // Theme suggestions
+    this.container.querySelectorAll('.suggestion-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const themeInput = this.container.querySelector('#theme-input');
+        if (themeInput) {
+          themeInput.value = btn.dataset.theme;
+          this.selection.theme = btn.dataset.theme;
+          this.updateNextButton();
+        }
+      });
+    });
+
+    // Navigation (boutons haut et bas)
+    this.container.querySelectorAll('.wizard-back').forEach(btn => {
+      btn.addEventListener('click', () => this.prevStep());
+    });
+    this.container.querySelectorAll('.wizard-cancel').forEach(btn => {
+      btn.addEventListener('click', () => this.onCancel());
+    });
+    this.container.querySelectorAll('.wizard-next').forEach(btn => {
+      btn.addEventListener('click', () => this.nextStep());
+    });
+    this.container.querySelectorAll('.wizard-finish').forEach(btn => {
+      btn.addEventListener('click', () => this.finish());
+    });
+    this.container.querySelectorAll('.wizard-skip').forEach(btn => {
+      btn.addEventListener('click', () => this.skipStep());
+    });
+
+    this.updateNextButton();
+  }
+
+  /**
+   * Passe l'étape courante en utilisant la valeur par défaut si disponible
+   */
+  skipStep() {
+    const step = this.steps[this.currentStep];
+    const settings = db.getSettings();
+
+    // Appliquer la valeur par défaut si nécessaire
+    if (step === 'level' && !this.selection.level && settings.defaultLevel) {
+      this.selection.level = settings.defaultLevel;
+    }
+
+    this.nextStep();
+  }
+
+  updateNextButton() {
+    const step = this.steps[this.currentStep];
+    let isValid = false;
+
+    switch (step) {
+      case 'action':
+        isValid = !!this.selection.action;
+        break;
+      case 'subject':
+        isValid = !!this.selection.subject;
+        break;
+      case 'level':
+        isValid = !!this.selection.level;
+        break;
+      case 'theme':
+        isValid = true; // Le thème est optionnel
+        break;
+    }
+
+    // Mettre à jour tous les boutons (haut et bas)
+    this.container.querySelectorAll('.wizard-next').forEach(btn => {
+      btn.disabled = !isValid;
+    });
+    this.container.querySelectorAll('.wizard-finish').forEach(btn => {
+      btn.disabled = !isValid;
+    });
+  }
+
+  nextStep() {
+    if (this.currentStep < this.steps.length - 1) {
+      this.currentStep++;
+      this.render();
+    }
+  }
+
+  prevStep() {
+    if (this.currentStep > 0) {
+      this.currentStep--;
+      this.render();
+    }
+  }
+
+  finish() {
+    this.onComplete(this.selection);
+  }
+
+  /**
+   * Récupère les labels pour l'affichage
+   */
+  getSelectionLabels() {
+    const action = ACTIONS.find(a => a.id === this.selection.action);
+    const subject = DEFAULT_SUBJECTS.find(s => s.id === this.selection.subject);
+    const level = DEFAULT_LEVELS.find(l => l.id === this.selection.level);
+
+    return {
+      action: action ? `${action.emoji} ${action.label}` : '',
+      subject: subject ? `${subject.emoji} ${subject.label}` : '',
+      level: level ? level.label : '',
+      theme: this.selection.theme || 'Non spécifié'
+    };
+  }
+}
+
+
+// ============ ui/components/prompt-list.js ============
+/**
+ * Composant Liste des Prompts
+ * Affiche les prompts stockés avec filtres et actions
+ */
+
+
+
+
+class PromptList {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.filters = {
+      action: null,
+      subject: null,
+      level: null,
+      search: ''
+    };
+    this.onEdit = null;
+    this.onCopy = null;
+    this.onDelete = null;
+  }
+
+  /**
+   * Initialise et affiche la liste
+   */
+  init(options = {}) {
+    this.onEdit = options.onEdit || (() => {});
+    this.onCopy = options.onCopy || (() => {});
+    this.onDelete = options.onDelete || (() => {});
+    this.render();
+  }
+
+  /**
+   * Rendu principal
+   */
+  render() {
+    const prompts = db.getPrompts(this.filters);
+    const settings = db.getSettings();
+
+    let html = `
+      <div class="prompt-list-container">
+        <div class="prompt-list-header">
+          <h2>📚 Mes Prompts</h2>
+          <div class="prompt-count">${prompts.length} prompt${prompts.length > 1 ? 's' : ''}</div>
+        </div>
+
+        <div class="prompt-filters">
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="🔍 Rechercher..."
+                   value="${this.filters.search}">
+          </div>
+          <div class="filter-row">
+            <select id="filter-action">
+              <option value="">Toutes les actions</option>
+              ${ACTIONS.filter(a => settings.enabledActions?.includes(a.id))
+                .map(a => `<option value="${a.id}" ${this.filters.action === a.id ? 'selected' : ''}>${a.emoji} ${a.label}</option>`)
+                .join('')}
+            </select>
+            <select id="filter-subject">
+              <option value="">Toutes les matières</option>
+              ${DEFAULT_SUBJECTS.filter(s => settings.enabledSubjects?.includes(s.id))
+                .map(s => `<option value="${s.id}" ${this.filters.subject === s.id ? 'selected' : ''}>${s.emoji} ${s.label}</option>`)
+                .join('')}
+            </select>
+            <select id="filter-level">
+              <option value="">Tous les niveaux</option>
+              ${DEFAULT_LEVELS.filter(l => l.enabled)
+                .map(l => `<option value="${l.id}" ${this.filters.level === l.id ? 'selected' : ''}>${l.label}</option>`)
+                .join('')}
+            </select>
+            <button class="btn btn-small" id="clear-filters">✖ Effacer</button>
+          </div>
+        </div>
+
+        <div class="prompt-list">
+          ${prompts.length === 0 ? this.renderEmpty() : prompts.map(p => this.renderPromptCard(p)).join('')}
+        </div>
+      </div>
+    `;
+
+    this.container.innerHTML = html;
+    this.bindEvents();
+  }
+
+  renderEmpty() {
+    return `
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <h3>Aucun prompt pour le moment</h3>
+        <p>Commence par créer ton premier prompt ou utilise le fabricateur !</p>
+      </div>
+    `;
+  }
+
+  renderPromptCard(prompt) {
+    const action = ACTIONS.find(a => a.id === prompt.action);
+    const subject = DEFAULT_SUBJECTS.find(s => s.id === prompt.subject);
+    const level = DEFAULT_LEVELS.find(l => l.id === prompt.level);
+
+    const truncatedContent = prompt.content.length > 150
+      ? prompt.content.substring(0, 150) + '...'
+      : prompt.content;
+
+    return `
+      <div class="prompt-card" data-id="${prompt.id}">
+        <div class="prompt-card-header">
+          <div class="prompt-tags">
+            ${action ? `<span class="tag tag-action">${action.emoji} ${action.label}</span>` : ''}
+            ${subject ? `<span class="tag tag-subject">${subject.emoji} ${subject.label}</span>` : ''}
+            ${level ? `<span class="tag tag-level">${level.label}</span>` : ''}
+          </div>
+          <div class="prompt-date">${this.formatDate(prompt.createdAt)}</div>
+        </div>
+        <div class="prompt-card-body">
+          <h4 class="prompt-title">${prompt.title || 'Sans titre'}</h4>
+          ${prompt.theme ? `<div class="prompt-theme">📌 ${prompt.theme}</div>` : ''}
+          <p class="prompt-preview">${truncatedContent}</p>
+          ${prompt.description ? `<p class="prompt-description"><em>${prompt.description}</em></p>` : ''}
+        </div>
+        <div class="prompt-card-actions">
+          <button class="btn btn-small btn-primary copy-btn" data-id="${prompt.id}" title="Copier">
+            📋 Copier
+          </button>
+          <button class="btn btn-small edit-btn" data-id="${prompt.id}" title="Modifier">
+            ✏️
+          </button>
+          <button class="btn btn-small btn-danger delete-btn" data-id="${prompt.id}" title="Supprimer">
+            🗑️
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  formatDate(isoDate) {
+    const date = new Date(isoDate);
+    const now = new Date();
+    const diff = now - date;
+
+    if (diff < 86400000) { // Moins de 24h
+      return 'Aujourd\'hui';
+    } else if (diff < 172800000) { // Moins de 48h
+      return 'Hier';
+    } else {
+      return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+    }
+  }
+
+  bindEvents() {
+    // Recherche
+    const searchInput = this.container.querySelector('#search-input');
+    if (searchInput) {
+      let searchTimeout;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          this.filters.search = e.target.value;
+          this.render();
+        }, 300);
+      });
+    }
+
+    // Filtres
+    const filterAction = this.container.querySelector('#filter-action');
+    const filterSubject = this.container.querySelector('#filter-subject');
+    const filterLevel = this.container.querySelector('#filter-level');
+    const clearFilters = this.container.querySelector('#clear-filters');
+
+    if (filterAction) {
+      filterAction.addEventListener('change', (e) => {
+        this.filters.action = e.target.value || null;
+        this.render();
+      });
+    }
+    if (filterSubject) {
+      filterSubject.addEventListener('change', (e) => {
+        this.filters.subject = e.target.value || null;
+        this.render();
+      });
+    }
+    if (filterLevel) {
+      filterLevel.addEventListener('change', (e) => {
+        this.filters.level = e.target.value || null;
+        this.render();
+      });
+    }
+    if (clearFilters) {
+      clearFilters.addEventListener('click', () => {
+        this.filters = { action: null, subject: null, level: null, search: '' };
+        this.render();
+      });
+    }
+
+    // Actions sur les cartes
+    this.container.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        const prompt = db.getPromptById(id);
+        if (prompt) {
+          navigator.clipboard.writeText(prompt.content).then(() => {
+            this.showToast('Prompt copié !');
+            this.onCopy(prompt);
+          });
+        }
+      });
+    });
+
+    this.container.querySelectorAll('.edit-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        const prompt = db.getPromptById(id);
+        if (prompt) {
+          this.onEdit(prompt);
+        }
+      });
+    });
+
+    this.container.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        if (confirm('Supprimer ce prompt ?')) {
+          db.deletePrompt(id);
+          this.render();
+          this.onDelete(id);
+        }
+      });
+    });
+
+    // Clic sur la carte pour voir le détail
+    this.container.querySelectorAll('.prompt-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.id;
+        const prompt = db.getPromptById(id);
+        if (prompt) {
+          this.showPromptDetail(prompt);
+        }
+      });
+    });
+  }
+
+  showPromptDetail(prompt) {
+    const action = ACTIONS.find(a => a.id === prompt.action);
+    const subject = DEFAULT_SUBJECTS.find(s => s.id === prompt.subject);
+    const level = DEFAULT_LEVELS.find(l => l.id === prompt.level);
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal">
+        <div class="modal-header">
+          <h3>${prompt.title || 'Prompt'}</h3>
+          <button class="modal-close">✖</button>
+        </div>
+        <div class="modal-body">
+          <div class="prompt-meta">
+            ${action ? `<span class="tag tag-action">${action.emoji} ${action.label}</span>` : ''}
+            ${subject ? `<span class="tag tag-subject">${subject.emoji} ${subject.label}</span>` : ''}
+            ${level ? `<span class="tag tag-level">${level.label}</span>` : ''}
+            ${prompt.theme ? `<span class="tag tag-theme">📌 ${prompt.theme}</span>` : ''}
+          </div>
+          <div class="prompt-content-full">
+            <pre>${prompt.content}</pre>
+          </div>
+          ${prompt.description ? `<p class="prompt-description"><em>${prompt.description}</em></p>` : ''}
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="modal-copy">📋 Copier</button>
+          <button class="btn btn-secondary" id="modal-close">Fermer</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+    modal.querySelector('#modal-close').addEventListener('click', () => modal.remove());
+    modal.querySelector('#modal-copy').addEventListener('click', () => {
+      navigator.clipboard.writeText(prompt.content).then(() => {
+        this.showToast('Prompt copié !');
+        modal.remove();
+      });
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
+  }
+
+  showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 2000);
+  }
+
+  refresh() {
+    this.render();
+  }
+}
+
+
+// ============ ui/components/builder-panel.js ============
+/**
+ * Composant Panneau de Construction de Prompts
+ * Interface pour assembler des briques et générer un prompt
+ */
+
+
+
+
+
+class BuilderPanel {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.paramValues = {};
+    this.onPromptGenerated = null;
+    // Valeurs pour pré-remplir la modale de sauvegarde
+    this.builderValues = {
+      level: null,
+      subject: null,
+      theme: ''
+    };
+  }
+
+  /**
+   * Initialise le panneau
+   */
+  init(options = {}) {
+    this.onPromptGenerated = options.onPromptGenerated || (() => {});
+    promptBuilder.reset();
+
+    // Pré-sélectionner le niveau par défaut
+    const settings = db.getSettings();
+    if (settings.defaultLevel) {
+      this.builderValues.level = settings.defaultLevel;
+      promptBuilder.setParam('niveau', DEFAULT_LEVELS.find(l => l.id === settings.defaultLevel)?.label || settings.defaultLevel);
+    }
+
+    this.render();
+  }
+
+  /**
+   * Rendu principal
+   */
+  render() {
+    const structures = promptBuilder.getAllStructures();
+    const bricks = promptBuilder.getAllBricks();
+
+    let html = `
+      <div class="builder-panel">
+        <div class="builder-section">
+          <h3>🎯 Structures prédéfinies</h3>
+          <p class="hint">Clique sur une structure pour pré-remplir les briques</p>
+          <div class="structure-grid">
+            ${structures.filter(s => s.enabled).map(s => `
+              <button class="structure-btn" data-structure="${s.id}" title="${s.description}">
+                <span class="structure-icon">${s.icon}</span>
+                <span class="structure-label">${s.label}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="builder-section">
+          <h3>🧱 Briques disponibles</h3>
+          <p class="hint">Sélectionne les briques pour construire ton prompt</p>
+
+          <div class="brick-categories">
+            ${Object.entries(BRICK_CATEGORIES).map(([catId, cat]) => `
+              <div class="brick-category">
+                <h4 style="color: ${cat.color}">${cat.icon} ${cat.label}</h4>
+                <div class="brick-list">
+                  ${bricks.filter(b => b.category === catId && b.enabled !== false).map(b => `
+                    <label class="brick-item ${promptBuilder.selectedBricks.includes(b.id) ? 'selected' : ''}">
+                      <input type="checkbox" data-brick="${b.id}"
+                             ${promptBuilder.selectedBricks.includes(b.id) ? 'checked' : ''}>
+                      <span class="brick-label">${b.label}</span>
+                    </label>
+                  `).join('')}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        ${this.renderParamsSection()}
+
+        <div class="builder-section">
+          <h3>👁️ Aperçu du prompt</h3>
+          <div class="preview-box">
+            <pre id="prompt-preview">${promptBuilder.preview() || '<em>Sélectionne des briques pour voir l\'aperçu</em>'}</pre>
+          </div>
+          <div class="builder-actions">
+            <button class="btn btn-secondary" id="builder-reset">🔄 Réinitialiser</button>
+            <button class="btn btn-primary" id="builder-copy">📋 Copier</button>
+            <button class="btn btn-success" id="builder-save">💾 Sauvegarder</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    this.container.innerHTML = html;
+    this.bindEvents();
+  }
+
+  renderParamsSection() {
+    const requiredParams = promptBuilder.getRequiredParams();
+
+    if (requiredParams.length === 0) {
+      return '';
+    }
+
+    const paramLabels = {
+      niveau: 'Niveau',
+      matiere: 'Matière',
+      theme: 'Thème/Chapitre',
+      sujet_difficile: 'Sujet de difficulté',
+      concept: 'Concept à expliquer',
+      nombre: 'Nombre',
+      sujet: 'Sujet',
+      difficulte: 'Difficulté',
+      longueur: 'Longueur (quelques lignes, 1 page...)',
+      lignes: 'Nombre de lignes max',
+      temps: 'Temps disponible'
+    };
+
+    // Paramètres avec menu déroulant
+    const dropdownParams = ['niveau', 'matiere', 'difficulte'];
+
+    const settings = db.getSettings();
+    const enabledSubjects = settings.enabledSubjects || [];
+    const subjects = DEFAULT_SUBJECTS.filter(s => enabledSubjects.includes(s.id));
+    const levels = DEFAULT_LEVELS.filter(l => l.enabled);
+
+    const difficulties = [
+      { id: 'facile', label: 'Facile' },
+      { id: 'moyen', label: 'Moyen' },
+      { id: 'difficile', label: 'Difficile' }
+    ];
+
+    return `
+      <div class="builder-section">
+        <h3>✏️ Paramètres à remplir</h3>
+        <div class="params-form">
+          ${requiredParams.map(param => {
+            if (param === 'niveau') {
+              return `
+                <div class="param-field">
+                  <label for="param-${param}">${paramLabels[param]}</label>
+                  <select id="param-${param}" data-param="${param}" class="param-select">
+                    <option value="">-- Choisir un niveau --</option>
+                    ${levels.map(l => `
+                      <option value="${l.label}" ${this.builderValues.level === l.id ? 'selected' : ''}>${l.label}</option>
+                    `).join('')}
+                  </select>
+                </div>
+              `;
+            } else if (param === 'matiere') {
+              return `
+                <div class="param-field">
+                  <label for="param-${param}">${paramLabels[param]}</label>
+                  <select id="param-${param}" data-param="${param}" class="param-select">
+                    <option value="">-- Choisir une matière --</option>
+                    ${subjects.map(s => `
+                      <option value="${s.label}" ${this.builderValues.subject === s.id ? 'selected' : ''}>${s.emoji} ${s.label}</option>
+                    `).join('')}
+                  </select>
+                </div>
+              `;
+            } else if (param === 'difficulte') {
+              return `
+                <div class="param-field">
+                  <label for="param-${param}">${paramLabels[param]}</label>
+                  <select id="param-${param}" data-param="${param}" class="param-select">
+                    <option value="">-- Choisir la difficulté --</option>
+                    ${difficulties.map(d => `
+                      <option value="${d.label}" ${promptBuilder.paramValues[param] === d.label ? 'selected' : ''}>${d.label}</option>
+                    `).join('')}
+                  </select>
+                </div>
+              `;
+            } else {
+              return `
+                <div class="param-field">
+                  <label for="param-${param}">${paramLabels[param] || param}</label>
+                  <input type="text" id="param-${param}" data-param="${param}"
+                         value="${promptBuilder.paramValues[param] || ''}"
+                         placeholder="${paramLabels[param] || param}">
+                </div>
+              `;
+            }
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  bindEvents() {
+    // Structures
+    this.container.querySelectorAll('.structure-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        promptBuilder.applyStructure(btn.dataset.structure);
+        this.render();
+      });
+    });
+
+    // Briques
+    this.container.querySelectorAll('input[data-brick]').forEach(checkbox => {
+      checkbox.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          promptBuilder.selectBrick(e.target.dataset.brick);
+        } else {
+          promptBuilder.unselectBrick(e.target.dataset.brick);
+        }
+        this.render();
+      });
+    });
+
+    // Paramètres (inputs texte)
+    this.container.querySelectorAll('input[data-param]').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const param = e.target.dataset.param;
+        promptBuilder.setParam(param, e.target.value);
+        // Stocker le thème pour le pré-remplissage
+        if (param === 'theme') {
+          this.builderValues.theme = e.target.value;
+        }
+        this.updatePreview();
+      });
+    });
+
+    // Paramètres (selects)
+    this.container.querySelectorAll('select[data-param]').forEach(select => {
+      select.addEventListener('change', (e) => {
+        const param = e.target.dataset.param;
+        promptBuilder.setParam(param, e.target.value);
+
+        // Stocker les valeurs pour le pré-remplissage de la modale
+        if (param === 'niveau') {
+          const level = DEFAULT_LEVELS.find(l => l.label === e.target.value);
+          this.builderValues.level = level ? level.id : null;
+        } else if (param === 'matiere') {
+          const subject = DEFAULT_SUBJECTS.find(s => s.label === e.target.value || `${s.emoji} ${s.label}` === e.target.value);
+          this.builderValues.subject = subject ? subject.id : null;
+        }
+
+        this.updatePreview();
+      });
+    });
+
+    // Actions
+    const resetBtn = this.container.querySelector('#builder-reset');
+    const copyBtn = this.container.querySelector('#builder-copy');
+    const saveBtn = this.container.querySelector('#builder-save');
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        promptBuilder.reset();
+        this.render();
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const prompt = promptBuilder.build();
+        if (prompt) {
+          navigator.clipboard.writeText(prompt).then(() => {
+            this.showToast('Prompt copié !');
+          });
+        }
+      });
+    }
+
+    if (saveBtn) {
+      saveBtn.addEventListener('click', () => {
+        const prompt = promptBuilder.build();
+        if (prompt && promptBuilder.selectedBricks.length > 0) {
+          // Passer le prompt ET les valeurs pré-remplies
+          this.onPromptGenerated(prompt, this.getBuilderValues());
+        } else {
+          this.showToast('Sélectionne au moins une brique');
+        }
+      });
+    }
+  }
+
+  /**
+   * Retourne les valeurs saisies dans le fabricateur pour pré-remplir la modale
+   */
+  getBuilderValues() {
+    return {
+      level: this.builderValues.level,
+      subject: this.builderValues.subject,
+      theme: promptBuilder.paramValues.theme || this.builderValues.theme || ''
+    };
+  }
+
+  updatePreview() {
+    const preview = this.container.querySelector('#prompt-preview');
+    if (preview) {
+      preview.textContent = promptBuilder.preview() || 'Sélectionne des briques pour voir l\'aperçu';
+    }
+  }
+
+  showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 2000);
+  }
+
+  refresh() {
+    this.render();
+  }
+}
+
+
+// ============ ui/components/concatenation-panel.js ============
+/**
+ * Composant Panneau de Concaténation
+ * Fournit le prompt pour résumer une conversation IA
+ */
+
+
+class ConcatenationPanel {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.selectedVariant = 'standard';
+  }
+
+  /**
+   * Initialise le panneau
+   */
+  init() {
+    this.render();
+  }
+
+  /**
+   * Rendu principal
+   */
+  render() {
+    const selectedPrompt = CONCATENATION_VARIANTS.find(v => v.id === this.selectedVariant);
+
+    let html = `
+      <div class="concatenation-panel">
+        <div class="concat-header">
+          <h2>🔗 Résumer une conversation</h2>
+          <p class="hint">Copie ce prompt et colle-le à la fin de ta conversation avec une IA pour obtenir un résumé de tout ce que tu as demandé.</p>
+        </div>
+
+        <div class="concat-section">
+          <h3>Choisis le format</h3>
+          <div class="variant-selector">
+            ${CONCATENATION_VARIANTS.map(v => `
+              <button class="variant-btn ${this.selectedVariant === v.id ? 'selected' : ''}"
+                      data-variant="${v.id}">
+                <strong>${v.label}</strong>
+                <span>${v.description}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="concat-section">
+          <h3>📋 Prompt à copier</h3>
+          <div class="prompt-display">
+            <pre id="concat-prompt">${selectedPrompt.prompt}</pre>
+          </div>
+          <div class="concat-actions">
+            <button class="btn btn-primary btn-large" id="copy-concat">
+              📋 Copier le prompt
+            </button>
+          </div>
+        </div>
+
+        <div class="concat-section instructions">
+          <h3>📖 Comment utiliser ?</h3>
+          <ol class="instruction-list">
+            <li>
+              <span class="step-num">1</span>
+              <span class="step-text">Finis ta conversation avec l'IA (ChatGPT, Claude, etc.)</span>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <span class="step-text">Clique sur "Copier le prompt" ci-dessus</span>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <span class="step-text">Colle-le dans la conversation avec l'IA</span>
+            </li>
+            <li>
+              <span class="step-num">4</span>
+              <span class="step-text">L'IA te donnera un résumé de tout ce que tu as demandé</span>
+            </li>
+            <li>
+              <span class="step-num">5</span>
+              <span class="step-text">Copie ce résumé et stocke-le ici pour le réutiliser plus tard !</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="concat-section tip-box">
+          <h4>💡 Astuce</h4>
+          <p>Ce prompt fonctionne avec toutes les IA conversationnelles : ChatGPT, Claude, Gemini, Mistral, etc.</p>
+          <p>Le résumé obtenu est parfait pour être stocké et réutilisé dans une nouvelle conversation !</p>
+        </div>
+      </div>
+    `;
+
+    this.container.innerHTML = html;
+    this.bindEvents();
+  }
+
+  bindEvents() {
+    // Sélection de variante
+    this.container.querySelectorAll('.variant-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.selectedVariant = btn.dataset.variant;
+        this.render();
+      });
+    });
+
+    // Copier
+    const copyBtn = this.container.querySelector('#copy-concat');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const selectedPrompt = CONCATENATION_VARIANTS.find(v => v.id === this.selectedVariant);
+        navigator.clipboard.writeText(selectedPrompt.prompt).then(() => {
+          this.showToast('Prompt copié ! Colle-le dans ta conversation IA');
+          copyBtn.textContent = '✓ Copié !';
+          setTimeout(() => {
+            copyBtn.textContent = '📋 Copier le prompt';
+          }, 2000);
+        });
+      });
+    }
+  }
+
+  showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+}
+
+
+// ============ ui/components/settings-panel.js ============
+/**
+ * Composant Panneau des Paramètres
+ * Permet de configurer les actions, matières, briques personnalisées et structures
+ */
+
+
+
+
+
+
+class SettingsPanel {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.onSettingsChanged = null;
+  }
+
+  /**
+   * Initialise le panneau
+   */
+  init(options = {}) {
+    this.onSettingsChanged = options.onSettingsChanged || (() => {});
+    this.render();
+  }
+
+  /**
+   * Rendu principal
+   */
+  render() {
+    const settings = db.getSettings();
+
+    let html = `
+      <div class="settings-panel">
+        <div class="settings-header">
+          <h2>⚙️ Paramètres</h2>
+          <p class="hint">Configure l'application selon tes besoins</p>
+        </div>
+
+        <div class="settings-section">
+          <h3>📊 Niveau par défaut</h3>
+          <p class="hint">Si tu es toujours au même niveau, définis-le ici pour gagner du temps</p>
+          <select id="default-level">
+            <option value="">Aucun (demander à chaque fois)</option>
+            ${DEFAULT_LEVELS.map(l => `
+              <option value="${l.id}" ${settings.defaultLevel === l.id ? 'selected' : ''}>${l.label}</option>
+            `).join('')}
+          </select>
+        </div>
+
+        <div class="settings-section">
+          <h3>✨ Actions disponibles</h3>
+          <p class="hint">Coche les actions que tu veux voir dans le wizard</p>
+          <div class="checkbox-grid">
+            ${ACTIONS.map(a => `
+              <label class="checkbox-item">
+                <input type="checkbox" data-action="${a.id}"
+                       ${settings.enabledActions?.includes(a.id) ? 'checked' : ''}>
+                <span>${a.emoji} ${a.label}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div class="settings-actions">
+            <button class="btn btn-small" id="actions-select-all">Tout cocher</button>
+            <button class="btn btn-small" id="actions-select-none">Tout décocher</button>
+            <button class="btn btn-small" id="actions-reset">Par défaut</button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>📚 Matières disponibles</h3>
+          <p class="hint">Coche les matières que tu étudies</p>
+          <div class="checkbox-grid">
+            ${DEFAULT_SUBJECTS.map(s => `
+              <label class="checkbox-item">
+                <input type="checkbox" data-subject="${s.id}"
+                       ${settings.enabledSubjects?.includes(s.id) ? 'checked' : ''}>
+                <span>${s.emoji} ${s.label}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>🎨 Apparence</h3>
+          <div class="theme-selector">
+            <button class="theme-btn ${settings.theme === 'light' ? 'selected' : ''}" data-theme="light">
+              ☀️ Clair
+            </button>
+            <button class="theme-btn ${settings.theme === 'dark' ? 'selected' : ''}" data-theme="dark">
+              🌙 Sombre
+            </button>
+          </div>
+        </div>
+
+        ${this.renderCustomBricksSection()}
+
+        ${this.renderCustomStructuresSection()}
+
+        <div class="settings-section danger-zone">
+          <h3>⚠️ Zone de danger</h3>
+          <div class="danger-actions">
+            <button class="btn btn-danger" id="export-data">
+              📤 Exporter mes données
+            </button>
+            <button class="btn btn-danger" id="import-data">
+              📥 Importer des données
+            </button>
+            <button class="btn btn-danger" id="clear-data">
+              🗑️ Tout effacer
+            </button>
+          </div>
+          <input type="file" id="import-file" accept=".json" style="display: none">
+        </div>
+      </div>
+    `;
+
+    this.container.innerHTML = html;
+    this.bindEvents();
+  }
+
+  /**
+   * Rendu de la section briques personnalisées
+   */
+  renderCustomBricksSection() {
+    const customBricks = db.getCustomBricks();
+
+    return `
+      <div class="settings-section">
+        <h3>🧱 Mes briques personnalisées</h3>
+        <p class="hint">Crée tes propres briques de texte réutilisables</p>
+
+        ${customBricks.length > 0 ? `
+          <div class="custom-items-list">
+            ${customBricks.map(brick => `
+              <div class="custom-item" data-brick-id="${brick.id}">
+                <div class="custom-item-info">
+                  <span class="custom-item-category" style="background: ${BRICK_CATEGORIES[brick.category]?.color || '#888'}">
+                    ${BRICK_CATEGORIES[brick.category]?.icon || '📦'} ${BRICK_CATEGORIES[brick.category]?.label || brick.category}
+                  </span>
+                  <strong>${brick.label}</strong>
+                  <div class="custom-item-preview">${brick.template}</div>
+                </div>
+                <div class="custom-item-actions">
+                  <button class="btn btn-small btn-secondary edit-brick" data-brick-id="${brick.id}">✏️</button>
+                  <button class="btn btn-small btn-danger delete-brick" data-brick-id="${brick.id}">🗑️</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        ` : `
+          <p class="empty-hint">Aucune brique personnalisée. Crée ta première !</p>
+        `}
+
+        <button class="btn btn-primary" id="add-brick">
+          ➕ Créer une brique
+        </button>
+      </div>
+    `;
+  }
+
+  /**
+   * Rendu de la section structures personnalisées
+   */
+  renderCustomStructuresSection() {
+    const customStructures = db.getCustomStructures();
+    const allBricks = [...DEFAULT_BRICKS, ...db.getCustomBricks()];
+
+    return `
+      <div class="settings-section">
+        <h3>🏗️ Mes structures personnalisées</h3>
+        <p class="hint">Combine des briques pour créer des structures réutilisables</p>
+
+        ${customStructures.length > 0 ? `
+          <div class="custom-items-list">
+            ${customStructures.map(structure => `
+              <div class="custom-item" data-structure-id="${structure.id}">
+                <div class="custom-item-info">
+                  <span class="custom-item-icon">${structure.icon || '📋'}</span>
+                  <strong>${structure.label}</strong>
+                  <div class="custom-item-preview">${structure.description || ''}</div>
+                  <div class="custom-item-bricks">
+                    ${structure.bricks.map(brickId => {
+                      const brick = allBricks.find(b => b.id === brickId);
+                      return brick ? `<span class="mini-tag">${brick.label}</span>` : '';
+                    }).join('')}
+                  </div>
+                </div>
+                <div class="custom-item-actions">
+                  <button class="btn btn-small btn-secondary edit-structure" data-structure-id="${structure.id}">✏️</button>
+                  <button class="btn btn-small btn-danger delete-structure" data-structure-id="${structure.id}">🗑️</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        ` : `
+          <p class="empty-hint">Aucune structure personnalisée. Crée ta première !</p>
+        `}
+
+        <button class="btn btn-primary" id="add-structure">
+          ➕ Créer une structure
+        </button>
+      </div>
+    `;
+  }
+
+  /**
+   * Ouvre la modal de création/édition de brique
+   */
+  openBrickModal(existingBrick = null) {
+    const isEdit = !!existingBrick;
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal">
+        <div class="modal-header">
+          <h3>${isEdit ? '✏️ Modifier la brique' : '➕ Nouvelle brique'}</h3>
+          <button class="modal-close">✖</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="brick-label">Nom de la brique *</label>
+            <input type="text" id="brick-label" value="${existingBrick?.label || ''}" placeholder="Ex: Ma demande personnalisée" required>
+          </div>
+
+          <div class="form-group">
+            <label for="brick-category">Catégorie *</label>
+            <select id="brick-category">
+              ${Object.entries(BRICK_CATEGORIES).map(([id, cat]) => `
+                <option value="${id}" ${existingBrick?.category === id ? 'selected' : ''}>
+                  ${cat.icon} ${cat.label}
+                </option>
+              `).join('')}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="brick-template">Texte du prompt *</label>
+            <textarea id="brick-template" rows="3" placeholder="Utilise {parametre} pour les variables">${existingBrick?.template || ''}</textarea>
+            <small>Astuce : utilise <code>{niveau}</code>, <code>{matiere}</code>, <code>{theme}</code> pour des paramètres</small>
+          </div>
+
+          <div class="form-group">
+            <label>Aperçu des paramètres détectés</label>
+            <div id="params-preview" class="params-preview">
+              ${this.extractParams(existingBrick?.template || '').map(p => `<span class="param-tag">{${p}}</span>`).join('') || '<em>Aucun paramètre</em>'}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary modal-cancel">Annuler</button>
+          <button class="btn btn-success modal-save">${isEdit ? 'Enregistrer' : 'Créer'}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Mise à jour en temps réel des paramètres
+    const templateInput = modal.querySelector('#brick-template');
+    const paramsPreview = modal.querySelector('#params-preview');
+    templateInput.addEventListener('input', () => {
+      const params = this.extractParams(templateInput.value);
+      paramsPreview.innerHTML = params.length > 0
+        ? params.map(p => `<span class="param-tag">{${p}}</span>`).join('')
+        : '<em>Aucun paramètre</em>';
+    });
+
+    // Événements
+    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+    modal.querySelector('.modal-cancel').addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+
+    modal.querySelector('.modal-save').addEventListener('click', () => {
+      const label = modal.querySelector('#brick-label').value.trim();
+      const category = modal.querySelector('#brick-category').value;
+      const template = modal.querySelector('#brick-template').value.trim();
+
+      if (!label || !template) {
+        this.showToast('Remplis tous les champs obligatoires');
+        return;
+      }
+
+      const params = this.extractParams(template);
+
+      if (isEdit) {
+        // Supprimer l'ancienne et créer la nouvelle (simple update)
+        db.deleteCustomBrick(existingBrick.id);
+      }
+
+      db.addCustomBrick({ label, category, template, params, enabled: true });
+      this.showToast(isEdit ? 'Brique modifiée !' : 'Brique créée !');
+      modal.remove();
+      this.render();
+    });
+  }
+
+  /**
+   * Ouvre la modal de création/édition de structure
+   */
+  openStructureModal(existingStructure = null) {
+    const isEdit = !!existingStructure;
+    const allBricks = [...DEFAULT_BRICKS, ...db.getCustomBricks()];
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal modal-large">
+        <div class="modal-header">
+          <h3>${isEdit ? '✏️ Modifier la structure' : '➕ Nouvelle structure'}</h3>
+          <button class="modal-close">✖</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="structure-icon">Icône</label>
+              <input type="text" id="structure-icon" value="${existingStructure?.icon || '📋'}" maxlength="2" style="width: 60px; text-align: center; font-size: 1.5rem;">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label for="structure-label">Nom de la structure *</label>
+              <input type="text" id="structure-label" value="${existingStructure?.label || ''}" placeholder="Ex: Ma révision personnalisée">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="structure-description">Description</label>
+            <input type="text" id="structure-description" value="${existingStructure?.description || ''}" placeholder="Courte description de l'utilité">
+          </div>
+
+          <div class="form-group">
+            <label>Sélectionne les briques à inclure *</label>
+            <div class="brick-selector">
+              ${Object.entries(BRICK_CATEGORIES).map(([catId, cat]) => `
+                <div class="brick-selector-category">
+                  <h4 style="color: ${cat.color}">${cat.icon} ${cat.label}</h4>
+                  <div class="brick-selector-list">
+                    ${allBricks.filter(b => b.category === catId).map(brick => `
+                      <label class="brick-selector-item">
+                        <input type="checkbox" value="${brick.id}"
+                               ${existingStructure?.bricks?.includes(brick.id) ? 'checked' : ''}>
+                        <span>${brick.label}</span>
+                        ${brick.isCustom ? '<span class="custom-badge">Perso</span>' : ''}
+                      </label>
+                    `).join('')}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Briques sélectionnées</label>
+            <div id="selected-bricks-preview" class="selected-bricks-preview">
+              ${existingStructure?.bricks?.length > 0
+                ? existingStructure.bricks.map(bId => {
+                    const b = allBricks.find(br => br.id === bId);
+                    return b ? `<span class="mini-tag">${b.label}</span>` : '';
+                  }).join('')
+                : '<em>Aucune brique sélectionnée</em>'}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary modal-cancel">Annuler</button>
+          <button class="btn btn-success modal-save">${isEdit ? 'Enregistrer' : 'Créer'}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Mise à jour en temps réel de la prévisualisation
+    const updatePreview = () => {
+      const selected = Array.from(modal.querySelectorAll('.brick-selector input:checked')).map(cb => cb.value);
+      const preview = modal.querySelector('#selected-bricks-preview');
+      preview.innerHTML = selected.length > 0
+        ? selected.map(bId => {
+            const b = allBricks.find(br => br.id === bId);
+            return b ? `<span class="mini-tag">${b.label}</span>` : '';
+          }).join('')
+        : '<em>Aucune brique sélectionnée</em>';
+    };
+
+    modal.querySelectorAll('.brick-selector input').forEach(cb => {
+      cb.addEventListener('change', updatePreview);
+    });
+
+    // Événements
+    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+    modal.querySelector('.modal-cancel').addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+
+    modal.querySelector('.modal-save').addEventListener('click', () => {
+      const label = modal.querySelector('#structure-label').value.trim();
+      const description = modal.querySelector('#structure-description').value.trim();
+      const icon = modal.querySelector('#structure-icon').value.trim() || '📋';
+      const bricks = Array.from(modal.querySelectorAll('.brick-selector input:checked')).map(cb => cb.value);
+
+      if (!label) {
+        this.showToast('Donne un nom à ta structure');
+        return;
+      }
+
+      if (bricks.length === 0) {
+        this.showToast('Sélectionne au moins une brique');
+        return;
+      }
+
+      if (isEdit) {
+        db.deleteCustomStructure(existingStructure.id);
+      }
+
+      db.addCustomStructure({ label, description, icon, bricks, enabled: true });
+      this.showToast(isEdit ? 'Structure modifiée !' : 'Structure créée !');
+      modal.remove();
+      this.render();
+    });
+  }
+
+  /**
+   * Extrait les paramètres d'un template
+   */
+  extractParams(template) {
+    const matches = template.match(/\{(\w+)\}/g) || [];
+    return [...new Set(matches.map(m => m.slice(1, -1)))];
+  }
+
+  bindEvents() {
+    const settings = db.getSettings();
+
+    // Niveau par défaut
+    const defaultLevel = this.container.querySelector('#default-level');
+    if (defaultLevel) {
+      defaultLevel.addEventListener('change', (e) => {
+        db.updateSettings({ defaultLevel: e.target.value || null });
+        this.onSettingsChanged();
+      });
+    }
+
+    // Actions
+    this.container.querySelectorAll('input[data-action]').forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const enabledActions = [];
+        this.container.querySelectorAll('input[data-action]:checked').forEach(cb => {
+          enabledActions.push(cb.dataset.action);
+        });
+        db.updateSettings({ enabledActions });
+        this.onSettingsChanged();
+      });
+    });
+
+    // Boutons actions
+    const selectAll = this.container.querySelector('#actions-select-all');
+    const selectNone = this.container.querySelector('#actions-select-none');
+    const resetActions = this.container.querySelector('#actions-reset');
+
+    if (selectAll) {
+      selectAll.addEventListener('click', () => {
+        const allActions = ACTIONS.map(a => a.id);
+        db.updateSettings({ enabledActions: allActions });
+        this.render();
+        this.onSettingsChanged();
+      });
+    }
+
+    if (selectNone) {
+      selectNone.addEventListener('click', () => {
+        db.updateSettings({ enabledActions: [] });
+        this.render();
+        this.onSettingsChanged();
+      });
+    }
+
+    if (resetActions) {
+      resetActions.addEventListener('click', () => {
+        const defaultActions = ACTIONS.filter(a => a.enabled).map(a => a.id);
+        db.updateSettings({ enabledActions: defaultActions });
+        this.render();
+        this.onSettingsChanged();
+      });
+    }
+
+    // Matières
+    this.container.querySelectorAll('input[data-subject]').forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const enabledSubjects = [];
+        this.container.querySelectorAll('input[data-subject]:checked').forEach(cb => {
+          enabledSubjects.push(cb.dataset.subject);
+        });
+        db.updateSettings({ enabledSubjects });
+        this.onSettingsChanged();
+      });
+    });
+
+    // Thème
+    this.container.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        db.updateSettings({ theme });
+        document.documentElement.setAttribute('data-theme', theme);
+        this.render();
+        this.onSettingsChanged();
+      });
+    });
+
+    // Export
+    const exportBtn = this.container.querySelector('#export-data');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        const data = db.exportAll();
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `prompts-backup-${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        this.showToast('Données exportées !');
+      });
+    }
+
+    // Import
+    const importBtn = this.container.querySelector('#import-data');
+    const importFile = this.container.querySelector('#import-file');
+    if (importBtn && importFile) {
+      importBtn.addEventListener('click', () => importFile.click());
+      importFile.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (evt) => {
+            const merge = confirm('Fusionner avec les données existantes ?\n\nOK = Fusionner\nAnnuler = Remplacer');
+            if (db.importData(evt.target.result, merge)) {
+              this.showToast('Données importées !');
+              this.render();
+              this.onSettingsChanged();
+            } else {
+              this.showToast('Erreur d\'import');
+            }
+          };
+          reader.readAsText(file);
+        }
+      });
+    }
+
+    // Clear
+    const clearBtn = this.container.querySelector('#clear-data');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (confirm('Supprimer TOUTES les données ? Cette action est irréversible !')) {
+          if (confirm('Vraiment sûr ? Dernière chance...')) {
+            db.clear();
+            this.showToast('Toutes les données ont été effacées');
+            this.render();
+            this.onSettingsChanged();
+          }
+        }
+      });
+    }
+
+    // ===== Briques personnalisées =====
+    const addBrickBtn = this.container.querySelector('#add-brick');
+    if (addBrickBtn) {
+      addBrickBtn.addEventListener('click', () => this.openBrickModal());
+    }
+
+    this.container.querySelectorAll('.edit-brick').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const brickId = btn.dataset.brickId;
+        const brick = db.getCustomBricks().find(b => b.id === brickId);
+        if (brick) this.openBrickModal(brick);
+      });
+    });
+
+    this.container.querySelectorAll('.delete-brick').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const brickId = btn.dataset.brickId;
+        if (confirm('Supprimer cette brique ?')) {
+          db.deleteCustomBrick(brickId);
+          this.showToast('Brique supprimée');
+          this.render();
+        }
+      });
+    });
+
+    // ===== Structures personnalisées =====
+    const addStructureBtn = this.container.querySelector('#add-structure');
+    if (addStructureBtn) {
+      addStructureBtn.addEventListener('click', () => this.openStructureModal());
+    }
+
+    this.container.querySelectorAll('.edit-structure').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const structureId = btn.dataset.structureId;
+        const structure = db.getCustomStructures().find(s => s.id === structureId);
+        if (structure) this.openStructureModal(structure);
+      });
+    });
+
+    this.container.querySelectorAll('.delete-structure').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const structureId = btn.dataset.structureId;
+        if (confirm('Supprimer cette structure ?')) {
+          db.deleteCustomStructure(structureId);
+          this.showToast('Structure supprimée');
+          this.render();
+        }
+      });
+    });
+  }
+
+  showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 2000);
+  }
+}
+
+
+// ============ ui/components/save-modal.js ============
+/**
+ * Composant Modal de Sauvegarde
+ * Affiche le wizard de catégorisation puis sauvegarde le prompt
+ */
+
+
+
+class SaveModal {
+  constructor() {
+    this.modal = null;
+    this.promptContent = '';
+    this.onSaved = null;
+    this.wizard = null;
+    this.prefillValues = null;
+  }
+
+  /**
+   * Ouvre la modal pour sauvegarder un prompt
+   * @param {string} promptContent - Le contenu du prompt
+   * @param {Object} options - Options
+   * @param {Function} options.onSaved - Callback après sauvegarde
+   * @param {Object} options.prefill - Valeurs pré-remplies {level, subject, theme}
+   */
+  open(promptContent, options = {}) {
+    this.promptContent = promptContent;
+    this.onSaved = options.onSaved || (() => {});
+    this.prefillValues = options.prefill || null;
+
+    // Créer la modal
+    this.modal = document.createElement('div');
+    this.modal.className = 'modal-overlay';
+    this.modal.innerHTML = `
+      <div class="modal modal-large">
+        <div class="modal-header">
+          <h3>💾 Sauvegarder le prompt</h3>
+          <button class="modal-close">✖</button>
+        </div>
+        <div class="modal-body">
+          <div class="save-modal-content">
+            <div class="prompt-preview-section">
+              <h4>Prompt à sauvegarder :</h4>
+              <div class="prompt-preview-box">
+                <pre>${promptContent.length > 300 ? promptContent.substring(0, 300) + '...' : promptContent}</pre>
+              </div>
+            </div>
+            <div class="wizard-section" id="save-wizard"></div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(this.modal);
+
+    // Initialiser le wizard avec les valeurs pré-remplies
+    this.wizard = new Wizard('save-wizard');
+    this.wizard.start({
+      onComplete: (selection) => this.handleWizardComplete(selection),
+      onCancel: () => this.close(),
+      prefill: this.prefillValues
+    });
+
+    // Fermer la modal
+    this.modal.querySelector('.modal-close').addEventListener('click', () => this.close());
+    this.modal.addEventListener('click', (e) => {
+      if (e.target === this.modal) this.close();
+    });
+  }
+
+  /**
+   * Gère la fin du wizard
+   */
+  handleWizardComplete(selection) {
+    // Afficher le formulaire de finalisation
+    const wizardSection = this.modal.querySelector('.wizard-section');
+    wizardSection.innerHTML = `
+      <div class="finalize-form">
+        <h4>✏️ Informations complémentaires</h4>
+
+        <div class="form-group">
+          <label for="prompt-title">Titre (optionnel)</label>
+          <input type="text" id="prompt-title" placeholder="Ex: Aide pour résoudre des équations"
+                 maxlength="100">
+        </div>
+
+        <div class="form-group">
+          <label for="prompt-description">Description courte (optionnel)</label>
+          <textarea id="prompt-description" rows="2"
+                    placeholder="Note personnelle pour te souvenir de ce prompt"></textarea>
+        </div>
+
+        <div class="selection-summary">
+          <h4>📋 Récapitulatif</h4>
+          <div class="summary-tags">
+            <span class="tag">${this.wizard.getSelectionLabels().action}</span>
+            <span class="tag">${this.wizard.getSelectionLabels().subject}</span>
+            <span class="tag">${this.wizard.getSelectionLabels().level}</span>
+            ${selection.theme ? `<span class="tag">📌 ${selection.theme}</span>` : ''}
+          </div>
+        </div>
+
+        <div class="finalize-actions">
+          <button class="btn btn-secondary" id="back-to-wizard">← Modifier</button>
+          <button class="btn btn-success" id="confirm-save">💾 Sauvegarder</button>
+        </div>
+      </div>
+    `;
+
+    // Événements
+    this.modal.querySelector('#back-to-wizard').addEventListener('click', () => {
+      this.wizard.currentStep = 0;
+      this.wizard.render();
+    });
+
+    this.modal.querySelector('#confirm-save').addEventListener('click', () => {
+      const title = this.modal.querySelector('#prompt-title').value.trim();
+      const description = this.modal.querySelector('#prompt-description').value.trim();
+
+      const prompt = db.addPrompt({
+        content: this.promptContent,
+        title: title || null,
+        description: description || null,
+        action: selection.action,
+        subject: selection.subject,
+        level: selection.level,
+        theme: selection.theme || null
+      });
+
+      this.showToast('Prompt sauvegardé !');
+      this.onSaved(prompt);
+      this.close();
+    });
+  }
+
+  /**
+   * Ferme la modal
+   */
+  close() {
+    if (this.modal) {
+      this.modal.remove();
+      this.modal = null;
+    }
+  }
+
+  showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 2000);
+  }
+}
+
+
+// ============ app.js ============
+/**
+ * Application principale - Prompt Manager
+ * Point d'entrée de l'application
+ */
+
+
+
+
+
+
+
+
+
+
+class App {
+  constructor() {
+    this.currentView = 'prompts';
+    this.promptList = null;
+    this.builderPanel = null;
+    this.concatenationPanel = null;
+    this.settingsPanel = null;
+    this.saveModal = new SaveModal();
+    this.files = [];
+  }
+
+  /**
+   * Initialise l'application
+   */
+  async init() {
+    try {
+      // Initialiser la connexion DB
+      await db.init();
+
+      // Charger la liste des fichiers
+      this.files = await db.listFiles();
+
+      // Si des fichiers existent, charger le premier
+      if (this.files.length > 0) {
+        await db.loadFile(this.files[0].name);
+      }
+
+      // Appliquer le thème
+      const settings = db.getSettings();
+      document.documentElement.setAttribute('data-theme', settings.theme || 'light');
+
+      // Rendre le layout principal
+      this.renderLayout();
+
+      // Bind des événements
+      this.bindNavigation();
+      this.bindFileSelector();
+
+      // Afficher la vue par défaut
+      this.showView('prompts');
+
+    } catch (err) {
+      console.error('Erreur initialisation:', err);
+      this.showError(err.message);
+    }
+  }
+
+  /**
+   * Affiche un écran d'erreur
+   */
+  async showError(message) {
+    let debugInfo = '';
+    try {
+      if (window.__TAURI__ && window.__TAURI__.core) {
+        const { invoke } = window.__TAURI__.core;
+        debugInfo = await invoke('debug_paths');
+      }
+    } catch (e) {
+      debugInfo = 'Impossible de récupérer les chemins: ' + e;
+    }
+
+    document.body.innerHTML = `
+      <div class="error-screen">
+        <div class="error-card">
+          <div class="error-icon">⚠️</div>
+          <h1>Erreur</h1>
+          <p>${message}</p>
+          <p class="error-hint">Vérifiez que le dossier <code>data/</code> existe à côté de l'application.</p>
+          <pre class="error-debug">${debugInfo}</pre>
+        </div>
+      </div>
+    `;
+    this.addErrorStyles();
+  }
+
+  addErrorStyles() {
+    const styles = document.createElement('style');
+    styles.textContent = `
+      .error-screen {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+      }
+      .error-card {
+        background: white;
+        border-radius: 16px;
+        padding: 3rem;
+        text-align: center;
+        max-width: 400px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      }
+      .error-icon { font-size: 4rem; margin-bottom: 1rem; }
+      .error-card h1 { margin-bottom: 1rem; color: #e74c3c; }
+      .error-card p { color: #666; margin-bottom: 1rem; }
+      .error-hint { font-size: 0.9rem; background: #f5f5f5; padding: 1rem; border-radius: 8px; }
+      .error-hint code { background: #e0e0e0; padding: 0.2rem 0.5rem; border-radius: 4px; }
+      .error-debug { text-align: left; background: #2d2d2d; color: #0f0; padding: 1rem; border-radius: 8px; font-size: 0.8rem; overflow-x: auto; margin-top: 1rem; white-space: pre-wrap; word-break: break-all; }
+    `;
+    document.head.appendChild(styles);
+  }
+
+  /**
+   * Rendu du layout principal
+   */
+  renderLayout() {
+    const currentFile = db.getCurrentFile();
+    const dataDir = db.getDataDirectory();
+
+    const appHtml = `
+      <div class="app-container">
+        <header class="app-header">
+          <div class="app-header-left">
+            <h1>🎯 Prompt Manager</h1>
+            <div class="file-selector">
+              <select id="file-select" title="Fichier actif">
+                ${this.files.length === 0 ? '<option value="">Aucun fichier</option>' : ''}
+                ${this.files.map(f => `
+                  <option value="${f.name}" ${f.name === currentFile ? 'selected' : ''}>
+                    📄 ${f.name.replace('.json', '')}
+                  </option>
+                `).join('')}
+              </select>
+              <button class="btn-icon" id="btn-new-file" title="Nouveau fichier">➕</button>
+              <button class="btn-icon" id="btn-delete-file" title="Supprimer ce fichier" ${!currentFile ? 'disabled' : ''}>🗑️</button>
+            </div>
+          </div>
+          <nav class="app-nav">
+            <button class="nav-btn active" data-view="prompts">
+              📚 Mes Prompts
+            </button>
+            <button class="nav-btn" data-view="builder">
+              🧱 Fabricateur
+            </button>
+            <button class="nav-btn" data-view="concat">
+              🔗 Résumer
+            </button>
+            <button class="nav-btn" data-view="new">
+              ➕ Nouveau
+            </button>
+            <div class="nav-dropdown">
+              <button class="nav-btn nav-dropdown-btn">
+                🛠️ Créer ▾
+              </button>
+              <div class="nav-dropdown-menu">
+                <button class="dropdown-item" id="quick-add-brick">🧱 Nouvelle brique</button>
+                <button class="dropdown-item" id="quick-add-structure">🏗️ Nouvelle structure</button>
+                <hr>
+                <button class="dropdown-item" id="quick-manage-bricks">📋 Gérer les briques</button>
+                <button class="dropdown-item" id="quick-manage-structures">📋 Gérer les structures</button>
+              </div>
+            </div>
+            <button class="nav-btn" data-view="settings">
+              ⚙️
+            </button>
+          </nav>
+        </header>
+        <main class="app-content" id="main-content">
+          <!-- Contenu dynamique -->
+        </main>
+      </div>
+    `;
+
+    document.body.innerHTML = appHtml;
+    this.addFileSelectorStyles();
+  }
+
+  addFileSelectorStyles() {
+    if (document.getElementById('file-selector-styles')) return;
+
+    const styles = document.createElement('style');
+    styles.id = 'file-selector-styles';
+    styles.textContent = `
+      .file-selector {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-left: 1rem;
+      }
+      .file-selector select {
+        padding: 0.4rem 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background: white;
+        font-size: 0.9rem;
+        cursor: pointer;
+        min-width: 150px;
+      }
+      .file-selector select:focus {
+        outline: none;
+        border-color: #4361ee;
+      }
+      .btn-icon {
+        padding: 0.4rem 0.6rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background: white;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+      }
+      .btn-icon:hover:not(:disabled) {
+        background: #f0f0f0;
+        border-color: #ccc;
+      }
+      .btn-icon:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .app-header-left {
+        display: flex;
+        align-items: center;
+      }
+      /* Dropdown menu */
+      .nav-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .nav-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        min-width: 220px;
+        z-index: 1000;
+        padding: 0.5rem 0;
+        margin-top: 0.25rem;
+      }
+      .nav-dropdown.open .nav-dropdown-menu {
+        display: block;
+      }
+      .nav-dropdown-btn.active {
+        background: var(--primary);
+        color: white;
+      }
+      .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 0.6rem 1rem;
+        border: none;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: #333;
+        transition: all 0.15s;
+      }
+      .dropdown-item:hover {
+        background: #f0f0f0;
+      }
+      .nav-dropdown-menu hr {
+        margin: 0.5rem 0;
+        border: none;
+        border-top: 1px solid #eee;
+      }
+    `;
+    document.head.appendChild(styles);
+  }
+
+  /**
+   * Bind des événements du sélecteur de fichier
+   */
+  bindFileSelector() {
+    const select = document.getElementById('file-select');
+    const btnNew = document.getElementById('btn-new-file');
+    const btnDelete = document.getElementById('btn-delete-file');
+
+    select?.addEventListener('change', async (e) => {
+      const filename = e.target.value;
+      if (filename) {
+        await db.loadFile(filename);
+        const settings = db.getSettings();
+        document.documentElement.setAttribute('data-theme', settings.theme || 'light');
+        this.showView(this.currentView);
+        this.updateDeleteButton();
+      }
+    });
+
+    btnNew?.addEventListener('click', () => this.showNewFileModal());
+    btnDelete?.addEventListener('click', () => this.confirmDeleteFile());
+  }
+
+  updateDeleteButton() {
+    const btnDelete = document.getElementById('btn-delete-file');
+    if (btnDelete) {
+      btnDelete.disabled = !db.getCurrentFile();
+    }
+  }
+
+  /**
+   * Modal pour créer un nouveau fichier
+   */
+  showNewFileModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal-card">
+        <h2>📄 Nouveau fichier de prompts</h2>
+        <div class="form-group">
+          <label for="new-file-name">Nom du fichier</label>
+          <input type="text" id="new-file-name" placeholder="ex: maths-terminale" autofocus>
+          <small>L'extension .json sera ajoutée automatiquement</small>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" id="modal-cancel">Annuler</button>
+          <button class="btn btn-success" id="modal-create">Créer</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    this.addModalStyles();
+
+    const input = modal.querySelector('#new-file-name');
+    const btnCancel = modal.querySelector('#modal-cancel');
+    const btnCreate = modal.querySelector('#modal-create');
+
+    btnCancel.addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
+
+    btnCreate.addEventListener('click', async () => {
+      const name = input.value.trim();
+      if (!name) {
+        input.focus();
+        return;
+      }
+
+      try {
+        await db.createFile(name);
+        this.files = await db.listFiles();
+        this.renderLayout();
+        this.bindNavigation();
+        this.bindFileSelector();
+        this.showView('prompts');
+        modal.remove();
+        this.showToast(`Fichier "${name}.json" créé !`);
+      } catch (err) {
+        alert(err.message || 'Erreur lors de la création');
+      }
+    });
+
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') btnCreate.click();
+    });
+  }
+
+  /**
+   * Confirmer la suppression du fichier actif
+   */
+  confirmDeleteFile() {
+    const currentFile = db.getCurrentFile();
+    if (!currentFile) return;
+
+    const confirmed = confirm(`Supprimer définitivement "${currentFile}" ?\n\nCette action est irréversible.`);
+    if (!confirmed) return;
+
+    this.deleteCurrentFile();
+  }
+
+  async deleteCurrentFile() {
+    const currentFile = db.getCurrentFile();
+    try {
+      await db.deleteFile(currentFile);
+      this.files = await db.listFiles();
+
+      // Charger un autre fichier s'il en reste
+      if (this.files.length > 0) {
+        await db.loadFile(this.files[0].name);
+      }
+
+      this.renderLayout();
+      this.bindNavigation();
+      this.bindFileSelector();
+      this.showView('prompts');
+      this.showToast(`Fichier "${currentFile}" supprimé`);
+    } catch (err) {
+      alert(err.message || 'Erreur lors de la suppression');
+    }
+  }
+
+  addModalStyles() {
+    if (document.getElementById('modal-styles')) return;
+
+    const styles = document.createElement('style');
+    styles.id = 'modal-styles';
+    styles.textContent = `
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+      .modal-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        min-width: 350px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      }
+      .modal-card h2 {
+        margin-bottom: 1.5rem;
+      }
+      .modal-card .form-group {
+        margin-bottom: 1.5rem;
+      }
+      .modal-card label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+      .modal-card input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+      .modal-card input:focus {
+        outline: none;
+        border-color: #4361ee;
+      }
+      .modal-card small {
+        display: block;
+        margin-top: 0.5rem;
+        color: #888;
+        font-size: 0.85rem;
+      }
+      .modal-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+      }
+    `;
+    document.head.appendChild(styles);
+  }
+
+  /**
+   * Gère la navigation entre les vues
+   */
+  bindNavigation() {
+    document.querySelectorAll('.nav-btn[data-view]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const view = btn.dataset.view;
+        if (view) this.showView(view);
+      });
+    });
+
+    // Dropdown menu - toggle on click
+    const dropdown = document.querySelector('.nav-dropdown');
+    const dropdownBtn = document.querySelector('.nav-dropdown-btn');
+
+    if (dropdownBtn && dropdown) {
+      dropdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+        dropdownBtn.classList.toggle('active');
+      });
+
+      // Fermer quand on clique ailleurs
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('open');
+          dropdownBtn.classList.remove('active');
+        }
+      });
+    }
+
+    // Dropdown menu actions - fermer le menu après action
+    const closeDropdown = () => {
+      dropdown?.classList.remove('open');
+      dropdownBtn?.classList.remove('active');
+    };
+
+    const quickAddBrick = document.getElementById('quick-add-brick');
+    const quickAddStructure = document.getElementById('quick-add-structure');
+    const quickManageBricks = document.getElementById('quick-manage-bricks');
+    const quickManageStructures = document.getElementById('quick-manage-structures');
+
+    if (quickAddBrick) {
+      quickAddBrick.addEventListener('click', () => { closeDropdown(); this.openBrickModal(); });
+    }
+    if (quickAddStructure) {
+      quickAddStructure.addEventListener('click', () => { closeDropdown(); this.openStructureModal(); });
+    }
+    if (quickManageBricks) {
+      quickManageBricks.addEventListener('click', () => { closeDropdown(); this.openBricksManager(); });
+    }
+    if (quickManageStructures) {
+      quickManageStructures.addEventListener('click', () => { closeDropdown(); this.openStructuresManager(); });
+    }
+  }
+
+  /**
+   * Affiche une vue spécifique
+   */
+  showView(viewName) {
+    // Vérifier qu'un fichier est chargé
+    if (!db.getCurrentFile() && viewName !== 'settings') {
+      const content = document.getElementById('main-content');
+      content.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">📂</div>
+          <h2>Aucun fichier sélectionné</h2>
+          <p>Créez un nouveau fichier pour commencer à stocker vos prompts.</p>
+          <button class="btn btn-primary" id="btn-create-first">➕ Créer mon premier fichier</button>
+        </div>
+      `;
+      document.getElementById('btn-create-first')?.addEventListener('click', () => this.showNewFileModal());
+      this.addEmptyStateStyles();
+      return;
+    }
+
+    this.currentView = viewName;
+
+    // Mettre à jour les boutons de navigation
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.view === viewName);
+    });
+
+    const content = document.getElementById('main-content');
+
+    switch (viewName) {
+      case 'prompts':
+        content.innerHTML = '<div id="prompt-list-container"></div>';
+        this.promptList = new PromptList('prompt-list-container');
+        this.promptList.init({
+          onEdit: (prompt) => this.editPrompt(prompt),
+          onCopy: (prompt) => console.log('Copié:', prompt.id),
+          onDelete: (id) => console.log('Supprimé:', id)
+        });
+        break;
+
+      case 'builder':
+        content.innerHTML = '<div id="builder-container"></div>';
+        this.builderPanel = new BuilderPanel('builder-container');
+        this.builderPanel.init({
+          onPromptGenerated: (promptContent, builderValues) => {
+            this.saveModal.open(promptContent, {
+              onSaved: (prompt) => {
+                this.showView('prompts');
+              },
+              prefill: builderValues  // Pré-remplir avec les valeurs du fabricateur
+            });
+          }
+        });
+        break;
+
+      case 'concat':
+        content.innerHTML = '<div id="concat-container"></div>';
+        this.concatenationPanel = new ConcatenationPanel('concat-container');
+        this.concatenationPanel.init();
+        break;
+
+      case 'new':
+        this.showNewPromptView(content);
+        break;
+
+      case 'settings':
+        content.innerHTML = '<div id="settings-container"></div>';
+        this.settingsPanel = new SettingsPanel('settings-container');
+        this.settingsPanel.init({
+          onSettingsChanged: () => {
+            const settings = db.getSettings();
+            document.documentElement.setAttribute('data-theme', settings.theme || 'light');
+          }
+        });
+        break;
+    }
+  }
+
+  addEmptyStateStyles() {
+    if (document.getElementById('empty-state-styles')) return;
+
+    const styles = document.createElement('style');
+    styles.id = 'empty-state-styles';
+    styles.textContent = `
+      .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+      .empty-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+      .empty-state h2 {
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+      .empty-state p {
+        color: #666;
+        margin-bottom: 2rem;
+      }
+    `;
+    document.head.appendChild(styles);
+  }
+
+  /**
+   * Vue pour ajouter un nouveau prompt
+   */
+  showNewPromptView(content) {
+    content.innerHTML = `
+      <div class="new-prompt-container" style="max-width: 800px; margin: 0 auto;">
+        <div class="card" style="margin-bottom: 1.5rem; text-align: center;">
+          <h2>➕ Ajouter un nouveau prompt</h2>
+          <p class="hint">Colle ici un prompt que tu as utilisé ou créé</p>
+        </div>
+
+        <div class="card">
+          <div class="form-group">
+            <label for="new-prompt-content">Contenu du prompt</label>
+            <textarea id="new-prompt-content" rows="10"
+                      placeholder="Colle ton prompt ici..."></textarea>
+          </div>
+          <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem;">
+            <button class="btn btn-secondary" id="cancel-new">Annuler</button>
+            <button class="btn btn-success" id="save-new" disabled>💾 Catégoriser et sauvegarder</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const textarea = content.querySelector('#new-prompt-content');
+    const saveBtn = content.querySelector('#save-new');
+    const cancelBtn = content.querySelector('#cancel-new');
+
+    textarea.addEventListener('input', () => {
+      saveBtn.disabled = !textarea.value.trim();
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      this.showView('prompts');
+    });
+
+    saveBtn.addEventListener('click', () => {
+      const promptContent = textarea.value.trim();
+      if (promptContent) {
+        this.saveModal.open(promptContent, {
+          onSaved: (prompt) => {
+            this.showView('prompts');
+          }
+        });
+      }
+    });
+
+    setTimeout(() => textarea.focus(), 100);
+  }
+
+  /**
+   * Édite un prompt existant
+   */
+  editPrompt(prompt) {
+    const content = document.getElementById('main-content');
+    content.innerHTML = `
+      <div class="edit-prompt-container" style="max-width: 800px; margin: 0 auto;">
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <h2>✏️ Modifier le prompt</h2>
+        </div>
+
+        <div class="card">
+          <div class="form-group">
+            <label for="edit-title">Titre</label>
+            <input type="text" id="edit-title" value="${prompt.title || ''}" placeholder="Titre du prompt">
+          </div>
+
+          <div class="form-group">
+            <label for="edit-content">Contenu</label>
+            <textarea id="edit-content" rows="10">${prompt.content}</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-description">Description</label>
+            <textarea id="edit-description" rows="2"
+                      placeholder="Note personnelle">${prompt.description || ''}</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-theme">Thème</label>
+            <input type="text" id="edit-theme" value="${prompt.theme || ''}" placeholder="Thème ou chapitre">
+          </div>
+
+          <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem;">
+            <button class="btn btn-secondary" id="cancel-edit">Annuler</button>
+            <button class="btn btn-success" id="save-edit">💾 Sauvegarder</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const cancelBtn = content.querySelector('#cancel-edit');
+    const saveBtn = content.querySelector('#save-edit');
+
+    cancelBtn.addEventListener('click', () => {
+      this.showView('prompts');
+    });
+
+    saveBtn.addEventListener('click', () => {
+      const updates = {
+        title: content.querySelector('#edit-title').value.trim() || null,
+        content: content.querySelector('#edit-content').value.trim(),
+        description: content.querySelector('#edit-description').value.trim() || null,
+        theme: content.querySelector('#edit-theme').value.trim() || null
+      };
+
+      if (updates.content) {
+        db.updatePrompt(prompt.id, updates);
+        this.showToast('Prompt mis à jour !');
+        this.showView('prompts');
+      }
+    });
+  }
+
+  // ===== MODALS BRIQUES/STRUCTURES =====
+
+  /**
+   * Extrait les paramètres d'un template
+   */
+  extractParams(template) {
+    const matches = template.match(/\{(\w+)\}/g) || [];
+    return [...new Set(matches.map(m => m.slice(1, -1)))];
+  }
+
+  /**
+   * Ouvre la modal de création/édition de brique
+   * @param {Object} existingBrick - Brique existante à modifier
+   * @param {boolean} existingBrick.isCustom - true si c'est une brique personnalisée
+   * @param {boolean} existingBrick.isDefault - true si c'est une brique par défaut
+   */
+  openBrickModal(existingBrick = null) {
+    const isEdit = !!existingBrick;
+    const isDefault = existingBrick?.isDefault === true;
+    const isCustom = existingBrick?.isCustom === true;
+    const isOverridden = existingBrick?.isOverridden === true;
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal">
+        <div class="modal-header">
+          <h3>${isEdit ? '✏️ Modifier la brique' : '➕ Nouvelle brique'}</h3>
+          <button class="modal-close">✖</button>
+        </div>
+        <div class="modal-body">
+          ${isDefault ? '<p class="hint" style="color: var(--info); margin-bottom: 1rem;">ℹ️ Modification d\'une brique par défaut. Les changements seront sauvegardés comme personnalisation.</p>' : ''}
+
+          <div class="form-group">
+            <label for="brick-label">Nom de la brique *</label>
+            <input type="text" id="brick-label" value="${existingBrick?.label || ''}" placeholder="Ex: Ma demande personnalisée" required>
+          </div>
+
+          <div class="form-group">
+            <label for="brick-category">Catégorie *</label>
+            <select id="brick-category">
+              ${Object.entries(BRICK_CATEGORIES).map(([id, cat]) => `
+                <option value="${id}" ${existingBrick?.category === id ? 'selected' : ''}>
+                  ${cat.icon} ${cat.label}
+                </option>
+              `).join('')}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="brick-template">Texte du prompt *</label>
+            <textarea id="brick-template" rows="3" placeholder="Utilise {parametre} pour les variables">${existingBrick?.template || ''}</textarea>
+            <small>Astuce : utilise <code>{niveau}</code>, <code>{matiere}</code>, <code>{theme}</code> pour des paramètres</small>
+          </div>
+
+          <div class="form-group">
+            <label>Aperçu des paramètres détectés</label>
+            <div id="params-preview" class="params-preview">
+              ${this.extractParams(existingBrick?.template || '').map(p => `<span class="param-tag">{${p}}</span>`).join('') || '<em>Aucun paramètre</em>'}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary modal-cancel">Annuler</button>
+          <button class="btn btn-success modal-save">Enregistrer</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Mise à jour en temps réel des paramètres
+    const templateInput = modal.querySelector('#brick-template');
+    const paramsPreview = modal.querySelector('#params-preview');
+    templateInput.addEventListener('input', () => {
+      const params = this.extractParams(templateInput.value);
+      paramsPreview.innerHTML = params.length > 0
+        ? params.map(p => `<span class="param-tag">{${p}}</span>`).join('')
+        : '<em>Aucun paramètre</em>';
+    });
+
+    // Événements
+    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+    modal.querySelector('.modal-cancel').addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+
+    modal.querySelector('.modal-save').addEventListener('click', () => {
+      const label = modal.querySelector('#brick-label').value.trim();
+      const category = modal.querySelector('#brick-category').value;
+      const template = modal.querySelector('#brick-template').value.trim();
+
+      if (!label || !template) {
+        this.showToast('Remplis tous les champs obligatoires');
+        return;
+      }
+
+      const params = this.extractParams(template);
+
+      if (isDefault) {
+        // Sauvegarder comme override de la brique par défaut
+        db.setBrickOverride(existingBrick.id, { label, category, template, params });
+        this.showToast('Brique modifiée !');
+      } else if (isCustom) {
+        // Modifier une brique personnalisée
+        db.deleteCustomBrick(existingBrick.id);
+        db.addCustomBrick({ label, category, template, params, enabled: true });
+        this.showToast('Brique modifiée !');
+      } else {
+        // Nouvelle brique personnalisée
+        db.addCustomBrick({ label, category, template, params, enabled: true });
+        this.showToast('Brique créée !');
+      }
+
+      modal.remove();
+
+      // Rafraîchir la vue si on est dans les paramètres
+      if (this.currentView === 'settings' && this.settingsPanel) {
+        this.settingsPanel.render();
+      }
+    });
+  }
+
+  /**
+   * Ouvre la modal de création/édition de structure
+   */
+  openStructureModal(existingStructure = null) {
+    const isEdit = !!existingStructure;
+    const isDefault = existingStructure?.isDefault === true;
+    const isCustom = existingStructure?.isCustom === true;
+    const allBricks = [...DEFAULT_BRICKS, ...db.getCustomBricks()];
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal modal-large">
+        <div class="modal-header">
+          <h3>${isEdit ? '✏️ Modifier la structure' : '➕ Nouvelle structure'}</h3>
+          <button class="modal-close">✖</button>
+        </div>
+        <div class="modal-body">
+          ${isDefault ? '<p class="hint" style="color: var(--info); margin-bottom: 1rem;">ℹ️ Modification d\'une structure par défaut. Les changements seront sauvegardés comme personnalisation.</p>' : ''}
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="structure-icon">Icône</label>
+              <input type="text" id="structure-icon" value="${existingStructure?.icon || '📋'}" maxlength="2" style="width: 60px; text-align: center; font-size: 1.5rem;">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label for="structure-label">Nom de la structure *</label>
+              <input type="text" id="structure-label" value="${existingStructure?.label || ''}" placeholder="Ex: Ma révision personnalisée">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="structure-description">Description</label>
+            <input type="text" id="structure-description" value="${existingStructure?.description || ''}" placeholder="Courte description de l'utilité">
+          </div>
+
+          <div class="form-group">
+            <label>Sélectionne les briques à inclure *</label>
+            <div class="brick-selector">
+              ${Object.entries(BRICK_CATEGORIES).map(([catId, cat]) => `
+                <div class="brick-selector-category">
+                  <h4 style="color: ${cat.color}">${cat.icon} ${cat.label}</h4>
+                  <div class="brick-selector-list">
+                    ${allBricks.filter(b => b.category === catId).map(brick => `
+                      <label class="brick-selector-item">
+                        <input type="checkbox" value="${brick.id}"
+                               ${existingStructure?.bricks?.includes(brick.id) ? 'checked' : ''}>
+                        <span>${brick.label}</span>
+                        ${brick.isCustom ? '<span class="custom-badge">Perso</span>' : ''}
+                      </label>
+                    `).join('')}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Briques sélectionnées</label>
+            <div id="selected-bricks-preview" class="selected-bricks-preview">
+              ${existingStructure?.bricks?.length > 0
+                ? existingStructure.bricks.map(bId => {
+                    const b = allBricks.find(br => br.id === bId);
+                    return b ? `<span class="mini-tag">${b.label}</span>` : '';
+                  }).join('')
+                : '<em>Aucune brique sélectionnée</em>'}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary modal-cancel">Annuler</button>
+          <button class="btn btn-success modal-save">Enregistrer</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Mise à jour en temps réel de la prévisualisation
+    const updatePreview = () => {
+      const selected = Array.from(modal.querySelectorAll('.brick-selector input:checked')).map(cb => cb.value);
+      const preview = modal.querySelector('#selected-bricks-preview');
+      preview.innerHTML = selected.length > 0
+        ? selected.map(bId => {
+            const b = allBricks.find(br => br.id === bId);
+            return b ? `<span class="mini-tag">${b.label}</span>` : '';
+          }).join('')
+        : '<em>Aucune brique sélectionnée</em>';
+    };
+
+    modal.querySelectorAll('.brick-selector input').forEach(cb => {
+      cb.addEventListener('change', updatePreview);
+    });
+
+    // Événements
+    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+    modal.querySelector('.modal-cancel').addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+
+    modal.querySelector('.modal-save').addEventListener('click', () => {
+      const label = modal.querySelector('#structure-label').value.trim();
+      const description = modal.querySelector('#structure-description').value.trim();
+      const icon = modal.querySelector('#structure-icon').value.trim() || '📋';
+      const bricks = Array.from(modal.querySelectorAll('.brick-selector input:checked')).map(cb => cb.value);
+
+      if (!label) {
+        this.showToast('Donne un nom à ta structure');
+        return;
+      }
+
+      if (bricks.length === 0) {
+        this.showToast('Sélectionne au moins une brique');
+        return;
+      }
+
+      if (isDefault) {
+        // Sauvegarder comme override de la structure par défaut
+        db.setStructureOverride(existingStructure.id, { label, description, icon, bricks });
+        this.showToast('Structure modifiée !');
+      } else if (isCustom) {
+        // Modifier une structure personnalisée
+        db.deleteCustomStructure(existingStructure.id);
+        db.addCustomStructure({ label, description, icon, bricks, enabled: true });
+        this.showToast('Structure modifiée !');
+      } else {
+        // Nouvelle structure personnalisée
+        db.addCustomStructure({ label, description, icon, bricks, enabled: true });
+        this.showToast('Structure créée !');
+      }
+
+      modal.remove();
+
+      if (this.currentView === 'settings' && this.settingsPanel) {
+        this.settingsPanel.render();
+      }
+    });
+  }
+
+  /**
+   * Ouvre le gestionnaire de briques (toutes les briques)
+   */
+  openBricksManager() {
+    const customBricks = db.getCustomBricks();
+    const brickOverrides = db.getAllBrickOverrides();
+
+    // Construire la liste des briques avec statut
+    const allBricks = [
+      ...DEFAULT_BRICKS.map(b => {
+        const override = brickOverrides[b.id];
+        return {
+          ...b,
+          ...(override || {}),
+          isDefault: true,
+          isOverridden: !!override
+        };
+      }),
+      ...customBricks.map(b => ({...b, isCustom: true}))
+    ];
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal modal-large">
+        <div class="modal-header">
+          <h3>📋 Gérer les briques</h3>
+          <button class="modal-close">✖</button>
+        </div>
+        <div class="modal-body">
+          <div class="manager-toolbar">
+            <button class="btn btn-primary" id="manager-add-brick">➕ Nouvelle brique</button>
+            <div class="manager-toolbar-right">
+              <button class="btn btn-secondary" id="manager-export-bricks">📤 Exporter</button>
+              <button class="btn btn-secondary" id="manager-import-bricks">📥 Importer</button>
+              <button class="btn btn-danger" id="manager-reset-bricks">🔄 Réinitialiser tout</button>
+            </div>
+          </div>
+          <input type="file" id="import-bricks-file" accept=".json" style="display: none">
+
+          <div class="manager-list">
+            ${Object.entries(BRICK_CATEGORIES).map(([catId, cat]) => {
+              const catBricks = allBricks.filter(b => b.category === catId);
+              if (catBricks.length === 0) return '';
+              return `
+                <div class="manager-category">
+                  <h4 style="color: ${cat.color}">${cat.icon} ${cat.label}</h4>
+                  <div class="manager-items">
+                    ${catBricks.map(brick => `
+                      <div class="manager-item ${brick.isDefault ? (brick.isOverridden ? 'is-overridden' : 'is-default') : 'is-custom'}">
+                        <div class="manager-item-info">
+                          <strong>${brick.label}</strong>
+                          ${brick.isDefault
+                            ? (brick.isOverridden
+                              ? '<span class="badge-overridden">Modifié</span>'
+                              : '<span class="badge-default">Par défaut</span>')
+                            : '<span class="badge-custom">Personnalisé</span>'}
+                          <div class="manager-item-preview">${brick.template}</div>
+                        </div>
+                        <div class="manager-item-actions">
+                          <button class="btn btn-small btn-secondary manager-edit-brick" data-brick-id="${brick.id}" data-is-default="${brick.isDefault}" data-is-custom="${brick.isCustom || false}">
+                            ✏️ Modifier
+                          </button>
+                          ${brick.isOverridden ? `<button class="btn btn-small btn-warning manager-reset-brick" data-brick-id="${brick.id}" title="Restaurer la version d'origine">↩️</button>` : ''}
+                          ${brick.isCustom ? `<button class="btn btn-small btn-danger manager-delete-brick" data-brick-id="${brick.id}">🗑️</button>` : ''}
+                        </div>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary modal-close-btn">Fermer</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+    this.addManagerStyles();
+
+    // Événements
+    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+    modal.querySelector('.modal-close-btn').addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+
+    modal.querySelector('#manager-add-brick').addEventListener('click', () => {
+      modal.remove();
+      this.openBrickModal();
+    });
+
+    // Export
+    modal.querySelector('#manager-export-bricks').addEventListener('click', () => {
+      const data = db.exportBricksAndStructures();
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `briques-structures-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      this.showToast('Export réussi !');
+    });
+
+    // Import
+    const importFile = modal.querySelector('#import-bricks-file');
+    modal.querySelector('#manager-import-bricks').addEventListener('click', () => importFile.click());
+    importFile.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          const merge = confirm('Fusionner avec les données existantes ?\n\nOK = Fusionner\nAnnuler = Remplacer');
+          if (db.importBricksAndStructures(evt.target.result, merge)) {
+            this.showToast('Import réussi !');
+            modal.remove();
+            this.openBricksManager();
+          } else {
+            this.showToast('Erreur d\'import');
+          }
+        };
+        reader.readAsText(file);
+      }
+    });
+
+    // Réinitialiser tout
+    modal.querySelector('#manager-reset-bricks').addEventListener('click', () => {
+      if (confirm('Réinitialiser TOUTES les briques et structures ?\n\nCela supprimera toutes les modifications et briques personnalisées.')) {
+        db.resetAllBricksAndStructures();
+        this.showToast('Réinitialisation effectuée');
+        modal.remove();
+        this.openBricksManager();
+      }
+    });
+
+    // Modifier une brique
+    modal.querySelectorAll('.manager-edit-brick').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const brickId = btn.dataset.brickId;
+        const isDefault = btn.dataset.isDefault === 'true';
+        const isCustom = btn.dataset.isCustom === 'true';
+
+        let brick;
+        if (isDefault) {
+          // Récupérer la brique par défaut avec son éventuel override
+          const defaultBrick = DEFAULT_BRICKS.find(b => b.id === brickId);
+          const override = brickOverrides[brickId];
+          brick = { ...defaultBrick, ...(override || {}), isDefault: true };
+        } else {
+          brick = customBricks.find(b => b.id === brickId);
+          if (brick) brick = { ...brick, isCustom: true };
+        }
+
+        if (brick) {
+          modal.remove();
+          this.openBrickModal(brick);
+        }
+      });
+    });
+
+    // Réinitialiser une brique individuelle
+    modal.querySelectorAll('.manager-reset-brick').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const brickId = btn.dataset.brickId;
+        if (confirm('Restaurer cette brique à sa version d\'origine ?')) {
+          db.deleteBrickOverride(brickId);
+          modal.remove();
+          this.openBricksManager();
+          this.showToast('Brique restaurée');
+        }
+      });
+    });
+
+    // Supprimer une brique personnalisée
+    modal.querySelectorAll('.manager-delete-brick').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const brickId = btn.dataset.brickId;
+        if (confirm('Supprimer cette brique ?')) {
+          db.deleteCustomBrick(brickId);
+          modal.remove();
+          this.openBricksManager();
+          this.showToast('Brique supprimée');
+        }
+      });
+    });
+  }
+
+  /**
+   * Ouvre le gestionnaire de structures (toutes les structures)
+   */
+  openStructuresManager() {
+    const customStructures = db.getCustomStructures();
+    const structureOverrides = db.getAllStructureOverrides();
+    const allBricks = [...DEFAULT_BRICKS, ...db.getCustomBricks()];
+
+    // Construire la liste des structures avec statut
+    const allStructures = [
+      ...DEFAULT_STRUCTURES.map(s => {
+        const override = structureOverrides[s.id];
+        return {
+          ...s,
+          ...(override || {}),
+          isDefault: true,
+          isOverridden: !!override
+        };
+      }),
+      ...customStructures.map(s => ({...s, isCustom: true}))
+    ];
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal modal-large">
+        <div class="modal-header">
+          <h3>📋 Gérer les structures</h3>
+          <button class="modal-close">✖</button>
+        </div>
+        <div class="modal-body">
+          <div class="manager-toolbar">
+            <button class="btn btn-primary" id="manager-add-structure">➕ Nouvelle structure</button>
+            <div class="manager-toolbar-right">
+              <button class="btn btn-secondary" id="manager-export-structures">📤 Exporter</button>
+              <button class="btn btn-secondary" id="manager-import-structures">📥 Importer</button>
+              <button class="btn btn-danger" id="manager-reset-structures">🔄 Réinitialiser tout</button>
+            </div>
+          </div>
+          <input type="file" id="import-structures-file" accept=".json" style="display: none">
+
+          <div class="manager-list">
+            ${allStructures.map(structure => `
+              <div class="manager-item ${structure.isDefault ? (structure.isOverridden ? 'is-overridden' : 'is-default') : 'is-custom'}">
+                <div class="manager-item-info">
+                  <span style="font-size: 1.5rem; margin-right: 0.5rem;">${structure.icon || '📋'}</span>
+                  <strong>${structure.label}</strong>
+                  ${structure.isDefault
+                    ? (structure.isOverridden
+                      ? '<span class="badge-overridden">Modifié</span>'
+                      : '<span class="badge-default">Par défaut</span>')
+                    : '<span class="badge-custom">Personnalisé</span>'}
+                  <div class="manager-item-preview">${structure.description || ''}</div>
+                  <div class="manager-item-bricks">
+                    ${structure.bricks.map(bId => {
+                      const b = allBricks.find(br => br.id === bId);
+                      return b ? `<span class="mini-tag">${b.label}</span>` : '';
+                    }).join('')}
+                  </div>
+                </div>
+                <div class="manager-item-actions">
+                  <button class="btn btn-small btn-secondary manager-edit-structure" data-structure-id="${structure.id}" data-is-default="${structure.isDefault}" data-is-custom="${structure.isCustom || false}">
+                    ✏️ Modifier
+                  </button>
+                  ${structure.isOverridden ? `<button class="btn btn-small btn-warning manager-reset-structure" data-structure-id="${structure.id}" title="Restaurer la version d'origine">↩️</button>` : ''}
+                  ${structure.isCustom ? `<button class="btn btn-small btn-danger manager-delete-structure" data-structure-id="${structure.id}">🗑️</button>` : ''}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary modal-close-btn">Fermer</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+    this.addManagerStyles();
+
+    // Événements
+    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+    modal.querySelector('.modal-close-btn').addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+
+    modal.querySelector('#manager-add-structure').addEventListener('click', () => {
+      modal.remove();
+      this.openStructureModal();
+    });
+
+    // Export
+    modal.querySelector('#manager-export-structures').addEventListener('click', () => {
+      const data = db.exportBricksAndStructures();
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `briques-structures-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      this.showToast('Export réussi !');
+    });
+
+    // Import
+    const importFile = modal.querySelector('#import-structures-file');
+    modal.querySelector('#manager-import-structures').addEventListener('click', () => importFile.click());
+    importFile.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          const merge = confirm('Fusionner avec les données existantes ?\n\nOK = Fusionner\nAnnuler = Remplacer');
+          if (db.importBricksAndStructures(evt.target.result, merge)) {
+            this.showToast('Import réussi !');
+            modal.remove();
+            this.openStructuresManager();
+          } else {
+            this.showToast('Erreur d\'import');
+          }
+        };
+        reader.readAsText(file);
+      }
+    });
+
+    // Réinitialiser tout
+    modal.querySelector('#manager-reset-structures').addEventListener('click', () => {
+      if (confirm('Réinitialiser TOUTES les briques et structures ?\n\nCela supprimera toutes les modifications et briques/structures personnalisées.')) {
+        db.resetAllBricksAndStructures();
+        this.showToast('Réinitialisation effectuée');
+        modal.remove();
+        this.openStructuresManager();
+      }
+    });
+
+    // Modifier une structure
+    modal.querySelectorAll('.manager-edit-structure').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const structureId = btn.dataset.structureId;
+        const isDefault = btn.dataset.isDefault === 'true';
+        const isCustom = btn.dataset.isCustom === 'true';
+
+        let structure;
+        if (isDefault) {
+          // Récupérer la structure par défaut avec son éventuel override
+          const defaultStructure = DEFAULT_STRUCTURES.find(s => s.id === structureId);
+          const override = structureOverrides[structureId];
+          structure = { ...defaultStructure, ...(override || {}), isDefault: true };
+        } else {
+          structure = customStructures.find(s => s.id === structureId);
+          if (structure) structure = { ...structure, isCustom: true };
+        }
+
+        if (structure) {
+          modal.remove();
+          this.openStructureModal(structure);
+        }
+      });
+    });
+
+    // Réinitialiser une structure individuelle
+    modal.querySelectorAll('.manager-reset-structure').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const structureId = btn.dataset.structureId;
+        if (confirm('Restaurer cette structure à sa version d\'origine ?')) {
+          db.deleteStructureOverride(structureId);
+          modal.remove();
+          this.openStructuresManager();
+          this.showToast('Structure restaurée');
+        }
+      });
+    });
+
+    // Supprimer une structure personnalisée
+    modal.querySelectorAll('.manager-delete-structure').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const structureId = btn.dataset.structureId;
+        if (confirm('Supprimer cette structure ?')) {
+          db.deleteCustomStructure(structureId);
+          modal.remove();
+          this.openStructuresManager();
+          this.showToast('Structure supprimée');
+        }
+      });
+    });
+  }
+
+  addManagerStyles() {
+    if (document.getElementById('manager-styles')) return;
+
+    const styles = document.createElement('style');
+    styles.id = 'manager-styles';
+    styles.textContent = `
+      .manager-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .manager-toolbar-right {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .manager-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-height: 60vh;
+        overflow-y: auto;
+      }
+      .manager-category h4 {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+      }
+      .manager-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .manager-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        background: var(--bg-hover);
+        border-radius: var(--radius-sm);
+        border-left: 3px solid var(--border);
+      }
+      .manager-item.is-default {
+        border-left-color: var(--text-muted);
+      }
+      .manager-item.is-custom {
+        border-left-color: var(--success);
+      }
+      .manager-item.is-overridden {
+        border-left-color: var(--warning, #f39c12);
+        background: rgba(243, 156, 18, 0.05);
+      }
+      .manager-item-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .manager-item-info strong {
+        margin-right: 0.5rem;
+      }
+      .manager-item-preview {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-top: 0.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .manager-item-bricks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        margin-top: 0.5rem;
+      }
+      .manager-item-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-shrink: 0;
+      }
+      .badge-default, .badge-custom, .badge-overridden {
+        display: inline-block;
+        padding: 0.15rem 0.4rem;
+        border-radius: 3px;
+        font-size: 0.7rem;
+        vertical-align: middle;
+      }
+      .badge-default {
+        background: var(--text-muted);
+        color: white;
+      }
+      .badge-custom {
+        background: var(--success);
+        color: white;
+      }
+      .badge-overridden {
+        background: var(--warning, #f39c12);
+        color: white;
+      }
+      .btn-warning {
+        background: var(--warning, #f39c12);
+        color: white;
+        border-color: var(--warning, #f39c12);
+      }
+      .btn-warning:hover {
+        background: #e67e22;
+        border-color: #e67e22;
+      }
+      .mini-tag {
+        display: inline-block;
+        padding: 0.1rem 0.35rem;
+        background: var(--bg-hover);
+        border-radius: 3px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+    `;
+    document.head.appendChild(styles);
+  }
+
+  showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 2000);
+  }
+}
+
+// Démarrer l'application au chargement
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new App();
+  app.init();
+});
+
+
+
+  // Démarrage de l'application
+  document.addEventListener('DOMContentLoaded', function() {
+    const app = new App();
+    app.init();
+  });
+})();
+  </script>
+</body>
+</html>

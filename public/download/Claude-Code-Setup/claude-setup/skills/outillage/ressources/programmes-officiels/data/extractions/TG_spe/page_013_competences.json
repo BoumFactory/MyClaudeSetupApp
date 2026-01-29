@@ -1,0 +1,615 @@
+{
+  "source": {
+    "pdf": "TG_spe.pdf",
+    "page": 13,
+    "text_length": 1847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AN-650",
+      "intitule": "Définir une fonction continue en un point",
+      "fingerprint": "definir_fonction_continue_point",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "contenu",
+      "description_detaillee": "Définition d'une fonction continue en un point par les limites : une fonction f est continue en un point a si lim f(x) = f(a) quand x tend vers a",
+      "formulation_bo": "Fonction continue en un point (définition par les limites)",
+      "connaissances_associees": ["notion de limite", "fonction d'une variable réelle"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-651",
+      "intitule": "Définir une fonction continue sur un intervalle",
+      "fingerprint": "definir_fonction_continue_intervalle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "contenu",
+      "description_detaillee": "Définition d'une fonction continue sur un intervalle : f est continue sur I si f est continue en tout point de I",
+      "formulation_bo": "Fonction continue en un point (définition par les limites), sur un intervalle",
+      "connaissances_associees": ["fonction continue en un point", "notion d'intervalle"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-652",
+      "intitule": "Appliquer la propriété : toute fonction dérivable est continue",
+      "fingerprint": "appliquer_derivable_continue",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "contenu",
+      "description_detaillee": "Propriété fondamentale : si une fonction est dérivable sur un intervalle, alors elle est nécessairement continue sur cet intervalle",
+      "formulation_bo": "Toute fonction dérivable est continue",
+      "connaissances_associees": ["dérivabilité", "continuité"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-653",
+      "intitule": "Interpréter l'image d'une suite convergente par une fonction continue",
+      "fingerprint": "interpreter_image_suite_convergente_continue",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "contenu",
+      "description_detaillee": "Si une suite (un) converge vers L et f est continue en L, alors la suite (f(un)) converge vers f(L)",
+      "formulation_bo": "Image d'une suite convergente par une fonction continue",
+      "connaissances_associees": ["convergence de suite", "fonction continue", "limite d'une suite"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-654",
+      "intitule": "Appliquer le théorème des valeurs intermédiaires",
+      "fingerprint": "appliquer_theoreme_valeurs_intermediaires",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "contenu",
+      "description_detaillee": "Théorème des valeurs intermédiaires : si f est continue sur [a,b] et k est une valeur entre f(a) et f(b), alors il existe au moins un c dans ]a,b[ tel que f(c) = k",
+      "formulation_bo": "Théorème des valeurs intermédiaires. Cas des fonctions continues strictement monotones",
+      "connaissances_associees": ["continuité", "intervalle", "monotonie"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-655",
+      "intitule": "Appliquer le théorème des valeurs intermédiaires pour une fonction strictement monotone",
+      "fingerprint": "appliquer_tvi_monotone",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "contenu",
+      "description_detaillee": "Cas particulier du théorème des valeurs intermédiaires : si f est continue et strictement monotone sur [a,b], alors pour toute valeur k entre f(a) et f(b), il existe une et une seule solution à f(x) = k",
+      "formulation_bo": "Théorème des valeurs intermédiaires. Cas des fonctions continues strictement monotones",
+      "connaissances_associees": ["théorème des valeurs intermédiaires", "monotonie stricte", "unicité de la solution"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-656",
+      "intitule": "Étudier l'existence de solutions à une équation du type f(x) = k",
+      "fingerprint": "etudier_existence_solutions_equation",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les propriétés de continuité et de monotonie pour déterminer l'existence d'au moins une solution à l'équation f(x) = k",
+      "formulation_bo": "Étudier les solutions d'une équation du type ƒ(x) = k : existence",
+      "connaissances_associees": ["théorème des valeurs intermédiaires", "fonction continue", "fonction monotone"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-657",
+      "intitule": "Étudier l'unicité de solutions à une équation du type f(x) = k",
+      "fingerprint": "etudier_unicite_solutions_equation",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la stricte monotonie d'une fonction continue pour prouver qu'il existe une et une seule solution à l'équation f(x) = k",
+      "formulation_bo": "Étudier les solutions d'une équation du type ƒ(x) = k : unicité",
+      "connaissances_associees": ["monotonie stricte", "théorème des valeurs intermédiaires"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-658",
+      "intitule": "Encadrer les solutions d'une équation du type f(x) = k",
+      "fingerprint": "encadrer_solutions_equation",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "capacite",
+      "description_detaillee": "Déterminer un intervalle [a,b] contenant une solution à l'équation f(x) = k, avec une précision donnée",
+      "formulation_bo": "Étudier les solutions d'une équation du type ƒ(x) = k : encadrement",
+      "connaissances_associees": ["théorème des valeurs intermédiaires", "encadrement numérique"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-659",
+      "intitule": "Étudier une suite récurrente définie par u_{n+1} = f(u_n) où f est continue",
+      "fingerprint": "etudier_suite_recurrente_continue",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "capacite",
+      "description_detaillee": "Pour une fonction f continue d'un intervalle I dans lui-même et une suite définie par u_{n+1} = f(u_n), étudier la convergence et la limite éventuelle",
+      "formulation_bo": "Pour une fonction continue ƒ d'un intervalle dans lui-même, étudier une suite définie par une relation de récurrence u_{n+1} = ƒ(u_n)",
+      "connaissances_associees": ["continuité", "suite récurrente", "convergence de suite", "point fixe"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AG-660",
+      "intitule": "Implémenter la méthode de dichotomie",
+      "fingerprint": "implementer_methode_dichotomie",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Méthodes numériques",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme qui recherche une solution à une équation f(x) = k par la méthode de dichotomie en divisant successivement un intervalle en deux",
+      "formulation_bo": "Méthode de dichotomie",
+      "connaissances_associees": ["théorème des valeurs intermédiaires", "algorithme de recherche"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AG-661",
+      "intitule": "Implémenter la méthode de Newton",
+      "fingerprint": "implementer_methode_newton",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Méthodes numériques",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme de recherche de solution à une équation f(x) = 0 par la méthode de Newton utilisant la dérivée de f",
+      "formulation_bo": "Méthode de Newton",
+      "connaissances_associees": ["dérivée", "convergence", "approximation numérique"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AG-662",
+      "intitule": "Implémenter la méthode de la sécante",
+      "fingerprint": "implementer_methode_secante",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Méthodes numériques",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme qui approche la solution d'une équation f(x) = 0 en utilisant la méthode de la sécante",
+      "formulation_bo": "Méthode de la sécante",
+      "connaissances_associees": ["pente d'une sécante", "approximation numérique"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-663",
+      "intitule": "Démontrer le théorème des valeurs intermédiaires par dichotomie",
+      "fingerprint": "demontrer_tvi_dichotomie",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "demonstration",
+      "description_detaillee": "Prouver le théorème des valeurs intermédiaires en utilisant la méthode de dichotomie",
+      "formulation_bo": "Démonstration par dichotomie du théorème des valeurs intermédiaires",
+      "connaissances_associees": ["théorème des valeurs intermédiaires", "dichotomie"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-664",
+      "intitule": "Caractériser les fonctions continues de ℝ dans ℝ satisfaisant f(x+y) = f(x) + f(y)",
+      "fingerprint": "caracteriser_fonction_cauchy",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "approfondissement",
+      "description_detaillee": "Étudier les fonctions continues de ℝ dans ℝ qui vérifient l'équation fonctionnelle de Cauchy : f(x + y) = f(x) + f(y) pour tous réels x et y",
+      "formulation_bo": "Fonctions continues de ℝ dans ℝ telles que ƒ(x + y) = ƒ(x) + ƒ(y) pour tous réels x, y",
+      "connaissances_associees": ["continuité", "équation fonctionnelle", "fonction linéaire"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-665",
+      "intitule": "Appliquer le prolongement par continuité",
+      "fingerprint": "appliquer_prolongement_continuite",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité des fonctions",
+      "type": "approfondissement",
+      "description_detaillee": "Prolonger une fonction par continuité en un point où elle n'était pas initialement définie en utilisant la limite",
+      "formulation_bo": "Prolongement par continuité",
+      "connaissances_associees": ["continuité", "limite", "extension d'une fonction"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-666",
+      "intitule": "Reconnaître la fonction logarithme népérien comme réciproque de l'exponentielle",
+      "fingerprint": "reconnaitre_logarithme_reciproque_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "La fonction logarithme népérien ln est définie comme la fonction réciproque de la fonction exponentielle exp",
+      "formulation_bo": "Fonction logarithme népérien, notée ln, construite comme réciproque de la fonction exponentielle",
+      "connaissances_associees": ["fonction exponentielle", "fonction réciproque", "continuité"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-667",
+      "intitule": "Appliquer les propriétés algébriques du logarithme",
+      "fingerprint": "appliquer_proprietes_algebriques_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "Utiliser les propriétés algébriques du logarithme : ln(ab) = ln(a) + ln(b), ln(a/b) = ln(a) - ln(b), ln(a^n) = n*ln(a), etc.",
+      "formulation_bo": "Propriétés algébriques du logarithme",
+      "connaissances_associees": ["logarithme", "propriétés des opérations"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-668",
+      "intitule": "Calculer la dérivée du logarithme népérien",
+      "fingerprint": "calculer_derivee_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "La dérivée de ln(x) est 1/x pour x > 0. Plus généralement, (ln(u))' = u'/u",
+      "formulation_bo": "Fonction dérivée du logarithme",
+      "connaissances_associees": ["logarithme", "dérivée", "dérivée de fonction composée"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-669",
+      "intitule": "Étudier les variations du logarithme népérien",
+      "fingerprint": "etudier_variations_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "Le logarithme népérien est strictement croissant sur ]0, +∞[ car sa dérivée 1/x est positive pour tout x > 0",
+      "formulation_bo": "Fonction dérivée du logarithme, variations",
+      "connaissances_associees": ["logarithme", "dérivée", "monotonie"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-670",
+      "intitule": "Déterminer la limite du logarithme en 0 par la droite",
+      "fingerprint": "determiner_limite_logarithme_zero",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "La limite de ln(x) quand x tend vers 0 par la droite est -∞",
+      "formulation_bo": "Limites en 0 et en + ∞",
+      "connaissances_associees": ["logarithme", "limite", "comportement asymptotique"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-671",
+      "intitule": "Déterminer la limite du logarithme en +∞",
+      "fingerprint": "determiner_limite_logarithme_infini",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "La limite de ln(x) quand x tend vers +∞ est +∞",
+      "formulation_bo": "Limites en 0 et en + ∞",
+      "connaissances_associees": ["logarithme", "limite", "comportement asymptotique"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-672",
+      "intitule": "Tracer la courbe représentative du logarithme népérien",
+      "fingerprint": "tracer_courbe_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "Représenter graphiquement la fonction logarithme en utilisant ses propriétés (croissance, limites, dérivée)",
+      "formulation_bo": "courbe représentative",
+      "connaissances_associees": ["logarithme", "graphe de fonction", "limites", "dérivée"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-673",
+      "intitule": "Utiliser le lien entre les courbes de ln et exp",
+      "fingerprint": "utiliser_lien_courbes_ln_exp",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "Les courbes représentatives de ln et exp sont symétriques par rapport à la droite y = x (elles sont réciproques)",
+      "formulation_bo": "Lien entre les courbes représentatives des fonctions logarithme népérien et exponentielle",
+      "connaissances_associees": ["logarithme", "exponentielle", "fonction réciproque", "symétrie"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-674",
+      "intitule": "Comparer la croissance du logarithme et de x^n en 0",
+      "fingerprint": "comparer_croissance_logarithme_puissance_zero",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "Étudier le comportement de ln(x) comparé à x^n quand x tend vers 0 par la droite : croissance comparée en 0",
+      "formulation_bo": "Croissance comparée du logarithme népérien et de x ↦ x^n en 0 et en + ∞",
+      "connaissances_associees": ["logarithme", "puissance", "limite", "comparaison de croissance"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-675",
+      "intitule": "Comparer la croissance du logarithme et de x^n en +∞",
+      "fingerprint": "comparer_croissance_logarithme_puissance_infini",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "Étudier le comportement de ln(x) comparé à x^n quand x tend vers +∞ : le logarithme croit moins vite que n'importe quelle puissance",
+      "formulation_bo": "Croissance comparée du logarithme népérien et de x ↦ x^n en 0 et en + ∞",
+      "connaissances_associees": ["logarithme", "puissance", "limite", "comparaison de croissance"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-676",
+      "intitule": "Utiliser l'équation fonctionnelle de l'exponentielle pour transformer une écriture",
+      "fingerprint": "utiliser_equation_fonctionnelle_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Appliquer l'équation fonctionnelle e^(x+y) = e^x * e^y pour simplifier une écriture algébrique",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour transformer une écriture",
+      "connaissances_associees": ["exponentielle", "équation fonctionnelle"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-677",
+      "intitule": "Utiliser l'équation fonctionnelle du logarithme pour transformer une écriture",
+      "fingerprint": "utiliser_equation_fonctionnelle_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Appliquer l'équation fonctionnelle ln(xy) = ln(x) + ln(y) pour simplifier une écriture algébrique",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour transformer une écriture",
+      "connaissances_associees": ["logarithme", "équation fonctionnelle"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-678",
+      "intitule": "Résoudre une équation avec exponentielle ou logarithme",
+      "fingerprint": "resoudre_equation_exponentielle_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les propriétés de l'exponentielle et du logarithme pour résoudre une équation du type e^f(x) = a ou ln(f(x)) = b",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour transformer une écriture, résoudre une équation",
+      "connaissances_associees": ["exponentielle", "logarithme", "équation"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-679",
+      "intitule": "Résoudre une inéquation avec exponentielle ou logarithme",
+      "fingerprint": "resoudre_inequation_exponentielle_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les propriétés de l'exponentielle et du logarithme pour résoudre une inéquation du type e^f(x) > a ou ln(f(x)) < b",
+      "formulation_bo": "Utiliser l'équation fonctionnelle de l'exponentielle ou du logarithme pour transformer une écriture, résoudre une inéquation",
+      "connaissances_associees": ["exponentielle", "logarithme", "inéquation", "monotonie"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-680",
+      "intitule": "Utiliser les propriétés d'exponentielle et logarithme pour résoudre un problème",
+      "fingerprint": "utiliser_proprietes_exp_log_probleme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "capacite",
+      "description_detaillee": "Appliquer les propriétés algébriques et analytiques de l'exponentielle et du logarithme pour modéliser et résoudre une situation-problème",
+      "formulation_bo": "Dans le cadre d'une résolution de problème, utiliser les propriétés des fonctions exponentielle et logarithme",
+      "connaissances_associees": ["exponentielle", "logarithme", "modélisation", "équation", "inéquation"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-681",
+      "intitule": "Démontrer la dérivée du logarithme",
+      "fingerprint": "demontrer_derivee_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que la dérivée de ln(x) est 1/x, en admettant que ln est dérivable",
+      "formulation_bo": "Calcul de la fonction dérivée de la fonction logarithme népérien, la dérivabilité étant admise",
+      "connaissances_associees": ["logarithme", "dérivée", "dérivée d'une fonction réciproque"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AN-682",
+      "intitule": "Démontrer la limite de x*ln(x) en 0",
+      "fingerprint": "demontrer_limite_x_ln_x_zero",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que la limite de x*ln(x) quand x tend vers 0 par la droite est 0",
+      "formulation_bo": "Limite en 0 de x ↦ x ln(x)",
+      "connaissances_associees": ["logarithme", "limite", "croissance comparée"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TSPE-AG-683",
+      "intitule": "Implémenter l'algorithme de Briggs pour le calcul du logarithme",
+      "fingerprint": "implementer_algorithme_briggs_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Méthodes numériques",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un programme qui calcule une valeur approchée de ln(x) en utilisant l'algorithme de Briggs",
+      "formulation_bo": "Algorithme de Briggs pour le calcul du logarithme",
+      "connaissances_associees": ["logarithme", "algorithme", "approximation numérique"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 13
+      }
+    }
+  ],
+  "summary": {
+    "total": 34,
+    "by_type": {
+      "contenu": 20,
+      "capacite": 9,
+      "demonstration": 3,
+      "algorithme": 4,
+      "approfondissement": 2
+    },
+    "by_domaine": {
+      "ANALYSE": 28,
+      "ALGORITHMIQUE": 4
+    },
+    "by_sous_domaine": {
+      "Continuité des fonctions": 13,
+      "Fonction logarithme": 15,
+      "Méthodes numériques": 4,
+      "Autres": 2
+    },
+    "fingerprints": [
+      "definir_fonction_continue_point",
+      "definir_fonction_continue_intervalle",
+      "appliquer_derivable_continue",
+      "interpreter_image_suite_convergente_continue",
+      "appliquer_theoreme_valeurs_intermediaires",
+      "appliquer_tvi_monotone",
+      "etudier_existence_solutions_equation",
+      "etudier_unicite_solutions_equation",
+      "encadrer_solutions_equation",
+      "etudier_suite_recurrente_continue",
+      "implementer_methode_dichotomie",
+      "implementer_methode_newton",
+      "implementer_methode_secante",
+      "demontrer_tvi_dichotomie",
+      "caracteriser_fonction_cauchy",
+      "appliquer_prolongement_continuite",
+      "reconnaitre_logarithme_reciproque_exponentielle",
+      "appliquer_proprietes_algebriques_logarithme",
+      "calculer_derivee_logarithme",
+      "etudier_variations_logarithme",
+      "determiner_limite_logarithme_zero",
+      "determiner_limite_logarithme_infini",
+      "tracer_courbe_logarithme",
+      "utiliser_lien_courbes_ln_exp",
+      "comparer_croissance_logarithme_puissance_zero",
+      "comparer_croissance_logarithme_puissance_infini",
+      "utiliser_equation_fonctionnelle_exponentielle",
+      "utiliser_equation_fonctionnelle_logarithme",
+      "resoudre_equation_exponentielle_logarithme",
+      "resoudre_inequation_exponentielle_logarithme",
+      "utiliser_proprietes_exp_log_probleme",
+      "demontrer_derivee_logarithme",
+      "demontrer_limite_x_ln_x_zero",
+      "implementer_algorithme_briggs_logarithme"
+    ]
+  }
+}

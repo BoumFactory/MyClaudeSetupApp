@@ -1,0 +1,867 @@
+{
+  "generated_at": "2026-01-10T15:12:29.661790",
+  "method": "bidirectional_keywords",
+  "thresholds": {
+    "ok": 0.5,
+    "warn": 0.3
+  },
+  "summary": {
+    "total_levels": 16,
+    "total_competences": 5528,
+    "total_ok": 4974,
+    "total_warnings": 509,
+    "total_errors": 45
+  },
+  "errors_to_review": [
+    {
+      "code": "5E-ST-281",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 4,
+      "json_total": 14,
+      "missing": [
+        "extraire",
+        "utiliser",
+        "questions",
+        "indicateurs",
+        "exploiter"
+      ],
+      "intitule": "Exploiter un tableau d'effectifs",
+      "file": "page_005_competences.json"
+    },
+    {
+      "code": "5E-ST-285",
+      "status": "ERROR",
+      "ratio": 0.23,
+      "intersection": 3,
+      "json_total": 13,
+      "missing": [
+        "extraire",
+        "statistique",
+        "utiliser",
+        "questions",
+        "observer"
+      ],
+      "intitule": "Exploiter un graphique statistique",
+      "file": "page_005_competences.json"
+    },
+    {
+      "code": "5E-GE-516",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 4,
+      "json_total": 14,
+      "missing": [
+        "angle",
+        "degres",
+        "construire",
+        "cote",
+        "cotes"
+      ],
+      "intitule": "Tracer un triangle isocele a partir de donnees (cotes et ang",
+      "file": "page_010_competences.json"
+    },
+    {
+      "code": "5E-GE-556",
+      "status": "ERROR",
+      "ratio": 0.26,
+      "intersection": 5,
+      "json_total": 19,
+      "missing": [
+        "diagonales",
+        "opposes",
+        "utiliser",
+        "milieu",
+        "caracteristiques"
+      ],
+      "intitule": "Demontrer qu'un quadrilatere est un parallelogramme",
+      "file": "page_011_competences.json"
+    },
+    {
+      "code": "4E-NB-106",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 5,
+      "json_total": 17,
+      "missing": [
+        "unites",
+        "connaitre",
+        "milli",
+        "mesures",
+        "kilo"
+      ],
+      "intitule": "Utiliser les prefixes du systeme metrique de nano a giga",
+      "file": "page_002_competences.json"
+    },
+    {
+      "code": "4E-NB-201",
+      "status": "ERROR",
+      "ratio": 0.08,
+      "intersection": 1,
+      "json_total": 12,
+      "missing": [
+        "divisant",
+        "diviseur",
+        "denominateur",
+        "fractions",
+        "jusqu"
+      ],
+      "intitule": "Simplifier une fraction",
+      "file": "page_004_competences.json"
+    },
+    {
+      "code": "3E-AL-159",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 4,
+      "json_total": 14,
+      "missing": [
+        "pouvoir",
+        "remarquable",
+        "identites",
+        "remarquables",
+        "reconnaitre"
+      ],
+      "intitule": "Reconnaitre une identite remarquable difference de carres",
+      "file": "page_003_competences.json"
+    },
+    {
+      "code": "1TECHNO-AN-655",
+      "status": "ERROR",
+      "ratio": 0.22,
+      "intersection": 2,
+      "json_total": 9,
+      "missing": [
+        "produit",
+        "derivation",
+        "reel",
+        "regle",
+        "scalaire"
+      ],
+      "intitule": "Calculer la derivee de kf ou k est un reel",
+      "file": "page_013_competences.json"
+    },
+    {
+      "code": "1SPE-AN-516",
+      "status": "ERROR",
+      "ratio": 0.25,
+      "intersection": 2,
+      "json_total": 8,
+      "missing": [
+        "oppose",
+        "connaitre",
+        "utiliser",
+        "relation",
+        "soit"
+      ],
+      "intitule": "Appliquer la relation exp(x)exp(-x) = 1",
+      "file": "page_010_competences.json"
+    },
+    {
+      "code": "1SPE-AG-613",
+      "status": "ERROR",
+      "ratio": 0.23,
+      "intersection": 3,
+      "json_total": 13,
+      "missing": [
+        "estimer",
+        "estimation",
+        "methode",
+        "parabole",
+        "implementer"
+      ],
+      "intitule": "Programmer la methode de Monte-Carlo",
+      "file": "page_013_competences.json"
+    },
+    {
+      "code": "2GT-AL-254",
+      "status": "ERROR",
+      "ratio": 0.25,
+      "intersection": 4,
+      "json_total": 16,
+      "missing": [
+        "manipuler",
+        "manipulation",
+        "regles",
+        "connaitre",
+        "soustraction"
+      ],
+      "intitule": "Manipuler des inegalites (sens, operations conservant le sen",
+      "file": "page_005_competences.json"
+    },
+    {
+      "code": "C3-LO-004",
+      "status": "ERROR",
+      "ratio": 0.17,
+      "intersection": 2,
+      "json_total": 12,
+      "missing": [
+        "produire",
+        "solutions",
+        "redigees",
+        "demonstrations",
+        "recherche"
+      ],
+      "intitule": "Rediger des ecrits mathematiques",
+      "file": "page_001_competences.json"
+    },
+    {
+      "code": "C3-NB-111",
+      "status": "ERROR",
+      "ratio": 0.25,
+      "intersection": 3,
+      "json_total": 12,
+      "missing": [
+        "resultats",
+        "durablement",
+        "automatismes",
+        "tables",
+        "memoriser"
+      ],
+      "intitule": "Memoriser des resultats et des procedures",
+      "file": "page_002_competences.json"
+    },
+    {
+      "code": "C3-NB-112",
+      "status": "ERROR",
+      "ratio": 0.21,
+      "intersection": 3,
+      "json_total": 14,
+      "missing": [
+        "acquerir",
+        "reflexes",
+        "automatismes",
+        "rapidement",
+        "procedures"
+      ],
+      "intitule": "Automatiser des procedures de calcul",
+      "file": "page_002_competences.json"
+    },
+    {
+      "code": "C3-LO-616",
+      "status": "ERROR",
+      "ratio": 0.25,
+      "intersection": 3,
+      "json_total": 12,
+      "missing": [
+        "maniere",
+        "objets",
+        "ensemble",
+        "compter",
+        "resolution"
+      ],
+      "intitule": "Resoudre des problemes de denombrement",
+      "file": "page_012_competences.json"
+    },
+    {
+      "code": "1ENSSCI_MATHS-LO-002",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 4,
+      "json_total": 15,
+      "missing": [
+        "resultat",
+        "hypotheses",
+        "affirmation",
+        "face",
+        "verifier"
+      ],
+      "intitule": "Exercer son esprit critique face a une affirmation ou un res",
+      "file": "page_001_competences.json"
+    },
+    {
+      "code": "1ENSSCI_MATHS-LO-005",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 4,
+      "json_total": 15,
+      "missing": [
+        "structurees",
+        "ecrit",
+        "vocabulaire",
+        "claires",
+        "reponses"
+      ],
+      "intitule": "S'exprimer avec qualite a l'ecrit sur un sujet mathematique",
+      "file": "page_001_competences.json"
+    },
+    {
+      "code": "1ES-GR-452",
+      "status": "ERROR",
+      "ratio": 0.18,
+      "intersection": 2,
+      "json_total": 11,
+      "missing": [
+        "rapport",
+        "determiner",
+        "valeur",
+        "calculer",
+        "rapports"
+      ],
+      "intitule": "Calculer un pourcentage",
+      "file": "page_009_competences.json"
+    },
+    {
+      "code": "1ENSSCI-AL-506",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 5,
+      "json_total": 17,
+      "missing": [
+        "manipuler",
+        "lies",
+        "algebriques",
+        "calculs",
+        "effectuer"
+      ],
+      "intitule": "Effectuer des calculs algebriques lies a la geometrie de la ",
+      "file": "page_010_competences.json"
+    },
+    {
+      "code": "1ES-ST-751",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 4,
+      "json_total": 14,
+      "missing": [
+        "representations",
+        "tableaux",
+        "graphique",
+        "graphiquement",
+        "visuelles"
+      ],
+      "intitule": "Représenter graphiquement des données expérimentales",
+      "file": "page_015_competences.json"
+    },
+    {
+      "code": "1ES-ST-752",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 4,
+      "json_total": 15,
+      "missing": [
+        "sens",
+        "interpreter",
+        "critiquement",
+        "resultats",
+        "mesures"
+      ],
+      "intitule": "Interpréter des données expérimentales",
+      "file": "page_015_competences.json"
+    },
+    {
+      "code": "TSPE-AN-651",
+      "status": "ERROR",
+      "ratio": 0.18,
+      "intersection": 2,
+      "json_total": 11,
+      "missing": [
+        "demonstration",
+        "produit",
+        "neperien",
+        "propriete",
+        "fondamentales"
+      ],
+      "intitule": "Demontrer la propriete ln(ab) = ln(a) + ln(b)",
+      "file": "page_013_competences.json"
+    },
+    {
+      "code": "TSPE-AN-652",
+      "status": "ERROR",
+      "ratio": 0.18,
+      "intersection": 2,
+      "json_total": 11,
+      "missing": [
+        "demonstration",
+        "neperien",
+        "propriete",
+        "fondamentales",
+        "demontrer"
+      ],
+      "intitule": "Demontrer la propriete ln(1/a) = -ln(a)",
+      "file": "page_013_competences.json"
+    },
+    {
+      "code": "TSPE-AN-674",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 2,
+      "json_total": 7,
+      "missing": [
+        "derivation",
+        "successivement",
+        "derivant",
+        "fois",
+        "calculer"
+      ],
+      "intitule": "Calculer la derivee seconde d'une fonction",
+      "file": "page_013_competences.json"
+    },
+    {
+      "code": "TSPE-AL-317",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 3,
+      "json_total": 11,
+      "missing": [
+        "parmi",
+        "connaitre",
+        "binomiaux",
+        "petits",
+        "coefficients"
+      ],
+      "intitule": "Calculer les coefficients binomiaux pour k = 0, 1, 2",
+      "file": "page_006_competences.json"
+    },
+    {
+      "code": "TSPE-AN-557",
+      "status": "ERROR",
+      "ratio": 0.21,
+      "intersection": 3,
+      "json_total": 14,
+      "missing": [
+        "produit",
+        "regles",
+        "numeriques",
+        "operatoires",
+        "utiliser"
+      ],
+      "intitule": "Appliquer les regles operatoires sur les limites de suites",
+      "file": "page_011_competences.json"
+    },
+    {
+      "code": "TSPE-AN-802",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 4,
+      "json_total": 15,
+      "missing": [
+        "asymptotique",
+        "encadrer",
+        "utiliser",
+        "comportement",
+        "harmonique"
+      ],
+      "intitule": "Encadrer la somme harmonique Hn par des integrales",
+      "file": "page_016_competences.json"
+    },
+    {
+      "code": "TCOMP-AN-215",
+      "status": "ERROR",
+      "ratio": 0.2,
+      "intersection": 2,
+      "json_total": 10,
+      "missing": [
+        "racine",
+        "carree",
+        "utiliser",
+        "connaitre",
+        "mobiliser"
+      ],
+      "intitule": "Mobiliser les fonctions de reference",
+      "file": "page_005_competences.json"
+    },
+    {
+      "code": "TCOMP-AN-306",
+      "status": "ERROR",
+      "ratio": 0.28,
+      "intersection": 5,
+      "json_total": 18,
+      "missing": [
+        "determiner",
+        "numeriques",
+        "depassement",
+        "rechercher",
+        "numerique"
+      ],
+      "intitule": "Rechercher un seuil dans une suite numérique",
+      "file": "page_006_competences.json"
+    },
+    {
+      "code": "TG-PR-453",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 5,
+      "json_total": 17,
+      "missing": [
+        "observee",
+        "significativite",
+        "test",
+        "formulation",
+        "uvre"
+      ],
+      "intitule": "Appliquer la démarche d'un test d'hypothèse",
+      "file": "page_009_competences.json"
+    },
+    {
+      "code": "TG-AN-503",
+      "status": "ERROR",
+      "ratio": 0.25,
+      "intersection": 4,
+      "json_total": 16,
+      "missing": [
+        "lineaire",
+        "determiner",
+        "tension",
+        "utiliser",
+        "resistance"
+      ],
+      "intitule": "Modéliser la loi d'Ohm par une relation affine",
+      "file": "page_010_competences.json"
+    },
+    {
+      "code": "TG-AN-506",
+      "status": "ERROR",
+      "ratio": 0.25,
+      "intersection": 4,
+      "json_total": 16,
+      "missing": [
+        "utiliser",
+        "predictions",
+        "exponentiel",
+        "nombre",
+        "etablir"
+      ],
+      "intitule": "Modéliser la loi de Moore par une relation exponentielle",
+      "file": "page_010_competences.json"
+    },
+    {
+      "code": "TG-AN-507",
+      "status": "ERROR",
+      "ratio": 0.18,
+      "intersection": 2,
+      "json_total": 11,
+      "missing": [
+        "logarithmes",
+        "contextes",
+        "connaitre",
+        "utiliser",
+        "polynomes"
+      ],
+      "intitule": "Utiliser les fonctions usuelles dans une modélisation",
+      "file": "page_010_competences.json"
+    },
+    {
+      "code": "TG-AN-508",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 4,
+      "json_total": 15,
+      "missing": [
+        "asymptotes",
+        "identifiant",
+        "representation",
+        "particuliers",
+        "graphique"
+      ],
+      "intitule": "Tracer la représentation graphique de fonctions usuelles",
+      "file": "page_010_competences.json"
+    },
+    {
+      "code": "TG-AN-509",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 4,
+      "json_total": 15,
+      "missing": [
+        "interpreter",
+        "determiner",
+        "maximum",
+        "forme",
+        "polynomes"
+      ],
+      "intitule": "Déterminer le minimum d'une fonction trinôme",
+      "file": "page_010_competences.json"
+    },
+    {
+      "code": "TG-AN-001",
+      "status": "ERROR",
+      "ratio": 0.21,
+      "intersection": 3,
+      "json_total": 14,
+      "missing": [
+        "produit",
+        "justifier",
+        "egale",
+        "propriete",
+        "nombres"
+      ],
+      "intitule": "Démontrer la relation ln(ab) = ln(a) + ln(b)",
+      "file": "page_013_competences.json"
+    },
+    {
+      "code": "TG-AN-002",
+      "status": "ERROR",
+      "ratio": 0.19,
+      "intersection": 3,
+      "json_total": 16,
+      "missing": [
+        "egale",
+        "justifier",
+        "propriete",
+        "nombres",
+        "demontrer"
+      ],
+      "intitule": "Démontrer la relation ln(a/b) = ln(a) - ln(b)",
+      "file": "page_013_competences.json"
+    },
+    {
+      "code": "TEXP-NB-451",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 3,
+      "json_total": 11,
+      "missing": [
+        "connaitre",
+        "definir",
+        "seulement",
+        "arithmetique",
+        "definition"
+      ],
+      "intitule": "Definir la divisibilite dans Z",
+      "file": "page_009_competences.json"
+    },
+    {
+      "code": "TEXP-NB-455",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 3,
+      "json_total": 11,
+      "missing": [
+        "grand",
+        "diviseur",
+        "connaitre",
+        "definir",
+        "commun"
+      ],
+      "intitule": "Definir le PGCD de deux entiers",
+      "file": "page_009_competences.json"
+    },
+    {
+      "code": "TEXP-NB-459",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 2,
+      "json_total": 7,
+      "missing": [
+        "connaitre",
+        "arithmetique",
+        "alors",
+        "divise",
+        "enoncer"
+      ],
+      "intitule": "Enoncer le theoreme de Gauss",
+      "file": "page_009_competences.json"
+    },
+    {
+      "code": "TEXP-NB-460",
+      "status": "ERROR",
+      "ratio": 0.29,
+      "intersection": 4,
+      "json_total": 14,
+      "missing": [
+        "connaitre",
+        "definir",
+        "arithmetique",
+        "positifs",
+        "definition"
+      ],
+      "intitule": "Definir un nombre premier",
+      "file": "page_009_competences.json"
+    },
+    {
+      "code": "TSPE-PR-319",
+      "status": "ERROR",
+      "ratio": 0.22,
+      "intersection": 2,
+      "json_total": 9,
+      "missing": [
+        "coefficient",
+        "binomial",
+        "utiliser",
+        "formule",
+        "factorielles"
+      ],
+      "intitule": "Appliquer la formule du coefficient binomial avec les factor",
+      "file": "page_006_competences.json"
+    },
+    {
+      "code": "TSPE-AN-802",
+      "status": "ERROR",
+      "ratio": 0.27,
+      "intersection": 4,
+      "json_total": 15,
+      "missing": [
+        "courbe",
+        "encadrer",
+        "minorants",
+        "utiliser",
+        "integration"
+      ],
+      "intitule": "Encadrer une somme harmonique par des intégrales",
+      "file": "page_016_competences.json"
+    },
+    {
+      "code": "TSPE-AG-807",
+      "status": "ERROR",
+      "ratio": 0.23,
+      "intersection": 5,
+      "json_total": 22,
+      "missing": [
+        "maniere",
+        "base",
+        "constantes",
+        "approximer",
+        "convergente"
+      ],
+      "intitule": "Implémenter l'algorithme de Brouncker pour le calcul de ln(2",
+      "file": "page_016_competences.json"
+    },
+    {
+      "code": "TTECH-AG-751",
+      "status": "ERROR",
+      "ratio": 0.13,
+      "intersection": 2,
+      "json_total": 15,
+      "missing": [
+        "carre",
+        "ecrire",
+        "carres",
+        "evaluer",
+        "residus"
+      ],
+      "intitule": "Automatiser le calcul de la somme des résidus au carré",
+      "file": "page_015_competences.json"
+    }
+  ],
+  "levels": [
+    {
+      "level": "14-Maths-5e-attendus-eduscol_1114744",
+      "files_checked": 12,
+      "total_competences": 309,
+      "total_ok": 264,
+      "total_warnings": 41,
+      "total_errors": 4
+    },
+    {
+      "level": "16-Maths-4e-attendus-eduscol_1114746",
+      "files_checked": 11,
+      "total_competences": 205,
+      "total_ok": 183,
+      "total_warnings": 20,
+      "total_errors": 2
+    },
+    {
+      "level": "18-Maths-3e-attendus-eduscol_1114748",
+      "files_checked": 10,
+      "total_competences": 197,
+      "total_ok": 166,
+      "total_warnings": 30,
+      "total_errors": 1
+    },
+    {
+      "level": "1ere_techno",
+      "files_checked": 16,
+      "total_competences": 317,
+      "total_ok": 296,
+      "total_warnings": 20,
+      "total_errors": 1
+    },
+    {
+      "level": "1GT",
+      "files_checked": 16,
+      "total_competences": 348,
+      "total_ok": 316,
+      "total_warnings": 30,
+      "total_errors": 2
+    },
+    {
+      "level": "2GT",
+      "files_checked": 16,
+      "total_competences": 392,
+      "total_ok": 345,
+      "total_warnings": 46,
+      "total_errors": 1
+    },
+    {
+      "level": "2STHR",
+      "files_checked": 13,
+      "total_competences": 276,
+      "total_ok": 250,
+      "total_warnings": 26,
+      "total_errors": 0
+    },
+    {
+      "level": "cycle3_v2",
+      "files_checked": 28,
+      "total_competences": 906,
+      "total_ok": 877,
+      "total_warnings": 25,
+      "total_errors": 4
+    },
+    {
+      "level": "Mathematiques_integrees_EnsSci_1reG",
+      "files_checked": 7,
+      "total_competences": 163,
+      "total_ok": 154,
+      "total_warnings": 7,
+      "total_errors": 2
+    },
+    {
+      "level": "premiere_ens_sci",
+      "files_checked": 15,
+      "total_competences": 207,
+      "total_ok": 181,
+      "total_warnings": 22,
+      "total_errors": 4
+    },
+    {
+      "level": "spe265_annexe_1159134",
+      "files_checked": 17,
+      "total_competences": 375,
+      "total_ok": 330,
+      "total_warnings": 42,
+      "total_errors": 3
+    },
+    {
+      "level": "terminale_spe",
+      "files_checked": 21,
+      "total_competences": 476,
+      "total_ok": 421,
+      "total_warnings": 52,
+      "total_errors": 3
+    },
+    {
+      "level": "TG_comp",
+      "files_checked": 17,
+      "total_competences": 401,
+      "total_ok": 342,
+      "total_warnings": 49,
+      "total_errors": 10
+    },
+    {
+      "level": "TG_expertes",
+      "files_checked": 11,
+      "total_competences": 207,
+      "total_ok": 175,
+      "total_warnings": 28,
+      "total_errors": 4
+    },
+    {
+      "level": "TG_spe",
+      "files_checked": 21,
+      "total_competences": 479,
+      "total_ok": 430,
+      "total_warnings": 46,
+      "total_errors": 3
+    },
+    {
+      "level": "Tle_techno",
+      "files_checked": 16,
+      "total_competences": 270,
+      "total_ok": 244,
+      "total_warnings": 25,
+      "total_errors": 1
+    }
+  ]
+}

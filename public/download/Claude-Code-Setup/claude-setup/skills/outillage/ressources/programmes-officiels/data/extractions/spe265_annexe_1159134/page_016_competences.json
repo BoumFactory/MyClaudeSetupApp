@@ -1,0 +1,549 @@
+{
+  "source": {
+    "pdf": "spe265_annexe_1159134.pdf",
+    "page": 16,
+    "text_length": 1847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-PR-801",
+      "intitule": "Comprendre la notion de loi à densité à partir d'exemples",
+      "fingerprint": "comprendre_loi_densite_exemples",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Introduire et concevoir la notion de loi de probabilité à densité à travers des exemples concrets de variables aléatoires continues.",
+      "formulation_bo": "Notion de loi à densité à partir d'exemples.",
+      "connaissances_associees": ["variable aléatoire continue", "probabilités"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-802",
+      "intitule": "Representer une probabilité comme une aire sous une courbe",
+      "fingerprint": "representer_probabilite_aire_courbe",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Interpréter géométriquement une probabilité associée à une loi à densité comme l'aire sous la courbe de la fonction de densité.",
+      "formulation_bo": "Représentation d'une probabilité comme une aire.",
+      "connaissances_associees": ["fonction de densité", "intégrale", "graphique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-803",
+      "intitule": "Definir la fonction de répartition d'une variable aléatoire à densité",
+      "fingerprint": "definir_fonction_repartition_densite",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Définir la fonction de répartition x ↦ P(X ≤ x) pour une variable aléatoire continue à densité.",
+      "formulation_bo": "Fonction de répartition x ↦ P(X ⩽ x)",
+      "connaissances_associees": ["loi à densité", "probabilité", "intégrale"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-804",
+      "intitule": "Calculer l'espérance d'une variable aléatoire à densité",
+      "fingerprint": "calculer_esperance_variable_densite",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'espérance E(X) d'une variable aléatoire continue en utilisant l'expression sous forme d'intégrale.",
+      "formulation_bo": "Calculer l'espérance d'une variable aléatoire à densité.",
+      "connaissances_associees": ["loi à densité", "intégrale", "fonction de densité"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-805",
+      "intitule": "Calculer la variance d'une variable aléatoire à densité",
+      "fingerprint": "calculer_variance_variable_densite",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Calculer la variance V(X) d'une variable aléatoire continue en utilisant l'expression sous forme d'intégrale.",
+      "formulation_bo": "Variance d'une loi à densité, expressions sous forme d'intégrales.",
+      "connaissances_associees": ["loi à densité", "intégrale", "fonction de densité", "espérance"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-806",
+      "intitule": "Definir la loi uniforme sur [0,1]",
+      "fingerprint": "definir_loi_uniforme_0_1",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Définir la loi uniforme sur l'intervalle [0,1], sa fonction de densité et sa fonction de répartition.",
+      "formulation_bo": "Loi uniforme sur [0,1]. Fonction de densité, fonction de répartition.",
+      "connaissances_associees": ["loi à densité", "fonction de densité", "fonction de répartition"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-807",
+      "intitule": "Definir la loi uniforme sur [a,b]",
+      "fingerprint": "definir_loi_uniforme_a_b",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Définir la loi uniforme sur un intervalle [a,b] quelconque, sa fonction de densité et sa fonction de répartition.",
+      "formulation_bo": "Loi uniforme sur [a,b]. Fonction de densité, fonction de répartition.",
+      "connaissances_associees": ["loi à densité", "loi uniforme", "fonction de densité", "fonction de répartition"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-808",
+      "intitule": "Calculer l'espérance de la loi uniforme",
+      "fingerprint": "calculer_esperance_loi_uniforme",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Calculer l'espérance E(X) pour une variable aléatoire suivant une loi uniforme sur [a,b].",
+      "formulation_bo": "Espérance et variance [de la loi uniforme].",
+      "connaissances_associees": ["loi uniforme", "espérance", "intégrale"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-809",
+      "intitule": "Calculer la variance de la loi uniforme",
+      "fingerprint": "calculer_variance_loi_uniforme",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Calculer la variance V(X) pour une variable aléatoire suivant une loi uniforme sur [a,b].",
+      "formulation_bo": "Espérance et variance [de la loi uniforme].",
+      "connaissances_associees": ["loi uniforme", "variance", "intégrale"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-810",
+      "intitule": "Definir la loi exponentielle",
+      "fingerprint": "definir_loi_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Définir la loi exponentielle, sa fonction de densité et sa fonction de répartition.",
+      "formulation_bo": "Loi exponentielle. Fonction densité, fonction de répartition.",
+      "connaissances_associees": ["loi à densité", "exponentielle", "fonction de densité", "fonction de répartition"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-811",
+      "intitule": "Calculer l'espérance de la loi exponentielle",
+      "fingerprint": "calculer_esperance_loi_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Calculer l'espérance E(X) pour une variable aléatoire suivant une loi exponentielle de paramètre λ.",
+      "formulation_bo": "Espérance [de la loi exponentielle].",
+      "connaissances_associees": ["loi exponentielle", "espérance", "intégrale"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-812",
+      "intitule": "Comprendre la propriété d'absence de mémoire de la loi exponentielle",
+      "fingerprint": "comprendre_absence_memoire_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "contenu",
+      "description_detaillee": "Connaître et comprendre la propriété caractéristique d'absence de mémoire de la loi exponentielle.",
+      "formulation_bo": "Propriété d'absence de mémoire.",
+      "connaissances_associees": ["loi exponentielle", "probabilité conditionnelle"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-813",
+      "intitule": "Determiner si une fonction est une densité de probabilité",
+      "fingerprint": "determiner_fonction_densite",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "capacite",
+      "description_detaillee": "Vérifier qu'une fonction donnée satisfait les conditions pour être une fonction de densité de probabilité (positivité, intégrale sur R égale à 1).",
+      "formulation_bo": "Déterminer si une fonction est une densité de probabilité.",
+      "connaissances_associees": ["fonction de densité", "intégrale", "probabilité"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-814",
+      "intitule": "Calculer des probabilités avec une loi à densité",
+      "fingerprint": "calculer_probabilites_densite",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois à densité",
+      "type": "capacite",
+      "description_detaillee": "Calculer P(X ≤ a), P(X > a), P(a ≤ X ≤ b) pour une variable aléatoire continue à densité.",
+      "formulation_bo": "Calculer des probabilités.",
+      "connaissances_associees": ["loi à densité", "fonction de répartition", "intégrale"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-815",
+      "intitule": "Representer un nuage de points",
+      "fingerprint": "representer_nuage_points",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "capacite",
+      "description_detaillee": "Construire graphiquement un nuage de points à partir d'une série statistique à deux variables quantitatives.",
+      "formulation_bo": "Représenter un nuage de points.",
+      "connaissances_associees": ["série statistique", "variable quantitative", "graphique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-816",
+      "intitule": "Definir le point moyen d'une série statistique à deux variables",
+      "fingerprint": "definir_point_moyen",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "contenu",
+      "description_detaillee": "Définir le point moyen (centre de gravité) d'un nuage de points à partir des moyennes des deux variables.",
+      "formulation_bo": "Point moyen.",
+      "connaissances_associees": ["moyenne", "série statistique", "nuage de points"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-817",
+      "intitule": "Calculer les coordonnées du point moyen",
+      "fingerprint": "calculer_coordonnees_point_moyen",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les coordonnées (x̄, ȳ) du point moyen d'un nuage de points.",
+      "formulation_bo": "Calculer les coordonnées d'un point moyen.",
+      "connaissances_associees": ["point moyen", "moyenne", "série statistique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-818",
+      "intitule": "Definir l'ajustement affine",
+      "fingerprint": "definir_ajustement_affine",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "contenu",
+      "description_detaillee": "Définir l'ajustement affine d'une série statistique à deux variables comme la recherche d'une relation linéaire entre deux variables.",
+      "formulation_bo": "Ajustement affine.",
+      "connaissances_associees": ["droite de régression", "série statistique", "nuage de points"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-819",
+      "intitule": "Definir la droite des moindres carrés",
+      "fingerprint": "definir_droite_moindres_carres",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "contenu",
+      "description_detaillee": "Définir la droite des moindres carrés comme l'ajustement affine qui minimise la somme des carrés des résidus.",
+      "formulation_bo": "Droite des moindres carrés.",
+      "connaissances_associees": ["ajustement affine", "résidu", "régression"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-820",
+      "intitule": "Definir le coefficient de corrélation",
+      "fingerprint": "definir_coefficient_correlation",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "contenu",
+      "description_detaillee": "Définir le coefficient de corrélation linéaire comme mesure du lien linéaire entre deux variables.",
+      "formulation_bo": "Coefficient de corrélation.",
+      "connaissances_associees": ["droite des moindres carrés", "ajustement affine", "covariance"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-821",
+      "intitule": "Determiner une droite de régression par calcul",
+      "fingerprint": "determiner_droite_regression_calcul",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'équation de la droite de régression (des moindres carrés) en utilisant les formules mathématiques appropriées.",
+      "formulation_bo": "Déterminer une droite de régression, à l'aide... ou par calcul.",
+      "connaissances_associees": ["droite des moindres carrés", "formules de régression", "calcul"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-822",
+      "intitule": "Determiner une droite de régression avec calculatrice ou logiciel",
+      "fingerprint": "determiner_droite_regression_outil",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une calculatrice ou un logiciel pour déterminer l'équation de la droite de régression.",
+      "formulation_bo": "Déterminer une droite de régression, à l'aide de la calculatrice, d'un logiciel...",
+      "connaissances_associees": ["calculatrice", "logiciel", "droite de régression"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-823",
+      "intitule": "Comprendre l'ajustement se ramenant à un ajustement affine par changement de variable",
+      "fingerprint": "comprendre_ajustement_changement_variable",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "contenu",
+      "description_detaillee": "Connaître les techniques de changement de variable pour transformer un ajustement non affine en ajustement affine (par exemple exponentiel en linéaire).",
+      "formulation_bo": "Ajustement se ramenant par changement de variable à un ajustement affine.",
+      "connaissances_associees": ["ajustement affine", "changement de variable", "fonction exponentielle"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-824",
+      "intitule": "Utiliser un ajustement pour interpoler",
+      "fingerprint": "utiliser_ajustement_interpoler",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "capacite",
+      "description_detaillee": "Utiliser un ajustement affine ou autre pour estimer une valeur entre deux valeurs connues (interpolation).",
+      "formulation_bo": "Utiliser un ajustement pour interpoler, extrapoler.",
+      "connaissances_associees": ["ajustement affine", "interpolation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-825",
+      "intitule": "Utiliser un ajustement pour extrapoler",
+      "fingerprint": "utiliser_ajustement_extrapoler",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "capacite",
+      "description_detaillee": "Utiliser un ajustement affine ou autre pour estimer une valeur en dehors du domaine des données connues (extrapolation).",
+      "formulation_bo": "Utiliser un ajustement pour interpoler, extrapoler.",
+      "connaissances_associees": ["ajustement affine", "extrapolation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-ST-826",
+      "intitule": "Demontrer la formule de la droite des moindres carrés",
+      "fingerprint": "demontrer_droite_moindres_carres",
+      "niveau": "TSPE",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique à deux variables",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que la droite des moindres carrés minimise la somme des carrés des résidus.",
+      "formulation_bo": "Droite des moindres carrés.",
+      "connaissances_associees": ["droite des moindres carrés", "résidu", "optimisation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AG-827",
+      "intitule": "Simuler une variable de Bernoulli à partir d'une variable uniforme [0,1]",
+      "fingerprint": "simuler_bernoulli_uniforme",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et algorithmes probabilistes",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme ou un programme pour simuler une variable de Bernoulli en utilisant une variable aléatoire de loi uniforme sur [0,1].",
+      "formulation_bo": "Simulation d'une variable de Bernoulli... à partir d'une variable aléatoire de loi uniforme sur [0,1].",
+      "connaissances_associees": ["loi uniforme", "loi de Bernoulli", "variable aléatoire", "programmation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AG-828",
+      "intitule": "Simuler un lancer de dé à partir d'une variable uniforme [0,1]",
+      "fingerprint": "simuler_lancer_de_uniforme",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et algorithmes probabilistes",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme ou un programme pour simuler un lancer de dé en utilisant une variable aléatoire de loi uniforme sur [0,1].",
+      "formulation_bo": "Simulation... d'un lancer de dé... à partir d'une variable aléatoire de loi uniforme sur [0,1].",
+      "connaissances_associees": ["loi uniforme", "loi discrète uniforme", "variable aléatoire", "programmation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AG-829",
+      "intitule": "Simuler une variable uniforme sur un ensemble fini à partir d'une variable uniforme [0,1]",
+      "fingerprint": "simuler_uniforme_ensemble_fini",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et algorithmes probabilistes",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme ou un programme pour simuler une variable aléatoire uniforme sur un ensemble fini en utilisant une variable aléatoire de loi uniforme sur [0,1].",
+      "formulation_bo": "Simulation... d'une variable aléatoire... uniforme sur un ensemble fini à partir d'une variable aléatoire de loi uniforme sur [0,1].",
+      "connaissances_associees": ["loi uniforme", "variable aléatoire", "programmation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AG-830",
+      "intitule": "Simuler la somme de n variables aléatoires indépendantes de même loi",
+      "fingerprint": "simuler_somme_variables_iid",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Simulation et algorithmes probabilistes",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme ou un programme pour simuler le comportement de la somme de n variables aléatoires indépendantes et de même loi.",
+      "formulation_bo": "Simulation du comportement de la somme de n variables aléatoires indépendantes et de même loi.",
+      "connaissances_associees": ["variable aléatoire", "somme de variables", "programmation", "loi des grands nombres"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 16
+      }
+    }
+  ],
+  "summary": {
+    "total": 35,
+    "by_type": {
+      "contenu": 16,
+      "capacite": 10,
+      "demonstration": 1,
+      "algorithme": 4,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "PROBABILITES": 14,
+      "STATISTIQUES": 13,
+      "ALGORITHMIQUE": 4,
+      "ANALYSE": 0,
+      "ALGEBRE": 0,
+      "GEOMETRIE": 0,
+      "TRIGONOMETRIE": 0,
+      "NOMBRES": 0,
+      "GRANDEURS": 0,
+      "LOGIQUE": 0
+    },
+    "fingerprints": [
+      "comprendre_loi_densite_exemples",
+      "representer_probabilite_aire_courbe",
+      "definir_fonction_repartition_densite",
+      "calculer_esperance_variable_densite",
+      "calculer_variance_variable_densite",
+      "definir_loi_uniforme_0_1",
+      "definir_loi_uniforme_a_b",
+      "calculer_esperance_loi_uniforme",
+      "calculer_variance_loi_uniforme",
+      "definir_loi_exponentielle",
+      "calculer_esperance_loi_exponentielle",
+      "comprendre_absence_memoire_exponentielle",
+      "determiner_fonction_densite",
+      "calculer_probabilites_densite",
+      "representer_nuage_points",
+      "definir_point_moyen",
+      "calculer_coordonnees_point_moyen",
+      "definir_ajustement_affine",
+      "definir_droite_moindres_carres",
+      "definir_coefficient_correlation",
+      "determiner_droite_regression_calcul",
+      "determiner_droite_regression_outil",
+      "comprendre_ajustement_changement_variable",
+      "utiliser_ajustement_interpoler",
+      "utiliser_ajustement_extrapoler",
+      "demontrer_droite_moindres_carres",
+      "simuler_bernoulli_uniforme",
+      "simuler_lancer_de_uniforme",
+      "simuler_uniforme_ensemble_fini",
+      "simuler_somme_variables_iid"
+    ]
+  }
+}

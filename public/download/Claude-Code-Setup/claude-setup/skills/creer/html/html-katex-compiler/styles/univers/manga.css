@@ -1,0 +1,579 @@
+/* ===========================================
+   UNIVERS: MANGA 漫画
+   Dynamique, expressif, énergique !
+   Support Light/Dark automatique
+   =========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@400;600;700&display=swap');
+
+/* ===========================================
+   VARIABLES - MODE CLAIR (défaut)
+   =========================================== */
+:root {
+    /* Couleurs manga */
+    --manga-pink: #ff6b9d;
+    --manga-blue: #00b4d8;
+    --manga-yellow: #ffd60a;
+    --manga-orange: #ff7b00;
+    --manga-purple: #9d4edd;
+    --manga-green: #2ec4b6;
+    --manga-red: #ef233c;
+
+    /* Couleurs de fond et texte */
+    --manga-bg: #ffffff;
+    --manga-bg-alt: #fafafa;
+    --manga-text: #1a1a2e;
+    --manga-text-muted: #555;
+    --manga-shadow: rgba(0,0,0,0.15);
+    --manga-shadow-strong: rgba(0,0,0,0.9);
+
+    /* Blocs */
+    --manga-def-bg: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+    --manga-theo-bg: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    --manga-prop-bg: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    --manga-ex-bg: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+    --manga-meth-bg: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%);
+    --manga-rem-bg: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+    --manga-exo-bg: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+
+    /* Speed lines */
+    --speed-line-color: rgba(0,0,0,0.06);
+    --screentone-color: rgba(0,0,0,0.03);
+}
+
+/* ===========================================
+   VARIABLES - MODE SOMBRE
+   =========================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Couleurs manga ajustées pour le dark */
+        --manga-pink: #ff8fb3;
+        --manga-blue: #4dd0e1;
+        --manga-yellow: #ffe066;
+        --manga-orange: #ffab40;
+        --manga-purple: #b388ff;
+        --manga-green: #64ffda;
+        --manga-red: #ff6b6b;
+
+        /* Couleurs de fond et texte */
+        --manga-bg: #1a1a2e;
+        --manga-bg-alt: #252542;
+        --manga-text: #f0f0f0;
+        --manga-text-muted: #aaa;
+        --manga-shadow: rgba(0,0,0,0.4);
+        --manga-shadow-strong: rgba(0,0,0,0.95);
+
+        /* Blocs - versions sombres douces */
+        --manga-def-bg: linear-gradient(135deg, #1a3a4a 0%, #1e4a5a 100%);
+        --manga-theo-bg: linear-gradient(135deg, #3a2a1a 0%, #4a3520 100%);
+        --manga-prop-bg: linear-gradient(135deg, #1a3a2a 0%, #204530 100%);
+        --manga-ex-bg: linear-gradient(135deg, #2a1a3a 0%, #352045 100%);
+        --manga-meth-bg: linear-gradient(135deg, #3a3a1a 0%, #454520 100%);
+        --manga-rem-bg: linear-gradient(135deg, #3a1a2a 0%, #452030 100%);
+        --manga-exo-bg: linear-gradient(135deg, #3a1a1a 0%, #452020 100%);
+
+        /* Speed lines */
+        --speed-line-color: rgba(255,255,255,0.03);
+        --screentone-color: rgba(255,255,255,0.02);
+    }
+}
+
+/* ===========================================
+   STYLES DE BASE
+   =========================================== */
+body {
+    font-family: 'Fredoka', 'Comic Sans MS', cursive, sans-serif;
+    background: var(--manga-bg);
+    color: var(--manga-text);
+    position: relative;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* === SPEED LINES BACKGROUND === */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 20px,
+            var(--speed-line-color) 20px,
+            var(--speed-line-color) 21px
+        );
+    z-index: -2;
+}
+
+/* === EFFET TRAME MANGA (SCREENTONE) === */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: radial-gradient(circle, var(--screentone-color) 1px, transparent 1px);
+    background-size: 4px 4px;
+    z-index: -1;
+}
+
+/* ===========================================
+   TITRES EXPLOSIFS
+   =========================================== */
+
+h1 {
+    font-family: 'Bangers', 'Impact', cursive;
+    font-size: 3.5rem !important;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--manga-text);
+    text-shadow:
+        4px 4px 0 var(--manga-yellow),
+        6px 6px 0 var(--manga-orange),
+        8px 8px 0 var(--manga-shadow);
+    border: none;
+    background: none;
+    position: relative;
+    display: inline-block;
+    transform: skewX(-3deg);
+    padding: 0.5rem 2rem !important;
+    margin-bottom: 2rem;
+}
+
+h1::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 150%;
+    background: radial-gradient(ellipse, var(--manga-yellow) 0%, transparent 70%);
+    z-index: -1;
+    opacity: 0.3;
+}
+
+h1::after {
+    content: '★';
+    position: absolute;
+    top: -15px;
+    right: -25px;
+    font-size: 2rem;
+    color: var(--manga-red);
+    animation: starPulse 1s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(15deg); }
+}
+
+h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 2.2rem !important;
+    color: #fff;
+    background: linear-gradient(135deg, var(--manga-pink) 0%, var(--manga-purple) 100%);
+    padding: 0.8rem 2rem !important;
+    border-radius: 0 30px 0 30px;
+    border: 4px solid var(--manga-text);
+    box-shadow: 5px 5px 0 var(--manga-shadow-strong);
+    transform: rotate(-1deg);
+    margin: 2.5rem 0 1.5rem 0;
+    display: inline-block;
+    position: relative;
+}
+
+h2::after {
+    content: '!!';
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    font-size: 1.5rem;
+    color: var(--manga-yellow);
+    text-shadow: 2px 2px 0 var(--manga-text);
+}
+
+h3 {
+    font-family: 'Fredoka', cursive;
+    font-size: 1.6rem !important;
+    color: var(--manga-blue);
+    font-weight: 700;
+    padding-left: 2.5rem;
+    position: relative;
+    border: none;
+    background: none;
+}
+
+h3::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    font-size: 2rem;
+    color: var(--manga-orange);
+    animation: bounce 0.6s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
+/* ===========================================
+   BLOCS PÉDAGOGIQUES - STYLE BULLE MANGA
+   =========================================== */
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    position: relative;
+    border-width: 4px !important;
+    border-style: solid !important;
+    border-radius: 25px !important;
+    box-shadow:
+        6px 6px 0 var(--manga-shadow-strong),
+        inset 0 0 20px rgba(255,255,255,0.2);
+    margin: 2.5rem 0;
+    padding: 2rem !important;
+    overflow: visible;
+    transform-origin: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.definition:hover, .theoreme:hover, .propriete:hover,
+.exemple:hover, .methode:hover, .remarque:hover, .exercice:hover {
+    transform: translateY(-3px) rotate(0.5deg);
+    box-shadow:
+        8px 8px 0 var(--manga-shadow-strong),
+        inset 0 0 25px rgba(255,255,255,0.3);
+}
+
+/* === BADGES EN BULLE === */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before,
+.exercice::before {
+    font-family: 'Bangers', cursive !important;
+    font-size: 1.1rem !important;
+    letter-spacing: 2px;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 30px !important;
+    border: 3px solid var(--manga-text);
+    box-shadow: 3px 3px 0 var(--manga-shadow-strong);
+    position: relative;
+    z-index: 10;
+}
+
+/* Icônes décoratives */
+.definition::after { content: '📖'; position: absolute; top: -15px; right: 20px; font-size: 2rem; }
+.theoreme::after { content: '⚡'; position: absolute; top: -15px; right: 20px; font-size: 2rem; }
+.propriete::after { content: '✨'; position: absolute; top: -15px; right: 20px; font-size: 2rem; }
+.exemple::after { content: '💡'; position: absolute; top: -15px; right: 20px; font-size: 2rem; }
+.methode::after { content: '🎯'; position: absolute; top: -15px; right: 20px; font-size: 2rem; }
+.remarque::after { content: '💬'; position: absolute; top: -15px; right: 20px; font-size: 2rem; }
+.exercice::after { content: '✏️'; position: absolute; top: -15px; right: 20px; font-size: 2rem; }
+
+/* === COULEURS DES BLOCS === */
+.definition {
+    background: var(--manga-def-bg) !important;
+    border-color: var(--manga-blue) !important;
+}
+.definition::before {
+    background: var(--manga-blue) !important;
+    color: #fff !important;
+}
+
+.theoreme {
+    background: var(--manga-theo-bg) !important;
+    border-color: var(--manga-orange) !important;
+}
+.theoreme::before {
+    background: var(--manga-orange) !important;
+    color: #fff !important;
+}
+
+.propriete {
+    background: var(--manga-prop-bg) !important;
+    border-color: var(--manga-green) !important;
+}
+.propriete::before {
+    background: var(--manga-green) !important;
+    color: #fff !important;
+}
+
+.exemple {
+    background: var(--manga-ex-bg) !important;
+    border-color: var(--manga-purple) !important;
+}
+.exemple::before {
+    background: var(--manga-purple) !important;
+    color: #fff !important;
+}
+
+.methode {
+    background: var(--manga-meth-bg) !important;
+    border-color: var(--manga-yellow) !important;
+}
+.methode::before {
+    background: var(--manga-yellow) !important;
+    color: #000 !important;
+}
+
+.remarque {
+    background: var(--manga-rem-bg) !important;
+    border-color: var(--manga-pink) !important;
+}
+.remarque::before {
+    background: var(--manga-pink) !important;
+    color: #fff !important;
+}
+
+.exercice {
+    background: var(--manga-exo-bg) !important;
+    border-color: var(--manga-red) !important;
+}
+.exercice::before {
+    background: var(--manga-red) !important;
+    color: #fff !important;
+}
+
+/* ===========================================
+   LISTES STYLE MANGA
+   =========================================== */
+
+ul {
+    list-style: none !important;
+    padding-left: 2rem !important;
+}
+
+ul li {
+    padding-left: 2.5rem !important;
+    position: relative;
+    margin: 0.8rem 0;
+}
+
+ul li::before {
+    content: '★' !important;
+    position: absolute;
+    left: 0 !important;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    border-radius: 0 !important;
+    color: var(--manga-orange);
+    font-size: 1.3rem;
+}
+
+ul li:nth-child(2)::before { content: '◆' !important; color: var(--manga-pink); }
+ul li:nth-child(3)::before { content: '●' !important; color: var(--manga-blue); }
+ul li:nth-child(4)::before { content: '▶' !important; color: var(--manga-green); }
+ul li:nth-child(5)::before { content: '★' !important; color: var(--manga-purple); }
+
+ol li::before {
+    background: linear-gradient(135deg, var(--manga-pink), var(--manga-purple)) !important;
+    border: 2px solid var(--manga-text);
+    box-shadow: 2px 2px 0 var(--manga-text);
+    font-family: 'Bangers', cursive;
+}
+
+/* ===========================================
+   KaTeX - FORMULES ENCADRÉES MANGA
+   =========================================== */
+
+.katex {
+    font-size: 1.2em !important;
+}
+
+.katex-display {
+    background: var(--manga-meth-bg) !important;
+    border: 3px solid var(--manga-orange) !important;
+    border-radius: 15px !important;
+    padding: 1.5rem !important;
+    box-shadow: 4px 4px 0 var(--manga-shadow-strong);
+    position: relative;
+    margin-top: 1.5rem !important;
+    overflow: visible !important;
+}
+
+.katex-display::before {
+    content: '📐';
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    font-size: 1.5rem;
+}
+
+/* ===========================================
+   TABLEAUX MANGA
+   =========================================== */
+
+table {
+    border: 4px solid var(--manga-text) !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+    box-shadow: 5px 5px 0 var(--manga-text);
+}
+
+th {
+    background: linear-gradient(135deg, var(--manga-pink) 0%, var(--manga-purple) 100%) !important;
+    color: #fff !important;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 1px;
+    border: none !important;
+    padding: 1rem !important;
+}
+
+td {
+    border-color: var(--manga-text) !important;
+    background: var(--manga-bg-alt);
+}
+
+tr:nth-child(even) td {
+    background: var(--manga-bg);
+}
+
+tr:hover td {
+    background: rgba(255, 107, 157, 0.15) !important;
+}
+
+/* ===========================================
+   LIENS
+   =========================================== */
+
+a {
+    color: var(--manga-pink) !important;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--manga-pink);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+a:hover::after {
+    transform: scaleX(1);
+}
+
+/* ===========================================
+   FOOTER FUN
+   =========================================== */
+
+.footer {
+    text-align: center;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    color: var(--manga-purple);
+    padding: 2rem;
+    border-top: 4px dashed var(--manga-pink);
+    background: linear-gradient(180deg, transparent, rgba(255,107,157,0.1));
+}
+
+.footer::before {
+    content: '~ ';
+}
+
+.footer::after {
+    content: ' ~  ★';
+}
+
+/* ===========================================
+   ONOMATOPÉES DÉCORATIVES
+   =========================================== */
+
+.cours-container::before {
+    content: 'GO!';
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    color: var(--manga-yellow);
+    text-shadow: 3px 3px 0 var(--manga-orange), 5px 5px 0 var(--manga-text);
+    transform: rotate(15deg);
+    opacity: 0.3;
+    pointer-events: none;
+    animation: goFloat 3s ease-in-out infinite;
+}
+
+@keyframes goFloat {
+    0%, 100% { transform: rotate(15deg) translateY(0); }
+    50% { transform: rotate(15deg) translateY(-10px); }
+}
+
+/* ===========================================
+   SCROLLBAR MANGA
+   =========================================== */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--manga-bg-alt);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--manga-pink), var(--manga-purple));
+    border-radius: 6px;
+    border: 2px solid var(--manga-text);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--manga-purple), var(--manga-pink));
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem !important;
+    }
+
+    h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .cours-container::before {
+        display: none;
+    }
+}
+
+/* ===========================================
+   PRINT
+   =========================================== */
+
+@media print {
+    body::before, body::after, .cours-container::before,
+    h1::after, h2::after {
+        display: none !important;
+    }
+
+    h1, h2 {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .definition, .theoreme, .propriete, .exemple,
+    .methode, .remarque, .exercice {
+        box-shadow: none;
+        border-width: 2px !important;
+    }
+}

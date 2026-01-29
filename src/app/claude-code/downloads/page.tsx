@@ -1,4 +1,5 @@
-import { Download, FolderTree } from "lucide-react"
+import Link from "next/link"
+import { Download, FolderTree, Settings, ArrowRight } from "lucide-react"
 import path from "path"
 import { scanDirectory } from "@/lib/file-scanner-server"
 import { createGitignoreParser } from "@/lib/gitignore-parser"
@@ -99,7 +100,7 @@ export default async function DownloadsPage() {
       </div>
 
       {/* Info */}
-      <div className="glass-card rounded-xl p-6 space-y-3">
+      <div className="glass-card rounded-xl p-6 space-y-4">
         <h3 className="font-semibold">Comment utiliser ?</h3>
         <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
           <li>
@@ -118,6 +119,27 @@ export default async function DownloadsPage() {
             Consultez les présentations pour comprendre l'utilisation de chaque composant
           </li>
         </ol>
+
+        {/* Lien vers le tutoriel de configuration */}
+        <div className="mt-4 p-4 bg-nebula-950/30 border border-nebula-800 rounded-lg">
+          <div className="flex items-start gap-3">
+            <Settings className="w-5 h-5 text-nebula-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-medium text-nebula-300 mb-1">Configuration de Claude Code</h4>
+              <p className="text-xs text-muted-foreground mb-3">
+                Pour utiliser les fichiers de <strong>Claude-Code-Setup</strong>, consultez le tutoriel de configuration
+                qui explique comment les installer dans votre répertoire de travail.
+              </p>
+              <Link
+                href="/claude-code/tutorials/claude-code-config"
+                className="inline-flex items-center gap-2 text-sm text-nebula-400 hover:text-nebula-300 transition-colors"
+              >
+                <ArrowRight className="w-4 h-4" />
+                Voir le tutoriel de configuration
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Explorateur de fichiers */}

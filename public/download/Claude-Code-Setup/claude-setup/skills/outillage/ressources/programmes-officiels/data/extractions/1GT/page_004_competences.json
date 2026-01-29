@@ -1,0 +1,152 @@
+{
+  "source": {
+    "pdf": "1GT.pdf",
+    "page": 4,
+    "text_length": 2847
+  },
+  "extraction": {
+    "date": "2026-01-02T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "notes": "Page introductive et pedagogique - peu de competences mathematiques specifiques, essentiellement des competences transversales de raisonnement"
+  },
+  "competences": [
+    {
+      "code": "1SPE-LO-201",
+      "intitule": "Distinguer le statut d'une conjecture",
+      "fingerprint": "distinguer_statut_conjecture",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement mathematique",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre qu'un enonce mathematique est une conjecture, c'est-a-dire une affirmation dont la verite n'est pas encore etablie",
+      "formulation_bo": "bien distinguer le statut des enonces (conjecture, definition, propriete - admise ou demontree -, demonstration, theoreme)",
+      "connaissances_associees": ["notion de conjecture", "difference entre conjecture et theoreme"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "1SPE-LO-202",
+      "intitule": "Distinguer le statut d'une definition",
+      "fingerprint": "distinguer_statut_definition",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement mathematique",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre qu'un enonce mathematique est une definition, c'est-a-dire une convention qui introduit un nouveau terme ou concept",
+      "formulation_bo": "bien distinguer le statut des enonces (conjecture, definition, propriete - admise ou demontree -, demonstration, theoreme)",
+      "connaissances_associees": ["notion de definition mathematique"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "1SPE-LO-203",
+      "intitule": "Distinguer une propriete admise d'une propriete demontree",
+      "fingerprint": "distinguer_propriete_admise_demontree",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement mathematique",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre si une propriete mathematique est admise (acceptee sans preuve) ou demontree (prouvee par un raisonnement)",
+      "formulation_bo": "bien distinguer le statut des enonces (conjecture, definition, propriete - admise ou demontree -, demonstration, theoreme)",
+      "connaissances_associees": ["notion de propriete", "notion de demonstration", "notion d'axiome"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "1SPE-LO-204",
+      "intitule": "Distinguer le statut d'un theoreme",
+      "fingerprint": "distinguer_statut_theoreme",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement mathematique",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre qu'un enonce mathematique est un theoreme, c'est-a-dire une propriete importante qui a ete demontree",
+      "formulation_bo": "bien distinguer le statut des enonces (conjecture, definition, propriete - admise ou demontree -, demonstration, theoreme)",
+      "connaissances_associees": ["notion de theoreme", "difference entre propriete et theoreme"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "1SPE-LO-205",
+      "intitule": "Reconnaitre une demonstration mathematique",
+      "fingerprint": "reconnaitre_demonstration",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement mathematique",
+      "type": "capacite",
+      "description_detaillee": "Identifier qu'un texte mathematique constitue une demonstration, c'est-a-dire un enchainement logique d'arguments prouvant une propriete",
+      "formulation_bo": "bien distinguer le statut des enonces (conjecture, definition, propriete - admise ou demontree -, demonstration, theoreme)",
+      "connaissances_associees": ["structure d'une demonstration", "enchainement logique"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "1SPE-LO-206",
+      "intitule": "S'engager dans une recherche mathematique",
+      "fingerprint": "engager_recherche_mathematique",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Demarche de recherche",
+      "type": "capacite",
+      "description_detaillee": "Initier une demarche de recherche face a un probleme mathematique, individuellement ou en equipe, en explorant differentes pistes",
+      "formulation_bo": "L'eleve doit etre incite a s'engager dans une recherche mathematique, individuellement ou en equipe",
+      "connaissances_associees": ["demarche de resolution de probleme", "prise d'initiative"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 4
+      }
+    },
+    {
+      "code": "1SPE-LO-207",
+      "intitule": "Analyser une erreur mathematique pour en tirer profit",
+      "fingerprint": "analyser_erreur_mathematique",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Demarche de recherche",
+      "type": "capacite",
+      "description_detaillee": "Identifier, analyser et comprendre une erreur commise dans un raisonnement mathematique pour en tirer un enseignement",
+      "formulation_bo": "Il ne doit pas craindre l'erreur, car il sait qu'il peut en tirer profit [...] l'aide a l'identifier, a l'analyser et la comprendre",
+      "connaissances_associees": ["metacognition", "auto-evaluation"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 4
+      }
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "by_type": {
+      "capacite": 7,
+      "contenu": 0,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "LOGIQUE": 7
+    },
+    "fingerprints": [
+      "distinguer_statut_conjecture",
+      "distinguer_statut_definition",
+      "distinguer_propriete_admise_demontree",
+      "distinguer_statut_theoreme",
+      "reconnaitre_demonstration",
+      "engager_recherche_mathematique",
+      "analyser_erreur_mathematique"
+    ],
+    "page_type": "introduction_pedagogique",
+    "remarques": "Cette page est principalement introductive et pedagogique. Elle presente les grandes orientations du programme (5 parties : Algebre, Analyse, Geometrie, Probabilites/Statistiques, Algorithmique/Programmation) et des recommandations methodologiques. Les competences extraites sont transversales et concernent le raisonnement mathematique."
+  }
+}

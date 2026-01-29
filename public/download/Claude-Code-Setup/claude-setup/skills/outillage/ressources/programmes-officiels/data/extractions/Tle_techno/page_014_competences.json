@@ -1,0 +1,292 @@
+{
+  "source": {
+    "pdf": "Tle_techno.pdf",
+    "page": 14,
+    "text_length": 1847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TTC-ST-701",
+      "intitule": "Reconnaitre une serie statistique a deux variables quantitatives",
+      "fingerprint": "reconnaitre_serie_deux_variables_quantitatives",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "contenu",
+      "description_detaillee": "Identifier et characteriser une serie statistique associant deux variables quantitatives (numeriques), en lien avec des donnees reelles ou experimentales",
+      "formulation_bo": "Series statistiques a deux variables quantitatives",
+      "connaissances_associees": [
+        "notion de variable quantitative",
+        "series statistiques simples"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-702",
+      "intitule": "Construire un nuage de points associe a une serie statistique",
+      "fingerprint": "construire_nuage_points_serie_deux_variables",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "capacite",
+      "description_detaillee": "A partir des donnees d'une serie statistique a deux variables, representer graphiquement l'ensemble des points (xi, yi) dans un repere du plan",
+      "formulation_bo": "Representer un nuage de points",
+      "connaissances_associees": [
+        "systeme de coordonnees",
+        "representation graphique",
+        "variables quantitatives"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-703",
+      "intitule": "Determiner un ajustement affine pour une serie statistique",
+      "fingerprint": "determiner_ajustement_affine_serie",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "capacite",
+      "description_detaillee": "Rechercher une droite d'equation y = ax + b qui s'ajuste au nuage de points, soit graphiquement 'au juge', soit par la methode des moindres carres minimisant la somme des carres des ecarts",
+      "formulation_bo": "Determiner et utiliser un ajustement affine pour interpoler ou extrapoler des valeurs inconnues",
+      "connaissances_associees": [
+        "equation de droite",
+        "fonction affine",
+        "nuage de points",
+        "methode des moindres carres"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-704",
+      "intitule": "Utiliser un ajustement affine pour realiser une interpolation",
+      "fingerprint": "utiliser_ajustement_affine_interpolation",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "capacite",
+      "description_detaillee": "A partir d'une droite d'ajustement, estimer une valeur inconnue situee dans l'intervalle des donnees observees (interpolation)",
+      "formulation_bo": "Determiner et utiliser un ajustement affine pour interpoler ou extrapoler des valeurs inconnues",
+      "connaissances_associees": [
+        "ajustement affine",
+        "equation de droite",
+        "valeurs intermediaires"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-705",
+      "intitule": "Utiliser un ajustement affine pour realiser une extrapolation",
+      "fingerprint": "utiliser_ajustement_affine_extrapolation",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "capacite",
+      "description_detaillee": "A partir d'une droite d'ajustement, estimer une valeur inconnue situee en dehors de l'intervalle des donnees observees (extrapolation)",
+      "formulation_bo": "Determiner et utiliser un ajustement affine pour interpoler ou extrapoler des valeurs inconnues",
+      "connaissances_associees": [
+        "ajustement affine",
+        "equation de droite",
+        "limites de l'extrapolation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-706",
+      "intitule": "Appliquer un changement de variable pour lineariser une relation",
+      "fingerprint": "appliquer_changement_variable_lineariser",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "capacite",
+      "description_detaillee": "Effectuer une transformation de variable (u=1/t, v=1/x, w=log(y), etc.) afin de conjecturer une relation lineaire entre les nouvelles variables et lineariser ainsi un ajustement non affine",
+      "formulation_bo": "Representer un nuage de points en effectuant un changement de variable donne (par exemple u2, 1/t, 1/n, log(y)…) afin de conjecturer une relation de linearite entre de nouvelles variables",
+      "connaissances_associees": [
+        "transformations de variables",
+        "linearisation",
+        "ajustement affine",
+        "fonction logarithme",
+        "fonction inverse"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-707",
+      "intitule": "Conjecturer une relation de linearite apres changement de variable",
+      "fingerprint": "conjecturer_relation_linearite_changement_variable",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "capacite",
+      "description_detaillee": "A partir d'un nouveau nuage de points obtenu apres transformation de variables, formuler l'hypothese d'une relation affine entre les nouvelles variables et en deduire la relation entre les variables initiales",
+      "formulation_bo": "Representer un nuage de points en effectuant un changement de variable donne (par exemple u2, 1/t, 1/n, log(y)…) afin de conjecturer une relation de linearite entre de nouvelles variables",
+      "connaissances_associees": [
+        "ajustement affine",
+        "changement de variables",
+        "hypotheses statistiques"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-708",
+      "intitule": "Evaluer la qualite d'un ajustement affine",
+      "fingerprint": "evaluer_qualite_ajustement_affine",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "capacite",
+      "description_detaillee": "Apprecier et discuter la pertinence d'une modélisation par ajustement affine au regard des donnees observees et du contexte reel de la situation etudiee",
+      "formulation_bo": "L'appreciation de la qualite des ajustements peut faire l'objet d'une discussion au sein de la classe. Les eleves sont entraines a exercer leur esprit critique sur la pertinence d'une modelisation par ajustement affine",
+      "connaissances_associees": [
+        "ajustement affine",
+        "ecarts residuels",
+        "methode des moindres carres",
+        "analyse critique"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-709",
+      "intitule": "Analyser les limites des extrapolations par ajustement affine",
+      "fingerprint": "analyser_limites_extrapolation_ajustement_affine",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "capacite",
+      "description_detaillee": "Identifier et discuter les limites et risques associes a l'utilisation d'une droite d'ajustement pour predire des valeurs en dehors de l'intervalle observe, notamment dans des contextes reels (sante, economie, sciences)",
+      "formulation_bo": "Les eleves sont entraines a exercer leur esprit critique sur les limites des extrapolations faites dans ce cadre",
+      "connaissances_associees": [
+        "extrapolation",
+        "ajustement affine",
+        "contexte reel",
+        "critiques methodologiques"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-710",
+      "intitule": "Appliquer la methode des moindres carres pour ajustement affine",
+      "fingerprint": "appliquer_methode_moindres_carres_ajustement",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "demonstration",
+      "description_detaillee": "Utiliser la methode des moindres carres pour trouver les coefficients a et b de la droite y = ax + b minimisant la somme des carres des ecarts Σ(yi - (axi+b))²",
+      "formulation_bo": "La methode des moindres carres est presentee : recherche d'une droite d'equation y = ax + b realisant le minimum de Σ(yi - (axi+b))² pour le nuage de points (xi,yi)",
+      "connaissances_associees": [
+        "droite de regression",
+        "minimisation",
+        "fonction objectif",
+        "calcul differentiel"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-711",
+      "intitule": "Identifier et utiliser des donnees de contextes reels pour ajustement",
+      "fingerprint": "utiliser_donnees_contexte_reel_ajustement",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "contenu",
+      "description_detaillee": "Reconnaitre et exploiter des donnees issues de contextes reels (sante, economie, gestion, sciences sociales, mesures experimentales en physique-chimie, biotechnologies, sciences de l'ingenieur) pour construire et valider des ajustements statistiques",
+      "formulation_bo": "Les situations ou contextes reels, en lien notamment avec les enseignements de specialite, sont privilegies : donnees issues des domaines de la sante, de l'economie, de la gestion, des sciences sociales… ; mesures experimentales de grandeurs liees par une relation lineaire",
+      "connaissances_associees": [
+        "interdisciplinarite",
+        "modelisation",
+        "interpretation de donnees",
+        "contexte reel"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TTC-ST-712",
+      "intitule": "Automatiser le calcul d'ajustements par programmation",
+      "fingerprint": "automatiser_calcul_ajustement_programmation",
+      "niveau": "TTC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Series statistiques bivariees",
+      "type": "capacite",
+      "description_detaillee": "Utiliser un tableur ou un langage de programmation (Python) pour automatiser les calculs de regression, d'ajustements et obtenir des resultats complexes inaccessibles au calcul manuel",
+      "formulation_bo": "Des activites de programmation, au tableur ou en langage Python, permettent d'automatiser certains calculs et d'obtenir des resultats inaccessibles a la main",
+      "connaissances_associees": [
+        "programmation Python",
+        "tableur",
+        "algorithme de regression",
+        "methode des moindres carres"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 14
+      }
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "by_type": {
+      "contenu": 2,
+      "capacite": 8,
+      "demonstration": 1,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "STATISTIQUES": 12
+    },
+    "by_sous_domaine": {
+      "Series statistiques bivariees": 12
+    },
+    "fingerprints": [
+      "reconnaitre_serie_deux_variables_quantitatives",
+      "construire_nuage_points_serie_deux_variables",
+      "determiner_ajustement_affine_serie",
+      "utiliser_ajustement_affine_interpolation",
+      "utiliser_ajustement_affine_extrapolation",
+      "appliquer_changement_variable_lineariser",
+      "conjecturer_relation_linearite_changement_variable",
+      "evaluer_qualite_ajustement_affine",
+      "analyser_limites_extrapolation_ajustement_affine",
+      "appliquer_methode_moindres_carres_ajustement",
+      "utiliser_donnees_contexte_reel_ajustement",
+      "automatiser_calcul_ajustement_programmation"
+    ]
+  }
+}

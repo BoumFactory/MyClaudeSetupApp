@@ -1,0 +1,432 @@
+{
+  "source": {
+    "pdf": "spe265_annexe_1159134.pdf",
+    "page": 6,
+    "text_length": 1847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AN-601",
+      "intitule": "Modéliser une dynamique de population par un modèle de Malthus géométrique",
+      "fingerprint": "modeliser_dynamique_population_malthus_geometrique",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites et modèles discrets",
+      "type": "contenu",
+      "description_detaillee": "Utiliser une suite géométrique pour modéliser la croissance ou décroissance d'une population selon le modèle exponentiel de Malthus.",
+      "formulation_bo": "Dynamique des populations : modèle de Malthus (géométrique)",
+      "connaissances_associees": ["suites géométriques", "croissance exponentielle", "population"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-602",
+      "intitule": "Modéliser une dynamique de population par le modèle de Verhulst discret",
+      "fingerprint": "modeliser_dynamique_population_verhulst_discret",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites et modèles discrets",
+      "type": "contenu",
+      "description_detaillee": "Utiliser la suite récurrente N_{t+1} = N_t + r*N_t*(k - N_t) pour modéliser la croissance logistique d'une population avec facteur de limitation k.",
+      "formulation_bo": "modèle de Verhulst (logistique) discret N_{t+1} = N_t + r*N_t*(k - N_t)",
+      "connaissances_associees": ["suites récurrentes", "logistique", "capacité limite", "paramètres"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-603",
+      "intitule": "Modéliser une dynamique de population par le modèle de Verhulst continu",
+      "fingerprint": "modeliser_dynamique_population_verhulst_continu",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "contenu",
+      "description_detaillee": "Utiliser l'équation différentielle y' = a*y*(b - y) pour modéliser la croissance logistique continue d'une population.",
+      "formulation_bo": "modèle de Verhulst (logistique) continu : y' = a*y*(b - y)",
+      "connaissances_associees": ["équations différentielles", "croissance logistique", "paramètres"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-604",
+      "intitule": "Modéliser une dynamique proie-prédateur par un système de suites récurrentes",
+      "fingerprint": "modeliser_dynamique_proie_predateur_discret",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites et modèles discrets",
+      "type": "contenu",
+      "description_detaillee": "Utiliser un système d'évolution couplée de deux suites récurrentes pour modéliser l'interaction entre deux populations (proies et prédateurs).",
+      "formulation_bo": "Modèle proie prédateur discrétisé : évolution couplée de deux suites récurrentes",
+      "connaissances_associees": ["suites récurrentes", "systèmes couplés", "équilibre des populations"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-605",
+      "intitule": "Étudier les suites récurrentes",
+      "fingerprint": "etudier_suites_recurrentes",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites et modèles discrets",
+      "type": "contenu",
+      "description_detaillee": "Analyser les propriétés et comportements des suites définies par une relation de récurrence u_{n+1} = f(u_n).",
+      "formulation_bo": "Contenus associés : Suites récurrentes",
+      "connaissances_associees": ["notion de suite", "relation de récurrence", "convergence"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-606",
+      "intitule": "Étudier les suites géométriques",
+      "fingerprint": "etudier_suites_geometriques",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "contenu",
+      "description_detaillee": "Analyser les propriétés des suites géométriques : terme général, raison, convergence selon la valeur de la raison.",
+      "formulation_bo": "Contenus associés : Suites géométriques",
+      "connaissances_associees": ["raison géométrique", "terme général", "convergence"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-607",
+      "intitule": "Étudier la fonction exponentielle",
+      "fingerprint": "etudier_fonction_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions exponentielles",
+      "type": "contenu",
+      "description_detaillee": "Analyser les propriétés de la fonction exponentielle : dérivée, limites, croissance, relation avec les suites géométriques.",
+      "formulation_bo": "Contenus associés : Fonction exponentielle",
+      "connaissances_associees": ["exp(x)", "dérivée", "limites", "propriétés algébriques"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-608",
+      "intitule": "Étudier les suites arithmético-géométriques",
+      "fingerprint": "etudier_suites_arithmetico_geometriques",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "contenu",
+      "description_detaillee": "Analyser les suites de la forme u_{n+1} = a*u_n + b, combinant croissance géométrique et déplacement arithmétique.",
+      "formulation_bo": "Contenus associés : Suites arithmético-géométriques",
+      "connaissances_associees": ["suites arithmétiques", "suites géométriques", "changement de variable", "point fixe"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-609",
+      "intitule": "Résoudre l'équation différentielle y' = a*y + b",
+      "fingerprint": "resoudre_equation_differentielle_y_ay_b",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "contenu",
+      "description_detaillee": "Déterminer la solution générale de l'équation différentielle linéaire du premier ordre y' = a*y + b.",
+      "formulation_bo": "Contenus associés : Équation différentielle y' = a*y + b",
+      "connaissances_associees": ["équations différentielles", "solutions générales", "conditions initiales"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-610",
+      "intitule": "Calculer les limites de suites",
+      "fingerprint": "calculer_limites_suites",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et convergence",
+      "type": "contenu",
+      "description_detaillee": "Déterminer la limite d'une suite et étudier sa convergence ou divergence.",
+      "formulation_bo": "Contenus associés : Limites",
+      "connaissances_associees": ["limite", "convergence", "divergence", "croissance"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AG-611",
+      "intitule": "Implémenter l'algorithme de calcul des termes d'une suite",
+      "fingerprint": "implementer_algorithme_calcul_termes_suite",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Calcul itératif",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme (en Python par exemple) pour calculer successivement les termes d'une suite récurrente.",
+      "formulation_bo": "Exemples d'algorithme : Calcul des termes d'une suite",
+      "connaissances_associees": ["boucles", "variables", "suite récurrente"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AG-612",
+      "intitule": "Implémenter l'algorithme de recherche de seuils",
+      "fingerprint": "implementer_algorithme_recherche_seuils",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Recherche et optimisation",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme pour trouver le rang n à partir duquel une suite dépasse un seuil donné.",
+      "formulation_bo": "Exemples d'algorithme : Recherche de seuils",
+      "connaissances_associees": ["conditions", "boucles", "suites", "convergence"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AG-613",
+      "intitule": "Implémenter la méthode d'Euler",
+      "fingerprint": "implementer_methode_euler",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Analyse numérique",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme mettant en œuvre la méthode d'Euler pour approximer numériquement la solution d'une équation différentielle.",
+      "formulation_bo": "Exemples d'algorithme : Méthode d'Euler",
+      "connaissances_associees": ["équations différentielles", "approximation numérique", "pas de discrétisation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-614",
+      "intitule": "Étudier le logarithme népérien comme fonction réciproque de l'exponentielle",
+      "fingerprint": "etudier_logarithme_fonction_reciproque_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions logarithmiques",
+      "type": "contenu",
+      "description_detaillee": "Analyser la fonction logarithme népérien comme inverse de la fonction exponentielle, ses propriétés et ses applications.",
+      "formulation_bo": "Approche historique de la fonction logarithme : Le volet des contenus l'introduit comme fonction réciproque de la fonction exponentielle",
+      "connaissances_associees": ["fonction exponentielle", "fonction réciproque", "bijection", "ln(x)"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-615",
+      "intitule": "Étudier le logarithme comme équation fonctionnelle f(xy) = f(x) + f(y)",
+      "fingerprint": "etudier_logarithme_equation_fonctionnelle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions logarithmiques",
+      "type": "contenu",
+      "description_detaillee": "Analyser la propriété fondamentale du logarithme : l'équation fonctionnelle f(xy) = f(x) + f(y) et ses conséquences.",
+      "formulation_bo": "Approche historique de la fonction logarithme : ses deux aspects fondamentaux : équation fonctionnelle",
+      "connaissances_associees": ["équation fonctionnelle", "propriété algébrique", "ln(xy) = ln(x) + ln(y)"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-GR-616",
+      "intitule": "Étudier la quadrature de l'hyperbole et le logarithme",
+      "fingerprint": "etudier_quadrature_hyperbole_logarithme",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Calcul d'aires et intégration",
+      "type": "contenu",
+      "description_detaillee": "Analyser le problème historique de la quadrature de l'hyperbole (calcul de l'aire sous l'hyperbole y=1/x) et sa connexion au logarithme.",
+      "formulation_bo": "Approche historique : ses deux aspects fondamentaux : quadrature de l'hyperbole",
+      "connaissances_associees": ["aire sous une courbe", "intégrale", "fonction réciproque", "ln(x)"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-617",
+      "intitule": "Étudier les suites arithmétiques",
+      "fingerprint": "etudier_suites_arithmetiques",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "contenu",
+      "description_detaillee": "Analyser les propriétés des suites arithmétiques : raison, terme général, somme des termes.",
+      "formulation_bo": "Contenus associés : Suites arithmétiques, suites géométriques",
+      "connaissances_associees": ["raison arithmétique", "terme général", "somme des termes"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-618",
+      "intitule": "Étudier l'intégrale d'une fonction continue et positive",
+      "fingerprint": "etudier_integrale_fonction_continue_positive",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "contenu",
+      "description_detaillee": "Introduire et étudier l'intégrale d'une fonction continue et positive sur un intervalle [a,b] comme aire sous la courbe.",
+      "formulation_bo": "Calculs d'aires : l'introduction de l'intégrale d'une fonction continue et positive sur un intervalle [a,b]",
+      "connaissances_associees": ["aire sous courbe", "fonction continue", "borne inférieure et supérieure"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-619",
+      "intitule": "Appliquer le théorème fondamental du calcul intégral",
+      "fingerprint": "appliquer_theoreme_fondamental_calcul_integral",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "contenu",
+      "description_detaillee": "Utiliser la détermination des primitives pour calculer efficacement l'intégrale d'une fonction sur un intervalle.",
+      "formulation_bo": "Calculs d'aires : la puissance de calcul qu'apporte dans ce domaine la détermination des primitives",
+      "connaissances_associees": ["primitives", "théorème fondamental", "intégrale définie"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-GR-620",
+      "intitule": "Calculer les aires par la méthode des rectangles",
+      "fingerprint": "calculer_aires_methode_rectangles",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Calcul d'aires et intégration",
+      "type": "algorithme",
+      "description_detaillee": "Utiliser la méthode d'approximation des aires par des rectangles pour estimer l'intégrale d'une fonction.",
+      "formulation_bo": "Calculs d'aires : méthode des rectangles et des trapèzes pour l'aire sous une courbe",
+      "connaissances_associees": ["approximation numérique", "aire sous courbe", "discrétisation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-GR-621",
+      "intitule": "Calculer les aires par la méthode des trapèzes",
+      "fingerprint": "calculer_aires_methode_trapezes",
+      "niveau": "TSPE",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Calcul d'aires et intégration",
+      "type": "algorithme",
+      "description_detaillee": "Utiliser la méthode d'approximation des aires par des trapèzes pour estimer l'intégrale d'une fonction.",
+      "formulation_bo": "Calculs d'aires : méthode des rectangles et des trapèzes pour l'aire sous une courbe",
+      "connaissances_associees": ["approximation numérique", "aire sous courbe", "discrétisation"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-622",
+      "intitule": "Implémenter l'algorithme de Briggs pour le calcul de logarithmes",
+      "fingerprint": "implementer_algorithme_briggs_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Analyse numérique",
+      "type": "algorithme",
+      "description_detaillee": "Implémenter l'algorithme historique de Briggs pour calculer approximativement les valeurs de logarithmes.",
+      "formulation_bo": "Exemples d'algorithme : Algorithme de Briggs",
+      "connaissances_associees": ["logarithme", "calcul numérique", "tables de logarithmes"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TSPE-AN-623",
+      "intitule": "Implémenter l'algorithme de Brouncker pour approximer ln(2)",
+      "fingerprint": "implementer_algorithme_brouncker_ln2",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Analyse numérique",
+      "type": "algorithme",
+      "description_detaillee": "Implémenter la méthode de dichotomie selon l'algorithme de Brouncker pour approximer le logarithme népérien de 2.",
+      "formulation_bo": "Exemples d'algorithme : Approximation de ln2 par dichotomie selon l'algorithme de Brouncker",
+      "connaissances_associees": ["logarithme", "dichotomie", "approximation numérique"],
+      "source": {
+        "pdf": "spe265_annexe_1159134.pdf",
+        "page": 6
+      }
+    }
+  ],
+  "summary": {
+    "total": 23,
+    "by_type": {
+      "contenu": 14,
+      "algorithme": 7,
+      "capacite": 0,
+      "demonstration": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "ANALYSE": 13,
+      "ALGORITHMIQUE": 5,
+      "GRANDEURS": 3,
+      "GEOMETRIE": 0,
+      "PROBABILITES": 0,
+      "STATISTIQUES": 0,
+      "TRIGONOMETRIE": 0,
+      "NOMBRES": 0,
+      "LOGIQUE": 0
+    },
+    "by_niveau": {
+      "TSPE": 23
+    },
+    "fingerprints": [
+      "modeliser_dynamique_population_malthus_geometrique",
+      "modeliser_dynamique_population_verhulst_discret",
+      "modeliser_dynamique_population_verhulst_continu",
+      "modeliser_dynamique_proie_predateur_discret",
+      "etudier_suites_recurrentes",
+      "etudier_suites_geometriques",
+      "etudier_fonction_exponentielle",
+      "etudier_suites_arithmetico_geometriques",
+      "resoudre_equation_differentielle_y_ay_b",
+      "calculer_limites_suites",
+      "implementer_algorithme_calcul_termes_suite",
+      "implementer_algorithme_recherche_seuils",
+      "implementer_methode_euler",
+      "etudier_logarithme_fonction_reciproque_exponentielle",
+      "etudier_logarithme_equation_fonctionnelle",
+      "etudier_quadrature_hyperbole_logarithme",
+      "etudier_suites_arithmetiques",
+      "etudier_integrale_fonction_continue_positive",
+      "appliquer_theoreme_fondamental_calcul_integral",
+      "calculer_aires_methode_rectangles",
+      "calculer_aires_methode_trapezes",
+      "implementer_algorithme_briggs_logarithme",
+      "implementer_algorithme_brouncker_ln2"
+    ]
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "source": {
+    "pdf": "premiere_ens_sci.pdf",
+    "page": 11,
+    "text_length": 2156
+  },
+  "extraction": {
+    "date": "2026-01-09T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "metadata": {
+    "niveau": "1ES",
+    "niveau_complet": "Premiere Enseignement Scientifique",
+    "note": "Page d'Enseignement Scientifique. Les competences extraites sont les competences mathematiques transversales mentionnees dans le programme."
+  },
+  "competences": [
+    {
+      "code": "1ES-GR-551",
+      "intitule": "Interpreter des ordres de grandeur dans un contexte scientifique",
+      "fingerprint": "interpreter_ordres_grandeur_contexte",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Ordres de grandeur et puissances de 10",
+      "type": "capacite",
+      "description_detaillee": "Comprendre et interpreter les ordres de grandeur, notamment en lien avec l'age de la Terre (4,57.10^9 ans). Savoir lire et utiliser la notation scientifique pour exprimer des grandeurs cosmologiques.",
+      "formulation_bo": "Ordres de grandeur.",
+      "connaissances_associees": [
+        "notation scientifique",
+        "puissances de 10",
+        "comparaison de grandeurs"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "1ES-GR-552",
+      "intitule": "Estimer le volume d'une reserve d'eau douce a partir de donnees",
+      "fingerprint": "estimer_volume_eau_douce",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Grandeurs et mesures",
+      "type": "capacite",
+      "description_detaillee": "A partir de donnees fournies sur la repartition de l'eau douce sur Terre, estimer le volume d'une reserve d'eau douce specifique en utilisant la proportionnalite et les ordres de grandeur.",
+      "formulation_bo": "Estimer le volume d'une reserve d'eau douce a partir de donnees fournies.",
+      "connaissances_associees": [
+        "volume",
+        "proportionnalite",
+        "ordres de grandeur",
+        "unites de volume"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "1ES-NB-553",
+      "intitule": "Utiliser la proportionnalite pour analyser la repartition de l'eau",
+      "fingerprint": "utiliser_proportionnalite_eau",
+      "niveau": "1ES",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Proportionnalite et pourcentages",
+      "type": "capacite",
+      "description_detaillee": "Appliquer les concepts de proportionnalite pour etudier la repartition inegale de l'eau douce et de l'eau salée sur Terre, notamment pour determiner les pourcentages de reserves potables.",
+      "formulation_bo": "Proportionnalite.",
+      "connaissances_associees": [
+        "proportionnalite",
+        "pourcentages",
+        "rapports et ratios"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "1ES-GE-554",
+      "intitule": "Reconnaitre les proprietes geometriques du cercle et de la sphere",
+      "fingerprint": "reconnaitre_cercle_sphere",
+      "niveau": "1ES",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Formes geometriques",
+      "type": "contenu",
+      "description_detaillee": "Identifier et caracteriser les formes geometriques : cercle, sphere et disque. Utiliser ces concepts pour decrire les trajectoires circulaires de la Terre et de la Lune.",
+      "formulation_bo": "Geometrie : cercle, sphere et disque ; rotation.",
+      "connaissances_associees": [
+        "cercle",
+        "sphere",
+        "disque",
+        "proprietes geometriques"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "1ES-GE-555",
+      "intitule": "Appliquer le concept de rotation pour decrire des mouvements circulaires",
+      "fingerprint": "appliquer_rotation_mouvements",
+      "niveau": "1ES",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Transformations et mouvements",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le concept de rotation pour decrire et analyser des mouvements circulaires, notamment la rotation de la Terre sur elle-même et autour du Soleil, ainsi que la rotation de la Lune.",
+      "formulation_bo": "Rotation.",
+      "connaissances_associees": [
+        "rotation",
+        "trajectoire circulaire",
+        "mouvements periodiques"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 11
+      }
+    },
+    {
+      "code": "1ES-GE-556",
+      "intitule": "Interpreter l'aspect variable de la Lune en fonction de sa position geometrique",
+      "fingerprint": "interpreter_phases_lune_geometrie",
+      "niveau": "1ES",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Formes geometriques et observation",
+      "type": "capacite",
+      "description_detaillee": "Expliquer les phases de la Lune en utilisant les proprietes geometriques des positions relatives de la Terre, de la Lune et du Soleil. Comprendre pourquoi la Lune presente toujours la meme face a la Terre.",
+      "formulation_bo": "Interpreter l'aspect de la Lune dans le ciel en fonction de sa position par rapport a la Terre et au Soleil.",
+      "connaissances_associees": [
+        "cercle",
+        "sphere",
+        "rotation",
+        "positions relatives",
+        "symetrie"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 11
+      }
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "by_type": {
+      "contenu": 1,
+      "capacite": 5
+    },
+    "by_domaine": {
+      "GRANDEURS": 2,
+      "NOMBRES": 1,
+      "GEOMETRIE": 3
+    },
+    "fingerprints": [
+      "interpreter_ordres_grandeur_contexte",
+      "estimer_volume_eau_douce",
+      "utiliser_proportionnalite_eau",
+      "reconnaitre_cercle_sphere",
+      "appliquer_rotation_mouvements",
+      "interpreter_phases_lune_geometrie"
+    ]
+  },
+  "notes_extraction": {
+    "observations": [
+      "Page traitant d'Enseignement Scientifique avec des competences scientifiques primaires (histoire des sciences, datation, exoplanetes)",
+      "Extraction limitee aux competences mathematiques transversales explicitement mentionnees",
+      "Domaines mathematiques impliques : Grandeurs et mesures (ordres de grandeur, volumes), Nombres (proportionnalite), Geometrie (cercle, sphere, rotation)"
+    ],
+    "contexte_page": "Section 3.2 et 3.3 du programme ES : L'age de la Terre et La Terre dans l'Univers",
+    "references_bo": [
+      "Ordres de grandeur",
+      "Proportionnalite",
+      "Grandeurs et mesures, puissances de 10, ordres de grandeur",
+      "Geometrie : cercle, sphere et disque ; rotation"
+    ]
+  }
+}

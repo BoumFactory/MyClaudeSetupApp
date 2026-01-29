@@ -1,0 +1,664 @@
+{
+  "source": {
+    "pdf": "TG_comp.pdf",
+    "page": 7,
+    "text_length": 1847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TG-GR-351",
+      "intitule": "Calculer l'aire d'un triangle",
+      "fingerprint": "calculer_aire_triangle",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes",
+      "type": "capacite",
+      "description_detaillee": "Déterminer l'aire d'un triangle en utilisant la formule appropriée",
+      "formulation_bo": "revoir les aires des figures planes usuelles : triangles",
+      "connaissances_associees": ["notion d'aire", "formules de base"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-352",
+      "intitule": "Calculer l'aire d'un trapèze",
+      "fingerprint": "calculer_aire_trapeze",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes",
+      "type": "capacite",
+      "description_detaillee": "Déterminer l'aire d'un trapèze en utilisant la formule appropriée",
+      "formulation_bo": "revoir les aires des figures planes usuelles : trapèzes",
+      "connaissances_associees": ["notion d'aire", "formules de base"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-353",
+      "intitule": "Calculer l'aire d'un rectangle",
+      "fingerprint": "calculer_aire_rectangle",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes",
+      "type": "capacite",
+      "description_detaillee": "Déterminer l'aire d'un rectangle en multipliant longueur et largeur",
+      "formulation_bo": "revoir les aires des figures planes usuelles : rectangles",
+      "connaissances_associees": ["notion d'aire", "formules de base"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-354",
+      "intitule": "Calculer l'aire d'un carré",
+      "fingerprint": "calculer_aire_carre",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes",
+      "type": "capacite",
+      "description_detaillee": "Déterminer l'aire d'un carré en utilisant le côté",
+      "formulation_bo": "revoir les aires des figures planes usuelles : carrés",
+      "connaissances_associees": ["notion d'aire", "formules de base"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-355",
+      "intitule": "Calculer l'aire d'un disque",
+      "fingerprint": "calculer_aire_disque",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes",
+      "type": "capacite",
+      "description_detaillee": "Déterminer l'aire d'un disque en utilisant le rayon et π",
+      "formulation_bo": "revoir les aires des figures planes usuelles : disques",
+      "connaissances_associees": ["notion d'aire", "nombre pi", "rayon"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-356",
+      "intitule": "Appliquer la propriété d'additivité des aires",
+      "fingerprint": "appliquer_additivite_aires",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le fait que l'aire d'une figure composée est la somme des aires de ses parties",
+      "formulation_bo": "utilisation de propriétés classiques : additivité",
+      "connaissances_associees": ["notion d'aire", "décomposition de figures"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-357",
+      "intitule": "Appliquer l'invariance d'aire par symétrie",
+      "fingerprint": "appliquer_invariance_aire_symetrie",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le fait que l'aire d'une figure ne change pas par une transformation de symétrie",
+      "formulation_bo": "utilisation de propriétés classiques : invariance par symétrie",
+      "connaissances_associees": ["notion d'aire", "symétries"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-358",
+      "intitule": "Appliquer l'invariance d'aire par translation",
+      "fingerprint": "appliquer_invariance_aire_translation",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires des figures planes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le fait que l'aire d'une figure ne change pas par translation",
+      "formulation_bo": "utilisation de propriétés classiques : invariance par translation",
+      "connaissances_associees": ["notion d'aire", "translation"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-359",
+      "intitule": "Calculer l'aire sous une courbe par approximations successives",
+      "fingerprint": "calculer_aire_sous_courbe_approximations",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "capacite",
+      "description_detaillee": "Estimer l'aire entre une courbe et l'axe des abscisses en utilisant des méthodes d'approximation itératives",
+      "formulation_bo": "calculs d'aires par approximations successives",
+      "connaissances_associees": ["notion d'aire", "algorithmes", "fonctions"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-360",
+      "intitule": "Calculer l'aire sous une courbe par la méthode des rectangles",
+      "fingerprint": "calculer_aire_rectangles",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "capacite",
+      "description_detaillee": "Approximer l'aire sous la courbe d'une fonction à l'aide de rectangles",
+      "formulation_bo": "approximation de l'aire sous la courbe de la fonction exponentielle sur [0,1] par la méthode des rectangles",
+      "connaissances_associees": ["rectangles", "approximation numérique", "fonction exponentielle"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-361",
+      "intitule": "Calculer l'aire sous une courbe par la méthode de Monte-Carlo",
+      "fingerprint": "calculer_aire_monte_carlo",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "capacite",
+      "description_detaillee": "Estimer l'aire sous une courbe en utilisant une approche probabiliste par points aléatoires",
+      "formulation_bo": "estimation de l'aire sous une courbe par la méthode de Monte-Carlo",
+      "connaissances_associees": ["probabilités", "approximation numérique", "aléatoire"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-362",
+      "intitule": "Calculer le volume d'un cylindre",
+      "fingerprint": "calculer_volume_cylindre",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Volumes des solides",
+      "type": "capacite",
+      "description_detaillee": "Déterminer le volume d'un cylindre de révolution",
+      "formulation_bo": "calculs de volumes notamment pour des solides de révolution (cylindre, cône, sphère, paraboloïde de révolution)",
+      "connaissances_associees": ["notion de volume", "solide de révolution"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-363",
+      "intitule": "Calculer le volume d'un cône",
+      "fingerprint": "calculer_volume_cone",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Volumes des solides",
+      "type": "capacite",
+      "description_detaillee": "Déterminer le volume d'un cône de révolution",
+      "formulation_bo": "calculs de volumes notamment pour des solides de révolution (cylindre, cône, sphère, paraboloïde de révolution)",
+      "connaissances_associees": ["notion de volume", "solide de révolution"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-364",
+      "intitule": "Calculer le volume d'une sphère",
+      "fingerprint": "calculer_volume_sphere",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Volumes des solides",
+      "type": "capacite",
+      "description_detaillee": "Déterminer le volume d'une sphère",
+      "formulation_bo": "calculs de volumes notamment pour des solides de révolution (cylindre, cône, sphère, paraboloïde de révolution)",
+      "connaissances_associees": ["notion de volume", "solide de révolution"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-GR-365",
+      "intitule": "Calculer le volume d'un paraboloïde de révolution",
+      "fingerprint": "calculer_volume_paraboloide",
+      "niveau": "TG",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Volumes des solides",
+      "type": "capacite",
+      "description_detaillee": "Déterminer le volume d'un paraboloïde de révolution",
+      "formulation_bo": "calculs de volumes notamment pour des solides de révolution (cylindre, cône, sphère, paraboloïde de révolution)",
+      "connaissances_associees": ["notion de volume", "solide de révolution", "parabole"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-366",
+      "intitule": "Déterminer une primitive d'une fonction",
+      "fingerprint": "determiner_primitive_fonction",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "contenu",
+      "description_detaillee": "Trouver une fonction dont la dérivée est une fonction donnée",
+      "formulation_bo": "primitives",
+      "connaissances_associees": ["dérivation", "fonction", "calcul intégral"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-367",
+      "intitule": "Calculer l'intégrale d'une fonction continue et positive",
+      "fingerprint": "calculer_integrale_fonction_continue_positive",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "contenu",
+      "description_detaillee": "Calculer l'intégrale d'une fonction continue et positive sur un intervalle donné",
+      "formulation_bo": "intégrale d'une fonction continue et positive",
+      "connaissances_associees": ["fonction continue", "fonction positive", "calcul intégral"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-368",
+      "intitule": "Déterminer la limite d'une suite",
+      "fingerprint": "determiner_limite_suite",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites de suites",
+      "type": "contenu",
+      "description_detaillee": "Trouver ou caractériser la limite d'une suite numérique",
+      "formulation_bo": "limites de suites",
+      "connaissances_associees": ["suites numériques", "convergence", "divergence"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-369",
+      "intitule": "Étudier la continuité d'une fonction",
+      "fingerprint": "etudier_continuite_fonction",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité et dérivation",
+      "type": "contenu",
+      "description_detaillee": "Analyser la continuité d'une fonction sur un intervalle ou en un point",
+      "formulation_bo": "continuité et dérivation",
+      "connaissances_associees": ["fonction", "limite"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-370",
+      "intitule": "Étudier la dérivation d'une fonction",
+      "fingerprint": "etudier_derivation_fonction",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité et dérivation",
+      "type": "contenu",
+      "description_detaillee": "Analyser la dérivabilité d'une fonction et calculer sa dérivée",
+      "formulation_bo": "continuité et dérivation",
+      "connaissances_associees": ["fonction", "dérivée", "taux de variation"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AG-371",
+      "intitule": "Écrire un algorithme pour calculer un terme d'une suite",
+      "fingerprint": "ecrire_algorithme_terme_suite",
+      "niveau": "TG",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes et suites",
+      "type": "algorithme",
+      "description_detaillee": "Rédiger ou implémenter un algorithme permettant de calculer le terme de rang n d'une suite",
+      "formulation_bo": "calcul d'un terme de rang donné d'une suite",
+      "connaissances_associees": ["suites numériques", "programmation", "boucles"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AG-372",
+      "intitule": "Écrire un algorithme de recherche d'une valeur approchée",
+      "fingerprint": "ecrire_algorithme_valeur_approchee",
+      "niveau": "TG",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes et approximation",
+      "type": "algorithme",
+      "description_detaillee": "Rédiger ou implémenter un algorithme permettant de trouver une valeur approchée avec une précision donnée",
+      "formulation_bo": "recherche d'une valeur approchée de précision donnée",
+      "connaissances_associees": ["algorithmes", "approximation numérique", "précision"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-373",
+      "intitule": "Approximer le nombre π",
+      "fingerprint": "approximer_nombre_pi",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Nombres remarquables",
+      "type": "approfondissement",
+      "description_detaillee": "Calculer une valeur approchée de π en utilisant diverses méthodes historiques ou numériques",
+      "formulation_bo": "approximation de π et aire d'un disque",
+      "connaissances_associees": ["nombre pi", "aire du disque", "approximation numérique"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-374",
+      "intitule": "Résoudre la quadrature de la parabole par la méthode d'Archimède",
+      "fingerprint": "resoudre_quadrature_parabole_archimede",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer la méthode historique d'Archimède pour déterminer l'aire sous une parabole",
+      "formulation_bo": "quadrature de la parabole par la méthode d'Archimède",
+      "connaissances_associees": ["parabole", "aire sous courbe", "méthode historique"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-375",
+      "intitule": "Résoudre la quadrature de l'hyperbole par la méthode de Brouncker",
+      "fingerprint": "resoudre_quadrature_hyperbole_brouncker",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer la méthode de Brouncker pour déterminer l'aire sous une hyperbole",
+      "formulation_bo": "quadrature de l'hyperbole par la méthode de Brouncker",
+      "connaissances_associees": ["hyperbole", "aire sous courbe", "méthode historique"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-376",
+      "intitule": "Résoudre la quadrature de l'hyperbole par la méthode de Grégoire de Saint-Vincent",
+      "fingerprint": "resoudre_quadrature_hyperbole_gregoire_saint_vincent",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul intégral",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer la méthode de Grégoire de Saint-Vincent pour déterminer l'aire sous une hyperbole",
+      "formulation_bo": "quadrature de l'hyperbole par la méthode de Grégoire de Saint-Vincent",
+      "connaissances_associees": ["hyperbole", "aire sous courbe", "méthode historique"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-ST-377",
+      "intitule": "Analyser la répartition des richesses dans une population",
+      "fingerprint": "analyser_repartition_richesses",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique descriptive",
+      "type": "capacite",
+      "description_detaillee": "Étudier comment les richesses sont distribuées dans une population et comparer différentes répartitions",
+      "formulation_bo": "étude de la répartition de richesses dans la population d'un pays, des salaires dans une entreprise",
+      "connaissances_associees": ["statistique descriptive", "répartition", "comparaison"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-ST-378",
+      "intitule": "Définir et interpréter la courbe de Lorenz",
+      "fingerprint": "definir_courbe_lorenz",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Courbe de Lorenz et inégalités",
+      "type": "contenu",
+      "description_detaillee": "Définir la courbe de Lorenz, lire et interpréter ses propriétés géométriques et son positionnement par rapport à la première bissectrice",
+      "formulation_bo": "courbe de Lorenz : présentation, définition, lecture, construction d'une ligne polygonale à partir des quantiles, interprétation",
+      "connaissances_associees": ["fonction continue", "fonction croissante", "fonction convexe", "point fixe", "bissectrice"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-ST-379",
+      "intitule": "Construire la courbe de Lorenz à partir de données réelles",
+      "fingerprint": "construire_courbe_lorenz",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Courbe de Lorenz et inégalités",
+      "type": "capacite",
+      "description_detaillee": "À partir de données de répartition, construire une ligne polygonale en utilisant les quantiles pour représenter la courbe de Lorenz",
+      "formulation_bo": "construction d'une ligne polygonale à partir des quantiles",
+      "connaissances_associees": ["quantiles", "donnée réelle", "représentation graphique", "déciles"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-ST-380",
+      "intitule": "Modéliser la courbe de Lorenz par une fonction mathématique",
+      "fingerprint": "modeliser_courbe_lorenz_fonction",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Courbe de Lorenz et inégalités",
+      "type": "capacite",
+      "description_detaillee": "Déterminer une fonction continue, croissante et convexe de [0,1] dans [0,1] ayant 0 et 1 comme points fixes pour modéliser la courbe de Lorenz",
+      "formulation_bo": "modélisation par la courbe représentative d'une fonction continue, croissante, convexe de [0,1] dans [0,1] et ayant 0 et 1 comme points fixes",
+      "connaissances_associees": ["fonction continue", "fonction croissante", "fonction convexe", "point fixe"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-ST-381",
+      "intitule": "Définir et calculer l'indice de Gini",
+      "fingerprint": "definir_calculer_indice_gini",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Courbe de Lorenz et inégalités",
+      "type": "contenu",
+      "description_detaillee": "Définir l'indice de Gini comme mesure du degré d'inégalité et calculer sa valeur à partir d'une répartition donnée",
+      "formulation_bo": "indice de Gini : définition, calcul",
+      "connaissances_associees": ["courbe de Lorenz", "aire sous courbe", "inégalité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-ST-382",
+      "intitule": "Interpréter l'indice de Gini comme mesure d'inégalité",
+      "fingerprint": "interpreter_indice_gini",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Courbe de Lorenz et inégalités",
+      "type": "capacite",
+      "description_detaillee": "Donner du sens à la valeur de l'indice de Gini en la reliant au degré d'inégalité d'une répartition",
+      "formulation_bo": "indice de Gini : interprétation comme mesure du degré d'inégalité d'une répartition",
+      "connaissances_associees": ["indice de Gini", "inégalité", "répartition"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-ST-383",
+      "intitule": "Comparer plusieurs répartitions à l'aide de l'indice de Gini",
+      "fingerprint": "comparer_repartitions_indice_gini",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Courbe de Lorenz et inégalités",
+      "type": "capacite",
+      "description_detaillee": "Utiliser l'indice de Gini pour comparer le degré d'inégalité de différentes répartitions",
+      "formulation_bo": "comparaison de plusieurs répartitions",
+      "connaissances_associees": ["indice de Gini", "répartition", "comparaison"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-ST-384",
+      "intitule": "Analyser l'évolution de l'indice de Gini sur une période",
+      "fingerprint": "analyser_evolution_indice_gini",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Courbe de Lorenz et inégalités",
+      "type": "capacite",
+      "description_detaillee": "Étudier comment l'indice de Gini varie au cours du temps pour une population donnée",
+      "formulation_bo": "évolution de l'indice sur une période",
+      "connaissances_associees": ["indice de Gini", "variation temporelle", "série temporelle"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-ST-385",
+      "intitule": "Déterminer les caractéristiques de dispersion d'une distribution",
+      "fingerprint": "determiner_caracteristiques_dispersion",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistique descriptive",
+      "type": "contenu",
+      "description_detaillee": "Calculer ou analyser les indicateurs de dispersion : médiane, quartiles, déciles, et rapport interdécile",
+      "formulation_bo": "statistique descriptive : caractéristiques de dispersion (médiane, quartiles, déciles, rapport interdécile)",
+      "connaissances_associees": ["médiane", "quartile", "décile", "rapport", "dispersion"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-AN-386",
+      "intitule": "Étudier une fonction d'une variable",
+      "fingerprint": "etudier_fonction_variable",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions d'une variable",
+      "type": "contenu",
+      "description_detaillee": "Analyser les propriétés et le comportement d'une fonction à une variable réelle",
+      "formulation_bo": "fonctions d'une variable",
+      "connaissances_associees": ["fonction", "dérivée", "continuité", "limite"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    },
+    {
+      "code": "TG-PR-387",
+      "intitule": "Utiliser les probabilités dans le contexte de répartition des richesses",
+      "fingerprint": "utiliser_probabilites_repartition",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Probabilités appliquées",
+      "type": "contenu",
+      "description_detaillee": "Appliquer des concepts probabilistes à l'analyse de la répartition des richesses ou des inégalités",
+      "formulation_bo": "probabilités",
+      "connaissances_associees": ["probabilité", "répartition", "inégalité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 7
+      }
+    }
+  ],
+  "summary": {
+    "total": 37,
+    "by_type": {
+      "capacite": 16,
+      "contenu": 9,
+      "approfondissement": 3,
+      "algorithme": 2,
+      "demonstration": 0
+    },
+    "by_domaine": {
+      "GRANDEURS": 9,
+      "ANALYSE": 9,
+      "STATISTIQUES": 9,
+      "ALGORITHMIQUE": 2,
+      "PROBABILITES": 1,
+      "NOMBRES": 1
+    },
+    "fingerprints": [
+      "calculer_aire_triangle",
+      "calculer_aire_trapeze",
+      "calculer_aire_rectangle",
+      "calculer_aire_carre",
+      "calculer_aire_disque",
+      "appliquer_additivite_aires",
+      "appliquer_invariance_aire_symetrie",
+      "appliquer_invariance_aire_translation",
+      "calculer_aire_sous_courbe_approximations",
+      "calculer_aire_rectangles",
+      "calculer_aire_monte_carlo",
+      "calculer_volume_cylindre",
+      "calculer_volume_cone",
+      "calculer_volume_sphere",
+      "calculer_volume_paraboloide",
+      "determiner_primitive_fonction",
+      "calculer_integrale_fonction_continue_positive",
+      "determiner_limite_suite",
+      "etudier_continuite_fonction",
+      "etudier_derivation_fonction",
+      "ecrire_algorithme_terme_suite",
+      "ecrire_algorithme_valeur_approchee",
+      "approximer_nombre_pi",
+      "resoudre_quadrature_parabole_archimede",
+      "resoudre_quadrature_hyperbole_brouncker",
+      "resoudre_quadrature_hyperbole_gregoire_saint_vincent",
+      "analyser_repartition_richesses",
+      "definir_courbe_lorenz",
+      "construire_courbe_lorenz",
+      "modeliser_courbe_lorenz_fonction",
+      "definir_calculer_indice_gini",
+      "interpreter_indice_gini",
+      "comparer_repartitions_indice_gini",
+      "analyser_evolution_indice_gini",
+      "determiner_caracteristiques_dispersion",
+      "etudier_fonction_variable",
+      "utiliser_probabilites_repartition"
+    ]
+  }
+}

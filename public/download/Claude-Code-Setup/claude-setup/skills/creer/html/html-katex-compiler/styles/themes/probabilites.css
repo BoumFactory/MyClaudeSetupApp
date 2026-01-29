@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Probabilités
+   Palette Orange/Ambre - Hasard, dés, arbres
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #e67e22;
+    --theme-secondary: #f39c12;
+    --theme-accent: #d35400;
+
+    /* Couleurs des blocs */
+    --color-definition: #e67e22;
+    --color-theoreme: #d35400;
+    --color-propriete: #f39c12;
+    --color-exemple: #f5b041;
+    --color-methode: #f8c471;
+    --color-remarque: #fad7a0;
+    --color-exercice: #fdebd0;
+
+    /* Backgrounds */
+    --bg-definition: #fef5e7;
+    --bg-theoreme: #fdebd0;
+    --bg-propriete: #fef9e7;
+    --bg-exemple: #fef9f0;
+    --bg-methode: #fffbf2;
+    --bg-remarque: #fffcf5;
+    --bg-exercice: #fffdf8;
+}
+
+/* Titres */
+h1 { color: #9c4100; }
+h2 { color: #b34d00; }
+h3 { color: #ca5700; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

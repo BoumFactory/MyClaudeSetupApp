@@ -1,0 +1,133 @@
+{
+  "source": {
+    "pdf": "1ere_techno.pdf",
+    "page": 5,
+    "text_length": 2849
+  },
+  "extraction": {
+    "date": "2026-01-02T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page introductive - organisation du programme, peu de competences techniques specifiques"
+  },
+  "competences": [
+    {
+      "code": "1TC-LO-251",
+      "intitule": "Distinguer le statut des enonces mathematiques (conjecture, definition, propriete, demonstration, theoreme)",
+      "fingerprint": "distinguer_statut_enonces_mathematiques",
+      "niveau": "1TC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir identifier et differencier le statut d'un enonce mathematique : conjecture (hypothese non demontree), definition (introduction d'un concept), propriete (admise ou demontree), demonstration (raisonnement prouvant une propriete), theoreme (propriete importante demontree)",
+      "formulation_bo": "il est essentiel de bien distinguer le statut des enonces (conjecture, definition, propriete - admise ou demontree -, demonstration, theoreme)",
+      "connaissances_associees": ["notion de conjecture", "notion de definition", "notion de propriete", "notion de demonstration", "notion de theoreme"],
+      "source": {
+        "pdf": "1ere_techno.pdf",
+        "page": 5
+      }
+    },
+    {
+      "code": "1TC-AG-252",
+      "intitule": "Utiliser le langage Python pour resoudre des situations algorithmiques",
+      "fingerprint": "utiliser_python_situations_algorithmiques",
+      "niveau": "1TC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmique et programmation",
+      "type": "capacite",
+      "description_detaillee": "Savoir programmer en Python pour resoudre des problemes mathematiques identifies dans le programme. Le langage Python est l'un des deux outils (avec le tableur) a maitriser pour les situations algorithmiques",
+      "formulation_bo": "situations qui doivent toutes faire l'objet d'un travail specifique utilisant le langage Python ou le tableur",
+      "connaissances_associees": ["syntaxe Python de base", "variables", "boucles", "fonctions"],
+      "source": {
+        "pdf": "1ere_techno.pdf",
+        "page": 5
+      }
+    },
+    {
+      "code": "1TC-AG-253",
+      "intitule": "Utiliser le tableur pour resoudre des situations algorithmiques",
+      "fingerprint": "utiliser_tableur_situations_algorithmiques",
+      "niveau": "1TC",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmique et programmation",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser un tableur pour resoudre des problemes mathematiques identifies dans le programme. Le tableur est l'un des deux outils (avec Python) a maitriser pour les situations algorithmiques",
+      "formulation_bo": "situations qui doivent toutes faire l'objet d'un travail specifique utilisant le langage Python ou le tableur",
+      "connaissances_associees": ["formules tableur", "references cellules", "recopie de formules"],
+      "source": {
+        "pdf": "1ere_techno.pdf",
+        "page": 5
+      }
+    },
+    {
+      "code": "1TC-AN-254",
+      "intitule": "Modeliser des evolutions a l'aide des outils d'analyse",
+      "fingerprint": "modeliser_evolutions_analyse",
+      "niveau": "1TC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Modelisation",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser les outils de l'analyse mathematique (fonctions, suites, derivees) pour etudier ou modeliser des phenomenes d'evolution",
+      "formulation_bo": "analyse pour etudier ou modeliser des evolutions",
+      "connaissances_associees": ["fonctions", "suites", "derivees", "variations"],
+      "source": {
+        "pdf": "1ere_techno.pdf",
+        "page": 5
+      }
+    },
+    {
+      "code": "1TC-ST-255",
+      "intitule": "Traiter et interpreter des donnees statistiques",
+      "fingerprint": "traiter_interpreter_donnees_statistiques",
+      "niveau": "1TC",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Statistiques descriptives",
+      "type": "capacite",
+      "description_detaillee": "Savoir collecter, organiser, analyser et interpreter des donnees statistiques pour en tirer des conclusions",
+      "formulation_bo": "statistiques et probabilites pour traiter et interpreter des donnees",
+      "connaissances_associees": ["indicateurs statistiques", "representations graphiques", "series statistiques"],
+      "source": {
+        "pdf": "1ere_techno.pdf",
+        "page": 5
+      }
+    },
+    {
+      "code": "1TC-PR-256",
+      "intitule": "Modeliser des phenomenes aleatoires",
+      "fingerprint": "modeliser_phenomenes_aleatoires",
+      "niveau": "1TC",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Modelisation probabiliste",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser les outils probabilistes pour modeliser des situations comportant une part de hasard",
+      "formulation_bo": "statistiques et probabilites [...] pour modeliser des phenomenes aleatoires",
+      "connaissances_associees": ["probabilites", "lois de probabilite", "experiences aleatoires"],
+      "source": {
+        "pdf": "1ere_techno.pdf",
+        "page": 5
+      }
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "by_type": {
+      "capacite": 6
+    },
+    "by_domaine": {
+      "LOGIQUE": 1,
+      "ALGORITHMIQUE": 2,
+      "ANALYSE": 1,
+      "STATISTIQUES": 1,
+      "PROBABILITES": 1
+    },
+    "fingerprints": [
+      "distinguer_statut_enonces_mathematiques",
+      "utiliser_python_situations_algorithmiques",
+      "utiliser_tableur_situations_algorithmiques",
+      "modeliser_evolutions_analyse",
+      "traiter_interpreter_donnees_statistiques",
+      "modeliser_phenomenes_aleatoires"
+    ]
+  }
+}

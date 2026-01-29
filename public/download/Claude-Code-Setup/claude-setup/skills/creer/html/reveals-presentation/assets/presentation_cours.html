@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expressions algébriques - Seconde</title>
+  <meta name="author" content="Lycée Camille Claudel">
+  <meta name="description" content="Cours sur les expressions algébriques - Développement et factorisation">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.css">
+
+  <!-- Custom styles pour lycée -->
+  <style>
+    :root {
+      --main-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --background-color: #ffffff;
+      --text-color: #333333;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+    }
+
+    .reveal {
+      font-family: 'Roboto', 'Arial', sans-serif;
+      font-size: 20px;
+      color: var(--text-color);
+    }
+
+    .reveal h1 {
+      font-size: 2.2em;
+      color: var(--main-color);
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h2 {
+      font-size: 1.8em;
+      color: var(--main-color);
+      margin-bottom: 0.8em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.3em;
+    }
+
+    .reveal h3 {
+      font-size: 1.4em;
+      color: var(--secondary-color);
+      margin-bottom: 0.5em;
+    }
+
+    .reveal ul, .reveal ol {
+      margin-top: 1em;
+    }
+
+    .reveal li {
+      margin-bottom: 0.5em;
+    }
+
+    /* Boxes */
+    .box-info {
+      background-color: #ecf0f1;
+      border-left: 5px solid var(--secondary-color);
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+
+    .box-warning {
+      background-color: #fff3cd;
+      border-left: 5px solid var(--warning-color);
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+
+    .box-success {
+      background-color: #d4edda;
+      border-left: 5px solid var(--success-color);
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+
+    .box-error {
+      background-color: #f8d7da;
+      border-left: 5px solid var(--accent-color);
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+
+    .result-box {
+      background-color: #f8f9fa;
+      border: 2px solid var(--main-color);
+      padding: 1em;
+      text-align: center;
+      font-size: 1.3em;
+      font-weight: bold;
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+
+    .formula-box {
+      background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+      border: 3px solid var(--secondary-color);
+      padding: 1em;
+      text-align: center;
+      font-size: 1.2em;
+      border-radius: 10px;
+      margin: 1em 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Exercices */
+    .exercise {
+      background: linear-gradient(135deg, #fff9e6 0%, #fffaf0 100%);
+      padding: 1.5em;
+      border-radius: 10px;
+      border: 2px solid #ffc107;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1em;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    .difficulty {
+      color: #ff9800;
+    }
+
+    .estimated-time {
+      color: #666;
+      font-style: italic;
+    }
+
+    .statement {
+      background-color: white;
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+      border: 1px solid #ddd;
+    }
+
+    /* Mise en forme */
+    .highlight {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    .question {
+      background-color: #e8f4f8;
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+      border: 2px solid var(--secondary-color);
+    }
+
+    .answer {
+      background-color: #e8f8f5;
+      padding: 1em;
+      border-radius: 8px;
+      margin-top: 1em;
+      border: 2px solid var(--success-color);
+    }
+
+    /* Colonnes */
+    .two-columns {
+      display: flex;
+      gap: 2em;
+    }
+
+    .two-columns > div {
+      flex: 1;
+    }
+
+    /* Navigation hints */
+    .nav-hint {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 0.5em 1em;
+      background-color: rgba(52, 152, 219, 0.2);
+      border: 2px solid var(--secondary-color);
+      border-radius: 8px;
+      font-size: 0.85em;
+      color: var(--secondary-color);
+      font-weight: bold;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Footer */
+    .reveal .slide-number {
+      background-color: var(--main-color);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    /* Liste sans puces */
+    .no-bullets {
+      list-style: none;
+    }
+
+    /* Espacement math */
+    .reveal .MathJax {
+      margin: 0.3em 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ========================================= -->
+      <!-- INTRODUCTION -->
+      <!-- ========================================= -->
+
+      <!-- Slide de titre -->
+      <section>
+        <h1>Expressions algébriques</h1>
+        <h3>Développement et Factorisation</h3>
+        <p>
+          <small><strong>Lycée Camille Claudel</strong></small><br>
+          <small>Classe de Seconde</small><br>
+          <small><em>Année 2025-2026</em></small>
+        </p>
+      </section>
+
+      <!-- Objectifs -->
+      <section>
+        <h2>Objectifs du chapitre</h2>
+        <ol>
+          <li class="fragment">Présenter une expression polynomiale sous forme développée, réduite et ordonnée</li>
+          <li class="fragment">Maîtriser les techniques de développement</li>
+          <li class="fragment">Connaître et appliquer les formules de factorisation</li>
+          <li class="fragment">Développer une démarche de recherche pour factoriser</li>
+        </ol>
+      </section>
+
+      <!-- Plan -->
+      <section>
+        <h2>Plan</h2>
+        <ol>
+          <li>Les polynômes</li>
+          <li>Développer une expression</li>
+          <li>Factoriser une expression</li>
+        </ol>
+      </section>
+
+      <!-- ========================================= -->
+      <!-- SECTION 1 : LES POLYNÔMES -->
+      <!-- ========================================= -->
+
+      <!-- H1 : Qu'est-ce qu'un monôme ? -->
+      <section>
+        <!-- Niveau 0 : Question -->
+        <section>
+          <h2>Qu'est-ce qu'un monôme ?</h2>
+          <div class="question">
+            <p><strong>Question :</strong> Comment définir un monôme ?</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour la définition
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Définition avec exemples -->
+        <section>
+          <h3>Définition</h3>
+          <div class="box-info">
+            <p><strong>Monôme :</strong> Expression algébrique formée du produit d'un coefficient \(a\) réel par une puissance (entière) d'une indéterminée \(X\) :</p>
+            <p class="formula-box">\[aX^n\]</p>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemples :</strong></p>
+            <ul>
+              <li>\(4X^0 = 4\)</li>
+              <li>\(-3X^1 = -3X\)</li>
+              <li>\(\pi X^2\)</li>
+              <li>\(12{,}5X^7\)</li>
+            </ul>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Remarque sur le degré ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Remarque sur le degré -->
+        <section>
+          <h3>Degré d'un monôme</h3>
+          <div class="box-success">
+            <p>L'exposant de \(X\) est appelé le <strong>degré du monôme</strong>.</p>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemples :</strong></p>
+            <ul class="no-bullets">
+              <li> \(-3X\) est de degré <strong>1</strong></li>
+              <li> \(\pi X^2\) est de degré <strong>2</strong></li>
+              <li> \(12{,}5X^7\) est de degré <strong>7</strong></li>
+              <li> \(4\) est de degré <strong>0</strong></li>
+              <li> \(0X = 0\) est de degré <strong>\(-\infty\)</strong></li>
+            </ul>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> FAQ ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : FAQ -->
+        <section>
+          <h3>💡 Questions fréquentes</h3>
+          <div class="fragment">
+            <p><strong>Q :</strong> Pourquoi utilise-t-on \(X\) majuscule et non \(x\) minuscule ?</p>
+          </div>
+          <div class="fragment">
+            <div class="answer">
+              <p><strong>R :</strong> \(X\) désigne une <strong>indéterminée</strong> (variable abstraite), tandis que \(x\) désignera une <strong>variable numérique</strong> dans les applications. Cette distinction sera importante plus tard !</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H2 : Qu'est-ce qu'un polynôme ? -->
+      <section>
+        <!-- Niveau 0 : Question -->
+        <section>
+          <h2>Qu'est-ce qu'un polynôme ?</h2>
+          <div class="question">
+            <p><strong>Question :</strong> Comment passe-t-on des monômes aux polynômes ?</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour la définition
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Définition avec exemple -->
+        <section>
+          <h3>Définition</h3>
+          <div class="box-info">
+            <p><strong>Polynôme :</strong> Une somme (finie) de monômes.</p>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemple :</strong></p>
+            <p>\[-3 + 8X^2 + 4X - 7X^3 - 7X + 10\]</p>
+            <p class="fragment">Ce polynôme contient 6 monômes.</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Forme réduite ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Remarque forme réduite -->
+        <section>
+          <h3>Forme réduite</h3>
+          <div class="box-warning">
+            <p><strong>Polynôme réduit :</strong> Tous ses monômes sont de degrés distincts.</p>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemple :</strong></p>
+            <ul class="no-bullets">
+              <li> \(3X^2 - 12X^5 + 2\) est <span class="highlight">réduit</span> ✓</li>
+              <li class="fragment"> \(5 + 7X - 14X^2 + 8X\) n'est <span class="highlight">pas réduit</span> ✗<br>
+              <small>(car \(7X\) et \(8X\) sont semblables)</small></li>
+            </ul>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Comment réduire ? ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : FAQ Comment réduire -->
+        <section>
+          <h3>💡 Comment réduire ?</h3>
+          <div class="fragment">
+            <p><strong>Q :</strong> Comment réduire \(5 + 7X - 14X^2 + 8X\) ?</p>
+          </div>
+          <div class="fragment">
+            <p><strong>R :</strong> Regrouper les termes de même degré :</p>
+            <p>\[\begin{align}
+            5 + 7X - 14X^2 + 8X &= 5 + (7X + 8X) - 14X^2 \\
+            &= 5 + 15X - 14X^2
+            \end{align}\]</p>
+          </div>
+          <div class="fragment">
+            <div class="result-box">
+              \(5 + 15X - 14X^2\)
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H3 : Forme ordonnée -->
+      <section>
+        <!-- Niveau 0 : Concept -->
+        <section>
+          <h2>Forme ordonnée</h2>
+          <div class="box-info">
+            <p><strong>Polynôme ordonné :</strong> Polynôme réduit dont les monômes sont rangés suivant les puissances <strong>décroissantes</strong> de \(X\).</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemples ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemples -->
+        <section>
+          <h3>Exemples</h3>
+          <ul class="no-bullets">
+            <li class="fragment"> \(-7X^3 + X - 3\) est <span class="highlight">ordonné</span> ✓</li>
+            <li class="fragment"> \(X - 7X^2 + 2\) n'est <span class="highlight">pas ordonné</span> ✗</li>
+          </ul>
+          <div class="fragment">
+            <p><strong>Correction :</strong></p>
+            <p>\[X - 7X^2 + 2 = -7X^2 + X + 2\]</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Erreur fréquente ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Erreur fréquente -->
+        <section>
+          <h3>⚠️ Erreur fréquente</h3>
+          <div class="box-error">
+            <p><strong>Attention !</strong> L'ordre des puissances est <strong>décroissant</strong>, pas croissant !</p>
+          </div>
+          <div class="fragment">
+            <p>❌ <strong>Faux :</strong> \(2 + X - 7X^2\) (ordre croissant des puissances)</p>
+          </div>
+          <div class="fragment">
+            <p>✓ <strong>Correct :</strong> \(-7X^2 + X + 2\) (ordre  décroissant des puissances)</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- ========================================= -->
+      <!-- SECTION 2 : DÉVELOPPER -->
+      <!-- ========================================= -->
+
+      <!-- H3bis : Pourquoi développer ? -->
+      <section>
+        <!-- Niveau 0 : Question et exemple initial -->
+        <section>
+          <h2>Pourquoi développer ?</h2>
+          <div class="question">
+            <p><strong>Problème :</strong> Est-ce que \(x^2(3x-1)\) est un polynôme ?</p>
+          </div>
+          <div class="fragment">
+            <div class="box-warning">
+              <p><strong>A priori non !</strong> Ce n'est pas une somme de monômes...</p>
+            </div>
+          </div>
+          <div class="fragment">
+            <p>Mais en distribuant \(x^2\), on peut le transformer !</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Développement détaillé ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Développement étape par étape -->
+        <section>
+          <h3>Développement de \(x^2(3x-1)\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>Étape 1 : On distribue \(x^2\)</em></p>
+            <p>\[x^2(3x-1) = x^2\times 3x - x^2\times 1\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="2">
+            <p><em>Étape 2 : On simplifie \(x^2 \times 1\)</em></p>
+            <p>\[= x^2\times 3x^1 - x^2\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>Étape 3 : On applique la règle des exposants</em></p>
+            <p>\[= 3x^{2+1} - x^2\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="4">
+            <p><em>Étape 4 : Résultat final</em></p>
+            <div class="result-box">
+              \[3x^3 - x^2\]
+            </div>
+          </div>
+          <div class="fragment" data-fragment-index="5">
+            <div class="box-success">
+              <p>Ainsi \(x^2(3x-1) = 3x^3 - x^2\) <strong>est bien un polynôme</strong> de degré 3 !</p>
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="6">
+            <i class="fas fa-arrow-down"></i> Convention ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Convention forme réduite ordonnée -->
+        <section>
+          <h3>Convention d'écriture</h3>
+          <div class="box-info">
+            <p><strong>Afin d'identifier chaque polynôme</strong>, la convention est de l'écrire sous forme :</p>
+            <ul class="fragment">
+              <li><strong>Développée</strong> : Uniquement des sommes de monômes</li>
+              <li class="fragment"><strong>Réduite</strong> : tous les monômes de degrés distincts</li>
+              <li class="fragment"><strong>Ordonnée</strong> : puissances décroissantes</li>
+            </ul>
+          </div>
+          <div class="fragment">
+            <p><strong>Pourquoi cette convention ?</strong></p>
+            <div class="box-warning fragment">
+              <p>Pour pouvoir <strong>comparer</strong> deux polynômes, on les met sous cette forme puis on compare les coefficients associés aux mêmes puissances.</p>
+            </div>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Définition d'égalité ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Définition et exemple égalité -->
+        <section>
+          <h3>Égalité de polynômes</h3>
+          <div class="box-info">
+            <p><strong>Définition :</strong></p>
+            <p>Deux polynômes sont dits <strong>égaux</strong> lorsqu'ils ont la <strong>même expression développée, réduite et ordonnée</strong>.</p>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemple :</strong></p>
+            <p>Les polynômes \(x^2(3x-1)\) et \(3x^3-x^2\) sont égaux car :</p>
+          </div>
+          <div class="fragment">
+            <p>\[\begin{align}
+            x^2(3x-1) &\text{ (forme factorisée)} \\
+            &= 3x^3 - x^2 \text{ (forme développée, réduite, ordonnée)}
+            \end{align}\]</p>
+          </div>
+          <div class="fragment">
+            <div class="box-success">
+              <p><strong>Conséquence :</strong> Pour vérifier si deux polynômes sont égaux, on les développe, réduit et ordonne, puis on compare terme à terme.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H4 : Distributivité -->
+      <section>
+        <!-- Niveau 0 : Formule -->
+        <section>
+          <h2>Distributivité</h2>
+          <div class="formula-box">
+            \[a(b+c) = ab + ac\]
+          </div>
+          <p><strong>Propriété fondamentale</strong> pour développer une expression.</p>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple -->
+        <section>
+          <h3>Exemple : Développer \(3(x+2)\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>On applique la distributivité :</em></p>
+            <p>\[3(x+2) = 3 \times x + 3 \times 2\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="2">
+            <p><em>On simplifie :</em></p>
+            <div class="result-box">
+              \(3x + 6\)
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="3">
+            <i class="fas fa-arrow-down"></i> Erreur courante ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Erreur courante -->
+        <section>
+          <h3>⚠️ Erreur fréquente</h3>
+          <div class="box-error">
+            <p><strong>Oublier de distribuer au 2ème terme</strong></p>
+          </div>
+          <div class="fragment">
+            <p>❌ <strong>Faux :</strong> \(3(x+2) = 3x + 2\)</p>
+            <p class="fragment"><small>(Le 3 n'a pas été distribué au 2)</small></p>
+          </div>
+          <div class="fragment">
+            <p>✓ <strong>Correct :</strong> \(3(x+2) = 3x + 6\)</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> FAQ ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : FAQ -->
+        <section>
+          <h3>💡 Questions fréquentes</h3>
+          <div class="fragment">
+            <p><strong>Q :</strong> Pourquoi doit-on distribuer ?</p>
+          </div>
+          <div class="fragment">
+            <div class="answer">
+              <p><strong>R :</strong> C'est une <strong>propriété axiomatique</strong> des nombres réels : la multiplication est distributive sur l'addition. Cela permet de transformer un produit en somme.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H5 : Double distributivité -->
+      <section>
+        <!-- Niveau 0 : Formule -->
+        <section>
+          <h2>Double distributivité</h2>
+          <div class="formula-box">
+            \[(a+b)(c+d) = ac + ad + bc + bd\]
+          </div>
+          <p><strong>Chaque terme du 1er facteur</strong> avec <strong>chaque terme du 2nd</strong>.</p>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple -->
+        <section>
+          <h3>Exemple : Développer \((x+2)(x+3)\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>On applique la double distributivité :</em></p>
+            <p>\[(x+2)(x+3) = x \times x + x \times 3 + 2 \times x + 2 \times 3\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="2">
+            <p><em>On simplifie :</em></p>
+            <p>\[= x^2 + 3x + 2x + 6\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>On réduit :</em></p>
+            <div class="result-box">
+              \(x^2 + 5x + 6\)
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="4">
+            <i class="fas fa-arrow-down"></i> Méthode visuelle ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Méthode visuelle -->
+        <section>
+          <h3>Méthode "chaque avec chaque"</h3>
+          <div class="box-success">
+            <p>\((x+2)(x+3)\)</p>
+            <ul class="no-bullets fragment">
+              <li>1️⃣ \(x \times x = x^2\)</li>
+              <li>2️⃣ \(x \times 3 = 3x\)</li>
+              <li>3️⃣ \(2 \times x = 2x\)</li>
+              <li>4️⃣ \(2 \times 3 = 6\)</li>
+            </ul>
+          </div>
+          <div class="fragment">
+            <p>Somme : \(x^2 + 3x + 2x + 6 = x^2 + 5x + 6\)</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Erreur courante ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Erreur courante -->
+        <section>
+          <h3>⚠️ Erreur à éviter</h3>
+          <div class="box-error">
+            <p><strong>Oublier les termes croisés</strong></p>
+          </div>
+          <div class="fragment">
+            <p>❌ <strong>Faux :</strong> \((x+2)(x+3) = x^2 + 6\)</p>
+            <p class="fragment"><small>(Les termes \(3x\) et \(2x\) ont été oubliés)</small></p>
+          </div>
+          <div class="fragment">
+            <p>✓ <strong>Correct :</strong> \((x+2)(x+3) = x^2 + 5x + 6\)</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- H6 : Identité remarquable (a+b)² -->
+      <section>
+        <!-- Niveau 0 : Formule -->
+        <section>
+          <h2>Identité remarquable : \((a+b)^2\)</h2>
+          <div class="formula-box">
+            \[(a+b)^2 = a^2 + 2ab + b^2\]
+          </div>
+          <p><strong>Formule à connaître par cœur !</strong></p>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple -->
+        <section>
+          <h3>Exemple : Développer \((x+3)^2\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>On identifie : \(a = x\) et \(b = 3\)</em></p>
+          </div>
+          <div class="fragment" data-fragment-index="2">
+            <p><em>On applique la formule :</em></p>
+            <p>\[(x+3)^2 = x^2 + 2 \times x \times 3 + 3^2\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>On simplifie :</em></p>
+            <div class="result-box">
+              \(x^2 + 6x + 9\)
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="4">
+            <i class="fas fa-arrow-down"></i> Astuce mnémotechnique ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Astuce -->
+        <section>
+          <h3>💡 Astuce pour retenir</h3>
+          <div class="box-success">
+            <p><strong>Structure :</strong></p>
+            <ol>
+              <li class="fragment">Carré du 1er : \(a^2\)</li>
+              <li class="fragment">Double produit : \(2ab\)</li>
+              <li class="fragment">Carré du 2ème : \(b^2\)</li>
+            </ol>
+          </div>
+          <div class="fragment">
+            <p><strong>Phrase :</strong> "Carré du premier, plus deux fois le produit, plus carré du second"</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> FAQ ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : FAQ -->
+        <section>
+          <h3>💡 Questions fréquentes</h3>
+          <div class="fragment">
+            <p><strong>Q :</strong> Pourquoi \((x+3)^2 \neq x^2 + 9\) ?</p>
+          </div>
+          <div class="fragment">
+            <div class="answer">
+              <p><strong>R :</strong> On ne peut pas distribuer l'exposant ! Il faut utiliser la formule :</p>
+              <p>\[(x+3)^2 = (x+3)(x+3) = x^2 + 3x + 3x + 9 = x^2 + 6x + 9\]</p>
+              <p>Le terme \(6x\) est essentiel et souvent oublié !</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H7 : Identité remarquable (a-b)² -->
+      <section>
+        <!-- Niveau 0 : Formule -->
+        <section>
+          <h2>Identité remarquable : \((a-b)^2\)</h2>
+          <div class="formula-box">
+            \[(a-b)^2 = a^2 - 2ab + b^2\]
+          </div>
+          <p><strong>Attention au signe du terme médian !</strong></p>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple -->
+        <section>
+          <h3>Exemple : Développer \((x-4)^2\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>On identifie : \(a = x\) et \(b = 4\)</em></p>
+          </div>
+          <div class="fragment" data-fragment-index="2">
+            <p><em>On applique la formule :</em></p>
+            <p>\[(x-4)^2 = x^2 - 2 \times x \times 4 + 4^2\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>On simplifie :</em></p>
+            <div class="result-box">
+              \(x^2 - 8x + 16\)
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="4">
+            <i class="fas fa-arrow-down"></i> Différence avec (a+b)² ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Différence avec (a+b)² -->
+        <section>
+          <h3>Comparaison : \((a+b)^2\) vs \((a-b)^2\)</h3>
+          <div class="two-columns">
+            <div class="fragment">
+              <div class="box-info">
+                <p>\((a+b)^2\)</p>
+                <p>\(= a^2 \mathbf{+} 2ab + b^2\)</p>
+              </div>
+            </div>
+            <div class="fragment">
+              <div class="box-warning">
+                <p>\((a-b)^2\)</p>
+                <p>\(= a^2 \mathbf{-} 2ab + b^2\)</p>
+              </div>
+            </div>
+          </div>
+          <div class="fragment">
+            <p><strong>Seul le terme médian change de signe !</strong></p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Erreur courante ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Erreur courante -->
+        <section>
+          <h3>⚠️ Erreur sur le signe</h3>
+          <div class="box-error">
+            <p><strong>Confusion sur le signe du terme médian</strong></p>
+          </div>
+          <div class="fragment">
+            <p>❌ <strong>Faux :</strong> \((x-4)^2 = x^2 + 8x + 16\)</p>
+            <p class="fragment"><small>(Le signe du terme médian est incorrect)</small></p>
+          </div>
+          <div class="fragment">
+            <p>✓ <strong>Correct :</strong> \((x-4)^2 = x^2 - 8x + 16\)</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- H8 : Identité remarquable a²-b² -->
+      <section>
+        <!-- Niveau 0 : Formule -->
+        <section>
+          <h2>Identité remarquable : \(a^2-b^2\)</h2>
+          <div class="formula-box">
+            \[(a-b)(a+b) = a^2 - b^2\]
+          </div>
+          <p><strong>Différence de deux carrés</strong></p>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple -->
+        <section>
+          <h3>Exemple : Développer \((x-5)(x+5)\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>On identifie : \(a = x\) et \(b = 5\)</em></p>
+          </div>
+          <div class="fragment" data-fragment-index="2">
+            <p><em>On applique la formule :</em></p>
+            <p>\[(x-5)(x+5) = x^2 - 5^2\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>On simplifie :</em></p>
+            <div class="result-box">
+              \(x^2 - 25\)
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="4">
+            <i class="fas fa-arrow-down"></i> Reconnaissance visuelle ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Reconnaissance visuelle -->
+        <section>
+          <h3>Comment reconnaître cette formule ?</h3>
+          <div class="box-success">
+            <p><strong>Indices visuels :</strong></p>
+            <ul class="fragment">
+              <li>Produit de deux binômes</li>
+              <li>Mêmes termes dans les deux facteurs</li>
+              <li>Signes opposés : \((a\mathbf{-}b)(a\mathbf{+}b)\)</li>
+            </ul>
+          </div>
+          <div class="fragment">
+            <p><strong>Résultat :</strong> Disparition des termes en \(x\), il ne reste que les carrés !</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Calcul mental ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Application calcul mental -->
+        <section>
+          <h3>💡 Application au calcul mental</h3>
+          <div class="fragment">
+            <p><strong>Q :</strong> Calculer \(103 \times 97\) sans calculatrice ?</p>
+          </div>
+          <div class="fragment">
+            <p><strong>R :</strong> On remarque que \(103 = 100 + 3\) et \(97 = 100 - 3\)</p>
+          </div>
+          <div class="fragment">
+            <p>\[\begin{align}
+            103 \times 97 &= (100+3)(100-3) \\
+            &= 100^2 - 3^2 \\
+            &= 10\,000 - 9 \\
+            &= 9\,991
+            \end{align}\]</p>
+          </div>
+          <div class="fragment">
+            <div class="result-box">
+              \(103 \times 97 = 9\,991\)
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H9 : Exercice développement -->
+      <section>
+        <!-- Niveau 0 : Énoncé -->
+        <section class="exercise">
+          <h2>Exercice : Développement</h2>
+          <div class="exercise-header">
+            <span class="difficulty">★★☆</span>
+            <span class="estimated-time">3 minutes</span>
+          </div>
+          <div class="statement">
+            <p><strong>Énoncé :</strong> Développer et réduire</p>
+            <p class="formula-box">\[(2x+1)(x-3)\]</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Choix de méthode ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Choix de méthode -->
+        <section>
+          <h3>Choix de la méthode</h3>
+          <div class="fragment">
+            <p><strong>Quelle formule utiliser ?</strong></p>
+            <ul class="no-bullets">
+              <li class="fragment"> Distributivité simple ? <span class="fragment">Non (deux binômes)</span></li>
+              <li class="fragment"> Identité remarquable ? <span class="fragment">Non (signes différents)</span></li>
+              <li class="fragment"> <strong class="highlight">Double distributivité ✓</strong></li>
+            </ul>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Application ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Application étape par étape -->
+        <section>
+          <h3>Application de la double distributivité</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>Étape 1 : Chaque terme avec chaque terme</em></p>
+            <p>\[\begin{align}
+            (2x+1)(x-3) &= 2x \times x + 2x \times (-3) \\
+            &\quad + 1 \times x + 1 \times (-3)
+            \end{align}\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="2">
+            <p><em>Étape 2 : Simplification</em></p>
+            <p>\[= 2x^2 - 6x + x - 3\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>Étape 3 : Réduction</em></p>
+            <p>\[= 2x^2 - 5x - 3\]</p>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="4">
+            <i class="fas fa-arrow-down"></i> Résultat final ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Résultat final -->
+        <section>
+          <h3>Résultat final</h3>
+          <div class="result-box">
+            \[(2x+1)(x-3) = 2x^2 - 5x - 3\]
+          </div>
+          <div class="fragment">
+            <div class="box-success">
+              <p><strong>Vérification :</strong> L'expression est développée, réduite et ordonnée ✓</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ========================================= -->
+      <!-- SECTION 3 : FACTORISER -->
+      <!-- ========================================= -->
+
+      <!-- H10 : Qu'est-ce que factoriser ? -->
+      <section>
+        <!-- Niveau 0 : Question -->
+        <section>
+          <h2>Qu'est-ce que factoriser ?</h2>
+          <div class="question">
+            <p><strong>Question :</strong> Quelle est la définition de la factorisation ?</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Définition ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Définition -->
+        <section>
+          <h3>Définition</h3>
+          <div class="box-info">
+            <p><strong>Factoriser :</strong> Écrire une expression algébrique sous forme d'un <strong>produit</strong>.</p>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemple :</strong></p>
+            <p>\[3x + 6 = 3(x+2)\]</p>
+            <p class="fragment"><small>Forme développée → Forme factorisée (produit)</small></p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Utilité ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Utilité -->
+        <section>
+          <h3>Pourquoi factoriser ?</h3>
+          <div class="box-success">
+            <p><strong>La factorisation est utile pour :</strong></p>
+            <ol class="fragment">
+              <li>Simplifier un quotient</li>
+              <li>Résoudre des équations</li>
+            </ol>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemple 1 :</strong> Simplifier \(\dfrac{3x+6}{3}\)</p>
+            <p class="fragment">\[= \dfrac{3(x+2)}{3} = x+2\]</p>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemple 2 :</strong> Résoudre \(x(x-2) = 0\)</p>
+            <p class="fragment">\[x = 0 \text{ ou } x-2 = 0 \implies x = 0 \text{ ou } x = 2\]</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> FAQ ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : FAQ -->
+        <section>
+          <h3>💡 Questions fréquentes</h3>
+          <div class="fragment">
+            <p><strong>Q :</strong> Quelle est la différence entre développer et factoriser ?</p>
+          </div>
+          <div class="fragment">
+            <div class="answer">
+              <p><strong>R :</strong></p>
+              <ul>
+                <li><strong>Développer :</strong> Transformer un produit en somme<br>
+                \(3(x+2) \to 3x+6\)</li>
+                <li class="fragment"><strong>Factoriser :</strong> Transformer une somme en produit<br>
+                \(3x+6 \to 3(x+2)\)</li>
+              </ul>
+              <p class="fragment">Ce sont des opérations <strong>inverses</strong> !</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H11 : Facteur commun -->
+      <section>
+        <!-- Niveau 0 : Formule -->
+        <section>
+          <h2>Facteur commun</h2>
+          <div class="formula-box">
+            \[ab + ac = a(b+c)\]
+          </div>
+          <p><strong>Première méthode à tester</strong> pour factoriser</p>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple -->
+        <section>
+          <h3>Exemple : Factoriser \(3x+6\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>Étape 1 : Identifier les termes</em></p>
+            <p>Les termes sont : \(3x\) et \(6\)</p>
+          </div>
+          <div class="fragment" data-fragment-index="2">
+            <p><em>Étape 2 : Écrire chaque terme comme produit</em></p>
+            <p><em>( Décompositions en produit de facteurs premiers )</em></p>
+            <p>\(3x = 3 \times x\) et \(6 = 3 \times 2\)</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>Étape 3 : Identifier le facteur commun</em></p>
+            <p>Facteur commun : <strong>3</strong></p>
+          </div>
+          <div class="fragment" data-fragment-index="4">
+            <p><em>Étape 4 : Factoriser</em></p>
+            <div class="result-box">
+              \(3x + 6 = 3(x+2)\)
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="5">
+            <i class="fas fa-arrow-down"></i> Méthode de détection ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Méthode de détection -->
+        <section>
+          <h3>Comment détecter un facteur commun ?</h3>
+          <div class="box-success">
+            <p><strong>Méthode :</strong></p>
+            <ol class="fragment">
+              <li>Décomposer chaque coefficient en facteurs premiers</li>
+              <li>Chercher les variables présentes dans tous les termes</li>
+              <li>Prendre le PGCD des coefficients et la puissance minimale des variables</li>
+            </ol>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemple :</strong> \(12x^3 + 18x^2\)</p>
+            <ul class="fragment no-bullets">
+              <li> PGCD(12, 18) = 6 Car \(6 \times 2 = 12\) et \(6 \times 3 = 18\)</li>
+              <li> Puissance min de \(x\) : \(x^2\)</li>
+              <li> Facteur commun : \(6x^2\)</li>
+            </ul>
+          </div>
+          <div class="fragment">
+            <div class="result-box">
+              \(12x^3 + 18x^2 = 6x^2(2x+3)\)
+            </div>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Erreur courante ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Erreur courante -->
+        <section>
+          <h3>⚠️ Facteur incomplet</h3>
+          <div class="box-error">
+            <p><strong>Oublier une partie du facteur commun</strong></p>
+          </div>
+          <div class="fragment">
+            <p>Pour \(12x^3 + 18x^2\) :</p>
+          </div>
+          <div class="fragment">
+            <p>❌ <strong>Faux :</strong> \(= 6(2x^3+3x^2)\)</p>
+            <p class="fragment">(On a oublié le \(x^2\) dans le facteur commun)</p>
+          </div>
+          <div class="fragment">
+            <p>❌ <strong>Faux :</strong> \(= x^2(12x+18)\)</p>
+            <p class="fragment"><small>(On a oublié le 6 dans le facteur commun)</small></p>
+          </div>
+          <div class="fragment">
+            <p>✓ <strong>Correct :</strong> \(= 6x^2(2x+3)\)</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- H12 : Identité remarquable a²+2ab+b² -->
+      <section>
+        <!-- Niveau 0 : Formule -->
+        <section>
+          <h2>Identité remarquable : \(a^2+2ab+b^2\)</h2>
+          <div class="formula-box">
+            \[a^2 + 2ab + b^2 = (a+b)^2\]
+          </div>
+          <p><strong>Reconnaissance d'une somme au carré</strong></p>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple -->
+        <section>
+          <h3>Exemple : Factoriser \(x^2+6x+9\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>Étape 1 : Identifier les carrés</em></p>
+            <p>\(x^2 = (x)^2\) et \(9 = 3^2\)</p>
+            <p class="fragment" data-fragment-index="2">Donc \(a = x\) et \(b = 3\)</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>Étape 2 : Vérifier le terme médian</em></p>
+            <p>\(2ab = 2 \times x \times 3 = 6x\) ✓</p>
+          </div>
+          <div class="fragment" data-fragment-index="4">
+            <p><em>Étape 3 : Factoriser</em></p>
+            <div class="result-box">
+              \(x^2 + 6x + 9 = (x+3)^2\)
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="5">
+            <i class="fas fa-arrow-down"></i> Reconnaissance ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Reconnaissance -->
+        <section>
+          <h3>Comment reconnaître \(a^2+2ab+b^2\) ?</h3>
+          <div class="box-success">
+            <p><strong>Liste de vérification :</strong></p>
+            <ol class="fragment">
+              <li>Trois termes dans la somme</li>
+              <li>Le 1er terme est un carré : \(a^2\)</li>
+              <li>Le 3ème terme est un carré : \(b^2\)</li>
+              <li>Le terme médian est \(2ab\) (vérifier !)</li>
+              <li>Tous les signes sont <strong>positifs</strong></li>
+            </ol>
+          </div>
+          <div class="fragment">
+            <p><strong>Astuce :</strong> Pour vérifier le terme médian, calculer \(2 \times a \times b\) et comparer.</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> FAQ ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : FAQ -->
+        <section>
+          <h3>💡 Questions fréquentes</h3>
+          <div class="fragment">
+            <p><strong>Q :</strong> Comment trouver \(a\) et \(b\) dans \(4x^2 + 12x + 9\) ?</p>
+          </div>
+          <div class="fragment">
+            <div class="answer">
+              <p><strong>R :</strong></p>
+              <ul>
+                <li class="fragment"> \(4x^2 = (2x)^2 \implies a = 2x\)</li>
+                <li class="fragment"> \(9 = 3^2 \implies b = 3\)</li>
+                <li class="fragment"> Vérification : \(2ab = 2 \times 2x \times 3 = 12x\) ✓</li>
+              </ul>
+              <div class="fragment">
+                <div class="result-box">
+                  \(4x^2 + 12x + 9 = (2x+3)^2\)
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H13 : Identité remarquable a²-2ab+b² -->
+      <section>
+        <!-- Niveau 0 : Formule -->
+        <section>
+          <h2>Identité remarquable : \(a^2-2ab+b^2\)</h2>
+          <div class="formula-box">
+            \[a^2 - 2ab + b^2 = (a-b)^2\]
+          </div>
+          <p><strong>Reconnaissance d'une différence au carré</strong></p>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple -->
+        <section>
+          <h3>Exemple : Factoriser \(x^2-10x+25\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>Étape 1 : Identifier les carrés</em></p>
+            <p>\(x^2 = (x)^2\) et \(25 = 5^2\)</p>
+            <p class="fragment" data-fragment-index="2">Donc \(a = x\) et \(b = 5\)</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>Étape 2 : Vérifier le terme médian</em></p>
+            <p>\(2ab = 2 \times x \times 5 = 10x\)</p>
+            <p class="fragment" data-fragment-index="4">Le terme médian est \(-10x\) ✓</p>
+          </div>
+          <div class="fragment" data-fragment-index="5">
+            <p><em>Étape 3 : Factoriser</em></p>
+            <div class="result-box">
+              \(x^2 - 10x + 25 = (x-5)^2\)
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="6">
+            <i class="fas fa-arrow-down"></i> Différence avec \(a^2+2ab+b^2\) ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Différence -->
+        <section>
+          <h3>Comparaison des deux formules</h3>
+          <div class="two-columns">
+            <div class="fragment">
+              <div class="box-info">
+                <p>\(a^2 \mathbf{+} 2ab + b^2\)</p>
+                <p>\(= (a\mathbf{+}b)^2\)</p>
+                <p class="fragment"><small>Terme médian positif</small></p>
+              </div>
+            </div>
+            <div class="fragment">
+              <div class="box-warning">
+                <p>\(a^2 \mathbf{-} 2ab + b^2\)</p>
+                <p>\(= (a\mathbf{-}b)^2\)</p>
+                <p class="fragment"><small>Terme médian négatif</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="fragment">
+            <p><strong>Règle :</strong> Le signe du terme médian détermine le signe dans la factorisation !</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Erreur courante ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Erreur courante -->
+        <section>
+          <h3>⚠️ Confusion de signe</h3>
+          <div class="box-error">
+            <p><strong>Oublier le signe du terme médian</strong></p>
+          </div>
+          <div class="fragment">
+            <p>Pour \(x^2 - 10x + 25\) :</p>
+          </div>
+          <div class="fragment">
+            <p>❌ <strong>Faux :</strong> \(= (x+5)^2\)</p>
+            <p class="fragment"><small>(Le signe dans la parenthèse est incorrect)</small></p>
+            <p class="fragment">Car \((x+5)^2 = x^2 + 10x + 25 \neq x^2 - 10x + 25\)</p>
+          </div>
+          <div class="fragment">
+            <p>✓ <strong>Correct :</strong> \(= (x-5)^2\)</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- H14 : Différence de carrés a²-b² -->
+      <section>
+        <!-- Niveau 0 : Formule -->
+        <section>
+          <h2>Identité remarquable : \(a^2-b^2\)</h2>
+          <div class="formula-box">
+            \[a^2 - b^2 = (a-b)(a+b)\]
+          </div>
+          <p><strong>Différence de deux carrés</strong></p>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple -->
+        <section>
+          <h3>Exemple : Factoriser \(x^2-25\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>Étape 1 : Identifier les carrés</em></p>
+            <p>\(x^2 = (x)^2\) et \(25 = 5^2\)</p>
+            <p class="fragment" data-fragment-index="2">Donc \(a = x\) et \(b = 5\)</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>Étape 2 : Vérifier la structure</em></p>
+            <p>Forme : \(a^2 - b^2\) ✓ (différence de deux carrés)</p>
+          </div>
+          <div class="fragment" data-fragment-index="4">
+            <p><em>Étape 3 : Factoriser</em></p>
+            <div class="result-box">
+              \(x^2 - 25 = (x-5)(x+5)\)
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="5">
+            <i class="fas fa-arrow-down"></i> Reconnaissance rapide ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Reconnaissance rapide -->
+        <section>
+          <h3>Reconnaissance rapide de \(a^2-b^2\)</h3>
+          <div class="box-success">
+            <p><strong>Indices visuels :</strong></p>
+            <ul class="fragment">
+              <li>Seulement <strong>deux termes</strong></li>
+              <li>Séparés par un <strong>signe moins</strong></li>
+              <li>Chaque terme est un <strong>carré parfait</strong></li>
+            </ul>
+          </div>
+          <div class="fragment">
+            <p><strong>Exemples rapides :</strong></p>
+            <ul class="no-bullets fragment">
+              <li> \(x^2 - 4 = (x-2)(x+2)\)</li>
+              <li class="fragment"> \(9x^2 - 16 = (3x-4)(3x+4)\)</li>
+              <li class="fragment"> \(x^2 - 1 = (x-1)(x+1)\)</li>
+            </ul>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Application ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Application -->
+        <section>
+          <h3>Application : \(4x^2-9\)</h3>
+          <div class="fragment">
+            <p><strong>Analyse :</strong></p>
+            <ul class="no-bullets">
+              <li class="fragment"> \(4x^2 = (2x)^2 \implies a = 2x\)</li>
+              <li class="fragment"> \(9 = 3^2 \implies b = 3\)</li>
+            </ul>
+          </div>
+          <div class="fragment">
+            <p><strong>Application de la formule :</strong></p>
+            <p>\[4x^2 - 9 = (2x)^2 - 3^2 = (2x-3)(2x+3)\]</p>
+          </div>
+          <div class="fragment">
+            <div class="result-box">
+              \(4x^2 - 9 = (2x-3)(2x+3)\)
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H15 : Méthode de factorisation -->
+      <section>
+        <!-- Niveau 0 : Les 4 étapes -->
+        <section>
+          <h2>Démarche de factorisation</h2>
+          <div class="box-info">
+            <p><strong>Stratégie en 4 étapes :</strong></p>
+            <ol>
+              <li class="fragment">Chercher un facteur commun</li>
+              <li class="fragment">Utiliser une identité remarquable</li>
+              <li class="fragment">Factoriser une partie pour faire apparaître un facteur commun ou une identité</li>
+              <li class="fragment">Développer et réessayer</li>
+            </ol>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Détail étape 1 ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Étape 1 - Facteur commun -->
+        <section>
+          <h3>Étape 1 : Facteur commun</h3>
+          <div class="box-success">
+            <p><strong>Procédure :</strong></p>
+            <ol>
+              <li class="fragment">Identifier les termes de la somme (ou différence)</li>
+              <li class="fragment">Écrire chaque terme sous forme d'un produit</li>
+              <li class="fragment">Identifier un facteur commun à tous les termes</li>
+              <li class="fragment">Mettre le facteur en évidence</li>
+            </ol>
+          </div>
+          <div class="fragment">
+            <p><strong>Si trouvé :</strong> Factoriser et recommencer sur ce qui reste dans la parenthèse</p>
+            <p class="fragment"><strong>Si non :</strong> Passer à l'étape 2</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Détail étape 2 ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Étape 2 - Identité remarquable -->
+        <section>
+          <h3>Étape 2 : Identité remarquable</h3>
+          <div class="box-success">
+            <p><strong>Quelle identité choisir ?</strong></p>
+            <table style="font-size: 0.8em; margin: auto;">
+              <tr class="fragment">
+                <td><strong>Structure</strong></td>
+                <td><strong>Formule</strong></td>
+              </tr>
+              <tr class="fragment">
+                <td>3 termes, signes +</td>
+                <td>\(a^2+2ab+b^2=(a+b)^2\)</td>
+              </tr>
+              <tr class="fragment">
+                <td>3 termes, médian -</td>
+                <td>\(a^2-2ab+b^2=(a-b)^2\)</td>
+              </tr>
+              <tr class="fragment">
+                <td>2 termes, signe -</td>
+                <td>\(a^2-b^2=(a-b)(a+b)\)</td>
+              </tr>
+            </table>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Détail étapes 3-4 ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Étapes 3-4 -->
+        <section>
+          <h3>Étapes 3 et 4 : Techniques avancées</h3>
+          <div class="box-warning">
+            <p><strong>Étape 3 :</strong> Factorisation partielle</p>
+            <p class="fragment">Exemple : \(x^3-x = x(x^2-1) = x(x-1)(x+1)\)</p>
+            <p class="fragment">On factorise d'abord \(x\), puis on reconnaît \(a^2-b^2\) dans le reste</p>
+          </div>
+          <div class="fragment">
+            <div class="box-error">
+              <p><strong>Étape 4 :</strong> Développer et réessayer</p>
+              <p class="fragment"><small>Si vraiment rien ne marche, développer complètement puis recommencer</small></p>
+              <p class="fragment"><small>Cette étape fonctionne rarement, mais peut révéler des structures cachées</small></p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H16 : Exercice factorisation -->
+      <section>
+        <!-- Niveau 0 : Énoncé -->
+        <section class="exercise">
+          <h2>Exercice : Factorisation</h2>
+          <div class="exercise-header">
+            <span class="difficulty">★★☆</span>
+            <span class="estimated-time">4 minutes</span>
+          </div>
+          <div class="statement">
+            <p><strong>Énoncé :</strong> Factoriser</p>
+            <p class="formula-box">\[2x^2 - 8\]</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Étape 1 ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Étape 1 - Facteur commun -->
+        <section>
+          <h3>Étape 1 : Facteur commun</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><strong>Analyse :</strong></p>
+            <ul class="no-bullets">
+              <li> Termes : \(2x^2\) et \(8\)</li>
+              <li class="fragment" data-fragment-index="2">- PGCD(2, 8) = 2</li>
+              <li class="fragment" data-fragment-index="3">- Facteur commun : <strong>2</strong></li>
+            </ul>
+          </div>
+          <div class="fragment" data-fragment-index="4">
+            <p><strong>Factorisation :</strong></p>
+            <p>\[2x^2 - 8 = 2(x^2 - 4)\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="5">
+            <div class="box-warning">
+              <p><strong>Attention :</strong> On n'a pas fini ! Il faut continuer avec \(x^2 - 4\)</p>
+            </div>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="6">
+            <i class="fas fa-arrow-down"></i> Étape 2 ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Étape 2 - Identité remarquable -->
+        <section>
+          <h3>Étape 2 : Identité remarquable</h3>
+          <div class="fragment">
+            <p><strong>Analyse de \(x^2 - 4\) :</strong></p>
+            <ul class="no-bullets">
+              <li class="fragment"> 2 termes séparés par un signe -</li>
+              <li class="fragment"> \(x^2 = (x)^2\) et \(4 = 2^2\)</li>
+              <li class="fragment"> C'est une différence de carrés ! \(a^2-b^2\)</li>
+            </ul>
+          </div>
+          <div class="fragment">
+            <p><strong>Application de la formule :</strong></p>
+            <p>\[x^2 - 4 = (x-2)(x+2)\]</p>
+          </div>
+          <div class="fragment">
+            <p><strong>Factorisation complète :</strong></p>
+            <p>\[2x^2 - 8 = 2(x-2)(x+2)\]</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Vérification ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Vérification -->
+        <section>
+          <h3>Vérification par développement</h3>
+          <div class="fragment">
+            <p><strong>Développons \(2(x-2)(x+2)\) :</strong></p>
+          </div>
+          <div class="fragment">
+            <p><em>Étape 1 : \((x-2)(x+2)\)</em></p>
+            <p>\[(x-2)(x+2) = x^2 - 4\]</p>
+          </div>
+          <div class="fragment">
+            <p><em>Étape 2 : Multiplier par 2</em></p>
+            <p>\[2(x^2-4) = 2x^2 - 8\]</p>
+          </div>
+          <div class="fragment">
+            <div class="box-success">
+              <p>On retrouve bien l'expression initiale ✓</p>
+            </div>
+          </div>
+          <div class="fragment">
+            <div class="result-box">
+              \[2x^2 - 8 = 2(x-2)(x+2)\]
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- H17 : Exercice complexe -->
+      <section>
+        <!-- Niveau 0 : Énoncé -->
+        <section class="exercise">
+          <h2>Exercice : Cas complexe</h2>
+          <div class="exercise-header">
+            <span class="difficulty">★★★</span>
+            <span class="estimated-time">5 minutes</span>
+          </div>
+          <div class="statement">
+            <p><strong>Énoncé :</strong> Factoriser</p>
+            <p class="formula-box">\[(x+1)^2 - (2x-3)^2\]</p>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Reconnaissance ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Reconnaissance a²-b² -->
+        <section>
+          <h3>Reconnaissance de la structure</h3>
+          <div class="fragment">
+            <p><strong>Analyse :</strong></p>
+            <ul class="no-bullets">
+              <li class="fragment"> Forme : <strong>quelque chose²</strong> - <strong>quelque chose²</strong></li>
+              <li class="fragment"> C'est une différence de carrés ! \(a^2 - b^2\)</li>
+            </ul>
+          </div>
+          <div class="fragment">
+            <p><strong>Identification :</strong></p>
+            <ul class="no-bullets">
+              <li class="fragment"> \(a = (x+1)\)</li>
+              <li class="fragment"> \(b = (2x-3)\)</li>
+            </ul>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Application formule ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Application formule -->
+        <section>
+          <h3>Application de \(a^2-b^2=(a-b)(a+b)\)</h3>
+          <div class="fragment" data-fragment-index="1">
+            <p><em>On applique la formule :</em></p>
+            <p>\[(x+1)^2 - (2x-3)^2 = [(x+1) - (2x-3)][(x+1) + (2x-3)]\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="2">
+            <p><em>Simplification du 1er facteur :</em></p>
+            <p>\[\begin{align}
+            (x+1) - (2x-3) &= x + 1 - 2x + 3 \\
+            &= -x + 4
+            \end{align}\]</p>
+          </div>
+          <div class="fragment" data-fragment-index="3">
+            <p><em>Simplification du 2ème facteur :</em></p>
+            <p>\[\begin{align}
+            (x+1) + (2x-3) &= x + 1 + 2x - 3 \\
+            &= 3x - 2
+            \end{align}\]</p>
+          </div>
+          <div class="nav-hint fragment" data-fragment-index="4">
+            <i class="fas fa-arrow-down"></i> Résultat final ↓
+          </div>
+        </section>
+
+        <!-- Niveau 3 : Simplification finale -->
+        <section>
+          <h3>Résultat final</h3>
+          <div class="result-box">
+            \[(x+1)^2 - (2x-3)^2 = (-x+4)(3x-2)\]
+          </div>
+          <div class="fragment">
+            <p><strong>Forme alternative :</strong></p>
+            <p>On peut aussi écrire (en factorisant -1) :</p>
+            <p>\[= -(x-4)(3x-2)\]</p>
+          </div>
+          <div class="fragment">
+            <div class="box-success">
+              <p><strong>Remarque :</strong> Cette méthode évite de développer les carrés, ce qui serait beaucoup plus long !</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ========================================= -->
+      <!-- SECTION 4 : FRACTIONS ET POLYNÔMES -->
+      <!-- ========================================= -->
+
+      <!-- H18 : Fractions et polynômes -->
+      <section>
+        <!-- Niveau 0 : Formules -->
+        <section>
+          <h2>Fractions et polynômes</h2>
+          <div class="box-info">
+            <p><strong>Les règles d'opérations sur les fractions</strong> s'appliquent également lorsque les numérateurs et dénominateurs sont des polynômes.</p>
+          </div>
+          <div class="fragment">
+            <p><strong>Rappels :</strong></p>
+            <div class="two-columns">
+              <div class="fragment">
+                <div class="formula-box">
+                  <p><strong>Multiplication</strong></p>
+                  \[\dfrac{a}{b}\times \dfrac{c}{d}=\dfrac{a\times c}{b\times d}\]
+                </div>
+              </div>
+              <div class="fragment">
+                <div class="formula-box">
+                  <p><strong>Addition</strong></p>
+                  \[\dfrac{a}{b}+ \dfrac{c}{d}=\dfrac{a\times d + b\times c}{b\times d}\]
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemples ↓
+          </div>
+        </section>
+
+        <!-- Niveau 1 : Exemple multiplication -->
+        <section>
+          <h3>Exemple : Multiplication</h3>
+          <div class="fragment">
+            <p><strong>Calculer :</strong> \(\dfrac{x+2}{3} \times \dfrac{2}{x-1}\)</p>
+          </div>
+          <div class="fragment">
+            <p><em>On applique la formule :</em></p>
+            <p>\[\dfrac{x+2}{3} \times \dfrac{2}{x-1} = \dfrac{(x+2) \times 2}{3 \times (x-1)}\]</p>
+          </div>
+          <div class="fragment">
+            <p><em>On simplifie :</em></p>
+            <div class="result-box">
+              \[\dfrac{2(x+2)}{3(x-1)}\]
+            </div>
+          </div>
+          <div class="nav-hint fragment">
+            <i class="fas fa-arrow-down"></i> Exemple addition ↓
+          </div>
+        </section>
+
+        <!-- Niveau 2 : Exemple addition -->
+        <section>
+          <h3>Exemple : Addition</h3>
+          <div class="fragment">
+            <p><strong>Calculer :</strong> \(\dfrac{x}{2} + \dfrac{3}{x}\)</p>
+          </div>
+          <div class="fragment">
+            <p><em>On réduit au même dénominateur \(2x\) :</em></p>
+            <p>\[\dfrac{x}{2} + \dfrac{3}{x} = \dfrac{x \times x}{2 \times x} + \dfrac{3 \times 2}{x \times 2}\]</p>
+          </div>
+          <div class="fragment">
+            <p>\[= \dfrac{x^2}{2x} + \dfrac{6}{2x}\]</p>
+          </div>
+          <div class="fragment">
+            <p><em>On additionne les numérateurs :</em></p>
+            <div class="result-box">
+              \[\dfrac{x^2 + 6}{2x}\]
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ========================================= -->
+      <!-- CONCLUSION -->
+      <!-- ========================================= -->
+
+      <!-- Synthèse développer vs factoriser -->
+      <section>
+        <h2>Synthèse : Développer vs Factoriser</h2>
+        <div class="two-columns">
+          <div class="fragment">
+            <div class="box-info">
+              <h3>Développer</h3>
+              <ul>
+                <li>Produit → Somme</li>
+                <li>Distributivité</li>
+                <li>Double distributivité</li>
+                <li>Identités remarquables</li>
+              </ul>
+              <p><strong>But :</strong> Forme réduite et ordonnée</p>
+            </div>
+          </div>
+          <div class="fragment">
+            <div class="box-success">
+              <h3>Factoriser</h3>
+              <ul>
+                <li>Somme → Produit</li>
+                <li>Facteur commun</li>
+                <li>Identités remarquables</li>
+                <li>Stratégie par étapes</li>
+              </ul>
+              <p><strong>But :</strong> Simplifier, résoudre</p>
+            </div>
+          </div>
+        </div>
+        <div class="fragment">
+          <p><strong>Ce sont des opérations inverses !</strong></p>
+        </div>
+      </section>
+
+      <!-- Points clés à retenir -->
+      <section>
+        <h2>Points clés à retenir</h2>
+        <ol>
+          <li class="fragment"><strong>Polynôme :</strong> Somme de monômes, à présenter sous forme réduite et ordonnée</li>
+          <li class="fragment"><strong>Développer :</strong> Maîtriser distributivité, double distributivité et les 3 identités remarquables</li>
+          <li class="fragment"><strong>Factoriser :</strong> Stratégie par étapes (facteur commun puis identités)</li>
+          <li class="fragment"><strong>Identités remarquables :</strong> Les connaître dans les deux sens (développement ET factorisation)</li>
+          <li class="fragment"><strong>Vérification :</strong> Toujours vérifier en développant la forme factorisée</li>
+        </ol>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Affichage
+      width: 1280,
+      height: 720,
+      margin: 0.1,
+
+      // Navigation 2D - CONFIGURATION CRITIQUE
+      navigationMode: 'grid', // IMPORTANT pour navigation 2D !
+      controls: true,
+      controlsLayout: 'edges', // Affiche les 4 flèches
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+
+      progress: true,
+      slideNumber: 'h.v', // Format horizontal.vertical (ex: 2.3)
+      hash: true,
+
+      // Comportement
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+
+      // Math avec MathJax 3
+      math: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+        config: 'TeX-AMS_HTML-full',
+      },
+
+      // Plugins
+      plugins: [
+        RevealMath,
+        RevealNotes,
+        RevealHighlight,
+        RevealZoom
+      ]
+    });
+
+    // IMPORTANT : Retour au top lors de la navigation horizontale
+    let lastHorizontalIndex = 0;
+
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+
+      // Si on change de colonne horizontale et qu'on n'est pas au niveau 0, remonter
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        Reveal.slide(currentH, 0);
+      }
+
+      lastHorizontalIndex = currentH;
+    });
+
+    // Système de zoom avec CTRL +/-
+    let currentZoom = 100; // Pourcentage de zoom par défaut
+    const minZoom = 70;
+    const maxZoom = 200;
+    const zoomStep = 10;
+
+    document.addEventListener('keydown', function(e) {
+      // CTRL + Plus (ou =)
+      if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '=')) {
+        e.preventDefault();
+        if (currentZoom < maxZoom) {
+          currentZoom += zoomStep;
+          applyZoom();
+        }
+      }
+      // CTRL + Moins
+      else if ((e.ctrlKey || e.metaKey) && (e.key === '-' || e.key === '_')) {
+        e.preventDefault();
+        if (currentZoom > minZoom) {
+          currentZoom -= zoomStep;
+          applyZoom();
+        }
+      }
+      // CTRL + 0 (réinitialiser)
+      else if ((e.ctrlKey || e.metaKey) && e.key === '0') {
+        e.preventDefault();
+        currentZoom = 100;
+        applyZoom();
+      }
+    });
+
+    function applyZoom() {
+      document.querySelector('.reveal').style.fontSize = currentZoom + '%';
+      // Afficher temporairement le niveau de zoom
+      showZoomLevel();
+    }
+
+    function showZoomLevel() {
+      // Créer ou récupérer l'indicateur de zoom
+      let indicator = document.getElementById('zoom-indicator');
+      if (!indicator) {
+        indicator = document.createElement('div');
+        indicator.id = 'zoom-indicator';
+        indicator.style.cssText = `
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(0, 0, 0, 0.8);
+          color: white;
+          padding: 10px 20px;
+          border-radius: 8px;
+          font-size: 16px;
+          z-index: 9999;
+          transition: opacity 0.3s;
+        `;
+        document.body.appendChild(indicator);
+      }
+
+      indicator.textContent = `Zoom : ${currentZoom}%`;
+      indicator.style.opacity = '1';
+
+      // Masquer après 1 seconde
+      setTimeout(() => {
+        indicator.style.opacity = '0';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

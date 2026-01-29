@@ -1,0 +1,4146 @@
+{
+  "meta": {
+    "niveau": "3E",
+    "source_folder": "18-Maths-3e-attendus-eduscol_1114748",
+    "generated": "2026-01-09T13:09:02.063024",
+    "total_competences": 197,
+    "duplicates_count": 4,
+    "organization": "domaine > sous_domaine > competences"
+  },
+  "stats": {
+    "by_domaine": {
+      "NOMBRES": 20,
+      "ALGEBRE": 17,
+      "STATISTIQUES": 13,
+      "PROBABILITES": 8,
+      "ANALYSE": 23,
+      "GEOMETRIE": 58,
+      "GRANDEURS": 11,
+      "ALGORITHMIQUE": 45,
+      "TRIGONOMETRIE": 2
+    },
+    "by_type": {
+      "capacite": 188,
+      "contenu": 7,
+      "demonstration": 2
+    }
+  },
+  "competences_by_theme": {
+    "NOMBRES": {
+      "Puissances": [
+        {
+          "code": "3E-NB-101",
+          "intitule": "Utiliser les puissances d'exposants positifs pour simplifier l'ecriture d'un produit",
+          "fingerprint": "utiliser_puissances_exposant_positif_simplifier_produit",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "description_detaillee": "Reconnaitre un produit de facteurs identiques et l'ecrire sous forme de puissance avec exposant positif (ex: 8 x 8 x 8 x 8 x 8 = 8^5)",
+          "formulation_bo": "Il utilise les puissances d'exposants positifs ou negatifs pour simplifier l'ecriture des produits.",
+          "connaissances_associees": [
+            "definition puissance",
+            "notation exponentielle"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-102",
+          "intitule": "Utiliser les puissances d'exposants negatifs pour simplifier l'ecriture d'un produit",
+          "fingerprint": "utiliser_puissances_exposant_negatif_simplifier_produit",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "description_detaillee": "Ecrire un quotient ou une fraction sous forme de puissance avec exposant negatif (ex: 1/100 = 10^-2)",
+          "formulation_bo": "Il utilise les puissances d'exposants positifs ou negatifs pour simplifier l'ecriture des produits.",
+          "connaissances_associees": [
+            "definition puissance",
+            "puissance negative",
+            "inverse"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-108",
+          "intitule": "Resoudre un probleme avec des puissances",
+          "fingerprint": "resoudre_probleme_puissances",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "description_detaillee": "Modeliser une situation de croissance/decroissance exponentielle par des puissances (ex: division de bacteries)",
+          "formulation_bo": "Il resout des problemes avec des puissances, notamment en utilisant la notation scientifique.",
+          "connaissances_associees": [
+            "puissances",
+            "croissance exponentielle"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-109",
+          "intitule": "Utiliser la notation scientifique pour resoudre un probleme",
+          "fingerprint": "utiliser_notation_scientifique_probleme",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "description_detaillee": "Effectuer des calculs avec des nombres en notation scientifique (ex: 2 x 10^15 atomes dans 211 ng)",
+          "formulation_bo": "Il resout des problemes avec des puissances, notamment en utilisant la notation scientifique.",
+          "connaissances_associees": [
+            "notation scientifique",
+            "puissances de 10",
+            "ordres de grandeur"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "Calcul": [
+        {
+          "code": "3E-NB-103",
+          "intitule": "Calculer avec les nombres rationnels",
+          "fingerprint": "calculer_nombres_rationnels",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul",
+          "type": "capacite",
+          "description_detaillee": "Effectuer les quatre operations (addition, soustraction, multiplication, division) avec des fractions et nombres decimaux",
+          "formulation_bo": "Il calcule avec les nombres rationnels, notamment dans le cadre de resolution de problemes.",
+          "connaissances_associees": [
+            "fractions",
+            "operations sur les fractions",
+            "nombres decimaux"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-104",
+          "intitule": "Resoudre un probleme faisant intervenir des nombres rationnels",
+          "fingerprint": "resoudre_probleme_nombres_rationnels",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Calcul",
+          "type": "capacite",
+          "description_detaillee": "Modeliser et resoudre une situation concrete impliquant des calculs avec fractions (ex: rebond aux trois-quarts de la hauteur)",
+          "formulation_bo": "Il calcule avec les nombres rationnels, notamment dans le cadre de resolution de problemes.",
+          "connaissances_associees": [
+            "fractions",
+            "operations sur les fractions",
+            "modelisation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "Racines carrees": [
+        {
+          "code": "3E-NB-105",
+          "intitule": "Resoudre un probleme mettant en jeu des racines carrees",
+          "fingerprint": "resoudre_probleme_racines_carrees",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Racines carrees",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la racine carree pour resoudre un probleme (ex: determiner le cote d'un carre connaissant son aire)",
+          "formulation_bo": "Il resout des problemes mettant en jeu des racines carrees.",
+          "connaissances_associees": [
+            "definition racine carree",
+            "carre d'un nombre"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-106",
+          "intitule": "Determiner la valeur exacte d'une racine carree",
+          "fingerprint": "determiner_valeur_exacte_racine_carree",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Racines carrees",
+          "type": "capacite",
+          "description_detaillee": "Exprimer un resultat sous forme de racine carree (ex: le cote d'un carre d'aire 17 cm^2 est sqrt(17) cm)",
+          "formulation_bo": "Il determine la valeur exacte puis approchee au millimetre pres de la longueur du cote d'un carre d'aire 17 cm^2.",
+          "connaissances_associees": [
+            "definition racine carree",
+            "valeur exacte"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-107",
+          "intitule": "Determiner la valeur approchee d'une racine carree",
+          "fingerprint": "determiner_valeur_approchee_racine_carree",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Racines carrees",
+          "type": "capacite",
+          "description_detaillee": "Calculer une valeur approchee d'une racine carree a une precision donnee (ex: sqrt(17) environ 4,123 donc 41 mm)",
+          "formulation_bo": "Il determine la valeur exacte puis approchee au millimetre pres de la longueur du cote d'un carre d'aire 17 cm^2.",
+          "connaissances_associees": [
+            "definition racine carree",
+            "valeur approchee",
+            "arrondi"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "Divisibilite": [
+        {
+          "code": "3E-NB-110",
+          "intitule": "Decomposer un nombre entier en produit de facteurs premiers a la main",
+          "fingerprint": "decomposer_entier_facteurs_premiers_main",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Divisibilite",
+          "type": "capacite",
+          "description_detaillee": "Trouver la decomposition en facteurs premiers d'un entier par divisions successives",
+          "formulation_bo": "Il decompose un nombre entier en produit de facteurs premiers (a la main, a l'aide d'un tableur ou d'un logiciel de programmation).",
+          "connaissances_associees": [
+            "nombres premiers",
+            "divisibilite",
+            "criteres de divisibilite"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-111",
+          "intitule": "Decomposer un nombre entier en produit de facteurs premiers avec un tableur",
+          "fingerprint": "decomposer_entier_facteurs_premiers_tableur",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Divisibilite",
+          "type": "capacite",
+          "description_detaillee": "Utiliser un tableur pour trouver la decomposition en facteurs premiers d'un entier",
+          "formulation_bo": "Il decompose un nombre entier en produit de facteurs premiers (a la main, a l'aide d'un tableur ou d'un logiciel de programmation).",
+          "connaissances_associees": [
+            "nombres premiers",
+            "divisibilite",
+            "tableur"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-112",
+          "intitule": "Decomposer un nombre entier en produit de facteurs premiers avec un programme",
+          "fingerprint": "decomposer_entier_facteurs_premiers_programme",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Divisibilite",
+          "type": "capacite",
+          "description_detaillee": "Utiliser un logiciel de programmation (Scratch, Python) pour trouver la decomposition en facteurs premiers",
+          "formulation_bo": "Il decompose un nombre entier en produit de facteurs premiers (a la main, a l'aide d'un tableur ou d'un logiciel de programmation).",
+          "connaissances_associees": [
+            "nombres premiers",
+            "divisibilite",
+            "algorithmique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-114",
+          "intitule": "Modeliser un probleme mettant en jeu la divisibilite",
+          "fingerprint": "modeliser_probleme_divisibilite",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Divisibilite",
+          "type": "capacite",
+          "description_detaillee": "Traduire mathematiquement une situation concrete impliquant la divisibilite (engrenages, conjonction de phenomenes)",
+          "formulation_bo": "Il modelise et resout des problemes mettant en jeu la divisibilite (engrenages, conjonction de phenomenes...).",
+          "connaissances_associees": [
+            "divisibilite",
+            "multiples",
+            "PPCM"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-115",
+          "intitule": "Resoudre un probleme mettant en jeu la divisibilite",
+          "fingerprint": "resoudre_probleme_divisibilite",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Divisibilite",
+          "type": "capacite",
+          "description_detaillee": "Resoudre des problemes concrets utilisant la divisibilite (engrenages, conjonction de phenomenes periodiques)",
+          "formulation_bo": "Il modelise et resout des problemes mettant en jeu la divisibilite (engrenages, conjonction de phenomenes...).",
+          "connaissances_associees": [
+            "divisibilite",
+            "multiples",
+            "PPCM",
+            "PGCD"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "Fractions": [
+        {
+          "code": "3E-NB-113",
+          "intitule": "Simplifier une fraction pour la rendre irreductible",
+          "fingerprint": "simplifier_fraction_irreductible",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Fractions",
+          "type": "capacite",
+          "description_detaillee": "Diviser numerateur et denominateur par leur PGCD pour obtenir une fraction irreductible",
+          "formulation_bo": "Il simplifie une fraction pour la rendre irreductible.",
+          "connaissances_associees": [
+            "fractions",
+            "divisibilite",
+            "PGCD",
+            "nombres premiers"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 2
+          }
+        },
+        {
+          "code": "3E-NB-152",
+          "intitule": "Rendre une fraction irreductible",
+          "fingerprint": "rendre_fraction_irreductible",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Fractions",
+          "type": "capacite",
+          "description_detaillee": "Simplifier une fraction jusqu'a obtenir une fraction irreductible en utilisant le PGCD ou la decomposition en facteurs premiers",
+          "formulation_bo": "Il rend irreductibles les fractions suivantes",
+          "connaissances_associees": [
+            "PGCD",
+            "decomposition en facteurs premiers",
+            "fractions"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Arithmetique": [
+        {
+          "code": "3E-NB-151",
+          "intitule": "Decomposer un entier naturel en produit de facteurs premiers",
+          "fingerprint": "decomposer_entier_facteurs_premiers",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Savoir decomposer un entier naturel en produit de facteurs premiers, a la main ou a l'aide d'outils numeriques (tableur, logiciel de programmation)",
+          "formulation_bo": "Il decompose en produit de facteurs premiers (a la main, a l'aide d'un tableur ou d'un logiciel de programmation) les entiers naturels",
+          "connaissances_associees": [
+            "nombres premiers",
+            "divisibilite",
+            "division euclidienne"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-NB-153",
+          "intitule": "Resoudre un probleme de PPCM en contexte",
+          "fingerprint": "resoudre_probleme_ppcm_contexte",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Arithmetique",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le PPCM pour resoudre des problemes concrets de synchronisation ou de periodicite (ex: ampoules clignotantes)",
+          "formulation_bo": "Deux ampoules clignotent. L'une s'allume toutes les 153 secondes et l'autre toutes les 187 secondes. A minuit, elles s'allument ensemble. Determine l'heure a laquelle elles s'allumeront de nouveau ensemble.",
+          "connaissances_associees": [
+            "PPCM",
+            "decomposition en facteurs premiers",
+            "multiples"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Pourcentages": [
+        {
+          "code": "3E-NB-255",
+          "intitule": "Determiner le coefficient multiplicateur associe a un pourcentage d'augmentation",
+          "fingerprint": "determiner_coefficient_multiplicateur_augmentation",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Pourcentages",
+          "type": "capacite",
+          "description_detaillee": "Savoir qu'une augmentation de p% correspond a une multiplication par (1 + p/100)",
+          "formulation_bo": "Il sait qu'une augmentation de 5 % se traduit par une multiplication par 1,05.",
+          "connaissances_associees": [
+            "pourcentage",
+            "coefficient multiplicateur",
+            "augmentation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-NB-256",
+          "intitule": "Determiner le coefficient multiplicateur associe a un pourcentage de diminution",
+          "fingerprint": "determiner_coefficient_multiplicateur_diminution",
+          "niveau": "3E",
+          "domaine": "NOMBRES",
+          "sous_domaine": "Pourcentages",
+          "type": "capacite",
+          "description_detaillee": "Savoir qu'une diminution de p% correspond a une multiplication par (1 - p/100)",
+          "formulation_bo": "Il sait qu'une diminution de 20 % se traduit par une multiplication par 0,8.",
+          "connaissances_associees": [
+            "pourcentage",
+            "coefficient multiplicateur",
+            "diminution"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        }
+      ]
+    },
+    "ALGEBRE": {
+      "Calcul litteral": [
+        {
+          "code": "3E-AL-154",
+          "intitule": "Determiner l'oppose d'une expression litterale",
+          "fingerprint": "determiner_oppose_expression_litterale",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Calcul litteral",
+          "type": "capacite",
+          "description_detaillee": "Savoir ecrire l'oppose d'une expression litterale en changeant le signe de chaque terme (ex: -(3x - 7) = -3x + 7)",
+          "formulation_bo": "Il determine l'oppose d'une expression litterale",
+          "connaissances_associees": [
+            "oppose d'un nombre",
+            "regles des signes"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-155",
+          "intitule": "Developper une expression par simple distributivite",
+          "fingerprint": "developper_simple_distributivite",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Calcul litteral",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la distributivite simple k(a + b) = ka + kb pour developper une expression algebrique",
+          "formulation_bo": "Il developpe (par simple et double distributivites)",
+          "connaissances_associees": [
+            "distributivite",
+            "multiplication"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-156",
+          "intitule": "Developper une expression par double distributivite",
+          "fingerprint": "developper_double_distributivite",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Calcul litteral",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la double distributivite (a + b)(c + d) = ac + ad + bc + bd pour developper un produit de deux binomes (ex: (2x - 3)(5x + 7))",
+          "formulation_bo": "Il developpe (par simple et double distributivites)",
+          "connaissances_associees": [
+            "distributivite",
+            "multiplication de polynomes"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-157",
+          "intitule": "Factoriser une expression algebrique par facteur commun",
+          "fingerprint": "factoriser_facteur_commun",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Calcul litteral",
+          "type": "capacite",
+          "description_detaillee": "Identifier un facteur commun et factoriser une expression (ex: 5a + 15b = 5(a + 3b), 12x^2 - 15x = 3x(4x - 5))",
+          "formulation_bo": "Il factorise : 5a + 15b ; 12x2 - 15x",
+          "connaissances_associees": [
+            "facteur commun",
+            "distributivite"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-158",
+          "intitule": "Reduire une expression algebrique",
+          "fingerprint": "reduire_expression_algebrique",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Calcul litteral",
+          "type": "capacite",
+          "description_detaillee": "Regrouper les termes semblables d'une expression algebrique pour la simplifier",
+          "formulation_bo": "réduit des expressions algébriques simples",
+          "connaissances_associees": [
+            "termes semblables",
+            "addition algebrique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Identites remarquables": [
+        {
+          "code": "3E-AL-159",
+          "intitule": "Reconnaitre une identite remarquable difference de carres",
+          "fingerprint": "reconnaitre_identite_difference_carres",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Identites remarquables",
+          "type": "capacite",
+          "description_detaillee": "Identifier une expression de la forme a^2 - b^2 pour pouvoir la factoriser",
+          "formulation_bo": "Il factorise une expression du type a2 - b2",
+          "connaissances_associees": [
+            "carres",
+            "identites remarquables"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-160",
+          "intitule": "Factoriser une expression de type a^2 - b^2",
+          "fingerprint": "factoriser_difference_carres",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Identites remarquables",
+          "type": "capacite",
+          "description_detaillee": "Appliquer l'identite a^2 - b^2 = (a + b)(a - b) pour factoriser (ex: x^2 - 64 = (x + 8)(x - 8), 4x^2 - 49 = (2x + 7)(2x - 7))",
+          "formulation_bo": "Il factorise x2 - 64 ; 4x2 - 49",
+          "connaissances_associees": [
+            "identite remarquable a^2 - b^2",
+            "racines carrees parfaites"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-161",
+          "intitule": "Developper une expression de type (a + b)(a - b)",
+          "fingerprint": "developper_somme_difference",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Identites remarquables",
+          "type": "capacite",
+          "description_detaillee": "Appliquer l'identite (a + b)(a - b) = a^2 - b^2 pour developper (ex: (x + 6)(x - 6) = x^2 - 36)",
+          "formulation_bo": "Il développe (x + 6)(x - 6) ; (2x - 5)(2x + 5)",
+          "connaissances_associees": [
+            "identite remarquable (a+b)(a-b)",
+            "developpement"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        }
+      ],
+      "Equations": [
+        {
+          "code": "3E-AL-162",
+          "intitule": "Resoudre une equation du premier degre a une inconnue de forme ax = b",
+          "fingerprint": "resoudre_equation_ax_egal_b",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations",
+          "type": "capacite",
+          "description_detaillee": "Resoudre rapidement une equation de la forme ax = b (ex: -3x = 12, 7x = 5)",
+          "formulation_bo": "Il résout rapidement : -3x = 12 ; 7x = 5",
+          "connaissances_associees": [
+            "division",
+            "equations"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-163",
+          "intitule": "Resoudre une equation du premier degre a une inconnue de forme x + a = b",
+          "fingerprint": "resoudre_equation_x_plus_a_egal_b",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations",
+          "type": "capacite",
+          "description_detaillee": "Resoudre rapidement une equation de la forme x + a = b (ex: x + 9 = 5)",
+          "formulation_bo": "Il résout rapidement : x + 9 = 5",
+          "connaissances_associees": [
+            "soustraction",
+            "equations"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-164",
+          "intitule": "Resoudre une equation du premier degre a une inconnue avec termes en x des deux cotes",
+          "fingerprint": "resoudre_equation_premier_degre_complete",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations",
+          "type": "capacite",
+          "description_detaillee": "Resoudre une equation du premier degre avec des termes en x des deux cotes du signe egal (ex: 4x - 8 = 7x + 4)",
+          "formulation_bo": "Il résout les équations suivantes : 4x - 8 = 7x + 4",
+          "connaissances_associees": [
+            "transposition de termes",
+            "reduction",
+            "equations"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-165",
+          "intitule": "Resoudre une equation du premier degre avec parentheses",
+          "fingerprint": "resoudre_equation_premier_degre_parentheses",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations",
+          "type": "capacite",
+          "description_detaillee": "Resoudre une equation du premier degre necessitant un developpement prealable (ex: 5(7 - 2,2x) = 9 - 6x)",
+          "formulation_bo": "5(7 - 2,2x) = 9 - 6x",
+          "connaissances_associees": [
+            "developpement",
+            "reduction",
+            "equations"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-166",
+          "intitule": "Resoudre une equation produit nul",
+          "fingerprint": "resoudre_equation_produit_nul",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations",
+          "type": "capacite",
+          "description_detaillee": "Resoudre une equation de type (ax + b)(cx + d) = 0 en utilisant la propriete du produit nul (ex: (2,5x - 7)(8x - 9,6) = 0)",
+          "formulation_bo": "équation s'y ramenant (équations produits) ; (2,5x - 7)(8x - 9,6) = 0",
+          "connaissances_associees": [
+            "produit nul",
+            "equations du premier degre"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-167",
+          "intitule": "Resoudre une equation de la forme x^2 = a (a positif)",
+          "fingerprint": "resoudre_equation_x_carre_egal_a",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations",
+          "type": "capacite",
+          "description_detaillee": "Resoudre une equation de la forme x^2 = a ou a >= 0 et donner les deux solutions (ex: x^2 = 20 donne x = sqrt(20) ou x = -sqrt(20))",
+          "formulation_bo": "équations de la forme x2 = a sur des exemples simples ; x2 = 20",
+          "connaissances_associees": [
+            "racine carree",
+            "carres"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-168",
+          "intitule": "Modeliser un probleme par une equation du premier degre",
+          "fingerprint": "modeliser_probleme_equation_premier_degre",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations",
+          "type": "capacite",
+          "description_detaillee": "Traduire un probleme concret en equation du premier degre, resoudre et interpreter le resultat dans le contexte (ex: probleme de rentabilite d'un investissement)",
+          "formulation_bo": "Il résout des problèmes s'y ramenant, qui peuvent être internes aux mathématiques ou en lien avec d'autres disciplines",
+          "connaissances_associees": [
+            "mise en equation",
+            "resolution d'equation",
+            "interpretation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 3
+          }
+        },
+        {
+          "code": "3E-AL-310",
+          "intitule": "Resoudre une equation du premier degre a une inconnue",
+          "fingerprint": "resoudre_equation_premier_degre",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations",
+          "type": "capacite",
+          "description_detaillee": "Isoler l'inconnue dans une equation du type ax + b = c pour determiner sa valeur",
+          "formulation_bo": "Determine a l'aide d'une equation : l'antecedent de 10 par la fonction f definie par f(x) = -3x - 4",
+          "connaissances_associees": [
+            "operations sur les equations",
+            "regles de transposition"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "3E-AL-311",
+          "intitule": "Resoudre une equation produit nul",
+          "fingerprint": "resoudre_equation_produit_nul",
+          "niveau": "3E",
+          "domaine": "ALGEBRE",
+          "sous_domaine": "Equations",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la propriete 'un produit est nul si et seulement si l'un des facteurs est nul' pour resoudre une equation du type (ax + b)(cx + d) = 0",
+          "formulation_bo": "les antecedents de 0 par la fonction g definie par g(x) = (3x + 6)(x - 9)",
+          "connaissances_associees": [
+            "produit nul",
+            "resolution d'equations du premier degre"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        }
+      ]
+    },
+    "STATISTIQUES": {
+      "Representation de donnees": [
+        {
+          "code": "3E-ST-201",
+          "intitule": "Lire des donnees sous forme d'histogramme pour des classes de meme amplitude",
+          "fingerprint": "lire_donnees_histogramme_classes_meme_amplitude",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Representation de donnees",
+          "type": "capacite",
+          "description_detaillee": "A partir d'un histogramme dont les classes ont la meme amplitude, lire les effectifs ou frequences correspondant a chaque classe",
+          "formulation_bo": "Il lit, interprete et represente des donnees sous forme d'histogrammes pour des classes de meme amplitude.",
+          "connaissances_associees": [
+            "notion de classe",
+            "notion d'amplitude",
+            "lecture graphique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-202",
+          "intitule": "Interpreter des donnees sous forme d'histogramme pour des classes de meme amplitude",
+          "fingerprint": "interpreter_donnees_histogramme_classes_meme_amplitude",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Representation de donnees",
+          "type": "capacite",
+          "description_detaillee": "Donner du sens aux donnees representees dans un histogramme, identifier les classes les plus representees, comparer des effectifs",
+          "formulation_bo": "Il lit, interprete et represente des donnees sous forme d'histogrammes pour des classes de meme amplitude.",
+          "connaissances_associees": [
+            "notion de classe",
+            "notion d'amplitude",
+            "interpretation graphique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-203",
+          "intitule": "Representer des donnees sous forme d'histogramme pour des classes de meme amplitude",
+          "fingerprint": "representer_donnees_histogramme_classes_meme_amplitude",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Representation de donnees",
+          "type": "capacite",
+          "description_detaillee": "Construire un histogramme a partir d'un tableau de donnees regroupees en classes de meme amplitude, en respectant les conventions graphiques (axes, echelles, rectangles contigus)",
+          "formulation_bo": "Il lit, interprete et represente des donnees sous forme d'histogrammes pour des classes de meme amplitude.",
+          "connaissances_associees": [
+            "notion de classe",
+            "notion d'amplitude",
+            "construction graphique",
+            "axes et echelles"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        }
+      ],
+      "Indicateurs statistiques": [
+        {
+          "code": "3E-ST-204",
+          "intitule": "Calculer l'etendue d'une serie a partir de donnees brutes",
+          "fingerprint": "calculer_etendue_serie_donnees_brutes",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Indicateurs statistiques",
+          "type": "capacite",
+          "description_detaillee": "Determiner l'etendue (difference entre valeur maximale et valeur minimale) d'une serie statistique presentee sous forme de liste de valeurs",
+          "formulation_bo": "Il calcule et interprete l'etendue d'une serie presentee sous forme de donnees brutes, d'un tableau, d'un diagramme en batons, d'un diagramme circulaire ou d'un histogramme.",
+          "connaissances_associees": [
+            "definition de l'etendue",
+            "identification du maximum et minimum"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-205",
+          "intitule": "Calculer l'etendue d'une serie a partir d'un tableau",
+          "fingerprint": "calculer_etendue_serie_tableau",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Indicateurs statistiques",
+          "type": "capacite",
+          "description_detaillee": "Determiner l'etendue d'une serie statistique presentee sous forme de tableau (valeurs/effectifs ou valeurs/frequences)",
+          "formulation_bo": "Il calcule et interprete l'etendue d'une serie presentee sous forme de donnees brutes, d'un tableau, d'un diagramme en batons, d'un diagramme circulaire ou d'un histogramme.",
+          "connaissances_associees": [
+            "definition de l'etendue",
+            "lecture de tableau statistique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-206",
+          "intitule": "Calculer l'etendue d'une serie a partir d'un diagramme en batons",
+          "fingerprint": "calculer_etendue_serie_diagramme_batons",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Indicateurs statistiques",
+          "type": "capacite",
+          "description_detaillee": "Determiner l'etendue d'une serie statistique en lisant les valeurs extremes sur un diagramme en batons",
+          "formulation_bo": "Il calcule et interprete l'etendue d'une serie presentee sous forme de donnees brutes, d'un tableau, d'un diagramme en batons, d'un diagramme circulaire ou d'un histogramme.",
+          "connaissances_associees": [
+            "definition de l'etendue",
+            "lecture de diagramme en batons"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-207",
+          "intitule": "Calculer l'etendue d'une serie a partir d'un diagramme circulaire",
+          "fingerprint": "calculer_etendue_serie_diagramme_circulaire",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Indicateurs statistiques",
+          "type": "capacite",
+          "description_detaillee": "Determiner l'etendue d'une serie statistique en identifiant les valeurs extremes sur un diagramme circulaire",
+          "formulation_bo": "Il calcule et interprete l'etendue d'une serie presentee sous forme de donnees brutes, d'un tableau, d'un diagramme en batons, d'un diagramme circulaire ou d'un histogramme.",
+          "connaissances_associees": [
+            "definition de l'etendue",
+            "lecture de diagramme circulaire"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-208",
+          "intitule": "Calculer l'etendue d'une serie a partir d'un histogramme",
+          "fingerprint": "calculer_etendue_serie_histogramme",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Indicateurs statistiques",
+          "type": "capacite",
+          "description_detaillee": "Determiner l'etendue d'une serie statistique en identifiant les bornes extremes des classes sur un histogramme",
+          "formulation_bo": "Il calcule et interprete l'etendue d'une serie presentee sous forme de donnees brutes, d'un tableau, d'un diagramme en batons, d'un diagramme circulaire ou d'un histogramme.",
+          "connaissances_associees": [
+            "definition de l'etendue",
+            "lecture d'histogramme",
+            "notion de classe"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-209",
+          "intitule": "Interpreter l'etendue d'une serie statistique",
+          "fingerprint": "interpreter_etendue_serie_statistique",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Indicateurs statistiques",
+          "type": "capacite",
+          "description_detaillee": "Donner du sens a la valeur de l'etendue d'une serie : mesurer la dispersion des donnees, comparer des series",
+          "formulation_bo": "Il calcule et interprete l'etendue d'une serie presentee sous forme de donnees brutes, d'un tableau, d'un diagramme en batons, d'un diagramme circulaire ou d'un histogramme.",
+          "connaissances_associees": [
+            "definition de l'etendue",
+            "notion de dispersion"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        }
+      ],
+      "Effectifs et frequences": [
+        {
+          "code": "3E-ST-210",
+          "intitule": "Calculer l'effectif d'une valeur ou d'une classe",
+          "fingerprint": "calculer_effectif_valeur_classe",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Effectifs et frequences",
+          "type": "capacite",
+          "description_detaillee": "Determiner le nombre d'individus correspondant a une valeur du caractere ou a une classe donnee, eventuellement par denombrement ou calcul a partir de donnees graphiques",
+          "formulation_bo": "Il calcule des effectifs et des frequences.",
+          "connaissances_associees": [
+            "definition de l'effectif",
+            "lecture de representations graphiques"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-211",
+          "intitule": "Calculer la frequence d'une valeur ou d'une classe",
+          "fingerprint": "calculer_frequence_valeur_classe",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Effectifs et frequences",
+          "type": "capacite",
+          "description_detaillee": "Calculer la frequence (effectif partiel / effectif total) d'une valeur ou d'une classe, exprimer le resultat sous forme decimale ou en pourcentage",
+          "formulation_bo": "Il calcule des effectifs et des frequences.",
+          "connaissances_associees": [
+            "definition de la frequence",
+            "calcul d'un quotient",
+            "conversion en pourcentage"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-212",
+          "intitule": "Calculer l'effectif cumule d'une condition (au moins, au plus, entre)",
+          "fingerprint": "calculer_effectif_cumule_condition",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Effectifs et frequences",
+          "type": "capacite",
+          "description_detaillee": "Calculer le nombre d'individus verifiant une condition du type 'au moins', 'au plus', 'entre ... et ...' en cumulant les effectifs des valeurs ou classes concernees",
+          "formulation_bo": "Calcule le nombre de personnes chaussant au moins du 40. Calcule le nombre de personnes chaussant entre 38 et 41.",
+          "connaissances_associees": [
+            "effectifs cumules",
+            "inegalites",
+            "addition d'effectifs"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-ST-213",
+          "intitule": "Calculer la frequence cumulee d'une condition (au moins, au plus)",
+          "fingerprint": "calculer_frequence_cumulee_condition",
+          "niveau": "3E",
+          "domaine": "STATISTIQUES",
+          "sous_domaine": "Effectifs et frequences",
+          "type": "capacite",
+          "description_detaillee": "Calculer la frequence des individus verifiant une condition du type 'au moins', 'au plus' en cumulant les frequences ou en divisant l'effectif cumule par l'effectif total",
+          "formulation_bo": "Calcule la frequence des personnes chaussant au plus du 42.",
+          "connaissances_associees": [
+            "frequences cumulees",
+            "inegalites",
+            "calcul de quotient"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        }
+      ]
+    },
+    "PROBABILITES": {
+      "Calcul de probabilites": [
+        {
+          "code": "3E-PR-214",
+          "intitule": "Calculer une probabilite par denombrement pour une experience a une epreuve",
+          "fingerprint": "calculer_probabilite_denombrement_une_epreuve",
+          "niveau": "3E",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Calcul de probabilites",
+          "type": "capacite",
+          "description_detaillee": "Pour une experience aleatoire simple a une epreuve, calculer la probabilite d'un evenement en utilisant le quotient nombre de cas favorables / nombre de cas possibles",
+          "formulation_bo": "A partir de denombrements, il calcule des probabilites pour des experiences aleatoires simples a une ou deux epreuves.",
+          "connaissances_associees": [
+            "definition de la probabilite",
+            "denombrement",
+            "equiprobabilite"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-PR-215",
+          "intitule": "Calculer une probabilite par denombrement pour une experience a deux epreuves",
+          "fingerprint": "calculer_probabilite_denombrement_deux_epreuves",
+          "niveau": "3E",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Calcul de probabilites",
+          "type": "capacite",
+          "description_detaillee": "Pour une experience aleatoire a deux epreuves successives, lister toutes les issues possibles (arbre, tableau) et calculer la probabilite d'un evenement par denombrement",
+          "formulation_bo": "A partir de denombrements, il calcule des probabilites pour des experiences aleatoires simples a une ou deux epreuves.",
+          "connaissances_associees": [
+            "arbre de probabilite",
+            "tableau a double entree",
+            "denombrement systematique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-PR-216",
+          "intitule": "Lister les issues possibles d'une experience a deux epreuves",
+          "fingerprint": "lister_issues_experience_deux_epreuves",
+          "niveau": "3E",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Calcul de probabilites",
+          "type": "capacite",
+          "description_detaillee": "Expliciter de maniere exhaustive toutes les issues possibles d'une experience aleatoire a deux epreuves, en utilisant un arbre ou un tableau",
+          "formulation_bo": "Calcule, en explicitant les issues possibles, la probabilite d'avoir deux garcons.",
+          "connaissances_associees": [
+            "notion d'issue",
+            "arbre de probabilite",
+            "tableau a double entree"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-PR-218",
+          "intitule": "Utiliser l'evenement contraire pour calculer une probabilite",
+          "fingerprint": "utiliser_evenement_contraire_probabilite",
+          "niveau": "3E",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Calcul de probabilites",
+          "type": "capacite",
+          "description_detaillee": "Calculer la probabilite d'un evenement en utilisant la relation P(A) = 1 - P(contraire de A) lorsque le calcul direct est plus complexe",
+          "formulation_bo": "Calcule la probabilite que le couple ait au moins une fille. Il peut utiliser le fait que c'est l'evenement contraire d'avoir deux garcons.",
+          "connaissances_associees": [
+            "evenement contraire",
+            "probabilite de l'evenement contraire",
+            "P(A) + P(non A) = 1"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-PR-251",
+          "intitule": "Determiner une probabilite par denombrement avec tableau a double entree",
+          "fingerprint": "determiner_probabilite_denombrement_tableau",
+          "niveau": "3E",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Calcul de probabilites",
+          "type": "capacite",
+          "description_detaillee": "Calculer la probabilite d'un evenement compose (tirages successifs avec remise) en utilisant un tableau a double entree pour denombrer les issues",
+          "formulation_bo": "Determine la probabilite de tirer successivement deux boules violettes, en utilisant une methode de denombrement prenant appui sur un tableau a double entree.",
+          "connaissances_associees": [
+            "probabilite",
+            "denombrement",
+            "tableau a double entree",
+            "tirage avec remise"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Approche frequentiste": [
+        {
+          "code": "3E-PR-217",
+          "intitule": "Faire le lien entre stabilisation des frequences et probabilite",
+          "fingerprint": "lien_stabilisation_frequences_probabilite",
+          "niveau": "3E",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Approche frequentiste",
+          "type": "capacite",
+          "description_detaillee": "Comprendre et expliquer que lorsque le nombre d'experiences augmente, la frequence observee d'un evenement se stabilise autour de sa probabilite theorique",
+          "formulation_bo": "Il fait le lien entre stabilisation des frequences et probabilites.",
+          "connaissances_associees": [
+            "frequence",
+            "probabilite",
+            "loi des grands nombres (notion intuitive)"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 4
+          }
+        },
+        {
+          "code": "3E-PR-252",
+          "intitule": "Interpreter des frequences experimentales en les comparant aux probabilites theoriques",
+          "fingerprint": "interpreter_frequences_probabilites_theoriques",
+          "niveau": "3E",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Approche frequentiste",
+          "type": "capacite",
+          "description_detaillee": "Analyser les frequences d'apparition observees lors d'une experience aleatoire et les comparer aux probabilites theoriques attendues",
+          "formulation_bo": "L'eleve interprete les resultats en les comparant aux probabilites theoriques.",
+          "connaissances_associees": [
+            "frequence",
+            "probabilite theorique",
+            "loi des grands nombres"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Simulation": [
+        {
+          "code": "3E-PR-253",
+          "intitule": "Interpreter des simulations aleatoires en fonction du nombre de repetitions",
+          "fingerprint": "interpreter_simulations_nombre_repetitions",
+          "niveau": "3E",
+          "domaine": "PROBABILITES",
+          "sous_domaine": "Simulation",
+          "type": "capacite",
+          "description_detaillee": "Analyser les resultats de simulations effectuees sur tableur ou logiciel de programmation et observer la stabilisation des frequences",
+          "formulation_bo": "L'eleve interprete des simulations effectuees sur tableur ou logiciel de programmation en fonction d'un nombre de lancers.",
+          "connaissances_associees": [
+            "simulation",
+            "frequence",
+            "convergence"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        }
+      ]
+    },
+    "ANALYSE": {
+      "Fonctions lineaires": [
+        {
+          "code": "3E-AN-254",
+          "intitule": "Modeliser une situation de proportionnalite par une fonction lineaire",
+          "fingerprint": "modeliser_proportionnalite_fonction_lineaire",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions lineaires",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation concrete de proportionnalite par une fonction de la forme f(x) = ax",
+          "formulation_bo": "Il modelise une situation de proportionnalite a l'aide d'une fonction lineaire.",
+          "connaissances_associees": [
+            "proportionnalite",
+            "fonction lineaire",
+            "coefficient de proportionnalite"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-AN-266",
+          "intitule": "Tracer la representation graphique d'une fonction lineaire",
+          "fingerprint": "tracer_graphe_fonction_lineaire",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions lineaires",
+          "type": "capacite",
+          "description_detaillee": "Tracer la droite passant par l'origine representant une fonction f(x) = ax",
+          "formulation_bo": "Il represente graphiquement une fonction lineaire",
+          "connaissances_associees": [
+            "fonction lineaire",
+            "droite",
+            "origine",
+            "coefficient directeur"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Notion de fonction": [
+        {
+          "code": "3E-AN-260",
+          "intitule": "Utiliser les notations fonctionnelles f(x) et f:x->...",
+          "fingerprint": "utiliser_notations_fonctionnelles",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Notion de fonction",
+          "type": "capacite",
+          "description_detaillee": "Maitriser les deux notations d'une fonction : f(x) = expression et f : x -> expression",
+          "formulation_bo": "Il utilise les notations et le vocabulaire fonctionnels.",
+          "connaissances_associees": [
+            "notation fonctionnelle",
+            "variable",
+            "expression"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-AN-261",
+          "intitule": "Passer d'un mode de representation d'une fonction a un autre",
+          "fingerprint": "convertir_representations_fonction",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Notion de fonction",
+          "type": "capacite",
+          "description_detaillee": "Passer entre expression algebrique, representation graphique, tableau de valeurs et programme de calcul",
+          "formulation_bo": "Il passe d'un mode de representation d'une fonction a un autre.",
+          "connaissances_associees": [
+            "expression algebrique",
+            "courbe representative",
+            "tableau de valeurs",
+            "programme de calcul"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-AN-262",
+          "intitule": "Determiner l'image d'un nombre par une fonction",
+          "fingerprint": "determiner_image_fonction",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Notion de fonction",
+          "type": "capacite",
+          "description_detaillee": "Calculer f(a) a partir de l'expression, du graphique, du tableau de valeurs ou du programme de calcul",
+          "formulation_bo": "Il determine, a partir de tous les modes de representation, l'image d'un nombre.",
+          "connaissances_associees": [
+            "image",
+            "evaluation",
+            "fonction"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-AN-263",
+          "intitule": "Determiner un antecedent a partir d'une representation graphique",
+          "fingerprint": "determiner_antecedent_graphique",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Notion de fonction",
+          "type": "capacite",
+          "description_detaillee": "Lire graphiquement la ou les valeurs de x telles que f(x) = y donne",
+          "formulation_bo": "Il determine un antecedent a partir d'une representation graphique",
+          "connaissances_associees": [
+            "antecedent",
+            "lecture graphique",
+            "courbe representative"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-AN-264",
+          "intitule": "Determiner un antecedent a partir d'un tableau de valeurs",
+          "fingerprint": "determiner_antecedent_tableau",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Notion de fonction",
+          "type": "capacite",
+          "description_detaillee": "Trouver dans un tableau de valeurs la valeur de x correspondant a une image donnee",
+          "formulation_bo": "Il determine un antecedent a partir d'un tableau de valeurs d'une fonction.",
+          "connaissances_associees": [
+            "antecedent",
+            "tableau de valeurs"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-AN-265",
+          "intitule": "Determiner algebriquement un antecedent par resolution d'equation du premier degre",
+          "fingerprint": "determiner_antecedent_algebrique_equation",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Notion de fonction",
+          "type": "capacite",
+          "description_detaillee": "Resoudre f(x) = k lorsque cela se ramene a une equation du premier degre",
+          "formulation_bo": "Il determine de maniere algebrique l'antecedent par une fonction, dans des cas se ramenant a la resolution d'une equation du premier degre.",
+          "connaissances_associees": [
+            "antecedent",
+            "equation premier degre",
+            "resolution algebrique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-AN-271",
+          "intitule": "Identifier la variable et la fonction dans une notation fonctionnelle",
+          "fingerprint": "identifier_variable_fonction_notation",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Notion de fonction",
+          "type": "contenu",
+          "description_detaillee": "Dans f(x) = 3x^2 - 7, reconnaitre que x est la variable et f est la fonction",
+          "formulation_bo": "Il comprend les notations f :x -> 3x^2 - 7 et f(x) = 3x^2 - 7. Il sait alors que x est la variable et f la fonction.",
+          "connaissances_associees": [
+            "variable",
+            "fonction",
+            "notation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-AN-272",
+          "intitule": "Interpreter la notation g(3) = 15 en termes d'image et d'antecedent",
+          "fingerprint": "interpreter_notation_image_antecedent",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Notion de fonction",
+          "type": "contenu",
+          "description_detaillee": "Comprendre que g(3) = 15 signifie que 15 est l'image de 3 par g et que 3 est un antecedent de 15 par g",
+          "formulation_bo": "Il sait que g(3) = 15 signifie que 15 est l'image de 3 par la fonction g et que 3 est un antecedent de 15 par la fonction g.",
+          "connaissances_associees": [
+            "image",
+            "antecedent",
+            "vocabulaire fonctionnel"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Fonctions affines": [
+        {
+          "code": "3E-AN-267",
+          "intitule": "Tracer la representation graphique d'une fonction affine",
+          "fingerprint": "tracer_graphe_fonction_affine",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions affines",
+          "type": "capacite",
+          "description_detaillee": "Tracer la droite representant une fonction f(x) = ax + b",
+          "formulation_bo": "Il represente graphiquement une fonction affine.",
+          "connaissances_associees": [
+            "fonction affine",
+            "droite",
+            "coefficient directeur",
+            "ordonnee a l'origine"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-AN-268",
+          "intitule": "Interpreter les parametres a et b d'une fonction affine a partir de sa courbe",
+          "fingerprint": "interpreter_parametres_fonction_affine_graphique",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions affines",
+          "type": "capacite",
+          "description_detaillee": "Lire graphiquement le coefficient directeur et l'ordonnee a l'origine d'une fonction affine",
+          "formulation_bo": "Il interprete les parametres d'une fonction affine suivant l'allure de sa courbe representative.",
+          "connaissances_associees": [
+            "coefficient directeur",
+            "ordonnee a l'origine",
+            "pente",
+            "lecture graphique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Modelisation": [
+        {
+          "code": "3E-AN-269",
+          "intitule": "Modeliser un phenomene continu par une fonction",
+          "fingerprint": "modeliser_phenomene_continu_fonction",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Modelisation",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation concrete (physique, economique...) par une fonction adaptee",
+          "formulation_bo": "Il modelise un phenomene continu par une fonction.",
+          "connaissances_associees": [
+            "modelisation",
+            "fonction",
+            "variable",
+            "dependance"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Resolution de problemes": [
+        {
+          "code": "3E-AN-270",
+          "intitule": "Resoudre un probleme en utilisant plusieurs modes de representation d'une fonction",
+          "fingerprint": "resoudre_probleme_multi_representations_fonction",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Resolution de problemes",
+          "type": "capacite",
+          "description_detaillee": "Combiner expression algebrique, graphique, tableau pour repondre a un probleme modelise par une fonction",
+          "formulation_bo": "Il resout des problemes modelises par des fonctions en utilisant un ou plusieurs modes de representation.",
+          "connaissances_associees": [
+            "fonction",
+            "resolution de probleme",
+            "representations multiples"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "Fonctions": [
+        {
+          "code": "3E-AN-301",
+          "intitule": "Determiner l'antecedent d'un nombre par une fonction affine a l'aide d'une equation",
+          "fingerprint": "determiner_antecedent_fonction_affine_equation",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "description_detaillee": "Resoudre une equation du type ax + b = k pour trouver l'antecedent de k par la fonction f(x) = ax + b",
+          "formulation_bo": "Determine a l'aide d'une equation : l'antecedent de 10 par la fonction f definie par f(x) = -3x - 4",
+          "connaissances_associees": [
+            "notion d'antecedent",
+            "fonction affine",
+            "resolution d'equation du premier degre"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "3E-AN-302",
+          "intitule": "Determiner les antecedents de zero par une fonction produit",
+          "fingerprint": "determiner_antecedents_zero_fonction_produit",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "description_detaillee": "Resoudre une equation produit nul du type (ax + b)(cx + d) = 0 pour trouver les antecedents de 0",
+          "formulation_bo": "les antecedents de 0 par la fonction g definie par g(x) = (3x + 6)(x - 9)",
+          "connaissances_associees": [
+            "equation produit nul",
+            "notion d'antecedent",
+            "factorisation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "3E-AN-303",
+          "intitule": "Representer graphiquement une fonction lineaire",
+          "fingerprint": "representer_graphiquement_fonction_lineaire",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "description_detaillee": "Tracer la droite representant une fonction lineaire f(x) = ax passant par l'origine",
+          "formulation_bo": "Il represente graphiquement les fonctions f : x -> 5x - 1 et g : x -> 3x",
+          "connaissances_associees": [
+            "fonction lineaire",
+            "droite passant par l'origine",
+            "coefficient directeur"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "3E-AN-304",
+          "intitule": "Representer graphiquement une fonction affine",
+          "fingerprint": "representer_graphiquement_fonction_affine",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "description_detaillee": "Tracer la droite representant une fonction affine f(x) = ax + b a partir de deux points ou du coefficient directeur et de l'ordonnee a l'origine",
+          "formulation_bo": "Il represente graphiquement les fonctions f : x -> 5x - 1 et g : x -> 3x",
+          "connaissances_associees": [
+            "fonction affine",
+            "coefficient directeur",
+            "ordonnee a l'origine"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "3E-AN-305",
+          "intitule": "Determiner le signe du coefficient directeur d'une fonction affine a partir de son graphe",
+          "fingerprint": "determiner_signe_coefficient_directeur_graphe",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "description_detaillee": "A partir de l'allure d'une droite (croissante ou decroissante), deduire si le coefficient directeur est positif ou negatif",
+          "formulation_bo": "A partir de l'allure de la representation graphique d'une fonction affine, il determine le signe du coefficient directeur",
+          "connaissances_associees": [
+            "fonction affine",
+            "coefficient directeur",
+            "sens de variation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "3E-AN-306",
+          "intitule": "Determiner le signe de l'ordonnee a l'origine d'une fonction affine a partir de son graphe",
+          "fingerprint": "determiner_signe_ordonnee_origine_graphe",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "description_detaillee": "A partir de la position de l'intersection de la droite avec l'axe des ordonnees, deduire si l'ordonnee a l'origine est positive ou negative",
+          "formulation_bo": "A partir de l'allure de la representation graphique d'une fonction affine, il determine le signe [...] de l'ordonnee a l'origine",
+          "connaissances_associees": [
+            "fonction affine",
+            "ordonnee a l'origine",
+            "lecture graphique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "3E-AN-307",
+          "intitule": "Modeliser une situation geometrique par une fonction",
+          "fingerprint": "modeliser_situation_geometrique_fonction",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "description_detaillee": "Exprimer une grandeur geometrique (aire, perimetre) en fonction d'une variable, traduisant une contrainte geometrique",
+          "formulation_bo": "Complete : l'aire d'un rectangle dont le perimetre est egal a 30 cm et dont un cote a pour longueur x est donne par la fonction A : x -> ...",
+          "connaissances_associees": [
+            "notion de fonction",
+            "aire du rectangle",
+            "perimetre du rectangle",
+            "mise en equation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "3E-AN-308",
+          "intitule": "Modeliser une situation de mouvement uniforme par une fonction lineaire",
+          "fingerprint": "modeliser_mouvement_uniforme_fonction_lineaire",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "description_detaillee": "Traduire une situation de deplacement a vitesse constante par une fonction lineaire f(x) = vx ou v est la vitesse et x le temps",
+          "formulation_bo": "Un mobile se deplace a 5 m/s. L'eleve modelise la situation par la fonction f definie par f(x) = 5x ou x est le temps exprime en secondes et f(x) la distance parcourue",
+          "connaissances_associees": [
+            "fonction lineaire",
+            "proportionnalite",
+            "vitesse constante",
+            "distance"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        },
+        {
+          "code": "3E-AN-309",
+          "intitule": "Resoudre un probleme d'optimisation geometrique par mise en equation",
+          "fingerprint": "resoudre_probleme_optimisation_geometrique_equation",
+          "niveau": "3E",
+          "domaine": "ANALYSE",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "description_detaillee": "Determiner une dimension inconnue dans un probleme geometrique en mettant en equation la contrainte et en resolvant l'equation obtenue",
+          "formulation_bo": "On enleve quatre carres identiques aux quatre coins d'un rectangle de 20 cm de longueur et 13 cm de largeur. Determine la longueur du cote de ces carres qui correspond a une aire restante de 208,16 cm²",
+          "connaissances_associees": [
+            "mise en equation",
+            "resolution d'equation",
+            "aire",
+            "calcul algebrique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 6
+          }
+        }
+      ]
+    },
+    "GEOMETRIE": {
+      "Theoreme de Thales": [
+        {
+          "code": "3E-GE-257",
+          "intitule": "Calculer des longueurs dans une configuration de Thales",
+          "fingerprint": "calculer_longueurs_thales",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Theoreme de Thales",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la proportionnalite issue du theoreme de Thales pour determiner des longueurs inconnues",
+          "formulation_bo": "Il utilise la proportionnalite pour calculer des longueurs dans une configuration de Thales",
+          "connaissances_associees": [
+            "theoreme de Thales",
+            "proportionnalite",
+            "droites paralleles"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-GE-413",
+          "intitule": "Appliquer le theoreme de Thales dans la configuration papillon",
+          "fingerprint": "appliquer_thales_papillon",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Theoreme de Thales",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le theoreme de Thales pour calculer des longueurs dans une configuration ou deux droites se coupent en un point et sont coupees par deux paralleles",
+          "formulation_bo": "le theoreme de Thales et sa reciproque dans la configuration papillon",
+          "connaissances_associees": [
+            "theoreme de Thales",
+            "configuration papillon",
+            "droites paralleles",
+            "proportionnalite"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-414",
+          "intitule": "Appliquer la reciproque du theoreme de Thales dans la configuration papillon",
+          "fingerprint": "appliquer_reciproque_thales_papillon",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Theoreme de Thales",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la reciproque du theoreme de Thales pour demontrer que deux droites sont paralleles dans une configuration papillon",
+          "formulation_bo": "le theoreme de Thales et sa reciproque dans la configuration papillon",
+          "connaissances_associees": [
+            "reciproque de Thales",
+            "configuration papillon",
+            "parallelisme"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-457",
+          "intitule": "Calculer des longueurs en appliquant le theoreme de Thales",
+          "fingerprint": "calculer_longueurs_thales",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Theoreme de Thales",
+          "type": "capacite",
+          "description_detaillee": "Appliquer le theoreme de Thales pour calculer des longueurs inconnues dans une configuration de droites paralleles coupees par des secantes",
+          "formulation_bo": "En appliquant le theoreme de Thales, il effectue des calculs de longueurs.",
+          "connaissances_associees": [
+            "theoreme de Thales",
+            "droites paralleles",
+            "proportionnalite"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "3E-GE-463",
+          "intitule": "Reconnaitre une configuration de Thales avec droites paralleles",
+          "fingerprint": "reconnaitre_configuration_thales",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Theoreme de Thales",
+          "type": "capacite",
+          "description_detaillee": "Identifier dans une figure les elements permettant d'appliquer le theoreme de Thales : deux droites paralleles coupees par deux secantes",
+          "formulation_bo": "les droites (AE) et (CD) sont paralleles ; les droites (CE) et (BD) sont paralleles",
+          "connaissances_associees": [
+            "droites paralleles",
+            "secantes",
+            "configuration de Thales"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        }
+      ],
+      "Triangles semblables": [
+        {
+          "code": "3E-GE-258",
+          "intitule": "Calculer des longueurs dans des triangles semblables",
+          "fingerprint": "calculer_longueurs_triangles_semblables",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Triangles semblables",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la proportionnalite des cotes de triangles semblables pour determiner des longueurs",
+          "formulation_bo": "Il utilise la proportionnalite pour calculer des longueurs dans des triangles semblables",
+          "connaissances_associees": [
+            "triangles semblables",
+            "proportionnalite",
+            "rapport de similitude"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-GE-371",
+          "intitule": "Resoudre un probleme en utilisant des triangles semblables",
+          "fingerprint": "resoudre_probleme_triangles_semblables",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Triangles semblables",
+          "type": "capacite",
+          "description_detaillee": "Reconnaitre des triangles semblables et utiliser la proportionnalite des cotes pour determiner des longueurs inconnues",
+          "formulation_bo": "Il résout des problèmes en utilisant la proportionnalité en géométrie dans le cadre de certaines configurations ou transformations (agrandissement, réduction, triangles semblables, homothéties).",
+          "connaissances_associees": [
+            "triangles semblables",
+            "proportionnalite des cotes",
+            "rapport de similitude"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-415",
+          "intitule": "Reconnaitre deux triangles semblables",
+          "fingerprint": "reconnaitre_triangles_semblables",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Triangles semblables",
+          "type": "capacite",
+          "description_detaillee": "Identifier que deux triangles sont semblables en utilisant la definition (memes angles) ou une propriete caracteristique",
+          "formulation_bo": "les triangles semblables : une definition et une propriete caracteristique",
+          "connaissances_associees": [
+            "triangles semblables",
+            "angles egaux",
+            "proportionnalite des cotes"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-461",
+          "intitule": "Demontrer que deux triangles sont semblables",
+          "fingerprint": "demontrer_triangles_semblables",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Triangles semblables",
+          "type": "demonstration",
+          "description_detaillee": "Demontrer que deux triangles sont semblables en utilisant les criteres de similitude (trois angles egaux, ou proportionnalite des cotes)",
+          "formulation_bo": "Demontrer que les triangles ACE et CBD sont semblables.",
+          "connaissances_associees": [
+            "triangles semblables",
+            "criteres de similitude",
+            "egalite des angles",
+            "proportionnalite des cotes"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "3E-GE-462",
+          "intitule": "Calculer les longueurs des cotes d'un triangle semblable a un autre",
+          "fingerprint": "calculer_longueurs_triangles_semblables",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Triangles semblables",
+          "type": "capacite",
+          "description_detaillee": "Utiliser la proportionnalite des cotes de triangles semblables pour calculer les longueurs des cotes inconnus",
+          "formulation_bo": "En deduire les longueurs des cotes du triangle ACE.",
+          "connaissances_associees": [
+            "triangles semblables",
+            "proportionnalite",
+            "rapport de similitude"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        }
+      ],
+      "Homothetie": [
+        {
+          "code": "3E-GE-259",
+          "intitule": "Calculer des longueurs dans le cadre des homotheties",
+          "fingerprint": "calculer_longueurs_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homothetie",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le rapport d'homothetie pour determiner des longueurs d'images ou d'antecedents",
+          "formulation_bo": "Il utilise la proportionnalite pour calculer des longueurs dans le cadre des homotheties.",
+          "connaissances_associees": [
+            "homothetie",
+            "rapport d'homothetie",
+            "proportionnalite"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 5
+          }
+        },
+        {
+          "code": "3E-GE-367",
+          "intitule": "Calculer des longueurs dans une homothetie de rapport k",
+          "fingerprint": "calculer_longueurs_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homothetie",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la relation L' = |k| * L pour calculer une longueur image dans une homothetie de rapport k",
+          "formulation_bo": "Dans une homothétie de rapport k, il calcule des longueurs, des aires et des volumes.",
+          "connaissances_associees": [
+            "definition homothetie",
+            "rapport d'homothetie",
+            "effet sur les longueurs"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-368",
+          "intitule": "Calculer des aires dans une homothetie de rapport k",
+          "fingerprint": "calculer_aires_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homothetie",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la relation A' = k^2 * A pour calculer une aire image dans une homothetie de rapport k",
+          "formulation_bo": "Dans une homothétie de rapport k, il calcule des longueurs, des aires et des volumes. Par exemple, il est capable de calculer l'aire de la figure obtenue dans une homothétie de rapport k (k non nul) connaissant l'aire de la figure initiale.",
+          "connaissances_associees": [
+            "definition homothetie",
+            "rapport d'homothetie",
+            "effet sur les aires"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-369",
+          "intitule": "Calculer des volumes dans une homothetie de rapport k",
+          "fingerprint": "calculer_volumes_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homothetie",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la relation V' = k^3 * V pour calculer un volume image dans une homothetie de rapport k",
+          "formulation_bo": "Dans une homothétie de rapport k, il calcule des longueurs, des aires et des volumes.",
+          "connaissances_associees": [
+            "definition homothetie",
+            "rapport d'homothetie",
+            "effet sur les volumes"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-370",
+          "intitule": "Resoudre un probleme en utilisant la proportionnalite avec l'homothetie",
+          "fingerprint": "resoudre_probleme_proportionnalite_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homothetie",
+          "type": "capacite",
+          "description_detaillee": "Utiliser les proprietes de l'homothetie pour resoudre des problemes d'agrandissement ou de reduction",
+          "formulation_bo": "Il résout des problèmes en utilisant la proportionnalité en géométrie dans le cadre de certaines configurations ou transformations (agrandissement, réduction, triangles semblables, homothéties).",
+          "connaissances_associees": [
+            "homothetie",
+            "proportionnalite",
+            "agrandissement",
+            "reduction"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-372",
+          "intitule": "Determiner le rapport d'une homothetie a partir de figures",
+          "fingerprint": "determiner_rapport_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homothetie",
+          "type": "capacite",
+          "description_detaillee": "A partir de deux figures homologues, calculer le rapport d'homothetie en comparant des longueurs correspondantes",
+          "formulation_bo": "À partir d'un schéma tel que celui ci-contre, il calcule des longueurs de carrés connaissant les longueurs d'un des carrés et le rapport de l'homothétie correspondante.",
+          "connaissances_associees": [
+            "homothetie",
+            "rapport d'homothetie",
+            "figures homologues"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Transformations": [
+        {
+          "code": "3E-GE-361",
+          "intitule": "Calculer des longueurs en utilisant les proprietes de conservation des symetries",
+          "fingerprint": "calculer_longueurs_conservation_symetries",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le fait que les symetries axiale et centrale conservent les longueurs pour determiner des longueurs dans une figure transformee",
+          "formulation_bo": "Il détermine des longueurs, des aires, des mesures d'angles et des volumes en utilisant les propriétés de conservation des symétries (axiale et centrale), d'une translation, d'une rotation.",
+          "connaissances_associees": [
+            "symetrie axiale",
+            "symetrie centrale",
+            "conservation des longueurs"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-362",
+          "intitule": "Calculer des aires en utilisant les proprietes de conservation des symetries",
+          "fingerprint": "calculer_aires_conservation_symetries",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le fait que les symetries axiale et centrale conservent les aires pour determiner des aires dans une figure transformee",
+          "formulation_bo": "Il détermine des longueurs, des aires, des mesures d'angles et des volumes en utilisant les propriétés de conservation des symétries (axiale et centrale), d'une translation, d'une rotation.",
+          "connaissances_associees": [
+            "symetrie axiale",
+            "symetrie centrale",
+            "conservation des aires"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-363",
+          "intitule": "Calculer des mesures d'angles en utilisant les proprietes de conservation des symetries",
+          "fingerprint": "calculer_angles_conservation_symetries",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le fait que les symetries axiale et centrale conservent les angles pour determiner des mesures d'angles dans une figure transformee",
+          "formulation_bo": "Il détermine des longueurs, des aires, des mesures d'angles et des volumes en utilisant les propriétés de conservation des symétries (axiale et centrale), d'une translation, d'une rotation.",
+          "connaissances_associees": [
+            "symetrie axiale",
+            "symetrie centrale",
+            "conservation des angles"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-364",
+          "intitule": "Calculer des volumes en utilisant les proprietes de conservation des symetries",
+          "fingerprint": "calculer_volumes_conservation_symetries",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le fait que les symetries axiale et centrale conservent les volumes pour determiner des volumes dans une figure transformee",
+          "formulation_bo": "Il détermine des longueurs, des aires, des mesures d'angles et des volumes en utilisant les propriétés de conservation des symétries (axiale et centrale), d'une translation, d'une rotation.",
+          "connaissances_associees": [
+            "symetrie axiale",
+            "symetrie centrale",
+            "conservation des volumes"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-365",
+          "intitule": "Calculer des longueurs en utilisant les proprietes de conservation d'une translation",
+          "fingerprint": "calculer_longueurs_conservation_translation",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le fait que la translation conserve les longueurs pour determiner des longueurs dans une figure transformee",
+          "formulation_bo": "Il détermine des longueurs, des aires, des mesures d'angles et des volumes en utilisant les propriétés de conservation des symétries (axiale et centrale), d'une translation, d'une rotation.",
+          "connaissances_associees": [
+            "translation",
+            "vecteur de translation",
+            "conservation des longueurs"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-366",
+          "intitule": "Calculer des longueurs en utilisant les proprietes de conservation d'une rotation",
+          "fingerprint": "calculer_longueurs_conservation_rotation",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations",
+          "type": "capacite",
+          "description_detaillee": "Utiliser le fait que la rotation conserve les longueurs pour determiner des longueurs dans une figure transformee",
+          "formulation_bo": "Il détermine des longueurs, des aires, des mesures d'angles et des volumes en utilisant les propriétés de conservation des symétries (axiale et centrale), d'une translation, d'une rotation.",
+          "connaissances_associees": [
+            "rotation",
+            "centre et angle de rotation",
+            "conservation des longueurs"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GE-455",
+          "intitule": "Decrire les transformations permettant de construire une rosace",
+          "fingerprint": "decrire_transformations_rosace",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations",
+          "type": "capacite",
+          "description_detaillee": "Analyser une rosace et identifier les transformations geometriques (rotations, symetries, homotheties) utilisees pour sa construction",
+          "formulation_bo": "Il decrit les transformations permettant de construire la rosace suivante",
+          "connaissances_associees": [
+            "rotations",
+            "symetries",
+            "homotheties",
+            "composition de transformations"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        }
+      ],
+      "Geometrie dans l'espace - Sphere": [
+        {
+          "code": "3E-GE-401",
+          "intitule": "Se reperer sur une sphere en utilisant la latitude",
+          "fingerprint": "reperer_sphere_latitude",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Sphere",
+          "type": "capacite",
+          "description_detaillee": "Identifier la position d'un point sur une sphere a partir de sa latitude (angle par rapport a l'equateur)",
+          "formulation_bo": "Il se repere sur une sphere (latitude, longitude).",
+          "connaissances_associees": [
+            "sphere",
+            "latitude",
+            "equateur",
+            "paralleles"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-402",
+          "intitule": "Se reperer sur une sphere en utilisant la longitude",
+          "fingerprint": "reperer_sphere_longitude",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Sphere",
+          "type": "capacite",
+          "description_detaillee": "Identifier la position d'un point sur une sphere a partir de sa longitude (angle par rapport au meridien de reference)",
+          "formulation_bo": "Il se repere sur une sphere (latitude, longitude).",
+          "connaissances_associees": [
+            "sphere",
+            "longitude",
+            "meridien",
+            "meridien de Greenwich"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-403",
+          "intitule": "Pointer un lieu sur un globe terrestre a partir de ses coordonnees",
+          "fingerprint": "pointer_lieu_globe_coordonnees",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Sphere",
+          "type": "capacite",
+          "description_detaillee": "Localiser une ville ou un point sur un globe terrestre en utilisant sa latitude et sa longitude",
+          "formulation_bo": "Il pointe Paris et Sidney sur un globe terrestre a partir de leurs latitudes et longitudes.",
+          "connaissances_associees": [
+            "latitude",
+            "longitude",
+            "globe terrestre",
+            "coordonnees geographiques"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-404",
+          "intitule": "Reconnaitre un grand cercle sur une sphere",
+          "fingerprint": "reconnaitre_grand_cercle_sphere",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Sphere",
+          "type": "capacite",
+          "description_detaillee": "Identifier un grand cercle comme etant un cercle de la sphere dont le centre coincide avec le centre de la sphere",
+          "formulation_bo": "Il reconnait un grand cercle sur une sphere.",
+          "connaissances_associees": [
+            "sphere",
+            "grand cercle",
+            "centre de la sphere",
+            "equateur",
+            "meridien"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Geometrie dans l'espace - Representation": [
+        {
+          "code": "3E-GE-405",
+          "intitule": "Construire une representation en perspective cavaliere d'un solide",
+          "fingerprint": "construire_perspective_cavaliere_solide",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Representation",
+          "type": "capacite",
+          "description_detaillee": "Tracer un solide en perspective cavaliere en respectant les conventions (aretes paralleles, rapport de reduction pour la profondeur)",
+          "formulation_bo": "Il construit et met en relation differentes representations des solides etudies au cours du cycle (representations en perspective cavaliere, vues de face, de dessus, en coupe, patrons)",
+          "connaissances_associees": [
+            "perspective cavaliere",
+            "solides",
+            "aretes",
+            "faces"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-406",
+          "intitule": "Construire une vue de face d'un solide",
+          "fingerprint": "construire_vue_face_solide",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Representation",
+          "type": "capacite",
+          "description_detaillee": "Tracer la projection d'un solide selon une vue de face",
+          "formulation_bo": "Il construit et met en relation differentes representations des solides etudies au cours du cycle (representations en perspective cavaliere, vues de face, de dessus, en coupe, patrons)",
+          "connaissances_associees": [
+            "vue de face",
+            "projection",
+            "solides"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-407",
+          "intitule": "Construire une vue de dessus d'un solide",
+          "fingerprint": "construire_vue_dessus_solide",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Representation",
+          "type": "capacite",
+          "description_detaillee": "Tracer la projection d'un solide selon une vue de dessus",
+          "formulation_bo": "Il construit et met en relation differentes representations des solides etudies au cours du cycle (representations en perspective cavaliere, vues de face, de dessus, en coupe, patrons)",
+          "connaissances_associees": [
+            "vue de dessus",
+            "projection",
+            "solides"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-408",
+          "intitule": "Construire une vue en coupe d'un solide",
+          "fingerprint": "construire_vue_coupe_solide",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Representation",
+          "type": "capacite",
+          "description_detaillee": "Tracer la section d'un solide par un plan de coupe",
+          "formulation_bo": "Il construit et met en relation differentes representations des solides etudies au cours du cycle (representations en perspective cavaliere, vues de face, de dessus, en coupe, patrons)",
+          "connaissances_associees": [
+            "vue en coupe",
+            "section",
+            "plan de coupe",
+            "solides"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-409",
+          "intitule": "Construire le patron d'un solide",
+          "fingerprint": "construire_patron_solide",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Representation",
+          "type": "capacite",
+          "description_detaillee": "Tracer le developpement plan (patron) d'un solide permettant sa construction par pliage",
+          "formulation_bo": "Il construit et met en relation differentes representations des solides etudies au cours du cycle (representations en perspective cavaliere, vues de face, de dessus, en coupe, patrons)",
+          "connaissances_associees": [
+            "patron",
+            "developpement",
+            "faces",
+            "solides"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-410",
+          "intitule": "Mettre en relation differentes representations d'un meme solide",
+          "fingerprint": "relier_representations_solide",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Representation",
+          "type": "capacite",
+          "description_detaillee": "Faire le lien entre perspective cavaliere, vues, coupes et patron d'un meme solide",
+          "formulation_bo": "Il construit et met en relation differentes representations des solides etudies au cours du cycle",
+          "connaissances_associees": [
+            "perspective cavaliere",
+            "vues",
+            "patron",
+            "correspondance"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Geometrie dans l'espace - Sections": [
+        {
+          "code": "3E-GE-411",
+          "intitule": "Determiner une section plane d'un solide",
+          "fingerprint": "determiner_section_plane_solide",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Sections",
+          "type": "capacite",
+          "description_detaillee": "Identifier et tracer la figure obtenue par l'intersection d'un solide avec un plan",
+          "formulation_bo": "Il construit et met en relation differentes representations des solides etudies au cours du cycle [...] et leurs sections planes.",
+          "connaissances_associees": [
+            "section plane",
+            "intersection",
+            "plan",
+            "solide"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-412",
+          "intitule": "Tracer des sections sur un solide en perspective cavaliere",
+          "fingerprint": "tracer_sections_perspective_cavaliere",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Geometrie dans l'espace - Sections",
+          "type": "capacite",
+          "description_detaillee": "Faire apparaitre graphiquement une section plane sur une representation en perspective cavaliere d'un solide",
+          "formulation_bo": "Il trace des solides en perspective cavaliere et fait apparaitre des sections.",
+          "connaissances_associees": [
+            "perspective cavaliere",
+            "section plane",
+            "representation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Trigonometrie": [
+        {
+          "code": "3E-GE-416",
+          "intitule": "Definir le cosinus d'un angle aigu dans un triangle rectangle",
+          "fingerprint": "definir_cosinus_triangle_rectangle",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition du cosinus comme rapport du cote adjacent sur l'hypotenuse",
+          "formulation_bo": "les lignes trigonometriques dans le triangle rectangle : cosinus, sinus, tangente",
+          "connaissances_associees": [
+            "cosinus",
+            "triangle rectangle",
+            "cote adjacent",
+            "hypotenuse"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-417",
+          "intitule": "Definir le sinus d'un angle aigu dans un triangle rectangle",
+          "fingerprint": "definir_sinus_triangle_rectangle",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition du sinus comme rapport du cote oppose sur l'hypotenuse",
+          "formulation_bo": "les lignes trigonometriques dans le triangle rectangle : cosinus, sinus, tangente",
+          "connaissances_associees": [
+            "sinus",
+            "triangle rectangle",
+            "cote oppose",
+            "hypotenuse"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-418",
+          "intitule": "Definir la tangente d'un angle aigu dans un triangle rectangle",
+          "fingerprint": "definir_tangente_triangle_rectangle",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Trigonometrie",
+          "type": "contenu",
+          "description_detaillee": "Connaitre la definition de la tangente comme rapport du cote oppose sur le cote adjacent",
+          "formulation_bo": "les lignes trigonometriques dans le triangle rectangle : cosinus, sinus, tangente",
+          "connaissances_associees": [
+            "tangente",
+            "triangle rectangle",
+            "cote oppose",
+            "cote adjacent"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Transformations - Rotation": [
+        {
+          "code": "3E-GE-419",
+          "intitule": "Transformer une figure par rotation",
+          "fingerprint": "transformer_figure_rotation",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Rotation",
+          "type": "capacite",
+          "description_detaillee": "Construire l'image d'une figure par une rotation de centre et d'angle donnes",
+          "formulation_bo": "il transforme une figure par rotation et par homothetie",
+          "connaissances_associees": [
+            "rotation",
+            "centre de rotation",
+            "angle de rotation",
+            "image"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-421",
+          "intitule": "Comprendre l'effet d'une rotation sur une figure",
+          "fingerprint": "comprendre_effet_rotation",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Rotation",
+          "type": "capacite",
+          "description_detaillee": "Identifier les proprietes conservees par une rotation (distances, angles, aires) et l'effet sur la position",
+          "formulation_bo": "il comprend l'effet d'une rotation et d'une homothetie",
+          "connaissances_associees": [
+            "rotation",
+            "isometrie",
+            "conservation des distances",
+            "conservation des angles"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Transformations - Homothetie": [
+        {
+          "code": "3E-GE-420",
+          "intitule": "Transformer une figure par homothetie",
+          "fingerprint": "transformer_figure_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Homothetie",
+          "type": "capacite",
+          "description_detaillee": "Construire l'image d'une figure par une homothetie de centre et de rapport donnes",
+          "formulation_bo": "il transforme une figure par rotation et par homothetie",
+          "connaissances_associees": [
+            "homothetie",
+            "centre d'homothetie",
+            "rapport d'homothetie",
+            "image"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-422",
+          "intitule": "Comprendre l'effet d'une homothetie sur une figure",
+          "fingerprint": "comprendre_effet_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Homothetie",
+          "type": "capacite",
+          "description_detaillee": "Identifier les proprietes d'une homothetie : conservation des angles, multiplication des longueurs par |k|, effet sur les aires",
+          "formulation_bo": "il comprend l'effet d'une rotation et d'une homothetie",
+          "connaissances_associees": [
+            "homothetie",
+            "rapport",
+            "agrandissement",
+            "reduction"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Transformations - Applications": [
+        {
+          "code": "3E-GE-423",
+          "intitule": "Identifier des rotations dans une frise",
+          "fingerprint": "identifier_rotations_frise",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Applications",
+          "type": "capacite",
+          "description_detaillee": "Reperer les rotations utilisees dans la construction d'une frise decorative",
+          "formulation_bo": "Il identifie des rotations et des homotheties dans des frises, des pavages et des rosaces.",
+          "connaissances_associees": [
+            "rotation",
+            "frise",
+            "motif",
+            "symetrie"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-424",
+          "intitule": "Identifier des rotations dans un pavage",
+          "fingerprint": "identifier_rotations_pavage",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Applications",
+          "type": "capacite",
+          "description_detaillee": "Reperer les rotations utilisees dans la construction d'un pavage",
+          "formulation_bo": "Il identifie des rotations et des homotheties dans des frises, des pavages et des rosaces.",
+          "connaissances_associees": [
+            "rotation",
+            "pavage",
+            "motif",
+            "symetrie"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-425",
+          "intitule": "Identifier des rotations dans une rosace",
+          "fingerprint": "identifier_rotations_rosace",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Applications",
+          "type": "capacite",
+          "description_detaillee": "Reperer les rotations utilisees dans la construction d'une rosace",
+          "formulation_bo": "Il identifie des rotations et des homotheties dans des frises, des pavages et des rosaces.",
+          "connaissances_associees": [
+            "rotation",
+            "rosace",
+            "motif",
+            "symetrie de rotation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-426",
+          "intitule": "Identifier des homotheties dans des figures",
+          "fingerprint": "identifier_homotheties_figures",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Applications",
+          "type": "capacite",
+          "description_detaillee": "Reperer les homotheties utilisees dans des frises, pavages ou rosaces",
+          "formulation_bo": "Il identifie des rotations et des homotheties dans des frises, des pavages et des rosaces.",
+          "connaissances_associees": [
+            "homothetie",
+            "rapport",
+            "agrandissement",
+            "reduction"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-427",
+          "intitule": "Determiner des grandeurs geometriques en mobilisant les transformations",
+          "fingerprint": "determiner_grandeurs_transformations",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Applications",
+          "type": "capacite",
+          "description_detaillee": "Utiliser les proprietes de la rotation et de l'homothetie pour calculer des longueurs, des angles ou des aires",
+          "formulation_bo": "Il mobilise les connaissances des figures, des configurations, de la rotation et de l'homothetie pour determiner des grandeurs geometriques.",
+          "connaissances_associees": [
+            "rotation",
+            "homothetie",
+            "longueurs",
+            "angles",
+            "aires"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Transformations - Demonstration": [
+        {
+          "code": "3E-GE-428",
+          "intitule": "Mener un raisonnement utilisant les proprietes de la rotation",
+          "fingerprint": "raisonner_proprietes_rotation",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Demonstration",
+          "type": "capacite",
+          "description_detaillee": "Construire une demonstration ou un raisonnement s'appuyant sur les proprietes de la rotation",
+          "formulation_bo": "Il mene des raisonnements en utilisant des proprietes des figures, des configurations, de la rotation et de l'homothetie.",
+          "connaissances_associees": [
+            "rotation",
+            "demonstration",
+            "proprietes conservees"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-429",
+          "intitule": "Mener un raisonnement utilisant les proprietes de l'homothetie",
+          "fingerprint": "raisonner_proprietes_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Demonstration",
+          "type": "capacite",
+          "description_detaillee": "Construire une demonstration ou un raisonnement s'appuyant sur les proprietes de l'homothetie",
+          "formulation_bo": "Il mene des raisonnements en utilisant des proprietes des figures, des configurations, de la rotation et de l'homothetie.",
+          "connaissances_associees": [
+            "homothetie",
+            "demonstration",
+            "rapport",
+            "alignement"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        },
+        {
+          "code": "3E-GE-431",
+          "intitule": "Justifier une propriete de figure obtenue par rotations",
+          "fingerprint": "justifier_propriete_figure_rotations",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Demonstration",
+          "type": "capacite",
+          "description_detaillee": "Demontrer une propriete geometrique d'une figure construite par rotations successives",
+          "formulation_bo": "Il justifie que la figure precedente est composee de 6 triangles rectangles.",
+          "connaissances_associees": [
+            "rotation",
+            "demonstration",
+            "proprietes des figures",
+            "triangles rectangles"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Transformations - Construction": [
+        {
+          "code": "3E-GE-430",
+          "intitule": "Realiser une figure par rotations successives",
+          "fingerprint": "realiser_figure_rotations_successives",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Transformations - Construction",
+          "type": "capacite",
+          "description_detaillee": "Construire une figure complexe en appliquant plusieurs rotations successives de meme centre",
+          "formulation_bo": "Il realise (a la main, a l'aide d'un logiciel de geometrie dynamique ou de programmation) la figure suivante obtenue a partir du triangle ABC par des rotations successives de centre A et d'angle 60 degres.",
+          "connaissances_associees": [
+            "rotation",
+            "composition",
+            "construction",
+            "rosace"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Homotheties": [
+        {
+          "code": "3E-GE-451",
+          "intitule": "Realiser une figure a la main a partir d'un quadrilatere et d'homotheties",
+          "fingerprint": "realiser_figure_main_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homotheties",
+          "type": "capacite",
+          "description_detaillee": "Construire a la main une figure obtenue par application de deux homotheties de rapports donnes (positif et negatif) a un quadrilatere initial",
+          "formulation_bo": "Il realise (a la main, a l'aide d'un logiciel de geometrie dynamique ou de programmation) la figure suivante a l'aide du quadrilatere ABCD et deux homotheties de centre O et de rapports 3 et -0,5.",
+          "connaissances_associees": [
+            "definition homothetie",
+            "centre d'homothetie",
+            "rapport d'homothetie",
+            "construction geometrique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "3E-GE-452",
+          "intitule": "Realiser une figure avec un logiciel de geometrie dynamique a partir d'homotheties",
+          "fingerprint": "realiser_figure_logiciel_geometrie_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homotheties",
+          "type": "capacite",
+          "description_detaillee": "Utiliser un logiciel de geometrie dynamique pour construire une figure obtenue par application d'homotheties",
+          "formulation_bo": "Il realise (a la main, a l'aide d'un logiciel de geometrie dynamique ou de programmation) la figure suivante a l'aide du quadrilatere ABCD et deux homotheties de centre O et de rapports 3 et -0,5.",
+          "connaissances_associees": [
+            "definition homothetie",
+            "logiciel geometrie dynamique",
+            "construction numerique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "3E-GE-454",
+          "intitule": "Justifier la nature d'un quadrilatere en utilisant les proprietes de conservation des homotheties",
+          "fingerprint": "justifier_nature_quadrilatere_conservation_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homotheties",
+          "type": "capacite",
+          "description_detaillee": "Identifier et justifier la nature de quadrilateres obtenus par homothetie en s'appuyant sur les proprietes de conservation (angles, parallelisme, nature des figures)",
+          "formulation_bo": "Il justifie la nature des trois quadrilateres en s'appuyant sur le codage et sur les proprietes de conservations des homotheties.",
+          "connaissances_associees": [
+            "proprietes conservation homothetie",
+            "nature quadrilateres",
+            "codage geometrique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "3E-GE-464",
+          "intitule": "Appliquer les proprietes de conservation des homotheties",
+          "fingerprint": "appliquer_conservation_homothetie",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homotheties",
+          "type": "contenu",
+          "description_detaillee": "Connaitre et appliquer les proprietes conservees par une homothetie : alignement, parallelisme, angles, nature des figures",
+          "formulation_bo": "proprietes de conservations des homotheties",
+          "connaissances_associees": [
+            "homothetie",
+            "conservation alignement",
+            "conservation parallelisme",
+            "conservation angles"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "3E-GE-465",
+          "intitule": "Construire l'image d'un point par une homothetie de rapport positif",
+          "fingerprint": "construire_image_point_homothetie_positive",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homotheties",
+          "type": "capacite",
+          "description_detaillee": "Construire l'image d'un point par une homothetie de centre O et de rapport positif k (ex: k=3)",
+          "formulation_bo": "homotheties de centre O et de rapports 3",
+          "connaissances_associees": [
+            "centre homothetie",
+            "rapport homothetie positif",
+            "construction image"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "3E-GE-466",
+          "intitule": "Construire l'image d'un point par une homothetie de rapport negatif",
+          "fingerprint": "construire_image_point_homothetie_negative",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Homotheties",
+          "type": "capacite",
+          "description_detaillee": "Construire l'image d'un point par une homothetie de centre O et de rapport negatif k (ex: k=-0,5)",
+          "formulation_bo": "homotheties de centre O et de rapports -0,5",
+          "connaissances_associees": [
+            "centre homothetie",
+            "rapport homothetie negatif",
+            "construction image",
+            "sens oppose"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        }
+      ],
+      "Angles et droites paralleles": [
+        {
+          "code": "3E-GE-460",
+          "intitule": "Demontrer que deux angles ont meme mesure en utilisant les proprietes des angles",
+          "fingerprint": "demontrer_egalite_angles",
+          "niveau": "3E",
+          "domaine": "GEOMETRIE",
+          "sous_domaine": "Angles et droites paralleles",
+          "type": "demonstration",
+          "description_detaillee": "Utiliser les proprietes des angles (alternes-internes, correspondants, angles d'un triangle) pour demontrer l'egalite de deux angles",
+          "formulation_bo": "Demontrer que les angles BCD et CAE ont meme mesure.",
+          "connaissances_associees": [
+            "angles alternes-internes",
+            "angles correspondants",
+            "droites paralleles",
+            "angles d'un triangle"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        }
+      ]
+    },
+    "GRANDEURS": {
+      "Volumes": [
+        {
+          "code": "3E-GR-351",
+          "intitule": "Calculer le volume d'une boule",
+          "fingerprint": "calculer_volume_boule",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Volumes",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la formule V = (4/3) * pi * r^3 pour calculer le volume d'une boule connaissant son rayon",
+          "formulation_bo": "Il calcule le volume d'une boule.",
+          "connaissances_associees": [
+            "formule volume boule",
+            "notion de rayon",
+            "valeur de pi"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GR-352",
+          "intitule": "Calculer le volume d'un cylindre",
+          "fingerprint": "calculer_volume_cylindre",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Volumes",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la formule V = pi * r^2 * h pour calculer le volume d'un cylindre",
+          "formulation_bo": "Il calcule les volumes d'assemblages de solides étudiés au cours du cycle.",
+          "connaissances_associees": [
+            "formule volume cylindre",
+            "aire du disque",
+            "notion de hauteur"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GR-353",
+          "intitule": "Calculer le volume d'un assemblage de solides",
+          "fingerprint": "calculer_volume_assemblage_solides",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Volumes",
+          "type": "capacite",
+          "description_detaillee": "Decomposer un solide complexe en solides elementaires (cylindre, boule, cone, prisme, pyramide) et calculer le volume total par addition ou soustraction des volumes",
+          "formulation_bo": "Il calcule les volumes d'assemblages de solides étudiés au cours du cycle.",
+          "connaissances_associees": [
+            "volumes des solides usuels",
+            "decomposition de solides",
+            "addition et soustraction de volumes"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Grandeurs composees": [
+        {
+          "code": "3E-GR-354",
+          "intitule": "Calculer avec des grandeurs composees",
+          "fingerprint": "calculer_grandeurs_composees",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Grandeurs composees",
+          "type": "capacite",
+          "description_detaillee": "Effectuer des calculs impliquant des grandeurs composees comme la vitesse (km/h, m/s) ou le debit (m^3/s, L/h)",
+          "formulation_bo": "Il mène des calculs sur des grandeurs mesurables, notamment des grandeurs composées, et exprime les résultats dans les unités adaptées.",
+          "connaissances_associees": [
+            "definition grandeur composee",
+            "vitesse",
+            "debit",
+            "operations sur les grandeurs"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GR-358",
+          "intitule": "Calculer une distance parcourue a partir d'une vitesse et d'une duree",
+          "fingerprint": "calculer_distance_vitesse_duree",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Grandeurs composees",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la relation d = v * t pour calculer la distance parcourue connaissant la vitesse et la duree",
+          "formulation_bo": "Un conducteur met 1 s avant de commencer à freiner quand il voit un obstacle. Quelle distance parcourt-il pendant cette durée s'il roule à 80 km/h ?",
+          "connaissances_associees": [
+            "relation distance-vitesse-temps",
+            "conversions d'unites"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GR-359",
+          "intitule": "Calculer un volume d'eau a partir d'un debit et d'une duree",
+          "fingerprint": "calculer_volume_debit_duree",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Grandeurs composees",
+          "type": "capacite",
+          "description_detaillee": "Appliquer la relation V = D * t pour calculer le volume ecoule connaissant le debit et la duree",
+          "formulation_bo": "Le débit moyen de la Seine sous le pont de l'Alma est 328 m3/s. Combien de litres d'eau sont-ils passés sous ce pont en 3 min ?",
+          "connaissances_associees": [
+            "notion de debit",
+            "conversions m^3/L",
+            "conversions min/s"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Unites": [
+        {
+          "code": "3E-GR-355",
+          "intitule": "Exprimer un resultat dans l'unite adaptee",
+          "fingerprint": "exprimer_resultat_unite_adaptee",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Unites",
+          "type": "capacite",
+          "description_detaillee": "Choisir l'unite appropriee pour exprimer un resultat en fonction du contexte (longueurs en m, aires en m^2, volumes en m^3, vitesses en km/h ou m/s, debits en m^3/s ou L/h)",
+          "formulation_bo": "Il mène des calculs sur des grandeurs mesurables, notamment des grandeurs composées, et exprime les résultats dans les unités adaptées.",
+          "connaissances_associees": [
+            "systeme d'unites",
+            "unites de longueur",
+            "unites d'aire",
+            "unites de volume",
+            "unites de vitesse",
+            "unites de debit"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GR-357",
+          "intitule": "Verifier la coherence d'un resultat par analyse des unites",
+          "fingerprint": "verifier_coherence_unites",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Unites",
+          "type": "capacite",
+          "description_detaillee": "Controler la validite d'un resultat en verifiant que les unites obtenues sont coherentes avec la grandeur calculee",
+          "formulation_bo": "Il vérifie la cohérence des résultats du point de vue des unités pour les calculs de grandeurs simples ou composées.",
+          "connaissances_associees": [
+            "analyse dimensionnelle",
+            "homogeneite des formules",
+            "unites SI"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        },
+        {
+          "code": "3E-GR-360",
+          "intitule": "Identifier les unites appropriees pour chaque type de grandeur",
+          "fingerprint": "identifier_unites_types_grandeurs",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Unites",
+          "type": "contenu",
+          "description_detaillee": "Connaitre les unites usuelles : durees (h, min, s), longueurs (m), aires (m^2), volumes (m^3), vitesses (km/h, m/s), debits (m^3/s, L/h)",
+          "formulation_bo": "Il oralise que les durées sont en heures, minutes, secondes, les longueurs en mètres, les aires en mètres carrés et les volumes en mètres cubes, les vitesses en kilomètres par heure ou en mètres par seconde, les débits en mètres cubes par seconde ou litres par heure…",
+          "connaissances_associees": [
+            "unites SI",
+            "unites derivees"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Conversions": [
+        {
+          "code": "3E-GR-356",
+          "intitule": "Convertir des unites de grandeurs composees",
+          "fingerprint": "convertir_unites_grandeurs_composees",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Conversions",
+          "type": "capacite",
+          "description_detaillee": "Effectuer des conversions entre unites de grandeurs composees (ex: km/h vers m/s, m^3/s vers L/h)",
+          "formulation_bo": "Il résout des problèmes utilisant les conversions d'unités sur des grandeurs composées.",
+          "connaissances_associees": [
+            "conversions d'unites simples",
+            "facteurs de conversion",
+            "grandeurs composees"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 7
+          }
+        }
+      ],
+      "Aires et homotheties": [
+        {
+          "code": "3E-GR-456",
+          "intitule": "Determiner l'aire totale de figures construites par homothetie",
+          "fingerprint": "determiner_aire_figures_homothetie",
+          "niveau": "3E",
+          "domaine": "GRANDEURS",
+          "sous_domaine": "Aires et homotheties",
+          "type": "capacite",
+          "description_detaillee": "Calculer l'aire totale de figures obtenues par homothetie en utilisant la relation entre le rapport d'homothetie et le rapport des aires (k^2)",
+          "formulation_bo": "Il determine l'aire totale des figures construites ci-dessous connaissant les longueurs AB et BC pour la premiere et la longueur AB pour la seconde.",
+          "connaissances_associees": [
+            "aire quadrilatere",
+            "rapport d'homothetie",
+            "rapport des aires",
+            "carre du rapport"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        }
+      ]
+    },
+    "ALGORITHMIQUE": {
+      "Outils numeriques - Geometrie": [
+        {
+          "code": "3E-AG-432",
+          "intitule": "Construire une figure geometrique avec un logiciel de geometrie dynamique",
+          "fingerprint": "construire_figure_logiciel_geometrie",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Outils numeriques - Geometrie",
+          "type": "capacite",
+          "description_detaillee": "Utiliser un logiciel de geometrie dynamique (type GeoGebra) pour construire des figures incluant des transformations",
+          "formulation_bo": "Il realise (a la main, a l'aide d'un logiciel de geometrie dynamique ou de programmation) la figure",
+          "connaissances_associees": [
+            "logiciel geometrie",
+            "GeoGebra",
+            "construction",
+            "transformations"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Programmation - Geometrie": [
+        {
+          "code": "3E-AG-433",
+          "intitule": "Construire une figure geometrique par programmation",
+          "fingerprint": "construire_figure_programmation",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Geometrie",
+          "type": "capacite",
+          "description_detaillee": "Ecrire un programme (type Scratch ou Python) pour generer une figure geometrique incluant des transformations",
+          "formulation_bo": "Il realise (a la main, a l'aide d'un logiciel de geometrie dynamique ou de programmation) la figure",
+          "connaissances_associees": [
+            "programmation",
+            "Scratch",
+            "Python",
+            "boucles",
+            "transformations"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 8
+          }
+        }
+      ],
+      "Programmation geometrique": [
+        {
+          "code": "3E-AG-453",
+          "intitule": "Realiser une figure par programmation a partir d'homotheties",
+          "fingerprint": "realiser_figure_programmation_homothetie",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation geometrique",
+          "type": "capacite",
+          "description_detaillee": "Programmer la construction d'une figure obtenue par application d'homotheties",
+          "formulation_bo": "Il realise (a la main, a l'aide d'un logiciel de geometrie dynamique ou de programmation) la figure suivante a l'aide du quadrilatere ABCD et deux homotheties de centre O et de rapports 3 et -0,5.",
+          "connaissances_associees": [
+            "definition homothetie",
+            "programmation",
+            "coordonnees"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        }
+      ],
+      "Programmation - Niveau 1": [
+        {
+          "code": "3E-AG-501",
+          "intitule": "Realiser des activites d'algorithmique debranchee",
+          "fingerprint": "realiser_algorithmique_debranchee",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Executer des algorithmes sans ordinateur, en manipulant des cartes ou en suivant des instructions ecrites",
+          "formulation_bo": "Il realise des activites d'algorithmique debranchee.",
+          "connaissances_associees": [
+            "notion d'algorithme",
+            "sequence d'instructions"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-502",
+          "intitule": "Ordonner des blocs de programmation fournis pour construire un programme simple",
+          "fingerprint": "ordonner_blocs_programme_simple",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "A partir de blocs fournis par l'enseignant, les mettre dans le bon ordre pour obtenir un programme fonctionnel",
+          "formulation_bo": "Il met en ordre et/ou complete des blocs fournis par le professeur pour construire un programme simple sur un logiciel de programmation.",
+          "connaissances_associees": [
+            "blocs de programmation",
+            "sequence d'instructions"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-503",
+          "intitule": "Completer des blocs de programmation fournis pour construire un programme simple",
+          "fingerprint": "completer_blocs_programme_simple",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "A partir de blocs partiellement fournis par l'enseignant, completer les elements manquants pour obtenir un programme fonctionnel",
+          "formulation_bo": "Il met en ordre et/ou complete des blocs fournis par le professeur pour construire un programme simple sur un logiciel de programmation.",
+          "connaissances_associees": [
+            "blocs de programmation",
+            "sequence d'instructions"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-504",
+          "intitule": "Ecrire un script de deplacement utilisant des instructions conditionnelles",
+          "fingerprint": "ecrire_script_deplacement_conditionnelles",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Creer un programme qui fait deplacer un objet (lutin) en utilisant des structures si...alors",
+          "formulation_bo": "Il ecrit un script de deplacement ou de construction geometrique utilisant des instructions conditionnelles et/ou la boucle Repeter ... fois.",
+          "connaissances_associees": [
+            "instruction conditionnelle",
+            "deplacement",
+            "script"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-505",
+          "intitule": "Ecrire un script de deplacement utilisant la boucle Repeter...fois",
+          "fingerprint": "ecrire_script_deplacement_boucle_repeter",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Creer un programme qui fait deplacer un objet (lutin) en utilisant une boucle bornee",
+          "formulation_bo": "Il ecrit un script de deplacement ou de construction geometrique utilisant des instructions conditionnelles et/ou la boucle Repeter ... fois.",
+          "connaissances_associees": [
+            "boucle bornee",
+            "deplacement",
+            "script"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-506",
+          "intitule": "Ecrire un script de construction geometrique utilisant des instructions conditionnelles",
+          "fingerprint": "ecrire_script_geometrie_conditionnelles",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Creer un programme qui trace une figure geometrique en utilisant des structures si...alors",
+          "formulation_bo": "Il ecrit un script de deplacement ou de construction geometrique utilisant des instructions conditionnelles et/ou la boucle Repeter ... fois.",
+          "connaissances_associees": [
+            "instruction conditionnelle",
+            "construction geometrique",
+            "script"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-507",
+          "intitule": "Ecrire un script de construction geometrique utilisant la boucle Repeter...fois",
+          "fingerprint": "ecrire_script_geometrie_boucle_repeter",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Creer un programme qui trace une figure geometrique en utilisant une boucle bornee",
+          "formulation_bo": "Il ecrit un script de deplacement ou de construction geometrique utilisant des instructions conditionnelles et/ou la boucle Repeter ... fois.",
+          "connaissances_associees": [
+            "boucle bornee",
+            "construction geometrique",
+            "script"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-523",
+          "intitule": "Comprendre ce que font des assemblages simples de blocs de programmation",
+          "fingerprint": "comprendre_assemblages_blocs_programmation",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Lire et interpreter le comportement d'un programme simple constitue de blocs",
+          "formulation_bo": "Il comprend ce que font des assemblages simples de blocs de programmation, par exemple au travers de questions flash.",
+          "connaissances_associees": [
+            "lecture de programme",
+            "blocs de programmation",
+            "interpretation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-524",
+          "intitule": "Retrouver parmi des programmes donnes celui qui permet d'obtenir une figure donnee",
+          "fingerprint": "retrouver_programme_correspondant_figure",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Associer un resultat graphique au programme qui l'a produit parmi plusieurs propositions",
+          "formulation_bo": "Il retrouve parmi des programmes donnes celui qui permet d'obtenir une figure donnee, et inversement.",
+          "connaissances_associees": [
+            "lecture de programme",
+            "construction geometrique",
+            "correspondance"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-525",
+          "intitule": "Retrouver parmi des figures donnees celle produite par un programme donne",
+          "fingerprint": "retrouver_figure_correspondant_programme",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Predire le resultat graphique d'un programme parmi plusieurs propositions de figures",
+          "formulation_bo": "Il retrouve parmi des programmes donnes celui qui permet d'obtenir une figure donnee, et inversement.",
+          "connaissances_associees": [
+            "lecture de programme",
+            "construction geometrique",
+            "prediction"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-526",
+          "intitule": "Ecrire un algorithme en langage naturel pour decrire un deplacement",
+          "fingerprint": "ecrire_algorithme_naturel_deplacement",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Rediger en francais les etapes d'un algorithme de deplacement sans utiliser de langage de programmation",
+          "formulation_bo": "Sans utiliser de langage informatique formalise, il ecrit un algorithme pour decrire un deplacement ou un calcul.",
+          "connaissances_associees": [
+            "algorithme",
+            "langage naturel",
+            "deplacement"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-527",
+          "intitule": "Ecrire un algorithme en langage naturel pour decrire un calcul",
+          "fingerprint": "ecrire_algorithme_naturel_calcul",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Rediger en francais les etapes d'un algorithme de calcul sans utiliser de langage de programmation",
+          "formulation_bo": "Sans utiliser de langage informatique formalise, il ecrit un algorithme pour decrire un deplacement ou un calcul.",
+          "connaissances_associees": [
+            "algorithme",
+            "langage naturel",
+            "calcul"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-528",
+          "intitule": "Decrire ce que fait un assemblage simple de blocs de programmation",
+          "fingerprint": "decrire_assemblage_blocs_programmation",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Expliquer en langage naturel le comportement d'un programme simple",
+          "formulation_bo": "Il decrit ce que fait un assemblage simple de blocs de programmation.",
+          "connaissances_associees": [
+            "lecture de programme",
+            "verbalisation",
+            "blocs de programmation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-529",
+          "intitule": "Ordonner des blocs de programmation en fonction d'une consigne donnee",
+          "fingerprint": "ordonner_blocs_selon_consigne",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "A partir d'une consigne (tracer un carre, se deplacer vers un point), ordonner correctement les blocs pour obtenir le resultat attendu",
+          "formulation_bo": "Il ordonne des blocs en fonction d'une consigne donnee.",
+          "connaissances_associees": [
+            "blocs de programmation",
+            "sequence",
+            "consigne"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-530",
+          "intitule": "Assembler des blocs pour tracer un carre de longueur donnee",
+          "fingerprint": "assembler_blocs_tracer_carre",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 1",
+          "type": "capacite",
+          "description_detaillee": "Utiliser les blocs avancer et tourner pour programmer le trace d'un carre",
+          "formulation_bo": "Assemble correctement les blocs ci-contre pour permettre au lutin de tracer un carre de longueur 100 pixels",
+          "connaissances_associees": [
+            "blocs de programmation",
+            "carre",
+            "trace",
+            "boucle"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        }
+      ],
+      "Programmation - Niveau 2": [
+        {
+          "code": "3E-AG-508",
+          "intitule": "Gerer le declenchement d'un script en reponse a un evenement",
+          "fingerprint": "gerer_declenchement_script_evenement",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 2",
+          "type": "capacite",
+          "description_detaillee": "Programmer un script qui demarre lorsqu'un evenement particulier se produit (clic, touche, message)",
+          "formulation_bo": "Il gere le declenchement d'un script en reponse a un evenement.",
+          "connaissances_associees": [
+            "evenement",
+            "declencheur",
+            "script"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-509",
+          "intitule": "Ecrire une sequence d'instructions utilisant une condition si...alors",
+          "fingerprint": "ecrire_sequence_condition_si_alors",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 2",
+          "type": "capacite",
+          "description_detaillee": "Rediger un programme comportant une structure conditionnelle simple",
+          "formulation_bo": "Il ecrit une sequence d'instructions (condition si ... alors et boucle repeter ... fois).",
+          "connaissances_associees": [
+            "instruction conditionnelle",
+            "structure si...alors"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-510",
+          "intitule": "Ecrire une sequence d'instructions utilisant une boucle repeter...fois",
+          "fingerprint": "ecrire_sequence_boucle_repeter_fois",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 2",
+          "type": "capacite",
+          "description_detaillee": "Rediger un programme comportant une boucle bornee",
+          "formulation_bo": "Il ecrit une sequence d'instructions (condition si ... alors et boucle repeter ... fois).",
+          "connaissances_associees": [
+            "boucle bornee",
+            "iteration"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-511",
+          "intitule": "Integrer une variable dans un programme de deplacement",
+          "fingerprint": "integrer_variable_programme_deplacement",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 2",
+          "type": "capacite",
+          "description_detaillee": "Utiliser une variable pour parametrer ou controler un deplacement dans un programme",
+          "formulation_bo": "Il integre une variable dans un programme de deplacement, de construction geometrique ou de calcul.",
+          "connaissances_associees": [
+            "variable",
+            "affectation",
+            "deplacement"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-512",
+          "intitule": "Integrer une variable dans un programme de construction geometrique",
+          "fingerprint": "integrer_variable_programme_geometrie",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 2",
+          "type": "capacite",
+          "description_detaillee": "Utiliser une variable pour parametrer une construction geometrique (longueur, angle)",
+          "formulation_bo": "Il integre une variable dans un programme de deplacement, de construction geometrique ou de calcul.",
+          "connaissances_associees": [
+            "variable",
+            "affectation",
+            "construction geometrique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-513",
+          "intitule": "Integrer une variable dans un programme de calcul",
+          "fingerprint": "integrer_variable_programme_calcul",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 2",
+          "type": "capacite",
+          "description_detaillee": "Utiliser une variable pour stocker et manipuler des valeurs dans un calcul",
+          "formulation_bo": "Il integre une variable dans un programme de deplacement, de construction geometrique ou de calcul.",
+          "connaissances_associees": [
+            "variable",
+            "affectation",
+            "calcul"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        }
+      ],
+      "Programmation - Niveau 3": [
+        {
+          "code": "3E-AG-514",
+          "intitule": "Decomposer un probleme en sous-problemes",
+          "fingerprint": "decomposer_probleme_sous_problemes",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 3",
+          "type": "capacite",
+          "description_detaillee": "Analyser un probleme complexe pour identifier les etapes elementaires qui le composent",
+          "formulation_bo": "Il decompose un probleme en sous-problemes et traduit un sous-probleme en creant un bloc-personnalise.",
+          "connaissances_associees": [
+            "analyse de probleme",
+            "decomposition",
+            "modularite"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-515",
+          "intitule": "Creer un bloc personnalise pour traduire un sous-probleme",
+          "fingerprint": "creer_bloc_personnalise_sous_probleme",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 3",
+          "type": "capacite",
+          "description_detaillee": "Definir un nouveau bloc (fonction/procedure) qui encapsule la resolution d'un sous-probleme",
+          "formulation_bo": "Il decompose un probleme en sous-problemes et traduit un sous-probleme en creant un bloc-personnalise.",
+          "connaissances_associees": [
+            "bloc personnalise",
+            "fonction",
+            "modularite"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-516",
+          "intitule": "Construire une figure en creant un motif et en le reproduisant avec une boucle",
+          "fingerprint": "construire_figure_motif_boucle",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 3",
+          "type": "capacite",
+          "description_detaillee": "Identifier un motif repetitif dans une figure et utiliser une boucle pour le reproduire plusieurs fois",
+          "formulation_bo": "Il construit une figure en creant un motif et en le reproduisant a l'aide d'une boucle.",
+          "connaissances_associees": [
+            "motif",
+            "boucle",
+            "construction geometrique",
+            "repetition"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-517",
+          "intitule": "Utiliser simultanement les boucles Repeter...fois et Repeter jusqu'a pour realiser des figures",
+          "fingerprint": "utiliser_boucles_combinees_figures",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 3",
+          "type": "capacite",
+          "description_detaillee": "Combiner boucle bornee et boucle conditionnelle dans un meme programme de construction geometrique",
+          "formulation_bo": "Il utilise simultanement les boucles Repeter ... fois et Repeter jusqu'a ... ainsi que les instructions conditionnelles pour realiser des figures, des programmes de calculs, des deplacements, des simulations d'experience aleatoire.",
+          "connaissances_associees": [
+            "boucle bornee",
+            "boucle conditionnelle",
+            "construction geometrique"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-518",
+          "intitule": "Utiliser simultanement les boucles Repeter...fois et Repeter jusqu'a pour realiser des programmes de calculs",
+          "fingerprint": "utiliser_boucles_combinees_calculs",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 3",
+          "type": "capacite",
+          "description_detaillee": "Combiner boucle bornee et boucle conditionnelle dans un meme programme de calcul",
+          "formulation_bo": "Il utilise simultanement les boucles Repeter ... fois et Repeter jusqu'a ... ainsi que les instructions conditionnelles pour realiser des figures, des programmes de calculs, des deplacements, des simulations d'experience aleatoire.",
+          "connaissances_associees": [
+            "boucle bornee",
+            "boucle conditionnelle",
+            "calcul"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-519",
+          "intitule": "Utiliser simultanement les boucles Repeter...fois et Repeter jusqu'a pour realiser des deplacements",
+          "fingerprint": "utiliser_boucles_combinees_deplacements",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 3",
+          "type": "capacite",
+          "description_detaillee": "Combiner boucle bornee et boucle conditionnelle dans un meme programme de deplacement",
+          "formulation_bo": "Il utilise simultanement les boucles Repeter ... fois et Repeter jusqu'a ... ainsi que les instructions conditionnelles pour realiser des figures, des programmes de calculs, des deplacements, des simulations d'experience aleatoire.",
+          "connaissances_associees": [
+            "boucle bornee",
+            "boucle conditionnelle",
+            "deplacement"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-520",
+          "intitule": "Utiliser simultanement les boucles Repeter...fois et Repeter jusqu'a pour realiser des simulations d'experience aleatoire",
+          "fingerprint": "utiliser_boucles_combinees_simulations_aleatoire",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 3",
+          "type": "capacite",
+          "description_detaillee": "Combiner boucle bornee et boucle conditionnelle pour simuler des experiences aleatoires (lancer de de, tirage au sort)",
+          "formulation_bo": "Il utilise simultanement les boucles Repeter ... fois et Repeter jusqu'a ... ainsi que les instructions conditionnelles pour realiser des figures, des programmes de calculs, des deplacements, des simulations d'experience aleatoire.",
+          "connaissances_associees": [
+            "boucle bornee",
+            "boucle conditionnelle",
+            "simulation",
+            "experience aleatoire"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-521",
+          "intitule": "Ecrire plusieurs scripts fonctionnant en parallele pour gerer des interactions",
+          "fingerprint": "ecrire_scripts_paralleles_interactions",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 3",
+          "type": "capacite",
+          "description_detaillee": "Programmer plusieurs scripts qui s'executent simultanement et communiquent entre eux (messages, variables partagees)",
+          "formulation_bo": "Il ecrit plusieurs scripts fonctionnant en parallele pour gerer des interactions et creer des jeux.",
+          "connaissances_associees": [
+            "parallelisme",
+            "script",
+            "interaction",
+            "message"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        },
+        {
+          "code": "3E-AG-522",
+          "intitule": "Ecrire plusieurs scripts fonctionnant en parallele pour creer des jeux",
+          "fingerprint": "ecrire_scripts_paralleles_jeux",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation - Niveau 3",
+          "type": "capacite",
+          "description_detaillee": "Concevoir un jeu interactif avec plusieurs lutins/scripts qui s'executent en meme temps",
+          "formulation_bo": "Il ecrit plusieurs scripts fonctionnant en parallele pour gerer des interactions et creer des jeux.",
+          "connaissances_associees": [
+            "parallelisme",
+            "script",
+            "jeu",
+            "interaction"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 10
+          }
+        }
+      ],
+      "Programmation par blocs - Constructions geometriques": [
+        {
+          "code": "3E-AG-551",
+          "intitule": "Programmer la construction d'un triangle equilateral avec une boucle",
+          "fingerprint": "programmer_construction_triangle_equilateral_boucle",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Constructions geometriques",
+          "type": "capacite",
+          "description_detaillee": "Produire seul un programme de construction d'un triangle equilateral en utilisant une structure de boucle pour repeter les instructions",
+          "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre ou d'un rectangle en utilisant la boucle",
+          "connaissances_associees": [
+            "boucle repetition",
+            "angle de rotation",
+            "deplacement lutin",
+            "proprietes triangle equilateral"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "3E-AG-552",
+          "intitule": "Programmer la construction d'un carre avec une boucle",
+          "fingerprint": "programmer_construction_carre_boucle",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Constructions geometriques",
+          "type": "capacite",
+          "description_detaillee": "Produire seul un programme de construction d'un carre en utilisant une structure de boucle pour repeter les 4 cotes",
+          "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre ou d'un rectangle en utilisant la boucle",
+          "connaissances_associees": [
+            "boucle repetition",
+            "angle droit",
+            "deplacement lutin",
+            "proprietes carre"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "3E-AG-553",
+          "intitule": "Programmer la construction d'un rectangle avec une boucle",
+          "fingerprint": "programmer_construction_rectangle_boucle",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Constructions geometriques",
+          "type": "capacite",
+          "description_detaillee": "Produire seul un programme de construction d'un rectangle en utilisant une structure de boucle",
+          "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre ou d'un rectangle en utilisant la boucle",
+          "connaissances_associees": [
+            "boucle repetition",
+            "angle droit",
+            "deplacement lutin",
+            "proprietes rectangle"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "3E-AG-555",
+          "intitule": "Programmer la construction d'un triangle equilateral avec saisie utilisateur",
+          "fingerprint": "programmer_construction_triangle_equilateral_saisie",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Constructions geometriques",
+          "type": "capacite",
+          "description_detaillee": "Produire un programme de construction d'un triangle equilateral dans lequel l'utilisateur saisit la mesure de la longueur d'au moins un cote",
+          "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre, d'un rectangle ou d'un parallelogramme dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+          "connaissances_associees": [
+            "variable",
+            "saisie utilisateur",
+            "boucle",
+            "proprietes triangle equilateral"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "3E-AG-556",
+          "intitule": "Programmer la construction d'un carre avec saisie utilisateur",
+          "fingerprint": "programmer_construction_carre_saisie",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Constructions geometriques",
+          "type": "capacite",
+          "description_detaillee": "Produire un programme de construction d'un carre dans lequel l'utilisateur saisit la mesure de la longueur du cote",
+          "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre, d'un rectangle ou d'un parallelogramme dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+          "connaissances_associees": [
+            "variable",
+            "saisie utilisateur",
+            "boucle",
+            "proprietes carre"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "3E-AG-557",
+          "intitule": "Programmer la construction d'un rectangle avec saisie utilisateur",
+          "fingerprint": "programmer_construction_rectangle_saisie",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Constructions geometriques",
+          "type": "capacite",
+          "description_detaillee": "Produire un programme de construction d'un rectangle dans lequel l'utilisateur saisit la mesure de la longueur d'au moins un cote (longueur et/ou largeur)",
+          "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre, d'un rectangle ou d'un parallelogramme dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+          "connaissances_associees": [
+            "variable",
+            "saisie utilisateur",
+            "boucle",
+            "proprietes rectangle"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "3E-AG-558",
+          "intitule": "Programmer la construction d'un parallelogramme avec saisie utilisateur",
+          "fingerprint": "programmer_construction_parallelogramme_saisie",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Constructions geometriques",
+          "type": "capacite",
+          "description_detaillee": "Produire un programme de construction d'un parallelogramme dans lequel l'utilisateur saisit la mesure de la longueur d'au moins un cote",
+          "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre, d'un rectangle ou d'un parallelogramme dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+          "connaissances_associees": [
+            "variable",
+            "saisie utilisateur",
+            "boucle",
+            "angles parallelogramme",
+            "proprietes parallelogramme"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        },
+        {
+          "code": "3E-AG-560",
+          "intitule": "Programmer une figure geometrique complexe",
+          "fingerprint": "programmer_figure_geometrique_complexe",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Constructions geometriques",
+          "type": "capacite",
+          "description_detaillee": "Produire un programme realisant une figure geometrique complexe (type rosace, spirale, etc.)",
+          "formulation_bo": "Il produit un programme realisant une figure du type",
+          "connaissances_associees": [
+            "boucle",
+            "angle",
+            "deplacement",
+            "rotation"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        }
+      ],
+      "Programmation par blocs - Interaction": [
+        {
+          "code": "3E-AG-554",
+          "intitule": "Gerer l'interaction entre deux lutins par detection de contact",
+          "fingerprint": "gerer_interaction_lutins_contact",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Interaction",
+          "type": "capacite",
+          "description_detaillee": "Programmer une interaction entre deux lutins, par exemple en faisant dire une phrase a l'un lorsque l'autre le touche (capteur de contact)",
+          "formulation_bo": "Il gere l'interaction entre deux lutins, par exemple en faisant dire une phrase a l'un lorsque l'autre le touche",
+          "connaissances_associees": [
+            "capteur contact",
+            "condition si-alors",
+            "bloc dire",
+            "evenement"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        }
+      ],
+      "Programmation par blocs - Blocs personnalises": [
+        {
+          "code": "3E-AG-559",
+          "intitule": "Reproduire une frise avec un bloc personnalise",
+          "fingerprint": "reproduire_frise_bloc_personnalise",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Blocs personnalises",
+          "type": "capacite",
+          "description_detaillee": "Reproduire une frise donnee reproduisant un motif grace a un bloc personnalise (fonction/procedure)",
+          "formulation_bo": "Il reproduit une frise donnee reproduisant un motif grace a un bloc personnalise",
+          "connaissances_associees": [
+            "bloc personnalise",
+            "fonction",
+            "boucle",
+            "motif repetitif"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        }
+      ],
+      "Programmation par blocs - Simulation": [
+        {
+          "code": "3E-AG-561",
+          "intitule": "Programmer la simulation d'une experience aleatoire",
+          "fingerprint": "programmer_simulation_experience_aleatoire",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Simulation",
+          "type": "capacite",
+          "description_detaillee": "Utiliser un logiciel de programmation pour realiser la simulation d'une experience aleatoire, par exemple programmer un lutin pour qu'il enonce 100 nombres aleatoires 0 ou 1 et qu'il compte le nombre de 0 et de 1 obtenus",
+          "formulation_bo": "Il utilise un logiciel de programmation pour realiser la simulation d'une experience aleatoire, par exemple : Programmer un lutin pour qu'il enonce 100 nombres aleatoires 0 ou 1 et qu'il compte le nombre de 0 et de 1 obtenus",
+          "connaissances_associees": [
+            "nombre aleatoire",
+            "boucle",
+            "variable compteur",
+            "frequence"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        }
+      ],
+      "Programmation par blocs - Projets complexes": [
+        {
+          "code": "3E-AG-562",
+          "intitule": "Programmer un jeu avec plusieurs lutins en parallele",
+          "fingerprint": "programmer_jeu_lutins_parallele",
+          "niveau": "3E",
+          "domaine": "ALGORITHMIQUE",
+          "sous_domaine": "Programmation par blocs - Projets complexes",
+          "type": "capacite",
+          "description_detaillee": "Programmer un jeu avec un logiciel de programmation par blocs utilisant au moins 2 lutins avec des scripts en parallele, mobilisant les capacites acquises precedemment",
+          "formulation_bo": "Il programme un jeu avec un logiciel de programmation par blocs utilisant au moins 2 lutins avec des scripts en parallele. Il mobilise des capacites acquises precedemment dans les niveaux 1, 2 et 3",
+          "connaissances_associees": [
+            "scripts paralleles",
+            "interaction lutins",
+            "evenements",
+            "variables",
+            "conditions",
+            "boucles"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 11
+          }
+        }
+      ]
+    },
+    "TRIGONOMETRIE": {
+      "Trigonometrie dans le triangle rectangle": [
+        {
+          "code": "3E-TR-458",
+          "intitule": "Calculer des longueurs en utilisant les lignes trigonometriques dans un triangle rectangle",
+          "fingerprint": "calculer_longueurs_trigonometrie_triangle_rectangle",
+          "niveau": "3E",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Trigonometrie dans le triangle rectangle",
+          "type": "capacite",
+          "description_detaillee": "Utiliser les rapports cos, sin et tan pour calculer des longueurs dans un triangle rectangle",
+          "formulation_bo": "Il utilise les lignes trigonometriques dans un triangle rectangle pour calculer des longueurs ou des mesures d'angles.",
+          "connaissances_associees": [
+            "cosinus",
+            "sinus",
+            "tangente",
+            "triangle rectangle",
+            "cote adjacent",
+            "cote oppose",
+            "hypotenuse"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        },
+        {
+          "code": "3E-TR-459",
+          "intitule": "Calculer des mesures d'angles en utilisant les lignes trigonometriques dans un triangle rectangle",
+          "fingerprint": "calculer_angles_trigonometrie_triangle_rectangle",
+          "niveau": "3E",
+          "domaine": "TRIGONOMETRIE",
+          "sous_domaine": "Trigonometrie dans le triangle rectangle",
+          "type": "capacite",
+          "description_detaillee": "Utiliser les rapports cos, sin et tan et leurs fonctions reciproques pour calculer des mesures d'angles dans un triangle rectangle",
+          "formulation_bo": "Il utilise les lignes trigonometriques dans un triangle rectangle pour calculer des longueurs ou des mesures d'angles.",
+          "connaissances_associees": [
+            "cosinus",
+            "sinus",
+            "tangente",
+            "arccos",
+            "arcsin",
+            "arctan",
+            "triangle rectangle"
+          ],
+          "source": {
+            "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+            "page": 9
+          }
+        }
+      ]
+    }
+  }
+}

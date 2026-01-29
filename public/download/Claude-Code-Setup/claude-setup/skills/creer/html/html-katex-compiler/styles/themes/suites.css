@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Suites
+   Palette Teal - Séquences, récurrence
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #009688;
+    --theme-secondary: #26a69a;
+    --theme-accent: #00796b;
+
+    /* Couleurs des blocs */
+    --color-definition: #009688;
+    --color-theoreme: #00796b;
+    --color-propriete: #26a69a;
+    --color-exemple: #4db6ac;
+    --color-methode: #80cbc4;
+    --color-remarque: #b2dfdb;
+    --color-exercice: #e0f2f1;
+
+    /* Backgrounds */
+    --bg-definition: #e0f2f1;
+    --bg-theoreme: #d0ece9;
+    --bg-propriete: #e5f5f3;
+    --bg-exemple: #ecf8f7;
+    --bg-methode: #f2faf9;
+    --bg-remarque: #f5fbfa;
+    --bg-exercice: #f9fcfc;
+}
+
+/* Titres */
+h1 { color: #004d40; }
+h2 { color: #00695c; }
+h3 { color: #00796b; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

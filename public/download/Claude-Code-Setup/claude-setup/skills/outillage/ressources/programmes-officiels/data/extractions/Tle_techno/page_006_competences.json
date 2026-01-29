@@ -1,0 +1,452 @@
+{
+  "source": {
+    "pdf": "Tle_techno.pdf",
+    "page": 6,
+    "text_length": 2287
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TTC-LO-001",
+      "intitule": "Connaitre la notion d'element d'un ensemble",
+      "fingerprint": "connaitre_element_ensemble",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et identifier qu'un element appartient a un ensemble",
+      "formulation_bo": "Les élèves doivent connaître les notions d'élément d'un ensemble",
+      "connaissances_associees": ["notation d'appartenance ∈"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-002",
+      "intitule": "Connaitre la notion de sous-ensemble",
+      "fingerprint": "connaitre_sous_ensemble",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la notion qu'un ensemble est contenu dans un autre ensemble",
+      "formulation_bo": "Les élèves doivent connaître les notions de sous-ensemble, d'appartenance et d'inclusion",
+      "connaissances_associees": ["notion d'ensemble", "notation d'inclusion ⊂"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-003",
+      "intitule": "Connaitre la notion d'inclusion",
+      "fingerprint": "connaitre_inclusion",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que l'inclusion d'ensembles signifie que tous les elements d'un ensemble appartiennent a un autre",
+      "formulation_bo": "Les élèves doivent connaître les notions d'appartenance et d'inclusion",
+      "connaissances_associees": ["sous-ensemble", "notation ⊂"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-004",
+      "intitule": "Connaitre la notion de reunion d'ensembles",
+      "fingerprint": "connaitre_reunion_ensembles",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que la reunion de deux ensembles contient tous les elements appartenant a l'un ou l'autre",
+      "formulation_bo": "Les élèves doivent connaître les notions de réunion, d'intersection et de complémentaire",
+      "connaissances_associees": ["ensemble", "notation ⋃"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-005",
+      "intitule": "Connaitre la notion d'intersection d'ensembles",
+      "fingerprint": "connaitre_intersection_ensembles",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que l'intersection de deux ensembles contient les elements appartenant aux deux simultanement",
+      "formulation_bo": "Les élèves doivent connaître les notions de réunion, d'intersection et de complémentaire",
+      "connaissances_associees": ["ensemble", "notation ⋂"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-006",
+      "intitule": "Connaitre la notion de complementaire d'un ensemble",
+      "fingerprint": "connaitre_complementaire_ensemble",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que le complementaire d'un sous-ensemble A de E contient tous les elements de E qui ne sont pas dans A",
+      "formulation_bo": "Les élèves doivent connaître les notions de réunion, d'intersection et de complémentaire",
+      "connaissances_associees": ["sous-ensemble", "notation Ā ou E \\ A"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-007",
+      "intitule": "Utiliser le symbole d'appartenance ∈",
+      "fingerprint": "utiliser_symbole_appartenance",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser correctement le symbole ∈ pour exprimer qu'un element appartient a un ensemble",
+      "formulation_bo": "savoir utiliser les symboles de base correspondants : ∈, ⊂, ⋂, ⋃",
+      "connaissances_associees": ["notion d'element", "notation d'appartenance"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-008",
+      "intitule": "Utiliser le symbole d'inclusion ⊂",
+      "fingerprint": "utiliser_symbole_inclusion",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser correctement le symbole ⊂ pour exprimer l'inclusion d'ensembles",
+      "formulation_bo": "savoir utiliser les symboles de base correspondants : ∈, ⊂, ⋂, ⋃",
+      "connaissances_associees": ["notion d'inclusion", "sous-ensemble"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-009",
+      "intitule": "Utiliser le symbole d'intersection ⋂",
+      "fingerprint": "utiliser_symbole_intersection",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser correctement le symbole ⋂ pour exprimer l'intersection d'ensembles",
+      "formulation_bo": "savoir utiliser les symboles de base correspondants : ∈, ⊂, ⋂, ⋃",
+      "connaissances_associees": ["notion d'intersection"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-010",
+      "intitule": "Utiliser le symbole de reunion ⋃",
+      "fingerprint": "utiliser_symbole_reunion",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser correctement le symbole ⋃ pour exprimer la reunion d'ensembles",
+      "formulation_bo": "savoir utiliser les symboles de base correspondants : ∈, ⊂, ⋂, ⋃",
+      "connaissances_associees": ["notion de reunion"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-011",
+      "intitule": "Utiliser la notation des ensembles de nombres",
+      "fingerprint": "utiliser_notation_ensembles_nombres",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser les notations standard pour les ensembles de nombres (N, Z, Q, R, C)",
+      "formulation_bo": "savoir utiliser les symboles de base correspondants et la notation des ensembles de nombres et des intervalles",
+      "connaissances_associees": ["ensembles de nombres", "symboles ensemblistes"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-012",
+      "intitule": "Utiliser la notation des intervalles",
+      "fingerprint": "utiliser_notation_intervalles",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir utiliser la notation standard pour les intervalles (crochets ouverts et fermes)",
+      "formulation_bo": "savoir utiliser la notation des ensembles de nombres et des intervalles",
+      "connaissances_associees": ["intervalles", "notation [, ], (, )"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-013",
+      "intitule": "Utiliser correctement le connecteur logique « et »",
+      "fingerprint": "utiliser_connecteur_et",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir construire et utiliser des propositions avec le connecteur logique « et » en contexte mathematique et algorithmique",
+      "formulation_bo": "à utiliser correctement les connecteurs logiques « et », « ou »",
+      "connaissances_associees": ["logique propositionnelle", "operateur ET"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-014",
+      "intitule": "Utiliser correctement le connecteur logique « ou »",
+      "fingerprint": "utiliser_connecteur_ou",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir construire et utiliser des propositions avec le connecteur logique « ou » en contexte mathematique et algorithmique",
+      "formulation_bo": "à utiliser correctement les connecteurs logiques « et », « ou »",
+      "connaissances_associees": ["logique propositionnelle", "operateur OU"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-015",
+      "intitule": "Identifier le statut d'une egalite (identite ou equation)",
+      "fingerprint": "identifier_statut_egalite",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Distinguer si une egalite est une identite valable pour tous les elements ou une equation a resoudre",
+      "formulation_bo": "à identifier le statut d'une égalité (identité, équation)",
+      "connaissances_associees": ["identite", "equation", "variable"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-016",
+      "intitule": "Identifier le statut des lettres utilisees (variable, indeterminee, inconnue, parametre)",
+      "fingerprint": "identifier_statut_lettres",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Distinguer le role d'une lettre selon le contexte: variable, indeterminee, inconnue ou parametre",
+      "formulation_bo": "celui de la ou des lettres utilisées (variable, indéterminée, inconnue, paramètre)",
+      "connaissances_associees": ["variable", "indeterminee", "inconnue", "parametre"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-017",
+      "intitule": "Utiliser un contre-exemple pour infirmer une proposition universelle",
+      "fingerprint": "utiliser_contre_exemple",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Savoir fournir un contre-exemple qui contredit une affirmation universelle pour prouver sa faussete",
+      "formulation_bo": "à utiliser un contre-exemple pour infirmer une proposition universelle",
+      "connaissances_associees": ["proposition universelle", "negation"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-018",
+      "intitule": "Distinguer une proposition de sa reciproque",
+      "fingerprint": "distinguer_proposition_reciproque",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Comprendre qu'une proposition et sa reciproque sont deux affirmations differentes et que la verite de l'une n'implique pas celle de l'autre",
+      "formulation_bo": "à distinguer une proposition de sa réciproque",
+      "connaissances_associees": ["implication", "reciproque"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-019",
+      "intitule": "Utiliser la notion de condition necessaire",
+      "fingerprint": "utiliser_condition_necessaire",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Comprendre et utiliser la notion de condition necessaire: B est necessaire pour A si A implique B",
+      "formulation_bo": "à utiliser à bon escient les expressions « condition nécessaire », « condition suffisante », « équivalence logique »",
+      "connaissances_associees": ["implication", "condition", "reciproque"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-020",
+      "intitule": "Utiliser la notion de condition suffisante",
+      "fingerprint": "utiliser_condition_suffisante",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Comprendre et utiliser la notion de condition suffisante: B est suffisante pour A si B implique A",
+      "formulation_bo": "à utiliser à bon escient les expressions « condition nécessaire », « condition suffisante », « équivalence logique »",
+      "connaissances_associees": ["implication", "condition"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-021",
+      "intitule": "Utiliser la notion d'equivalence logique",
+      "fingerprint": "utiliser_equivalence_logique",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Comprendre et utiliser l'equivalence logique: deux propositions sont equivalentes si elles ont la meme valeur de verite",
+      "formulation_bo": "à utiliser à bon escient les expressions « condition nécessaire », « condition suffisante », « équivalence logique »",
+      "connaissances_associees": ["implication reciproque", "biconditionnelle"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-022",
+      "intitule": "Expliciter les natures de raisonnements (disjonction des cas)",
+      "fingerprint": "expliciter_raisonnement_disjonction_cas",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et pouvoir identifier un raisonnement par disjonction des cas en langage naturel",
+      "formulation_bo": "le professeur explicite la nature des raisonnements conduits (raisonnement par disjonction des cas, recours à la contraposée, raisonnement par l'absurde)",
+      "connaissances_associees": ["raisonnement logique", "cas"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-023",
+      "intitule": "Expliciter les natures de raisonnements (contraposee)",
+      "fingerprint": "expliciter_raisonnement_contraposee",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et pouvoir identifier un raisonnement par contraposee en langage naturel",
+      "formulation_bo": "le professeur explicite la nature des raisonnements conduits (raisonnement par disjonction des cas, recours à la contraposée, raisonnement par l'absurde)",
+      "connaissances_associees": ["raisonnement logique", "implication"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-024",
+      "intitule": "Expliciter les natures de raisonnements (absurde)",
+      "fingerprint": "expliciter_raisonnement_absurde",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et pouvoir identifier un raisonnement par l'absurde en langage naturel",
+      "formulation_bo": "le professeur explicite la nature des raisonnements conduits (raisonnement par disjonction des cas, recours à la contraposée, raisonnement par l'absurde)",
+      "connaissances_associees": ["raisonnement logique", "negation"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    },
+    {
+      "code": "TTC-LO-025",
+      "intitule": "Identifier et utiliser les quantificateurs en langage naturel",
+      "fingerprint": "identifier_quantificateurs",
+      "niveau": "TTC",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "capacite",
+      "description_detaillee": "Comprendre et utiliser les quantificateurs (pour tout, il existe) exprimes en langage naturel sans formalisme",
+      "formulation_bo": "ainsi que les quantificateurs à l'œuvre, en langage naturel et sans formalisme",
+      "connaissances_associees": ["quantificateur universel", "quantificateur existentiel"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 6
+      }
+    }
+  ],
+  "summary": {
+    "total": 25,
+    "by_type": {
+      "contenu": 9,
+      "capacite": 16
+    },
+    "by_domaine": {
+      "LOGIQUE": 25
+    },
+    "fingerprints": [
+      "connaitre_element_ensemble",
+      "connaitre_sous_ensemble",
+      "connaitre_inclusion",
+      "connaitre_reunion_ensembles",
+      "connaitre_intersection_ensembles",
+      "connaitre_complementaire_ensemble",
+      "utiliser_symbole_appartenance",
+      "utiliser_symbole_inclusion",
+      "utiliser_symbole_intersection",
+      "utiliser_symbole_reunion",
+      "utiliser_notation_ensembles_nombres",
+      "utiliser_notation_intervalles",
+      "utiliser_connecteur_et",
+      "utiliser_connecteur_ou",
+      "identifier_statut_egalite",
+      "identifier_statut_lettres",
+      "utiliser_contre_exemple",
+      "distinguer_proposition_reciproque",
+      "utiliser_condition_necessaire",
+      "utiliser_condition_suffisante",
+      "utiliser_equivalence_logique",
+      "expliciter_raisonnement_disjonction_cas",
+      "expliciter_raisonnement_contraposee",
+      "expliciter_raisonnement_absurde",
+      "identifier_quantificateurs"
+    ]
+  }
+}

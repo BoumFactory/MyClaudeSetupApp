@@ -1,0 +1,241 @@
+{
+  "source": {
+    "pdf": "terminale_spe.pdf",
+    "page": 10,
+    "text_length": 3547
+  },
+  "extraction": {
+    "date": "2026-01-02T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed",
+    "note": "Page introductive presentant les objectifs pedagogiques et le contexte historique du programme d'analyse. Pas de tableau structurant Contenus/Capacites/Demonstrations. Competences implicites extraites du texte."
+  },
+  "competences": [
+    {
+      "code": "TSPE-AN-501",
+      "intitule": "Determiner la limite d'une suite",
+      "fingerprint": "determiner_limite_suite",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques - Limites",
+      "type": "capacite",
+      "description_detaillee": "Calculer ou determiner la limite d'une suite en utilisant les techniques appropriees (operations sur les limites, formes indeterminees, theoremes de comparaison)",
+      "formulation_bo": "determination de limites",
+      "connaissances_associees": ["definition de limite de suite", "operations sur les limites", "formes indeterminees"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-502",
+      "intitule": "Appliquer le theoreme de convergence d'une suite croissante majoree",
+      "fingerprint": "appliquer_theoreme_convergence_suite_croissante_majoree",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques - Convergence",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le theoreme affirmant qu'une suite croissante et majoree converge pour etablir l'existence d'une limite",
+      "formulation_bo": "la convergence d'une suite croissante majoree",
+      "connaissances_associees": ["monotonie d'une suite", "suite majoree", "theoreme de convergence monotone"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-503",
+      "intitule": "Distinguer les proprietes globales et asymptotiques d'une suite",
+      "fingerprint": "distinguer_proprietes_globales_asymptotiques_suite",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numeriques",
+      "type": "contenu",
+      "description_detaillee": "Differencier les proprietes valables pour tous les termes d'une suite (proprietes globales) de celles ne concernant que le comportement a l'infini (proprietes asymptotiques)",
+      "formulation_bo": "Lors de l'etude d'une suite, on distingue les aspects globaux des aspects asymptotiques",
+      "connaissances_associees": ["comportement global", "comportement asymptotique", "limite"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-504",
+      "intitule": "Reconnaitre une fonction convexe",
+      "fingerprint": "reconnaitre_fonction_convexe",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions - Convexite",
+      "type": "contenu",
+      "description_detaillee": "Identifier si une fonction est convexe a partir de sa definition, de sa derivee seconde ou de proprietes graphiques",
+      "formulation_bo": "la notion de fonction convexe",
+      "connaissances_associees": ["definition de convexite", "derivee seconde", "tangente et courbe"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-505",
+      "intitule": "Etudier les fonctions trigonometriques",
+      "fingerprint": "etudier_fonctions_trigonometriques",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions trigonometriques",
+      "type": "contenu",
+      "description_detaillee": "Analyser les proprietes des fonctions sinus et cosinus : periodicite, parite, derivees, limites, variations",
+      "formulation_bo": "l'etude des fonctions trigonometriques",
+      "connaissances_associees": ["fonction sinus", "fonction cosinus", "periodicite", "derivees"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-506",
+      "intitule": "Definir et utiliser la fonction logarithme",
+      "fingerprint": "definir_utiliser_fonction_logarithme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction logarithme",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition du logarithme neperien comme primitive de 1/x s'annulant en 1, et utiliser ses proprietes",
+      "formulation_bo": "l'introduction du logarithme",
+      "connaissances_associees": ["primitive", "fonction 1/x", "proprietes du logarithme"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-507",
+      "intitule": "Determiner la limite d'une fonction",
+      "fingerprint": "determiner_limite_fonction",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions - Limites",
+      "type": "capacite",
+      "description_detaillee": "Calculer ou determiner la limite d'une fonction en un point ou a l'infini",
+      "formulation_bo": "un travail autour des notions de limite et de continuite",
+      "connaissances_associees": ["definition de limite", "operations sur les limites", "formes indeterminees"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-508",
+      "intitule": "Appliquer le theoreme des valeurs intermediaires",
+      "fingerprint": "appliquer_theoreme_valeurs_intermediaires",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions - Continuite",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le theoreme des valeurs intermediaires pour justifier l'existence de solutions a une equation f(x) = k",
+      "formulation_bo": "le theoreme des valeurs intermediaires, l'etude de la continuite permet de preciser les arguments assurant qu'une equation du type f(x) = k a des solutions",
+      "connaissances_associees": ["continuite", "intervalle", "existence de solutions"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-509",
+      "intitule": "Determiner une primitive d'une fonction continue",
+      "fingerprint": "determiner_primitive_fonction_continue",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives",
+      "type": "capacite",
+      "description_detaillee": "Trouver une primitive d'une fonction continue donnee en utilisant les primitives usuelles et les regles d'integration",
+      "formulation_bo": "la notion de primitive d'une fonction continue f, que l'on presente comme probleme inverse de celui de la derivation",
+      "connaissances_associees": ["derivation", "primitives usuelles", "regles d'integration"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-510",
+      "intitule": "Resoudre une equation differentielle y' = f",
+      "fingerprint": "resoudre_equation_differentielle_y_prime_egal_f",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Reconnaitre que la recherche d'une primitive est equivalente a la resolution de l'equation differentielle y' = f",
+      "formulation_bo": "resolution de l'equation differentielle y' = f",
+      "connaissances_associees": ["primitive", "equation differentielle"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-511",
+      "intitule": "Resoudre une equation differentielle lineaire y' = ay + b",
+      "fingerprint": "resoudre_equation_differentielle_lineaire_y_prime_ay_b",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Equations differentielles",
+      "type": "capacite",
+      "description_detaillee": "Determiner les solutions generales et particulieres d'une equation differentielle de la forme y' = ay + b ou a et b sont des constantes",
+      "formulation_bo": "les equations differentielles lineaires de la forme y' = ay + b",
+      "connaissances_associees": ["fonction exponentielle", "solution generale", "solution particuliere", "condition initiale"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-512",
+      "intitule": "Definir l'integrale a partir de la notion d'aire",
+      "fingerprint": "definir_integrale_notion_aire",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul integral",
+      "type": "contenu",
+      "description_detaillee": "Comprendre l'integrale comme l'aire algebrique sous la courbe d'une fonction",
+      "formulation_bo": "L'integrale est introduite a partir de la notion intuitive d'aire",
+      "connaissances_associees": ["aire sous une courbe", "aire algebrique"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-513",
+      "intitule": "Etablir le lien entre integrale et primitive",
+      "fingerprint": "etablir_lien_integrale_primitive",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul integral",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et utiliser la relation fondamentale entre l'integrale d'une fonction et ses primitives",
+      "formulation_bo": "On fait ensuite le lien avec la notion de primitive",
+      "connaissances_associees": ["primitive", "integrale", "theoreme fondamental"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-514",
+      "intitule": "Appliquer l'integration par parties",
+      "fingerprint": "appliquer_integration_par_parties",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul integral",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la technique d'integration par parties pour calculer des integrales de produits de fonctions",
+      "formulation_bo": "la technique d'integration par parties",
+      "connaissances_associees": ["derivee d'un produit", "primitive", "integrale"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    },
+    {
+      "code": "TSPE-AN-515",
+      "intitule": "Utiliser la methode des rectangles pour encadrer une somme",
+      "fingerprint": "utiliser_methode_rectangles_encadrer_somme",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Calcul integral",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la methode des rectangles pour obtenir des encadrements d'integrales ou de sommes sans formule exacte",
+      "formulation_bo": "La methode des rectangles fournit des encadrements pertinents de sommes pour lesquelles on ne dispose pas de formule exacte",
+      "connaissances_associees": ["sommes de Riemann", "encadrement", "approximation"],
+      "source": {"pdf": "terminale_spe.pdf", "page": 10}
+    }
+  ],
+  "summary": {
+    "total": 15,
+    "by_type": {
+      "capacite": 9,
+      "contenu": 6,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "ANALYSE": 15
+    },
+    "fingerprints": [
+      "determiner_limite_suite",
+      "appliquer_theoreme_convergence_suite_croissante_majoree",
+      "distinguer_proprietes_globales_asymptotiques_suite",
+      "reconnaitre_fonction_convexe",
+      "etudier_fonctions_trigonometriques",
+      "definir_utiliser_fonction_logarithme",
+      "determiner_limite_fonction",
+      "appliquer_theoreme_valeurs_intermediaires",
+      "determiner_primitive_fonction_continue",
+      "resoudre_equation_differentielle_y_prime_egal_f",
+      "resoudre_equation_differentielle_lineaire_y_prime_ay_b",
+      "definir_integrale_notion_aire",
+      "etablir_lien_integrale_primitive",
+      "appliquer_integration_par_parties",
+      "utiliser_methode_rectangles_encadrer_somme"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+ Sondages par échantillonnage aléatoire simple. Fourchette de sondage. Réflexion
+sur la réalisation effective d’un sondage et les biais possibles (représentativité,
+sincérité des réponses, etc.).
+ Démarche des tests d’hypothèse et de l’estimation. Les observations étant vues
+comme un échantillon aléatoire d’expériences régies par une loi inconnue (à
+découvrir), il s’agit de confronter une modélisation théorique proposée avec les
+résultats mesurés. Une bonne adéquation peut permettre de valider a priori le modèle
+(avec un certain degré de confiance), tandis que l’observation d'évènements donnés
+avec une probabilité très faible dans le modèle peut conduire à rejeter le modèle et à
+en chercher un autre.
+Contenus associés
+ Épreuve et loi de Bernoulli.
+ Schéma de Bernoulli et loi binomiale.
+ Lois uniformes discrètes et continues sur [0,1].
+Exemples d’algorithme
+ Dans le cadre de la loi binomiale : calcul de coefficients binomiaux (triangle de
+Pascal), de probabilités ; détermination d’un intervalle I pour lequel la probabilité
+P(X ∈ I ) est inférieure à une valeur donnée α, ou supérieure à 1 - α.
+ Simulation avec Python d’une variable aléatoire (de la loi de Bernoulli, d’une loi
+uniforme discrète, etc.) d’un échantillon de taille n d’une variable aléatoire. Fonction
+Python renvoyant une moyenne pour un échantillon. Série des moyennes pour N
+échantillons de taille n d’une variable aléatoire d’espérance  et d’écart type . Calcul
+de l’écart type s de la série des moyennes des échantillons observés, à comparer à
+/ n . Calcul de la proportion des cas où l’écart entre la moyenne m et  est
+inférieur ou égal à k/ n ou à ks, pour k = 2 ou k = 3.
+Temps d’attente
+Descriptif
+Certains phénomènes physiques (temps de désintégration d’un atome radioactif) ou
+biologiques (durée de vie de certains organismes) possèdent la propriété d’absence de
+mémoire. Leur modélisation mathématique repose sur l’utilisation des lois géométriques et
+exponentielles selon que le temps est considéré comme discret ou continu. La loi
+géométrique est vue soit comme la distribution du premier succès dans un schéma de
+Bernoulli, soit comme une loi discrète possédant la propriété d’absence de mémoire. La loi
+exponentielle peut être introduite à partir de la propriété d’absence de mémoire.
+Problèmes possibles
+ Durée de vie d’un atome radioactif. Discrétisation d’une variable aléatoire suivant une
+loi exponentielle.
+ Exemples de modélisation par une variable aléatoire suivant une loi géométrique ou
+exponentielle : durée entre deux appels téléphoniques, durée de vie d’un composant
+électronique, période de retour de crue, etc.
+ Utilisation de la loi uniforme. Temps d’attente à un arrêt de bus, paradoxe de
+l’inspection.
+Contenus associés
+ Lois à densité.
+ Loi géométrique, loi exponentielle.
+ Absence de mémoire, discrète ou continue.
+© Ministère de l'Éducation nationale et de la Jeunesse > www.education.gouv.fr

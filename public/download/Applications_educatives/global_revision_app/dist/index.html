@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application de Révisions</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: true,
+                packages: {'[+]': ['mhchem']}
+            },
+            options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+            loader: { load: ['[tex]/mhchem'] }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <style>
+/* ==================== Variables & Reset ==================== */
+:root {
+    --primary: #4F46E5;
+    --primary-dark: #3730A3;
+    --success: #10B981;
+    --danger: #EF4444;
+    --warning: #F59E0B;
+    --info: #3B82F6;
+    --text: #1F2937;
+    --text-light: #6B7280;
+    --bg: #F9FAFB;
+    --bg-card: #FFFFFF;
+    --border: #E5E7EB;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+h1, h2, h3 { margin-bottom: 0.5em; }
+a { color: var(--primary); text-decoration: none; }
+
+/* ==================== Navigation ==================== */
+.main-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.75rem 1.5rem; background: var(--bg-card); border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+}
+.nav-brand { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; font-size: 1.1rem; }
+.brand-icon { font-size: 1.5rem; }
+.nav-links { display: flex; gap: 0.25rem; }
+.nav-link {
+    padding: 0.5rem 1rem; border: none; background: none; cursor: pointer;
+    border-radius: var(--radius); font-size: 0.9rem; color: var(--text-light); transition: all 0.2s;
+}
+.nav-link:hover { background: var(--bg); color: var(--text); }
+.nav-link.active { background: var(--primary); color: white; }
+
+/* ==================== Buttons ==================== */
+.btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 1rem; border: none; border-radius: var(--radius);
+    font-size: 0.9rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--border); }
+.btn-danger { background: var(--danger); color: white; }
+.btn-sm { padding: 0.35rem 0.75rem; font-size: 0.85rem; }
+.btn-icon { padding: 0.25rem 0.5rem; background: none; border: none; cursor: pointer; font-size: 1rem; }
+.btn-icon:hover { opacity: 0.7; }
+.btn-icon.btn-danger:hover { color: var(--danger); }
+
+/* ==================== Main Content ==================== */
+.main-content { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+
+/* ==================== Home View ==================== */
+.hero-section { text-align: center; padding: 2rem 0; }
+.hero-section h1 { font-size: 2rem; }
+.hero-section p { color: var(--text-light); }
+
+.stats-cards { display: flex; gap: 1rem; justify-content: center; margin: 1.5rem 0; flex-wrap: wrap; }
+.stat-card {
+    background: var(--bg-card); padding: 1.25rem 2rem; border-radius: var(--radius);
+    box-shadow: var(--shadow); text-align: center; min-width: 120px;
+}
+.stat-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+.stat-label { color: var(--text-light); font-size: 0.85rem; }
+
+.subject-grid, .quick-actions { margin: 2rem 0; }
+.subject-grid h2, .quick-actions h2 { margin-bottom: 1rem; }
+.subjects-container, .actions-container { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.subject-card {
+    background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius);
+    box-shadow: var(--shadow); cursor: pointer; transition: all 0.2s; text-align: center; min-width: 140px;
+}
+.subject-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.subject-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.subject-name { font-weight: 600; }
+.subject-count { color: var(--text-light); font-size: 0.85rem; }
+
+.action-card {
+    display: flex; flex-direction: column; align-items: flex-start;
+    background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius);
+    box-shadow: var(--shadow); cursor: pointer; border: none; text-align: left; transition: all 0.2s;
+}
+.action-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.action-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.action-text { font-weight: 600; }
+.action-desc { color: var(--text-light); font-size: 0.85rem; }
+
+.no-data { color: var(--text-light); font-style: italic; }
+
+/* ==================== Revision View ==================== */
+.revision-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+.revision-controls { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.revision-controls select { padding: 0.5rem; border: 1px solid var(--border); border-radius: var(--radius); }
+
+.revision-progress {
+    display: flex; align-items: center; gap: 1rem; padding: 0.75rem;
+    background: var(--bg-card); border-radius: var(--radius); margin-bottom: 1rem;
+}
+.progress-bar { flex: 1; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--primary); transition: width 0.3s; }
+.progress-text, .progress-stats { font-size: 0.9rem; color: var(--text-light); }
+
+.revision-nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+.revision-placeholder { text-align: center; padding: 3rem; color: var(--text-light); }
+
+/* ==================== Question Card ==================== */
+.question-card {
+    background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 1.5rem; margin-bottom: 1rem;
+}
+.question-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.question-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.subject-badge, .theme-badge {
+    padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; background: var(--bg);
+}
+.question-info { display: flex; gap: 0.75rem; color: var(--text-light); font-size: 0.85rem; }
+.question-content { font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.7; }
+.question-content pre { background: #f8f9fa; padding: 1rem; border-radius: var(--radius); overflow-x: auto; margin: 0.5rem 0; }
+.question-content code { font-family: 'Fira Code', monospace; font-size: 0.9em; }
+
+.question-actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+
+/* Choices (QCM) */
+.choices-container { display: flex; flex-direction: column; gap: 0.5rem; }
+.choice-label {
+    display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem;
+    background: var(--bg); border-radius: var(--radius); cursor: pointer; transition: all 0.2s;
+}
+.choice-label:hover { background: #e5e7eb; }
+.choice-label input { width: 18px; height: 18px; cursor: pointer; }
+.choice-label.correct { background: #d1fae5; border-left: 3px solid var(--success); }
+.choice-label.incorrect { background: #fee2e2; border-left: 3px solid var(--danger); }
+
+/* Fields (Input) */
+.fields-container { display: flex; flex-direction: column; gap: 0.75rem; }
+.field-group { display: flex; flex-direction: column; gap: 0.25rem; }
+.field-group label { font-weight: 500; }
+.field-input {
+    padding: 0.5rem; border: 1px solid var(--border); border-radius: var(--radius);
+    font-size: 1rem; width: 100%; max-width: 300px;
+}
+.field-input.correct { border-color: var(--success); background: #f0fdf4; }
+.field-input.incorrect { border-color: var(--danger); background: #fef2f2; }
+
+/* Hint & Feedback */
+.hint-container { margin-top: 1rem; padding: 0.75rem; background: #fef3c7; border-radius: var(--radius); }
+.feedback-container { margin-top: 1rem; }
+.feedback { padding: 1rem; border-radius: var(--radius); }
+.feedback-correct { background: #d1fae5; border-left: 4px solid var(--success); }
+.feedback-incorrect { background: #fee2e2; border-left: 4px solid var(--danger); }
+.feedback-header { font-weight: 600; margin-bottom: 0.5rem; }
+.feedback-explanation { margin-top: 0.75rem; }
+.expected-answers { margin-top: 0.75rem; }
+.expected-answers ul { margin-left: 1.5rem; }
+
+/* ==================== Revision Summary ==================== */
+.revision-summary { text-align: center; padding: 2rem; }
+.summary-icon { font-size: 4rem; margin-bottom: 1rem; }
+.summary-stats { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; }
+.summary-stat { text-align: center; }
+.summary-stat .stat-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+.summary-stat .stat-label { color: var(--text-light); }
+.summary-actions { display: flex; justify-content: center; gap: 1rem; }
+
+/* ==================== Editor ==================== */
+.editor-container { display: grid; grid-template-columns: 300px 1fr; gap: 1rem; min-height: 70vh; }
+.editor-sidebar {
+    background: var(--bg-card); border-radius: var(--radius); padding: 1rem;
+    box-shadow: var(--shadow); overflow-y: auto; max-height: 80vh;
+}
+.editor-main { background: var(--bg-card); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); }
+.editor-filters { margin-bottom: 1rem; }
+.filter-select { width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: var(--radius); }
+.editor-stats { margin-bottom: 0.5rem; color: var(--text-light); font-size: 0.9rem; }
+.editor-actions-bar { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.editor-placeholder { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-light); }
+
+.question-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.question-item {
+    padding: 0.75rem; background: var(--bg); border-radius: var(--radius);
+    cursor: pointer; transition: all 0.2s;
+}
+.question-item:hover { background: #e5e7eb; }
+.question-item.active { background: var(--primary); color: white; }
+.question-item-header { display: flex; justify-content: space-between; margin-bottom: 0.25rem; }
+.type-badge { font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 3px; text-transform: uppercase; }
+.type-qcm { background: var(--info); color: white; }
+.type-input { background: var(--warning); color: white; }
+.difficulty-badge { font-size: 0.75rem; color: var(--warning); }
+.question-item-preview { font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.question-item-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 0.25rem; font-size: 0.8rem; color: var(--text-light); }
+.no-questions { text-align: center; color: var(--text-light); padding: 1rem; }
+
+/* Edit Form */
+.edit-form { max-width: 600px; }
+.edit-form h3 { margin-bottom: 1rem; }
+.form-row { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.form-group { flex: 1; display: flex; flex-direction: column; gap: 0.25rem; }
+.form-group label { font-weight: 500; font-size: 0.9rem; }
+.form-group input, .form-group select, .form-group textarea {
+    padding: 0.5rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.95rem;
+}
+.form-group textarea { resize: vertical; font-family: inherit; }
+.form-actions { display: flex; gap: 0.5rem; margin-top: 1.5rem; }
+
+.choice-edit-row, .field-edit-row {
+    display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;
+    padding: 0.5rem; background: var(--bg); border-radius: var(--radius);
+}
+.choice-letter { font-weight: 600; width: 24px; }
+.choice-text-input { flex: 1; padding: 0.35rem; border: 1px solid var(--border); border-radius: 4px; }
+.field-edit-row { flex-wrap: wrap; }
+.field-edit-row select, .field-edit-row input { padding: 0.35rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.9rem; }
+
+/* ==================== Import ==================== */
+.import-view { max-width: 800px; margin: 0 auto; }
+.import-section {
+    background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius);
+    box-shadow: var(--shadow); margin-bottom: 1.5rem;
+}
+.import-section h3 { margin-bottom: 0.5rem; }
+.section-help { color: var(--text-light); margin-bottom: 1rem; font-size: 0.9rem; }
+
+.format-selector { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.format-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
+    padding: 1rem 1.5rem; background: var(--bg); border: 2px solid var(--border);
+    border-radius: var(--radius); cursor: pointer; transition: all 0.2s;
+}
+.format-btn:hover { border-color: var(--primary); }
+.format-btn.active { border-color: var(--primary); background: #eef2ff; }
+.format-icon { font-size: 1.5rem; }
+.format-name { font-size: 0.85rem; font-weight: 500; }
+
+.prompt-box { background: var(--bg); border-radius: var(--radius); overflow: hidden; }
+.prompt-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.75rem 1rem; background: #1f2937; color: white;
+}
+.prompt-content {
+    padding: 1rem; margin: 0; font-size: 0.8rem; font-family: 'Fira Code', monospace;
+    white-space: pre-wrap; word-break: break-word; max-height: 200px; overflow-y: auto;
+    background: #f8f9fa; color: var(--text);
+}
+.prompt-tip {
+    margin-top: 1rem; padding: 0.75rem; background: #fef3c7;
+    border-radius: var(--radius); font-size: 0.9rem;
+}
+
+.user-prompt-section {
+    margin: 1.5rem 0;
+}
+.user-prompt-section label {
+    display: block; margin-bottom: 0.5rem; color: var(--text);
+}
+.user-prompt-input {
+    width: 100%; min-height: 80px; padding: 1rem;
+    border: 2px solid var(--primary); border-radius: var(--radius);
+    font-size: 1rem; font-family: inherit; resize: vertical;
+    background: #f0f4ff; transition: all 0.2s;
+}
+.user-prompt-input:focus {
+    outline: none; border-color: var(--primary-dark);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    background: white;
+}
+.user-prompt-input::placeholder {
+    color: #9ca3af; font-style: italic;
+}
+
+.import-dropzone {
+    position: relative; border: 2px dashed var(--border); border-radius: var(--radius);
+    padding: 1rem; background: var(--bg); transition: all 0.2s;
+}
+.import-dropzone.dragover { border-color: var(--primary); background: #eef2ff; }
+.import-textarea {
+    width: 100%; min-height: 150px; border: none; background: transparent;
+    font-family: 'Fira Code', monospace; font-size: 0.85rem; resize: vertical;
+}
+.dropzone-overlay {
+    display: none; position: absolute; inset: 0; background: rgba(79, 70, 229, 0.1);
+    flex-direction: column; align-items: center; justify-content: center;
+    border-radius: var(--radius); pointer-events: none;
+}
+.import-dropzone.dragover .dropzone-overlay { display: flex; }
+.dropzone-icon { font-size: 3rem; }
+.import-actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+.import-result { margin-top: 1rem; }
+.import-message { padding: 0.75rem; border-radius: var(--radius); }
+.result-success { background: #d1fae5; color: #065f46; }
+.result-error { background: #fee2e2; color: #991b1b; }
+
+/* ==================== Settings ==================== */
+.settings-view { max-width: 600px; margin: 0 auto; }
+.settings-help { color: var(--text-light); margin-bottom: 1.5rem; }
+.subjects-settings { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+.subject-setting-row {
+    display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+}
+.subject-toggle { display: flex; align-items: center; gap: 0.75rem; flex: 1; cursor: pointer; }
+.subject-toggle input { width: 18px; height: 18px; cursor: pointer; }
+.subject-info { font-size: 1rem; }
+.add-subject-form { background: var(--bg); padding: 1rem; border-radius: var(--radius); margin-bottom: 2rem; }
+.add-subject-form h3 { margin-bottom: 0.75rem; }
+.add-subject-form .form-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.add-subject-form input { padding: 0.5rem; border: 1px solid var(--border); border-radius: var(--radius); flex: 1; min-width: 100px; }
+.settings-actions { padding-top: 1rem; border-top: 1px solid var(--border); }
+
+/* ==================== Notifications ==================== */
+#notification-container { position: fixed; top: 70px; right: 1rem; z-index: 1000; display: flex; flex-direction: column; gap: 0.5rem; }
+.notification {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem;
+    background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    transform: translateX(100%); opacity: 0; transition: all 0.3s;
+}
+.notification.show { transform: translateX(0); opacity: 1; }
+.notification-success { border-left: 3px solid var(--success); }
+.notification-error { border-left: 3px solid var(--danger); }
+.notification-warning { border-left: 3px solid var(--warning); }
+.notification-info { border-left: 3px solid var(--info); }
+
+/* ==================== Connection Screen ==================== */
+.connection-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.connection-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.connection-card.error {
+    border-top: 4px solid var(--danger);
+}
+
+.connection-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.connection-card h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.connection-subtitle {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.connection-info {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.info-icon {
+    font-size: 1.5rem;
+}
+
+.info-text {
+    font-weight: 500;
+}
+
+.info-text code {
+    background: #e5e7eb;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.info-detail {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.connection-help {
+    margin-top: 1.5rem;
+    color: var(--text-light);
+}
+
+.connection-help code {
+    background: #e5e7eb;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+}
+
+.browser-list {
+    text-align: left;
+    margin-top: 1.5rem;
+}
+
+.browser-list ul {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.browser-list li {
+    padding: 0.25rem 0;
+}
+
+/* Nav DB Status */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-db-status {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    padding: 0.25rem 0.5rem;
+    background: var(--bg);
+    border-radius: var(--radius);
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 768px) {
+    .main-nav { flex-wrap: wrap; gap: 0.5rem; }
+    .nav-links { order: 3; width: 100%; justify-content: center; }
+    .editor-container { grid-template-columns: 1fr; }
+    .editor-sidebar { max-height: 300px; }
+    .form-row { flex-direction: column; }
+    .stats-cards { flex-direction: column; align-items: center; }
+    .connection-card { padding: 2rem; }
+    .connection-icon { font-size: 3rem; }
+    .nav-db-status { display: none; }
+}
+
+    </style>
+</head>
+<body>
+    <nav id="main-nav" class="main-nav"></nav>
+    <main id="main-content" class="main-content"></main>
+    <script src="https://unpkg.com/@tauri-apps/api@1/dist/tauri.min.js"></script>
+    <script>
+
+/**
+ * Module Database - Gestion via Tauri
+ */
+const Database = (function() {
+    'use strict';
+
+    let data = null;
+    let listeners = [];
+    let isReady = false;
+    let dbPath = '';
+    let invoke = null;
+
+    async function init() {
+        // Attendre que Tauri soit prêt
+        if (window.__TAURI__ && window.__TAURI__.core) {
+            invoke = window.__TAURI__.core.invoke;
+        } else {
+            console.error('[DB] Tauri API non disponible');
+            data = { subjects: [], questions: [] };
+            isReady = true;
+            return data;
+        }
+
+        try {
+            dbPath = await invoke('get_database_path');
+            const content = await invoke('load_database');
+            data = JSON.parse(content);
+            isReady = true;
+            console.log('[DB] Chargé depuis:', dbPath);
+            notifyListeners('init');
+            return data;
+        } catch (e) {
+            console.error('[DB] Erreur:', e);
+            data = { subjects: [], questions: [] };
+            isReady = true;
+            return data;
+        }
+    }
+
+    async function save() {
+        if (!data) return false;
+        try {
+            await invoke('save_database', { content: JSON.stringify(data, null, 2) });
+            return true;
+        } catch (e) {
+            console.error('[DB] Erreur sauvegarde:', e);
+            return false;
+        }
+    }
+
+    function getStatus() { return { ready: isReady, path: dbPath }; }
+    function exportJSON() { return JSON.stringify(data, null, 2); }
+    function downloadJSON(filename = 'questions.json') {
+        const blob = new Blob([exportJSON()], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename; a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    function getSubjects(enabledOnly = false) {
+        const subjects = data?.subjects || [];
+        return enabledOnly ? subjects.filter(s => s.enabled) : subjects;
+    }
+    function getSubject(id) { return data?.subjects.find(s => s.id === id) || null; }
+
+    function addSubject(subject) {
+        if (!data || !subject.id || !subject.name) return false;
+        if (data.subjects.some(s => s.id === subject.id)) return false;
+        data.subjects.push({ id: subject.id, name: subject.name, icon: subject.icon || '📚', enabled: subject.enabled !== false });
+        save(); notifyListeners('subject-add', subject); return true;
+    }
+
+    function updateSubject(id, updates) {
+        const subject = getSubject(id);
+        if (!subject) return false;
+        Object.assign(subject, updates);
+        save(); notifyListeners('subject-update', subject); return true;
+    }
+
+    function toggleSubject(id, enabled) { return updateSubject(id, { enabled }); }
+
+    function deleteSubject(id) {
+        if (!data) return false;
+        const index = data.subjects.findIndex(s => s.id === id);
+        if (index === -1) return false;
+        data.subjects.splice(index, 1);
+        save(); notifyListeners('subject-delete', id); return true;
+    }
+
+    function getAllQuestions() { return data?.questions || []; }
+    function getQuestion(id) { return data?.questions.find(q => q.id === id) || null; }
+
+    function getQuestionsByFilter({ subject, theme, difficulty } = {}) {
+        let questions = getAllQuestions();
+        const enabledSubjects = getSubjects(true).map(s => s.id);
+        questions = questions.filter(q => enabledSubjects.includes(q.subject));
+        if (subject) questions = questions.filter(q => q.subject === subject);
+        if (theme) questions = questions.filter(q => q.theme === theme);
+        if (difficulty) questions = questions.filter(q => q.difficulty === difficulty);
+        return questions;
+    }
+
+    function getThemes(subjectId = null) {
+        let questions = getAllQuestions();
+        if (subjectId) questions = questions.filter(q => q.subject === subjectId);
+        return [...new Set(questions.map(q => q.theme).filter(Boolean))].sort();
+    }
+
+    function generateId() { return 'q' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5); }
+
+    function validateQuestion(q) {
+        if (!q.type || !['qcm', 'input'].includes(q.type)) return { valid: false, error: 'Type invalide' };
+        if (!q.question) return { valid: false, error: 'Question manquante' };
+        if (!q.subject) return { valid: false, error: 'Matière manquante' };
+        if (q.type === 'qcm') {
+            if (!Array.isArray(q.choices) || q.choices.length < 2) return { valid: false, error: 'QCM: 2+ choix' };
+            if (!Array.isArray(q.correctAnswers) || !q.correctAnswers.length) return { valid: false, error: 'QCM: correctAnswers' };
+        }
+        if (q.type === 'input' && (!Array.isArray(q.fields) || !q.fields.length)) return { valid: false, error: 'Input: champs' };
+        return { valid: true };
+    }
+
+    function addQuestions(questions) {
+        if (!data) return { added: [], errors: [] };
+        const toAdd = Array.isArray(questions) ? questions : [questions];
+        const results = { added: [], errors: [] };
+        for (const q of toAdd) {
+            const v = validateQuestion(q);
+            if (!v.valid) { results.errors.push({ question: q, error: v.error }); continue; }
+            if (!q.id) q.id = generateId();
+            if (data.questions.some(e => e.id === q.id)) q.id = generateId();
+            if (!q.stats) q.stats = { accessCount: 0, correctCount: 0, lastAccessed: null };
+            if (!getSubject(q.subject)) addSubject({ id: q.subject, name: q.subject, enabled: true });
+            data.questions.push(q); results.added.push(q);
+        }
+        if (results.added.length > 0) { save(); notifyListeners('add', results.added); }
+        return results;
+    }
+
+    function updateQuestion(id, updates) {
+        const index = data?.questions.findIndex(q => q.id === id);
+        if (index === -1) return { success: false, error: 'Non trouvée' };
+        const updated = { ...data.questions[index], ...updates, id };
+        const v = validateQuestion(updated);
+        if (!v.valid) return { success: false, error: v.error };
+        data.questions[index] = updated;
+        save(); notifyListeners('update', updated);
+        return { success: true, question: updated };
+    }
+
+    function deleteQuestion(id) {
+        const index = data?.questions.findIndex(q => q.id === id);
+        if (index === -1) return { success: false, error: 'Non trouvée' };
+        const deleted = data.questions.splice(index, 1)[0];
+        save(); notifyListeners('delete', deleted);
+        return { success: true, question: deleted };
+    }
+
+    function importFromJSON(jsonString) {
+        try {
+            const imported = JSON.parse(jsonString);
+            if (Array.isArray(imported)) return addQuestions(imported);
+            if (imported.questions && Array.isArray(imported.questions)) {
+                if (imported.subjects) { for (const s of imported.subjects) { if (!getSubject(s.id)) addSubject(s); } }
+                return addQuestions(imported.questions);
+            }
+            if (imported.question || imported.type) return addQuestions([imported]);
+            return { added: [], errors: [{ error: 'Format non reconnu' }] };
+        } catch (e) { return { added: [], errors: [{ error: 'JSON invalide' }] }; }
+    }
+
+    function recordAccess(questionId, isCorrect = null) {
+        const question = getQuestion(questionId);
+        if (!question) return false;
+        question.stats = question.stats || { accessCount: 0, correctCount: 0, lastAccessed: null };
+        question.stats.accessCount++;
+        question.stats.lastAccessed = new Date().toISOString();
+        if (isCorrect) question.stats.correctCount++;
+        save(); return true;
+    }
+
+    function resetStats(questionId = null) {
+        if (questionId) { const q = getQuestion(questionId); if (q) q.stats = { accessCount: 0, correctCount: 0, lastAccessed: null }; }
+        else { data.questions.forEach(q => { q.stats = { accessCount: 0, correctCount: 0, lastAccessed: null }; }); }
+        save(); notifyListeners('stats-reset', questionId); return true;
+    }
+
+    function getQuestionsForRevision(count = 10, filter = {}) {
+        let questions = getQuestionsByFilter(filter);
+        questions.sort((a, b) => {
+            const aCount = a.stats?.accessCount || 0, bCount = b.stats?.accessCount || 0;
+            if (aCount !== bCount) return aCount - bCount;
+            const aDate = a.stats?.lastAccessed ? new Date(a.stats.lastAccessed) : new Date(0);
+            const bDate = b.stats?.lastAccessed ? new Date(b.stats.lastAccessed) : new Date(0);
+            return aDate - bDate;
+        });
+        return questions.slice(0, count);
+    }
+
+    function addListener(cb) { listeners.push(cb); return () => { listeners = listeners.filter(l => l !== cb); }; }
+    function notifyListeners(event, payload) { listeners.forEach(l => { try { l(event, payload); } catch (e) {} }); }
+
+    return {
+        init, save, getStatus, exportJSON, downloadJSON,
+        getSubjects, getSubject, addSubject, updateSubject, toggleSubject, deleteSubject,
+        getAllQuestions, getQuestion, getQuestionsByFilter, getThemes,
+        addQuestions, updateQuestion, deleteQuestion, importFromJSON,
+        recordAccess, resetStats, getQuestionsForRevision, addListener
+    };
+})();
+
+
+/**
+ * Module Exercises - Logique de révision et vérification des réponses
+ */
+const Exercises = (function() {
+    'use strict';
+
+    let currentQuestion = null;
+    let sessionStats = { answered: 0, correct: 0, startTime: null };
+
+    function renderQuestion(question, container) {
+        if (!question || !container) return;
+        currentQuestion = question;
+        Database.recordAccess(question.id);
+
+        container.innerHTML = buildQuestionHTML(question);
+        renderMath(container);
+        highlightCode(container);
+    }
+
+    function buildQuestionHTML(q) {
+        const stars = '★'.repeat(q.difficulty || 1) + '☆'.repeat(3 - (q.difficulty || 1));
+        const subject = Database.getSubject(q.subject);
+        const subjectName = subject ? `${subject.icon} ${subject.name}` : q.subject;
+        const accessCount = q.stats?.accessCount || 0;
+
+        return `
+            <div class="question-card" data-id="${q.id}" data-type="${q.type}">
+                <div class="question-header">
+                    <span class="question-meta">
+                        <span class="subject-badge">${subjectName}</span>
+                        ${q.theme ? `<span class="theme-badge">${q.theme}</span>` : ''}
+                    </span>
+                    <span class="question-info">
+                        <span class="difficulty" title="Difficulté">${stars}</span>
+                        <span class="access-count" title="Nombre de révisions">👁 ${accessCount}</span>
+                    </span>
+                </div>
+
+                <div class="question-content">${q.question}</div>
+
+                <form class="answer-form" onsubmit="return false;">
+                    ${q.type === 'qcm' ? buildQCMFields(q) : buildInputFields(q)}
+                    <div class="question-actions">
+                        ${q.hint ? `<button type="button" class="btn btn-secondary btn-hint" onclick="Exercises.showHint()">💡 Indice</button>` : ''}
+                        <button type="button" class="btn btn-primary btn-check" onclick="Exercises.checkAnswer()">Vérifier</button>
+                    </div>
+                </form>
+
+                <div class="hint-container" style="display: none;">
+                    <div class="hint-content">${q.hint || ''}</div>
+                </div>
+
+                <div class="feedback-container" style="display: none;"></div>
+            </div>
+        `;
+    }
+
+    function buildQCMFields(q) {
+        const isMultiple = q.correctAnswers.length > 1;
+        const inputType = isMultiple ? 'checkbox' : 'radio';
+
+        return '<div class="choices-container">' +
+            q.choices.map(c => `
+                <label class="choice-label">
+                    <input type="${inputType}" name="answer" value="${c.id}">
+                    <span class="choice-text">${c.text}</span>
+                </label>
+            `).join('') + '</div>';
+    }
+
+    function buildInputFields(q) {
+        return '<div class="fields-container">' +
+            q.fields.map(f => `
+                <div class="field-group">
+                    <label for="field-${f.id}">${f.label || 'Réponse :'}</label>
+                    ${f.options
+                        ? `<select id="field-${f.id}" name="${f.id}" class="field-input">
+                             <option value="">-- Choisir --</option>
+                             ${f.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                           </select>`
+                        : `<input type="text" id="field-${f.id}" name="${f.id}" class="field-input" autocomplete="off">`
+                    }
+                </div>
+            `).join('') + '</div>';
+    }
+
+    function showHint() {
+        const hint = document.querySelector('.hint-container');
+        if (hint) {
+            hint.style.display = 'block';
+            renderMath(hint);
+        }
+    }
+
+    function checkAnswer() {
+        if (!currentQuestion) return;
+        const form = document.querySelector('.answer-form');
+        if (!form) return;
+
+        const results = currentQuestion.type === 'qcm' ? checkQCM(form) : checkInputs(form);
+
+        sessionStats.answered++;
+        if (results.correct) {
+            sessionStats.correct++;
+            Database.recordAccess(currentQuestion.id, true);
+        }
+
+        displayFeedback(results.correct, results);
+        disableForm(form);
+
+        return results;
+    }
+
+    function checkQCM(form) {
+        const selected = Array.from(form.querySelectorAll('input[name="answer"]:checked')).map(i => i.value);
+        const correct = currentQuestion.correctAnswers;
+
+        const isCorrect = selected.length === correct.length &&
+            selected.every(s => correct.includes(s)) &&
+            correct.every(c => selected.includes(c));
+
+        form.querySelectorAll('.choice-label').forEach(label => {
+            const id = label.querySelector('input').value;
+            if (correct.includes(id)) label.classList.add('correct');
+            if (selected.includes(id) && !correct.includes(id)) label.classList.add('incorrect');
+        });
+
+        return { correct: isCorrect, selected, expected: correct };
+    }
+
+    function checkInputs(form) {
+        const results = { correct: true, fields: {} };
+
+        for (const field of currentQuestion.fields) {
+            const input = form.querySelector(`[name="${field.id}"]`);
+            if (!input) continue;
+
+            const userAnswer = input.value.trim();
+            const isFieldCorrect = checkFieldAnswer(userAnswer, field);
+
+            results.fields[field.id] = { correct: isFieldCorrect, userAnswer, expected: field.answer };
+            input.classList.add(isFieldCorrect ? 'correct' : 'incorrect');
+
+            if (!isFieldCorrect) results.correct = false;
+        }
+
+        return results;
+    }
+
+    function checkFieldAnswer(userAnswer, field) {
+        const normalize = s => s.toLowerCase().replace(/\s+/g, '').replace(/,/g, '.').replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
+        const normalizedUser = normalize(userAnswer);
+        const normalizedExpected = normalize(String(field.answer));
+
+        if (normalizedUser === normalizedExpected) return true;
+
+        if (field.type === 'number') {
+            const tolerance = field.tolerance || 0;
+            const userNum = parseFloat(normalizedUser);
+            const expectedNum = parseFloat(field.answer);
+            if (!isNaN(userNum) && !isNaN(expectedNum)) {
+                return Math.abs(userNum - expectedNum) <= tolerance;
+            }
+        }
+
+        if (field.alternatives) {
+            for (const alt of field.alternatives) {
+                if (normalizedUser === normalize(String(alt))) return true;
+            }
+        }
+
+        return false;
+    }
+
+    function displayFeedback(isCorrect, results) {
+        const container = document.querySelector('.feedback-container');
+        if (!container) return;
+
+        let html = `
+            <div class="feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
+                <div class="feedback-header">${isCorrect ? '✅ Bravo !' : '❌ Pas tout à fait...'}</div>
+        `;
+
+        if (currentQuestion.explanation) {
+            html += `<div class="feedback-explanation"><strong>Explication :</strong><div>${currentQuestion.explanation}</div></div>`;
+        }
+
+        if (!isCorrect && currentQuestion.type === 'input') {
+            html += '<div class="expected-answers"><strong>Réponses attendues :</strong><ul>';
+            for (const f of currentQuestion.fields) {
+                html += `<li>${f.label || f.id} ${f.answer}</li>`;
+            }
+            html += '</ul></div>';
+        }
+
+        html += '</div>';
+        container.innerHTML = html;
+        container.style.display = 'block';
+        renderMath(container);
+    }
+
+    function disableForm(form) {
+        form.querySelectorAll('input, select, button').forEach(el => {
+            if (el.classList.contains('btn-check')) el.style.display = 'none';
+            else el.disabled = true;
+        });
+        const hint = form.querySelector('.btn-hint');
+        if (hint) hint.style.display = 'none';
+    }
+
+    function renderMath(container) {
+        if (window.MathJax && MathJax.typesetPromise) {
+            MathJax.typesetPromise([container]).catch(e => console.warn('[MathJax]', e));
+        }
+    }
+
+    function highlightCode(container) {
+        if (window.hljs) {
+            container.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
+        }
+    }
+
+    function getSessionStats() { return { ...sessionStats }; }
+    function resetSessionStats() { sessionStats = { answered: 0, correct: 0, startTime: Date.now() }; }
+
+    return { renderQuestion, showHint, checkAnswer, getSessionStats, resetSessionStats };
+})();
+
+
+/**
+ * Module Import - Workflow guidé pour générer et importer des questions
+ */
+const Import = (function() {
+    'use strict';
+
+    // Prompts optimisés (courts pour économiser les tokens)
+    const PROMPTS = {
+        qcm: `Génère des QCM JSON. Format STRICT :
+[{"subject":"ID_MATIERE","theme":"Thème","type":"qcm","difficulty":1,"question":"Question avec $LaTeX$ si maths","choices":[{"id":"a","text":"Choix A"},{"id":"b","text":"Choix B"},{"id":"c","text":"Choix C"}],"correctAnswers":["a"],"explanation":"Explication"}]
+
+IDs matières: maths, physique, svt, nsi, francais, philosophie, histoire-geo, ses, anglais, allemand, espagnol, latin, grec, hggsp, hlp, si
+
+Règles: difficulty 1-3, correctAnswers=tableau, LaTeX entre $...$
+
+Génère 5 QCM sur : `,
+
+        input: `Génère des questions à réponse libre JSON. Format STRICT :
+[{"subject":"ID_MATIERE","theme":"Thème","type":"input","difficulty":2,"question":"Question","fields":[{"id":"rep","label":"Réponse :","type":"text","answer":"réponse","alternatives":["autre forme"]}],"explanation":"Explication"}]
+
+IDs matières: maths, physique, svt, nsi, francais, philosophie, histoire-geo, ses, anglais, allemand, espagnol, latin, grec, hggsp, hlp, si
+
+Types de champs: "text" ou "number" (avec "tolerance":0.1 si besoin)
+
+Génère 5 questions sur : `,
+
+        mixte: `Génère des questions de révision JSON (QCM et réponses libres mélangés). Format STRICT :
+
+QCM: {"subject":"ID","theme":"Thème","type":"qcm","difficulty":1,"question":"...","choices":[{"id":"a","text":"..."}],"correctAnswers":["a"],"explanation":"..."}
+
+Input: {"subject":"ID","theme":"Thème","type":"input","difficulty":2,"question":"...","fields":[{"id":"rep","type":"text","answer":"...","alternatives":["..."]}],"explanation":"..."}
+
+IDs: maths, physique, svt, nsi, francais, philosophie, histoire-geo, ses, anglais, allemand, espagnol, hggsp, hlp, si
+
+Génère 5 questions variées sur : `
+    };
+
+    let selectedType = 'mixte';
+
+    function init(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.innerHTML = `
+            <div class="import-view">
+                <!-- ÉTAPE 1 : Générer avec l'IA -->
+                <div class="import-section">
+                    <h3>1️⃣ Générer des questions avec l'IA</h3>
+                    <p class="section-help">Choisis un format, copie le prompt, colle-le dans ChatGPT/Mistral/Claude et complète avec ton sujet.</p>
+
+                    <div class="format-selector">
+                        <button class="format-btn ${selectedType === 'qcm' ? 'active' : ''}" onclick="Import.selectFormat('qcm')">
+                            <span class="format-icon">☑️</span>
+                            <span class="format-name">QCM uniquement</span>
+                        </button>
+                        <button class="format-btn ${selectedType === 'input' ? 'active' : ''}" onclick="Import.selectFormat('input')">
+                            <span class="format-icon">✍️</span>
+                            <span class="format-name">Réponses libres</span>
+                        </button>
+                        <button class="format-btn ${selectedType === 'mixte' ? 'active' : ''}" onclick="Import.selectFormat('mixte')">
+                            <span class="format-icon">🔀</span>
+                            <span class="format-name">Mixte (recommandé)</span>
+                        </button>
+                    </div>
+
+                    <div class="user-prompt-section">
+                        <label for="user-prompt-input"><strong>📝 Décris ce que tu veux réviser :</strong></label>
+                        <textarea id="user-prompt-input" class="user-prompt-input" placeholder="Ex: le second degré niveau 1ère, les verbes irréguliers anglais, la Révolution française..."></textarea>
+                    </div>
+
+                    <div class="prompt-box">
+                        <div class="prompt-header">
+                            <span>Prompt technique (généré automatiquement) :</span>
+                            <button class="btn btn-primary btn-sm" onclick="Import.copyPrompt()">📋 Copier le prompt amélioré</button>
+                        </div>
+                        <pre class="prompt-content" id="prompt-content">${PROMPTS[selectedType]}</pre>
+                    </div>
+
+                    <div class="prompt-tip">
+                        <strong>💡 Comment ça marche :</strong> Écris ton sujet ci-dessus, puis clique sur "Copier le prompt amélioré". Le prompt complet (ton sujet + instructions techniques) sera copié, prêt à coller dans ChatGPT/Mistral/Claude.
+                    </div>
+                </div>
+
+                <!-- ÉTAPE 2 : Importer le résultat -->
+                <div class="import-section">
+                    <h3>2️⃣ Importer le résultat</h3>
+                    <p class="section-help">Copie la réponse JSON de l'IA et colle-la ici (ou glisse un fichier .json)</p>
+
+                    <div class="import-dropzone">
+                        <textarea class="import-textarea" placeholder="Colle ici le JSON généré par l'IA..."></textarea>
+                        <div class="dropzone-overlay">
+                            <span class="dropzone-icon">📄</span>
+                            <span>Dépose ton fichier .json</span>
+                        </div>
+                    </div>
+
+                    <div class="import-actions">
+                        <button class="btn btn-secondary" onclick="Import.clear()">Effacer</button>
+                        <button class="btn btn-primary" onclick="Import.process()">✅ Importer</button>
+                    </div>
+
+                    <div class="import-result" id="import-result"></div>
+                </div>
+            </div>
+        `;
+
+        setupEvents(container);
+    }
+
+    function setupEvents(container) {
+        const dropzone = container.querySelector('.import-dropzone');
+        const textarea = container.querySelector('.import-textarea');
+
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.preventDefault(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file && (file.type === 'application/json' || file.name.endsWith('.json'))) {
+                const reader = new FileReader();
+                reader.onload = ev => { textarea.value = ev.target.result; };
+                reader.readAsText(file);
+            }
+        });
+
+        textarea.addEventListener('paste', () => {
+            setTimeout(() => {
+                try {
+                    const parsed = JSON.parse(textarea.value.trim());
+                    textarea.value = JSON.stringify(parsed, null, 2);
+                } catch (e) { /* pas du JSON */ }
+            }, 10);
+        });
+    }
+
+    function selectFormat(type) {
+        selectedType = type;
+        document.querySelectorAll('.format-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.textContent.toLowerCase().includes(type) ||
+                (type === 'mixte' && btn.textContent.includes('Mixte')));
+        });
+        document.getElementById('prompt-content').textContent = PROMPTS[type];
+    }
+
+    function copyPrompt() {
+        const userInput = document.getElementById('user-prompt-input')?.value.trim() || '';
+        const technicalPrompt = PROMPTS[selectedType];
+
+        // Combine le prompt technique + le sujet de l'élève
+        const fullPrompt = technicalPrompt + userInput;
+
+        if (!userInput) {
+            App.showNotification('💡 Écris d\'abord ton sujet de révision !', 'warning');
+            document.getElementById('user-prompt-input')?.focus();
+            return;
+        }
+
+        navigator.clipboard.writeText(fullPrompt).then(() => {
+            App.showNotification('✅ Prompt amélioré copié ! Colle-le dans ton IA.', 'success');
+        }).catch(() => {
+            // Fallback
+            const textarea = document.createElement('textarea');
+            textarea.value = fullPrompt;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            App.showNotification('✅ Prompt amélioré copié !', 'success');
+        });
+    }
+
+    function clear() {
+        document.querySelector('.import-textarea').value = '';
+        document.getElementById('import-result').innerHTML = '';
+    }
+
+    function process() {
+        const content = document.querySelector('.import-textarea').value.trim();
+        if (!content) {
+            showResult('error', 'Colle le JSON généré par l\'IA');
+            return;
+        }
+
+        const result = Database.importFromJSON(content);
+
+        if (result.added.length > 0) {
+            showResult('success', `✅ ${result.added.length} question(s) importée(s) !`);
+            document.querySelector('.import-textarea').value = '';
+            if (window.App) App.refreshUI();
+        } else if (result.errors.length > 0) {
+            showResult('error', '❌ Erreur : ' + result.errors.map(e => e.error).join(', '));
+        }
+    }
+
+    function showResult(type, message) {
+        const cls = { success: 'result-success', error: 'result-error' };
+        document.getElementById('import-result').innerHTML = `<div class="import-message ${cls[type] || ''}">${message}</div>`;
+    }
+
+    return { init, selectFormat, copyPrompt, clear, process };
+})();
+
+
+/**
+ * Module Editor - Interface CRUD pour gérer les questions
+ */
+const Editor = (function() {
+    'use strict';
+
+    let currentEditId = null;
+    let filterSubject = null;
+
+    function init(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.innerHTML = `
+            <div class="editor-container">
+                <div class="editor-sidebar">
+                    <h3>📚 Mes questions</h3>
+                    <div class="editor-filters">
+                        <select id="filter-subject" class="filter-select" onchange="Editor.filterBySubject(this.value)">
+                            <option value="">Toutes les matières</option>
+                        </select>
+                    </div>
+                    <div class="editor-stats"><span id="question-count">0 questions</span></div>
+                    <div class="editor-actions-bar">
+                        <button class="btn btn-primary btn-sm" onclick="Editor.showNewForm()">+ Nouvelle</button>
+                        <button class="btn btn-secondary btn-sm" onclick="Editor.resetAllStats()">Reset stats</button>
+                    </div>
+                    <div class="question-list" id="question-list"></div>
+                </div>
+                <div class="editor-main">
+                    <div id="editor-form-container">
+                        <div class="editor-placeholder"><p>Sélectionnez ou créez une question</p></div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        updateFilters();
+        renderQuestionList();
+        Database.addListener((event) => {
+            if (['init', 'add', 'delete', 'update', 'stats-reset'].includes(event)) {
+                updateFilters();
+                renderQuestionList();
+            }
+        });
+    }
+
+    function updateFilters() {
+        const select = document.getElementById('filter-subject');
+        if (!select) return;
+        const val = select.value;
+        select.innerHTML = '<option value="">Toutes les matières</option>' +
+            Database.getSubjects(true).map(s => `<option value="${s.id}">${s.icon} ${s.name}</option>`).join('');
+        select.value = val;
+    }
+
+    function filterBySubject(id) {
+        filterSubject = id || null;
+        renderQuestionList();
+    }
+
+    function renderQuestionList() {
+        const container = document.getElementById('question-list');
+        const countEl = document.getElementById('question-count');
+        if (!container) return;
+
+        const filter = filterSubject ? { subject: filterSubject } : {};
+        const questions = Database.getQuestionsByFilter(filter);
+
+        if (countEl) countEl.textContent = `${questions.length} question(s)`;
+
+        if (questions.length === 0) {
+            container.innerHTML = '<p class="no-questions">Aucune question</p>';
+            return;
+        }
+
+        container.innerHTML = questions.map(q => {
+            const preview = q.question.replace(/\$[^$]+\$/g, '[math]').substring(0, 50);
+            const stats = q.stats || {};
+            return `
+                <div class="question-item ${currentEditId === q.id ? 'active' : ''}" onclick="Editor.selectQuestion('${q.id}')">
+                    <div class="question-item-header">
+                        <span class="type-badge type-${q.type}">${q.type}</span>
+                        <span class="difficulty-badge">★${q.difficulty || 1}</span>
+                    </div>
+                    <div class="question-item-preview">${preview}...</div>
+                    <div class="question-item-meta">
+                        <span>👁 ${stats.accessCount || 0}</span>
+                        <button class="btn-icon btn-danger" onclick="event.stopPropagation(); Editor.deleteQuestion('${q.id}')">🗑️</button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function selectQuestion(id) {
+        currentEditId = id;
+        const question = Database.getQuestion(id);
+        if (question) renderEditForm(question);
+        renderQuestionList();
+    }
+
+    function showNewForm() {
+        currentEditId = null;
+        renderEditForm(null);
+        renderQuestionList();
+    }
+
+    function renderEditForm(question) {
+        const container = document.getElementById('editor-form-container');
+        if (!container) return;
+
+        const isNew = !question;
+        const q = question || {
+            type: 'qcm', subject: filterSubject || 'maths', theme: '', difficulty: 1,
+            question: '', choices: [{ id: 'a', text: '' }, { id: 'b', text: '' }],
+            correctAnswers: [], explanation: '', hint: ''
+        };
+
+        const subjects = Database.getSubjects();
+
+        container.innerHTML = `
+            <div class="edit-form">
+                <h3>${isNew ? '+ Nouvelle question' : 'Modifier'}</h3>
+                <form id="question-form" onsubmit="return false;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select id="edit-type" name="type" onchange="Editor.toggleTypeFields(this.value)">
+                                <option value="qcm" ${q.type === 'qcm' ? 'selected' : ''}>QCM</option>
+                                <option value="input" ${q.type === 'input' ? 'selected' : ''}>Réponse libre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Difficulté</label>
+                            <select id="edit-difficulty" name="difficulty">
+                                <option value="1" ${q.difficulty === 1 ? 'selected' : ''}>★ Facile</option>
+                                <option value="2" ${q.difficulty === 2 ? 'selected' : ''}>★★ Moyen</option>
+                                <option value="3" ${q.difficulty === 3 ? 'selected' : ''}>★★★ Difficile</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Matière</label>
+                            <select id="edit-subject" name="subject">
+                                ${subjects.map(s => `<option value="${s.id}" ${s.id === q.subject ? 'selected' : ''}>${s.icon} ${s.name}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Thème (label)</label>
+                            <input type="text" id="edit-theme" name="theme" value="${q.theme || ''}" placeholder="Ex: Second degré">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Question (LaTeX: $...$)</label>
+                        <textarea id="edit-question" name="question" rows="3" required>${q.question}</textarea>
+                    </div>
+                    <div id="qcm-fields" style="${q.type !== 'qcm' ? 'display:none' : ''}">
+                        <label>Choix</label>
+                        <div id="choices-container">${buildChoicesHTML(q.choices, q.correctAnswers)}</div>
+                        <button type="button" class="btn btn-sm btn-secondary" onclick="Editor.addChoice()">+ Choix</button>
+                    </div>
+                    <div id="input-fields" style="${q.type !== 'input' ? 'display:none' : ''}">
+                        <label>Champs</label>
+                        <div id="fields-container">${buildFieldsHTML(q.fields)}</div>
+                        <button type="button" class="btn btn-sm btn-secondary" onclick="Editor.addField()">+ Champ</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Explication</label>
+                        <textarea id="edit-explanation" name="explanation" rows="2">${q.explanation || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Indice (optionnel)</label>
+                        <input type="text" id="edit-hint" name="hint" value="${q.hint || ''}">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="Editor.cancelEdit()">Annuler</button>
+                        <button type="button" class="btn btn-primary" onclick="Editor.saveQuestion()">${isNew ? 'Créer' : 'Enregistrer'}</button>
+                    </div>
+                </form>
+            </div>
+        `;
+    }
+
+    function buildChoicesHTML(choices = [], correct = []) {
+        if (!choices.length) choices = [{ id: 'a', text: '' }, { id: 'b', text: '' }];
+        return choices.map(c => `
+            <div class="choice-edit-row" data-choice-id="${c.id}">
+                <input type="checkbox" name="correct[]" value="${c.id}" ${correct.includes(c.id) ? 'checked' : ''}>
+                <span class="choice-letter">${c.id.toUpperCase()}</span>
+                <input type="text" name="choice-text-${c.id}" value="${esc(c.text)}" placeholder="Texte..." class="choice-text-input">
+                <button type="button" class="btn-icon btn-danger" onclick="Editor.removeChoice('${c.id}')">×</button>
+            </div>
+        `).join('');
+    }
+
+    function buildFieldsHTML(fields = []) {
+        if (!fields || !fields.length) fields = [{ id: 'answer', label: '', type: 'text', answer: '' }];
+        return fields.map((f, i) => `
+            <div class="field-edit-row" data-field-index="${i}">
+                <select name="field-type-${i}">
+                    <option value="text" ${f.type === 'text' ? 'selected' : ''}>Texte</option>
+                    <option value="number" ${f.type === 'number' ? 'selected' : ''}>Nombre</option>
+                </select>
+                <input type="text" name="field-label-${i}" value="${esc(f.label || '')}" placeholder="Label">
+                <input type="text" name="field-answer-${i}" value="${esc(String(f.answer || ''))}" placeholder="Réponse">
+                <input type="text" name="field-alts-${i}" value="${(f.alternatives || []).join(', ')}" placeholder="Alternatives (,)">
+                <button type="button" class="btn-icon btn-danger" onclick="Editor.removeField(${i})">×</button>
+            </div>
+        `).join('');
+    }
+
+    function esc(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function toggleTypeFields(type) {
+        document.getElementById('qcm-fields').style.display = type === 'qcm' ? '' : 'none';
+        document.getElementById('input-fields').style.display = type === 'input' ? '' : 'none';
+    }
+
+    function addChoice() {
+        const container = document.getElementById('choices-container');
+        const letters = 'abcdefgh';
+        const next = letters[container.querySelectorAll('.choice-edit-row').length] || 'x';
+        container.insertAdjacentHTML('beforeend', buildChoicesHTML([{ id: next, text: '' }], []));
+    }
+
+    function removeChoice(id) {
+        document.querySelector(`.choice-edit-row[data-choice-id="${id}"]`)?.remove();
+    }
+
+    function addField() {
+        const container = document.getElementById('fields-container');
+        const i = container.querySelectorAll('.field-edit-row').length;
+        container.insertAdjacentHTML('beforeend', buildFieldsHTML([{ id: 'field' + i, type: 'text', answer: '' }])
+            .replace(/field-(\w+)-0/g, `field-$1-${i}`));
+    }
+
+    function removeField(i) {
+        document.querySelector(`.field-edit-row[data-field-index="${i}"]`)?.remove();
+    }
+
+    function saveQuestion() {
+        const form = document.getElementById('question-form');
+        const type = form.querySelector('[name="type"]').value;
+
+        const question = {
+            type,
+            subject: form.querySelector('[name="subject"]').value,
+            theme: form.querySelector('[name="theme"]').value,
+            difficulty: parseInt(form.querySelector('[name="difficulty"]').value),
+            question: form.querySelector('[name="question"]').value,
+            explanation: form.querySelector('[name="explanation"]').value,
+            hint: form.querySelector('[name="hint"]').value
+        };
+
+        if (type === 'qcm') {
+            question.choices = [];
+            question.correctAnswers = [];
+            form.querySelectorAll('.choice-edit-row').forEach(row => {
+                const id = row.dataset.choiceId;
+                const text = row.querySelector('.choice-text-input').value;
+                if (text.trim()) {
+                    question.choices.push({ id, text });
+                    if (row.querySelector('input[type="checkbox"]').checked) question.correctAnswers.push(id);
+                }
+            });
+        } else {
+            question.fields = [];
+            form.querySelectorAll('.field-edit-row').forEach((row, i) => {
+                const fieldType = row.querySelector(`[name="field-type-${i}"]`).value;
+                const answer = row.querySelector(`[name="field-answer-${i}"]`).value;
+                const alts = row.querySelector(`[name="field-alts-${i}"]`).value;
+                question.fields.push({
+                    id: 'field' + i,
+                    type: fieldType,
+                    label: row.querySelector(`[name="field-label-${i}"]`).value,
+                    answer: fieldType === 'number' ? parseFloat(answer) : answer,
+                    alternatives: alts ? alts.split(',').map(s => s.trim()).filter(Boolean) : []
+                });
+            });
+        }
+
+        if (!question.question.trim()) { alert('Question obligatoire'); return; }
+        if (type === 'qcm' && question.choices.length < 2) { alert('Au moins 2 choix'); return; }
+        if (type === 'qcm' && !question.correctAnswers.length) { alert('Cochez une réponse correcte'); return; }
+
+        if (currentEditId) {
+            Database.updateQuestion(currentEditId, question);
+            App.showNotification('Question mise à jour', 'success');
+        } else {
+            const result = Database.addQuestions(question);
+            if (result.added.length) {
+                currentEditId = result.added[0].id;
+                App.showNotification('Question créée', 'success');
+            }
+        }
+        renderQuestionList();
+    }
+
+    function cancelEdit() {
+        currentEditId = null;
+        document.getElementById('editor-form-container').innerHTML =
+            '<div class="editor-placeholder"><p>Sélectionnez ou créez une question</p></div>';
+        renderQuestionList();
+    }
+
+    function deleteQuestion(id) {
+        if (!confirm('Supprimer cette question ?')) return;
+        Database.deleteQuestion(id);
+        if (currentEditId === id) cancelEdit();
+        App.showNotification('Question supprimée', 'info');
+    }
+
+    function resetAllStats() {
+        if (!confirm('Réinitialiser toutes les statistiques ?')) return;
+        Database.resetStats();
+        App.showNotification('Stats réinitialisées', 'info');
+    }
+
+    return {
+        init, filterBySubject, selectQuestion, showNewForm, toggleTypeFields,
+        addChoice, removeChoice, addField, removeField, saveQuestion, cancelEdit,
+        deleteQuestion, resetAllStats
+    };
+})();
+
+
+/**
+ * Application principale - Global Revision App (Tauri)
+ * Lit/écrit directement dans questions.json à côté de l'exécutable
+ */
+const App = (function() {
+    'use strict';
+
+    let currentView = 'home';
+    let revisionState = { questions: [], currentIndex: 0, filter: {} };
+
+    /**
+     * Point d'entrée : initialise la base et lance l'app
+     */
+    async function init() {
+        console.log('[App] Initialisation...');
+
+        try {
+            await Database.init();
+            renderNavigation();
+            showView('home');
+            Database.addListener(() => updateStats());
+            updateStats();
+            console.log('[App] Prêt !');
+        } catch (e) {
+            console.error('[App] Erreur init:', e);
+            document.body.innerHTML = `
+                <div style="padding: 2rem; text-align: center;">
+                    <h1>Erreur de chargement</h1>
+                    <p>${e.message}</p>
+                </div>
+            `;
+        }
+    }
+
+    function renderNavigation() {
+        const nav = document.getElementById('main-nav');
+        if (!nav) return;
+
+        const status = Database.getStatus();
+
+        nav.innerHTML = `
+            <div class="nav-brand">
+                <span class="brand-icon">📚</span>
+                <span class="brand-text">Révisions</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-link active" data-view="home" onclick="App.showView('home')">🏠 Accueil</button>
+                <button class="nav-link" data-view="revision" onclick="App.showView('revision')">📝 Réviser</button>
+                <button class="nav-link" data-view="manage" onclick="App.showView('manage')">✏️ Gérer</button>
+                <button class="nav-link" data-view="import" onclick="App.showView('import')">📥 Importer</button>
+                <button class="nav-link" data-view="settings" onclick="App.showView('settings')">⚙️ Matières</button>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-sm btn-secondary" onclick="App.exportData()">💾 Exporter</button>
+            </div>
+        `;
+    }
+
+    function showView(viewName) {
+        currentView = viewName;
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.view === viewName));
+
+        const content = document.getElementById('main-content');
+        if (!content) return;
+
+        switch (viewName) {
+            case 'home': renderHomeView(content); break;
+            case 'revision': renderRevisionView(content); break;
+            case 'manage': renderManageView(content); break;
+            case 'import': renderImportView(content); break;
+            case 'settings': renderSettingsView(content); break;
+        }
+    }
+
+    function renderHomeView(container) {
+        const subjects = Database.getSubjects(true);
+        const questions = Database.getQuestionsByFilter({});
+        const totalAccess = questions.reduce((sum, q) => sum + (q.stats?.accessCount || 0), 0);
+
+        container.innerHTML = `
+            <div class="home-view">
+                <div class="hero-section">
+                    <h1>🎓 Application de Révisions</h1>
+                    <p>QCM et questions à réponse libre</p>
+                </div>
+                <div class="stats-cards">
+                    <div class="stat-card"><div class="stat-value" id="stat-questions">${questions.length}</div><div class="stat-label">Questions</div></div>
+                    <div class="stat-card"><div class="stat-value" id="stat-subjects">${subjects.length}</div><div class="stat-label">Matières</div></div>
+                    <div class="stat-card"><div class="stat-value" id="stat-revisions">${totalAccess}</div><div class="stat-label">Révisions</div></div>
+                </div>
+                <div class="subject-grid">
+                    <h2>📚 Matières</h2>
+                    <div class="subjects-container">
+                        ${subjects.map(s => {
+                            const count = questions.filter(q => q.subject === s.id).length;
+                            return `<div class="subject-card" onclick="App.startRevision('${s.id}')">
+                                <div class="subject-icon">${s.icon}</div>
+                                <div class="subject-name">${s.name}</div>
+                                <div class="subject-count">${count} question(s)</div>
+                            </div>`;
+                        }).join('')}
+                        ${subjects.length === 0 ? '<p class="no-data">Aucune matière active. Allez dans ⚙️ Matières.</p>' : ''}
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <h2>🚀 Actions rapides</h2>
+                    <div class="actions-container">
+                        <button class="action-card" onclick="App.startSmartRevision()">
+                            <span class="action-icon">🧠</span>
+                            <span class="action-text">Révision intelligente</span>
+                            <span class="action-desc">Priorité aux moins révisées</span>
+                        </button>
+                        <button class="action-card" onclick="App.startRandomRevision()">
+                            <span class="action-icon">🎲</span>
+                            <span class="action-text">Mode aléatoire</span>
+                            <span class="action-desc">Questions au hasard</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderRevisionView(container) {
+        const subjects = Database.getSubjects(true);
+        container.innerHTML = `
+            <div class="revision-view">
+                <div class="revision-header">
+                    <h2>📝 Révision</h2>
+                    <div class="revision-controls">
+                        <select id="revision-subject" onchange="App.updateRevisionThemes()">
+                            <option value="">Toutes les matières</option>
+                            ${subjects.map(s => `<option value="${s.id}">${s.icon} ${s.name}</option>`).join('')}
+                        </select>
+                        <select id="revision-theme"><option value="">Tous les thèmes</option></select>
+                        <button class="btn btn-primary" onclick="App.startFilteredRevision()">Commencer</button>
+                    </div>
+                </div>
+                <div class="revision-progress" id="revision-progress" style="display: none;">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span class="progress-text" id="progress-text">0 / 0</span>
+                    <span class="progress-stats" id="progress-stats">✓ 0</span>
+                </div>
+                <div class="question-container" id="question-container">
+                    <div class="revision-placeholder"><p>Sélectionnez une matière ou cliquez sur "Commencer"</p></div>
+                </div>
+                <div class="revision-nav" id="revision-nav" style="display: none;">
+                    <button class="btn btn-secondary" onclick="App.previousQuestion()">← Précédent</button>
+                    <button class="btn btn-primary" onclick="App.nextQuestion()">Suivant →</button>
+                </div>
+            </div>
+        `;
+    }
+
+    function updateRevisionThemes() {
+        const subjectId = document.getElementById('revision-subject').value;
+        const themeSelect = document.getElementById('revision-theme');
+        themeSelect.innerHTML = '<option value="">Tous les thèmes</option>';
+        if (subjectId) {
+            const themes = Database.getThemes(subjectId);
+            themes.forEach(t => { themeSelect.innerHTML += `<option value="${t}">${t}</option>`; });
+        }
+    }
+
+    function startFilteredRevision() {
+        const subject = document.getElementById('revision-subject').value;
+        const theme = document.getElementById('revision-theme').value;
+        revisionState.filter = {};
+        if (subject) revisionState.filter.subject = subject;
+        if (theme) revisionState.filter.theme = theme;
+
+        revisionState.questions = Database.getQuestionsByFilter(revisionState.filter);
+        revisionState.currentIndex = 0;
+
+        if (!revisionState.questions.length) { showNotification('Aucune question', 'warning'); return; }
+
+        Exercises.resetSessionStats();
+        showCurrentQuestion();
+        showRevisionUI(true);
+    }
+
+    function startRevision(subjectId) {
+        revisionState.filter = { subject: subjectId };
+        revisionState.questions = Database.getQuestionsByFilter(revisionState.filter);
+        revisionState.currentIndex = 0;
+
+        if (!revisionState.questions.length) { showNotification('Aucune question', 'warning'); return; }
+
+        showView('revision');
+        setTimeout(() => {
+            document.getElementById('revision-subject').value = subjectId;
+            updateRevisionThemes();
+            Exercises.resetSessionStats();
+            showCurrentQuestion();
+            showRevisionUI(true);
+        }, 50);
+    }
+
+    function startSmartRevision() {
+        revisionState.filter = {};
+        revisionState.questions = Database.getQuestionsForRevision(20);
+        revisionState.currentIndex = 0;
+        if (!revisionState.questions.length) { showNotification('Aucune question', 'warning'); return; }
+        showView('revision');
+        setTimeout(() => { Exercises.resetSessionStats(); showCurrentQuestion(); showRevisionUI(true); }, 50);
+    }
+
+    function startRandomRevision() {
+        revisionState.filter = {};
+        revisionState.questions = shuffleArray([...Database.getQuestionsByFilter({})]).slice(0, 20);
+        revisionState.currentIndex = 0;
+        if (!revisionState.questions.length) { showNotification('Aucune question', 'warning'); return; }
+        showView('revision');
+        setTimeout(() => { Exercises.resetSessionStats(); showCurrentQuestion(); showRevisionUI(true); }, 50);
+    }
+
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function showRevisionUI(show) {
+        const progress = document.getElementById('revision-progress');
+        const nav = document.getElementById('revision-nav');
+        if (progress) progress.style.display = show ? 'flex' : 'none';
+        if (nav) nav.style.display = show ? 'flex' : 'none';
+        updateProgressUI();
+    }
+
+    function showCurrentQuestion() {
+        if (revisionState.currentIndex >= revisionState.questions.length) { showRevisionSummary(); return; }
+        const q = revisionState.questions[revisionState.currentIndex];
+        Exercises.renderQuestion(q, document.getElementById('question-container'));
+        updateProgressUI();
+    }
+
+    function updateProgressUI() {
+        const fill = document.getElementById('progress-fill');
+        const text = document.getElementById('progress-text');
+        const stats = document.getElementById('progress-stats');
+        if (!fill) return;
+        const total = revisionState.questions.length;
+        const current = revisionState.currentIndex + 1;
+        const sessionStats = Exercises.getSessionStats();
+        fill.style.width = (total > 0 ? (current / total) * 100 : 0) + '%';
+        text.textContent = `${current} / ${total}`;
+        stats.textContent = `✓ ${sessionStats.correct}`;
+    }
+
+    function nextQuestion() {
+        if (revisionState.currentIndex < revisionState.questions.length - 1) {
+            revisionState.currentIndex++;
+            showCurrentQuestion();
+        } else {
+            showRevisionSummary();
+        }
+    }
+
+    function previousQuestion() {
+        if (revisionState.currentIndex > 0) {
+            revisionState.currentIndex--;
+            showCurrentQuestion();
+        }
+    }
+
+    function showRevisionSummary() {
+        const container = document.getElementById('question-container');
+        const stats = Exercises.getSessionStats();
+        const pct = stats.answered > 0 ? Math.round((stats.correct / stats.answered) * 100) : 0;
+        container.innerHTML = `
+            <div class="revision-summary">
+                <div class="summary-icon">${pct >= 70 ? '🎉' : pct >= 50 ? '👍' : '💪'}</div>
+                <h2>Session terminée !</h2>
+                <div class="summary-stats">
+                    <div class="summary-stat"><span class="stat-value">${stats.answered}</span><span class="stat-label">Questions</span></div>
+                    <div class="summary-stat"><span class="stat-value">${stats.correct}</span><span class="stat-label">Correctes</span></div>
+                    <div class="summary-stat"><span class="stat-value">${pct}%</span><span class="stat-label">Score</span></div>
+                </div>
+                <div class="summary-actions">
+                    <button class="btn btn-secondary" onclick="App.showView('home')">Accueil</button>
+                    <button class="btn btn-primary" onclick="App.restartRevision()">Recommencer</button>
+                </div>
+            </div>
+        `;
+        showRevisionUI(false);
+    }
+
+    function restartRevision() {
+        revisionState.currentIndex = 0;
+        revisionState.questions = shuffleArray(revisionState.questions);
+        Exercises.resetSessionStats();
+        showCurrentQuestion();
+        showRevisionUI(true);
+    }
+
+    function renderManageView(container) {
+        container.innerHTML = `<div id="editor-container"></div>`;
+        Editor.init('editor-container');
+    }
+
+    function renderImportView(container) {
+        container.innerHTML = `<div id="import-container"></div>`;
+        Import.init('import-container');
+    }
+
+    // ==================== SETTINGS ====================
+
+    function renderSettingsView(container) {
+        const subjects = Database.getSubjects();
+        container.innerHTML = `
+            <div class="settings-view">
+                <h2>⚙️ Configuration des matières</h2>
+                <p class="settings-help">Activez/désactivez les matières selon vos besoins.</p>
+
+                <div class="subjects-settings">
+                    ${subjects.map(s => `
+                        <div class="subject-setting-row">
+                            <label class="subject-toggle">
+                                <input type="checkbox" ${s.enabled ? 'checked' : ''} onchange="App.toggleSubject('${s.id}', this.checked)">
+                                <span class="subject-info">${s.icon} ${s.name}</span>
+                            </label>
+                            <button class="btn-icon" onclick="App.editSubject('${s.id}')" title="Modifier">✏️</button>
+                            <button class="btn-icon btn-danger" onclick="App.deleteSubject('${s.id}')" title="Supprimer">🗑️</button>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="add-subject-form">
+                    <h3>➕ Ajouter une matière</h3>
+                    <div class="form-row">
+                        <input type="text" id="new-subject-icon" placeholder="Icône" maxlength="2" style="width: 60px;">
+                        <input type="text" id="new-subject-name" placeholder="Nom de la matière">
+                        <input type="text" id="new-subject-id" placeholder="ID (ex: bio)">
+                        <button class="btn btn-primary" onclick="App.addSubject()">Ajouter</button>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button class="btn btn-secondary" onclick="App.exportData()">💾 Exporter la base</button>
+                </div>
+            </div>
+        `;
+    }
+
+    function toggleSubject(id, enabled) {
+        Database.toggleSubject(id, enabled);
+        showNotification(enabled ? 'Matière activée' : 'Matière désactivée', 'info');
+    }
+
+    function editSubject(id) {
+        const subject = Database.getSubject(id);
+        if (!subject) return;
+
+        const newName = prompt('Nom de la matière :', subject.name);
+        if (newName && newName !== subject.name) {
+            Database.updateSubject(id, { name: newName });
+            renderSettingsView(document.getElementById('main-content'));
+            showNotification('Matière modifiée', 'success');
+        }
+
+        const newIcon = prompt('Icône (emoji) :', subject.icon);
+        if (newIcon && newIcon !== subject.icon) {
+            Database.updateSubject(id, { icon: newIcon });
+            renderSettingsView(document.getElementById('main-content'));
+        }
+    }
+
+    function deleteSubject(id) {
+        if (!confirm('Supprimer cette matière ?')) return;
+        Database.deleteSubject(id);
+        renderSettingsView(document.getElementById('main-content'));
+        showNotification('Matière supprimée', 'info');
+    }
+
+    function addSubject() {
+        const icon = document.getElementById('new-subject-icon').value.trim() || '📚';
+        const name = document.getElementById('new-subject-name').value.trim();
+        const id = document.getElementById('new-subject-id').value.trim().toLowerCase().replace(/\s+/g, '-');
+
+        if (!name || !id) { showNotification('Nom et ID requis', 'error'); return; }
+
+        if (Database.addSubject({ id, name, icon, enabled: true })) {
+            renderSettingsView(document.getElementById('main-content'));
+            showNotification('Matière ajoutée', 'success');
+        } else {
+            showNotification('Cette matière existe déjà', 'error');
+        }
+    }
+
+    // ==================== UTILITAIRES ====================
+
+    function updateStats() {
+        const questions = Database.getQuestionsByFilter({});
+        const subjects = Database.getSubjects(true);
+        const el1 = document.getElementById('stat-questions');
+        const el2 = document.getElementById('stat-subjects');
+        if (el1) el1.textContent = questions.length;
+        if (el2) el2.textContent = subjects.length;
+    }
+
+    function exportData() {
+        Database.downloadJSON('mes-questions.json');
+        showNotification('Base exportée !', 'success');
+    }
+
+    function refreshUI() {
+        showView(currentView);
+    }
+
+    function showNotification(message, type = 'info') {
+        const icons = { success: '✅', error: '❌', warning: '⚠️', info: 'ℹ️' };
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `<span class="notification-icon">${icons[type] || 'ℹ️'}</span><span class="notification-message">${message}</span>`;
+
+        let container = document.getElementById('notification-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'notification-container';
+            document.body.appendChild(container);
+        }
+        container.appendChild(notification);
+        setTimeout(() => notification.classList.add('show'), 10);
+        setTimeout(() => { notification.classList.remove('show'); setTimeout(() => notification.remove(), 300); }, 3000);
+    }
+
+    return {
+        init, showView, startRevision, startSmartRevision, startRandomRevision, startFilteredRevision,
+        updateRevisionThemes, nextQuestion, previousQuestion, restartRevision,
+        toggleSubject, editSubject, deleteSubject, addSubject,
+        exportData, refreshUI, showNotification
+    };
+})();
+
+document.addEventListener('DOMContentLoaded', App.init);
+
+    </script>
+</body>
+</html>

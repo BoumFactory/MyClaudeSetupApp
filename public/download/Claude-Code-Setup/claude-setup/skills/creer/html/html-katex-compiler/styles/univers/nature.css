@@ -1,0 +1,601 @@
+/* ===========================================
+   UNIVERS: NATURE / BOTANIQUE
+   Organique, apaisant, tons terreux et forestiers
+   Inspiré des herbiers et illustrations botaniques
+   Support automatique Light/Dark mode
+   =========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ===========================================
+   VARIABLES - MODE CLAIR (défaut)
+   =========================================== */
+:root {
+    /* Palette Nature - Light */
+    --nature-forest: #2d5a27;
+    --nature-leaf: #4a7c40;
+    --nature-moss: #6b8e23;
+    --nature-sage: #9caf88;
+    --nature-cream: #faf8f0;
+    --nature-parchment: #f5f0e1;
+    --nature-bark: #5d4037;
+    --nature-earth: #8b7355;
+    --nature-gold: #c9a227;
+    --nature-berry: #8e4585;
+    --nature-sky: #87ceeb;
+    --nature-water: #5f9ea0;
+
+    /* Backgrounds */
+    --nature-bg: var(--nature-cream);
+    --nature-text: #3d3d3d;
+    --nature-text-light: #5d5d5d;
+
+    /* Bloc backgrounds */
+    --nature-def-bg: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    --nature-thm-bg: linear-gradient(135deg, #efebe9 0%, #d7ccc8 100%);
+    --nature-prop-bg: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
+    --nature-ex-bg: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%);
+    --nature-meth-bg: linear-gradient(135deg, #f0f4e8 0%, #e0e8d5 100%);
+    --nature-rem-bg: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    --nature-exo-bg: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+
+    /* Katex */
+    --nature-formula-bg: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%);
+
+    /* Shadows */
+    --nature-shadow: rgba(93, 64, 55, 0.15);
+    --nature-shadow-hover: rgba(93, 64, 55, 0.2);
+
+    /* Corner fold */
+    --nature-fold: var(--nature-parchment);
+}
+
+/* ===========================================
+   VARIABLES - MODE SOMBRE
+   =========================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Palette Nature - Dark (tons forestiers nocturnes) */
+        --nature-forest: #4a8f44;
+        --nature-leaf: #6aaa5e;
+        --nature-moss: #8bb85a;
+        --nature-sage: #a8c792;
+        --nature-cream: #1a2318;
+        --nature-parchment: #232e20;
+        --nature-bark: #9c7b65;
+        --nature-earth: #bfa08a;
+        --nature-gold: #dbb840;
+        --nature-berry: #c47ab5;
+        --nature-sky: #6ab0d8;
+        --nature-water: #7ac5c5;
+
+        /* Backgrounds */
+        --nature-bg: #1a2318;
+        --nature-text: #e8e4d8;
+        --nature-text-light: #c8c4b8;
+
+        /* Bloc backgrounds - tons sombres et terreux */
+        --nature-def-bg: linear-gradient(135deg, #1e3620 0%, #264028 100%);
+        --nature-thm-bg: linear-gradient(135deg, #2a231e 0%, #342b24 100%);
+        --nature-prop-bg: linear-gradient(135deg, #222e1e 0%, #2a3822 100%);
+        --nature-ex-bg: linear-gradient(135deg, #2e2a18 0%, #3a3420 100%);
+        --nature-meth-bg: linear-gradient(135deg, #252e20 0%, #2e3828 100%);
+        --nature-rem-bg: linear-gradient(135deg, #2e1e28 0%, #3a2432 100%);
+        --nature-exo-bg: linear-gradient(135deg, #1a2a2c 0%, #223438 100%);
+
+        /* Katex */
+        --nature-formula-bg: linear-gradient(135deg, #2e2a18 0%, #3a3420 100%);
+
+        /* Shadows */
+        --nature-shadow: rgba(0, 0, 0, 0.4);
+        --nature-shadow-hover: rgba(0, 0, 0, 0.5);
+
+        /* Corner fold */
+        --nature-fold: #2a3825;
+    }
+}
+
+body {
+    font-family: 'Lora', 'Palatino Linotype', 'Book Antiqua', serif;
+    background: var(--nature-bg);
+    color: var(--nature-text);
+    position: relative;
+    line-height: 1.8;
+}
+
+/* === TEXTURE PAPIER NATUREL === */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    z-index: -1;
+}
+
+/* === BORDURE FEUILLAGE === */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg,
+        var(--nature-forest),
+        var(--nature-leaf),
+        var(--nature-moss),
+        var(--nature-leaf),
+        var(--nature-forest));
+    z-index: 100;
+}
+
+/* ===========================================
+   TITRES BOTANIQUES
+   =========================================== */
+
+h1 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 3rem !important;
+    font-weight: 600;
+    color: var(--nature-forest);
+    font-variant: small-caps;
+    letter-spacing: 3px;
+    border: none;
+    background: linear-gradient(180deg, var(--nature-bg) 0%, var(--nature-parchment) 100%);
+    padding: 2rem 2.5rem !important;
+    position: relative;
+    text-align: center;
+}
+
+/* Cadre ornemental */
+h1::before {
+    content: '❧';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: var(--nature-moss);
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--nature-moss),
+        var(--nature-forest),
+        var(--nature-moss),
+        transparent);
+}
+
+h2 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.9rem !important;
+    font-weight: 600;
+    color: var(--nature-bark);
+    font-style: italic;
+    border-bottom: none;
+    padding-left: 3rem;
+    margin-top: 3rem;
+    position: relative;
+}
+
+/* Icône feuille */
+h2::before {
+    content: '🌿';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 3rem;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--nature-moss), transparent);
+}
+
+h3 {
+    font-family: 'Lora', serif !important;
+    font-size: 1.4rem !important;
+    color: var(--nature-leaf);
+    font-weight: 600;
+    padding-left: 2rem;
+    position: relative;
+}
+
+h3::before {
+    content: '❋';
+    position: absolute;
+    left: 0;
+    color: var(--nature-sage);
+}
+
+/* ===========================================
+   BLOCS - STYLE HERBIER
+   =========================================== */
+
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    position: relative;
+    border: 2px solid !important;
+    border-radius: 0 !important;
+    box-shadow:
+        3px 3px 0 var(--nature-shadow),
+        inset 0 0 50px rgba(255,255,255,0.1);
+    margin: 2.5rem 0;
+    padding: 2rem 2rem 2rem 2.5rem !important;
+    transition: all 0.3s ease;
+}
+
+/* Effet de coin de page */
+.definition::after, .theoreme::after, .propriete::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg,
+        var(--nature-fold) 50%,
+        rgba(0,0,0,0.1) 50%);
+    box-shadow: -2px -2px 5px rgba(0,0,0,0.1);
+}
+
+.definition:hover, .theoreme:hover, .propriete:hover,
+.exemple:hover, .methode:hover, .remarque:hover, .exercice:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        5px 5px 10px var(--nature-shadow-hover),
+        inset 0 0 60px rgba(255,255,255,0.15);
+}
+
+/* === LABELS NATURELS === */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before, .exercice::before {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 2px;
+    padding: 0.4rem 1.2rem !important;
+    border-radius: 0 !important;
+    border: 1px solid;
+    position: relative;
+}
+
+/* === COULEURS NATURELLES === */
+
+/* DÉFINITION - Vert forêt */
+.definition {
+    background: var(--nature-def-bg) !important;
+    border-color: var(--nature-forest) !important;
+}
+.definition::before {
+    background: var(--nature-bg) !important;
+    color: var(--nature-forest) !important;
+    border-color: var(--nature-forest) !important;
+}
+
+/* THÉORÈME - Brun terreux */
+.theoreme {
+    background: var(--nature-thm-bg) !important;
+    border-color: var(--nature-bark) !important;
+}
+.theoreme::before {
+    background: var(--nature-bg) !important;
+    color: var(--nature-bark) !important;
+    border-color: var(--nature-bark) !important;
+}
+
+/* PROPRIÉTÉ - Vert mousse */
+.propriete {
+    background: var(--nature-prop-bg) !important;
+    border-color: var(--nature-moss) !important;
+}
+.propriete::before {
+    background: var(--nature-bg) !important;
+    color: var(--nature-moss) !important;
+    border-color: var(--nature-moss) !important;
+}
+
+/* EXEMPLE - Or doré */
+.exemple {
+    background: var(--nature-ex-bg) !important;
+    border-color: var(--nature-gold) !important;
+}
+.exemple::before {
+    background: var(--nature-bg) !important;
+    color: var(--nature-gold) !important;
+    border-color: var(--nature-gold) !important;
+}
+
+/* MÉTHODE - Vert sauge */
+.methode {
+    background: var(--nature-meth-bg) !important;
+    border-color: var(--nature-sage) !important;
+}
+.methode::before {
+    background: var(--nature-bg) !important;
+    color: var(--nature-leaf) !important;
+    border-color: var(--nature-sage) !important;
+}
+
+/* REMARQUE - Baie */
+.remarque {
+    background: var(--nature-rem-bg) !important;
+    border-color: var(--nature-berry) !important;
+}
+.remarque::before {
+    background: var(--nature-bg) !important;
+    color: var(--nature-berry) !important;
+    border-color: var(--nature-berry) !important;
+}
+
+/* EXERCICE - Eau */
+.exercice {
+    background: var(--nature-exo-bg) !important;
+    border-color: var(--nature-water) !important;
+}
+.exercice::before {
+    background: var(--nature-bg) !important;
+    color: var(--nature-water) !important;
+    border-color: var(--nature-water) !important;
+}
+
+/* ===========================================
+   LISTES - STYLE BOTANIQUE
+   =========================================== */
+
+ul li::before {
+    content: '🌱' !important;
+    background: none !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    font-size: 0.9rem;
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+}
+
+ul li:nth-child(2)::before { content: '🍃' !important; }
+ul li:nth-child(3)::before { content: '🌿' !important; }
+ul li:nth-child(4)::before { content: '☘️' !important; }
+ul li:nth-child(5)::before { content: '🌱' !important; }
+
+ol li::before {
+    background: linear-gradient(135deg, var(--nature-forest), var(--nature-leaf)) !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 600;
+}
+
+/* ===========================================
+   KaTeX - FORMULES ENCADRÉES
+   =========================================== */
+
+.katex-display {
+    background: var(--nature-formula-bg) !important;
+    border: 2px solid var(--nature-gold) !important;
+    border-left: 5px solid var(--nature-gold) !important;
+    border-radius: 0 !important;
+    position: relative;
+    margin-top: 1.5rem !important;
+    overflow: visible !important;
+}
+
+.katex-display::before {
+    content: '✧ formule ✧';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--nature-gold);
+    background: var(--nature-bg);
+    padding: 0 1rem;
+}
+
+/* ===========================================
+   TABLEAUX - STYLE NATURALISTE
+   =========================================== */
+
+table {
+    border: 2px solid var(--nature-bark) !important;
+    border-radius: 0 !important;
+    overflow: hidden;
+    box-shadow: 3px 3px 0 var(--nature-shadow);
+}
+
+th {
+    background: linear-gradient(135deg, var(--nature-forest), var(--nature-leaf)) !important;
+    color: #fff !important;
+    font-family: 'Cormorant Garamond', serif;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    font-size: 1rem;
+}
+
+td {
+    border-color: var(--nature-sage) !important;
+    color: var(--nature-text);
+}
+
+tr:nth-child(even) {
+    background: rgba(156, 175, 136, 0.15);
+}
+
+tr:hover {
+    background: rgba(107, 142, 35, 0.15) !important;
+}
+
+/* ===========================================
+   LIENS
+   =========================================== */
+
+a {
+    color: var(--nature-forest) !important;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--nature-moss);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--nature-berry) !important;
+    border-bottom-color: var(--nature-berry);
+}
+
+/* ===========================================
+   FOOTER NATUREL
+   =========================================== */
+
+.footer {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--nature-earth);
+    padding: 2rem;
+    border-top: 2px solid var(--nature-sage);
+    background: linear-gradient(180deg, transparent, rgba(156, 175, 136, 0.15));
+}
+
+.footer::before {
+    content: '❧ ';
+    color: var(--nature-moss);
+}
+
+.footer::after {
+    content: ' ❧';
+    color: var(--nature-moss);
+}
+
+/* ===========================================
+   DÉCORATIONS FLORALES
+   =========================================== */
+
+.cours-container::before {
+    content: '🌸';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 2rem;
+    opacity: 0.3;
+    animation: floatFlower 4s ease-in-out infinite;
+}
+
+@keyframes floatFlower {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* ===========================================
+   CITATIONS / BLOCKQUOTE
+   =========================================== */
+
+blockquote {
+    font-style: italic;
+    border-left: 4px solid var(--nature-sage);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    color: var(--nature-bark);
+}
+
+blockquote::before {
+    content: '"';
+    font-size: 3rem;
+    color: var(--nature-sage);
+    float: left;
+    margin-right: 0.5rem;
+    line-height: 1;
+}
+
+/* ===========================================
+   SCROLLBAR NATURELLE
+   =========================================== */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--nature-parchment);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--nature-leaf), var(--nature-forest));
+    border-radius: 6px;
+    border: 2px solid var(--nature-parchment);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--nature-forest), var(--nature-bark));
+}
+
+/* ===========================================
+   SELECTION
+   =========================================== */
+
+::selection {
+    background: var(--nature-sage);
+    color: #fff;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem !important;
+    }
+
+    h1::before {
+        display: none;
+    }
+
+    .cours-container::before {
+        display: none;
+    }
+}
+
+/* ===========================================
+   PRINT
+   =========================================== */
+
+@media print {
+    body::before,
+    body::after,
+    .cours-container::before {
+        display: none !important;
+    }
+
+    .definition::after,
+    .theoreme::after,
+    .propriete::after {
+        display: none !important;
+    }
+
+    .definition, .theoreme, .propriete, .exemple,
+    .methode, .remarque, .exercice {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}

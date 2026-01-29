@@ -1,0 +1,603 @@
+{
+  "source": {
+    "pdf": "Tle_techno.pdf",
+    "page": 8,
+    "text_length": 1986
+  },
+  "extraction": {
+    "date": "2026-01-09T14:32:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TTC-GE-401",
+      "intitule": "Définir une conique comme section plane d'un cône de révolution",
+      "fingerprint": "definir_conique_section_cone_revolution",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie plane - Coniques",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et reconnaître les coniques (cercle, ellipse, parabole, hyperbole) comme résultant des sections planes d'un cône de révolution.",
+      "formulation_bo": "Coniques : sections planes d'un cône de révolution",
+      "connaissances_associees": [
+        "cône de révolution",
+        "sections planes",
+        "cercle",
+        "ellipse",
+        "parabole",
+        "hyperbole"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-402",
+      "intitule": "Définir la tangente à une conique en un point",
+      "fingerprint": "definir_tangente_conique",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie plane - Coniques",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la tangente à une conique en un point comme la position limite des sécantes en ce point, par analogie avec la tangente à une courbe représentative de fonction.",
+      "formulation_bo": "Notion de tangente à une conique en un point",
+      "connaissances_associees": [
+        "tangente à une courbe",
+        "sécantes",
+        "limite",
+        "conique"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-403",
+      "intitule": "Étudier le raccordement d'arcs de cercles",
+      "fingerprint": "etudier_raccordement_arcs_cercles",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie plane - Coniques",
+      "type": "capacite",
+      "description_detaillee": "Analyser les conditions de continuité et de continuité de la tangente pour le raccordement de deux arcs de cercles.",
+      "formulation_bo": "Étudier le raccordement d'arcs de cercles, d'ellipses ou de courbes représentatives de fonctions",
+      "connaissances_associees": [
+        "arcs de cercles",
+        "continuité",
+        "tangente",
+        "raccordement"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-404",
+      "intitule": "Étudier le raccordement d'arcs d'ellipses",
+      "fingerprint": "etudier_raccordement_arcs_ellipses",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie plane - Coniques",
+      "type": "capacite",
+      "description_detaillee": "Analyser les conditions de continuité et de continuité de la tangente pour le raccordement de deux arcs d'ellipses.",
+      "formulation_bo": "Étudier le raccordement d'arcs de cercles, d'ellipses ou de courbes représentatives de fonctions",
+      "connaissances_associees": [
+        "arcs d'ellipses",
+        "continuité",
+        "tangente",
+        "raccordement"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-405",
+      "intitule": "Étudier le raccordement de courbes représentatives de fonctions",
+      "fingerprint": "etudier_raccordement_courbes_fonction",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie plane - Coniques",
+      "type": "capacite",
+      "description_detaillee": "Analyser les conditions de continuité et de continuité de la tangente pour le raccordement de deux courbes représentatives de fonctions.",
+      "formulation_bo": "Étudier le raccordement d'arcs de cercles, d'ellipses ou de courbes représentatives de fonctions",
+      "connaissances_associees": [
+        "courbes de fonctions",
+        "continuité",
+        "tangente",
+        "raccordement",
+        "dérivée"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-406",
+      "intitule": "Définir la projection centrale en perspective",
+      "fingerprint": "definir_projection_centrale_perspective",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre le concept de projection centrale comme projection d'une figure de l'espace sur un plan à partir d'un point (centre de projection).",
+      "formulation_bo": "Perspective centrale : projection centrale",
+      "connaissances_associees": [
+        "projection",
+        "centre de projection",
+        "perspective",
+        "géométrie de l'espace"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-407",
+      "intitule": "Appliquer la propriété de conservation de l'alignement en projection centrale",
+      "fingerprint": "appliquer_propriete_alignement_projection_centrale",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître que l'alignement des points est conservé par projection centrale : si trois points sont alignés, leurs projections sont alignées.",
+      "formulation_bo": "Propriétés de conservation (alignement, contact) ou de non conservation (longueurs, milieux, rapports de longueurs, angles, parallélisme)",
+      "connaissances_associees": [
+        "projection centrale",
+        "alignement",
+        "propriété de conservation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-408",
+      "intitule": "Appliquer la propriété de conservation du contact en projection centrale",
+      "fingerprint": "appliquer_propriete_contact_projection_centrale",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître que le contact entre deux courbes (ou objets géométriques) est conservé par projection centrale.",
+      "formulation_bo": "Propriétés de conservation (alignement, contact) ou de non conservation (longueurs, milieux, rapports de longueurs, angles, parallélisme)",
+      "connaissances_associees": [
+        "projection centrale",
+        "contact",
+        "propriété de conservation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-409",
+      "intitule": "Reconnaître que les longueurs ne sont pas conservées en projection centrale",
+      "fingerprint": "reconnaitre_non_conservation_longueurs_projection_centrale",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que les distances linéaires ne sont pas préservées par projection centrale en général.",
+      "formulation_bo": "Propriétés de conservation (alignement, contact) ou de non conservation (longueurs, milieux, rapports de longueurs, angles, parallélisme)",
+      "connaissances_associees": [
+        "projection centrale",
+        "longueurs",
+        "propriété de non-conservation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-410",
+      "intitule": "Reconnaître que les milieux ne sont pas conservés en projection centrale",
+      "fingerprint": "reconnaitre_non_conservation_milieux_projection_centrale",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que les milieux des segments ne sont pas nécessairement préservés par projection centrale.",
+      "formulation_bo": "Propriétés de conservation (alignement, contact) ou de non conservation (longueurs, milieux, rapports de longueurs, angles, parallélisme)",
+      "connaissances_associees": [
+        "projection centrale",
+        "milieux",
+        "propriété de non-conservation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-411",
+      "intitule": "Reconnaître que les rapports de longueurs ne sont pas conservés en projection centrale",
+      "fingerprint": "reconnaitre_non_conservation_rapports_projection_centrale",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que les rapports de distances ne sont pas conservés par projection centrale en général.",
+      "formulation_bo": "Propriétés de conservation (alignement, contact) ou de non conservation (longueurs, milieux, rapports de longueurs, angles, parallélisme)",
+      "connaissances_associees": [
+        "projection centrale",
+        "rapports de longueurs",
+        "propriété de non-conservation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-412",
+      "intitule": "Reconnaître que les angles ne sont pas conservés en projection centrale",
+      "fingerprint": "reconnaitre_non_conservation_angles_projection_centrale",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que les angles ne sont pas préservés par projection centrale en général.",
+      "formulation_bo": "Propriétés de conservation (alignement, contact) ou de non conservation (longueurs, milieux, rapports de longueurs, angles, parallélisme)",
+      "connaissances_associees": [
+        "projection centrale",
+        "angles",
+        "propriété de non-conservation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-413",
+      "intitule": "Reconnaître que le parallélisme n'est pas conservé en projection centrale",
+      "fingerprint": "reconnaitre_non_conservation_parallelisme_projection_centrale",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que deux droites parallèles ne conservent pas le parallélisme après projection centrale.",
+      "formulation_bo": "Propriétés de conservation (alignement, contact) ou de non conservation (longueurs, milieux, rapports de longueurs, angles, parallélisme)",
+      "connaissances_associees": [
+        "projection centrale",
+        "parallélisme",
+        "propriété de non-conservation"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-414",
+      "intitule": "Appliquer la conservation de forme dans les plans frontaux",
+      "fingerprint": "appliquer_conservation_forme_plans_frontaux",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître que dans les plans frontaux (plans parallèles au plan de projection), les formes sont conservées et les projections sont des agrandissements ou réductions.",
+      "formulation_bo": "Cas particulier des plans frontaux",
+      "connaissances_associees": [
+        "projection centrale",
+        "plans frontaux",
+        "conservation de forme",
+        "similitude"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-415",
+      "intitule": "Définir le point de fuite d'une droite en perspective centrale",
+      "fingerprint": "definir_point_fuite_droite",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que le point de fuite d'une droite est le point de projection sur le plan de projection d'une parallèle à cette droite passant par le centre de projection.",
+      "formulation_bo": "Point de fuite d'une droite",
+      "connaissances_associees": [
+        "projection centrale",
+        "droite",
+        "point de fuite",
+        "perspective"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-416",
+      "intitule": "Définir le point de fuite principal en perspective centrale",
+      "fingerprint": "definir_point_fuite_principal",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître le point de fuite principal comme le point de fuite des droites perpendiculaires au plan de projection, généralement situé au centre du champ de vision.",
+      "formulation_bo": "Point de fuite principal",
+      "connaissances_associees": [
+        "projection centrale",
+        "point de fuite",
+        "plan de projection",
+        "droites perpendiculaires"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-417",
+      "intitule": "Définir la ligne de fuite d'un plan non frontal",
+      "fingerprint": "definir_ligne_fuite_plan_non_frontal",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que la ligne de fuite d'un plan non frontal est l'ensemble des points de fuite des droites du plan.",
+      "formulation_bo": "Ligne de fuite d'un plan non frontal, ligne d'horizon",
+      "connaissances_associees": [
+        "projection centrale",
+        "plan non frontal",
+        "ligne de fuite",
+        "points de fuite"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-418",
+      "intitule": "Définir la ligne d'horizon en perspective centrale",
+      "fingerprint": "definir_ligne_horizon_perspective",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que la ligne d'horizon est la ligne de fuite du plan horizontal (plan parallèle au sol dans une perspective naturelle).",
+      "formulation_bo": "Ligne de fuite d'un plan non frontal, ligne d'horizon",
+      "connaissances_associees": [
+        "projection centrale",
+        "ligne de fuite",
+        "plan horizontal",
+        "perspective naturelle"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-419",
+      "intitule": "Construire l'image d'un quadrillage en perspective centrale",
+      "fingerprint": "construire_image_quadrillage_perspective",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "capacite",
+      "description_detaillee": "Construire la projection centrale d'un quadrillage, en utilisant les propriétés de perspective (points de fuite, conservation de l'alignement).",
+      "formulation_bo": "Construire l'image d'un quadrillage ou d'un parallélépipède rectangle ayant au moins une arête en vraie grandeur",
+      "connaissances_associees": [
+        "projection centrale",
+        "quadrillage",
+        "points de fuite",
+        "conservation de l'alignement",
+        "vraie grandeur"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-420",
+      "intitule": "Construire l'image d'un parallélépipède rectangle en perspective centrale",
+      "fingerprint": "construire_image_parallelepipede_perspective",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "capacite",
+      "description_detaillee": "Construire la projection centrale d'un parallélépipède rectangle ayant au moins une arête en vraie grandeur, en utilisant les points de fuite et les propriétés de projection.",
+      "formulation_bo": "Construire l'image d'un quadrillage ou d'un parallélépipède rectangle ayant au moins une arête en vraie grandeur",
+      "connaissances_associees": [
+        "projection centrale",
+        "parallélépipède rectangle",
+        "points de fuite",
+        "vraie grandeur",
+        "arêtes"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-421",
+      "intitule": "Construire l'image d'un prisme en perspective centrale",
+      "fingerprint": "construire_image_prisme_perspective",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "capacite",
+      "description_detaillee": "Construire la projection centrale d'un prisme (solide simple), en appliquant les propriétés de la projection centrale et les points de fuite.",
+      "formulation_bo": "Image d'un quadrillage, de solides simples (parallélépipède rectangle, prisme, pyramide)",
+      "connaissances_associees": [
+        "projection centrale",
+        "prisme",
+        "solides simples",
+        "points de fuite"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-422",
+      "intitule": "Construire l'image d'une pyramide en perspective centrale",
+      "fingerprint": "construire_image_pyramide_perspective",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "capacite",
+      "description_detaillee": "Construire la projection centrale d'une pyramide (solide simple), en appliquant les propriétés de la projection centrale et les points de fuite.",
+      "formulation_bo": "Image d'un quadrillage, de solides simples (parallélépipède rectangle, prisme, pyramide)",
+      "connaissances_associees": [
+        "projection centrale",
+        "pyramide",
+        "solides simples",
+        "points de fuite"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-423",
+      "intitule": "Utiliser le vocabulaire usuel de la perspective centrale",
+      "fingerprint": "utiliser_vocabulaire_perspective_centrale",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "capacite",
+      "description_detaillee": "Maîtriser et employer correctement la terminologie spécifique à la perspective centrale : projection centrale, point de fuite, ligne de fuite, plan frontal, etc.",
+      "formulation_bo": "Utiliser le vocabulaire usuel de la perspective centrale",
+      "connaissances_associees": [
+        "projection centrale",
+        "perspective",
+        "vocabulaire technique",
+        "point de fuite",
+        "ligne de fuite",
+        "plan frontal"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-424",
+      "intitule": "Utiliser les propriétés d'une projection centrale",
+      "fingerprint": "utiliser_proprietes_projection_centrale",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "capacite",
+      "description_detaillee": "Appliquer les propriétés de conservation et de non-conservation de la projection centrale pour résoudre des problèmes de perspective et de représentation.",
+      "formulation_bo": "Utiliser les propriétés d'une projection centrale",
+      "connaissances_associees": [
+        "projection centrale",
+        "conservation de l'alignement et du contact",
+        "non-conservation des longueurs et angles",
+        "points de fuite"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-425",
+      "intitule": "Utiliser la conservation de forme dans les plans frontaux",
+      "fingerprint": "utiliser_conservation_forme_plans_frontaux",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "capacite",
+      "description_detaillee": "Exploiter le fait que les formes sont conservées dans les plans frontaux pour simplifier les constructions et les calculs en perspective centrale.",
+      "formulation_bo": "Utiliser la conservation de forme dans les plans frontaux",
+      "connaissances_associees": [
+        "projection centrale",
+        "plans frontaux",
+        "conservation de forme",
+        "similitude"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    },
+    {
+      "code": "TTC-GE-426",
+      "intitule": "Utiliser la position relative de l'image de deux droites parallèles",
+      "fingerprint": "utiliser_position_relative_droites_paralleles_projection",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie dans l'espace - Perspective centrale",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître que l'image en projection centrale de deux droites parallèles converge vers leur point de fuite commun (sauf si elles sont dans un plan frontal).",
+      "formulation_bo": "Utiliser la position relative de l'image de deux droites parallèles",
+      "connaissances_associees": [
+        "projection centrale",
+        "droites parallèles",
+        "point de fuite",
+        "convergence"
+      ],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 8
+      }
+    }
+  ],
+  "summary": {
+    "total": 26,
+    "by_type": {
+      "contenu": 14,
+      "capacite": 12
+    },
+    "by_domaine": {
+      "GEOMETRIE": 26
+    },
+    "by_sous_domaine": {
+      "Géométrie plane - Coniques": 5,
+      "Géométrie dans l'espace - Perspective centrale": 21
+    },
+    "fingerprints": [
+      "definir_conique_section_cone_revolution",
+      "definir_tangente_conique",
+      "etudier_raccordement_arcs_cercles",
+      "etudier_raccordement_arcs_ellipses",
+      "etudier_raccordement_courbes_fonction",
+      "definir_projection_centrale_perspective",
+      "appliquer_propriete_alignement_projection_centrale",
+      "appliquer_propriete_contact_projection_centrale",
+      "reconnaitre_non_conservation_longueurs_projection_centrale",
+      "reconnaitre_non_conservation_milieux_projection_centrale",
+      "reconnaitre_non_conservation_rapports_projection_centrale",
+      "reconnaitre_non_conservation_angles_projection_centrale",
+      "reconnaitre_non_conservation_parallelisme_projection_centrale",
+      "appliquer_conservation_forme_plans_frontaux",
+      "definir_point_fuite_droite",
+      "definir_point_fuite_principal",
+      "definir_ligne_fuite_plan_non_frontal",
+      "definir_ligne_horizon_perspective",
+      "construire_image_quadrillage_perspective",
+      "construire_image_parallelepipede_perspective",
+      "construire_image_prisme_perspective",
+      "construire_image_pyramide_perspective",
+      "utiliser_vocabulaire_perspective_centrale",
+      "utiliser_proprietes_projection_centrale",
+      "utiliser_conservation_forme_plans_frontaux",
+      "utiliser_position_relative_droites_paralleles_projection"
+    ]
+  }
+}

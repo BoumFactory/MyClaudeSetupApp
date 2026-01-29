@@ -1,0 +1,200 @@
+{
+  "source": {
+    "pdf": "TG_expertes.pdf",
+    "page": 5,
+    "text_length": 2893
+  },
+  "extraction": {
+    "date": "2026-01-02T12:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TEXP-AL-251",
+      "intitule": "Resoudre une equation de degre 2 a coefficients reels avec discriminant negatif",
+      "fingerprint": "resoudre_equation_degre2_discriminant_negatif",
+      "niveau": "TEXP",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Nombres complexes - Equations polynomiales",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les nombres complexes pour resoudre les equations du second degre lorsque le discriminant est negatif, en exprimant les solutions sous forme a + ib",
+      "formulation_bo": "les nombres complexes permettent de resoudre les equations de degre 2 a coefficients reels lorsque le discriminant est negatif",
+      "connaissances_associees": ["definition nombre complexe", "discriminant", "equation second degre", "racine carree de nombre negatif"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-AL-252",
+      "intitule": "Factoriser un polynome a partir d'une racine connue",
+      "fingerprint": "factoriser_polynome_racine_connue",
+      "niveau": "TEXP",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Nombres complexes - Equations polynomiales",
+      "type": "capacite",
+      "description_detaillee": "Effectuer la factorisation d'un polynome par (x - a) lorsque a est une racine du polynome",
+      "formulation_bo": "On met en evidence, dans un cadre general, la factorisation associee a une racine",
+      "connaissances_associees": ["racine d'un polynome", "division euclidienne polynomes", "factorisation"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-AL-253",
+      "intitule": "Demontrer que le nombre de solutions d'une equation polynomiale est majore par son degre",
+      "fingerprint": "demontrer_nb_solutions_majore_degre",
+      "niveau": "TEXP",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Nombres complexes - Equations polynomiales",
+      "type": "demonstration",
+      "description_detaillee": "Etablir par recurrence ou factorisation successive qu'un polynome de degre n a au plus n racines dans C",
+      "formulation_bo": "etablissant que le nombre de solutions d'une equation est majore par son degre",
+      "connaissances_associees": ["degre d'un polynome", "factorisation", "raisonnement par recurrence"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-AL-254",
+      "intitule": "Determiner la somme des racines d'un polynome a partir de ses coefficients",
+      "fingerprint": "determiner_somme_racines_polynome",
+      "niveau": "TEXP",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Nombres complexes - Relations coefficients-racines",
+      "type": "capacite",
+      "description_detaillee": "Pour un polynome P(x) = ax^n + bx^(n-1) + ..., determiner que la somme des racines vaut -b/a",
+      "formulation_bo": "somme et produit des racines d'un polynome se lisent sur le polynome",
+      "connaissances_associees": ["relations de Viete", "coefficients polynome", "racines polynome"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-AL-255",
+      "intitule": "Determiner le produit des racines d'un polynome a partir de ses coefficients",
+      "fingerprint": "determiner_produit_racines_polynome",
+      "niveau": "TEXP",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Nombres complexes - Relations coefficients-racines",
+      "type": "capacite",
+      "description_detaillee": "Pour un polynome P(x) = ax^n + ... + c, determiner que le produit des racines vaut (-1)^n * c/a",
+      "formulation_bo": "somme et produit des racines d'un polynome se lisent sur le polynome",
+      "connaissances_associees": ["relations de Viete", "coefficients polynome", "racines polynome"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-GE-256",
+      "intitule": "Identifier le plan euclidien R2 a l'ensemble des nombres complexes",
+      "fingerprint": "identifier_R2_ensemble_complexes",
+      "niveau": "TEXP",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Nombres complexes - Representation geometrique",
+      "type": "contenu",
+      "description_detaillee": "Associer a chaque point M(x,y) du plan le nombre complexe z = x + iy et reciproquement",
+      "formulation_bo": "Le plan euclidien R2 peut etre vu comme l'ensemble des nombres complexes",
+      "connaissances_associees": ["plan cartesien", "affixe d'un point", "nombre complexe"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-GE-257",
+      "intitule": "Interpreter des notions de geometrie plane en termes de nombres complexes",
+      "fingerprint": "interpreter_geometrie_plane_complexes",
+      "niveau": "TEXP",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Nombres complexes - Representation geometrique",
+      "type": "capacite",
+      "description_detaillee": "Traduire des proprietes geometriques (distance, alignement, orthogonalite, angles) en langage des nombres complexes",
+      "formulation_bo": "de nombreuses notions de geometrie plane s'interpretent en termes de nombres complexes",
+      "connaissances_associees": ["module", "argument", "affixe", "distance", "angle"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-GE-258",
+      "intitule": "Utiliser le calcul dans C pour resoudre des problemes de geometrie plane",
+      "fingerprint": "utiliser_calcul_C_geometrie",
+      "niveau": "TEXP",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Nombres complexes - Applications geometriques",
+      "type": "capacite",
+      "description_detaillee": "Resoudre des problemes geometriques (lieux, constructions, proprietes) par des calculs sur les nombres complexes",
+      "formulation_bo": "On peut ainsi utiliser le calcul dans C pour resoudre de nombreuses questions de geometrie",
+      "connaissances_associees": ["operations sur les complexes", "module", "argument", "affixe"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-TR-259",
+      "intitule": "Utiliser le calcul dans C pour resoudre des problemes de trigonometrie",
+      "fingerprint": "utiliser_calcul_C_trigonometrie",
+      "niveau": "TEXP",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Nombres complexes - Applications trigonometriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les nombres complexes (notamment la forme exponentielle) pour etablir des formules trigonometriques ou resoudre des equations trigonometriques",
+      "formulation_bo": "On peut ainsi utiliser le calcul dans C pour resoudre de nombreuses questions [...] de trigonometrie",
+      "connaissances_associees": ["forme exponentielle", "formule de Moivre", "cos et sin", "argument"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-AL-260",
+      "intitule": "Determiner les racines n-iemes de l'unite",
+      "fingerprint": "determiner_racines_niemes_unite",
+      "niveau": "TEXP",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Nombres complexes - Racines de l'unite",
+      "type": "capacite",
+      "description_detaillee": "Trouver tous les nombres complexes z tels que z^n = 1, les exprimer sous forme exponentielle et les representer geometriquement",
+      "formulation_bo": "Les racines n-iemes de l'unite fournissent par ailleurs un pont interessant entre equations polynomiales et geometrie",
+      "connaissances_associees": ["forme exponentielle", "equation z^n = 1", "polygone regulier"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-GE-261",
+      "intitule": "Representer geometriquement les racines n-iemes de l'unite",
+      "fingerprint": "representer_geometriquement_racines_niemes_unite",
+      "niveau": "TEXP",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Nombres complexes - Racines de l'unite",
+      "type": "capacite",
+      "description_detaillee": "Placer les racines n-iemes de l'unite sur le cercle trigonometrique, reconnaitre qu'elles forment un polygone regulier a n cotes",
+      "formulation_bo": "Les racines n-iemes de l'unite fournissent par ailleurs un pont interessant entre equations polynomiales et geometrie",
+      "connaissances_associees": ["cercle trigonometrique", "polygone regulier", "racines de l'unite", "argument"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    },
+    {
+      "code": "TEXP-AL-262",
+      "intitule": "Factoriser un polynome reel en utilisant des techniques d'analyse",
+      "fingerprint": "factoriser_polynome_reel_analyse",
+      "niveau": "TEXP",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Nombres complexes - Polynomes reels",
+      "type": "capacite",
+      "description_detaillee": "Utiliser des outils d'analyse (theoreme des valeurs intermediaires, derivee, variations) pour localiser ou demontrer l'existence de racines reelles d'un polynome",
+      "formulation_bo": "On peut par ailleurs revenir sur le cas des polynomes reels, en utilisant des techniques d'analyse",
+      "connaissances_associees": ["theoreme des valeurs intermediaires", "derivation", "etude de fonctions", "racines reelles"],
+      "source": {"pdf": "TG_expertes.pdf", "page": 5}
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "by_type": {
+      "capacite": 9,
+      "contenu": 1,
+      "demonstration": 1,
+      "algorithme": 0,
+      "approfondissement": 1
+    },
+    "by_domaine": {
+      "ALGEBRE": 7,
+      "GEOMETRIE": 4,
+      "TRIGONOMETRIE": 1
+    },
+    "fingerprints": [
+      "resoudre_equation_degre2_discriminant_negatif",
+      "factoriser_polynome_racine_connue",
+      "demontrer_nb_solutions_majore_degre",
+      "determiner_somme_racines_polynome",
+      "determiner_produit_racines_polynome",
+      "identifier_R2_ensemble_complexes",
+      "interpreter_geometrie_plane_complexes",
+      "utiliser_calcul_C_geometrie",
+      "utiliser_calcul_C_trigonometrie",
+      "determiner_racines_niemes_unite",
+      "representer_geometriquement_racines_niemes_unite",
+      "factoriser_polynome_reel_analyse"
+    ]
+  }
+}

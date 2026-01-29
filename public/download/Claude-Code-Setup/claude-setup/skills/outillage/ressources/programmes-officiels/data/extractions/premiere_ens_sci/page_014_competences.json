@@ -1,0 +1,145 @@
+{
+  "source": {
+    "pdf": "premiere_ens_sci.pdf",
+    "page": 14,
+    "text_length": 1847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "notes": {
+    "domaine_principal": "Sciences Physiques / Biologie (Enseignement Scientifique)",
+    "competences_mathematiques": "Limitées - compétences transversales d'analyse de données",
+    "interpretation": "Cette page traite principalement d'audition et de sciences de la vie. Les compétences mathématiques identifiées sont celles communes à tous les enseignements scientifiques."
+  },
+  "competences": [
+    {
+      "code": "1ES-ST-701",
+      "intitule": "Effectuer des lectures graphiques de données",
+      "fingerprint": "effectuer_lectures_graphiques_donnees",
+      "niveau": "1ES",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Analyse de données",
+      "type": "capacite",
+      "description_detaillee": "Extraire des informations d'un graphique ou d'une représentation visuelle de données (courbes, diagrammes, histogrammes). Dans le contexte de l'audition : lire des données sur l'intensité sonore, les seuils auditifs, les résultats d'audiométrie.",
+      "formulation_bo": "Lectures graphiques",
+      "connaissances_associees": [
+        "representation graphique de donnees",
+        "axes et echelles",
+        "interpretation de courbes"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "1ES-ST-702",
+      "intitule": "Organiser et exploiter des donnees",
+      "fingerprint": "organiser_exploiter_donnees",
+      "niveau": "1ES",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Analyse de données",
+      "type": "capacite",
+      "description_detaillee": "Collecter, classer et analyser des donnees pour en tirer des conclusions. Dans le contexte de l'audition : traiter des donnees epidemiologiques sur la sante auditive, organiser des mesures acoustiques, exploiter des donnees issues de l'audiometrie.",
+      "formulation_bo": "Organisation et exploitation de données",
+      "connaissances_associees": [
+        "collecte de donnees",
+        "classification",
+        "tableaux et bases de donnees",
+        "statistiques descriptives"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "1ES-ST-703",
+      "intitule": "Exploiter des donnees epidemiologiques",
+      "fingerprint": "exploiter_donnees_epidemiologiques",
+      "niveau": "1ES",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Analyse de données",
+      "type": "capacite",
+      "description_detaillee": "Analyser et interpreter des donnees de sante publique pour comprendre les tendances, les risques et les prevalences de troubles (ici, auditifs). Identifier les correlations entre variables (intensite sonore, duree d'exposition, dommages auditifs).",
+      "formulation_bo": "Exploiter des données épidémiologiques sur la santé auditive",
+      "connaissances_associees": [
+        "donnees statistiques",
+        "sante publique",
+        "correlation et causalite",
+        "representation de donnees"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "1ES-GR-704",
+      "intitule": "Mesurer le niveau d'intensite sonore",
+      "fingerprint": "mesurer_niveau_intensite_sonore",
+      "niveau": "1ES",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Mesures et unites",
+      "type": "capacite",
+      "description_detaillee": "Realiser ou interpreter des mesures d'intensite sonore (exprimee en decibels) a differentes distances d'une source sonore. Comprendre l'effet de la distance sur le niveau sonore percu. Evaluer les risques lies a des niveaux excessifs (au-dela de 80 dB).",
+      "formulation_bo": "Mesurer le niveau d'intensité sonore perçu en fonction de la distance à la source avec ou sans dispositif de protection",
+      "connaissances_associees": [
+        "decibel et echelle logarithmique",
+        "attenuation du son",
+        "loi de propagation du son",
+        "intensite sonore"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "1ES-ST-705",
+      "intitule": "Interpreter une relation entre intensite sonore et duree d'exposition",
+      "fingerprint": "interpreter_relation_intensite_duree_exposition",
+      "niveau": "1ES",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Analyse de données",
+      "type": "capacite",
+      "description_detaillee": "Analyser et comprendre la dependance entre deux variables : l'intensite d'un son et la duree d'exposition. Reconnaitre le risque encoru par l'oreille interne comme une fonction de ces deux parametres. Utiliser des donnees pour etablir des seuils de securite.",
+      "formulation_bo": "Relier l'intensité du son et la durée d'écoute au risque encouru par l'oreille interne",
+      "connaissances_associees": [
+        "dependance entre variables",
+        "facteurs de risque",
+        "relations cause-effet",
+        "seuils de securite"
+      ],
+      "source": {
+        "pdf": "premiere_ens_sci.pdf",
+        "page": 14
+      }
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "by_type": {
+      "capacite": 5,
+      "contenu": 0,
+      "demonstration": 0
+    },
+    "by_domaine": {
+      "STATISTIQUES": 3,
+      "GRANDEURS": 1,
+      "AUTRES": 1
+    },
+    "fingerprints": [
+      "effectuer_lectures_graphiques_donnees",
+      "organiser_exploiter_donnees",
+      "exploiter_donnees_epidemiologiques",
+      "mesurer_niveau_intensite_sonore",
+      "interpreter_relation_intensite_duree_exposition"
+    ],
+    "note": "Cette page traite principalement de biologie et de sciences physiques (audition). Les competences mathematiques extraites sont transversales et communes a tous les enseignements scientifiques de niveau Premiere Enseignement Scientifique."
+  }
+}

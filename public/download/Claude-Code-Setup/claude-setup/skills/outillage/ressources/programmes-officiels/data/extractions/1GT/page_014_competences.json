@@ -1,0 +1,229 @@
+{
+  "source": {
+    "pdf": "1GT.pdf",
+    "page": 14,
+    "text_length": 2156
+  },
+  "extraction": {
+    "date": "2026-01-05T14:35:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "1SPE-PR-621",
+      "intitule": "Definir une variable aleatoire reelle",
+      "fingerprint": "definir_variable_aleatoire_reelle",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre qu'une variable aleatoire reelle est une fonction definie sur l'univers et a valeurs reelles, modelisant le resultat numerique d'une experience aleatoire",
+      "formulation_bo": "Variable aleatoire reelle : modelisation du resultat numerique d'une experience aleatoire ; formalisation comme fonction definie sur l'univers et a valeurs reelles",
+      "connaissances_associees": ["fonction", "univers", "valeurs reelles", "resultat numerique"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-622",
+      "intitule": "Connaitre la loi d'une variable aleatoire",
+      "fingerprint": "connaitre_loi_variable_aleatoire",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "contenu",
+      "description_detaillee": "Savoir que la loi d'une variable aleatoire X associe a chaque valeur x_i la probabilite P(X = x_i)",
+      "formulation_bo": "Loi d'une variable aleatoire",
+      "connaissances_associees": ["loi de probabilite", "distribution", "valeurs possibles"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-623",
+      "intitule": "Definir l'esperance d'une variable aleatoire",
+      "fingerprint": "definir_esperance_variable_aleatoire",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition de l'esperance E(X) = somme des x_i * P(X = x_i)",
+      "formulation_bo": "Esperance d'une variable aleatoire",
+      "connaissances_associees": ["esperance", "moyenne ponderee", "somme"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-624",
+      "intitule": "Definir la variance d'une variable aleatoire",
+      "fingerprint": "definir_variance_variable_aleatoire",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition de la variance V(X) = E((X - E(X))^2) = somme des (x_i - E(X))^2 * P(X = x_i)",
+      "formulation_bo": "Variance d'une variable aleatoire",
+      "connaissances_associees": ["variance", "dispersion", "ecart a la moyenne"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-625",
+      "intitule": "Definir l'ecart type d'une variable aleatoire",
+      "fingerprint": "definir_ecart_type_variable_aleatoire",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "contenu",
+      "description_detaillee": "Connaitre la definition de l'ecart type sigma(X) = racine carree de V(X)",
+      "formulation_bo": "Ecart type d'une variable aleatoire",
+      "connaissances_associees": ["ecart type", "racine de variance", "dispersion"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-626",
+      "intitule": "Interpreter et utiliser les notations {X = a}, {X <= a}, P(X = a), P(X <= a)",
+      "fingerprint": "interpreter_notations_variable_aleatoire",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "capacite",
+      "description_detaillee": "Comprendre les notations ensemblistes et probabilistes pour les evenements lies a une variable aleatoire et savoir passer de la langue naturelle au registre symbolique",
+      "formulation_bo": "Interpreter en situation et utiliser les notations {X = a}, {X <= a}, P(X = a), P(X <= a). Passer du registre de la langue naturelle au registre symbolique et inversement",
+      "connaissances_associees": ["notations", "evenements", "registre symbolique"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-627",
+      "intitule": "Modeliser une situation a l'aide d'une variable aleatoire",
+      "fingerprint": "modeliser_situation_variable_aleatoire",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "capacite",
+      "description_detaillee": "Identifier le resultat numerique d'interet dans une situation et definir la variable aleatoire associee",
+      "formulation_bo": "Modeliser une situation a l'aide d'une variable aleatoire",
+      "connaissances_associees": ["modelisation", "resultat numerique", "definition"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-628",
+      "intitule": "Determiner la loi de probabilite d'une variable aleatoire",
+      "fingerprint": "determiner_loi_probabilite",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "capacite",
+      "description_detaillee": "Etablir le tableau donnant les valeurs possibles de X et leurs probabilites associees",
+      "formulation_bo": "Determiner la loi de probabilite d'une variable aleatoire",
+      "connaissances_associees": ["tableau de loi", "valeurs", "probabilites"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-629",
+      "intitule": "Calculer l'esperance, la variance et l'ecart type",
+      "fingerprint": "calculer_esperance_variance_ecart_type",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "capacite",
+      "description_detaillee": "Calculer E(X), V(X) et sigma(X) a partir de la loi de probabilite de X",
+      "formulation_bo": "Calculer une esperance, une variance, un ecart type",
+      "connaissances_associees": ["calcul", "formules", "application"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-630",
+      "intitule": "Utiliser l'esperance dans une resolution de probleme",
+      "fingerprint": "utiliser_esperance_resolution_probleme",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la notion d'esperance pour resoudre des problemes, notamment determiner la mise pour un jeu equitable",
+      "formulation_bo": "Utiliser la notion d'esperance dans une resolution de probleme (mise pour un jeu equitable...)",
+      "connaissances_associees": ["jeu equitable", "mise", "gain moyen"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-AG-631",
+      "intitule": "Programmer un algorithme calculant esperance, variance ou ecart type",
+      "fingerprint": "programmer_algorithme_esperance_variance",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un programme Python renvoyant l'esperance, la variance ou l'ecart type d'une variable aleatoire",
+      "formulation_bo": "Algorithme renvoyant l'esperance, la variance ou l'ecart type d'une variable aleatoire",
+      "connaissances_associees": ["Python", "algorithme", "calcul statistique"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-AG-632",
+      "intitule": "Calculer la frequence d'apparition des lettres d'un texte",
+      "fingerprint": "calculer_frequence_lettres_texte",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un programme calculant la frequence d'apparition de chaque lettre dans un texte, en francais ou en anglais",
+      "formulation_bo": "Frequence d'apparition des lettres d'un texte donne, en francais, en anglais",
+      "connaissances_associees": ["frequences", "chaines de caracteres", "analyse de texte"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-633",
+      "intitule": "Connaitre la formule de Konig-Huygens",
+      "fingerprint": "connaitre_formule_konig_huygens",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "approfondissement",
+      "description_detaillee": "Connaitre la formule V(X) = E(X^2) - (E(X))^2 pour simplifier le calcul de la variance",
+      "formulation_bo": "Formule de Konig-Huygens",
+      "connaissances_associees": ["variance", "formule alternative", "simplification"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    },
+    {
+      "code": "1SPE-PR-634",
+      "intitule": "Etudier la fonction x -> E((X - x)^2)",
+      "fingerprint": "etudier_fonction_ecart_quadratique",
+      "niveau": "1SPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aleatoires reelles",
+      "type": "approfondissement",
+      "description_detaillee": "Pour X variable aleatoire, etudier la fonction du second degre x -> E((X - x)^2) et montrer que son minimum est atteint pour x = E(X)",
+      "formulation_bo": "Pour X variable aleatoire, etude de la fonction du second degre x -> E((X - x)^2)",
+      "connaissances_associees": ["fonction du second degre", "minimum", "interpretation"],
+      "source": {"pdf": "1GT.pdf", "page": 14}
+    }
+  ],
+  "summary": {
+    "total": 14,
+    "by_type": {
+      "contenu": 5,
+      "capacite": 5,
+      "algorithme": 2,
+      "approfondissement": 2
+    },
+    "by_domaine": {
+      "PROBABILITES": 12,
+      "ALGORITHMIQUE": 2
+    },
+    "by_sous_domaine": {
+      "Variables aleatoires reelles": 14
+    },
+    "fingerprints": [
+      "definir_variable_aleatoire_reelle",
+      "connaitre_loi_variable_aleatoire",
+      "definir_esperance_variable_aleatoire",
+      "definir_variance_variable_aleatoire",
+      "definir_ecart_type_variable_aleatoire",
+      "interpreter_notations_variable_aleatoire",
+      "modeliser_situation_variable_aleatoire",
+      "determiner_loi_probabilite",
+      "calculer_esperance_variance_ecart_type",
+      "utiliser_esperance_resolution_probleme",
+      "programmer_algorithme_esperance_variance",
+      "calculer_frequence_lettres_texte",
+      "connaitre_formule_konig_huygens",
+      "etudier_fonction_ecart_quadratique"
+    ]
+  }
+}

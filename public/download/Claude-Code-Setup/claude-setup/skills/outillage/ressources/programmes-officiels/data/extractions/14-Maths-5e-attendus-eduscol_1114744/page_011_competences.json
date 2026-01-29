@@ -1,0 +1,112 @@
+{
+  "source": {
+    "pdf": "14-Maths-5e-attendus-eduscol_1114744.pdf",
+    "page": 11,
+    "text_length": 357
+  },
+  "extraction": {
+    "date": "2026-01-03T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "5E-GE-551",
+      "intitule": "Identifier des axes de symetrie dans un pavage",
+      "fingerprint": "identifier_axes_symetrie_pavage",
+      "niveau": "5E",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Symetries et transformations",
+      "type": "capacite",
+      "description_detaillee": "Reperer les axes de symetrie axiale presents dans un pavage du plan, en analysant les motifs et leur repetition",
+      "formulation_bo": "Identifie des symetries dans le pavage dont on a represente une portion ci-dessous",
+      "connaissances_associees": ["definition symetrie axiale", "axe de symetrie", "notion de pavage"],
+      "source": {"pdf": "14-Maths-5e-attendus-eduscol_1114744.pdf", "page": 11}
+    },
+    {
+      "code": "5E-GE-552",
+      "intitule": "Identifier des centres de symetrie dans un pavage",
+      "fingerprint": "identifier_centres_symetrie_pavage",
+      "niveau": "5E",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Symetries et transformations",
+      "type": "capacite",
+      "description_detaillee": "Reperer les centres de symetrie centrale presents dans un pavage du plan, en analysant les motifs et leur repetition",
+      "formulation_bo": "Identifie des symetries dans le pavage dont on a represente une portion ci-dessous",
+      "connaissances_associees": ["definition symetrie centrale", "centre de symetrie", "notion de pavage"],
+      "source": {"pdf": "14-Maths-5e-attendus-eduscol_1114744.pdf", "page": 11}
+    },
+    {
+      "code": "5E-GE-553",
+      "intitule": "Identifier des axes de symetrie dans une frise",
+      "fingerprint": "identifier_axes_symetrie_frise",
+      "niveau": "5E",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Symetries et transformations",
+      "type": "capacite",
+      "description_detaillee": "Reperer les axes de symetrie axiale presents dans une frise (motif periodique unidimensionnel)",
+      "formulation_bo": "Il identifie des symetries dans la frise dont on a represente une portion ci-dessous",
+      "connaissances_associees": ["definition symetrie axiale", "axe de symetrie", "notion de frise"],
+      "source": {"pdf": "14-Maths-5e-attendus-eduscol_1114744.pdf", "page": 11}
+    },
+    {
+      "code": "5E-GE-554",
+      "intitule": "Identifier des centres de symetrie dans une frise",
+      "fingerprint": "identifier_centres_symetrie_frise",
+      "niveau": "5E",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Symetries et transformations",
+      "type": "capacite",
+      "description_detaillee": "Reperer les centres de symetrie centrale presents dans une frise (motif periodique unidimensionnel)",
+      "formulation_bo": "Il identifie des symetries dans la frise dont on a represente une portion ci-dessous",
+      "connaissances_associees": ["definition symetrie centrale", "centre de symetrie", "notion de frise"],
+      "source": {"pdf": "14-Maths-5e-attendus-eduscol_1114744.pdf", "page": 11}
+    },
+    {
+      "code": "5E-GR-555",
+      "intitule": "Calculer l'aire d'une figure composee a partir de l'aire d'un motif elementaire",
+      "fingerprint": "calculer_aire_figure_composee_motif_elementaire",
+      "niveau": "5E",
+      "domaine": "GRANDEURS",
+      "sous_domaine": "Aires",
+      "type": "capacite",
+      "description_detaillee": "Determiner l'aire d'une portion de frise ou d'un pavage en comptant le nombre de motifs elementaires et en multipliant par l'aire d'un motif",
+      "formulation_bo": "Il determine l'aire de la portion de frise suivante connaissant l'aire du motif elementaire « goutte »",
+      "connaissances_associees": ["notion d'aire", "multiplication", "decomposition de figures"],
+      "source": {"pdf": "14-Maths-5e-attendus-eduscol_1114744.pdf", "page": 11}
+    },
+    {
+      "code": "5E-GE-556",
+      "intitule": "Demontrer qu'un quadrilatere est un parallelogramme",
+      "fingerprint": "demontrer_quadrilatere_parallelogramme",
+      "niveau": "5E",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Quadrilateres",
+      "type": "demonstration",
+      "description_detaillee": "Utiliser les proprietes caracteristiques du parallelogramme (cotes paralleles, diagonales qui se coupent en leur milieu, cotes opposes de meme longueur) pour prouver qu'un quadrilatere est un parallelogramme",
+      "formulation_bo": "Dans la configuration suivante, demontre que ABCD est un parallelogramme.",
+      "connaissances_associees": ["definition du parallelogramme", "proprietes du parallelogramme", "raisonnement deductif"],
+      "source": {"pdf": "14-Maths-5e-attendus-eduscol_1114744.pdf", "page": 11}
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "by_type": {
+      "capacite": 5,
+      "demonstration": 1
+    },
+    "by_domaine": {
+      "GEOMETRIE": 5,
+      "GRANDEURS": 1
+    },
+    "fingerprints": [
+      "identifier_axes_symetrie_pavage",
+      "identifier_centres_symetrie_pavage",
+      "identifier_axes_symetrie_frise",
+      "identifier_centres_symetrie_frise",
+      "calculer_aire_figure_composee_motif_elementaire",
+      "demontrer_quadrilatere_parallelogramme"
+    ]
+  }
+}

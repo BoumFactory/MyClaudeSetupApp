@@ -1,0 +1,460 @@
+{
+  "source": {
+    "pdf": "TG_spe.pdf",
+    "page": 16,
+    "text_length": 2847
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AN-801",
+      "intitule": "Approximer une aire par l'utilisation de suites adjacentes",
+      "fingerprint": "approximer_aire_suites_adjacentes",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Intégration et approximation",
+      "type": "approfondissement",
+      "description_detaillee": "Utiliser deux suites adjacentes (l'une croissante minorant l'aire, l'autre décroissante majorant l'aire) pour approcher une aire sous une courbe. Les suites convergent vers la même limite qui est l'aire cherchée.",
+      "formulation_bo": "Approximation d'une aire par l'utilisation de suites adjacentes.",
+      "connaissances_associees": [
+        "suites adjacentes",
+        "convergence de suites",
+        "notion d'aire sous une courbe",
+        "intégrale"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AN-802",
+      "intitule": "Encadrer une somme harmonique par des intégrales",
+      "fingerprint": "encadrer_somme_harmonique_integrales",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Intégration",
+      "type": "approfondissement",
+      "description_detaillee": "Encadrer la somme harmonique H_n = 1 + 1/2 + ... + 1/n par des intégrales. Utiliser la comparaison entre l'aire sous la courbe y=1/x et les aires des rectangles pour obtenir des majorants et minorants de H_n.",
+      "formulation_bo": "Encadrement de H_n par des intégrales.",
+      "connaissances_associees": [
+        "somme harmonique",
+        "intégrale",
+        "comparaison aire-intégrale",
+        "fonction inverse"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AG-803",
+      "intitule": "Implémenter l'algorithme de la méthode des rectangles",
+      "fingerprint": "implementer_algorithme_methode_rectangles",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Calcul numérique et approximation",
+      "type": "algorithme",
+      "description_detaillee": "Créer un algorithme qui approxime l'aire sous une courbe en divisant l'intervalle en n rectangles et en sommant leurs aires. Les rectangles peuvent être construits avec les hauteurs à gauche, à droite ou à mi-hauteur de chaque sous-intervalle.",
+      "formulation_bo": "Méthodes des rectangles, des milieux, des trapèzes.",
+      "connaissances_associees": [
+        "intégrale",
+        "approximation numérique",
+        "algorithme itératif",
+        "subdivision d'intervalle"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AG-804",
+      "intitule": "Implémenter l'algorithme de la méthode des milieux",
+      "fingerprint": "implementer_algorithme_methode_milieux",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Calcul numérique et approximation",
+      "type": "algorithme",
+      "description_detaillee": "Créer un algorithme qui approxime l'aire sous une courbe en divisant l'intervalle en n rectangles dont la hauteur est déterminée par la valeur de la fonction au milieu de chaque sous-intervalle.",
+      "formulation_bo": "Méthodes des rectangles, des milieux, des trapèzes.",
+      "connaissances_associees": [
+        "intégrale",
+        "approximation numérique",
+        "algorithme itératif",
+        "subdivision d'intervalle",
+        "point milieu"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AG-805",
+      "intitule": "Implémenter l'algorithme de la méthode des trapèzes",
+      "fingerprint": "implementer_algorithme_methode_trapèzes",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Calcul numérique et approximation",
+      "type": "algorithme",
+      "description_detaillee": "Créer un algorithme qui approxime l'aire sous une courbe en divisant l'intervalle en n trapèzes. Chaque trapèze a pour bases les valeurs de la fonction aux extrémités de chaque sous-intervalle et pour hauteur la largeur du sous-intervalle.",
+      "formulation_bo": "Méthodes des rectangles, des milieux, des trapèzes.",
+      "connaissances_associees": [
+        "intégrale",
+        "approximation numérique",
+        "trapèze",
+        "formule aire trapèze",
+        "subdivision d'intervalle"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AG-806",
+      "intitule": "Implémenter l'algorithme de Monte-Carlo",
+      "fingerprint": "implementer_algorithme_monte_carlo",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Calcul numérique et probabilités",
+      "type": "algorithme",
+      "description_detaillee": "Créer un algorithme qui approxime une aire ou une intégrale en générant aléatoirement des points dans une région connue et en calculant la proportion de points tombant sous la courbe.",
+      "formulation_bo": "Méthode de Monte-Carlo.",
+      "connaissances_associees": [
+        "intégrale",
+        "approximation numérique",
+        "nombre aléatoire",
+        "probabilités",
+        "proportion"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-AG-807",
+      "intitule": "Implémenter l'algorithme de Brouncker pour le calcul de ln(2)",
+      "fingerprint": "implementer_algorithme_brouncker_ln2",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Calcul numérique et constantes mathématiques",
+      "type": "algorithme",
+      "description_detaillee": "Créer un algorithme basé sur la découverte historique de Brouncker qui permet de calculer ln(2) de manière itérative. Cet algorithme utilise une formule de fraction continue ou une série convergente pour approximer ln(2).",
+      "formulation_bo": "Algorithme de Brouncker pour le calcul de ln(2).",
+      "connaissances_associees": [
+        "logarithme népérien",
+        "série convergente",
+        "fraction continue",
+        "approximation numérique",
+        "histoire des mathématiques"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-808",
+      "intitule": "Définir le schéma de Bernoulli comme succession d'épreuves indépendantes",
+      "fingerprint": "definir_schema_bernoulli_epreuves_independantes",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Schéma de Bernoulli",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que le schéma de Bernoulli est une succession de n épreuves aléatoires identiques et indépendantes, chacune ayant exactement deux issues possibles. L'univers associé est {0,1}^n ou {a,b}^n.",
+      "formulation_bo": "Le schéma de Bernoulli est fondamental : succession de n épreuves identiques indépendantes à deux issues. L'univers est formalisé par {0,1}^n (ou {a,b}^n)",
+      "connaissances_associees": [
+        "épreuve aléatoire",
+        "indépendance d'événements",
+        "univers fini",
+        "événements élémentaires"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-809",
+      "intitule": "Représenter un schéma de Bernoulli par un arbre de probabilités",
+      "fingerprint": "representer_schema_bernoulli_arbre",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Schéma de Bernoulli",
+      "type": "capacite",
+      "description_detaillee": "Construire et utiliser une représentation arborescente pour visualiser les différentes séquences possibles d'un schéma de Bernoulli. Chaque branche représente une issue et est étiquetée par sa probabilité.",
+      "formulation_bo": "il importe d'exploiter la représentation à l'aide d'arbres, et de conserver l'intuition des situations concrètes familières : tirage avec remise dans une urne de Bernoulli, lancers de pièce, etc.",
+      "connaissances_associees": [
+        "arbre de probabilités",
+        "schéma de Bernoulli",
+        "multiplication des probabilités",
+        "chemins dans un arbre"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-810",
+      "intitule": "Appliquer la propriété multiplicative pour les épreuves indépendantes",
+      "fingerprint": "appliquer_propriete_multiplicative_independance",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Indépendance",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le fait que pour des épreuves indépendantes, la probabilité d'une liste de résultats est égale au produit des probabilités des résultats individuels. P(A et B) = P(A) × P(B) pour A et B indépendants.",
+      "formulation_bo": "L'indépendance des expériences se traduit par la propriété multiplicative : la probabilité d'une liste de résultats est égale au produit des probabilités des résultats.",
+      "connaissances_associees": [
+        "indépendance d'événements",
+        "probabilité d'événement",
+        "multiplication",
+        "épreuves répétées"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-811",
+      "intitule": "Définir l'indépendance mutuelle de variables aléatoires",
+      "fingerprint": "definir_independance_mutuelle_variables_aleatoires",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Variables aléatoires",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que des variables aléatoires sont mutuellement indépendantes lorsque la réalisation de l'une n'affecte pas les probabilités des autres. C'est l'extension du concept d'indépendance d'événements au contexte des variables aléatoires.",
+      "formulation_bo": "ce qui conduit à introduire la notion de variables aléatoires indépendantes, l'indépendance étant prise ici au sens d'indépendance mutuelle.",
+      "connaissances_associees": [
+        "variable aléatoire",
+        "loi de probabilité",
+        "indépendance d'événements",
+        "schéma de Bernoulli"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-812",
+      "intitule": "Calculer l'espérance d'une variable aléatoire finie",
+      "fingerprint": "calculer_esperance_variable_aleatoire_finie",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Espérance et variance",
+      "type": "capacite",
+      "description_detaillee": "Calculer E(X) = Σ x_i × P(X = x_i) pour une variable aléatoire X dont l'ensemble des valeurs possibles est fini. L'espérance représente la valeur moyenne attendue.",
+      "formulation_bo": "Les deux premiers indicateurs relatifs à une variable aléatoire, l'espérance et la variance, ont été introduits en classe de première. On en approfondit l'étude dans le cadre des variables aléatoires finies.",
+      "connaissances_associees": [
+        "variable aléatoire finie",
+        "loi de probabilité",
+        "somme pondérée",
+        "interprétation moyenne"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-813",
+      "intitule": "Calculer la variance d'une variable aléatoire finie",
+      "fingerprint": "calculer_variance_variable_aleatoire_finie",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Espérance et variance",
+      "type": "capacite",
+      "description_detaillee": "Calculer V(X) = E(X²) - (E(X))² ou V(X) = Σ (x_i - E(X))² × P(X = x_i) pour une variable aléatoire X finie. La variance mesure la dispersion des valeurs autour de l'espérance.",
+      "formulation_bo": "Les deux premiers indicateurs relatifs à une variable aléatoire, l'espérance et la variance, ont été introduits en classe de première. On en approfondit l'étude dans le cadre des variables aléatoires finies.",
+      "connaissances_associees": [
+        "variable aléatoire finie",
+        "espérance",
+        "écart-type",
+        "dispersion"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-814",
+      "intitule": "Appliquer la linéarité de l'espérance",
+      "fingerprint": "appliquer_linearite_esperance",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Espérance et variance",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le fait que E(aX + b) = aE(X) + b pour calculer l'espérance d'une combinaison linéaire de variables aléatoires, ou que E(X + Y) = E(X) + E(Y) pour la somme de variables aléatoires. Cela permet de calculer l'espérance sans déterminer la loi complète.",
+      "formulation_bo": "La linéarité de l'espérance donne un outil très puissant permettant de déterminer l'espérance d'une variable aléatoire sans avoir à en déterminer la loi.",
+      "connaissances_associees": [
+        "espérance",
+        "variable aléatoire",
+        "combinaison linéaire",
+        "propriété de linéarité"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-815",
+      "intitule": "Appliquer l'additivité de la variance pour variables indépendantes",
+      "fingerprint": "appliquer_additivite_variance_variables_independantes",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Espérance et variance",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le fait que pour des variables aléatoires indépendantes X et Y, V(X + Y) = V(X) + V(Y). Cette propriété est essentielle pour calculer la variance de la somme sans déterminer la loi conjointe, notamment dans le contexte de l'addition d'épreuves indépendantes.",
+      "formulation_bo": "L'additivité de la variance pour les variables indépendantes est présentée dans le cadre de la succession d'épreuves indépendantes.",
+      "connaissances_associees": [
+        "variance",
+        "indépendance de variables",
+        "somme de variables",
+        "épreuves indépendantes"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-816",
+      "intitule": "Calculer la variance de la moyenne d'un échantillon",
+      "fingerprint": "calculer_variance_moyenne_echantillon",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Espérance et variance",
+      "type": "capacite",
+      "description_detaillee": "Déterminer que si X est une variable aléatoire d'espérance μ et de variance σ², alors la variance de la moyenne M_n = (X₁ + X₂ + ... + X_n)/n d'un échantillon de taille n est σ²/n. Utiliser l'additivité de la variance.",
+      "formulation_bo": "Elle permet d'établir l'expression de la variance de la moyenne d'un échantillon d'une variable aléatoire.",
+      "connaissances_associees": [
+        "variance",
+        "moyenne d'échantillon",
+        "additivité variance",
+        "taille échantillon",
+        "estimation"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-817",
+      "intitule": "Énoncer et appliquer l'inégalité de Bienaymé-Tchebychev",
+      "fingerprint": "enoncer_appliquer_inegalite_bienayume_tchebychev",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inégalités probabilistes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser l'inégalité P(|X - E(X)| ≥ k) ≤ V(X)/k² pour une variable aléatoire X et un réel k > 0. Cette inégalité montre que la variance mesure la dispersion et que la probabilité d'écart s'amenuise avec le carré de l'écart.",
+      "formulation_bo": "l'inégalité de Bienaymé-Tchebychev explicite le rôle de la variance comme indicateur de dispersion.",
+      "connaissances_associees": [
+        "variance",
+        "inégalité probabiliste",
+        "espérance",
+        "dispersion",
+        "concentration"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-818",
+      "intitule": "Énoncer et appliquer l'inégalité de concentration pour la moyenne d'un échantillon",
+      "fingerprint": "enoncer_appliquer_inegalite_concentration_moyenne",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Inégalités probabilistes et estimation",
+      "type": "capacite",
+      "description_detaillee": "Utiliser P(|M_n - μ| ≥ ε) ≤ σ²/(n·ε²) pour montrer que la moyenne d'un échantillon de taille n se rapproche de la véritable espérance μ avec une probabilité croissante en fonction de n. Comprendre le rôle du facteur 1/√n en théorie de l'estimation.",
+      "formulation_bo": "l'inégalité de concentration pour la moyenne d'un échantillon d'une variable aléatoire, qui justifie l'apparition du facteur 1/ √n en théorie de l'estimation",
+      "connaissances_associees": [
+        "inégalité probabiliste",
+        "moyenne d'échantillon",
+        "convergence",
+        "estimation",
+        "facteur 1/√n",
+        "variance"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    },
+    {
+      "code": "TSPE-PR-819",
+      "intitule": "Démontrer la loi des grands nombres",
+      "fingerprint": "demontrer_loi_grands_nombres",
+      "niveau": "TSPE",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Théorèmes limites",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que pour une variable aléatoire X d'espérance μ, la moyenne M_n d'un échantillon de taille n converge vers μ en probabilité quand n tend vers l'infini. Utiliser l'inégalité de concentration. Ce théorème justifie le lien entre fréquences observées et probabilités théoriques.",
+      "formulation_bo": "permet d'aboutir à la démonstration de la loi des grands nombres.",
+      "connaissances_associees": [
+        "loi des grands nombres",
+        "inégalité de concentration",
+        "moyenne d'échantillon",
+        "probabilité",
+        "convergence",
+        "fréquence"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 16
+      }
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "by_type": {
+      "contenu": 2,
+      "capacite": 10,
+      "demonstration": 1,
+      "algorithme": 5,
+      "approfondissement": 1
+    },
+    "by_domaine": {
+      "ANALYSE": 2,
+      "ALGORITHMIQUE": 5,
+      "PROBABILITES": 12
+    },
+    "fingerprints": [
+      "approximer_aire_suites_adjacentes",
+      "encadrer_somme_harmonique_integrales",
+      "implementer_algorithme_methode_rectangles",
+      "implementer_algorithme_methode_milieux",
+      "implementer_algorithme_methode_trapèzes",
+      "implementer_algorithme_monte_carlo",
+      "implementer_algorithme_brouncker_ln2",
+      "definir_schema_bernoulli_epreuves_independantes",
+      "representer_schema_bernoulli_arbre",
+      "appliquer_propriete_multiplicative_independance",
+      "definir_independance_mutuelle_variables_aleatoires",
+      "calculer_esperance_variable_aleatoire_finie",
+      "calculer_variance_variable_aleatoire_finie",
+      "appliquer_linearite_esperance",
+      "appliquer_additivite_variance_variables_independantes",
+      "calculer_variance_moyenne_echantillon",
+      "enoncer_appliquer_inegalite_bienayume_tchebychev",
+      "enoncer_appliquer_inegalite_concentration_moyenne",
+      "demontrer_loi_grands_nombres"
+    ]
+  }
+}

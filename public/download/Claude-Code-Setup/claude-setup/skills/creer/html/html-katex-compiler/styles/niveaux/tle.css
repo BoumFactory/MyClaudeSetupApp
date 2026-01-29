@@ -1,0 +1,67 @@
+/* ===========================================
+   NIVEAU: Terminale
+   Compact, style pré-universitaire
+   =========================================== */
+
+:root {
+    --content-width: 780px;
+    --content-padding: 1.5rem;
+    --bloc-padding: 0.85rem 1.3rem;
+    --bloc-radius: 6px;
+    --bloc-border-width: 3px;
+}
+
+body {
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+}
+
+p, li {
+    font-size: 0.95rem;
+}
+
+/* Blocs */
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    padding: 0.85rem 1.3rem;
+    margin: 1.1rem 0;
+}
+
+/* Labels */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before,
+.exercice::before {
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
+}
+
+/* KaTeX */
+.katex {
+    font-size: 1.05em;
+}
+
+.katex-display {
+    margin: 0.85rem 0;
+}
+
+/* Listes */
+ul, ol {
+    margin: 0.85rem 0;
+}
+
+li {
+    margin: 0.2rem 0;
+}

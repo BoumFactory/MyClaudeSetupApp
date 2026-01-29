@@ -1,0 +1,67 @@
+/* ===========================================
+   NIVEAU: 6ème
+   Grande police, espacement aéré, très accessible
+   =========================================== */
+
+:root {
+    --content-width: 850px;
+    --content-padding: 2.5rem;
+    --bloc-padding: 1.25rem 1.75rem;
+    --bloc-radius: 12px;
+    --bloc-border-width: 5px;
+}
+
+body {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+p, li {
+    font-size: 1.1rem;
+}
+
+/* Blocs plus visibles */
+.definition, .theoreme, .propriete, .exemple,
+.methode, .remarque, .exercice {
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+}
+
+/* Labels plus grands */
+.definition::before, .theoreme::before, .propriete::before,
+.exemple::before, .methode::before, .remarque::before,
+.exercice::before {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+/* KaTeX plus grand */
+.katex {
+    font-size: 1.3em;
+}
+
+.katex-display {
+    margin: 1.5rem 0;
+}
+
+/* Espacement listes */
+ul, ol {
+    margin: 1.5rem 0;
+}
+
+li {
+    margin: 0.5rem 0;
+}

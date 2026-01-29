@@ -1,0 +1,562 @@
+{
+  "source": {
+    "pdf": "TG_comp.pdf",
+    "page": 10,
+    "text_length": 1856
+  },
+  "extraction": {
+    "date": "2026-01-09T14:35:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TG-PR-500",
+      "intitule": "Simuler une variable aléatoire de loi géométrique à partir du schéma de Bernoulli",
+      "fingerprint": "simuler_variable_loi_geometrique_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme permettant de générer une réalisation d'une variable aléatoire suivant une loi géométrique en utilisant des épreuves de Bernoulli répétées.",
+      "formulation_bo": "Simulation d'une variable aléatoire de loi géométrique à partir du schéma de Bernoulli.",
+      "connaissances_associees": [
+        "loi géométrique",
+        "schéma de Bernoulli",
+        "épreuve aléatoire",
+        "probabilité d'un événement"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-PR-501",
+      "intitule": "Simuler une loi exponentielle à partir d'une loi uniforme",
+      "fingerprint": "simuler_loi_exponentielle_loi_uniforme",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois continues",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un algorithme permettant de générer une réalisation d'une variable aléatoire suivant une loi exponentielle en utilisant la transformation d'une loi uniforme.",
+      "formulation_bo": "Simulation d'une loi exponentielle à partir d'une loi uniforme.",
+      "connaissances_associees": [
+        "loi exponentielle",
+        "loi uniforme",
+        "fonction de répartition",
+        "inverse d'une fonction"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-PR-502",
+      "intitule": "Calculer la demi-vie d'un échantillon radioactif de grande taille",
+      "fingerprint": "calculer_demi_vie_echantillon_radioactif",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois continues - Applications",
+      "type": "approfondissement",
+      "description_detaillee": "À partir de la simulation d'une loi exponentielle, déterminer la demi-vie (temps auquel le nombre d'atomes radioactifs est réduit de moitié) d'un échantillon de grande taille.",
+      "formulation_bo": "Demi-vie d'un échantillon de grande taille d'atomes radioactifs.",
+      "connaissances_associees": [
+        "loi exponentielle",
+        "simulation",
+        "demi-vie",
+        "décroissance radioactive",
+        "médiane d'une loi exponentielle"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-ST-500",
+      "intitule": "Évaluer une corrélation entre deux phénomènes",
+      "fingerprint": "evaluer_correlation_deux_phenomenes",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Séries statistiques à deux variables",
+      "type": "capacite",
+      "description_detaillee": "À partir d'une série statistique à deux variables, calculer et interpréter un coefficient de corrélation pour évaluer le lien linéaire entre deux variables.",
+      "formulation_bo": "À travers l'étude de séries statistiques à deux variables, l'objectif est d'amener l'élève à évaluer une corrélation entre deux phénomènes.",
+      "connaissances_associees": [
+        "série statistique à deux variables",
+        "coefficient de corrélation",
+        "covariance",
+        "écart-type"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-ST-501",
+      "intitule": "Distinguer corrélation et causalité",
+      "fingerprint": "distinguer_correlation_causalite",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Interprétation des données",
+      "type": "capacite",
+      "description_detaillee": "Développer une réflexion critique sur le lien entre deux phénomènes corrélés et démontrer que l'existence d'une corrélation ne suffit pas à établir une relation de causalité.",
+      "formulation_bo": "À développer une réflexion critique sur le lien entre deux phénomènes corrélés, et finalement à distinguer corrélation et causalité.",
+      "connaissances_associees": [
+        "corrélation",
+        "causalité",
+        "relation statistique",
+        "biais d'interprétation",
+        "variables confondantes"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-ST-502",
+      "intitule": "Déterminer la droite de régression linéaire",
+      "fingerprint": "determiner_droite_regression_lineaire",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Régression linéaire",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'équation de la droite de régression linéaire (droite des moindres carrés) à partir d'une série statistique à deux variables.",
+      "formulation_bo": "C'est aussi l'occasion de travailler sur la droite de régression, et de faire percevoir le sens de l'expression « moindres carrés ».",
+      "connaissances_associees": [
+        "régression linéaire",
+        "méthode des moindres carrés",
+        "équation de droite",
+        "résidu",
+        "coefficient directeur"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-ST-503",
+      "intitule": "Interpréter les moindres carrés dans une régression",
+      "fingerprint": "interpreter_moindres_carres_regression",
+      "niveau": "TG",
+      "domaine": "STATISTIQUES",
+      "sous_domaine": "Régression linéaire",
+      "type": "capacite",
+      "description_detaillee": "Comprendre et expliquer le sens de l'expression « moindres carrés » : minimisation de la somme des carrés des résidus.",
+      "formulation_bo": "Faire percevoir le sens de l'expression « moindres carrés ».",
+      "connaissances_associees": [
+        "résidu",
+        "minimisation",
+        "somme des carrés",
+        "écart à la droite",
+        "algorithme d'optimisation"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-500",
+      "intitule": "Effectuer une interpolation à partir d'une droite de régression",
+      "fingerprint": "effectuer_interpolation_droite_regression",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions et modélisation",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une droite de régression pour estimer une valeur manquante entre deux observations connues.",
+      "formulation_bo": "Des ajustements affines ou s'y ramenant permettent des interpolations.",
+      "connaissances_associees": [
+        "droite de régression",
+        "équation de droite",
+        "extrapolation",
+        "modèle linéaire"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-501",
+      "intitule": "Effectuer une extrapolation à partir d'une droite de régression",
+      "fingerprint": "effectuer_extrapolation_droite_regression",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions et modélisation",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une droite de régression pour estimer une valeur en dehors du domaine observé et porter un regard critique sur cette estimation.",
+      "formulation_bo": "Des ajustements affines permettent des extrapolations, sur lesquelles l'élève porte un regard critique.",
+      "connaissances_associees": [
+        "droite de régression",
+        "modèle linéaire",
+        "limites de la modélisation",
+        "risque de prédiction"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-502",
+      "intitule": "Effectuer un changement de variable pour ramener à un ajustement affine",
+      "fingerprint": "effectuer_changement_variable_ajustement_affine",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions et modélisation",
+      "type": "capacite",
+      "description_detaillee": "Identifier et appliquer un changement de variable approprié pour transformer une relation non-affine en relation affine, afin de pouvoir appliquer une régression linéaire.",
+      "formulation_bo": "Des ajustements affines ou s'y ramenant à l'aide d'un changement de variable permettent des interpolations et des extrapolations.",
+      "connaissances_associees": [
+        "changement de variable",
+        "ajustement affine",
+        "régression linéaire",
+        "logarithme",
+        "fonctions exponentielles"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-503",
+      "intitule": "Modéliser la loi d'Ohm par une relation affine",
+      "fingerprint": "modeliser_loi_ohm_relation_affine",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Modélisation et applications",
+      "type": "approfondissement",
+      "description_detaillee": "Utiliser la relation I = U/R pour établir une corrélation linéaire entre tension et intensité, et déterminer la résistance à partir d'une série de mesures.",
+      "formulation_bo": "Établissement de la loi d'Ohm.",
+      "connaissances_associees": [
+        "loi d'Ohm",
+        "régression linéaire",
+        "mesure expérimentale",
+        "électricité",
+        "droite de régression"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-504",
+      "intitule": "Modéliser une loi de désintégration radioactive",
+      "fingerprint": "modeliser_loi_desintegration_radioactive",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Modélisation et applications",
+      "type": "approfondissement",
+      "description_detaillee": "À partir de données sur la décroissance d'atomes radioactifs, établir et valider un modèle exponentiel en utilisant un changement de variable pour ramener à une régression linéaire.",
+      "formulation_bo": "Loi de désintégration radioactive.",
+      "connaissances_associees": [
+        "loi exponentielle",
+        "décroissance radioactive",
+        "changement de variable",
+        "régression linéaire",
+        "demi-vie"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-505",
+      "intitule": "Modéliser l'évolution de la température et des émissions de gaz à effet de serre",
+      "fingerprint": "modeliser_evolution_temperature_gaz_effet_serre",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Modélisation et applications",
+      "type": "approfondissement",
+      "description_detaillee": "À partir de données climatiques, établir une relation entre variables (température, émissions de GES), discuter de la causalité et de la pertinence de l'extrapolation.",
+      "formulation_bo": "Évolution de la température et des émissions de gaz à effet de serre dans le cadre du réchauffement climatique.",
+      "connaissances_associees": [
+        "régression linéaire",
+        "corrélation",
+        "causalité",
+        "extrapolation",
+        "limites de la modélisation",
+        "changement climatique"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-506",
+      "intitule": "Modéliser la loi de Moore par une relation exponentielle",
+      "fingerprint": "modeliser_loi_moore_relation_exponentielle",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Modélisation et applications",
+      "type": "approfondissement",
+      "description_detaillee": "À partir de données historiques sur le nombre de transistors, établir un modèle exponentiel et l'utiliser pour faire des prédictions futures.",
+      "formulation_bo": "Loi de Moore.",
+      "connaissances_associees": [
+        "fonction exponentielle",
+        "régression logarithmique",
+        "changement de variable",
+        "extrapolation",
+        "modèle de croissance"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-507",
+      "intitule": "Utiliser les fonctions usuelles dans une modélisation",
+      "fingerprint": "utiliser_fonctions_usuelles_modelisation",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "contenu",
+      "description_detaillee": "Connaître et appliquer les propriétés des fonctions usuelles (polynômes, exponentielles, logarithmes) dans des contextes de modélisation.",
+      "formulation_bo": "Fonctions usuelles.",
+      "connaissances_associees": [
+        "fonction polynôme",
+        "fonction exponentielle",
+        "fonction logarithme",
+        "fonction puissance",
+        "propriétés algébriques"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-508",
+      "intitule": "Tracer la représentation graphique de fonctions usuelles",
+      "fingerprint": "tracer_representation_graphique_fonctions_usuelles",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "contenu",
+      "description_detaillee": "Construire et analyser les représentations graphiques des fonctions usuelles en identifiant leurs caractéristiques (asymptotes, monotonie, points particuliers).",
+      "formulation_bo": "Représentations graphiques.",
+      "connaissances_associees": [
+        "graphique de fonction",
+        "asymptote",
+        "monotonie",
+        "ensemble de définition",
+        "limites"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-509",
+      "intitule": "Déterminer le minimum d'une fonction trinôme",
+      "fingerprint": "determiner_minimum_fonction_trinome",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions polynômes",
+      "type": "capacite",
+      "description_detaillee": "Calculer et interpréter les coordonnées du sommet (minimum ou maximum) d'une parabole en utilisant la forme canonique ou les dérivées.",
+      "formulation_bo": "Minimum d'une fonction trinôme.",
+      "connaissances_associees": [
+        "fonction polynôme de degré 2",
+        "forme canonique",
+        "discriminant",
+        "sommet de parabole",
+        "dérivée"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-510",
+      "intitule": "Consolider et enrichir les connaissances sur les suites",
+      "fingerprint": "consolider_enrichir_connaissances_suites",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "contenu",
+      "description_detaillee": "Approfondir l'étude des suites, notamment les suites géométriques et arithmético-géométriques, pour modéliser des phénomènes discrets.",
+      "formulation_bo": "L'objectif du programme d'analyse est de permettre à l'élève de consolider et d'enrichir ses connaissances et compétences sur les suites.",
+      "connaissances_associees": [
+        "suite arithmétique",
+        "suite géométrique",
+        "suite arithmético-géométrique",
+        "limite de suite",
+        "modélisation discrète"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-511",
+      "intitule": "Consolider et enrichir les connaissances sur les fonctions",
+      "fingerprint": "consolider_enrichir_connaissances_fonctions",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions",
+      "type": "contenu",
+      "description_detaillee": "Approfondir l'étude des fonctions pour modéliser et étudier une grande diversité de phénomènes continus.",
+      "formulation_bo": "L'objectif du programme d'analyse est de permettre à l'élève de consolider et d'enrichir ses connaissances et compétences sur les fonctions.",
+      "connaissances_associees": [
+        "fonction",
+        "limite",
+        "continuité",
+        "dérivabilité",
+        "intégration",
+        "fonction composée"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-512",
+      "intitule": "Comprendre la notion de limite intuitivement",
+      "fingerprint": "comprendre_notion_limite_intuitivement",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites",
+      "type": "contenu",
+      "description_detaillee": "Développer une compréhension intuitive de la notion de limite pour les suites et les fonctions sans formalisme excessif.",
+      "formulation_bo": "À la fois pour les suites et les fonctions, la notion de limite est un objectif important, qui fait l'objet d'une approche intuitive.",
+      "connaissances_associees": [
+        "limite de suite",
+        "limite de fonction",
+        "convergence",
+        "divergence",
+        "infini"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-513",
+      "intitule": "Étudier les suites géométriques",
+      "fingerprint": "etudier_suites_geometriques",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "contenu",
+      "description_detaillee": "Analyser les propriétés des suites géométriques : formule du terme général, convergence, somme de termes, applications à la modélisation.",
+      "formulation_bo": "Les suites géométriques sont étudiées spécifiquement.",
+      "connaissances_associees": [
+        "suite géométrique",
+        "raison",
+        "terme général",
+        "limite",
+        "somme d'une suite géométrique",
+        "applications"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-514",
+      "intitule": "Étudier les suites arithmético-géométriques",
+      "fingerprint": "etudier_suites_arithmetico_geometriques",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Suites numériques",
+      "type": "contenu",
+      "description_detaillee": "Analyser les propriétés des suites arithmético-géométriques : définition par récurrence, formule du terme général, convergence, modélisation.",
+      "formulation_bo": "Les suites arithmético-géométriques sont étudiées spécifiquement.",
+      "connaissances_associees": [
+        "suite arithmético-géométrique",
+        "relation de récurrence",
+        "terme général",
+        "limite",
+        "point fixe",
+        "applications"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    },
+    {
+      "code": "TG-AN-515",
+      "intitule": "Introduire la notion de continuité d'une fonction",
+      "fingerprint": "introduire_notion_continuite_fonction",
+      "niveau": "TG",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Continuité",
+      "type": "contenu",
+      "description_detaillee": "Définir et comprendre la continuité d'une fonction en liaison avec le théorème des valeurs intermédiaires.",
+      "formulation_bo": "Introduire la notion de continuité en liaison avec le théorème des valeurs intermédiaires.",
+      "connaissances_associees": [
+        "continuité",
+        "fonction continue",
+        "théorème des valeurs intermédiaires",
+        "discontinuité",
+        "intervalle"
+      ],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 10
+      }
+    }
+  ],
+  "summary": {
+    "total": 25,
+    "by_type": {
+      "contenu": 7,
+      "capacite": 10,
+      "algorithme": 2,
+      "approfondissement": 6
+    },
+    "by_domaine": {
+      "PROBABILITES": 3,
+      "STATISTIQUES": 5,
+      "ANALYSE": 17
+    },
+    "by_niveau": {
+      "TG": 25
+    },
+    "fingerprints": [
+      "simuler_variable_loi_geometrique_bernoulli",
+      "simuler_loi_exponentielle_loi_uniforme",
+      "calculer_demi_vie_echantillon_radioactif",
+      "evaluer_correlation_deux_phenomenes",
+      "distinguer_correlation_causalite",
+      "determiner_droite_regression_lineaire",
+      "interpreter_moindres_carres_regression",
+      "effectuer_interpolation_droite_regression",
+      "effectuer_extrapolation_droite_regression",
+      "effectuer_changement_variable_ajustement_affine",
+      "modeliser_loi_ohm_relation_affine",
+      "modeliser_loi_desintegration_radioactive",
+      "modeliser_evolution_temperature_gaz_effet_serre",
+      "modeliser_loi_moore_relation_exponentielle",
+      "utiliser_fonctions_usuelles_modelisation",
+      "tracer_representation_graphique_fonctions_usuelles",
+      "determiner_minimum_fonction_trinome",
+      "consolider_enrichir_connaissances_suites",
+      "consolider_enrichir_connaissances_fonctions",
+      "comprendre_notion_limite_intuitivement",
+      "etudier_suites_geometriques",
+      "etudier_suites_arithmetico_geometriques",
+      "introduire_notion_continuite_fonction"
+    ]
+  }
+}

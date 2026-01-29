@@ -1,0 +1,44 @@
+ Modéliser le hasard, calculer des probabilités
+L’ensemble des issues est fini.
+Contenus
+ Ensemble (univers) des issues. Événements. Réunion, intersection, complémentaire.
+ Loi (distribution) de probabilité. Probabilité d’un événement : somme des probabilités
+des issues.
+ Relation P(A ⋃ B) + P(A ⋂ B) = P(A) + P(B).
+ Dénombrement à l’aide de tableaux et d’arbres.
+Capacités attendues
+ Utiliser des modèles théoriques de référence (dé, pièce équilibrée, tirage au sort avec
+équiprobabilité dans une population) en comprenant que les probabilités sont définies
+a priori.
+ Construire un modèle à partir de fréquences observées, en distinguant nettement
+modèle et réalité.
+ Calculer des probabilités dans des cas simples : expérience aléatoire à deux ou trois
+épreuves.
+ Échantillonnage
+En liaison avec la partie « Algorithmique et programmation », on définit la notion
+d’échantillon. L’objectif est de faire percevoir, sous une forme expérimentale, la loi des
+grands nombres, la fluctuation d’échantillonnage et le principe de l’estimation d’une
+probabilité par une fréquence observée sur un échantillon.
+Contenus
+ Échantillon aléatoire de taille n pour une expérience à deux issues.
+ Version vulgarisée de la loi des grands nombres : « Lorsque n est grand, sauf
+exception, la fréquence observée est proche de la probabilité. »
+ Principe de l’estimation d’une probabilité, ou d’une proportion dans une population,
+par une fréquence observée sur un échantillon.
+Capacités attendues
+ Lire et comprendre une fonction Python renvoyant le nombre ou la fréquence de
+succès dans un échantillon de taille n pour une expérience aléatoire à deux issues.
+ Observer la loi des grands nombres à l’aide d’une simulation sur Python ou tableur.
+ Simuler N échantillons de taille n d’une expérience aléatoire à deux issues. Si p est la
+probabilité d’une issue et ƒ sa fréquence observée dans un échantillon, calculer la
+1
+proportion des cas où l’écart entre p et ƒ est inférieur ou égal à .
+n
+Algorithmique et programmation
+La démarche algorithmique est, depuis les origines, une composante essentielle de l’activité
+mathématique. Au cycle 4, en mathématiques et en technologie, les élèves ont appris à
+écrire, mettre au point et exécuter un programme simple. Une consolidation des acquis du
+cycle 4 est proposée autour de deux idées essentielles :
+ la notion de fonction ;
+ la programmation comme production d’un texte dans un langage informatique.
+© Ministère de l'Éducation nationale et de la Jeunesse > www.education.gouv.fr

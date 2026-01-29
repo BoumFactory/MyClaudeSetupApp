@@ -1,5 +1,6 @@
-import { FileText, ExternalLink, Code2, GraduationCap, Play, BookOpen, Download } from "lucide-react"
+import { FileText, ExternalLink, Code2, GraduationCap, Play, BookOpen, Download, Terminal, Database, MessageSquare, HelpCircle, CheckCircle, Eye } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import type { Metadata } from "next"
@@ -42,6 +43,45 @@ export default function ApplicationsEducativesPage() {
       technologies: ["HTML", "CSS", "JavaScript"],
       viewPath: "/download/Applications_educatives/animations/animation_trigo.html",
       downloadPath: "/download/Applications_educatives/animations/animation_trigo.html",
+    },
+  ]
+
+  // Applications Tauri (exécutables standalone)
+  const tauriApps = [
+    {
+      id: "prompt-manager",
+      title: "Gestionnaire de Prompts",
+      description: "Application pour stocker, organiser et créer des prompts IA de manière simple et ergonomique. Arbre décisionnel, fabricateur de prompts et générateur de résumés.",
+      technologies: ["Tauri", "Rust", "HTML/JS"],
+      features: [
+        "26 actions disponibles (Créer, Réviser, Expliquer...)",
+        "8 templates prédéfinis pour prompts",
+        "Export/Import des prompts en JSON",
+        "Mode sombre disponible"
+      ],
+      downloadPath: "/download/Applications_educatives/stocker-prompts",
+      screenshots: ["/download/Applications_educatives/stocker-prompts/preview.png"],
+      exeName: "prompt-manager.exe",
+      dataFile: "mes-prompts.json",
+    },
+    {
+      id: "global-revision",
+      title: "Application de Révisions",
+      description: "Application de révision multi-matières avec QCM et questions à réponse libre. Support LaTeX pour les maths, coloration syntaxique pour le code.",
+      technologies: ["Tauri", "Rust", "HTML/JS", "MathJax"],
+      features: [
+        "QCM et questions libres",
+        "Support LaTeX (formules maths)",
+        "Statistiques de révision",
+        "Import de questions via JSON"
+      ],
+      downloadPath: "/download/Applications_educatives/global_revision_app",
+      screenshots: [
+        "/download/Applications_educatives/global_revision_app/preview-1.png",
+        "/download/Applications_educatives/global_revision_app/preview-2.png"
+      ],
+      exeName: "revision-app.exe",
+      dataFile: "questions.json",
     },
   ]
 
@@ -121,6 +161,140 @@ export default function ApplicationsEducativesPage() {
                     <Button asChild variant="cosmic" className="flex-1">
                       <Link href="/claude-code/downloads">
                         <ExternalLink className="w-4 h-4 mr-2" />
+                        Télécharger
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Applications Tauri */}
+      {tauriApps.length > 0 && (
+        <section className="space-y-6">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <Terminal className="w-6 h-6 text-purple-400" />
+            Applications Standalone (Tauri)
+          </h2>
+          <p className="text-muted-foreground">
+            Applications de bureau légères construites avec Tauri (Rust + Web).
+            <span className="block mt-1 text-purple-400">
+              Exécutables autonomes à distribuer aux élèves avec leurs fichiers de données.
+            </span>
+          </p>
+
+          {/* Comment utiliser */}
+          <div className="glass-card rounded-xl p-6 border-l-4 border-purple-500">
+            <h3 className="font-semibold text-purple-400 mb-3 flex items-center gap-2">
+              <HelpCircle className="w-5 h-5" />
+              Comment distribuer aux élèves ?
+            </h3>
+            <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
+              <li>
+                Téléchargez le dossier de l'application depuis la{" "}
+                <Link href="/claude-code/downloads" className="text-purple-400 hover:underline">
+                  page de téléchargement
+                </Link>
+              </li>
+              <li>
+                Donnez aux élèves le fichier <code className="px-1 bg-slate-900 rounded text-purple-300">.exe</code> et le fichier <code className="px-1 bg-slate-900 rounded text-purple-300">.json</code> correspondant
+              </li>
+              <li>
+                Les deux fichiers doivent être dans le <strong>même dossier</strong>
+              </li>
+              <li>
+                L'élève double-clique sur le <code className="px-1 bg-slate-900 rounded text-purple-300">.exe</code> pour lancer l'application
+              </li>
+            </ol>
+            <div className="mt-4 p-3 bg-purple-950/30 border border-purple-800 rounded-lg">
+              <p className="text-xs text-muted-foreground">
+                <strong className="text-purple-300">Personnalisation :</strong> Pour créer vos propres questionnaires ou bases de prompts,
+                modifiez le fichier JSON avec vos données puis distribuez-le avec l'exécutable.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {tauriApps.map((app) => (
+              <Card key={app.id} className="glass-card hover:scale-[1.02] transition-all duration-300">
+                {/* Screenshots */}
+                <div className={`grid ${app.screenshots.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-1 rounded-t-lg overflow-hidden`}>
+                  {app.screenshots.map((screenshot, idx) => (
+                    <a
+                      key={idx}
+                      href={screenshot}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block relative w-full h-36 overflow-hidden group"
+                    >
+                      <Image
+                        src={screenshot}
+                        alt={`Capture d'écran ${idx + 1} de ${app.title}`}
+                        fill
+                        className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-2">
+                        <span className="text-white text-xs flex items-center gap-1">
+                          <Eye className="w-3 h-3" />
+                          Agrandir
+                        </span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+
+                <CardHeader className="pt-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center flex-shrink-0">
+                      <Terminal className="w-5 h-5 text-white" />
+                    </div>
+                    <CardTitle className="text-lg">{app.title}</CardTitle>
+                  </div>
+                  <CardDescription className="text-sm">{app.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2">
+                    {app.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs rounded-md bg-purple-900/30 border border-purple-700 text-purple-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Fonctionnalités */}
+                  <div className="space-y-1">
+                    {app.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-muted-foreground">
+                        <CheckCircle className="w-3 h-3 text-purple-400 mt-0.5 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Fichiers */}
+                  <div className="p-3 bg-slate-950/50 rounded-lg border border-slate-800">
+                    <p className="text-xs text-muted-foreground mb-1">Fichiers à distribuer :</p>
+                    <div className="flex flex-wrap gap-2">
+                      <code className="px-2 py-1 text-xs bg-purple-950/50 rounded text-purple-300">
+                        {app.exeName}
+                      </code>
+                      <code className="px-2 py-1 text-xs bg-slate-900 rounded text-slate-300">
+                        {app.dataFile}
+                      </code>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button asChild variant="outline" size="sm" className="flex-1">
+                      <Link href="/claude-code/downloads">
+                        <Download className="w-4 h-4 mr-1" />
                         Télécharger
                       </Link>
                     </Button>

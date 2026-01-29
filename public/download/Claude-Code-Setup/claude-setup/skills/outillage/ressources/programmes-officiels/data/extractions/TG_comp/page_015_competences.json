@@ -1,0 +1,644 @@
+{
+  "source": {
+    "pdf": "TG_comp.pdf",
+    "page": 15,
+    "text_length": 1847,
+    "title": "Lois discrètes"
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TG-PR-750",
+      "intitule": "Définir la loi uniforme sur {1,2,...,n}",
+      "fingerprint": "definir_loi_uniforme_discrete",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Connaître la définition et les caractéristiques de la loi uniforme sur un ensemble fini {1,2,...,n}",
+      "formulation_bo": "Loi uniforme sur {1,2,…,n}. Espérance.",
+      "connaissances_associees": ["probabilité", "variable aléatoire"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-751",
+      "intitule": "Calculer l'espérance d'une loi uniforme",
+      "fingerprint": "calculer_esperance_loi_uniforme",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'espérance d'une variable aléatoire suivant une loi uniforme sur {1,2,...,n}",
+      "formulation_bo": "Loi uniforme sur {1,2,…,n}. Espérance.",
+      "connaissances_associees": ["loi uniforme", "définition espérance"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-752",
+      "intitule": "Définir une épreuve de Bernoulli",
+      "fingerprint": "definir_epreuve_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Connaître la définition d'une épreuve de Bernoulli : expérience aléatoire n'ayant que deux issues (succès/échec) avec une probabilité p de succès",
+      "formulation_bo": "Épreuve de Bernoulli.",
+      "connaissances_associees": ["expérience aléatoire", "probabilité", "événement"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-753",
+      "intitule": "Définir la loi de Bernoulli",
+      "fingerprint": "definir_loi_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Connaître la définition de la loi de Bernoulli de paramètre p : distribution de probabilité d'une épreuve de Bernoulli",
+      "formulation_bo": "Loi de Bernoulli : définition, espérance et écart type.",
+      "connaissances_associees": ["épreuve de Bernoulli", "variable aléatoire", "probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-754",
+      "intitule": "Calculer l'espérance d'une loi de Bernoulli",
+      "fingerprint": "calculer_esperance_loi_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Calculer ou appliquer la formule de l'espérance d'une variable aléatoire suivant une loi de Bernoulli de paramètre p : E(X) = p",
+      "formulation_bo": "Loi de Bernoulli : définition, espérance et écart type.",
+      "connaissances_associees": ["loi de Bernoulli", "espérance", "paramètre p"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-755",
+      "intitule": "Calculer l'écart type d'une loi de Bernoulli",
+      "fingerprint": "calculer_ecart_type_loi_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Calculer ou appliquer la formule de l'écart type d'une variable aléatoire suivant une loi de Bernoulli de paramètre p : σ(X) = √(p(1-p))",
+      "formulation_bo": "Loi de Bernoulli : définition, espérance et écart type.",
+      "connaissances_associees": ["loi de Bernoulli", "écart type", "variance"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-756",
+      "intitule": "Définir un schéma de Bernoulli",
+      "fingerprint": "definir_schema_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Connaître la définition d'un schéma de Bernoulli : répétition n fois, de manière indépendante, d'une même épreuve de Bernoulli",
+      "formulation_bo": "Schéma de Bernoulli. Représentation par un arbre.",
+      "connaissances_associees": ["épreuve de Bernoulli", "répétition d'expériences", "indépendance"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-757",
+      "intitule": "Représenter un schéma de Bernoulli par un arbre",
+      "fingerprint": "representer_schema_bernoulli_arbre",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Tracer un arbre de probabilité pour représenter les résultats possibles d'un schéma de Bernoulli",
+      "formulation_bo": "Schéma de Bernoulli. Représentation par un arbre.",
+      "connaissances_associees": ["schéma de Bernoulli", "arbre de probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-758",
+      "intitule": "Définir les coefficients binomiaux",
+      "fingerprint": "definir_coefficients_binomiaux",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Connaître la définition des coefficients binomiaux C(n,k) : nombre de façons d'obtenir k succès dans un schéma de Bernoulli de taille n",
+      "formulation_bo": "Coefficients binomiaux : définition (nombre de façons d'obtenir k succès dans un schéma de Bernoulli de taille n), triangle de Pascal, symétrie.",
+      "connaissances_associees": ["schéma de Bernoulli", "combinaisons", "dénombrement"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-759",
+      "intitule": "Utiliser le triangle de Pascal pour les coefficients binomiaux",
+      "fingerprint": "utiliser_triangle_pascal",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Construire et utiliser le triangle de Pascal pour déterminer les coefficients binomiaux",
+      "formulation_bo": "Coefficients binomiaux : définition (nombre de façons d'obtenir k succès dans un schéma de Bernoulli de taille n), triangle de Pascal, symétrie.",
+      "connaissances_associees": ["coefficients binomiaux", "triangle de Pascal"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-760",
+      "intitule": "Déterminer des coefficients binomiaux à l'aide du triangle de Pascal",
+      "fingerprint": "determiner_coefficients_binomiaux",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Calculer des coefficients binomiaux C(n,k) en utilisant le triangle de Pascal ou la formule C(n,k) = n!/(k!(n-k)!)",
+      "formulation_bo": "Déterminer des coefficients binomiaux à l'aide du triangle de Pascal.",
+      "connaissances_associees": ["triangle de Pascal", "coefficients binomiaux", "formule"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-761",
+      "intitule": "Appliquer la propriété de symétrie des coefficients binomiaux",
+      "fingerprint": "appliquer_symetrie_coefficients_binomiaux",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la propriété C(n,k) = C(n,n-k) pour simplifier les calculs de coefficients binomiaux",
+      "formulation_bo": "Coefficients binomiaux : définition (nombre de façons d'obtenir k succès dans un schéma de Bernoulli de taille n), triangle de Pascal, symétrie.",
+      "connaissances_associees": ["coefficients binomiaux", "symétrie"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-762",
+      "intitule": "Définir la loi binomiale",
+      "fingerprint": "definir_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Connaître la définition de la loi binomiale B(n,p) : distribution de probabilité du nombre de succès dans un schéma de Bernoulli de taille n avec probabilité de succès p",
+      "formulation_bo": "Variable aléatoire suivant une loi binomiale ℬ(n,p). Interprétation : nombre de succès dans le schéma de Bernoulli.",
+      "connaissances_associees": ["schéma de Bernoulli", "variable aléatoire", "paramètres n et p"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-763",
+      "intitule": "Exprimer la loi binomiale",
+      "fingerprint": "exprimer_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Connaître l'expression analytique de la loi binomiale : P(X=k) = C(n,k) * p^k * (1-p)^(n-k)",
+      "formulation_bo": "Variable aléatoire suivant une loi binomiale ℬ(n,p). Interprétation : nombre de succès dans le schéma de Bernoulli. Expression, espérance et écart type (admis).",
+      "connaissances_associees": ["loi binomiale", "coefficients binomiaux", "probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-764",
+      "intitule": "Calculer l'espérance d'une loi binomiale",
+      "fingerprint": "calculer_esperance_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule E(X) = n*p pour l'espérance d'une variable aléatoire suivant une loi binomiale B(n,p)",
+      "formulation_bo": "Variable aléatoire suivant une loi binomiale ℬ(n,p). Interprétation : nombre de succès dans le schéma de Bernoulli. Expression, espérance et écart type (admis).",
+      "connaissances_associees": ["loi binomiale", "espérance", "paramètres n et p"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-765",
+      "intitule": "Calculer l'écart type d'une loi binomiale",
+      "fingerprint": "calculer_ecart_type_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule σ(X) = √(n*p*(1-p)) pour l'écart type d'une variable aléatoire suivant une loi binomiale B(n,p)",
+      "formulation_bo": "Variable aléatoire suivant une loi binomiale ℬ(n,p). Interprétation : nombre de succès dans le schéma de Bernoulli. Expression, espérance et écart type (admis).",
+      "connaissances_associees": ["loi binomiale", "écart type", "variance", "paramètres n et p"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-766",
+      "intitule": "Tracer la représentation graphique d'une loi binomiale",
+      "fingerprint": "tracer_representation_graphique_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Construire et interpréter un diagramme en bâtons ou un histogramme pour représenter la loi binomiale",
+      "formulation_bo": "Variable aléatoire suivant une loi binomiale ℬ(n,p). Interprétation : nombre de succès dans le schéma de Bernoulli. Expression, espérance et écart type (admis). Représentation graphique.",
+      "connaissances_associees": ["loi binomiale", "représentation graphique", "diagramme en bâtons"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-767",
+      "intitule": "Calculer les probabilités P(X=k) pour une loi binomiale",
+      "fingerprint": "calculer_probabilites_X_egal_k_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une calculatrice ou un logiciel pour calculer P(X=k) quand X suit une loi binomiale B(n,p)",
+      "formulation_bo": "Dans le cas où 𝑋 suit une loi binomiale, calculer à l'aide d'une calculatrice ou d'un logiciel, les probabilités des événements de type P(X = k) ou P(X ⩽ k), etc.",
+      "connaissances_associees": ["loi binomiale", "calculatrice", "logiciel", "probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-768",
+      "intitule": "Calculer les probabilités cumulées P(X ≤ k) pour une loi binomiale",
+      "fingerprint": "calculer_probabilites_X_inferieur_egal_k_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser une calculatrice ou un logiciel pour calculer P(X ≤ k) quand X suit une loi binomiale B(n,p)",
+      "formulation_bo": "Dans le cas où 𝑋 suit une loi binomiale, calculer à l'aide d'une calculatrice ou d'un logiciel, les probabilités des événements de type P(X = k) ou P(X ⩽ k), etc.",
+      "connaissances_associees": ["loi binomiale", "calculatrice", "logiciel", "probabilités cumulées"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-769",
+      "intitule": "Définir la loi géométrique",
+      "fingerprint": "definir_loi_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Connaître la définition de la loi géométrique : distribution de probabilité du nombre d'essais jusqu'au premier succès dans une répétition d'épreuves de Bernoulli identiques",
+      "formulation_bo": "Loi géométrique : définition, expression, espérance (admise), représentation graphique et propriété caractéristique (loi sans mémoire).",
+      "connaissances_associees": ["épreuve de Bernoulli", "variable aléatoire", "premier succès"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-770",
+      "intitule": "Exprimer la loi géométrique",
+      "fingerprint": "exprimer_loi_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Connaître l'expression analytique de la loi géométrique : P(X=k) = (1-p)^(k-1) * p pour le nombre de tentatives jusqu'au premier succès",
+      "formulation_bo": "Loi géométrique : définition, expression, espérance (admise), représentation graphique et propriété caractéristique (loi sans mémoire).",
+      "connaissances_associees": ["loi géométrique", "paramètre p", "probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-771",
+      "intitule": "Calculer l'espérance d'une loi géométrique",
+      "fingerprint": "calculer_esperance_loi_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Appliquer la formule E(X) = 1/p pour l'espérance d'une variable aléatoire suivant une loi géométrique de paramètre p",
+      "formulation_bo": "Loi géométrique : définition, expression, espérance (admise), représentation graphique et propriété caractéristique (loi sans mémoire).",
+      "connaissances_associees": ["loi géométrique", "espérance", "paramètre p"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-772",
+      "intitule": "Tracer la représentation graphique d'une loi géométrique",
+      "fingerprint": "tracer_representation_graphique_loi_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Construire et interpréter un diagramme en bâtons ou un histogramme pour représenter la loi géométrique",
+      "formulation_bo": "Loi géométrique : définition, expression, espérance (admise), représentation graphique et propriété caractéristique (loi sans mémoire).",
+      "connaissances_associees": ["loi géométrique", "représentation graphique", "diagramme en bâtons"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-773",
+      "intitule": "Appliquer la propriété sans mémoire de la loi géométrique",
+      "fingerprint": "appliquer_propriete_sans_memoire_loi_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser et interpréter la propriété caractéristique de la loi géométrique : P(X > n+k | X > n) = P(X > k), c'est-à-dire l'absence de mémoire",
+      "formulation_bo": "Loi géométrique : définition, expression, espérance (admise), représentation graphique et propriété caractéristique (loi sans mémoire).",
+      "connaissances_associees": ["loi géométrique", "probabilité conditionnelle", "absence de mémoire"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-774",
+      "intitule": "Identifier des situations suivant une loi de Bernoulli",
+      "fingerprint": "identifier_situation_loi_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître et modéliser une situation réelle par une loi de Bernoulli",
+      "formulation_bo": "Identifier des situations où une variable aléatoire suit une loi de Bernoulli, une loi binomiale ou une loi géométrique.",
+      "connaissances_associees": ["loi de Bernoulli", "modélisation", "situation concrète"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-775",
+      "intitule": "Identifier des situations suivant une loi binomiale",
+      "fingerprint": "identifier_situation_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître et modéliser une situation réelle par une loi binomiale",
+      "formulation_bo": "Identifier des situations où une variable aléatoire suit une loi de Bernoulli, une loi binomiale ou une loi géométrique.",
+      "connaissances_associees": ["loi binomiale", "modélisation", "situation concrète", "schéma de Bernoulli"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-776",
+      "intitule": "Identifier des situations suivant une loi géométrique",
+      "fingerprint": "identifier_situation_loi_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Reconnaître et modéliser une situation réelle par une loi géométrique",
+      "formulation_bo": "Identifier des situations où une variable aléatoire suit une loi de Bernoulli, une loi binomiale ou une loi géométrique.",
+      "connaissances_associees": ["loi géométrique", "modélisation", "situation concrète", "premier succès"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-777",
+      "intitule": "Calculer explicitement P(X=k) pour une loi géométrique",
+      "fingerprint": "calculer_probabilites_X_egal_k_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Calculer directement P(X=k) = (1-p)^(k-1)*p pour une variable aléatoire suivant une loi géométrique",
+      "formulation_bo": "Calculer explicitement ces probabilités pour une variable aléatoire suivant une loi géométrique.",
+      "connaissances_associees": ["loi géométrique", "expression analytique", "probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-778",
+      "intitule": "Déterminer un intervalle de confiance pour une loi binomiale",
+      "fingerprint": "determiner_intervalle_confiance_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Trouver un intervalle I tel que P(X ∈ I) ≥ 1-α ou P(X ∈ I) < α pour une loi binomiale, où α est un seuil donné",
+      "formulation_bo": "Dans le cas où X suit une loi binomiale, déterminer un intervalle I pour lequel la probabilité P(X ∈ I ) est inférieure à une valeur donnée α, ou supérieure à 1 - α.",
+      "connaissances_associees": ["loi binomiale", "intervalle de confiance", "probabilité", "seuil"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-779",
+      "intitule": "Utiliser l'espérance pour résoudre des problèmes",
+      "fingerprint": "utiliser_esperance_resolution_probleme",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Appliquer le concept d'espérance (pour lois uniformes, de Bernoulli, binomiales ou géométriques) pour résoudre des problèmes contextualisés",
+      "formulation_bo": "Dans le cadre de la résolution de problème, utiliser l'espérance des lois précédentes.",
+      "connaissances_associees": ["espérance", "lois discrètes", "modélisation", "résolution de problème"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-780",
+      "intitule": "Calculer des probabilités avec des conditionnelles",
+      "fingerprint": "calculer_probabilites_conditionnelles",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Calculer des probabilités impliquant des événements conditionnels et des répétitions d'expériences aléatoires",
+      "formulation_bo": "Calculer des probabilités dans des situations faisant intervenir des probabilités conditionnelles, des répétitions d'expériences aléatoires.",
+      "connaissances_associees": ["probabilité conditionnelle", "répétition d'expériences", "indépendance"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-781",
+      "intitule": "Démontrer l'espérance d'une loi de Bernoulli",
+      "fingerprint": "demontrer_esperance_loi_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que E(X) = p pour une variable aléatoire suivant une loi de Bernoulli",
+      "formulation_bo": "Espérance et écart type d'une variable aléatoire suivant une loi de Bernoulli.",
+      "connaissances_associees": ["loi de Bernoulli", "espérance", "définition", "calcul"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-782",
+      "intitule": "Démontrer l'écart type d'une loi de Bernoulli",
+      "fingerprint": "demontrer_ecart_type_loi_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que σ(X) = √(p(1-p)) pour une variable aléatoire suivant une loi de Bernoulli",
+      "formulation_bo": "Espérance et écart type d'une variable aléatoire suivant une loi de Bernoulli.",
+      "connaissances_associees": ["loi de Bernoulli", "écart type", "variance", "définition"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-783",
+      "intitule": "Démontrer l'espérance d'une loi uniforme",
+      "fingerprint": "demontrer_esperance_loi_uniforme",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que E(X) = (n+1)/2 pour une variable aléatoire suivant une loi uniforme sur {1,2,...,n}",
+      "formulation_bo": "Espérance d'une variable aléatoire uniforme sur {1,2,…,n}.",
+      "connaissances_associees": ["loi uniforme", "espérance", "définition", "somme des entiers"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-784",
+      "intitule": "Démontrer l'espérance d'une loi binomiale (n ≤ 3)",
+      "fingerprint": "demontrer_esperance_loi_binomiale_petit_n",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "demonstration",
+      "description_detaillee": "Prouver que E(X) = n*p pour une variable aléatoire suivant une loi binomiale B(n,p) dans le cas où n ≤ 3",
+      "formulation_bo": "Espérance d'une variable aléatoire suivant une binomiale (n ⩽ 3).",
+      "connaissances_associees": ["loi binomiale", "espérance", "paramètres n et p", "définition"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    },
+    {
+      "code": "TG-PR-785",
+      "intitule": "Démontrer la caractérisation sans mémoire de la loi géométrique",
+      "fingerprint": "demontrer_caracterisation_sans_memoire_loi_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "demonstration",
+      "description_detaillee": "Prouver la propriété caractéristique : une loi géométrique est celle dont P(X > n+k | X > n) = P(X > k)",
+      "formulation_bo": "Caractérisation d'une loi géométrique par l'absence de mémoire.",
+      "connaissances_associees": ["loi géométrique", "probabilité conditionnelle", "propriété sans mémoire"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 15
+      }
+    }
+  ],
+  "summary": {
+    "total": 36,
+    "by_type": {
+      "contenu": 9,
+      "capacite": 22,
+      "demonstration": 5
+    },
+    "by_domaine": {
+      "PROBABILITES": 36
+    },
+    "by_sous_domaine": {
+      "Lois discrètes": 36
+    },
+    "fingerprints": [
+      "definir_loi_uniforme_discrete",
+      "calculer_esperance_loi_uniforme",
+      "definir_epreuve_bernoulli",
+      "definir_loi_bernoulli",
+      "calculer_esperance_loi_bernoulli",
+      "calculer_ecart_type_loi_bernoulli",
+      "definir_schema_bernoulli",
+      "representer_schema_bernoulli_arbre",
+      "definir_coefficients_binomiaux",
+      "utiliser_triangle_pascal",
+      "determiner_coefficients_binomiaux",
+      "appliquer_symetrie_coefficients_binomiaux",
+      "definir_loi_binomiale",
+      "exprimer_loi_binomiale",
+      "calculer_esperance_loi_binomiale",
+      "calculer_ecart_type_loi_binomiale",
+      "tracer_representation_graphique_loi_binomiale",
+      "calculer_probabilites_X_egal_k_binomiale",
+      "calculer_probabilites_X_inferieur_egal_k_binomiale",
+      "definir_loi_geometrique",
+      "exprimer_loi_geometrique",
+      "calculer_esperance_loi_geometrique",
+      "tracer_representation_graphique_loi_geometrique",
+      "appliquer_propriete_sans_memoire_loi_geometrique",
+      "identifier_situation_loi_bernoulli",
+      "identifier_situation_loi_binomiale",
+      "identifier_situation_loi_geometrique",
+      "calculer_probabilites_X_egal_k_geometrique",
+      "determiner_intervalle_confiance_loi_binomiale",
+      "utiliser_esperance_resolution_probleme",
+      "calculer_probabilites_conditionnelles",
+      "demontrer_esperance_loi_bernoulli",
+      "demontrer_ecart_type_loi_bernoulli",
+      "demontrer_esperance_loi_uniforme",
+      "demontrer_esperance_loi_binomiale_petit_n",
+      "demontrer_caracterisation_sans_memoire_loi_geometrique"
+    ]
+  }
+}

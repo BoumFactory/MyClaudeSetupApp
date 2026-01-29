@@ -1,0 +1,186 @@
+{
+  "source": {
+    "pdf": "1GT.pdf",
+    "page": 3,
+    "text_length": 2832
+  },
+  "extraction": {
+    "date": "2026-01-02T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "1SPE-NB-151",
+      "intitule": "Effectuer un calcul mental",
+      "fingerprint": "effectuer_calcul_mental",
+      "niveau": "1SPE",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Calcul",
+      "type": "capacite",
+      "description_detaillee": "Realiser des calculs numeriques ou litteraux de tete, sans support ecrit ni calculatrice",
+      "formulation_bo": "la pratique reguliere du calcul numerique et du calcul litteral, sous ses diverses formes : mentale",
+      "connaissances_associees": ["operations arithmetiques", "proprietes algebriques"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "1SPE-NB-152",
+      "intitule": "Effectuer un calcul ecrit",
+      "fingerprint": "effectuer_calcul_ecrit",
+      "niveau": "1SPE",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Calcul",
+      "type": "capacite",
+      "description_detaillee": "Realiser des calculs numeriques ou litteraux par ecrit, en posant les operations et developpements",
+      "formulation_bo": "la pratique reguliere du calcul numerique et du calcul litteral, sous ses diverses formes : ecrite",
+      "connaissances_associees": ["operations arithmetiques", "calcul litteral"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "1SPE-NB-153",
+      "intitule": "Effectuer un calcul instrumente",
+      "fingerprint": "effectuer_calcul_instrumente",
+      "niveau": "1SPE",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Calcul",
+      "type": "capacite",
+      "description_detaillee": "Realiser des calculs numeriques ou litteraux a l'aide d'une calculatrice ou d'un logiciel de calcul formel",
+      "formulation_bo": "la pratique reguliere du calcul numerique et du calcul litteral, sous ses diverses formes : instrumentee",
+      "connaissances_associees": ["utilisation calculatrice", "logiciel calcul formel"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "1SPE-AG-154",
+      "intitule": "Utiliser un logiciel de visualisation et representation",
+      "fingerprint": "utiliser_logiciel_visualisation",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Outils numeriques",
+      "type": "capacite",
+      "description_detaillee": "Manipuler des outils numeriques pour visualiser des objets mathematiques (courbes, figures geometriques)",
+      "formulation_bo": "L'utilisation de logiciels, d'outils de visualisation et de representation",
+      "connaissances_associees": ["grapheur", "logiciel geometrie dynamique"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "1SPE-AG-155",
+      "intitule": "Utiliser un logiciel de simulation",
+      "fingerprint": "utiliser_logiciel_simulation",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Outils numeriques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser des outils numeriques pour simuler des experiences aleatoires ou des phenomenes mathematiques",
+      "formulation_bo": "L'utilisation de logiciels de simulation",
+      "connaissances_associees": ["simulation probabiliste", "experimentation numerique"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "1SPE-AG-156",
+      "intitule": "Utiliser un logiciel de programmation",
+      "fingerprint": "utiliser_logiciel_programmation",
+      "niveau": "1SPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation",
+      "type": "capacite",
+      "description_detaillee": "Ecrire et executer des programmes informatiques pour resoudre des problemes mathematiques",
+      "formulation_bo": "L'utilisation de logiciels de programmation",
+      "connaissances_associees": ["Python", "algorithmique"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "1SPE-LO-157",
+      "intitule": "Reformuler un enonce mathematique",
+      "fingerprint": "reformuler_enonce",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Communication mathematique",
+      "type": "capacite",
+      "description_detaillee": "Exprimer avec ses propres mots un enonce ou une demarche mathematique pour se l'approprier",
+      "formulation_bo": "la reformulation par l'eleve d'un enonce ou d'une demarche",
+      "connaissances_associees": ["comprehension d'enonce", "langage mathematique"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "1SPE-LO-158",
+      "intitule": "Argumenter pour convaincre",
+      "fingerprint": "argumenter_convaincre",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Raisonnement",
+      "type": "capacite",
+      "description_detaillee": "Preciser sa pensee et expliciter son raisonnement de maniere a convaincre, en utilisant des arguments mathematiques",
+      "formulation_bo": "la pratique de l'argumentation conduit a preciser sa pensee et a expliciter son raisonnement de maniere a convaincre",
+      "connaissances_associees": ["raisonnement logique", "demonstration"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 3
+      }
+    },
+    {
+      "code": "1SPE-LO-159",
+      "intitule": "Presenter oralement une solution mathematique",
+      "fingerprint": "presenter_oral_solution",
+      "niveau": "1SPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Communication mathematique",
+      "type": "capacite",
+      "description_detaillee": "Exposer oralement une demarche de resolution, en utilisant le langage naturel et le langage symbolique",
+      "formulation_bo": "expose oral d'une solution",
+      "connaissances_associees": ["langage naturel", "langage symbolique", "registre graphique"],
+      "source": {
+        "pdf": "1GT.pdf",
+        "page": 3
+      }
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "by_type": {
+      "capacite": 9,
+      "contenu": 0,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 0
+    },
+    "by_domaine": {
+      "NOMBRES": 3,
+      "ALGORITHMIQUE": 3,
+      "LOGIQUE": 3
+    },
+    "fingerprints": [
+      "effectuer_calcul_mental",
+      "effectuer_calcul_ecrit",
+      "effectuer_calcul_instrumente",
+      "utiliser_logiciel_visualisation",
+      "utiliser_logiciel_simulation",
+      "utiliser_logiciel_programmation",
+      "reformuler_enonce",
+      "argumenter_convaincre",
+      "presenter_oral_solution"
+    ]
+  },
+  "notes": "Cette page contient principalement des informations sur les modalites pedagogiques (utilisation de logiciels, evaluation, oral, trace ecrite) et non des contenus mathematiques specifiques. Les competences extraites sont des competences transversales methodologiques."
+}

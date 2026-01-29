@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "description": "Fichier de suivi pour l'extraction des programmes officiels du college",
+    "created": "2026-01-03",
+    "last_updated": "2026-01-03",
+    "version": "1.4"
+  },
+  "resume_rapide": {
+    "total_pages_college": 64,
+    "pages_extraites": 61,
+    "pages_restantes": 3,
+    "progression": "95%",
+    "note": "EXTRACTION COMPLETE - Cycle3, 5e, 4e, 3e termines. Reste uniquement pages titre (non extractibles)."
+  },
+  "pdfs_college": [
+    {
+      "id": "cycle3_v2",
+      "nom_fichier": "cycle3_v2.pdf",
+      "niveau": "Cycle 3 (CM1-CM2-6e)",
+      "code_niveau": "C3",
+      "statut_split": "completed",
+      "total_pages": 28,
+      "pages_extraites": 28,
+      "pages_restantes": [],
+      "statut": "TERMINE",
+      "dossier_pages": "data/pages/cycle3_v2",
+      "dossier_extraction": "data/extractions/cycle3_v2",
+      "notes": "COMPLET - 28 pages extraites."
+    },
+    {
+      "id": "maths_5e",
+      "nom_fichier": "14-Maths-5e-attendus-eduscol_1114744.pdf",
+      "niveau": "5eme",
+      "code_niveau": "5E",
+      "statut_split": "completed",
+      "total_pages": 13,
+      "pages_extraites": 12,
+      "pages_restantes": [1],
+      "statut": "TERMINE",
+      "dossier_pages": "data/pages/14-Maths-5e-attendus-eduscol_1114744",
+      "dossier_extraction": "data/extractions/14-Maths-5e-attendus-eduscol_1114744",
+      "notes": "COMPLET - 12 pages de contenu extraites (pages 2-13). Page 1 = titre."
+    },
+    {
+      "id": "maths_4e",
+      "nom_fichier": "16-Maths-4e-attendus-eduscol_1114746.pdf",
+      "niveau": "4eme",
+      "code_niveau": "4E",
+      "statut_split": "completed",
+      "total_pages": 12,
+      "pages_extraites": 11,
+      "pages_restantes": [1],
+      "statut": "TERMINE",
+      "dossier_pages": "data/pages/16-Maths-4e-attendus-eduscol_1114746",
+      "dossier_extraction": "data/extractions/16-Maths-4e-attendus-eduscol_1114746",
+      "notes": "COMPLET - 11 pages de contenu extraites (pages 2-12). Page 1 = titre."
+    },
+    {
+      "id": "maths_3e",
+      "nom_fichier": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+      "niveau": "3eme",
+      "code_niveau": "3E",
+      "statut_split": "completed",
+      "total_pages": 11,
+      "pages_extraites": 10,
+      "pages_restantes": [1],
+      "statut": "TERMINE",
+      "dossier_pages": "data/pages/18-Maths-3e-attendus-eduscol_1114748",
+      "dossier_extraction": "data/extractions/18-Maths-3e-attendus-eduscol_1114748",
+      "notes": "COMPLET - 10 pages de contenu extraites (pages 2-11). Page 1 = titre."
+    }
+  ],
+  "workflow": {
+    "etape_1": "Splitter les PDFs en pages - FAIT",
+    "etape_2": "Creer les dossiers d'extraction - FAIT",
+    "etape_3": "Lancer les agents bo-competence-extractor - FAIT",
+    "etape_4": "Verifier les extractions et corriger si necessaire",
+    "etape_5": "Consolider les competences par niveau"
+  },
+  "sessions": [
+    {
+      "date": "2026-01-03",
+      "session_id": "session_001",
+      "actions": ["Preparation initiale, split PDFs"],
+      "notes": "Session initiale"
+    },
+    {
+      "date": "2026-01-03",
+      "session_id": "session_002",
+      "actions": ["Extraction 5eme pages 2-4"],
+      "notes": "Premier batch"
+    },
+    {
+      "date": "2026-01-03",
+      "session_id": "session_003",
+      "actions": ["Extraction complete 5e, 4e, 3e"],
+      "notes": "33 pages extraites"
+    },
+    {
+      "date": "2026-01-03",
+      "session_id": "session_004",
+      "actions": ["Extraction Cycle 3 pages 22-28 (7 agents)"],
+      "notes": "Cycle 3 complete. EXTRACTION COLLEGE TERMINEE."
+    }
+  ],
+  "instructions_prochaine_session": {
+    "resume": "Consolidation des competences",
+    "priorite": [
+      "1. Consolider toutes les competences par niveau en fichiers uniques",
+      "2. Verifier la qualite des extractions"
+    ]
+  }
+}

@@ -1,0 +1,835 @@
+{
+  "source": {
+    "pdf": "TG_spe.pdf",
+    "page": 20,
+    "text_length": 2247
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AG-1001",
+      "intitule": "Comprendre le rôle essentiel de la démarche algorithmique en mathématiques",
+      "fingerprint": "comprendre_role_demarche_algorithmique",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Fondamentaux algorithmiques",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître que la démarche algorithmique est une composante essentielle de l'activité mathématique depuis ses origines et qu'elle aide à la compréhension et à la construction des notions mathématiques.",
+      "formulation_bo": "La démarche algorithmique est, depuis les origines, une composante essentielle de l'activité mathématique",
+      "connaissances_associees": [
+        "notion de variable",
+        "affectation",
+        "instruction conditionnelle",
+        "boucle",
+        "fonction informatique",
+        "liste"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1002",
+      "intitule": "Utiliser le langage naturel pour écrire un algorithme",
+      "fingerprint": "utiliser_langage_naturel_algorithme",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Écriture d'algorithmes",
+      "type": "capacite",
+      "description_detaillee": "Écrire un algorithme en langage naturel, en utilisant le symbole « ← » pour désigner l'affectation.",
+      "formulation_bo": "Les algorithmes peuvent être écrits en langage naturel ou utiliser le langage Python. On utilise le symbole « ← » pour désigner l'affection dans un algorithme écrit en langage naturel.",
+      "connaissances_associees": [
+        "affectation",
+        "symboles algorithme",
+        "langage naturel"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1003",
+      "intitule": "Écrire un algorithme en langage Python",
+      "fingerprint": "ecrire_algorithme_python",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation",
+      "type": "capacite",
+      "description_detaillee": "Traduire un algorithme en langage Python.",
+      "formulation_bo": "Les algorithmes peuvent être écrits en langage naturel ou utiliser le langage Python.",
+      "connaissances_associees": [
+        "langage Python",
+        "syntaxe Python",
+        "variables",
+        "fonctions"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1004",
+      "intitule": "Mettre en œuvre la programmation modulaire pour décomposer une tâche complexe",
+      "fingerprint": "programmation_modulaire_decomposition_tache",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation modulaire",
+      "type": "capacite",
+      "description_detaillee": "Découper une tâche complexe en tâches plus simples et les programmer séparément sous forme de modules ou fonctions.",
+      "formulation_bo": "L'accent est mis sur la programmation modulaire qui permet de découper une tâche complexe en tâches plus simples.",
+      "connaissances_associees": [
+        "fonction informatique",
+        "décomposition",
+        "modularité",
+        "encapsulation"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1005",
+      "intitule": "Transformer un texte historique avec visée algorithmique en algorithme ou programme",
+      "fingerprint": "transformer_texte_historique_algorithme",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Histoire des mathématiques et algorithmique",
+      "type": "capacite",
+      "description_detaillee": "Quand un texte historique a une visée algorithmique, transformer les méthodes qu'il présente en un algorithme ou en un programme informatique.",
+      "formulation_bo": "Lorsqu'un texte historique a une visée algorithmique, transformer les méthodes qu'il présente en un algorithme, voire en un programme, ou inversement.",
+      "connaissances_associees": [
+        "histoire des mathématiques",
+        "changements de registre",
+        "formalisme mathématique"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1006",
+      "intitule": "Transformer un algorithme ou un programme en texte historique",
+      "fingerprint": "transformer_algorithme_texte_historique",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Histoire des mathématiques et algorithmique",
+      "type": "capacite",
+      "description_detaillee": "Transformer un algorithme ou un programme en un texte historique ou une description mathématique en langage naturel.",
+      "formulation_bo": "transformer les méthodes qu'il présente en un algorithme, voire en un programme, ou inversement",
+      "connaissances_associees": [
+        "histoire des mathématiques",
+        "changements de registre",
+        "formalisme mathématique"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1007",
+      "intitule": "Générer une liste en extension",
+      "fingerprint": "generer_liste_extension",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Créer une liste en énumérant explicitement tous ses éléments.",
+      "formulation_bo": "Générer une liste (en extension, par ajouts successifs ou en compréhension).",
+      "connaissances_associees": [
+        "notion de liste",
+        "éléments",
+        "énumération"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1008",
+      "intitule": "Générer une liste par ajouts successifs",
+      "fingerprint": "generer_liste_ajouts_successifs",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Créer une liste en ajoutant progressivement des éléments.",
+      "formulation_bo": "Générer une liste (en extension, par ajouts successifs ou en compréhension).",
+      "connaissances_associees": [
+        "notion de liste",
+        "méthode append",
+        "construction progressive"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1009",
+      "intitule": "Générer une liste en compréhension",
+      "fingerprint": "generer_liste_comprehension",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes",
+      "type": "capacite",
+      "description_detaillee": "Créer une liste en spécifiant une condition d'appartenance. Utiliser la syntaxe de compréhension pour créer une liste à partir d'une expression avec des conditions.",
+      "formulation_bo": "Générer une liste (en extension, par ajouts successifs ou en compréhension).",
+      "connaissances_associees": [
+        "notion de liste",
+        "conditions logiques",
+        "ensemble",
+        "syntaxe de compréhension Python"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1010",
+      "intitule": "Lier les listes en compréhension avec la notion d'ensemble",
+      "fingerprint": "lier_listes_comprehension_ensemble",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Listes et ensembles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre le lien entre la génération des listes en compréhension et la notion mathématique d'ensemble. Reconnaître qu'une condition dans une liste en compréhension définit une appartenance à un ensemble.",
+      "formulation_bo": "La génération des listes en compréhension et en extension est mise en lien avec la notion d'ensemble.",
+      "connaissances_associees": [
+        "notion de liste",
+        "notion d'ensemble",
+        "conditions",
+        "compréhension"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1011",
+      "intitule": "Utiliser les conditions dans les listes en compréhension pour travailler la logique",
+      "fingerprint": "utiliser_conditions_listes_logique",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Logique et listes",
+      "type": "capacite",
+      "description_detaillee": "Écrire et interpréter les conditions apparaissant dans les listes définies en compréhension. Utiliser ces conditions pour travailler les concepts de logique mathématique.",
+      "formulation_bo": "Les conditions apparaissant dans les listes définies en compréhension permettent de travailler la logique.",
+      "connaissances_associees": [
+        "logique mathématique",
+        "conditions",
+        "prédicats",
+        "quantificateurs"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1012",
+      "intitule": "Ajouter des éléments à une liste",
+      "fingerprint": "ajouter_elements_liste",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Manipulation de listes",
+      "type": "capacite",
+      "description_detaillee": "Insérer ou ajouter un ou plusieurs éléments dans une liste à une position donnée ou à la fin.",
+      "formulation_bo": "Manipuler des éléments d'une liste (ajouter, supprimer…) et leurs indices.",
+      "connaissances_associees": [
+        "liste",
+        "indices",
+        "méthode append",
+        "méthode insert"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1013",
+      "intitule": "Supprimer des éléments d'une liste",
+      "fingerprint": "supprimer_elements_liste",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Manipulation de listes",
+      "type": "capacite",
+      "description_detaillee": "Retirer un ou plusieurs éléments d'une liste selon leur position ou leur valeur.",
+      "formulation_bo": "Manipuler des éléments d'une liste (ajouter, supprimer…) et leurs indices.",
+      "connaissances_associees": [
+        "liste",
+        "indices",
+        "méthode remove",
+        "méthode pop",
+        "slicing"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1014",
+      "intitule": "Accéder aux indices d'une liste",
+      "fingerprint": "acceder_indices_liste",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Manipulation de listes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les indices pour accéder, modifier ou référencer les éléments d'une liste. Comprendre l'indexation 0-based en Python.",
+      "formulation_bo": "Manipuler des éléments d'une liste (ajouter, supprimer…) et leurs indices.",
+      "connaissances_associees": [
+        "liste",
+        "indices",
+        "indexation",
+        "accès"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1015",
+      "intitule": "Parcourir une liste",
+      "fingerprint": "parcourir_liste",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Itération sur listes",
+      "type": "capacite",
+      "description_detaillee": "Accéder successivement à tous les éléments d'une liste dans un processus d'itération pour effectuer une opération sur chaque élément.",
+      "formulation_bo": "Parcourir une liste.",
+      "connaissances_associees": [
+        "boucle for",
+        "itération",
+        "indice",
+        "élément"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AG-1016",
+      "intitule": "Itérer sur les éléments d'une liste",
+      "fingerprint": "iterer_elements_liste",
+      "niveau": "TSPE",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Itération sur listes",
+      "type": "capacite",
+      "description_detaillee": "Exécuter un bloc de code pour chaque élément d'une liste en utilisant une boucle de parcours (for ... in ...).",
+      "formulation_bo": "Itérer sur les éléments d'une liste.",
+      "connaissances_associees": [
+        "boucle for",
+        "itération",
+        "variable de boucle",
+        "élément"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1001",
+      "intitule": "Connaître la notion d'élément d'un ensemble",
+      "fingerprint": "connaitre_notion_element_ensemble",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et utiliser la notion d'élément d'un ensemble. Reconnaître qu'un objet appartient ou non à un ensemble.",
+      "formulation_bo": "Les élèves doivent connaître les notions d'élément d'un ensemble, de sous-ensemble, d'appartenance et d'inclusion",
+      "connaissances_associees": [
+        "ensemble",
+        "élément",
+        "appartenance"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1002",
+      "intitule": "Connaître la notion de sous-ensemble",
+      "fingerprint": "connaitre_notion_sous_ensemble",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Vocabulaire ensembliste et logique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la notion de sous-ensemble : un ensemble dont tous les éléments appartiennent à un autre ensemble.",
+      "formulation_bo": "Les élèves doivent connaître les notions d'élément d'un ensemble, de sous-ensemble, d'appartenance et d'inclusion",
+      "connaissances_associees": [
+        "ensemble",
+        "sous-ensemble",
+        "inclusion"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1003",
+      "intitule": "Utiliser le symbole ∈ pour l'appartenance",
+      "fingerprint": "utiliser_symbole_appartenance",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Notations ensemblistes",
+      "type": "contenu",
+      "description_detaillee": "Utiliser correctement le symbole ∈ pour exprimer qu'un élément appartient à un ensemble.",
+      "formulation_bo": "savoir utiliser les symboles de base correspondant : ∈, ⊂, ⋂, ⋃",
+      "connaissances_associees": [
+        "symbole ∈",
+        "appartenance",
+        "notation ensembliste"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1004",
+      "intitule": "Utiliser le symbole ⊂ pour l'inclusion",
+      "fingerprint": "utiliser_symbole_inclusion",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Notations ensemblistes",
+      "type": "contenu",
+      "description_detaillee": "Utiliser correctement le symbole ⊂ pour exprimer qu'un ensemble est inclus dans un autre.",
+      "formulation_bo": "savoir utiliser les symboles de base correspondant : ∈, ⊂, ⋂, ⋃",
+      "connaissances_associees": [
+        "symbole ⊂",
+        "inclusion",
+        "sous-ensemble",
+        "notation ensembliste"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1005",
+      "intitule": "Utiliser le symbole ⋂ pour l'intersection",
+      "fingerprint": "utiliser_symbole_intersection",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Notations ensemblistes",
+      "type": "contenu",
+      "description_detaillee": "Utiliser correctement le symbole ⋂ pour exprimer l'intersection de deux ensembles.",
+      "formulation_bo": "savoir utiliser les symboles de base correspondant : ∈, ⊂, ⋂, ⋃",
+      "connaissances_associees": [
+        "symbole ⋂",
+        "intersection",
+        "éléments communs",
+        "notation ensembliste"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1006",
+      "intitule": "Utiliser le symbole ⋃ pour la réunion",
+      "fingerprint": "utiliser_symbole_reunion",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Notations ensemblistes",
+      "type": "contenu",
+      "description_detaillee": "Utiliser correctement le symbole ⋃ pour exprimer la réunion de deux ensembles.",
+      "formulation_bo": "savoir utiliser les symboles de base correspondant : ∈, ⊂, ⋂, ⋃",
+      "connaissances_associees": [
+        "symbole ⋃",
+        "réunion",
+        "union",
+        "notation ensembliste"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1007",
+      "intitule": "Connaître l'intersection de deux ensembles",
+      "fingerprint": "connaitre_intersection_ensemble",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Opérations sur ensembles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que l'intersection de deux ensembles est l'ensemble de tous les éléments qui appartiennent à la fois à l'un et à l'autre.",
+      "formulation_bo": "d'intersection et de complémentaire",
+      "connaissances_associees": [
+        "ensemble",
+        "intersection",
+        "éléments communs"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1008",
+      "intitule": "Connaître la réunion de deux ensembles",
+      "fingerprint": "connaitre_reunion_ensemble",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Opérations sur ensembles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que la réunion de deux ensembles est l'ensemble de tous les éléments qui appartiennent à l'un ou à l'autre ou aux deux.",
+      "formulation_bo": "de réunion, d'intersection et de complémentaire",
+      "connaissances_associees": [
+        "ensemble",
+        "réunion",
+        "union"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1009",
+      "intitule": "Connaître le complémentaire d'un ensemble",
+      "fingerprint": "connaitre_complementaire_ensemble",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Opérations sur ensembles",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la notion de complémentaire d'un sous-ensemble A de E : l'ensemble de tous les éléments de E qui n'appartiennent pas à A.",
+      "formulation_bo": "de réunion, d'intersection et de complémentaire",
+      "connaissances_associees": [
+        "ensemble",
+        "complémentaire",
+        "négation"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1010",
+      "intitule": "Utiliser la notation Ā pour le complémentaire",
+      "fingerprint": "utiliser_notation_complementaire_barre",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Notations ensemblistes",
+      "type": "contenu",
+      "description_detaillee": "Utiliser la notation Ā pour désigner le complémentaire d'un sous-ensemble A, notation usuelle en probabilités.",
+      "formulation_bo": "Pour le complémentaire d'un sous-ensemble A de E, on utilise la notation des probabilités Ā",
+      "connaissances_associees": [
+        "complémentaire",
+        "notation Ā",
+        "probabilités"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1011",
+      "intitule": "Utiliser la notation E \\ A pour le complémentaire",
+      "fingerprint": "utiliser_notation_complementaire_slash",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Notations ensemblistes",
+      "type": "contenu",
+      "description_detaillee": "Utiliser la notation E \\ A pour désigner le complémentaire d'un sous-ensemble A de E dans l'ensemble E.",
+      "formulation_bo": "ou la notation E \\ A",
+      "connaissances_associees": [
+        "complémentaire",
+        "notation E \\ A",
+        "ensemble de référence"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1012",
+      "intitule": "Utiliser la notation d'ensemble pour les ensembles de nombres",
+      "fingerprint": "utiliser_notation_ensembles_nombres",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Notations et ensembles numériques",
+      "type": "contenu",
+      "description_detaillee": "Utiliser correctement la notation des ensembles de nombres (ℕ, ℤ, ℚ, ℝ, ℂ) et interpréter les relations d'inclusion entre ces ensembles.",
+      "formulation_bo": "ainsi que la notation des ensembles de nombres et des intervalles",
+      "connaissances_associees": [
+        "ensembles numériques",
+        "ℕ, ℤ, ℚ, ℝ, ℂ",
+        "notation ensembliste"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1013",
+      "intitule": "Utiliser la notation d'intervalle",
+      "fingerprint": "utiliser_notation_intervalle",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Notations et intervalles",
+      "type": "contenu",
+      "description_detaillee": "Utiliser correctement la notation des intervalles : crochets fermants [ et ], crochets ouvrants ] et [, pour exprimer les ensembles de nombres dans une plage.",
+      "formulation_bo": "ainsi que la notation des ensembles de nombres et des intervalles",
+      "connaissances_associees": [
+        "intervalle",
+        "notation d'intervalle",
+        "ensembles numériques"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1014",
+      "intitule": "Connaître la notion de couple",
+      "fingerprint": "connaitre_notion_couple",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "n-uplets et produit cartésien",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la notion de couple : une paire ordonnée de deux éléments (a, b).",
+      "formulation_bo": "Ils connaissent également la notion de couple, de triplet et plus généralement de n-uplet et celle de produit cartésien.",
+      "connaissances_associees": [
+        "couple",
+        "paire ordonnée",
+        "élément"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1015",
+      "intitule": "Connaître la notion de triplet",
+      "fingerprint": "connaitre_notion_triplet",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "n-uplets et produit cartésien",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la notion de triplet : un ensemble ordonné de trois éléments (a, b, c).",
+      "formulation_bo": "Ils connaissent également la notion de couple, de triplet et plus généralement de n-uplet et celle de produit cartésien.",
+      "connaissances_associees": [
+        "triplet",
+        "n-uplet",
+        "élément"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1016",
+      "intitule": "Connaître la notion de n-uplet",
+      "fingerprint": "connaitre_notion_n_uplet",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "n-uplets et produit cartésien",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la notion de n-uplet : une séquence ordonnée de n éléments (a1, a2, ..., an).",
+      "formulation_bo": "Ils connaissent également la notion de couple, de triplet et plus généralement de n-uplet et celle de produit cartésien.",
+      "connaissances_associees": [
+        "n-uplet",
+        "séquence ordonnée",
+        "élément"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1017",
+      "intitule": "Connaître la notion de produit cartésien",
+      "fingerprint": "connaitre_produit_cartesien",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "n-uplets et produit cartésien",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la notion de produit cartésien : l'ensemble de tous les couples (ou n-uplets) formés en prenant un élément de chaque ensemble.",
+      "formulation_bo": "Ils connaissent également la notion de couple, de triplet et plus généralement de n-uplet et celle de produit cartésien.",
+      "connaissances_associees": [
+        "produit cartésien",
+        "couple",
+        "n-uplet",
+        "ensemble"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-AN-1001",
+      "intitule": "Comprendre la notion de fonction dans divers contextes",
+      "fingerprint": "comprendre_notion_fonction_contextes",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Notion transversale de fonction",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître et comprendre la notion de fonction dans les diverses parties du programme : fonctions d'une variable réelle, suites, variables aléatoires, exemples en géométrie.",
+      "formulation_bo": "La notion de fonction, que les élèves manipulent depuis le cycle 4, est mise en évidence dans les diverses parties du programme : fonctions d'une variable réelle, suites, variables aléatoires, exemples en géométrie.",
+      "connaissances_associees": [
+        "fonction",
+        "ensemble de définition",
+        "image",
+        "antécédent"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-LO-1018",
+      "intitule": "Connaître la notion de bijection",
+      "fingerprint": "connaitre_notion_bijection",
+      "niveau": "TSPE",
+      "domaine": "LOGIQUE",
+      "sous_domaine": "Fonctions et bijections",
+      "type": "contenu",
+      "description_detaillee": "Comprendre la notion de bijection : une fonction qui est à la fois injective (chaque élément du codomaine a au plus un antécédent) et surjective (chaque élément du codomaine a au moins un antécédent).",
+      "formulation_bo": "La notion de bijection est rencontrée naturellement en analyse, en géométrie (notamment bijection entre le plan et ℝ2, l'espace et ℝ3)",
+      "connaissances_associees": [
+        "bijection",
+        "injection",
+        "surjection",
+        "fonction",
+        "correspondance biunivoque"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-GE-1001",
+      "intitule": "Reconnaître la bijection entre le plan et ℝ²",
+      "fingerprint": "reconnaitre_bijection_plan_R2",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie analytique",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et utiliser la bijection qui existe entre les points du plan et les couples de nombres réels (x, y) des coordonnées cartésiennes.",
+      "formulation_bo": "notamment bijection entre le plan et ℝ2, l'espace et ℝ3",
+      "connaissances_associees": [
+        "bijection",
+        "coordonnées cartésiennes",
+        "plan",
+        "couple",
+        "nombre réel"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    },
+    {
+      "code": "TSPE-GE-1002",
+      "intitule": "Reconnaître la bijection entre l'espace et ℝ³",
+      "fingerprint": "reconnaitre_bijection_espace_R3",
+      "niveau": "TSPE",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Géométrie analytique 3D",
+      "type": "contenu",
+      "description_detaillee": "Comprendre et utiliser la bijection qui existe entre les points de l'espace et les triplets de nombres réels (x, y, z) des coordonnées cartésiennes 3D.",
+      "formulation_bo": "notamment bijection entre le plan et ℝ2, l'espace et ℝ3",
+      "connaissances_associees": [
+        "bijection",
+        "coordonnées cartésiennes 3D",
+        "espace",
+        "triplet",
+        "nombre réel"
+      ],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 20
+      }
+    }
+  ],
+  "summary": {
+    "total": 35,
+    "by_type": {
+      "contenu": 16,
+      "capacite": 16,
+      "demonstration": 0,
+      "algorithme": 0,
+      "approfondissement": 3
+    },
+    "by_domaine": {
+      "ALGORITHMIQUE": 16,
+      "LOGIQUE": 12,
+      "ANALYSE": 1,
+      "GEOMETRIE": 2
+    },
+    "fingerprints": [
+      "comprendre_role_demarche_algorithmique",
+      "utiliser_langage_naturel_algorithme",
+      "ecrire_algorithme_python",
+      "programmation_modulaire_decomposition_tache",
+      "transformer_texte_historique_algorithme",
+      "transformer_algorithme_texte_historique",
+      "generer_liste_extension",
+      "generer_liste_ajouts_successifs",
+      "generer_liste_comprehension",
+      "lier_listes_comprehension_ensemble",
+      "utiliser_conditions_listes_logique",
+      "ajouter_elements_liste",
+      "supprimer_elements_liste",
+      "acceder_indices_liste",
+      "parcourir_liste",
+      "iterer_elements_liste",
+      "connaitre_notion_element_ensemble",
+      "connaitre_notion_sous_ensemble",
+      "utiliser_symbole_appartenance",
+      "utiliser_symbole_inclusion",
+      "utiliser_symbole_intersection",
+      "utiliser_symbole_reunion",
+      "connaitre_intersection_ensemble",
+      "connaitre_reunion_ensemble",
+      "connaitre_complementaire_ensemble",
+      "utiliser_notation_complementaire_barre",
+      "utiliser_notation_complementaire_slash",
+      "utiliser_notation_ensembles_nombres",
+      "utiliser_notation_intervalle",
+      "connaitre_notion_couple",
+      "connaitre_notion_triplet",
+      "connaitre_notion_n_uplet",
+      "connaitre_produit_cartesien",
+      "comprendre_notion_fonction_contextes",
+      "connaitre_notion_bijection",
+      "reconnaitre_bijection_plan_R2",
+      "reconnaitre_bijection_espace_R3"
+    ]
+  }
+}

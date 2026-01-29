@@ -1,0 +1,428 @@
+{
+  "source": {
+    "pdf": "Tle_techno.pdf",
+    "page": 13,
+    "text_length": 1548
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TTC-AN-651",
+      "intitule": "Définir le logarithme décimal comme solution de l'équation 10^x = b",
+      "fingerprint": "definir_logarithme_decimal_equation",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions logarithmiques",
+      "type": "contenu",
+      "description_detaillee": "Définition du logarithme décimal de b pour b > 0 comme l'unique solution de l'équation 10^x = b, notation log(b)",
+      "formulation_bo": "Définition du logarithme décimal de b pour b > 0 comme l'unique solution de l'équation 10^x = b ; notation log.",
+      "connaissances_associees": ["fonctions exponentielles", "équations exponentielles", "réels strictement positifs"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-652",
+      "intitule": "Déterminer le sens de variation de la fonction logarithme décimal",
+      "fingerprint": "determiner_variation_logarithme_decimal",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions logarithmiques",
+      "type": "contenu",
+      "description_detaillee": "Étudier et reconnaître que la fonction logarithme décimal est croissante sur son ensemble de définition (réels strictement positifs)",
+      "formulation_bo": "Sens de variation.",
+      "connaissances_associees": ["définition logarithme décimal", "monotonie des fonctions"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-653",
+      "intitule": "Appliquer la propriété log(ab) = log(a) + log(b)",
+      "fingerprint": "appliquer_propriete_logarithme_produit",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions logarithmiques",
+      "type": "contenu",
+      "description_detaillee": "Utiliser la propriété algébrique log(ab) = log(a) + log(b) pour a et b réels strictement positifs",
+      "formulation_bo": "Propriétés algébriques : log(ab) = log(a) + log(b)",
+      "connaissances_associees": ["logarithme décimal", "propriétés algébriques"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-654",
+      "intitule": "Appliquer la propriété log(a^n) = n·log(a)",
+      "fingerprint": "appliquer_propriete_logarithme_puissance",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions logarithmiques",
+      "type": "contenu",
+      "description_detaillee": "Utiliser la propriété algébrique log(a^n) = n·log(a) pour a réel strictement positif et n entier naturel",
+      "formulation_bo": "Propriétés algébriques : log(a^n) = n log(a) pour n entier naturel, a et b réels strictement positifs.",
+      "connaissances_associees": ["logarithme décimal", "propriétés algébriques"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-655",
+      "intitule": "Appliquer la propriété log(a/b) = log(a) - log(b)",
+      "fingerprint": "appliquer_propriete_logarithme_quotient",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions logarithmiques",
+      "type": "contenu",
+      "description_detaillee": "Utiliser la propriété algébrique log(a/b) = log(a) - log(b) pour a et b réels strictement positifs",
+      "formulation_bo": "Propriétés algébriques : log(a/b) = log(a) - log(b), pour n entier naturel, a et b réels strictement positifs.",
+      "connaissances_associees": ["logarithme décimal", "propriétés algébriques"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-656",
+      "intitule": "Résoudre une équation du type a^x = b d'inconnue x réelle",
+      "fingerprint": "resoudre_equation_exponentielle_ax_b",
+      "niveau": "TTC",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Équations exponentielles et logarithmiques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le logarithme décimal pour résoudre une équation du type a^x = b d'inconnue x réelle, où a > 0 et a ≠ 1",
+      "formulation_bo": "Utiliser le logarithme décimal pour résoudre une équation du type a^x = b ou x^a = b d'inconnue x réelle",
+      "connaissances_associees": ["logarithme décimal", "équations exponentielles", "propriétés du logarithme"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-657",
+      "intitule": "Résoudre une équation du type x^a = b d'inconnue x réelle",
+      "fingerprint": "resoudre_equation_puissance_xa_b",
+      "niveau": "TTC",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Équations exponentielles et logarithmiques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le logarithme décimal pour résoudre une équation du type x^a = b d'inconnue x réelle, où a et b sont strictement positifs",
+      "formulation_bo": "Utiliser le logarithme décimal pour résoudre une équation du type a^x = b ou x^a = b d'inconnue x réelle",
+      "connaissances_associees": ["logarithme décimal", "équations de puissance", "propriétés du logarithme"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-658",
+      "intitule": "Résoudre une inéquation du type a^x < b d'inconnue x réelle",
+      "fingerprint": "resoudre_inequation_exponentielle_ax_b",
+      "niveau": "TTC",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Équations exponentielles et logarithmiques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le logarithme décimal pour résoudre une inéquation du type a^x < b d'inconnue x réelle, où a > 0 et a ≠ 1",
+      "formulation_bo": "Utiliser le logarithme décimal pour résoudre une inéquation du type a^x < b ou x^a < b d'inconnue x réelle",
+      "connaissances_associees": ["logarithme décimal", "inégalités exponentielles", "propriétés du logarithme", "monotonie"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-659",
+      "intitule": "Résoudre une inéquation du type x^a < b d'inconnue x réelle",
+      "fingerprint": "resoudre_inequation_puissance_xa_b",
+      "niveau": "TTC",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Équations exponentielles et logarithmiques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le logarithme décimal pour résoudre une inéquation du type x^a < b d'inconnue x réelle, où a et b sont strictement positifs",
+      "formulation_bo": "Utiliser le logarithme décimal pour résoudre une inéquation du type a^x < b ou x^a < b d'inconnue x réelle",
+      "connaissances_associees": ["logarithme décimal", "inégalités de puissance", "propriétés du logarithme", "monotonie"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-660",
+      "intitule": "Résoudre une inéquation du type a^n < b d'inconnue n entier naturel",
+      "fingerprint": "resoudre_inequation_exponentielle_an_b_entier",
+      "niveau": "TTC",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Équations exponentielles et logarithmiques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser le logarithme décimal pour résoudre une inéquation du type a^n < b d'inconnue n entier naturel, où a > 0 et a ≠ 1",
+      "formulation_bo": "Utiliser le logarithme décimal pour résoudre une inéquation du type a^n < b d'inconnue n entier naturel.",
+      "connaissances_associees": ["logarithme décimal", "inégalités exponentielles", "entiers naturels", "propriétés du logarithme"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-661",
+      "intitule": "Transformer des expressions numériques avec les propriétés du logarithme décimal",
+      "fingerprint": "transformer_expressions_logarithme_decimal",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions logarithmiques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les propriétés algébriques de la fonction logarithme décimal pour simplifier et transformer des expressions numériques",
+      "formulation_bo": "Utiliser les propriétés algébriques de la fonction logarithme décimal pour transformer des expressions numériques ou littérales.",
+      "connaissances_associees": ["logarithme décimal", "propriétés algébriques du logarithme"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-662",
+      "intitule": "Transformer des expressions littérales avec les propriétés du logarithme décimal",
+      "fingerprint": "transformer_expressions_littérales_logarithme_decimal",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions logarithmiques",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les propriétés algébriques de la fonction logarithme décimal pour simplifier et transformer des expressions littérales",
+      "formulation_bo": "Utiliser les propriétés algébriques de la fonction logarithme décimal pour transformer des expressions numériques ou littérales.",
+      "connaissances_associees": ["logarithme décimal", "propriétés algébriques du logarithme"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-663",
+      "intitule": "Déterminer l'ordre de grandeur d'un nombre avec son logarithme décimal",
+      "fingerprint": "determiner_ordre_grandeur_logarithme_decimal",
+      "niveau": "TTC",
+      "domaine": "NOMBRE",
+      "sous_domaine": "Logarithme décimal et ordre de grandeur",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la valeur du logarithme décimal d'un nombre strictement positif pour obtenir son ordre de grandeur",
+      "formulation_bo": "La valeur du logarithme décimal d'un nombre strictement positif permet d'obtenir son ordre de grandeur",
+      "connaissances_associees": ["logarithme décimal", "ordre de grandeur", "puissances de 10"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-664",
+      "intitule": "Déterminer le nombre de chiffres d'un entier positif avec son logarithme décimal",
+      "fingerprint": "determiner_nombre_chiffres_logarithme_decimal",
+      "niveau": "TTC",
+      "domaine": "NOMBRE",
+      "sous_domaine": "Logarithme décimal et ordre de grandeur",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la valeur du logarithme décimal d'un entier strictement positif pour déterminer le nombre de chiffres de son écriture décimale",
+      "formulation_bo": "La valeur du logarithme décimal d'un nombre strictement positif permet de déterminer, dans le cas d'un entier strictement positif, le nombre de chiffres de son écriture décimale.",
+      "connaissances_associees": ["logarithme décimal", "écriture décimale", "puissances de 10"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-665",
+      "intitule": "Déterminer le comportement aux bornes de l'ensemble de définition de la fonction inverse",
+      "fingerprint": "determiner_comportement_limites_inverse",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonction inverse",
+      "type": "contenu",
+      "description_detaillee": "Étudier le comportement de la fonction inverse f(x) = 1/x aux bornes de son ensemble de définition (comportement en +∞, -∞, 0+ et 0-)",
+      "formulation_bo": "Comportement de la fonction inverse aux bornes de son ensemble de définition.",
+      "connaissances_associees": ["fonction inverse", "limite", "ensemble de définition", "asymptotes"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-666",
+      "intitule": "Calculer la dérivée de la fonction inverse",
+      "fingerprint": "calculer_derivee_fonction_inverse",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation et fonction inverse",
+      "type": "contenu",
+      "description_detaillee": "Déterminer que la dérivée de la fonction f(x) = 1/x est f'(x) = -1/x² en utilisant la définition du nombre dérivé ou le taux de variation",
+      "formulation_bo": "Dérivée et sens de variation.",
+      "connaissances_associees": ["fonction inverse", "dérivation", "taux de variation", "nombre dérivé"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-667",
+      "intitule": "Déterminer le sens de variation de la fonction inverse",
+      "fingerprint": "determiner_variation_fonction_inverse",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Dérivation et fonction inverse",
+      "type": "contenu",
+      "description_detaillee": "Étudier et reconnaître que la fonction inverse est décroissante sur ]-∞, 0[ et sur ]0, +∞[ en utilisant le signe de sa dérivée",
+      "formulation_bo": "Dérivée et sens de variation.",
+      "connaissances_associees": ["fonction inverse", "dérivation", "monotonie", "signe de la dérivée"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-668",
+      "intitule": "Tracer la courbe représentative de la fonction inverse",
+      "fingerprint": "tracer_courbe_fonction_inverse",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Représentation graphique et fonction inverse",
+      "type": "contenu",
+      "description_detaillee": "Construire et reconnaître la courbe représentative de la fonction inverse avec ses asymptotes verticale (x=0) et horizontale (y=0)",
+      "formulation_bo": "Courbe représentative ; asymptotes.",
+      "connaissances_associees": ["fonction inverse", "représentation graphique", "asymptotes", "hyperbole"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-669",
+      "intitule": "Identifier les asymptotes de la fonction inverse",
+      "fingerprint": "identifier_asymptotes_fonction_inverse",
+      "niveau": "TTC",
+      "domaine": "ANALYSIS",
+      "sous_domaine": "Représentation graphique et fonction inverse",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître et identifier les asymptotes de la fonction inverse : asymptote verticale x=0 et asymptote horizontale y=0",
+      "formulation_bo": "Courbe représentative ; asymptotes.",
+      "connaissances_associees": ["fonction inverse", "asymptotes", "limites", "représentation graphique"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-670",
+      "intitule": "Étudier une fonction combinaison linéaire de la fonction inverse et de polynômes de degré ≤ 3",
+      "fingerprint": "etudier_fonction_combinaison_inverse_polynome",
+      "niveau": "TTC",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Étude de fonctions",
+      "type": "capacite",
+      "description_detaillee": "Étudier complètement une fonction de la forme f(x) = αP(x) + β/x où P(x) est un polynôme de degré au maximum 3 : dérivée, sens de variation, limites, asymptotes",
+      "formulation_bo": "Étudier et représenter des fonctions obtenues par combinaisons linéaires de la fonction inverse et de fonctions polynomiales de degré au maximum 3.",
+      "connaissances_associees": ["fonction inverse", "polynômes", "dérivation", "étude de fonctions", "monotonie"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    },
+    {
+      "code": "TTC-AN-671",
+      "intitule": "Représenter graphiquement une fonction combinaison linéaire de la fonction inverse et de polynômes de degré ≤ 3",
+      "fingerprint": "representer_fonction_combinaison_inverse_polynome",
+      "niveau": "TTC",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Représentation graphique",
+      "type": "capacite",
+      "description_detaillee": "Tracer la courbe représentative d'une fonction de la forme f(x) = αP(x) + β/x où P(x) est un polynôme de degré au maximum 3, avec asymptotes et points remarquables",
+      "formulation_bo": "Étudier et représenter des fonctions obtenues par combinaisons linéaires de la fonction inverse et de fonctions polynomiales de degré au maximum 3.",
+      "connaissances_associees": ["fonction inverse", "polynômes", "représentation graphique", "asymptotes", "points remarquables"],
+      "source": {
+        "pdf": "Tle_techno.pdf",
+        "page": 13
+      }
+    }
+  ],
+  "summary": {
+    "total": 21,
+    "by_type": {
+      "contenu": 11,
+      "capacite": 10
+    },
+    "by_domaine": {
+      "ANALYSE": 13,
+      "ALGEBRE": 4,
+      "NOMBRE": 2,
+      "GEOMETRIE": 2
+    },
+    "sections": [
+      {
+        "titre": "Fonction logarithme décimal",
+        "competences_count": 12,
+        "codes": [
+          "TTC-AN-651",
+          "TTC-AN-652",
+          "TTC-AN-653",
+          "TTC-AN-654",
+          "TTC-AN-655",
+          "TTC-AN-656",
+          "TTC-AN-657",
+          "TTC-AN-658",
+          "TTC-AN-659",
+          "TTC-AN-660",
+          "TTC-AN-661",
+          "TTC-AN-662"
+        ]
+      },
+      {
+        "titre": "Applications du logarithme décimal",
+        "competences_count": 2,
+        "codes": [
+          "TTC-AN-663",
+          "TTC-AN-664"
+        ]
+      },
+      {
+        "titre": "Fonction inverse",
+        "competences_count": 7,
+        "codes": [
+          "TTC-AN-665",
+          "TTC-AN-666",
+          "TTC-AN-667",
+          "TTC-AN-668",
+          "TTC-AN-669",
+          "TTC-AN-670",
+          "TTC-AN-671"
+        ]
+      }
+    ],
+    "fingerprints": [
+      "definir_logarithme_decimal_equation",
+      "determiner_variation_logarithme_decimal",
+      "appliquer_propriete_logarithme_produit",
+      "appliquer_propriete_logarithme_puissance",
+      "appliquer_propriete_logarithme_quotient",
+      "resoudre_equation_exponentielle_ax_b",
+      "resoudre_equation_puissance_xa_b",
+      "resoudre_inequation_exponentielle_ax_b",
+      "resoudre_inequation_puissance_xa_b",
+      "resoudre_inequation_exponentielle_an_b_entier",
+      "transformer_expressions_logarithme_decimal",
+      "transformer_expressions_littérales_logarithme_decimal",
+      "determiner_ordre_grandeur_logarithme_decimal",
+      "determiner_nombre_chiffres_logarithme_decimal",
+      "determiner_comportement_limites_inverse",
+      "calculer_derivee_fonction_inverse",
+      "determiner_variation_fonction_inverse",
+      "tracer_courbe_fonction_inverse",
+      "identifier_asymptotes_fonction_inverse",
+      "etudier_fonction_combinaison_inverse_polynome",
+      "representer_fonction_combinaison_inverse_polynome"
+    ]
+  }
+}

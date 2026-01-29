@@ -1,0 +1,116 @@
+{
+  "source": {
+    "pdf": "2GT.pdf",
+    "page": 8,
+    "text_length": 2687
+  },
+  "extraction": {
+    "date": "2026-01-09T12:00:00",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "2GT-AG-401",
+      "intitule": "Determiner la premiere puissance d'un nombre positif superieure a une valeur donnee",
+      "fingerprint": "determiner_premiere_puissance_superieure_valeur",
+      "niveau": "2GT",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes et programmation",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un algorithme qui, etant donne un nombre positif a et une valeur seuil s, determine le plus petit entier n tel que a^n > s (ou a^n >= s)",
+      "formulation_bo": "Determiner la premiere puissance d'un nombre positif donne superieure ou inferieure a une valeur donnee.",
+      "connaissances_associees": ["puissances", "boucle while", "comparaison"],
+      "source": {"pdf": "2GT.pdf", "page": 8}
+    },
+    {
+      "code": "2GT-AG-402",
+      "intitule": "Determiner la premiere puissance d'un nombre positif inferieure a une valeur donnee",
+      "fingerprint": "determiner_premiere_puissance_inferieure_valeur",
+      "niveau": "2GT",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Algorithmes et programmation",
+      "type": "algorithme",
+      "description_detaillee": "Ecrire un algorithme qui, etant donne un nombre positif a (0 < a < 1) et une valeur seuil s, determine le plus petit entier n tel que a^n < s",
+      "formulation_bo": "Determiner la premiere puissance d'un nombre positif donne superieure ou inferieure a une valeur donnee.",
+      "connaissances_associees": ["puissances", "boucle while", "comparaison"],
+      "source": {"pdf": "2GT.pdf", "page": 8}
+    },
+    {
+      "code": "2GT-AL-403",
+      "intitule": "Developper (a + b + c)^2",
+      "fingerprint": "developper_somme_trois_termes_carre",
+      "niveau": "2GT",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Calcul algebrique",
+      "type": "approfondissement",
+      "description_detaillee": "Connaitre et appliquer la formule de developpement (a+b+c)^2 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc",
+      "formulation_bo": "Developpement de (a + b + c)2.",
+      "connaissances_associees": ["identites remarquables", "distributivite", "developpement"],
+      "source": {"pdf": "2GT.pdf", "page": 8}
+    },
+    {
+      "code": "2GT-AL-404",
+      "intitule": "Developper (a + b)^3",
+      "fingerprint": "developper_somme_deux_termes_cube",
+      "niveau": "2GT",
+      "domaine": "ALGEBRE",
+      "sous_domaine": "Calcul algebrique",
+      "type": "approfondissement",
+      "description_detaillee": "Connaitre et appliquer la formule de developpement (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3",
+      "formulation_bo": "Developpement de (a + b)3.",
+      "connaissances_associees": ["identites remarquables", "distributivite", "developpement", "puissances"],
+      "source": {"pdf": "2GT.pdf", "page": 8}
+    },
+    {
+      "code": "2GT-NB-405",
+      "intitule": "Demontrer l'inegalite entre moyennes geometrique et arithmetique",
+      "fingerprint": "demontrer_inegalite_moyenne_geometrique_arithmetique",
+      "niveau": "2GT",
+      "domaine": "NOMBRES",
+      "sous_domaine": "Inegalites",
+      "type": "approfondissement",
+      "description_detaillee": "Demontrer que pour deux reels strictement positifs a et b, sqrt(ab) <= (a+b)/2, avec egalite si et seulement si a = b",
+      "formulation_bo": "Inegalite entre moyennes geometrique et arithmetique de deux reels strictement positifs.",
+      "connaissances_associees": ["moyenne arithmetique", "moyenne geometrique", "racine carree", "inegalites"],
+      "source": {"pdf": "2GT.pdf", "page": 8}
+    },
+    {
+      "code": "2GT-GE-406",
+      "intitule": "Reconnaitre l'effet d'une translation sur une configuration plane",
+      "fingerprint": "reconnaitre_effet_translation_configuration",
+      "niveau": "2GT",
+      "domaine": "GEOMETRIE",
+      "sous_domaine": "Vecteurs du plan",
+      "type": "contenu",
+      "description_detaillee": "Observer et identifier les proprietes conservees par une translation : parallelisme, distances, angles, aires",
+      "formulation_bo": "La notion de translation fait l'objet d'une premiere approche, fondee sur l'observation de son effet sur les configurations planes et de manipulations diverses.",
+      "connaissances_associees": ["translation", "transformations geometriques", "invariants"],
+      "source": {"pdf": "2GT.pdf", "page": 8}
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "by_type": {
+      "algorithme": 2,
+      "approfondissement": 3,
+      "contenu": 1
+    },
+    "by_domaine": {
+      "ALGORITHMIQUE": 2,
+      "ALGEBRE": 2,
+      "NOMBRES": 1,
+      "GEOMETRIE": 1
+    },
+    "fingerprints": [
+      "determiner_premiere_puissance_superieure_valeur",
+      "determiner_premiere_puissance_inferieure_valeur",
+      "developper_somme_trois_termes_carre",
+      "developper_somme_deux_termes_cube",
+      "demontrer_inegalite_moyenne_geometrique_arithmetique",
+      "reconnaitre_effet_translation_configuration"
+    ]
+  },
+  "notes": "Cette page est principalement introductive pour la partie Geometrie. Elle contient les objectifs generaux du programme de geometrie mais peu de competences specifiques. Les competences concretes extraites proviennent de la fin de la section Nombres et calculs (exemple algorithme et approfondissements) et du debut de la section vecteurs (rappel sur la translation du cycle 4)."
+}

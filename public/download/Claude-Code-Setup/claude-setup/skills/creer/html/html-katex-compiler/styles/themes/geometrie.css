@@ -1,0 +1,56 @@
+/* ===========================================
+   THÈME: Géométrie
+   Palette Bleu/Cyan - Formes, espace, mesures
+   =========================================== */
+
+:root {
+    /* Couleurs principales */
+    --theme-primary: #2980b9;
+    --theme-secondary: #3498db;
+    --theme-accent: #1abc9c;
+
+    /* Couleurs des blocs */
+    --color-definition: #3498db;
+    --color-theoreme: #2980b9;
+    --color-propriete: #1abc9c;
+    --color-exemple: #5dade2;
+    --color-methode: #48c9b0;
+    --color-remarque: #76d7c4;
+    --color-exercice: #85c1e9;
+
+    /* Backgrounds */
+    --bg-definition: #ebf5fb;
+    --bg-theoreme: #d4e6f1;
+    --bg-propriete: #d1f2eb;
+    --bg-exemple: #d6eaf8;
+    --bg-methode: #d5f5e3;
+    --bg-remarque: #e8f8f5;
+    --bg-exercice: #eaf2f8;
+}
+
+/* Titres */
+h1 { color: #1a5276; }
+h2 { color: #2471a3; }
+h3 { color: #2e86c1; }
+
+/* Blocs - couleurs */
+.definition { background: var(--bg-definition); border-color: var(--color-definition); }
+.theoreme { background: var(--bg-theoreme); border-color: var(--color-theoreme); }
+.propriete { background: var(--bg-propriete); border-color: var(--color-propriete); }
+.exemple { background: var(--bg-exemple); border-color: var(--color-exemple); }
+.methode { background: var(--bg-methode); border-color: var(--color-methode); }
+.remarque { background: var(--bg-remarque); border-color: var(--color-remarque); }
+.exercice { background: var(--bg-exercice); border-color: var(--color-exercice); }
+
+/* Labels */
+.definition::before { color: var(--color-definition); }
+.theoreme::before { color: var(--color-theoreme); }
+.propriete::before { color: var(--color-propriete); }
+.exemple::before { color: var(--color-exemple); }
+.methode::before { color: var(--color-methode); }
+.remarque::before { color: var(--color-remarque); }
+.exercice::before { color: var(--color-exercice); }
+
+/* Liens */
+a { color: var(--theme-primary); }
+a:hover { color: var(--theme-accent); }

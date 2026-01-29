@@ -1,0 +1,666 @@
+{
+  "source": {
+    "pdf": "TG_comp.pdf",
+    "page": 9,
+    "text_length": 1878
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TG-PR-450",
+      "intitule": "Mettre en place un sondage par échantillonnage aléatoire simple",
+      "fingerprint": "mettre_en_place_sondage_echantillonnage_aleatoire_simple",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Sondages et échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Organiser un sondage en utilisant l'échantillonnage aléatoire simple comme méthode d'extraction d'un échantillon",
+      "formulation_bo": "Sondages par échantillonnage aléatoire simple",
+      "connaissances_associees": ["définition échantillonnage aléatoire", "probabilités élémentaires"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-451",
+      "intitule": "Déterminer une fourchette de sondage",
+      "fingerprint": "determiner_fourchette_sondage",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Sondages et échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Calculer l'intervalle de confiance autour d'un résultat de sondage pour évaluer la marge d'erreur",
+      "formulation_bo": "Fourchette de sondage",
+      "connaissances_associees": ["intervalle de confiance", "loi normale", "théorème limite central"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-452",
+      "intitule": "Analyser les biais possibles dans un sondage",
+      "fingerprint": "analyser_biais_sondage",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Sondages et échantillonnage",
+      "type": "capacite",
+      "description_detaillee": "Identifier et étudier les sources d'erreur dans un sondage : représentativité de l'échantillon, sincérité des réponses, contexte de réalisation",
+      "formulation_bo": "Réflexion sur la réalisation effective d'un sondage et les biais possibles (représentativité, sincérité des réponses, etc.)",
+      "connaissances_associees": ["méthodes d'échantillonnage", "statistique appliquée"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-453",
+      "intitule": "Appliquer la démarche d'un test d'hypothèse",
+      "fingerprint": "appliquer_demarche_test_hypothese",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Tests d'hypothèse",
+      "type": "capacite",
+      "description_detaillee": "Mettre en œuvre la procédure complète d'un test d'hypothèse : formulation d'une hypothèse nulle, calcul de la probabilité observée, confrontation avec le seuil de significativité",
+      "formulation_bo": "Démarche des tests d'hypothèse",
+      "connaissances_associees": ["probabilités", "lois de probabilité", "risque alpha"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-454",
+      "intitule": "Appliquer la démarche d'une estimation",
+      "fingerprint": "appliquer_demarche_estimation",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Tests d'hypothèse",
+      "type": "capacite",
+      "description_detaillee": "Utiliser l'estimation pour déterminer les paramètres d'une loi inconnue à partir d'observations empiriques",
+      "formulation_bo": "Démarche de l'estimation",
+      "connaissances_associees": ["observations échantillon", "lois de probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-455",
+      "intitule": "Valider un modèle probabiliste à partir d'observations",
+      "fingerprint": "valider_modele_probabiliste_observations",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Tests d'hypothèse",
+      "type": "capacite",
+      "description_detaillee": "Confronter une modélisation théorique proposée avec les résultats mesurés pour valider ou rejeter le modèle avec un certain degré de confiance",
+      "formulation_bo": "Une bonne adéquation peut permettre de valider a priori le modèle (avec un certain degré de confiance)",
+      "connaissances_associees": ["modélisation probabiliste", "comparaison théorie-pratique"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-456",
+      "intitule": "Rejeter un modèle probabiliste basé sur l'observation d'événements rares",
+      "fingerprint": "rejeter_modele_evenements_rares",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Tests d'hypothèse",
+      "type": "capacite",
+      "description_detaillee": "Conclure au rejet d'un modèle lorsque les événements observés ont une très faible probabilité selon ce modèle",
+      "formulation_bo": "L'observation d'évènements donnés avec une probabilité très faible dans le modèle peut conduire à rejeter le modèle",
+      "connaissances_associees": ["probabilités", "seuil de significativité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-457",
+      "intitule": "Identifier une épreuve de Bernoulli",
+      "fingerprint": "identifier_epreuve_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître et définir une expérience aléatoire binaire (deux issues : succès ou échec)",
+      "formulation_bo": "Épreuve et loi de Bernoulli",
+      "connaissances_associees": ["expérience aléatoire", "probabilités élémentaires"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-458",
+      "intitule": "Appliquer la loi de Bernoulli",
+      "fingerprint": "appliquer_loi_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Calculer la probabilité d'une épreuve de Bernoulli et identifier les paramètres (probabilité de succès p)",
+      "formulation_bo": "Loi de Bernoulli",
+      "connaissances_associees": ["épreuve de Bernoulli", "probabilité de succès"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-459",
+      "intitule": "Identifier un schéma de Bernoulli",
+      "fingerprint": "identifier_schema_bernoulli",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître une répétition d'épreuves de Bernoulli identiques et indépendantes",
+      "formulation_bo": "Schéma de Bernoulli et loi binomiale",
+      "connaissances_associees": ["épreuve de Bernoulli", "indépendance", "répétition"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-460",
+      "intitule": "Appliquer la loi binomiale",
+      "fingerprint": "appliquer_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Calculer les probabilités dans un schéma de Bernoulli et identifier les paramètres (n, p) de la loi binomiale",
+      "formulation_bo": "Loi binomiale",
+      "connaissances_associees": ["schéma de Bernoulli", "coefficients binomiaux"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-461",
+      "intitule": "Identifier une loi uniforme discrète",
+      "fingerprint": "identifier_loi_uniforme_discrete",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître une distribution où tous les résultats ont la même probabilité sur un ensemble fini",
+      "formulation_bo": "Lois uniformes discrètes",
+      "connaissances_associees": ["probabilités discrètes", "équiprobabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-462",
+      "intitule": "Appliquer une loi uniforme discrète sur [0,1]",
+      "fingerprint": "appliquer_loi_uniforme_discrete_0_1",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois discrètes",
+      "type": "capacite",
+      "description_detaillee": "Utiliser les propriétés d'une loi uniforme discrète pour des calculs de probabilités",
+      "formulation_bo": "Lois uniformes discrètes sur [0,1]",
+      "connaissances_associees": ["loi uniforme discrète"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-463",
+      "intitule": "Identifier une loi uniforme continue",
+      "fingerprint": "identifier_loi_uniforme_continue",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois continues",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître une distribution où la densité de probabilité est constante sur un intervalle",
+      "formulation_bo": "Lois uniformes continues sur [0,1]",
+      "connaissances_associees": ["lois de densité", "densité de probabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-464",
+      "intitule": "Appliquer une loi uniforme continue sur [0,1]",
+      "fingerprint": "appliquer_loi_uniforme_continue_0_1",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois continues",
+      "type": "capacite",
+      "description_detaillee": "Calculer des probabilités et des paramètres (espérance, variance) pour une loi uniforme continue",
+      "formulation_bo": "Lois uniformes continues sur [0,1]",
+      "connaissances_associees": ["lois de densité", "calcul intégral"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-465",
+      "intitule": "Calculer les coefficients binomiaux",
+      "fingerprint": "calculer_coefficients_binomiaux",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Algorithmes",
+      "type": "algorithme",
+      "description_detaillee": "Déterminer les valeurs C(n,k) par le triangle de Pascal ou par la formule n!/(k!(n-k)!)",
+      "formulation_bo": "Calcul de coefficients binomiaux (triangle de Pascal)",
+      "connaissances_associees": ["combinatoire", "triangle de Pascal"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-466",
+      "intitule": "Calculer les probabilités d'une loi binomiale",
+      "fingerprint": "calculer_probabilites_loi_binomiale",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Algorithmes",
+      "type": "algorithme",
+      "description_detaillee": "Utiliser un algorithme pour déterminer P(X=k) ou P(X≤k) pour une variable aléatoire suivant une loi binomiale",
+      "formulation_bo": "Calcul de probabilités",
+      "connaissances_associees": ["loi binomiale", "coefficients binomiaux"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-467",
+      "intitule": "Déterminer un intervalle de valeurs pour une probabilité seuil donnée",
+      "fingerprint": "determiner_intervalle_probabilite_seuil",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Algorithmes",
+      "type": "algorithme",
+      "description_detaillee": "Trouver l'intervalle I tel que P(X ∈ I) soit inférieur à α ou supérieur à 1-α pour une variable aléatoire",
+      "formulation_bo": "Détermination d'un intervalle I pour lequel la probabilité P(X ∈ I) est inférieure à une valeur donnée α, ou supérieure à 1 - α",
+      "connaissances_associees": ["loi binomiale", "seuil de significativité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-468",
+      "intitule": "Simuler une variable aléatoire avec Python",
+      "fingerprint": "simuler_variable_aleatoire_python",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Algorithmes",
+      "type": "algorithme",
+      "description_detaillee": "Écrire un programme Python pour générer des réalisations d'une variable aléatoire suivant une loi donnée (Bernoulli, uniforme discrète, etc.)",
+      "formulation_bo": "Simulation avec Python d'une variable aléatoire (de la loi de Bernoulli, d'une loi uniforme discrète, etc.)",
+      "connaissances_associees": ["lois de probabilité", "programmation Python"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-469",
+      "intitule": "Générer un échantillon de taille n avec Python",
+      "fingerprint": "generer_echantillon_taille_n_python",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Algorithmes",
+      "type": "algorithme",
+      "description_detaillee": "Créer un programme Python produisant n réalisations indépendantes d'une variable aléatoire",
+      "formulation_bo": "Échantillon de taille n d'une variable aléatoire",
+      "connaissances_associees": ["variable aléatoire", "programmation Python"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-470",
+      "intitule": "Calculer la moyenne d'un échantillon avec Python",
+      "fingerprint": "calculer_moyenne_echantillon_python",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Algorithmes",
+      "type": "algorithme",
+      "description_detaillee": "Écrire une fonction Python retournant la moyenne arithmétique d'un échantillon",
+      "formulation_bo": "Fonction Python renvoyant une moyenne pour un échantillon",
+      "connaissances_associees": ["moyenne", "programmation Python"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-471",
+      "intitule": "Générer une série de moyennes d'échantillons avec Python",
+      "fingerprint": "generer_serie_moyennes_echantillons_python",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Algorithmes",
+      "type": "algorithme",
+      "description_detaillee": "Créer un programme calculant les moyennes de N échantillons de taille n d'une variable aléatoire d'espérance μ et d'écart type σ",
+      "formulation_bo": "Série des moyennes pour N échantillons de taille n d'une variable aléatoire d'espérance μ et d'écart type σ",
+      "connaissances_associees": ["variable aléatoire", "espérance", "écart type", "programmation Python"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-472",
+      "intitule": "Calculer l'écart type d'une série de moyennes d'échantillons",
+      "fingerprint": "calculer_ecart_type_moyennes_echantillons",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Algorithmes",
+      "type": "algorithme",
+      "description_detaillee": "Déterminer l'écart type s de la série des moyennes observées et le comparer à σ/√n (théorème limite central)",
+      "formulation_bo": "Calcul de l'écart type s de la série des moyennes des échantillons observés, à comparer à σ/√n",
+      "connaissances_associees": ["écart type", "théorème limite central"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-473",
+      "intitule": "Calculer la proportion d'écarts inférieurs à un multiple de l'écart type",
+      "fingerprint": "calculer_proportion_ecarts_multiple_ecart_type",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Algorithmes",
+      "type": "algorithme",
+      "description_detaillee": "Déterminer le pourcentage de cas où l'écart entre la moyenne m et μ est inférieur ou égal à k·σ/√n ou à k·s, pour k = 2 ou k = 3",
+      "formulation_bo": "Calcul de la proportion des cas où l'écart entre la moyenne m et μ est inférieur ou égal à k·σ/√n ou à k·s, pour k = 2 ou k = 3",
+      "connaissances_associees": ["écart type", "intervalle de confiance", "loi normale"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-474",
+      "intitule": "Identifier une propriété d'absence de mémoire d'une variable aléatoire",
+      "fingerprint": "identifier_absence_memoire_variable_aleatoire",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître et caractériser les phénomènes possédant l'absence de mémoire (indépendance du passé pour les événements futurs)",
+      "formulation_bo": "Absence de mémoire, discrète ou continue",
+      "connaissances_associees": ["probabilité conditionnelle", "indépendance"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-475",
+      "intitule": "Identifier une loi géométrique",
+      "fingerprint": "identifier_loi_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître une loi discrète modélisant le temps jusqu'au premier succès dans un schéma de Bernoulli ou possédant la propriété d'absence de mémoire",
+      "formulation_bo": "Loi géométrique",
+      "connaissances_associees": ["schéma de Bernoulli", "absence de mémoire"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-476",
+      "intitule": "Appliquer la loi géométrique",
+      "fingerprint": "appliquer_loi_geometrique",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la loi géométrique pour calculer les probabilités et l'espérance du temps avant le premier succès",
+      "formulation_bo": "Loi géométrique",
+      "connaissances_associees": ["absence de mémoire", "schéma de Bernoulli"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-477",
+      "intitule": "Identifier une loi exponentielle",
+      "fingerprint": "identifier_loi_exponentielle",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître une loi continue modélisant les temps d'attente ou les durées de vie avec absence de mémoire",
+      "formulation_bo": "Loi exponentielle",
+      "connaissances_associees": ["lois de densité", "absence de mémoire"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-478",
+      "intitule": "Appliquer la loi exponentielle",
+      "fingerprint": "appliquer_loi_exponentielle",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la loi exponentielle pour calculer les probabilités et l'espérance de temps d'attente ou de durées de vie",
+      "formulation_bo": "Loi exponentielle",
+      "connaissances_associees": ["absence de mémoire", "lois de densité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-479",
+      "intitule": "Discrétiser une variable aléatoire suivant une loi exponentielle",
+      "fingerprint": "discretiser_variable_aleatoire_loi_exponentielle",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "capacite",
+      "description_detaillee": "Convertir une variable aléatoire continue (exponentielle) en variable discrète pour adapter le modèle",
+      "formulation_bo": "Discrétisation d'une variable aléatoire suivant une loi exponentielle",
+      "connaissances_associees": ["loi exponentielle", "loi géométrique"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-480",
+      "intitule": "Modéliser la durée de vie d'un atome radioactif",
+      "fingerprint": "modeliser_duree_vie_atome_radioactif",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer la loi exponentielle pour étudier la désintégration d'atomes radioactifs, un exemple classique d'absence de mémoire",
+      "formulation_bo": "Durée de vie d'un atome radioactif",
+      "connaissances_associees": ["loi exponentielle", "absence de mémoire", "physique nucléaire"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-481",
+      "intitule": "Modéliser la durée entre deux appels téléphoniques par une loi géométrique ou exponentielle",
+      "fingerprint": "modeliser_duree_appels_loi_geometrique_exponentielle",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "approfondissement",
+      "description_detaillee": "Utiliser les lois géométrique ou exponentielle selon le contexte (discret/continu) pour modéliser des phénomènes de file d'attente",
+      "formulation_bo": "Exemples de modélisation par une variable aléatoire suivant une loi géométrique ou exponentielle : durée entre deux appels téléphoniques",
+      "connaissances_associees": ["loi géométrique", "loi exponentielle", "files d'attente"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-482",
+      "intitule": "Modéliser la durée de vie d'un composant électronique par une loi géométrique ou exponentielle",
+      "fingerprint": "modeliser_duree_composant_electronique_loi_geometrique_exponentielle",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "approfondissement",
+      "description_detaillee": "Appliquer les lois géométrique ou exponentielle pour étudier la fiabilité et la durée de vie des composants électroniques",
+      "formulation_bo": "Exemples de modélisation par une variable aléatoire suivant une loi géométrique ou exponentielle : durée de vie d'un composant électronique",
+      "connaissances_associees": ["loi géométrique", "loi exponentielle", "fiabilité"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-483",
+      "intitule": "Modéliser la période de retour de crue par une loi géométrique ou exponentielle",
+      "fingerprint": "modeliser_periode_retour_crue_loi_geometrique_exponentielle",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "approfondissement",
+      "description_detaillee": "Utiliser les lois géométrique ou exponentielle pour étudier les temps de retour d'événements climatiques extrêmes",
+      "formulation_bo": "Exemples de modélisation par une variable aléatoire suivant une loi géométrique ou exponentielle : période de retour de crue",
+      "connaissances_associees": ["loi géométrique", "loi exponentielle", "climatologie"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-484",
+      "intitule": "Appliquer la loi uniforme au problème du temps d'attente à un arrêt de bus",
+      "fingerprint": "appliquer_loi_uniforme_attente_bus",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "approfondissement",
+      "description_detaillee": "Utiliser la loi uniforme pour modéliser le temps d'arrivée d'un bus et analyser le temps d'attente d'un passager",
+      "formulation_bo": "Utilisation de la loi uniforme : Temps d'attente à un arrêt de bus",
+      "connaissances_associees": ["loi uniforme continue", "probabilités conditionnelles"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-485",
+      "intitule": "Étudier le paradoxe de l'inspection",
+      "fingerprint": "etudier_paradoxe_inspection",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Temps d'attente",
+      "type": "approfondissement",
+      "description_detaillee": "Analyser et expliquer le paradoxe selon lequel le temps d'attente moyen d'un inspecteur diffère du temps d'attente moyen d'un client",
+      "formulation_bo": "Paradoxe de l'inspection",
+      "connaissances_associees": ["loi uniforme", "probabilités conditionnelles", "paradoxe statistique"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    },
+    {
+      "code": "TG-PR-486",
+      "intitule": "Identifier une loi de densité",
+      "fingerprint": "identifier_loi_densite",
+      "niveau": "TG",
+      "domaine": "PROBABILITES",
+      "sous_domaine": "Lois continues",
+      "type": "contenu",
+      "description_detaillee": "Reconnaître et caractériser une variable aléatoire continue définie par sa densité de probabilité",
+      "formulation_bo": "Lois à densité",
+      "connaissances_associees": ["variable aléatoire continue", "intégration"],
+      "source": {
+        "pdf": "TG_comp.pdf",
+        "page": 9
+      }
+    }
+  ],
+  "summary": {
+    "total": 37,
+    "by_type": {
+      "contenu": 8,
+      "capacite": 13,
+      "algorithme": 9,
+      "approfondissement": 7
+    },
+    "by_domaine": {
+      "PROBABILITES": 37
+    },
+    "by_sous_domaine": {
+      "Sondages et échantillonnage": 3,
+      "Tests d'hypothèse": 5,
+      "Lois discrètes": 6,
+      "Lois continues": 3,
+      "Algorithmes": 9,
+      "Temps d'attente": 11
+    },
+    "fingerprints": [
+      "mettre_en_place_sondage_echantillonnage_aleatoire_simple",
+      "determiner_fourchette_sondage",
+      "analyser_biais_sondage",
+      "appliquer_demarche_test_hypothese",
+      "appliquer_demarche_estimation",
+      "valider_modele_probabiliste_observations",
+      "rejeter_modele_evenements_rares",
+      "identifier_epreuve_bernoulli",
+      "appliquer_loi_bernoulli",
+      "identifier_schema_bernoulli",
+      "appliquer_loi_binomiale",
+      "identifier_loi_uniforme_discrete",
+      "appliquer_loi_uniforme_discrete_0_1",
+      "identifier_loi_uniforme_continue",
+      "appliquer_loi_uniforme_continue_0_1",
+      "calculer_coefficients_binomiaux",
+      "calculer_probabilites_loi_binomiale",
+      "determiner_intervalle_probabilite_seuil",
+      "simuler_variable_aleatoire_python",
+      "generer_echantillon_taille_n_python",
+      "calculer_moyenne_echantillon_python",
+      "generer_serie_moyennes_echantillons_python",
+      "calculer_ecart_type_moyennes_echantillons",
+      "calculer_proportion_ecarts_multiple_ecart_type",
+      "identifier_absence_memoire_variable_aleatoire",
+      "identifier_loi_geometrique",
+      "appliquer_loi_geometrique",
+      "identifier_loi_exponentielle",
+      "appliquer_loi_exponentielle",
+      "discretiser_variable_aleatoire_loi_exponentielle",
+      "modeliser_duree_vie_atome_radioactif",
+      "modeliser_duree_appels_loi_geometrique_exponentielle",
+      "modeliser_duree_composant_electronique_loi_geometrique_exponentielle",
+      "modeliser_periode_retour_crue_loi_geometrique_exponentielle",
+      "appliquer_loi_uniforme_attente_bus",
+      "etudier_paradoxe_inspection",
+      "identifier_loi_densite"
+    ]
+  }
+}

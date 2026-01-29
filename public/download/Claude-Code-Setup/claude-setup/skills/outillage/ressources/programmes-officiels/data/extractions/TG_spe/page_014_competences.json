@@ -1,0 +1,454 @@
+{
+  "source": {
+    "pdf": "TG_spe.pdf",
+    "page": 14,
+    "text_length": 2487
+  },
+  "extraction": {
+    "date": "2026-01-09T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "TSPE-AN-701",
+      "intitule": "Etudier les fonctions puissance x ↦ x^α pour α dans ℝ",
+      "fingerprint": "etudier_fonction_puissance_alpha",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Fonctions et dérivées",
+      "type": "approfondissement",
+      "description_detaillee": "Pour α réel, analyser les propriétés et variations de la fonction x ↦ x^α. Approfondissement possible non obligatoire.",
+      "formulation_bo": "Pour α dans ℝ, fonction x ↦ x^α.",
+      "connaissances_associees": ["fonctions de référence", "dérivées", "variations de fonctions"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-702",
+      "intitule": "Calculer la limite de (1 + x/n)^n lorsque n tend vers l'infini",
+      "fingerprint": "calculer_limite_1_plus_x_sur_n_puissance_n",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Limites et continuité",
+      "type": "approfondissement",
+      "description_detaillee": "Pour x dans ℝ, étudier et calculer la limite de (1 + x/n)^n quand n tend vers l'infini. Approfondissement possible.",
+      "formulation_bo": "Pour x dans ℝ, limite de (1 + x/n)^n.",
+      "connaissances_associees": ["notion de limite", "fonction exponentielle"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-TR-703",
+      "intitule": "Connaitre la définition et les propriétés des fonctions trigonométriques sinus et cosinus",
+      "fingerprint": "connaitre_definition_sinus_cosinus",
+      "niveau": "TSPE",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Fonctions trigonométriques",
+      "type": "contenu",
+      "description_detaillee": "Définir les fonctions sinus et cosinus, leurs propriétés fondamentales (domaine, parité, périodicité).",
+      "formulation_bo": "Fonctions trigonométriques sinus et cosinus : dérivées, variations, courbes représentatives.",
+      "connaissances_associees": ["cercle trigonométrique", "radian"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-TR-704",
+      "intitule": "Calculer la dérivée des fonctions sinus et cosinus",
+      "fingerprint": "calculer_derivee_sinus_cosinus",
+      "niveau": "TSPE",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Fonctions trigonométriques",
+      "type": "contenu",
+      "description_detaillee": "Connaître et appliquer les dérivées : (sin x)' = cos x et (cos x)' = -sin x.",
+      "formulation_bo": "Fonctions trigonométriques sinus et cosinus : dérivées, variations, courbes représentatives.",
+      "connaissances_associees": ["notion de dérivée", "fonction sinus", "fonction cosinus"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-TR-705",
+      "intitule": "Déterminer les variations des fonctions sinus et cosinus",
+      "fingerprint": "determiner_variations_sinus_cosinus",
+      "niveau": "TSPE",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Fonctions trigonométriques",
+      "type": "contenu",
+      "description_detaillee": "Étudier et dresser le tableau de variations des fonctions sinus et cosinus sur des intervalles donnés.",
+      "formulation_bo": "Fonctions trigonométriques sinus et cosinus : dérivées, variations, courbes représentatives.",
+      "connaissances_associees": ["dérivée", "signe de la dérivée", "croissance/décroissance"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-TR-706",
+      "intitule": "Tracer les courbes représentatives des fonctions sinus et cosinus",
+      "fingerprint": "tracer_courbes_sinus_cosinus",
+      "niveau": "TSPE",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Fonctions trigonométriques",
+      "type": "contenu",
+      "description_detaillee": "Représenter graphiquement les fonctions sinus et cosinus en tenant compte de leurs propriétés (période, amplitude, points particuliers).",
+      "formulation_bo": "Fonctions trigonométriques sinus et cosinus : dérivées, variations, courbes représentatives.",
+      "connaissances_associees": ["tableau de variations", "points remarquables", "période"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-TR-707",
+      "intitule": "Résoudre une équation du type cos(x) = a sur l'intervalle [-π, π]",
+      "fingerprint": "resoudre_equation_cosinus_intervalle",
+      "niveau": "TSPE",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Équations trigonométriques",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les solutions de l'équation cos(x) = a sur l'intervalle [-π, π], où a est une constante réelle.",
+      "formulation_bo": "Résoudre une équation du type cos(x) = a, une inéquation de la forme cos(x) ⩽ a sur [-π,π].",
+      "connaissances_associees": ["fonction cosinus", "cercle trigonométrique", "valeurs remarquables"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-TR-708",
+      "intitule": "Résoudre une inéquation du type cos(x) ≤ a sur l'intervalle [-π, π]",
+      "fingerprint": "resoudre_inequation_cosinus_intervalle",
+      "niveau": "TSPE",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Équations trigonométriques",
+      "type": "capacite",
+      "description_detaillee": "Déterminer l'ensemble des solutions de l'inéquation cos(x) ≤ a sur [-π, π], où a est une constante réelle.",
+      "formulation_bo": "Résoudre une équation du type cos(x) = a, une inéquation de la forme cos(x) ⩽ a sur [-π,π].",
+      "connaissances_associees": ["fonction cosinus", "inégalités", "représentation graphique"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-TR-709",
+      "intitule": "Étudier une fonction simple définie à partir de fonctions trigonométriques",
+      "fingerprint": "etudier_fonction_trigonometrique",
+      "niveau": "TSPE",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Fonctions trigonométriques",
+      "type": "capacite",
+      "description_detaillee": "Analyser une fonction simple composée de fonctions trigonométriques : étudier les variations, déterminer les optimums (maxima et minima), résoudre dans un contexte géométrique.",
+      "formulation_bo": "Dans le cadre de la résolution de problème, notamment géométrique, étudier une fonction simple définie à partir de fonctions trigonométriques, pour déterminer des variations, un optimum.",
+      "connaissances_associees": ["dérivation", "variations de fonctions", "optimisation", "géométrie"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-TR-710",
+      "intitule": "Étudier la fonction tangente",
+      "fingerprint": "etudier_fonction_tangente",
+      "niveau": "TSPE",
+      "domaine": "TRIGONOMETRIE",
+      "sous_domaine": "Fonctions trigonométriques",
+      "type": "approfondissement",
+      "description_detaillee": "Analyser les propriétés de la fonction tangente : domaine de définition, variations, asymptotes, représentation graphique. Approfondissement possible.",
+      "formulation_bo": "Fonction tangente.",
+      "connaissances_associees": ["sinus", "cosinus", "asymptotes", "périodicité"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-711",
+      "intitule": "Reconnaitre une équation différentielle de la forme y' = ƒ",
+      "fingerprint": "reconnaitre_equation_differentielle_y_prime_f",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "contenu",
+      "description_detaillee": "Identifier et comprendre la structure d'une équation différentielle du type y' = ƒ, où l'inconnue est une fonction.",
+      "formulation_bo": "Équation différentielle y' = ƒ. Notion de primitive d'une fonction continue sur un intervalle.",
+      "connaissances_associees": ["dérivée", "fonction", "notion de solution"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-712",
+      "intitule": "Définir une primitive d'une fonction continue sur un intervalle",
+      "fingerprint": "definir_primitive_fonction_continue",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "contenu",
+      "description_detaillee": "Comprendre que la primitive F d'une fonction f continue est telle que F' = f. Connaître que deux primitives d'une même fonction diffèrent d'une constante.",
+      "formulation_bo": "Équation différentielle y' = ƒ. Notion de primitive d'une fonction continue sur un intervalle. Deux primitives d'une même fonction continue sur un intervalle diffèrent d'une constante.",
+      "connaissances_associees": ["dérivée", "fonction continue", "inverse de la dérivation"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-713",
+      "intitule": "Appliquer le théorème d'unicité des primitives à une constante près",
+      "fingerprint": "appliquer_unicite_primitives_constante",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "contenu",
+      "description_detaillee": "Utiliser le fait que deux primitives d'une même fonction continue diffèrent d'une constante pour déterminer la forme générale des primitives.",
+      "formulation_bo": "Deux primitives d'une même fonction continue sur un intervalle diffèrent d'une constante.",
+      "connaissances_associees": ["notion de primitive", "constante d'intégration", "continuité"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-714",
+      "intitule": "Calculer une primitive de x ↦ x^n pour n entier",
+      "fingerprint": "calculer_primitive_x_puissance_n",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "contenu",
+      "description_detaillee": "Déterminer une primitive pour les fonctions de référence x ↦ x^n où n ∈ ℤ, notamment x ↦ x^n pour n ≥ 0 et x ↦ 1/x.",
+      "formulation_bo": "Primitives des fonctions de référence : x ↦ x^n pour n ∈ ℤ, x ↦ 1/x, exponentielle, sinus, cosinus.",
+      "connaissances_associees": ["notion de primitive", "puissance", "règle de puissance en intégration"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-715",
+      "intitule": "Calculer une primitive de x ↦ 1/x",
+      "fingerprint": "calculer_primitive_1_sur_x",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "contenu",
+      "description_detaillee": "Déterminer une primitive de la fonction x ↦ 1/x sur son domaine de définition.",
+      "formulation_bo": "Primitives des fonctions de référence : x ↦ x^n pour n ∈ ℤ, x ↦ 1/x, exponentielle, sinus, cosinus.",
+      "connaissances_associees": ["fonction inverse", "logarithme naturel", "domaine de définition"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-716",
+      "intitule": "Calculer une primitive de la fonction exponentielle",
+      "fingerprint": "calculer_primitive_exponentielle",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "contenu",
+      "description_detaillee": "Déterminer une primitive de la fonction exponentielle x ↦ e^x.",
+      "formulation_bo": "Primitives des fonctions de référence : x ↦ x^n pour n ∈ ℤ, x ↦ 1/x, exponentielle, sinus, cosinus.",
+      "connaissances_associees": ["fonction exponentielle", "propriétés de l'exponentielle"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-717",
+      "intitule": "Calculer une primitive de la fonction sinus",
+      "fingerprint": "calculer_primitive_sinus",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "contenu",
+      "description_detaillee": "Déterminer une primitive de la fonction x ↦ sin(x), soit x ↦ -cos(x).",
+      "formulation_bo": "Primitives des fonctions de référence : x ↦ x^n pour n ∈ ℤ, x ↦ 1/x, exponentielle, sinus, cosinus.",
+      "connaissances_associees": ["fonction sinus", "dérivée du cosinus"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-718",
+      "intitule": "Calculer une primitive de la fonction cosinus",
+      "fingerprint": "calculer_primitive_cosinus",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "contenu",
+      "description_detaillee": "Déterminer une primitive de la fonction x ↦ cos(x), soit x ↦ sin(x).",
+      "formulation_bo": "Primitives des fonctions de référence : x ↦ x^n pour n ∈ ℤ, x ↦ 1/x, exponentielle, sinus, cosinus.",
+      "connaissances_associees": ["fonction cosinus", "dérivée du sinus"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-719",
+      "intitule": "Calculer une primitive en utilisant les primitives de référence",
+      "fingerprint": "calculer_primitive_reference",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "capacite",
+      "description_detaillee": "Déterminer les primitives de fonctions en utilisant le tableau des primitives usuelles et les propriétés de linéarité.",
+      "formulation_bo": "Calculer une primitive en utilisant les primitives de référence et les fonctions de la forme (v' ○ u) × u'.",
+      "connaissances_associees": ["primitives usuelles", "linéarité", "combinaison linéaire"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-720",
+      "intitule": "Calculer une primitive de la forme (v' ∘ u) × u'",
+      "fingerprint": "calculer_primitive_composition",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Primitives et intégrales",
+      "type": "capacite",
+      "description_detaillee": "Utiliser la formule de la dérivée d'une composée pour déterminer les primitives de fonctions composées de la forme (v' ∘ u) × u'.",
+      "formulation_bo": "Calculer une primitive en utilisant les primitives de référence et les fonctions de la forme (v' ○ u) × u'.",
+      "connaissances_associees": ["dérivée composée", "composition de fonctions", "changement de variable"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-721",
+      "intitule": "Étudier l'équation différentielle y' = ay où a est un nombre réel",
+      "fingerprint": "etudier_equation_differentielle_y_prime_ay",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "contenu",
+      "description_detaillee": "Analyser la structure et les solutions de l'équation différentielle y' = ay, où a ∈ ℝ. Comprendre l'allure des courbes solutions.",
+      "formulation_bo": "Équation différentielle y' = ay, où a est un nombre réel ; allure des courbes.",
+      "connaissances_associees": ["équations différentielles", "fonction exponentielle", "croissance exponentielle"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-722",
+      "intitule": "Étudier l'équation différentielle y' = ay + b",
+      "fingerprint": "etudier_equation_differentielle_y_prime_ay_plus_b",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "contenu",
+      "description_detaillee": "Analyser l'équation différentielle affine y' = ay + b, où a et b sont des nombres réels.",
+      "formulation_bo": "Équation différentielle y' = ay + b.",
+      "connaissances_associees": ["équations différentielles", "fonction exponentielle"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-723",
+      "intitule": "Déterminer une solution particulière constante de l'équation y' = ay + b (a ≠ 0)",
+      "fingerprint": "determiner_solution_particuliere_constante_y_prime_ay_b",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "capacite",
+      "description_detaillee": "Pour a ≠ 0, trouver une solution particulière de la forme y = k (constante) de l'équation y' = ay + b.",
+      "formulation_bo": "Pour une équation différentielle y' = ay + b (a ≠ 0) : déterminer une solution particulière constante ; utiliser cette solution pour déterminer toutes les solutions.",
+      "connaissances_associees": ["équations différentielles", "solution particulière", "conditions d'existence"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    },
+    {
+      "code": "TSPE-AN-724",
+      "intitule": "Résoudre l'équation différentielle y' = ay + b en utilisant une solution particulière",
+      "fingerprint": "resoudre_equation_differentielle_y_prime_ay_b",
+      "niveau": "TSPE",
+      "domaine": "ANALYSE",
+      "sous_domaine": "Équations différentielles",
+      "type": "capacite",
+      "description_detaillee": "Une fois une solution particulière constante trouvée, l'utiliser pour déterminer l'ensemble de toutes les solutions de y' = ay + b (a ≠ 0).",
+      "formulation_bo": "Pour une équation différentielle y' = ay + b (a ≠ 0) : déterminer une solution particulière constante ; utiliser cette solution pour déterminer toutes les solutions.",
+      "connaissances_associees": ["équation différentielle homogène", "solution générale", "fonction exponentielle"],
+      "source": {
+        "pdf": "TG_spe.pdf",
+        "page": 14
+      }
+    }
+  ],
+  "summary": {
+    "total": 24,
+    "by_type": {
+      "contenu": 13,
+      "capacite": 8,
+      "approfondissement": 3
+    },
+    "by_domaine": {
+      "ANALYSE": 14,
+      "TRIGONOMETRIE": 7,
+      "ALGEBRE": 0,
+      "GEOMETRIE": 0,
+      "PROBABILITES": 0,
+      "STATISTIQUES": 0,
+      "ALGORITHMIQUE": 0,
+      "NOMBRES": 0,
+      "GRANDEURS": 0,
+      "LOGIQUE": 0
+    },
+    "by_sous_domaine": {
+      "Fonctions et dérivées": 1,
+      "Limites et continuité": 1,
+      "Fonctions trigonométriques": 4,
+      "Équations trigonométriques": 2,
+      "Équations différentielles": 4,
+      "Primitives et intégrales": 10,
+      "Approfondissements": 2
+    },
+    "fingerprints": [
+      "etudier_fonction_puissance_alpha",
+      "calculer_limite_1_plus_x_sur_n_puissance_n",
+      "connaitre_definition_sinus_cosinus",
+      "calculer_derivee_sinus_cosinus",
+      "determiner_variations_sinus_cosinus",
+      "tracer_courbes_sinus_cosinus",
+      "resoudre_equation_cosinus_intervalle",
+      "resoudre_inequation_cosinus_intervalle",
+      "etudier_fonction_trigonometrique",
+      "etudier_fonction_tangente",
+      "reconnaitre_equation_differentielle_y_prime_f",
+      "definir_primitive_fonction_continue",
+      "appliquer_unicite_primitives_constante",
+      "calculer_primitive_x_puissance_n",
+      "calculer_primitive_1_sur_x",
+      "calculer_primitive_exponentielle",
+      "calculer_primitive_sinus",
+      "calculer_primitive_cosinus",
+      "calculer_primitive_reference",
+      "calculer_primitive_composition",
+      "etudier_equation_differentielle_y_prime_ay",
+      "etudier_equation_differentielle_y_prime_ay_plus_b",
+      "determiner_solution_particuliere_constante_y_prime_ay_b",
+      "resoudre_equation_differentielle_y_prime_ay_b"
+    ]
+  }
+}

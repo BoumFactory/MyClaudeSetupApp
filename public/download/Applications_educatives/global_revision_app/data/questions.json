@@ -1,0 +1,624 @@
+{
+  "subjects": [
+    {
+      "id": "maths",
+      "name": "Mathématiques",
+      "icon": "📐",
+      "enabled": true
+    },
+    {
+      "id": "physique",
+      "name": "Physique-Chimie",
+      "icon": "⚗️",
+      "enabled": true
+    },
+    {
+      "id": "svt",
+      "name": "SVT",
+      "icon": "🌿",
+      "enabled": true
+    },
+    {
+      "id": "nsi",
+      "name": "NSI",
+      "icon": "💻",
+      "enabled": true
+    },
+    {
+      "id": "francais",
+      "name": "Français",
+      "icon": "📖",
+      "enabled": true
+    },
+    {
+      "id": "philosophie",
+      "name": "Philosophie",
+      "icon": "🤔",
+      "enabled": true
+    },
+    {
+      "id": "histoire-geo",
+      "name": "Histoire-Géographie",
+      "icon": "🌍",
+      "enabled": true
+    },
+    {
+      "id": "ses",
+      "name": "SES",
+      "icon": "📊",
+      "enabled": true
+    },
+    {
+      "id": "emc",
+      "name": "EMC",
+      "icon": "⚖️",
+      "enabled": true
+    },
+    {
+      "id": "anglais",
+      "name": "Anglais",
+      "icon": "🇬🇧",
+      "enabled": true
+    },
+    {
+      "id": "allemand",
+      "name": "Allemand",
+      "icon": "🇩🇪",
+      "enabled": true
+    },
+    {
+      "id": "espagnol",
+      "name": "Espagnol",
+      "icon": "🇪🇸",
+      "enabled": true
+    },
+    {
+      "id": "italien",
+      "name": "Italien",
+      "icon": "🇮🇹",
+      "enabled": true
+    },
+    {
+      "id": "portugais",
+      "name": "Portugais",
+      "icon": "🇵🇹",
+      "enabled": true
+    },
+    {
+      "id": "chinois",
+      "name": "Chinois",
+      "icon": "🇨🇳",
+      "enabled": true
+    },
+    {
+      "id": "japonais",
+      "name": "Japonais",
+      "icon": "🇯🇵",
+      "enabled": true
+    },
+    {
+      "id": "russe",
+      "name": "Russe",
+      "icon": "🇷🇺",
+      "enabled": true
+    },
+    {
+      "id": "arabe",
+      "name": "Arabe",
+      "icon": "🇸🇦",
+      "enabled": true
+    },
+    {
+      "id": "latin",
+      "name": "Latin",
+      "icon": "🏛️",
+      "enabled": true
+    },
+    {
+      "id": "grec",
+      "name": "Grec ancien",
+      "icon": "🏺",
+      "enabled": true
+    },
+    {
+      "id": "arts",
+      "name": "Arts plastiques",
+      "icon": "🎨",
+      "enabled": true
+    },
+    {
+      "id": "musique",
+      "name": "Musique",
+      "icon": "🎵",
+      "enabled": true
+    },
+    {
+      "id": "cinema",
+      "name": "Cinéma-Audiovisuel",
+      "icon": "🎬",
+      "enabled": true
+    },
+    {
+      "id": "theatre",
+      "name": "Théâtre",
+      "icon": "🎭",
+      "enabled": true
+    },
+    {
+      "id": "eps",
+      "name": "EPS",
+      "icon": "🏃",
+      "enabled": true
+    },
+    {
+      "id": "hggsp",
+      "name": "HGGSP",
+      "icon": "🗺️",
+      "enabled": true
+    },
+    {
+      "id": "hlp",
+      "name": "HLP",
+      "icon": "📜",
+      "enabled": true
+    },
+    {
+      "id": "llce",
+      "name": "LLCE",
+      "icon": "🗣️",
+      "enabled": true
+    },
+    {
+      "id": "si",
+      "name": "Sciences de l'ingénieur",
+      "icon": "⚙️",
+      "enabled": true
+    },
+    {
+      "id": "bioeco",
+      "name": "Biologie-Écologie",
+      "icon": "🌱",
+      "enabled": true
+    }
+  ],
+  "questions": [
+    {
+      "id": "ex-maths",
+      "subject": "maths",
+      "theme": "Second degré",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Soit $f(x) = x^2 - 5x + 6$. Combien de racines réelles ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Aucune"
+        },
+        {
+          "id": "b",
+          "text": "Une (double)"
+        },
+        {
+          "id": "c",
+          "text": "Deux distinctes"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": "$\\Delta = 25 - 24 = 1 > 0$ donc deux racines.",
+      "stats": {
+        "accessCount": 9,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T14:32:13.030Z"
+      },
+      "hint": ""
+    },
+    {
+      "id": "ex-physique",
+      "subject": "physique",
+      "theme": "Mécanique",
+      "type": "input",
+      "difficulty": 1,
+      "question": "Valeur de l'accélération de la pesanteur g (en m/s²) ?",
+      "fields": [
+        {
+          "id": "g",
+          "label": "g = ",
+          "type": "number",
+          "answer": 9.8,
+          "tolerance": 0.1
+        }
+      ],
+      "explanation": "$g \\approx 9{,}8$ m/s²",
+      "stats": {
+        "accessCount": 5,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T14:29:06.131Z"
+      }
+    },
+    {
+      "id": "ex-svt",
+      "subject": "svt",
+      "theme": "Génétique",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Combien de chromosomes dans une cellule humaine ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "23"
+        },
+        {
+          "id": "b",
+          "text": "46"
+        },
+        {
+          "id": "c",
+          "text": "92"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "23 paires = 46 chromosomes",
+      "stats": {
+        "accessCount": 2,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T14:20:35.434Z"
+      }
+    },
+    {
+      "id": "ex-nsi",
+      "subject": "nsi",
+      "theme": "Python",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Que retourne `len('Hello')` ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "4"
+        },
+        {
+          "id": "b",
+          "text": "5"
+        },
+        {
+          "id": "c",
+          "text": "6"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "'Hello' contient 5 caractères",
+      "stats": {
+        "accessCount": 2,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T14:20:35.217Z"
+      }
+    },
+    {
+      "id": "ex-francais",
+      "subject": "francais",
+      "theme": "Figures de style",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "\"La terre est bleue comme une orange\" est :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Une métaphore"
+        },
+        {
+          "id": "b",
+          "text": "Une comparaison"
+        },
+        {
+          "id": "c",
+          "text": "Une hyperbole"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Présence de \"comme\" = comparaison (Éluard)",
+      "stats": {
+        "accessCount": 2,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T14:20:35.004Z"
+      }
+    },
+    {
+      "id": "ex-philosophie",
+      "subject": "philosophie",
+      "theme": "Conscience",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "\"Je pense donc je suis\" est de :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Platon"
+        },
+        {
+          "id": "b",
+          "text": "Descartes"
+        },
+        {
+          "id": "c",
+          "text": "Kant"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Cogito ergo sum - Descartes",
+      "stats": {
+        "accessCount": 3,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T14:32:41.981Z"
+      }
+    },
+    {
+      "id": "ex-histoire",
+      "subject": "histoire-geo",
+      "theme": "Révolution française",
+      "type": "input",
+      "difficulty": 1,
+      "question": "Année de la prise de la Bastille ?",
+      "fields": [
+        {
+          "id": "annee",
+          "label": "Année : ",
+          "type": "number",
+          "answer": 1789,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "14 juillet 1789",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T14:20:32.153Z"
+      }
+    },
+    {
+      "id": "ex-ses",
+      "subject": "ses",
+      "theme": "Économie",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Le PIB mesure :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "La richesse d'un pays"
+        },
+        {
+          "id": "b",
+          "text": "La production d'un pays"
+        },
+        {
+          "id": "c",
+          "text": "La dette d'un pays"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "PIB = Produit Intérieur Brut = production",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T14:32:46.697Z"
+      }
+    },
+    {
+      "id": "ex-anglais",
+      "subject": "anglais",
+      "theme": "Grammaire",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "She ___ to school every day.",
+      "choices": [
+        {
+          "id": "a",
+          "text": "go"
+        },
+        {
+          "id": "b",
+          "text": "goes"
+        },
+        {
+          "id": "c",
+          "text": "going"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "3rd person singular → goes",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-allemand",
+      "subject": "allemand",
+      "theme": "Vocabulaire",
+      "type": "input",
+      "difficulty": 1,
+      "question": "Comment dit-on \"merci\" en allemand ?",
+      "fields": [
+        {
+          "id": "rep",
+          "label": "Réponse : ",
+          "type": "text",
+          "answer": "Danke",
+          "alternatives": [
+            "danke"
+          ]
+        }
+      ],
+      "explanation": "Danke = merci",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-espagnol",
+      "subject": "espagnol",
+      "theme": "Conjugaison",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "Yo ___ español. (hablar)",
+      "choices": [
+        {
+          "id": "a",
+          "text": "hablo"
+        },
+        {
+          "id": "b",
+          "text": "hablas"
+        },
+        {
+          "id": "c",
+          "text": "habla"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": "Yo hablo (1ère personne)",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-hggsp",
+      "subject": "hggsp",
+      "theme": "Géopolitique",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "L'ONU a été créée en :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1919"
+        },
+        {
+          "id": "b",
+          "text": "1945"
+        },
+        {
+          "id": "c",
+          "text": "1948"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "ONU créée en 1945, SDN en 1919",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-hlp",
+      "subject": "hlp",
+      "theme": "Littérature",
+      "type": "qcm",
+      "difficulty": 2,
+      "question": "Les Essais ont été écrits par :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Rabelais"
+        },
+        {
+          "id": "b",
+          "text": "Montaigne"
+        },
+        {
+          "id": "c",
+          "text": "La Fontaine"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Montaigne (1580-1592)",
+      "stats": {
+        "accessCount": 1,
+        "correctCount": 0,
+        "lastAccessed": "2026-01-14T14:32:56.547Z"
+      }
+    },
+    {
+      "id": "ex-si",
+      "subject": "si",
+      "theme": "Énergie",
+      "type": "qcm",
+      "difficulty": 1,
+      "question": "L'unité de puissance est :",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Le Joule"
+        },
+        {
+          "id": "b",
+          "text": "Le Watt"
+        },
+        {
+          "id": "c",
+          "text": "Le Newton"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": "Puissance en Watts, Énergie en Joules",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    },
+    {
+      "id": "ex-latin",
+      "subject": "latin",
+      "theme": "Vocabulaire",
+      "type": "input",
+      "difficulty": 1,
+      "question": "Que signifie \"aqua\" ?",
+      "fields": [
+        {
+          "id": "rep",
+          "label": "Réponse : ",
+          "type": "text",
+          "answer": "eau",
+          "alternatives": [
+            "l'eau"
+          ]
+        }
+      ],
+      "explanation": "Aqua = eau",
+      "stats": {
+        "accessCount": 0,
+        "correctCount": 0,
+        "lastAccessed": null
+      }
+    }
+  ]
+}

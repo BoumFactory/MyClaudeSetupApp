@@ -1,0 +1,194 @@
+{
+  "source": {
+    "pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf",
+    "page": 11,
+    "text_length": 1147
+  },
+  "extraction": {
+    "date": "2026-01-03T00:00:00Z",
+    "agent": "bo-competence-extractor",
+    "version": "2.0",
+    "status": "completed"
+  },
+  "competences": [
+    {
+      "code": "3E-AG-551",
+      "intitule": "Programmer la construction d'un triangle equilateral avec une boucle",
+      "fingerprint": "programmer_construction_triangle_equilateral_boucle",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Constructions geometriques",
+      "type": "capacite",
+      "description_detaillee": "Produire seul un programme de construction d'un triangle equilateral en utilisant une structure de boucle pour repeter les instructions",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre ou d'un rectangle en utilisant la boucle",
+      "connaissances_associees": ["boucle repetition", "angle de rotation", "deplacement lutin", "proprietes triangle equilateral"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-552",
+      "intitule": "Programmer la construction d'un carre avec une boucle",
+      "fingerprint": "programmer_construction_carre_boucle",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Constructions geometriques",
+      "type": "capacite",
+      "description_detaillee": "Produire seul un programme de construction d'un carre en utilisant une structure de boucle pour repeter les 4 cotes",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre ou d'un rectangle en utilisant la boucle",
+      "connaissances_associees": ["boucle repetition", "angle droit", "deplacement lutin", "proprietes carre"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-553",
+      "intitule": "Programmer la construction d'un rectangle avec une boucle",
+      "fingerprint": "programmer_construction_rectangle_boucle",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Constructions geometriques",
+      "type": "capacite",
+      "description_detaillee": "Produire seul un programme de construction d'un rectangle en utilisant une structure de boucle",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre ou d'un rectangle en utilisant la boucle",
+      "connaissances_associees": ["boucle repetition", "angle droit", "deplacement lutin", "proprietes rectangle"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-554",
+      "intitule": "Gerer l'interaction entre deux lutins par detection de contact",
+      "fingerprint": "gerer_interaction_lutins_contact",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Interaction",
+      "type": "capacite",
+      "description_detaillee": "Programmer une interaction entre deux lutins, par exemple en faisant dire une phrase a l'un lorsque l'autre le touche (capteur de contact)",
+      "formulation_bo": "Il gere l'interaction entre deux lutins, par exemple en faisant dire une phrase a l'un lorsque l'autre le touche",
+      "connaissances_associees": ["capteur contact", "condition si-alors", "bloc dire", "evenement"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-555",
+      "intitule": "Programmer la construction d'un triangle equilateral avec saisie utilisateur",
+      "fingerprint": "programmer_construction_triangle_equilateral_saisie",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Constructions geometriques",
+      "type": "capacite",
+      "description_detaillee": "Produire un programme de construction d'un triangle equilateral dans lequel l'utilisateur saisit la mesure de la longueur d'au moins un cote",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre, d'un rectangle ou d'un parallelogramme dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+      "connaissances_associees": ["variable", "saisie utilisateur", "boucle", "proprietes triangle equilateral"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-556",
+      "intitule": "Programmer la construction d'un carre avec saisie utilisateur",
+      "fingerprint": "programmer_construction_carre_saisie",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Constructions geometriques",
+      "type": "capacite",
+      "description_detaillee": "Produire un programme de construction d'un carre dans lequel l'utilisateur saisit la mesure de la longueur du cote",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre, d'un rectangle ou d'un parallelogramme dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+      "connaissances_associees": ["variable", "saisie utilisateur", "boucle", "proprietes carre"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-557",
+      "intitule": "Programmer la construction d'un rectangle avec saisie utilisateur",
+      "fingerprint": "programmer_construction_rectangle_saisie",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Constructions geometriques",
+      "type": "capacite",
+      "description_detaillee": "Produire un programme de construction d'un rectangle dans lequel l'utilisateur saisit la mesure de la longueur d'au moins un cote (longueur et/ou largeur)",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre, d'un rectangle ou d'un parallelogramme dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+      "connaissances_associees": ["variable", "saisie utilisateur", "boucle", "proprietes rectangle"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-558",
+      "intitule": "Programmer la construction d'un parallelogramme avec saisie utilisateur",
+      "fingerprint": "programmer_construction_parallelogramme_saisie",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Constructions geometriques",
+      "type": "capacite",
+      "description_detaillee": "Produire un programme de construction d'un parallelogramme dans lequel l'utilisateur saisit la mesure de la longueur d'au moins un cote",
+      "formulation_bo": "Il produit seul un programme de construction d'un triangle equilateral, d'un carre, d'un rectangle ou d'un parallelogramme dans lequel l'utilisateur saisi la mesure de la longueur d'au moins un cote",
+      "connaissances_associees": ["variable", "saisie utilisateur", "boucle", "angles parallelogramme", "proprietes parallelogramme"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-559",
+      "intitule": "Reproduire une frise avec un bloc personnalise",
+      "fingerprint": "reproduire_frise_bloc_personnalise",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Blocs personnalises",
+      "type": "capacite",
+      "description_detaillee": "Reproduire une frise donnee reproduisant un motif grace a un bloc personnalise (fonction/procedure)",
+      "formulation_bo": "Il reproduit une frise donnee reproduisant un motif grace a un bloc personnalise",
+      "connaissances_associees": ["bloc personnalise", "fonction", "boucle", "motif repetitif"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-560",
+      "intitule": "Programmer une figure geometrique complexe",
+      "fingerprint": "programmer_figure_geometrique_complexe",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Constructions geometriques",
+      "type": "capacite",
+      "description_detaillee": "Produire un programme realisant une figure geometrique complexe (type rosace, spirale, etc.)",
+      "formulation_bo": "Il produit un programme realisant une figure du type",
+      "connaissances_associees": ["boucle", "angle", "deplacement", "rotation"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-561",
+      "intitule": "Programmer la simulation d'une experience aleatoire",
+      "fingerprint": "programmer_simulation_experience_aleatoire",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Simulation",
+      "type": "capacite",
+      "description_detaillee": "Utiliser un logiciel de programmation pour realiser la simulation d'une experience aleatoire, par exemple programmer un lutin pour qu'il enonce 100 nombres aleatoires 0 ou 1 et qu'il compte le nombre de 0 et de 1 obtenus",
+      "formulation_bo": "Il utilise un logiciel de programmation pour realiser la simulation d'une experience aleatoire, par exemple : Programmer un lutin pour qu'il enonce 100 nombres aleatoires 0 ou 1 et qu'il compte le nombre de 0 et de 1 obtenus",
+      "connaissances_associees": ["nombre aleatoire", "boucle", "variable compteur", "frequence"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    },
+    {
+      "code": "3E-AG-562",
+      "intitule": "Programmer un jeu avec plusieurs lutins en parallele",
+      "fingerprint": "programmer_jeu_lutins_parallele",
+      "niveau": "3E",
+      "domaine": "ALGORITHMIQUE",
+      "sous_domaine": "Programmation par blocs - Projets complexes",
+      "type": "capacite",
+      "description_detaillee": "Programmer un jeu avec un logiciel de programmation par blocs utilisant au moins 2 lutins avec des scripts en parallele, mobilisant les capacites acquises precedemment",
+      "formulation_bo": "Il programme un jeu avec un logiciel de programmation par blocs utilisant au moins 2 lutins avec des scripts en parallele. Il mobilise des capacites acquises precedemment dans les niveaux 1, 2 et 3",
+      "connaissances_associees": ["scripts paralleles", "interaction lutins", "evenements", "variables", "conditions", "boucles"],
+      "source": {"pdf": "18-Maths-3e-attendus-eduscol_1114748.pdf", "page": 11}
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "by_type": {
+      "capacite": 12
+    },
+    "by_domaine": {
+      "ALGORITHMIQUE": 12
+    },
+    "fingerprints": [
+      "programmer_construction_triangle_equilateral_boucle",
+      "programmer_construction_carre_boucle",
+      "programmer_construction_rectangle_boucle",
+      "gerer_interaction_lutins_contact",
+      "programmer_construction_triangle_equilateral_saisie",
+      "programmer_construction_carre_saisie",
+      "programmer_construction_rectangle_saisie",
+      "programmer_construction_parallelogramme_saisie",
+      "reproduire_frise_bloc_personnalise",
+      "programmer_figure_geometrique_complexe",
+      "programmer_simulation_experience_aleatoire",
+      "programmer_jeu_lutins_parallele"
+    ]
+  }
+}
