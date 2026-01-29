@@ -105,6 +105,13 @@ export function MainNav() {
           description: "Configurer avec mes outils personnalisés"
         },
         {
+          title: "Utiliser ma configuration",
+          href: "/claude-code/tutorials/utilisation-config",
+          icon: Sparkles,
+          description: "Déclencher les commandes et skills",
+          highlighted: "nebula"
+        },
+        {
           title: "Installation VS Code & MikTeX",
           href: "/claude-code/tutorials/vscode-miktex",
           icon: Code2,
@@ -565,19 +572,23 @@ export function MainNav() {
                                           ? "bg-emerald-950/40 border border-emerald-700/50 hover:bg-emerald-900/50 hover:border-emerald-600/50"
                                           : highlighted === "cosmic"
                                           ? "bg-cosmic-950/40 border border-cosmic-700/50 hover:bg-cosmic-900/50 hover:border-cosmic-600/50"
+                                          : highlighted === "nebula"
+                                          ? "bg-purple-950/40 border border-purple-700/50 hover:bg-purple-900/50 hover:border-purple-600/50"
                                           : "hover:bg-cosmic-900/50"
                                       )}
                                     >
                                       <SubIcon className={cn(
                                         "w-5 h-5 mt-0.5 flex-shrink-0",
                                         highlighted === "emerald" ? "text-emerald-400" :
-                                        highlighted === "cosmic" ? "text-cosmic-400" : "text-cosmic-400"
+                                        highlighted === "cosmic" ? "text-cosmic-400" :
+                                        highlighted === "nebula" ? "text-purple-400" : "text-cosmic-400"
                                       )} />
                                       <div>
                                         <div className={cn(
                                           "font-medium text-sm",
                                           highlighted === "emerald" && "text-emerald-300",
-                                          highlighted === "cosmic" && "text-cosmic-300"
+                                          highlighted === "cosmic" && "text-cosmic-300",
+                                          highlighted === "nebula" && "text-purple-300"
                                         )}>{subItem.title}</div>
                                         <div className="text-xs text-muted-foreground">
                                           {subItem.description}
@@ -759,13 +770,16 @@ export function MainNav() {
                                           ? "bg-emerald-950/40 border border-emerald-700/50 text-emerald-300"
                                           : highlighted === "cosmic"
                                           ? "bg-cosmic-950/40 border border-cosmic-700/50 text-cosmic-300"
+                                          : highlighted === "nebula"
+                                          ? "bg-purple-950/40 border border-purple-700/50 text-purple-300"
                                           : "text-muted-foreground hover:bg-cosmic-900/50"
                                       )}
                                     >
                                       <SubIcon className={cn(
                                         "w-4 h-4 mt-0.5 flex-shrink-0",
                                         highlighted === "emerald" ? "text-emerald-400" :
-                                        highlighted === "cosmic" ? "text-cosmic-400" : ""
+                                        highlighted === "cosmic" ? "text-cosmic-400" :
+                                        highlighted === "nebula" ? "text-purple-400" : ""
                                       )} />
                                       <div className="flex-1 min-w-0">
                                         <div className="font-medium text-sm truncate">{subItem.title}</div>

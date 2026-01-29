@@ -1,6 +1,30 @@
 {
   "changelogs": [
     {
+      "id": "2026-01-29-v3",
+      "date": "2026-01-29",
+      "title": "Guide d'utilisation de la configuration",
+      "categories": ["tutorials"],
+      "changes": [
+        {
+          "title": "Nouveau tutoriel : Utiliser ma configuration",
+          "details": "Guide pratique pour déclencher les commandes (/chemin:commande) et skills (/skill). Explications sur l'autocomplétion, la commande /do et l'importance de préciser le chemin de travail.",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Documentation de la commande /do",
+          "details": "Explication du mode intelligent qui laisse Claude choisir automatiquement les outils adaptés à la demande",
+          "type": "feature"
+        },
+        {
+          "title": "Tutoriel ajouté à la navigation",
+          "details": "Le tutoriel 'Utiliser ma configuration' est mis en avant en violet dans le menu Tutoriels",
+          "type": "improvement"
+        }
+      ]
+    },
+    {
       "id": "2026-01-29-v2",
       "date": "2026-01-29",
       "title": "Tutoriel Claude Desktop et aperçus présentations",

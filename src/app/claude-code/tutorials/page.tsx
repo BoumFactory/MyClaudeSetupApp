@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { BookOpen, Code2, Download, Settings, FileCode2, Package, Image, Sparkles, GraduationCap, Monitor, Terminal } from "lucide-react"
+import { BookOpen, Code2, Download, Settings, FileCode2, Package, Image, Sparkles, GraduationCap, Monitor, Terminal, Command, Zap } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumb } from "@/components/layout/Breadcrumb"
 import type { Metadata } from "next"
@@ -281,6 +281,58 @@ export default function TutorialsPage() {
                   </div>
                   <div className="text-nebula-400 font-semibold group-hover:underline">
                     Configurer l'API →
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* 5. Utiliser ma configuration */}
+          <Link href="/claude-code/tutorials/utilisation-config" className="block md:col-span-2">
+            <Card className="glass-card hover:scale-[1.02] transition-all duration-300 group cursor-pointer h-full border-2 border-purple-500/40 bg-purple-950/10">
+              <CardHeader>
+                <div className="flex items-start justify-between mb-3">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
+                    <Command className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-semibold text-purple-400 px-2.5 py-1 rounded-full bg-purple-500/20 border border-purple-500/50">
+                      Guide pratique
+                    </span>
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                      5
+                    </div>
+                  </div>
+                </div>
+                <CardTitle className="group-hover:text-purple-400 transition-colors">
+                  Utiliser ma configuration
+                </CardTitle>
+                <CardDescription>
+                  <strong className="text-purple-400">Mode d'emploi</strong> : apprenez à déclencher les commandes et skills.
+                  Autocomplétion, syntaxe, commande /do et bonnes pratiques.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-medium">
+                      <Command className="w-3 h-3" />
+                      Commandes
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-medium">
+                      <Sparkles className="w-3 h-3" />
+                      Skills
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-medium">
+                      <Zap className="w-3 h-3" />
+                      /do
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-medium">
+                      Essentiel
+                    </span>
+                  </div>
+                  <div className="text-purple-400 font-semibold group-hover:underline">
+                    Apprendre à utiliser →
                   </div>
                 </div>
               </CardContent>
