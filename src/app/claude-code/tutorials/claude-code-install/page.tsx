@@ -403,11 +403,25 @@ export default function ClaudeCodeInstallPage() {
             Prérequis
           </h3>
 
+          {/* Note importante : Node.js plus obligatoire */}
+          <div className="mb-4 p-4 bg-emerald-950/30 border-2 border-emerald-500/50 rounded-lg">
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold text-emerald-300 mb-1">Bonne nouvelle ! Node.js n'est plus obligatoire</p>
+                <p className="text-sm text-muted-foreground">
+                  Depuis les dernières mises à jour, Claude Code propose une <strong className="text-foreground">installation native</strong> qui
+                  ne nécessite plus Node.js. L'installation via npm est désormais <strong className="text-amber-300">dépréciée</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="mb-4 p-4 bg-blue-950/30 border border-blue-800 rounded-lg">
             <p className="text-sm text-muted-foreground">
-              <strong className="text-blue-300">Pourquoi ces prérequis ?</strong> Node.js et Python sont les compilateurs
-              associés aux principaux langages utilisés par les IA. Ils permettent d'utiliser un bon paquet de programmes utiles
-              et d'exploiter pleinement les fonctionnalités graphiques et d'intelligence artificielle.
+              <strong className="text-blue-300">Pourquoi installer Node.js et Python quand même ?</strong> Ces environnements
+              restent très utiles pour exploiter pleinement les fonctionnalités avancées (serveurs MCP, scripts personnalisés,
+              fonctionnalités graphiques et d'IA). Si vous débutez, vous pouvez les installer plus tard.
             </p>
           </div>
 
@@ -420,12 +434,12 @@ export default function ClaudeCodeInstallPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-3 rounded-lg bg-emerald-950/20 border border-emerald-800/50">
-              <CheckCircle className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-950/30 border border-slate-700/50">
+              <CheckCircle className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
               <div className="flex-1">
-                <p className="font-semibold text-emerald-300">Node.js installé (version 18 ou supérieure)</p>
+                <p className="font-semibold text-slate-300">Node.js (version 18+) — <span className="text-amber-400 text-sm">Optionnel</span></p>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Nécessaire pour exécuter Claude Code et de nombreux outils de développement
+                  Plus requis pour l'installation native. Utile pour les serveurs MCP et certains outils avancés.
                 </p>
                 <Button asChild variant="outline" size="sm">
                   <Link href="/claude-code/tutorials/nodejs-install" className="flex items-center gap-2" prefetch={false}>
@@ -436,12 +450,12 @@ export default function ClaudeCodeInstallPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-3 rounded-lg bg-emerald-950/20 border border-emerald-800/50">
-              <CheckCircle className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-950/30 border border-slate-700/50">
+              <CheckCircle className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
               <div className="flex-1">
-                <p className="font-semibold text-emerald-300">Python x64 installé (version 3.8 ou supérieure)</p>
+                <p className="font-semibold text-slate-300">Python x64 (version 3.8+) — <span className="text-amber-400 text-sm">Optionnel</span></p>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Requis pour les fonctionnalités graphiques et IA associées à Python
+                  Utile pour les fonctionnalités graphiques, IA et certains scripts avancés.
                 </p>
                 <Button asChild variant="outline" size="sm">
                   <Link href="/claude-code/tutorials/python-install" className="flex items-center gap-2" prefetch={false}>

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { BookOpen, Code2, Download, Settings, FileCode2, Package, Image, Sparkles, GraduationCap } from "lucide-react"
+import { BookOpen, Code2, Download, Settings, FileCode2, Package, Image, Sparkles, GraduationCap, Monitor, Terminal } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumb } from "@/components/layout/Breadcrumb"
 import type { Metadata } from "next"
@@ -133,52 +133,111 @@ export default function TutorialsPage() {
             </Card>
           </Link>
 
-          {/* 3. Claude Code */}
-          <Link href="/claude-code/tutorials/claude-code-install" className="block">
-            <Card className="glass-card hover:scale-105 transition-all duration-300 group cursor-pointer h-full border-2 border-cosmic-500/30">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-3">
-                  <div className="w-12 h-12 rounded-lg cosmic-gradient flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full cosmic-gradient flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                    3
-                  </div>
-                </div>
-                <CardTitle className="group-hover:text-cosmic-400 transition-colors">
-                  Installation de Claude Code
-                </CardTitle>
-                <CardDescription>
-                  <strong className="text-cosmic-400">L'outil IA principal</strong> : installez Claude Code CLI et configurez votre abonnement.
-                  Automatisez la création de code et de documents pédagogiques.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-cosmic-500/20 text-cosmic-400 text-xs font-medium">
-                      <Download className="w-3 h-3" />
-                      CLI
-                    </span>
-                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-cosmic-500/20 text-cosmic-400 text-xs font-medium">
-                      <Settings className="w-3 h-3" />
-                      Configuration
-                    </span>
-                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-medium">
-                      20€/mois
-                    </span>
-                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-medium">
-                      <Sparkles className="w-3 h-3" />
-                      Essentiel
-                    </span>
-                  </div>
-                  <div className="text-cosmic-400 font-semibold group-hover:underline">
-                    Installer Claude Code →
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
+          {/* 3. Claude Code - Section avec 2 options */}
+          <div className="md:col-span-2 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full cosmic-gradient flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                3
+              </div>
+              <div>
+                <h3 className="font-bold text-lg">Installation de Claude Code</h3>
+                <p className="text-sm text-muted-foreground">Choisissez votre méthode d'installation (ou les deux !)</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {/* Option A : Claude Desktop */}
+              <Link href="/claude-code/tutorials/claude-desktop-install" className="block">
+                <Card className="glass-card hover:scale-105 transition-all duration-300 group cursor-pointer h-full border-2 border-emerald-500/30">
+                  <CardHeader>
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center">
+                        <Monitor className="w-6 h-6 text-white" />
+                      </div>
+                      <span className="text-xs font-semibold text-emerald-400 px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/50">
+                        Recommandé débutants
+                      </span>
+                    </div>
+                    <CardTitle className="group-hover:text-emerald-400 transition-colors">
+                      Claude Desktop
+                    </CardTitle>
+                    <CardDescription>
+                      <strong className="text-emerald-400">Interface graphique</strong> : application native avec interface visuelle.
+                      Idéal si vous préférez éviter le terminal.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-medium">
+                          <Monitor className="w-3 h-3" />
+                          Application
+                        </span>
+                        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-medium">
+                          Windows/macOS
+                        </span>
+                        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-medium">
+                          <Sparkles className="w-3 h-3" />
+                          Visuel
+                        </span>
+                      </div>
+                      <div className="text-emerald-400 font-semibold group-hover:underline">
+                        Installer Claude Desktop →
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Option B : Claude Code CLI */}
+              <Link href="/claude-code/tutorials/claude-code-install" className="block">
+                <Card className="glass-card hover:scale-105 transition-all duration-300 group cursor-pointer h-full border-2 border-cosmic-500/30">
+                  <CardHeader>
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="w-12 h-12 rounded-lg cosmic-gradient flex items-center justify-center">
+                        <Terminal className="w-6 h-6 text-white" />
+                      </div>
+                      <span className="text-xs font-semibold text-cosmic-400 px-2.5 py-1 rounded-full bg-cosmic-500/20 border border-cosmic-500/50">
+                        Plus flexible
+                      </span>
+                    </div>
+                    <CardTitle className="group-hover:text-cosmic-400 transition-colors">
+                      Claude Code CLI
+                    </CardTitle>
+                    <CardDescription>
+                      <strong className="text-cosmic-400">Ligne de commande</strong> : outil terminal puissant et scriptable.
+                      Plus de contrôle et d'options avancées.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-cosmic-500/20 text-cosmic-400 text-xs font-medium">
+                          <Terminal className="w-3 h-3" />
+                          Terminal
+                        </span>
+                        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-cosmic-500/20 text-cosmic-400 text-xs font-medium">
+                          Tous OS
+                        </span>
+                        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-cosmic-500/20 text-cosmic-400 text-xs font-medium">
+                          <Code2 className="w-3 h-3" />
+                          Scriptable
+                        </span>
+                      </div>
+                      <div className="text-cosmic-400 font-semibold group-hover:underline">
+                        Installer Claude Code CLI →
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+
+            <div className="p-3 bg-blue-950/30 border border-blue-800 rounded-lg text-sm text-muted-foreground">
+              <strong className="text-blue-300">Astuce :</strong> Les deux méthodes utilisent le même moteur et partagent la configuration.
+              Vous pouvez installer les deux et les utiliser selon vos préférences. Abonnement ~20€/mois requis.
+            </div>
+          </div>
 
           {/* 4. Google API (optionnel) */}
           <Link href="/claude-code/tutorials/google-api-setup" className="block">
@@ -297,9 +356,12 @@ export default function TutorialsPage() {
                 Claude Code (Essentiel pour l'IA)
               </h3>
               <p className="text-muted-foreground text-sm">
-                L'outil principal pour automatiser la création de contenu avec l'IA. Génère du code,
-                des documents LaTeX, des présentations et bien plus encore.
+                L'outil principal pour automatiser la création de contenu avec l'IA. Deux options :
               </p>
+              <ul className="text-sm text-muted-foreground mt-2 space-y-1 ml-4">
+                <li><strong className="text-emerald-400">Desktop</strong> : interface graphique, idéal pour débuter</li>
+                <li><strong className="text-cosmic-400">CLI</strong> : terminal, plus puissant et flexible</li>
+              </ul>
             </div>
           </div>
 

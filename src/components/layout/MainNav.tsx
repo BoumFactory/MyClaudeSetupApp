@@ -16,6 +16,7 @@ import {
   Package,
   Image,
   Terminal,
+  Monitor,
   BarChart3,
   Video,
   Shuffle,
@@ -84,22 +85,30 @@ export function MainNav() {
       icon: GraduationCap,
       submenu: [
         {
+          title: "Claude Desktop",
+          href: "/claude-code/tutorials/claude-desktop-install",
+          icon: Monitor,
+          description: "Application graphique - idéal débutants",
+          highlighted: "emerald"
+        },
+        {
+          title: "Claude Code CLI",
+          href: "/claude-code/tutorials/claude-code-install",
+          icon: Terminal,
+          description: "Terminal - plus puissant et flexible",
+          highlighted: "cosmic"
+        },
+        {
+          title: "Configuration de Claude Code",
+          href: "/claude-code/tutorials/claude-code-config",
+          icon: Settings,
+          description: "Configurer avec mes outils personnalisés"
+        },
+        {
           title: "Installation VS Code & MikTeX",
           href: "/claude-code/tutorials/vscode-miktex",
           icon: Code2,
-          description: "La fondation : éditeur et distribution LaTeX"
-        },
-        {
-          title: "Installation de Node.js",
-          href: "/claude-code/tutorials/nodejs-install",
-          icon: Terminal,
-          description: "Environnement JavaScript pour Claude Code"
-        },
-        {
-          title: "Installation de Python x64",
-          href: "/claude-code/tutorials/python-install",
-          icon: Terminal,
-          description: "Environnement Python pour les outils IA"
+          description: "Éditeur et distribution LaTeX"
         },
         {
           title: "Installation du package bfcours",
@@ -108,16 +117,16 @@ export function MainNav() {
           description: "Package personnalisé pour l'enseignement"
         },
         {
-          title: "Installation de Claude Code",
-          href: "/claude-code/tutorials/claude-code-install",
-          icon: Sparkles,
-          description: "L'outil IA principal pour automatiser"
+          title: "Installation de Node.js",
+          href: "/claude-code/tutorials/nodejs-install",
+          icon: Terminal,
+          description: "Environnement JavaScript (optionnel)"
         },
         {
-          title: "Configuration de Claude Code",
-          href: "/claude-code/tutorials/claude-code-config",
-          icon: Settings,
-          description: "Configurer avec mes outils personnalisés"
+          title: "Installation de Python x64",
+          href: "/claude-code/tutorials/python-install",
+          icon: Terminal,
+          description: "Environnement Python (optionnel)"
         },
         {
           title: "Configuration de l'API Google",
@@ -395,7 +404,7 @@ export function MainNav() {
             className="hidden md:block relative"
             onMouseLeave={handleNavLeave}
           >
-            <nav className="flex items-center gap-1">
+            <nav className="flex items-center gap-0.5 lg:gap-1">
             {navItems.map((item, itemIndex) => {
               const Icon = item.icon
               const isActive = pathname === item.href ||
@@ -403,9 +412,8 @@ export function MainNav() {
               const hasSubmenu = item.submenu && item.submenu.length > 0
               const isFeatured = (item as any).featured
 
-              // Déterminer si on est dans les derniers éléments (pour positionner à droite)
-              const isLastItems = itemIndex >= navItems.length - 2
-              const isFirstItems = itemIndex <= 2
+              // Positionner à droite pour la moitié droite des éléments (évite débordement)
+              const shouldAlignRight = itemIndex >= Math.ceil(navItems.length / 2)
 
               return (
                 <div
@@ -416,16 +424,17 @@ export function MainNav() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "inline-flex items-center gap-1 p-2 rounded-md text-sm font-medium transition-all duration-200 relative",
+                      "inline-flex items-center gap-1.5 px-2 py-2 lg:px-3 rounded-md text-sm font-medium transition-all duration-200 relative",
                       isActive
                         ? "bg-cosmic-900/50 text-cosmic-300 border border-cosmic-700"
                         : isFeatured
                         ? "text-foreground border border-cosmic-600/40 hover:border-cosmic-500/60 hover:bg-cosmic-900/30 hover:shadow-[0_0_12px_rgba(139,92,246,0.15)]"
                         : "text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30"
                     )}
-                    title={item.title}
                   >
-                    <Icon className={cn("w-5 h-5", isFeatured && "text-cosmic-400")} />
+                    <Icon className={cn("w-4 h-4 lg:w-5 lg:h-5", isFeatured && "text-cosmic-400")} />
+                    {/* Label visible sur grands écrans */}
+                    <span className="hidden xl:inline text-xs font-medium">{item.title}</span>
                     {hasSubmenu && (
                       <ChevronDown
                         className={cn(
@@ -434,25 +443,19 @@ export function MainNav() {
                         )}
                       />
                     )}
-
-                    {/* Tooltip au survol */}
-                    {!hasSubmenu && (
-                      <span className="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-2 py-1 bg-background/95 backdrop-blur-sm rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-cosmic-700/50">
-                        {item.title}
-                      </span>
-                    )}
                   </Link>
 
                   {/* Submenu Dropdown */}
                   {hasSubmenu && openMenu === item.title && (
                     <div
                       className={cn(
-                        "absolute top-full pt-2",
-                        isLastItems ? "right-0" : "left-0"
+                        "absolute top-full pt-2 z-50",
+                        // Positionner à droite pour la moitié droite du menu
+                        shouldAlignRight ? "right-0" : "left-0"
                       )}
                     >
                       <div className={cn(
-                        "w-72 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 p-2 animate-in fade-in slide-in-from-top-2 duration-150",
+                        "w-64 lg:w-72 max-w-[calc(100vw-2rem)] bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 p-2 animate-in fade-in slide-in-from-top-2 duration-150",
                         (item as any).isMultiLevel ? "" : "max-h-[80vh] overflow-y-auto"
                       )}>
                       {/* Header du dropdown avec le titre de la catégorie */}
@@ -495,9 +498,9 @@ export function MainNav() {
                                 {/* Sous-menu latéral pour les présentations de la catégorie */}
                                 {openCategory === category.title && category.presentations && (
                                   <div
-                                    className="absolute right-full top-0 pr-2"
+                                    className="absolute top-0 right-full pr-2"
                                   >
-                                    <div className="w-72 bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 p-2 animate-in fade-in slide-in-from-right-2 duration-150 max-h-[80vh] overflow-y-auto z-[100]">
+                                    <div className="w-64 lg:w-72 max-w-[calc(100vw-2rem)] bg-background/95 backdrop-blur-sm rounded-lg shadow-xl border border-cosmic-700/50 p-2 duration-150 max-h-[80vh] overflow-y-auto z-[100] animate-in fade-in slide-in-from-right-2">
 
                                     {category.presentations.map((presentation: any) => {
                                       const PresIcon = presentation.icon
@@ -548,6 +551,7 @@ export function MainNav() {
                                 {groupedItems.get(category)!.map((subItem) => {
                                   const SubIcon = subItem.icon
                                   const isSubActive = pathname === subItem.href
+                                  const highlighted = (subItem as any).highlighted
 
                                   return (
                                     <Link
@@ -557,12 +561,24 @@ export function MainNav() {
                                         "flex items-start gap-3 px-3 py-2.5 rounded-md transition-colors",
                                         isSubActive
                                           ? "bg-cosmic-900/70 text-cosmic-300"
+                                          : highlighted === "emerald"
+                                          ? "bg-emerald-950/40 border border-emerald-700/50 hover:bg-emerald-900/50 hover:border-emerald-600/50"
+                                          : highlighted === "cosmic"
+                                          ? "bg-cosmic-950/40 border border-cosmic-700/50 hover:bg-cosmic-900/50 hover:border-cosmic-600/50"
                                           : "hover:bg-cosmic-900/50"
                                       )}
                                     >
-                                      <SubIcon className="w-5 h-5 mt-0.5 flex-shrink-0 text-cosmic-400" />
+                                      <SubIcon className={cn(
+                                        "w-5 h-5 mt-0.5 flex-shrink-0",
+                                        highlighted === "emerald" ? "text-emerald-400" :
+                                        highlighted === "cosmic" ? "text-cosmic-400" : "text-cosmic-400"
+                                      )} />
                                       <div>
-                                        <div className="font-medium text-sm">{subItem.title}</div>
+                                        <div className={cn(
+                                          "font-medium text-sm",
+                                          highlighted === "emerald" && "text-emerald-300",
+                                          highlighted === "cosmic" && "text-cosmic-300"
+                                        )}>{subItem.title}</div>
                                         <div className="text-xs text-muted-foreground">
                                           {subItem.description}
                                         </div>
@@ -728,6 +744,7 @@ export function MainNav() {
                                 {groupedItems.get(category)!.map((subItem) => {
                                   const SubIcon = subItem.icon
                                   const isSubActive = pathname === subItem.href
+                                  const highlighted = (subItem as any).highlighted
 
                                   return (
                                     <Link
@@ -738,10 +755,18 @@ export function MainNav() {
                                         "flex items-start gap-2 px-3 py-2 rounded-md text-sm transition-colors",
                                         isSubActive
                                           ? "bg-cosmic-900/70 text-cosmic-300"
+                                          : highlighted === "emerald"
+                                          ? "bg-emerald-950/40 border border-emerald-700/50 text-emerald-300"
+                                          : highlighted === "cosmic"
+                                          ? "bg-cosmic-950/40 border border-cosmic-700/50 text-cosmic-300"
                                           : "text-muted-foreground hover:bg-cosmic-900/50"
                                       )}
                                     >
-                                      <SubIcon className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                                      <SubIcon className={cn(
+                                        "w-4 h-4 mt-0.5 flex-shrink-0",
+                                        highlighted === "emerald" ? "text-emerald-400" :
+                                        highlighted === "cosmic" ? "text-cosmic-400" : ""
+                                      )} />
                                       <div className="flex-1 min-w-0">
                                         <div className="font-medium text-sm truncate">{subItem.title}</div>
                                         {subItem.description && (

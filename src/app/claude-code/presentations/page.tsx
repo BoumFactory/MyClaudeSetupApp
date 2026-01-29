@@ -5,6 +5,7 @@ import { scanPresentations, readCategoriesConfig, organizePresentationsByCategor
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Breadcrumb } from "@/components/layout/Breadcrumb"
+import { PresentationPreview } from "@/components/presentations/PresentationPreview"
 import { formatDate } from "@/lib/utils"
 import type { Metadata } from "next"
 
@@ -228,30 +229,43 @@ export default async function PresentationsPage() {
                       style={getCategoryBackgroundStyle(category.id)}
                     >
                       <Link href={`/claude-code/presentations/${presentation.slug}`} className="relative z-10 block">
-                        <CardHeader>
-                          <div className="flex items-start justify-between gap-2">
-                            <div
-                              className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.gradient} border-2 ${(category as any).borderColor || 'border-cosmic-700/50'} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-xl transition-shadow`}
-                            >
-                              <Icon className={`w-7 h-7 text-${category.color}-400 group-hover:scale-110 transition-transform`} />
+                        {/* Aperçu de la présentation */}
+                        <div className="relative">
+                          <PresentationPreview
+                            src={`/render/Reveals/${presentation.filename}`}
+                            title={presentation.title}
+                            height={140}
+                            className="w-full"
+                          />
+                          {/* Badge de date sur l'aperçu */}
+                          {presentation.updatedAt && (
+                            <div className="absolute top-2 right-2 flex items-center gap-1 text-xs text-white/90 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1 z-30">
+                              <Calendar className="w-3 h-3" />
+                              {formatDate(presentation.updatedAt)}
                             </div>
-                            {presentation.updatedAt && (
-                              <div className="flex items-center gap-1 text-xs text-muted-foreground bg-black/20 rounded-full px-2 py-1">
-                                <Calendar className="w-3 h-3" />
-                                {formatDate(presentation.updatedAt)}
-                              </div>
-                            )}
+                          )}
+                        </div>
+
+                        <CardHeader className="pt-4">
+                          <div className="flex items-start gap-3">
+                            <div
+                              className={`w-10 h-10 rounded-lg bg-gradient-to-br ${category.gradient} border ${(category as any).borderColor || 'border-cosmic-700/50'} flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow`}
+                            >
+                              <Icon className={`w-5 h-5 text-${category.color}-400 group-hover:scale-110 transition-transform`} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <CardTitle className={`line-clamp-2 group-hover:text-${category.color}-400 transition-colors font-bold text-base`}>
+                                {presentation.title}
+                              </CardTitle>
+                            </div>
                           </div>
-                          <CardTitle className={`line-clamp-2 group-hover:text-${category.color}-400 transition-colors font-bold text-lg mt-3`}>
-                            {presentation.title}
-                          </CardTitle>
                           {presentation.comment && (
-                            <CardDescription className="line-clamp-3 text-sm">
+                            <CardDescription className="line-clamp-2 text-sm mt-2">
                               {presentation.comment}
                             </CardDescription>
                           )}
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="pt-0">
                           <div className={`flex items-center justify-between text-muted-foreground group-hover:text-${category.color}-400 transition-colors font-medium text-sm`}>
                             <span>Ouvrir la présentation</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

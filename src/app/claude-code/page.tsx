@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Code2, BookOpen, Download, Video, FileText, GraduationCap } from "lucide-react"
+import { Code2, BookOpen, Download, Video, FileText, GraduationCap, Cpu, Terminal, FolderOpen, ArrowRight, Sparkles, Cog, FileOutput, Zap } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Breadcrumb } from "@/components/layout/Breadcrumb"
@@ -61,6 +61,131 @@ export default function ClaudeCodePage() {
             <li>Automatiser la création de documents LaTeX</li>
             <li>Concevoir des systèmes d'agents intelligents</li>
           </ul>
+        </div>
+      </section>
+
+      {/* Schéma explicatif : Système autonome */}
+      <section className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-3xl font-bold">Un système complet et autonome</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Claude Code combine l'intelligence artificielle et des scripts pour créer
+            des documents directement sur votre ordinateur, avec une efficacité remarquable.
+          </p>
+        </div>
+
+        {/* Schéma visuel */}
+        <div className="glass-card rounded-xl p-6 lg:p-8">
+          {/* Flux principal */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6">
+
+            {/* Entrée : Votre demande */}
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-3 shadow-lg shadow-blue-500/20">
+                <Terminal className="w-8 h-8 text-white" />
+              </div>
+              <span className="font-semibold text-sm">Votre demande</span>
+              <span className="text-xs text-muted-foreground">en langage naturel</span>
+            </div>
+
+            <ArrowRight className="w-6 h-6 text-muted-foreground rotate-90 lg:rotate-0 flex-shrink-0" />
+
+            {/* Centre : Système IA + Scripts */}
+            <div className="relative">
+              <div className="glass-card rounded-2xl p-6 border-2 border-cosmic-500/50 bg-cosmic-950/30">
+                <div className="flex flex-col items-center text-center space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl cosmic-gradient flex items-center justify-center shadow-lg shadow-cosmic-500/20">
+                      <Cpu className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-2xl font-bold">+</span>
+                    <div className="w-12 h-12 rounded-xl nebula-gradient flex items-center justify-center shadow-lg shadow-nebula-500/20">
+                      <Cog className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <span className="font-bold text-lg">IA + Scripts</span>
+                    <p className="text-xs text-muted-foreground mt-1">Agents & Skills spécialisés</p>
+                  </div>
+                </div>
+              </div>
+              {/* Badge autonome */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-500 text-white text-xs font-bold rounded-full shadow-lg">
+                Autonome
+              </div>
+            </div>
+
+            <ArrowRight className="w-6 h-6 text-muted-foreground rotate-90 lg:rotate-0 flex-shrink-0" />
+
+            {/* Sortie : Documents créés */}
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center mb-3 shadow-lg shadow-emerald-500/20">
+                <FileOutput className="w-8 h-8 text-white" />
+              </div>
+              <span className="font-semibold text-sm">Documents créés</span>
+              <span className="text-xs text-muted-foreground">sur votre ordinateur</span>
+            </div>
+          </div>
+
+          {/* Exemples de sorties */}
+          <div className="mt-8 pt-6 border-t border-cosmic-800/50">
+            <p className="text-center text-sm text-muted-foreground mb-4">Exemples de créations automatisées :</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="flex items-center gap-2 p-3 rounded-lg bg-slate-950/50 border border-slate-800">
+                <FileText className="w-4 h-4 text-cosmic-400 flex-shrink-0" />
+                <span className="text-xs">Documents LaTeX</span>
+              </div>
+              <div className="flex items-center gap-2 p-3 rounded-lg bg-slate-950/50 border border-slate-800">
+                <BookOpen className="w-4 h-4 text-nebula-400 flex-shrink-0" />
+                <span className="text-xs">Présentations</span>
+              </div>
+              <div className="flex items-center gap-2 p-3 rounded-lg bg-slate-950/50 border border-slate-800">
+                <Code2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <span className="text-xs">Applications</span>
+              </div>
+              <div className="flex items-center gap-2 p-3 rounded-lg bg-slate-950/50 border border-slate-800">
+                <Sparkles className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <span className="text-xs">Images IA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Avantages clés */}
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="glass-card rounded-xl p-5 border-l-4 border-cosmic-500">
+            <div className="flex items-start gap-3">
+              <Zap className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-semibold text-sm mb-1">Efficacité maximale</h3>
+                <p className="text-xs text-muted-foreground">
+                  L'IA comprend votre besoin et exécute les scripts nécessaires sans intervention
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="glass-card rounded-xl p-5 border-l-4 border-nebula-500">
+            <div className="flex items-start gap-3">
+              <FolderOpen className="w-5 h-5 text-nebula-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-semibold text-sm mb-1">Fichiers locaux</h3>
+                <p className="text-xs text-muted-foreground">
+                  Tout est créé directement dans vos dossiers, prêt à l'emploi
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="glass-card rounded-xl p-5 border-l-4 border-emerald-500">
+            <div className="flex items-start gap-3">
+              <Cog className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-semibold text-sm mb-1">Personnalisable</h3>
+                <p className="text-xs text-muted-foreground">
+                  Agents et skills adaptés à vos besoins d'enseignement
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

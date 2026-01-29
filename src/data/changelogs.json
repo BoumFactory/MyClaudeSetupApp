@@ -1,6 +1,78 @@
 {
   "changelogs": [
     {
+      "id": "2026-01-29-v2",
+      "date": "2026-01-29",
+      "title": "Tutoriel Claude Desktop et aperçus présentations",
+      "categories": ["tutorials", "presentations"],
+      "changes": [
+        {
+          "title": "Nouveau tutoriel : Installation Claude Desktop",
+          "details": "Guide complet pour installer l'application de bureau Claude avec activation de Claude Code. Point d'entrée idéal pour les débutants.",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Distinction CLI vs Desktop dans les tutoriels",
+          "details": "Les deux méthodes d'installation Claude sont maintenant présentées côte à côte avec des couleurs distinctives (vert pour Desktop, violet pour CLI)",
+          "type": "improvement"
+        },
+        {
+          "title": "Aperçus visuels des présentations",
+          "details": "Chaque carte de présentation affiche maintenant une miniature iframe de la première slide",
+          "type": "feature"
+        },
+        {
+          "title": "Navigation : tutoriels Claude mis en avant",
+          "details": "Les tutoriels Claude Desktop et CLI sont maintenant en premier dans le menu avec des couleurs distinctives",
+          "type": "improvement"
+        },
+        {
+          "title": "Mise à jour tutoriel Node.js",
+          "details": "Précision que Node.js n'est plus obligatoire pour Claude Code (installation native recommandée)",
+          "type": "improvement"
+        }
+      ]
+    },
+    {
+      "id": "2026-01-29",
+      "date": "2026-01-29",
+      "title": "Réorganisation et nouvelles applications",
+      "categories": ["downloads", "tutorials", "applications"],
+      "changes": [
+        {
+          "title": "Réorganisation skills, agents et commandes",
+          "details": "Nouvelle architecture des dossiers dans Claude-Code-Setup pour une meilleure organisation",
+          "type": "improvement"
+        },
+        {
+          "title": "Nouveau tutoriel : Configuration de Claude Code",
+          "details": "Guide dédié pour installer les outils personnalisés (agents, skills, commandes) dans votre répertoire de travail",
+          "type": "feature"
+        },
+        {
+          "title": "Applications Tauri : Gestionnaire de Prompts",
+          "details": "Application standalone pour stocker, organiser et créer des prompts IA pour les élèves",
+          "type": "feature"
+        },
+        {
+          "title": "Applications Tauri : Application de Révisions",
+          "details": "QCM et questions libres avec support LaTeX pour les révisions multi-matières",
+          "type": "feature"
+        },
+        {
+          "title": "Simplification du tutoriel d'installation Claude Code",
+          "details": "Mise à jour avec les 3 méthodes d'installation natives (macOS/Linux, PowerShell, CMD) - Node.js plus obligatoire",
+          "type": "improvement"
+        },
+        {
+          "title": "Amélioration de la navigation",
+          "details": "Labels visibles sur grands écrans, meilleur positionnement des menus déroulants",
+          "type": "improvement"
+        }
+      ]
+    },
+    {
       "id": "2025-12-30",
       "date": "2025-12-30",
       "title": "Skill ODT pour LibreOffice",

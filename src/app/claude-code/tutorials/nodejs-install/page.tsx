@@ -46,9 +46,52 @@ export default function NodeJSInstallPage() {
           Installation de Node.js
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Node.js est un environnement d'exécution JavaScript essentiel pour utiliser Claude Code
-          et de nombreux outils de développement modernes
+          Node.js est un environnement d'exécution JavaScript utile pour exploiter pleinement
+          les fonctionnalités avancées de Claude Code
         </p>
+      </section>
+
+      {/* Bandeau : Plus obligatoire */}
+      <section className="glass-card rounded-xl p-6 border-2 border-amber-500/40 bg-amber-950/20">
+        <div className="flex items-start gap-4">
+          <div className="w-10 h-10 rounded-lg bg-amber-600 flex items-center justify-center flex-shrink-0">
+            <AlertCircle className="w-5 h-5 text-white" />
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-xl font-bold text-amber-300">Node.js n'est plus obligatoire pour Claude Code</h2>
+            <p className="text-muted-foreground">
+              Depuis les dernières mises à jour, Claude Code propose une <strong className="text-foreground">installation native</strong> qui
+              ne nécessite plus Node.js. L'installation via npm est désormais <strong className="text-amber-300">dépréciée</strong>.
+            </p>
+            <div className="mt-3 p-3 bg-amber-950/40 border border-amber-800 rounded-lg">
+              <p className="text-sm text-muted-foreground">
+                <strong className="text-amber-300">Faut-il quand même installer Node.js ?</strong> Oui, si vous souhaitez :
+              </p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground ml-4">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                  <span>Utiliser des serveurs MCP (Model Context Protocol)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                  <span>Exécuter des scripts Node.js personnalisés</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                  <span>Développer des applications web (React, Next.js, etc.)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                  <span>Utiliser des packages npm tiers</span>
+                </li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-3">
+                Si vous débutez avec Claude Code, vous pouvez <strong className="text-foreground">sauter cette étape</strong> et
+                revenir installer Node.js plus tard si nécessaire.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Qu'est-ce que Node.js */}
@@ -70,9 +113,9 @@ export default function NodeJSInstallPage() {
           <div className="flex gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800">
             <CheckCircle className="w-6 h-6 text-cosmic-400 flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-semibold mb-1 text-cosmic-300">Nécessaire pour Claude Code</h3>
+              <h3 className="font-semibold mb-1 text-cosmic-300">Serveurs MCP</h3>
               <p className="text-sm text-muted-foreground">
-                Claude Code CLI est construit avec Node.js et ne peut pas fonctionner sans lui
+                Requis pour exécuter les serveurs MCP qui étendent les capacités de Claude Code
               </p>
             </div>
           </div>
@@ -82,7 +125,7 @@ export default function NodeJSInstallPage() {
             <div>
               <h3 className="font-semibold mb-1 text-cosmic-300">NPM inclus</h3>
               <p className="text-sm text-muted-foreground">
-                Node.js inclut npm, le gestionnaire de paquets pour installer Claude Code
+                Node.js inclut npm, le gestionnaire de paquets pour installer des outils tiers
               </p>
             </div>
           </div>
