@@ -200,16 +200,45 @@ Contenu de la solution suivant la structure de l'énoncé.
 
 ### Espaces Réponses pour les Élèves
 
-1. **Ligne courte** : `\repsim[1.5cm]{contenu}`
-2. **Ligne adaptative** : `\tcfillcrep{texte}`
+**⚠️ RÈGLE CRITIQUE : Différence Collège / Lycée**
+
+| Niveau | Espaces réponses | Comportement par défaut |
+|--------|------------------|------------------------|
+| **Collège** (6ème-3ème) | **SYSTÉMATIQUES** | Toujours inclure les espaces réponses dans les énoncés |
+| **Lycée** (2nde-Terminale) | **Optionnels** | Ne pas inclure sauf demande explicite |
+
+**Au collège**, les élèves travaillent sur le document imprimé. Les espaces réponses contiennent la correction qui s'affiche en mode professeur.
+
+**Au lycée**, les élèves rédigent généralement sur copie. Les espaces réponses sont ajoutés uniquement si l'utilisateur le demande ou utilise l'option `--crep`.
+
+**Commandes disponibles :**
+
+1. **Ligne courte** : `\repsim[1.5cm]{contenu}` - pour les petites réponses (un nombre, un mot)
+2. **Ligne adaptative** : `\tcfillcrep{texte}` - occupe tout l'espace disponible sur la ligne
 3. **Multiligne** :
 
    ```latex
    \begin{crep}[extra lines=4]
    Contenu de réponse
    \end{crep}
-
    ```
+
+**Bonnes pratiques pour les espaces réponses :**
+
+- Utiliser `\repsim` pour les réponses courtes (résultats numériques, comparaisons)
+- Utiliser `\tcfillcrep` pour les réponses à compléter en fin de ligne (textes à trous)
+- Utiliser `\begin{crep}...\end{crep}` pour les calculs détaillés, raisonnements
+- L'option `[extra lines=N]` permet d'ajuster la hauteur de l'espace multiligne
+
+**Exemple collège (avec espaces réponses) :**
+```latex
+\tcbitem \tcbitempoint{2}$\dfrac{3}{4} + \dfrac{1}{2} = $ \tcfillcrep{$\dfrac{3}{4} + \dfrac{2}{4} = \dfrac{5}{4}$}
+```
+
+**Exemple lycée (sans espaces réponses) :**
+```latex
+\tcbitem \tcbitempoint{2}\acc{Calculer} $\dfrac{3}{4} + \dfrac{1}{2}$.
+```
 
 ## Intégration des Serveurs MCP
 
