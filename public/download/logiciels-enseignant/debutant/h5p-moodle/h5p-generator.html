@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H5P Game Map Generator</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f0f2f5;--card:#fff;--primary:#2c3e50;--accent:#3498db;--success:#27ae60;--error:#e74c3c;--warn:#f39c12;--border:#dce1e8;--text:#333;--muted:#777;--radius:10px;--purple:#8e44ad}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.container{max-width:900px;margin:0 auto;padding:20px}
+header{text-align:center;padding:24px 0 16px}
+header h1{font-size:1.6em;color:var(--primary);margin-bottom:4px}
+header h1 span{color:var(--accent)}
+header p{color:var(--muted);font-size:0.95em}
+.step{background:var(--card);border-radius:var(--radius);box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:20px;margin-bottom:16px;border-left:4px solid var(--border)}
+.step.active{border-left-color:var(--accent)}
+.step-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;cursor:pointer;user-select:none}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9em;flex-shrink:0;transition:all 0.2s}
+.step.active .step-num{background:var(--accent);color:#fff}
+.step-header h2{font-size:1em;color:var(--primary);font-weight:600}
+.step-body{display:none}
+.step.open .step-body{display:block}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:none;border-radius:6px;font-size:0.9em;font-weight:600;cursor:pointer;transition:all 0.15s}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-outline{background:transparent;border:2px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-success{background:var(--success);color:#fff}
+.btn-success:disabled{background:#aaa;cursor:not-allowed;transform:none}
+.btn-error{background:var(--error);color:#fff}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-purple:hover{filter:brightness(1.1)}
+.btn-sm{padding:5px 12px;font-size:0.82em}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.78em;font-weight:600;vertical-align:middle}
+.badge-ok{background:#e8f8f0;color:var(--success)}
+.badge-warn{background:#fff8e6;color:var(--warn)}
+.badge-err{background:#fde8e8;color:var(--error)}
+.badge-type{background:#eaf0f9;color:var(--accent)}
+textarea{width:100%;padding:14px;border:2px solid var(--border);border-radius:8px;font-family:'Cascadia Code','Fira Code','Consolas',monospace;font-size:0.88em;line-height:1.45;resize:vertical;transition:border-color 0.2s;tab-size:2}
+textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(52,152,219,0.15)}
+#scenarioInput{min-height:140px;font-family:'Segoe UI',system-ui,sans-serif;font-size:0.95em}
+#jsonInput{min-height:320px}
+.file-info{font-size:0.85em;color:var(--muted);padding:2px 0}
+.actions{display:flex;gap:10px;justify-content:center;margin:16px 0}
+#results{display:none}
+#results.visible{display:block}
+.result-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.result-header h3{font-size:1.05em}
+.msg-list{list-style:none;padding:0;margin:8px 0}
+.msg-list li{padding:6px 10px;border-radius:6px;margin-bottom:4px;font-size:0.9em;display:flex;align-items:flex-start;gap:8px}
+.msg-list li.err{background:#fde8e8;color:#9b1c1c}
+.msg-list li.warn{background:#fff8e6;color:#92600a}
+.msg-list li.ok{background:#e8f8f0;color:#1a6b3c}
+.msg-list li .icon{flex-shrink:0;font-weight:bold;width:18px;text-align:center}
+.preview{margin-top:12px}
+.preview h4{font-size:0.95em;color:var(--primary);margin-bottom:6px}
+.step-list{list-style:none;padding:0}
+.step-list li{padding:5px 8px;font-size:0.88em;border-left:3px solid var(--border);margin-bottom:2px;display:flex;align-items:center;gap:8px}
+.step-list li.start{border-left-color:var(--success);background:#f4fdf7}
+.step-list li .num{color:var(--muted);font-weight:600;min-width:22px}
+.step-list li .type{font-size:0.8em;padding:1px 6px;border-radius:3px;background:#eaf0f9;color:var(--accent);font-weight:600}
+.download-area{text-align:center;margin-top:16px;padding:16px;background:#f4fdf7;border-radius:8px;border:2px dashed var(--success)}
+.download-area .size{font-size:0.85em;color:var(--muted);margin-top:4px}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.copy-feedback{display:inline-block;margin-left:8px;font-size:0.85em;color:var(--success);opacity:0;transition:opacity 0.3s}
+.copy-feedback.show{opacity:1}
+.hint{font-size:0.88em;color:var(--muted);margin:8px 0;padding:10px 14px;background:#f8f9fb;border-radius:6px;border-left:3px solid var(--accent)}
+.hint strong{color:var(--text)}
+footer{text-align:center;padding:20px 0;color:var(--muted);font-size:0.82em}
+@media(max-width:600px){.container{padding:12px}textarea{min-height:200px}.toolbar{flex-direction:column;align-items:stretch}.actions{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1><span>H5P</span> Game Map Generator</h1>
+  <p>Cr&eacute;ez un parcours gamifi&eacute; H5P pour Moodle en 4 &eacute;tapes.</p>
+</header>
+
+<!-- STEP 0 : Scenario -->
+<div class="step active open" id="step0">
+  <div class="step-header" onclick="toggleStep(0)">
+    <span class="step-num">0</span>
+    <h2>D&eacute;cris ton parcours</h2>
+  </div>
+  <div class="step-body">
+    <p class="hint"><strong>Mode d'emploi :</strong> D&eacute;cris le parcours que tu veux cr&eacute;er (niveau, th&egrave;me, chapitre, nombre d'&eacute;tapes, style souhait&eacute;...). Clique ensuite sur <strong>Copier</strong> pour obtenir ta demande + le prompt technique complet. Colle le tout dans ton IA pr&eacute;f&eacute;r&eacute;e (ChatGPT, Claude, Mistral...) et r&eacute;cup&egrave;re le JSON g&eacute;n&eacute;r&eacute;.</p>
+    <textarea id="scenarioInput" placeholder="Exemple : Cr&eacute;e un parcours de 10 &eacute;tapes sur le th&eacute;or&egrave;me de Pythagore, niveau 4&egrave;me, style aventure. Inclus des figures SVG dans les &eacute;tapes advancedtext et du LaTeX MathJax pour les formules."></textarea>
+    <div style="margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-purple" onclick="copyPrompt()">Copier sc&eacute;nario + prompt technique</button>
+      <span class="copy-feedback" id="copyFeedback">Copi&eacute; dans le presse-papier !</span>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 1 : JSON -->
+<div class="step open" id="step1">
+  <div class="step-header" onclick="toggleStep(1)">
+    <span class="step-num">1</span>
+    <h2>Colle le JSON g&eacute;n&eacute;r&eacute; par l'IA</h2>
+  </div>
+  <div class="step-body">
+    <div class="toolbar">
+      <button class="btn btn-outline" onclick="document.getElementById('fJson').click()">Importer JSON</button>
+      <input type="file" id="fJson" accept=".json" hidden>
+      <span style="flex:1"></span>
+      <button class="btn btn-sm btn-outline" onclick="loadExample()">Charger exemple</button>
+    </div>
+    <textarea id="jsonInput" spellcheck="false" placeholder='{ "title": "Mon Parcours", "theme": "...", "style": "aventure", "etapes": [ ... ] }'></textarea>
+  </div>
+</div>
+
+<!-- STEP 2 : Background -->
+<div class="step open" id="step2">
+  <div class="step-header" onclick="toggleStep(2)">
+    <span class="step-num">2</span>
+    <h2>Image de fond (optionnel)</h2>
+  </div>
+  <div class="step-body">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-outline" onclick="document.getElementById('fBg').click()">Choisir une image</button>
+      <input type="file" id="fBg" accept="image/png,image/jpeg,image/webp" hidden>
+      <span id="bgName" class="file-info">Aucune image (un fond par d&eacute;faut sera utilis&eacute;)</span>
+    </div>
+    <p class="hint" style="margin-top:8px">Format recommand&eacute; : PNG 1920&times;1080. L'image sert de carte de fond pour le parcours.</p>
+  </div>
+</div>
+
+<!-- STEP 3 : Validate & Generate -->
+<div class="step active open" id="step3">
+  <div class="step-header" onclick="toggleStep(3)">
+    <span class="step-num">3</span>
+    <h2>Valider &amp; G&eacute;n&eacute;rer</h2>
+  </div>
+  <div class="step-body">
+    <div class="actions" style="margin:0">
+      <button class="btn btn-primary" id="btnValidate" onclick="doValidate()">Valider le JSON</button>
+      <button class="btn btn-success" id="btnGenerate" onclick="doGenerate()" disabled>G&eacute;n&eacute;rer H5P</button>
+    </div>
+    <div class="step" id="results" style="margin-top:12px;border-left-color:transparent;box-shadow:none;padding:12px 0">
+      <div id="resultContent"></div>
+    </div>
+  </div>
+</div>
+
+<footer>H5P Game Map Generator &mdash; 100% navigateur, z&eacute;ro serveur.</footer>
+</div>
+
+<!-- ============================================================ -->
+<!-- PROMPT TECHNIQUE EMBARQUE (contenu de prompt.md)              -->
+<!-- ============================================================ -->
+<script type="text/plain" id="skillPrompt">
+# Création de parcours gamifié H5P Game Map
+
+Produis un **fichier JSON** décrivant un parcours pédagogique gamifié H5P Game Map pour Moodle.
+Le JSON sera converti en .h5p par le générateur intégré.
+
+---
+
+## Règles critiques
+
+1. **Pas de LaTeX dans les trous — fermer le mode math AVANT le trou** — Les `*mots*` de dragtext/blanks sont saisis ou glissés par l'élève. Y mettre du LaTeX forcerait l'élève à taper `\(\mathbb{N}\)`. De plus, si un calcul mène à un trou, le `\\)` doit être AVANT le `*mot*`, jamais après :
+   - CORRECT : `"\\(2x + 5 = 2 \\times 3 + 5 =\\) *11*."` → le mode math est fermé, le trou est en texte brut
+   - CORRECT : `"\\(2x +\\) *5* \\(= 11\\)."` → on ferme avant le trou, on rouvre après si besoin
+   - FAUX : `"\\(2x + 5 = 2 \\times 3 + 5 = *11*\\)."` → le trou est piégé dans le LaTeX, tout casse
+   - FAUX : `"\\(2x + 5 = 2 \\times 3 + 5 = *11*.\\)"` → `\\(` jamais fermé avant le trou
+   Règle simple : **fermer `\\)` avant chaque `*mot*`**, rouvrir `\\(` après si l'expression continue.
+2. **DragText : dernière ligne sans trou** — Bug H5P : si la dernière ligne contient un `*mot*`, l'interface peut bloquer. Terminer par une phrase simple sans trou.
+3. **Plusieurs questions par étape** — Privilégier `questionset` (2-4 questions de types variés) ou `singlechoiceset` (2-5 QCM enchaînés). Les `dragtext` et `blanks` comptent comme étapes riches (plusieurs trous = plusieurs interactions).
+4. **Jamais 2 mêmes types consécutifs** — Alterner systématiquement.
+5. **Max 40% de multichoice simples** — Diversifier avec dragtext, blanks, singlechoiceset, questionset, advancedtext.
+6. **Feedbacks explicatifs** — Chaque réponse explique pourquoi c'est correct ou non. Jamais juste "Correct !" ou "Faux !".
+7. **Noms narratifs** — "Le Pont des Calculs", pas "Question 3".
+8. **LaTeX MathJax** — `\\(formule\\)` pour le LaTeX inline (double backslash obligatoire en JSON).
+9. **Fermer chaque mode math** — Chaque `\\(` doit avoir son `\\)`. Un `\\(` non fermé casse tout le rendu MathJax en aval. Vérifier systématiquement que le nombre de `\\(` est égal au nombre de `\\)` dans chaque champ.
+10. **Jamais de trou `*mot*` dans un `\frac{}{}`** — MathJax rend la fraction en image : l'élève ne peut ni glisser ni taper à l'intérieur d'une fraction rendue. Utiliser `?` comme placeholder visible dans la fraction, puis poser le trou en texte à côté :
+   - FAUX : `"\\(\\frac{OB}{*OD*} = 5\\)"` → le trou `*OD*` est piégé dans le dénominateur, invisible pour H5P
+   - FAUX : `"\\(\\frac{*AM*}{AB} = k\\)"` → le trou `*AM*` est piégé dans le numérateur
+   - CORRECT : `"\\(\\frac{OB}{?} = 5\\), ? =\\) *OD*"` → le `?` est visible dans la fraction, le trou est en texte brut à côté
+   - CORRECT : `"Le dénominateur vaut *OD*, donc \\(\\frac{OB}{OD} = 5\\)."` → reformulation : le trou est en texte, la formule complète est affichée après
+   Règle simple : **si la réponse est dans une fraction, mettre `?` dans le `\frac` et `? =` *réponse* à côté**.
+
+---
+
+## Échappement LaTeX en JSON
+
+En JSON, le backslash `\` doit être doublé. Donc `\(x^2\)` s'écrit `\\(x^2\\)` dans le JSON :
+
+```
+CORRECT en JSON :  "Calcule \\(2x + 3\\) pour \\(x = 4\\)."
+INCORRECT en JSON : "Calcule \(2x + 3\) pour \(x = 4\)."
+```
+
+Idem pour les commandes LaTeX : `\frac` devient `\\frac`, `\mathbb` devient `\\mathbb`.
+
+---
+
+## Schéma JSON global
+
+```json
+{
+  "title": "Nom narratif du parcours",
+  "niveau": "6eme | 5eme | 4eme | 3eme | 2nde | 1ere | Terminale",
+  "theme": "Sujet mathématique",
+  "style": "aventure | revision | evaluation | decouverte",
+  "config": {
+    "lives": 4,
+    "roaming": "complete",
+    "fog": "visited"
+  },
+  "lore": "<p>HTML d'introduction du parcours</p>",
+  "etapes": [],
+  "endScreen": {
+    "success": "<p>HTML de victoire</p>",
+    "failure": "<p>HTML de défaite</p>",
+    "feedbacks": [
+      { "from": 0, "to": 40, "feedback": "Message encourageant" },
+      { "from": 41, "to": 70, "feedback": "Bon travail" },
+      { "from": 71, "to": 99, "feedback": "Excellent" },
+      { "from": 100, "to": 100, "feedback": "Parfait" }
+    ]
+  }
+}
+```
+
+### Styles prédéfinis
+
+| Style | lives | roaming | fog | Usage |
+|-------|-------|---------|-----|-------|
+| `aventure` | 4 | complete | visited | Révision ludique |
+| `revision` | null | free | none | Entraînement libre |
+| `evaluation` | 1 | strict | visited | Test noté |
+| `decouverte` | null | free | all | Introduction |
+
+(`lives: null` = vies illimitées)
+
+### Structure d'une étape
+
+```json
+{
+  "title": "Le Pont des Calculs",
+  "x": 45,
+  "y": 30,
+  "type": "multichoice",
+  "isStart": false,
+  "content": {}
+}
+```
+
+- `x`, `y` : position sur la carte, entre 0 et 100
+- `isStart` : `true` uniquement pour la première étape
+- `type` : un des 7 types décrits ci-dessous
+
+---
+
+## Types d'étapes — format du champ `content`
+
+### multichoice — QCM à choix unique
+
+```json
+{
+  "question": "Que vaut \\(2x + 3\\) pour \\(x = 4\\) ?",
+  "answers": [
+    { "text": "11", "correct": true, "feedback": "Exact : \\(2 \\times 4 + 3 = 11\\)." },
+    { "text": "10", "correct": false, "feedback": "Non, \\(2 \\times 4 = 8\\), puis \\(8 + 3 = 11\\)." },
+    { "text": "14", "correct": false, "feedback": "Tu as calculé \\(2 + 4 \\times 3\\) au lieu de \\(2 \\times 4 + 3\\)." }
+  ],
+  "tip": "Remplace x par 4 dans l'expression."
+}
+```
+
+Minimum 2 réponses, exactement 1 correcte, feedback sur chaque réponse.
+
+### truefalse — Vrai ou Faux
+
+```json
+{
+  "question": "Un carré est toujours un rectangle.",
+  "correct": true,
+  "feedback_correct": "Exact ! Un carré a 4 angles droits, c'est un rectangle particulier.",
+  "feedback_incorrect": "Si ! Un carré a bien 4 angles droits, c'est donc un rectangle."
+}
+```
+
+### dragtext — Glisser-déposer
+
+Les `*mots*` sont les éléments à glisser. **Jamais de LaTeX dans les `*mots*`. Dernière ligne sans trou.**
+
+```json
+{
+  "description": "Place les mots au bon endroit.",
+  "text": "Un triangle *équilatéral* a ses trois côtés de même longueur.\nUn triangle *isocèle* a exactement deux côtés égaux.\nUn triangle *rectangle* possède un angle droit.\n\nRetiens bien ces définitions !"
+}
+```
+
+La dernière ligne `Retiens bien ces définitions !` ne contient pas de `*mot*` — OK.
+
+### blanks — Texte à trous
+
+Les `*mots*` sont les trous à compléter. **Jamais de LaTeX dans les `*mots*`.**
+
+```json
+{
+  "description": "Complète les phrases.",
+  "text": "Le théorème de Pythagore s'applique dans un triangle *rectangle*.\nIl relie l'*hypoténuse* aux deux autres côtés.\nLa formule s'écrit \\(a^2 = b^2 + c^2\\) où \\(a\\) est le plus *grand* côté."
+}
+```
+
+Le LaTeX `\\(a^2 = b^2 + c^2\\)` est dans l'énoncé (OK), les trous `*rectangle*`, `*hypoténuse*`, `*grand*` sont en texte simple (OK).
+
+### singlechoiceset — Série de QCM rapides
+
+2 à 5 questions enchaînées.
+
+```json
+{
+  "questions": [
+    {
+      "question": "Que vaut \\(3^2\\) ?",
+      "answers": [
+        { "text": "9", "correct": true },
+        { "text": "6", "correct": false },
+        { "text": "8", "correct": false }
+      ]
+    },
+    {
+      "question": "Que vaut \\((-2)^3\\) ?",
+      "answers": [
+        { "text": "-8", "correct": true },
+        { "text": "8", "correct": false },
+        { "text": "-6", "correct": false }
+      ]
+    }
+  ]
+}
+```
+
+### questionset — Mix de types (synthèse, boss final)
+
+Chaque question a un champ `type` : `"multichoice"` ou `"truefalse"`.
+
+```json
+{
+  "questions": [
+    {
+      "type": "multichoice",
+      "question": "Quel est le périmètre d'un cercle de rayon 3 ?",
+      "answers": [
+        { "text": "\\(6\\pi\\)", "correct": true },
+        { "text": "\\(9\\pi\\)", "correct": false },
+        { "text": "\\(3\\pi\\)", "correct": false }
+      ]
+    },
+    {
+      "type": "truefalse",
+      "question": "L'aire d'un disque de rayon \\(r\\) est \\(2\\pi r\\).",
+      "correct": false,
+      "feedback_correct": "Exact, l'aire est \\(\\pi r^2\\), pas \\(2\\pi r\\).",
+      "feedback_incorrect": "Non ! \\(2\\pi r\\) est le périmètre. L'aire est \\(\\pi r^2\\)."
+    }
+  ]
+}
+```
+
+### advancedtext — Texte riche (respiration, récap, checkpoint)
+
+Étape sans score. Sert de pause narrative entre les défis : rappel de cours, encouragement, checkpoint.
+
+```json
+{
+  "text": "<p>Bravo, tu as franchi les premières épreuves !</p><p>Rappel : une <strong>suite arithmétique</strong> a une raison constante \\(r\\) telle que \\(u_{n+1} = u_n + r\\).</p><p><em>Reprends ton souffle avant de continuer...</em></p>"
+}
+```
+
+Le champ `text` contient du HTML. Le LaTeX MathJax (`\\(...)\\)`) est autorisé. Pas de question, pas de score — l'élève lit et passe à la suite.
+
+---
+
+## Conception du parcours
+
+### Structure narrative (8-12 étapes)
+
+```
+ZONE DÉCOUVERTE (2-3 étapes)
+  Vocabulaire, définitions, premières notions
+  Types : dragtext, blanks, singlechoiceset
+
+ZONE EXPLORATION (3-4 étapes)
+  Premiers calculs, propriétés, applications simples
+  Types : multichoice, singlechoiceset, questionset
+
+ZONE MAÎTRISE (2-3 étapes)
+  Applications complexes, synthèse, boss final
+  Types : questionset, singlechoiceset
+```
+
+### Variété obligatoire
+
+Pour un parcours de N étapes :
+- Au moins 3 types différents utilisés
+- Pas 2 types identiques consécutifs
+- Max 40% de multichoice simples
+- Le type de question est adapté au contenu (voir tableau ci-dessous)
+
+### Positions sur la carte
+
+Répartir en formant un chemin lisible :
+- Départ en bas-gauche (x = 10-20, y = 60-80)
+- Progression vers le haut-droite
+- Arrivée en haut-droite (x = 70-90, y = 20-40)
+- Espacement minimum de 10 entre deux étapes
+
+### Adaptation contenu source vers type de question
+
+| Contenu source | Type recommandé | Pourquoi |
+|----------------|-----------------|----------|
+| Définition | blanks, dragtext | L'élève manipule le vocabulaire |
+| Propriété, théorème | truefalse, multichoice | Tester la compréhension |
+| Exemple calculatoire | singlechoiceset | Enchaîner des calculs similaires |
+| Exercice d'application | questionset | Mixer les approches |
+| Vocabulaire technique | dragtext | Associer termes et définitions |
+| Récap, checkpoint, encouragement | advancedtext | Pause narrative, respiration entre les défis |
+
+---
+
+## Protocole d'exécution
+
+### Étape 1 — Analyser la ressource
+
+Lire la ressource fournie et extraire :
+- **Notions clés** : définitions, propriétés, théorèmes
+- **Formules** : pour les énoncés (en LaTeX MathJax)
+- **Erreurs typiques** : pour créer des distracteurs crédibles
+- **Vocabulaire** : pour les dragtext
+
+### Étape 2 — Structurer le parcours
+
+1. Mapper chaque notion vers un type de question (voir tableau)
+2. Organiser en zones (découverte, exploration, maîtrise)
+3. Nommer chaque étape avec un nom narratif évocateur
+4. Placer les étapes sur la carte (positions x, y)
+5. S'assurer que les **questions portent sur le contenu réel** de la ressource, pas sur un thème générique
+
+### Étape 3 — Produire le JSON
+
+Générer le JSON complet en respectant le schéma et les règles critiques.
+
+### Étape 4 — Vérification
+
+Avant de finaliser, vérifier cette checklist :
+- [ ] Aucun LaTeX dans les `*mots*` de dragtext et blanks
+- [ ] Aucun `*mot*` à l'intérieur d'un `\frac{}{}` (utiliser `?` + trou à côté)
+- [ ] Dernière ligne de chaque dragtext sans trou
+- [ ] Pas 2 types identiques consécutifs
+- [ ] Feedbacks explicatifs sur chaque réponse
+- [ ] Au moins 3 types différents dans le parcours
+- [ ] Les `\\(` et `\\)` sont bien doublés (JSON)
+- [ ] Chaque `\\(` a son `\\)` correspondant (aucun mode math non fermé)
+- [ ] Chaque multichoice a exactement 1 réponse correcte
+- [ ] Les questions portent sur le contenu réel de la ressource analysée
+
+---
+
+## Exemple complet (12 étapes, thème : suites numériques, 1ère)
+
+```json
+{
+  "title": "L'Archipel des Suites",
+  "niveau": "1ere",
+  "theme": "Suites numériques",
+  "style": "aventure",
+  "config": {
+    "lives": 4,
+    "roaming": "complete",
+    "fog": "visited"
+  },
+  "lore": "<p style='text-align: center;'><strong>Bienvenue sur l'Archipel des Suites !</strong><br>Navigateur intrépide, tu devras traverser 12 îles pour maîtriser les suites numériques.<br>Chaque île cache un défi mathématique. Tu as <strong>4 vies</strong> — ne les gaspille pas !<br><em>Bonne traversée !</em></p>",
+  "etapes": [
+    {
+      "title": "Le Départ",
+      "type": "dragtext",
+      "x": 10, "y": 75,
+      "isStart": true,
+      "content": {
+        "description": "Complète les phrases en glissant les mots au bon endroit.",
+        "text": "Une suite numérique est une *fonction* définie sur N à valeurs dans R.\nLe terme de rang n se note *un* et la suite complète se note *(un)*.\nChaque entier naturel n donne un *terme* de la suite.\nLe premier terme est souvent u0 ou u1."
+      }
+    },
+    {
+      "title": "Le Parchemin",
+      "type": "blanks",
+      "x": 25, "y": 75,
+      "content": {
+        "description": "Calcule les premiers termes de la suite un = 3n + 1.",
+        "text": "Pour n = 0 : u0 = 3 x 0 + 1 = *1*.\nPour n = 1 : u1 = 3 x 1 + 1 = *4*.\nPour n = 2 : u2 = 3 x 2 + 1 = *7*.\nLa suite (un) est définie pour tout entier *naturel* n."
+      }
+    },
+    {
+      "title": "La Balance",
+      "type": "truefalse",
+      "x": 40, "y": 75,
+      "content": {
+        "question": "Si une suite est définie à partir de n = 0, alors u5 est le 5ème terme.",
+        "correct": false,
+        "feedback_correct": "Exact ! u0 est le 1er, u5 est le 6ème terme.",
+        "feedback_incorrect": "Non ! Compte : u0 (1er), u1 (2e)... u5 est le 6ème terme."
+      }
+    },
+    {
+      "title": "Le Pont",
+      "type": "multichoice",
+      "x": 35, "y": 48,
+      "content": {
+        "question": "Soit un = 2n + 1. Que vaut u4 ?",
+        "answers": [
+          {"text": "9", "correct": true, "feedback": "u4 = 2x4 + 1 = 9."},
+          {"text": "8", "correct": false, "feedback": "Non. u4 = 2x4 + 1 = 9, pas 8."},
+          {"text": "7", "correct": false, "feedback": "Tu as calculé u3, pas u4."}
+        ]
+      }
+    }
+  ],
+  "endScreen": {
+    "success": "<p><strong>Bravo !</strong></p>",
+    "failure": "<p><strong>Dommage !</strong></p>",
+    "feedbacks": [
+      {"from": 0, "to": 50, "feedback": "Revois les bases."},
+      {"from": 51, "to": 99, "feedback": "Presque !"},
+      {"from": 100, "to": 100, "feedback": "Parfait !"}
+    ]
+  }
+}
+```
+
+(Cet exemple est réduit pour la démo. Un vrai parcours contient 8-12 étapes avec 7 types variés.)
+</script>
+
+<script>
+// ================================================================
+//  GLOBALS
+// ================================================================
+let bgFile = null;
+let lastValidData = null;
+
+document.getElementById('fJson').addEventListener('change', e => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = () => { document.getElementById('jsonInput').value = r.result; doValidate(); };
+  r.readAsText(f);
+});
+document.getElementById('fBg').addEventListener('change', e => {
+  bgFile = e.target.files[0] || null;
+  document.getElementById('bgName').textContent = bgFile ? bgFile.name : 'Aucune image (un fond par d\u00e9faut sera utilis\u00e9)';
+});
+
+// ================================================================
+//  STEP TOGGLE
+// ================================================================
+function toggleStep(n) {
+  document.getElementById('step' + n).classList.toggle('open');
+}
+
+// ================================================================
+//  COPY PROMPT
+// ================================================================
+function copyPrompt() {
+  const scenario = document.getElementById('scenarioInput').value.trim();
+  const skillText = document.getElementById('skillPrompt').textContent;
+  let fullText = '';
+  if (scenario) {
+    fullText = '# Ma demande\n\n' + scenario + '\n\n---\n\n# Instructions techniques\n\n' + skillText;
+  } else {
+    fullText = skillText;
+  }
+  navigator.clipboard.writeText(fullText).then(() => {
+    const fb = document.getElementById('copyFeedback');
+    fb.classList.add('show');
+    setTimeout(() => fb.classList.remove('show'), 2500);
+  }).catch(() => {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = fullText;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const fb = document.getElementById('copyFeedback');
+    fb.classList.add('show');
+    setTimeout(() => fb.classList.remove('show'), 2500);
+  });
+}
+
+// ================================================================
+//  STYLES
+// ================================================================
+const STYLES = {
+  aventure: {lives:4,roaming:'complete',fog:'visited',colors:{stageUnvisited:'rgba(52,152,219,0.85)',stageLocked:'rgba(127,140,141,0.7)',stageCleared:'rgba(46,204,113,0.85)',pathNormal:'rgba(44,62,80,0.6)',pathCleared:'rgba(46,204,113,0.7)'}},
+  revision: {lives:null,roaming:'free',fog:'none',colors:{stageUnvisited:'rgba(41,128,185,0.8)',stageLocked:'rgba(149,165,166,0.6)',stageCleared:'rgba(39,174,96,0.8)',pathNormal:'rgba(52,73,94,0.5)',pathCleared:'rgba(39,174,96,0.6)'}},
+  evaluation:{lives:1,roaming:'strict',fog:'visited',colors:{stageUnvisited:'rgba(155,89,182,0.8)',stageLocked:'rgba(127,140,141,0.7)',stageCleared:'rgba(46,204,113,0.85)',pathNormal:'rgba(44,62,80,0.6)',pathCleared:'rgba(46,204,113,0.7)'}},
+  decouverte:{lives:null,roaming:'free',fog:'all',colors:{stageUnvisited:'rgba(230,126,34,0.85)',stageLocked:'rgba(127,140,141,0.7)',stageCleared:'rgba(46,204,113,0.85)',pathNormal:'rgba(44,62,80,0.6)',pathCleared:'rgba(46,204,113,0.7)'}}
+};
+const VALID_TYPES = new Set(['multichoice','truefalse','dragtext','blanks','singlechoiceset','questionset','advancedtext']);
+const VALID_STYLES = new Set(['aventure','revision','evaluation','decouverte']);
+
+// ================================================================
+//  HELPERS
+// ================================================================
+function uid(){return crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:(r&3|8)).toString(16)})}
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[b[i],b[j]]=[b[j],b[i]]}return b}
+
+function uiMultichoice(){return{checkAnswerButton:'V\u00e9rifier',submitAnswerButton:'Soumettre',showSolutionButton:'Voir la solution',tryAgainButton:'R\u00e9essayer',tipsLabel:'Indice',scoreBarLabel:'Score : :num sur :total',tipAvailable:'Indice disponible',feedbackAvailable:'Explication disponible',readFeedback:"Lire l'explication",wrongAnswer:'Incorrect',correctAnswer:'Correct !',shouldCheck:'\u00c0 cocher',shouldNotCheck:'\u00c0 ne pas cocher',noInput:'R\u00e9ponds avant de voir la solution',a11yCheck:'V\u00e9rifier les r\u00e9ponses.',a11yShowSolution:'Afficher la solution.',a11yRetry:'Recommencer.'}}
+function confirmDlg(h,b){return{header:h,body:b,cancelLabel:'Annuler',confirmLabel:'Valider'}}
+function l10n(){return{start:'Commencer','continue':'Continuer',restart:'Recommencer',showSolutions:'Solutions',completedMap:'Parcours termin\u00e9 !',fullScoreButnoLivesLeft:'Score parfait mais plus de vies !',confirmFinishHeader:'Terminer ?',confirmFinishDialog:'Tu ne pourras plus explorer.',confirmFinishDialogSubmission:'Ton score sera enregistr\u00e9.',confirmFinishDialogQuestion:'Veux-tu vraiment terminer ?',confirmAccessDeniedHeader:'\u00c9tape verrouill\u00e9e',confirmAccessDeniedDialog:'R\u00e9ussis les \u00e9tapes pr\u00e9c\u00e9dentes.',yes:'Oui',no:'Non',confirmGameOverHeader:'Game Over !',confirmGameOverDialog:'Tu as perdu toutes tes vies ! Recommence.',confirmTimeoutHeader:'Temps \u00e9coul\u00e9 !',confirmTimeoutDialog:'Le temps est \u00e9coul\u00e9.',confirmTimeoutDialogLostLife:'Temps \u00e9coul\u00e9, tu perds une vie.',confirmScoreIncompleteHeader:'Score incomplet',confirmIncompleteScoreDialogLostLife:'Score insuffisant, tu perds une vie.',confirmFullScoreHeader:'Score parfait !',confirmFullScoreDialog:'Bravo ! Tu peux continuer.',confirmFullScoreDialogLoseLivesAmendmend:'Attention, tu peux encore perdre des vies !',ok:'OK',noStages:'Aucune \u00e9tape valide.',fullScoreButTimeout:'Score parfait mais temps \u00e9coul\u00e9 !'}}
+function a11y(){return{buttonFinish:'Terminer',buttonAudioActive:'Couper le son',buttonAudioInactive:'Activer le son',close:'Fermer',yourResult:'Tu as obtenu @score sur @total points',mapWasOpened:'La carte est ouverte.',mapSolutionsWasOpened:'Mode solutions.',startScreenWasOpened:'\u00c9cran de d\u00e9marrage.',endScreenWasOpened:'\u00c9cran de fin.',exerciseLabel:'. Exercice pour @stagelabel',stageButtonLabel:'\u00c9tape : @stagelabel',adjacentStageLabel:'\u00c9tape voisine : @stagelabelNeighbor',locked:'Verrouill\u00e9e',cleared:'R\u00e9ussie',applicationInstructions:'Utilise Espace ou Entr\u00e9e pour activer une \u00e9tape. Fl\u00e8ches pour naviguer.',applicationDescription:'Carte du parcours',movedToStage:'D\u00e9placement vers @stagelabel',stageUnlocked:'\u00c9tape @stagelabel d\u00e9bloqu\u00e9e !',toolbarFallbackLabel:'Parcours',enterFullscreen:'Plein \u00e9cran',exitFullscreen:'Quitter plein \u00e9cran'}}
+
+// ================================================================
+//  CONTENT GENERATORS
+// ================================================================
+function makeMultichoice(e){
+  const c=e.content||{};
+  const answers=shuffle((c.answers||[]).map(a=>({correct:!!a.correct,tipsAndFeedback:{tip:'',chosenFeedback:'<div>'+(a.feedback||'')+'</div>',notChosenFeedback:''},text:'<div>'+(a.text||'')+'</div>\n'})));
+  return{contentType:{params:{media:{disableImageZooming:false},answers,overallFeedback:[{from:0,to:0,feedback:'Dommage ! Relis bien la question.'},{from:1,to:99,feedback:'Presque ! R\u00e9fl\u00e9chis encore.'},{from:100,to:100,feedback:'Parfait !'}],behaviour:{enableRetry:true,enableSolutionsButton:true,enableCheckButton:true,type:'auto',singlePoint:false,randomAnswers:false,showSolutionsRequiresInput:true,passPercentage:100,showScorePoints:true},UI:uiMultichoice(),confirmCheck:confirmDlg('Valider ?','Es-tu s\u00fbr de ta r\u00e9ponse ?'),confirmRetry:confirmDlg('R\u00e9essayer ?','Tu vas recommencer cette question.'),question:'<p><strong>'+esc(e.title||'')+'</strong></p>\n<p>'+(c.question||'')+'</p>\n'+(c.tip?'<p><em>Indice : '+c.tip+'</em></p>':'')},library:'H5P.MultiChoice 1.16',metadata:{contentType:'Multiple Choice',license:'U',title:e.title||''},subContentId:uid()}};
+}
+
+function makeTruefalse(e){
+  const c=e.content||{};
+  return{contentType:{params:{media:{disableImageZooming:false},correct:c.correct?'true':'false',behaviour:{enableRetry:true,enableSolutionsButton:true,enableCheckButton:true,confirmCheckDialog:false,confirmRetryDialog:false,autoCheck:false},l10n:{trueText:'Vrai',falseText:'Faux',score:'Score : @score sur @total',checkAnswer:'V\u00e9rifier',submitAnswer:'Soumettre',showSolutionButton:'Voir la solution',tryAgain:'R\u00e9essayer',wrongAnswerMessage:c.feedback_incorrect||'Incorrect.',correctAnswerMessage:c.feedback_correct||'Correct !',scoreBarLabel:'Score : :num sur :total',a11yCheck:'V\u00e9rifier.',a11yShowSolution:'Solution.',a11yRetry:'Recommencer.'},confirmCheck:confirmDlg('Valider ?','S\u00fbr ?'),confirmRetry:confirmDlg('R\u00e9essayer ?','Recommencer.'),question:'<p><strong>'+esc(e.title||'')+'</strong></p>\n<p>'+(c.question||'')+'</p>\n'},library:'H5P.TrueFalse 1.8',metadata:{contentType:'True/False Question',license:'U',title:e.title||''},subContentId:uid()}};
+}
+
+function makeDragtext(e){
+  const c=e.content||{};
+  return{contentType:{params:{media:{disableImageZooming:false},taskDescription:'<p><strong>'+esc(e.title||'')+'</strong></p>\n<p>'+(c.description||'')+'</p>\n',overallFeedback:[{from:0,to:0,feedback:'Dommage ! R\u00e9essaie !'},{from:1,to:99,feedback:'Presque ! V\u00e9rifie les derniers mots.'},{from:100,to:100,feedback:'Parfait !'}],checkAnswer:'V\u00e9rifier',submitAnswer:'Soumettre',tryAgain:'R\u00e9essayer',showSolution:'Voir la solution',dropZoneIndex:'Zone @index.',empty:'Zone @index vide.',contains:'Zone @index contient @draggable.',ariaDraggableIndex:'@index sur @count.',tipLabel:'Indice',correctText:'Correct !',incorrectText:'Incorrect',resetDropTitle:'R\u00e9initialiser',resetDropDescription:'R\u00e9initialiser cette zone ?',grabbed:'\u00c9l\u00e9ment s\u00e9lectionn\u00e9.',cancelledDragging:'Annul\u00e9.',correctAnswer:'R\u00e9ponse correcte :',feedbackHeader:'R\u00e9sultat',behaviour:{enableRetry:true,enableSolutionsButton:true,enableCheckButton:true,instantFeedback:false},scoreBarLabel:'Score : :num sur :total',a11yCheck:'V\u00e9rifier.',a11yShowSolution:'Solution.',a11yRetry:'Recommencer.',textField:c.text||''},library:'H5P.DragText 1.10',metadata:{contentType:'Drag the Words',license:'U',title:e.title||''},subContentId:uid()}};
+}
+
+function makeBlanks(e){
+  const c=e.content||{};
+  return{contentType:{params:{media:{disableImageZooming:false},text:'<p><strong>'+esc(e.title||'')+'</strong></p>\n<p>'+(c.description||'')+'</p>\n',overallFeedback:[{from:0,to:0,feedback:'Dommage !'},{from:1,to:99,feedback:'Presque parfait !'},{from:100,to:100,feedback:'Excellent !'}],showSolutions:'Voir la solution',tryAgain:'R\u00e9essayer',checkAnswer:'V\u00e9rifier',submitAnswer:'Soumettre',notFilledOut:'Compl\u00e8te tous les champs.',answerIsCorrect:"':ans' est correct !",answerIsWrong:"':ans' est incorrect.",answeredCorrectly:'Bonne r\u00e9ponse !',answeredIncorrectly:'Mauvaise r\u00e9ponse.',solutionLabel:'R\u00e9ponse :',inputLabel:'Champ @num sur @total',inputHasTipLabel:'Indice disponible',tipLabel:'Indice',behaviour:{enableRetry:true,enableSolutionsButton:true,enableCheckButton:true,autoCheck:false,caseSensitive:false,showSolutionsRequiresInput:true,separateLines:false,acceptSpellingErrors:true},scoreBarLabel:'Score : :num sur :total',a11yCheck:'V\u00e9rifier.',a11yShowSolution:'Solution.',a11yRetry:'Recommencer.',a11yCheckingModeHeader:'V\u00e9rification',confirmCheck:confirmDlg('Valider ?','S\u00fbr ?'),confirmRetry:confirmDlg('R\u00e9essayer ?','Recommencer.'),questions:['<p>'+(c.text||'')+'</p>']},library:'H5P.Blanks 1.14',metadata:{contentType:'Fill in the Blanks',license:'U',title:e.title||''},subContentId:uid()}};
+}
+
+function makeSinglechoiceset(e){
+  const c=e.content||{};
+  const choices=(c.questions||[]).map(q=>{
+    const correct=(q.answers||[]).filter(a=>a.correct).map(a=>a.text);
+    const wrong=(q.answers||[]).filter(a=>!a.correct).map(a=>a.text);
+    return{subContentId:uid(),question:q.question||'',answers:[...correct,...wrong]};
+  });
+  return{contentType:{params:{behaviour:{autoContinue:true,enableRetry:true,enableSolutionsButton:true,passPercentage:100,soundEffectsEnabled:true,timeoutCorrect:2000,timeoutWrong:3000},choices,l10n:{nextButtonLabel:'Question suivante',showSolutionButtonLabel:'Voir la solution',retryButtonLabel:'R\u00e9essayer',solutionViewTitle:'Solutions',correctText:'Correct !',incorrectText:'Incorrect !',shouldSelect:'Aurait d\u00fb \u00eatre s\u00e9lectionn\u00e9',shouldNotSelect:'Ne devait pas \u00eatre s\u00e9lectionn\u00e9',muteButtonLabel:'Couper le son',closeButtonLabel:'Fermer',slideOfTotal:'Question :num sur :total',scoreBarLabel:'Tu as :num sur :total points',solutionListQuestionNumber:'Question :num',a11yShowSolution:'Afficher la solution.',a11yRetry:'Recommencer.'},overallFeedback:[{from:0,to:50,feedback:'Continue tes efforts !'},{from:51,to:99,feedback:'Bien, mais tu peux mieux faire !'},{from:100,to:100,feedback:'Parfait !'}]},library:'H5P.SingleChoiceSet 1.11',metadata:{contentType:'Single Choice Set',license:'U',title:e.title||''},subContentId:uid()}};
+}
+
+function makeAdvancedtext(e){
+  const c=e.content||{};
+  return{contentType:{params:{text:'<p><strong>'+esc(e.title||'')+'</strong></p>\n'+(c.text||'')},library:'H5P.AdvancedText 1.1',metadata:{contentType:'Text',license:'U',title:e.title||''},subContentId:uid()}};
+}
+
+function makeQuestionset(e){
+  const c=e.content||{};
+  const qList=(c.questions||[]).map(q=>{
+    if(q.type==='truefalse')return{params:{media:{disableImageZooming:false},correct:q.correct?'true':'false',behaviour:{enableRetry:true,enableSolutionsButton:true,enableCheckButton:true},l10n:{trueText:'Vrai',falseText:'Faux',score:'Score : @score sur @total',checkAnswer:'V\u00e9rifier',showSolutionButton:'Voir la solution',tryAgain:'R\u00e9essayer',wrongAnswerMessage:q.feedback_incorrect||'Incorrect.',correctAnswerMessage:q.feedback_correct||'Correct !'},question:'<p>'+(q.question||'')+'</p>\n'},library:'H5P.TrueFalse 1.8',metadata:{contentType:'True/False Question',license:'U',title:'Question'},subContentId:uid()};
+    // multichoice (default)
+    const answers=shuffle((q.answers||[]).map(a=>({correct:!!a.correct,tipsAndFeedback:{tip:'',chosenFeedback:'',notChosenFeedback:''},text:'<div>'+(a.text||'')+'</div>\n'})));
+    return{params:{media:{disableImageZooming:false},answers,overallFeedback:[{from:0,to:100}],behaviour:{enableRetry:true,enableSolutionsButton:true,enableCheckButton:true,type:'auto',singlePoint:false,randomAnswers:false,showSolutionsRequiresInput:true,passPercentage:100,showScorePoints:true},UI:uiMultichoice(),question:'<p>'+(q.question||'')+'</p>\n'},library:'H5P.MultiChoice 1.16',metadata:{contentType:'Multiple Choice',license:'U',title:'Question'},subContentId:uid()};
+  });
+  return{contentType:{params:{introPage:{showIntroPage:false,startButtonText:'Commencer',introduction:''},progressType:'dots',passPercentage:50,questions:qList,disableBackwardsNavigation:false,randomQuestions:false,endGame:{showResultPage:true,showSolutionButton:true,showRetryButton:true,noResultMessage:'Quiz termin\u00e9',message:'Tu as obtenu @score sur @total points.',overallFeedback:[{from:0,to:50,feedback:'Continue !'},{from:51,to:100,feedback:'Bien jou\u00e9 !'}],solutionButtonText:'Voir les solutions',retryButtonText:'R\u00e9essayer',finishButtonText:'Terminer',submitButtonText:'Soumettre',showAnimations:true,skippable:false,skipButtonText:'Passer'},override:{showSolutionButton:'on',retryButton:'on'},texts:{prevButton:'Pr\u00e9c\u00e9dent',nextButton:'Suivant',finishButton:'Terminer',submitButton:'Soumettre',textualProgress:'Question :current sur :total',jumpToQuestion:'Question %d sur %total',questionLabel:'Question',readSpeakerProgress:'Question :current sur :total',unansweredText:'Non r\u00e9pondu',answeredText:'R\u00e9pondu',currentQuestionText:'Question actuelle',navigationLabel:'Questions'}},library:'H5P.QuestionSet 1.20',metadata:{contentType:'Question Set',license:'U',title:e.title||''},subContentId:uid()}};
+}
+
+const generators={multichoice:makeMultichoice,truefalse:makeTruefalse,dragtext:makeDragtext,blanks:makeBlanks,singlechoiceset:makeSinglechoiceset,questionset:makeQuestionset,advancedtext:makeAdvancedtext};
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+// ================================================================
+//  GAMEMAP BUILDER
+// ================================================================
+function getDeps(types){
+  const base=[
+    {machineName:'H5P.GameMap',majorVersion:'1',minorVersion:'5'},
+    {machineName:'H5P.Question',majorVersion:'1',minorVersion:'5'},
+    {machineName:'H5P.JoubelUI',majorVersion:'1',minorVersion:'3'},
+    {machineName:'FontAwesome',majorVersion:'4',minorVersion:'5'}
+  ];
+  const map={
+    multichoice:{machineName:'H5P.MultiChoice',majorVersion:'1',minorVersion:'16'},
+    truefalse:{machineName:'H5P.TrueFalse',majorVersion:'1',minorVersion:'8'},
+    dragtext:{machineName:'H5P.DragText',majorVersion:'1',minorVersion:'10'},
+    blanks:{machineName:'H5P.Blanks',majorVersion:'1',minorVersion:'14'},
+    singlechoiceset:{machineName:'H5P.SingleChoiceSet',majorVersion:'1',minorVersion:'11'},
+    questionset:{machineName:'H5P.QuestionSet',majorVersion:'1',minorVersion:'20'},
+    advancedtext:{machineName:'H5P.AdvancedText',majorVersion:'1',minorVersion:'1'}
+  };
+  for(const t of types)if(map[t])base.push(map[t]);
+  if(types.has('questionset')){
+    if(!types.has('multichoice'))base.push(map.multichoice);
+    if(!types.has('truefalse'))base.push(map.truefalse);
+  }
+  return base;
+}
+
+function buildGamemap(data){
+  const st=STYLES[data.style]||STYLES.aventure;
+  const cfg=data.config||{};
+  const colors={...st.colors,...(data.colors||{})};
+  const etapes=data.etapes||[];
+  const elements=etapes.map((e,i)=>{
+    const gen=generators[e.type||'multichoice']||generators.multichoice;
+    const content=gen(e);
+    const neighbors=[];
+    if(i>0)neighbors.push(String(i-1));
+    if(i<etapes.length-1)neighbors.push(String(i+1));
+    return{id:uid(),label:e.title||'Etape '+(i+1),telemetry:{x:String(e.x||50),y:String(e.y||50),width:'6',height:'10'},neighbors,type:'stage',canBeStartStage:!!(e.isStart||(i===0)),time:{},accessRestrictions:{allOrAnyRestrictionSet:'all',restrictionSetList:[{allOrAnyRestriction:'any',restrictionList:[{restrictionType:'totalScore'}]}]},specialStageExtraLives:0,specialStageExtraTime:0,contentsList:[content]};
+  });
+  const endFb=(data.endScreen||{}).feedbacks||[{from:0,to:40,feedback:'Continue !'},{from:41,to:70,feedback:'Bon travail !'},{from:71,to:99,feedback:'Excellent !'},{from:100,to:100,feedback:'Parfait !'}];
+  const contentJson={
+    showTitleScreen:true,
+    titleScreen:{titleScreenIntroduction:data.lore||'<p>Bienvenue !</p>'},
+    gamemapSteps:{backgroundImageSettings:{backgroundImage:{path:'images/background.png',mime:'image/png',copyright:{license:'U'},width:1920,height:1080}},gamemap:{elements}},
+    endScreen:{noSuccess:{endScreenTextNoSuccess:(data.endScreen||{}).failure||'<p><strong>Dommage !</strong></p>'},success:{endScreenTextSuccess:(data.endScreen||{}).success||'<p><strong>Bravo !</strong></p>'},overallFeedback:endFb},
+    visual:{stages:{colorStage:colors.stageUnvisited,colorStageLocked:colors.stageLocked,colorStageCleared:colors.stageCleared,showScoreStars:cfg.showScoreStars||'always'},paths:{displayPaths:true,style:{colorPath:colors.pathNormal,colorPathCleared:colors.pathCleared,pathWidth:'0.25',pathStyle:colors.pathStyle||'dotted'}},misc:{useAnimation:cfg.useAnimation!==false}},
+    audio:{backgroundMusic:{muteDuringExercise:true},ambient:{}},
+    behaviour:{enableRetry:true,enableSolutionsButton:true,lives:cfg.lives||st.lives,map:{showLabels:cfg.showLabels!==false,roaming:cfg.roaming||st.roaming,fog:cfg.fog||st.fog}},
+    l10n:l10n(),a11y:a11y(),headline:data.title||'Parcours'
+  };
+  const typesUsed=new Set(etapes.map(e=>e.type||'multichoice'));
+  const h5pJson={title:data.title||'Parcours',language:'fr',mainLibrary:'H5P.GameMap',embedTypes:['iframe'],license:'CC BY-SA',preloadedDependencies:getDeps(typesUsed)};
+  return{contentJson,h5pJson};
+}
+
+// ================================================================
+//  VALIDATION
+// ================================================================
+function validate(data){
+  const errors=[],warnings=[];
+  if(typeof data!=='object'||Array.isArray(data)){errors.push("Le JSON doit \u00eatre un objet");return{errors,warnings}}
+  if(!data.title)errors.push("Champ 'title' requis");
+  const etapes=data.etapes||[];
+  if(!etapes.length){errors.push("Au moins une \u00e9tape requise");return{errors,warnings}}
+  if(data.style&&!VALID_STYLES.has(data.style))warnings.push("Style '"+data.style+"' inconnu, d\u00e9faut 'aventure'");
+  let prev=null;const tc={};
+  for(let i=0;i<etapes.length;i++){
+    const e=etapes[i],tag='\u00c9tape '+(i+1)+' ('+(e.title||'sans titre')+')';
+    const t=e.type||'multichoice';
+    if(!VALID_TYPES.has(t)){errors.push(tag+": type '"+t+"' invalide");continue}
+    tc[t]=(tc[t]||0)+1;
+    if(t===prev)warnings.push(tag+": m\u00eame type que l'\u00e9tape pr\u00e9c\u00e9dente ('"+t+"')");
+    prev=t;
+    const x=e.x??50,y=e.y??50;
+    if(x<0||x>100||y<0||y>100)errors.push(tag+": position hors limites");
+    const c=e.content||{};
+    if(!Object.keys(c).length){errors.push(tag+": 'content' vide");continue}
+    if(t==='multichoice')valMC(tag,c,errors);
+    else if(t==='truefalse')valTF(tag,c,errors);
+    else if(t==='dragtext'||t==='blanks')valText(tag,t,c,errors,warnings);
+    else if(t==='singlechoiceset')valSCS(tag,c,errors,warnings);
+    else if(t==='questionset')valQS(tag,c,errors,warnings);
+    else if(t==='advancedtext'){if(!c.text)errors.push(tag+": 'text' manquant")}
+  }
+  const n=etapes.length,mc=tc.multichoice||0;
+  if(n>=4&&mc/n>0.5)warnings.push("Trop de multichoice ("+mc+"/"+n+")");
+  if(n>=4&&Object.keys(tc).length<2)warnings.push("Un seul type \u2014 diversifier");
+  if(!etapes.some(e=>e.isStart))warnings.push("Aucune \u00e9tape isStart=true, la premi\u00e8re sera utilis\u00e9e");
+  return{errors,warnings};
+}
+function valMC(t,c,err){if(!c.question)err.push(t+": 'question' manquante");const a=c.answers||[];if(a.length<2)err.push(t+": min 2 r\u00e9ponses");if(a.length&&!a.some(x=>x.correct))err.push(t+": aucune r\u00e9ponse correcte")}
+function valTF(t,c,err){if(!c.question)err.push(t+": 'question' manquante");if(!('correct' in c))err.push(t+": 'correct' requis")}
+function valText(tag,type,c,err,warn){
+  const text=c.text||'';if(!text){err.push(tag+": 'text' manquant");return}
+  const holes=[...text.matchAll(/\*([^*]+)\*/g)].map(m=>m[1]);
+  if(!holes.length)warn.push(tag+": aucun trou *mot* d\u00e9tect\u00e9");
+  for(const h of holes){if(h.includes('\\(')||h.includes('\\)')||h.includes('$')||h.includes('\\frac')||h.includes('\\mathbb'))err.push(tag+": LaTeX interdit dans les trous \u2014 '*"+h+"*'")}
+  // Check hole *mot* trapped inside \frac{}{}
+  const fracRx=/\\frac\{[^}]*\*[^*]+\*|\\frac\{[^}]*\}\{[^}]*\*[^*]+\*/g;
+  for(const m of text.matchAll(fracRx)){const tr=(m[0].match(/\*([^*]+)\*/)||['*?*'])[0];err.push(tag+": trou "+tr+" pi\u00e9g\u00e9 dans \\frac{} \u2014 utiliser ? dans la fraction et poser le trou en texte \u00e0 c\u00f4t\u00e9")}
+  // Check unclosed math before hole
+  for(const m of text.matchAll(/\\\(/g)){
+    const s=m.index,nc=text.indexOf('\\)',s+2),nh=text.indexOf('*',s+2);
+    if(nh!==-1&&(nc===-1||nc>nh)){err.push(tag+": mode math \\( non ferm\u00e9 avant un trou *mot*");break}
+  }
+  if(type==='dragtext'&&holes.length){const lines=text.trim().split('\n').filter(l=>l.trim());if(lines.length&&lines[lines.length-1].includes('*'))warn.push(tag+": dragtext \u2014 derni\u00e8re ligne contient un trou (bug H5P)")}
+}
+function valSCS(t,c,err,warn){const q=c.questions||[];if(q.length<2)warn.push(t+": singlechoiceset < 2 questions");for(let i=0;i<q.length;i++){const qi=q[i],qt=t+' Q'+(i+1);if(!qi.question)err.push(qt+": question manquante");const a=qi.answers||[];if(a.length<2)err.push(qt+": min 2 r\u00e9ponses");if(a.length&&!a.some(x=>x.correct))err.push(qt+": aucune bonne r\u00e9ponse")}}
+function valQS(t,c,err,warn){const q=c.questions||[];if(q.length<2)warn.push(t+": questionset < 2 questions");for(let i=0;i<q.length;i++){const qi=q[i],qt=t+' Q'+(i+1),tp=qi.type||'multichoice';if(tp!=='multichoice'&&tp!=='truefalse')err.push(qt+": type '"+tp+"' non support\u00e9 dans questionset");if(tp==='multichoice'){const a=qi.answers||[];if(a.length&&!a.some(x=>x.correct))err.push(qt+": aucune bonne r\u00e9ponse")}if(tp==='truefalse'&&!('correct' in qi))err.push(qt+": 'correct' requis")}}
+
+// ================================================================
+//  H5P ZIP GENERATION
+// ================================================================
+const DEFAULT_BG='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+function b64toU8(b64){const bin=atob(b64);const u8=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);return u8}
+
+async function generateH5P(data,bgFileObj){
+  const{contentJson,h5pJson}=buildGamemap(data);
+  const zip=new JSZip();
+  zip.file('h5p.json',JSON.stringify(h5pJson,null,2));
+  zip.file('content/content.json',JSON.stringify(contentJson,null,2));
+  if(bgFileObj){
+    const buf=await bgFileObj.arrayBuffer();
+    zip.file('content/images/background.png',buf);
+  }else{
+    zip.file('content/images/background.png',b64toU8(DEFAULT_BG));
+  }
+  return zip.generateAsync({type:'blob'});
+}
+
+// ================================================================
+//  UI LOGIC
+// ================================================================
+function doValidate(){
+  const ta=document.getElementById('jsonInput');
+  const res=document.getElementById('results');
+  const rc=document.getElementById('resultContent');
+  const btnGen=document.getElementById('btnGenerate');
+  lastValidData=null;btnGen.disabled=true;
+  let data;
+  try{data=JSON.parse(ta.value)}catch(e){
+    rc.innerHTML=msg('err','\u274c JSON invalide : '+esc(e.message));
+    res.classList.add('visible');return;
+  }
+  const{errors,warnings}=validate(data);
+  let html='';
+  if(errors.length){
+    html+='<div class="result-header"><h3><span class="badge badge-err">\u274c Erreurs</span></h3></div><ul class="msg-list">';
+    for(const e of errors)html+='<li class="err"><span class="icon">\u2716</span>'+esc(e)+'</li>';
+    html+='</ul>';
+  }
+  if(warnings.length){
+    html+='<div class="result-header"><h3><span class="badge badge-warn">\u26a0 Avertissements</span></h3></div><ul class="msg-list">';
+    for(const w of warnings)html+='<li class="warn"><span class="icon">!</span>'+esc(w)+'</li>';
+    html+='</ul>';
+  }
+  if(!errors.length){
+    lastValidData=data;btnGen.disabled=false;
+    const etapes=data.etapes||[];
+    const types=new Set(etapes.map(e=>e.type||'?'));
+    html+='<div class="result-header"><h3><span class="badge badge-ok">\u2714 Valide</span> '+etapes.length+' \u00e9tapes \u2014 '+types.size+' types : '+[...types].sort().join(', ')+'</h3></div>';
+    html+='<div class="preview"><h4>'+esc(data.title||'Parcours')+'</h4><ul class="step-list">';
+    for(let i=0;i<etapes.length;i++){
+      const e=etapes[i],cls=e.isStart?' start':'';
+      html+='<li class="'+cls+'"><span class="num">'+(e.isStart?'\u25b6':'')+(i+1)+'.</span>'+esc(e.title||'?')+' <span class="type">'+(e.type||'?')+'</span></li>';
+    }
+    html+='</ul></div>';
+  }
+  rc.innerHTML=html;res.classList.add('visible');
+}
+
+async function doGenerate(){
+  if(!lastValidData)return;
+  const btn=document.getElementById('btnGenerate');
+  const rc=document.getElementById('resultContent');
+  btn.innerHTML='<span class="spinner"></span> G\u00e9n\u00e9ration...';btn.disabled=true;
+  try{
+    const blob=await generateH5P(lastValidData,bgFile);
+    const slug=(lastValidData.theme||'parcours').toLowerCase().replace(/[^a-z0-9\u00e0-\u00ff]+/g,'_').replace(/^_|_$/g,'');
+    const fname='parcours_'+slug+'.h5p';
+    const url=URL.createObjectURL(blob);
+    const sizeKB=(blob.size/1024).toFixed(1);
+    const dl=document.createElement('div');dl.className='download-area';
+    dl.innerHTML='<a href="'+url+'" download="'+fname+'" class="btn btn-success" style="font-size:1.05em;padding:10px 24px;">\u2b07 T\u00e9l\u00e9charger '+esc(fname)+'</a><div class="size">'+sizeKB+' Ko'+(bgFile?' (avec image)':' (sans image)')+'</div>';
+    const prev=rc.querySelector('.download-area');if(prev)prev.remove();
+    rc.appendChild(dl);
+  }catch(e){
+    const prev=rc.querySelector('.download-area');if(prev)prev.remove();
+    const dl=document.createElement('div');dl.className='download-area';dl.style.borderColor='var(--error)';dl.style.background='#fde8e8';
+    dl.innerHTML='\u274c Erreur : '+esc(e.message);
+    rc.appendChild(dl);
+  }
+  btn.innerHTML='G\u00e9n\u00e9rer H5P';btn.disabled=false;
+}
+
+function msg(cls,txt){return'<ul class="msg-list"><li class="'+cls+'"><span class="icon">'+(cls==='err'?'\u2716':'!')+'</span>'+txt+'</li></ul>'}
+
+function loadExample(){
+  document.getElementById('jsonInput').value=JSON.stringify({
+    title:"Les \u00celes Parall\u00e8les",niveau:"3eme",theme:"Th\u00e9or\u00e8me de Thal\u00e8s",style:"aventure",
+    config:{lives:4,roaming:"complete",fog:"visited"},
+    lore:"<p style='text-align:center;'><strong>Bienvenue !</strong><br>Ma\u00eetrise le th\u00e9or\u00e8me de Thal\u00e8s pour naviguer entre les \u00eeles.</p>",
+    etapes:[
+      {title:"Le Portail",type:"dragtext",x:10,y:80,isStart:true,content:{description:"Compl\u00e8te les phrases.",text:"Dans une configuration de Thal\u00e8s, deux droites *s\u00e9cantes* sont coup\u00e9es par deux droites *parall\u00e8les*.\nLes droites parall\u00e8les d\u00e9coupent des segments *proportionnels*.\nCette propri\u00e9t\u00e9 est le th\u00e9or\u00e8me de Thal\u00e8s."}},
+      {title:"La Boussole",type:"truefalse",x:30,y:65,content:{question:"Pour appliquer le th\u00e9or\u00e8me de Thal\u00e8s, il suffit que deux droites se coupent en un point.",correct:false,feedback_correct:"Il faut aussi des parall\u00e8les !",feedback_incorrect:"Non, il faut deux droites s\u00e9cantes ET deux droites parall\u00e8les."}},
+      {title:"Le Calcul",type:"multichoice",x:55,y:45,content:{question:"\\((EF) \\parallel (ST)\\). \\(RE = 4\\), \\(RS = 10\\), \\(EF = 5\\). Calcule \\(ST\\).",answers:[{text:"\\(12{,}5\\)",correct:true,feedback:"\\(\\frac{4}{10} = \\frac{5}{ST}\\), donc \\(ST = 12{,}5\\)."},{text:"\\(7{,}5\\)",correct:false,feedback:"Attention : \\(RS = 10\\), pas \\(ES = 6\\)."},{text:"\\(8\\)",correct:false,feedback:"\\(ST = \\frac{50}{4} = 12{,}5\\)."}]}},
+      {title:"Le Tr\u00e9sor",type:"questionset",x:80,y:25,content:{questions:[{type:"multichoice",question:"\\(\\frac{AM}{AB} = \\frac{AN}{AC}\\). \\(AB=15\\), \\(AM=6\\), \\(AC=20\\). \\(AN\\) = ?",answers:[{text:"\\(8\\)",correct:true},{text:"\\(10\\)",correct:false},{text:"\\(12\\)",correct:false}]},{type:"truefalse",question:"Le th\u00e9or\u00e8me direct sert \u00e0 prouver un parall\u00e9lisme.",correct:false,feedback_correct:"Non, c'est la r\u00e9ciproque !",feedback_incorrect:"Le direct sert \u00e0 calculer."}]}}
+    ],
+    endScreen:{success:"<p><strong>Bravo !</strong></p>",failure:"<p><strong>Dommage !</strong></p>",feedbacks:[{from:0,to:50,feedback:"Revois les bases."},{from:51,to:99,feedback:"Presque !"},{from:100,to:100,feedback:"Parfait !"}]}
+  },null,2);
+  doValidate();
+}
+</script>
+</body>
+</html>

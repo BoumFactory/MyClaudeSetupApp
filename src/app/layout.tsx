@@ -5,6 +5,11 @@ import { MainNav } from "@/components/layout/MainNav";
 import { Footer } from "@/components/layout/Footer";
 import { MathBackground } from "@/components/background/MathBackground";
 import { BackgroundAnimationProvider } from "@/contexts/BackgroundAnimationContext";
+import { CartThemeProvider } from "@/contexts/CartThemeContext";
+import { CartProvider } from "@/contexts/CartContext";
+import { TutorialProgressProvider } from "@/contexts/TutorialProgressContext";
+import { CartFloatingButton } from "@/components/cart/CartFloatingButton";
+import { CartToast } from "@/components/cart/CartToast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -61,16 +66,24 @@ export default function RootLayout({
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}
       >
         <BackgroundAnimationProvider>
-          <div className="relative min-h-screen math-bg">
-            <MathBackground />
-            <div className="relative z-10">
-              <MainNav />
-              <main className="container mx-auto px-4 py-8">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </div>
+          <CartThemeProvider>
+            <CartProvider>
+              <TutorialProgressProvider>
+                <div className="relative min-h-screen math-bg">
+                  <MathBackground />
+                  <div className="relative z-10">
+                    <MainNav />
+                    <main className="container mx-auto px-4 py-8">
+                      {children}
+                    </main>
+                    <Footer />
+                  </div>
+                  <CartFloatingButton />
+                  <CartToast />
+                </div>
+              </TutorialProgressProvider>
+            </CartProvider>
+          </CartThemeProvider>
         </BackgroundAnimationProvider>
       </body>
     </html>

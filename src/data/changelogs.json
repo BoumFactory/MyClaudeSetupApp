@@ -1,6 +1,83 @@
 {
   "changelogs": [
     {
+      "id": "2026-03-17",
+      "date": "2026-03-17",
+      "title": "Parcours \"Communiquer avec l'IA\", panier de téléchargement et refonte tutoriels",
+      "categories": ["tutorials", "downloads", "skills", "applications"],
+      "changes": [
+        {
+          "title": "Nouveau parcours : Communiquer avec un système d'agents IA",
+          "details": "8 capsules interactives pour apprendre à parler à une IA : structurer ses prompts en Markdown, s'appuyer sur ses sources (limiter les hallucinations), invoquer skills et agents, clarifier avec idea-challenger, co-construire un pré-plan, adversarial review multi-agents, combiner les briques (coût/bénéfice), et choisir le bon modèle (Haiku/Sonnet/Opus).",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Composants interactifs dans les capsules",
+          "details": "Arbre de décision pour la création de QCM (SkillDecisionTree), mini pré-plan interactif (PrePlanDemo), et copie du skill complet Idea Challenger (IdeaChallengerCopy). Chaque composant génère un prompt structuré copiable.",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Système de panier allégorique pour téléchargements",
+          "details": "Panier persistant (localStorage) permettant d'ajouter des fichiers au fil de la navigation, puis de les télécharger en ZIP. Thèmes fantaisistes liés aux animations de fond. Boutons AddToCart intégrés sur les pages de téléchargement et logiciels.",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Refonte de la page d'aiguillage des tutoriels",
+          "details": "Layout en flux avec flèches SVG animées (split/merge) entre les parcours. Quick View → (Desktop | CLI) → Communiquer → Avancé. Référentiel de compétences IA dynamique lié aux capsules avec suivi de progression. Guides d'installation enrichis avec icônes colorées et descriptions.",
+          "type": "improvement",
+          "highlight": true
+        },
+        {
+          "title": "Capsules tutoriel : système complet de parcours interactifs",
+          "details": "Architecture capsules info/exemple/pratique avec vocabulaire tooltip, progression localStorage, parcours libre et guidé. Composants QuickViewGraph, SkillDecisionTree, PrePlanDemo et IdeaChallengerCopy injectables dans les sections.",
+          "type": "feature"
+        },
+        {
+          "title": "Parcours Avancé : sous-agents et TeamPlay",
+          "details": "Deux nouvelles capsules dans le parcours Avancé : orchestration de sous-agents spécialisés (économie de contexte, parallélisme, modifications ciblées) et TeamPlay expérimental (équipes d'agents persistantes avec mémoire).",
+          "type": "feature"
+        },
+        {
+          "title": "Skill adversarial-optimisation enrichi",
+          "details": "Ajout du rôle inspecteur pédagogique (changements de registre, activité mathématique élèves, illustrations). Expert didactique : contenu maths correct en priorité + conformité habitudes. Élève-testeur : besoins pour mieux réussir (peut générer des annexes). Critique éditorial : amplificateur de possibilités techniques. Arbitre mis à jour pour 4 critiques.",
+          "type": "improvement"
+        },
+        {
+          "title": "Bundles IA : adversarial-optimisation et make-blueprint-eval",
+          "details": "adversarial-optimisation ajouté au bundle de base (inclus dans tous les packages). make-blueprint-eval ajouté aux bundles LaTeX Enseignant et Word Enseignant. teamPlay ajouté au bundle Power User.",
+          "type": "improvement"
+        },
+        {
+          "title": "Vocabulaire tooltip enrichi",
+          "details": "Nouveaux termes : Markdown, Pré-plan, Meta-prompt, Adversarial review, Vibe coding, Prompt engineering (ingénierie/architecture du prompt).",
+          "type": "improvement"
+        },
+        {
+          "title": "Page Logiciels Enseignants : outils prêts à l'emploi",
+          "details": "3 cartes détaillées pour les outils du dossier débutant : Loiseau Generator (Word pro), Générateur H5P/Moodle (contenus interactifs), Stats DataGouv (exercices avec données réelles). Chacun avec description, tags et bouton panier.",
+          "type": "feature"
+        },
+        {
+          "title": "Couleur violet pour le parcours Communiquer",
+          "details": "Nouvelle couleur Tailwind 'violet' ajoutée dans tous les color maps (6 fichiers). Icône MessageSquareText ajoutée dans tous les ICON_MAP.",
+          "type": "improvement"
+        },
+        {
+          "title": "Suppression de la présentation MASFEA",
+          "details": "Retrait de la présentation masfea-system des catégories et de l'index de recherche (contenu obsolète).",
+          "type": "fix"
+        },
+        {
+          "title": "Amélioration visuelle des capsules",
+          "details": "Fond des sections ouvertes changé de couleur teintée (amber/blue/emerald à 15%) vers un blanc neutre subtil (white 3%) pour ne plus obscurcir la lecture.",
+          "type": "fix"
+        }
+      ]
+    },
+    {
       "id": "2026-01-29-v3",
       "date": "2026-01-29",
       "title": "Guide d'utilisation de la configuration",

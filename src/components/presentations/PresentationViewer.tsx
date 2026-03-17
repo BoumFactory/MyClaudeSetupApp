@@ -5,6 +5,8 @@ import { Maximize2, Navigation, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { AddToCartButton } from "@/components/cart/AddToCartButton"
+import type { CartItem } from "@/types/cart-theme"
 
 interface PresentationViewerProps {
   presentationUrl: string // URL du fichier HTML de la présentation
@@ -24,6 +26,15 @@ export function PresentationViewer({ presentationUrl, title, initialSlide }: Pre
   const [isRevealReady, setIsRevealReady] = useState(false)
   const setupAttempts = useRef(0)
   const maxSetupAttempts = 50 // 50 * 100ms = 5 secondes max
+
+  const filename = presentationUrl.split('/').pop() || 'presentation.html'
+  const cartItem: CartItem = {
+    id: `presentation-${filename}`,
+    name: title,
+    type: 'file',
+    path: presentationUrl.startsWith('/') ? presentationUrl.slice(1) : presentationUrl,
+    description: 'Presentation reveal.js',
+  }
 
   // Fonction pour mettre à jour l'URL sans recharger la page
   // Utilise le hash natif de Reveal.js via l'API History
@@ -347,16 +358,22 @@ export function PresentationViewer({ presentationUrl, title, initialSlide }: Pre
               <Maximize2 className="w-4 h-4" />
               Plein écran
             </Button>
-            <Button
-              onClick={handleDownload}
-              variant="outline"
-              size="sm"
-              className="gap-2 w-full"
-              title="Télécharge un fichier ZIP contenant le HTML et tous les assets"
-            >
-              <Download className="w-4 h-4" />
-              Télécharger (ZIP)
-            </Button>
+            <div className="grid grid-cols-2 gap-2">
+              <AddToCartButton
+                item={cartItem}
+                className="w-full text-xs"
+              />
+              <Button
+                onClick={handleDownload}
+                variant="outline"
+                size="sm"
+                className="gap-2 w-full text-xs"
+                title="Télécharge un fichier ZIP contenant le HTML et tous les assets"
+              >
+                <Download className="w-4 h-4" />
+                ZIP direct
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -376,7 +393,7 @@ export function PresentationViewer({ presentationUrl, title, initialSlide }: Pre
           src={presentationUrl}
           title={title}
           className="w-full aspect-video"
-          sandbox="allow-scripts allow-same-origin"
+          sandbox="allow-scripts allow-same-origin allow-popups"
           style={{
             border: 'none',
             minHeight: '600px',

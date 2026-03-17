@@ -1,0 +1,608 @@
+{
+  "_meta": {
+    "description": "JSON de pairing pour la refacto des capsules tutoriels. Chaque capsule contient les specs completes pour un agent Sonnet.",
+    "images_path": "C:/Users/Utilisateur/Documents/Professionnel/1. Reims 2025 - 2026/GT_IA_MATHS/setup_claude_desktop_moldus/images/",
+    "parcours_file": "src/data/parcours.ts",
+    "date": "2026-03-15",
+    "regles_globales": {
+      "pratique": "La section 'A vous de jouer' doit proposer un EXERCICE de familiarisation, PAS repeter les etapes du tuto. Ne jamais copier le contenu de l'exemple. Format: mise en situation concrete → action a realiser → observation attendue.",
+      "info": "Section de connaissances. Doit etre pedagogique, pas un copier-coller de doc technique.",
+      "exemple": "Illustration concrete. Doit montrer un cas reel, pas reformuler l'info.",
+      "no_bfcours_commands": "Les capsules generiques (parcours claude-desktop et claude-code) ne doivent PAS mentionner les commandes/skills bfcours. Uniquement les fonctionnalites natives des outils.",
+      "encoding": "Les hooks PostToolUse gerent l'encodage UTF-8 automatiquement."
+    }
+  },
+
+  "qv-overview": {
+    "id": "qv-overview",
+    "title": "Vue d'ensemble",
+    "parcours": "quick-view",
+    "duration": "5 min",
+    "action": "MODIFIER",
+    "fichier_cible": "src/data/parcours.ts",
+    "composant_react_associe": "src/components/tutorials/QuickViewGraph.tsx",
+    "specs": {
+      "info": {
+        "action": "GARDER TEL QUEL",
+        "raison": "On explique le fonctionnement general puis on montre sur un exemple — c'est le bon enchainement"
+      },
+      "exemple": {
+        "action": "ENRICHIR LE COMPOSANT QuickViewGraph.tsx",
+        "modifications": [
+          "Dans WORKFLOW_STEPS, chaque etape doit devenir depliable au clic",
+          "Au clic sur une etape, afficher un panneau avec: (1) Reflexion de l'agent (ce qu'il decide), (2) Outils utilises (badges: Read, Write, Bash, Glob, Grep, etc.), (3) Mini-workflow interne (ex: pour bfcours-latex: lire le template → analyser la demande → ecrire le contenu → verifier la syntaxe), (4) Script execute si applicable",
+          "Ajouter des badges visuels pour les outils (petits chips colores avec le nom de l'outil)",
+          "Garder le mecanisme d'animation sequentielle existant"
+        ],
+        "details_par_etape": {
+          "etape_1_tex_document_creator": {
+            "reflexion": "L'agent analyse la demande (cours? exercice? evaluation?) et choisit le template LaTeX adapte.",
+            "outils": ["Read", "Glob", "Write"],
+            "workflow_interne": "Lire les templates disponibles → Matcher le type de document → Creer la structure de fichiers → Remplir les metadonnees"
+          },
+          "etape_2_bfcours_latex": {
+            "reflexion": "L'agent ecrit le contenu mathematique structure en LaTeX avec le package bfcours.",
+            "outils": ["Read", "Write", "Grep"],
+            "workflow_interne": "Consulter les references du package → Ecrire le contenu pedagogique → Structurer en sections (cours, exemples, exercices) → Verifier la syntaxe LaTeX"
+          },
+          "etape_3_tex_compiling_skill": {
+            "reflexion": "L'agent lance la compilation deterministe du fichier .tex en PDF.",
+            "outils": ["Bash", "Read"],
+            "workflow_interne": "Executer pdflatex → Analyser le log de compilation → Si erreur: diagnostiquer et corriger → Relancer → Confirmer le PDF genere"
+          }
+        }
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "titre": "Explorer",
+        "contenu": [
+          "Remplacer le titre 'A vous de jouer' par 'Explorer'",
+          "QCM rapide avec 2-3 questions interpretatives (formulation: 'Que semble etre le role de [composant] ?' — c'est de l'interpretation, pas du par-coeur)",
+          "Questions proposees:",
+          "  Q1: 'Que semble etre le role du composant Scripts dans le schema ?' → R: 'Garantir la reproductibilite du resultat — eliminer l'aleatoire de l'IA'",
+          "  Q2: 'Pourquoi l'Agent est-il connecte aux Skills plutot qu'aux Scripts directement ?' → R: 'L'Agent decide quoi faire, les Skills savent comment, les Scripts executent de maniere deterministe'",
+          "  Q3: 'A quoi servent les Instructions (CLAUDE.md) ?' → R: 'Definir les regles permanentes que l'agent suit a chaque conversation, sans avoir a les repeter'",
+          "Implementer en JS cote client: question affichee, 3 choix, correction instantanee avec explication",
+          "Garder les liens vers les parcours Claude Desktop et Claude Code en bas"
+        ]
+      }
+    }
+  },
+
+  "cd-install": {
+    "id": "cd-install",
+    "title": "Installation Claude Desktop",
+    "parcours": "claude-desktop",
+    "duration": "5 min",
+    "action": "REECRIRE",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "REECRIRE EN VRAI TUTORIEL D'INSTALLATION",
+        "modifications": [
+          "Garder l'intro sur ce qu'est Claude Desktop et les 3 modes",
+          "PRECISER que le mode Cowork n'est accessible que sur macOS",
+          "PRECISER que le mode Code necessite d'activer le mode developpeur dans les parametres de l'app",
+          "Transformer en tutoriel pas-a-pas avec images:",
+          "  Etape 1: Telecharger depuis claude.ai/download (screenshot: claude_desktop_landing.png)",
+          "  Etape 2: Installer (Windows .exe / macOS .dmg)",
+          "  Etape 3: Premier lancement et connexion",
+          "  Etape 4: Activer le mode developpeur (menu Parametres > Developpeur)",
+          "  Etape 5: Decouvrir les 3 onglets (screenshot: claude_code_on_desktop.png)",
+          "Les images sont dans: C:/Users/Utilisateur/Documents/Professionnel/1. Reims 2025 - 2026/GT_IA_MATHS/setup_claude_desktop_moldus/images/",
+          "Il faudra copier les images dans public/images/tutorials/ et les referencer en HTML avec <img>",
+          "Garder la mention ecosysteme ouvert (Gemini, ChatGPT, Codex)"
+        ]
+      },
+      "exemple": {
+        "action": "REECRIRE",
+        "modifications": [
+          "Scenario concret: L'utilisateur lance une nouvelle conversation et demande:",
+          "  'Comment faire pour que tu lises et modifies mes fichiers Excel ?'",
+          "Reponse type de Claude: 'Vous pouvez installer l'extension Excel via le menu Extensions. Redemarrez ensuite l'application pour que je puisse acceder a vos fichiers.'",
+          "Montrer que Claude guide l'utilisateur vers les bonnes extensions",
+          "Cela introduit naturellement la capsule suivante (cd-config)"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice 1: 'Envoyez ce prompt a Claude Desktop: Comment faire pour que tu lises et modifies mes fichiers Excel ? Suivez les instructions qu'il vous donne.'",
+          "Exercice 2: 'Comparez les 3 onglets (Chat, Cowork si macOS, Code). Envoyez le meme message dans Chat et Code. Quelle difference observez-vous dans la facon dont Claude repond ?'",
+          "Defi rapide: 'Trouvez ou se cache le menu des parametres. Que pouvez-vous y configurer ?'",
+          "NE PAS re-lister les etapes d'installation (elles sont dans l'info)"
+        ]
+      }
+    }
+  },
+
+  "cd-config": {
+    "id": "cd-config",
+    "title": "Configuration Claude Desktop",
+    "parcours": "claude-desktop",
+    "duration": "10 min",
+    "action": "REECRIRE",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "REECRIRE — SIMPLIFIER POUR NOVICES",
+        "modifications": [
+          "SUPPRIMER toute mention du fichier claude_desktop_config.json — ca fait peur aux novices et ce n'est pas necessaire",
+          "A la place, expliquer que la configuration se fait via les MENUS de l'application:",
+          "  1. Activer le mode developpeur (Parametres > Developpeur) si pas deja fait",
+          "  2. Explorer les Extensions disponibles (suites Office, filesystem, etc.)",
+          "  3. Activer le serveur filesystem pour donner acces a ses fichiers",
+          "Ton accessible: 'Tout se fait dans les menus, pas besoin de toucher a des fichiers de configuration'",
+          "Mentionner qu'apres avoir active filesystem, Claude peut lire et creer des fichiers dans le dossier autorise"
+        ]
+      },
+      "exemple": {
+        "action": "REECRIRE",
+        "modifications": [
+          "Montrer le parcours dans les menus: Parametres > Extensions > filesystem > activer > choisir le dossier",
+          "Exemple de test: demander a Claude 'Liste les fichiers dans mon dossier' apres activation",
+          "Montrer la reponse de Claude qui liste effectivement les fichiers"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice: 'Activez l'extension filesystem en pointant vers votre dossier de cours habituel. Puis demandez a Claude: Liste les fichiers dans mon dossier. Que voyez-vous ?'",
+          "NE PAS repeter les etapes du menu (elles sont dans l'exemple)",
+          "Defi bonus: 'Demandez a Claude de creer un fichier texte dans votre dossier. Verifiez qu'il apparait bien.'"
+        ]
+      }
+    }
+  },
+
+  "cd-extensions": {
+    "id": "cd-extensions",
+    "title": "Extensions MCP",
+    "parcours": "claude-desktop",
+    "duration": "10 min",
+    "action": "REECRIRE",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "REECRIRE EN CATALOGUE/PANORAMA",
+        "modifications": [
+          "PAS DE MENTION DU JSON — le menu de parametres permet d'ajouter facilement des MCP",
+          "Positionner cette capsule comme un PANORAMA des possibilites, pas un tuto technique",
+          "Distinguer clairement deux types:",
+          "  1. Extensions integrees (un clic dans le menu): filesystem, suites Office, etc.",
+          "  2. Connecteurs integres (menu ... > Connectors): Google Drive, Notion, Slack, etc.",
+          "  3. Serveurs MCP communautaires: catalogue sur github.com/modelcontextprotocol/servers",
+          "Donner des exemples concrets utiles pour un enseignant: filesystem (lire/creer des fichiers), web search (chercher des infos), etc.",
+          "Insister: 'cd-config vous a montre comment activer une extension. Ici on decouvre tout ce qui existe.'"
+        ]
+      },
+      "exemple": {
+        "action": "MODIFIER",
+        "modifications": [
+          "Montrer un exemple de Connecteur integre (Google Drive par ex.) active en un clic via le menu ... > Connectors",
+          "PAS de JSON — tout se fait dans l'interface",
+          "Montrer comment tester: 'Quels outils as-tu a disposition ?' apres activation"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice d'exploration: 'Rendez-vous sur le catalogue MCP officiel (github.com/modelcontextprotocol/servers). Identifiez 2 serveurs qui seraient utiles dans votre discipline. Pour chacun, notez: son nom, ce qu'il fait, en quoi il vous serait utile.'",
+          "Alternative: 'Activez un Connecteur integre (Google Drive, Notion...) via le menu ... > Connectors. Testez-le.'",
+          "NE PAS repeter le pattern 'ajoutez/redemarrez/testez' de cd-config"
+        ]
+      }
+    }
+  },
+
+  "cd-first-prompt": {
+    "id": "cd-first-prompt",
+    "title": "Premier prompt",
+    "parcours": "claude-desktop",
+    "duration": "10 min",
+    "action": "MODIFIER",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "GARDER + COMPLETER",
+        "modifications": [
+          "Garder les 4 principes (precision, contexte, format, public)",
+          "Ajouter: maintenant que l'extension filesystem est installee (capsule precedente), Claude peut directement creer et modifier des fichiers sur votre machine"
+        ]
+      },
+      "exemple": {
+        "action": "GARDER + COMPLETER",
+        "modifications": [
+          "Garder l'exemple du prompt sur les fractions",
+          "Ajouter un 2e exemple montrant l'iteration avec les fichiers: demander a Claude de creer un exercice, puis de le modifier, puis d'en faire une 2e version — tout ca directement dans les fichiers grace a filesystem"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice comparatif: 'Envoyez ce prompt vague: Fais-moi un exercice de maths. Observez le resultat. Puis envoyez le meme enrichi avec contexte/niveau/format (inspirez-vous de l'exemple). Comparez les deux resultats. Qu'est-ce qui a change ?'",
+          "Defi fichier: 'Demandez a Claude de creer un fichier avec un exercice, puis de le modifier pour ajouter un corrige, puis d'en faire une version differenciee. Observez comment il modifie directement les fichiers.'",
+          "SUPPRIMER le template copier-coller (c'est deja dans l'exemple)"
+        ]
+      }
+    }
+  },
+
+  "cc-install": {
+    "id": "cc-install",
+    "title": "Installation Claude Code",
+    "parcours": "claude-code",
+    "duration": "5 min",
+    "action": "MODIFIER",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "GARDER TEL QUEL"
+      },
+      "exemple": {
+        "action": "GARDER TEL QUEL"
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice post-install: 'Lancez claude. Envoyez /help et identifiez 3 commandes qui vous semblent utiles. Envoyez un message simple. Quittez avec /exit.'",
+          "Defi decouverte: 'Relancez avec la commande claude --dangerously-skip-permissions. Que remarquez-vous de different par rapport au lancement classique ?'",
+          "Reponse depliable (detail masque): 'Avec ce flag, Claude ne vous demande plus la permission avant de lire/ecrire des fichiers ou executer des commandes. C'est utile pour des modifications de routine ou vous faites confiance a l'agent pour agir en autonomie complete. A utiliser quand vous connaissez bien votre projet et que les taches sont previsibles.'",
+          "SUPPRIMER les commandes d'installation du pratique — elles sont mot pour mot dans l'exemple"
+        ]
+      }
+    }
+  },
+
+  "cc-config": {
+    "id": "cc-config",
+    "title": "Configuration Claude Code",
+    "parcours": "claude-code",
+    "duration": "10 min",
+    "action": "MODIFIER",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "GARDER TEL QUEL",
+        "raison": "La hierarchie CLAUDE.md / .claude/ / settings.json est bien expliquee"
+      },
+      "exemple": {
+        "action": "GARDER TEL QUEL",
+        "raison": "L'exemple CLAUDE.md + arborescence .claude/ est la reference"
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice de securite en 3 etapes:",
+          "  Etape 1 — Preparation: 'Creez un dossier nomme secret/ a la racine de votre repertoire de travail. Placez-y un fichier mot-de-passe.txt contenant un mot de votre choix.'",
+          "  Etape 2 — Configuration: 'Demandez a Claude Code de configurer les settings pour lui INTERDIRE l'acces au dossier secret/. (Indice: c'est dans .claude/settings.json, section permissions ou deny patterns.)'",
+          "  Etape 3 — Test: 'Relancez une nouvelle conversation Claude Code (meme en mode --dangerously-skip-permissions si vous voulez tester). Demandez-lui de lire le contenu du fichier mot-de-passe.txt dans le dossier secret/.'",
+          "Resultat attendu (depliable): 'Claude devrait tenter de lire le fichier, recevoir une erreur de permission de son propre systeme de securite, et vous repondre qu'il n'a pas le droit d'acceder aux fichiers dans le dossier secret/. Cela demontre que les settings de permission sont plus forts que le flag --dangerously-skip-permissions.'",
+          "Cet exercice apprend a la fois la configuration et le modele de securite de Claude Code"
+        ]
+      }
+    }
+  },
+
+  "cc-commands": {
+    "id": "cc-commands",
+    "title": "Commandes essentielles",
+    "parcours": "claude-code",
+    "duration": "15 min",
+    "action": "REECRIRE",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "REECRIRE — COMMANDES NATIVES UNIQUEMENT",
+        "modifications": [
+          "PAS DE COMMANDES BFCOURS — uniquement les fonctionnalites natives d'Anthropic",
+          "Commandes systeme: /help, /compact, /clear, /exit, /status, /init, /config",
+          "Fonctionnalites natives avancees a presenter:",
+          "  - ultrathink: chaine de caracteres a ecrire dans le prompt pour activer la reflexion approfondie du modele (le modele reflechit plus longtemps avant de repondre)",
+          "  - statusline: barre d'etat en bas du terminal qui affiche l'etat de la session (modele, tokens, couts, etc.)",
+          "  - /init: initialise un CLAUDE.md automatiquement en analysant le projet",
+          "  - /config: ouvre la configuration interactive",
+          "  - Mode plan: l'agent planifie avant d'agir",
+          "Autocompletion avec / + Tab"
+        ]
+      },
+      "exemple": {
+        "action": "REECRIRE",
+        "modifications": [
+          "Exemples de commandes NATIVES uniquement:",
+          "  /help → aide complete",
+          "  /compact → compacter la conversation",
+          "  /init → generer un CLAUDE.md",
+          "  /config → configuration interactive",
+          "Exemple d'utilisation d'ultrathink: montrer un prompt normal vs un prompt avec ultrathink et la difference de qualite",
+          "Exemple de statusline: montrer ce qui s'affiche en bas du terminal"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice guide: 'Lancez /help. Reperer les commandes que vous ne connaissiez pas. Testez /init dans un dossier vide: que genere-t-il comme CLAUDE.md ?'",
+          "Defi ultrathink: 'Envoyez la meme demande deux fois: une fois normalement, une fois en ajoutant ultrathink dans votre message. Comparez la profondeur et la qualite des deux reponses.'",
+          "NE PAS mentionner les commandes bfcours (ex: /createTex, /bfcours-latex) — elles seront dans une capsule dediee"
+        ]
+      },
+      "note": "Il faudra creer une capsule supplementaire dediee aux commandes bfcours/personnalisees. Voir cc-tips pour la reorganisation."
+    }
+  },
+
+  "cc-tips": {
+    "id": "cc-tips",
+    "title": "Astuces et bonnes pratiques",
+    "parcours": "claude-code",
+    "duration": "10 min",
+    "action": "REFACTORING COMPLET — SCINDER EN 2 CAPSULES",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "capsule_1": {
+        "nouveau_id": "cc-dotclaude",
+        "nouveau_titre": "Le dossier .claude",
+        "description": "Comprendre la structure du dossier .claude et son role dans la gestion du contexte et des prompts",
+        "sections": {
+          "info": {
+            "contenu": [
+              "Structure detaillee du dossier .claude/ (ou equivalent concurrent: .gemini/, .codex/)",
+              "Comment il est fait pour MANAGER DU CONTEXTE ET DES PROMPTS:",
+              "  - agents/ : sous-processus specialises avec leurs propres instructions",
+              "  - skills/ : savoir-faire invocables via /nom-du-skill",
+              "  - commands/ : commandes organisees par categories/sous-dossiers",
+              "  - settings.json : hooks, permissions, configuration globale",
+              "  - mcp_servers/ : serveurs MCP custom du projet",
+              "Le CLAUDE.md orchestre l'ensemble",
+              "Equivalences multi-fournisseur: .claude/ ≈ .gemini/ ≈ .codex/"
+            ]
+          },
+          "exemple": {
+            "contenu": [
+              "Arborescence commentee d'un .claude/ reel",
+              "Montrer un fichier agent, un fichier skill, et un settings.json — chacun avec une annotation de ce qu'il fait",
+              "Expliquer le naming et l'organisation par categories"
+            ]
+          },
+          "pratique": {
+            "contenu": [
+              "Exercice: 'Explorez le dossier .claude/ (si vous l'avez telecharge depuis ce site). Ouvrez un fichier agent et un fichier skill. Identifiez: le role de chacun, les outils qu'il utilise, et comment il est invoque.'",
+              "Defi comprehension: 'Dessinez l'arborescence de votre .claude/ ideal pour votre usage. Quels agents vous manquent ? Quels skills aimeriez-vous avoir ?'"
+            ]
+          }
+        }
+      },
+      "capsule_2": {
+        "nouveau_id": "cc-bfcours-setup",
+        "nouveau_titre": "Exploiter le setup bfcours",
+        "description": "Utiliser la configuration bfcours preconfiguree et creer ses propres skills",
+        "sections": {
+          "info": {
+            "contenu": [
+              "Presentation du setup bfcours: une configuration complete et prête a l'emploi pour l'enseignement des mathematiques",
+              "Ce qu'il contient: agents specialises (LaTeX, debug, images, presentations...), skills (bfcours-latex, reveals, etc.), commandes organisees par categories",
+              "L'utilisateur peut aussi CREER SES PROPRES skills equivalents au fur et a mesure de ses besoins",
+              "Le setup est un point de depart, pas une fin en soi"
+            ]
+          },
+          "exemple": {
+            "contenu": [
+              "Workflow concret avec le setup bfcours: '/createTex dans ./Cours/6eme/ fais un cours sur les fractions'",
+              "Montrer le resultat: un fichier LaTeX complet avec structure bfcours",
+              "Montrer comment adapter: 'Et si je veux changer le format ? Je modifie le skill ou j'en cree un nouveau'"
+            ]
+          },
+          "pratique": {
+            "contenu": [
+              "Exercice: 'Choisissez un skill du setup bfcours et testez-le avec une demande concrete liee a votre programme actuel. Notez ce qui vous convient et ce que vous aimeriez modifier.'",
+              "Defi creation: 'Identifiez une tache que vous faites souvent et que le setup ne couvre pas. Utilisez /skill-creator pour creer votre propre skill. Testez-le.'"
+            ]
+          }
+        }
+      },
+      "impact_parcours": "Modifier le parcours claude-code pour remplacer cc-tips par [cc-dotclaude, cc-bfcours-setup]. L'ordre final sera: cc-install, cc-config, cc-commands, cc-dotclaude, cc-bfcours-setup"
+    }
+  },
+
+  "av-architecture": {
+    "id": "av-architecture",
+    "title": "Architecture agentique",
+    "parcours": "avance",
+    "duration": "15 min",
+    "action": "MODIFIER",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "GARDER TEL QUEL"
+      },
+      "exemple": {
+        "action": "GARDER + ENRICHIR",
+        "modifications": [
+          "Garder le workflow latex-main-worker",
+          "Enrichir avec plus de detail comme pour qv-overview (outils utilises, sous-etapes)"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice d'investigation: 'Ouvrez un fichier agent au hasard dans .claude/agents/. Lisez-le. Devinez ce qu'il fait, puis testez-le. Votre prediction etait-elle correcte ?'",
+          "Defi decomposition d'une tache complexe:",
+          "  'Imaginez que vous devez creer une petite interface web de QCM sur un theme donne (par exemple: QCM sur les fractions pour les 6eme).'",
+          "  'Identifiez les briques necessaires: quelles etapes dans le workflow ? quels skills intermediaires faudrait-il ? (exemples: un skill qui genere les questions, un skill qui cree l'interface HTML, un script qui assemble le tout)'",
+          "  'Dessinez le schema agent → skills → scripts pour ce workflow.'",
+          "L'objectif est de penser en termes d'architecture: decomposer une tache complexe en briques reutilisables"
+        ]
+      }
+    }
+  },
+
+  "av-meta-prompt": {
+    "id": "av-meta-prompt",
+    "title": "Meta-prompt",
+    "parcours": "avance",
+    "duration": "15 min",
+    "action": "REECRIRE COMPLETEMENT",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "REECRIRE — NOUVEAU CONCEPT",
+        "modifications": [
+          "Le meta-prompt N'EST PAS le CLAUDE.md. C'est un PROMPT QUI GENERE DES PROMPTS DE QUALITE.",
+          "Definition: un meta-prompt est un prompt specialise qui permet a Claude de produire lui-meme des prompts optimises a partir d'une simple demande.",
+          "Le skill /meta-prompt embarque 23 techniques de prompt engineering 2025-2026 (Anthropic, OpenAI, Google, Meta)",
+          "3 workflows: creation (6 phases avec idea-challenger + skill-creator), refactoring (diagnostic + amelioration), diagnostic (scoring 8 axes)",
+          "Le skill /skill-creator (officiel, fourni par Anthropic) est egalement une forme de meta-prompt: il transforme une description en skill structure. Generalement utilise APRES avoir etabli un prompt via /meta-prompt.",
+          "Pipeline typique: idee vague → /meta-prompt create → prompt optimise → /skill-creator → skill reutilisable"
+        ]
+      },
+      "exemple": {
+        "action": "REECRIRE",
+        "modifications": [
+          "Exemple concret du pipeline complet:",
+          "  1. L'utilisateur a une idee: 'Je veux un truc qui genere des QCM'",
+          "  2. /meta-prompt create → Claude pose des questions (niveau? format? nombre de questions? types de distracteurs?), choisit les techniques (Role expert + Few-shot + Structured Output), genere un prompt structure",
+          "  3. Le prompt genere est teste et affine",
+          "  4. /skill-creator → Le prompt est encapsule en skill reutilisable dans .claude/skills/qcm-generator.md",
+          "Montrer le resultat: un skill qui produit des QCM de qualite professionnelle a chaque invocation",
+          "Montrer la matrice de decision du meta-prompt: quel contexte → quelles techniques"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice pipeline complet: 'Choisissez une tache repetitive de votre quotidien (generer des exercices, creer des fiches de revision, rediger des commentaires de bulletin...). Lancez /meta-prompt create et decrivez cette tache. Observez les questions que Claude pose et le prompt qu'il genere.'",
+          "Defi enchainement: 'Prenez le prompt genere par /meta-prompt et transformez-le en skill avec /skill-creator. Testez le skill obtenu. Est-il meilleur qu'un prompt ecrit a la main ?'"
+        ]
+      }
+    }
+  },
+
+  "av-skill-creator": {
+    "id": "av-skill-creator",
+    "title": "Createur de skills",
+    "parcours": "avance",
+    "duration": "20 min",
+    "action": "MODIFIER",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "GARDER TEL QUEL"
+      },
+      "exemple": {
+        "action": "ENRICHIR",
+        "modifications": [
+          "Garder l'exemple du skill exercices-maths",
+          "AJOUTER dans les regles du skill:",
+          "  - Etape 0 (prerequis): 'Invoquer le skill /programmes-officiels pour recuperer les attendus officiels du niveau et du theme donnes. Les exercices doivent imperativement porter sur les competences et capacites du programme.'",
+          "  - Regle ultrathink: 'Pour la creation du contenu de chaque exercice, utiliser ultrathink pour une reflexion approfondie sur la pertinence pedagogique, la progressivite et la variete des questions.'",
+          "L'exemple enrichi montre un skill qui commence par sourcer les programmes officiels, puis reflechit en profondeur avant de generer"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice rapide: 'Utilisez /skill-creator en lui decrivant un skill pour votre tache la plus repetitive. Testez le skill genere. Ajoutez une regle qui manquait.'",
+          "NE PAS detailler les 5 etapes manuelles de creation de fichier (c'est dans l'exemple)",
+          "Le but est de pratiquer /skill-creator, pas de creer un fichier .md a la main"
+        ]
+      }
+    }
+  },
+
+  "av-hooks": {
+    "id": "av-hooks",
+    "title": "Hooks et automatisations",
+    "parcours": "avance",
+    "duration": "15 min",
+    "action": "MODIFIER",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "GARDER TEL QUEL"
+      },
+      "exemple": {
+        "action": "SIMPLIFIER",
+        "modifications": [
+          "GARDER UN SEUL EXEMPLE: le hook de correction d'encodage UTF-8 (PostToolUse sur Write/Edit/MultiEdit)",
+          "SUPPRIMER l'exemple de compilation LaTeX automatique — il est dangereux (peut boucler si mal configure)",
+          "L'exemple unique est suffisant pour comprendre le concept matcher/type/command"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice guide avec hook sonore: 'Ajoutez un hook qui joue un son lorsque Claude a une question pour vous (evenement AskUserQuestion ou NotificationPost).'",
+          "Fournir le hook a copier-coller:",
+          "  { \"hooks\": { \"PostToolUse\": [{ \"matcher\": \"AskUserQuestion\", \"hooks\": [{ \"type\": \"command\", \"command\": \"powershell -c [System.Media.SystemSounds]::Exclamation.Play()\" }] }] } }",
+          "  (Ou sur macOS: afplay /System/Library/Sounds/Glass.aiff)",
+          "  'Vous pouvez remplacer par le chemin d'un sample son de votre choix.'",
+          "Etapes: 'Ajoutez ce hook dans .claude/settings.json. Lancez Claude. Posez une question qui necessite une clarification. Le son se joue-t-il ?'",
+          "NE PAS dire 'ajoutez un hook simple' sans preciser lequel"
+        ]
+      }
+    }
+  },
+
+  "av-share": {
+    "id": "av-share",
+    "title": "Partager sa configuration",
+    "parcours": "avance",
+    "duration": "10 min",
+    "action": "REECRIRE COMPLETEMENT",
+    "fichier_cible": "src/data/parcours.ts",
+    "specs": {
+      "info": {
+        "action": "REECRIRE",
+        "modifications": [
+          "Refaire completement: les fournisseurs CLI proposent maintenant des ecosystemes de partage",
+          "Presenter les 3 ecosystemes:",
+          "  1. Claude Code: marketplace officielle (claude-plugins-official), Skill Hub, standard ouvert Agent Skills (SKILL.md), publication via claude.ai/settings/plugins/submit. Docs: code.claude.com/docs/en/skills et github.com/anthropics/skills",
+          "  2. Gemini CLI: Extensions Gallery (geminicli.com/extensions/browse/), installation via 'gemini extensions install <URL>'. Docs: geminicli.com/docs/extensions/",
+          "  3. Codex CLI: SkillsMP (71 000+ skills compatibles), installation via 'npx skills add', config TOML. Docs: developers.openai.com/codex/cli/",
+          "Standard partage: SKILL.md est un format ouvert adopte par Claude Code ET Codex CLI",
+          "Methodes classiques toujours valides: Git, ZIP, depot dedie"
+        ]
+      },
+      "exemple": {
+        "action": "REECRIRE",
+        "modifications": [
+          "Tableau comparatif des ecosystemes de partage:",
+          "  | Plateforme | Marketplace | Installation CLI | Standard |",
+          "  | Claude Code | Skill Hub | /plugin install nom | SKILL.md |",
+          "  | Gemini CLI | Extensions Gallery | gemini extensions install URL | Proprietaire |",
+          "  | Codex CLI | SkillsMP | npx skills add | SKILL.md |",
+          "Montrer un exemple d'installation de skill depuis un marketplace",
+          "Liens directs vers les documentations et catalogues"
+        ]
+      },
+      "pratique": {
+        "action": "REECRIRE",
+        "contenu": [
+          "Exercice: 'Explorez le catalogue de skills/extensions de votre outil (Skill Hub pour Claude Code, Extensions Gallery pour Gemini CLI). Identifiez 2 skills/extensions qui vous seraient utiles. Installez-en un et testez-le.'",
+          "Defi portabilite: 'Si vous avez acces a deux outils CLI differents, comparez l'installation d'un meme type de skill sur chacun. Qu'est-ce qui est commun ? Qu'est-ce qui differe ?'",
+          "Alternative: 'Listez les 3 skills que vous recommanderiez a un collegue. Redigez un mini-README de 5 lignes pour les accompagner.'"
+        ]
+      },
+      "liens_documentation": {
+        "claude_code_skills": "https://code.claude.com/docs/en/skills",
+        "claude_code_plugins": "https://code.claude.com/docs/en/discover-plugins",
+        "anthropic_skills_repo": "https://github.com/anthropics/skills",
+        "gemini_extensions": "https://geminicli.com/extensions/",
+        "gemini_extensions_docs": "https://geminicli.com/docs/extensions/",
+        "codex_cli": "https://developers.openai.com/codex/cli/",
+        "codex_features": "https://developers.openai.com/codex/cli/features/",
+        "agent_skills_standard": "https://agentskills.io",
+        "skills_marketplace": "https://skillsmp.com"
+      }
+    }
+  },
+
+  "_nouvelle_capsule": {
+    "note": "cc-tips est scinde en cc-dotclaude + cc-bfcours-setup (voir specs dans cc-tips). Il faut aussi envisager une capsule dediee aux commandes bfcours personnalisees (mentionnee dans cc-commands). A decider: l'integrer dans cc-bfcours-setup ou en faire une 3e capsule.",
+    "modification_parcours": {
+      "claude-code": {
+        "ancien": ["cc-install", "cc-config", "cc-commands", "cc-tips"],
+        "nouveau": ["cc-install", "cc-config", "cc-commands", "cc-dotclaude", "cc-bfcours-setup"]
+      }
+    }
+  }
+}

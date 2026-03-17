@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Code2, BookOpen, Download, Video, FileText, GraduationCap, Cpu, Terminal, FolderOpen, ArrowRight, Sparkles, Cog, FileOutput, Zap } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { AddToCartButton } from "@/components/cart/AddToCartButton"
 import { Breadcrumb } from "@/components/layout/Breadcrumb"
 import type { Metadata } from "next"
 
@@ -187,6 +188,20 @@ export default function ClaudeCodePage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Setup complet */}
+      <section className="glass-card rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-2 border-cosmic-500/30">
+        <div>
+          <h3 className="text-lg font-bold text-cosmic-400">Setup complet</h3>
+          <p className="text-sm text-muted-foreground">
+            Ajoutez toute la configuration Claude Code (agents, skills, commandes, serveurs MCP) à votre panier pour un téléchargement groupé.
+          </p>
+        </div>
+        <AddToCartButton
+          item={{ id: 'setup-complet', name: 'Setup Claude Code complet', type: 'setup', path: 'Claude-Code-Setup', description: 'Configuration complète : agents, skills, commandes et serveurs MCP' }}
+          variant="cosmic"
+        />
       </section>
 
       {/* Tutoriels d'installation */}

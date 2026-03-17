@@ -15,6 +15,9 @@ import { GitignoreParser } from './gitignore-parser'
 export interface PresentationEntry {
   slug: string
   comment: string
+  tags?: string[]
+  level?: 'débutant' | 'intermédiaire' | 'avancé'
+  updatedAt?: string
 }
 
 /**
@@ -49,6 +52,8 @@ export interface CategoriesConfig {
     defaultIcon: string
     defaultGradient: string
     defaultColor: string
+    availableTags?: string[]
+    availableLevels?: string[]
   }
 }
 
@@ -268,7 +273,10 @@ export function organizePresentationsByCategory(
         if (presentation) {
           subcategoryPresentations.push({
             ...presentation,
-            comment: entry.comment
+            comment: entry.comment,
+            tags: entry.tags,
+            level: entry.level,
+            configUpdatedAt: entry.updatedAt,
           })
         }
       })

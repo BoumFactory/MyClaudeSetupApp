@@ -72,6 +72,11 @@ async function addItemsToZip(
 
     const zipPath = currentPath ? `${currentPath}/${item.name}` : item.name
     const fullPath = path.join(basePath, item.path)
+    const resolvedPath = path.resolve(fullPath)
+    if (!resolvedPath.startsWith(path.resolve(basePath))) {
+      console.warn(`[ZIP] Path traversal bloque: ${item.path}`)
+      continue
+    }
 
     if (item.type === 'directory') {
       // Pour un dossier, on explore toujours ses enfants

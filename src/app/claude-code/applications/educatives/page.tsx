@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { AddToCartButton } from "@/components/cart/AddToCartButton"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -158,10 +159,15 @@ export default function ApplicationsEducativesPage() {
                     ))}
                   </div>
                   <div className="flex gap-2">
-                    <Button asChild variant="cosmic" className="flex-1">
+                    <AddToCartButton
+                      item={{ id: app.id, name: app.title, type: 'app', path: app.path, description: app.description }}
+                      variant="cosmic"
+                      className="flex-1"
+                    />
+                    <Button asChild variant="ghost" size="sm">
                       <Link href="/claude-code/downloads">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Télécharger
+                        <Download className="w-4 h-4 mr-1" />
+                        <span className="text-xs">Page de telechargement</span>
                       </Link>
                     </Button>
                   </div>
@@ -292,10 +298,15 @@ export default function ApplicationsEducativesPage() {
                   </div>
 
                   <div className="flex gap-2">
-                    <Button asChild variant="outline" size="sm" className="flex-1">
+                    <AddToCartButton
+                      item={{ id: app.id, name: app.title, type: 'app', path: app.downloadPath, description: app.description }}
+                      variant="cosmic"
+                      className="flex-1"
+                    />
+                    <Button asChild variant="ghost" size="sm">
                       <Link href="/claude-code/downloads">
                         <Download className="w-4 h-4 mr-1" />
-                        Télécharger
+                        <span className="text-xs">Page de telechargement</span>
                       </Link>
                     </Button>
                   </div>
@@ -341,17 +352,17 @@ export default function ApplicationsEducativesPage() {
                     ))}
                   </div>
                   <div className="flex gap-2">
-                    <Button asChild variant="outline" size="sm" className="flex-1">
+                    <Button asChild variant="outline" size="sm">
                       <a href={anim.viewPath} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-1" />
                         Voir
                       </a>
                     </Button>
-                    <Button asChild variant="ghost" size="sm">
-                      <a href={anim.downloadPath} download>
-                        <Download className="w-4 h-4" />
-                      </a>
-                    </Button>
+                    <AddToCartButton
+                      item={{ id: anim.id, name: anim.title, type: 'app', path: anim.downloadPath, description: anim.description }}
+                      variant="cosmic"
+                      className="flex-1"
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -395,17 +406,17 @@ export default function ApplicationsEducativesPage() {
                     ))}
                   </div>
                   <div className="flex gap-2">
-                    <Button asChild variant="outline" size="sm" className="flex-1">
+                    <Button asChild variant="outline" size="sm">
                       <a href={nb.viewPath} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-1" />
                         Voir
                       </a>
                     </Button>
-                    <Button asChild variant="ghost" size="sm">
-                      <a href={nb.downloadPath} download>
-                        <Download className="w-4 h-4" />
-                      </a>
-                    </Button>
+                    <AddToCartButton
+                      item={{ id: nb.id, name: nb.title, type: 'app', path: nb.downloadPath, description: nb.description }}
+                      variant="cosmic"
+                      className="flex-1"
+                    />
                   </div>
                 </CardContent>
               </Card>

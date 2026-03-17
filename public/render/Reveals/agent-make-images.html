@@ -8,9 +8,9 @@
   <title>Génération d'images pédagogiques avec IA</title>
 
   <!-- Reveal.js Core -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="assets/reveal/reset.css">
+  <link rel="stylesheet" href="assets/reveal/reveal.css">
+  <link rel="stylesheet" href="assets/reveal/theme/white.css">
 
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -54,7 +54,7 @@
     .reveal h3 {
       font-size: 1.3em;
       color: var(--secondary-color);
-      margin-top: 0.8em;
+      margin-top: 0.4em;
     }
 
     .reveal ul, .reveal ol {
@@ -234,6 +234,28 @@
       background: var(--secondary-color);
       color: white;
     }
+
+    .reveal a {
+      color: var(--secondary-color);
+      text-decoration: underline;
+      transition: all 0.3s ease;
+    }
+
+    .reveal a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    .reveal code a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .reveal code a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -272,11 +294,19 @@
         </div>
 
         <ul class="feature-list">
-          <li class="fragment"><i class="fas fa-robot icon"></i> Utilise <strong>Google Gemini 2.5 Flash Image</strong></li>
+          <li class="fragment"><i class="fas fa-robot icon"></i> Utilise <strong>Google Imagen 4.0</strong></li>
           <li class="fragment"><i class="fas fa-chalkboard-teacher icon"></i> Optimisé pour les <strong>ressources pédagogiques</strong></li>
           <li class="fragment"><i class="fas fa-print icon"></i> Styles adaptés à l'<strong>impression économique</strong></li>
           <li class="fragment"><i class="fas fa-palette icon"></i> Génère des corpus d'images <strong>cohérents</strong></li>
         </ul>
+<section>
+        <div class="box fragment" style="margin-top: 1em; font-size: 0.85em;">
+          <p><i class="fas fa-info-circle icon"></i> <strong>Deux façons de générer :</strong></p>
+          <ul class="smaller">
+            <li><span class="tag">image-generator rapide</span> - Génération directe et instantanée</li>
+            <li><span class="tag warning">image-generator expert</span> - Workflow THINKHARD pour analyse pédagogique complète</li>
+          </ul>
+        </div></section>
       </section>
 
       <!-- SLIDE 4 : FONCTIONNEMENT GLOBAL -->
@@ -400,7 +430,65 @@
         </div>
       </section>
 
-      <!-- SLIDE 9 : STYLES DISPONIBLES -->
+      <!-- SLIDE 9 : CAS D'USAGE PÉDAGOGIQUES CONCRETS -->
+      <section>
+        <section>
+          <h2><i class="fas fa-chalkboard icon"></i> Cas d'usage pédagogiques concrets</h2>
+          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir des exemples disciplinaires</p>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-calculator icon"></i> Mathématiques</h3>
+          <ul class="smaller">
+            <li><strong>Illustrations de cours :</strong> Géométrie dynamique, graphiques, croquis pédagogiques</li>
+            <li><strong>Schémas géométriques :</strong> Triangles, angles, symétries en ligne claire</li>
+            <li><strong>Images pour exercices :</strong> Mise en contexte des problèmes (courses, budgets, constructions)</li>
+            <li><strong>Escape games :</strong> Thèmes médiévaux, pirates, laboratoires secrets</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-flask-vial icon"></i> Sciences & Technologie</h3>
+          <ul class="smaller">
+            <li><strong>Schémas expériences :</strong> Circuit électrique, réactions chimiques, expériences biologiques</li>
+            <li><strong>Illustrations bio :</strong> Cellules, organes, écosystèmes en style pédagogique</li>
+            <li><strong>Diagrammes physiques :</strong> Forces, mouvements, optique</li>
+            <li><strong>Technologie :</strong> Systèmes mécaniques, algorithmes visuels</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-book-open icon"></i> Français & Littérature</h3>
+          <ul class="smaller">
+            <li><strong>Personnages des textes :</strong> Illustrations des protagonistes, scènes clés</li>
+            <li><strong>Frises narratives :</strong> Timeline d'une histoire, succession d'événements</li>
+            <li><strong>Contextualisation :</strong> Époque historique, décors, ambiances</li>
+            <li><strong>Supports créatifs :</strong> Réécritures, continuations, illustrations libres</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-earth-americas icon"></i> Histoire & Géographie</h3>
+          <ul class="smaller">
+            <li><strong>Cartes thématiques :</strong> Cartes historiques, migrations, ressources</li>
+            <li><strong>Scènes historiques :</strong> Moments clés, reconstitutions, ambiances époque</li>
+            <li><strong>Paysages types :</strong> Biomes, relief, architecture régionale</li>
+            <li><strong>Infographies :</strong> Données géographiques, comparaisons visuelles</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><i class="fas fa-language icon"></i> Langues & Culture</h3>
+          <ul class="smaller">
+            <li><strong>Vocabulaire illustré :</strong> Objets du quotidien, actions, concepts</li>
+            <li><strong>Scènes de dialogue :</strong> Contextes sociaux, situations authentiques</li>
+            <li><strong>Culture visuelle :</strong> Patrimoine, traditions, paysages de pays anglophones/francophones</li>
+            <li><strong>Enrobages ludiques :</strong> Jeux linguistiques, chasses au vocabulaire</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- SLIDE 10 : STYLES DISPONIBLES -->
       <section>
         <section>
           <h2>Styles disponibles</h2>
@@ -586,7 +674,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 13 : CONFIGURATION NÉCESSAIRE -->
+      <!-- SLIDE 15 : CONFIGURATION NÉCESSAIRE -->
       <section>
         <section>
           <h2>Configuration nécessaire</h2>
@@ -635,7 +723,7 @@
         </section>
       </section>
 
-      <!-- SLIDE 13 : TARIFICATION -->
+      <!-- SLIDE 13 : TARIFICATION GOOGLE VERTEX AI -->
       <section>
         <h2>Tarification Google Vertex AI</h2>
 
@@ -684,7 +772,46 @@
         </div>
       </section>
 
-      <!-- SLIDE 14 : CONSEILS D'UTILISATION -->
+      <!-- SLIDE 14 : OPTIMISATION FORMAT ET RÉSOLUTION -->
+      <section>
+        <h2><i class="fas fa-sliders-h icon"></i> Optimisation : Format, résolution & coût</h2>
+          <section>
+          <div class="grid-2">
+            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-image icon"></i> Résolution recommandée</h3>
+              <ul class="smaller">
+                <li><strong>Affichage classe :</strong> 1024×768 ou 1280×960</li>
+                <li><strong>Impression A4 :</strong> 1024×768 (économique) à 1920×1080 (haute qualité)</li>
+                <li><strong>Web/vidéo :</strong> 1024×576 à 1280×720</li>
+                <li><strong>Conseil :</strong> 1024×768 = optimal pour la plupart des usages</li>
+              </ul>
+            </div>
+
+            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <h3 class="smaller"><i class="fas fa-file-code icon"></i> Format & compression</h3>
+              <ul class="smaller">
+                <li><strong>Format :</strong> PNG uniquement (lossless)</li>
+                <li><strong>Taille fichier :</strong> 150-400 Ko (par image)</li>
+                <li><strong>Impact impression :</strong> 1024×768 = économique</li>
+                <li><strong>Optimisation :</strong> Styles N&B/minimal = 2-3× plus léger</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="warning-box fragment" data-fragment-index="3" style="font-size: 0.85em; margin-top: 1em;">
+            <p><i class="fas fa-dollar-sign icon"></i> <strong>Impact sur le coût</strong></p>
+            <ul class="smaller">
+              <li>La résolution <strong>N'AFFECTE PAS le prix</strong> (facturation à l'image générée)</li>
+              <li>Le coût dépend du <strong>nombre d'images</strong> et du <strong>modèle</strong></li>
+              <li>Générer 10 images à 1024×768 = même prix qu'à 1920×1080</li>
+              <li>Économie réelle : <strong>moins d'images</strong> = moins de coût</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SLIDE 16 : CONSEILS D'UTILISATION -->
       <section>
         <h2><i class="fas fa-lightbulb icon"></i> Conseils d'utilisation</h2>
 
@@ -722,7 +849,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 15 : STRUCTURE DU SKILL -->
+      <!-- SLIDE 17 : STRUCTURE DU SKILL -->
       <section>
         <h2>Structure du skill</h2>
 
@@ -748,7 +875,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 16bis : L'AGENT UN EXPERT AUTONOME -->
+      <!-- SLIDE 18 : L'AGENT : UN EXPERT AUTONOME -->
       <section>
         <!-- Slide DOWN 1 : Introduction -->
         <section>
@@ -813,7 +940,7 @@
         </section>
       </section>
 
-      <!-- SLIDE 17 : POURQUOI GÉNÉRER VIA AGENT -->
+      <!-- SLIDE 19 : POURQUOI GÉNÉRER VIA AGENT -->
       <section>
         <section>
           <h2><i class="fas fa-robot icon"></i> Pourquoi générer via agent ?</h2>
@@ -886,7 +1013,7 @@
         </section>
       </section>
 
-      <!-- SLIDE 18 : RÉSULTATS TYPIQUES -->
+      <!-- SLIDE 20 : RÉSULTATS TYPIQUES -->
       <section>
         <h2>Résultats typiques</h2>
 
@@ -918,7 +1045,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 19 : AUTRES CAS D'USAGE -->
+      <!-- SLIDE 21 : AUTRES CAS D'USAGE (BONUS) -->
       <section>
         <section>
           <h2>Autres cas d'usage possibles</h2>
@@ -970,7 +1097,7 @@
         </section>
       </section>
 
-      <!-- SLIDE 20 : CONCLUSION -->
+      <!-- SLIDE 22 : CONCLUSION -->
       <section>
         <h2>En résumé</h2>
 
@@ -1003,33 +1130,39 @@
         </div>
       </section>
 
-      <!-- SLIDE 21 : RESSOURCES ET DOCUMENTATION -->
+      <!-- SLIDE 23 : RESSOURCES ET DOCUMENTATION -->
       <section>
-        <h2><i class="fas fa-book icon"></i> Ressources</h2>
+        <h2><i class="fas fa-book icon"></i> Ressources & Documentation</h2>
 
         <div class="grid-2">
-          <div class="box" style="font-size: 0.8em;">
-            <h3 class="smaller">Documentation</h3>
+          <div class="box" style="font-size: 0.75em;">
+            <h3 class="smaller"><i class="fas fa-folder icon"></i> Documentation locale</h3>
             <ul class="smaller">
-              <li><code>README.md</code> - Guide utilisateur</li>
-              <li><code>SKILL.md</code> - Instructions agents</li>
-              <li><code>knowledge/</code> - Guides détaillés</li>
-              <li><code>examples/</code> - Exemples pratiques</li>
+              <li><strong>README.md</strong> - Guide utilisateur complet</li>
+              <li><strong>SKILL.md</strong> - Instructions pour agents Claude</li>
+              <li><strong>knowledge/</strong> - Guides détaillés et spécialisés</li>
+              <li><strong>examples/</strong> - Exemples pratiques et cas d'usage</li>
+              <li><strong>requirements.txt</strong> - Dépendances Python</li>
             </ul>
           </div>
 
-          <div class="box fragment" style="font-size: 0.8em;">
-            <h3 class="smaller">Liens utiles</h3>
+          <div class="box fragment" data-fragment-index="1" style="font-size: 0.75em;">
+            <h3 class="smaller"><i class="fas fa-external-link-alt icon"></i> Ressources externes</h3>
             <ul class="smaller">
-              <li><i class="fas fa-cloud icon"></i> Google Cloud Console</li>
-              <li><i class="fas fa-book icon"></i> Docs Vertex AI</li>
-              <li><i class="fas fa-dollar-sign icon"></i> Tarification</li>
+              <li><a href="https://console.cloud.google.com" target="_blank" class="highlight">Google Cloud Console</a> - Gestion API</li>
+              <li><a href="https://cloud.google.com/vertex-ai/docs/generative-ai/image/overview" target="_blank" class="highlight">Documentation Vertex AI</a></li>
+              <li><a href="https://cloud.google.com/vertex-ai/pricing" target="_blank" class="highlight">Tarification Google Cloud</a></li>
+              <li><a href="https://cloud.google.com/vertex-ai/docs/generative-ai/image/generate-images" target="_blank" class="highlight">Guide génération d'images</a></li>
             </ul>
           </div>
         </div>
 
-        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
-          <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
+        <div class="example-box fragment" data-fragment-index="2" style="margin-top: 1em; font-size: 0.8em;">
+          <p><i class="fas fa-lightbulb icon"></i> <strong>Conseil :</strong> Commencez par le <strong>README.md</strong> pour une vue d'ensemble, puis explorez les guides <strong>knowledge/</strong> pour approfondir.</p>
+        </div>
+
+        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.1em;">
+          <i class="fas fa-question-circle icon"></i> <strong>Des questions ? N'hésitez pas à explorer la documentation !</strong>
         </p>
       </section>
 
@@ -1037,10 +1170,10 @@
   </div>
 
   <!-- Reveal.js Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+  <script src="assets/reveal/reveal.js"></script>
+  <script src="assets/reveal/plugin/notes/notes.js"></script>
+  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
+  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
 
   <script>
     Reveal.initialize({

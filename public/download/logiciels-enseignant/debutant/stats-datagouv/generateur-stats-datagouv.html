@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generateur d'exercices Statistiques v0.3 — MCP DataGouv</title>
+<style>
+  :root {
+    --primary: #1a56db;
+    --primary-light: #e8effc;
+    --accent: #059669;
+    --accent-light: #ecfdf5;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+    color: var(--primary);
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  .version {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 20px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .card h2 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .card h2 .badge {
+    background: var(--primary);
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 20px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .form-group.full { grid-column: 1 / -1; }
+  label {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  label .hint {
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  input, select, textarea {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+  }
+  textarea { resize: vertical; min-height: 60px; }
+
+  .suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.3rem;
+  }
+  .suggestions button {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: none;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .suggestions button:hover {
+    background: var(--primary);
+    color: white;
+  }
+
+  .output-area {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 8px;
+    padding: 1.25rem;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 500px;
+    overflow-y: auto;
+    line-height: 1.5;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-primary:hover { background: #1e40af; }
+  .btn-accent { background: var(--accent); color: white; }
+  .btn-accent:hover { background: #047857; }
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+  .btn-outline:hover { background: var(--primary-light); }
+  .btn-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--accent);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s;
+    pointer-events: none;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  .tuto {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+  }
+  .tuto h2 { color: var(--accent); }
+  .tuto code {
+    background: #d1fae5;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+  }
+  .tuto pre {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.88rem;
+    overflow-x: auto;
+    margin: 0.5rem 0;
+  }
+  .tuto ol, .tuto ul { padding-left: 1.3rem; }
+  .tuto li { margin-bottom: 0.5rem; }
+
+  .pipeline-box {
+    background: #f0f9ff;
+    border: 2px dashed var(--primary);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+  }
+
+  @media (max-width: 640px) {
+    .form-grid { grid-template-columns: 1fr; }
+    body { padding: 1rem 0.5rem; }
+    h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Generateur d'exercices Statistiques <span class="version">v0.3</span></h1>
+  <p class="subtitle">Exercices de maths avec donnees reelles de data.gouv.fr — chaine de verite garantie (fichier brut + verification).</p>
+
+  <!-- TUTO MCP -->
+  <div class="card tuto">
+    <h2>Prerequis : configurer le serveur MCP DataGouv</h2>
+    <p>Ce prompt necessite un <strong>chatbot IA ayant acces aux serveurs MCP</strong> (Claude Code, Claude Desktop, Cursor...) avec le serveur MCP DataGouv configure.</p>
+    <h3 style="margin-top:0.5rem;">Claude</h3>
+    <p><strong>Claude Code (terminal)</strong> :</p>
+    <pre>claude mcp add --transport http datagouv https://mcp.data.gouv.fr/mcp</pre>
+    <p><strong>Claude Desktop</strong> (Settings &gt; Connectors) :</p>
+    <pre>{
+  "mcpServers": {
+    "datagouv": {
+      "transport": "http",
+      "url": "https://mcp.data.gouv.fr/mcp"
+    }
+  }
+}</pre>
+
+    <h3 style="margin-top:0.5rem;">Gemini CLI</h3>
+    <p><strong>Gemini CLI (terminal)</strong> :</p>
+    <pre>gemini mcp add --transport http datagouv https://mcp.data.gouv.fr/mcp</pre>
+    <p><strong>Configuration manuelle</strong> (settings.json) :</p>
+    <pre>{
+  "mcpServers": {
+    "datagouv": {
+      "httpUrl": "https://mcp.data.gouv.fr/mcp"
+    }
+  }
+}</pre>
+
+    <h3 style="margin-top:0.5rem;">OpenAI</h3>
+    <p><strong>Responses API</strong> (dans le tableau <code>tools</code>) :</p>
+    <pre>{
+  "type": "mcp",
+  "server_label": "datagouv",
+  "server_url": "https://mcp.data.gouv.fr/mcp"
+}</pre>
+    <p style="margin-top:0.5rem;"><strong>Source :</strong> <a href="https://github.com/datagouv/datagouv-mcp" target="_blank" style="color:var(--accent)">github.com/datagouv/datagouv-mcp</a> — Serveur MCP officiel (DINUM).</p>
+
+    <h2 style="margin-top:1rem;">Chaine de verite (nouveau v0.3)</h2>
+    <div class="pipeline-box">
+MCP DataGouv ──> URL fichier brut<br>
+       │<br>
+  Telechargement ──> raw_file.csv + source.json<br>
+       │<br>
+  Filtrage ──> extract.csv + extract.json + extract_params.json<br>
+       │<br>
+  Corrige ──> computed.json (chaque calcul declare)<br>
+       │<br>
+  verify.py ──> OK/FAIL par question
+    </div>
+    <p style="font-size:0.85rem; color:var(--muted);">Le fichier brut est telecharge tel quel depuis data.gouv.fr. Tous les calculs du corrige sont verifiables contre les donnees source.</p>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <div class="card">
+    <h2>Parametres de l'exercice <span class="badge">Remplir puis copier</span></h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Theme <span class="hint">(domaine des donnees)</span></label>
+        <input type="text" id="theme" placeholder="ex : meteo, sport, transports...">
+        <div class="suggestions">
+          <button onclick="fill('theme','Demographie / population')">Demographie</button>
+          <button onclick="fill('theme','Meteo / climat')">Meteo</button>
+          <button onclick="fill('theme','Transports / SNCF')">Transports</button>
+          <button onclick="fill('theme','Sport / licences sportives')">Sport</button>
+          <button onclick="fill('theme','Education / resultats scolaires')">Education</button>
+          <button onclick="fill('theme','Economie / prix immobiliers')">Economie</button>
+          <button onclick="fill('theme','Sante / vaccination')">Sante</button>
+          <button onclick="fill('theme','Environnement / qualite de l\'air')">Environnement</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Niveau scolaire</label>
+        <select id="niveau">
+          <option value="">-- Choisir --</option>
+          <option value="6e">6e</option>
+          <option value="5e">5e</option>
+          <option value="4e">4e</option>
+          <option value="3e">3e</option>
+          <option value="2nde">2nde</option>
+          <option value="1ere">1ere</option>
+          <option value="Terminale">Terminale</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Notions cibles <span class="hint">(adaptees au niveau)</span></label>
+        <input type="text" id="notions" placeholder="ex : moyenne, mediane, quartiles...">
+        <div class="suggestions" id="notions-suggestions"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Format</label>
+        <select id="format">
+          <option value="Exercice court (4-6 questions)">Exercice court (4-6 questions)</option>
+          <option value="TP long (10+ questions)">TP long (10+ questions)</option>
+          <option value="DM (devoir maison)">DM (devoir maison)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Sortie souhaitee</label>
+        <select id="sortie">
+          <option value="LaTeX">LaTeX</option>
+          <option value="HTML">HTML</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Precisions supplementaires <span class="hint">(optionnel)</span></label>
+        <textarea id="extra" placeholder="ex : donnees de la region Grand Est, exercice pour eleves en difficulte, inclure un diagramme..."></textarea>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="generatePrompt()">Generer le prompt</button>
+      <button class="btn btn-outline" onclick="resetForm()">Reinitialiser</button>
+    </div>
+  </div>
+
+  <!-- SORTIE -->
+  <div class="card" id="output-card" style="display:none;">
+    <h2>Prompt genere</h2>
+    <p style="color:var(--muted); font-size:0.88rem; margin-bottom:0.75rem;">Copiez ce prompt et collez-le dans votre chatbot IA avec le serveur MCP DataGouv configure.</p>
+    <div class="output-area" id="output"></div>
+    <div class="btn-group">
+      <button class="btn btn-accent" onclick="copyPrompt()">Copier dans le presse-papier</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">Copie !</div>
+
+<script>
+const NOTIONS_PAR_NIVEAU = {
+  '6e': ['Lecture de tableau', 'Effectifs', 'Proportions simples', 'Diagramme en batons'],
+  '5e': ['Frequences', 'Proportionnalite', 'Pourcentages', 'Diagramme circulaire'],
+  '4e': ['Moyenne simple', 'Moyenne ponderee', 'Etendue', 'Frequences'],
+  '3e': ['Mediane', 'Frequences cumulees', 'Quartiles (initiation)', 'Probabilites'],
+  '2nde': ['Moyenne', 'Mediane', 'Quartiles Q1/Q3', 'Ecart interquartile', 'Ecart-type (intro)', 'Boite a moustaches'],
+  '1ere': ['Ecart-type', 'Variance', 'Probabilites conditionnelles', 'Loi binomiale', 'Echantillonnage'],
+  'Terminale': ['Loi normale', 'Loi binomiale', 'Intervalle de confiance', 'Estimation', 'Series chronologiques']
+};
+
+document.getElementById('niveau').addEventListener('change', function() {
+  const container = document.getElementById('notions-suggestions');
+  const notions = NOTIONS_PAR_NIVEAU[this.value] || [];
+  container.innerHTML = notions.map(n =>
+    `<button onclick="appendNotion('${n}')">${n}</button>`
+  ).join('');
+});
+
+function fill(id, value) {
+  document.getElementById(id).value = value;
+}
+
+function appendNotion(notion) {
+  const input = document.getElementById('notions');
+  const current = input.value.trim();
+  if (current && !current.includes(notion)) {
+    input.value = current + ', ' + notion;
+  } else if (!current) {
+    input.value = notion;
+  }
+}
+
+function generatePrompt() {
+  const theme = document.getElementById('theme').value.trim() || 'au choix de l\'IA';
+  const niveau = document.getElementById('niveau').value || 'au choix de l\'IA';
+  const notions = document.getElementById('notions').value.trim() || 'adaptees au niveau';
+  const format = document.getElementById('format').value;
+  const sortie = document.getElementById('sortie').value;
+  const extra = document.getElementById('extra').value.trim();
+
+  const prompt = `Tu es un generateur d'exercices de mathematiques utilisant des donnees reelles issues de data.gouv.fr via le serveur MCP DataGouv.
+
+### Parametres de l'exercice
+
+- **Theme** : ${theme}
+- **Niveau scolaire** : ${niveau}
+- **Notions cibles** : ${notions}
+- **Format** : ${format}
+- **Sortie** : ${sortie}${extra ? '\n- **Precisions** : ' + extra : ''}
+
+### Workflow a suivre
+
+#### Etape 1 — Explorer via MCP (recherche uniquement)
+
+Le MCP sert **uniquement a explorer et identifier** le bon dataset :
+
+1. Appeler \`search_datasets\` avec des mots-cles adaptes au theme.
+2. Examiner les 3-5 premiers resultats pertinents.
+3. Appeler \`list_dataset_resources\` pour lister les fichiers CSV/XLSX.
+4. Appeler \`get_resource_info\` pour obtenir **l'URL de telechargement direct** du fichier.
+
+**Objectif : obtenir l'URL brute du fichier CSV/XLSX.**
+
+#### Etape 2 — Telecharger le fichier brut
+
+Telecharger le fichier CSV/XLSX directement depuis l'URL obtenue :
+\`\`\`bash
+curl -L -o _data/raw_file.csv "URL_DU_FICHIER"
+\`\`\`
+
+Creer \`_data/source.json\` avec les metadonnees de provenance :
+\`\`\`json
+{
+  "dataset_id": "ID",
+  "dataset_title": "Titre",
+  "resource_id": "ID",
+  "producer": "Producteur",
+  "download_url": "URL",
+  "datagouv_url": "https://www.data.gouv.fr/fr/datasets/ID",
+  "download_date": "AAAA-MM-JJ",
+  "raw_file": "raw_file.csv"
+}
+\`\`\`
+
+#### Etape 3 — Filtrer et extraire le sous-ensemble
+
+A partir du fichier brut telecharge :
+- Selectionner les colonnes pertinentes
+- Filtrer par region, annee, categorie...
+- Limiter a 15-30 valeurs (exercice) ou 50-100 (TP)
+- Arrondir si necessaire, verifier les valeurs
+
+Produire :
+- \`_data/extract.csv\` (sous-ensemble filtre, separateur \`;\`)
+- \`_data/extract.json\` (meme contenu en JSON)
+- \`_data/extract_params.json\` (parametres de filtrage pour reproductibilite)
+
+#### Etape 4 — Generer l'exercice
+
+1. **Chapeau contextuel** (2-3 lignes) : provenance et interet
+2. **Tableau de donnees** depuis extract.csv
+3. **Questions progressives** : lecture > calcul > interpretation > esprit critique
+4. **Source** : "Source : data.gouv.fr -- {dataset} ({producteur}, {annee})"
+
+#### Etape 5 — Produire le corrige avec chaine de verite
+
+Chaque calcul du corrige DOIT etre declare dans \`_data/computed.json\` :
+\`\`\`json
+{
+  "exercice": "Nom_exercice",
+  "source_file": "extract.csv",
+  "calculs": [
+    {
+      "question": "Q1",
+      "operation": "sum",
+      "column": "nom_colonne",
+      "result": 4000000
+    },
+    {
+      "question": "Q3",
+      "operation": "ratio",
+      "input_values": [2200000, 4000000],
+      "result": 0.55
+    }
+  ]
+}
+\`\`\`
+
+Deux modes : \`"column"\` (toutes les valeurs de la colonne) ou \`"input_values"\` (explicites).
+Operations : sum, mean, median, min, max, range, count, ratio, percentage, frequency, complement, variance, stdev, q1, q3, iqr, product, subtract, add.
+
+#### Etape 6 — Verifier la chaine
+
+Creer \`_data/verify.py\` qui charge extract.json + computed.json, recalcule chaque operation et affiche OK/FAIL.
+Executer et corriger si un test echoue.
+
+### Contraintes de qualite
+
+- Verifier les calculs sur les donnees extraites
+- Unites toujours precisees
+- Arrondis adaptes au niveau
+- Citation obligatoire data.gouv.fr
+
+### Arborescence finale
+
+\`\`\`
+Nom_exercice/
+|-- enonce.tex (ou .html)
+|-- corrige.tex
+\\\`-- _data/
+    |-- source.json         # provenance (URL, IDs, date)
+    |-- raw_file.csv        # fichier brut data.gouv.fr
+    |-- extract.csv         # sous-ensemble filtre (tableur)
+    |-- extract.json        # idem JSON (machine)
+    |-- extract_params.json # filtres appliques
+    |-- computed.json       # calculs du corrige
+    \\\`-- verify.py           # script de verification
+\`\`\``;
+
+  document.getElementById('output').textContent = prompt;
+  document.getElementById('output-card').style.display = 'block';
+  document.getElementById('output-card').scrollIntoView({ behavior: 'smooth' });
+}
+
+function copyPrompt() {
+  const text = document.getElementById('output').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  });
+}
+
+function resetForm() {
+  document.getElementById('theme').value = '';
+  document.getElementById('niveau').value = '';
+  document.getElementById('notions').value = '';
+  document.getElementById('format').value = 'Exercice court (4-6 questions)';
+  document.getElementById('sortie').value = 'LaTeX';
+  document.getElementById('extra').value = '';
+  document.getElementById('notions-suggestions').innerHTML = '';
+  document.getElementById('output-card').style.display = 'none';
+}
+</script>
+
+</body>
+</html>

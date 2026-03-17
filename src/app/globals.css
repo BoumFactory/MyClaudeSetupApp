@@ -50,6 +50,8 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     font-size: 16px;
     line-height: 1.6;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(99, 102, 241, 0.5) rgba(30, 27, 75, 0.5);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -141,11 +143,25 @@
 
 /* Effets de survol pour les liens */
 a {
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 a:hover {
   text-decoration: none;
+}
+
+/* Focus states pour l'accessibilité */
+.vocab-term:focus-visible,
+.doc-link:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.7);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.exercise-solution summary:focus-visible {
+  outline: 2px solid rgba(52, 211, 153, 0.7);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Optimisation des performances */
@@ -155,4 +171,418 @@ a:hover {
 
 .will-change-opacity {
   will-change: opacity;
+}
+
+/* Styles pour le contenu HTML rendu dans les capsules */
+.capsule-content code {
+  @apply bg-slate-800 text-cosmic-300 px-1.5 py-0.5 rounded text-sm;
+}
+
+.capsule-content pre {
+  @apply bg-slate-900 border border-white/10 rounded-lg overflow-x-auto;
+}
+
+.capsule-content pre code {
+  @apply bg-transparent text-gray-200 px-0 py-0 rounded-none text-sm;
+  display: block;
+  padding: 1rem;
+}
+
+.capsule-content ul {
+  @apply list-disc list-inside space-y-1.5 ml-2;
+}
+
+.capsule-content ol {
+  @apply list-decimal list-inside space-y-1.5 ml-2;
+}
+
+.capsule-content li {
+  @apply text-gray-300;
+}
+
+.capsule-content h3,
+.capsule-content h4 {
+  @apply font-bold text-white mt-4 mb-2;
+}
+
+.capsule-content strong {
+  @apply text-white font-semibold;
+}
+
+.capsule-content em {
+  @apply italic text-gray-100;
+}
+
+.capsule-content table {
+  @apply w-full border-collapse border border-white/10 rounded-lg overflow-hidden;
+}
+
+.capsule-content th {
+  @apply bg-white/10 border border-white/10 px-3 py-2 text-left font-semibold text-white;
+}
+
+.capsule-content td {
+  @apply border border-white/10 px-3 py-2 text-gray-300;
+}
+
+.capsule-content a {
+  @apply text-cosmic-400 hover:text-cosmic-300 underline transition-colors;
+}
+
+.capsule-content p {
+  @apply text-gray-300 leading-relaxed mb-3;
+}
+
+.capsule-content > *:first-child {
+  @apply mt-0;
+}
+
+.capsule-content > *:last-child {
+  @apply mb-0;
+}
+
+/* ===== Onglets CLI dans les capsules ===== */
+
+.capsule-content .cli-tabs {
+  margin: 1rem 0;
+}
+
+.capsule-content .cli-tabs-nav {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 0;
+}
+
+.capsule-content .cli-tab-btn {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.capsule-content .cli-tab-btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.capsule-content .cli-tab-btn.active {
+  color: #818cf8;
+  border-bottom-color: #818cf8;
+}
+
+.capsule-content .cli-tab-btn[data-tab-brand="anthropic"].active {
+  color: #e8935a;
+  border-bottom-color: #e8935a;
+}
+
+.capsule-content .cli-tab-btn[data-tab-brand="google"].active {
+  color: #6ea8fe;
+  border-bottom-color: #6ea8fe;
+}
+
+.capsule-content .cli-tab-btn[data-tab-brand="openai"].active {
+  color: #34d399;
+  border-bottom-color: #34d399;
+}
+
+.capsule-content .cli-tab-panel {
+  display: none;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.capsule-content .cli-tab-panel.active {
+  display: block;
+}
+
+.capsule-content .cli-tab-panel pre {
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.capsule-content .cli-tab-panel code {
+  font-size: 0.85em;
+}
+
+/* ===== Cartes exercice dans les capsules ===== */
+
+.capsule-content .exercise-card {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.capsule-content .exercise-header {
+  margin-bottom: 0.75rem;
+}
+
+.capsule-content .exercise-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.capsule-content .exercise-body {
+  margin-bottom: 0.75rem;
+}
+
+.capsule-content .exercise-body p,
+.capsule-content .exercise-body ol,
+.capsule-content .exercise-body ul {
+  margin: 0.5rem 0;
+}
+
+.capsule-content .exercise-solution {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.5rem;
+}
+
+.capsule-content .exercise-solution summary {
+  cursor: pointer;
+  color: #34d399;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.capsule-content .exercise-solution summary::-webkit-details-marker {
+  display: none;
+}
+
+.capsule-content .exercise-solution summary::before {
+  content: "\25B6";
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+
+.capsule-content .exercise-solution[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.capsule-content .solution-content {
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
+  background: rgba(52, 211, 153, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid rgba(52, 211, 153, 0.3);
+}
+
+.capsule-content .solution-content p,
+.capsule-content .solution-content ul,
+.capsule-content .solution-content ol {
+  font-size: 0.9rem;
+}
+
+.capsule-content .solution-content pre {
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+
+/* ===== Boutons documentation multi-plateforme ===== */
+
+.capsule-content .doc-links {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.capsule-content .doc-links-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.capsule-content .doc-links-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.capsule-content .doc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s;
+}
+
+.capsule-content .doc-link-anthropic {
+  background: rgba(204, 120, 50, 0.15);
+  color: #e8935a;
+  border: 1px solid rgba(204, 120, 50, 0.3);
+}
+.capsule-content .doc-link-anthropic:hover {
+  background: rgba(204, 120, 50, 0.25);
+}
+
+.capsule-content .doc-link-google {
+  background: rgba(66, 133, 244, 0.15);
+  color: #6ea8fe;
+  border: 1px solid rgba(66, 133, 244, 0.3);
+}
+.capsule-content .doc-link-google:hover {
+  background: rgba(66, 133, 244, 0.25);
+}
+
+.capsule-content .doc-link-openai {
+  background: rgba(16, 163, 127, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 163, 127, 0.3);
+}
+.capsule-content .doc-link-openai:hover {
+  background: rgba(16, 163, 127, 0.25);
+}
+
+/* ===== Vocabulaire avec infobulles ===== */
+
+.vocab-term {
+  color: #8197ff;
+  border-bottom: 1px dotted rgba(129, 151, 255, 0.5);
+  cursor: pointer;
+  position: relative;
+  display: inline;
+}
+
+/* Tooltip = vrai élément HTML enfant */
+.vocab-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 260px;
+  max-width: 340px;
+  white-space: normal;
+  background: rgba(12, 10, 36, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(129, 151, 255, 0.35);
+  border-radius: 12px;
+  padding: 14px 16px 12px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.35), 0 0 0 1px rgba(129, 151, 255, 0.1);
+  z-index: 100;
+  font-weight: 400;
+  letter-spacing: 0;
+  flex-direction: column;
+  gap: 8px;
+  animation: vocabFadeIn 0.15s ease-out;
+}
+
+@keyframes vocabFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Flèche en bas du tooltip */
+.vocab-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: rgba(129, 151, 255, 0.35);
+}
+
+/* Afficher au survol */
+.vocab-term:hover > .vocab-tooltip {
+  display: flex;
+}
+
+/* Pinné au clic */
+.vocab-term.vocab-pinned > .vocab-tooltip {
+  display: flex;
+}
+
+/* Bouton fermer */
+.vocab-tooltip-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.vocab-tooltip-close:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Définition */
+.vocab-tooltip-def {
+  display: block;
+  padding-right: 16px;
+}
+
+.vocab-tooltip-def b {
+  color: #a5b4fc;
+  font-weight: 600;
+}
+
+/* Lien vers la doc */
+.vocab-tooltip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #8197ff !important;
+  text-decoration: none !important;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  margin-top: 2px;
+  border-radius: 6px;
+  background: rgba(129, 151, 255, 0.1);
+  border: 1px solid rgba(129, 151, 255, 0.2) !important;
+  border-bottom: 1px solid rgba(129, 151, 255, 0.2) !important;
+  transition: all 0.15s;
+  cursor: pointer;
+  pointer-events: all;
+  width: fit-content;
+}
+
+.vocab-tooltip-link:hover {
+  background: rgba(129, 151, 255, 0.2);
+  color: #a5b4fc !important;
 }

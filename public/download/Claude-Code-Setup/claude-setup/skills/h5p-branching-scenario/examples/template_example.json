@@ -1,0 +1,140 @@
+{
+  "title": "Les fractions - Parcours adaptatif",
+  "scoring": "static-end-score",
+  "enableBackwardsNavigation": true,
+  "startScreen": {
+    "title": "Les fractions",
+    "subtitle": "__TODO_SUBTITLE__"
+  },
+  "_meta": {
+    "pattern": "diagnostic_differentiation",
+    "level": "5eme",
+    "theme": "fractions",
+    "generated_by": "create_template.py",
+    "version": "1.0"
+  },
+  "nodes": [
+    {
+      "title": "Introduction",
+      "type": "text",
+      "content": "__TODO_INTRO__",
+      "nextContentId": 1,
+      "meta": {"purpose": "introduction", "difficulty": "none", "branch": "common", "estimated_time_seconds": 30}
+    },
+    {
+      "title": "Test diagnostique",
+      "type": "branching_question",
+      "question": "__TODO_DIAGNOSTIC_QUESTION__",
+      "alternatives": [
+        {
+          "text": "__TODO_ALT_EXPERT__",
+          "nextContentId": 2,
+          "feedback": {"title": "__TODO_ALT_FB_TITLE_EXPERT__", "subtitle": "__TODO_ALT_FB_SUB_EXPERT__", "score": 100}
+        },
+        {
+          "text": "__TODO_ALT_INTERMEDIAIRE__",
+          "nextContentId": 4,
+          "feedback": {"title": "__TODO_ALT_FB_TITLE_INTERMEDIAIRE__", "subtitle": "__TODO_ALT_FB_SUB_INTERMEDIAIRE__", "score": 70}
+        },
+        {
+          "text": "__TODO_ALT_DEBUTANT__",
+          "nextContentId": 6,
+          "feedback": {"title": "__TODO_ALT_FB_TITLE_DEBUTANT__", "subtitle": "__TODO_ALT_FB_SUB_DEBUTANT__", "score": 40}
+        }
+      ],
+      "meta": {"purpose": "diagnostic", "difficulty": "medium", "branch": "common", "estimated_time_seconds": 60}
+    },
+    {
+      "title": "Parcours expert",
+      "type": "course_presentation",
+      "slides": [
+        {"content": "__TODO_SLIDE_EXPERT_1__", "interactions": []},
+        {"content": "__TODO_SLIDE_EXPERT_2__", "interactions": [
+          {
+            "type": "multichoice",
+            "x": 5, "y": 40, "width": 90, "height": 55,
+            "question": "__TODO_QUIZ_EXPERT__",
+            "answers": [
+              {"text": "__TODO_ANSWER_1__", "correct": true, "feedback": "__TODO_FEEDBACK_CORRECT__"},
+              {"text": "__TODO_ANSWER_2__", "correct": false, "feedback": "__TODO_FEEDBACK_INCORRECT__"},
+              {"text": "__TODO_ANSWER_3__", "correct": false, "feedback": "__TODO_FEEDBACK_INCORRECT__"}
+            ]
+          }
+        ]}
+      ],
+      "nextContentId": 3,
+      "meta": {"purpose": "content", "difficulty": "hard", "branch": "expert", "estimated_time_seconds": 120}
+    },
+    {
+      "title": "Bilan expert",
+      "type": "text",
+      "content": "__TODO_BILAN_EXPERT__",
+      "nextContentId": -1,
+      "feedback": {"title": "__TODO_FEEDBACK_TITLE_EXPERT__", "subtitle": "__TODO_FEEDBACK_SUB_EXPERT__", "score": 100},
+      "meta": {"purpose": "conclusion", "difficulty": "hard", "branch": "expert", "estimated_time_seconds": 30}
+    },
+    {
+      "title": "Parcours intermediaire",
+      "type": "course_presentation",
+      "slides": [
+        {"content": "__TODO_SLIDE_INTERMEDIAIRE_1__", "interactions": []},
+        {"content": "__TODO_SLIDE_INTERMEDIAIRE_2__", "interactions": [
+          {
+            "type": "multichoice",
+            "x": 5, "y": 40, "width": 90, "height": 55,
+            "question": "__TODO_QUIZ_INTERMEDIAIRE__",
+            "answers": [
+              {"text": "__TODO_ANSWER_1__", "correct": true, "feedback": "__TODO_FEEDBACK_CORRECT__"},
+              {"text": "__TODO_ANSWER_2__", "correct": false, "feedback": "__TODO_FEEDBACK_INCORRECT__"},
+              {"text": "__TODO_ANSWER_3__", "correct": false, "feedback": "__TODO_FEEDBACK_INCORRECT__"}
+            ]
+          }
+        ]}
+      ],
+      "nextContentId": 5,
+      "meta": {"purpose": "content", "difficulty": "medium", "branch": "intermediaire", "estimated_time_seconds": 120}
+    },
+    {
+      "title": "Bilan intermediaire",
+      "type": "text",
+      "content": "__TODO_BILAN_INTERMEDIAIRE__",
+      "nextContentId": -1,
+      "feedback": {"title": "__TODO_FEEDBACK_TITLE_INTERMEDIAIRE__", "subtitle": "__TODO_FEEDBACK_SUB_INTERMEDIAIRE__", "score": 70},
+      "meta": {"purpose": "conclusion", "difficulty": "medium", "branch": "intermediaire", "estimated_time_seconds": 30}
+    },
+    {
+      "title": "Parcours debutant",
+      "type": "course_presentation",
+      "slides": [
+        {"content": "__TODO_SLIDE_DEBUTANT_1__", "interactions": []},
+        {"content": "__TODO_SLIDE_DEBUTANT_2__", "interactions": [
+          {
+            "type": "multichoice",
+            "x": 5, "y": 40, "width": 90, "height": 55,
+            "question": "__TODO_QUIZ_DEBUTANT__",
+            "answers": [
+              {"text": "__TODO_ANSWER_1__", "correct": true, "feedback": "__TODO_FEEDBACK_CORRECT__"},
+              {"text": "__TODO_ANSWER_2__", "correct": false, "feedback": "__TODO_FEEDBACK_INCORRECT__"},
+              {"text": "__TODO_ANSWER_3__", "correct": false, "feedback": "__TODO_FEEDBACK_INCORRECT__"}
+            ]
+          }
+        ]}
+      ],
+      "nextContentId": 7,
+      "meta": {"purpose": "content", "difficulty": "easy", "branch": "debutant", "estimated_time_seconds": 120}
+    },
+    {
+      "title": "Bilan debutant",
+      "type": "text",
+      "content": "__TODO_BILAN_DEBUTANT__",
+      "nextContentId": -1,
+      "feedback": {"title": "__TODO_FEEDBACK_TITLE_DEBUTANT__", "subtitle": "__TODO_FEEDBACK_SUB_DEBUTANT__", "score": 40},
+      "meta": {"purpose": "conclusion", "difficulty": "easy", "branch": "debutant", "estimated_time_seconds": 30}
+    }
+  ],
+  "endScreens": [
+    {"title": "__TODO_END_TITLE_EXPERT__", "subtitle": "__TODO_END_SUB_EXPERT__", "score": 100},
+    {"title": "__TODO_END_TITLE_INTERMEDIAIRE__", "subtitle": "__TODO_END_SUB_INTERMEDIAIRE__", "score": 70},
+    {"title": "__TODO_END_TITLE_DEBUTANT__", "subtitle": "__TODO_END_SUB_DEBUTANT__", "score": 40}
+  ]
+}

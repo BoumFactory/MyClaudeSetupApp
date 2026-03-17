@@ -17,11 +17,17 @@
           "presentations": [
             {
               "slug": "architecture-claude-code-reveals",
-              "comment": "Vue d'ensemble complète de l'architecture de ma configuration Claude Code. Découvrez comment agents, skills, commandes et serveurs MCP s'articulent ensemble."
+              "comment": "Vue d'ensemble complète de l'architecture de ma configuration Claude Code. Découvrez comment agents, skills, commandes et serveurs MCP s'articulent ensemble.",
+              "tags": ["architecture", "vue d'ensemble", "agents", "skills"],
+              "level": "débutant",
+              "updatedAt": "2026-03"
             },
             {
               "slug": "claude-code-interface",
-              "comment": "Guide détaillé de l'interface de Claude Code et de ses fonctionnalités principales. Apprenez à naviguer efficacement dans l'environnement et à utiliser les outils disponibles."
+              "comment": "Guide détaillé de l'interface de Claude Code et de ses fonctionnalités principales. Apprenez à naviguer efficacement dans l'environnement et à utiliser les outils disponibles.",
+              "tags": ["interface", "navigation", "outils", "vue d'ensemble"],
+              "level": "débutant",
+              "updatedAt": "2026-03"
             }
           ]
         },
@@ -32,7 +38,10 @@
           "presentations": [
             {
               "slug": "commandes-disponibles",
-              "comment": "Catalogue exhaustif de toutes les commandes disponibles dans ma configuration. Commandes slash, skills et raccourcis pour optimiser votre workflow pédagogique."
+              "comment": "Catalogue exhaustif de toutes les commandes disponibles dans ma configuration. Commandes slash, skills et raccourcis pour optimiser votre workflow pédagogique.",
+              "tags": ["commandes", "workflow", "productivité", "référence"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-03"
             }
           ]
         }
@@ -55,7 +64,10 @@
           "presentations": [
             {
               "slug": "tex-document-creator-system",
-              "comment": "Système d'initialisation automatisée de projets LaTeX avec templates personnalisés. Créez rapidement des cours, fiches, évaluations et activités avec le package bfcours."
+              "comment": "Système d'initialisation automatisée de projets LaTeX avec templates personnalisés. Créez rapidement des cours, fiches, évaluations et activités avec le package bfcours.",
+              "tags": ["LaTeX", "documents", "templates", "automatisation"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-03"
             }
           ]
         },
@@ -66,7 +78,10 @@
           "presentations": [
             {
               "slug": "agent-make-images",
-              "comment": "Agent intelligent pour générer des images pédagogiques avec l'API Google Imagen. Optimisation automatique pour l'impression économique et les ressources éducatives."
+              "comment": "Agent intelligent pour générer des images pédagogiques avec l'API Google Imagen. Optimisation automatique pour l'impression économique et les ressources éducatives.",
+              "tags": ["images", "IA générative", "pédagogie", "API"],
+              "level": "avancé",
+              "updatedAt": "2026-03"
             }
           ]
         },
@@ -77,7 +92,10 @@
           "presentations": [
             {
               "slug": "skill-creator-system",
-              "comment": "Framework complet pour créer vos propres skills personnalisés. Guide méthodologique et bonnes pratiques pour étendre les capacités de Claude Code."
+              "comment": "Framework complet pour créer vos propres skills personnalisés. Guide méthodologique et bonnes pratiques pour étendre les capacités de Claude Code.",
+              "tags": ["skills", "personnalisation", "framework", "développement"],
+              "level": "avancé",
+              "updatedAt": "2026-03"
             }
           ]
         },
@@ -88,22 +106,17 @@
           "presentations": [
             {
               "slug": "beamer-presentation-system",
-              "comment": "Système de génération automatisée de diaporamas Beamer LaTeX professionnels. Gestion avancée des overlays, animations et styles pédagogiques (collège, lycée, académique)."
+              "comment": "Système de génération automatisée de diaporamas Beamer LaTeX professionnels. Gestion avancée des overlays, animations et styles pédagogiques (collège, lycée, académique).",
+              "tags": ["LaTeX", "Beamer", "diaporamas", "automatisation"],
+              "level": "avancé",
+              "updatedAt": "2026-03"
             },
             {
               "slug": "reveals-presentation-system",
-              "comment": "Création de présentations web interactives avec Reveal.js. Navigation fluide, animations modernes et adaptation responsive pour vos cours en ligne."
-            }
-          ]
-        },
-        {
-          "id": "creation-apps",
-          "name": "Applications éducatives",
-          "description": "Générateur d'applications pédagogiques",
-          "presentations": [
-            {
-              "slug": "educational-app-builder-system",
-              "comment": "Générateur complet d'applications Flask éducatives interactives. Transformation automatique de ressources pédagogiques en applications web packagées et standalone."
+              "comment": "Création de présentations web interactives avec Reveal.js. Navigation fluide, animations modernes et adaptation responsive pour vos cours en ligne.",
+              "tags": ["Reveal.js", "diaporamas", "web", "interactif"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-03"
             }
           ]
         },
@@ -114,7 +127,10 @@
           "presentations": [
             {
               "slug": "programmes-officiels-system",
-              "comment": "Système d'extraction et structuration des programmes officiels de l'Éducation Nationale. Recherche avancée de compétences et capacités pour vos fiches pédagogiques."
+              "comment": "Système d'extraction et structuration des programmes officiels de l'Éducation Nationale. Recherche avancée de compétences et capacités pour vos fiches pédagogiques.",
+              "tags": ["programmes", "Éducation Nationale", "compétences", "référence"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-03"
             }
           ]
         }
@@ -137,7 +153,10 @@
           "presentations": [
             {
               "slug": "bfcours-latex-system",
-              "comment": "Guide complet du package LaTeX bfcours pour l'enseignement des mathématiques. Environnements prédéfinis, mise en page automatisée et outils de compilation optimisés."
+              "comment": "Guide complet du package LaTeX bfcours pour l'enseignement des mathématiques. Environnements prédéfinis, mise en page automatisée et outils de compilation optimisés.",
+              "tags": ["LaTeX", "bfcours", "compilation", "mathématiques"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-03"
             }
           ]
         }
@@ -147,6 +166,44 @@
   "settings": {
     "defaultIcon": "BookOpen",
     "defaultGradient": "cosmic-gradient",
-    "defaultColor": "cosmic"
+    "defaultColor": "cosmic",
+    "availableTags": [
+      "architecture",
+      "vue d'ensemble",
+      "agents",
+      "skills",
+      "interface",
+      "navigation",
+      "outils",
+      "commandes",
+      "workflow",
+      "productivité",
+      "référence",
+      "LaTeX",
+      "documents",
+      "templates",
+      "automatisation",
+      "images",
+      "IA générative",
+      "pédagogie",
+      "API",
+      "personnalisation",
+      "framework",
+      "développement",
+      "Beamer",
+      "diaporamas",
+      "Reveal.js",
+      "web",
+      "interactif",
+      "applications",
+      "Flask",
+      "programmes",
+      "Éducation Nationale",
+      "compétences",
+      "bfcours",
+      "compilation",
+      "mathématiques"
+    ],
+    "availableLevels": ["débutant", "intermédiaire", "avancé"]
   }
 }

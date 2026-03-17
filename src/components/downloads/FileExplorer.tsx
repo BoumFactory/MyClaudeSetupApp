@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Download, CheckSquare, Square, AlertTriangle, Info } from "lucide-react"
+import { Download, CheckSquare, Square, AlertTriangle, Info, ShoppingBag } from "lucide-react"
 import { DownloadableItem } from "@/types"
 import { Button } from "@/components/ui/button"
 import { FileTreeItem } from "./FileTreeItem"
@@ -11,6 +11,10 @@ import {
   countSelectedFiles,
 } from "@/lib/zip-generator"
 import { getTotalSize, formatSize } from "@/lib/file-scanner"
+import { useCart } from "@/contexts/CartContext"
+import { useCartTheme } from "@/contexts/CartThemeContext"
+import { triggerCartToast } from "@/components/cart/CartToast"
+import type { CartItem } from "@/types/cart-theme"
 
 interface FileExplorerProps {
   files: DownloadableItem[]
@@ -28,6 +32,8 @@ export function FileExplorer({ files: initialFiles, basePath }: FileExplorerProp
     message: string
     remaining?: number
   }>({ show: false, message: "" })
+  const { addItem } = useCart()
+  const { theme } = useCartTheme()
 
   // Compter les fichiers sélectionnés
   const selectedCount = countSelectedFiles(files)
@@ -242,22 +248,24 @@ export function FileExplorer({ files: initialFiles, basePath }: FileExplorerProp
           </div>
         </div>
 
-        <Button
-          onClick={handleDownload}
-          disabled={selectedCount === 0 || isDownloading}
-          variant="cosmic"
-          className="gap-2 w-full sm:w-auto"
-        >
-          <Download className="w-4 h-4" />
-          <span className="hidden sm:inline">
-            {isDownloading
-              ? "Génération en cours..."
-              : "Télécharger la sélection"}
-          </span>
-          <span className="sm:hidden">
-            {isDownloading ? "Génération..." : "Télécharger"}
-          </span>
-        </Button>
+        <div className="flex gap-2 w-full sm:w-auto">
+          <Button
+            onClick={handleDownload}
+            disabled={selectedCount === 0 || isDownloading}
+            variant="cosmic"
+            className="gap-2 flex-1 sm:flex-none"
+          >
+            <Download className="w-4 h-4" />
+            <span className="hidden sm:inline">
+              {isDownloading
+                ? "Génération en cours..."
+                : "Télécharger la sélection"}
+            </span>
+            <span className="sm:hidden">
+              {isDownloading ? "Génération..." : "Télécharger"}
+            </span>
+          </Button>
+        </div>
       </div>
 
       {/* Arbre de fichiers */}

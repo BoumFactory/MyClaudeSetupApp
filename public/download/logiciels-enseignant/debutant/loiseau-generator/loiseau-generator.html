@@ -1,0 +1,2876 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de fiches Loiseau</title>
+    <!-- KaTeX pour conversion LaTeX → MathML + rendu preview -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00203F;
+            --accent: #B48C3C;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --light-gray: #F5F5F5;
+            --medium-gray: #E8E8E8;
+            --text-dark: #1a1a1a;
+            --loiseau-black: #000;
+            --loiseau-gray-dark: #333;
+            --loiseau-gray-med: #666;
+            --loiseau-gray-light: #f0f0f0;
+            --loiseau-violet: #6B3FA0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #003d66 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 1em;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0;
+        }
+
+        /* Steps container */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        .step-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #003d66 100%);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.05em;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .step-header:hover {
+            background: linear-gradient(135deg, #001a33 0%, #003055 100%);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .step-title-text {
+            flex: 1;
+        }
+
+        .step-toggle {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .step.expanded .step-toggle {
+            transform: rotate(180deg);
+        }
+
+        .step-content {
+            padding: 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: white;
+        }
+
+        .step.expanded .step-content {
+            max-height: 3000px;
+        }
+
+        /* Textarea styling */
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid var(--medium-gray);
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 0.9em;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+            background: var(--light-gray);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+        }
+
+        /* Form groups */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--medium-gray);
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* Form grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Button styling */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #003d66 100%);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: linear-gradient(135deg, #001a33 0%, #003055 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,32,63,0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: #c4985c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(180,140,60,0.3);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover:not(:disabled) {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(39,174,96,0.3);
+        }
+
+        .btn-success:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.85em;
+        }
+
+        /* Button groups */
+        .button-group {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.2rem;
+        }
+
+        /* Results and status messages */
+        .results {
+            background: var(--light-gray);
+            border-left: 4px solid var(--accent);
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-top: 1.5rem;
+            min-height: 50px;
+        }
+
+        .result-item {
+            margin-bottom: 0.8rem;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .result-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-ok {
+            background: rgba(39,174,96,0.15);
+            border-left: 3px solid var(--success);
+            color: #229954;
+        }
+
+        .result-error {
+            background: rgba(231,76,60,0.15);
+            border-left: 3px solid var(--error);
+            color: #c0392b;
+        }
+
+        .result-warning {
+            background: rgba(241,196,15,0.15);
+            border-left: 3px solid #f39c12;
+            color: #d68910;
+        }
+
+        .result-icon {
+            margin-right: 0.5rem;
+        }
+
+        /* Preview section */
+        .preview-section {
+            background: white;
+            border: 2px solid var(--accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .preview-section h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2em;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Download section */
+        .download-section {
+            background: white;
+            border: 2px dashed var(--accent);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .download-section h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1em;
+        }
+
+        .download-section p {
+            color: var(--text-dark);
+            margin-bottom: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--text-dark);
+            opacity: 0.7;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--medium-gray);
+            font-size: 0.9em;
+        }
+
+        /* Helper text */
+        .helper-text {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-top: 0.4rem;
+        }
+
+        /* Tab bar styles */
+        .tab-bar {
+            display: flex;
+            gap: 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--medium-gray);
+        }
+
+        .tab {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--text-dark);
+            opacity: 0.6;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            margin-bottom: -2px;
+        }
+
+        .tab:hover {
+            opacity: 0.8;
+        }
+
+        .tab.active {
+            opacity: 1;
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Help block styles */
+        .help-block {
+            background: var(--light-gray);
+            border: 1px solid var(--medium-gray);
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .help-block.visible {
+            display: block;
+        }
+
+        .help-block h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 0.95em;
+        }
+
+        .help-provider {
+            margin-bottom: 0.8rem;
+            padding: 0.6rem;
+            background: white;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .help-provider strong {
+            color: var(--primary);
+        }
+
+        .help-provider p {
+            font-size: 0.85em;
+            margin-top: 0.3rem;
+            color: #555;
+        }
+
+        /* Warning box styles */
+        .warning-box {
+            background: rgba(243, 156, 18, 0.1);
+            border: 2px solid #f39c12;
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.9em;
+            color: #7d6608;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-number {
+                align-self: flex-start;
+            }
+
+            .step-content {
+                padding: 1.5rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tab-bar {
+                flex-direction: column;
+            }
+
+            .tab {
+                border-bottom: none;
+                border-left: 3px solid transparent;
+                text-align: left;
+            }
+
+            .tab.active {
+                border-left-color: var(--accent);
+                border-bottom: none;
+            }
+        }
+
+        /* Loiseau Preview Styles */
+        .loiseau-header {
+            display: table;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .loiseau-header-cell {
+            display: table-cell;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+        }
+
+        .loiseau-header-left {
+            background: var(--loiseau-black);
+            color: white;
+            font-weight: bold;
+            width: 20%;
+            text-align: center;
+        }
+
+        .loiseau-header-center {
+            background: white;
+            color: var(--loiseau-gray-dark);
+            font-weight: bold;
+            width: 60%;
+            text-align: center;
+        }
+
+        .loiseau-header-right {
+            background: var(--loiseau-violet);
+            color: white;
+            font-weight: bold;
+            width: 20%;
+            text-align: center;
+            border-radius: 0 0 0 0;
+        }
+
+        .loiseau-badge {
+            display: inline-block;
+            background: var(--loiseau-violet);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .loiseau-section-band {
+            background: linear-gradient(to right, var(--loiseau-black), var(--loiseau-gray-med));
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 1rem 0 0.8rem 0;
+        }
+
+        .loiseau-section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 1rem 0 0.6rem 0;
+        }
+
+        .loiseau-section-num {
+            display: inline-block;
+            background: var(--loiseau-black);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .loiseau-section-name {
+            color: var(--loiseau-gray-dark);
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .loiseau-content-box {
+            display: flex;
+            margin: 0.8rem 0;
+            border: 1px solid #ddd;
+        }
+
+        .loiseau-box-label {
+            background: var(--loiseau-black);
+            color: white;
+            padding: 0.8rem 0.4rem;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-weight: bold;
+            font-size: 0.8em;
+            text-align: center;
+            min-width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loiseau-box-content {
+            flex: 1;
+            background: var(--loiseau-gray-light);
+            padding: 0.8rem;
+            font-size: 0.9em;
+        }
+
+        .loiseau-exercise {
+            margin: 1rem 0;
+        }
+
+        .loiseau-exercise-num {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .loiseau-exercise-statement {
+            margin: 0.4rem 0;
+            font-size: 0.9em;
+        }
+
+        .loiseau-difficulty {
+            color: var(--loiseau-gray-med);
+            font-size: 0.85em;
+        }
+
+        .loiseau-items {
+            margin: 0.6rem 0 0 1.2rem;
+        }
+
+        .loiseau-item {
+            margin: 0.4rem 0;
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .loiseau-item-label {
+            background: var(--loiseau-black);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.85em;
+            flex-shrink: 0;
+        }
+
+        .loiseau-item-content {
+            flex: 1;
+            font-size: 0.9em;
+        }
+
+        .loiseau-answer-grid {
+            border: 2px dashed #ccc;
+            padding: 1rem;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 7mm,
+                #e8e8e8 7mm,
+                #e8e8e8 7.5mm
+            );
+            margin: 1rem 0;
+            min-height: 100px;
+        }
+
+        .loiseau-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.8rem 0;
+            font-size: 0.9em;
+        }
+
+        .loiseau-table th {
+            background: var(--loiseau-black);
+            color: white;
+            padding: 0.5rem;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .loiseau-table td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+        }
+
+        .loiseau-table tr:nth-child(even) {
+            background: var(--loiseau-gray-light);
+        }
+
+        .loiseau-text {
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin: 0.6rem 0;
+        }
+
+        .loiseau-spacer {
+            margin: 1rem 0;
+        }
+
+        .loiseau-formula {
+            font-family: monospace;
+            background: #f9f9f9;
+            padding: 0.2em 0.4em;
+            border-radius: 2px;
+            font-size: 0.9em;
+        }
+
+        .loiseau-bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Générateur de fiches Loiseau</h1>
+            <p>Créez des fiches mathématiques structurées — directement en document Word (.docx)</p>
+        </header>
+
+        <!-- Steps -->
+        <div class="steps">
+            <!-- Step 0: Describe the document -->
+            <div class="step expanded">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <span class="step-number">0</span>
+                        <span class="step-title-text">Décrire votre document</span>
+                    </div>
+                    <span class="step-toggle">▼</span>
+                </div>
+                <div class="step-content">
+                    <!-- Tab bar -->
+                    <div class="tab-bar">
+                        <button class="tab active" onclick="switchTab(this, 'optionA')">J'ai un cours/exercice existant</button>
+                        <button class="tab" onclick="switchTab(this, 'optionB')">Je décris ce que je veux</button>
+                    </div>
+
+                    <!-- Results area (shared between tabs) -->
+                    <div class="results" id="step0Results" style="display: none;"></div>
+
+                    <!-- Option A: Existing content -->
+                    <div id="optionA" style="display: block;">
+                        <div class="form-group">
+                            <label>Collez votre cours ou exercice existant</label>
+                            <textarea id="existingContent" placeholder="Collez ici votre contenu : texte, énoncés d'exercices, définitions, etc."></textarea>
+                            <div class="helper-text">Ce contenu servira de base à la structuration JSON.</div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-secondary" onclick="copyContentWithPrompt()">
+                                📋 Copier contenu + prompt technique
+                            </button>
+                            <button class="btn btn-secondary" onclick="toggleHelp()">
+                                ❓ Comment utiliser avec une IA ?
+                            </button>
+                        </div>
+
+                        <!-- Help block -->
+                        <div class="help-block" id="helpBlock">
+                            <h4>Instructions d'utilisation avec votre IA préférée</h4>
+
+                            <div class="help-provider">
+                                <strong>ChatGPT (OpenAI)</strong>
+                                <p>1. Copiez le bouton « Copier contenu + prompt »</p>
+                                <p>2. Collez dans une conversation ChatGPT</p>
+                                <p>3. Attendez la réponse JSON complète</p>
+                            </div>
+
+                            <div class="help-provider">
+                                <strong>Claude (Anthropic)</strong>
+                                <p>1. Copiez le bouton « Copier contenu + prompt »</p>
+                                <p>2. Collez dans Claude</p>
+                                <p>3. Claude produira du JSON validé</p>
+                            </div>
+
+                            <div class="help-provider">
+                                <strong>Gemini (Google)</strong>
+                                <p>1. Copiez le contenu + prompt</p>
+                                <p>2. Collez dans Gemini</p>
+                                <p>3. Gérez les formules LaTeX avec $...$ ou \(...\)</p>
+                            </div>
+
+                            <div class="help-provider">
+                                <strong>Mistral (Le Chat)</strong>
+                                <p>1. Copiez le contenu + prompt</p>
+                                <p>2. Collez dans Mistral</p>
+                                <p>3. Demandez de produire UNIQUEMENT du JSON</p>
+                            </div>
+
+                            <div class="help-provider">
+                                <strong>Important</strong>
+                                <p>L'IA doit produire UNIQUEMENT du JSON valide, rien avant, rien après. Si elle ajoute du texte, copiez seulement la partie JSON.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Option B: Free description -->
+                    <div id="optionB" style="display: none;">
+                        <div class="form-group">
+                            <label>Décrivez librement ce que vous voulez créer</label>
+                            <textarea id="description" placeholder="Exemple : Fiche d'exercices sur les équations du second degré pour 1ère. 5 exercices progressifs avec grille réponse."></textarea>
+                            <div class="helper-text">Soyez spécifique sur le contenu, le niveau, et la structure souhaitée.</div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-secondary" onclick="copyDescriptionWithPrompt()">
+                                📋 Copier description + prompt technique
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 1: Import JSON -->
+            <div class="step expanded">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <span class="step-number">1</span>
+                        <span class="step-title-text">Coller le JSON</span>
+                    </div>
+                    <span class="step-toggle">▼</span>
+                </div>
+                <div class="step-content">
+                    <div class="form-group">
+                        <label>Collez le JSON produit par l'IA</label>
+                        <textarea id="jsonInput" placeholder='Collez ici le JSON structuré généré par l\'IA...'></textarea>
+                        <div class="helper-text">Vous devez avoir d'abord généré ce JSON via une IA (étape 0).</div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="loadExampleJSON()">
+                            📄 Charger exemple
+                        </button>
+                        <button class="btn btn-secondary" onclick="importFromFile()">
+                            📁 Importer fichier JSON
+                        </button>
+                        <input type="file" id="fileInput" accept=".json" style="display: none;" onchange="handleFileSelect(event)">
+                    </div>
+
+                    <div class="results" id="step1Results" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Step 2: Parameters -->
+            <div class="step expanded">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <span class="step-number">2</span>
+                        <span class="step-title-text">Paramètres du document</span>
+                    </div>
+                    <span class="step-toggle">▼</span>
+                </div>
+                <div class="step-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Type de document</label>
+                            <select id="paramDocType">
+                                <option value="">-- Non défini --</option>
+                                <option value="Fiche Méthode">Fiche Méthode</option>
+                                <option value="Fiche Exercices">Fiche Exercices</option>
+                                <option value="Évaluation">Évaluation</option>
+                                <option value="Cours">Cours</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Numéro</label>
+                            <input type="text" id="paramNumber" placeholder="Ex: 01, 12, A3" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Titre</label>
+                            <input type="text" id="paramTitle" placeholder="Ex: Équations du second degré" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Niveau</label>
+                            <select id="paramLevel">
+                                <option value="">-- Non défini --</option>
+                                <option value="6e">6e</option>
+                                <option value="5e">5e</option>
+                                <option value="4e">4e</option>
+                                <option value="3e">3e</option>
+                                <option value="2nde">2nde</option>
+                                <option value="1ère">1ère</option>
+                                <option value="Tle">Tle</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Auteur</label>
+                            <input type="text" id="paramAuthor" placeholder="Ex: M. Dupont" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mode</label>
+                            <select id="paramMode">
+                                <option value="">-- Non défini --</option>
+                                <option value="exercice">Exercice</option>
+                                <option value="cours">Cours</option>
+                                <option value="eval">Évaluation</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="helper-text">
+                        ⓘ Ces paramètres écrasent les métadonnées du JSON si remplis.
+                    </div>
+
+                    <div class="results" id="step2Results" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Step 3: Validate, Preview & Download -->
+            <div class="step expanded">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <span class="step-number">3</span>
+                        <span class="step-title-text">Valider, prévisualiser & télécharger</span>
+                    </div>
+                    <span class="step-toggle">▼</span>
+                </div>
+                <div class="step-content">
+                    <div style="background: rgba(39,174,96,0.1); border-left: 4px solid var(--success); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
+                        <strong>Avant de continuer :</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Vérifiez le JSON à l'étape 1</li>
+                            <li>Ajustez les paramètres à l'étape 2 si nécessaire</li>
+                        </ul>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-success" onclick="validateAndGenerate()">
+                            ✓ Valider et prévisualiser
+                        </button>
+                        <button class="btn btn-secondary" onclick="window.print()">
+                            🖨️ Imprimer l'aperçu
+                        </button>
+                        <button class="btn btn-primary" onclick="document.getElementById('batchFolderInput').click()">
+                            📁 Importer un dossier de JSON
+                        </button>
+                        <input type="file" id="batchFolderInput" webkitdirectory multiple accept=".json" style="display:none" onchange="handleBatchFolder(this)">
+                    </div>
+
+                    <div class="results" id="step3Results" style="display: none;"></div>
+
+                    <!-- Preview section (hidden until generated) -->
+                    <div id="previewSection" style="display: none;">
+                        <div class="preview-section">
+                            <h3>Aperçu — Style Loiseau</h3>
+                            <div id="previewContent"></div>
+                        </div>
+                    </div>
+
+                    <!-- Download section (hidden until generated) -->
+                    <div class="download-section" id="downloadSection" style="display: none;">
+                        <h3>✓ Document prêt</h3>
+                        <p>Votre document Word va être téléchargé au format .docx avec le style Loiseau.</p>
+                        <button class="btn btn-primary" id="downloadBtn">
+                            ⬇️ Télécharger le document Word (.docx)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Générateur de fiches Loiseau — 100% navigateur, zéro serveur.</p>
+        </footer>
+    </div>
+
+    <!-- Hidden skill prompt -->
+    <script type="text/plain" id="skillPrompt">
+# Générateur de fiches pédagogiques — Format Loiseau
+
+Tu es un expert en création de fiches mathématiques pédagogiques dans un style pédagogique structuré.
+
+## Concept
+
+Les fiches utilisent un système visuel distinctif avec :
+- Header 3-colonnes (Type+N° | Titre | Badge Niveau)
+- Section bands dégradés noir→gris
+- Content boxes avec labels verticaux noirs
+- Exercices numérotés avec icônes
+- Grilles de réponse Séyès
+- Tableaux avec en-têtes noirs
+
+## Format JSON attendu
+
+Tu DOIS produire UNIQUEMENT du JSON valide dans ce format :
+
+```json
+{
+  "metadata": {
+    "doc_type": "Fiche Exercices",
+    "number": "03",
+    "title": "Équations du second degré",
+    "level": "1ère",
+    "author": "Nom Auteur",
+    "doc_mode": "exercice"
+  },
+  "versions": ["eleve", "corrige"],
+  "pages": [
+    {
+      "components": [
+        {"type": "header"},
+        {"type": "spacer", "height_pt": 2},
+        {"type": "section_band", "title": "Exercices d'application"},
+        {
+          "type": "content_box",
+          "label": "Rappel",
+          "subtitle": "Discriminant",
+          "content": "Pour $ax^2 + bx + c = 0$, on calcule $\\Delta = b^2 - 4ac$"
+        },
+        {
+          "type": "exercise",
+          "number": 1,
+          "statement": "Résoudre les équations suivantes :",
+          "difficulty": 2,
+          "items": [
+            {"label": "a.", "content": "$x^2 - 5x + 6 = 0$", "correction": "$x = 2$ ou $x = 3$"},
+            {"label": "b.", "content": "$2x^2 + 3x - 2 = 0$", "correction": "$x = \\frac{1}{2}$ ou $x = -2$"}
+          ],
+          "answer_grid_height": 5.0
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Champs métadonnées
+
+- `doc_type` : "Fiche Méthode" | "Fiche Exercices" | "Évaluation" | "Cours"
+- `number` : numéro (string)
+- `title` : titre principal
+- `level` : "6e" | "5e" | "4e" | "3e" | "2nde" | "1ère" | "Tle"
+- `author` : auteur du document
+- `doc_mode` : "exercice" | "cours" | "eval"
+- `versions` : ["eleve", "corrige"] ou ["eleve"] ou ["corrige"]
+
+## Composants disponibles
+
+- `header` : Utilise automatiquement les metadata
+- `section_band` : Bande dégradée avec titre
+- `section_title` : Numéro + titre
+- `content_box` : Label vertical + contenu (label: Propriété, Règle, Méthode, Définition, Rappel, Remarque, Théorème, Exemple, Attention)
+- `exercise` : Énoncé + items + grille réponse
+- `items` : Listes de sous-questions
+- `answer_grid` : Grille Séyès
+- `table` : Tableau (headers + rows)
+- `text` : Texte simple
+- `spacer` : Espace vertical (height_pt)
+- `page_break` : Saut de page
+
+## Conventions de texte
+
+- **Formules LaTeX** : $...$ ou \(...\)
+- **Gras** : **texte** (sera converti en LaTeX \textbf{})
+- **Italique** : *texte*
+
+## Exemple minimal complet
+
+```json
+{
+  "metadata": {
+    "doc_type": "Fiche Exercices",
+    "number": "01",
+    "title": "Fractions - Addition",
+    "level": "4e",
+    "author": "Mme Martin",
+    "doc_mode": "exercice"
+  },
+  "versions": ["eleve", "corrige"],
+  "pages": [
+    {
+      "components": [
+        {"type": "header"},
+        {"type": "spacer", "height_pt": 2},
+        {"type": "section_band", "title": "Exercices"},
+        {
+          "type": "exercise",
+          "number": 1,
+          "statement": "Effectuer les additions suivantes :",
+          "difficulty": 1,
+          "items": [
+            {"label": "a.", "content": "$\\frac{1}{2} + \\frac{1}{3}$", "correction": "$\\frac{5}{6}$"},
+            {"label": "b.", "content": "$\\frac{3}{4} + \\frac{1}{8}$", "correction": "$\\frac{7}{8}$"}
+          ],
+          "answer_grid_height": 4.0
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Règles strictes
+
+1. **Structure** : pages → components → type spécifique
+2. **HTML** : Ne pas générer d'HTML, juste du texte + markdown simple
+3. **Formules** : Toujours utiliser $...$ pour LaTeX
+4. **Gras/Italique** : **texte** et *texte* dans le contenu
+5. **Longueur** : Garder les énoncés concis (1-2 lignes)
+6. **Progression** : Si plusieurs exercices, du simple au complexe
+7. **Grilles** : answer_grid_height en cm (3-6 généralement)
+8. **Corrections** : Inclure pour tous les items
+9. **Version** : Inclure au minimum ["eleve"]
+10. **Produis UNIQUEMENT du JSON** : Pas de texte avant ou après
+
+Transcris le contenu fourni en JSON selon ce format.
+    </script>
+
+    <script>
+        // Global data
+        let parsedData = null;
+        let generatedJSON = null;
+
+        // Example JSON
+        const EXAMPLE_JSON = {
+            "metadata": {
+                "doc_type": "Fiche Exercices",
+                "number": "03",
+                "title": "Équations du second degré",
+                "level": "1ère",
+                "author": "M. Dupont",
+                "doc_mode": "exercice"
+            },
+            "versions": ["eleve", "corrige"],
+            "pages": [
+                {
+                    "components": [
+                        {"type": "header"},
+                        {"type": "spacer", "height_pt": 2},
+                        {"type": "section_band", "title": "Exercices d'application"},
+                        {
+                            "type": "content_box",
+                            "label": "Rappel",
+                            "subtitle": "Discriminant",
+                            "content": "Pour $ax^2 + bx + c = 0$, on calcule $\\Delta = b^2 - 4ac$"
+                        },
+                        {"type": "spacer", "height_pt": 2},
+                        {
+                            "type": "exercise",
+                            "number": 1,
+                            "statement": "Résoudre les équations suivantes :",
+                            "difficulty": 2,
+                            "items": [
+                                {"label": "a.", "content": "$x^2 - 5x + 6 = 0$", "correction": "$x = 2$ ou $x = 3$"},
+                                {"label": "b.", "content": "$2x^2 + 3x - 2 = 0$", "correction": "$x = \\frac{1}{2}$ ou $x = -2$"}
+                            ],
+                            "answer_grid_height": 5.0
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // ========== Modification 1 : Auto-remplissage du formulaire depuis le JSON ==========
+
+        // Debounce helper
+        function debounce(fn, delay) {
+            let timer = null;
+            return function() {
+                const args = arguments;
+                const ctx = this;
+                clearTimeout(timer);
+                timer = setTimeout(() => fn.apply(ctx, args), delay);
+            };
+        }
+
+        // Try to auto-fill form fields from parsed JSON metadata
+        function tryAutoFillFromJSON(jsonString) {
+            try {
+                const data = JSON.parse(jsonString);
+                if (!data || !data.metadata) return;
+                const meta = data.metadata;
+
+                // Map metadata fields to form fields
+                const fieldMap = {
+                    'paramDocType': meta.doc_type,
+                    'paramNumber': meta.number,
+                    'paramTitle': meta.title,
+                    'paramLevel': meta.level,
+                    'paramAuthor': meta.author,
+                    'paramMode': meta.doc_mode
+                };
+
+                let filled = false;
+                for (const [fieldId, value] of Object.entries(fieldMap)) {
+                    if (value !== undefined && value !== null && value !== '') {
+                        const el = document.getElementById(fieldId);
+                        if (el) {
+                            // For select elements, try to match the value
+                            if (el.tagName === 'SELECT') {
+                                const options = Array.from(el.options);
+                                const match = options.find(o => o.value === value);
+                                if (match) {
+                                    el.value = value;
+                                    filled = true;
+                                }
+                            } else {
+                                el.value = value;
+                                filled = true;
+                            }
+                        }
+                    }
+                }
+
+                if (filled) {
+                    showResult('step1Results', 'Métadonnées détectées — formulaire pré-rempli', 'ok');
+                }
+            } catch (e) {
+                // JSON invalide, on ne fait rien
+            }
+        }
+
+        // Attach debounced listener on jsonInput
+        document.addEventListener('DOMContentLoaded', () => {
+            const jsonInput = document.getElementById('jsonInput');
+            if (jsonInput) {
+                jsonInput.addEventListener('input', debounce(function() {
+                    const val = jsonInput.value.trim();
+                    if (val) {
+                        tryAutoFillFromJSON(val);
+                    }
+                }, 600));
+            }
+        });
+
+        // Toggle steps
+        function toggleStep(header) {
+            const step = header.closest('.step');
+            step.classList.toggle('expanded');
+        }
+
+        // Switch between tabs
+        function switchTab(tabBtn, tabName) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            tabBtn.classList.add('active');
+            document.getElementById('optionA').style.display = (tabName === 'optionA') ? 'block' : 'none';
+            document.getElementById('optionB').style.display = (tabName === 'optionB') ? 'block' : 'none';
+        }
+
+        // Toggle help block
+        function toggleHelp() {
+            const block = document.getElementById('helpBlock');
+            block.classList.toggle('visible');
+        }
+
+        // Copy content + prompt
+        function copyContentWithPrompt() {
+            const content = document.getElementById('existingContent').value;
+            const promptText = document.getElementById('skillPrompt').textContent;
+
+            if (!content.trim()) {
+                showResult('step0Results', 'Collez d\'abord votre contenu.', 'error');
+                return;
+            }
+
+            const fullText = `## Contenu à transformer
+
+${content}
+
+## Instructions de structuration Loiseau
+
+${promptText}`;
+
+            navigator.clipboard.writeText(fullText).then(() => {
+                showResult('step0Results', 'Contenu + prompt copié ! Collez dans votre IA préférée.', 'ok');
+            }).catch(() => {
+                showResult('step0Results', 'Erreur lors de la copie.', 'error');
+            });
+        }
+
+        // Copy description + prompt
+        function copyDescriptionWithPrompt() {
+            const description = document.getElementById('description').value;
+            const promptText = document.getElementById('skillPrompt').textContent;
+
+            if (!description.trim()) {
+                showResult('step0Results', 'Décrivez d\'abord ce que vous voulez créer.', 'error');
+                return;
+            }
+
+            const fullText = `## Description du document souhaité
+
+${description}
+
+## Instructions de structuration Loiseau
+
+${promptText}`;
+
+            navigator.clipboard.writeText(fullText).then(() => {
+                showResult('step0Results', 'Description + prompt copié ! Collez dans votre IA préférée.', 'ok');
+            }).catch(() => {
+                showResult('step0Results', 'Erreur lors de la copie.', 'error');
+            });
+        }
+
+        // Load example JSON
+        function loadExampleJSON() {
+            const jsonStr = JSON.stringify(EXAMPLE_JSON, null, 2);
+            document.getElementById('jsonInput').value = jsonStr;
+            showResult('step1Results', 'Exemple JSON chargé. Vous pouvez le modifier ou le valider.', 'ok');
+            tryAutoFillFromJSON(jsonStr);
+        }
+
+        // Import from file
+        function importFromFile() {
+            document.getElementById('fileInput').click();
+        }
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const content = e.target.result;
+                    const data = JSON.parse(content);
+                    const jsonStr = JSON.stringify(data, null, 2);
+                    document.getElementById('jsonInput').value = jsonStr;
+                    showResult('step1Results', `Fichier importé : ${file.name}`, 'ok');
+                    tryAutoFillFromJSON(jsonStr);
+                } catch (err) {
+                    showResult('step1Results', `Erreur : ${err.message}`, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Get parameters
+        function getParameters() {
+            return {
+                doc_type: document.getElementById('paramDocType').value,
+                number: document.getElementById('paramNumber').value,
+                title: document.getElementById('paramTitle').value,
+                level: document.getElementById('paramLevel').value,
+                author: document.getElementById('paramAuthor').value,
+                doc_mode: document.getElementById('paramMode').value
+            };
+        }
+
+        // Validate and generate
+        function validateAndGenerate() {
+            const results = document.getElementById('step3Results');
+            results.innerHTML = '';
+            results.style.display = 'block';
+
+            // Parse JSON
+            const jsonText = document.getElementById('jsonInput').value;
+            if (!jsonText.trim()) {
+                showResult('step3Results', 'Erreur : Aucun JSON à valider.', 'error');
+                return;
+            }
+
+            try {
+                parsedData = JSON.parse(jsonText);
+            } catch (err) {
+                showResult('step3Results', `Erreur JSON : ${err.message}`, 'error');
+                return;
+            }
+
+            // Validate structure
+            const errors = validateJSON(parsedData);
+            if (errors.length > 0) {
+                errors.forEach(e => showResult('step3Results', e, 'error'));
+                return;
+            }
+
+            // Merge with parameters
+            const params = getParameters();
+            if (params.doc_type) parsedData.metadata.doc_type = params.doc_type;
+            if (params.number) parsedData.metadata.number = params.number;
+            if (params.title) parsedData.metadata.title = params.title;
+            if (params.level) parsedData.metadata.level = params.level;
+            if (params.author) parsedData.metadata.author = params.author;
+            if (params.doc_mode) parsedData.metadata.doc_mode = params.doc_mode;
+
+            // Store JSON
+            generatedJSON = JSON.stringify(parsedData, null, 2);
+
+            // Generate preview
+            try {
+                const preview = generatePreview(parsedData);
+                document.getElementById('previewContent').innerHTML = preview;
+                document.getElementById('previewSection').style.display = 'block';
+                document.getElementById('downloadSection').style.display = 'block';
+                setupDownload();
+
+                showResult('step3Results', 'Validation réussie ! Aperçu généré.', 'ok');
+            } catch (err) {
+                showResult('step3Results', `Erreur de génération d'aperçu : ${err.message}`, 'error');
+            }
+        }
+
+        // Validate JSON structure
+        function validateJSON(data) {
+            const errors = [];
+
+            if (!data.metadata) errors.push('Erreur : metadata manquant');
+            else {
+                if (!data.metadata.doc_type) errors.push('Erreur : metadata.doc_type manquant');
+                if (!data.metadata.title) errors.push('Erreur : metadata.title manquant');
+            }
+
+            if (!data.pages || !Array.isArray(data.pages) || data.pages.length === 0) {
+                errors.push('Erreur : pages doit être un array non vide');
+                return errors;
+            }
+
+            data.pages.forEach((page, pidx) => {
+                if (!page.components || !Array.isArray(page.components)) {
+                    errors.push(`Erreur : Page ${pidx + 1} sans components array`);
+                }
+            });
+
+            return errors;
+        }
+
+        // Generate preview
+        function generatePreview(data) {
+            const meta = data.metadata;
+            let html = '';
+
+            // Header
+            html += '<div class="loiseau-header">';
+            html += `<div class="loiseau-header-cell loiseau-header-left">${escapeHTML(meta.doc_type)}<br>${escapeHTML(meta.number || 'N°')}</div>`;
+            html += `<div class="loiseau-header-cell loiseau-header-center">${escapeHTML(meta.title)}</div>`;
+            html += `<div class="loiseau-header-cell loiseau-header-right"><span class="loiseau-badge">${escapeHTML(meta.level || 'Niveau')}</span></div>`;
+            html += '</div>';
+
+            // Author
+            if (meta.author) {
+                html += `<div style="text-align: right; font-size: 0.85em; color: #666; margin-bottom: 0.5rem;">${escapeHTML(meta.author)}</div>`;
+            }
+
+            // Components
+            if (data.pages && data.pages.length > 0) {
+                data.pages.forEach(page => {
+                    if (page.components) {
+                        page.components.forEach(comp => {
+                            html += renderComponent(comp, meta);
+                        });
+                    }
+                });
+            }
+
+            return html;
+        }
+
+        // Render a component
+        function renderComponent(comp, meta) {
+            let html = '';
+
+            if (comp.type === 'header') {
+                // Already rendered in main header
+                return '';
+            } else if (comp.type === 'spacer') {
+                const height = comp.height_pt || 2;
+                html += `<div class="loiseau-spacer" style="height: ${height * 3}px;"></div>`;
+            } else if (comp.type === 'section_band') {
+                html += `<div class="loiseau-section-band">${escapeHTML(comp.title || '')}</div>`;
+            } else if (comp.type === 'section_title') {
+                html += '<div class="loiseau-section-title">';
+                html += `<span class="loiseau-section-num">${comp.number}</span>`;
+                html += `<span class="loiseau-section-name">${escapeHTML(comp.title || '')}</span>`;
+                html += '</div>';
+            } else if (comp.type === 'content_box') {
+                html += '<div class="loiseau-content-box">';
+                let label = comp.label || 'Info';
+                html += `<div class="loiseau-box-label">${label}</div>`;
+                html += '<div class="loiseau-box-content">';
+                if (comp.subtitle) {
+                    html += `<div style="font-weight: bold; margin-bottom: 0.4rem;">${escapeHTML(comp.subtitle)}</div>`;
+                }
+                html += `<div>${renderMath(escapeHTML(comp.content || ''))}</div>`;
+                html += '</div></div>';
+            } else if (comp.type === 'exercise') {
+                html += '<div class="loiseau-exercise">';
+                html += `<div class="loiseau-exercise-num">★ Exercice ${comp.number}</div>`;
+                html += `<div class="loiseau-exercise-statement">${renderMath(escapeHTML(comp.statement || ''))}</div>`;
+                if (comp.difficulty) {
+                    const stars = '★'.repeat(comp.difficulty);
+                    html += `<div class="loiseau-difficulty">${stars}</div>`;
+                }
+                if (comp.items && comp.items.length > 0) {
+                    html += '<div class="loiseau-items">';
+                    comp.items.forEach(item => {
+                        html += '<div class="loiseau-item">';
+                        html += `<span class="loiseau-item-label">${escapeHTML(item.label || '')}</span>`;
+                        html += `<span class="loiseau-item-content">${renderMath(escapeHTML(item.content || ''))}</span>`;
+                        html += '</div>';
+                    });
+                    html += '</div>';
+                }
+                if (comp.answer_grid_height) {
+                    const heightPx = comp.answer_grid_height * 20;
+                    html += `<div class="loiseau-answer-grid" style="min-height: ${heightPx}px;"></div>`;
+                }
+                html += '</div>';
+            } else if (comp.type === 'items') {
+                html += '<div class="loiseau-items">';
+                if (comp.items && comp.items.length > 0) {
+                    comp.items.forEach(item => {
+                        html += '<div class="loiseau-item">';
+                        html += `<span class="loiseau-item-label">${escapeHTML(item.label || '')}</span>`;
+                        html += `<span class="loiseau-item-content">${renderMath(escapeHTML(item.content || ''))}</span>`;
+                        html += '</div>';
+                    });
+                }
+                html += '</div>';
+            } else if (comp.type === 'answer_grid') {
+                const heightPx = (comp.height_cm || 5) * 20;
+                html += `<div class="loiseau-answer-grid" style="min-height: ${heightPx}px;"></div>`;
+            } else if (comp.type === 'table') {
+                html += '<table class="loiseau-table"><thead><tr>';
+                if (comp.headers) {
+                    comp.headers.forEach(h => {
+                        html += `<th>${renderMath(escapeHTML(h))}</th>`;
+                    });
+                }
+                html += '</tr></thead><tbody>';
+                if (comp.rows) {
+                    comp.rows.forEach(row => {
+                        html += '<tr>';
+                        row.forEach(cell => {
+                            html += `<td>${renderMath(escapeHTML(cell))}</td>`;
+                        });
+                        html += '</tr>';
+                    });
+                }
+                html += '</tbody></table>';
+            } else if (comp.type === 'text') {
+                html += `<div class="loiseau-text">${renderMath(escapeHTML(comp.content || ''))}</div>`;
+            } else if (comp.type === 'page_break') {
+                html += '<div style="page-break-after: always; margin: 2rem 0; border-top: 2px dashed #ccc; padding-top: 1rem; font-size: 0.85em; color: #999;">--- Saut de page ---</div>';
+            }
+
+            return html;
+        }
+
+        // Render math formulas
+        function renderMath(text) {
+            return text.replace(/\$([^\$]+)\$/g, (match, formula) => {
+                try {
+                    return katex.renderToString(formula, { throwOnError: false, displayMode: false });
+                } catch (e) {
+                    return `<span class="loiseau-formula">${formula}</span>`;
+                }
+            });
+        }
+
+        // Escape HTML
+        function escapeHTML(text) {
+            if (!text) return '';
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, c => map[c]);
+        }
+
+        // Show result
+        function showResult(elementId, message, type) {
+            const results = document.getElementById(elementId);
+            if (!results) return;
+
+            const resultItem = document.createElement('div');
+            resultItem.className = `result-item result-${type}`;
+
+            const icons = {
+                ok: '✓',
+                error: '✕',
+                warning: '⚠'
+            };
+
+            resultItem.innerHTML = `<span class="result-icon">${icons[type]}</span>${message}`;
+            results.style.display = 'block';
+            results.appendChild(resultItem);
+        }
+
+        // ========== Modification 3 : Vrai générateur .docx (OOXML) avec images ==========
+
+        // CRC32 implementation
+        function crc32(data) {
+            let crc = 0xFFFFFFFF;
+            if (!crc32.table) {
+                crc32.table = new Uint32Array(256);
+                for (let i = 0; i < 256; i++) {
+                    let c = i;
+                    for (let j = 0; j < 8; j++) {
+                        c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+                    }
+                    crc32.table[i] = c;
+                }
+            }
+            for (let i = 0; i < data.length; i++) {
+                crc = crc32.table[(crc ^ data[i]) & 0xFF] ^ (crc >>> 8);
+            }
+            return (crc ^ 0xFFFFFFFF) >>> 0;
+        }
+
+        // Create a ZIP blob from an array of {path, content} objects
+        // content peut être une string OU un Uint8Array (pour les images)
+        function createZipBlob(files) {
+            const encoder = new TextEncoder();
+            const entries = files.map(f => ({
+                path: encoder.encode(f.path),
+                data: (f.content instanceof Uint8Array) ? f.content : encoder.encode(f.content)
+            }));
+
+            let offset = 0;
+            const localHeaders = [];
+
+            entries.forEach(entry => {
+                const headerSize = 30 + entry.path.length;
+                localHeaders.push({ offset, headerSize });
+                offset += headerSize + entry.data.length;
+            });
+
+            const centralDirStart = offset;
+            let centralDirSize = 0;
+            entries.forEach(entry => {
+                centralDirSize += 46 + entry.path.length;
+            });
+
+            const totalSize = offset + centralDirSize + 22;
+            const buffer = new ArrayBuffer(totalSize);
+            const view = new DataView(buffer);
+            const bytes = new Uint8Array(buffer);
+
+            let pos = 0;
+
+            entries.forEach((entry, i) => {
+                view.setUint32(pos, 0x04034b50, true); pos += 4;
+                view.setUint16(pos, 20, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+
+                const crc = crc32(entry.data);
+                view.setUint32(pos, crc, true); pos += 4;
+                view.setUint32(pos, entry.data.length, true); pos += 4;
+                view.setUint32(pos, entry.data.length, true); pos += 4;
+                view.setUint16(pos, entry.path.length, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+
+                bytes.set(entry.path, pos); pos += entry.path.length;
+                bytes.set(entry.data, pos); pos += entry.data.length;
+            });
+
+            const centralStart = pos;
+            entries.forEach((entry, i) => {
+                view.setUint32(pos, 0x02014b50, true); pos += 4;
+                view.setUint16(pos, 20, true); pos += 2;
+                view.setUint16(pos, 20, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+
+                const crc = crc32(entry.data);
+                view.setUint32(pos, crc, true); pos += 4;
+                view.setUint32(pos, entry.data.length, true); pos += 4;
+                view.setUint32(pos, entry.data.length, true); pos += 4;
+                view.setUint16(pos, entry.path.length, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint16(pos, 0, true); pos += 2;
+                view.setUint32(pos, 0, true); pos += 4;
+                view.setUint32(pos, localHeaders[i].offset, true); pos += 4;
+
+                bytes.set(entry.path, pos); pos += entry.path.length;
+            });
+
+            const centralEnd = pos;
+
+            view.setUint32(pos, 0x06054b50, true); pos += 4;
+            view.setUint16(pos, 0, true); pos += 2;
+            view.setUint16(pos, 0, true); pos += 2;
+            view.setUint16(pos, entries.length, true); pos += 2;
+            view.setUint16(pos, entries.length, true); pos += 2;
+            view.setUint32(pos, centralEnd - centralStart, true); pos += 4;
+            view.setUint32(pos, centralStart, true); pos += 4;
+            view.setUint16(pos, 0, true); pos += 2;
+
+            return new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+        }
+
+        // Escape XML special characters
+        function escapeXML(text) {
+            if (!text) return '';
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&apos;');
+        }
+
+        // ========== Canvas image generators ==========
+
+        function canvasToUint8Array(canvas) {
+            const dataUrl = canvas.toDataURL('image/png');
+            const base64 = dataUrl.split(',')[1];
+            const binary = atob(base64);
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+                bytes[i] = binary.charCodeAt(i);
+            }
+            return bytes;
+        }
+
+        function roundRect(ctx, x, y, w, h, r) {
+            ctx.moveTo(x + r, y);
+            ctx.lineTo(x + w - r, y);
+            ctx.arcTo(x + w, y, x + w, y + r, r);
+            ctx.lineTo(x + w, y + h - r);
+            ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+            ctx.lineTo(x + r, y + h);
+            ctx.arcTo(x, y + h, x, y + h - r, r);
+            ctx.lineTo(x, y + r);
+            ctx.arcTo(x, y, x + r, y, r);
+            ctx.closePath();
+        }
+
+        // Grille Seyes (reproduit create_seyes_grid du Python)
+        function generateSeyesGrid(widthCm, heightCm) {
+            const dpi = 150;
+            const pxPerCm = dpi / 2.54;
+            const w = Math.round(widthCm * pxPerCm);
+            const h = Math.round(heightCm * pxPerCm);
+
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, w, h);
+
+            const mm = pxPerCm / 10;
+
+            // Lignes horizontales fines tous les 2mm (bleu clair)
+            ctx.strokeStyle = '#C8D8E8';
+            ctx.lineWidth = 0.5;
+            for (let y = 0; y < h; y += 2 * mm) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(w, y);
+                ctx.stroke();
+            }
+
+            // Lignes horizontales fortes tous les 8mm (violet/bleu)
+            ctx.strokeStyle = '#9090D0';
+            ctx.lineWidth = 1;
+            for (let y = 0; y < h; y += 8 * mm) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(w, y);
+                ctx.stroke();
+            }
+
+            // Lignes verticales tous les 8mm
+            ctx.strokeStyle = '#D0C8E0';
+            ctx.lineWidth = 0.5;
+            for (let x = 0; x < w; x += 8 * mm) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, h);
+                ctx.stroke();
+            }
+
+            // Marge rouge a gauche (2cm)
+            ctx.strokeStyle = '#FF6666';
+            ctx.lineWidth = 1.5;
+            const marginX = 2 * pxPerCm;
+            ctx.beginPath();
+            ctx.moveTo(marginX, 0);
+            ctx.lineTo(marginX, h);
+            ctx.stroke();
+
+            return canvasToUint8Array(canvas);
+        }
+
+        // Section Band (reproduit create_section_band_image du Python)
+        function generateSectionBand(title) {
+            const dpi = 150;
+            const pxPerCm = dpi / 2.54;
+            const widthCm = 19.0;
+            const heightCm = 0.7;
+            const w = Math.round(widthCm * pxPerCm);
+            const h = Math.round(heightCm * pxPerCm);
+
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+
+            // Gradient horizontal noir -> gris -> quasi blanc
+            // t < 0.6: noir (0,0,0) -> gris (214,214,214)
+            // t >= 0.6: gris (214,214,214) -> presque blanc (242,242,242)
+            const gradient = ctx.createLinearGradient(0, 0, w, 0);
+            gradient.addColorStop(0, '#000000');
+            gradient.addColorStop(0.6, '#D6D6D6');
+            gradient.addColorStop(1, '#F2F2F2');
+
+            const radius = h * 0.4;
+            ctx.beginPath();
+            roundRect(ctx, 0, 0, w, h, radius);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Texte blanc
+            const fontSize = Math.round(h * 0.55);
+            ctx.font = `bold ${fontSize}px "Arial Rounded MT Bold", Arial, sans-serif`;
+            ctx.fillStyle = '#FFFFFF';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(title, w * 0.02, h * 0.48);
+
+            return canvasToUint8Array(canvas);
+        }
+
+        // Badge Niveau (reproduit create_level_badge du Python)
+        function generateLevelBadge(level) {
+            const size = 400;
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            ctx.clearRect(0, 0, size, size);
+
+            const margin = size * 0.05;
+            const radius = size * 0.18;
+
+            // Rectangle arrondi exterieur (fond violet fonce)
+            ctx.beginPath();
+            roundRect(ctx, margin, margin, size - 2 * margin, size - 2 * margin, radius);
+            ctx.fillStyle = 'rgb(80, 60, 130)';
+            ctx.fill();
+            ctx.lineWidth = size * 0.04;
+            ctx.strokeStyle = 'rgb(45, 27, 105)';
+            ctx.stroke();
+
+            // Gradient interne (violet clair -> violet)
+            const innerM = margin + size * 0.06;
+            const innerR = radius * 0.7;
+            const gradSteps = 20;
+            for (let i = 0; i < gradSteps; i++) {
+                const t = i / (gradSteps - 1);
+                const r = Math.round(229 - t * 70);
+                const g = Math.round(213 - t * 70);
+                const b = Math.round(255 - t * 50);
+                const shrink = t * size * 0.15;
+                const x0 = innerM + shrink;
+                const y0 = innerM + shrink;
+                const x1 = size - innerM - shrink;
+                const y1 = size - innerM - shrink;
+                if (x1 > x0 && y1 > y0) {
+                    ctx.beginPath();
+                    roundRect(ctx, x0, y0, x1 - x0, y1 - y0, Math.max(1, innerR - t * 10));
+                    ctx.fillStyle = `rgb(${r},${g},${b})`;
+                    ctx.fill();
+                }
+            }
+
+            // Parse "1ere", "4e", "2nde" etc.
+            const match = level.match(/^(\d+)(.*)/);
+            const mainText = match ? match[1] : level;
+            const supText = match ? match[2] : '';
+
+            const mainFontSize = Math.round(size * 0.55);
+            const supFontSize = Math.round(size * 0.25);
+
+            ctx.font = `bold ${mainFontSize}px "Cooper Black", "Cooper", serif`;
+            ctx.textBaseline = 'middle';
+            const mainWidth = ctx.measureText(mainText).width;
+
+            ctx.font = `bold ${supFontSize}px "Cooper Black", "Cooper", serif`;
+            const supWidth = supText ? ctx.measureText(supText).width : 0;
+
+            const totalWidth = mainWidth + supWidth + size * 0.01;
+            const xStart = (size - totalWidth) / 2;
+            const yMain = size * 0.46;
+
+            // Texte principal avec ombre
+            ctx.font = `bold ${mainFontSize}px "Cooper Black", "Cooper", serif`;
+            ctx.fillStyle = 'rgba(60, 40, 100, 0.47)';
+            ctx.fillText(mainText, xStart + 2, yMain + 2);
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillText(mainText, xStart, yMain);
+
+            // Texte exposant
+            if (supText) {
+                const xSup = xStart + mainWidth + size * 0.01;
+                const ySup = yMain - size * 0.1;
+                ctx.font = `bold ${supFontSize}px "Cooper Black", "Cooper", serif`;
+                ctx.fillStyle = 'rgba(60, 40, 100, 0.47)';
+                ctx.fillText(supText, xSup + 1, ySup + 1);
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillText(supText, xSup, ySup);
+            }
+
+            return canvasToUint8Array(canvas);
+        }
+
+        // ========== OMML Math pipeline (KaTeX → MathML DOM → OMML string) ==========
+        // Convertisseur natif JS — pas de XSLT (déprécié dans Chrome)
+
+        function latexToOmml(latex) {
+            try {
+                // 1. KaTeX → MathML HTML
+                const mathmlHtml = katex.renderToString(latex, {
+                    output: 'mathml',
+                    throwOnError: false,
+                    displayMode: false
+                });
+
+                // 2. Extraire le <math> du HTML retourné par KaTeX
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = mathmlHtml;
+                const mathEl = tempDiv.querySelector('math');
+                if (!mathEl) return null;
+
+                // 3. Convertir le DOM MathML → string OMML
+                const omml = mathmlNodeToOmml(mathEl);
+                return `<m:oMath>${omml}</m:oMath>`;
+            } catch (e) {
+                console.warn('Erreur conversion LaTeX→OMML:', latex, e);
+                return null;
+            }
+        }
+
+        // Convertit récursivement un nœud MathML DOM en OMML string
+        function mathmlNodeToOmml(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const t = node.textContent.trim();
+                return t ? makeOmmlRun(t) : '';
+            }
+            if (node.nodeType !== Node.ELEMENT_NODE) return '';
+
+            const tag = node.localName || node.tagName.toLowerCase();
+            const children = Array.from(node.childNodes);
+
+            switch (tag) {
+                case 'math':
+                case 'mrow':
+                case 'mstyle':
+                case 'mpadded':
+                case 'mphantom':
+                    return children.map(c => mathmlNodeToOmml(c)).join('');
+
+                case 'semantics':
+                    // Traiter uniquement le premier enfant (le vrai math), ignorer <annotation>
+                    for (const c of children) {
+                        if (c.nodeType === Node.ELEMENT_NODE && c.localName !== 'annotation') {
+                            return mathmlNodeToOmml(c);
+                        }
+                    }
+                    return '';
+
+                case 'annotation':
+                    return ''; // Ignorer
+
+                case 'mi': {
+                    const text = node.textContent;
+                    const variant = node.getAttribute('mathvariant');
+                    if (variant === 'normal') {
+                        return makeOmmlRun(text, 'p'); // pas italique
+                    }
+                    return makeOmmlRun(text, 'i'); // italique par défaut pour les identifiants
+                }
+
+                case 'mn':
+                    return makeOmmlRun(node.textContent, 'p');
+
+                case 'mo':
+                    return makeOmmlRun(node.textContent, 'p');
+
+                case 'mtext':
+                    return makeOmmlRun(node.textContent, 'p');
+
+                case 'ms':
+                    return makeOmmlRun('"' + node.textContent + '"', 'p');
+
+                case 'mspace':
+                    return makeOmmlRun('\u00A0', 'p');
+
+                case 'msup': {
+                    const base = children[0] ? mathmlNodeToOmml(children[0]) : '';
+                    const sup = children[1] ? mathmlNodeToOmml(children[1]) : '';
+                    return `<m:sSup><m:e>${base}</m:e><m:sup>${sup}</m:sup></m:sSup>`;
+                }
+
+                case 'msub': {
+                    const base = children[0] ? mathmlNodeToOmml(children[0]) : '';
+                    const sub = children[1] ? mathmlNodeToOmml(children[1]) : '';
+                    return `<m:sSub><m:e>${base}</m:e><m:sub>${sub}</m:sub></m:sSub>`;
+                }
+
+                case 'msubsup': {
+                    const base = children[0] ? mathmlNodeToOmml(children[0]) : '';
+                    const sub = children[1] ? mathmlNodeToOmml(children[1]) : '';
+                    const sup = children[2] ? mathmlNodeToOmml(children[2]) : '';
+                    return `<m:sSubSup><m:e>${base}</m:e><m:sub>${sub}</m:sub><m:sup>${sup}</m:sup></m:sSubSup>`;
+                }
+
+                case 'mfrac': {
+                    const num = children[0] ? mathmlNodeToOmml(children[0]) : '';
+                    const den = children[1] ? mathmlNodeToOmml(children[1]) : '';
+                    return `<m:f><m:num>${num}</m:num><m:den>${den}</m:den></m:f>`;
+                }
+
+                case 'msqrt': {
+                    const content = children.map(c => mathmlNodeToOmml(c)).join('');
+                    return `<m:rad><m:radPr><m:degHide m:val="1"/></m:radPr><m:deg/><m:e>${content}</m:e></m:rad>`;
+                }
+
+                case 'mroot': {
+                    const base = children[0] ? mathmlNodeToOmml(children[0]) : '';
+                    const idx = children[1] ? mathmlNodeToOmml(children[1]) : '';
+                    return `<m:rad><m:deg>${idx}</m:deg><m:e>${base}</m:e></m:rad>`;
+                }
+
+                case 'mover': {
+                    const base = children[0] ? mathmlNodeToOmml(children[0]) : '';
+                    const over = children[1] ? children[1].textContent : '';
+                    // Accent au-dessus (barre, vecteur, chapeau, etc.)
+                    const chrMap = { '\u0305': '\u0305', '\u00AF': '\u0305', '\u0302': '\u0302',
+                        '\u2192': '\u2192', '\u20D7': '\u2192', '→': '\u2192',
+                        '\u0303': '\u0303', '~': '\u0303', '^': '\u0302',
+                        '\u02D9': '\u02D9', '\u00A8': '\u00A8', '\u02DC': '\u0303' };
+                    const accChr = chrMap[over] || over;
+                    return `<m:acc><m:accPr><m:chr m:val="${accChr}"/></m:accPr><m:e>${base}</m:e></m:acc>`;
+                }
+
+                case 'munder': {
+                    const base = children[0] ? mathmlNodeToOmml(children[0]) : '';
+                    const under = children[1] ? mathmlNodeToOmml(children[1]) : '';
+                    return `<m:limLow><m:e>${base}</m:e><m:lim>${under}</m:lim></m:limLow>`;
+                }
+
+                case 'munderover': {
+                    const base = children[0] ? mathmlNodeToOmml(children[0]) : '';
+                    const under = children[1] ? mathmlNodeToOmml(children[1]) : '';
+                    const over = children[2] ? mathmlNodeToOmml(children[2]) : '';
+                    return `<m:limLow><m:e><m:limUpp><m:e>${base}</m:e><m:lim>${over}</m:lim></m:limUpp></m:e><m:lim>${under}</m:lim></m:limLow>`;
+                }
+
+                case 'mtable': {
+                    const rows = children.filter(c => c.localName === 'mtr' || c.localName === 'mlabeledtr');
+                    const ommlRows = rows.map(row => {
+                        const cells = Array.from(row.childNodes).filter(c => c.localName === 'mtd');
+                        const ommlCells = cells.map(cell => `<m:e>${mathmlNodeToOmml(cell)}</m:e>`).join('');
+                        return `<m:mr>${ommlCells}</m:mr>`;
+                    }).join('');
+                    const nCols = rows[0] ? Array.from(rows[0].childNodes).filter(c => c.localName === 'mtd').length : 1;
+                    let mcs = '';
+                    for (let i = 0; i < nCols; i++) mcs += '<m:mc><m:mcPr><m:mcJc m:val="center"/></m:mcPr></m:mc>';
+                    return `<m:m><m:mPr><m:mcs>${mcs}</m:mcs></m:mPr>${ommlRows}</m:m>`;
+                }
+                case 'mtr':
+                case 'mlabeledtr':
+                case 'mtd':
+                    return children.map(c => mathmlNodeToOmml(c)).join('');
+
+                case 'menclose': {
+                    // Simplification : juste rendre le contenu
+                    return children.map(c => mathmlNodeToOmml(c)).join('');
+                }
+
+                case 'mfenced': {
+                    const open = node.getAttribute('open') || '(';
+                    const close = node.getAttribute('close') || ')';
+                    const content = children.map(c => mathmlNodeToOmml(c)).join('');
+                    return `<m:d><m:dPr><m:begChr m:val="${escapeXML(open)}"/><m:endChr m:val="${escapeXML(close)}"/></m:dPr><m:e>${content}</m:e></m:d>`;
+                }
+
+                default:
+                    // Fallback : traiter les enfants
+                    return children.map(c => mathmlNodeToOmml(c)).join('');
+            }
+        }
+
+        // Crée un <m:r> OMML avec texte et style optionnel
+        function makeOmmlRun(text, style) {
+            let rPr = '';
+            if (style) {
+                rPr = `<m:rPr><m:sty m:val="${style}"/></m:rPr>`;
+            }
+            // Aussi mettre Cambria Math comme police pour Word
+            const wRPr = '<w:rPr><w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/></w:rPr>';
+            return `<m:r>${rPr}${wRPr}<m:t>${escapeXML(text)}</m:t></m:r>`;
+        }
+
+        // ========== Text rendering helpers ==========
+
+        // Render text with inline formatting to Word XML runs (<w:r> elements)
+        function renderTextToWordXML(text, baseOpts) {
+            if (!text) return '<w:r><w:t></w:t></w:r>';
+            baseOpts = baseOpts || {};
+            let runs = '';
+            const regex = /(\*\*[^*]+\*\*)|(\$[^\$]+\$)/g;
+            let lastIndex = 0;
+            let match;
+
+            while ((match = regex.exec(text)) !== null) {
+                if (match.index > lastIndex) {
+                    const plain = text.substring(lastIndex, match.index);
+                    runs += makeTextRun(escapeXML(plain), baseOpts);
+                }
+
+                if (match[1]) {
+                    // Gras+italique
+                    const inner = match[1].substring(2, match[1].length - 2);
+                    runs += makeTextRun(escapeXML(inner), Object.assign({}, baseOpts, { bold: true, italic: true }));
+                } else if (match[2]) {
+                    // Formule LaTeX → OMML natif Word
+                    const latex = match[2].substring(1, match[2].length - 1);
+                    const omml = latexToOmml(latex);
+                    if (omml) {
+                        console.log('OMML OK pour:', latex, '→', omml.substring(0, 120) + '...');
+                        runs += omml;
+                    } else {
+                        // Fallback : texte brut en Cambria Math
+                        runs += makeTextRun(escapeXML(latex), Object.assign({}, baseOpts, { font: 'Cambria Math' }));
+                    }
+                }
+
+                lastIndex = match.index + match[0].length;
+            }
+
+            if (lastIndex < text.length) {
+                const plain = text.substring(lastIndex);
+                runs += makeTextRun(escapeXML(plain), baseOpts);
+            }
+
+            return runs || '<w:r><w:t></w:t></w:r>';
+        }
+
+        // Helper: make a single <w:r> with optional formatting
+        function makeTextRun(escapedText, opts) {
+            let rPr = '';
+            if (opts.font) rPr += `<w:rFonts w:ascii="${opts.font}" w:hAnsi="${opts.font}"/>`;
+            if (opts.bold) rPr += '<w:b/>';
+            if (opts.italic) rPr += '<w:i/>';
+            if (opts.color) rPr += `<w:color w:val="${opts.color}"/>`;
+            if (opts.sz) rPr += `<w:sz w:val="${opts.sz}"/>`;
+            if (opts.szCs) rPr += `<w:szCs w:val="${opts.szCs}"/>`;
+            if (opts.shd) rPr += `<w:shd w:val="clear" w:color="auto" w:fill="${opts.shd}"/>`;
+
+            const rPrXml = rPr ? `<w:rPr>${rPr}</w:rPr>` : '';
+            const needsPreserve = escapedText.startsWith(' ') || escapedText.endsWith(' ');
+            const spaceAttr = needsPreserve ? ' xml:space="preserve"' : '';
+            return `<w:r>${rPrXml}<w:t${spaceAttr}>${escapedText}</w:t></w:r>`;
+        }
+
+        // ========== Image insertion helper ==========
+
+        // Image context shared across generateDocxBlob
+        let _imgCtx = null;
+
+        function addImageXml(canvasData, widthCm, heightCm) {
+            _imgCtx.imageCounter++;
+            _imgCtx.docPrId++;
+            const relId = `rId${_imgCtx.imageCounter + 10}`;
+            const path = `word/media/image${_imgCtx.imageCounter}.png`;
+            _imgCtx.images.push({ id: relId, path: path, data: canvasData });
+
+            const cx = Math.round(widthCm * 360000);
+            const cy = Math.round(heightCm * 360000);
+
+            return `<w:r><w:drawing>` +
+                `<wp:inline distT="0" distB="0" distL="0" distR="0" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing">` +
+                `<wp:extent cx="${cx}" cy="${cy}"/>` +
+                `<wp:docPr id="${_imgCtx.docPrId}" name="Image ${_imgCtx.docPrId}"/>` +
+                `<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">` +
+                `<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">` +
+                `<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">` +
+                `<pic:nvPicPr><pic:cNvPr id="${_imgCtx.docPrId}" name="Image ${_imgCtx.docPrId}"/><pic:cNvPicPr/></pic:nvPicPr>` +
+                `<pic:blipFill>` +
+                `<a:blip r:embed="${relId}" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/>` +
+                `<a:stretch><a:fillRect/></a:stretch>` +
+                `</pic:blipFill>` +
+                `<pic:spPr>` +
+                `<a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm>` +
+                `<a:prstGeom prst="rect"><a:avLst/></a:prstGeom>` +
+                `</pic:spPr>` +
+                `</pic:pic>` +
+                `</a:graphicData></a:graphic>` +
+                `</wp:inline></w:drawing></w:r>`;
+        }
+
+        // ========== OOXML Component renderers (fideles au script Python) ==========
+
+        function ooxml_header(meta) {
+            const docType = escapeXML(meta.doc_type || '');
+            const number = escapeXML(meta.number || '');
+            const title = escapeXML(meta.title || '');
+            const level = meta.level || '';
+
+            // Badge niveau (image)
+            const badgeData = generateLevelBadge(level);
+            const badgeImgXml = addImageXml(badgeData, 1.3, 1.3);
+
+            // Table 3 colonnes : widths 1241 / 8443 / 1088 twips (comme Python)
+            let xml = `<w:tbl>
+  <w:tblPr>
+    <w:tblW w:w="5000" w:type="pct"/>
+    <w:tblBorders>
+      <w:top w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:left w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:bottom w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:right w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:insideH w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:insideV w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+    </w:tblBorders>
+  </w:tblPr>
+  <w:tblGrid>
+    <w:gridCol w:w="1241"/>
+    <w:gridCol w:w="8443"/>
+    <w:gridCol w:w="1088"/>
+  </w:tblGrid>
+  <w:tr>
+    <w:tc>
+      <w:tcPr>
+        <w:tcW w:w="1241" w:type="dxa"/>
+        <w:shd w:val="clear" w:color="auto" w:fill="D9D9D9"/>
+        <w:vAlign w:val="center"/>
+      </w:tcPr>
+      <w:p>
+        <w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="0"/></w:pPr>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Cooper" w:hAnsi="Cooper"/>
+            <w:sz w:val="20"/>
+          </w:rPr>
+          <w:t>${docType}</w:t>
+        </w:r>
+      </w:p>
+      <w:p>
+        <w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="0"/></w:pPr>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Cooper" w:hAnsi="Cooper"/>
+            <w:sz w:val="22"/>
+          </w:rPr>
+          <w:t>${number}</w:t>
+        </w:r>
+      </w:p>
+    </w:tc>
+    <w:tc>
+      <w:tcPr>
+        <w:tcW w:w="8443" w:type="dxa"/>
+        <w:shd w:val="clear" w:color="auto" w:fill="F2F2F2"/>
+        <w:vAlign w:val="center"/>
+        <w:tcBorders><w:left w:val="nil"/></w:tcBorders>
+      </w:tcPr>
+      <w:p>
+        <w:pPr><w:jc w:val="center"/><w:spacing w:before="40" w:after="40"/></w:pPr>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Cooper Black" w:hAnsi="Cooper Black"/>
+            <w:sz w:val="36"/>
+          </w:rPr>
+          <w:t>${title}</w:t>
+        </w:r>
+      </w:p>
+    </w:tc>
+    <w:tc>
+      <w:tcPr>
+        <w:tcW w:w="1088" w:type="dxa"/>
+        <w:vAlign w:val="center"/>
+      </w:tcPr>
+      <w:p>
+        <w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="0"/></w:pPr>
+        ${badgeImgXml}
+      </w:p>
+    </w:tc>
+  </w:tr>
+</w:tbl>`;
+            return xml;
+        }
+
+        function ooxml_section_band(comp) {
+            // Image PNG generee par Canvas (19cm x 0.7cm)
+            const bandData = generateSectionBand(comp.title || '');
+            const bandImgXml = addImageXml(bandData, 19.0, 0.7);
+
+            return `<w:p>` +
+                `<w:pPr><w:spacing w:before="120" w:after="20"/></w:pPr>` +
+                bandImgXml +
+                `</w:p>`;
+        }
+
+        function ooxml_section_title(comp) {
+            // Table 2 colonnes : 562 / 10200 twips (comme Python)
+            return `<w:tbl>
+  <w:tblPr>
+    <w:tblW w:w="5000" w:type="pct"/>
+    <w:tblBorders>
+      <w:top w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:left w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:bottom w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:right w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:insideH w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:insideV w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+    </w:tblBorders>
+  </w:tblPr>
+  <w:tblGrid>
+    <w:gridCol w:w="562"/>
+    <w:gridCol w:w="10200"/>
+  </w:tblGrid>
+  <w:tr>
+    <w:tc>
+      <w:tcPr>
+        <w:tcW w:w="562" w:type="dxa"/>
+        <w:shd w:val="clear" w:color="auto" w:fill="000000"/>
+        <w:vAlign w:val="center"/>
+      </w:tcPr>
+      <w:p>
+        <w:pPr><w:jc w:val="center"/><w:spacing w:before="40" w:after="40"/></w:pPr>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Cambria" w:hAnsi="Cambria"/>
+            <w:b/>
+            <w:color w:val="FFFFFF"/>
+            <w:sz w:val="32"/>
+          </w:rPr>
+          <w:t>${escapeXML(String(comp.number || ''))}</w:t>
+        </w:r>
+      </w:p>
+    </w:tc>
+    <w:tc>
+      <w:tcPr>
+        <w:tcW w:w="10200" w:type="dxa"/>
+        <w:shd w:val="clear" w:color="auto" w:fill="F2F2F2"/>
+        <w:vAlign w:val="center"/>
+      </w:tcPr>
+      <w:p>
+        <w:pPr><w:spacing w:before="40" w:after="40"/></w:pPr>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Cambria" w:hAnsi="Cambria"/>
+            <w:b/>
+            <w:sz w:val="32"/>
+          </w:rPr>
+          <w:t xml:space="preserve"> ${escapeXML(comp.title || '')}</w:t>
+        </w:r>
+      </w:p>
+    </w:tc>
+  </w:tr>
+</w:tbl>`;
+        }
+
+        function ooxml_content_box(comp) {
+            const label = escapeXML(comp.label || 'Info');
+            let contentXml = '';
+            if (comp.subtitle) {
+                // Sous-titre avec fond D9D9D9, Cambria 11pt bold italic
+                contentXml += `<w:p><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="D9D9D9"/><w:spacing w:before="40" w:after="40"/></w:pPr>` +
+                    `<w:r><w:rPr><w:rFonts w:ascii="Cambria" w:hAnsi="Cambria"/><w:b/><w:i/><w:sz w:val="22"/></w:rPr>` +
+                    `<w:t>${escapeXML(comp.subtitle)}</w:t></w:r></w:p>`;
+            }
+            contentXml += `<w:p><w:pPr><w:spacing w:before="80" w:after="80"/></w:pPr>${renderTextToWordXML(comp.content || '', { font: 'Cambria', sz: '22' })}</w:p>`;
+
+            // Table 2 colonnes : 480 / 10282 twips (comme Python)
+            return `<w:tbl>
+  <w:tblPr>
+    <w:tblW w:w="5000" w:type="pct"/>
+    <w:tblBorders>
+      <w:top w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:left w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:bottom w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:right w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:insideH w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      <w:insideV w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+    </w:tblBorders>
+  </w:tblPr>
+  <w:tblGrid>
+    <w:gridCol w:w="480"/>
+    <w:gridCol w:w="10282"/>
+  </w:tblGrid>
+  <w:tr>
+    <w:tc>
+      <w:tcPr>
+        <w:tcW w:w="480" w:type="dxa"/>
+        <w:shd w:val="clear" w:color="auto" w:fill="000000"/>
+        <w:textDirection w:val="btLr"/>
+        <w:vAlign w:val="center"/>
+      </w:tcPr>
+      <w:p>
+        <w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="0"/></w:pPr>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Cambria" w:hAnsi="Cambria"/>
+            <w:color w:val="FFFFFF"/>
+            <w:b/>
+            <w:sz w:val="22"/>
+          </w:rPr>
+          <w:t>${label}</w:t>
+        </w:r>
+      </w:p>
+    </w:tc>
+    <w:tc>
+      <w:tcPr>
+        <w:tcW w:w="10282" w:type="dxa"/>
+        <w:shd w:val="clear" w:color="auto" w:fill="F2F2F2"/>
+      </w:tcPr>
+      ${contentXml}
+    </w:tc>
+  </w:tr>
+</w:tbl>`;
+        }
+
+        function ooxml_exercise(comp, version, meta) {
+            let xml = '';
+            const num = comp.number || '';
+            const difficulty = comp.difficulty || 0;
+            const points = comp.points || null;
+            const docMode = (meta && meta.doc_mode) || 'exercice';
+
+            // Exercise label : Wingdings losange + Cooper "Exercice N :" + etoiles
+            xml += `<w:p><w:pPr><w:spacing w:before="80" w:after="20"/></w:pPr>`;
+
+            // Wingdings F0DC (losange)
+            xml += `<w:r><w:rPr><w:rFonts w:ascii="Cooper Black" w:hAnsi="Cooper Black"/><w:sz w:val="22"/></w:rPr>` +
+                `<w:sym w:font="Wingdings" w:char="F0DC"/></w:r>`;
+
+            // Espace
+            xml += `<w:r><w:rPr><w:rFonts w:ascii="Cooper Black" w:hAnsi="Cooper Black"/><w:sz w:val="22"/></w:rPr>` +
+                `<w:t xml:space="preserve"> </w:t></w:r>`;
+
+            // "Exercice N "
+            xml += `<w:r><w:rPr><w:rFonts w:ascii="Cooper" w:hAnsi="Cooper"/><w:sz w:val="22"/></w:rPr>` +
+                `<w:t xml:space="preserve">Exercice ${escapeXML(String(num))} </w:t></w:r>`;
+
+            if (points && docMode === 'eval') {
+                // Points avec tabulation droite et pointilles
+                xml += `<w:r><w:rPr><w:rFonts w:ascii="Cooper" w:hAnsi="Cooper"/><w:sz w:val="22"/></w:rPr>` +
+                    `<w:t xml:space="preserve"> </w:t></w:r>`;
+            } else {
+                // Deux-points
+                xml += `<w:r><w:rPr><w:rFonts w:ascii="Cooper" w:hAnsi="Cooper"/><w:sz w:val="22"/></w:rPr>` +
+                    `<w:t xml:space="preserve">: </w:t></w:r>`;
+            }
+
+            // Etoiles de difficulte
+            if (difficulty && docMode !== 'eval') {
+                const stars = '\u2605'.repeat(difficulty) + '\u2606'.repeat(3 - difficulty);
+                xml += `<w:r><w:rPr><w:color w:val="7030A0"/><w:sz w:val="18"/></w:rPr>` +
+                    `<w:t xml:space="preserve">  ${stars}</w:t></w:r>`;
+            }
+
+            xml += `</w:p>`;
+
+            // Statement
+            if (comp.statement) {
+                xml += `<w:p><w:pPr><w:spacing w:before="20" w:after="40"/></w:pPr>${renderTextToWordXML(comp.statement, { font: 'Cambria', sz: '22' })}</w:p>`;
+            }
+
+            // Items
+            if (comp.items && comp.items.length > 0) {
+                comp.items.forEach(item => {
+                    // Label noir + contenu
+                    xml += `<w:p><w:pPr><w:ind w:left="284"/><w:spacing w:before="40" w:after="40"/></w:pPr>`;
+                    xml += `<w:r><w:rPr><w:shd w:val="clear" w:color="auto" w:fill="000000"/><w:color w:val="FFFFFF"/><w:b/><w:sz w:val="18"/></w:rPr>` +
+                        `<w:t xml:space="preserve"> ${escapeXML(item.label || '')} </w:t></w:r>`;
+                    xml += `<w:r><w:rPr><w:sz w:val="22"/></w:rPr><w:t xml:space="preserve">  </w:t></w:r>`;
+                    xml += renderTextToWordXML(item.content || '', { font: 'Cambria', sz: '22' });
+                    xml += `</w:p>`;
+
+                    // Correction en version corrigee
+                    if (version === 'corrige' && item.correction) {
+                        xml += `<w:p><w:pPr><w:ind w:left="568"/><w:spacing w:before="20" w:after="40"/></w:pPr>`;
+                        // Label rouge
+                        xml += `<w:r><w:rPr><w:shd w:val="clear" w:color="auto" w:fill="FF0000"/><w:color w:val="FFFFFF"/><w:b/><w:sz w:val="18"/></w:rPr>` +
+                            `<w:t xml:space="preserve"> ${escapeXML(item.label || '')} </w:t></w:r>`;
+                        xml += `<w:r><w:rPr><w:sz w:val="22"/></w:rPr><w:t xml:space="preserve">  </w:t></w:r>`;
+                        xml += renderTextToWordXML(item.correction, { font: 'Cambria', sz: '22', color: 'FF0000' });
+                        xml += `</w:p>`;
+                    }
+                });
+            }
+
+            // Answer grid (eleve only) - image Seyes
+            if (comp.answer_grid_height && version === 'eleve') {
+                const hCm = comp.answer_grid_height;
+                const wCm = 19.0;
+                const gridData = generateSeyesGrid(wCm, hCm);
+                const gridImgXml = addImageXml(gridData, wCm, hCm);
+                xml += `<w:p><w:pPr><w:spacing w:before="20" w:after="20"/></w:pPr>${gridImgXml}</w:p>`;
+            }
+
+            return xml;
+        }
+
+        function ooxml_items(comp, version) {
+            let xml = '';
+            if (comp.items && comp.items.length > 0) {
+                comp.items.forEach(item => {
+                    xml += `<w:p><w:pPr><w:ind w:left="284"/><w:spacing w:before="40" w:after="40"/></w:pPr>`;
+                    xml += `<w:r><w:rPr><w:shd w:val="clear" w:color="auto" w:fill="000000"/><w:color w:val="FFFFFF"/><w:b/><w:sz w:val="18"/></w:rPr>` +
+                        `<w:t xml:space="preserve"> ${escapeXML(item.label || '')} </w:t></w:r>`;
+                    xml += `<w:r><w:rPr><w:sz w:val="22"/></w:rPr><w:t xml:space="preserve">  </w:t></w:r>`;
+                    xml += renderTextToWordXML(item.content || '', { font: 'Cambria', sz: '22' });
+                    xml += `</w:p>`;
+                });
+            }
+            return xml;
+        }
+
+        function ooxml_answer_grid(comp) {
+            // Image Seyes generee par Canvas
+            const hCm = comp.height_cm || 5.0;
+            const wCm = comp.width_cm || 19.0;
+            const gridData = generateSeyesGrid(wCm, hCm);
+            const gridImgXml = addImageXml(gridData, wCm, hCm);
+            return `<w:p><w:pPr><w:spacing w:before="20" w:after="20"/></w:pPr>${gridImgXml}</w:p>`;
+        }
+
+        function ooxml_table(comp) {
+            const headers = comp.headers || [];
+            const rows = comp.rows || [];
+            const colCount = headers.length || (rows[0] ? rows[0].length : 1);
+            const colWidth = Math.floor(10762 / colCount);
+
+            let xml = `<w:tbl>
+  <w:tblPr>
+    <w:tblW w:w="5000" w:type="pct"/>
+    <w:tblBorders>
+      <w:top w:val="single" w:sz="4" w:color="auto"/>
+      <w:left w:val="single" w:sz="4" w:color="auto"/>
+      <w:bottom w:val="single" w:sz="4" w:color="auto"/>
+      <w:right w:val="single" w:sz="4" w:color="auto"/>
+      <w:insideH w:val="single" w:sz="4" w:color="auto"/>
+      <w:insideV w:val="single" w:sz="4" w:color="auto"/>
+    </w:tblBorders>
+  </w:tblPr>
+  <w:tblGrid>`;
+            for (let c = 0; c < colCount; c++) {
+                xml += `<w:gridCol w:w="${colWidth}"/>`;
+            }
+            xml += `</w:tblGrid>`;
+
+            // En-tetes : fond noir, Cambria 11pt bold blanc, centre
+            if (headers.length > 0) {
+                xml += '<w:tr>';
+                headers.forEach(h => {
+                    xml += `<w:tc><w:tcPr><w:shd w:val="clear" w:color="auto" w:fill="000000"/></w:tcPr>` +
+                        `<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="80" w:after="80"/></w:pPr>` +
+                        `<w:r><w:rPr><w:rFonts w:ascii="Cambria" w:hAnsi="Cambria"/><w:color w:val="FFFFFF"/><w:b/><w:sz w:val="22"/></w:rPr>` +
+                        `<w:t>${escapeXML(h)}</w:t></w:r></w:p></w:tc>`;
+                });
+                xml += '</w:tr>';
+            }
+
+            // Lignes : alternance F2F2F2 / FFFFFF, Cambria 11pt, centre
+            rows.forEach((row, ri) => {
+                const fill = (ri % 2 === 0) ? 'F2F2F2' : 'FFFFFF';
+                xml += '<w:tr>';
+                row.forEach(cell => {
+                    xml += `<w:tc><w:tcPr><w:shd w:val="clear" w:color="auto" w:fill="${fill}"/></w:tcPr>` +
+                        `<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="80" w:after="80"/></w:pPr>` +
+                        `${renderTextToWordXML(String(cell), { font: 'Cambria', sz: '22' })}</w:p></w:tc>`;
+                });
+                xml += '</w:tr>';
+            });
+
+            xml += '</w:tbl>';
+            return xml;
+        }
+
+        function ooxml_text(comp) {
+            return `<w:p><w:pPr><w:spacing w:before="80" w:after="40"/></w:pPr>${renderTextToWordXML(comp.content || '', { font: 'Cambria', sz: '22' })}</w:p>`;
+        }
+
+        function ooxml_spacer(comp) {
+            const heightPt = comp.height_pt || 2;
+            const szVal = heightPt * 2;
+            return `<w:p><w:pPr><w:spacing w:before="0" w:after="0"/></w:pPr><w:r><w:rPr><w:sz w:val="${szVal}"/></w:rPr><w:t></w:t></w:r></w:p>`;
+        }
+
+        function ooxml_page_break() {
+            return '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
+        }
+
+        // Render one component to OOXML
+        function renderComponentToOOXML(comp, meta, version) {
+            switch (comp.type) {
+                case 'header': return ooxml_header(meta);
+                case 'section_band': return ooxml_section_band(comp);
+                case 'section_title': return ooxml_section_title(comp);
+                case 'content_box': return ooxml_content_box(comp);
+                case 'exercise': return ooxml_exercise(comp, version, meta);
+                case 'items': return ooxml_items(comp, version);
+                case 'answer_grid': {
+                    if (version === 'eleve') {
+                        return ooxml_answer_grid(comp);
+                    }
+                    return '';
+                }
+                case 'table': return ooxml_table(comp);
+                case 'text': return ooxml_text(comp);
+                case 'spacer': return ooxml_spacer(comp);
+                case 'page_break': return ooxml_page_break();
+                default: return '';
+            }
+        }
+
+        // Generate the full .docx Blob
+        function generateDocxBlob(data) {
+            const meta = data.metadata;
+            const versions = data.versions || ['eleve'];
+
+            // Init image context
+            _imgCtx = { images: [], imageCounter: 0, docPrId: 0 };
+
+            // Build body content
+            let bodyXml = '';
+
+            versions.forEach((version, vIdx) => {
+                if (vIdx > 0) {
+                    bodyXml += ooxml_page_break();
+                    bodyXml += `<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="400" w:after="400"/></w:pPr>` +
+                        `<w:r><w:rPr><w:rFonts w:ascii="Cooper Black" w:hAnsi="Cooper Black"/><w:b/><w:sz w:val="28"/><w:color w:val="FF0000"/></w:rPr>` +
+                        `<w:t>VERSION CORRIG\u00C9E</w:t></w:r></w:p>`;
+                }
+
+                if (data.pages && data.pages.length > 0) {
+                    data.pages.forEach((page, pIdx) => {
+                        if (pIdx > 0) {
+                            bodyXml += ooxml_page_break();
+                        }
+                        if (page.components) {
+                            page.components.forEach(comp => {
+                                bodyXml += renderComponentToOOXML(comp, meta, version);
+                            });
+                        }
+                    });
+                }
+            });
+
+            // Footer XML
+            const footerAuthor = escapeXML(meta.author || 'Auteur');
+            const footerInfo = escapeXML(`${meta.level || ''} \u2013 ${meta.doc_type || ''} ${(meta.number || '01')} \u2013 ${meta.title || ''}`);
+            const footerXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:ftr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:tbl>
+    <w:tblPr>
+      <w:tblW w:w="5000" w:type="pct"/>
+      <w:tblBorders>
+        <w:top w:val="single" w:sz="8" w:space="0" w:color="auto"/>
+        <w:left w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+        <w:bottom w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+        <w:right w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+        <w:insideH w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+        <w:insideV w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+      </w:tblBorders>
+    </w:tblPr>
+    <w:tblGrid><w:gridCol w:w="5000"/><w:gridCol w:w="5000"/><w:gridCol w:w="800"/></w:tblGrid>
+    <w:tr>
+      <w:tc>
+        <w:p>
+          <w:r><w:rPr><w:i/><w:sz w:val="18"/></w:rPr><w:t>${footerAuthor}</w:t></w:r>
+        </w:p>
+      </w:tc>
+      <w:tc>
+        <w:p>
+          <w:pPr><w:jc w:val="right"/></w:pPr>
+          <w:r><w:rPr><w:i/><w:sz w:val="18"/></w:rPr><w:t xml:space="preserve">${footerInfo}</w:t></w:r>
+        </w:p>
+      </w:tc>
+      <w:tc>
+        <w:p>
+          <w:pPr><w:jc w:val="right"/></w:pPr>
+          <w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:fldChar w:fldCharType="begin"/></w:r>
+          <w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:instrText xml:space="preserve"> PAGE </w:instrText></w:r>
+          <w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:fldChar w:fldCharType="end"/></w:r>
+          <w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:t>/</w:t></w:r>
+          <w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:fldChar w:fldCharType="begin"/></w:r>
+          <w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:instrText xml:space="preserve"> NUMPAGES </w:instrText></w:r>
+          <w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:fldChar w:fldCharType="end"/></w:r>
+        </w:p>
+      </w:tc>
+    </w:tr>
+  </w:tbl>
+</w:ftr>`;
+
+            // Content Types (avec PNG)
+            const contentTypesXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
+                '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+                '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+                '<Default Extension="xml" ContentType="application/xml"/>' +
+                '<Default Extension="png" ContentType="image/png"/>' +
+                '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>' +
+                '<Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>' +
+                '<Override PartName="/word/settings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"/>' +
+                '<Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/>' +
+                '</Types>';
+
+            const relsXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
+                '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+                '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>' +
+                '</Relationships>';
+
+            // Document relationships : styles, settings, footer, + toutes les images
+            let docRelsXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
+                '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+                '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>' +
+                '<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/>' +
+                '<Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>';
+
+            _imgCtx.images.forEach((img, idx) => {
+                const imgNum = idx + 1;
+                docRelsXml += `<Relationship Id="${img.id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/image${imgNum}.png"/>`;
+            });
+            docRelsXml += '</Relationships>';
+
+            const settingsXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
+                '<w:settings xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
+                '<w:defaultTabStop w:val="708"/>' +
+                '<w:compat><w:compatSetting w:name="compatibilityMode" w:uri="http://schemas.microsoft.com/office/word" w:val="15"/></w:compat>' +
+                '</w:settings>';
+
+            const stylesXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
+                '<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
+                '<w:docDefaults>' +
+                '<w:rPrDefault><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/><w:sz w:val="22"/></w:rPr></w:rPrDefault>' +
+                '<w:pPrDefault><w:pPr><w:spacing w:after="0" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault>' +
+                '</w:docDefaults>' +
+                '<w:style w:type="paragraph" w:styleId="Normal" w:default="1"><w:name w:val="Normal"/></w:style>' +
+                '</w:styles>';
+
+            // Document XML avec sectPr referençant le footer
+            const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+  <w:body>
+${bodyXml}
+    <w:sectPr>
+      <w:footerReference w:type="default" r:id="rId3"/>
+      <w:pgSz w:w="11906" w:h="16838"/>
+      <w:pgMar w:top="567" w:right="567" w:bottom="567" w:left="567" w:header="284" w:footer="284"/>
+    </w:sectPr>
+  </w:body>
+</w:document>`;
+
+            // Assembler tous les fichiers
+            const files = [
+                { path: '[Content_Types].xml', content: contentTypesXml },
+                { path: '_rels/.rels', content: relsXml },
+                { path: 'word/_rels/document.xml.rels', content: docRelsXml },
+                { path: 'word/document.xml', content: documentXml },
+                { path: 'word/styles.xml', content: stylesXml },
+                { path: 'word/settings.xml', content: settingsXml },
+                { path: 'word/footer1.xml', content: footerXml }
+            ];
+
+            // Ajouter les images dans word/media/
+            _imgCtx.images.forEach(img => {
+                files.push({ path: img.path, content: img.data });
+            });
+
+            // Reset context
+            const blob = createZipBlob(files);
+            _imgCtx = null;
+            return blob;
+        }
+
+        // ========== Batch folder import ==========
+
+        async function handleBatchFolder(input) {
+            const files = Array.from(input.files).filter(f => f.name.endsWith('.json'));
+            input.value = ''; // reset pour pouvoir re-sélectionner le même dossier
+
+            if (files.length === 0) {
+                showResult('step3Results', 'Aucun fichier .json trouvé dans le dossier.', 'error');
+                document.getElementById('step3Results').style.display = 'block';
+                return;
+            }
+
+            const results = document.getElementById('step3Results');
+            results.innerHTML = '';
+            results.style.display = 'block';
+            showResult('step3Results', `${files.length} fichier(s) JSON détecté(s) — génération en cours...`, 'ok');
+
+            // Cacher la preview solo (pas pertinent en batch)
+            document.getElementById('previewSection').style.display = 'none';
+            document.getElementById('downloadSection').style.display = 'none';
+
+            const docxEntries = [];
+            let ok = 0, fail = 0;
+
+            for (const file of files) {
+                try {
+                    const text = await file.text();
+                    const data = JSON.parse(text);
+
+                    // Validation minimale
+                    if (!data.metadata || !data.pages) {
+                        showResult('step3Results', `⚠ ${file.name} : structure invalide (metadata/pages manquant)`, 'error');
+                        fail++;
+                        continue;
+                    }
+
+                    // Générer le DOCX blob
+                    const blob = generateDocxBlob(data);
+                    const arrayBuf = await blob.arrayBuffer();
+
+                    // Nom du fichier DOCX
+                    const title = data.metadata.title || file.name.replace('.json', '');
+                    const safeName = title.replace(/[^a-zA-Z0-9àâäéèêëïîôùûüç\s-]/g, '').replace(/\s+/g, '-').toLowerCase();
+
+                    docxEntries.push({
+                        path: `${safeName}.docx`,
+                        content: new Uint8Array(arrayBuf)
+                    });
+
+                    showResult('step3Results', `✓ ${file.name} → ${safeName}.docx`, 'ok');
+                    ok++;
+                } catch (err) {
+                    showResult('step3Results', `✗ ${file.name} : ${err.message}`, 'error');
+                    fail++;
+                }
+            }
+
+            if (docxEntries.length === 0) {
+                showResult('step3Results', 'Aucun document généré.', 'error');
+                return;
+            }
+
+            // Créer le ZIP contenant tous les DOCX
+            const zipBlob = createZipBlob(docxEntries);
+            const url = URL.createObjectURL(zipBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'fiches-loiseau-batch.zip';
+            link.click();
+            URL.revokeObjectURL(url);
+
+            showResult('step3Results', `Terminé : ${ok} document(s) généré(s), ${fail} erreur(s). ZIP téléchargé.`, ok > 0 ? 'ok' : 'error');
+        }
+
+        // Setup download — generates real .docx
+        function setupDownload() {
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.onclick = () => {
+                const blob = generateDocxBlob(parsedData);
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                const title = parsedData.metadata.title || 'fiche-loiseau';
+                const safeTitle = title.replace(/[^a-zA-Z0-9àâäéèêëïîôùûüç\s-]/g, '').replace(/\s+/g, '-').toLowerCase();
+                link.download = `${safeTitle}.docx`;
+                link.click();
+                URL.revokeObjectURL(url);
+            };
+        }
+    </script>
+</body>
+</html>

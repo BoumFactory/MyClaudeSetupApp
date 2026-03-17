@@ -1,0 +1,1011 @@
+{
+  "title": "Les fractions - Parcours complet",
+  "scoring": "static-end-score",
+  "enableBackwardsNavigation": true,
+  "startScreen": {
+    "title": "Les fractions",
+    "subtitle": "Maitriser les 4 operations sur les fractions a ton rythme"
+  },
+  "nodes": [
+    {
+      "title": "Bienvenue",
+      "type": "text",
+      "content": "<h2>Les fractions : parcours complet</h2><p>Dans ce parcours, tu vas travailler les <strong>4 operations</strong> sur les fractions :</p><ul><li>Addition et soustraction</li><li>Multiplication</li><li>Division</li></ul><p>Tu choisis par quoi commencer. A la fin de chaque partie, tu seras redirige vers le menu pour continuer.</p>",
+      "nextContentId": 1
+    },
+    {
+      "title": "Choix de la notion",
+      "type": "branching_question",
+      "question": "<p><strong>Quelle notion veux-tu travailler ?</strong></p><p>Choisis selon tes besoins. Tu pourras revenir au menu apres chaque partie.</p>",
+      "alternatives": [
+        {
+          "text": "Addition et soustraction de fractions",
+          "nextContentId": 2,
+          "feedback": {
+            "title": "Addition / Soustraction",
+            "subtitle": "C'est parti pour les additions et soustractions !",
+            "score": 0
+          }
+        },
+        {
+          "text": "Multiplication de fractions",
+          "nextContentId": 11,
+          "feedback": {
+            "title": "Multiplication",
+            "subtitle": "On attaque la multiplication !",
+            "score": 0
+          }
+        },
+        {
+          "text": "Division de fractions",
+          "nextContentId": 20,
+          "feedback": {
+            "title": "Division",
+            "subtitle": "La division, c'est parti !",
+            "score": 0
+          }
+        },
+        {
+          "text": "Enchainement d'operations",
+          "nextContentId": 29,
+          "feedback": {
+            "title": "Enchainement",
+            "subtitle": "Le boss final : enchainer les operations !",
+            "score": 0
+          }
+        }
+      ]
+    },
+    {
+      "title": "Cours : Addition et soustraction",
+      "type": "course_presentation",
+      "slides": [
+        {
+          "content": "<h2>Additionner des fractions</h2><p>Pour additionner deux fractions, il faut qu'elles aient le <strong>meme denominateur</strong>.</p><p>Si les denominateurs sont differents, on les met au <strong>meme denominateur</strong> en cherchant un multiple commun.</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Exemple</h2><p>\\(\\frac{1}{3} + \\frac{1}{4}\\)</p><p><strong>Etape 1</strong> : Denominateur commun = 12</p><p><strong>Etape 2</strong> : \\(\\frac{1}{3} = \\frac{4}{12}\\) et \\(\\frac{1}{4} = \\frac{3}{12}\\)</p><p><strong>Etape 3</strong> : \\(\\frac{4}{12} + \\frac{3}{12} = \\frac{7}{12}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Soustraire des fractions</h2><p>Meme methode : on met au meme denominateur, puis on <strong>soustrait les numerateurs</strong>.</p><p>Exemple : \\(\\frac{5}{6} - \\frac{1}{4} = \\frac{10}{12} - \\frac{3}{12} = \\frac{7}{12}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Verifie ta comprehension</h2>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "x": 5,
+              "y": 30,
+              "width": 90,
+              "height": 65,
+              "question": "Quel est le resultat de \\(\\frac{2}{5} + \\frac{1}{3}\\) ?",
+              "answers": [
+                {
+                  "text": "\\(\\frac{11}{15}\\)",
+                  "correct": true,
+                  "feedback": "Correct ! \\(\\frac{6}{15} + \\frac{5}{15} = \\frac{11}{15}\\)"
+                },
+                {
+                  "text": "\\(\\frac{3}{8}\\)",
+                  "correct": false,
+                  "feedback": "Non ! On n'additionne pas numerateurs et denominateurs separement."
+                },
+                {
+                  "text": "\\(\\frac{3}{15}\\)",
+                  "correct": false,
+                  "feedback": "Non, verifie le calcul des numerateurs."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nextContentId": 3
+    },
+    {
+      "title": "Test : Addition/Soustraction",
+      "type": "branching_question",
+      "question": "<p><strong>Test</strong> : Calcule \\(\\frac{3}{4} - \\frac{1}{6}\\)</p>",
+      "alternatives": [
+        {
+          "text": "7/12",
+          "nextContentId": 4,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "\\(\\frac{9}{12} - \\frac{2}{12} = \\frac{7}{12}\\). Parfait !",
+            "score": 100
+          }
+        },
+        {
+          "text": "2/2",
+          "nextContentId": 6,
+          "feedback": {
+            "title": "Pas tout a fait",
+            "subtitle": "Tu as soustrait numerateurs et denominateurs separement. Revoyons la methode.",
+            "score": 0
+          }
+        },
+        {
+          "text": "1/6",
+          "nextContentId": 6,
+          "feedback": {
+            "title": "Non",
+            "subtitle": "Il faut d'abord mettre au meme denominateur.",
+            "score": 0
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reussite addition/soustraction",
+      "type": "text",
+      "content": "<h2>Excellent !</h2><p>Tu maitrises l'addition et la soustraction de fractions.</p><p><strong>Retiens</strong> : toujours mettre au meme denominateur avant d'operer sur les numerateurs.</p>",
+      "nextContentId": 5
+    },
+    {
+      "title": "Continuer ou terminer ?",
+      "type": "branching_question",
+      "question": "<p>Tu as reussi l'addition/soustraction ! Que veux-tu faire ?</p>",
+      "alternatives": [
+        {
+          "text": "Retour au menu (autre notion)",
+          "nextContentId": 1,
+          "feedback": {
+            "title": "Menu",
+            "subtitle": "Choisis une autre notion.",
+            "score": 0
+          }
+        },
+        {
+          "text": "J'ai termine, voir mon score",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "Tu as reussi la partie addition/soustraction.",
+            "score": 80
+          }
+        }
+      ]
+    },
+    {
+      "title": "Remediation : Addition/Soustraction",
+      "type": "course_presentation",
+      "slides": [
+        {
+          "content": "<h2>Revoyons la methode pas a pas</h2><p><strong>Regle d'or</strong> : on ne peut additionner ou soustraire que des fractions ayant le <strong>meme denominateur</strong>.</p><p>Si \\(\\frac{a}{b} \\pm \\frac{c}{d}\\), il faut trouver un denominateur commun a \\(b\\) et \\(d\\).</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Methode detaillee</h2><p><strong>1.</strong> Trouver le PPCM de b et d (ou simplement b x d)</p><p><strong>2.</strong> Multiplier chaque fraction pour obtenir ce denominateur</p><p><strong>3.</strong> Additionner (ou soustraire) les numerateurs</p><p><strong>4.</strong> Simplifier si possible</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Exemple guide</h2><p>\\(\\frac{3}{4} - \\frac{1}{6}\\)</p><p><strong>PPCM(4, 6) = 12</strong></p><p>\\(\\frac{3}{4} = \\frac{3 \\times 3}{4 \\times 3} = \\frac{9}{12}\\)</p><p>\\(\\frac{1}{6} = \\frac{1 \\times 2}{6 \\times 2} = \\frac{2}{12}\\)</p><p>\\(\\frac{9}{12} - \\frac{2}{12} = \\frac{7}{12}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Entraine-toi</h2>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "x": 5,
+              "y": 30,
+              "width": 90,
+              "height": 65,
+              "question": "Calcule \\(\\frac{1}{2} + \\frac{2}{3}\\)",
+              "answers": [
+                {
+                  "text": "\\(\\frac{7}{6}\\)",
+                  "correct": true,
+                  "feedback": "Oui ! \\(\\frac{3}{6} + \\frac{4}{6} = \\frac{7}{6}\\)"
+                },
+                {
+                  "text": "\\(\\frac{3}{5}\\)",
+                  "correct": false,
+                  "feedback": "Non, on ne peut pas additionner numerateurs et denominateurs."
+                },
+                {
+                  "text": "\\(\\frac{3}{6}\\)",
+                  "correct": false,
+                  "feedback": "Non, verifie ton calcul."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nextContentId": 7
+    },
+    {
+      "title": "Retest : Addition/Soustraction (variante)",
+      "type": "branching_question",
+      "question": "<p><strong>Retest</strong> : Calcule \\(\\frac{2}{3} + \\frac{3}{5}\\)</p>",
+      "alternatives": [
+        {
+          "text": "19/15",
+          "nextContentId": 8,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "\\(\\frac{10}{15} + \\frac{9}{15} = \\frac{19}{15}\\). Tu as compris !",
+            "score": 70
+          }
+        },
+        {
+          "text": "5/8",
+          "nextContentId": 9,
+          "feedback": {
+            "title": "Dommage",
+            "subtitle": "Tu additionnes encore numerateurs et denominateurs separement.",
+            "score": 30
+          }
+        },
+        {
+          "text": "6/15",
+          "nextContentId": 9,
+          "feedback": {
+            "title": "Presque",
+            "subtitle": "Le denominateur est bon mais verifie les numerateurs.",
+            "score": 30
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reussite apres remediation (add/sous)",
+      "type": "text",
+      "content": "<h2>Bien joue !</h2><p>Apres la remediation, tu as compris la methode. Continue a t'entrainer !</p>",
+      "nextContentId": 5
+    },
+    {
+      "title": "Echec remediation (add/sous)",
+      "type": "text",
+      "content": "<h2>Continue a travailler</h2><p>L'addition et la soustraction de fractions demandent de la pratique. Revois ton cours et entraine-toi avec des exercices supplementaires.</p><p><strong>Retiens</strong> : il faut TOUJOURS un denominateur commun !</p>",
+      "nextContentId": 10
+    },
+    {
+      "title": "Apres echec : continuer ?",
+      "type": "branching_question",
+      "question": "<p>Que veux-tu faire ?</p>",
+      "alternatives": [
+        {
+          "text": "Retour au menu (essayer autre chose)",
+          "nextContentId": 1,
+          "feedback": {
+            "title": "Menu",
+            "subtitle": "Essaie une autre notion.",
+            "score": 0
+          }
+        },
+        {
+          "text": "Terminer pour aujourd'hui",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "A bientot",
+            "subtitle": "Reviens quand tu es pret !",
+            "score": 30
+          }
+        }
+      ]
+    },
+    {
+      "title": "Cours : Multiplication",
+      "type": "course_presentation",
+      "slides": [
+        {
+          "content": "<h2>Multiplier des fractions</h2><p>C'est l'operation la plus simple sur les fractions !</p><p><strong>Regle</strong> : on multiplie les numerateurs entre eux et les denominateurs entre eux.</p><p>\\(\\frac{a}{b} \\times \\frac{c}{d} = \\frac{a \\times c}{b \\times d}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Exemples</h2><p>\\(\\frac{2}{3} \\times \\frac{4}{5} = \\frac{2 \\times 4}{3 \\times 5} = \\frac{8}{15}\\)</p><p>\\(\\frac{3}{7} \\times \\frac{2}{3} = \\frac{6}{21} = \\frac{2}{7}\\)</p><p><strong>Astuce</strong> : on peut simplifier AVANT de multiplier !</p><p>\\(\\frac{\\require{cancel}\\cancel{3}}{7} \\times \\frac{2}{\\cancel{3}} = \\frac{2}{7}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Multiplier par un entier</h2><p>Un entier \\(n\\) s'ecrit \\(\\frac{n}{1}\\). Donc :</p><p>\\(3 \\times \\frac{2}{5} = \\frac{3}{1} \\times \\frac{2}{5} = \\frac{6}{5}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Verifie</h2>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "x": 5,
+              "y": 30,
+              "width": 90,
+              "height": 65,
+              "question": "Calcule \\(\\frac{3}{4} \\times \\frac{2}{5}\\)",
+              "answers": [
+                {
+                  "text": "\\(\\frac{6}{20} = \\frac{3}{10}\\)",
+                  "correct": true,
+                  "feedback": "Parfait ! Et tu as bien simplifie."
+                },
+                {
+                  "text": "\\(\\frac{5}{9}\\)",
+                  "correct": false,
+                  "feedback": "Non, on multiplie numerateurs entre eux ET denominateurs entre eux."
+                },
+                {
+                  "text": "\\(\\frac{6}{9}\\)",
+                  "correct": false,
+                  "feedback": "Non, verifie : 4 x 5 = 20, pas 9."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nextContentId": 12
+    },
+    {
+      "title": "Test : Multiplication",
+      "type": "branching_question",
+      "question": "<p><strong>Test</strong> : Calcule \\(\\frac{5}{6} \\times \\frac{3}{10}\\)</p><p><em>Pense a simplifier !</em></p>",
+      "alternatives": [
+        {
+          "text": "1/4",
+          "nextContentId": 13,
+          "feedback": {
+            "title": "Excellent !",
+            "subtitle": "\\(\\frac{15}{60} = \\frac{1}{4}\\). Ou mieux : simplifier avant ! \\(\\frac{5}{6} \\times \\frac{3}{10} = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)",
+            "score": 100
+          }
+        },
+        {
+          "text": "15/60",
+          "nextContentId": 13,
+          "feedback": {
+            "title": "Correct mais...",
+            "subtitle": "Le calcul est bon mais il faut simplifier ! \\(\\frac{15}{60} = \\frac{1}{4}\\)",
+            "score": 80
+          }
+        },
+        {
+          "text": "8/16",
+          "nextContentId": 15,
+          "feedback": {
+            "title": "Non",
+            "subtitle": "Verifie ton calcul : 5 x 3 = 15 et 6 x 10 = 60.",
+            "score": 0
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reussite multiplication",
+      "type": "text",
+      "content": "<h2>Tu maitrises la multiplication !</h2><p>N'oublie pas l'astuce : <strong>simplifier avant de multiplier</strong> pour eviter les grands nombres.</p>",
+      "nextContentId": 14
+    },
+    {
+      "title": "Continuer apres multiplication ?",
+      "type": "branching_question",
+      "question": "<p>Multiplication reussie ! Que veux-tu faire ?</p>",
+      "alternatives": [
+        {
+          "text": "Retour au menu",
+          "nextContentId": 1,
+          "feedback": {
+            "title": "Menu",
+            "subtitle": "Choisis une autre notion.",
+            "score": 0
+          }
+        },
+        {
+          "text": "Terminer",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "Tu maitrises la multiplication de fractions.",
+            "score": 80
+          }
+        }
+      ]
+    },
+    {
+      "title": "Remediation : Multiplication",
+      "type": "course_presentation",
+      "slides": [
+        {
+          "content": "<h2>Revoyons la multiplication</h2><p><strong>C'est simple</strong> : on multiplie \"en ligne\".</p><p>\\(\\frac{a}{b} \\times \\frac{c}{d} = \\frac{a \\times c}{b \\times d}\\)</p><p>Pas besoin de denominateur commun !</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Exemple pas a pas</h2><p>\\(\\frac{2}{3} \\times \\frac{5}{7}\\)</p><p>Numerateur : \\(2 \\times 5 = 10\\)</p><p>Denominateur : \\(3 \\times 7 = 21\\)</p><p>Resultat : \\(\\frac{10}{21}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Entraine-toi</h2>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "x": 5,
+              "y": 30,
+              "width": 90,
+              "height": 65,
+              "question": "Calcule \\(\\frac{1}{3} \\times \\frac{3}{4}\\)",
+              "answers": [
+                {
+                  "text": "\\(\\frac{3}{12} = \\frac{1}{4}\\)",
+                  "correct": true,
+                  "feedback": "Oui ! \\(1 \\times 3 = 3\\) et \\(3 \\times 4 = 12\\), simplifie : \\(\\frac{1}{4}\\)"
+                },
+                {
+                  "text": "\\(\\frac{4}{7}\\)",
+                  "correct": false,
+                  "feedback": "Non, on multiplie, on n'additionne pas !"
+                },
+                {
+                  "text": "\\(\\frac{1}{12}\\)",
+                  "correct": false,
+                  "feedback": "Verifie le numerateur : 1 x 3 = 3, pas 1."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nextContentId": 16
+    },
+    {
+      "title": "Retest : Multiplication (variante)",
+      "type": "branching_question",
+      "question": "<p><strong>Retest</strong> : Calcule \\(\\frac{4}{9} \\times \\frac{3}{2}\\)</p>",
+      "alternatives": [
+        {
+          "text": "2/3",
+          "nextContentId": 17,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "\\(\\frac{12}{18} = \\frac{2}{3}\\). Tu as compris !",
+            "score": 70
+          }
+        },
+        {
+          "text": "12/18",
+          "nextContentId": 17,
+          "feedback": {
+            "title": "Presque !",
+            "subtitle": "Calcul correct mais il faut simplifier : \\(\\frac{12}{18} = \\frac{2}{3}\\)",
+            "score": 60
+          }
+        },
+        {
+          "text": "7/11",
+          "nextContentId": 18,
+          "feedback": {
+            "title": "Non",
+            "subtitle": "Tu as additionne au lieu de multiplier.",
+            "score": 30
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reussite remediation (mult)",
+      "type": "text",
+      "content": "<h2>C'est acquis !</h2><p>La multiplication de fractions n'a plus de secret pour toi.</p>",
+      "nextContentId": 14
+    },
+    {
+      "title": "Echec remediation (mult)",
+      "type": "text",
+      "content": "<h2>Persevere !</h2><p>La multiplication est l'operation la plus simple sur les fractions. Retiens :</p><p><strong>Numerateur x Numerateur / Denominateur x Denominateur</strong></p><p>Entraine-toi avec des exemples simples avant de passer a la suite.</p>",
+      "nextContentId": 19
+    },
+    {
+      "title": "Apres echec mult : continuer ?",
+      "type": "branching_question",
+      "question": "<p>Que veux-tu faire ?</p>",
+      "alternatives": [
+        {
+          "text": "Retour au menu",
+          "nextContentId": 1,
+          "feedback": {
+            "title": "Menu",
+            "subtitle": "Essaie une autre notion.",
+            "score": 0
+          }
+        },
+        {
+          "text": "Terminer",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "A bientot",
+            "subtitle": "Continue a t'entrainer !",
+            "score": 30
+          }
+        }
+      ]
+    },
+    {
+      "title": "Cours : Division",
+      "type": "course_presentation",
+      "slides": [
+        {
+          "content": "<h2>Diviser des fractions</h2><p><strong>Diviser par une fraction, c'est multiplier par son inverse !</strong></p><p>\\(\\frac{a}{b} \\div \\frac{c}{d} = \\frac{a}{b} \\times \\frac{d}{c}\\)</p><p>L'inverse de \\(\\frac{c}{d}\\) est \\(\\frac{d}{c}\\) (on retourne la fraction).</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Exemple</h2><p>\\(\\frac{3}{4} \\div \\frac{2}{5}\\)</p><p><strong>Etape 1</strong> : Inverse de \\(\\frac{2}{5}\\) = \\(\\frac{5}{2}\\)</p><p><strong>Etape 2</strong> : \\(\\frac{3}{4} \\times \\frac{5}{2} = \\frac{15}{8}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Diviser par un entier</h2><p>\\(\\frac{3}{5} \\div 2 = \\frac{3}{5} \\times \\frac{1}{2} = \\frac{3}{10}\\)</p><p><strong>Astuce</strong> : diviser par \\(n\\), c'est multiplier le denominateur par \\(n\\).</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Verifie</h2>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "x": 5,
+              "y": 30,
+              "width": 90,
+              "height": 65,
+              "question": "Calcule \\(\\frac{2}{3} \\div \\frac{4}{5}\\)",
+              "answers": [
+                {
+                  "text": "\\(\\frac{10}{12} = \\frac{5}{6}\\)",
+                  "correct": true,
+                  "feedback": "Oui ! \\(\\frac{2}{3} \\times \\frac{5}{4} = \\frac{10}{12} = \\frac{5}{6}\\)"
+                },
+                {
+                  "text": "\\(\\frac{8}{15}\\)",
+                  "correct": false,
+                  "feedback": "Tu as multiplie au lieu de diviser ! Il faut retourner la 2e fraction."
+                },
+                {
+                  "text": "\\(\\frac{6}{7}\\)",
+                  "correct": false,
+                  "feedback": "Non, revois la methode : diviser = multiplier par l'inverse."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nextContentId": 21
+    },
+    {
+      "title": "Test : Division",
+      "type": "branching_question",
+      "question": "<p><strong>Test</strong> : Calcule \\(\\frac{5}{6} \\div \\frac{2}{3}\\)</p>",
+      "alternatives": [
+        {
+          "text": "5/4",
+          "nextContentId": 22,
+          "feedback": {
+            "title": "Parfait !",
+            "subtitle": "\\(\\frac{5}{6} \\times \\frac{3}{2} = \\frac{15}{12} = \\frac{5}{4}\\)",
+            "score": 100
+          }
+        },
+        {
+          "text": "10/18",
+          "nextContentId": 24,
+          "feedback": {
+            "title": "Non",
+            "subtitle": "Tu as multiplie directement au lieu d'inverser la 2e fraction.",
+            "score": 0
+          }
+        },
+        {
+          "text": "15/12",
+          "nextContentId": 22,
+          "feedback": {
+            "title": "Presque !",
+            "subtitle": "Le calcul est bon mais il faut simplifier : \\(\\frac{15}{12} = \\frac{5}{4}\\)",
+            "score": 80
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reussite division",
+      "type": "text",
+      "content": "<h2>Division maitrisee !</h2><p><strong>Retiens</strong> : diviser par \\(\\frac{c}{d}\\), c'est multiplier par \\(\\frac{d}{c}\\). Toujours !</p>",
+      "nextContentId": 23
+    },
+    {
+      "title": "Continuer apres division ?",
+      "type": "branching_question",
+      "question": "<p>Division reussie ! Que veux-tu faire ?</p>",
+      "alternatives": [
+        {
+          "text": "Retour au menu",
+          "nextContentId": 1,
+          "feedback": {
+            "title": "Menu",
+            "subtitle": "Continue avec une autre notion.",
+            "score": 0
+          }
+        },
+        {
+          "text": "Terminer",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "Tu maitrises la division de fractions.",
+            "score": 80
+          }
+        }
+      ]
+    },
+    {
+      "title": "Remediation : Division",
+      "type": "course_presentation",
+      "slides": [
+        {
+          "content": "<h2>La regle d'or de la division</h2><p>Il n'y a qu'UNE chose a retenir :</p><p style='font-size:1.3em'><strong>Diviser par \\(\\frac{c}{d}\\) = Multiplier par \\(\\frac{d}{c}\\)</strong></p><p>On RETOURNE la deuxieme fraction, puis on MULTIPLIE.</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Exemple pas a pas</h2><p>\\(\\frac{3}{5} \\div \\frac{2}{7}\\)</p><p><strong>1.</strong> Retourner \\(\\frac{2}{7}\\) → \\(\\frac{7}{2}\\)</p><p><strong>2.</strong> Multiplier : \\(\\frac{3}{5} \\times \\frac{7}{2} = \\frac{21}{10}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Entraine-toi</h2>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "x": 5,
+              "y": 30,
+              "width": 90,
+              "height": 65,
+              "question": "Calcule \\(\\frac{1}{2} \\div \\frac{3}{4}\\)",
+              "answers": [
+                {
+                  "text": "\\(\\frac{4}{6} = \\frac{2}{3}\\)",
+                  "correct": true,
+                  "feedback": "Oui ! \\(\\frac{1}{2} \\times \\frac{4}{3} = \\frac{4}{6} = \\frac{2}{3}\\)"
+                },
+                {
+                  "text": "\\(\\frac{3}{8}\\)",
+                  "correct": false,
+                  "feedback": "Tu as multiplie au lieu de diviser (il faut retourner \\(\\frac{3}{4}\\))."
+                },
+                {
+                  "text": "\\(\\frac{1}{6}\\)",
+                  "correct": false,
+                  "feedback": "Verifie ton calcul apres avoir retourne la fraction."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nextContentId": 25
+    },
+    {
+      "title": "Retest : Division (variante)",
+      "type": "branching_question",
+      "question": "<p><strong>Retest</strong> : Calcule \\(\\frac{4}{5} \\div \\frac{2}{3}\\)</p>",
+      "alternatives": [
+        {
+          "text": "6/5",
+          "nextContentId": 26,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "\\(\\frac{4}{5} \\times \\frac{3}{2} = \\frac{12}{10} = \\frac{6}{5}\\). Parfait !",
+            "score": 70
+          }
+        },
+        {
+          "text": "12/10",
+          "nextContentId": 26,
+          "feedback": {
+            "title": "Presque !",
+            "subtitle": "Calcul correct, simplifie : \\(\\frac{12}{10} = \\frac{6}{5}\\)",
+            "score": 60
+          }
+        },
+        {
+          "text": "8/15",
+          "nextContentId": 27,
+          "feedback": {
+            "title": "Non",
+            "subtitle": "Tu as multiplie sans retourner la fraction.",
+            "score": 30
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reussite remediation (div)",
+      "type": "text",
+      "content": "<h2>C'est compris !</h2><p>La division de fractions n'a plus de secret.</p>",
+      "nextContentId": 23
+    },
+    {
+      "title": "Echec remediation (div)",
+      "type": "text",
+      "content": "<h2>Persevere !</h2><p>Retiens cette phrase : <strong>\"Diviser c'est multiplier par l'inverse\"</strong>.</p><p>Entraine-toi d'abord sur la multiplication, puis reviens a la division.</p>",
+      "nextContentId": 28
+    },
+    {
+      "title": "Apres echec div : continuer ?",
+      "type": "branching_question",
+      "question": "<p>Que veux-tu faire ?</p>",
+      "alternatives": [
+        {
+          "text": "Retour au menu",
+          "nextContentId": 1,
+          "feedback": {
+            "title": "Menu",
+            "subtitle": "Essaie la multiplication d'abord ?",
+            "score": 0
+          }
+        },
+        {
+          "text": "Terminer",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "A bientot",
+            "subtitle": "Continue a t'entrainer !",
+            "score": 30
+          }
+        }
+      ]
+    },
+    {
+      "title": "Cours : Enchainement d'operations",
+      "type": "course_presentation",
+      "slides": [
+        {
+          "content": "<h2>Enchainer les operations</h2><p>Quand un calcul melange plusieurs operations sur les fractions, on respecte les <strong>priorites operatoires</strong> :</p><ol><li>Parentheses d'abord</li><li>Multiplication et division (de gauche a droite)</li><li>Addition et soustraction (de gauche a droite)</li></ol>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Exemple</h2><p>\\(\\frac{1}{2} + \\frac{3}{4} \\times \\frac{2}{3}\\)</p><p><strong>1.</strong> D'abord la multiplication : \\(\\frac{3}{4} \\times \\frac{2}{3} = \\frac{6}{12} = \\frac{1}{2}\\)</p><p><strong>2.</strong> Puis l'addition : \\(\\frac{1}{2} + \\frac{1}{2} = 1\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Avec parentheses</h2><p>\\(\\left(\\frac{1}{3} + \\frac{1}{6}\\right) \\times \\frac{2}{5}\\)</p><p><strong>1.</strong> Parenthese : \\(\\frac{2}{6} + \\frac{1}{6} = \\frac{3}{6} = \\frac{1}{2}\\)</p><p><strong>2.</strong> Multiplication : \\(\\frac{1}{2} \\times \\frac{2}{5} = \\frac{2}{10} = \\frac{1}{5}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Verifie</h2>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "x": 5,
+              "y": 30,
+              "width": 90,
+              "height": 65,
+              "question": "Calcule \\(\\frac{2}{3} \\times \\frac{3}{4} + \\frac{1}{6}\\)",
+              "answers": [
+                {
+                  "text": "\\(\\frac{2}{3}\\)",
+                  "correct": true,
+                  "feedback": "Oui ! D'abord \\(\\frac{2}{3} \\times \\frac{3}{4} = \\frac{1}{2}\\), puis \\(\\frac{1}{2} + \\frac{1}{6} = \\frac{3}{6} + \\frac{1}{6} = \\frac{4}{6} = \\frac{2}{3}\\)"
+                },
+                {
+                  "text": "\\(\\frac{7}{12}\\)",
+                  "correct": false,
+                  "feedback": "Attention aux priorites ! La multiplication passe AVANT l'addition."
+                },
+                {
+                  "text": "\\(\\frac{1}{2}\\)",
+                  "correct": false,
+                  "feedback": "Tu as oublie d'ajouter \\(\\frac{1}{6}\\) apres la multiplication."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nextContentId": 30
+    },
+    {
+      "title": "Test : Enchainement",
+      "type": "branching_question",
+      "question": "<p><strong>Test</strong> : Calcule \\(\\frac{1}{2} \\div \\frac{1}{4} - \\frac{3}{2}\\)</p><p><em>Attention aux priorites !</em></p>",
+      "alternatives": [
+        {
+          "text": "1/2",
+          "nextContentId": 31,
+          "feedback": {
+            "title": "Excellent !",
+            "subtitle": "D'abord \\(\\frac{1}{2} \\div \\frac{1}{4} = \\frac{1}{2} \\times 4 = 2\\), puis \\(2 - \\frac{3}{2} = \\frac{4}{2} - \\frac{3}{2} = \\frac{1}{2}\\)",
+            "score": 100
+          }
+        },
+        {
+          "text": "2",
+          "nextContentId": 33,
+          "feedback": {
+            "title": "Pas tout a fait",
+            "subtitle": "Tu as bien fait la division mais tu as oublie la soustraction.",
+            "score": 40
+          }
+        },
+        {
+          "text": "-1",
+          "nextContentId": 33,
+          "feedback": {
+            "title": "Non",
+            "subtitle": "Verifie tes priorites et tes calculs.",
+            "score": 0
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reussite enchainement",
+      "type": "text",
+      "content": "<h2>Magistral !</h2><p>Tu maitrises les 4 operations ET leurs enchainements. Tu es un expert des fractions !</p>",
+      "nextContentId": 32
+    },
+    {
+      "title": "Continuer apres enchainement ?",
+      "type": "branching_question",
+      "question": "<p>Enchainement reussi ! Tu peux etre fier. Que veux-tu faire ?</p>",
+      "alternatives": [
+        {
+          "text": "Retour au menu (reviser une notion)",
+          "nextContentId": 1,
+          "feedback": {
+            "title": "Menu",
+            "subtitle": "Revise ce que tu veux.",
+            "score": 0
+          }
+        },
+        {
+          "text": "Terminer avec le score maximum !",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "Champion !",
+            "subtitle": "Tu maitrises toutes les operations sur les fractions.",
+            "score": 100
+          }
+        }
+      ]
+    },
+    {
+      "title": "Remediation : Enchainement",
+      "type": "course_presentation",
+      "slides": [
+        {
+          "content": "<h2>Les priorites, c'est la cle</h2><p>Dans un calcul avec fractions :</p><p><strong>1.</strong> Parentheses</p><p><strong>2.</strong> Multiplications et divisions (de gauche a droite)</p><p><strong>3.</strong> Additions et soustractions (de gauche a droite)</p><p>C'est la meme regle qu'avec les nombres entiers !</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Methode pas a pas</h2><p>\\(\\frac{1}{2} \\div \\frac{1}{4} - \\frac{3}{2}\\)</p><p><strong>Etape 1</strong> (division prioritaire) : \\(\\frac{1}{2} \\div \\frac{1}{4} = \\frac{1}{2} \\times 4 = 2 = \\frac{4}{2}\\)</p><p><strong>Etape 2</strong> (soustraction) : \\(\\frac{4}{2} - \\frac{3}{2} = \\frac{1}{2}\\)</p>",
+          "interactions": []
+        },
+        {
+          "content": "<h2>Entraine-toi</h2>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "x": 5,
+              "y": 30,
+              "width": 90,
+              "height": 65,
+              "question": "Calcule \\(\\frac{1}{3} + \\frac{2}{3} \\times \\frac{3}{4}\\)",
+              "answers": [
+                {
+                  "text": "\\(\\frac{5}{6}\\)",
+                  "correct": true,
+                  "feedback": "Oui ! D'abord \\(\\frac{2}{3} \\times \\frac{3}{4} = \\frac{1}{2}\\), puis \\(\\frac{1}{3} + \\frac{1}{2} = \\frac{2}{6} + \\frac{3}{6} = \\frac{5}{6}\\)"
+                },
+                {
+                  "text": "\\(\\frac{3}{4}\\)",
+                  "correct": false,
+                  "feedback": "Attention : la multiplication est prioritaire sur l'addition !"
+                },
+                {
+                  "text": "\\(1\\)",
+                  "correct": false,
+                  "feedback": "Verifie tes calculs etape par etape."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nextContentId": 34
+    },
+    {
+      "title": "Retest : Enchainement (variante)",
+      "type": "branching_question",
+      "question": "<p><strong>Retest</strong> : Calcule \\(\\left(\\frac{1}{2} + \\frac{1}{3}\\right) \\times \\frac{6}{5}\\)</p>",
+      "alternatives": [
+        {
+          "text": "1",
+          "nextContentId": 35,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "Parenthese : \\(\\frac{5}{6}\\), puis \\(\\frac{5}{6} \\times \\frac{6}{5} = 1\\). Magnifique !",
+            "score": 80
+          }
+        },
+        {
+          "text": "5/6",
+          "nextContentId": 35,
+          "feedback": {
+            "title": "Presque !",
+            "subtitle": "Tu as bien calcule la parenthese mais oublie la multiplication par \\(\\frac{6}{5}\\).",
+            "score": 50
+          }
+        },
+        {
+          "text": "11/30",
+          "nextContentId": 36,
+          "feedback": {
+            "title": "Non",
+            "subtitle": "Verifie les priorites : d'abord la parenthese, puis la multiplication.",
+            "score": 30
+          }
+        }
+      ]
+    },
+    {
+      "title": "Reussite remediation (enchainement)",
+      "type": "text",
+      "content": "<h2>Tu y es arrive !</h2><p>Les priorites operatoires avec les fractions, c'est acquis.</p>",
+      "nextContentId": 32
+    },
+    {
+      "title": "Echec remediation (enchainement)",
+      "type": "text",
+      "content": "<h2>Pas de panique</h2><p>L'enchainement des operations est la partie la plus difficile. Assure-toi de maitriser chaque operation individuellement avant de les combiner.</p><p><strong>Conseil</strong> : reviens travailler l'addition, la multiplication et la division separement.</p>",
+      "nextContentId": 37
+    },
+    {
+      "title": "Apres echec enchainement : continuer ?",
+      "type": "branching_question",
+      "question": "<p>Que veux-tu faire ?</p>",
+      "alternatives": [
+        {
+          "text": "Retour au menu (reviser les bases)",
+          "nextContentId": 1,
+          "feedback": {
+            "title": "Bonne idee !",
+            "subtitle": "Revois chaque operation avant d'enchainer.",
+            "score": 0
+          }
+        },
+        {
+          "text": "Terminer",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "A bientot",
+            "subtitle": "Reviens quand tu seras pret !",
+            "score": 30
+          }
+        }
+      ]
+    }
+  ],
+  "endScreens": [
+    {
+      "title": "Champion des fractions !",
+      "subtitle": "Tu maitrises toutes les operations. Felicitations !",
+      "score": 100
+    },
+    {
+      "title": "Tres bien !",
+      "subtitle": "Tu maitrises les operations de base. Continue a progresser.",
+      "score": 80
+    },
+    {
+      "title": "Bien !",
+      "subtitle": "Tu as fait des progres. Continue a t'entrainer.",
+      "score": 70
+    },
+    {
+      "title": "En progression",
+      "subtitle": "Revois les notions qui te posent probleme.",
+      "score": 50
+    },
+    {
+      "title": "A retravailler",
+      "subtitle": "Reprends le cours et entraine-toi regulierement.",
+      "score": 30
+    }
+  ]
+}

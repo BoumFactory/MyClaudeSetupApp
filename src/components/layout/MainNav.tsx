@@ -24,7 +24,10 @@ import {
   FileText,
   History,
   Settings,
-  AlignJustify
+  AlignJustify,
+  Wrench,
+  MessageSquareText,
+  Search
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useBackgroundAnimation } from "@/contexts/BackgroundAnimationContext"
@@ -83,63 +86,121 @@ export function MainNav() {
       title: "Tutoriels",
       href: "/claude-code/tutorials",
       icon: GraduationCap,
+      isMultiLevel: true,
       submenu: [
         {
-          title: "Claude Desktop",
-          href: "/claude-code/tutorials/claude-desktop-install",
-          icon: Monitor,
-          description: "Application graphique - idéal débutants",
-          highlighted: "emerald"
+          title: "Parcours pas à pas",
+          isCategory: true,
+          icon: GraduationCap,
+          description: "Formations interactives avec suivi de progression",
+          presentations: [
+            {
+              title: "Hub tutoriels",
+              href: "/claude-code/tutorials",
+              icon: BookOpen,
+              description: "Page d'aiguillage des parcours"
+            },
+            {
+              title: "Quick View",
+              href: "/claude-code/tutorials/parcours/quick-view",
+              icon: Shuffle,
+              description: "Aperçu rapide des fonctionnalités"
+            },
+            {
+              title: "Claude Desktop",
+              href: "/claude-code/tutorials/parcours/claude-desktop",
+              icon: Monitor,
+              description: "Application graphique — idéal débutants"
+            },
+            {
+              title: "Agents CLI",
+              href: "/claude-code/tutorials/parcours/claude-code",
+              icon: Terminal,
+              description: "Claude Code, Codex et Gemini CLI"
+            },
+            {
+              title: "Communiquer avec l'IA",
+              href: "/claude-code/tutorials/parcours/prompt-craft",
+              icon: MessageSquareText,
+              description: "Structurer ses prompts et invoquer les bons outils"
+            },
+            {
+              title: "Avancé",
+              href: "/claude-code/tutorials/parcours/avance",
+              icon: Sparkles,
+              description: "Architecture agents, skills et hooks"
+            },
+          ]
         },
         {
-          title: "Claude Code CLI",
-          href: "/claude-code/tutorials/claude-code-install",
-          icon: Terminal,
-          description: "Terminal - plus puissant et flexible",
-          highlighted: "cosmic"
+          title: "Logiciels",
+          isCategory: true,
+          icon: Download,
+          description: "Installation des outils nécessaires",
+          presentations: [
+            {
+              title: "Python",
+              href: "/claude-code/tutorials/python-install",
+              icon: Download,
+              description: "Installation de Python"
+            },
+            {
+              title: "Node.js",
+              href: "/claude-code/tutorials/nodejs-install",
+              icon: Download,
+              description: "Installation de Node.js"
+            },
+            {
+              title: "VS Code + MiKTeX",
+              href: "/claude-code/tutorials/vscode-miktex",
+              icon: Download,
+              description: "Éditeur et compilateur LaTeX"
+            },
+            {
+              title: "Claude Desktop",
+              href: "/claude-code/tutorials/claude-desktop-install",
+              icon: Monitor,
+              description: "Installation de l'application"
+            },
+            {
+              title: "Claude Code",
+              href: "/claude-code/tutorials/claude-code-install",
+              icon: Terminal,
+              description: "Installation du CLI"
+            },
+            {
+              title: "Config Claude Code",
+              href: "/claude-code/tutorials/claude-code-config",
+              icon: Settings,
+              description: "Configuration initiale"
+            },
+          ]
         },
         {
-          title: "Configuration de Claude Code",
-          href: "/claude-code/tutorials/claude-code-config",
-          icon: Settings,
-          description: "Configurer avec mes outils personnalisés"
-        },
-        {
-          title: "Utiliser ma configuration",
-          href: "/claude-code/tutorials/utilisation-config",
-          icon: Sparkles,
-          description: "Déclencher les commandes et skills",
-          highlighted: "nebula"
-        },
-        {
-          title: "Installation VS Code & MikTeX",
-          href: "/claude-code/tutorials/vscode-miktex",
-          icon: Code2,
-          description: "Éditeur et distribution LaTeX"
-        },
-        {
-          title: "Installation du package bfcours",
-          href: "/claude-code/tutorials/bfcours-setup",
-          icon: Package,
-          description: "Package personnalisé pour l'enseignement"
-        },
-        {
-          title: "Installation de Node.js",
-          href: "/claude-code/tutorials/nodejs-install",
-          icon: Terminal,
-          description: "Environnement JavaScript (optionnel)"
-        },
-        {
-          title: "Installation de Python x64",
-          href: "/claude-code/tutorials/python-install",
-          icon: Terminal,
-          description: "Environnement Python (optionnel)"
-        },
-        {
-          title: "Configuration de l'API Google",
-          href: "/claude-code/tutorials/google-api-setup",
-          icon: Image,
-          description: "Générez des images avec l'IA (optionnel)"
+          title: "API et services externes",
+          isCategory: true,
+          icon: Wrench,
+          description: "Configuration d'API et services tiers",
+          presentations: [
+            {
+              title: "API Google",
+              href: "/claude-code/tutorials/google-api-setup",
+              icon: Wrench,
+              description: "Configuration de l'API Google"
+            },
+            {
+              title: "Utilisation et config",
+              href: "/claude-code/tutorials/utilisation-config",
+              icon: Settings,
+              description: "Utilisation et configuration avancée"
+            },
+            {
+              title: "BFCours Setup",
+              href: "/claude-code/tutorials/bfcours-setup",
+              icon: Wrench,
+              description: "Configuration du package BFCours"
+            },
+          ]
         },
       ]
     },
@@ -305,6 +366,13 @@ export function MainNav() {
       featured: true, // Item mis en avant
       submenu: [
         {
+          title: "Packages IA",
+          href: "/claude-code/download-ai-packages",
+          icon: Package,
+          description: "Setups Claude Code prêts à l'emploi",
+          highlighted: "cosmic"
+        },
+        {
           title: "Tous les téléchargements",
           href: "/claude-code/downloads",
           icon: Download,
@@ -404,6 +472,16 @@ export function MainNav() {
                 </div>
               )}
             </button>
+
+            {/* Bouton recherche */}
+            <Link
+              href="/recherche"
+              className="group relative flex items-center gap-2 px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30 border border-transparent hover:border-cosmic-700/50 flex-shrink-0"
+              title="Rechercher"
+            >
+              <Search className="w-4 h-4 transition-transform group-hover:scale-110 duration-300" />
+              <span className="hidden lg:inline-block text-xs whitespace-nowrap">Recherche</span>
+            </Link>
           </div>
 
           {/* Navigation Desktop avec zone globale */}

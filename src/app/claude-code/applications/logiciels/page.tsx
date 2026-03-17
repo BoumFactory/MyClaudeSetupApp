@@ -1,8 +1,10 @@
-import { FileText, ExternalLink, Wrench, Settings, Sparkles, Github } from "lucide-react"
+import { FileText, ExternalLink, Wrench, Settings, Sparkles, Github, Download, BarChart3, BookOpen, Puzzle, Globe } from "lucide-react"
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { AddToCartButton } from "@/components/cart/AddToCartButton"
 import type { Metadata } from "next"
+import type { CartItem } from "@/types/cart-theme"
 
 export const metadata: Metadata = {
   title: "Logiciels Enseignants",
@@ -50,18 +52,135 @@ export default function LogicielsEnseignantsPage() {
               Vous y trouverez des outils pour la préparation de cours, la gestion de classe et l'automatisation
               de tâches pédagogiques.
             </p>
-            <Button asChild variant="nebula" size="lg" className="w-full sm:w-auto">
-              <a
-                href="https://github.com/Romain1099/BFtools.git"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="w-4 h-4 mr-2" />
-                Accéder au dépôt BFtools
-                <ExternalLink className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
+            <div className="flex flex-wrap gap-3">
+              <AddToCartButton
+                item={{ id: 'bftools-repo', name: 'BFtools (GitHub)', type: 'logiciel', path: 'logiciels-enseignant', description: 'Depot GitHub BFtools - outils enseignants' }}
+                variant="nebula"
+                className="w-full sm:w-auto"
+              />
+              <Button asChild variant="ghost" size="sm" className="w-full sm:w-auto">
+                <a
+                  href="https://github.com/Romain1099/BFtools.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="w-4 h-4 mr-1" />
+                  <span className="text-xs">Voir sur GitHub</span>
+                  <ExternalLink className="w-3 h-3 ml-1" />
+                </a>
+              </Button>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Outils prêts à l'emploi */}
+      <section className="space-y-6">
+        <div>
+          <h2 className="text-2xl font-bold">Outils prêts à l&apos;emploi</h2>
+          <p className="text-muted-foreground mt-1">
+            Applications web autonomes — ouvrez le fichier HTML dans votre navigateur, aucune installation requise.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {/* Loiseau Generator */}
+          <Card className="glass-card border-2 border-violet-500/20 hover:border-violet-500/40 transition-all duration-300 group">
+            <CardHeader>
+              <div className="flex items-start justify-between mb-2">
+                <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                  <FileText className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-400 font-medium">Word</span>
+              </div>
+              <CardTitle className="text-lg group-hover:text-violet-400 transition-colors">
+                Loiseau Generator
+              </CardTitle>
+              <CardDescription>
+                Générateur de documents Word avec mise en page professionnelle style &quot;Loiseau&quot;.
+                Créez des cours, exercices et évaluations avec un rendu imprimable soigné —
+                directement depuis votre navigateur.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex flex-wrap gap-1.5">
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400">Word .docx</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400">Mise en page pro</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400">Hors ligne</span>
+              </div>
+              <div className="flex gap-2">
+                <AddToCartButton
+                  item={{ id: 'loiseau-generator', name: 'Loiseau Generator', type: 'logiciel', path: 'logiciels-enseignant/debutant/loiseau-generator', description: 'Generateur Word mise en page pro' }}
+                  className="flex-1"
+                />
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Inclut une <Link href="/download/logiciels-enseignant/debutant/loiseau-generator/fiche_technique_ia_word.pdf" className="text-violet-400 hover:underline">fiche technique PDF</Link>
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* H5P / Moodle Generator */}
+          <Card className="glass-card border-2 border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 group">
+            <CardHeader>
+              <div className="flex items-start justify-between mb-2">
+                <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                  <Puzzle className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-medium">H5P</span>
+              </div>
+              <CardTitle className="text-lg group-hover:text-emerald-400 transition-colors">
+                Générateur H5P / Moodle
+              </CardTitle>
+              <CardDescription>
+                Créez des contenus interactifs H5P (QCM, glisser-déposer, textes à trous...)
+                exportables directement dans Moodle ou tout LMS compatible.
+                Interface visuelle, aucune connaissance technique requise.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex flex-wrap gap-1.5">
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400">H5P interactif</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400">Export Moodle</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400">Hors ligne</span>
+              </div>
+              <AddToCartButton
+                item={{ id: 'h5p-generator', name: 'Générateur H5P/Moodle', type: 'logiciel', path: 'logiciels-enseignant/debutant/h5p-moodle', description: 'Contenus interactifs H5P exportables Moodle' }}
+                className="w-full"
+              />
+            </CardContent>
+          </Card>
+
+          {/* Stats DataGouv */}
+          <Card className="glass-card border-2 border-amber-500/20 hover:border-amber-500/40 transition-all duration-300 group">
+            <CardHeader>
+              <div className="flex items-start justify-between mb-2">
+                <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+                  <BarChart3 className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 font-medium">Stats</span>
+              </div>
+              <CardTitle className="text-lg group-hover:text-amber-400 transition-colors">
+                Stats DataGouv
+              </CardTitle>
+              <CardDescription>
+                Générateur d&apos;exercices de statistiques à partir de données réelles
+                issues de data.gouv.fr. Donnez du sens aux maths avec des données
+                authentiques (démographie, environnement, économie...).
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex flex-wrap gap-1.5">
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400">Données réelles</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400">data.gouv.fr</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400">Hors ligne</span>
+              </div>
+              <AddToCartButton
+                item={{ id: 'stats-datagouv', name: 'Stats DataGouv', type: 'logiciel', path: 'logiciels-enseignant/debutant/stats-datagouv', description: 'Exercices stats avec donnees reelles data.gouv.fr' }}
+                className="w-full"
+              />
+            </CardContent>
+          </Card>
         </div>
       </section>
 

@@ -8,9 +8,9 @@
   <title>Édition LaTeX Éducatifs avec BFCours</title>
 
   <!-- Reveal.js Core -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="assets/reveal/reset.css">
+  <link rel="stylesheet" href="assets/reveal/reveal.css">
+  <link rel="stylesheet" href="assets/reveal/theme/white.css">
 
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -54,7 +54,7 @@
     .reveal h3 {
       font-size: 1.3em;
       color: var(--secondary-color);
-      margin-top: 0.8em;
+      margin-top: 0.4em;
     }
 
     .reveal ul, .reveal ol {
@@ -257,665 +257,440 @@
 
       <!-- SLIDE 1 : TITRE -->
       <section>
-        <h1><i class="fas fa-file-pdf icon"></i> Édition de Documents LaTeX Éducatifs avec BFCours</h1>
-        <p class="subtitle">Le système skill <code>bfcours-latex</code> + agent <code>latex-main-worker</code></p>
+        <h1><i class="fas fa-file-pdf icon"></i> Système LaTeX BFCours</h1>
+        <p class="subtitle">Pipeline en 3 skills : Créer &rarr; Rédiger &rarr; Compiler</p>
         <p class="fragment" style="margin-top: 2em;">
           <span class="tag">Formation GT IA & Maths</span>
-          <span class="tag success">LaTeX automatisé</span>
+          <span class="tag success">Scripté + IA</span>
           <span class="tag warning">Package bfcours</span>
         </p>
       </section>
 
-      <!-- SLIDE 2 : SOMMAIRE -->
+      <!-- SLIDE 2 : LE PIPELINE EN 3 PHASES - DIAGRAMME PRINCIPAL -->
       <section>
-        <h2>Au programme</h2>
-        <ol class="feature-list">
-          <li class="fragment" data-fragment-index="1"><i class="fas fa-book icon"></i> Qu'est-ce que BFCours ?</li>
-          <li class="fragment" data-fragment-index="2"><i class="fas fa-cogs icon"></i> Le skill bfcours-latex</li>
-          <li class="fragment" data-fragment-index="3"><i class="fas fa-robot icon"></i> L'agent latex-main-worker</li>
-          <li class="fragment" data-fragment-index="4"><i class="fas fa-route icon"></i> Workflow complet</li>
-          <li class="fragment" data-fragment-index="5"><i class="fas fa-cube icon"></i> Environnements didactiques</li>
-          <li class="fragment" data-fragment-index="6"><i class="fas fa-folder-tree icon"></i> Architecture de projet</li>
-          <li class="fragment" data-fragment-index="7"><i class="fas fa-server icon"></i> Serveurs MCP utilisés</li>
-          <li class="fragment" data-fragment-index="8"><i class="fas fa-lightbulb icon"></i> Conseils pratiques</li>
-        </ol>
+        <h2>Architecture : Pipeline en 3 phases</h2>
+
+        <div class="fragment" style="display:flex;flex-direction:column;gap:0;align-items:center;margin-top:0.4em;">
+
+          <!-- PHASE 1 : tex-document-creator -->
+          <div style="width:92%;display:flex;align-items:center;gap:0.8em;background:linear-gradient(135deg,#27ae60,#2ecc71);padding:0.6em 1em;border-radius:12px;box-shadow:0 4px 15px rgba(39,174,96,0.3);">
+            <div style="flex-shrink:0;background:rgba(255,255,255,0.2);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
+              <i class="fas fa-folder-plus" style="color:#fff;font-size:1.3em;"></i>
+            </div>
+            <div style="flex:1;color:#fff;">
+              <div style="font-weight:700;font-size:0.85em;">Phase 1 &mdash; tex-document-creator</div>
+              <div style="font-size:0.65em;opacity:0.9;">Templates &rarr; Script Python &rarr; Structure de projet</div>
+            </div>
+            <div style="flex-shrink:0;background:rgba(255,255,255,0.25);padding:0.3em 0.7em;border-radius:20px;font-size:0.6em;font-weight:700;color:#fff;">0 tokens</div>
+          </div>
+
+          <!-- Flèche 1 -->
+          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+            <div style="width:3px;height:12px;background:linear-gradient(to bottom,#2ecc71,#3498db);"></div>
+            <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid #3498db;"></div>
+          </div>
+
+          <!-- PHASE 2 : bfcours-latex -->
+          <div style="width:92%;display:flex;align-items:center;gap:0.8em;background:linear-gradient(135deg,#2c3e50,#34495e);padding:0.6em 1em;border-radius:12px;box-shadow:0 4px 15px rgba(44,62,80,0.4);border:2px solid #3498db;">
+            <div style="flex-shrink:0;background:rgba(52,152,219,0.3);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
+              <i class="fas fa-robot" style="color:#3498db;font-size:1.3em;"></i>
+            </div>
+            <div style="flex:1;color:#fff;">
+              <div style="font-weight:700;font-size:0.85em;">Phase 2 &mdash; bfcours-latex</div>
+              <div style="font-size:0.65em;opacity:0.9;">Conventions + MCP &rarr; Agent IA &rarr; Contenu LaTeX</div>
+            </div>
+            <div style="flex-shrink:0;background:rgba(52,152,219,0.4);padding:0.3em 0.7em;border-radius:20px;font-size:0.6em;font-weight:700;color:#fff;">IA autonome</div>
+          </div>
+
+          <!-- Flèche 2 -->
+          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+            <div style="width:3px;height:12px;background:linear-gradient(to bottom,#34495e,#f39c12);"></div>
+            <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid #f39c12;"></div>
+          </div>
+
+          <!-- PHASE 3 : tex-compiling-skill -->
+          <div style="width:92%;display:flex;align-items:center;gap:0.8em;background:linear-gradient(135deg,#f39c12,#e67e22);padding:0.6em 1em;border-radius:12px;box-shadow:0 4px 15px rgba(243,156,18,0.3);">
+            <div style="flex-shrink:0;background:rgba(255,255,255,0.2);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
+              <i class="fas fa-cogs" style="color:#fff;font-size:1.3em;"></i>
+            </div>
+            <div style="flex:1;color:#fff;">
+              <div style="font-weight:700;font-size:0.85em;">Phase 3 &mdash; tex-compiling-skill</div>
+              <div style="font-size:0.65em;opacity:0.9;">Profils &rarr; Script Python &rarr; PDF final</div>
+            </div>
+            <div style="flex-shrink:0;background:rgba(255,255,255,0.25);padding:0.3em 0.7em;border-radius:20px;font-size:0.6em;font-weight:700;color:#fff;">0 tokens</div>
+          </div>
+
+          <!-- Flèche finale -->
+          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+            <div style="width:3px;height:12px;background:linear-gradient(to bottom,#e67e22,#e74c3c);"></div>
+            <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid #e74c3c;"></div>
+          </div>
+
+          <!-- RÉSULTAT -->
+          <div style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:0.5em 1.5em;border-radius:12px;font-weight:700;font-size:0.85em;box-shadow:0 6px 20px rgba(231,76,60,0.4);border:2px solid #fff;">
+            <i class="fas fa-check-circle" style="margin-right:0.4em;"></i>PDF compilé, prêt à imprimer
+          </div>
+        </div>
+
+        <div class="fragment" style="margin-top:0.6em;font-size:0.7em;color:#7f8c8d;text-align:center;font-style:italic;">
+          Chaque skill est invocable séparément, ou enchaîné via <code>/createTex</code>
+        </div>
       </section>
 
-      <!-- SLIDE 3 : QU'EST-CE QUE BFCOURS ? -->
+      <!-- SLIDE 3 : PHASE 1 - TEX-DOCUMENT-CREATOR -->
       <section>
         <section>
-          <h2>Qu'est-ce que BFCours ?</h2>
+          <h2 style="border-color:#27ae60;"><i class="fas fa-folder-plus icon" style="color:#27ae60;"></i> Phase 1 : tex-document-creator</h2>
 
-          <div class="box fragment">
-            <p><strong>Un package LaTeX éducatif complet pour l'enseignement des mathématiques</strong></p>
-          </div>
+          <div style="display:flex;gap:1em;margin-top:1em;">
+            <!-- Colonne gauche : principe -->
+            <div style="flex:1;">
+              <div class="box fragment" style="border-color:#27ae60;">
+                <p><strong>100% scripté, 0 token IA</strong></p>
+                <p class="smaller">Scripts Python qui créent la structure de projet à partir de templates configurables.</p>
+              </div>
 
-          <ul class="feature-list">
-            <li class="fragment"><i class="fas fa-graduation-cap icon"></i> Conçu pour les niveaux <strong>6ème à Terminale</strong></li>
-            <li class="fragment"><i class="fas fa-palette icon"></i> Environnements didactiques <strong>pré-stylés</strong></li>
-            <li class="fragment"><i class="fas fa-print icon"></i> Optimisé pour <strong>l'impression professionnelle</strong></li>
-            <li class="fragment"><i class="fas fa-check-square icon"></i> Système de <strong>compétences intégré</strong></li>
-          </ul>
-
-          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les types de documents</p>
-        </section>
-
-        <section>
-          <h3>Types de documents supportés</h3>
-          <div class="grid-2">
-            <div class="box fragment" style="font-size: 0.85em;">
-              <h4><i class="fas fa-book-open icon"></i> Cours</h4>
-              <ul class="smaller">
-                <li>Définitions</li>
-                <li>Théorèmes & propriétés</li>
-                <li>Démonstrations</li>
-                <li>Exemples</li>
-              </ul>
+              <div class="example-box fragment" style="font-size:0.8em;margin-top:0.8em;">
+                <p><strong>Scripts disponibles :</strong></p>
+                <ul class="smaller">
+                  <li><code>create_document.py</code> &mdash; Crée le projet complet</li>
+                  <li><code>list_templates.py</code> &mdash; Liste les templates</li>
+                  <li><code>get_template_info.py</code> &mdash; Champs d'un template</li>
+                </ul>
+              </div>
             </div>
 
-            <div class="box fragment" style="font-size: 0.85em;">
-              <h4><i class="fas fa-pencil-alt icon"></i> Exercices</h4>
-              <ul class="smaller">
-                <li>Énoncés structurés</li>
-                <li>Corrections détaillées</li>
-                <li>Espaces réponses élèves</li>
-                <li>Barèmes automatiques</li>
-              </ul>
-            </div>
-          </div>
+            <!-- Colonne droite : templates -->
+            <div style="flex:1;" class="fragment">
+              <div class="warning-box" style="font-size:0.8em;">
+                <p><i class="fas fa-puzzle-piece icon"></i> <strong>Templates fournis :</strong></p>
+                <p class="smaller">Cours, Devoir, DM, Exercices, Activité, AP, Plan de séquence, Fiche récap...</p>
+              </div>
 
-          <div class="grid-2" style="margin-top: 1em;">
-            <div class="box fragment" style="font-size: 0.85em;">
-              <h4><i class="fas fa-clipboard-check icon"></i> Évaluations</h4>
-              <ul class="smaller">
-                <li>Contrôles</li>
-                <li>Devoirs maison</li>
-                <li>Calcul automatique de points</li>
-              </ul>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <h4><i class="fas fa-flask icon"></i> Activités</h4>
-              <ul class="smaller">
-                <li>Activités de découverte</li>
-                <li>Travaux dirigés</li>
-                <li>Fiches méthodes</li>
-              </ul>
+              <div class="box fragment" style="font-size:0.8em;margin-top:0.6em;border-color:#27ae60;">
+                <p><i class="fas fa-user-cog icon"></i> <strong>Vos propres templates ?</strong></p>
+                <p class="smaller">Demandez à l'agent comment intégrer vos modèles personnalisés au système.</p>
+              </div>
             </div>
           </div>
         </section>
-      </section>
-
-      <!-- SLIDE 4 : LE SKILL BFCOURS-LATEX -->
-      <section>
-        <section>
-          <h2>Le skill bfcours-latex</h2>
-
-          <div class="box fragment">
-            <p><strong>Expert spécialisé pour l'édition de contenu LaTeX pédagogique</strong></p>
-          </div>
-
-          <ul class="feature-list">
-            <li class="fragment"><i class="fas fa-edit icon"></i> <strong>Édition de contenu</strong> uniquement (pas de compilation)</li>
-            <li class="fragment"><i class="fas fa-book icon"></i> Maîtrise complète des <strong>conventions bfcours</strong></li>
-            <li class="fragment"><i class="fas fa-language icon"></i> Respect de l'<strong>encodage UTF-8</strong> (accents français)</li>
-            <li class="fragment"><i class="fas fa-puzzle-piece icon"></i> Intégration avec <strong>serveurs MCP</strong></li>
-          </ul>
-
-          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les responsabilités</p>
-        </section>
 
         <section>
-          <h3>Séparation des responsabilités</h3>
-          <div class="warning-box" style="font-size: 0.85em;">
-            <p><strong><i class="fas fa-exclamation-triangle icon"></i> IMPORTANT : Le skill se concentre UNIQUEMENT sur l'édition</strong></p>
-          </div>
+          <h3>Exemple : créer un cours</h3>
+          <pre><code class="language-bash" style="font-size:0.7em;">python .claude/skills/tex-document-creator/scripts/create_document.py \
+  --destination "C:/Cours/1ere_spe/Sequence-Derivees" \
+  --name "Cours_Derivees" \
+  --template "Cours" \
+  --field "niveau=$\mathbf{1^{\text{ère}}}$" \
+  --field "theme=Dérivation" \
+  --create-sections --claude-instructions</code></pre>
 
-          <table class="comparison-table fragment">
-            <thead>
-              <tr>
-                <th>Tâche</th>
-                <th>Responsable</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><i class="fas fa-file-alt icon"></i> Créer un nouveau projet</td>
-                <td><code>tex-document-creator</code></td>
-              </tr>
-              <tr>
-                <td><i class="fas fa-cogs icon"></i> Compiler un document</td>
-                <td><code>tex-compiling-skill</code></td>
-              </tr>
-              <tr>
-                <td><i class="fas fa-edit icon success"></i> <strong>Éditer le contenu</strong></td>
-                <td><strong><code>bfcours-latex</code></strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </section>
-
-      <!-- SLIDE 5 : CONVENTIONS CRITIQUES -->
-      <section>
-        <section>
-          <h2>Conventions critiques bfcours</h2>
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque catégorie</p>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-list icon"></i> Énumérations : tcbenumerate</h3>
-          <div class="warning-box" style="font-size: 0.85em;">
-            <p><strong>OBLIGATOIRE : Remplace <code>enumerate</code></strong></p>
-          </div>
-
-          <pre class="fragment"><code class="language-latex">\begin{tcbenumerate}[nbCol][nbStart][style]
-    \tcbitem Premier item
-    \tcbitem Deuxième item
-\end{tcbenumerate}</code></pre>
-
-          <ul class="smaller fragment">
-            <li><code>nbCol</code> : Nombre de colonnes (défaut : 1)</li>
-            <li><code>nbStart</code> : Début de numérotation (défaut : 1)</li>
-            <li><code>style</code> : <code>num</code> ou <code>alph</code></li>
-          </ul>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-table icon"></i> Tableaux : tcbtab</h3>
-          <div class="warning-box" style="font-size: 0.85em;">
-            <p><strong>OBLIGATOIRE : Remplace <code>tabular</code></strong></p>
-          </div>
-
-          <pre class="fragment"><code class="language-latex">\begin{tcbtab}[Titre du tableau]{l|c|r}
-Colonne 1 & Colonne 2 & Colonne 3\\
-\hline
-a & b & c\\
-\end{tcbtab}</code></pre>
-
-          <div class="warning-box fragment" style="font-size: 0.8em;">
-            <p><i class="fas fa-exclamation-circle icon"></i> <strong>Différence critique</strong> : La première ligne EST l'en-tête (pas de <code>\hline</code> initial)</p>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-font icon"></i> Formatage de texte</h3>
-          <table class="comparison-table fragment">
-            <thead>
-              <tr>
-                <th>Commande</th>
-                <th>Usage</th>
-                <th>Exemple</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>\acc{}</code></td>
-                <td>Accentuation (remplace <code>\textbf</code>)</td>
-                <td><code>\acc{Calculer}</code></td>
-              </tr>
-              <tr>
-                <td><code>\voc{}</code></td>
-                <td><strong>OBLIGATOIRE</strong> pour vocabulaire</td>
-                <td><code>\voc{dérivée}</code></td>
-              </tr>
-              <tr>
-                <td><code>\encadrer[]{}</code></td>
-                <td>Encadrer résultat important</td>
-                <td><code>\encadrer[red]{$f'(x)=2x$}</code></td>
-              </tr>
-              <tr>
-                <td><code>a$^{\circ}$</code></td>
-                <td>Degrés (format obligatoire)</td>
-                <td><code>90$^{\circ}$</code></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="warning-box fragment" style="font-size: 0.8em; margin-top: 1em;">
-            <p><i class="fas fa-exclamation-triangle icon"></i> <code>\encadrer</code> sort du mode maths : toujours ré-entrer avec <code>$...$</code></p>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-columns icon"></i> Mise en page : MultiColonnes</h3>
-
-          <pre class="fragment"><code class="language-latex">\begin{MultiColonnes}{nbCol}[options]
-    \tcbitem[raster multicolumn=2] Contenu large
-    \tcbitem Contenu colonne 1
-    \tcbitem Contenu colonne 2
-\end{MultiColonnes}</code></pre>
-
-          <div class="warning-box fragment" style="font-size: 0.8em;">
-            <p><i class="fas fa-exclamation-triangle icon"></i> <strong>CRITIQUE</strong> : Toujours laisser une ligne vide AVANT <code>\begin{MultiColonnes}</code></p>
+          <div class="fragment" style="margin-top:0.8em;display:flex;gap:1em;font-size:0.8em;">
+            <div class="example-box" style="flex:1;">
+              <p><strong>Résultat :</strong> Structure complète créée en &lt; 1 sec</p>
+              <p class="smaller">Fichier principal, enonce.tex, sections/, enonce_figures.tex, CLAUDE.md</p>
+            </div>
+            <div class="box" style="flex:0.6;border-color:#27ae60;">
+              <p><strong>Fiabilité : 100%</strong></p>
+              <p class="smaller">Résultat déterministe, décidé par l'utilisateur via les paramètres.</p>
+            </div>
           </div>
         </section>
       </section>
 
-      <!-- SLIDE 6 : ENVIRONNEMENTS DIDACTIQUES -->
+      <!-- SLIDE 4 : PHASE 2 - BFCOURS-LATEX -->
       <section>
         <section>
-          <h2>Environnements didactiques</h2>
+          <h2 style="border-color:#3498db;"><i class="fas fa-robot icon" style="color:#3498db;"></i> Phase 2 : bfcours-latex</h2>
 
-          <div class="box fragment">
-            <p><strong>Chaque type de contenu a son environnement dédié</strong></p>
+          <div class="box fragment" style="border-color:#3498db;">
+            <p><strong>Le coeur IA du système</strong> &mdash; Rédaction de contenu pédagogique en respectant les conventions bfcours</p>
           </div>
 
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque environnement</p>
-        </section>
-
-        <section>
-          <h3>Syntaxe générale</h3>
-          <pre class="fragment"><code class="language-latex">\begin{Envname}[Titre Court]
-contenu avec \acc{emphase} et \voc{vocabulaire}
-\end{Envname}</code></pre>
-
-          <div class="grid-2" style="margin-top: 1em;">
-            <div class="env-card fragment">
-              <h4><i class="fas fa-book icon"></i> Definition</h4>
-              <p class="smaller">Définitions mathématiques</p>
+          <!-- Diagramme compact des sources de l'agent -->
+          <div class="fragment" style="margin-top:0.8em;display:flex;gap:0.6em;align-items:stretch;">
+            <div style="flex:1;background:#e8f4f8;padding:0.6em;border-radius:8px;border-left:3px solid #3498db;font-size:0.75em;">
+              <p style="font-weight:700;color:#2c3e50;"><i class="fas fa-book"></i> Conventions</p>
+              <p class="smaller">Environnements didactiques, formatage, ligatures, espaces réponses</p>
             </div>
-
-            <div class="env-card fragment">
-              <h4><i class="fas fa-certificate icon"></i> Propriete</h4>
-              <p class="smaller">Propriétés et règles</p>
+            <div style="flex:1;background:#e8f5e9;padding:0.6em;border-radius:8px;border-left:3px solid #27ae60;font-size:0.75em;">
+              <p style="font-weight:700;color:#2c3e50;"><i class="fas fa-search"></i> latex-search</p>
+              <p class="smaller">Recherche dans les packages LaTeX installés (localtexmf inclus)</p>
             </div>
-
-            <div class="env-card fragment">
-              <h4><i class="fas fa-star icon"></i> Theoreme</h4>
-              <p class="smaller">Théorèmes importants</p>
+            <div style="flex:1;background:#fff3cd;padding:0.6em;border-radius:8px;border-left:3px solid #f39c12;font-size:0.75em;">
+              <p style="font-weight:700;color:#2c3e50;"><i class="fas fa-graduation-cap"></i> Compétences</p>
+              <p class="smaller">Programmes officiels de l'Éducation Nationale (6e &rarr; Tle)</p>
             </div>
+          </div>
 
-            <div class="env-card fragment">
-              <h4><i class="fas fa-microscope icon"></i> Demonstration</h4>
-              <p class="smaller">Démonstrations</p>
-            </div>
-
-            <div class="env-card fragment">
-              <h4><i class="fas fa-lightbulb icon"></i> Exemple</h4>
-              <p class="smaller">Exemples illustratifs</p>
-            </div>
-
-            <div class="env-card fragment">
-              <h4><i class="fas fa-comment icon"></i> Remarque</h4>
-              <p class="smaller">Remarques pédagogiques</p>
-            </div>
+          <div class="fragment" style="margin-top:0.6em;font-size:0.75em;color:#7f8c8d;text-align:center;">
+            L'agent s'inspire du code LaTeX existant sur votre machine pour produire des documents techniques fidèles.
           </div>
         </section>
 
         <section>
-          <h3><i class="fas fa-pencil-alt icon"></i> Environnement EXO (exercices)</h3>
-
-          <pre class="fragment"><code class="language-latex">\def\rdifficulty{1.5}  % Échelle 1 à 3
-\begin{EXO}{Titre Compétence}{code_competence}
-
-Énoncé avec instructions claires.
-\tcbitempoint{2}\acc{Calculer} la valeur...
-
-\exocorrection
-
-Solution suivant la structure de l'énoncé.
-\end{EXO}</code></pre>
-
-          <div class="example-box fragment" style="font-size: 0.8em;">
-            <p><strong>Attribution des points :</strong></p>
-            <ul class="smaller">
-              <li><strong>1 point</strong> : Action basique (calcul, rappel)</li>
-              <li><strong>2 points</strong> : Figure, tableau, production complexe</li>
-              <li><strong>5 points</strong> : Recherche (pas de cumul)</li>
-            </ul>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-edit icon"></i> Espaces réponses élèves</h3>
-
-          <div class="grid-2">
+          <h3>Conventions critiques (résumé)</h3>
+          <div class="grid-2" style="font-size:0.8em;">
             <div>
-              <h4 class="smaller">Ligne courte</h4>
-              <pre class="fragment"><code class="language-latex">\repsim[1.5cm]{contenu}</code></pre>
+              <div class="warning-box" style="font-size:0.9em;">
+                <p><i class="fas fa-ban icon"></i> <strong>Remplacements obligatoires</strong></p>
+                <ul class="smaller">
+                  <li><code>enumerate</code> &rarr; <code>tcbenumerate</code></li>
+                  <li><code>tabular</code> &rarr; <code>tcbtab</code></li>
+                  <li><code>\textbf</code> &rarr; <code>\acc{}</code></li>
+                </ul>
+              </div>
+              <div class="box fragment">
+                <p><strong>Environnements didactiques :</strong></p>
+                <p class="smaller">Definition, Propriete, Theoreme, Demonstration, Exemple, Remarque, EXO</p>
+              </div>
             </div>
-
             <div>
-              <h4 class="smaller">Ligne adaptative</h4>
-              <pre class="fragment"><code class="language-latex">\tcfillcrep{texte}</code></pre>
-            </div>
-          </div>
-
-          <div style="margin-top: 1em;">
-            <h4 class="smaller">Multiligne</h4>
-            <pre class="fragment"><code class="language-latex">\begin{crep}[extra lines=4]
-Contenu de réponse
-\end{crep}</code></pre>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 7 : L'AGENT LATEX-MAIN-WORKER -->
-      <section>
-        <section>
-          <h2>L'agent latex-main-worker</h2>
-
-          <div class="box fragment">
-            <p><strong>Expert autonome en création de contenu pédagogique LaTeX</strong></p>
-          </div>
-
-          <ul class="feature-list">
-            <li class="fragment"><i class="fas fa-brain icon"></i> <strong>Totalement autonome</strong> : de la lecture à la compilation</li>
-            <li class="fragment"><i class="fas fa-graduation-cap icon"></i> Expertise complète en <strong>conventions bfcours</strong></li>
-            <li class="fragment"><i class="fas fa-server icon"></i> Utilise les <strong>serveurs MCP</strong> (compétences, encoding)</li>
-            <li class="fragment"><i class="fas fa-check-circle icon"></i> Responsable de la <strong>compilation finale</strong></li>
-          </ul>
-
-          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir le workflow</p>
-        </section>
-
-        <section>
-          <h3>Objectif de l'agent</h3>
-          <div class="example-box">
-            <p style="font-size: 1.1em;"><i class="fas fa-bullseye icon"></i> <strong>Rendre un document qui compile et respecte la demande</strong></p>
-          </div>
-
-          <div class="grid-2" style="margin-top: 1em;">
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-edit icon"></i> <strong>Édition</strong></p>
-              <p class="smaller">Utilise le skill bfcours-latex pour l'édition de contenu</p>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-cogs icon"></i> <strong>Compilation</strong></p>
-              <p class="smaller">Gère la compilation et les corrections d'erreurs</p>
+              <div class="example-box">
+                <p><strong>Formatage clé :</strong></p>
+                <ul class="smaller">
+                  <li><code>\acc{Calculer}</code> pour les verbes d'action</li>
+                  <li><code>\voc{mot}</code> pour le vocabulaire (1re occurrence)</li>
+                  <li><code>\tcbitempoint{N}</code> pour l'attribution des points</li>
+                  <li><code>\exocorrection</code> &mdash; correction intégrée dans l'EXO</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
       </section>
 
-      <!-- SLIDE 8 : WORKFLOW COMPLET -->
+      <!-- SLIDE 5 : PHASE 3 - TEX-COMPILING-SKILL -->
+      <section>
+        <h2 style="border-color:#f39c12;"><i class="fas fa-cogs icon" style="color:#f39c12;"></i> Phase 3 : tex-compiling-skill</h2>
+
+        <div style="display:flex;gap:1em;margin-top:1em;">
+          <div style="flex:1;">
+            <div class="box fragment" style="border-color:#f39c12;">
+              <p><strong>100% scripté, 0 token IA</strong></p>
+              <p class="smaller">Scripts Python de compilation avec profils configurables et analyse d'erreurs automatique.</p>
+            </div>
+
+            <div class="fragment" style="margin-top:0.8em;">
+              <pre><code class="language-bash" style="font-size:0.75em;">python .claude/skills/tex-compiling-skill/scripts/quick_compile.py \
+  --file "Cours_Derivees.tex" --passes 2</code></pre>
+            </div>
+          </div>
+
+          <div style="flex:0.8;" class="fragment">
+            <div class="example-box" style="font-size:0.8em;">
+              <p><strong>Profils de compilation :</strong></p>
+              <ul class="smaller">
+                <li><strong>lualatex_reims</strong> (par défaut) &mdash; LuaLaTeX 1 passe</li>
+                <li><strong>simple</strong> &mdash; pdflatex 2 passes</li>
+                <li><strong>standard</strong> &mdash; pdflatex 3 passes</li>
+                <li><strong>complete</strong> &mdash; pdflatex 3 passes + biblio</li>
+              </ul>
+              <p class="smaller" style="margin-top:0.4em;font-style:italic;">L'agent sait choisir le bon profil selon le document.</p>
+            </div>
+          </div>
+        </div>
+        </section>
+        <section>
+          <div class="box" style="flex:1;border-color:#f39c12;">
+            <p><i class="fas fa-broom icon"></i> <strong>Nettoyage auto</strong> &mdash; supprime .aux, .log, .toc, etc.</p>
+          </div>
+          <div class="box" style="flex:1;border-color:#f39c12;">
+            <p><i class="fas fa-stethoscope icon"></i> <strong>Diagnostic JSON</strong> &mdash; erreurs avec n° de ligne + suggestions</p>
+          </div>
+      </section>
+
+      <!-- SLIDE 6 : OUTILS COMPLÉMENTAIRES -->
       <section>
         <section>
-          <h2>Workflow complet de l'agent</h2>
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque étape</p>
-        </section>
+          <h2><i class="fas fa-toolbox icon" style="color:#9b59b6;"></i> Skills tiers utilisés</h2>
 
-        <section>
-          <h3>Étapes 1-2 : Lecture</h3>
-          <div class="workflow-step fragment" style="font-size: 0.85em;">
-            <div class="step-number">0</div>
-            <div><strong>Lire le document</strong> : Comprendre la structure existante</div>
-          </div>
+          <!-- Diagramme des outils satellites -->
+          <div class="fragment" style="display:flex;gap:0.8em;margin-top:1.2em;align-items:stretch;">
 
-          <div class="workflow-step fragment" style="font-size: 0.85em;">
-            <div class="step-number">1</div>
-            <div><strong>Charger les connaissances</strong> : Lire les fichiers de référence bfcours</div>
-          </div>
+            <!-- latex-search-server -->
+            <div style="flex:1;background:linear-gradient(135deg,#f5f7fa,#e8ecf1);padding:0.8em;border-radius:10px;border:2px solid #3498db;font-size:0.75em;">
+              <div style="text-align:center;margin-bottom:0.4em;">
+                <i class="fas fa-search" style="font-size:1.8em;color:#3498db;"></i>
+              </div>
+              <p style="font-weight:700;text-align:center;color:#2c3e50;">latex-search</p>
+              <ul class="smaller" style="margin-top:0.4em;">
+                <li>Un skill de recherche dans les packages</li>
+                <li>Recherche floue /exacte de commandes LaTeX</li>
+                <li><strong>Inclut localtexmf</strong> (vos packages perso)</li>
+              </ul>
+              <div style="margin-top:0.5em;background:#e8f4f8;padding:0.3em;border-radius:4px;font-size:0.85em;text-align:center;">
+                L'agent peut apprendre à utiliser un package grâce à son code source.
+              </div>
+            </div>
 
-          <div class="example-box fragment" style="font-size: 0.8em;">
-            <p><strong>Fichiers lus :</strong></p>
-            <ul class="smaller">
-              <li><code>main-latex-knowledge.md</code> : Conventions essentielles</li>
-              <li><code>usecase/*</code> : Exemples professionnels réels</li>
-            </ul>
-          </div>
-        </section>
+            <!-- pdf2tikz -->
+            <div style="flex:1;background:linear-gradient(135deg,#fdf2f8,#f5e6f0);padding:0.8em;border-radius:10px;border:2px solid #9b59b6;font-size:0.75em;">
+              <div style="text-align:center;margin-bottom:0.4em;">
+                <i class="fas fa-vector-square" style="font-size:1.8em;color:#9b59b6;"></i>
+              </div>
+              <p style="font-weight:700;text-align:center;color:#2c3e50;">pdf2tikz</p>
+              <ul class="smaller" style="margin-top:0.4em;">
+                <li>Extraction vectorielle PDF &rarr; TikZ</li>
+                <li>Analyse de disposition (layout)</li>
+                <li><strong>Récupère les designs complexes</strong></li>
+              </ul>
+              <div style="margin-top:0.5em;background:#f5e6f0;padding:0.3em;border-radius:4px;font-size:0.85em;text-align:center;">
+                Toutes les informations nécessaires pour qu'un agent convertisse un document PDF existant en LaTeX
+              </div>
+            </div>
 
-        <section>
-          <h3>Étape 3 : Documentation</h3>
-          <div class="workflow-step fragment" style="font-size: 0.85em;">
-            <div class="step-number">2</div>
-            <div><strong>Lire les ressources</strong> : Si fournies par l'utilisateur</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.85em;">
-            <div class="step-number">3</div>
-            <div><strong>Utiliser les environnements</strong> : Appliquer les conventions bfcours</div>
-          </div>
-
-          <div class="box fragment" style="font-size: 0.8em;">
-            <p><i class="fas fa-info-circle icon"></i> L'agent sélectionne les exemples pertinents via <code>Grep</code></p>
-          </div>
-        </section>
-
-        <section>
-          <h3>Étapes 4-6 : Correction et compilation</h3>
-          <div class="workflow-step fragment" style="font-size: 0.85em;">
-            <div class="step-number">4</div>
-            <div><strong>Corriger l'encodage</strong> : Utiliser <code>encoding-fixer-server</code> (UTF-8)</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.85em;">
-            <div class="step-number">5</div>
-            <div><strong>Compiler</strong> : Via <code>quick_compile.py</code> (1 passe)</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.85em;">
-            <div class="step-number">6</div>
-            <div><strong>Corriger erreurs</strong> : Itération jusqu'à compilation réussie</div>
+            <!-- competences-server -->
+            <div style="flex:1;background:linear-gradient(135deg,#fef9e7,#fdebd0);padding:0.8em;border-radius:10px;border:2px solid #f39c12;font-size:0.75em;">
+              <div style="text-align:center;margin-bottom:0.4em;">
+                <i class="fas fa-graduation-cap" style="font-size:1.8em;color:#f39c12;"></i>
+              </div>
+              <p style="font-weight:700;text-align:center;color:#2c3e50;">Skill programmes-officiels</p>
+              <ul class="smaller" style="margin-top:0.4em;">
+                <li>Programmes officiels (BO)</li>
+                <li>Recherche par niveau et thème</li>
+                <li><strong>Analyse</strong> de couverture ou clarification.</li>
+              </ul>
+              <div style="margin-top:0.5em;background:#fef9e7;padding:0.3em;border-radius:4px;font-size:0.85em;text-align:center;">
+                Sourcing automatique des compétences avec preuve à l'appui.
+              </div>
+            </div>
           </div>
         </section>
 
         <section>
-          <h3>Étapes 7-8 : Validation finale</h3>
-          <div class="workflow-step fragment" style="font-size: 0.85em;">
-            <div class="step-number">7</div>
-            <div><strong>Analyser le PDF</strong> : Vérifier le rendu visuel via <code>pdf-analyzer-server</code></div>
-          </div>
+          <h3><i class="fas fa-vector-square icon" style="color:#9b59b6;"></i> pdf2tikz en détail</h3>
 
-          <div class="workflow-step fragment" style="font-size: 0.85em;">
-            <div class="step-number">8</div>
-            <div><strong>Vérifier les erreurs mathématiques</strong> : Détecter les erreurs invisibles dans le code</div>
-          </div>
+          <div style="display:flex;gap:1em;">
+            <div style="flex:1;">
+              <div class="box fragment" style="font-size:0.85em;border-color:#9b59b6;">
+                <p><strong>Cas d'usage :</strong> Vous avez un PDF avec des figures géométriques, des graphiques ou une mise en page complexe que vous voulez reproduire en LaTeX éditable.</p>
+              </div>
 
-          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
-            <p><i class="fas fa-check-circle icon success"></i> <strong>Résultat</strong> : Document compilé et validé !</p>
+              <div class="fragment" style="margin-top:0.6em;">
+                <pre><code class="language-bash" style="font-size:0.7em;"># Analyser la disposition d'un document
+python .claude/skills/pdf2tikz/scripts/layout_analyze.py doc.pdf
+
+# Extraire les figures en TikZ
+python .claude/skills/pdf2tikz/scripts/pdf2tikz.py doc.pdf --page 1 --svg-bridge</code></pre>
+              </div>
+            </div>
+
+            <div style="flex:0.7;" class="fragment">
+              <div class="example-box" style="font-size:0.75em;">
+                <p><strong>Détections automatiques :</strong></p>
+                <ul class="smaller">
+                  <li>Zones multi-colonnes &rarr; <code>MultiColonnes</code></li>
+                  <li>Tableaux &rarr; <code>tcbtab</code></li>
+                  <li>Graphiques &rarr; code TikZ</li>
+                  <li>Boîtes colorées &rarr; <code>tcolorbox</code></li>
+                  <li>Flèches d'annotation</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
       </section>
 
-      <!-- SLIDE 9 : ARCHITECTURE DE PROJET -->
+      <!-- SLIDE 7 : WORKFLOW UNIFIÉ /createTex -->
       <section>
-        <section>
-          <h2>Architecture de projet type</h2>
+        <h2><i class="fas fa-route icon"></i> Workflow unifié : <code>/latex</code></h2>
 
-          <div class="tree-structure">
+        <div class="box fragment" style="text-align:center;">
+          <p><strong>Une seule commande enchaîne les 3 phases automatiquement</strong></p>
+        </div>
+
+        <!-- Diagramme horizontal du workflow unifié -->
+        <div class="fragment" style="display:flex;align-items:center;gap:0;margin-top:1em;justify-content:center;">
+          <!-- Phase 1 -->
+          <div style="background:#27ae60;color:#fff;padding:0.5em 0.8em;border-radius:10px 0 0 10px;text-align:center;font-size:0.7em;">
+            <div style="font-weight:700;">pdf2tikz / programmes-officiels</div>
+            <div style="opacity:0.8;font-size:0.85em;">Se documenter &bull; Script &bull; 0 tokens</div>
+          </div>
+          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #27ae60;"></div>
+
+          <div style="width:8px;"></div>
+          <div style="background:#27ae60;color:#fff;padding:0.5em 0.8em;border-radius:10px 0 0 10px;text-align:center;font-size:0.7em;">
+            <div style="font-weight:700;">tex-document-creator</div>
+            <div style="opacity:0.8;font-size:0.85em;">Script &bull; 0 tokens</div>
+          </div>
+          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #27ae60;"></div>
+
+          <div style="width:8px;"></div>
+
+          <!-- Phase 2 -->
+          <div style="background:#2c3e50;color:#fff;padding:0.5em 0.8em;text-align:center;font-size:0.7em;border:2px solid #3498db;border-radius:4px;">
+            <div style="font-weight:700;">bfcours-latex</div>
+            <div style="opacity:0.8;font-size:0.85em;">IA &bull; Rédaction</div>
+          </div>
+          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #2c3e50;"></div>
+
+          <div style="width:8px;"></div>
+          </div>
+          <div class="fragment" style="display:flex;align-items:center;gap:0;margin-top:1em;justify-content:center;">
+          <!-- Phase 3 -->
+          <div style="background:#f39c12;color:#fff;padding:0.5em 0.8em;text-align:center;font-size:0.7em;border-radius:0;">
+            <div style="font-weight:700;">tex-compiling-skill</div>
+            <div style="opacity:0.8;font-size:0.85em;">Script &bull; 0 tokens</div>
+          </div>
+          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #f39c12;"></div>
+
+          <div style="width:8px;"></div>
+
+          <!-- Résultat -->
+          <div style="background:#e74c3c;color:#fff;padding:0.5em 0.8em;border-radius:0 10px 10px 0;text-align:center;font-size:0.7em;font-weight:700;">
+            <i class="fas fa-file-pdf"></i> PDF
+          </div>
+        </div>
+
+        <div class="grid-2 fragment" style="margin-top:1.2em;font-size:0.8em;">
+          <div class="box" style="border-color:#27ae60;">
+            <p><i class="fas fa-bolt icon" style="color:#27ae60;"></i> <strong>Phases scriptées (1 ; 2 & 4)</strong></p>
+            <p class="smaller">Résultat déterministe, fiabilité 100%. Les paramètres sont choisis par l'utilisateur ou déduits par l'agent.</p>
+          </div>
+          <div class="box" style="border-color:#3498db;">
+            <p><i class="fas fa-robot icon" style="color:#3498db;"></i> <strong>Phase IA (3)</strong></p>
+            <p class="smaller">L'agent rédige le contenu en s'appuyant sur les conventions, les exemples et le code LaTeX existant sur la machine.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 : ARCHITECTURE DE PROJET -->
+      <section>
+        <h2>Architecture de projet type</h2>
+
+        <div class="tree-structure" style="font-size:0.6em;">
 Nom_projet/
-├── Nom_projet.tex          # Fichier principal à compiler
-│                           # Nommé d'après le répertoire
-├── VERSION_Nom_projet.tex  # Variantes (ex: ELEVE_Nom_projet.tex)
-├── enonce.tex              # Contenu principal importé
-├── enonce_TOOLS.tex        # Si présent, prioritaire sur enonce.tex
-├── enonce_figures.tex      # Figures TikZ indexées
-├── images/                 # Répertoire d'images [optionnel]
-│   └── *.png
-├── sections/               # Pour gros documents [optionnel]
-│   └── fichiers.tex        # Contenu réparti
+├── Nom_projet.tex          # Fichier principal (compilé par Phase 3)
+├── ELEVE_Nom_projet.tex    # Variante sans corrections [optionnel]
+├── enonce.tex              # Contenu principal (rédigé par Phase 2)
+├── enonce_figures.tex      # Figures TikZ indexées par \tikzfig{CODE}
+├── CLAUDE.md               # Journal de bord pour les agents
+├── sections/               # Contenu réparti (cours longs)
+├── images/                 # Images PNG [optionnel]
 └── annexes/                # Scripts secondaires [optionnel]
-    └── scripts.py
+        </div>
+
+        <div class="grid-2 fragment" style="margin-top:0.8em;font-size:0.8em;">
+          <div class="box">
+            <p><i class="fas fa-folder-plus icon" style="color:#27ae60;"></i> <strong>Créé par Phase 1</strong></p>
+            <p class="smaller">Structure, fichier principal, fichiers d'entrée &mdash; tout est généré par le script.</p>
           </div>
-
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les détails</p>
-        </section>
-
-        <section>
-          <h3>Fichiers principaux</h3>
-          <div class="grid-2">
-            <div class="box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-file-pdf icon"></i> Nom_projet.tex</h4>
-              <ul class="smaller">
-                <li>Fichier maître à compiler</li>
-                <li>En-têtes LaTeX</li>
-                <li>Imports globaux</li>
-                <li>Tableau des compétences</li>
-              </ul>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-file-alt icon"></i> enonce.tex</h4>
-              <ul class="smaller">
-                <li>Contenu principal</li>
-                <li>Importé dans le fichier maître</li>
-                <li>Édité par l'agent</li>
-              </ul>
-            </div>
+          <div class="box">
+            <p><i class="fas fa-robot icon" style="color:#3498db;"></i> <strong>Rempli par Phase 2</strong></p>
+            <p class="smaller">L'agent écrit dans <code>enonce.tex</code> et <code>sections/</code>, jamais dans le fichier principal.</p>
           </div>
-
-          <div class="warning-box fragment" style="font-size: 0.8em; margin-top: 1em;">
-            <p><i class="fas fa-info-circle icon"></i> Si <code>enonce_TOOLS.tex</code> existe, il remplace <code>enonce.tex</code></p>
-          </div>
-        </section>
-
-        <section>
-          <h3>Fichiers optionnels</h3>
-          <div class="grid-2">
-            <div class="box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-draw-polygon icon"></i> enonce_figures.tex</h4>
-              <p class="smaller">Figures TikZ indexées :</p>
-              <pre class="smaller"><code>\tikzfig{ABCD}</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-folder icon"></i> sections/</h4>
-              <p class="smaller">Pour gros documents :</p>
-              <ul class="smaller">
-                <li>Contenu réparti</li>
-                <li>Organisation modulaire</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+        </div>
       </section>
 
-      <!-- SLIDE 10 : SERVEURS MCP -->
+      <!-- SLIDE 9 : ENVIRONNEMENTS DIDACTIQUES -->
       <section>
         <section>
-          <h2>Serveurs MCP utilisés</h2>
-
-          <div class="box fragment">
-            <p><strong>Les serveurs MCP fournissent des capacités spécialisées</strong></p>
-          </div>
-
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque serveur</p>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-check-square icon"></i> competences-server</h3>
-
-          <div class="box" style="font-size: 0.85em;">
-            <p><strong>Cadre de compétences de l'éducation française</strong></p>
-          </div>
-
-          <ul class="feature-list fragment">
-            <li><code>advanced_search(query, niveau)</code> : Chercher des compétences</li>
-            <li><code>get_competence_by_code(code)</code> : Détails d'une compétence</li>
-            <li><code>filter_by_niveau(niveau)</code> : Compétences par niveau</li>
-          </ul>
-
-          <div class="example-box fragment" style="font-size: 0.8em;">
-            <p><strong>Exemple :</strong></p>
-            <pre class="smaller"><code>advanced_search("vecteurs", "1ere_spe")</code></pre>
-            <p class="smaller">→ Retourne les codes de compétences pour les exercices</p>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-language icon"></i> encoding-fixer-server</h3>
-
-          <div class="warning-box" style="font-size: 0.85em;">
-            <p><strong><i class="fas fa-exclamation-triangle icon"></i> CRITIQUE pour les accents français</strong></p>
-          </div>
-
-          <ul class="feature-list fragment">
-            <li><code>fix_file_encoding(file_path, create_backup=false)</code></li>
-          </ul>
-
-          <div class="box fragment" style="font-size: 0.8em;">
-            <p><i class="fas fa-info-circle icon"></i> Toujours utilisé sans backup dans les workflows bfcours</p>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-search icon"></i> latex-search-server</h3>
-
-          <div class="box" style="font-size: 0.85em;">
-            <p><strong>Documentation LaTeX et packages</strong></p>
-          </div>
-
-          <ul class="feature-list fragment">
-            <li><code>search_fuzzy_command(query)</code> : Recherche floue</li>
-            <li><code>search_exact_command(command)</code> : Documentation exacte</li>
-            <li><code>search_in_specific_package(package, query)</code> : Package spécifique</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-file-pdf icon"></i> pdf-analyzer-server</h3>
-
-          <div class="box" style="font-size: 0.85em;">
-            <p><strong>Analyse du PDF compilé pour validation</strong></p>
-          </div>
-
-          <ul class="feature-list fragment">
-            <li>Vérifier les informations du fichier compilé</li>
-            <li>Détecter des erreurs visuelles</li>
-            <li>Valider le rendu final</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-cogs icon"></i> latex-compiler-server</h3>
-
-          <div class="box" style="font-size: 0.85em;">
-            <p><strong>Compilation automatisée via quick_compile.py</strong></p>
-          </div>
-
-          <pre class="fragment"><code class="language-bash">python .claude\skills\tex-compiling-skill\scripts\quick_compile.py \
-  --file "chemin\vers\mon_cours.tex" \
-  --passes 2</code></pre>
-
-          <div class="box fragment" style="font-size: 0.8em;">
-            <p><strong>Compilation avec LuaLaTeX</strong> : shell-escape, synctex, nonstopmode</p>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 11 : EXEMPLE CONCRET -->
-      <section>
-        <section>
-          <h2>Exemple concret : Créer un cours sur les dérivées</h2>
-
-          <div class="example-box fragment">
-            <p><strong>Commande utilisateur :</strong></p>
-            <p style="font-style: italic;">"Écris un cours sur les dérivées pour la 1ère spécialité"</p>
-          </div>
-
-          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir le processus</p>
-        </section>
-
-        <section>
-          <h3>Processus automatique (1/3)</h3>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">1</div>
-            <div>L'agent lit le projet et les connaissances bfcours</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">2</div>
-            <div>Cherche des exemples de cours dans <code>usecase/</code></div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">3</div>
-            <div>Crée le contenu avec environnements didactiques</div>
-          </div>
-        </section>
-
-        <section>
-          <h3>Processus automatique (2/3)</h3>
+          <h2>Environnements didactiques bfcours</h2>
 
           <pre class="fragment"><code class="language-latex">\begin{Definition}[Nombre dérivé]
 Soit $f$ une fonction définie sur un intervalle $I$
-et $a \in I$. On dit que $f$ est \voc{dérivable}
-en $a$ si le taux d'accroissement...
+et $a \in I$. On dit que $f$ est \voc{dérivable} en $a$ si...
 \end{Definition}
 
 \begin{Propriete}[Dérivées usuelles]
@@ -925,517 +700,84 @@ Les \acc{fonctions usuelles} admettent les dérivées suivantes :
     \tcbitem $f(x) = \sin(x) \Rightarrow f'(x) = \cos(x)$
 \end{tcbenumerate}
 \end{Propriete}</code></pre>
-        </section>
 
-        <section>
-          <h3>Processus automatique (3/3)</h3>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">4</div>
-            <div>Corrige l'encodage UTF-8 automatiquement</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">5</div>
-            <div>Compile le document (LuaLaTeX)</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">6</div>
-            <div>Vérifie le PDF généré</div>
-          </div>
-
-          <div class="example-box fragment" style="font-size: 0.85em; margin-top: 1em;">
-            <p><i class="fas fa-check-circle icon success"></i> <strong>Résultat</strong> : Cours compilé et prêt à imprimer !</p>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 12 : CONSEILS PRATIQUES -->
-      <section>
-        <section>
-          <h2><i class="fas fa-lightbulb icon"></i> Conseils pratiques</h2>
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque conseil</p>
-        </section>
-
-        <section>
-          <h3>Règles d'or</h3>
-          <div class="grid-2">
-            <div>
-              <div class="warning-box fragment" style="font-size: 0.75em;">
-                <p><i class="fas fa-ban icon"></i> <strong>NE JAMAIS</strong></p>
-                <ul class="smaller">
-                  <li><code>enumerate</code> → Utiliser <code>tcbenumerate</code></li>
-                  <li><code>tabular</code> → Utiliser <code>tcbtab</code></li>
-                  <li><code>\textbf</code> → Utiliser <code>\acc</code></li>
-                </ul>
-              </div>
-
-              <div class="warning-box fragment" style="font-size: 0.75em;">
-                <p><i class="fas fa-exclamation-triangle icon"></i> <strong>TOUJOURS</strong></p>
-                <ul class="smaller">
-                  <li>Utiliser <code>\voc{}</code> pour vocabulaire</li>
-                  <li>Corriger l'encodage après édition</li>
-                  <li>Ligne vide avant <code>\begin{MultiColonnes}</code></li>
-                </ul>
-              </div>
+          <div class="grid-2 fragment" style="margin-top:0.6em;font-size:0.75em;">
+            <div class="env-card">
+              <p><strong>Cours :</strong> Definition, Propriete, Theoreme, Demonstration, Exemple, Remarque, Notation</p>
             </div>
-
-            <div>
-              <div class="example-box fragment" style="font-size: 0.75em;">
-                <p><i class="fas fa-check icon"></i> <strong>BONNES PRATIQUES</strong></p>
-                <ul class="smaller">
-                  <li>Verbes d'action en <code>\acc{}</code></li>
-                  <li>Utiliser <code>tcbenumerate[2]</code> pour économiser l'espace</li>
-                  <li>Attribution réfléchie des points (<code>\tcbitempoint</code>)</li>
-                  <li>Tester la compilation fréquemment</li>
-                </ul>
-              </div>
+            <div class="env-card">
+              <p><strong>Exercices :</strong> EXO avec <code>\tcbitempoint{N}</code>, <code>\exocorrection</code>, codes compétences</p>
             </div>
           </div>
         </section>
 
         <section>
-          <h3>Ligatures françaises</h3>
-          <div class="warning-box" style="font-size: 0.85em;">
-            <p><strong><i class="fas fa-exclamation-triangle icon"></i> IMPORTANT : Toujours utiliser <code>\oe</code> au lieu de œ</strong></p>
-          </div>
+          <h3><i class="fas fa-pencil-alt icon"></i> Exercices : environnement EXO</h3>
 
-          <table class="comparison-table fragment">
-            <thead>
-              <tr>
-                <th>Incorrect (Unicode)</th>
-                <th>Correct (LaTeX)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>nœud</td>
-                <td><code>n\oe ud</code></td>
-              </tr>
-              <tr>
-                <td>cœur</td>
-                <td><code>c\oe ur</code></td>
-              </tr>
-              <tr>
-                <td>œil</td>
-                <td><code>\oe il</code></td>
-              </tr>
-              <tr>
-                <td>sœur</td>
-                <td><code>s\oe ur</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+          <pre class="fragment"><code class="language-latex">\def\rdifficulty{1.5}
+\begin{EXO}{Titre Compétence}{code_competence}
+\tcbitempoint{2}\acc{Calculer} la valeur de $f(3)$
+en donnant un \acc{résultat simplifié}.
 
-        <section>
-          <h3>Optimisation de l'espace</h3>
-          <div class="grid-2">
-            <div class="box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-columns icon"></i> MultiColonnes</h4>
-              <ul class="smaller">
-                <li>Utiliser <code>raster multicolumn</code> pour contenu large</li>
-                <li>Imbriquer pour organisation complexe</li>
-              </ul>
+\exocorrection
+
+$f(3) = 3^2 - 2 \times 3 + 1 = 4$
+\end{EXO}</code></pre>
+
+          <div class="grid-2 fragment" style="margin-top:0.6em;font-size:0.8em;">
+            <div class="warning-box">
+              <p><strong>Collège</strong> : espaces réponses <strong>systématiques</strong></p>
+              <p class="smaller"><code>\repsim</code>, <code>\tcfillcrep</code>, <code>\begin{crep}</code></p>
             </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-list-ol icon"></i> tcbenumerate</h4>
-              <ul class="smaller">
-                <li>Privilégier <code>[2]</code> colonnes</li>
-                <li>Reprendre numérotation avec <code>[nbCol][nbStart]</code></li>
-              </ul>
+            <div class="box">
+              <p><strong>Lycée</strong> : espaces réponses <strong>optionnels</strong></p>
+              <p class="smaller">Rédaction sur copie par défaut.</p>
             </div>
           </div>
         </section>
       </section>
 
-      <!-- SLIDE 13 : NIVEAUX SCOLAIRES -->
-      <section>
-        <h2>Niveaux scolaires supportés</h2>
-
-        <div class="grid-2">
-          <div class="box fragment" style="font-size: 0.85em;">
-            <h3 class="smaller"><i class="fas fa-school icon"></i> Collège</h3>
-            <table class="comparison-table">
-              <thead>
-                <tr>
-                  <th>Niveau</th>
-                  <th>Code LaTeX</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>6ème</td>
-                  <td><code>$\mathbf{6^{\text{ème}}}$</code></td>
-                </tr>
-                <tr>
-                  <td>5ème</td>
-                  <td><code>$\mathbf{5^{\text{ème}}}$</code></td>
-                </tr>
-                <tr>
-                  <td>4ème</td>
-                  <td><code>$\mathbf{4^{\text{ème}}}$</code></td>
-                </tr>
-                <tr>
-                  <td>3ème</td>
-                  <td><code>$\mathbf{3^{\text{ème}}}$</code></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="box fragment" style="font-size: 0.85em;">
-            <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> Lycée</h3>
-            <table class="comparison-table">
-              <thead>
-                <tr>
-                  <th>Niveau</th>
-                  <th>Code LaTeX</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2nde</td>
-                  <td><code>$\mathbf{2^{\text{nde}}}$</code></td>
-                </tr>
-                <tr>
-                  <td>1ère spé</td>
-                  <td><code>$\mathbf{1^{\text{ère}}}$</code></td>
-                </tr>
-                <tr>
-                  <td>Terminale</td>
-                  <td><code>$\mathbf{T^{\text{Le}}}$</code></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 14 : AVANTAGES DU SYSTÈME -->
-      <section>
-        <h2>Avantages du système bfcours</h2>
-
-        <div class="grid-2">
-          <div>
-            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Pour l'enseignant</h3>
-            <ul class="smaller fragment" data-fragment-index="1">
-              <li>Création rapide de ressources professionnelles</li>
-              <li>Cohérence visuelle garantie</li>
-              <li>Gestion automatique des compétences</li>
-              <li>Calcul automatique des barèmes</li>
-              <li>Correction automatique de l'encodage</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="fragment" data-fragment-index="2" style="color: var(--secondary-color);"><i class="fas fa-users icon"></i> Pour les élèves</h3>
-            <ul class="smaller fragment" data-fragment-index="2">
-              <li>Documents lisibles et aérés</li>
-              <li>Espaces de réponse adaptés</li>
-              <li>Navigation claire (table des matières)</li>
-              <li>Couleurs didactiques cohérentes</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
-          <p><strong><i class="fas fa-rocket icon"></i> Gain de temps considérable : focus sur la pédagogie, pas la mise en forme !</strong></p>
-        </div>
-      </section>
-
-      <!-- SLIDE 15 : RÉSULTATS TYPIQUES -->
-      <section>
-        <h2>Résultats typiques</h2>
-
-        <div class="grid-2">
-          <div class="fragment">
-            <h3><i class="fas fa-clock icon"></i> Temps de création</h3>
-            <ul class="smaller">
-              <li>Lecture des connaissances : <strong>30 sec</strong></li>
-              <li>Création du contenu : <strong>2-5 min</strong></li>
-              <li>Compilation + validation : <strong>1-2 min</strong></li>
-              <li>Corrections éventuelles : <strong>1-2 min</strong></li>
-            </ul>
-            <p class="success"><strong>Total : ~5-10 minutes</strong></p>
-          </div>
-
-          <div class="fragment">
-            <h3><i class="fas fa-trophy icon"></i> Qualité</h3>
-            <ul class="smaller">
-              <li>Document compilé et validé</li>
-              <li>Conventions bfcours respectées</li>
-              <li>Encodage UTF-8 correct</li>
-              <li>Prêt à imprimer</li>
-            </ul>
-            <p class="success"><strong>Zéro intervention manuelle !</strong></p>
-          </div>
-        </div>
-
-        <div class="box fragment" style="margin-top: 1em; font-size: 0.8em;">
-          <p><i class="fas fa-chart-line icon"></i> vs création manuelle : <strong>gain de temps de 70-80%</strong></p>
-        </div>
-      </section>
-
-      <!-- SLIDE 16 : RÉFÉRENCES -->
-      <section>
-        <section>
-          <h2><i class="fas fa-folder-open icon"></i> Structure des références</h2>
-
-          <div class="tree-structure">
-.claude/skills/bfcours-latex/
-├── SKILL.md                         # Instructions pour agents
-├── references/
-│   ├── bfcours-conventions.md       # Conventions complètes ⭐
-│   └── exemples-usecases.md         # Exemples professionnels
-.claude/agents/
-├── latex-main-worker.md             # Agent principal
-.claude/agents-data/
-├── main-latex-knowledge.md          # Connaissances essentielles
-└── usecase/                         # Exemples réels par type
-    ├── cours_partie1/               # Cours complexe atomique
-    ├── cours_partie2/               # Cours simple
-    ├── exercices_*/                 # Exercices par partie
-    ├── evaluation/                  # Contrôles
-    ├── devoir_maison/               # DM
-    └── td/                          # Travaux dirigés
-          </div>
-
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir comment les utiliser</p>
-        </section>
-
-        <section>
-          <h3>Comment utiliser les références</h3>
-
-          <div class="box fragment" style="font-size: 0.85em;">
-            <h4><i class="fas fa-book icon"></i> Lecture systématique</h4>
-            <p class="smaller"><code>bfcours-conventions.md</code> : Toujours lu en premier</p>
-          </div>
-
-          <div class="box fragment" style="font-size: 0.85em;">
-            <h4><i class="fas fa-search icon"></i> Recherche ciblée</h4>
-            <p class="smaller">Utiliser <code>Grep</code> dans <code>usecase/</code> pour trouver des patterns spécifiques</p>
-          </div>
-
-          <div class="example-box fragment" style="font-size: 0.8em;">
-            <p><strong>Exemple :</strong></p>
-            <pre class="smaller"><code>Grep "\\begin{EXO}" --path ".claude/agents-data/usecase/"</code></pre>
-            <p class="smaller">→ Trouve tous les exemples d'exercices</p>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 17 : CAS D'USAGE AVANCÉS -->
-      <section>
-        <section>
-          <h2>Cas d'usage avancés</h2>
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir des exemples</p>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-file-alt icon"></i> Édition d'un cours existant</h3>
-
-          <div class="example-box" style="font-size: 0.85em;">
-            <p><strong>Commande :</strong> "Ajoute une section sur les équations du second degré"</p>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">1</div>
-            <div>Lire la structure actuelle du cours</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">2</div>
-            <div>Charger bfcours-conventions.md</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">3</div>
-            <div>Écrire nouvelle section avec environnements Definition, Propriete, Exemple</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">4</div>
-            <div>Compiler et valider</div>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-pencil-alt icon"></i> Création rapide d'exercices</h3>
-
-          <div class="example-box" style="font-size: 0.85em;">
-            <p><strong>Commande :</strong> "Écris 5 exercices sur les vecteurs pour 1ère"</p>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">1</div>
-            <div>Chercher compétences avec <code>competences-server</code></div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">2</div>
-            <div>Créer 5 environnements EXO avec codes de compétences</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">3</div>
-            <div>Attribution des points avec <code>\tcbitempoint</code></div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">4</div>
-            <div>Corrections détaillées</div>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-clipboard-check icon"></i> Enrichir avec compétences</h3>
-
-          <div class="example-box" style="font-size: 0.85em;">
-            <p><strong>Commande :</strong> "Ajoute les codes de compétences aux exercices sur les vecteurs"</p>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">1</div>
-            <div>Lire le document existant</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">2</div>
-            <div><code>competences-server: advanced_search("vecteurs", "1ere_spe")</code></div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">3</div>
-            <div>Identifier les compétences pertinentes</div>
-          </div>
-
-          <div class="workflow-step fragment" style="font-size: 0.8em;">
-            <div class="step-number">4</div>
-            <div>Éditer chaque environnement EXO pour ajouter le code</div>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 18 : LIMITATIONS ET CONTRAINTES -->
-      <section>
-        <h2><i class="fas fa-exclamation-triangle icon warning"></i> Limitations et contraintes</h2>
-
-        <div class="grid-2">
-          <div>
-            <div class="warning-box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-cog icon"></i> Compilation</h4>
-              <ul class="smaller">
-                <li>Requiert <strong>LuaLaTeX</strong></li>
-                <li>shell-escape nécessaire</li>
-                <li>Peut prendre 10-30 sec</li>
-              </ul>
-            </div>
-
-            <div class="warning-box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-language icon"></i> Encodage</h4>
-              <ul class="smaller">
-                <li>Toujours UTF-8</li>
-                <li>Correction automatique requise</li>
-                <li>Accents français sensibles</li>
-              </ul>
-            </div>
-          </div>
-
-          <div>
-            <div class="warning-box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-folder icon"></i> Structure</h4>
-              <ul class="smaller">
-                <li>Architecture stricte à respecter</li>
-                <li>Nommage conventionnel</li>
-                <li>Ne pas modifier les fichiers maîtres manuellement</li>
-              </ul>
-            </div>
-
-            <div class="warning-box fragment" style="font-size: 0.8em;">
-              <h4><i class="fas fa-book icon"></i> Apprentissage</h4>
-              <ul class="smaller">
-                <li>Conventions nombreuses</li>
-                <li>Courbe d'apprentissage initiale</li>
-                <li>Agent automatise mais besoin de compréhension</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 19 : CONCLUSION -->
+      <!-- SLIDE 10 : CONCLUSION -->
       <section>
         <h2>En résumé</h2>
 
-        <div class="grid-2">
+        <!-- Mini-pipeline rappel -->
+        <div class="fragment" style="display:flex;align-items:center;justify-content:center;gap:0.3em;margin:0.8em 0;font-size:0.7em;">
+          <div style="background:#27ae60;color:#fff;padding:0.4em 0.8em;border-radius:8px;font-weight:600;">Créer <span style="opacity:0.7;">(script)</span></div>
+          <span style="color:#7f8c8d;font-size:1.3em;">&rarr;</span>
+          <div style="background:#2c3e50;color:#fff;padding:0.4em 0.8em;border-radius:8px;font-weight:600;border:2px solid #3498db;">Rédiger <span style="opacity:0.7;">(IA)</span></div>
+          <span style="color:#7f8c8d;font-size:1.3em;">&rarr;</span>
+          <div style="background:#f39c12;color:#fff;padding:0.4em 0.8em;border-radius:8px;font-weight:600;">Compiler <span style="opacity:0.7;">(script)</span></div>
+          <span style="color:#7f8c8d;font-size:1.3em;">&rarr;</span>
+          <div style="background:#e74c3c;color:#fff;padding:0.4em 0.8em;border-radius:8px;font-weight:700;">PDF</div>
+        </div>
+
+        <div class="grid-2 fragment" style="font-size:0.85em;">
           <div>
-            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Points forts</h3>
-            <ul class="smaller fragment" data-fragment-index="1">
-              <li>Création automatisée de ressources LaTeX</li>
-              <li>Qualité professionnelle garantie</li>
-              <li>Conventions bfcours respectées</li>
-              <li>Gestion des compétences intégrée</li>
-              <li>Compilation et validation automatiques</li>
-              <li>Gain de temps considérable</li>
-            </ul>
+            <div class="example-box">
+              <p><i class="fas fa-check-circle icon success"></i> <strong>Points forts</strong></p>
+              <ul class="smaller">
+                <li>Phases 1 & 3 scriptées &rarr; 0 token, 100% fiable</li>
+                <li>Phase 2 IA &rarr; conventions bfcours + packages LaTeX locaux</li>
+                <li>Compétences officielles intégrées automatiquement</li>
+                <li>pdf2tikz pour récupérer des designs PDF existants</li>
+              </ul>
+            </div>
           </div>
-
           <div>
-            <h3 class="fragment warning" data-fragment-index="2"><i class="fas fa-lightbulb icon"></i> À retenir</h3>
-            <ul class="smaller fragment" data-fragment-index="2">
-              <li>Toujours utiliser les environnements bfcours</li>
-              <li>Jamais <code>enumerate</code>, <code>tabular</code>, <code>\textbf</code></li>
-              <li>Toujours <code>\voc{}</code> pour vocabulaire</li>
-              <li>Encodage UTF-8 critique</li>
-              <li>L'agent gère tout automatiquement</li>
-            </ul>
+            <div class="warning-box">
+              <p><i class="fas fa-lightbulb icon"></i> <strong>À retenir</strong></p>
+              <ul class="smaller">
+                <li>Jamais <code>enumerate</code>, <code>tabular</code>, <code>\textbf</code></li>
+                <li>Toujours <code>\acc{}</code>, <code>\voc{}</code>, <code>tcbenumerate</code></li>
+                <li>Templates personnalisables (demandez à l'agent)</li>
+                <li>Profils de compilation adaptables</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
-          <p><strong><i class="fas fa-rocket icon"></i> Système complet pour créer des ressources pédagogiques LaTeX de qualité professionnelle en quelques minutes !</strong></p>
-        </div>
-      </section>
-
-      <!-- SLIDE 20 : RESSOURCES ET DOCUMENTATION -->
-      <section>
-        <h2><i class="fas fa-book icon"></i> Ressources</h2>
-
-        <div class="grid-2">
-          <div class="box" style="font-size: 0.8em;">
-            <h3 class="smaller">Skill bfcours-latex</h3>
-            <ul class="smaller">
-              <li><code>SKILL.md</code> - Instructions skill</li>
-              <li><code>bfcours-conventions.md</code> - Conventions complètes</li>
-              <li><code>exemples-usecases.md</code> - Exemples</li>
-            </ul>
-          </div>
-
-          <div class="box fragment" style="font-size: 0.8em;">
-            <h3 class="smaller">Agent latex-main-worker</h3>
-            <ul class="smaller">
-              <li><code>latex-main-worker.md</code> - Configuration agent</li>
-              <li><code>main-latex-knowledge.md</code> - Connaissances</li>
-              <li><code>usecase/</code> - Exemples réels professionnels</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="box fragment" style="font-size: 0.8em; margin-top: 1em;">
-          <h3 class="smaller">Serveurs MCP</h3>
-          <ul class="smaller">
-            <li><code>competences-server</code> - Cadre des compétences</li>
-            <li><code>encoding-fixer-server</code> - Correction UTF-8</li>
-            <li><code>latex-search-server</code> - Documentation LaTeX</li>
-            <li><code>latex-compiler-server</code> - Compilation automatisée</li>
-            <li><code>pdf-analyzer-server</code> - Validation PDF</li>
-          </ul>
-        </div>
-
-        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
+        <p class="fragment success" style="margin-top:1em;font-size:1.1em;text-align:center;">
           <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
         </p>
       </section>
@@ -1444,10 +786,10 @@ Les \acc{fonctions usuelles} admettent les dérivées suivantes :
   </div>
 
   <!-- Reveal.js Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+  <script src="assets/reveal/reveal.js"></script>
+  <script src="assets/reveal/plugin/notes/notes.js"></script>
+  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
+  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
 
   <script>
     Reveal.initialize({

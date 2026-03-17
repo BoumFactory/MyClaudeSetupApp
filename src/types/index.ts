@@ -15,6 +15,9 @@ export interface Presentation {
   path: string
   createdAt?: Date
   updatedAt?: Date
+  tags?: string[]
+  level?: string
+  configUpdatedAt?: string
 }
 
 /**

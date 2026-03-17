@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const revealsPath = path.join(process.cwd(), 'src', 'public', 'render', 'Reveals')
+    const revealsPath = path.join(process.cwd(), 'public', 'render', 'Reveals')
     const htmlPath = path.join(revealsPath, filename)
 
     // Vérifier que le fichier existe

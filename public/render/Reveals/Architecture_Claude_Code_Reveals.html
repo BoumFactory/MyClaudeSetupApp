@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Formation IA & Mathématiques">
-  <meta name="description" content="Architecture modulaire de Claude Code - Gestion optimale du contexte">
-  <title>Utiliser Claude Code pour l'enseignement</title>
+  <meta name="description" content="Architecture d'une configuration Agent IA CLI - Conception modulaire pour optimiser le contexte">
+  <title>Architecture d'une configuration Claude Code</title>
 
   <!-- Reveal.js Core -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="assets/reveal/reset.css">
+  <link rel="stylesheet" href="assets/reveal/reveal.css">
+  <link rel="stylesheet" href="assets/reveal/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Theme personnalisé académique -->
   <style>
@@ -21,6 +24,7 @@
       --success-color: #27ae60;
       --text-color: #34495e;
       --bg-light: #ecf0f1;
+      --warning-color: #f39c12;
     }
 
     .reveal {
@@ -50,7 +54,7 @@
     .reveal h3 {
       font-size: 1.3em;
       color: var(--secondary-color);
-      margin-top: 0.8em;
+      margin-top: 0.4em;
     }
 
     .reveal ul, .reveal ol {
@@ -75,6 +79,7 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       border-radius: 8px;
       margin: 1em 0;
+      width: 100%;
     }
 
     .reveal pre code {
@@ -82,7 +87,7 @@
       color: #abb2bf;
       padding: 1em;
       max-height: 500px;
-      font-size: 0.7em;
+      font-size: 0.65em;
       line-height: 1.4;
     }
 
@@ -102,6 +107,7 @@
       border-radius: 8px;
       border-left: 4px solid var(--secondary-color);
       margin: 1em 0;
+      text-align: left;
     }
 
     .reveal .warning-box {
@@ -110,6 +116,7 @@
       border-radius: 8px;
       border-left: 4px solid #ffc107;
       margin: 1em 0;
+      text-align: left;
     }
 
     .reveal .example-box {
@@ -118,6 +125,7 @@
       border-radius: 8px;
       border-left: 4px solid var(--success-color);
       margin: 1em 0;
+      text-align: left;
     }
 
     .reveal .grid-2 {
@@ -148,22 +156,11 @@
     }
 
     .reveal .architecture-list {
-      font-size: 0.85em;
+      font-size: 0.9em;
     }
 
     .reveal .architecture-list li {
-      margin: 0.6em 0;
-    }
-
-    .reveal .demo-tag {
-      display: inline-block;
-      background: var(--secondary-color);
-      color: white;
-      padding: 0.2em 0.8em;
-      border-radius: 20px;
-      font-size: 0.7em;
-      font-weight: 600;
-      margin-right: 0.5em;
+      margin: 0.7em 0;
     }
 
     .reveal .workflow-step {
@@ -187,224 +184,188 @@
       font-weight: 600;
       margin-right: 1em;
       flex-shrink: 0;
+      font-size: 0.9em;
     }
 
     .reveal .tree-structure {
       font-family: 'Consolas', monospace;
-      font-size: 0.7em;
+      font-size: 0.75em;
       text-align: left;
       background: #f8f9fa;
-      padding: 1em;
+      padding: 1.2em;
       border-radius: 8px;
       line-height: 1.6;
+      margin: 0.8em 0;
     }
+
+    .reveal .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5em;
+      text-align: left;
+    }
+
+    .reveal .two-columns h3 {
+      margin-top: 0;
+    }
+
+    .reveal .nav-hint {
+      font-size: 0.7em;
+      color: #7f8c8d;
+      margin-top: 1.5em;
+      font-style: italic;
+    }
+
+    .reveal .nav-hint.fragment {
+      animation: fadeInUp 0.5s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal .schema-box {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 1.5em;
+      border-radius: 8px;
+      border: 2px solid var(--secondary-color);
+      font-family: 'Courier New', monospace;
+      font-size: 0.85em;
+      text-align: left;
+      line-height: 1.8;
+    }
+
+    .reveal .config-code {
+      background: #282c34;
+      color: #61dafb;
+      padding: 1em;
+      border-radius: 6px;
+      font-family: 'Consolas', monospace;
+      font-size: 0.75em;
+      text-align: left;
+      overflow-x: auto;
+      max-height: 300px;
+    }
+
+    .reveal section a {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+
+    .reveal section a:hover {
+      color: var(--accent-color);
+    }
+
   </style>
 
   <!-- Highlight.js pour coloration syntaxique -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/reveal/plugin/highlight/monokai.css">
 </head>
 
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- SLIDE TITRE -->
+      <!-- ========== SLIDE TITRE ========== -->
       <section data-transition="zoom">
-        <h1>Utiliser Claude Code pour l'enseignement</h1>
-        <h3>Outils agentiques - Gestion du contexte</h3>
+        <h1>Architecture d'une configuration Agent IA CLI</h1>
+        <h3>Conception modulaire et optimisation du contexte</h3>
         <p style="margin-top: 2em; font-size: 0.8em;">
-          <em>Outils IA & Mathématiques</em><br>
-          Groupe de Travail IA / Maths - 2025-2026
+          <em>Groupe de Travail IA & Mathématiques</em><br>
+          2025-2026
         </p>
       </section>
 
-      <!-- PLAN -->
+      <!-- ========== SLIDE PLAN ========== -->
       <section data-transition="slide">
         <h2>Plan de la présentation</h2>
-        <ol style="font-size: 0.85em;">
-          <li class="fragment">Prérequis vocabulaire</li>
-          <li class="fragment">Architecture - Pourquoi tant de complexité ?</li>
-          <li class="fragment">Skills & MCP</li>
-          <li class="fragment">Commandes</li>
-          <li class="fragment">Agents</li>
-          <li class="fragment">Démonstration 1 : Retranscription PDF</li>
-          <li class="fragment">Démonstration 2 : Fiche technique</li>
-          <li class="fragment">Démonstration 3 : Beamer</li>
-          <li class="fragment">Démonstration 4 : Application interactive</li>
+        <ol style="font-size: 0.9em;">
+          <li class="fragment">Vue d'ensemble : schéma global</li>
+          <li class="fragment">Le fichier CLAUDE.md : méta-prompt permanent</li>
+          <li class="fragment">Les Agents : sous-processus spécialisés</li>
+          <li class="fragment">Les Skills : savoir-faire invocables</li>
+          <li class="fragment">Les Commandes : slash commands</li>
+          <li class="fragment">Les Hooks : automatisation</li>
+          <li class="fragment">Les Serveurs MCP : protocole standard</li>
+          <li class="fragment">Workflow concret : exemple complet</li>
+          <li class="fragment">Multi-plateforme et conclusion</li>
         </ol>
       </section>
 
-      <!-- ========== PARTIE 0 : PRÉREQUIS ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">📚</span> Partie 0</h2>
-        <h3>Prérequis vocabulaire</h3>
-      </section>
-
-      <section>
-        <h2>Concepts fondamentaux</h2>
-
-        <div class="fragment">
-          <h3><span class="icon">💬</span> Prompt</h3>
-          <p class="box">
-            Instruction textuelle envoyée à un modèle d'IA pour obtenir une réponse
-          </p>
-        </div>
-
-        <div class="fragment">
-          <h3><span class="icon">📖</span> Contexte</h3>
-          <p class="box">
-            Ensemble des informations disponibles pour le modèle lors de sa génération<br>
-            <span class="highlight">Ressource limitée et précieuse</span>
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Types de prompts</h2>
-
-        <div class="grid-2">
-          <div class="fragment">
-            <h3><span class="icon">👤</span> User Prompt</h3>
-            <div class="box">
-              <p><strong>Quoi ?</strong> Instruction de l'utilisateur</p>
-              <p><strong>Exemple :</strong> "Crée un cours sur les dérivées"</p>
-            </div>
-          </div>
-
-          <div class="fragment">
-            <h3><span class="icon">⚙️</span> System Prompt</h3>
-            <div class="box">
-              <p><strong>Quoi ?</strong> Définition du rôle et des capacités</p>
-              <p><strong>Exemple :</strong> "Tu es un expert LaTeX spécialisé en Beamer"</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment" style="margin-top: 1.5em;">
-          <p class="warning-box">
-            <strong>Important :</strong> Le system prompt définit <em>comment</em> l'agent travaille,<br>
-            le user prompt définit <em>ce qu'il</em> doit faire.
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Outils & Workflows</h2>
-
-        <div class="fragment">
-          <h3><span class="icon">🔧</span> Outil (Tool)</h3>
-          <p class="box">
-            Fonction externe appelable par l'agent (lecture, écriture, compilation, etc.)
-          </p>
-        </div>
-
-        <div class="fragment">
-          <h3><span class="icon">🔄</span> Workflow / Flux de travail</h3>
-          <p class="box">
-            Séquence d'opérations coordonnées pour accomplir une tâche complexe
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Agent</h2>
-
-        <div class="fragment">
-          <div class="box">
-            <h3 style="margin-top: 0;"><span class="icon">🤖</span> Définition</h3>
-            <p>
-              Instance d'IA avec un <span class="highlight">system prompt spécialisé</span>,<br>
-              des <span class="highlight">outils dédiés</span>, et une <span class="highlight">autonomie d'action</span><br>
-              dans son domaine de compétence.
-            </p>
-          </div>
-        </div>
-
-        <div class="fragment" style="margin-top: 1.5em;">
-          <p class="example-box">
-            <strong>Exemple :</strong> L'agent <code>beamer-worker</code> est un expert<br>
-            en création de présentations Beamer avec overlays et animations.
-          </p>
-        </div>
-      </section>
-
-      <!-- ========== PARTIE 1 : ARCHITECTURE ========== -->
+      <!-- ========== PARTIE 1 : VUE D'ENSEMBLE ========== -->
       <section data-transition="convex">
         <h2><span class="icon">🏗️</span> Partie 1</h2>
-        <h3>Architecture - Pourquoi tant de complexité ?</h3>
+        <h3>Vue d'ensemble</h3>
       </section>
 
       <section>
-        <h2>Le contexte : une ressource limitée</h2>
+        <h2>Schéma global : Agent → Résultat</h2>
 
-        <div class="fragment">
-          <p class="warning-box">
-            <strong>Problème :</strong> Les modèles d'IA ont une <span class="highlight">fenêtre de contexte limitée</span><br>
-            (ex: 200 000 tokens pour Claude Sonnet)
-          </p>
-        </div>
-
-        <div class="fragment" style="margin-top: 1.5em;">
-          <h3>Deux stratégies principales</h3>
-        </div>
-
-        <div class="grid-2">
-          <div class="fragment">
-            <div class="box">
-              <p><strong>1. Réduire</strong></p>
-              <p>Minimiser les informations chargées en contexte</p>
-            </div>
+        <div class="fragment" style="display:flex;flex-direction:column;align-items:center;gap:0;margin-top:0.3em;">
+          <!-- Node 1 -->
+          <div style="background:linear-gradient(135deg,#2c3e50,#34495e);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:700;font-size:0.95em;box-shadow:0 4px 15px rgba(44,62,80,0.4);text-align:center;">
+            <i class="fas fa-robot" style="margin-right:0.4em;"></i>Agent Principal (Claude Code)
           </div>
-
-          <div class="fragment">
-            <div class="box">
-              <p><strong>2. Déléguer</strong></p>
-              <p>Distribuer le travail à des agents spécialisés</p>
-            </div>
+          <!-- Arrow 1 -->
+          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#2c3e50,#3498db);"></div>
+            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">lit</span>
+            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #3498db;"></div>
+          </div>
+          <!-- Node 2 -->
+          <div style="background:linear-gradient(135deg,#3498db,#2980b9);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:600;font-size:0.85em;box-shadow:0 4px 12px rgba(52,152,219,0.35);text-align:center;">
+            <i class="fas fa-file-code" style="margin-right:0.4em;"></i>CLAUDE.md (Méta-prompt)
+          </div>
+          <!-- Arrow 2 -->
+          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#2980b9,#27ae60);"></div>
+            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">charge</span>
+            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #27ae60;"></div>
+          </div>
+          <!-- Node 3 -->
+          <div style="background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:600;font-size:0.85em;box-shadow:0 4px 12px rgba(39,174,96,0.35);text-align:center;">
+            <i class="fas fa-puzzle-piece" style="margin-right:0.4em;"></i>Skills + Instructions de Référence
+          </div>
+          <!-- Arrow 3 -->
+          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#2ecc71,#f39c12);"></div>
+            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">appelle</span>
+            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #f39c12;"></div>
+          </div>
+          <!-- Node 4 -->
+          <div style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:600;font-size:0.85em;box-shadow:0 4px 12px rgba(243,156,18,0.35);text-align:center;">
+            <i class="fas fa-terminal" style="margin-right:0.4em;"></i>Scripts Python / Node.js
+          </div>
+          <!-- Arrow 4 -->
+          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#e67e22,#9b59b6);"></div>
+            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">exécute</span>
+            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #9b59b6;"></div>
+          </div>
+          <!-- Node 5 -->
+          <div style="background:linear-gradient(135deg,#9b59b6,#8e44ad);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:600;font-size:0.85em;box-shadow:0 4px 12px rgba(155,89,182,0.35);text-align:center;">
+            <i class="fas fa-server" style="margin-right:0.4em;"></i>Serveurs MCP (connexions externes)
+          </div>
+          <!-- Arrow 5 -->
+          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#8e44ad,#e74c3c);"></div>
+            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">produit</span>
+            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #e74c3c;"></div>
+          </div>
+          <!-- Node 6 - Result -->
+          <div style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:0.6em 2em;border-radius:12px;font-weight:700;font-size:0.95em;box-shadow:0 6px 20px rgba(231,76,60,0.4);text-align:center;border:2px solid #fff;">
+            <i class="fas fa-check-circle" style="margin-right:0.4em;"></i>Résultat final (PDF, HTML, etc.)
           </div>
         </div>
-      </section>
 
-      <section>
-        <h2>Exemple concret</h2>
-
-        <div class="fragment">
-          <p class="warning-box">
-            <span class="icon">📄</span> Un fichier de <strong>10 000 lignes</strong> consomme environ<br>
-            <strong>50 000 tokens</strong> (soit 25% du contexte total)
-          </p>
-        </div>
-
-        <div class="fragment" style="margin-top: 1.5em;">
-          <h3>Solution : Architecture modulaire</h3>
-          <ul>
-            <li class="fragment">Ne charger que les <span class="highlight">sections nécessaires</span></li>
-            <li class="fragment">Utiliser des agents <span class="highlight">spécialisés</span> avec contexte réduit</li>
-            <li class="fragment">Activer les capacités <span class="highlight">à la demande</span></li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2>Survol de l'architecture .claude/</h2>
-
-        <div class="tree-structure fragment">
-<pre style="margin: 0; background: transparent; font-family: 'Consolas', monospace;">
-.claude/
-├── agents/           <span class="highlight">→ System prompts spécialisés</span>
-├── commands/         <span class="highlight">→ Instructions stockées (workflows)</span>
-├── mcp_servers/      <span class="highlight">→ Scripts et connexions externes</span>
-├── skills/           <span class="highlight">→ Capacités activables</span>
-├── agents-data/      → Données de référence pour agents
-└── datas/            → Templates et configurations
-</pre>
-        </div>
-
-        <div class="fragment" style="margin-top: 1em;">
-          <p class="box">
-            Chaque composant a un <span class="highlight">rôle précis</span> dans l'écosystème
-          </p>
-        </div>
+        <div class="nav-hint fragment">↓ Détails de chaque composant</div>
       </section>
 
       <section>
@@ -412,724 +373,540 @@
 
         <ul class="architecture-list">
           <li class="fragment">
-            <span class="icon">🎯</span> <strong>Adaptation aux limites :</strong><br>
-            Chaque agent a ses contraintes de contexte, on les contourne par spécialisation
+            <span class="icon">💾</span> <strong>Contexte limité :</strong> Les modèles IA ont une fenêtre de contexte finie
           </li>
 
           <li class="fragment">
-            <span class="icon">🧩</span> <strong>Modularité :</strong><br>
-            On active seulement ce dont on a besoin (ex: skill MathJax uniquement si formules)
+            <span class="icon">🧩</span> <strong>Modularité :</strong> Charger uniquement ce qui est nécessaire
           </li>
 
           <li class="fragment">
-            <span class="icon">📈</span> <strong>Extensibilité :</strong><br>
-            Ajout d'agents, skills, commandes selon les besoins évolutifs
+            <span class="icon">🎯</span> <strong>Spécialisation :</strong> Agents experts dans leur domaine
           </li>
 
           <li class="fragment">
-            <span class="icon">⚡</span> <strong>Performance :</strong><br>
-            Agents légers (Haiku) pour tâches simples, Sonnet pour tâches complexes
+            <span class="icon">♻️</span> <strong>Réutilisabilité :</strong> Skills utilisables par plusieurs agents
+          </li>
+
+          <li class="fragment">
+            <span class="icon">📈</span> <strong>Extensibilité :</strong> Ajouter des capacités selon les besoins
           </li>
         </ul>
       </section>
 
-      <!-- ========== PARTIE 2 : SKILLS & MCP ========== -->
+      <!-- ========== PARTIE 2 : CLAUDE.MD ========== -->
       <section data-transition="convex">
-        <h2><span class="icon">🛠️</span> Partie 2</h2>
-        <h3>Skills & MCP</h3>
+        <h2><span class="icon">📄</span> Partie 2</h2>
+        <h3>Le fichier CLAUDE.md</h3>
       </section>
 
       <section>
-        <h2><span class="icon">💡</span> Skills</h2>
+        <section>
+          <h2>CLAUDE.md : Méta-prompt permanent</h2>
 
-        <div class="fragment">
-          <p class="box">
-            <strong>Définition :</strong> Capacités activables par les agents pour étendre leurs fonctionnalités
-          </p>
-        </div>
-
-        <div class="fragment" style="margin-top: 1em;">
-          <h3>Caractéristiques</h3>
-          <ul>
-            <li class="fragment">Peuvent inclure des <span class="highlight">scripts Python/Node.js</span></li>
-            <li class="fragment">Gestion fine du contexte par <span class="highlight">activation conditionnelle</span></li>
-            <li class="fragment">Réutilisables par plusieurs agents</li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2>Exemples de Skills</h2>
-
-        <div class="grid-2">
-          <div class="fragment">
-            <div class="example-box">
-              <p><strong>beamer-presentation</strong></p>
-              <p style="font-size: 0.8em;">Création de diaporamas avec overlays et animations LaTeX</p>
-            </div>
+          <div class="box fragment">
+            <p><strong>Définition :</strong> Fichier texte qui définit le <span class="highlight">rôle global</span>, <span class="highlight">l'expertise</span> et <span class="highlight">les règles d'exécution</span> de l'agent</p>
           </div>
 
-          <div class="fragment">
-            <div class="example-box">
-              <p><strong>tex-compiling-skill</strong></p>
-              <p style="font-size: 0.8em;">Compilation LaTeX avec gestion d'erreurs</p>
-            </div>
+          <div class="fragment" style="margin-top: 1.5em;">
+            <h3>Localisation</h3>
+            <p style="font-family: 'Consolas', monospace; font-size: 0.9em;">
+              <code>./CLAUDE.md</code> (racine du projet)
+            </p>
           </div>
 
-          <div class="fragment">
-            <div class="example-box">
-              <p><strong>pdf</strong></p>
-              <p style="font-size: 0.8em;">Extraction et analyse de documents PDF</p>
-            </div>
-          </div>
+          <div class="nav-hint fragment">↓ Structure type d'un CLAUDE.md</div>
+        </section>
 
-          <div class="fragment">
-            <div class="example-box">
-              <p><strong>educational-app-builder</strong></p>
-              <p style="font-size: 0.8em;">Génération d'applications web éducatives</p>
-            </div>
-          </div>
-        </div>
+        <section>
+          <h2>Structure d'un CLAUDE.md</h2>
 
-        <div class="fragment" style="margin-top: 1.5em;">
-          <p class="box">
-            <strong>Principe :</strong> Un skill n'est chargé en contexte que <span class="highlight">si nécessaire</span>
-          </p>
-        </div>
-      </section>
+          <div class="tree-structure">
+<pre># MyProject Agent
 
-      <section>
-        <h2><span class="icon">🔌</span> MCP (Model Context Protocol)</h2>
-
-        <div class="fragment">
-          <p class="box">
-            <strong>Définition :</strong> Scripts appelables fournissant des outils supplémentaires<br>
-            et connexions à l'écosystème externe
-          </p>
-        </div>
-
-        <div class="fragment" style="margin-top: 1em;">
-          <h3>Caractéristiques</h3>
-          <ul>
-            <li class="fragment">Serveurs dédiés avec API standardisée</li>
-            <li class="fragment">Isolation des dépendances (environnements virtuels)</li>
-            <li class="fragment">Outils exposés aux agents via protocole MCP</li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2>Exemples de serveurs MCP</h2>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">1</div>
-            <div>
-              <strong>latex-compiler-server</strong><br>
-              <span style="font-size: 0.8em;">Compilation LaTeX avec détection d'erreurs avancée</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">2</div>
-            <div>
-              <strong>competences-server</strong><br>
-              <span style="font-size: 0.8em;">Accès à la base de compétences du programme scolaire</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">3</div>
-            <div>
-              <strong>encoding-fixer-server</strong><br>
-              <span style="font-size: 0.8em;">Correction automatique des problèmes d'encodage</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Skills vs MCP</h2>
-
-        <div class="grid-2">
-          <div class="fragment">
-            <h3><span class="icon">💡</span> Skills</h3>
-            <div class="box">
-              <ul style="font-size: 0.8em;">
-                <li>Capacités <strong>internes</strong></li>
-                <li>Documentation + workflows</li>
-                <li>Chargés en contexte si activés</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="fragment">
-            <h3><span class="icon">🔌</span> MCP</h3>
-            <div class="box">
-              <ul style="font-size: 0.8em;">
-                <li>Outils <strong>externes</strong></li>
-                <li>Scripts Python/Node.js autonomes</li>
-                <li>Appelés via protocole standardisé</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment" style="margin-top: 1.5em;">
-          <p class="example-box">
-            <strong>Complémentarité :</strong> Un skill peut utiliser un serveur MCP pour des opérations complexes
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>🔄 Meta-création : Skills et Commandes générateurs</h2>
-
-        <div class="fragment">
-          <p class="box">
-            <strong>Système auto-extensible :</strong> L'architecture inclut des outils<br>
-            permettant de créer de nouveaux composants
-          </p>
-        </div>
-
-        <div class="fragment" style="margin-top: 1em;">
-          <h3>Outils disponibles</h3>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">📝</div>
-            <div>
-              <strong>Skill <code>skill-creator</code></strong><br>
-              <span style="font-size: 0.8em;">Guide pour créer de nouveaux skills personnalisés</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">⚙️</div>
-            <div>
-              <strong>Commandes de création</strong><br>
-              <span style="font-size: 0.8em;">Workflows pour générer agents, commandes et serveurs MCP</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment" style="margin-top: 1.5em;">
-          <p class="example-box">
-            <span class="icon">🚀</span> <strong>Extensibilité infinie :</strong> Créez vos propres outils pour répondre à vos besoins spécifiques !
-          </p>
-        </div>
-      </section>
-
-      <!-- ========== PARTIE 3 : COMMANDES ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">⚡</span> Partie 3</h2>
-        <h3>Commandes</h3>
-      </section>
-
-      <section>
-        <h2>Qu'est-ce qu'une commande ?</h2>
-
-        <div class="fragment">
-          <p class="box">
-            <strong>Définition :</strong> Instructions détaillées stockées pour tâches finales bien structurées<br>
-            Correspondent aux <span class="highlight">user prompts standardisés</span>
-          </p>
-        </div>
-
-        <div class="fragment" style="margin-top: 1em;">
-          <h3>Format</h3>
-          <p style="font-size: 0.9em;">
-            <code>/commandeName</code> → Exécute un workflow prédéfini
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Caractéristiques des commandes</h2>
-
-        <ul>
-          <li class="fragment">
-            <span class="icon">📋</span> <strong>Réutilisables :</strong> Une fois définie, utilisable à l'infini
-          </li>
-
-          <li class="fragment">
-            <span class="icon">🎯</span> <strong>Cohérentes :</strong> Garantit un résultat standardisé
-          </li>
-
-          <li class="fragment">
-            <span class="icon">🔄</span> <strong>Workflows intégrés :</strong> Orchestrent plusieurs agents/skills
-          </li>
-
-          <li class="fragment">
-            <span class="icon">⚡</span> <strong>Gain de temps :</strong> Évite de répéter des instructions complexes
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Exemple : /createBeamer</h2>
-
-        <div class="fragment">
-          <p style="font-size: 0.85em;">Workflow complet automatisé :</p>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">1</div>
-            <div>Analyse du contenu source (cours, notes, PDF...)</div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">2</div>
-            <div>Structuration en sections et slides</div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">3</div>
-            <div>Génération du code LaTeX Beamer avec overlays</div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">4</div>
-            <div>Compilation et vérification des erreurs</div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">5</div>
-            <div>Rapport final avec chemin du PDF généré</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ========== PARTIE 4 : AGENTS ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">🤖</span> Partie 4</h2>
-        <h3>Agents</h3>
-      </section>
-
-      <section>
-        <h2>Agents : les experts spécialisés</h2>
-
-        <div class="fragment">
-          <p class="box">
-            <strong>Définition :</strong> System prompts activables par Claude Code<br>
-            Experts autonomes sur un sujet donné
-          </p>
-        </div>
-
-        <div class="fragment" style="margin-top: 1em;">
-          <h3>Avantages</h3>
-          <ul>
-            <li class="fragment">Utilisation de <span class="highlight">modèles légers</span> (ex: Haiku) pour tâches simples</li>
-            <li class="fragment"><span class="highlight">Autonomie</span> dans leur domaine de spécialisation</li>
-            <li class="fragment">Contexte réduit et ciblé</li>
-            <li class="fragment"><span class="highlight">Contexte isolé</span> : n'influe pas sur l'agent principal</li>
-            <li class="fragment">Communication <span class="highlight">unidirectionnelle</span> : rapport final à l'agent principal uniquement</li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2>Exemples d'agents</h2>
-
-        <div class="grid-2">
-          <div class="fragment">
-            <div class="box">
-              <p><strong>latex-main-worker</strong></p>
-              <p style="font-size: 0.8em;">Expert en création de documents LaTeX structurés</p>
-            </div>
-          </div>
-
-          <div class="fragment">
-            <div class="box">
-              <p><strong>beamer-worker</strong></p>
-              <p style="font-size: 0.8em;">Spécialiste des présentations Beamer</p>
-            </div>
-          </div>
-
-          <div class="fragment">
-            <div class="box">
-              <p><strong>reveals-creator</strong></p>
-              <p style="font-size: 0.8em;">Expert en présentations reveal.js</p>
-            </div>
-          </div>
-
-          <div class="fragment">
-            <div class="box">
-              <p><strong>debug-tex-log</strong></p>
-              <p style="font-size: 0.8em;">Analyste d'erreurs de compilation LaTeX</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Architecture des agents</h2>
-
-        <div class="fragment">
-          <pre><code class="language-markdown">## Rôle
-
-Tu es un expert en [DOMAINE SPÉCIALISÉ]
+## Rôle
+Tu es un expert en [DOMAINE]
 
 ## Expertise
-
 - Compétence 1
 - Compétence 2
 - Compétence 3
 
-## Workflow
+## Stack technique
+[Technologies utilisées]
 
-1. Étape 1
-2. Étape 2
-3. Étape 3
+## Skills
+[Skills disponibles]
+
+## Workflow
+[Étapes recommandées]
 
 ## Règles strictes
+À FAIRE :
+- ...
 
-À FAIRE : ...
-À NE JAMAIS FAIRE : ...
-</code></pre>
-        </div>
+À NE JAMAIS FAIRE :
+- ...</pre>
+          </div>
 
-        <div class="fragment" style="margin-top: 1em;">
-          <p class="box">
-            Un agent = <span class="highlight">System prompt</span> + <span class="highlight">Données de référence</span> + <span class="highlight">Outils accessibles</span>
-          </p>
-        </div>
+          <div class="nav-hint fragment">↑ Permet au modèle de comprendre sa mission</div>
+        </section>
+
+        <section>
+          <h2>Exemple : CLAUDE.md d'enseignant</h2>
+
+          <div class="example-box fragment">
+            <p><strong>Rôle :</strong> Expert en création de ressources pédagogiques mathématiques</p>
+            <p><strong>Expertise :</strong> LaTeX, Beamer, reveal.js, exercices interactifs</p>
+            <p><strong>Stack :</strong> Python (compilation), Node.js (web)</p>
+            <p><strong>Rules :</strong> Formules en LaTeX, vérifier la compilation, tester les exercices</p>
+          </div>
+
+          <div class="nav-hint fragment">↑ Personnalisation totale selon le contexte</div>
+        </section>
       </section>
 
-      <!-- ========== PARTIE 5 : DEMO PDF ========== -->
+      <!-- ========== PARTIE 3 : AGENTS ========== -->
       <section data-transition="convex">
-        <h2><span class="icon">🎬</span> Partie 5</h2>
-        <h3>Démonstration 1 : Retranscription PDF</h3>
+        <h2><span class="icon">🤖</span> Partie 3</h2>
+        <h3>Les Agents</h3>
       </section>
 
       <section>
-        <h2>Scénario</h2>
+        <section>
+          <h2>Agents : Experts autonomes</h2>
 
-        <div class="fragment">
-          <p class="box">
-            <span class="icon">📄</span> J'ai un cours manuscrit scanné en PDF<br>
-            Je veux obtenir un document LaTeX professionnel
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Workflow automatisé</h2>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">1</div>
-            <div>
-              <strong>Skill <code>pdf</code></strong><br>
-              <span style="font-size: 0.8em;">Extraction du contenu textuel et visuel du PDF</span>
-            </div>
+          <div class="box fragment">
+            <p><strong>Définition :</strong> Sous-processus spécialisé avec un system prompt dédié, des outils accessibles et une autonomie d'action limitée à son domaine</p>
           </div>
-        </div>
 
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">2</div>
-            <div>
-              <strong>Agent <code>latex-main-worker</code></strong><br>
-              <span style="font-size: 0.8em;">Analyse de la structure et génération du LaTeX</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">3</div>
-            <div>
-              <strong>Skill <code>tex-compiling-skill</code></strong><br>
-              <span style="font-size: 0.8em;">Compilation avec gestion des erreurs</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Résultat</h2>
-
-        <div class="fragment">
-          <div class="example-box">
-            <p><span class="icon">✅</span> <strong>Document LaTeX professionnel</strong></p>
-            <ul style="font-size: 0.85em; margin-top: 0.5em;">
-              <li>Structure cohérente (sections, sous-sections)</li>
-              <li>Formules mathématiques correctement formatées</li>
-              <li>Figures et graphiques intégrés</li>
-              <li>Mise en page conforme aux standards</li>
+          <div class="fragment" style="margin-top: 1.5em;">
+            <h3>Avantages</h3>
+            <ul style="font-size: 0.9em;">
+              <li class="fragment">Contexte réduit et ciblé</li>
+              <li class="fragment">Utilisation de modèles légers (Haiku)</li>
+              <li class="fragment">Isolation du contexte principal</li>
+              <li class="fragment">Rapport final autonome</li>
             </ul>
           </div>
-        </div>
 
-        <div class="fragment" style="margin-top: 1.5em;">
-          <p class="box">
-            <strong>Gain de temps :</strong> <span class="highlight">2 heures → 5 minutes</span>
-          </p>
-        </div>
+          <div class="nav-hint fragment">↓ Exemples d'agents</div>
+        </section>
+
+        <section>
+          <h2>Exemples d'agents</h2>
+
+          <div class="grid-2">
+            <div class="fragment">
+              <div class="example-box">
+                <p><strong>latex-main-worker</strong></p>
+                <p style="font-size: 0.8em;">Création de documents LaTeX structurés</p>
+              </div>
+            </div>
+
+            <div class="fragment">
+              <div class="example-box">
+                <p><strong>debug-tex-log</strong></p>
+                <p style="font-size: 0.8em;">Analyse des erreurs de compilation</p>
+              </div>
+            </div>
+
+            <div class="fragment">
+              <div class="example-box">
+                <p><strong>beamer-worker</strong></p>
+                <p style="font-size: 0.8em;">Présentations Beamer avec overlays</p>
+              </div>
+            </div>
+
+            <div class="fragment">
+              <div class="example-box">
+                <p><strong>reveals-creator</strong></p>
+                <p style="font-size: 0.8em;">Présentations reveal.js interactives</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-hint fragment">↑ Structure dans .claude/agents/</div>
+        </section>
+
+        <section>
+          <h2>Localisation et structure</h2>
+
+          <div class="tree-structure">
+<pre>.claude/
+├── agents/
+│   ├── latex-main-worker.md
+│   ├── debug-tex-log.md
+│   ├── beamer-worker.md
+│   └── reveals-creator.md
+│
+└── agents-data/
+    ├── latex-templates/
+    ├── beamer-examples/
+    └── error-patterns/</pre>
+          </div>
+
+          <div class="box fragment" style="margin-top: 1em;">
+            <p><strong>Principe :</strong> Agent = system prompt + données de référence</p>
+          </div>
+        </section>
       </section>
 
-      <!-- ========== PARTIE 6 : DEMO FICHE TECHNIQUE ========== -->
+      <!-- ========== PARTIE 4 : SKILLS ========== -->
       <section data-transition="convex">
-        <h2><span class="icon">🎬</span> Partie 6</h2>
-        <h3>Démonstration 2 : Fiche technique</h3>
+        <h2><span class="icon">💡</span> Partie 4</h2>
+        <h3>Les Skills</h3>
       </section>
 
       <section>
-        <h2>Scénario</h2>
+        <section>
+          <h2>Skills : Savoir-faire invocables</h2>
 
-        <div class="fragment">
-          <p class="box">
-            <span class="icon">📋</span> Créer une fiche technique administrative<br>
-            pour documenter une ressource pédagogique
-          </p>
+          <div class="box fragment">
+            <p><strong>Définition :</strong> Capacités/workflows réutilisables qui peuvent être activées à la demande par les agents</p>
+          </div>
+
+          <div class="fragment" style="margin-top: 1.5em;">
+            <h3>Caractéristiques</h3>
+            <ul style="font-size: 0.9em;">
+              <li class="fragment">Peuvent inclure des scripts Python/Node.js</li>
+              <li class="fragment">Documentation complète intégrée</li>
+              <li class="fragment">Réutilisables par plusieurs agents</li>
+              <li class="fragment">Chargés en contexte uniquement si activés</li>
+            </ul>
+          </div>
+
+          <div class="nav-hint fragment">↓ Exemples et structure</div>
+        </section>
+
+        <section>
+          <h2>Exemples de Skills</h2>
+
+          <div class="grid-2">
+            <div class="fragment">
+              <div class="example-box">
+                <p><strong>tex-compiling-skill</strong></p>
+                <p style="font-size: 0.8em;">Compilation LaTeX avec détection d'erreurs</p>
+              </div>
+            </div>
+
+            <div class="fragment">
+              <div class="example-box">
+                <p><strong>reveals-presentation</strong></p>
+                <p style="font-size: 0.8em;">Création de présentations reveal.js</p>
+              </div>
+            </div>
+
+            <div class="fragment">
+              <div class="example-box">
+                <p><strong>pdf-extraction</strong></p>
+                <p style="font-size: 0.8em;">Extraction et analyse de PDFs</p>
+              </div>
+            </div>
+
+            <div class="fragment">
+              <div class="example-box">
+                <p><strong>educational-app-builder</strong></p>
+                <p style="font-size: 0.8em;">Génération d'apps web éducatives</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-hint fragment">↑ Modularité et réutilisabilité</div>
+        </section>
+
+        <section>
+          <h2>Structure d'un Skill</h2>
+
+          <div class="tree-structure">
+<pre>skills/
+└── tex-compiling-skill/
+    ├── README.md (description)
+    ├── skill.md (instructions complètes)
+    ├── examples/ (exemples d'utilisation)
+    ├── scripts/
+    │   ├── compile.py
+    │   └── error-parser.py
+    └── templates/ (templates LaTeX)</pre>
+          </div>
+
+          <div class="box fragment" style="margin-top: 1em;">
+            <p><strong>Activation :</strong> Le skill n'est chargé en contexte <span class="highlight">que si nécessaire</span>, de deux manières :</p>
+            <ul style="margin-top:0.4em;font-size:0.85em;">
+              <li><i class="fas fa-user" style="color:var(--secondary-color);margin-right:0.3em;"></i><strong>Par l'utilisateur</strong> — via une commande slash (<code>/createTex</code>, <code>/commit</code>...)</li>
+              <li><i class="fas fa-robot" style="color:var(--success-color);margin-right:0.3em;"></i><strong>Par l'agent lui-même</strong> — il détecte le besoin et déclenche le skill automatiquement</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- ========== PARTIE 5 : COMMANDES ========== -->
+      <section data-transition="convex">
+        <h2><span class="icon">⚡</span> Partie 5</h2>
+        <h3>Les Commandes</h3>
+      </section>
+<section>
+      <section>
+        <h2>Commandes = Prompts réutilisables</h2>
+
+        <div class="box fragment">
+          <p><strong>Principe :</strong> Une commande est simplement un <span class="highlight">prompt sauvegardé</span> dans un fichier <code>.md</code>, invocable via <code>/nomDeLaCommande</code></p>
         </div>
 
         <div class="fragment" style="margin-top: 1em;">
-          <h3>Destinataires possibles</h3>
+          <div class="example-box">
+            <p><strong>C'est la forme la plus simple d'un skill.</strong></p>
+            <p style="font-size:0.85em;margin-top:0.3em;">Un skill sans scripts, sans assets, sans sous-dossiers — juste un prompt.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+          <h3>Stockage</h3>
+          <div class="grid-2" style="font-size:0.85em;">
+            <div class="box">
+              <p><code>.claude/commands/</code></p>
+              <p style="font-size:0.85em;">Emplacement dédié aux commandes</p>
+            </div>
+            <div class="box">
+              <p><code>.claude/skills/</code></p>
+              <p style="font-size:0.85em;">Fusion possible : une commande peut vivre dans un skill</p>
+            </div>
+        </div>
+
+        <div class="fragment" style="margin-top:1em;font-size:0.8em;color:#7f8c8d;text-align:center;">
+          Ex. : <code>/createBeamer</code>, <code>/commit</code>, <code>/ficheTexnique</code> — un seul fichier <code>.md</code> chacun
+        </div>
+        </section>
+      </section>
+      <!-- ========== PARTIE 6 : HOOKS ========== -->
+      <section data-transition="convex">
+        <h2><span class="icon">🔗</span> Partie 6</h2>
+        <h3>Les Hooks</h3>
+      </section>
+
+      <section>
+        <section>
+          <h2>Hooks : Automatisation transparente</h2>
+
+          <div class="box fragment">
+            <p><strong>Définition :</strong> Scripts qui s'exécutent automatiquement avant ou après certaines opérations (PreToolUse / PostToolUse)</p>
+          </div>
+
+          <div class="fragment" style="margin-top: 1.5em;">
+            <h3>Deux types de hooks</h3>
+          </div>
+
+          <div class="grid-2">
+            <div class="fragment">
+              <div class="box">
+                <p><strong>PreToolUse</strong></p>
+                <p style="font-size: 0.85em;">S'exécute <strong>avant</strong> un outil (validation, préparation)</p>
+              </div>
+            </div>
+
+            <div class="fragment">
+              <div class="box">
+                <p><strong>PostToolUse</strong></p>
+                <p style="font-size: 0.85em;">S'exécute <strong>après</strong> un outil (correction, nettoyage)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-hint fragment">↓ Exemple : Correction d'encodage UTF-8</div>
+        </section>
+
+        <section>
+          <h2>Exemple : Hook de correction UTF-8</h2>
+
+          <div class="box fragment">
+            <p><strong>Problème :</strong> Les fichiers générés ont parfois un mauvais encodage</p>
+          </div>
+
+          <div class="fragment" style="margin-top: 1.5em;">
+            <p><strong>Solution : Hook PostToolUse</strong></p>
+          </div>
+
+          <div class="config-code fragment">
+<pre>Hook PostToolUse (Write):
+{
+  "action": "fix-encoding",
+  "encoding": "UTF-8",
+  "target": "all-generated-files"
+}
+
+Résultat : Tous les fichiers écrits
+sont automatiquement en UTF-8</pre>
+          </div>
+
+          <div class="example-box fragment" style="margin-top: 1em;">
+            <p>✅ Pas d'intervention manuelle nécessaire !</p>
+          </div>
+
+          <div class="nav-hint fragment">↑ Efficacité accrue</div>
+        </section>
+
+        <section>
+          <h2>Configuration des hooks</h2>
+
+          <div class="tree-structure">
+<pre>.claude/
+└── config/
+    └── settings.json
+
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "tool": "Write",
+        "action": "fix-encoding",
+        "encoding": "UTF-8"
+      },
+      {
+        "tool": "Edit",
+        "action": "fix-encoding",
+        "encoding": "UTF-8"
+      }
+    ]
+  }
+}</pre>
+          </div>
+
+          <div class="nav-hint fragment">↑ Automatisation centralisée</div>
+        </section>
+      </section>
+
+      <!-- ========== PARTIE 7 : MCP ========== -->
+      <section data-transition="convex">
+        <h2><span class="icon">🔌</span> Partie 7</h2>
+        <h3>Les Serveurs MCP</h3>
+      </section>
+
+      <section>
+        <section>
+          <h2>MCP : Model Context Protocol</h2>
+
+          <div class="box fragment">
+            <p><strong>Définition :</strong> Protocole standardisé pour exposer des outils et connecter l'agent à des services externes</p>
+          </div>
+
+          <div class="fragment" style="margin-top: 1.5em;">
+            <h3>Caractéristiques</h3>
+            <ul style="font-size: 0.9em;">
+              <li class="fragment">Serveurs dédiés avec API standardisée</li>
+              <li class="fragment">Isolation des dépendances (venv Python)</li>
+              <li class="fragment">Outils exposés via le protocole MCP</li>
+              <li class="fragment">Configuration JSON centralisée</li>
+            </ul>
+          </div>
+
+          <div class="nav-hint fragment">↓ Exemples de serveurs MCP</div>
+        </section>
+
+        <section>
+          <h2>Exemples de serveurs MCP</h2>
+
+          <div class="fragment">
+            <div class="workflow-step">
+              <div class="step-number">1</div>
+              <div>
+                <strong>latex-compiler-server</strong><br>
+                <span style="font-size: 0.85em;">Compilation LaTeX avec détection d'erreurs avancée</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="fragment">
+            <div class="workflow-step">
+              <div class="step-number">2</div>
+              <div>
+                <strong>competences-server</strong><br>
+                <span style="font-size: 0.85em;">Accès à la base des compétences du programme</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="fragment">
+            <div class="workflow-step">
+              <div class="step-number">3</div>
+              <div>
+                <strong>encoding-fixer-server</strong><br>
+                <span style="font-size: 0.85em;">Correction automatique des problèmes d'encodage</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="fragment">
+            <div class="workflow-step">
+              <div class="step-number">4</div>
+              <div>
+                <strong>datagouv-server</strong><br>
+                <span style="font-size: 0.85em;">Accès aux données publiques françaises</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-hint fragment">↑ Connexions externes standardisées</div>
+        </section>
+
+        <section>
+          <h2>Structure d'un serveur MCP</h2>
+
+          <div class="tree-structure">
+<pre>mcp_servers/
+└── latex-compiler-server/
+    ├── package.json (ou requirements.txt)
+    ├── index.js (ou main.py)
+    ├── src/
+    │   ├── tools.json (description des outils)
+    │   └── compiler.js
+    └── venv/ (environnement isolé)</pre>
+          </div>
+
+          <div class="box fragment" style="margin-top: 1em;">
+            <p><strong>Configuration :</strong> Référencé dans le <code>settings.json</code> de Claude Code</p>
+          </div>
+
+          <div class="nav-hint fragment">↑ Dépendances isolées et gérées</div>
+        </section>
+      </section>
+
+      <!-- ========== PARTIE 9 : MULTI-PLATEFORME ========== -->
+      <section data-transition="convex">
+        <h2><span class="icon">🌍</span> Partie 9</h2>
+        <h3>Multi-plateforme et conclusion</h3>
+      </section>
+
+      <section>
+        <h2>Adaptabilité à d'autres plateformes</h2>
+
+        <div class="box fragment">
+          <p><strong>Concept clé :</strong> Cette architecture n'est pas spécifique à Claude.</p>
+          <p>Demander simplement à Claude ce qu'il faudrait faire pour changer de fournisseur.</p>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1.5em;">
+          <p><strong>Avantage :</strong> Si vous changez de fournisseur IA, vous conservez les skills et agents</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ressources et documentation</h2>
+
+        <div class="box fragment" style="margin-top: 1em;">
+          <p><strong>Documentation Claude Code :</strong><br>
+          <a href="https://code.claude.com/docs/fr/" target="_blank">code.claude.com/docs/fr/</a></p>
+        </div>
+
+        <div class="box fragment" style="margin-top: 1.5em;">
+          <p><strong>Concepts clés abordés :</strong></p>
           <ul style="font-size: 0.85em;">
-            <li class="fragment">Inspecteur (évaluation)</li>
-            <li class="fragment">Collègues (partage de ressources)</li>
-            <li class="fragment">Personnel administratif (archivage)</li>
+            <li>Configuration du projet</li>
+            <li>Création d'agents spécialisés</li>
+            <li>Développement de skills réutilisables</li>
+            <li>Automatisation avec hooks</li>
+            <li>Intégration de serveurs MCP</li>
           </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2>Workflow automatisé</h2>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">1</div>
-            <div>
-              <strong>Agent <code>fiche-technique-agent</code></strong><br>
-              <span style="font-size: 0.8em;">Analyse automatique de la ressource (fichier ou dossier)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">2</div>
-            <div>
-              <strong>Extraction des métadonnées</strong><br>
-              <span style="font-size: 0.8em;">Niveau, compétences, durée, matériel...</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">3</div>
-            <div>
-              <strong>Génération LaTeX adaptée</strong><br>
-              <span style="font-size: 0.8em;">Format professionnel selon le destinataire</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Résultat</h2>
-
-        <div class="fragment">
-          <div class="example-box">
-            <p><span class="icon">✅</span> <strong>Documentation administrative conforme</strong></p>
-            <ul style="font-size: 0.85em; margin-top: 0.5em;">
-              <li>Présentation professionnelle</li>
-              <li>Informations structurées et complètes</li>
-              <li>Respect des normes institutionnelles</li>
-              <li>Prête à être archivée ou partagée</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="fragment" style="margin-top: 1.5em;">
-          <p class="box">
-            <strong>Avantage :</strong> Standardisation et qualité garantie
-          </p>
-        </div>
-      </section>
-
-      <!-- ========== PARTIE 7 : DEMO BEAMER ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">🎬</span> Partie 7</h2>
-        <h3>Démonstration 3 : Beamer</h3>
-      </section>
-
-      <section>
-        <h2>Scénario</h2>
-
-        <div class="fragment">
-          <p class="box">
-            <span class="icon">📊</span> Transformer un cours en présentation Beamer<br>
-            pour un support de cours dynamique
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Workflow automatisé</h2>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">1</div>
-            <div>
-              <strong>Agent <code>beamer-worker</code></strong><br>
-              <span style="font-size: 0.8em;">Analyse du contenu et extraction des points clés</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">2</div>
-            <div>
-              <strong>Création avec overlays</strong><br>
-              <span style="font-size: 0.8em;">Animations progressives pour révélation pédagogique</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">3</div>
-            <div>
-              <strong>Respect des normes typographiques</strong><br>
-              <span style="font-size: 0.8em;">Utilisation de <code>siunitx</code> pour les unités</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">4</div>
-            <div>
-              <strong>Compilation et vérification</strong><br>
-              <span style="font-size: 0.8em;">Détection automatique des erreurs</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Résultat</h2>
-
-        <div class="fragment">
-          <div class="example-box">
-            <p><span class="icon">✅</span> <strong>Diaporama pédagogique de haute qualité</strong></p>
-            <ul style="font-size: 0.85em; margin-top: 0.5em;">
-              <li>Animations fluides et progressives</li>
-              <li>Design professionnel et cohérent</li>
-              <li>Navigation intuitive</li>
-              <li>Formules mathématiques impeccables</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="fragment" style="margin-top: 1.5em;">
-          <p class="box">
-            <strong>Impact :</strong> Cours plus <span class="highlight">dynamiques</span> et <span class="highlight">engageants</span>
-          </p>
-        </div>
-      </section>
-
-      <!-- ========== PARTIE 8 : DEMO APP ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">🎬</span> Partie 8</h2>
-        <h3>Démonstration 4 : Application interactive</h3>
-      </section>
-
-      <section>
-        <h2>Scénario</h2>
-
-        <div class="fragment">
-          <p class="box">
-            <span class="icon">💻</span> Créer une application web interactive<br>
-            pour réviser un cours de manière ludique
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Workflow automatisé</h2>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">1</div>
-            <div>
-              <strong>Agent <code>app-creator-agent</code></strong><br>
-              <span style="font-size: 0.8em;">Analyse de la ressource éducative</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">2</div>
-            <div>
-              <strong>Génération de l'application Flask</strong><br>
-              <span style="font-size: 0.8em;">Backend (Python) + Frontend (HTML/CSS/JS)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">3</div>
-            <div>
-              <strong>Packaging en exécutable</strong><br>
-              <span style="font-size: 0.8em;">Application standalone (aucune installation requise)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fragment">
-          <div class="workflow-step">
-            <div class="step-number">4</div>
-            <div>
-              <strong>Tests automatisés</strong><br>
-              <span style="font-size: 0.8em;">Vérification du fonctionnement</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Résultat</h2>
-
-        <div class="fragment">
-          <div class="example-box">
-            <p><span class="icon">✅</span> <strong>Application éducative clé en main</strong></p>
-            <ul style="font-size: 0.85em; margin-top: 0.5em;">
-              <li>Interface intuitive et responsive</li>
-              <li>Exercices interactifs avec feedback immédiat</li>
-              <li>Suivi de progression</li>
-              <li>Déploiement simple (double-clic)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="fragment" style="margin-top: 1.5em;">
-          <p class="box">
-            <strong>Innovation :</strong> Apprentissage <span class="highlight">actif</span> et <span class="highlight">autonome</span>
-          </p>
         </div>
       </section>
 
@@ -1137,73 +914,129 @@ Tu es un expert en [DOMAINE SPÉCIALISÉ]
       <section data-transition="zoom">
         <h2><span class="icon">🎯</span> Conclusion</h2>
 
-        <ul>
+        <ul style="font-size: 0.95em;">
           <li class="fragment">
-            <strong>Architecture modulaire</strong> adaptée aux contraintes du contexte
+            <strong>Architecture modulaire</strong> : Adaptée aux limites du contexte
           </li>
 
           <li class="fragment">
-            <strong>Synergie</strong> entre tous les composants (agents, skills, MCP, commandes)
+            <strong>Synergie totale</strong> : Agents, skills, commandes, MCP, hooks = écosystème cohérent
           </li>
 
           <li class="fragment">
-            <strong>Système vivant et extensible</strong> selon les besoins
+            <strong>Système vivant</strong> : Extensible et évolutif selon les besoins
           </li>
 
           <li class="fragment">
-            <strong>Productivité décuplée</strong> pour l'enseignant
+            <strong>Productivité décuplée</strong> : Automatisation des tâches répétitives
+          </li>
+
+          <li class="fragment">
+            <strong>Déterminisme</strong> : Scripts et agents réduisent l'imprévisibilité
           </li>
         </ul>
 
-        <div class="fragment" style="margin-top: 2em;">
-          <p class="example-box">
-            <span class="icon">🚀</span> L'architecture Claude Code transforme l'IA en véritable <span class="highlight">assistant pédagogique</span>
-          </p>
+        <div class="example-box fragment" style="margin-top: 2em;">
+          <p><span class="icon">🚀</span> L'architecture Claude Code transforme l'IA en <span class="highlight">assistant autonome et fiable</span></p>
         </div>
       </section>
 
       <section data-transition="zoom">
         <h2>Merci de votre attention</h2>
-        <p style="margin-top: 2em; font-size: 0.9em;">
+        <p style="margin-top: 2em; font-size: 0.95em;">
           <strong>Questions ?</strong>
         </p>
-        <p style="margin-top: 2em; font-size: 0.7em; color: #95a5a6;">
+        <p style="margin-top: 2em; font-size: 0.8em; color: #95a5a6;">
           Présentation générée avec reveal.js<br>
-          Groupe de Travail IA & Mathématiques - 2025
+          Groupe de Travail IA & Mathématiques - 2025-2026
         </p>
       </section>
 
     </div>
   </div>
 
+
   <!-- Reveal.js Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+  <script src="assets/reveal/reveal.js"></script>
+  <script src="assets/reveal/plugin/notes/notes.js"></script>
+  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
+  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <script>
     Reveal.initialize({
-      // Navigation
+      // Navigation 2D
+      navigationMode: 'grid',
       controls: true,
-      controlsLayout: 'bottom-right',
+      controlsLayout: 'edges',
+      controlsBackArrows: 'visible',
+      controlsTutorial: true,
+
+      // Progression
       progress: true,
-      slideNumber: 'c/t',
+      slideNumber: 'h.v',
       hash: true,
       center: true,
 
       // Transitions
-      transition: 'slide', // none/fade/slide/convex/concave/zoom
-      transitionSpeed: 'default', // default/fast/slow
+      transition: 'slide',
+      transitionSpeed: 'default',
 
       // Apparence
       width: 1280,
       height: 720,
       margin: 0.04,
 
+      // Math
+      math: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+        config: 'TeX-AMS_HTML-full'
+      },
+
       // Plugins
       plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
     });
+
+    // Retour au top lors de la navigation horizontale
+    let lastHorizontalIndex = 0;
+
+    Reveal.on('slidechanged', event => {
+      const currentH = event.indexh;
+      const currentV = event.indexv;
+
+      if (currentH !== lastHorizontalIndex && currentV !== 0) {
+        Reveal.slide(currentH, 0);
+      }
+
+      lastHorizontalIndex = currentH;
+
+      // Mettre à jour l'état des boutons de navigation
+      updateNavigationPad();
+    });
+
+    // Mettre à jour l'état des boutons de navigation
+    function updateNavigationPad() {
+      const indices = Reveal.getIndices();
+      const slides = Reveal.getSlides();
+
+      const hasLeft = indices.h > 0;
+      const hasRight = indices.h < slides.length - 1;
+      const hasUp = indices.v > 0;
+      const hasDown = Reveal.availableRoutes().down;
+
+      document.querySelector('.nav-left').classList.toggle('disabled', !hasLeft);
+      document.querySelector('.nav-right').classList.toggle('disabled', !hasRight);
+      document.querySelector('.nav-up').classList.toggle('disabled', !hasUp);
+      document.querySelector('.nav-down').classList.toggle('disabled', !hasDown);
+
+      if (hasDown) {
+        document.querySelector('.nav-down').classList.add('active');
+      } else {
+        document.querySelector('.nav-down').classList.remove('active');
+      }
+    }
+
+    Reveal.on('ready', updateNavigationPad);
   </script>
 </body>
 </html>

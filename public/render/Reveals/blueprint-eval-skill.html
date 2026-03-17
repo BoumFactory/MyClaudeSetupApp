@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Formation IA & Développement">
-  <meta name="description" content="Skill make-blueprint-eval : générer des fiches de révision interactives HTML">
-  <title>Blueprint Eval - Fiches de Révision Interactives</title>
+  <meta name="description" content="Skill make-blueprint-eval : générer des fiches de révision interactives HTML basées sur l'évaluation par compétences">
+  <title>Blueprint Eval - Fiches de Révision Interactives par Compétences</title>
 
   <!-- Reveal.js Core -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="assets/reveal/reset.css">
+  <link rel="stylesheet" href="assets/reveal/reveal.css">
+  <link rel="stylesheet" href="assets/reveal/theme/white.css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -187,19 +187,23 @@
       <!-- SLIDE 1 : TITRE -->
       <section>
         <h1><i class="fas fa-clipboard-list icon"></i> Blueprint Eval</h1>
-        <p class="subtitle">Fiches de Révision Interactives HTML</p>
+        <p class="subtitle">Fiches de Révision Interactives par Compétences</p>
         <p class="fragment" style="margin-top: 2em;">
           <span class="tag">HTML autonome</span>
           <span class="tag success">Onglets interactifs</span>
           <span class="tag warning">Imprimable A4</span>
         </p>
+        <p class="smaller fragment" style="margin-top: 1em; color: #666;">
+          <i class="fas fa-info-circle icon"></i> Basé sur les programmes officiels et l'évaluation par compétences
+        </p>
       </section>
 
       <!-- SLIDE 2 : SOMMAIRE -->
       <section>
-        <h2>Au programme</h2>
+        <h2>Sommaire</h2>
         <ol class="feature-list">
           <li class="fragment"><i class="fas fa-bullseye icon"></i> Qu'est-ce qu'un blueprint ?</li>
+          <li class="fragment"><i class="fas fa-book icon"></i> Évaluation par compétences</li>
           <li class="fragment"><i class="fas fa-folder-open icon"></i> Prérequis</li>
           <li class="fragment"><i class="fas fa-th-large icon"></i> Les 5 onglets</li>
           <li class="fragment"><i class="fas fa-route icon"></i> Protocole de génération</li>
@@ -210,22 +214,22 @@
 
       <!-- SLIDE 3 : EXEMPLE LIVE -->
       <section>
-        <h2><i class="fas fa-eye icon" style="color: var(--secondary-color);"></i> Exemple : Dérivation & Trigo</h2>
+        <h2><i class="fas fa-eye icon" style="color: var(--secondary-color);"></i> Exemple : Produit Scalaire</h2>
 
         <div class="box fragment">
-          <p><strong>Blueprint interactif généré avec ce skill</strong></p>
-          <p class="smaller" style="margin-top: 0.5em;">5 onglets, quiz dépliables, exercices fléchés, conseils</p>
+          <p><strong>Blueprint interactif généré avec le skill</strong></p>
+          <p class="smaller" style="margin-top: 0.5em;">5 onglets, quiz dépliables, exercices fléchés, parcours de révision optimisé</p>
         </div>
 
         <div class="fragment" style="margin-top: 1.5em;">
-          <a href="/render/html/blueprint_fonctions_derivation_trigo.html" target="_blank" rel="noopener"
+          <a href="/render/html/blueprint_produit_scalaire.html" target="_blank" rel="noopener"
              style="display: inline-block; padding: 1em 2em; background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 1.1em; box-shadow: 0 4px 15px rgba(102,126,234,0.4); transition: transform 0.2s;">
             <i class="fas fa-external-link-alt icon"></i> Voir le blueprint en plein écran
           </a>
         </div>
 
         <p class="smaller fragment" style="margin-top: 1em; color: #666;">
-          <i class="fas fa-keyboard icon"></i> <strong>Ctrl + clic</strong> pour ouvrir dans un nouvel onglet
+          <i class="fas fa-keyboard icon"></i> <strong>Ctrl+Maj+Clic</strong> pour ouvrir dans un nouvel onglet
         </p>
         <p class="smaller fragment" style="margin-top: 0.3em; color: #666;">
           <i class="fas fa-info-circle icon"></i> Cliquez sur les onglets et dépliez les questions pour tester l'interactivité
@@ -238,43 +242,63 @@
 
         <div class="box fragment">
           <p><strong>Un "exosquelette pédagogique" de l'évaluation</strong></p>
-          <p class="smaller" style="margin-top: 0.5em;">Page HTML interactive pour aider les élèves à réviser efficacement</p>
+          <p class="smaller" style="margin-top: 0.5em;">Page HTML interactive pour guider les élèves dans leurs révisions basées sur les compétences</p>
         </div>
 
         <ul class="smaller">
           <li class="fragment"><i class="fas fa-sitemap icon"></i> <strong>Structure</strong> du contrôle (types, barème, durée)</li>
-          <li class="fragment"><i class="fas fa-bullseye icon"></i> <strong>Compétences</strong> évaluées avec niveaux de priorité</li>
+          <li class="fragment"><i class="fas fa-bullseye icon"></i> <strong>Compétences attendues</strong> (programmes officiels) avec priorités</li>
           <li class="fragment"><i class="fas fa-question-circle icon"></i> <strong>Quiz</strong> de compréhension du cours</li>
-          <li class="fragment"><i class="fas fa-link icon"></i> <strong>Fléchage</strong> vers les exercices types de la fiche</li>
-          <li class="fragment"><i class="fas fa-lightbulb icon"></i> <strong>Conseils</strong> de révision personnalisés</li>
+          <li class="fragment"><i class="fas fa-link icon"></i> <strong>Fléchage intelligent</strong> → exercices types de la fiche</li>
+          <li class="fragment"><i class="fas fa-lightbulb icon"></i> <strong>Conseils</strong> de révision personnalisés et actionables</li>
         </ul>
       </section>
 
-      <!-- SLIDE 4 : PRÉREQUIS -->
+      <!-- SLIDE 5 : PRÉREQUIS -->
       <section>
         <h2>Prérequis</h2>
 
         <div class="box fragment" style="font-size: 0.85em;">
-          <p><strong>Disposer de la séquence complète :</strong></p>
+          <p><strong>Disposer de la séquence pédagogique complète :</strong></p>
         </div>
 
         <ul class="smaller">
-          <li class="fragment"><i class="fas fa-file-alt icon"></i> <strong>Sujet d'évaluation</strong> (<code>enonce.tex</code>)</li>
-          <li class="fragment"><i class="fas fa-file-code icon"></i> <strong>Synthèse</strong> (<code>synthese_evaluation.md</code>)</li>
-          <li class="fragment"><i class="fas fa-book icon"></i> <strong>Cours du chapitre</strong></li>
-          <li class="fragment"><i class="fas fa-tasks icon"></i> <strong>Fiche d'exercices</strong></li>
-          <li class="fragment"><i class="fas fa-puzzle-piece icon"></i> <strong>Activités</strong> (si disponibles)</li>
+          <li class="fragment"><i class="fas fa-file-alt icon"></i> <strong>Sujet d'évaluation</strong> (<code>enonce.tex</code> ou PDF)</li>
+          <li class="fragment"><i class="fas fa-file-code icon"></i> <strong>Synthèse d'évaluation</strong> (compétences, barème)</li>
+          <li class="fragment"><i class="fas fa-book icon"></i> <strong>Cours du chapitre</strong> (contenus attendus)</li>
+          <li class="fragment"><i class="fas fa-tasks icon"></i> <strong>Fiche d'exercices</strong> (exercices types et solutions)</li>
+          <li class="fragment"><i class="fas fa-puzzle-piece icon"></i> <strong>Activités pédagogiques</strong> (démonstrations, investigations)</li>
         </ul>
 
         <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
-          <p><i class="fas fa-info-circle icon"></i> Le skill analyse <strong>toute la séquence</strong> pour créer un fléchage intelligent</p>
+          <p><i class="fas fa-info-circle icon"></i> Le skill analyse <strong>toute la séquence</strong> pour créer un fléchage intelligent vers les exercices types</p>
         </div>
       </section>
 
-      <!-- SLIDE 5 : LES 5 ONGLETS -->
+      <!-- SLIDE 5 : ÉVALUATION PAR COMPÉTENCES -->
+      <section>
+        <h2><i class="fas fa-star icon"></i> Évaluation par compétences</h2>
+
+        <div class="box fragment" style="font-size: 0.85em;">
+          <p><strong>Aligner l'évaluation avec les programmes officiels</strong></p>
+        </div>
+
+        <ul class="smaller">
+          <li class="fragment"><i class="fas fa-file-contract icon"></i> <strong>Programmes de l'Éducation Nationale</strong> définissent les compétences attendues</li>
+          <li class="fragment"><i class="fas fa-chart-line icon"></i> <strong>Grille de compétences</strong> : chaque exercice évalue une ou plusieurs compétences</li>
+          <li class="fragment"><i class="fas fa-trophy icon"></i> <strong>Critères de réussite</strong> : ce qu'il faut savoir faire pour chaque compétence</li>
+          <li class="fragment"><i class="fas fa-tasks-alt icon"></i> <strong>Niveaux de maîtrise</strong> : non acquise → en cours → acquise → dépassée</li>
+        </ul>
+
+        <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+          <p><i class="fas fa-info-circle icon"></i> <strong>Le blueprint</strong> organise les révisions autour de ces compétences officielles, pas autour des exercices</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 : LES 5 ONGLETS -->
       <section>
         <section>
-          <h2>Les 5 onglets</h2>
+          <h2>Les 5 onglets interactifs</h2>
 
           <div style="margin: 1em 0;">
             <span class="tab-demo active">📋 Structure</span>
@@ -285,8 +309,8 @@
           </div>
 
           <div class="box fragment" style="font-size: 0.85em;">
-            <p><strong>Interface à onglets</strong> : navigation intuitive pour les élèves</p>
-            <p class="smaller" style="margin-top: 0.5em;">À l'impression : tous les onglets visibles sur une page A4</p>
+            <p><strong>Interface à onglets</strong> : navigation intuitive et progressive pour les élèves</p>
+            <p class="smaller" style="margin-top: 0.5em;">À l'impression : tous les onglets visibles sur une page A4 (responsive design)</p>
           </div>
 
           <div class="nav-hint fragment">
@@ -333,7 +357,7 @@
           <h3><i class="fas fa-bullseye icon"></i> Onglet Compétences</h3>
 
           <div class="box" style="font-size: 0.85em;">
-            <p><strong>Savoirs et savoir-faire attendus</strong> avec priorités</p>
+            <p><strong>Savoirs et savoir-faire attendus</strong> (programmes officiels) avec priorités de révision</p>
           </div>
 
           <div class="grid-2" style="margin-top: 1em;">
@@ -341,17 +365,17 @@
               <strong>📌 Produit scalaire</strong>
               <ul class="smaller">
                 <li>Calculer avec les 3 formules</li>
-                <li>Orthogonalité</li>
+                <li>Caractériser l'orthogonalité</li>
               </ul>
-              <p class="smaller">Niveau : ⭐⭐⭐</p>
+              <p class="smaller">Priorité : ⭐⭐⭐ (16 pts)</p>
             </div>
 
             <div class="fragment priority-basse" style="padding: 0.8em; border-radius: 5px;">
               <strong>📌 Norme d'un vecteur</strong>
               <ul class="smaller">
-                <li>Calculer une norme</li>
+                <li>Calculer une norme en coordonnées</li>
               </ul>
-              <p class="smaller">Niveau : ⭐</p>
+              <p class="smaller">Priorité : ⭐ (4 pts)</p>
             </div>
           </div>
         </section>
@@ -428,37 +452,37 @@
         </section>
       </section>
 
-      <!-- SLIDE 6 : PROTOCOLE -->
+      <!-- SLIDE 7 : PROTOCOLE -->
       <section>
         <h2>Protocole de génération</h2>
 
         <div class="workflow-step fragment" style="font-size: 0.8em;">
           <div class="step-number">1</div>
-          <div><strong>Analyser la séquence</strong> — Cours, fiche d'exercices, sujet</div>
+          <div><strong>Analyser la séquence</strong> — Cours, fiche d'exercices, sujet d'évaluation</div>
         </div>
 
         <div class="workflow-step fragment" style="font-size: 0.8em;">
           <div class="step-number">2</div>
-          <div><strong>Construire le mapping</strong> — Compétences → Exercices types</div>
+          <div><strong>Identifier les compétences</strong> — (Programmes officiels) et leur priorité (barème)</div>
         </div>
 
         <div class="workflow-step fragment" style="font-size: 0.8em;">
           <div class="step-number">3</div>
-          <div><strong>Générer les questions</strong> — 5-8 questions de compréhension</div>
+          <div><strong>Mapper compétences → exercices</strong> — Fléchage intelligent vers les exercices types</div>
         </div>
 
         <div class="workflow-step fragment" style="font-size: 0.8em;">
           <div class="step-number">4</div>
-          <div><strong>Créer le HTML</strong> — <code>blueprint.html</code> autonome</div>
+          <div><strong>Générer contenu interactif</strong> — Quiz, questions, conseils personnalisés</div>
         </div>
 
         <div class="workflow-step fragment" style="font-size: 0.8em;">
           <div class="step-number">5</div>
-          <div><strong>Valider</strong> — Taille A4, onglets fonctionnels, confidentialité</div>
+          <div><strong>Créer le blueprint HTML</strong> — Autonome, responsive, imprimable A4</div>
         </div>
       </section>
 
-      <!-- SLIDE 7 : CONFIDENTIALITÉ -->
+      <!-- SLIDE 8 : CONFIDENTIALITÉ -->
       <section>
         <h2><i class="fas fa-lock icon"></i> Règles de confidentialité</h2>
 
@@ -468,26 +492,26 @@
 
         <div class="grid-2" style="margin-top: 1em;">
           <div>
-            <h4 class="fragment success"><i class="fas fa-check icon"></i> OK</h4>
+            <h4 class="fragment success"><i class="fas fa-check icon"></i> Autorisé</h4>
             <ul class="smaller fragment">
               <li>"Exercice 1 : QCM (6 questions)"</li>
-              <li>"Calculs sur le produit scalaire"</li>
-              <li>"Problème guidé"</li>
+              <li>"Appliquer les formules du produit scalaire"</li>
+              <li>"Problème guidé avec étapes"</li>
             </ul>
           </div>
 
           <div>
-            <h4 class="fragment" style="color: var(--danger-color);"><i class="fas fa-times icon"></i> INTERDIT</h4>
+            <h4 class="fragment" style="color: var(--danger-color);"><i class="fas fa-times icon"></i> Interdit</h4>
             <ul class="smaller fragment">
               <li>"L'exercice 2 demande de calculer AB · AC"</li>
-              <li>"Le triangle ABC a pour sommets..."</li>
-              <li>"Démontrer que ABCD est un losange"</li>
+              <li>"Le triangle ABC a les sommets A(1,2), B(3,4)"</li>
+              <li>"Démontrer que ABCD est un losange (énoncé exact)"</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- SLIDE 8 : BONNES PRATIQUES -->
+      <!-- SLIDE 9 : BONNES PRATIQUES -->
       <section>
         <h2>Bonnes pratiques</h2>
 
@@ -495,28 +519,51 @@
           <div>
             <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> À faire</h3>
             <ul class="smaller fragment" data-fragment-index="1">
-              <li>HTML <strong>autonome</strong> (CSS/JS intégrés)</li>
-              <li>Tenir sur <strong>une page A4</strong></li>
-              <li>Fléchage <strong>précis</strong> (numéros + questions)</li>
+              <li>HTML <strong>autonome</strong> (zéro dépendance externe)</li>
+              <li>Design <strong>responsive</strong> (mobile, tablette, PC)</li>
+              <li>Tenir sur <strong>1-2 pages A4</strong> à l'impression</li>
+              <li>Fléchage <strong>précis</strong> (exercices numérotés + niveaux)</li>
               <li>Priorités <strong>cohérentes</strong> avec le barème</li>
-              <li>Conseils <strong>actionables</strong></li>
+              <li>Conseils <strong>concrets et actionables</strong></li>
             </ul>
           </div>
 
           <div>
             <h3 class="fragment" data-fragment-index="2" style="color: var(--danger-color);"><i class="fas fa-times-circle icon"></i> À éviter</h3>
             <ul class="smaller fragment" data-fragment-index="2">
-              <li>Dépendances externes (CDN)</li>
-              <li>Contenu trop long</li>
+              <li>Dépendances externes (CDN, images)</li>
+              <li>Contenu trop dense (> 70% de l'espace)</li>
               <li>Fléchage vague ("revoir le cours")</li>
               <li>Toutes les compétences en priorité haute</li>
-              <li>Conseils génériques</li>
+              <li>Conseils génériques ou décalés du contrôle</li>
+              <li>Révéler l'énoncé exact du contrôle</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- SLIDE 9 : RÉSUMÉ -->
+      <!-- SLIDE 10 : ADAPTABILITÉ DU PATTERN -->
+      <section>
+        <h2><i class="fas fa-expand-alt icon"></i> Un pattern réutilisable</h2>
+
+        <div class="box fragment" style="font-size: 0.85em;">
+          <p><strong>Le blueprint d'évaluation est un pattern générique</strong></p>
+          <p class="smaller" style="margin-top: 0.5em;">Adaptable pour tous les documents d'évaluation ou de guide pédagogique</p>
+        </div>
+
+        <ul class="smaller">
+          <li class="fragment"><i class="fas fa-star icon"></i> <strong>Mathématiques</strong> : Compétences du programme, exercices types, quiz</li>
+          <li class="fragment"><i class="fas fa-language icon"></i> <strong>Français / Langues</strong> : Compétences de lecture/écriture, ressources, fiches méthodologiques</li>
+          <li class="fragment"><i class="fas fa-microscope icon"></i> <strong>Sciences</strong> : Objectifs pédagogiques, démarches d'investigation, travaux pratiques</li>
+          <li class="fragment"><i class="fas fa-book-open icon"></i> <strong>Autres disciplines</strong> : Domaines de compétences, documents ressources, conseils</li>
+        </ul>
+
+        <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+          <p><i class="fas fa-lightbulb icon"></i> <strong>Clé du succès :</strong> S'adapter au référentiel de compétences de votre discipline</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 11 : RÉSUMÉ -->
       <section>
         <h2>En résumé</h2>
 
@@ -526,24 +573,26 @@
             <ul class="smaller">
               <li>Fiche de révision HTML interactive</li>
               <li>5 onglets thématiques</li>
-              <li>Fléchage intelligent vers exercices</li>
+              <li>Compétences officielles en priorité</li>
+              <li>Fléchage vers exercices types</li>
               <li>Autonome et imprimable</li>
             </ul>
           </div>
 
           <div class="fragment">
-            <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> L'objectif</h3>
+            <h3 class="smaller"><i class="fas fa-graduation-cap icon"></i> Les objectifs</h3>
             <ul class="smaller">
-              <li>Guider les révisions des élèves</li>
-              <li>Ne pas spoiler le contrôle</li>
-              <li>Optimiser le temps de révision</li>
-              <li>Identifier les priorités</li>
+              <li>Guider les révisions efficaces</li>
+              <li>Respecter la confidentialité</li>
+              <li>Optimiser le temps de travail</li>
+              <li>Clarifier les priorités</li>
+              <li>Promouvoir l'évaluation par compétences</li>
             </ul>
           </div>
         </div>
 
         <div class="box fragment" style="margin-top: 1em;">
-          <p><strong><i class="fas fa-bullseye icon"></i> Un blueprint bien construit = des élèves mieux préparés !</strong></p>
+          <p><strong><i class="fas fa-bullseye icon"></i> Un blueprint bien construit = des élèves mieux préparés et autonomes !</strong></p>
         </div>
       </section>
 
@@ -551,10 +600,10 @@
   </div>
 
   <!-- Reveal.js Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+  <script src="assets/reveal/reveal.js"></script>
+  <script src="assets/reveal/plugin/notes/notes.js"></script>
+  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
+  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
 
   <script>
     Reveal.initialize({

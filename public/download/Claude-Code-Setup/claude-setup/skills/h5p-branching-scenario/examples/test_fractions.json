@@ -1,0 +1,140 @@
+{
+  "title": "Les fractions - Parcours adaptatif",
+  "scoring": "static-end-score",
+  "enableBackwardsNavigation": true,
+  "startScreen": {
+    "title": "Les fractions",
+    "subtitle": "Decouvre les fractions a ton rythme"
+  },
+  "nodes": [
+    {
+      "title": "Introduction",
+      "type": "text",
+      "content": "<p>Bienvenue dans ce parcours sur les <strong>fractions</strong> !</p><p>Tu vas pouvoir avancer a ton rythme selon ton niveau.</p>",
+      "nextContentId": 1
+    },
+    {
+      "title": "Test diagnostique",
+      "type": "branching_question",
+      "question": "<p>Que vaut \\(\\frac{1}{2} + \\frac{1}{4}\\) ?</p>",
+      "alternatives": [
+        {
+          "text": "3/4",
+          "nextContentId": 2,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "Tu maitrises deja l'addition de fractions.",
+            "score": 80
+          }
+        },
+        {
+          "text": "2/6",
+          "nextContentId": 4,
+          "feedback": {
+            "title": "Pas tout a fait...",
+            "subtitle": "On ne peut pas additionner les numerateurs et denominateurs separement.",
+            "score": 0
+          }
+        },
+        {
+          "text": "1/6",
+          "nextContentId": 4,
+          "feedback": {
+            "title": "Non",
+            "subtitle": "Revoyons ensemble la methode d'addition.",
+            "score": 0
+          }
+        }
+      ]
+    },
+    {
+      "title": "Parcours avance",
+      "type": "text",
+      "content": "<p>Tu maitrises les bases ! Passons a la <strong>simplification</strong>.</p><p>Simplifie \\(\\frac{12}{18}\\).</p><p>La reponse est \\(\\frac{2}{3}\\) car \\(\\text{PGCD}(12, 18) = 6\\).</p>",
+      "nextContentId": 3
+    },
+    {
+      "title": "Question avancee",
+      "type": "branching_question",
+      "question": "<p>Quel est le resultat de \\(\\frac{3}{4} - \\frac{1}{6}\\) ?</p>",
+      "alternatives": [
+        {
+          "text": "7/12",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "Excellent !",
+            "subtitle": "Tu as trouve le bon denominateur commun (12) et effectue le calcul correctement.",
+            "score": 100
+          }
+        },
+        {
+          "text": "2/2",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "Presque",
+            "subtitle": "Il faut mettre au meme denominateur avant de soustraire.",
+            "score": 60
+          }
+        }
+      ]
+    },
+    {
+      "title": "Rappel : addition de fractions",
+      "type": "course_presentation",
+      "slides": [
+        {
+          "content": "<h2>Additionner des fractions</h2><p>Pour additionner deux fractions, il faut qu'elles aient le <strong>meme denominateur</strong>.</p>"
+        },
+        {
+          "content": "<h2>Exemple</h2><p>\\(\\frac{1}{2} + \\frac{1}{4}\\)</p><p>On met au meme denominateur : \\(\\frac{2}{4} + \\frac{1}{4} = \\frac{3}{4}\\)</p>"
+        },
+        {
+          "content": "<h2>Methode</h2><p>1. Trouver un denominateur commun</p><p>2. Convertir chaque fraction</p><p>3. Additionner les numerateurs</p>"
+        }
+      ],
+      "nextContentId": 5
+    },
+    {
+      "title": "Exercice de base",
+      "type": "branching_question",
+      "question": "<p>Apres ce rappel, calcule \\(\\frac{1}{3} + \\frac{1}{6}\\)</p>",
+      "alternatives": [
+        {
+          "text": "1/2",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "Bravo !",
+            "subtitle": "\\(\\frac{2}{6} + \\frac{1}{6} = \\frac{3}{6} = \\frac{1}{2}\\). Parfait !",
+            "score": 70
+          }
+        },
+        {
+          "text": "2/9",
+          "nextContentId": -1,
+          "feedback": {
+            "title": "Pas encore...",
+            "subtitle": "N'oublie pas de mettre au meme denominateur. Continue a t'entrainer !",
+            "score": 30
+          }
+        }
+      ]
+    }
+  ],
+  "endScreens": [
+    {
+      "title": "Excellent !",
+      "subtitle": "Tu maitrises les fractions. Continue comme ca !",
+      "score": 100
+    },
+    {
+      "title": "Bien !",
+      "subtitle": "Tu progresses. Continue a t'entrainer.",
+      "score": 70
+    },
+    {
+      "title": "A retravailler",
+      "subtitle": "Revois le cours sur les fractions et reessaie.",
+      "score": 30
+    }
+  ]
+}

@@ -8,9 +8,9 @@
   <title>Commandes Claude Code - Guide Pratique</title>
 
   <!-- Reveal.js Core -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="assets/reveal/reset.css">
+  <link rel="stylesheet" href="assets/reveal/reveal.css">
+  <link rel="stylesheet" href="assets/reveal/theme/white.css">
 
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -54,7 +54,7 @@
     .reveal h3 {
       font-size: 1.3em;
       color: var(--secondary-color);
-      margin-top: 0.8em;
+      margin-top: 0.4em;
     }
 
     .reveal ul, .reveal ol {
@@ -263,10 +263,11 @@
           <li class="fragment" data-fragment-index="2"><i class="fas fa-folder-open icon"></i> Commandes de création</li>
           <li class="fragment" data-fragment-index="3"><i class="fas fa-edit icon"></i> Commandes de modification</li>
           <li class="fragment" data-fragment-index="4"><i class="fas fa-database icon"></i> Commandes de gestion des connaissances</li>
-          <li class="fragment" data-fragment-index="5"><i class="fas fa-laptop-code icon"></i> Commandes d'applications</li>
-          <li class="fragment" data-fragment-index="6"><i class="fas fa-cog icon"></i> Commandes d'automatisation</li>
-          <li class="fragment" data-fragment-index="7"><i class="fas fa-lightbulb icon"></i> Comment utiliser une commande</li>
-          <li class="fragment" data-fragment-index="8"><i class="fas fa-graduation-cap icon"></i> Conseils pratiques</li>
+          <li class="fragment" data-fragment-index="5"><i class="fas fa-laptop-code icon"></i> Commandes de gestion des fichiers</li>
+          <li class="fragment" data-fragment-index="6"><i class="fas fa-file-contract icon"></i> Commandes de documentation</li>
+          <li class="fragment" data-fragment-index="7"><i class="fas fa-cog icon"></i> Commandes d'automatisation</li>
+          <li class="fragment" data-fragment-index="8"><i class="fas fa-lightbulb icon"></i> Comment utiliser une commande</li>
+          <li class="fragment" data-fragment-index="9"><i class="fas fa-graduation-cap icon"></i> Conseils pratiques</li>
         </ol>
       </section>
 
@@ -279,7 +280,7 @@
         </div>
 
         <ul class="feature-list">
-          <li class="fragment"><i class="fas fa-bolt icon"></i> Lancée en tapant <code>/nom-commande</code> dans Claude Code</li>
+          <li class="fragment"><i class="fas fa-bolt icon"></i> Lancée en tapant <code>/nom-commande</code> + <code>Tab</code> pour autocomplétion</li>
           <li class="fragment"><i class="fas fa-robot icon"></i> Déclenche automatiquement des <strong>agents spécialisés</strong></li>
           <li class="fragment"><i class="fas fa-tools icon"></i> Utilise des <strong>skills experts</strong> pour chaque tâche</li>
           <li class="fragment"><i class="fas fa-magic icon"></i> Produit des <strong>résultats prêts à l'emploi</strong></li>
@@ -289,14 +290,18 @@
           <p><strong>Exemple :</strong> Au lieu de créer manuellement un document LaTeX, vous tapez :<br>
           <code>/createTex cours sur les vecteurs en seconde</code></p>
         </div>
+
+        <div class="box fragment" style="font-size: 0.75em; margin-top: 1em; background: #e3f2fd;">
+          <p><i class="fas fa-info-circle icon"></i> <strong>Multi-plateforme :</strong> Concept similaire à Gemini CLI et Codex, mais spécifique à Claude Code</p>
+        </div>
       </section>
 
       <!-- SLIDE 4 : CATÉGORIES DE COMMANDES -->
       <section>
-        <h2>Catégories de commandes</h2>
+        <section>
+          <h2>Catégories de commandes</h2>
 
         <div class="grid-2">
-          <div>
             <div class="command-card fragment" data-fragment-index="1">
               <div class="command-title"><i class="fas fa-folder-plus icon success"></i> Création</div>
               <div class="command-desc">Créer de nouveaux documents LaTeX, présentations, applications</div>
@@ -311,27 +316,27 @@
               <div class="command-title"><i class="fas fa-brain icon secondary"></i> Connaissances</div>
               <div class="command-desc">Charger les connaissances techniques nécessaires</div>
             </div>
-          </div>
-
-          <div>
             <div class="command-card fragment" data-fragment-index="4">
-              <div class="command-title"><i class="fas fa-laptop-code icon accent"></i> Applications</div>
-              <div class="command-desc">Transformer des ressources en apps interactives</div>
+              <div class="command-title"><i class="fas fa-folder-tree icon accent"></i> Gestion de fichiers</div>
+              <div class="command-desc">Organiser, renommer et optimiser vos fichiers</div>
             </div>
-
-            <div class="command-card fragment" data-fragment-index="5">
+        </div>
+      </section>
+        <section>
+        
+        <div class="grid-2">           
+            <div class="command-card fragment" data-fragment-index="2">
               <div class="command-title"><i class="fas fa-file-alt icon primary"></i> Documentation</div>
               <div class="command-desc">Générer des documents explicatifs</div>
             </div>
 
-            <div class="command-card fragment" data-fragment-index="6">
+            <div class="command-card fragment" data-fragment-index="3">
               <div class="command-title"><i class="fas fa-cogs icon"></i> Automatisation</div>
               <div class="command-desc">Investigation et auto-correction</div>
             </div>
-          </div>
         </div>
       </section>
-
+      </section>
       <!-- SECTION : COMMANDES DE CRÉATION -->
       <section>
         <section>
@@ -357,7 +362,6 @@
         </section>
 
         <!-- /createTex -->
-        <section>
           <section>
             <h2><i class="fas fa-file-alt icon"></i> /createTex</h2>
             <p class="subtitle">Création automatique de documents LaTeX pédagogiques</p>
@@ -417,12 +421,6 @@
               <pre><code class="language-bash">/createTex cours sur les fonctions affines en troisième</code></pre>
               <p class="success">→ Modèle Cours, 3eme, Sequence-Fonctions_affines/Cours/</p>
             </div>
-
-            <div class="example-box fragment" style="font-size: 0.75em;">
-              <p><strong>Exercices :</strong></p>
-              <pre><code class="language-bash">/createTex exercices sur les probabilités en terminale</code></pre>
-              <p class="success">→ Modèle Exercices light, Terminale, Sequence-Probabilites/</p>
-            </div>
           </section>
 
           <section>
@@ -451,10 +449,8 @@
               </div>
             </div>
           </section>
-        </section>
 
         <!-- /createBeamer -->
-        <section>
           <section>
             <h2><i class="fas fa-presentation icon"></i> /createBeamer</h2>
             <p class="subtitle">Création de diaporamas Beamer de haute qualité</p>
@@ -525,13 +521,6 @@
   --auteur "M. Dupont"</code></pre>
               <p class="success">→ 25 slides, 4 exercices, métadonnées complètes</p>
             </div>
-
-            <div class="example-box fragment" style="font-size: 0.75em;">
-              <p><strong>Conférence académique :</strong></p>
-              <pre><code class="language-bash">/createBeamer --style académique \
-  --sujet "Analyse spectrale" --duree 30</code></pre>
-              <p class="success">→ 23 slides format 16:9, sobre et professionnel</p>
-            </div>
           </section>
 
           <section>
@@ -580,10 +569,8 @@
               </tbody>
             </table>
           </section>
-        </section>
 
         <!-- /createReveals -->
-        <section>
           <section>
             <h2><i class="fas fa-globe icon"></i> /createReveals</h2>
             <p class="subtitle">Création de présentations reveal.js interactives</p>
@@ -643,12 +630,6 @@
               <pre><code class="language-bash">/createReveals --style lycée --sujet "Dérivation" --duree 55</code></pre>
               <p class="success">→ 25 slides avec fragments progressifs, mode présentation (S)</p>
             </div>
-
-            <div class="example-box fragment" style="font-size: 0.75em;">
-              <p><strong>Conférence académique :</strong></p>
-              <pre><code class="language-bash">/createReveals --style académique --sujet "Analyse" --duree 30</code></pre>
-              <p class="success">→ 23 slides sobres, transitions simples, export PDF possible</p>
-            </div>
           </section>
 
           <section>
@@ -673,10 +654,8 @@
               </div>
             </div>
           </section>
-        </section>
 
         <!-- /create-app -->
-        <section>
           <section>
             <h2><i class="fas fa-laptop-code icon"></i> /create-app</h2>
             <p class="subtitle">Créer une application éducative interactive</p>
@@ -797,7 +776,6 @@
             </div>
           </section>
         </section>
-      </section>
 
       <!-- SECTION : COMMANDES DE MODIFICATION -->
       <section>
@@ -821,7 +799,6 @@
         </section>
 
         <!-- /adaptTex -->
-        <section>
           <section>
             <h2><i class="fas fa-exchange-alt icon"></i> /adaptTex</h2>
             <p class="subtitle">Adaptation conceptuelle de documents LaTeX vers bfcours</p>
@@ -905,10 +882,8 @@
               </ul>
             </div>
           </section>
-        </section>
 
         <!-- /modifyTex -->
-        <section>
           <section>
             <h2><i class="fas fa-pen icon"></i> /modifyTex</h2>
             <p class="subtitle">Modifier un document LaTeX existant</p>
@@ -993,10 +968,8 @@
               </ul>
             </div>
           </section>
-        </section>
 
         <!-- /formatTexBetter -->
-        <section>
           <section>
             <h2><i class="fas fa-compress icon"></i> /formatTexBetter</h2>
             <p class="subtitle">Optimisation d'espace et présentation compacte</p>
@@ -1091,7 +1064,6 @@
             </div>
           </section>
         </section>
-      </section>
 
       <!-- SECTION : GESTION DES CONNAISSANCES -->
       <section>
@@ -1112,7 +1084,6 @@
         </section>
 
         <!-- /loadTexKnowledge -->
-        <section>
           <section>
             <h2><i class="fas fa-book icon"></i> /loadTexKnowledge</h2>
             <p class="subtitle">Chargement des connaissances LaTeX bfcours</p>
@@ -1189,10 +1160,8 @@
               </ul>
             </div>
           </section>
-        </section>
 
         <!-- /loadSkillKnowledge -->
-        <section>
           <section>
             <h2><i class="fas fa-puzzle-piece icon"></i> /loadSkillKnowledge</h2>
             <p class="subtitle">Documentation création de skills</p>
@@ -1270,7 +1239,198 @@
             </div>
           </section>
         </section>
-      </section>
+
+      <!-- SECTION : GESTION DE FICHIERS -->
+      <section>
+        <section>
+          <h2><i class="fas fa-folder-tree icon"></i> Commandes de Gestion des Fichiers</h2>
+          <p class="smaller fragment">2 commandes pour organiser et optimiser vos fichiers</p>
+
+          <div class="grid-2">
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/do</code></strong><br>Afficher l'état du projet et structurer vos dossiers</p>
+            </div>
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><strong><code>/compact</code></strong><br>Nettoyer et optimiser votre arborescence</p>
+            </div>
+          </div>
+
+          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque commande</p>
+        </section>
+
+        <!-- /do -->
+          <section>
+            <h2><i class="fas fa-folder-open icon"></i> /do</h2>
+            <p class="subtitle">Afficher l'état et la structure du projet</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/do [--format tree|json|markdown]</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-chart-line icon"></i> <strong>Diagnostic :</strong> Analyse l'arborescence de votre projet et affiche un résumé des fichiers</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /do</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <div class="step-number">1</div>
+              <div>Scan de l'arborescence du projet</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <div class="step-number">2</div>
+              <div>Comptage des fichiers par type</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <div class="step-number">3</div>
+              <div>Génération tree ou JSON selon format</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <div class="step-number">4</div>
+              <div>Affichage avec statistiques</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemples /do</h3>
+
+            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Format arborescence :</strong></p>
+              <pre><code class="language-bash">/do</code></pre>
+              <p class="success">→ Affiche l'arborescence complète du projet</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Format JSON :</strong></p>
+              <pre><code class="language-bash">/do --format json</code></pre>
+              <p class="success">→ Export structure en JSON</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em;">
+              <p><strong>Format Markdown :</strong></p>
+              <pre><code class="language-bash">/do --format markdown</code></pre>
+              <p class="success">→ Export structure en Markdown</p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Ce qu'affiche /do</h3>
+
+            <div class="box" style="font-size: 0.8em;">
+              <p><strong>Informations du projet :</strong></p>
+              <ul class="smaller">
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Arborescence</strong> : Structure complète</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Statistiques</strong> : Nombre de fichiers par type</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Taille</strong> : Poids total du projet</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Profondeur</strong> : Niveau d'imbrication max</li>
+                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Extensions</strong> : Types de fichiers présents</li>
+              </ul>
+            </div>
+          </section>
+
+        <!-- /compact -->
+          <section>
+            <h2><i class="fas fa-compress icon"></i> /compact</h2>
+            <p class="subtitle">Nettoyer et optimiser l'arborescence du projet</p>
+
+            <div class="example-box" style="font-size: 0.85em;">
+              <p><strong>Usage :</strong></p>
+              <pre><code class="language-bash">/compact [--simulate] [--patterns pattern1,pattern2]</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.85em;">
+              <p><i class="fas fa-broom icon"></i> <strong>Nettoyage :</strong> Supprime les fichiers temporaires, caches et fichiers inutiles</p>
+            </div>
+
+            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
+          </section>
+
+          <section>
+            <h3>Workflow /compact</h3>
+
+            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
+              <div class="step-number">1</div>
+              <div>Identification des fichiers non-essentiels</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
+              <div class="step-number">2</div>
+              <div>Suppression des caches (.cache, __pycache__, node_modules)</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
+              <div class="step-number">3</div>
+              <div>Suppression des fichiers temporaires</div>
+            </div>
+
+            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
+              <div class="step-number">4</div>
+              <div>Rapport des suppressions</div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Exemples /compact</h3>
+
+            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Simulation (sûr) :</strong></p>
+              <pre><code class="language-bash">/compact --simulate</code></pre>
+              <p class="success">→ Affiche les fichiers qui seraient supprimés (sans rien supprimer)</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em; margin-bottom: 0.8em;">
+              <p><strong>Nettoyage réel :</strong></p>
+              <pre><code class="language-bash">/compact</code></pre>
+              <p class="success">→ Nettoie les caches et fichiers temporaires</p>
+            </div>
+
+            <div class="example-box fragment" style="font-size: 0.75em;">
+              <p><strong>Patterns personnalisés :</strong></p>
+              <pre><code class="language-bash">/compact --patterns "*.tmp,*.bak,.DS_Store"</code></pre>
+              <p class="success">→ Supprime uniquement les fichiers matching les patterns</p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Ce qui sera nettoyé</h3>
+
+            <div class="grid-2">
+              <div class="box" style="font-size: 0.75em;">
+                <h3 class="smaller">Toujours supprimés</h3>
+                <ul class="smaller">
+                  <li><code>.DS_Store</code> (macOS)</li>
+                  <li><code>Thumbs.db</code> (Windows)</li>
+                  <li><code>*.pyc</code>, <code>__pycache__</code></li>
+                  <li><code>node_modules</code></li>
+                  <li><code>.cache</code>, <code>.tmp</code></li>
+                </ul>
+              </div>
+
+              <div class="box fragment" style="font-size: 0.75em;">
+                <h3 class="smaller">Optionnel (avec --patterns)</h3>
+                <ul class="smaller">
+                  <li><code>*.bak</code>, <code>*.backup</code></li>
+                  <li><code>*.log</code> (anciens logs)</li>
+                  <li><code>.git</code> (avec confirmation)</li>
+                  <li>Dossiers vides</li>
+                  <li>Fichiers orphelins</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="warning-box fragment" style="font-size: 0.75em; margin-top: 1em;">
+              <p><i class="fas fa-shield-alt icon"></i> <strong>Sécurité :</strong> Utilisez <code>--simulate</code> d'abord ! Les suppressions sont définitives</p>
+            </div>
+          </section>
+        </section>
 
       <!-- SECTION : DOCUMENTATION -->
       <section>
@@ -1286,7 +1446,6 @@
         </section>
 
         <!-- /ficheTexnique -->
-        <section>
           <section>
             <h2><i class="fas fa-clipboard-list icon"></i> /ficheTexnique</h2>
             <p class="subtitle">Document explicatif à partir d'une ressource</p>
@@ -1368,7 +1527,6 @@
               </ul>
             </div>
           </section>
-        </section>
       </section>
 
       <!-- SECTION : AUTOMATISATION -->
@@ -1385,7 +1543,6 @@
         </section>
 
         <!-- /background -->
-        <section>
           <section>
             <h2><i class="fas fa-bug icon"></i> /background</h2>
             <p class="subtitle">Investigation et auto-correction automatique</p>
@@ -1478,7 +1635,6 @@
               <p><i class="fas fa-shield-alt icon"></i> <strong>Sécurité :</strong> Ne modifie JAMAIS vos fichiers de travail (.tex, .pdf), seulement la configuration (.claude/)</p>
             </div>
           </section>
-        </section>
       </section>
 
       <!-- COMMENT UTILISER UNE COMMANDE -->
@@ -1502,17 +1658,63 @@
 
         <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
           <div class="step-number">4</div>
-          <div>Ajouter les paramètres nécessaires</div>
+          <div>Appuyer sur <code>Tab</code> pour autocomplétion</div>
         </div>
 
         <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
           <div class="step-number">5</div>
-          <div>Appuyer sur Entrée</div>
+          <div>Ajouter les paramètres nécessaires</div>
         </div>
 
         <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.85em;">
           <div class="step-number">6</div>
+          <div>Appuyer sur Entrée</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="7" style="font-size: 0.85em;">
+          <div class="step-number">7</div>
           <div>L'agent prend le relais automatiquement ✓</div>
+        </div>
+      </section>
+
+      <!-- AUTOCOMPLÉTION ET RACCOURCIS -->
+      <section>
+        <h2><i class="fas fa-keyboard icon"></i> Autocomplétion et Raccourcis</h2>
+
+        <div class="grid-2">
+          <div>
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-check icon success"></i> <strong>Tab - Autocomplétion</strong></p>
+              <p class="smaller">Complète automatiquement le nom de la commande</p>
+              <pre style="font-size: 0.7em; margin-top: 0.5em;"><code>/crea<u>Tab</u> → /createTex</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-check icon success"></i> <strong>/ - Liste complète</strong></p>
+              <p class="smaller">Affiche toutes les commandes disponibles</p>
+              <pre style="font-size: 0.7em; margin-top: 0.5em;"><code>/<u>Entrée</u> → Menu avec 13 commandes</code></pre>
+            </div>
+          </div>
+
+          <div>
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-check icon success"></i> <strong>Flèches - Navigation</strong></p>
+              <p class="smaller">Naviguez dans le menu des commandes</p>
+              <pre style="font-size: 0.7em; margin-top: 0.5em;"><code><u>↑↓</u> → Parcourir les options</code></pre>
+            </div>
+
+            <div class="box fragment" style="font-size: 0.8em;">
+              <p><i class="fas fa-check icon success"></i> <strong>Entrée - Exécution</strong></p>
+              <p class="smaller">Lance l'agent correspondant</p>
+              <pre style="font-size: 0.7em; margin-top: 0.5em;"><code>/createTex ... <u>Entrée</u> → Début</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="example-box fragment" style="font-size: 0.75em; margin-top: 1em;">
+          <p><strong>Exemple complet :</strong></p>
+          <pre><code>/cre<u>Tab</u> → /createTex<u>Espace</u>cours sur les dérivées<u>Entrée</u></code></pre>
+          <p class="success">→ Création automatique d'un cours LaTeX en quelques secondes</p>
         </div>
       </section>
 
@@ -1524,36 +1726,40 @@
           <div>
             <div class="box fragment" style="font-size: 0.8em;">
               <p><i class="fas fa-check icon success"></i> <strong>Soyez précis</strong></p>
-              <p class="smaller">Plus votre description est précise, meilleur sera le résultat</p>
+              <p class="smaller">Plus votre description est précise, meilleur sera le résultat. Inclure : niveau, durée, nombre de slides</p>
             </div>
 
             <div class="box fragment" style="font-size: 0.8em;">
               <p><i class="fas fa-robot icon success"></i> <strong>Laissez l'agent travailler</strong></p>
-              <p class="smaller">Les commandes sont autonomes, pas besoin d'intervention</p>
+              <p class="smaller">Les commandes sont autonomes. Ne pas interrompre ou re-demander avant fin</p>
             </div>
 
             <div class="box fragment" style="font-size: 0.8em;">
               <p><i class="fas fa-sync icon success"></i> <strong>Itérez si nécessaire</strong></p>
-              <p class="smaller">Vous pouvez relancer avec des ajustements</p>
+              <p class="smaller">Vous pouvez relancer avec des ajustements : couleurs, contenu, mise en page</p>
             </div>
           </div>
 
           <div>
             <div class="box fragment" style="font-size: 0.8em;">
               <p><i class="fas fa-save icon success"></i> <strong>Vérifiez les résultats</strong></p>
-              <p class="smaller">Toujours vérifier le PDF ou HTML généré</p>
+              <p class="smaller">Toujours tester : ouvrir le PDF, vérifier la compilation, naviguer la présentation</p>
             </div>
 
             <div class="box fragment" style="font-size: 0.8em;">
               <p><i class="fas fa-database icon success"></i> <strong>Chargez les connaissances</strong></p>
-              <p class="smaller">Utilisez /loadTexKnowledge avant modifications LaTeX</p>
+              <p class="smaller">Lancez /loadTexKnowledge avant modifications LaTeX complexes</p>
             </div>
 
             <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-history icon success"></i> <strong>Utilisez /background</strong></p>
-              <p class="smaller">Régulièrement pour auto-amélioration du système</p>
+              <p><i class="fas fa-history icon success"></i> <strong>Nettoyez régulièrement</strong></p>
+              <p class="smaller">Utilisez /do pour voir l'état du projet et /compact pour nettoyer</p>
             </div>
           </div>
+        </div>
+
+        <div class="example-box fragment" style="font-size: 0.75em; margin-top: 1em;">
+          <p><strong>Conseil bonus :</strong> Utilisez /background une fois par semaine pour auto-correction des bugs récurrents</p>
         </div>
       </section>
 
@@ -1562,40 +1768,55 @@
         <h2>Exemple complet de workflow</h2>
 
         <div class="example-box" style="font-size: 0.75em;">
-          <p><strong>Scénario :</strong> Créer un cours sur les vecteurs en seconde et le présenter</p>
+          <p><strong>Scénario :</strong> Créer une séquence complète sur les vecteurs en 2nde (cours, exercices, présentation, app interactive)</p>
         </div>
 
-        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.7em; margin-top: 1em;">
+        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.65em; margin-top: 1em;">
           <div class="step-number">1</div>
-          <div><code>/createTex cours sur les vecteurs en seconde</code> → Cours LaTeX créé</div>
+          <div><code>/do</code> → Vérifier l'arborescence actuelle</div>
         </div>
 
-        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.7em;">
+        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.65em;">
           <div class="step-number">2</div>
-          <div><code>/modifyTex ajouter 3 exercices d'application</code> → Exercices ajoutés</div>
+          <div><code>/createTex cours complet sur les vecteurs en seconde</code> → Cours LaTeX créé ✓</div>
         </div>
 
-        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.7em;">
+        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.65em;">
           <div class="step-number">3</div>
-          <div><code>/formatTexBetter ./Cours_vecteurs.tex</code> → Optimisation espace</div>
+          <div><code>/modifyTex ajouter 5 exercices progressifs avec corrections</code> → Exercices ajoutés ✓</div>
         </div>
 
-        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.7em;">
+        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.65em;">
           <div class="step-number">4</div>
-          <div><code>/createBeamer --sujet "Vecteurs 2nde" --duree 55</code> → Diaporama Beamer</div>
+          <div><code>/formatTexBetter ./Sequence-Vecteurs/Cours_vecteurs.tex</code> → Optimisation ✓</div>
         </div>
 
-        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.7em;">
+        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.65em;">
           <div class="step-number">5</div>
-          <div><code>/create-app ./2nde/Sequence-Vecteurs/Exercices/ --type exerciseur</code> → App interactive</div>
+          <div><code>/createBeamer --sujet "Vecteurs 2nde" --duree 50 --style lycée</code> → Beamer PDF ✓</div>
         </div>
 
-        <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.7em;">
+        <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.65em;">
           <div class="step-number">6</div>
-          <div><code>/ficheTexnique ./2nde/Sequence-Vecteurs/</code> → Documentation pour collègues</div>
+          <div><code>/createReveals --sujet "Vecteurs 2nde" --duree 50 --style lycée</code> → Présentation HTML ✓</div>
         </div>
 
-        <p class="success fragment" style="margin-top: 1em; font-size: 0.85em;">⏱ Total : ~30 minutes pour une séquence complète !</p>
+        <div class="workflow-step fragment" data-fragment-index="7" style="font-size: 0.65em;">
+          <div class="step-number">7</div>
+          <div><code>/create-app ./Sequence-Vecteurs/Exercices/ --type exerciseur</code> → App .exe ✓</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="8" style="font-size: 0.65em;">
+          <div class="step-number">8</div>
+          <div><code>/ficheTexnique ./Sequence-Vecteurs/</code> → Fiche pour collègues ✓</div>
+        </div>
+
+        <div class="workflow-step fragment" data-fragment-index="9" style="font-size: 0.65em;">
+          <div class="step-number">9</div>
+          <div><code>/compact</code> → Nettoyer fichiers temporaires ✓</div>
+        </div>
+
+        <p class="success fragment" style="margin-top: 1em; font-size: 0.85em;"><i class="fas fa-clock icon"></i> Total : <strong>~45 minutes</strong> pour une séquence complète et professionnelle !</p>
       </section>
 
       <!-- CONCLUSION -->
@@ -1604,11 +1825,12 @@
 
         <div class="grid-2">
           <div>
-            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> 11 commandes disponibles</h3>
+            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> 13 commandes disponibles</h3>
             <ul class="smaller fragment" data-fragment-index="1">
               <li>4 pour créer (Tex, Beamer, Reveals, App)</li>
               <li>3 pour modifier (adapt, modify, format)</li>
               <li>2 pour connaissances (Tex, Skill)</li>
+              <li>2 pour gestion de fichiers (do, compact)</li>
               <li>1 pour documentation (fiche)</li>
               <li>1 pour automatisation (background)</li>
             </ul>
@@ -1649,8 +1871,9 @@
           <div class="box fragment" style="font-size: 0.8em;">
             <h3 class="smaller">Aide en ligne</h3>
             <ul class="smaller">
-              <li><i class="fas fa-globe icon"></i> docs.claude.com</li>
-              <li><i class="fas fa-book icon"></i> Documentation bfcours</li>
+              <li><i class="fas fa-globe icon"></i> <a href="https://code.claude.com/docs/fr/skills" target="_blank">code.claude.com/docs/fr/skills</a></li>
+              <li><i class="fas fa-book icon"></i> <a href="https://code.claude.com/docs/fr" target="_blank">Documentation Claude Code FR</a></li>
+              <li><i class="fas fa-bookmark icon"></i> Documentation bfcours</li>
               <li><i class="fas fa-terminal icon"></i> Taper <code>/</code> pour la liste</li>
             </ul>
           </div>
@@ -1669,10 +1892,10 @@
   </div>
 
   <!-- Reveal.js Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script>
+  <script src="assets/reveal/reveal.js"></script>
+  <script src="assets/reveal/plugin/notes/notes.js"></script>
+  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
+  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
 
   <script>
     Reveal.initialize({
