@@ -44,6 +44,15 @@ const nextConfig = {
         ],
       },
       {
+        // Config feedback (kill-switch lu par l'app avant chaque envoi) :
+        // jamais en cache pour pouvoir couper l'ingestion en un commit.
+        source: '/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/feedback-config.json',
+        headers: [
+          { key: 'Content-Type', value: 'application/json; charset=utf-8' },
+          { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
+        ],
+      },
+      {
         source: '/(.*)',
         headers: [
           {

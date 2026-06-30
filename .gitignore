@@ -19,7 +19,20 @@ node_modules/
 
 # Misc
 .DS_Store
+
+# Secrets / cles privees (filet de securite — ne JAMAIS committer de cle ici).
+# La cle privee de signature de l'updater Tauri (minisign) vit sur la machine de
+# build / le depot de l'app, jamais sur le site.
 *.pem
+*.key
+*.p12
+*.pfx
+*.asc
+# Cles minisign / Tauri (formats de fichiers de cle de signature)
+*.priv
+minisign*.key
+tauri*.key
+.tauri/
 
 # Debug
 npm-debug.log*

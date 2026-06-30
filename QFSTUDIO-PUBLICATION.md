@@ -85,6 +85,37 @@ Dossier disque correspondant **1:1** :
 
 ---
 
+## Canal feedback (remontées de l'app)
+
+L'app POST ses retours sur `https://bfcours.dev/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/feedback`
+(header `X-QF-Key`). La route Next (`src/app/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/feedback/route.ts`)
+**committe chaque item** dans le dépôt **`BoumFactory/qfstudio-feedback`** sous
+`inbox/AAAA-MM/<id>.json` (idempotent via l'uuid de l'app). On lit les feedbacks
+par `git pull` de ce dépôt — pas d'endpoint de lecture.
+
+### Secrets Vercel (jamais dans le repo)
+
+```sh
+vercel env add QF_FEEDBACK_APP_KEY production    # secret partagé, comparé à X-QF-Key
+vercel env add QF_FEEDBACK_GH_TOKEN production    # PAT fine-grained, repo qfstudio-feedback seul, Contents: Read & write
+# (optionnel) vercel env add QF_FEEDBACK_KILL production   # "1" => la route refuse (503)
+```
+
+### Couper l'ingestion
+
+- **Côté app** (recommandé) : `enabled: false` dans
+  `public/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/feedback-config.json` + commit/push.
+  L'app lit ce fichier avant chaque envoi et n'envoie plus rien.
+- **Côté serveur** : `QF_FEEDBACK_KILL=1` dans Vercel.
+
+### Cap de taille — à garder synchronisé
+
+`MAX_BODY_BYTES` (route, **32 Ko**) doit rester **égal** à `max_payload_kb` de
+`feedback-config.json`. Sinon un item accepté par l'app mais refusé par la route
+(413) serait ré-essayé indéfiniment. Changer l'un = changer l'autre.
+
+---
+
 ## Garde-fous
 
 - **Token GELÉ** : `7gOdepBMu5OY2QBKBcd7mGyA`. Communiqué une seule fois, jamais modifié.
