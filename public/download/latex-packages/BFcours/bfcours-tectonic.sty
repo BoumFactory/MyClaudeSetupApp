@@ -1,0 +1,32 @@
+% bfcours-tectonic.sty — Wrapper pour compiler bfcours avec Tectonic
+% Usage : remplacer \usepackage{bfcours} par \usepackage{bfcours-tectonic}
+% Tout le reste du document reste identique.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bfcours-tectonic}[2026/03/08 v1.0 bfcours pour Tectonic]
+
+\RequirePackage{ifluatex}
+
+% --- input@path : Tectonic n'utilise pas TEXINPUTS ---
+\ifluatex\else
+  \makeatletter
+  \providecommand*{\input@path}{}
+  \edef\input@path{{\input@path}%
+    {C:/Users/Utilisateur/Documents/Professionnel/localtexmf/tex/latex/BFcours/}%
+    {C:/Users/Utilisateur/Documents/Professionnel/localtexmf/tex/latex/ProfDeleuze/}%
+    {C:/Users/Utilisateur/AppData/Roaming/MiKTeX/tex/latex/bclogo/}%
+  }
+  \makeatother
+\fi
+
+% --- Images (emoji + icones bclogo) ---
+\newcommand{\bfcoursimgpath}{C:/Users/Utilisateur/Documents/Professionnel/bfcours-images}
+
+% --- siunitx avant bfcours (conflit wrapfig2/L3 sous Tectonic) ---
+\ifluatex\else
+  \RequirePackage{siunitx}
+  \sisetup{output-decimal-marker={,}}
+\fi
+
+% --- Charger bfcours ---
+\RequirePackage{bfcours}
+\endinput

@@ -1,0 +1,435 @@
+% =====================================================================
+% bfd-html.sty  --  POC 2026-05-15
+%
+% Add-on pour bfcours-env-tcb : genere un fichier HTML autonome
+% en parallele de la compilation PDF.
+%
+% Usage :
+%   \usepackage{bfcours}
+%   \usepackage[override]{bfcours-env-tcb}
+%   \usepackage[makeHtml]{bfd-html}
+%
+% Sans l'option [makeHtml], le package est inactif (les commandes
+% \onlyHtml / \onlyPdf restent definies pour ne pas casser les docs).
+%
+% Strategie : dual rendering.
+%   - Les envs didactiques sont SURCHARGES pour produire le rendu PDF
+%     normal + un bloc HTML ecrit dans \jobname.html.
+%   - \onlyHtml{src} ecrit du HTML brut (rien en PDF).
+%   - \onlyPdf{src}  affiche en PDF (rien en HTML).
+%   - Les maths $...$ / \[...\] sont preserves -> MathJax les rend cote
+%     client (cf. bfd-html.js + CDN MathJax).
+%   - Les commandes texte (\voc, \emph...) sont post-traitees par
+%     bfd-html.js (substitution sur innerHTML avant MathJax).
+%
+% Fichiers compagnons attendus dans le meme dossier :
+%   - bfd-html.css : style des boites didactiques en HTML
+%   - bfd-html.js  : post-substitution des commandes texte
+%
+% Pour un VRAI onefile, post-compilation : inliner CSS + JS dans le .html.
+% Cf. build_onefile.py (a venir).
+% =====================================================================
+
+\ProvidesPackage{bfd-html}[2026/05/15 v0.2 Dual rendering PDF/HTML pour bfcours-env-tcb]
+
+\RequirePackage{xparse}
+\RequirePackage{etoolbox}
+
+% --- Option [makeHtml] -----------------------------------------------
+\newif\ifbfd@makehtml
+\bfd@makehtmlfalse
+\DeclareOption{makeHtml}{\bfd@makehtmltrue}
+\DeclareOption*{}
+\ProcessOptions\relax
+
+% =====================================================================
+% MODE INACTIF : definitions stubs et fin du chargement
+% =====================================================================
+% NOTE IMPORTANTE : xparse \DeclareDocumentEnvironment{NomEnv} ECRASE la
+% commande \NomEnv si elle existait deja. Donc on N'UTILISE PAS le meme
+% nom pour la commande et l'environnement. Ici on a juste les commandes
+% \onlyHtml / \onlyPdf, et pour les versions env, on les NOMME DIFFEREMMENT :
+%   \begin{ifHtml} ... \end{ifHtml}   (equivalent env de \onlyHtml)
+%   \begin{ifPdf}  ... \end{ifPdf}    (equivalent env de \onlyPdf)
+\ifbfd@makehtml\else
+  \DeclareDocumentCommand{\onlyHtml}{+m}{}
+  \DeclareDocumentCommand{\onlyPdf}{+m}{#1}
+  \newenvironment{ifHtml}{\setbox0=\vbox\bgroup}{\egroup}
+  \newenvironment{ifPdf}{}{}
+  % \bfdExo en mode inactif : appelle EXO classique avec correction
+  % (si fournie) via \exocorrection. Aucun HTML emis.
+  \NewDocumentCommand{\bfdExo}{m m +m +m}{%
+    \@ifundefined{EXO}{%
+      \par\noindent\textbf{Exercice -- #1}\par #3%
+      \edef\bfd@tmp{\detokenize{#4}}%
+      \ifx\bfd@tmp\@empty\else\par\textit{Correction :} #4\fi
+    }{%
+      \begin{EXO}{#1}{#2}%
+        #3%
+        \edef\bfd@tmp{\detokenize{#4}}%
+        \ifx\bfd@tmp\@empty\else\exocorrection #4\fi
+      \end{EXO}%
+    }%
+  }
+  \endinput
+\fi
+
+% =====================================================================
+% MODE ACTIF
+% =====================================================================
+\typeout{*** bfd-html : mode makeHtml ACTIF ***}
+
+\newwrite\bfd@htmlout
+
+% \bfd@w : ecrit une ligne brute (accolades doivent etre equilibrees)
+\newcommand{\bfd@w}[1]{\immediate\write\bfd@htmlout{\unexpanded{#1}}}
+
+% \bfd@wBody : ecrit le body d'un environnement en detokenize
+% (preserve $...$ et la source des macros : substitution JS plus tard).
+\newcommand{\bfd@wBody}[1]{%
+  \immediate\write\bfd@htmlout{\detokenize{#1}}%
+}
+
+% --- onlyHtml / onlyPdf (commandes) ---------------------------------
+\DeclareDocumentCommand{\onlyHtml}{+m}{\bfd@w{#1}}
+\DeclareDocumentCommand{\onlyPdf}{+m}{#1}
+
+% --- ifHtml / ifPdf (environnements, noms differents pour eviter le bug
+%     xparse de namespace partage entre cmd et env) ------------------
+\DeclareDocumentEnvironment{ifHtml}{+b}{\bfd@w{#1}}{}
+\DeclareDocumentEnvironment{ifPdf}{+b}{#1}{}
+
+% =====================================================================
+% Header / footer HTML
+% On ecrit des lignes simples (accolades equilibrees) pour eviter les
+% problemes d'echappement. Les regles CSS sont dans bfd-html.css.
+% =====================================================================
+% Ouverture du fichier DIRECT en preambule (et non via AtBeginDocument),
+% pour eviter un bug subtil ou \onlyHtml et \onlyPdf etaient capture en
+% un seul argument detokenize (origine non isolee, lie aux hooks LaTeX).
+\immediate\openout\bfd@htmlout=\jobname.html\relax
+
+\AtBeginDocument{%
+  \bfd@w{<!DOCTYPE html>}%
+  \bfd@w{<html lang="fr">}%
+  \bfd@w{<head>}%
+  \bfd@w{<meta charset="UTF-8">}%
+  \bfd@w{<meta name="viewport" content="width=device-width, initial-scale=1.0">}%
+  \immediate\write\bfd@htmlout{<title>\jobname</title>}%
+  \bfd@w{<link rel="stylesheet" href="bfd-html.css">}%
+  \bfd@w{<script src="bfd-html.js"></script>}%
+  \bfd@w{<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>}%
+  \bfd@w{</head>}%
+  \bfd@w{<body>}%
+  \bfd@w{<main>}%
+}
+
+\AtEndDocument{%
+  \bfd@w{</main>}%
+  \bfd@w{</body>}%
+  \bfd@w{</html>}%
+  \immediate\closeout\bfd@htmlout
+  \typeout{*** bfd-html : fichier HTML genere -> \jobname.html ***}%
+}
+
+% =====================================================================
+% Surcharge des envs didactiques de bfcours-env-tcb
+% =====================================================================
+% Strategie :
+%   1. On RENOMME l'env original en sauvegardant via \let les macros
+%      \NomEnv et \endNomEnv.
+%   2. On le REDEFINIT pour : appeler la version originale (PDF) + ecrire HTML.
+%
+% Probleme : avec xparse, les envs definis par \NewDocumentEnvironment
+% sont des macros INTERNES (\Definition / \endDefinition) avec un parsing
+% d'argument particulier. Faire un \let dessus est fragile.
+%
+% Solution plus simple : REINSTALLER les envs en reproduisant leur code,
+% car bfcours-env-tcb les declare via le helper \bfdNewSemanticEnv qu'on
+% peut reutiliser. Donc on appelle \bfdNewSemanticEnv avec option override
+% (selon le mode) + on intercale les \bfd@w.
+
+% Macro maitre :
+%   \bfdDualSemEnv{Env}{class}{tcb-style}{color-hook}
+% Surcharge l'env <Env> (suppose deja defini par bfcours-env-tcb) en
+% AJOUTANT l'ecriture HTML autour de la tcolorbox.
+\NewDocumentCommand{\bfdDualSemEnv}{m m m +m}{%
+  \RenewDocumentEnvironment{#1}{O{} +b}{%
+    % --- PDF : reproduit le squelette \bfdNewSemanticEnv ---
+    \def\bfdSubTitle{##1}%
+    \begin{tcolorbox}[#3]%
+      #4%
+      ##2%
+      \bfdResetColors
+    \end{tcolorbox}%
+    % --- HTML : ecrire le bloc ---
+    \bfd@w{<section class="bfd-box bfd-#2">}%
+    \edef\bfd@tmp{\detokenize{##1}}%
+    \ifx\bfd@tmp\@empty
+      \bfd@w{<div class="bfd-title">#1</div>}%
+    \else
+      \immediate\write\bfd@htmlout{<div class="bfd-title">#1 <span class="bfd-subtitle">\unexpanded{##1}</span></div>}%
+    \fi
+    \bfd@w{<div class="bfd-body">}%
+    \bfd@wBody{##2}%
+    \bfd@w{</div></section>}%
+  }{}%
+}
+
+% --- Macro maitre v2 : avec titre HTML personnalisable -------------
+% \bfdDualSemEnvL{Env}{class}{LibelleHTML}{tcb-style}{color-hook}
+% (Le libelle HTML peut inclure des accents, pas le nom de l'env LaTeX.)
+\NewDocumentCommand{\bfdDualSemEnvL}{m m m m +m}{%
+  \RenewDocumentEnvironment{#1}{O{} +b}{%
+    \def\bfdSubTitle{##1}%
+    \begin{tcolorbox}[#4]%
+      #5%
+      ##2%
+      \bfdResetColors
+    \end{tcolorbox}%
+    \bfd@w{<section class="bfd-box bfd-#2">}%
+    \edef\bfd@tmp{\detokenize{##1}}%
+    \ifx\bfd@tmp\@empty
+      \bfd@w{<div class="bfd-title">#3</div>}%
+    \else
+      \immediate\write\bfd@htmlout{<div class="bfd-title">#3 <span class="bfd-subtitle">\unexpanded{##1}</span></div>}%
+    \fi
+    \bfd@w{<div class="bfd-body">}%
+    \bfd@wBody{##2}%
+    \bfd@w{</div></section>}%
+  }{}%
+}
+
+% --- Application aux envs principaux (avec libelles francais) -------
+\bfdDualSemEnvL{Definition}{definition}{Définition}{bfd definition}{\bfdSetColorsDefinition}
+\bfdDualSemEnvL{Propriete}{propriete}{Propriété}{bfd propriete}{\bfdSetColors{prop}}
+\bfdDualSemEnvL{Theoreme}{theoreme}{Théorème}{bfd theoreme}{\bfdSetColorsTheoreme}
+\bfdDualSemEnvL{Methode}{methode}{Méthode}{bfd methode}{\bfdSetColors{meth}}
+\bfdDualSemEnvL{Demonstration}{demonstration}{Démonstration}{bfd demonstration}{\bfdSetColors{demo}}
+% Note : les hooks couleurs DOIVENT correspondre aux couleurs definies dans
+% bfcours-colors.sty. \bfdSetColors{act} (et non {acti}), {nota} (et non {voca}).
+\bfdDualSemEnvL{Activite}{activite}{Activité}{bfd activite}{\bfdSetColors{act}}
+\bfdDualSemEnvL{Vocabulaire}{vocabulaire}{Vocabulaire}{bfd vocabulaire}{\bfdSetColors{nota}}
+
+% =====================================================================
+% Sections : patch \section / \subsection / \subsubsection
+% =====================================================================
+% bfcours-sectionning + titlesec utilisent \@startsection avec une
+% signature complexe. On preserve cette signature en utilisant xparse
+% avec la signature classique LaTeX : `s o m` (etoile, court, long).
+% Chaque appel :
+%   - rend la section normalement (PDF inchange)
+%   - ecrit un <h{N} id="bfd-sec-K">titre</h{N}> dans le HTML
+%   - sauvegarde l'entree TOC dans le .aux pour la passe suivante
+\newcounter{bfd@seccnt}
+
+% Caractere # litteral pour l'ecriture dans \write (sinon LaTeX l'echappe en \#).
+\begingroup
+\catcode`\#=12
+\gdef\bfd@hash{#}
+\endgroup
+
+% \bfd@addtoc{niveau}{id}{titre} : appele depuis le .aux a la passe N+1
+% Stocke l'entree dans des csname pour iteration au \tableofcontents.
+\newcounter{bfd@tocidx}
+\providecommand{\bfd@addtoc}[3]{%
+  \stepcounter{bfd@tocidx}%
+  \expandafter\xdef\csname bfd@toclvl@\arabic{bfd@tocidx}\endcsname{#1}%
+  \expandafter\xdef\csname bfd@tocid@\arabic{bfd@tocidx}\endcsname{#2}%
+  % \detokenize protege les macros math (\mapsto, \bfe...) de l'expansion
+  % par \write : elles sortiront litteralement et seront rendues par MathJax.
+  \expandafter\xdef\csname bfd@toctit@\arabic{bfd@tocidx}\endcsname{\detokenize{#3}}%
+}
+
+% Macro helper : ecrit le titre HTML + entree TOC dans le .aux.
+% #1 = niveau (2 = section, 3 = subsection, 4 = subsubsection)
+% #2 = titre
+% On utilise \detokenize pour preserver les macros math (\mapsto, \R, etc.)
+% sans developpement, et permettre a MathJax de les rendre cote client.
+\newcommand{\bfd@emitsec}[2]{%
+  \stepcounter{bfd@seccnt}%
+  \edef\bfd@curid{bfd-sec-\arabic{bfd@seccnt}}%
+  % HTML : titre avec id
+  \immediate\write\bfd@htmlout{<h#1 id="\bfd@curid">\detokenize{#2}</h#1>}%
+  % .aux : entree TOC pour la passe suivante (detokenize protege les macros)
+  \protected@write\@auxout{}{\string\bfd@addtoc{#1}{\bfd@curid}{\detokenize{#2}}}%
+}
+
+% Patch des sections : seuls les non-etoiles ecrivent dans la TOC HTML.
+% Les sections etoilees (typiquement le \section*{\contentsname} interne
+% de \tableofcontents) sont SILENCIEUSES cote HTML : ni titre, ni entree.
+\let\bfd@orig@section\section
+\RenewDocumentCommand{\section}{s o m}{%
+  \IfBooleanTF{#1}{%
+    \bfd@orig@section*{#3}%
+  }{%
+    \IfNoValueTF{#2}{\bfd@orig@section{#3}}{\bfd@orig@section[#2]{#3}}%
+    \bfd@emitsec{2}{#3}%
+  }%
+}
+
+\let\bfd@orig@subsection\subsection
+\RenewDocumentCommand{\subsection}{s o m}{%
+  \IfBooleanTF{#1}{%
+    \bfd@orig@subsection*{#3}%
+  }{%
+    \IfNoValueTF{#2}{\bfd@orig@subsection{#3}}{\bfd@orig@subsection[#2]{#3}}%
+    \bfd@emitsec{3}{#3}%
+  }%
+}
+
+\let\bfd@orig@subsubsection\subsubsection
+\RenewDocumentCommand{\subsubsection}{s o m}{%
+  \IfBooleanTF{#1}{%
+    \bfd@orig@subsubsection*{#3}%
+  }{%
+    \IfNoValueTF{#2}{\bfd@orig@subsubsection{#3}}{\bfd@orig@subsubsection[#2]{#3}}%
+    \bfd@emitsec{4}{#3}%
+  }%
+}
+
+% =====================================================================
+% \tableofcontents : patch -> nav HTML construite a partir des entrees
+% sauvees dans le .aux par bfd@emitsec.
+% NOTE : necessite 2 passes lualatex (comme la TOC LaTeX classique).
+%        Passe 1 : .aux rempli, HTML contient une nav vide.
+%        Passe 2 : .aux relu en preambule, nav reconstituee.
+% =====================================================================
+\@ifundefined{bfd@orig@toc}{\let\bfd@orig@toc\tableofcontents}{}
+\renewcommand{\tableofcontents}{%
+  % Version PDF inchangee
+  \bfd@orig@toc
+  % Version HTML : nav structuree
+  \bfd@w{<nav class="bfd-toc" aria-label="Table des matières">}%
+  \bfd@w{<details class="bfd-toc-details" open>}%
+  \bfd@w{<summary>Table des matières</summary>}%
+  \ifnum\value{bfd@tocidx}=0\relax
+    \bfd@w{<p class="bfd-toc-empty">(Recompilez pour générer la table.)</p>}%
+  \else
+    \bfd@w{<ol class="bfd-toc-list">}%
+    \@tempcnta\z@
+    \loop\ifnum\@tempcnta<\value{bfd@tocidx}\relax
+      \advance\@tempcnta\@ne
+      \edef\bfd@tmplvl{\csname bfd@toclvl@\the\@tempcnta\endcsname}%
+      \edef\bfd@tmpid{\csname bfd@tocid@\the\@tempcnta\endcsname}%
+      \immediate\write\bfd@htmlout{<li class="bfd-toc-lvl-\bfd@tmplvl"><a href="\bfd@hash\bfd@tmpid">\csname bfd@toctit@\the\@tempcnta\endcsname</a></li>}%
+    \repeat
+    \bfd@w{</ol>}%
+  \fi
+  \bfd@w{</details>}%
+  \bfd@w{</nav>}%
+}
+
+% =====================================================================
+% Exercices : commande \bfdExo
+% =====================================================================
+% L'environnement bfcours EXO est complexe (tcolorbox + crep + niveau).
+% On ne le surcharge pas directement (risque de casser le PDF). A la place
+% on fournit \bfdExo{titre}{niveau}{enonce}{correction} qui :
+%   - en PDF : utilise EXO classique avec \exocorrection
+%   - en HTML : ecrit une section <section class="bfd-box bfd-exo"> avec
+%     enonce visible + correction masquable via <details>
+%
+% Usage :
+%   \bfdExo{Application}{}{
+%     Calculer $f'(x)$ pour $f(x) = \bfe^x$.
+%   }{
+%     $f'(x) = \bfe^x$.
+%   }
+%
+% Pour un EXO sans correction, passer la correction vide : \bfdExo{T}{N}{E}{}.
+\NewDocumentCommand{\bfdExo}{m m +m +m}{%
+  % --- PDF : appel a EXO classique (si disponible) ---
+  \@ifundefined{EXO}{%
+    \par\noindent\textbf{Exercice -- #1}\par #3\par\textit{Correction :} #4%
+  }{%
+    \begin{EXO}{#1}{#2}%
+      #3%
+      \exocorrection
+      #4%
+    \end{EXO}%
+  }%
+  % --- HTML : section dediee ---
+  \bfd@w{<section class="bfd-box bfd-exo">}%
+  \immediate\write\bfd@htmlout{<div class="bfd-title">Exercice <span class="bfd-subtitle">\unexpanded{#1}</span></div>}%
+  \bfd@w{<div class="bfd-body bfd-exo-statement">}%
+  \bfd@wBody{#3}%
+  \bfd@w{</div>}%
+  \bfd@w{<details class="bfd-exo-corr">}%
+  \bfd@w{<summary>Voir la correction</summary>}%
+  \bfd@w{<div class="bfd-body bfd-exo-correction">}%
+  \bfd@wBody{#4}%
+  \bfd@w{</div>}%
+  \bfd@w{</details>}%
+  \bfd@w{</section>}%
+}
+
+% =====================================================================
+% Gestion TikZ : env \begin{bfdFig}...\end{bfdFig}
+% =====================================================================
+% Pourquoi un env DEDIE plutot que de hook tikzpicture ?
+%   tcolorbox (utilise par bfcours-env-tcb) cree des dizaines de
+%   tikzpicture INTERNES par boite didactique (bordures, overlays...).
+%   Hook tikzpicture = polluer le HTML avec ~200 placeholders inutiles.
+%   Solution : l'utilisateur encapsule explicitement ses tikz pedagogiques
+%   dans bfdFig. Seuls ceux-la generent un placeholder + extraction SVG.
+%
+% Usage :
+%   \begin{bfdFig}
+%     \begin{tikzpicture}
+%       \draw[->] (-2,0)--(2,0);
+%       \draw plot [smooth] (\x, {exp(\x)});
+%     \end{tikzpicture}
+%   \end{bfdFig}
+%
+% Comportement :
+%   - PDF : rendu normal (le body est execute tel quel)
+%   - bfd@tikzcount incremente
+%   - Source ecrit dans tikz-figs/figure-N.tex (pour build_tikz.py)
+%   - Placeholder dans HTML : <!-- BFDTIKZ:N -->
+%
+% Capture du source via \NewEnviron du package environ : \BODY contient
+% le texte brut entre \begin{bfdFig} et \end{bfdFig}.
+
+\RequirePackage{environ}
+
+\@ifundefined{c@bfd@tikzcount}{\newcounter{bfd@tikzcount}}{}
+
+% Fichier auxiliaire ou on liste les sources tikz a compiler
+\newwrite\bfd@tikzlist
+\immediate\openout\bfd@tikzlist=\jobname.tikzlist\relax
+\AtEndDocument{\immediate\closeout\bfd@tikzlist}
+
+% Helper qui ecrit le source du body brut dans le tikzlist. Le numero
+% de figure est pre-developpe via \edef pour qu'il apparaisse en clair
+% (et non comme la macro \thebfd@tikzcount).
+\NewEnviron{bfdFig}{%
+  \stepcounter{bfd@tikzcount}%
+  \edef\bfd@figidx{\arabic{bfd@tikzcount}}%
+  \immediate\write\bfd@tikzlist{===BFDTIKZ-BEGIN-\bfd@figidx===}%
+  \immediate\write\bfd@tikzlist{\detokenize\expandafter{\BODY}}%
+  \immediate\write\bfd@tikzlist{===BFDTIKZ-END-\bfd@figidx===}%
+  % Placeholder HTML
+  \immediate\write\bfd@htmlout{<figure class="bfd-tikz" data-tikz-id="\bfd@figidx"><!-- BFDTIKZ:\bfd@figidx --></figure>}%
+  % Rendu PDF : on execute le body tel quel
+  \BODY
+}
+
+% =====================================================================
+% \bfdFigInput{path} : alternative a \begin{bfdFig}\input{path}\end{bfdFig}
+% Utile dans un tcolorbox/tcbitem ou \NewEnviron est fragile.
+% Au lieu de capturer le BODY, on ecrit le PATH du fichier dans le tikzlist
+% et build_tikz.py lit ce fichier pour le compiler.
+% =====================================================================
+\NewDocumentCommand{\bfdFigInput}{m}{%
+  \stepcounter{bfd@tikzcount}%
+  \edef\bfd@figidx{\arabic{bfd@tikzcount}}%
+  % tikzlist : reference au fichier (format INPUTFILE)
+  \immediate\write\bfd@tikzlist{===BFDTIKZ-INPUTFILE-\bfd@figidx===#1===END===}%
+  % Placeholder HTML
+  \immediate\write\bfd@htmlout{<figure class="bfd-tikz" data-tikz-id="\bfd@figidx"><!-- BFDTIKZ:\bfd@figidx --></figure>}%
+  % Rendu PDF : input direct
+  \input{#1}%
+}
+
+\endinput

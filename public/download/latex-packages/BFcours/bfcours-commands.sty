@@ -355,8 +355,9 @@ mynewtext/.style={
 	\centering\textbf{Nombre d'heures} & \multicolumn{4}{c}{\thetmp \ heures}\\ 
 	\hline
 }
-\newcommand{\competence}[1]{
-   \cellcolor{gray!10}\textcolor{black}{$\bullet$} #1 & & & & \\
+\newcommand{\competence}[2][]{
+   \cellcolor{gray!10}\textcolor{black}{$\bullet$} #2 \hfill 
+   \if\relax\detokenize{#1}\relax\else\encadrer[prop]{#1}\fi & & & & \\
     \hline
 }
 \newcounter{exerciceBCounter}
@@ -366,7 +367,7 @@ mynewtext/.style={
     \begin{tabularx}{\textwidth}{XXX}
       \textbf{Nom :} \tcfillcrep{} &\textbf{Prénom :} \tcfillcrep{} 
     \end{tabularx}
-  \end{tcolorbox}\end{minipage}  \begin{minipage}{0.295\textwidth}\hfill\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=2pt, arc=2pt,bottom=0pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.280
+  \end{tcolorbox}\end{minipage}  \begin{minipage}{0.295\textwidth}\hfill\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=0.4pt, arc=2pt,bottom=0pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.280
  \textbf{Bilan :\tccrep[seyes=false]{1cm}{}/#2\tccrep[seyes=false]{1.5cm}{}} 
   \end{tcolorbox}
 	\end{minipage} \\%\vspace{-0.5cm}
@@ -426,24 +427,6 @@ mynewtext/.style={
       \end{tcolorbox}
 
     \end{tcbraster}
-    \begin{tcbraster}[
-      raster columns     = 3,
-      raster width       = \textwidth,
-      %size               = fbox,
-      raster equal height,
-      raster column skip = 5pt,
-      raster row skip    = 1pt
-    ]%
-      \begin{tcolorbox}[halign=left,colback=white, colframe=black, width=\textwidth, valign=center,halign=center, boxrule=0.4pt, arc=2pt,top=2pt,bottom=0pt, auto outer arc, boxsep=0pt]%0.280
-\acc{Classe :} \tccrep[seyes=false,colback=white]{1.5cm}{}\hfill\phantom{a}
-      \end{tcolorbox}
-      \begin{tcolorbox}[halign=left,colback=white, colframe=black, width=\textwidth, valign=center,halign=center, boxrule=0.4pt, arc=2pt,top=2pt,bottom=0pt, auto outer arc, boxsep=0pt]
-\acc{Date :} \tccrep[seyes=false,colback=white]{3.5cm}{}\hfill\phantom{a}
-      \end{tcolorbox}% Espace classe et date
-      \begin{tcolorbox}[halign=left,colback=white, colframe=black, width=\textwidth, top=1pt, bottom=1pt, left=1pt, right=1pt, boxrule=1pt, arc=2pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.280
-                    \textbf{Bilan : \tccrep[seyes=false]{1.5cm}{}/\getsavedtotalpoints\phantom{A}}
-    \end{tcolorbox}%
-    \end{tcbraster}  
   \end{None}
 }
 %Commandes d'accentuation du texte 
@@ -587,10 +570,11 @@ mynewtext/.style={
 \newcommand{\ccb}{
     \checkbox[check mark = mark14,skin = squareshadow,checked corr]{}
 }
-% Commande personnalisée \myrdexohlist avec Lua pour découper suivant "&"
-\NewDocumentCommand{\myrdexohlist}{m}{
+% Commande personnalisee \myrdexohlist : decoupe suivant "&"
+\ifluatex
+  % Version LuaTeX
+  \NewDocumentCommand{\myrdexohlist}{m}{%
     \begin{center}\begingroup
-    % Utilisation de Lua pour diviser et afficher chaque élément
     \directlua{
         local list = "\luatexluaescapestring{#1}"
         for element in string.gmatch(list, "([^&]+)") do
@@ -598,8 +582,19 @@ mynewtext/.style={
         end
     }
     \endgroup
-\end{center}
-}
+    \end{center}%
+  }
+\else
+  % Version listofitems : compatible XeTeX, pdfTeX, Tectonic
+  \RequirePackage{listofitems}
+  \NewDocumentCommand{\myrdexohlist}{m}{%
+    \begin{center}%
+      \setsepchar{&}%
+      \readlist\bfcourstmplist{#1}%
+      \foreachitem\bfcourselem\in\bfcourstmplist{\bfcourselem}%
+    \end{center}%
+  }
+\fi
 
 %EMOJIS
 % Déclaration des emojis et des textes par défaut
@@ -612,11 +607,8 @@ mynewtext/.style={
 \newboolean{emojion} % Déclare un booléen emojion
 
 \newcommand{\setupemojit}{
-    \setboolean{emojion}{true}
-     \renewcommand{\mi}{\emoji{upside-down-face}} % Upside-down face
-    \renewcommand{\mf}{\emoji{face-with-raised-eyebrow}} % Face with raised eyebrow
-    \renewcommand{\ms}{\emoji{slightly-smiling-face}} % Slightly smiling face
-    \renewcommand{\tbm}{\emoji{star-struck}} % Star-struck
+    % Icones Twemoji vectorielles pour tous les moteurs
+    \setupemojiimg
 }
 
 \newcommand{\setupemojif}{
@@ -627,10 +619,34 @@ mynewtext/.style={
     \renewcommand{\tbm}{\textbf{TBM}}
 }
 
-% Commande principale \setemoji
-\newcommand{\setemoji}[1]{
-    \ifthenelse{\equal{#1}{true}}{\setupemojit}{\setupemojif}
+% Mode images : icones Twemoji vectorielles (CC-BY 4.0)
+% Chemin par defaut : dossier sans espaces pour compatibilite tous moteurs
+% Redefinir \bfcoursemojipath AVANT \usepackage{bfcours} si necessaire
+\providecommand{\bfcoursemojipath}{\bfcoursimgpath/emoji}
+\newcommand{\setupemojiimg}{
+    \setboolean{emojion}{true}
+    \makeatletter
+    \IfFileExists{\bfcoursemojipath/1f643.pdf}{}{%
+      \PackageError{bfcours-commands}{%
+        Emoji introuvables dans \bfcoursemojipath}{%
+        Placez les PDF emoji dans un chemin SANS ESPACES\MessageBreak
+        puis redefinissez avant \protect\usepackage{bfcours} :\MessageBreak
+        \protect\newcommand{\protect\bfcoursemojipath}{C:/chemin/sans/espaces/emoji}}%
+    }%
+    \makeatother
+    \renewcommand{\mi}{\raisebox{-0.2em}{\includegraphics[height=1.3em]{\bfcoursemojipath/1f643.pdf}}}
+    \renewcommand{\mf}{\raisebox{-0.2em}{\includegraphics[height=1.3em]{\bfcoursemojipath/1f928.pdf}}}
+    \renewcommand{\ms}{\raisebox{-0.2em}{\includegraphics[height=1.3em]{\bfcoursemojipath/1f642.pdf}}}
+    \renewcommand{\tbm}{\raisebox{-0.2em}{\includegraphics[height=1.3em]{\bfcoursemojipath/1f929.pdf}}}
 }
+
+% Commande principale \setemoji : true, false, ou images
+\newcommand{\setemoji}[1]{
+    \ifthenelse{\equal{#1}{true}}{\setupemojit}{%
+      \ifthenelse{\equal{#1}{images}}{\setupemojiimg}{\setupemojif}%
+    }
+}
+% Par defaut : icones Twemoji vectorielles (tous moteurs)
 \setemoji{true}
 
 \ExplSyntaxOn
@@ -659,6 +675,23 @@ mynewtext/.style={
     }
   }
 }
+% Affiche "+ val" si val≥0, "- |val|" si val<0 (pour termes après le premier)
+  \NewDocumentCommand{\plusterme}{m}{
+    \fp_compare:nTF { #1 < 0 } {
+      - \num{\fp_eval:n{-(#1)}}
+    } {
+      + \num{#1}
+    }
+  }
+
+  % Pareil mais avec une variable : "+ 3x" ou "- 3x"
+  \NewDocumentCommand{\plustermex}{mm}{
+    \fp_compare:nTF { #1 < 0 } {
+      - \num{\fp_eval:n{-(#1)}}#2
+    } {
+      + \num{#1}#2
+    }
+  }
 \ExplSyntaxOff
 
 %Commandes logique

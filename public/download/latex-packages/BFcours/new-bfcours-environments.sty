@@ -1,0 +1,2624 @@
+% =====================================================================
+% new-bfcours-environments.sty
+%
+% Fusion AUTONOME de :
+%   - bfcours-environments.sty (intégralement, sauf 12 envs refondus)
+%   - bfcours-env-tcb.sty (helpers, styles tcbset, et les 12 envs refondus)
+%
+% Avantages vs (bfcours-environments + bfcours-env-tcb[override]) :
+%   - 0 double-définition (chaque env est défini une seule fois)
+%   - Pas de \renew... -> compilation plus rapide
+%   - Un seul fichier à charger dans bfcours.sty
+%
+% Généré automatiquement par .claude/scripts/merge_new_environments.py
+% Date : 2026-05-16
+% =====================================================================
+
+\ProvidesPackage{new-bfcours-environments}[2026/05/16 v0.1 Fusion environments + env-tcb autonome]
+
+% Dépendances de tcbset (auparavant fournies par bfcours-env-tcb)
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins,breakable,raster,xparse}
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+% Lib `calc` pour les coordonnées tikz interpolées ($(A)!0.5!(B)$) utilisées
+% par le placement centré des sous-titres dans `bfd edge overlay lignes`.
+\usetikzlibrary{calc}
+
+% ====================================================================
+% SECTION 1 : Contenu de bfcours-environments.sty (envs refondus retirés)
+% ====================================================================
+
+% Nom du fichier : bfcours-environments.sty
+
+\RequirePackage{bfcours-competencies}
+% La gestion des couleurs se passe dans le fichier 'bfcours-colors.sty'
+
+
+\tcbset{enhanced,
+fonttitle=\bfseries\large,
+%fontupper=\normalsize\sffamily
+}
+\newcounter{contentcounter}
+\setcounter{contentcounter}{0}
+
+% --- Bookkeeping HORS titre + affichage dans le titre ------------------
+% Probleme historique : les titres tcolorbox utilisant `varwidth boxed
+% title*=...` passent leur contenu dans le package `varwidth`, qui le
+% reprocess pour mesurer la largeur. Si le titre contient des commandes
+% a effets de bord/fragiles (\stepcounter, \phantomsection, \hypertarget,
+% \addcontentsline, \label), varwidth echoue avec "Failed to reprocess
+% entire contents" et hyperref emet "Missing character ... nullfont".
+%
+% Solution : separer bookkeeping et affichage.
+%   * \bfdLiencontentRegister{cat}{titre} : execute UNIQUEMENT le
+%     bookkeeping (TOC, bookmark hyperref, label). A appeler AVANT
+%     \begin{tcolorbox} (typiquement via la cle `code={...}` du style
+%     tcbset de la box), donc HORS du contexte varwidth.
+%   * \liencontent{cat}{titre} : ne fait plus QUE l'affichage (\textbf).
+%     Reste utilisable dans `title={...}` sans declencher varwidth.
+%
+% \phantomsection est requis avant \addcontentsline pour eviter le
+% warning "anchor of a bookmark and its parent's must not be the same"
+% quand l'environnement suit immediatement un \section.
+%
+% \texorpdfstring : la TOC affichee garde la couleur, les bookmarks PDF
+% recoivent juste le texte (sinon "blue!90!black" apparait dans l'outline).
+\newcommand{\bfdLiencontentRegister}[2]{%
+  \stepcounter{contentcounter}%
+  \phantomsection
+  \hypertarget{subsec:\thecontentcounter}{}%
+  \addcontentsline{toc}{subsection}{\protect\numberline{}\textbf{#1} - {\texorpdfstring{\textcolor{blue!90!black}{#2}}{#2}}}%
+  \label{subsec:#1\thecontentcounter}%
+}
+\newcommand{\bfdLiensecretcontentRegister}[2]{%
+  \stepcounter{contentcounter}%
+  \phantomsection
+  \hypertarget{subsec:\thecontentcounter}{}%
+  \addcontentsline{toc}{subsubsection}{\protect\numberline{}\textbf{#1} - {\texorpdfstring{\textcolor{blue!90!black}{#2}}{#2}}}%
+  \label{subsec:#1\thecontentcounter}%
+}
+
+% \liencontent et \liensecretcontent : juste l'affichage. Le bookkeeping
+% est fait separement par \bfdLiencontentRegister dans le code/style de
+% chaque environnement.
+\newcommand{\liencontent}[2]{\textbf{#1}}
+\newcommand{\liensecretcontent}[2]{}
+
+% Stubs no-op conserves pour compat (anciens appels a \liencontent@arm
+% repartis dans le code des environnements). N'ont plus aucun effet : le
+% mecanisme d'armement est obsolete depuis que le bookkeeping est sorti
+% du titre.
+\def\liencontent@arm{}
+\def\liensecretcontent@arm{}
+
+% Définition de l'environnement tcolorboxNone
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+
+\newcommand{\getsavedtotalpoints}{
+	\pgfmathparse{int(\savedtotalpoints)==\savedtotalpoints ? int(\savedtotalpoints) : \savedtotalpoints}%
+	\num{\pgfmathresult}\phantom{A}%
+}
+\newcommand{\getsavedinfototalpoints}{
+	\pgfmathparse{int(\savedinfototalpoints)==\savedinfototalpoints ? int(\savedinfototalpoints) : \savedinfototalpoints}%
+	\num{\pgfmathresult}\phantom{A}%
+}
+% Définition du compteur global de points et de la liste de points
+\newcounter{itempointcounter}
+\newcounter{infoitempointcounter}
+\newcommand{\totalpoints}{0} % Total des points
+\newcommand{\exopoints}{0} % Total des points
+\newcommand{\exopointslist}{} % Liste des points pour chaque exercice
+\newcommand{\infototalpoints}{0} % Total des points
+\newcommand{\infoexopoints}{0} % Total des points
+\newcommand{\infoexopointslist}{} % Liste des points pour chaque exercice
+
+\newif\ifdisplayitempoints % Déclaration du booléen
+
+% Définition de la commande \itempoint (tout-en-un avec compteur et booléen)
+\NewDocumentCommand{\itempoint}{m O{-0pt}}{%
+    \stepcounter{itempointcounter}% Incrémentation du compteur
+	%code d'indexation à mettre ici
+	%\addtocounter{totalpoints}{#1}% Ajout au total des points
+	\pgfmathparse{\totalpoints + #1}%
+    \xdef\totalpoints{\pgfmathresult} % Mise à jour de totalpoints
+	\pgfmathparse{\exopoints + #1}%
+    \xdef\exopoints{\pgfmathresult} % Mise à jour de totalpoints
+	%\addtocounter{exopoints}{#1}% Ajout au total des points
+    \tikzmark{mylabel\theitempointcounter}% Placement du marqueur avec identifiant unique
+	\ifdisplayitempoints% Condition sur l'affichage
+     \tikz[remember picture, overlay]{% Overlay pour superposer la boîte
+            \node[anchor=base, draw=black, fill=gray!10, rounded corners, inner sep=1pt, outer sep=0pt, minimum width=1cm] at ($(pic cs:mylabel\theitempointcounter) + (\linewidth - 0.7cm, #2)$) { % Placement de la boîte avec décalage en X
+                %$\ifdim #1pt = 1pt 1 \,\text{pt} \else \num{#1} \,\text{pts} \fi$%
+			%$\num{#1} \,\text{pts}$
+			\pgfmathparse{#1} % Parse la valeur pour la manipuler en décimal
+			    \let\value=\pgfmathresult
+			    % Condition pour afficher "pt" ou "pts" en fonction de la comparaison avec 1
+			    \ifdim \value pt < 1pt
+			        % Si \value est inférieur à 1, affiche en singulier avec décimales
+			        \num{\value} \,\text{pt}%
+			    \else
+			        \ifdim \value pt = 1pt
+			            % Si \value est exactement 1, affiche en singulier sans décimales
+			            1 \,\text{pt}%
+			        \else
+			            % Si \value est supérieur à 1, affiche en pluriel
+			            \pgfmathparse{int(\value)==\value ? int(\value) : \value}%
+			            \num{\pgfmathresult} \,\text{pts}%
+			        \fi
+			    \fi
+            };
+        }%
+    \fi
+}
+% Définition de la commande \tcbitempoint (tout-en-un avec compteur et booléen)
+\NewDocumentCommand{\tcbitempoint}{m O{-0pt} O{0cm}}{%
+    \stepcounter{itempointcounter}% Incrémentation du compteur
+	%code d'indexation à mettre ici
+	%\addtocounter{totalpoints}{#1}% Ajout au total des points
+	\pgfmathparse{\totalpoints + #1}%
+    \xdef\totalpoints{\pgfmathresult} % Mise à jour de totalpoints
+	\pgfmathparse{\exopoints + #1}%
+    \xdef\exopoints{\pgfmathresult} % Mise à jour de totalpoints
+	%\addtocounter{exopoints}{#1}% Ajout au total des points
+    \tikzmark{mylabel\theitempointcounter}% Placement du marqueur avec identifiant unique
+	\ifdisplayitempoints% Condition sur l'affichage
+     \tikz[remember picture, overlay]{% Overlay pour superposer la boîte
+            \node[anchor=base, draw=black, fill=purple!10, rounded corners, inner sep=3pt, outer sep=0pt, minimum width=1cm, align=center] at ($(pic cs:mylabel\theitempointcounter) + (\linewidth - 1.6cm-#3, #2)$) { % Placement de la boîte avec décalage en X
+                %$\ifdim #1pt = 1pt 1 \,\text{pt} \else \num{#1} \,\text{pts} \fi$%
+			%$\num{#1} \,\text{pts}$
+			\pgfmathparse{#1} % Parse la valeur pour la manipuler en décimal
+			    \let\value=\pgfmathresult
+			    % Condition pour afficher "pt" ou "pts" en fonction de la comparaison avec 1
+			    \ifdim \value pt < 1pt
+			        % Si \value est inférieur à 1, affiche en singulier avec décimales
+			        \num{\value} \,\text{pt}%
+			    \else
+			        \ifdim \value pt = 1pt
+			            % Si \value est exactement 1, affiche en singulier sans décimales
+			            1 \,\text{pt}%
+			        \else
+			            % Si \value est supérieur à 1, affiche en pluriel
+			            \pgfmathparse{int(\value)==\value ? int(\value) : \value}%
+			            \num{\pgfmathresult} \,\text{pts}%
+			        \fi
+			    \fi
+            };
+        }%
+    \fi
+}
+\NewDocumentCommand{\dystcbitempoint}{m O{-0pt} O{2cm}}{%
+    \stepcounter{itempointcounter}% Incrémentation du compteur
+	%code d'indexation à mettre ici
+	%\addtocounter{totalpoints}{#1}% Ajout au total des points
+	\pgfmathparse{\totalpoints + #1}%
+    \xdef\totalpoints{\pgfmathresult} % Mise à jour de totalpoints
+	\pgfmathparse{\exopoints + #1}%
+    \xdef\exopoints{\pgfmathresult} % Mise à jour de totalpoints
+	%\addtocounter{exopoints}{#1}% Ajout au total des points
+    \tikzmark{mylabel\theitempointcounter}% Placement du marqueur avec identifiant unique
+	\ifdisplayitempoints% Condition sur l'affichage
+     \tikz[remember picture, overlay]{% Overlay pour superposer la boîte
+            \node[anchor=base, draw=black, fill=purple!10, rounded corners, inner sep=3pt, outer sep=0pt, minimum width=1cm, align=center] at ($(pic cs:mylabel\theitempointcounter) + (\linewidth - 1.6cm-#3, #2)$) { % Placement de la boîte avec décalage en X
+                %$\ifdim #1pt = 1pt 1 \,\text{pt} \else \num{#1} \,\text{pts} \fi$%
+			%$\num{#1} \,\text{pts}$
+			\pgfmathparse{#1} % Parse la valeur pour la manipuler en décimal
+			    \let\value=\pgfmathresult
+			    % Condition pour afficher "pt" ou "pts" en fonction de la comparaison avec 1
+			    \ifdim \value pt < 1pt
+			        % Si \value est inférieur à 1, affiche en singulier avec décimales
+			        \num{\value} \,\text{pt}%
+			    \else
+			        \ifdim \value pt = 1pt
+			            % Si \value est exactement 1, affiche en singulier sans décimales
+			            1 \,\text{pt}%
+			        \else
+			            % Si \value est supérieur à 1, affiche en pluriel
+			            \pgfmathparse{int(\value)==\value ? int(\value) : \value}%
+			            \num{\pgfmathresult} \,\text{pts}%
+			        \fi
+			    \fi
+            };
+        }%
+    \fi
+}
+% Définition de la commande \tcbitempoint (tout-en-un avec compteur et booléen)
+\NewDocumentCommand{\infotcbitempoint}{m O{-0pt} O{0cm}}{%
+    \stepcounter{infoitempointcounter}% Incrémentation du compteur
+	%code d'indexation à mettre ici
+	%\addtocounter{totalpoints}{#1}% Ajout au total des points
+	\pgfmathparse{\infototalpoints + #1}%
+    \xdef\infototalpoints{\pgfmathresult} % Mise à jour de totalpoints
+	\pgfmathparse{\infoexopoints + #1}%
+    \xdef\infoexopoints{\pgfmathresult} % Mise à jour de totalpoints
+	%\addtocounter{exopoints}{#1}% Ajout au total des points
+    \tikzmark{myinfolabel\theinfoitempointcounter}% Placement du marqueur avec identifiant unique
+	\ifdisplayitempoints% Condition sur l'affichage
+     \tikz[remember picture, overlay]{% Overlay pour superposer la boîte
+            \node[anchor=base, draw=black, fill=green!10, rounded corners, inner sep=3pt, outer sep=0pt, minimum width=1cm, align=center] at ($(pic cs:myinfolabel\theinfoitempointcounter) + (\linewidth - 1.9cm-#3, #2)$) { % Placement de la boîte avec décalage en X
+                %$\ifdim #1pt = 1pt 1 \,\text{pt} \else \num{#1} \,\text{pts} \fi$%
+			%$\num{#1} \,\text{pts}$
+			\pgfmathparse{#1} % Parse la valeur pour la manipuler en décimal
+			    \let\value=\pgfmathresult
+			    % Condition pour afficher "pt" ou "pts" en fonction de la comparaison avec 1
+			    \ifdim \value pt < 1pt
+			        % Si \value est inférieur à 1, affiche en singulier avec décimales
+          \faLaptop\ \num{\value} \,\text{pt}%
+			    \else
+			        \ifdim \value pt = 1pt
+			            % Si \value est exactement 1, affiche en singulier sans décimales
+			            \faLaptop\ 1 \,\text{pt}%
+			        \else
+			            % Si \value est supérieur à 1, affiche en pluriel
+			            \pgfmathparse{int(\value)==\value ? int(\value) : \value}%
+			            \faLaptop\ \num{\pgfmathresult} \,\text{pts}%
+			        \fi
+			    \fi
+            };
+        }%
+    \fi
+}
+\newcounter{baremepointcounter}
+\setcounter{baremepointcounter}{0}
+
+% Déclaration du booléen pour activer ou non l'affichage des points
+\newif\ifdisplaybaremepoints
+\displaybaremepointsfalse % Active par défaut l'affichage des points
+%\displaybaremepointstrue % Active par défaut l'affichage des points
+
+% Définition de la commande \baremepoint
+\NewDocumentCommand{\baremepoint}{m m}{%
+    \stepcounter{baremepointcounter}% Incrémentation du compteur
+    
+    % Calcul et définition du titre en fonction des points
+    \pgfmathparse{#2} % Parse la valeur
+	\let\value=\pgfmathresult
+	\ifdim \value pt < 1pt
+        % Si \value est inférieur à 1, affiche en singulier avec décimales
+        \xdef\bpointtitle{$\num{\value} \,\text{pt}$}%
+    \else
+        \ifdim \value pt = 1pt
+            % Si \value est exactement 1, affiche en singulier sans décimales
+            \xdef\bpointtitle{$1 \,\text{pt}$}%
+        \else
+            % Si \value est supérieur à 1, affiche en pluriel
+            \pgfmathparse{int(\value)==\value ? int(\value) : \value}%
+            \xdef\bpointtitle{$\num{\pgfmathresult} \,\text{pts}$}%
+        \fi
+    \fi
+    % Création de la boîte en overlay avec le titre des points
+    \ifdisplaybaremepoints
+	\tikz[remember picture] \node[inner sep=0pt, outer sep=0pt, anchor=base] (baremecontent\thebaremepointcounter) {%
+	        #1% Légèrement coloré en fond rouge clair
+	    };
+        \tikz[remember picture, overlay]{%
+            \node[draw=red, rounded corners, inner sep=3pt, outer sep=0pt, anchor=south, 
+                  fill=red!2!white, text=red] 
+            at ($(baremecontent\thebaremepointcounter.north) + (0,0.2cm)$) % Position de la boîte de points au-dessus
+            {\bpointtitle}; % Affiche le titre avec points
+        }
+\else
+\tikz[remember picture] \node[inner sep=0pt, outer sep=0pt, anchor=base] (baremecontent\thebaremepointcounter) {%
+        #1% Légèrement coloré en fond rouge clair
+    };
+    \fi
+}
+
+% Définition de la commande \itempoint (tout-en-un avec compteur et booléen)
+\NewDocumentCommand{\myolditempoint}{m O{-0pt}}{%
+    \stepcounter{itempointcounter}% Incrémentation du compteur
+    \tikzmark{mylabel\theitempointcounter}% Placement du marqueur avec identifiant unique
+	\ifdisplayitempoints% Condition sur l'affichage
+     \tikz[remember picture, overlay]{% Overlay pour superposer la boîte
+            \node[anchor=base, draw=black, fill=gray!10, rounded corners, inner sep=3pt, outer sep=0pt, minimum width=1.4cm, align=center] at ($(pic cs:mylabel\theitempointcounter) + (\linewidth - 0.7cm, #2)$) { % Placement de la boîte avec décalage en X
+                %$\ifdim #1pt = 1pt 1 \,\text{pt} \else \num{#1} \,\text{pts} \fi$%
+			$\num{#1} \,\text{pts}$
+            };
+        }%
+    \fi
+}
+
+
+%\newcommand{\exopointslist}{} % Liste des points pour chaque exercice
+\newcommand{\printexopoint}[1]{%
+#1
+}
+
+
+% Initialisation du drapeau \isfirst
+\newif\ifisfirst
+\isfirsttrue % Initialise à true pour le premier élément
+
+\newcounter{persoexocounter}
+\setcounter{persoexocounter}{0}
+% Fonction pour accéder au i-ème élément de exopointslist
+
+\NewDocumentCommand{\getexopoint}{m}{%
+   \xdef\points{1}%
+    \foreach \val [count=\i] in \savedexopointslist {%
+        \ifnum\i=#1 
+		\xdef\points{\val}
+		% Parse le nombre avec pgfmath pour arrondir
+            \pgfmathparse{ifthenelse(int(\val)==\val, int(\val), \val)}%
+            \xdef\points{\pgfmathresult}%
+	   \fi
+    }%
+}
+
+\NewDocumentCommand{\getinfoexopoint}{m}{%
+   \xdef\infopoints{1}%
+    \foreach \val [count=\i] in \savedinfoexopointslist {%
+        \ifnum\i=#1 
+		\xdef\infopoints{\val}
+		% Parse le nombre avec pgfmath pour arrondir
+            \pgfmathparse{ifthenelse(int(\val)==\val, int(\val), \val)}%
+            \xdef\infopoints{\pgfmathresult}%
+	   \fi
+    }%
+}
+
+\def\savedexopointslist{}
+\def\savedtotalpoints{0}
+
+
+\def\infosavedexopointslist{}
+\def\savedinfototalpoints{0}
+
+% Lecture du fichier bfpoints.tex au début du document, s'il existe
+\IfFileExists{bfpoints_\jobname.tex}{\input{bfpoints_\jobname.tex}}{}
+
+% Écriture dans bfpoints.tex à la fin du document
+\AtEndDocument{%
+    \newwrite\pointsfile
+    \immediate\openout\pointsfile=bfpoints_\jobname.tex
+    \immediate\write\pointsfile{\noexpand\renewcommand{\noexpand\savedtotalpoints}{\totalpoints}}%
+    \immediate\write\pointsfile{\noexpand\renewcommand{\noexpand\savedexopointslist}{\exopointslist}}%
+    %experimental : pour l'info 
+    \immediate\write\pointsfile{\noexpand\renewcommand{\noexpand\savedinfototalpoints}{\infototalpoints}}%
+    \immediate\write\pointsfile{\noexpand\renewcommand{\noexpand\infosavedexopointslist}{\infoexopointslist}}%
+    %
+    \immediate\closeout\pointsfile
+}
+
+\newcounter{exotoc}
+\setcounter{exotoc}{0}
+\NewDocumentEnvironment{EXO}{m m +b}{
+\stepcounter{persoexocounter}
+\getexopoint{\thepersoexocounter}
+\stepcounter{exotoc}
+\begin{exo}[exotitle=\begin{minipage}[t]{0.5\textwidth}#1\end{minipage}, tags={#2}]
+{\ncomp{#1}}% \texorpdfstring : pas de "blue!90!black" litteral dans les bookmarks PDF
+\addcontentsline{toc}{subsection}{\protect\numberline{}\textbf{Exercice \theexotoc} - {\texorpdfstring{\color{blue!90!black}#1}{#1}}}
+\label{exo:#1\thecontentcounter}%
+\renewcommand{\exopoints}{0}% Ajout au total des points
+#3
+\end{exo}
+  \ifisfirst
+        % Premier élément, pas de virgule
+        \xdef\exopointslist{\exopoints}%
+       \global\isfirstfalse % Passe \isfirst à false pour les éléments suivants
+    \else
+        \edef\oldpointslist{\exopointslist}
+	   \xdef\exopointslist{\oldpointslist , \exopoints} % Ajout avec virgule
+    \fi
+}
+
+% Environnement EXOEVAL avec LaTeX pour le calcul des points
+\NewDocumentEnvironment{EXOEVAL}{m m +b}{
+\stepcounter{persoexocounter}
+\getexopoint{\thepersoexocounter}
+\begin{exo}[exotitle=\begin{minipage}{0.4\textwidth}\liensecretcontent{\thelabel}{#1}#1\end{minipage}\hfill\begin{minipage}{0.18\textwidth}\vfill\renewcommand{\arraystretch}{0.75} % 0.6 est un exemple, à ajuster selon la hauteur souhaitée
+\begin{tcbtabcomp}{|>{\centering\arraybackslash}p{0.55cm}|>{\centering\arraybackslash}p{0.55cm}|>{\centering\arraybackslash}p{0.55cm}|>{\centering\arraybackslash}p{0.9cm}}
+    \hline
+    \rule[0pt]{0pt}{8pt}\cellcolor{red!10!white}\mi &\cellcolor{orange!10!white} \mf &\cellcolor{yellow!10!white} \ms &\cellcolor{green!10!white} \tbm \\
+    \hline
+   \renewcommand{\arraystretch}{1.2}\rule[0pt]{0pt}{11pt}  & & & \\
+\end{tcbtabcomp}\vfill\end{minipage}\hfill, tags={#2}]%
+{\ncomp{#2}}%
+\renewcommand{\exopoints}{0}% Ajout au total des points
+#3
+
+\end{exo}
+%
+%Points : \theexopoints. \\
+ % Premier élément sans virgule
+  \ifisfirst
+        % Premier élément, pas de virgule
+        \xdef\exopointslist{\exopoints}%
+       \global\isfirstfalse % Passe \isfirst à false pour les éléments suivants
+    \else
+        \edef\oldpointslist{\exopointslist}
+	   \xdef\exopointslist{\oldpointslist , \exopoints} % Ajout avec virgule
+    \fi
+%\exopointslist
+}
+
+
+\NewDocumentEnvironment{OLDEXOEVAL}{m m +b}{
+\begin{exo}[exotitle=\begin{minipage}{0.4\textwidth}#1\end{minipage}\hfill\begin{minipage}{0.18\textwidth}\vfill\renewcommand{\arraystretch}{0.75} % 0.6 est un exemple, à ajuster selon la hauteur souhaitée
+\begin{tcbtabcomp}{|>{\centering\arraybackslash}p{0.55cm}|>{\centering\arraybackslash}p{0.55cm}|>{\centering\arraybackslash}p{0.55cm}|>{\centering\arraybackslash}p{0.9cm}}
+    \hline
+    \rule[0pt]{0pt}{8pt}\cellcolor{red!30!white}\textbf{MI} &\cellcolor{orange!30!white} \textbf{MF} &\cellcolor{yellow!30!white} \textbf{MS} &\cellcolor{green!30!white} \textbf{TBM} \\
+    \hline
+   \renewcommand{\arraystretch}{1.2}\rule[0pt]{0pt}{11pt}  & & & \\
+\end{tcbtabcomp}\vfill\end{minipage}\hfill, tags={#2}]%
+\begingroup\ncomp{#2}\endgroup%
+#3
+\end{exo}
+}
+
+\newtcolorbox{Env}[2][]{enhanced,
+before skip=2mm,after skip=2mm,
+colback=#1!2!white,colframe=#1!50,boxrule=0pt,
+attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=tcbcolback!30!#1]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=tcbcolback!60!#1,right color=tcbcolback!60!#1,
+middle color=tcbcolback!80!#1]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={\large{#2}},
+coltitle =#1!80!black!,
+drop shadow,
+borderline west={1mm}{0pt}{#1!50},
+borderline south={1mm}{0pt}{#1!50},
+overlay={
+  \draw[line width=1mm, #1!50] 
+    ([xshift=0.5mm]frame.south west)--([xshift=0.5mm]frame.north west); % Bordure gauche
+  \draw[line width=1mm, #1!50] 
+    ([yshift=0.5mm]frame.south west)--([yshift=0.5mm]frame.south east); % Bordure du bas
+}}
+%\tcbset{enhanced,fonttitle=\bfseries\large,fontupper=\normalsize\sffamily,
+%colback=yellow!10!white,colframe=red!50!black,colbacktitle=Salmon!30!white,
+%coltitle=black,center title}
+% Environnement Theo basé sur Env
+\NewEnviron{env}[1]{
+	\begin{#1}
+	
+	\colorlet{itemcolor}{nota}%
+	\BODY
+        \end{#1}
+}
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+%\tcbset{enhanced,fonttitle=\bfseries\large,fontupper=\normalsize\sffamily,
+%colback=yellow!10!white,colframe=red!50!black,colbacktitle=Salmon!30!white,
+%coltitle=black,center title}
+
+
+%Définitions
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+%\NewDocumentEnvironment{Defi}{o}{
+%  \begin{Definition}[#1]
+%}{
+%  \end{Definition}
+%}
+
+
+
+%Exemples
+\tcbset{
+    exempleboxstyle/.style={
+        colback=gray!2!white, % Couleur de fond de la box (blanc pour ne pas cacher les traits)
+        colframe=black,  % Couleur de la bordure
+        fonttitle=\large\bfseries,
+        boxrule=0.5mm, % Épaisseur des bordures
+        coltitle=white,
+        sharp corners=south, % Coins droits en bas
+        rounded corners=northwest, % Coin en haut à gauche arrondi
+        attach boxed title to top left={yshift=-4mm, xshift=-2mm}, % Titre décalé vers la gauche
+        boxed title style={
+            colback=gray!80!black, % Fond du titre
+            colframe=gray!80!black, % Bordure autour du titre
+            sharp corners,
+            boxrule=0mm, % Pas de bordure pour le titre
+            rounded corners, % Coins arrondis pour le titre
+        },
+        before upper={}, % Ajouter un espacement avant le contenu
+        frame hidden, % On masque la bordure par défaut
+    }
+}
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+\tcbset{
+    contreexempleboxstyle/.style={
+        colback=red!2!white, % Couleur de fond de la box (blanc pour ne pas cacher les traits)
+        colframe=black,  % Couleur de la bordure
+        fonttitle=\large\bfseries,
+        boxrule=0.5mm, % Épaisseur des bordures
+        coltitle=white,
+        sharp corners=south, % Coins droits en bas
+        rounded corners=northwest, % Coin en haut à gauche arrondi
+        attach boxed title to top left={yshift=-4mm, xshift=-2mm}, % Titre décalé vers la gauche
+        boxed title style={
+            colback=red!80!black, % Fond du titre
+            colframe=red!80!black, % Bordure autour du titre
+            sharp corners,
+            boxrule=0mm, % Pas de bordure pour le titre
+            rounded corners, % Coins arrondis pour le titre
+        },
+        before upper={}, % Ajouter un espacement avant le contenu
+        frame hidden, % On masque la bordure par défaut
+    }
+}
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+%Notations
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+
+%Vocabulaire
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+
+%Aides
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+%Démonstrations
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+%\NewDocumentEnvironment{Demo}{O{} +b}{
+%  \begin{Demonstration}[#1]
+%    #2
+%  \end{Demonstration}
+%}
+
+
+%Remarques 
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+%\definecolor{headerrmq}{RGB}{0, 128, 0} % Couleur du fond de l'en-tête
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+%Solutions
+\newcounter{tempprofseyes}
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+
+
+\newcommand{\lienhautpage}[1]{%
+  \centering \bfseries \color{nota!70!black}\hyperlink{hautpage}{#1}
+}
+%\newcommand{\liensubsection}[1]{%
+%  \subsection[#1]{Recette}\label{subsec:#1}
+%}
+%\newcommand{\liensubsection}[1]{%
+%  \addcontentsline{toc}{subsection}{#1}
+%  \textbf{Recette}\label{subsec:#1}
+%}
+\newcommand{\liensubsection}[1]{%
+  \hypertarget{subsec:#1}{}
+  \addcontentsline{toc}{subsection}{\protect\numberline{}#1}
+  \textbf{Recette}\label{subsec:#1}
+}
+
+
+\newtcolorbox{Recette}[2][]{enhanced,
+before skip=2mm,after skip=2mm,
+colback=green!2!white,colframe=green!50,boxrule=0pt,
+  before upper={},%\setcounter{tempprofseyes}{\value{profseyescounter}}\setcounter{profseyescounter}{1}},
+  after upper={},%\setcounter{profseyescounter}{\value{tempprofseyes}}},
+attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=black!20!green]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=green!80!black,right color=green!80!black]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={\liensubsection{#1}},
+coltitle =white,
+drop shadow,
+borderline west={0.05mm}{0pt}{rem!80},
+borderline south={0.05mm}{0pt}{rem!80!black},
+overlay={
+  \draw[line width=0.5mm, rem!50] 
+    ([xshift=0mm,yshift=-0.25mm]frame.south west)--([xshift=0mm]frame.north west); % Bordure gauche
+  \draw[line width=0.5mm, rem!50] 
+    ([yshift=0mm]frame.south west)--([yshift=0mm]frame.south east); % Bordure du bas
+\ifx#1\empty
+    \else
+      \node[anchor=north east, fill=white, draw=rem!50, rounded corners] at ([xshift=-4cm]frame.north east) {\begin{minipage}{0.5\textwidth}\liensubsection{#1}\vspace{-10pt}\end{minipage}};
+    \fi%
+}}
+\newtcolorbox{RecetteAcinq}[2][]{enhanced,
+before skip=2mm,after skip=2mm, breakable,
+colback=green!2!white,colframe=green!50,boxrule=0pt,
+  before upper={},%\setcounter{tempprofseyes}{\value{profseyescounter}}\setcounter{profseyescounter}{1}},
+  after upper={},%\setcounter{profseyescounter}{\value{tempprofseyes}}},
+attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=nota!70!black]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=nota!70!black,right color=nota!70!black]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={\liensubsection{#1}},
+coltitle =white,
+drop shadow,
+borderline west={0.05mm}{0pt}{rem!80},
+borderline south={0.05mm}{0pt}{rem!80!black},
+overlay={
+  \draw[line width=0.5mm, rem!50] 
+    ([xshift=0mm,yshift=-0.25mm]frame.south west)--([xshift=0mm]frame.north west); % Bordure gauche
+  \draw[line width=0.5mm, rem!50] 
+    ([yshift=0mm]frame.south west)--([yshift=0mm]frame.south east); % Bordure du bas
+\ifx#1\empty
+    \else
+      \node[anchor=north east, fill=white, draw=rem!50, rounded corners] at (frame.north east) {\begin{minipage}{0.5\textwidth}\lienhautpage{#1}\end{minipage}};
+    \fi%
+}}
+
+%Propriétés 
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+
+% Contenant adaptable
+
+%Propriétés 
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+
+%Activités
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+
+
+
+%Méthodes
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+
+\newtcolorbox{pointerBox}[1][]{%
+  colback=red!2!white,
+  colframe=red!75!black,
+  fonttitle=\bfseries,
+  title=#1}
+
+%Punitions
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+\newcommand\punition[1]{
+\begin{PunitionBox}
+
+\phantom{a}\\\phantom{a}\\
+\boite{Motif }{\vspace{1cm}}
+
+\tcblower
+
+\hfill \begin{minipage}{0.7\textwidth} \textbf{Prénom : }\masquer{Nom et prénom de l'élève puni \hfill \phantom{a}}\textbf{Classe : }\masquer{Classe \ldots}\hfill \end{minipage}\\
+
+\boite{Sujet}{\vspace{2cm}}
+
+\textbf{A rendre pour le : } \masquer{\today} \hfill \textbf{Rendu le : } \masquer{\today} \hfill \boiteT[6cm]{Signature des parents}{\phantom{a} \vspace{1cm}}\hfill
+
+
+
+
+\end{PunitionBox}
+}
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+%\begin{cracked}[Exemple][red][red] test \end{cracked}
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+%%% Colonnes%%%
+
+
+\newcounter{chapcounter}
+\setcounter{chapcounter}{0}
+\newcommand{\coloredsquare}[1]{%
+  \textcolor{#1}{\rule{3ex}{3ex}}%
+}
+\newcommand{\dimcoloredsquare}[2]{%
+  \textcolor{#1}{\rule{#2ex}{#2ex}}%
+}
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+%%%Gestion du système de colonnes%%%
+\newcounter{tcb@nestlevel}
+% À chaque \begin{tcolorbox} on incrémente…
+\pretocmd{\tcolorbox}{\stepcounter{tcb@nestlevel}}{}{}
+% …et à chaque \end{tcolorbox} on décrémente.
+\apptocmd{\endtcolorbox}{\addtocounter{tcb@nestlevel}{-1}}{}{}
+
+% Test booléen pratique
+\newcommand{\IfInsideTcolorboxTF}[2]{%
+  \ifnum\value{tcb@nestlevel}>0 #1\else #2\fi}
+
+\newlength\ColRasterWidth           % longueur « globale »
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+% Définir un style de base plus complet et modulaire
+\tcbset{%
+  ColonnesBaseStyle/.style={%
+    top=0pt,
+    bottom=0pt,
+    left=0pt,
+    right=0pt,
+    boxrule=0pt,
+    boxsep=3pt,
+    nobeforeafter,
+    size=fbox,%
+    halign=left
+  }%
+}%
+
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+% Commande pour mettre à jour le style de base
+% [new-bfcours-env] bloc supprimé (refondu par env-tcb) : voir Section TCBSET-REFONTE ci-dessous.
+
+% ====================================================================
+% SECTION TCBSET-REFONTE : Contenu de bfcours-env-tcb.sty (mode standalone)
+%   Définit les helpers + styles tcbset + les 12 envs refondus :
+%   Theoreme, Definition, Propriete, Demonstration, Methode, Activite,
+%   Vocabulaire, Solution, RemarqueOld, OldExemple, OldNotation, OldAide.
+% ====================================================================
+
+% =====================================================================
+% bfcours-env-tcb.sty
+%   Refactorisation des environnements didactiques bfcours en
+%   styles tcolorbox (tcbset) PIXEL-PERFECT.
+%
+%   Auteur  : Romain Deschamps (refonte 2026-2027)
+%   Objectif: factoriser le code dupliqué (~1700 lignes -> ~450)
+%             SANS modifier le rendu PDF. Les bugs originaux sont
+%             reproduits volontairement (Solution bordure rem,
+%             Theoreme banderolle red direct, etc.).
+%
+%   Dépendances : tcolorbox, etoolbox, xparse, bclogo, bfcours-colors
+%                 et l'environnement 'exo' (pour EXO/EXOEVAL).
+% =====================================================================
+
+
+% Option [override] : si fournie, on remplace les environnements déjà
+% existants (cas où bfcours est chargé avant ce package). Sans l'option,
+% on déclare les environnements normalement (cas standalone).
+
+
+% Sélecteur de déclaration d'environnement : \NewDocumentEnvironment en
+% mode standalone, \RenewDocumentEnvironment en mode override.
+  \let\bfdDeclareEnv\NewDocumentEnvironment
+
+% Idem pour \newtcolorbox / \renewtcolorbox
+  \def\bfdDeclareTcb{\newtcolorbox}
+
+% Idem pour \newcommand / \renewcommand (commandes hors préfixe \bfd...
+% susceptibles de collisionner avec bfcours).
+  \let\bfdDeclareCmd\newcommand
+
+% =====================================================================
+% Helper de déclaration d'environnement sémantique didactique.
+%
+% Tous les envs « Théorème / Définition / Propriété / Démonstration /
+% Méthode / Activité / Vocabulaire / Solution / OldNotation / OldAide »
+% suivent rigoureusement le même squelette :
+%
+%   1. Stocker le sous-titre (#1 utilisateur) dans \bfdSubTitle
+%   2. Ouvrir une tcolorbox avec un style sémantique nommé
+%   3. Appliquer un hook couleurs (qui colore tabular/items/accent texte)
+%   4. Insérer le contenu utilisateur (#2 utilisateur)
+%   5. Appeler le reset couleurs
+%   6. Fermer la tcolorbox
+%
+% \bfdNewSemanticEnv prend :
+%   #1 = nom de l'environnement LaTeX (ex. "Propriete")
+%   #2 = nom du style tcbset (ex. "bfd propriete")
+%   #3 = code à exécuter pour le hook couleurs (ex. \bfdSetColors{prop} ou
+%        \bfdSetColorsTheoreme). Argument verbatim, donc on peut y mettre
+%        des macros ou des arguments composés.
+%
+% Le reset utilise toujours \bfdResetColors (idempotent : sûr même si le
+% hook utilisé n'a pas tout colorié, ex. \bfdSetColorsNoItem).
+\NewDocumentCommand{\bfdNewSemanticEnv}{m m +m}{%
+  \bfdDeclareEnv{#1}{O{} +b}{%
+    \def\bfdSubTitle{##1}%
+    \begin{tcolorbox}[#2]%
+      #3%
+      ##2%
+      \bfdResetColors
+    \end{tcolorbox}%
+  }{}%
+}
+
+% bclogo doit être chargé par l'utilisateur (avec ses propres options) avant
+% ce package, ou via bfcours.sty. On le requiert sans options pour ne pas
+% provoquer d'option clash.
+\@ifpackageloaded{bclogo}{}{\RequirePackage{bclogo}}
+
+% =====================================================================
+% Section 0 — Hyperliens et entrées TOC (\liencontent / \liensecretcontent)
+% Repris de bfcours-environments.sty d'origine (lignes 12-27).
+% =====================================================================
+
+\@ifundefined{c@contentcounter}{\newcounter{contentcounter}}{}
+
+% Recopié à l'identique depuis bfcours-environments.sty (l. 15-27).
+% Les espaces de fin de ligne sont préservés pour conserver l'effet
+% typographique exact du \textbf{#1} entouré d'espaces.
+% Si \bfdLiencontentRegister / \liencontent ne sont pas deja definis
+% plus haut (mode override ou recharge partielle), on les expose ici a
+% l'identique. Voir le bloc principal au debut du fichier pour
+% l'explication detaillee de la separation bookkeeping/affichage.
+\providecommand{\bfdLiencontentRegister}[2]{%
+  \stepcounter{contentcounter}%
+  \phantomsection
+  \hypertarget{subsec:\thecontentcounter}{}%
+  \addcontentsline{toc}{subsection}{\protect\numberline{}\textbf{#1} - {\texorpdfstring{\textcolor{blue!90!black}{#2}}{#2}}}%
+  \label{subsec:#1\thecontentcounter}%
+}
+\providecommand{\bfdLiensecretcontentRegister}[2]{%
+  \stepcounter{contentcounter}%
+  \phantomsection
+  \hypertarget{subsec:\thecontentcounter}{}%
+  \addcontentsline{toc}{subsubsection}{\protect\numberline{}\textbf{#1} - {\texorpdfstring{\textcolor{blue!90!black}{#2}}{#2}}}%
+  \label{subsec:#1\thecontentcounter}%
+}
+\providecommand{\liencontent}[2]{\textbf{#1}}
+\providecommand{\liensecretcontent}[2]{}
+\providecommand{\liencontent@arm}{}
+\providecommand{\liensecretcontent@arm}{}
+
+% \boitecouleur est attendue par \CouleurTexteAccent (bfcours-colors.sty)
+% mais n'y est jamais initialisée. On lui donne une valeur par défaut.
+
+% Préréglages tcolorbox globaux (identiques à bfcours-environments.sty l. 8-11).
+% Activer `enhanced` ici garantit que tous les environnements héritent du
+% skin nécessaire à l'attachement des boxed titles, sans avoir à le répéter.
+\tcbset{enhanced,
+  fonttitle=\bfseries\large,
+}
+
+% =====================================================================
+% Section 1 — Hooks couleurs (factorisation des 10 occurrences dupliquées)
+% =====================================================================
+
+% Variante canonique : accent = COL!80!black + tabulars + items
+\newcommand{\bfdSetColors}[1]{%
+  \CouleurTexteAccent{#1!80!black}%
+  \CouleursTabular{#1}{#1}{white}{#1!5}{blue!50!black}%
+  \CouleursSecondaryTabular{#1}{#1!30!white}{black}{#1!5}{#1}%
+  \couleurItem{#1}%
+}
+
+% Variante Theoreme : accent = thm (sans !80!black) + secondaire Salmon/yellow
+\newcommand{\bfdSetColorsTheoreme}{%
+  \CouleurTexteAccent{thm}%
+  \CouleursTabular{thm}{thm}{white}{thm!5}{blue!50!black}%
+  \CouleursSecondaryTabular{thm}{Salmon!30!white}{black}{yellow!10!white}{thm}%
+  \couleurItem{thm}%
+}
+
+% Variante Definition : accent = defi (sans !80!black)
+\newcommand{\bfdSetColorsDefinition}{%
+  \CouleurTexteAccent{defi}%
+  \CouleursTabular{defi}{defi}{white}{defi!5}{blue!50!black}%
+  \CouleursSecondaryTabular{defi}{defi!30!white}{black}{defi!5}{defi}%
+  \couleurItem{defi}%
+}
+
+% Variante "secondaire seule" : sans \couleurItem (utilisée par OldNotation, OldAide)
+\newcommand{\bfdSetColorsNoItem}[1]{%
+  \CouleurTexteAccent{#1!80!black}%
+  \CouleursTabular{#1}{#1}{white}{#1!5}{blue!50!black}%
+  \CouleursSecondaryTabular{#1}{#1!30!white}{black}{#1!5}{#1}%
+}
+
+% Reset commun à toutes les variantes
+\newcommand{\bfdResetColors}{%
+  \resetItemBaseColor%
+  \ResetCouleursTabular%
+  \ResetCouleursSecondaryTabular%
+  \ResetCouleurTexteAccent%
+}
+
+% Variante reset sans \resetItemBaseColor (pour OldNotation, OldAide)
+\newcommand{\bfdResetColorsNoItem}{%
+  \ResetCouleursTabular%
+  \ResetCouleursSecondaryTabular%
+  \ResetCouleurTexteAccent%
+}
+
+% =====================================================================
+% Section 2 — Stockage du sous-titre courant
+% =====================================================================
+% Chaque environnement définit \bfdSubTitle avant d'ouvrir la tcolorbox.
+% L'overlay teste \ifx\bfdSubTitle\empty pour afficher/masquer le node droit.
+%
+% PRINCIPE D'USAGE DUAL :
+%   1. Via l'environnement nommé : \begin{Theoreme}[Sous-titre]…\end{Theoreme}
+%      Le \NewDocumentEnvironment pose \def\bfdSubTitle{Sous-titre}.
+%   2. Via le style tcolorbox direct : \begin{tcolorbox}[bfd theoreme, bfd sub=Sous-titre]…\end{tcolorbox}
+%      La clé `bfd sub` (Section 3) pose \def\bfdSubTitle{...}.
+%
+% Reset automatique en fin de box via `after upper` (cf Section 6) pour
+% éviter toute fuite entre deux boîtes consécutives.
+\newcommand{\bfdSubTitle}{}
+
+% Hook couleurs voie (b) — modifié par la clé `bfd colors=<key>` (cf §3),
+% lu et reset par le `before upper` des styles `bfd didactic skin` et
+% `bfd exemple`. Vide par défaut → no-op en voie (a).
+\providecommand{\bfdColorsHook}{}
+
+% =====================================================================
+% Section 3 — Briques tcbset atomiques
+% =====================================================================
+
+\tcbset{
+  % -------------------------------------------------------------------
+  % Clé `bfd sub` : passe un sous-titre en option de la box.
+  %   Usage : \begin{tcolorbox}[bfd theoreme, bfd sub={Pythagore}] ...
+  % Équivaut à \def\bfdSubTitle{Pythagore} avant la box.
+  % -------------------------------------------------------------------
+  bfd sub/.code={\def\bfdSubTitle{#1}},
+  bfd sub/.default=,
+  % -------------------------------------------------------------------
+  % Clé `bfd colors=<key>` : pose les hooks couleurs sémantiques en voie (b).
+  %   Usage : \tcbitem[bfd methode, bfd colors=meth, bfd sub={...}]
+  %   La clé pose un hook (\bfdColorsHook) qui sera exécuté dans le
+  %   `before upper` des styles `bfd didactic skin` et `bfd exemple`.
+  %   Le hook est reset après exécution pour ne pas polluer la box suivante.
+  %   Si non utilisée (voie a), le hook reste vide → no-op.
+  %   Variantes :
+  %     - bfd colors=<key>   → \bfdSetColors{<key>}
+  %     - bfd colors thm     → \bfdSetColorsTheoreme
+  %     - bfd colors defi    → \bfdSetColorsDefinition
+  %     - bfd colors noitem=<key> → \bfdSetColorsNoItem{<key>}
+  % -------------------------------------------------------------------
+  bfd colors/.code={\renewcommand*{\bfdColorsHook}{\bfdSetColors{#1}}},
+  bfd colors/.default=,
+  bfd colors thm/.code={\renewcommand*{\bfdColorsHook}{\bfdSetColorsTheoreme}},
+  bfd colors defi/.code={\renewcommand*{\bfdColorsHook}{\bfdSetColorsDefinition}},
+  bfd colors noitem/.code={\renewcommand*{\bfdColorsHook}{\bfdSetColorsNoItem{#1}}},
+  % -------------------------------------------------------------------
+  % Brique « banderolle arc »
+  %   #1 = couleur de remplissage (le « ovale » sous le titre)
+  %   #2 = couleur du dégradé (le ruban derrière)
+  % -------------------------------------------------------------------
+  bfd banner arc/.style 2 args={
+    boxed title style={frame code={%
+      \path[fill=#1]
+        ([yshift=-1mm,xshift=-1mm]frame.north west)
+        arc[start angle=0,end angle=180,radius=1mm]
+        ([yshift=-1mm,xshift=1mm]frame.north east)
+        arc[start angle=180,end angle=0,radius=1mm];
+      \path[left color=#2,right color=#2]
+        ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+        [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+        -- (frame.south east) -- (frame.south west)
+        -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+        [sharp corners]-- cycle;
+    },interior engine=empty,},
+  },
+  % -------------------------------------------------------------------
+  % Brique « équerres L + node sous-titre droit »
+  %   #1 = couleur des deux lignes (gauche et bas)
+  %   #2 = xshift du node sous-titre (négatif, depuis frame.north east)
+  % La largeur de la minipage du sous-titre suit le calcul standard
+  % bfcours : \dimexpr(\columnwidth - 4cm - 0.2\columnwidth)\relax
+  % -------------------------------------------------------------------
+  % Phase G L2 — Variantes graphiques.
+  % bfd edge overlay est un alias dynamique (cf macro \bfd@@set@variant).
+  % Variantes livrées : lignes (default), minimal, sidebar.
+  % Phase H préservée : chaque variante définit overlay first/middle/
+  % last/unbroken pour gérer le break de page proprement.
+  bfd edge overlay lignes/.style 2 args={
+    overlay first={%
+      \draw[line width=0.5mm, #1]
+        ([xshift=0mm]frame.south west)--([xshift=0mm]frame.north west);
+      \ifx\bfdSubTitle\empty\else
+        % Node centré dans l'espace latéral disponible entre la banderolle
+        % titre (title.east) et le bord droit du frame (frame.east).
+        % Varwidth adaptatif : se rétracte si le contenu est court,
+        % limité par la formule standard bfcours.
+        \node[anchor=center, fill=white, draw=#1, rounded corners]
+          at ($(title.east)!0.5!(title.east -| frame.east)$)
+          {\begin{varwidth}{\dimexpr 0.4\columnwidth - 1cm\relax}%
+            \centering\textbf{\bfdSubTitle}%
+          \end{varwidth}};
+      \fi%
+    },
+    overlay middle={%
+      \draw[line width=0.5mm, #1]
+        ([xshift=0mm]frame.south west)--([xshift=0mm]frame.north west);
+    },
+    overlay last={%
+      \draw[line width=0.5mm, #1]
+        ([xshift=0mm,yshift=-0.25mm]frame.south west)--([xshift=0mm]frame.north west);
+      \draw[line width=0.5mm, #1]
+        ([yshift=0mm]frame.south west)--([yshift=0mm]frame.south east);
+    },
+    overlay unbroken={%
+      \draw[line width=0.5mm, #1]
+        ([xshift=0mm,yshift=-0.25mm]frame.south west)--([xshift=0mm]frame.north west);
+      \draw[line width=0.5mm, #1]
+        ([yshift=0mm]frame.south west)--([yshift=0mm]frame.south east);
+      \ifx\bfdSubTitle\empty\else
+        % Centré dans l'espace latéral disponible (idem overlay first).
+        % Note : overlay unbroken s'applique au cas mono-page (le 99% des
+        % envs courts), c'est cette version qui détermine le rendu visible.
+        \node[anchor=center, fill=white, draw=#1, rounded corners]
+          at ($(title.east)!0.5!(title.east -| frame.east)$)
+          {\begin{varwidth}{\dimexpr 0.4\columnwidth - 1cm\relax}%
+            \centering\textbf{\bfdSubTitle}%
+          \end{varwidth}};
+      \fi%
+    },
+  },
+  % --- Variante minimal : un fin trait gauche, pas de sous-titre ---
+  % Note : #1 est déjà la couleur nuancée passée par bfd theoreme
+  % (typiquement `thm!50`). On l'utilise telle quelle sans la re-nuancer.
+  bfd edge overlay minimal/.style 2 args={
+    overlay={%
+      \draw[line width=0.2mm, #1]
+        ([xshift=0mm]frame.south west)--([xshift=0mm]frame.north west);
+    },
+  },
+  % --- Variante sidebar : grosse bande gauche colorée ---
+  bfd edge overlay sidebar/.style 2 args={
+    overlay first={%
+      \fill[#1] (frame.south west) rectangle ([xshift=3mm]frame.north west);
+      \ifx\bfdSubTitle\empty\else
+        \node[anchor=north east, fill=white, draw=#1, rounded corners]
+          at ([xshift=#2]frame.north east)
+          {\begin{minipage}{\dimexpr(\columnwidth - 4cm - 0.2\columnwidth)\relax}%
+            \centering\textbf{\bfdSubTitle}%
+          \end{minipage}};
+      \fi%
+    },
+    overlay middle={%
+      \fill[#1] (frame.south west) rectangle ([xshift=3mm]frame.north west);
+    },
+    overlay last={%
+      \fill[#1] (frame.south west) rectangle ([xshift=3mm]frame.north west);
+    },
+    overlay unbroken={%
+      \fill[#1] (frame.south west) rectangle ([xshift=3mm]frame.north west);
+      \ifx\bfdSubTitle\empty\else
+        \node[anchor=north east, fill=white, draw=#1, rounded corners]
+          at ([xshift=#2]frame.north east)
+          {\begin{minipage}{\dimexpr(\columnwidth - 4cm - 0.2\columnwidth)\relax}%
+            \centering\textbf{\bfdSubTitle}%
+          \end{minipage}};
+      \fi%
+    },
+  },
+  % L'alias bfd edge overlay/.style 2 args est défini dynamiquement
+  % via \bfd@@set@variant (cf section L2). Pas de définition statique ici.
+  % --- Variante wide lignes : pour OldExemple, RemarqueOld ---
+  bfd edge overlay wide lignes/.style 2 args={
+    overlay first={%
+      \draw[line width=0.5mm, #1]
+        ([xshift=0mm]frame.south west)--([xshift=0mm]frame.north west);
+      \ifx\bfdSubTitle\empty\else
+        \node[anchor=north east, fill=white, draw=#1, rounded corners]
+          at ([xshift=#2]frame.north east)
+          {\begin{minipage}{0.5\textwidth}%
+            \centering\textbf{\bfdSubTitle}%
+          \end{minipage}};
+      \fi%
+    },
+    overlay middle={%
+      \draw[line width=0.5mm, #1]
+        ([xshift=0mm]frame.south west)--([xshift=0mm]frame.north west);
+    },
+    overlay last={%
+      \draw[line width=0.5mm, #1]
+        ([xshift=0mm,yshift=-0.25mm]frame.south west)--([xshift=0mm]frame.north west);
+      \draw[line width=0.5mm, #1]
+        ([yshift=0mm]frame.south west)--([yshift=0mm]frame.south east);
+    },
+    overlay unbroken={%
+      \draw[line width=0.5mm, #1]
+        ([xshift=0mm,yshift=-0.25mm]frame.south west)--([xshift=0mm]frame.north west);
+      \draw[line width=0.5mm, #1]
+        ([yshift=0mm]frame.south west)--([yshift=0mm]frame.south east);
+      \ifx\bfdSubTitle\empty\else
+        \node[anchor=north east, fill=white, draw=#1, rounded corners]
+          at ([xshift=#2]frame.north east)
+          {\begin{minipage}{0.5\textwidth}%
+            \centering\textbf{\bfdSubTitle}%
+          \end{minipage}};
+      \fi%
+    },
+  },
+  bfd edge overlay wide/.style 2 args={bfd edge overlay wide lignes={#1}{#2}},
+  % -------------------------------------------------------------------
+  % Style composite « didactique-classique »
+  %   Squelette commun aux 8 envs principaux (Theoreme, Definition,
+  %   Propriete, Demonstration, Methode, Activite, Vocabulaire, Solution
+  %   et leurs Old*-variantes).
+  % -------------------------------------------------------------------
+  bfd didactic base/.style={
+    enhanced,
+    before skip=2mm, after skip=2mm,
+    boxrule=0pt,
+    attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    fonttitle=\bfseries,
+    coltitle=white,
+    drop shadow,
+  },
+}
+
+% =====================================================================
+% Section 4 — Brique « cracked » (factorisation de l'environnement cracked)
+%   L'env cracked d'origine avait déjà une bonne structure (6 args).
+%   On le réécrit ici à l'identique pour rester autonome.
+% =====================================================================
+
+\tcbset{
+  % -------------------------------------------------------------------
+  % Brique « cadre déchiré + titre incliné »
+  %   #1 = couleur du cadre (random steps)
+  %   #2 = couleur du fond du titre incliné
+  %   #3 = largeur du titre incliné (text width)
+  % La macro \bfdCrackedTitle contient le texte du titre.
+  % La macro \bfdSubTitle est testée pour le node minipage optionnel.
+  % -------------------------------------------------------------------
+  bfd cracked frame/.style n args={3}{
+    enhanced,
+    frame code={},
+    interior code={},
+    colback=white,
+    drop shadow,
+    overlay={%
+      % SEED DÉTERMINISTE : un compteur dédié, incrémenté à chaque overlay
+      % cracked rencontré dans le document. Garantit que les contours
+      % « random steps » sont reproductibles entre deux compilations
+      % (sinon TikZ utilise un seed différent à chaque run sous LuaTeX).
+      \stepcounter{bfdCrackedSeed}%
+      \pgfmathsetseed{\value{bfdCrackedSeed}}%
+      \filldraw[
+        decoration={random steps, segment length=0.4cm},
+        decorate,
+        draw=#1,
+        ultra thick,
+        fill=white
+      ] (frame.south west) rectangle (frame.north east);
+      % Nouveau seed pour le titre (sinon décoration identique sur deux nodes proches)
+      \stepcounter{bfdCrackedSeed}%
+      \pgfmathsetseed{\value{bfdCrackedSeed}}%
+      \node[
+        rotate=10,
+        anchor=north west,
+        align=center,
+        draw=#2, fill=#2,
+        decoration={random steps, segment length=0.2cm},
+        decorate,
+        text=white,
+        text width=#3,
+        inner ysep=3pt, inner xsep=5pt,
+        ultra thick,
+        font={\bfseries\fontsize{16pt}{20pt}\selectfont},
+      ] at ([xshift=-3mm, yshift=-3mm]frame.north west) {\centering\textbf{\bfdCrackedTitle}};
+      \ifx\bfdSubTitle\empty\else
+        \node[anchor=north east, fill=white, draw=#1!50, rounded corners]
+          at ([xshift=-0.1\columnwidth,yshift=-0.25cm]frame.north east)
+          {\begin{minipage}{\dimexpr(\columnwidth - 4cm - 0.2\columnwidth)\relax}%
+            \centering\textbf{\bfdSubTitle}%
+          \end{minipage}};
+      \fi%
+    },
+    title={},
+    attach boxed title to top left={yshift=-6mm, xshift=-1mm},
+    boxed title style={interior code={}, frame code={}, center title,},
+    title style={\color{white}},
+    colframe=#1,
+    colback=white,
+    fonttitle={\large\textbf},
+    left=5mm, right=5mm, top=10mm, bottom=5mm,
+    drop fuzzy shadow,
+  },
+}
+
+% Macro auxiliaire pour stocker le titre incliné du cracked
+\newcommand{\bfdCrackedTitle}{}
+
+% Compteur de seed pour la décoration « random steps » du cracked frame.
+% Incrémenté à chaque overlay dessiné → contours déterministes entre runs.
+\@ifundefined{c@bfdCrackedSeed}{\newcounter{bfdCrackedSeed}}{}
+\setcounter{bfdCrackedSeed}{42}
+
+% =====================================================================
+% Section 5 — Briques « tikz-corners » (Exemple, ContreExemple)
+% =====================================================================
+
+\tcbset{
+  % -------------------------------------------------------------------
+  % Style « tikz-corners » : coin haut-gauche arrondi, équerres TikZ
+  %   #1 = couleur de fond contenu (e.g. gray!2!white, red!2!white)
+  %   #2 = couleur du titre (e.g. gray!80!black, red!80!black)
+  % -------------------------------------------------------------------
+  bfd tikz corners/.style 2 args={
+    colback=#1,
+    colframe=black,
+    fonttitle=\large\bfseries,
+    boxrule=0.5mm,
+    coltitle=white,
+    sharp corners=south,
+    rounded corners=northwest,
+    attach boxed title to top left={yshift=-4mm, xshift=-2mm},
+    boxed title style={
+      colback=#2, colframe=#2,
+      sharp corners, boxrule=0mm, rounded corners,
+    },
+    before upper={},
+    frame hidden,
+  },
+  % -------------------------------------------------------------------
+  % Overlay des 3 lignes TikZ (verticale sous titre, horizontale droite,
+  % équerre bas-droit) + node sous-titre à droite du titre
+  %   #1 = couleur des lignes (gray!80!black, red!80!black)
+  % -------------------------------------------------------------------
+  bfd tikz corners overlay/.style={
+    overlay={%
+      % Ligne verticale sous le titre
+      \draw[#1, line width=1.5pt]
+        (frame.north west)++(0.075,-0.2cm) -- ++(0,-2cm);
+      % Ligne horizontale à droite du titre
+      \draw[#1, line width=1.5pt]
+        (title.east) -- ++(3cm,0);
+      % Équerre angle bas-droit
+      \draw[#1, line width=1.5pt]
+        (frame.south east)++(-2cm,0.075cm) -- ++(1.925cm,0) -- ++(0,2cm);
+      \ifx\bfdSubTitle\empty\else
+        \node[anchor=west, fill=white, draw=#1, rounded corners] at ([xshift=3cm]title.east) {\begin{minipage}{0.5\columnwidth} \centering \textbf{\bfdSubTitle} \end{minipage}};
+      \fi%
+    },
+  },
+}
+
+% Anciens styles tcolorbox bfcours (préservés pour compatibilité éventuelle)
+\tcbset{
+  exempleboxstyle/.style={bfd tikz corners={gray!2!white}{gray!80!black}},
+  contreexempleboxstyle/.style={bfd tikz corners={red!2!white}{red!80!black}},
+}
+
+% =====================================================================
+% Section 6 — Styles tcbset par environnement (interface unifiée)
+% =====================================================================
+% Chaque environnement bfcours est exposé comme UN style tcbset autonome
+% portant le VISUEL pur (banderolle, frame, équerres, titre). Les hooks
+% couleurs (\CouleursTabular, \couleurItem, etc.) sont en revanche
+% appliqués par le \NewDocumentEnvironment (Section 7), PAS dans le
+% style, car `before upper` s'exécute trop tard dans tcolorbox et
+% perturbe le rendu pixel-perfect.
+%
+% USAGE DUAL — chaque style peut être consommé de deux manières :
+%
+%   (a) Via l'environnement nommé (couleurs sémantiques actives) :
+%       \begin{Theoreme}[Sous-titre]
+%         Contenu (les tableaux/items utilisent les couleurs sémantiques)
+%       \end{Theoreme}
+%
+%   (b) Via le style tcolorbox direct (visuel pur, sans hooks couleurs) :
+%       \begin{tcolorbox}[bfd theoreme, bfd sub={Sous-titre}]
+%         Contenu
+%       \end{tcolorbox}
+%
+%   Pour obtenir des hooks couleurs en mode (b), poser explicitement :
+%       \bfdSetColorsTheoreme  % AVANT \begin{tcolorbox}
+%       \begin{tcolorbox}[bfd theoreme, bfd sub=...] ... \end{tcolorbox}
+%       \bfdResetColors
+%
+% Le reset de \bfdSubTitle est fait APRÈS \end{tcolorbox} dans les
+% \NewDocumentEnvironment de la Section 7, jamais dans `after upper`
+% (qui s'exécute avant que l'overlay ne lise \bfdSubTitle).
+
+\tcbset{
+  % Skin didactique factorisé : application uniforme du couple
+  % (cadre + banderolle + bordures + edge overlay + titre liencontent).
+  % Paramètres : #1 = clé couleur sémantique (thm, defi, prop, …)
+  %              #2 = nom affiché dans la banderolle (« Théorème », …)
+  % Les variations (breakable, colback non blanc, banner override) sont
+  % ajoutées dans le style spécifique de chaque env via fusion de clés.
+  bfd didactic skin/.style 2 args={
+    bfd didactic base,
+    colback=white, colframe=#1!50,
+    bfd banner arc={white!20!#1}{#1!100!black},
+    borderline west={0.05mm}{0pt}{#1!80},
+    borderline south={0.05mm}{0pt}{#1!80!black},
+    bfd edge overlay={#1!50}{-0.1\columnwidth},
+    title={\large\liencontent{#2}{\bfdSubTitle}},
+    % Bookkeeping HORS du titre varwidth : la cle `code={...}` est
+    % evaluee pendant le parsing des options tcolorbox, avant la
+    % construction du boxed title. C'est la qu'on enregistre l'entree
+    % TOC, le bookmark hyperref et le label, sans que varwidth ne tente
+    % de reprocesser ces commandes a effet de bord.
+    code={\bfdLiencontentRegister{#2}{\bfdSubTitle}},
+    % Hook couleurs voie (b) : exécuté dans le scope du contenu, reset
+    % global après exécution. No-op si la clé `bfd colors=<key>` n'a
+    % pas été posée (voie a → \bfdColorsHook reste vide).
+    before upper={\bfdColorsHook\renewcommand*{\bfdColorsHook}{}},
+  },
+  % -- Envs didactiques principaux : skin factorisé ------------------
+  % Bug historique normalisé (Phase G) : la banderolle Théorème utilisait
+  % `red` en dur dans bfcours-environments.sty d'origine. On l'aligne sur
+  % la couleur sémantique `thm` pour permettre une palette cohérente.
+  bfd theoreme/.style={bfd didactic skin={thm}{Théorème}},
+  bfd definition/.style={bfd didactic skin={defi}{Définition}},
+  bfd propriete/.style={bfd didactic skin={prop}{Propriété}},
+  bfd demonstration/.style={bfd didactic skin={demo}{Démonstration}},
+  bfd methode/.style={bfd didactic skin={meth}{Méthode}},
+  bfd activite/.style={bfd didactic skin={act}{Activité}, breakable},
+  bfd vocabulaire/.style={bfd didactic skin={nota}{Vocabulaire}},
+  % -- Solution : skin {green}{Solution} + banner avec accent black ----
+  %    (variation par rapport au pattern par défaut : la banderolle
+  %    Solution est en black!20!green et non white!20!green pour mieux
+  %    contraster sur fond vert).
+  bfd solution/.style={
+    bfd didactic skin={green}{Solution},
+    bfd banner arc={black!20!green}{green!80!black},
+  },
+  % -- RemarqueOld : skin green avec colback teinté + edge wide + titre sans lien
+  bfd remarque old/.style={
+    bfd didactic skin={green}{Remarque},
+    colback=green!2!white,
+    bfd banner arc={black!20!green}{green!80!black},
+    bfd edge overlay wide={green!50}{-4cm},
+    title={\large{Remarque}},
+  },
+  % -- OldExemple : skin ex + colback teinté + edge wide + suffixe (s) -
+  bfd old exemple/.style={
+    bfd didactic skin={ex}{Exemple},
+    colback=ex!2!white,
+    bfd edge overlay wide={ex!50}{-4cm},
+    title={\large{Exemple}\scriptsize{(s)}},
+  },
+  % -- OldNotation : skin nota + colback teinté + titre sans lien ------
+  bfd old notation/.style={
+    bfd didactic skin={nota}{Notation},
+    colback=nota!2!white,
+    title={\large{Notation}},
+  },
+  % -- OldAide : skin nota + titre sans lien ---------------------------
+  bfd old aide/.style={
+    bfd didactic skin={nota}{Aide},
+    title={\large{Aide}},
+  },
+  % -- Exemple (nouveau, tikz-corners + 3 lignes + sous-titre minipage) -
+  % Style symétrique aux autres `bfd <env>` pour autoriser la voie (b) :
+  %   \begin{tcolorbox}[bfd exemple, bfd sub={Application}] ... \end{tcolorbox}
+  %   \tcbitem[bfd exemple, bfd sub={Application}] ...   (dans MultiColonnes)
+  % NB : duplique le visuel de \bfdDeclareEnv{Exemple} (Section 9, l. 1540-
+  % 1560). L'env Exemple n'est PAS refactoré pour préserver le pixel-perfect
+  % de la voie (a).
+  bfd exemple/.style={
+    exempleboxstyle,
+    % Hook couleurs voie (b) : pose la palette `ex` par défaut + accent
+    % textuel nota!80!black hérité de l'env Exemple original. L'utilisateur
+    % peut override via `bfd colors=<key>` (rare, mais possible).
+    before upper={%
+      \bfdColorsHook\renewcommand*{\bfdColorsHook}{}%
+      \bfdSetColors{ex}%
+      \CouleurTexteAccent{nota!80!black}%
+      \vspace{0.5cm}%
+    },
+    title={\liencontent{Exemple(s)}{\bfdSubTitle}},
+    code={\bfdLiencontentRegister{Exemple(s)}{\bfdSubTitle}},
+    overlay={%
+      \draw[gray!80!black, line width=1.5pt]
+        (frame.north west)++(0.075,-0.2cm) -- ++(0,-2cm);
+      \draw[gray!80!black, line width=1.5pt]
+        (title.east) -- ++(3cm,0);
+      \draw[gray!80!black, line width=1.5pt]
+        (frame.south east)++(-2cm,0.075cm) -- ++(1.925cm,0) -- ++(0,2cm);
+      \ifx\bfdSubTitle\empty\else
+        % Node placé sur le trait qui sort à droite de la banderolle
+        % « Exemple(s) » (le trait part de title.east et va à xshift=3cm).
+        % Ancrage west à title.east + petit xshift : le node démarre
+        % juste après le titre, sur le trait. Varwidth adaptatif.
+        \node[anchor=west, fill=white, draw=gray!80!black, rounded corners]
+          at ([xshift=0.8cm]title.east)
+          {\begin{varwidth}{\dimexpr(\columnwidth - 4cm - 0.2\columnwidth)\relax}%
+            \centering\textbf{\bfdSubTitle}%
+          \end{varwidth}};
+      \fi
+    },
+  },
+  % -- PunitionBox (recopié de bfcours-environments.sty l. 1385-1416) -
+  bfd punition/.style={
+    bfd didactic base,
+    colback=defi!2!white, colframe=defi!50,
+    bfd banner arc={white!20!defi}{defi!100!black},
+    borderline west={0.05mm}{0pt}{defi!80},
+    borderline south={0.05mm}{0pt}{defi!80!black},
+    overlay={%
+      \draw[line width=0.5mm, defi!50]
+        ([xshift=0mm,yshift=-0.25mm]frame.south west)--([xshift=0mm]frame.north west);
+      \draw[line width=0.5mm, defi!50]
+        ([yshift=0mm]frame.south west)--([yshift=0mm]frame.south east);
+      \node[anchor=north east, fill=white, draw=defi!50, rounded corners]
+        at (frame.north east)
+        {\begin{minipage}{0.7\textwidth}%
+          \textbf{Prénom : }\masquer{Nom et prénom de l'élève puni \hfill \phantom{a}}%
+          \textbf{Classe : }\masquer{Classe \ldots\ldots}%
+        \end{minipage}};
+    },
+    title={\large{Punition}},
+  },
+  % -- boiteFigure (recopié de bfcours-environments.sty l. 1514-1542) -
+  bfd figlabel/.code={\def\bfdFigLabel{#1}},
+  bfd figlabel/.default=,
+  bfd boite figure/.style={
+    enhanced,
+    colback=white, colframe=black!50,
+    arc=2mm,
+    fontupper=\normalsize,
+    halign=center, valign=center,
+    boxsep=5pt,
+    left=2pt, right=2pt, top=7mm, bottom=2pt,
+    overlay={%
+      \node[
+        fill=black, text=white,
+        font=\scriptsize\bfseries,
+        anchor=north west,
+        inner sep=3pt, outer sep=0pt,
+        minimum height=5mm,
+        rectangle,
+      ] at ([xshift=0mm, yshift=0mm]frame.north west) {\bfdFigLabel};
+    },
+  },
+}
+\newcommand{\bfdFigLabel}{}
+
+% =====================================================================
+% Section 7 — Déclarations des environnements didactiques
+% =====================================================================
+% Chaque \NewDocumentEnvironment :
+%   1. Pose \bfdSubTitle = sous-titre passé en option
+%   2. Applique les hooks couleurs AVANT \begin{tcolorbox}
+%   3. Le contenu utilise ces couleurs sémantiques (tableaux, items)
+%   4. Reset les hooks couleurs APRÈS \end{tcolorbox}
+%   5. Reset \bfdSubTitle APRÈS \end{tcolorbox} (et non dans `after upper`
+%      qui s'exécuterait avant que l'overlay ne lise \bfdSubTitle).
+
+% ---- Théorème ------------------------------------------------------
+\bfdNewSemanticEnv{Theoreme}{bfd theoreme}{\bfdSetColorsTheoreme}
+
+% Alias \begin{Theo} → \begin{Theoreme}
+\bfdDeclareEnv{Theo}{O{} +b}{\begin{Theoreme}[#1]#2}{\end{Theoreme}}
+
+% ---- TheoA (variante paramétrable) ---------------------------------
+% Conservée à l'identique car prend un argument couleur dynamique.
+\bfdDeclareTcb{TheoA}[2][thm]{enhanced,
+  before skip=2mm,after skip=2mm,
+  colback=#1!2!white,colframe=#1!50,boxrule=0.2mm,
+  attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+  varwidth boxed title*=-3cm,
+  boxed title style={frame code={%
+    \path[fill=tcbcolback!30!#1]
+      ([yshift=-1mm,xshift=-1mm]frame.north west)
+      arc[start angle=0,end angle=180,radius=1mm]
+      ([yshift=-1mm,xshift=1mm]frame.north east)
+      arc[start angle=180,end angle=0,radius=1mm];
+    \path[left color=tcbcolback!60!#1,right color=tcbcolback!60!#1,
+          middle color=tcbcolback!80!#1]
+      ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+      [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+      -- (frame.south east) -- (frame.south west)
+      -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+      [sharp corners]-- cycle;
+  },interior engine=empty,},
+  fonttitle=\bfseries,
+  title={\Large{#2}},
+  coltitle=#1!80!black!,
+}
+
+% ---- Envs sémantiques factorisés via \bfdNewSemanticEnv ------------
+% Pattern commun : \def\bfdSubTitle{#1} + tcolorbox[style] + hook couleurs
+% + contenu + reset couleurs. Voir helper en haut du fichier.
+\bfdNewSemanticEnv{Definition}{bfd definition}{\bfdSetColorsDefinition}
+\bfdNewSemanticEnv{Propriete}{bfd propriete}{\bfdSetColors{prop}}
+\bfdNewSemanticEnv{Demonstration}{bfd demonstration}{\bfdSetColors{demo}}
+\bfdNewSemanticEnv{Methode}{bfd methode}{\bfdSetColors{meth}}
+\bfdNewSemanticEnv{Activite}{bfd activite}{\bfdSetColors{act}}
+\bfdNewSemanticEnv{Vocabulaire}{bfd vocabulaire}{\bfdSetColors{nota}}
+% Solution utilise une couleur littérale (vert sombre, normalisée Phase C).
+\bfdNewSemanticEnv{Solution}{bfd solution}{\bfdSetColors{green!50!black}}
+
+% ---- RemarqueOld (pas de hook couleurs : visuel hérité) -----------
+\bfdNewSemanticEnv{RemarqueOld}{bfd remarque old}{}
+
+% ---- Remarque (bclogo, hors tcolorbox) -----------------------------
+% On garde TEL QUEL : c'est un bclogo, pas une tcolorbox.
+% Les \vspace{-0.5cm} avant/après sont indispensables (présents dans
+% bfcours-environments.sty original) : sans eux, l'env Remarque ajoute
+% ~1cm d'espace vertical par rapport à ses voisins (cf décalage page 4
+% Cours_Fonction_exponentielle en mode override).
+\bfdDeclareEnv{Remarque}{O{} +b}{%
+  \vspace{-0.5cm}%
+  \begin{bclogo}[noborder=true,logo={\bccrayon},arrondi=0.1,barre=snake]{Remarque(s) :}%
+    \CouleurTexteAccent{thm!80!black}%
+    #2%
+    \ResetCouleurTexteAccent%
+  \end{bclogo}%
+  \vspace{-0.5cm}%
+}{}
+
+% =====================================================================
+% Section 8 — Anciennes variantes (OldExemple, OldNotation, OldAide)
+% =====================================================================
+
+% ---- Anciennes variantes factorisées --------------------------------
+\bfdNewSemanticEnv{OldExemple}{bfd old exemple}{}
+\bfdNewSemanticEnv{OldNotation}{bfd old notation}{\bfdSetColorsNoItem{nota}}
+\bfdNewSemanticEnv{OldAide}{bfd old aide}{\bfdSetColorsNoItem{nota}}
+
+% ---- PunitionBox (recopié à l'identique de bfcours-environments.sty) ---
+% Usage classique : \begin{PunitionBox}…\end{PunitionBox} (sans option).
+% Usage direct via style : \begin{tcolorbox}[bfd punition]…\end{tcolorbox}.
+\bfdDeclareTcb{PunitionBox}{bfd punition}
+
+% ---- boiteFigure (recopié à l'identique de bfcours-environments.sty) ---
+% Usage classique : \begin{boiteFigure}{Label}…\end{boiteFigure}.
+% Usage direct via style : \begin{tcolorbox}[bfd boite figure, bfd figlabel={Label}]…
+\bfdDeclareTcb{boiteFigure}[1]{bfd boite figure, bfd figlabel={#1}}
+
+% =====================================================================
+% Section 9 — Environnements « tikz-corners » (Exemple, ContreExemple)
+% =====================================================================
+
+% ---- Exemple -------------------------------------------------------
+% Copié à l'identique (sans factorisation) depuis bfcours-environments.sty
+% l. 590-609 pour garantir le pixel-perfect.
+\bfdDeclareEnv{Exemple}{O{} +b}{
+\bfdLiencontentRegister{Exemple(s)}{#1}%
+\begin{tcolorbox}[title=\liencontent{Exemple(s)}{#1}, exempleboxstyle,overlay={ % Utilisation de TikZ pour ajouter les éléments de décoration
+            % Ligne verticale sous le titre
+            \draw[gray!80!black, line width = 1.5pt] (frame.north west)++(0.075,-0.2cm) -- ++(0,-2cm);
+            % Ligne horizontale à droite du titre
+            \draw[gray!80!black, line width = 1.5pt] (title.east) -- ++(3cm,0);
+            % Codage d'angle en bas à droite, corrigé pour être orienté vers le bas
+            \draw[gray!80!black, line width = 1.5pt] (frame.south east)++(-2cm,0.075cm) -- ++(1.925cm,0) -- ++(0,2cm);
+		\ifx#1\empty
+		    \else
+		      \node[anchor=west, fill=white, draw=gray!80!black, rounded corners] at ([xshift=3cm]title.east) {\begin{minipage}{0.5\columnwidth} \centering \textbf{#1} \end{minipage}};
+		    \fi%
+        },
+before upper={\vspace{0.5cm}}]
+\CouleurTexteAccent{nota!80!black}
+#2
+\ResetCouleurTexteAccent
+\end{tcolorbox}
+\vspace{-0.2cm}
+}{}
+
+% ---- ContreExemple -------------------------------------------------
+\bfdDeclareEnv{ContreExemple}{O{} +b}{%
+  \def\bfdSubTitle{#1}%
+  \bfdLiencontentRegister{Contre-Exemple(s)}{#1}%
+  \begin{tcolorbox}[
+    title=\liencontent{Contre-Exemple(s)}{#1},
+    bfd tikz corners={red!2!white}{red!80!black},
+    bfd tikz corners overlay={red!80!black},
+    before upper={\vspace{0.5cm}},
+  ]%
+  \CouleurTexteAccent{blue!80!black}%
+  #2%
+  \ResetCouleurTexteAccent%
+  \end{tcolorbox}%
+  \vspace{-0.2cm}%
+}{}
+
+% =====================================================================
+% Section 10 — Environnement cracked + wrappers Notation / Aide
+% =====================================================================
+
+% Environnement cracked refactorisé via bfd cracked frame
+% Signature : O{Propriété} O{} O{orange} O{orange} O{2.5cm} +b
+%   #1 = titre incliné
+%   #2 = sous-titre (minipage droite)
+%   #3 = couleur cadre
+%   #4 = couleur titre incliné (=#3 dans 100% des usages bfcours)
+%   #5 = largeur titre incliné
+%   #6 = contenu
+\bfdDeclareEnv{cracked}{O{Propriété} O{} O{orange} O{orange} O{2.5cm} +b}{%
+  \def\bfdCrackedTitle{#1}%
+  \def\bfdSubTitle{#2}%
+  \begin{tcolorbox}[bfd cracked frame={#3}{#4}{#5}]%
+}{%
+  \bfdSetColors{#3}%
+  #6%
+  \bfdResetColors%
+  \end{tcolorbox}%
+}
+
+% ---- Notation (wrapper cracked, defi) ------------------------------
+\bfdDeclareEnv{Notation}{O{} +b}{%
+  \begin{cracked}[\liencontent{Notation}{#1}][#1][defi][defi][3.5cm]%
+    #2%
+  \end{cracked}%
+}{}
+
+% ---- Aide (wrapper cracked, nota) ----------------------------------
+\bfdDeclareEnv{Aide}{O{} +b}{%
+  \begin{cracked}[\liencontent{Aide}{#1}][#1][nota][nota][2.5cm]%
+    #2%
+  \end{cracked}%
+}{}
+
+% =====================================================================
+% Section 11 — Tableaux stylés (reprise de bfcours-entete-tableaux.sty)
+% =====================================================================
+% Code original déjà très court et bien factorisé : on le reprend tel quel
+% en s'assurant que les styles \currentTable* sont gérés par bfcours-colors.
+
+\tcbset{
+  TableauBox/.style={%
+    colframe=\currentTableFrameColor,
+    colback=\currentTableColbackColor,
+    colupper=\currentTableColupperColor,
+    colbacktitle=\currentTableColbackTitleColor,
+    coltitle=\currentTableColTitleColor,
+    breakable,
+    fonttitle=\bfseries, nobeforeafter, center title,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,
+    toptitle=0.5mm,bottomtitle=0.5mm,
+  },
+  CompTab/.style={%
+    colframe=\currentTableFrameColor,
+    colback=\currentTableColbackColor,
+    colupper=\currentTableColupperColor,
+    colbacktitle=\currentTableColbackTitleColor,
+    coltitle=\currentTableColTitleColor,
+    before upper={\arrayrulecolor{blue!50!black}\renewcommand{\arraystretch}{0.2}},
+    fonttitle=\bfseries, nobeforeafter,
+    left=0pt,right=0pt,top=0pt,bottom=0pt,boxsep=0pt,
+    toptitle=0.5mm,bottomtitle=0.5mm,
+  },
+}
+
+% Tableau secondaire en tabularx (largeur paramétrable)
+\renewtcolorbox{tcbtabx}[3][]{%
+  enhanced,
+  fonttitle=\bfseries\large,
+  fontupper=\normalsize,
+  colback=\currentSecondaryTableColbackColor,
+  colframe=\currentSecondaryTableFrameColor,
+  colbacktitle=\currentSecondaryTableColbackTitleColor,
+  coltitle=\currentSecondaryTableColTitleColor,
+  drop fuzzy shadow,
+  width=#3,
+  center title,
+  title=#1,
+  tabularx*={\arrayrulewidth0.5mm\renewcommand\arraystretch{1.4}}{#2}
+}
+
+% Tableau classique en tabular
+\renewtcolorbox{tcbtab}[2][]{%
+  TableauBox,
+  drop fuzzy shadow,
+  center title,
+  title=#1,
+  hbox,
+  after upper*=\end{tabular},
+  before upper=\begin{tabular}{#2}
+}
+
+% Tableau classique centré (variante DocumentEnvironment pour options sup.)
+\RenewDocumentEnvironment{tcbtabc}{O{} m O{}}{%
+  \begin{tcolorbox}[
+    TableauBox,
+    drop fuzzy shadow,
+    center title,
+    title=#1,
+    hbox,
+    before upper*=\begin{center}\begin{tabular}{#2},
+    after upper*=\end{tabular}\end{center},
+    #3
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+% Tableau compact (utilisé dans EXOEVAL)
+\renewtcolorbox{tcbtabcomp}[2][]{%
+  CompTab,
+  drop fuzzy shadow,
+  center title,
+  title=#1,
+  hbox,
+  before upper*=\begin{tabular}{#2},
+  after upper*=\end{tabular}
+}
+
+% =====================================================================
+% Section 12 — Items et énumérations (reprise de bfcours-items.sty)
+% =====================================================================
+% Code original déjà structuré : on le reprend tel quel, sans modification
+% pixel-perfect.
+
+\RequirePackage{enumitem}
+\setlist[itemize]{label=$\bullet$}
+
+\providecommand{\myboxeditemstyle}[1]{%                                                                                                                       
+    \tcbox[                                                                                                                                                nobeforeafter,
+      colframe=\itemBaseColor,                                                                                                                   colback=\itemBaseColor,
+      coltext=white,                                                                                                                               boxsep=0pt,boxrule=1pt,
+      arc=2pt,
+      left=2pt, right=2pt,
+      top=2pt, bottom=2pt,
+      on line,
+      %tcbox width=forced center,
+      %width=0.5cm
+    ]{\bfseries #1.}%
+  }
+\renewcommand{\labelenumi}{%
+{\myboxeditemstyle{\theenumi}}%
+}
+
+% Redéfinir le label pour chaque item de deuxième niveau
+\renewcommand{\labelenumii}{%
+{\myboxeditemstyle{\theenumii}}%
+}
+% =====================================================================
+% tcbenumerate — refonte avec auto-niveau d'imbrication (Phase E)
+% =====================================================================
+% Profondeur courante d'imbrication (0 = hors env, 1/2/3 = niveau).
+\@ifundefined{c@bfdEnumDepth}{\newcounter{bfdEnumDepth}}{}
+\setcounter{bfdEnumDepth}{0}
+% Trois compteurs nommés, un par niveau (max 3 niveaux supportés).
+\@ifundefined{c@bfdEnumCntA}{\newcounter{bfdEnumCntA}}{}
+\@ifundefined{c@bfdEnumCntB}{\newcounter{bfdEnumCntB}}{}
+\@ifundefined{c@bfdEnumCntC}{\newcounter{bfdEnumCntC}}{}
+% Indent gauche selon le niveau (configurable depuis le document).
+\providecommand{\bfdEnumIndentI}{0em}
+\providecommand{\bfdEnumIndentII}{1.5em}
+\providecommand{\bfdEnumIndentIII}{3em}
+
+% Compatibilité ascendante : ces noms anciens restent définis afin de ne
+% pas casser un document qui les référencerait quelque part. Si bfcours
+% les a déjà déclarés (cas du mode override), on les conserve.
+\@ifundefined{c@tcbenumcounter}{\newcounter{tcbenumcounter}}{}
+\@ifundefined{ifintcbenumerate}{\newif\ifintcbenumerate\intcbenumeratefalse}{}
+\@ifundefined{c@savedtcbenumcounter}{\newcounter{savedtcbenumcounter}}{}
+\@ifundefined{iftcbenumisalpha}{\newif\iftcbenumisalpha\tcbenumisalphafalse}{}
+% Flag interne : mode `tight` détecté pour l'imbrication courante.
+% Levé quand \lastkern=1sp au begin du tcbenumerate enfant (cf. sentinelle).
+\@ifundefined{ifbfd@enumtight}{\newif\ifbfd@enumtight\bfd@enumtightfalse}{}
+
+% Initialisation par défaut (utilisé si \bfdEnumNum/\bfdEnumLabel sont appelés
+% hors d'un tcbenumerate, p.ex. dans un paragraphe d'introduction).
+\def\bfdEnumCurCounter{bfdEnumCntA}
+\def\bfdEnumCurAuto{arabic}
+\def\bfdEnumForcedFormat{auto}
+
+% Sélection du compteur et du format de label selon la profondeur.
+%   \bfdEnumCurCounter : nom du compteur du niveau courant
+%   \bfdEnumCurAuto    : nom de la macro de formatage (arabic/alph/roman)
+\newcommand{\bfdEnumSelect}{%
+    \ifcase\value{bfdEnumDepth}%
+        \def\bfdEnumCurCounter{bfdEnumCntA}\def\bfdEnumCurAuto{arabic}%
+    \or
+        \def\bfdEnumCurCounter{bfdEnumCntA}\def\bfdEnumCurAuto{arabic}%
+    \or
+        \def\bfdEnumCurCounter{bfdEnumCntB}\def\bfdEnumCurAuto{alph}%
+    \or
+        \def\bfdEnumCurCounter{bfdEnumCntC}\def\bfdEnumCurAuto{roman}%
+    \else
+        % Au-delà du niveau 3 : on retombe sur le format roman + cnt C
+        \def\bfdEnumCurCounter{bfdEnumCntC}\def\bfdEnumCurAuto{roman}%
+    \fi
+}
+
+% Indent gauche selon la profondeur (utilisé dans la box externe).
+\newcommand{\bfdEnumCurIndent}{%
+    \ifcase\value{bfdEnumDepth}0em%
+    \or\bfdEnumIndentI%
+    \or\bfdEnumIndentII%
+    \or\bfdEnumIndentIII%
+    \else\bfdEnumIndentIII%
+    \fi
+}
+
+% Macro qui produit le label affiché dans le badge d'un item.
+% Tient compte du format forcé (\bfdEnumForcedFormat) ou de \bfdEnumCurAuto.
+\newcommand{\bfdEnumPrintLabel}{%
+    \ifx\bfdEnumForcedFormat\bfdEnumAutoToken
+        % Format auto : on appelle la macro choisie par \bfdEnumSelect
+        \csname \bfdEnumCurAuto\endcsname{\bfdEnumCurCounter}%
+    \else
+        % Format imposé par l'utilisateur (num/alph/Alph/roman/Roman)
+        \csname \bfdEnumForcedFormat @counter\endcsname{\bfdEnumCurCounter}%
+    \fi
+}
+% Tokens internes pour la comparaison
+\def\bfdEnumAutoToken{auto}
+% Aliases num → arabic, et capture des autres formats
+\expandafter\let\csname num@counter\endcsname\arabic
+\expandafter\let\csname arabic@counter\endcsname\arabic
+\expandafter\let\csname alph@counter\endcsname\alph
+\expandafter\let\csname Alph@counter\endcsname\Alph
+\expandafter\let\csname roman@counter\endcsname\roman
+\expandafter\let\csname Roman@counter\endcsname\Roman
+
+% ---------------------------------------------------------------------
+% API utilisateur : accès au compteur courant d'un tcbenumerate
+% ---------------------------------------------------------------------
+% Utilisable dans le contenu d'un \tcbitem (le compteur a déjà été incrémenté
+% par `before upper` quand le contenu utilisateur est traité).
+%
+%   \bfdEnumNum    : valeur numérique brute du compteur du niveau courant
+%                    (1, 2, 3, ... — toujours arabe).
+%   \bfdEnumLabel  : label formaté selon le format auto/forcé du niveau
+%                    courant (1, 2, 3 au L1 ; a, b, c au L2 ; i, ii, iii au L3 ;
+%                    ou format imposé via le 3e argument de tcbenumerate).
+%   \bfdEnumLevel  : profondeur d'imbrication courante (1, 2, 3, ...).
+%
+% Accès direct par niveau (utile pour référencer un niveau parent depuis
+% un sous-niveau, p.ex. \bfdEnumLabelI dans un L2 donne le label de la
+% question principale englobante) :
+%   \bfdEnumNumI/II/III      : valeurs numériques par niveau
+%   \bfdEnumLabelI/II/III    : labels formatés par niveau
+%
+% Exemple :
+%   \tcbitem Question (réponse à la \bfdEnumLabel)
+\newcommand{\bfdEnumNum}{\arabic{\bfdEnumCurCounter}}
+\newcommand{\bfdEnumLabel}{\bfdEnumPrintLabel}
+\newcommand{\bfdEnumLevel}{\arabic{bfdEnumDepth}}
+\newcommand{\bfdEnumNumI}{\arabic{bfdEnumCntA}}
+\newcommand{\bfdEnumNumII}{\arabic{bfdEnumCntB}}
+\newcommand{\bfdEnumNumIII}{\arabic{bfdEnumCntC}}
+\newcommand{\bfdEnumLabelI}{\arabic{bfdEnumCntA}}
+\newcommand{\bfdEnumLabelII}{\alph{bfdEnumCntB}}
+\newcommand{\bfdEnumLabelIII}{\roman{bfdEnumCntC}}
+
+% tcbenumerate : énumération multi-colonnes avec items en badges stylés.
+% Signature :
+%   #1 = nombre de colonnes (défaut 1)
+%   #2 = valeur de départ   (défaut 1)
+%   #3 = format de label    (défaut auto : niv1=num, niv2=alph, niv3=roman ;
+%                            valeurs possibles : auto, num, arabic, alph,
+%                            Alph, roman, Roman)
+\RenewDocumentEnvironment{tcbenumerate}{O{1} O{1} O{auto}}{%
+    % 1) Profondeur d'imbrication
+    \stepcounter{bfdEnumDepth}%
+    \intcbenumeratetrue
+    % 2) Sélection compteur + format auto pour ce niveau
+    \bfdEnumSelect
+    % 3) Format forcé éventuel
+    \def\bfdEnumForcedFormat{#3}%
+    \ifx\bfdEnumForcedFormat\@empty\def\bfdEnumForcedFormat{auto}\fi
+    % 4) Init compteur du niveau courant à (#2 - 1)
+    \edef\bfd@enum@start{\number\numexpr#2-1\relax}%
+    \setcounter{\bfdEnumCurCounter}{\bfd@enum@start}%
+    % Conserver les anciennes variables synchronisées au niveau 1
+    \ifnum\value{bfdEnumDepth}=1
+        \setcounter{tcbenumcounter}{\bfd@enum@start}%
+        \tcbenumisalphafalse
+        \def\bfd@tmp@fmt{#3}\def\bfd@tmp@alph{alph}%
+        \ifx\bfd@tmp@fmt\bfd@tmp@alph\tcbenumisalphatrue\fi
+    \fi
+    % 5) Choix du wrapper selon le niveau d'imbrication.
+    %    - Niveau 1 : wrapper tcolorbox[blank] (rendu strictement identique
+    %      à l'historique, requis pour la conformité pixel-perfect du test
+    %      de référence). Pas de problème car le tcbitemize est de niveau 1.
+    %    - Niveau >=2 : on remplace le wrapper par un \leftskip + groupe.
+    %      tcolorbox+tcbitemize imbriqués au-delà du 2e niveau perdent le
+    %      `before upper` des items (les badges disparaissent). \leftskip est
+    %      page-break-safe et préserve `before upper` à toute profondeur.
+    \ifnum\value{bfdEnumDepth}=1
+        \begin{tcolorbox}[blank, width=\textwidth,boxrule=0pt,
+            left=\bfdEnumCurIndent,right=0pt,top=0pt,bottom=0pt,halign=left,breakable]%
+        \def\bfd@enum@closewrap{\end{tcolorbox}}%
+        % Au niveau 1, l'indent est dans la box (`left=`), pas dans le raster.
+        \edef\bfd@enum@rasterleft{0pt}%
+    \else
+        % Détection auto du contexte d'imbrication via la sentinelle \kern1sp
+        % posée par le `before upper` du parent (cf. style `raster every box`).
+        % \lastkern doit être capturé AVANT toute autre opération sinon il se
+        % réinitialise.
+        %   - \lastkern = 1sp : imbrication directe (\tcbitem vide + \begin)
+        %     → on consomme le kern trailing et on ne touche PAS à \leftskip
+        %     ni à \par. Sinon le \par implicite déclenché par \begin{tcbitemize}
+        %     refermerait la ligne du badge parent avec le nouveau \leftskip,
+        %     décalant visuellement le badge (bug reproduit avec b. shifté).
+        %   - \lastkern = 0sp : du texte précède notre \begin → on force \par
+        %     pour fermer le paragraphe avec le \leftskip courant (qui est
+        %     l'indent du parent, pas celui du raster enfant).
+        \edef\bfd@enum@lastk{\the\lastkern}%
+        \ifdim\bfd@enum@lastk=1sp\relax
+          % cas tight : retire le kern1sp sentinelle, puis force \par avec
+          % le \leftskip courant (=0). Le \kern vertical (non-discardable)
+          % rapproche visuellement le raster L>=2 du badge parent.
+          \unskip
+          \par\nobreak
+          \kern-2.15em
+          \bfd@enumtighttrue
+        \else
+          % cas avec texte précédent : fermer le paragraphe proprement
+          \ifhmode\par\fi
+          \bfd@enumtightfalse
+        \fi
+        % L'indent du raster L>=2 est porté UNIQUEMENT par `raster left skip`
+        % de tcbitemize, qui agit sur la géométrie du raster sans toucher au
+        % paragraph state du parent. Aucun \leftskip n'est modifié.
+        \def\bfd@enum@closewrap{}%
+        \edef\bfd@enum@rasterleft{\bfdEnumCurIndent}%
+    \fi
+    \begin{tcbitemize}[%
+        raster columns=#1,
+        raster equal height=rows,
+        raster column skip=0.5em,
+        raster row skip=5pt,
+        raster left skip=\bfd@enum@rasterleft,
+        breakable,
+        raster every box/.style={
+            enhanced, breakable, nobeforeafter,
+            colbacktitle=\itemBaseColor,
+            colback=\currentBackgroundColor,
+            boxrule=-1pt,
+            colframe=\itemBaseColor,
+            fonttitle=\bfseries\color{white},
+            arc=5pt, sharp corners=south,
+            left=0pt,right=0pt,top=0pt,bottom=0pt,
+            valign=top, halign=left,
+            toptitle=2pt, bottomtitle=3pt,
+            lefttitle=5pt, righttitle=5pt,
+            before upper={%
+                \stepcounter{\bfdEnumCurCounter}%
+                \ifnum\value{bfdEnumDepth}=1\stepcounter{tcbenumcounter}\fi
+                \tikz[baseline=(numbox.base)]{\node[
+                    inner sep=3pt,
+                    font=\large\bfseries,
+                    text=white,
+                    fill=\itemBaseColor,
+                    minimum width=1.5em, minimum height=1.5em,
+                    rounded corners=2pt,
+                    text centered
+                ] (numbox) {\bfdEnumPrintLabel.};}%
+                \hspace{3pt}%
+                % Sentinelle pour détection du contexte "tight" par un
+                % tcbenumerate imbriqué : kern de signature 1sp (invisible)
+                % placé juste après le badge du parent. Si l'enfant voit
+                % \lastkern=1sp dans son begin code, c'est qu'aucun glyphe
+                % n'a été émis entre le badge parent et lui (imbrication
+                % directe). Tout caractère ou glue émis par l'utilisateur
+                % entre les deux neutralise ce kern (\lastkern devient 0sp).
+                % \ignorespaces consomme l'espace source entre \tcbitem et
+                % \begin{tcbenumerate} pour préserver la sentinelle.
+                \kern1sp\relax
+                \ignorespaces
+            },
+        }%
+    ]%
+}{%
+    \end{tcbitemize}%
+    \bfd@enum@closewrap
+    % Décrémenter la profondeur et nettoyer si on sort du niveau racine
+    \addtocounter{bfdEnumDepth}{-1}%
+    \ifnum\value{bfdEnumDepth}=0
+        \intcbenumeratefalse
+        \setcounter{tcbenumcounter}{0}%
+        \setcounter{bfdEnumCntA}{0}%
+        \setcounter{bfdEnumCntB}{0}%
+        \setcounter{bfdEnumCntC}{0}%
+    \fi
+    \ignorespacesafterend
+}
+
+% Couleur de base pour les items (initialisée à RGB 31,119,180 si absente)
+\providecolor{itemBaseColor}{RGB}{31, 119, 180}
+
+% =====================================================================
+% Section 13 — Wrappers EXO / EXOEVAL (styles tcolorbox)
+% =====================================================================
+% Les environnements EXO/EXOEVAL s'appuient sur l'env 'exo' du package
+% bfcours (gestion des compteurs et points). On expose ici un STYLE
+% tcolorbox réutilisable pour leur formatage de titre.
+
+% Style « titre EXO simple » (titre dans minipage 0.5\textwidth)
+\tcbset{
+  bfd exo title/.style={
+    exotitle=\begin{minipage}[t]{0.5\textwidth}\bfdExoTitle\end{minipage},
+  },
+  bfd exo eval title/.style={
+    exotitle=\begin{minipage}{0.4\textwidth}%
+        \liensecretcontent{\thelabel}{\bfdExoTitle}\bfdExoTitle%
+      \end{minipage}\hfill
+      \begin{minipage}{0.18\textwidth}\vfill
+        \renewcommand{\arraystretch}{0.75}%
+        \begin{tcbtabcomp}{%
+            |>{\centering\arraybackslash}p{0.55cm}%
+            |>{\centering\arraybackslash}p{0.55cm}%
+            |>{\centering\arraybackslash}p{0.55cm}%
+            |>{\centering\arraybackslash}p{0.9cm}}
+          \hline
+          \rule[0pt]{0pt}{8pt}\cellcolor{red!10!white}\mi
+            &\cellcolor{orange!10!white}\mf
+            &\cellcolor{yellow!10!white}\ms
+            &\cellcolor{green!10!white}\tbm \\
+          \hline
+          \renewcommand{\arraystretch}{1.2}\rule[0pt]{0pt}{11pt} & & & \\
+        \end{tcbtabcomp}\vfill
+      \end{minipage}\hfill,
+  },
+}
+
+% Macro auxiliaire pour stocker le titre de l'exercice
+\newcommand{\bfdExoTitle}{}
+
+% En mode override, on NE redéfinit PAS EXO/EXOEVAL : la mécanique
+% `rdexo` (déclenchée par `\setrdexo{display exotitle, …}` du préambule)
+% configure dynamiquement les clés tcolorbox de l'env `exo` et entre en
+% conflit avec notre style `bfd exo title`. On laisse bfcours gérer.
+% Environnement EXO : wrappe 'exo' avec le style bfd exo title
+% [new-bfcours-env] \bfdDeclareEnv supprimé (env conservé tel quel dans environments).
+
+% Environnement EXOEVAL : idem + tableau MI/MF/MS/TBM via style bfd exo eval title
+% [new-bfcours-env] \bfdDeclareEnv supprimé (env conservé tel quel dans environments).
+
+% =====================================================================
+% Section 14 — Environnements complémentaires recopiés à l'identique
+% depuis bfcours-environments.sty d'origine.
+% Périmètre : None, bfEnv, bfbox, MultiColonnes (+ Colonnes,
+% système de comptage tcb@nestlevel et \setColonnesBaseStyle).
+% =====================================================================
+
+% --- None ----------------------------------------------------------
+% Recopié à l'identique depuis bfcours-environments.sty (l. 30-52).
+\bfdDeclareEnv{None}{O{}}{
+\begin{tcolorbox}[
+	  frame hidden, % Cache le cadre
+	  boxrule=0pt, % Pas de bordure
+	  sharp corners, % Coins carrés
+	  blankest, % Couleur de fond (ajustez selon vos préférences)
+	  left=0pt, % Pas de marge à gauche
+	  right=0pt, % Pas de marge à droite
+	  top=0pt, % Pas de marge en haut
+	  bottom=0pt, % Pas de marge en bas
+	    boxed title style = {
+	        interior code = {},
+	        frame code = {},
+	        center title,
+	    },
+	fonttitle=\bfseries,
+	coltitle=black,
+	  #1
+  ]
+}
+{
+\end{tcolorbox}
+}
+
+% --- bfEnv ---------------------------------------------------------
+% Recopié à l'identique depuis bfcours-environments.sty (l. 1205-1260).
+\bfdDeclareEnv{bfEnv}{m O{} O{prop} +b}{
+  \def\bfmaincol{#3}
+  \def\bfframecol{#3!50!white}
+  \def\bfitemacc{#3!80!black}
+\bfdLiencontentRegister{#1}{#2}%
+\begin{tcolorbox}[
+enhanced,
+before skip=2mm,after skip=0mm,bottom=0pt,
+colback=white,colframe=\bfframecol,boxrule=0pt,
+attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+varwidth boxed title*=-3cm,
+boxed title style={frame code={
+\path[fill=white!20!\bfmaincol]
+([yshift=-1mm,xshift=-1mm]frame.north west)
+arc[start angle=0,end angle=180,radius=1mm]
+([yshift=-1mm,xshift=1mm]frame.north east)
+arc[start angle=180,end angle=0,radius=1mm];
+\path[left color=\bfmaincol!100!black,right color=\bfmaincol!100!black]
+([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+-- (frame.south east) -- (frame.south west)
+-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+[sharp corners]-- cycle;
+},interior engine=empty,
+},
+fonttitle=\bfseries,
+title={\large{\liencontent{#1}{#2}}},
+coltitle =white,
+drop shadow,
+borderline west={0.05mm}{0pt}{\bfitemacc},
+borderline south={0.05mm}{0pt}{\bfitemacc},
+overlay={
+  \draw[line width=0.5mm, \bfframecol]
+    ([xshift=0mm,yshift=-0.25mm]frame.south west)--([xshift=0mm]frame.north west); % Bordure gauche
+  \draw[line width=0.5mm, \bfframecol]
+    ([yshift=0mm]frame.south west)--([yshift=0mm]frame.south east); % Bordure du bas
+\ifx#1\empty
+    \else
+      \node[anchor=north east, fill=white, draw=\bfframecol, rounded corners] at ([xshift=-0.1\columnwidth]frame.north east)
+      {\begin{minipage}{\dimexpr(\columnwidth - 4cm - 0.2\columnwidth)\relax}
+        \centering \textbf{#2}
+      \end{minipage}}; % Correctement fermer la minipage ici
+    \fi%
+}
+]
+
+\CouleurTexteAccent{\bfitemacc}
+\CouleursTabular{prop}{prop}{white}{\bfmaincol!5}{\bfmaincol!50!black}%{yellow!10!white}
+\CouleursSecondaryTabular{\bfmaincol}{\bfmaincol!30!white}{black}{\bfmaincol!5}{\bfmaincol}
+\couleurItem{\bfmaincol}
+#4
+\resetItemBaseColor
+\ResetCouleursTabular
+\ResetCouleursSecondaryTabular
+\ResetCouleurTexteAccent
+\end{tcolorbox}
+}
+
+% --- bfbox ---------------------------------------------------------
+% Recopié à l'identique depuis bfcours-environments.sty (l. 1555-1574).
+\bfdDeclareEnv{bfbox}{m O{}}{
+    \begin{tcolorbox}[
+        nobeforeafter,
+        title=#1,
+        halign title=flush left,
+        fonttitle=\bfseries,
+        boxrule=0.4pt,
+        right=0pt,
+        left=0pt,
+        top=0pt,
+        bottom=0pt,
+        colbacktitle=\boitecouleur,
+        coltitle=white,
+        colback=white,
+        colframe=\boitecouleur,
+        #2
+    ]
+}{
+    \end{tcolorbox}
+}
+
+% --- Système de comptage tcolorbox imbriqué ------------------------
+% Recopié à l'identique depuis bfcours-environments.sty (l. 1576-1586).
+%%%Gestion du système de colonnes%%%
+\@ifundefined{c@tcb@nestlevel}{%
+  \newcounter{tcb@nestlevel}%
+  % À chaque \begin{tcolorbox} on incrémente…
+  \pretocmd{\tcolorbox}{\stepcounter{tcb@nestlevel}}{}{}%
+  % …et à chaque \end{tcolorbox} on décrémente.
+  \apptocmd{\endtcolorbox}{\addtocounter{tcb@nestlevel}{-1}}{}{}%
+}{}
+
+% Test booléen pratique
+\providecommand{\IfInsideTcolorboxTF}[2]{%
+  \ifnum\value{tcb@nestlevel}>0 #1\else #2\fi}
+
+\@ifundefined{ColRasterWidth}{\newlength\ColRasterWidth}{}% longueur « globale »
+
+% --- Colonnes ------------------------------------------------------
+% Recopié à l'identique depuis bfcours-environments.sty (l. 1588-1613).
+\bfdDeclareEnv{Colonnes}{O{2} O{0.99\textwidth} O{2} O{5}}{%
+  % (3) si l'on N'EST PAS déjà dans un tcolorbox ⇒ on en ouvre un "vide"
+  \IfInsideTcolorboxTF
+    {\begin{tcolorbox}[blank, width=\textwidth,boxrule=0pt,left=0pt,right=0pt]}%
+    {}% branche VRAIE (déjà dedans) : rien à faire
+  % (4) le raster proprement dit
+  \begin{tcbraster}[
+    raster columns     = #1,
+    raster width       = #2,
+    raster equal height=rows,
+    raster column skip = #3pt,
+    raster row skip    = #4pt,
+    colback            = white,
+    colframe           = white,
+    boxrule            = 0pt,
+    top                = 0pt,
+    bottom             = 0pt,
+    left               = 0pt,
+    right              = 0pt
+  ]%
+  \ignorespaces % ⟵ gobe les espaces qui suivent
+}{%
+  \end{tcbraster}%
+  \IfInsideTcolorboxTF{ \end{tcolorbox} }{}%
+  \ignorespacesafterend        % ⟵ gobe les blancs après \end
+}
+
+% --- ColonnesBaseStyle ---------------------------------------------
+% Recopié à l'identique depuis bfcours-environments.sty (l. 1615-1628).
+% Définir un style de base plus complet et modulaire
+\tcbset{%
+  ColonnesBaseStyle/.style={%
+    top=0pt,
+    bottom=0pt,
+    left=0pt,
+    right=0pt,
+    boxrule=0pt,
+    boxsep=3pt,
+    nobeforeafter,
+    size=fbox,%
+    halign=left
+  }%
+}%
+
+% --- MultiColonnes -------------------------------------------------
+% Recopié à l'identique depuis bfcours-environments.sty (l. 1630-1678).
+\bfdDeclareEnv{MultiColonnes}{m O{ColonnesBaseStyle}}{%
+  % (3) si l'on N'EST PAS déjà dans un tcolorbox ⇒ on en ouvre un "vide"
+  %\IfInsideTcolorboxTF
+  %{
+    \begin{tcolorbox}[blank,nobeforeafter,size=minimal, width=\textwidth,boxrule=0pt,left=0pt,right=0pt,top=0pt,bottom=0pt,halign=left,boxsep=0pt,
+    colback            = \currentColContainerBackgroundColor,
+    colframe           = \currentColContainerFrameColor]%
+    %}%
+  %{}% branche VRAIE (déjà dedans) : rien à faire
+  % (4) le raster proprement dit
+  \begin{tcbitemize}[%
+    raster equal height=rows,
+    nobeforeafter,
+    boxsep=0pt,
+    breakable,
+    raster column skip = 5pt,
+    raster row skip    = 2pt,
+    raster columns     = #1,
+    colback            = \currentBackgroundColor,
+    colframe           = \currentFrameColor,
+    boxrule            = 0pt,
+    top                = 0pt,
+    bottom             = 0pt,
+    left               = 0pt,
+    right              = 0pt,
+    after skip         = 0pt,
+    after upper        = {},
+    after lower        = {},
+    size=minimal,
+    raster every box/.style={
+      enhanced,
+      breakable,
+      size=small,
+      halign=left,
+      colback=\currentBackgroundColor,
+      colframe=\currentFrameColor,
+      coltitle=\currentTitleColor,
+      fonttitle=\bfseries,
+      #2
+    }%
+  ]%
+  \ignorespaces
+}{%
+  \end{tcbitemize}%
+  %\IfInsideTcolorboxTF{
+  \end{tcolorbox}%
+  %}{}%
+  % Compense le \par implicite emis par la fermeture de la tcolorbox
+  % conteneur ci-dessus : sans cela, ce \par ouvre un paragraphe vide
+  % dans l'env englobant (Definition, Propriete, ...) qui produit un
+  % "Underfull \hbox (badness 10000)" sur le \end{...} parent.
+  % \nointerlineskip annule juste le saut de ligne automatique de ce
+  % \par, sans inserer de hauteur visible.
+  \par\nointerlineskip%
+\ignorespacesafterend% gobe les blancs apres \end
+}
+% Commande pour mettre à jour le style de base
+\bfdDeclareCmd{\setColonnesBaseStyle}[1]{%
+  \tcbset{
+    ColonnesBaseStyle/.style={
+      #1
+    }
+  }%
+}
+
+% =====================================================================
+% Section L3-L5 — Palette nommée + \bfset (Phase G architecture)
+% =====================================================================
+%
+% L3 (palette) : table de correspondance nom-de-palette → mapping des
+% couleurs sémantiques bfcours (thm, defi, prop, demo, meth, acti, voca,
+% rem, nota, ex). Chaque palette redéfinit ces couleurs via \colorlet.
+%
+% L5 (\bfset)  : commande utilisateur unique pour activer une palette
+% (et plus tard variant, shadow, etc.). Exemple :
+%     \bfset{palette=ocean}
+%     \bfset{palette=default}  % retour aux couleurs bfcours d'origine
+%
+% Backward compat : sans appel à \bfset, les couleurs bfcours-colors
+% restent intactes (le mécanisme ne modifie rien à charge du package).
+% =====================================================================
+
+% Sauvegarder les couleurs bfcours-colors au boot pour permettre le
+% retour à la palette "default" plus tard. Liste exacte des couleurs
+% sémantiques bfcours : thm, defi, prop, demo, meth, act, rem, nota, ex.
+% (Pas de `voca` — la voix Vocabulaire utilise `nota` dans bfcours.)
+\AtBeginDocument{%
+  \colorlet{bfd@default@thm}{thm}%
+  \colorlet{bfd@default@defi}{defi}%
+  \colorlet{bfd@default@prop}{prop}%
+  \colorlet{bfd@default@demo}{demo}%
+  \colorlet{bfd@default@meth}{meth}%
+  \colorlet{bfd@default@act}{act}%
+  \colorlet{bfd@default@rem}{rem}%
+  \colorlet{bfd@default@nota}{nota}%
+  \colorlet{bfd@default@ex}{ex}%
+}
+
+% Définir une palette : \NewBfdPalette{nom}{thm=blue, defi=teal, ...}
+% Les valeurs sont des couleurs TikZ/xcolor (ex. "blue!70!cyan").
+\NewDocumentCommand{\NewBfdPalette}{m m}{%
+  \csdef{bfd@palette@#1}{#2}%
+}
+
+% Activer une palette : \bfdActivatePalette{ocean}.
+% Émet un Warning silencieux si la palette n'existe pas.
+% Note technique : on passe par \edef pour expanser le contenu de la
+% csname AVANT que pgfqkeys ne le voie, sinon pgfqkeys reçoit le token
+% de macro brut et traite tout comme une seule clé.
+\NewDocumentCommand{\bfdActivatePalette}{m}{%
+  \@ifundefined{bfd@palette@#1}{%
+    \PackageWarning{bfcours-env-tcb}{Palette `#1' inconnue, ignorée}%
+  }{%
+    \edef\bfd@@palettekv{\noexpand\pgfqkeys{/bfd/palette}{\csname bfd@palette@#1\endcsname}}%
+    \bfd@@palettekv
+  }%
+}
+
+% Clés pgfkeys : chaque clé applique \colorlet{nom-bfcours}{valeur}.
+\pgfkeys{
+  /bfd/palette/.cd,
+  thm/.code   = {\colorlet{thm}{#1}},
+  defi/.code  = {\colorlet{defi}{#1}},
+  prop/.code  = {\colorlet{prop}{#1}},
+  demo/.code  = {\colorlet{demo}{#1}},
+  meth/.code  = {\colorlet{meth}{#1}},
+  act/.code   = {\colorlet{act}{#1}},
+  rem/.code   = {\colorlet{rem}{#1}},
+  nota/.code  = {\colorlet{nota}{#1}},
+  ex/.code    = {\colorlet{ex}{#1}},
+}
+
+% PRINCIPE : une palette ne contient QUE des couleurs de base atomiques
+% (nom xcolor pur, type "blue", "teal", "olive"…). Les nuances `!80!black`,
+% `!50`, `!5` etc. utilisées dans les styles tcbset sont calculées
+% dynamiquement par xcolor à partir de ces bases. Du coup, changer la
+% palette ne demande qu'à redéfinir 9 couleurs ; tout le reste suit.
+%
+% Note pgfkeys : on définit les palettes en une seule ligne pour éviter
+% que les sauts de ligne ne soient interprétés comme du texte.
+
+% --------------------- Palette "default" ----------------------------
+% Restaure les couleurs sauvegardées au boot du document (= les couleurs
+% historiques de bfcours-colors).
+\NewBfdPalette{default}{thm=bfd@default@thm,defi=bfd@default@defi,prop=bfd@default@prop,demo=bfd@default@demo,meth=bfd@default@meth,act=bfd@default@act,rem=bfd@default@rem,nota=bfd@default@nota,ex=bfd@default@ex}
+
+% --------------------- Palette "ocean" ------------------------------
+% Couleurs froides — bases atomiques uniquement (xcolor purs).
+\NewBfdPalette{ocean}{thm=blue,defi=teal,prop=cyan,demo=purple,meth=blue,act=teal,rem=blue,nota=purple,ex=blue}
+
+% --------------------- Palette "vintage" ----------------------------
+% Couleurs chaudes — bases atomiques uniquement.
+\NewBfdPalette{vintage}{thm=red,defi=olive,prop=orange,demo=brown,meth=brown,act=orange,rem=brown,nota=purple,ex=brown}
+
+% --------------------- Variantes graphiques (L2) --------------------
+% Trois variantes livrées (cf Section 3) : lignes (default), minimal, sidebar.
+%
+% Le mécanisme : on redéfinit dynamiquement la clé `bfd edge overlay`
+% pour qu'elle pointe vers `bfd edge overlay <variant>`. Les styles
+% `bfd theoreme`, `bfd definition`, etc. utilisent `bfd edge overlay`
+% comme alias et suivent ainsi automatiquement la variante active.
+\def\bfd@@set@variant#1{%
+  \tcbset{bfd edge overlay/.style 2 args={bfd edge overlay #1={##1}{##2}}}%
+}
+
+% Au boot, on active la variante "lignes" (= comportement historique).
+\bfd@@set@variant{lignes}
+
+% Activer une autre variante : \bfdActivateVariant{minimal}.
+% Émet un Warning si la variante n'existe pas (liste fermée).
+\NewDocumentCommand{\bfdActivateVariant}{m}{%
+  \def\bfd@@valid@variant{}%
+  \@for\bfd@@v:={lignes,minimal,sidebar}\do{%
+    \edef\bfd@@cmp{#1}%
+    \ifx\bfd@@v\bfd@@cmp\def\bfd@@valid@variant{1}\fi
+  }%
+  \ifx\bfd@@valid@variant\@empty
+    \PackageWarning{bfcours-env-tcb}{Variante `#1' inconnue, ignorée. Valides : lignes, minimal, sidebar}%
+  \else
+    \bfd@@set@variant{#1}%
+  \fi
+}
+
+% --------------------- Interface \bfset (L5) ------------------------
+% Commande utilisateur unique. Deux clés disponibles :
+%   - palette=NAME (cf L3)
+%   - variant=NAME (cf L2)
+% Architecture extensible (shadow, accent, etc. à venir).
+\pgfkeys{
+  /bfd/.cd,
+  palette/.code = {\bfdActivatePalette{#1}},
+  variant/.code = {\bfdActivateVariant{#1}},
+}
+
+\NewDocumentCommand{\bfset}{m}{%
+  \pgfqkeys{/bfd}{#1}%
+}
+
+% --------------------- Config externalisée (L6) ---------------------
+% L'utilisateur (ou le futur logiciel) peut placer ses réglages dans
+% un fichier externe et le charger via \bfLoadConfig{nom}. Le fichier
+% est un .tex standard qui contient typiquement un appel à \bfset.
+%
+% Exemple de bfcours-config.tex :
+%   \bfset{palette=ocean, variant=lignes}
+%
+% Le futur logiciel pourra générer/éditer ce fichier sans toucher au
+% LaTeX : il suffit de réécrire la ligne \bfset{...}.
+\NewDocumentCommand{\bfLoadConfig}{m}{%
+  \IfFileExists{#1.tex}{%
+    \input{#1.tex}%
+  }{%
+    \IfFileExists{#1}{%
+      \input{#1}%
+    }{%
+      \PackageWarning{bfcours-env-tcb}{Fichier de config `#1' introuvable}%
+    }%
+  }%
+}
+
+% Au chargement du package, tenter automatiquement le fichier
+% `bfcours-config.tex` du dossier courant (si présent). Permet à
+% l'utilisateur d'activer une config par défaut sans \bfLoadConfig.
+\AtBeginDocument{%
+  \IfFileExists{bfcours-config.tex}{%
+    \input{bfcours-config.tex}%
+  }{}%
+}
+
+% =====================================================================
+% Section 10 — Environnement « Histoire » (skin syBrisse / fancy-box)
+% =====================================================================
+% Boite d'histoire des mathematiques, au skin « banderolle pliee »
+% (portage FIDELE du dessin TikZ \syBrisse de fancy-box.tex). Trois
+% niveaux de texte :
+%   * banderolle (onglet haut-droit) : libelle fixe « Un peu d'histoire »
+%   * titre (haut-gauche, noir gras)  : le sujet,  ex. « La constante e »
+%   * sous-sous-titre (ligne grise)   : l'auteur cite, ex. « L. Euler (1748) »
+%
+% Usage :
+%   \begin{Histoire}{La constante e}[d'apres L. Euler, 1748]
+%     ... contenu ...
+%   \end{Histoire}
+%   (le 2e argument — l'auteur — est OPTIONNEL : \begin{Histoire}{Titre} ...)
+%
+% Le style visuel est expose de facon reutilisable via
+%   bfd syBrisse={<couleur>}{<LIBELLE ONGLET>}
+% le titre et l'auteur etant lus dans \bfdSybTitle / \bfdSybAuthor.
+% =====================================================================
+
+% Couleur dediee : sepia/brun « vieux livre ».
+\definecolor{histoire}{RGB}{120,72,48}
+
+% Stockage des trois textes (poses par l'environnement avant la box).
+\newcommand{\bfdSybTitle}{}
+\newcommand{\bfdSybAuthor}{}
+
+\tcbset{
+  % -------------------------------------------------------------------
+  % Skin « syBrisse » generique (portage du dessin TikZ d'origine).
+  %   #1 = couleur semantique ;  #2 = libelle affiche dans l'onglet.
+  % Le noeud (frame) de tcolorbox remplace le noeud (one) d'origine ;
+  % un noeud de mesure (two) dimensionne l'onglet sur le libelle #2.
+  % -------------------------------------------------------------------
+  bfd syBrisse/.style 2 args={
+    enhanced, breakable=false,
+    colback=#1!6,
+    colframe=#1, boxrule=0.8pt,
+    arc=4pt, outer arc=4pt,
+    top=23pt, bottom=3.5mm, left=4mm, right=4mm,
+    before skip=3mm, after skip=3mm,
+    % Bookkeeping TOC/hyperref hors titre (cf autres envs didactiques).
+    code={\bfdLiencontentRegister{#2}{\bfdSybTitle}},
+    % Sous-sous-titre (auteur) : 1re ligne grise du corps, auto-dimensionnee.
+    before upper={\ifdefempty{\bfdSybAuthor}{}{%
+        \noindent{\itshape\color{black!60}\small\bfdSybAuthor}\par\smallskip}},
+    %===== DEGRADE BAS (sous le texte) : \path[top color=#3!5 ...] =====
+    underlay={%
+      \path[opacity=0.5, top color=#1!5, middle color=#1!30, bottom color=#1]
+        ([xshift=0.9pt]interior.south west) [rounded corners=3pt] --
+        ([xshift=-0.9pt]interior.south east) [sharp corners] --
+        ([xshift=-0.9pt,yshift=0.8cm]interior.south east) --
+        ([xshift=0.9pt,yshift=0.8cm]interior.south west) [rounded corners] -- cycle;
+    },
+    %===== BANDEAU + ONGLET + TITRE + OMBRE + REHAUT (au-dessus) =======
+    overlay={%
+      % (two) : noeud de mesure du libelle d'onglet, ancre N-E sur frame.NE
+      \node[anchor=north east, minimum height=20pt, inner xsep=5pt, inner ysep=0pt]
+            (two) at (frame.north east) {#2\hspace*{.5mm}};
+      % --- bandeau colore avec renflement et pli (\path[fill=#2,draw=#2]) ---
+      \path[fill=#1, draw=#1]
+        ($(frame.north west)+(0ex,-4.5pt)$) [rounded corners=3pt] --
+        ($(two.north west)+(-22pt,-4.5pt)$) --
+        ($(two.south west)+(-4pt,0pt)$) [sharp corners] --
+        (two.south east) [rounded corners] --
+        (frame.north east) --
+        (frame.north west) [sharp corners] -- cycle;
+      % --- titre noir en haut a gauche (noeud three) ---
+      \node[text=black, anchor=north west, align=left, minimum height=20pt,
+            text height=2ex, inner sep=8pt, inner ysep=3pt, font=\bfseries]
+            (three) at ($(frame.north west)+(0,-3pt)$) {\bfdSybTitle};
+      % --- libelle blanc dans l'onglet (noeud for) ---
+      \node[text=white, anchor=north east, align=center, minimum height=20pt,
+            inner sep=8pt, inner ysep=6.5pt, font=\bfseries\footnotesize\sffamily]
+            (for) at ($(frame.north east)+(0,1.5pt)$) {#2\hspace*{0.8mm}};
+      % --- ombre degradee sous le pli (\foreach) ---
+      \foreach \x in {10,20,...,100}{%
+        \path[opacity=\x*0.01]
+          ($(frame.north west)+(0.4pt,-6.5pt+\x/100)$) [rounded corners=3pt,draw=gray!\x] --
+          ($(two.north west)+(-23.3pt+\x/100,-6.5pt+\x/100)$) [rounded corners=3.5pt,draw=gray!\x] --
+          ($(two.south west)+(-5.3pt+\x/100,-1.9pt+\x/100)$) --
+          ($(two.south east)+(-0.4pt,-1.9pt+\x/100)$);}%
+      % --- rehaut blanc (\path[draw=white,line width=1.1pt]) ---
+      \path[draw=white,line width=1.1pt]
+        ($(frame.north west)+(0.4pt,-5.2pt)$) [rounded corners=3pt] --
+        ($(two.north west)+(-22.3pt,-5.2pt)$) [rounded corners=3.5pt] --
+        ($(two.south west)+(-4.3pt,-0.6pt)$) --
+        ($(two.south east)+(-0.4pt,-0.6pt)$);
+    },
+  },
+  % Alias dedie « histoire » (couleur sepia + onglet « Un peu d'histoire »).
+  bfd histoire/.style={bfd syBrisse={histoire}{Un peu d'histoire}},
+}
+
+% Environnement Histoire : titre (m), auteur (o, optionnel), corps (+b).
+\NewDocumentEnvironment{Histoire}{m o +b}{%
+  \def\bfdSybTitle{#1}%
+  \IfValueTF{#2}{\def\bfdSybAuthor{#2}}{\def\bfdSybAuthor{}}%
+  \begin{tcolorbox}[bfd histoire]%
+    \bfdSetColors{histoire}%
+    #3%
+    \bfdResetColors
+  \end{tcolorbox}%
+}{}
+
+\endinput
+
+% =====================================================================
+% Fin de new-bfcours-environments.sty
+% =====================================================================

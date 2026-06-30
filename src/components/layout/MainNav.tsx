@@ -373,6 +373,13 @@ export function MainNav() {
           highlighted: "cosmic"
         },
         {
+          title: "Packages LaTeX",
+          href: "/claude-code/download-latex-packages",
+          icon: FileText,
+          description: "bfcours prêt à installer pour MikTeX",
+          highlighted: "cosmic"
+        },
+        {
           title: "Tous les téléchargements",
           href: "/claude-code/downloads",
           icon: Download,

@@ -80,22 +80,19 @@ Dans le tableau suivant, remplir les cases pour t'aider dans tes révisions.\\
 \NewDocumentCommand{\chapitre}{O{} m m m m m}{
   \fancypagestyle{monStyle}{%
   \fancyfoot[R]{%
-    \tikz[baseline]{
-	\addtocounter{pagecounter}{1}
- \node [circle, fill=gray!80!black, scale=0.8, text=white] (leftnode) {\textbf{\arabic{pagecounter}}};
+    \tikz[baseline]{%
+	\addtocounter{pagecounter}{1}%
+ \node [circle, fill=gray!80!black, scale=0.8, text=white] (leftnode) {\textbf{\arabic{pagecounter}}};%
     }%
-
   }%
   \fancyfoot[L]{%
-%	\hspace{1.5cm}
-    \begin{minipage}[t]{0.4\textwidth}
-      \scriptsize \textbf{#6\ #2} % Remplacer par le titre du chapitre
+    \begin{minipage}[t]{0.4\textwidth}%
+      \scriptsize \textbf{#6\ #2}%
     \end{minipage}%
-}
-   \fancyfoot[C]{
-    \begin{minipage}[t]{0.4\textwidth}
-
-	\hfill \scriptsize \textbf{#3\ #4} % Remplacer par le nom de l'établissement
+  }%
+  \fancyfoot[C]{%
+    \begin{minipage}[t]{0.4\textwidth}%
+	\hfill \scriptsize \textbf{#3\ #4}%
     \end{minipage}%
   }%
   \renewcommand{\footrulewidth}{0.4pt}
@@ -157,22 +154,19 @@ Dans le tableau suivant, remplir les cases pour t'aider dans tes révisions.\\
 \NewDocumentCommand{\chapEval}{O{} m m m m m}{
   \fancypagestyle{monStyleEval}{%
   \fancyfoot[R]{%
-    \tikz[baseline]{
-	\addtocounter{pagecounter}{1}
- \node [circle, fill=gray!80!black, scale=0.8, text=white] (leftnode) {\textbf{\arabic{pagecounter}}};
+    \tikz[baseline]{%
+	\addtocounter{pagecounter}{1}%
+ \node [circle, fill=gray!80!black, scale=0.8, text=white] (leftnode) {\textbf{\arabic{pagecounter}}};%
     }%
-
   }%
   \fancyfoot[L]{%
-%	\hspace{1.5cm}
-    \begin{minipage}[t]{0.4\textwidth}
-      \scriptsize \textbf{#6\ #2} % Remplacer par le titre du chapitre
+    \begin{minipage}[t]{0.4\textwidth}%
+      \scriptsize \textbf{#6\ #2}%
     \end{minipage}%
-}
-   \fancyfoot[C]{
-    \begin{minipage}[t]{0.4\textwidth}
-
-	\hfill \scriptsize \textbf{#3\ #4} % Remplacer par le nom de l'établissement
+  }%
+  \fancyfoot[C]{%
+    \begin{minipage}[t]{0.4\textwidth}%
+	\hfill \scriptsize \textbf{#3\ #4}%
     \end{minipage}%
   }%
   \renewcommand{\footrulewidth}{0.4pt}

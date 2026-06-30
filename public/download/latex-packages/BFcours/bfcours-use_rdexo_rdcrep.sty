@@ -1,5 +1,41 @@
 \ProvidesPackage{bfcours-use_rdexo_rdcrep}[29/06/2024 - Cas d'utilisation de rdexo/crep etc pour bfcours]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Liens hypertexte Exercice <-> Solution (skin bouyachakka)
+%   Sandbox 2026-05-16 - patch ajoute par bfd-html/normalize.
+%   Actifs uniquement si la correction de l'exo a ete enregistree
+%   par rdexo (csname rdexo@correction@content@N defini).
+%   Style visuel preserve via hypersetup{hidelinks} localise au groupe.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+% Pose le hypertarget rdexo:enonce:N UNE SEULE FOIS (le premier rendu, c'est
+% l'enonce). Quand rdexocorrection re-rend l'EXO en mode solution, le test
+% \@ifundefined echoue et on affiche le label nu (pas de re-pose, pas de lien
+% vers la solution depuis la solution elle-meme).
+% \edef est crucial : #1 = \therdexo@numexo n'est PAS developpe par
+% \@ifundefined (catcode protected). On le developpe explicitement en chiffre.
+\NewDocumentCommand{\rdexoEnonceLabel}{m m}{%
+  \edef\bfd@enonce@num{#1}%
+  \@ifundefined{rdexo@correction@content@\bfd@enonce@num}%
+    {#2}%   pas de correction enregistree -> label nu, zero lien
+    {\@ifundefined{rdexo@enonce@posed@\bfd@enonce@num}%
+       {\expandafter\global\expandafter\let
+         \csname rdexo@enonce@posed@\bfd@enonce@num\endcsname\empty
+        \Hy@raisedlink{\hypertarget{rdexo:enonce:\bfd@enonce@num}{}}%
+        \begingroup\hypersetup{hidelinks}%
+        \hyperlink{rdexo:sol:\bfd@enonce@num}{#2}%
+        \endgroup}%
+       {#2}}%   deja pose : label nu
+}
+\NewDocumentCommand{\rdexoSolutionLabel}{m m}{%
+  \edef\bfd@sol@num{#1}%
+  \Hy@raisedlink{\hypertarget{rdexo:sol:\bfd@sol@num}{}}%
+  \begingroup\hypersetup{hidelinks}%
+  \hyperlink{rdexo:enonce:\bfd@sol@num}{#2}%
+  \endgroup%
+}
+\makeatother
+
 %\definecolor{monrose}{HTML}{FF1493} %-> Stockée dans le fichier bfcours-colors.sty
 % Nouvelle commande pour définir couleur_theme
 \newcommand{\setcouleurtheme}[1]{%
@@ -70,13 +106,16 @@
  	opacityback=0,%
 	%halign = left,
  	fontupper=\sffamily,
+	% Patch sandbox : titre de solution rendu cliquable (retour vers enonce)
 	adjusted title={%
+	\rdexoSolutionLabel{\thecorrectionnum}{%
 	\tcbox[rdexo/bouyachakka/header label,%
 		%halign title = left,
-	 	colback=\pgfkeysvalueof{/tcb/rdexo/griba/lower bg color}, boxsep=2pt]%	
+	 	colback=\pgfkeysvalueof{/tcb/rdexo/griba/lower bg color}, boxsep=2pt]%
 	 	{\large{Solution de l'\thelabel}~\tcbox[rdexo/griba/numexo style,
 	 	coltext=\pgfkeysvalueof{/tcb/rdexo/griba/lower bg color},boxsep = 2pt]%
 	 	{\large{\bfseries\thecorrectionnum}}}%
+	}%
     	},
 	 coltitle=black,
 	 fonttitle=\sffamily\bfseries,
@@ -200,11 +239,11 @@
 
 \rdexoSkin{bouyachakka}%
 {%
-\tcbox[rdexo/bouyachakka/header tcbox]{\ding{110}~\thelabel\thenumexo*[~]}\TFTitle{~\tcbox[rdexo/bouyachakka/exotitle tcbox]{\frquote{\theexotitle}}}{}%
+\tcbox[rdexo/bouyachakka/header tcbox]{\ding{110}~\rdexoEnonceLabel{\arabic{rdexo@numexo}}{\thelabel\thenumexo*[~]}}\TFTitle{~\tcbox[rdexo/bouyachakka/exotitle tcbox]{\frquote{\theexotitle}}}{}%
 }%
 {%
 \begin{tcolorbox}[rdexo/bouyachakka/header tcolorbox]
-\ding{110}~\thelabel\thenumexo*[~]\theExotitle*[~--~] %
+\ding{110}~\rdexoEnonceLabel{\arabic{rdexo@numexo}}{\thelabel\thenumexo*[~]}\theExotitle*[~--~] %
 \hfill\TFScore{\TFLevel{\rdexostars[raise=-1pt, star color=\pgfkeysvalueof{/tcb/rdexo/bouyachakka/star fg color},
                         star background=\pgfkeysvalueof{/tcb/rdexo/bouyachakka/star bg color},
                         line color=\pgfkeysvalueof{/tcb/rdexo/bouyachakka/star line color}]{\thelevel}{3}}{}~\mbox{}}{}%

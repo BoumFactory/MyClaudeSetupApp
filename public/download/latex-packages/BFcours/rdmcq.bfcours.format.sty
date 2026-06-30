@@ -1,0 +1,121 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{rdmcq.bfcours.format}[01/11/2025 style perso pour les qcm]
+%%%%%%%%%%%%%   BFCours (basé sur Boston mais plus clair et moins arrondi)
+
+
+\definecolor{bfcours1}{HTML}{f5f5f5}  % Fond général plus clair (vs e5e5e5)
+\definecolor{bfcours2}{HTML}{fca311}  % Orange accent (identique à Boston)
+\definecolor{bfcours3}{HTML}{f9f6f0}  % Beige très clair pour messages (vs ede7d9)
+\definecolor{bfcours4}{HTML}{5a5245}  % Marron un peu plus clair (vs 4b4237)
+
+
+\newQuestionFormat{BFCours}{% boîte externe
+frame hidden,
+colback=white,
+opacityback=1,
+boxsep=0pt,
+top=0pt,
+bottom=0pt,
+sharp corners, arc=1.5mm, auto outer arc, rounded corners=north,  % Arc réduit de 3mm à 1.5mm
+%borderline north={0.4pt}{0pt}{black},
+%borderline west={0.4pt}{0pt}{black},
+%borderline east={0.4pt}{0pt}{black},
+}%
+{%   boîte interne
+    sidebyside, boxsep=0pt,
+    sidebyside gap=3pt,
+    lefthand width=2em,
+    top=0pt,bottom=0pt,
+    sidebyside align=top seam, halign upper=center, halign lower=justify,
+    before upper={\tikz[baseline=(x.base), inner sep=0pt, outer sep=0pt] \node[circle, fill=black, text=white, font=\sffamily\bfseries\normalsize, minimum width=1.5em] (x) {\rdmcqQuestioncount};
+    \tcblower}
+}
+
+\newAnswerFormat{BFCours}{vertical}%
+        {%  Zone Réponse
+        enhanced jigsaw, frame hidden,
+        boxsep=0pt,bottom=6pt,top=3pt, opacityback=1, colback=white,
+        sharp corners, arc=1.5mm, auto outer arc, rounded corners=south,  % Arc réduit
+        borderline south={0.4pt}{0pt}{black},
+        borderline west={0.4pt}{0pt}{black},
+        borderline east={0.4pt}{0pt}{black},
+        }
+        [%  Mode Correction
+        colback=prop!10, opacityback=0.20,  % Opacity réduite pour fond plus discret
+        ]%
+        {%  Réponses
+        enhanced jigsaw, colframe=black, colback=white, opacityback=0.90,  % Opacity augmentée (0.90 vs 0.75)
+        rounded corners, arc=1.5mm, auto outer arc, boxrule=0.8pt,  % Arc réduit
+        boxsep=3pt,
+        valign=center, halign=left,
+        before upper={\rdmcqcb[check color=red]{}\hspace*{0.5em}}  % Checkbox au lieu de radio button
+        }
+
+
+\newAnswerFormat{BFCours}{horizontal}%
+        {%  Zone Réponse
+        enhanced jigsaw, frame hidden,
+        boxsep=0pt,bottom=6pt,top=3pt, opacityback=1, colback=white,
+        sharp corners, arc=1.5mm, auto outer arc, rounded corners=south,  % Arc réduit
+        borderline south={0.4pt}{0pt}{black},
+        %borderline west={0.4pt}{0pt}{black},
+        %borderline east={0.4pt}{0pt}{black},
+        }
+        [%  Mode Correction
+        colback=prop!10
+        ]%
+        {%  Réponses
+        enhanced jigsaw, colframe=black, colback=white, opacityback=0.90,  % Opacity augmentée
+        rounded corners, arc=1.5mm, auto outer arc, boxrule=0.8pt,  % Arc réduit
+        boxsep=3pt,
+        valign=center, halign=center,
+        before upper={\rdmcqcb[check color=red]{}\hspace*{0.5em}}  % Checkbox visible en horizontal
+        }
+
+\newMessageFormat{BFCours}%
+    {%  Left message
+    boxsep=5pt, colback=bfcours3, left=1em, frame engine=empty,
+    opacityback=1,
+    sharp corners, arc=1.5mm, auto outer arc, rounded corners=west,  % Arc réduit
+    overlay={
+        \begin{tcbclipinterior}
+            \fill[bfcours4] (interior.north west) rectangle ([xshift=1em]interior.south west)
+                node[midway, rotate=90, text=white, font=\sffamily\tiny\bfseries] {Info} ;
+        \end{tcbclipinterior}
+            }%
+    }
+    [%  Right message
+    boxsep=5pt, colback=bfcours3, right=1em, frame engine=empty,
+    opacityback=1,
+    sharp corners, arc=1.5mm, auto outer arc, rounded corners=east,  % Arc réduit
+    overlay={
+        \begin{tcbclipinterior}
+            \fill[bfcours4] (interior.south east) rectangle ([xshift=-1em]interior.north east) ;
+        \end{tcbclipinterior}
+            }%
+    ]
+
+\newFooterFormat{BFCours}%
+    {%  Left footer
+    enhanced jigsaw,
+    boxsep=5pt, colback=bfcours4,
+    sharp corners, arc=1.5mm, rounded corners=south, auto outer arc,  % Arc réduit
+    halign=center, valign=center, fontupper=\sffamily\bfseries\footnotesize,
+    coltext=white,
+    fuzzy shadow={0pt}{1mm}{0mm}{0.1mm}{bfcours4}
+    }
+
+\newHeaderFormat{BFCours}%
+    {%  Left header
+    enhanced jigsaw,
+    boxsep=5pt, colback=bfcours4,
+    sharp corners, arc=1.5mm, rounded corners=north, auto outer arc,  % Arc réduit
+    halign=center, valign=center, fontupper=\sffamily\bfseries\footnotesize,
+    coltext=white,
+    fuzzy shadow={0pt}{-1mm}{0mm}{0.1mm}{bfcours4}
+    }%
+
+\newMcqFormat[gather=BFCours, same width, row sep=1em,
+    question answer sep=-0.1pt,
+    answer columns=2, answer column sep=1em, answer row sep=0.3em]{BFCours}{0pt}
+\endinput

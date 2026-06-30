@@ -12,16 +12,37 @@
 %\renewcommand{\labelenumi}{\textbf{\theenumi{}.}}
 %\renewcommand{\labelenumii}{\textbf{\theenumii{}.}}
 
-
+\providecommand{\myboxeditemstyle}[1]{%                                                                                                                       
+    \tcbox[                                                                                                                                                nobeforeafter,
+      colframe=\itemBaseColor,                                                                                                                   colback=\itemBaseColor,
+      coltext=white,                                                                                                                               boxsep=0pt,boxrule=1pt,
+      arc=2pt,
+      left=2pt, right=2pt,
+      top=2pt, bottom=2pt,
+      on line,
+      %tcbox width=forced center,
+      %width=0.5cm
+    ]{\bfseries #1.}%
+  }
 \renewcommand{\labelenumi}{%
-  {\colorbox{\itemBaseColor}{\textcolor{white}{\textbf{\theenumi}}}}%
+{\myboxeditemstyle{\theenumi}}%
 }
 
 % Redéfinir le label pour chaque item de deuxième niveau
 \renewcommand{\labelenumii}{%
-   {\colorbox{\itemBaseColor}{\textcolor{white}{\textbf{\theenumii}}}}%
+{\myboxeditemstyle{\theenumii}}%
 }
 
+% anciennes versions
+%\renewcommand{\labelenumi}{%
+%  {\colorbox{\itemBaseColor}{\textcolor{white}{\textbf{\theenumi}}}}%
+%}
+
+% Redéfinir le label pour chaque item de deuxième niveau
+%\renewcommand{\labelenumii}{%
+%   {\colorbox{\itemBaseColor}{\textcolor{white}{\textbf{\theenumii}}}}%
+%}
+% fin des old
 % Définition des thèmes et environnements
 % (Ajoutez ici les définitions de vos thèmes et environnements)
 

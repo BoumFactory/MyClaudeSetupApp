@@ -1,7 +1,6 @@
 % Nom du package : bfcours.sty
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{bfcours}[2024/06/29 v1.0 Package pour les cours BF]
-
+\ProvidesPackage{bfcoursQF}[2024/06/29 v1.0 Package pour les quetions flash]
 \RequirePackage{ifluatex}
 
 % --- siunitx avant wrapfig2 (conflit L3 sous Tectonic/XeTeX) ---
@@ -47,8 +46,8 @@
 \RequirePackage{pgfplots}
 \RequirePackage{xlop}
 \RequirePackage{scratch3}
-%\RequirePackage{ProfCollege}
-%\RequirePackage{ProfLycee} % Si bug, modifier luamaths.sty pour enlever la recherche de luamaths-complex et luamaths-fractions
+\RequirePackage{ProfCollege}
+\RequirePackage{ProfLycee} % Si bug, modifier luamaths.sty pour enlever la recherche de luamaths-complex et luamaths-fractions
 % chemin complet du fichier : "C:\Users\Utilisateur\AppData\Roaming\MiKTeX\tex\latex\luamaths\luamaths.sty"
 \RequirePackage{cancel}
 \RequirePackage[tikz]{bclogo}
@@ -135,23 +134,17 @@
 
 \RequirePackage{bfcours-competencies}
 \RequirePackage{scalerel,stackengine}
-% Note 2026-05-16 : pour new-bfcours-environments, bfcours-items,
-% bfcours-entete-tableaux et bfcours-boiteReponseInsertbox doivent être
-% chargés AVANT new-bfcours-environments. new-bfcours-environments
-% (qui intègre la refonte env-tcb) fait \renewtcolorbox / \renewcommand
-% sur tcbtab / tcbtabx / tcbtabcomp / tcbtabc / tcbenumerate / \boitecouleur :
-% ces définitions doivent donc déjà exister au moment de la surcharge.
-\RequirePackage{bfcours-items}
-\RequirePackage{bfcours-entete-tableaux}
-\RequirePackage{bfcours-boiteReponseInsertbox}
-%\RequirePackage{bfcours-environments}
-\RequirePackage{new-bfcours-environments}
+\RequirePackage{bfcours-environments}
+
 \RequirePackage{bfcours-commands}
 
+\RequirePackage{bfcours-items}
+\RequirePackage{bfcours-entete-tableaux}
 %\RequirePackage{bfcours-renardbox}
 
 %\RequirePackage{bfcours-EnteteExplications}
 %\RequirePackage{bfcours-EnteteOperations}
+\RequirePackage{bfcours-boiteReponseInsertbox}
 \RequirePackage{bfcours-exoplus}
 %\RequirePackage{bfcours-Impression}
 \RequirePackage{bfcours-Film}
@@ -180,6 +173,7 @@ decorations.markings,angles,quotes,decorations.pathmorphing,shadows,fadings,posi
 }
 
 \RequirePackage{rdmcq.bfcours.format}
+
 
 
 \endinput

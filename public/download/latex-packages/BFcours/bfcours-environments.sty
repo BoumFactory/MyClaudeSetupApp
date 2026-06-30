@@ -15,14 +15,16 @@ fonttitle=\bfseries\large,
 \newcommand{\liencontent}[2]{%
   \stepcounter{contentcounter}
   \hypertarget{subsec:\thecontentcounter}{}
-  \addcontentsline{toc}{subsection}{\protect\numberline{}\textbf{#1} - {\textcolor{blue!90!black}{#2}}}
+  % \texorpdfstring : TOC affichee garde la couleur, bookmarks PDF recoivent
+  % juste le texte sans le code couleur "blue!90!black".
+  \addcontentsline{toc}{subsection}{\protect\numberline{}\textbf{#1} - {\texorpdfstring{\textcolor{blue!90!black}{#2}}{#2}}}
   \label{subsec:#1\thecontentcounter}
   \textbf{#1}
 }
 \newcommand{\liensecretcontent}[2]{%
   \stepcounter{contentcounter}
   \hypertarget{subsec:\thecontentcounter}{}
-  \addcontentsline{toc}{subsubsection}{\protect\numberline{}\textbf{#1} - {\textcolor{blue!90!black}{#2}}}
+  \addcontentsline{toc}{subsubsection}{\protect\numberline{}\textbf{#1} - {\texorpdfstring{\textcolor{blue!90!black}{#2}}{#2}}}
   \label{subsec:#1\thecontentcounter}
 }
 
@@ -344,7 +346,8 @@ fonttitle=\bfseries\large,
 \getexopoint{\thepersoexocounter}
 \stepcounter{exotoc}
 \begin{exo}[exotitle=\begin{minipage}[t]{0.5\textwidth}#1\end{minipage}, tags={#2}]
-{\ncomp{#1}}\addcontentsline{toc}{subsection}{\protect\numberline{}\textbf{Exercice \theexotoc} - {\color{blue!90!black}#1}}
+{\ncomp{#1}}% \texorpdfstring : pas de "blue!90!black" litteral dans les bookmarks PDF
+\addcontentsline{toc}{subsection}{\protect\numberline{}\textbf{Exercice \theexotoc} - {\texorpdfstring{\color{blue!90!black}#1}{#1}}}
 \label{exo:#1\thecontentcounter}%
 \renewcommand{\exopoints}{0}% Ajout au total des points
 #3
@@ -1016,11 +1019,12 @@ overlay={
 
 %\definecolor{headerrmq}{RGB}{0, 128, 0} % Couleur du fond de l'en-tête
 \NewDocumentEnvironment{Remarque}{O{} +b}{
-    \begin{bclogo}[noborder=true,logo={\bccrayon},arrondi=0.1,barre=snake]{Remarque(s) :}
+    \vspace{-0.5cm}\begin{bclogo}[noborder=true,logo={\bccrayon},arrondi=0.1,barre=snake]{Remarque(s) :}
       \CouleurTexteAccent{thm!80!black}
       #2
       \ResetCouleurTexteAccent
     \end{bclogo}
+    \vspace{-0.5cm}
 }
 
 %Solutions
