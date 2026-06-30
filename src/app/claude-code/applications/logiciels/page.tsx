@@ -1,4 +1,4 @@
-import { FileText, ExternalLink, Wrench, Settings, Sparkles, Github, Download, BarChart3, BookOpen, Puzzle, Globe, Zap, RefreshCw, MonitorDown } from "lucide-react"
+import { FileText, ExternalLink, Wrench, Settings, Sparkles, Github, Download, BarChart3, BookOpen, Puzzle, Globe, Zap, RefreshCw, MonitorDown, Package, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -17,10 +17,18 @@ export const metadata: Metadata = {
 // a jour QFSTUDIO_VERSION et ajouter une entree en tete de QFSTUDIO_CHANGELOG.
 // (Le binaire est depose dans public/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/)
 // ────────────────────────────────────────────────────────────────────
-const QFSTUDIO_VERSION = "0.1.1"
+const QFSTUDIO_VERSION = "0.1.2"
 const QFSTUDIO_BASE = "https://bfcours.dev/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio"
 const QFSTUDIO_INSTALLER = `${QFSTUDIO_BASE}/QF-Studio_${QFSTUDIO_VERSION}_x64-setup.exe`
 const QFSTUDIO_CHANGELOG: { version: string; date: string; items: string[] }[] = [
+  {
+    version: "0.1.2",
+    date: "30 juin 2026",
+    items: [
+      "Configuration installée isolée : fini les chemins de développement hérités.",
+      "Icônes QF embarquées dans l'application.",
+    ],
+  },
   {
     version: "0.1.1",
     date: "30 juin 2026",
@@ -103,6 +111,26 @@ export default function LogicielsEnseignantsPage() {
                 Installeur .exe — installez une fois, les mises à jour suivent toutes seules.
               </p>
             </div>
+
+            {/* Prérequis LaTeX — packages bfcours pour compiler les documents générés */}
+            <Link
+              href="/claude-code/download-latex-packages"
+              prefetch={false}
+              className="group flex items-center gap-3 rounded-lg border border-cosmic-500/30 bg-cosmic-950/20 p-4 hover:border-cosmic-400/50 transition-all duration-300"
+            >
+              <div className="w-10 h-10 rounded-lg cosmic-gradient flex items-center justify-center flex-shrink-0">
+                <Package className="w-5 h-5 text-white" />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-semibold text-cosmic-300 group-hover:text-cosmic-200 transition-colors">
+                  Prérequis : packages LaTeX bfcours
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  QF-Studio génère des documents LaTeX. Installez le package <strong>bfcours</strong> pour les compiler.
+                </p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-cosmic-400 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+            </Link>
 
             {/* Notes de version */}
             <div className="pt-2 space-y-3">
