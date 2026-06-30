@@ -16,6 +16,33 @@ const nextConfig = {
   // Security headers
   async headers() {
     return [
+      // ----------------------------------------------------------------
+      // Zone de distribution QF-Studio (updater Tauri v2 + contenu)
+      // Token de discretion GELE : ne JAMAIS changer (URL gravee dans le binaire)
+      // ----------------------------------------------------------------
+      {
+        // Toute la zone : noindex (sans exposer le token dans robots.txt)
+        source: '/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+        ],
+      },
+      {
+        // Manifeste updater : type JSON explicite + jamais en cache
+        source: '/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/latest.json',
+        headers: [
+          { key: 'Content-Type', value: 'application/json; charset=utf-8' },
+          { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
+        ],
+      },
+      {
+        // Manifeste de contenu : type JSON explicite + jamais en cache
+        source: '/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/inputs-manifest.json',
+        headers: [
+          { key: 'Content-Type', value: 'application/json; charset=utf-8' },
+          { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
+        ],
+      },
       {
         source: '/(.*)',
         headers: [
