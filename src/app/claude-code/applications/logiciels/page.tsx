@@ -17,16 +17,17 @@ export const metadata: Metadata = {
 // a jour QFSTUDIO_VERSION et ajouter une entree en tete de QFSTUDIO_CHANGELOG.
 // (Le binaire est depose dans public/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/)
 // ────────────────────────────────────────────────────────────────────
-const QFSTUDIO_VERSION = "0.1.0"
+const QFSTUDIO_VERSION = "0.1.1"
 const QFSTUDIO_BASE = "https://bfcours.dev/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio"
 const QFSTUDIO_INSTALLER = `${QFSTUDIO_BASE}/QF-Studio_${QFSTUDIO_VERSION}_x64-setup.exe`
 const QFSTUDIO_CHANGELOG: { version: string; date: string; items: string[] }[] = [
   {
-    version: "0.1.0",
+    version: "0.1.1",
     date: "30 juin 2026",
     items: [
-      "Première version distribuée de QF-Studio.",
       "Mise à jour automatique intégrée (l'application se met à jour seule au démarrage).",
+      "Contenu officiel embarqué : banque collège (6e à 3e), 126 ressources, mise à jour à distance.",
+      "Remontée de retours (bug, avis, demande) directement depuis l'application.",
     ],
   },
 ]
