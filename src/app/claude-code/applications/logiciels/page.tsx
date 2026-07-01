@@ -14,31 +14,24 @@ export const metadata: Metadata = {
 // ────────────────────────────────────────────────────────────────────
 // QF-Studio — application desktop de questions flash (Tauri v2, Windows)
 // Distribuee depuis la zone d'auto-update gelee. A CHAQUE release, mettre
-// a jour QFSTUDIO_VERSION et ajouter une entree en tete de QFSTUDIO_CHANGELOG.
+// a jour QFSTUDIO_VERSION et remplacer QFSTUDIO_LATEST_NOTES par les notes
+// de la NOUVELLE version uniquement. L'historique complet des versions est
+// desormais consultable directement dans l'application (tableau de bord).
 // (Le binaire est depose dans public/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/)
 // ────────────────────────────────────────────────────────────────────
-const QFSTUDIO_VERSION = "0.1.2"
+const QFSTUDIO_VERSION = "0.1.4"
 const QFSTUDIO_BASE = "https://bfcours.dev/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio"
 const QFSTUDIO_INSTALLER = `${QFSTUDIO_BASE}/QF-Studio_${QFSTUDIO_VERSION}_x64-setup.exe`
-const QFSTUDIO_CHANGELOG: { version: string; date: string; items: string[] }[] = [
-  {
-    version: "0.1.2",
-    date: "30 juin 2026",
-    items: [
-      "Configuration installée isolée : fini les chemins de développement hérités.",
-      "Icônes QF embarquées dans l'application.",
-    ],
-  },
-  {
-    version: "0.1.1",
-    date: "30 juin 2026",
-    items: [
-      "Mise à jour automatique intégrée (l'application se met à jour seule au démarrage).",
-      "Contenu officiel embarqué : banque collège (6e à 3e), 126 ressources, mise à jour à distance.",
-      "Remontée de retours (bug, avis, demande) directement depuis l'application.",
-    ],
-  },
-]
+const QFSTUDIO_LATEST_NOTES: { version: string; date: string; items: string[] } = {
+  version: "0.1.4",
+  date: "1er juillet 2026",
+  items: [
+    "Dossier de données centralisé et fiable après installation.",
+    "Nouvelle page « Signaler un bug » pour remonter facilement un problème.",
+    "Vos remarques sur les Questions Flash remontent automatiquement.",
+    "Tableau de bord repensé : notes de version et suivi de votre production.",
+  ],
+}
 
 /**
  * Page des logiciels enseignants créés avec Claude Code
@@ -132,23 +125,24 @@ export default function LogicielsEnseignantsPage() {
               <ArrowRight className="w-5 h-5 text-cosmic-400 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
             </Link>
 
-            {/* Notes de version */}
+            {/* Notes de la derniere version — l'historique complet est dans l'app */}
             <div className="pt-2 space-y-3">
-              <h3 className="text-sm font-semibold text-indigo-300/90">Notes de version</h3>
-              <div className="space-y-3">
-                {QFSTUDIO_CHANGELOG.map((entry) => (
-                  <div key={entry.version} className="rounded-lg bg-white/5 p-3">
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-mono text-sm text-indigo-300">v{entry.version}</span>
-                      <span className="text-xs text-muted-foreground">— {entry.date}</span>
-                    </div>
-                    <ul className="mt-1.5 space-y-1 text-sm text-muted-foreground list-disc list-inside">
-                      {entry.items.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+              <div className="flex items-baseline justify-between gap-2 flex-wrap">
+                <h3 className="text-sm font-semibold text-indigo-300/90">Nouveautés de cette version</h3>
+                <span className="text-xs text-muted-foreground">
+                  Historique complet des versions dans l'application.
+                </span>
+              </div>
+              <div className="rounded-lg bg-white/5 p-3">
+                <div className="flex items-baseline gap-2">
+                  <span className="font-mono text-sm text-indigo-300">v{QFSTUDIO_LATEST_NOTES.version}</span>
+                  <span className="text-xs text-muted-foreground">— {QFSTUDIO_LATEST_NOTES.date}</span>
+                </div>
+                <ul className="mt-1.5 space-y-1 text-sm text-muted-foreground list-disc list-inside">
+                  {QFSTUDIO_LATEST_NOTES.items.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
