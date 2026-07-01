@@ -19,17 +19,16 @@ export const metadata: Metadata = {
 // desormais consultable directement dans l'application (tableau de bord).
 // (Le binaire est depose dans public/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio/)
 // ────────────────────────────────────────────────────────────────────
-const QFSTUDIO_VERSION = "0.1.4"
+const QFSTUDIO_VERSION = "0.1.5"
 const QFSTUDIO_BASE = "https://bfcours.dev/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio"
 const QFSTUDIO_INSTALLER = `${QFSTUDIO_BASE}/QF-Studio_${QFSTUDIO_VERSION}_x64-setup.exe`
 const QFSTUDIO_LATEST_NOTES: { version: string; date: string; items: string[] } = {
-  version: "0.1.4",
+  version: "0.1.5",
   date: "1er juillet 2026",
   items: [
-    "Dossier de données centralisé et fiable après installation.",
-    "Nouvelle page « Signaler un bug » pour remonter facilement un problème.",
-    "Vos remarques sur les Questions Flash remontent automatiquement.",
-    "Tableau de bord repensé : notes de version et suivi de votre production.",
+    "Correctif majeur : les modèles de mise en page sont bien installés, la génération de PDF fonctionne dès l'installation.",
+    "Calendrier scolaire 2026-2027 ajouté (vacances des zones A, B et C).",
+    "Compilation par lot : plus de faux délai d'attente sur les gros lots de modèles.",
   ],
 }
 
