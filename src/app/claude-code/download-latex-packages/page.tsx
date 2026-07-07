@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useCart } from '@/contexts/CartContext'
 import { useCartTheme } from '@/contexts/CartThemeContext'
 import { triggerCartToast } from '@/components/cart/CartToast'
-import { Download, Check, Package, ArrowRight, BookOpen, FolderTree, Sparkles, AlertTriangle } from 'lucide-react'
+import { Download, Check, Package, ArrowRight, BookOpen, FolderTree, Sparkles, AlertTriangle, FileText, ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { CartItem } from '@/types/cart-theme'
 
@@ -18,7 +18,7 @@ import type { CartItem } from '@/types/cart-theme'
 // (Le mode `cartItems` de /api/download zippe un dossier sous `item.name`,
 //  donc un nom avec des `/` reconstitue l'arborescence localtexmf.)
 // ────────────────────────────────────────────────────────────────────
-type LatexBundleId = 'bfcours' | 'bfcours-profdeleuze'
+type LatexBundleId = 'bfcours' | 'bfcours-profdeleuze' | 'profdeleuze'
 
 interface LatexBundle {
   id: LatexBundleId
@@ -50,6 +50,35 @@ const PROFDELEUZE_CART_ITEM: CartItem = {
 
 const BFCOURS_INSTALL = { name: 'localtexmf/tex/latex/bfcours', path: 'download/latex-packages/BFcours' }
 const PROFDELEUZE_INSTALL = { name: 'localtexmf/tex/latex/ProfDeleuze', path: 'download/latex-packages/ProfDeleuze' }
+// Dossiers de docs zippes sous `documentations/` (l'API zippe un dossier sous `item.name`)
+const BFCOURS_DOC_INSTALL = { name: 'documentations', path: 'download/latex-documentations/bfcours' }
+const PROFDELEUZE_DOC_INSTALL = { name: 'documentations', path: 'download/latex-documentations/ProfDeleuze' }
+// Documentation bfcours (PDF unique) — ouverture directe dans le navigateur
+const BFCOURS_DOC_URL = '/download/latex-documentations/bfcours/BFcours-doc.pdf'
+
+// Bundle ProfDeleuze seul (hors grille) : modules rd* + documentations PDF embarquees dans l'archive
+const PROFDELEUZE_ONLY_BUNDLE: LatexBundle = {
+  id: 'profdeleuze',
+  name: 'ProfDeleuze',
+  subtitle: 'Modules rd* seuls',
+  icon: '🎯',
+  description: '',
+  highlights: [],
+  badge: null,
+  cartItems: [PROFDELEUZE_CART_ITEM],
+  installItems: [PROFDELEUZE_INSTALL, PROFDELEUZE_DOC_INSTALL],
+}
+
+// Documentations PDF ProfDeleuze — accessibles directement dans public/ pour ouverture navigateur
+const PROFDELEUZE_DOC_BASE = '/download/latex-documentations/ProfDeleuze'
+const PROFDELEUZE_DOCS: { label: string; file: string }[] = [
+  { label: "rdexo — fiches d'exercices", file: 'rdexo_doc_new.pdf' },
+  { label: 'rdcrep — grilles de correction', file: 'rdcrep_doc.pdf' },
+  { label: 'rdarithm — arithmétique', file: 'rdarithm_doc.pdf' },
+  { label: 'rdcheckbox — cases à cocher', file: 'rdcheckbox_doc.pdf' },
+  { label: 'rdratio — proportionnalité', file: 'rdratio_doc.pdf' },
+  { label: 'rdtime — gestion du temps', file: 'rdtime_doc.pdf' },
+]
 
 const LATEX_BUNDLES: LatexBundle[] = [
   {
@@ -64,10 +93,11 @@ const LATEX_BUNDLES: LatexBundle[] = [
       'Commandes mathématiques simplifiées',
       'Couleurs et mise en page cohérentes',
       'Compatible Claude Code et QF-Studio',
+      'Documentation PDF incluse',
     ],
     badge: 'Recommandé',
     cartItems: [BFCOURS_CART_ITEM],
-    installItems: [BFCOURS_INSTALL],
+    installItems: [BFCOURS_INSTALL, BFCOURS_DOC_INSTALL],
   },
   {
     id: 'bfcours-profdeleuze',
@@ -81,10 +111,11 @@ const LATEX_BUNDLES: LatexBundle[] = [
       'Modules rdexo / rdcrep (exercices & corrections)',
       'QCM multi-formats (rdmcq : Paris, Reims, Tokyo…)',
       'Grilles, ratios, arithmétique et gestion du temps',
+      'Documentations PDF des modules incluses',
     ],
     badge: 'Complet',
     cartItems: [BFCOURS_CART_ITEM, PROFDELEUZE_CART_ITEM],
-    installItems: [BFCOURS_INSTALL, PROFDELEUZE_INSTALL],
+    installItems: [BFCOURS_INSTALL, PROFDELEUZE_INSTALL, BFCOURS_DOC_INSTALL, PROFDELEUZE_DOC_INSTALL],
   },
 ]
 
@@ -235,27 +266,51 @@ export default function DownloadLatexPackagesPage() {
         </p>
       </div>
 
-      {/* Lien direct vers le tutoriel d'installation */}
-      <Link
-        href="/claude-code/tutorials/bfcours-setup"
-        prefetch={false}
-        className="group block max-w-4xl mx-auto mb-12"
-      >
-        <div className="glass-card rounded-xl p-5 border border-nebula-500/30 hover:border-nebula-400/50 transition-all duration-300 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-lg nebula-gradient flex items-center justify-center flex-shrink-0">
-            <BookOpen className="w-6 h-6 text-white" />
+      {/* Liens : tutoriel d'installation + documentation bfcours (PDF) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-12">
+        <Link
+          href="/claude-code/tutorials/bfcours-setup"
+          prefetch={false}
+          className="group block"
+        >
+          <div className="glass-card h-full rounded-xl p-5 border border-nebula-500/30 hover:border-nebula-400/50 transition-all duration-300 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-lg nebula-gradient flex items-center justify-center flex-shrink-0">
+              <BookOpen className="w-6 h-6 text-white" />
+            </div>
+            <div className="flex-1">
+              <h2 className="font-semibold text-white group-hover:text-nebula-300 transition-colors">
+                Tutoriel : installer bfcours dans MikTeX
+              </h2>
+              <p className="text-sm text-white/55">
+                Guide pas à pas pour enregistrer le dossier <code className="text-nebula-300">localtexmf</code> dans MikTeX.
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-nebula-400 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
           </div>
-          <div className="flex-1">
-            <h2 className="font-semibold text-white group-hover:text-nebula-300 transition-colors">
-              Tutoriel : installer bfcours dans MikTeX
-            </h2>
-            <p className="text-sm text-white/55">
-              Guide pas à pas pour enregistrer le dossier <code className="text-nebula-300">localtexmf</code> dans MikTeX et tester la compilation.
-            </p>
+        </Link>
+
+        <a
+          href={BFCOURS_DOC_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block"
+        >
+          <div className="glass-card h-full rounded-xl p-5 border border-cosmic-500/30 hover:border-cosmic-400/50 transition-all duration-300 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-lg cosmic-gradient flex items-center justify-center flex-shrink-0">
+              <FileText className="w-6 h-6 text-white" />
+            </div>
+            <div className="flex-1">
+              <h2 className="font-semibold text-white group-hover:text-cosmic-300 transition-colors">
+                Documentation bfcours (PDF)
+              </h2>
+              <p className="text-sm text-white/55">
+                Référence complète des environnements, commandes et couleurs du package.
+              </p>
+            </div>
+            <ExternalLink className="w-5 h-5 text-cosmic-400 flex-shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </div>
-          <ArrowRight className="w-5 h-5 text-nebula-400 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
-        </div>
-      </Link>
+        </a>
+      </div>
 
       {/* Bundles */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
@@ -267,6 +322,69 @@ export default function DownloadLatexPackagesPage() {
             onDownload={handleDirectDownload}
           />
         ))}
+      </div>
+
+      {/* ProfDeleuze seul + documentations PDF */}
+      <div className="max-w-4xl mx-auto glass-card rounded-xl border border-cosmic-500/20 bg-cosmic-950/10 p-6 mb-12">
+        <div className="flex items-start gap-4 mb-5">
+          <div className="w-12 h-12 rounded-lg bg-cosmic-500/20 flex items-center justify-center flex-shrink-0 text-2xl">
+            🎯
+          </div>
+          <div className="flex-1">
+            <h2 className="text-lg font-bold text-white">Modules ProfDeleuze seuls</h2>
+            <p className="text-sm text-white/55 mt-1">
+              Vous avez déjà{' '}
+              <code className="text-cosmic-300 bg-cosmic-900/50 px-1.5 py-0.5 rounded text-xs">bfcours</code> ?
+              Récupérez uniquement les modules{' '}
+              <code className="text-cosmic-300 bg-cosmic-900/50 px-1.5 py-0.5 rounded text-xs">rd*</code>{' '}
+              de ProfDeleuze (rdexo, rdcrep, rdmcq…). L'archive embarque aussi les documentations PDF dans un dossier{' '}
+              <code className="text-cosmic-300 bg-cosmic-900/50 px-1.5 py-0.5 rounded text-xs">documentations/</code>.
+            </p>
+          </div>
+        </div>
+
+        {/* Telechargement direct ProfDeleuze seul (docs incluses) */}
+        <button
+          onClick={() => handleDirectDownload(PROFDELEUZE_ONLY_BUNDLE)}
+          disabled={downloading === 'profdeleuze'}
+          className={cn(
+            'w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg',
+            'text-sm font-medium text-white transition-all duration-200',
+            downloading === 'profdeleuze'
+              ? 'bg-white/10 cursor-not-allowed opacity-60'
+              : 'cosmic-gradient hover:opacity-90',
+          )}
+        >
+          <Download className="w-4 h-4" />
+          {downloading === 'profdeleuze' ? 'Génération…' : 'Télécharger ProfDeleuze seul (docs incluses)'}
+        </button>
+
+        {/* Liens directs vers les PDF de documentation */}
+        <div className="mt-5">
+          <p className="text-xs font-medium text-cosmic-300 mb-2.5 flex items-center gap-1.5">
+            <FileText className="w-3.5 h-3.5" />
+            Ouvrir une documentation (PDF)
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {PROFDELEUZE_DOCS.map((doc) => (
+              <a
+                key={doc.file}
+                href={`${PROFDELEUZE_DOC_BASE}/${encodeURIComponent(doc.file)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  'group flex items-center gap-2.5 px-3 py-2 rounded-lg',
+                  'bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cosmic-400/40',
+                  'text-sm text-white/70 hover:text-white transition-all duration-200',
+                )}
+              >
+                <FileText className="w-4 h-4 flex-shrink-0 text-cosmic-400" />
+                <span className="flex-1 truncate">{doc.label}</span>
+                <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 text-white/30 group-hover:text-cosmic-300 transition-colors" />
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Note structure */}
