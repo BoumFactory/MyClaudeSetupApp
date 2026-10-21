@@ -1,110 +1,110 @@
-# Catalogue de Datasets pour Exercices de Statistiques
+# Catalogue de jeux de données pour exercices de statistiques
 
-Datasets pre-identifies sur data.gouv.fr, classes par theme pedagogique.
-Pour chaque entree : mots-cles de recherche MCP, type de donnees, notions exploitables.
+Jeux de données pré-identifiés sur data.gouv.fr, classés par thème pédagogique.
+Pour chaque entrée : mots-clés de recherche MCP, type de données, notions exploitables.
 
-## Demographie et population
+## Démographie et population
 
 ### Recensement de la population (INSEE)
 - **Recherche** : `population communes recensement INSEE`
-- **Donnees** : population par commune, sexe, age, annee
-- **Notions** : moyennes, medianes, repartition, pourcentages, diagrammes circulaires
-- **Niveaux** : 6e (lecture tableau), 4e (moyennes), 2nde (quartiles)
+- **Données** : population par commune, sexe, âge, année
+- **Notions** : moyennes, médianes, répartition, pourcentages, diagrammes circulaires
+- **Niveaux** : 6e (lecture de tableau), 4e (moyennes), 2nde (quartiles)
 
-### Esperance de vie
+### Espérance de vie
 - **Recherche** : `esperance vie departement`
-- **Donnees** : esperance de vie par departement, sexe, annee
-- **Notions** : moyenne, comparaison, evolution, series chronologiques
-- **Niveaux** : 3e, 2nde, 1ere
+- **Données** : espérance de vie par département, sexe, année
+- **Notions** : moyenne, comparaison, évolution, séries chronologiques
+- **Niveaux** : 3e, 2nde, 1re
 
-## Education
+## Éducation
 
-### Resultats du DNB par etablissement
+### Résultats du DNB par établissement
 - **Recherche** : `diplome national brevet resultats etablissement`
-- **Donnees** : taux de reussite, mentions, par college
-- **Notions** : frequences, pourcentages, moyennes ponderees, comparaisons
-- **Niveaux** : 4e, 3e (directement pertinent pour les eleves)
+- **Données** : taux de réussite, mentions, par collège
+- **Notions** : fréquences, pourcentages, moyennes pondérées, comparaisons
+- **Niveaux** : 4e, 3e (directement pertinent pour les élèves)
 
-### Indicateurs des lycees (IVAL)
+### Indicateurs des lycées (IVAL)
 - **Recherche** : `indicateurs lycees resultats baccalaureat`
-- **Donnees** : taux de reussite au bac, valeur ajoutee, par lycee
-- **Notions** : statistiques a deux variables, correlation, ecart-type
-- **Niveaux** : 2nde, 1ere, Terminale
+- **Données** : taux de réussite au bac, valeur ajoutée, par lycée
+- **Notions** : statistiques à deux variables, corrélation, écart-type
+- **Niveaux** : 2nde, 1re, Terminale
 
 ### Effectifs scolaires
 - **Recherche** : `effectifs eleves academie niveau`
-- **Donnees** : nombre d'eleves par academie et niveau
-- **Notions** : effectifs, frequences, diagrammes en batons
+- **Données** : nombre d'élèves par académie et niveau
+- **Notions** : effectifs, fréquences, diagrammes en bâtons
 - **Niveaux** : 6e, 5e
 
-## Environnement et meteo
+## Environnement et météo
 
-### Donnees climatologiques Meteo-France
+### Données climatologiques Météo-France
 - **Recherche** : `temperatures meteo france climatologie`
-- **Donnees** : temperatures moyennes, precipitations, par station et mois
-- **Notions** : moyenne, etendue, ecart-type, quartiles, boites a moustaches
-- **Niveaux** : 4e (etendue), 3e (quartiles), 2nde-1ere (ecart-type)
+- **Données** : températures moyennes, précipitations, par station et mois
+- **Notions** : moyenne, étendue, écart-type, quartiles, boîtes à moustaches
+- **Niveaux** : 4e (étendue), 3e (quartiles), 2nde-1re (écart-type)
 
-### Qualite de l'air
+### Qualité de l'air
 - **Recherche** : `qualite air mesures polluants`
-- **Donnees** : concentrations de polluants par station
-- **Notions** : series statistiques, seuils, frequences cumulees
+- **Données** : concentrations de polluants par station
+- **Notions** : séries statistiques, seuils, fréquences cumulées
 - **Niveaux** : 3e, 2nde
 
 ## Transports
 
-### Frequentation des gares SNCF
+### Fréquentation des gares SNCF
 - **Recherche** : `frequentation gares voyageurs SNCF`
-- **Donnees** : nombre de voyageurs par gare et annee
+- **Données** : nombre de voyageurs par gare et année
 - **Notions** : grands nombres, arrondis, proportions, classements
-- **Niveaux** : 6e (lecture), 5e (proportionnalite), 3e (stats)
+- **Niveaux** : 6e (lecture), 5e (proportionnalité), 3e (statistiques)
 
 ### Accidents de la circulation
 - **Recherche** : `accidents corporels circulation routiere`
-- **Donnees** : nombre d'accidents par departement, gravite, conditions
-- **Notions** : tri croise, statistiques descriptives, probabilites
-- **Niveaux** : 3e, 2nde, 1ere
+- **Données** : nombre d'accidents par département, gravité, conditions
+- **Notions** : tri croisé, statistiques descriptives, probabilités
+- **Niveaux** : 3e, 2nde, 1re
 
-## Economie
+## Économie
 
 ### Prix immobiliers (DVF)
 - **Recherche** : `demandes valeurs foncieres prix immobilier`
-- **Donnees** : prix de vente par commune, type de bien
-- **Notions** : mediane, quartiles, boites a moustaches, dispersion
-- **Niveaux** : 2nde, 1ere
+- **Données** : prix de vente par commune, type de bien
+- **Notions** : médiane, quartiles, boîtes à moustaches, dispersion
+- **Niveaux** : 2nde, 1re
 
 ### Entreprises (SIRENE)
 - **Recherche** : `base sirene entreprises secteur`
-- **Donnees** : nombre d'entreprises par secteur et commune
+- **Données** : nombre d'entreprises par secteur et commune
 - **Notions** : effectifs, regroupements en classes, histogrammes
-- **Niveaux** : 2nde, 1ere
+- **Niveaux** : 2nde, 1re
 
 ## Sport et loisirs
 
-### Equipements sportifs
+### Équipements sportifs
 - **Recherche** : `equipements sportifs communes`
-- **Donnees** : nombre et type d'equipements par commune
-- **Notions** : proportionnalite, pourcentages, diagrammes
+- **Données** : nombre et type d'équipements par commune
+- **Notions** : proportionnalité, pourcentages, diagrammes
 - **Niveaux** : 6e, 5e, 4e
 
 ### Licences sportives
 - **Recherche** : `licences sportives federation`
-- **Donnees** : nombre de licencies par sport, sexe, departement
-- **Notions** : frequences, comparaisons, diagrammes en batons
+- **Données** : nombre de licenciés par sport, sexe, département
+- **Notions** : fréquences, comparaisons, diagrammes en bâtons
 - **Niveaux** : 6e, 5e, 4e
 
-## Sante
+## Santé
 
 ### Vaccination
 - **Recherche** : `couverture vaccinale departement`
-- **Donnees** : taux de couverture par vaccin et departement
-- **Notions** : pourcentages, moyennes, comparaisons, probabilites
+- **Données** : taux de couverture par vaccin et département
+- **Notions** : pourcentages, moyennes, comparaisons, probabilités
 - **Niveaux** : 4e, 3e, 2nde
 
 ## Conseils de recherche
 
-Si les datasets pre-identifies ne conviennent pas :
-1. Varier les mots-cles : synonymes, termes plus specifiques
-2. Chercher par producteur connu : INSEE, Meteo-France, SNCF, ministeres
-3. Filtrer les resultats : privilegier les datasets avec des ressources CSV
-4. Verifier la fraicheur : preferer les datasets mis a jour recemment
+Si les jeux de données pré-identifiés ne conviennent pas :
+1. Varier les mots-clés : synonymes, termes plus spécifiques
+2. Chercher par producteur connu : INSEE, Météo-France, SNCF, ministères
+3. Filtrer les résultats : privilégier les jeux de données avec des ressources CSV
+4. Vérifier la fraîcheur : préférer les jeux de données mis à jour récemment

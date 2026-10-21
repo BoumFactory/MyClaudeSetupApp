@@ -1,70 +1,78 @@
 ---
 name: stats-datagouv
 description: >
-  This skill should be used when the user asks to "creer un exercice de statistiques",
-  "exercice avec donnees reelles", "utiliser data.gouv", "exercice probabilites donnees reelles",
-  "stats avec MCP datagouv", "exercice moyenne mediane quartiles", "TP statistiques",
-  "exercice pourcentages donnees INSEE", or mentions data.gouv.fr, MCP datagouv,
-  statistiques descriptives, ou probabilites avec des donnees authentiques.
-  Genere des exercices de maths (statistiques, probabilites, proportionnalite)
-  a partir de donnees reelles extraites du portail open data data.gouv.fr via le serveur MCP DataGouv.
-version: 0.3.0
+  Ce skill s'utilise quand l'utilisateur demande de « créer un exercice de statistiques »,
+  un « exercice avec données réelles », d'« utiliser data.gouv », un « exercice de probabilités
+  avec données réelles », des « stats avec MCP datagouv », un « exercice moyenne médiane quartiles »,
+  un « TP statistiques », un « exercice de pourcentages avec données INSEE », ou mentionne
+  data.gouv.fr, le MCP datagouv, les statistiques descriptives ou des probabilités avec des données authentiques.
+  Génère des exercices de maths (statistiques, probabilités, proportionnalité)
+  à partir de données réelles extraites du portail open data data.gouv.fr via le serveur MCP DataGouv.
+version: 0.4.0
 ---
 
-# Exercices de Statistiques avec Donnees Reelles (MCP DataGouv)
+# Exercices de statistiques avec données réelles (MCP DataGouv)
 
-Generer des exercices de mathematiques contextuels et motivants en exploitant des donnees
-reelles du portail national open data data.gouv.fr, via le serveur MCP DataGouv.
+## Avant la première utilisation
 
-## Prerequis
+Ce skill a besoin du **serveur MCP officiel de data.gouv.fr** : gratuit, données publiques de l'État, sans compte.
 
-Le serveur MCP DataGouv doit etre configure dans Claude Code :
-```
-claude mcp add --transport http datagouv https://mcp.data.gouv.fr/mcp
-```
+1. Lancer **une seule fois** dans un terminal (pas dans Claude Code) :
+   ```
+   claude mcp add --transport http --scope user datagouv https://mcp.data.gouv.fr/mcp
+   ```
+   L'option `--scope user` rend le serveur disponible dans tous les projets.
+2. Redémarrer Claude Code.
+3. Taper `/mcp` et vérifier que `datagouv` apparaît comme connecté.
 
-Outils MCP disponibles apres configuration :
-- `mcp__datagouv__search_datasets` — Recherche par mots-cles
-- `mcp__datagouv__get_dataset_info` — Metadonnees d'un dataset
-- `mcp__datagouv__list_dataset_resources` — Fichiers disponibles
-- `mcp__datagouv__get_resource_info` — Details d'une ressource (verifier API Tabulaire)
-- `mcp__datagouv__query_resource_data` — Interroger les donnees CSV/XLSX
+**Consigne pour Claude** : si les outils `mcp__datagouv__*` sont absents, ne pas continuer sans données. Proposer d'abord cette commande à l'utilisateur, puis attendre le redémarrage.
+
+Outils disponibles une fois le serveur connecté :
+- `mcp__datagouv__search_datasets` : recherche par mots-clés
+- `mcp__datagouv__get_dataset_info` : métadonnées d'un jeu de données
+- `mcp__datagouv__list_dataset_resources` : fichiers disponibles
+- `mcp__datagouv__get_resource_info` : détails d'une ressource (vérifier l'API Tabulaire)
+- `mcp__datagouv__query_resource_data` : interroger les données CSV/XLSX
+
+Générer des exercices de mathématiques contextuels et motivants en exploitant des données
+réelles du portail national open data data.gouv.fr.
 
 ## Workflow principal
 
-### Etape 1 — Collecter les parametres
+### Étape 1 — Collecter les paramètres
 
-Determiner aupres de l'utilisateur :
-- **Theme** : population, climat, transports, education, economie...
-- **Niveau scolaire** : 6e, 5e, 4e, 3e, 2nde, 1ere, Terminale
-- **Notions cibles** : moyenne, mediane, etendue, quartiles, ecart-type, frequences, probabilites...
+Déterminer auprès de l'utilisateur :
+- **Thème** : population, climat, transports, éducation, économie…
+- **Niveau scolaire** : 6e, 5e, 4e, 3e, 2nde, 1re, Terminale
+- **Notions cibles** : moyenne, médiane, étendue, quartiles, écart-type, fréquences, probabilités…
 - **Format** : exercice court (4-6 questions), TP long (10+ questions), DM
 - **Sortie** : LaTeX (bfcours) ou HTML
 
-Si l'utilisateur ne precise pas tout, proposer des valeurs par defaut adaptees.
+Si l'utilisateur ne précise pas tout, proposer des valeurs par défaut adaptées.
 
-### Etape 2 — Explorer via MCP (recherche uniquement)
+### Étape 2 — Explorer via le MCP (recherche uniquement)
 
-Le MCP sert **uniquement a explorer et identifier** le bon dataset :
+Le MCP sert **uniquement à explorer et identifier** le bon jeu de données :
 
-1. Appeler `search_datasets` avec des mots-cles adaptes au theme
-2. Examiner les 3-5 premiers resultats pertinents
+1. Appeler `search_datasets` avec des mots-clés adaptés au thème
+2. Examiner les 3-5 premiers résultats pertinents
 3. Appeler `list_dataset_resources` pour lister les fichiers CSV/XLSX
-4. Appeler `get_resource_info` pour obtenir **l'URL de telechargement direct** du fichier
+4. Appeler `get_resource_info` pour obtenir **l'URL de téléchargement direct** du fichier
 
-**Objectif de cette etape : obtenir l'URL brute du fichier CSV/XLSX.**
+**Objectif de cette étape : obtenir l'URL brute du fichier CSV/XLSX.**
 
-Consulter `references/datasets-catalogue.md` pour des datasets pre-identifies par theme.
+Consulter `references/datasets-catalogue.md` pour des jeux de données pré-identifiés par thème.
 
-### Etape 3 — Telecharger et traiter les donnees brutes (scripts)
+### Étape 3 — Télécharger et traiter les données brutes (scripts)
 
-**Principe fondamental : la chaine de verite part du fichier brut telecharge.**
+**Principe fondamental : la chaîne de vérité part du fichier brut téléchargé.**
 
-Creer le dossier de l'exercice et son sous-dossier `_data/`, puis executer le pipeline :
+Créer le dossier de l'exercice et son sous-dossier `_data/`, puis exécuter le pipeline
+(chemins des scripts relatifs au dossier du skill) :
 
-#### 3a. Telecharger le fichier brut
+#### 3a. Télécharger le fichier brut
 
-Executer `scripts/download.py` :
+Exécuter `scripts/download.py` :
 ```bash
 python scripts/download.py \
   --url "https://www.data.gouv.fr/fr/datasets/r/{resource_id}" \
@@ -77,12 +85,12 @@ python scripts/download.py \
 ```
 
 Produit :
-- `_data/raw_file.csv` (ou `.xlsx`) — le fichier **tel quel** depuis data.gouv.fr
-- `_data/source.json` — metadonnees de provenance (URL, date, IDs)
+- `_data/raw_file.csv` (ou `.xlsx`) : le fichier **tel quel** depuis data.gouv.fr
+- `_data/source.json` : métadonnées de provenance (URL, date, identifiants)
 
 #### 3b. Filtrer et extraire le sous-ensemble
 
-Executer `scripts/extract.py` :
+Exécuter `scripts/extract.py` :
 ```bash
 python scripts/extract.py \
   --input _data/raw_file.csv \
@@ -94,14 +102,13 @@ python scripts/extract.py \
 ```
 
 Produit :
-- `_data/extract.csv` — sous-ensemble filtre (ce qui sera utilise dans l'exercice)
-- `_data/extract.json` — meme contenu en JSON (pour verify.py)
-- `_data/extract_params.json` — parametres de filtrage appliques (reproductibilite)
+- `_data/extract.csv` : sous-ensemble filtré (ce qui sera utilisé dans l'exercice)
+- `_data/extract.json` : même contenu en JSON (pour `verify.py`)
+- `_data/extract_params.json` : paramètres de filtrage appliqués (reproductibilité)
 
-#### 3c. Construire la chaine de verification
+#### 3c. Construire la chaîne de vérification
 
-Apres redaction du corrige, ecrire
-manuellement `_data/computed.json` en declarant chaque calcul :
+Après rédaction du corrigé, écrire `_data/computed.json` en déclarant chaque calcul :
 
 ```json
 {
@@ -124,7 +131,7 @@ manuellement `_data/computed.json` en declarant chaque calcul :
 }
 ```
 
-#### 3d. Verifier
+#### 3d. Vérifier
 
 ```bash
 python scripts/verify.py _data/
@@ -135,89 +142,124 @@ Relit `extract.csv` + `computed.json`, recalcule tout, affiche OK/FAIL par quest
 **Arborescence `_data/` finale :**
 ```
 _data/
-├── source.json           # provenance (URL, IDs, date telechargement)
-├── raw_file.csv          # fichier brut telecharge tel quel
-├── extract.csv           # sous-ensemble filtre pour l'exercice
+├── source.json           # provenance (URL, IDs, date de téléchargement)
+├── raw_file.csv          # fichier brut téléchargé tel quel
+├── extract.csv           # sous-ensemble filtré pour l'exercice
 ├── extract.json          # idem en JSON
-├── extract_params.json   # parametres de filtrage (reproductibilite)
-├── computed.json         # declaration des calculs du corrige
-└── verify.py             # copie locale du script de verification
+├── extract_params.json   # paramètres de filtrage (reproductibilité)
+└── computed.json         # déclaration des calculs du corrigé
 ```
 
-### Etape 4 — Generer l'exercice
+### Étape 4 — Générer l'exercice
 
 Structure type d'un exercice :
 
-1. **Chapeau contextuel** (2-3 lignes) : d'ou viennent les donnees, pourquoi c'est interessant
-2. **Tableau de donnees** : presentation claire des valeurs extraites
+1. **Chapeau contextuel** (2-3 lignes) : d'où viennent les données, pourquoi c'est intéressant
+2. **Tableau de données** : présentation claire des valeurs extraites
 3. **Questions progressives** (4-6 pour un exercice, 8-12 pour un TP) :
-   - Q1-Q2 : lecture de donnees, calculs simples (effectifs, frequences)
-   - Q3-Q4 : indicateurs statistiques (moyenne, mediane, etendue)
-   - Q5-Q6 : interpretation, comparaison, esprit critique
-4. **Source** : "Source : data.gouv.fr — {nom du dataset} ({producteur}, {annee})"
+   - Q1-Q2 : lecture de données, calculs simples (effectifs, fréquences)
+   - Q3-Q4 : indicateurs statistiques (moyenne, médiane, étendue)
+   - Q5-Q6 : interprétation, comparaison, esprit critique
+4. **Source** : « Source : data.gouv.fr — {nom du jeu de données} ({producteur}, {année}) »
 
-Adapter le vocabulaire et la complexite au niveau. Voir `references/notions-par-niveau.md`.
+Adapter le vocabulaire et la complexité au niveau. Voir `references/notions-par-niveau.md`.
 
-### Etape 5 — Produire le corrige
+### Étape 5 — Produire le corrigé
 
 Pour chaque question :
-- Calcul detaille etape par etape
-- Resultat encadre ou mis en valeur
-- Phrase de conclusion interpretant le resultat dans le contexte
+- Calcul détaillé étape par étape
+- Résultat encadré ou mis en valeur
+- Phrase de conclusion interprétant le résultat dans le contexte
 
-**Chaque calcul du corrige DOIT avoir une entree correspondante dans `computed.json`.**
+**Chaque calcul du corrigé DOIT avoir une entrée correspondante dans `computed.json`.**
 
-### Etape 6 — Verifier la chaine
+### Étape 6 — Vérifier la chaîne
 
-Executer `verify.py` pour confirmer que tous les calculs du corrige sont coherents
-avec les donnees brutes. Si un test echoue, corriger le corrige avant de livrer.
+Exécuter `verify.py` pour confirmer que tous les calculs du corrigé sont cohérents
+avec les données brutes. Si un test échoue, corriger le corrigé avant de livrer.
 
 **Arborescence finale produite :**
 ```
 Exo_probas_licences_sportives/
-├── enonce.tex              # ou .html
-├── corrige.tex
+├── Exo_probas_licences_sportives.tex   # fichier principal (EXO avec \exocorrection)
+├── enonce.tex                          # ou .html
 └── _data/
-    ├── source.json         # provenance (URL, IDs, date)
-    ├── raw_file.csv        # fichier brut data.gouv.fr
-    ├── extract.csv         # sous-ensemble filtre
-    ├── extract.json        # idem JSON
-    ├── extract_params.json # filtres appliques
-    ├── computed.json       # calculs du corrige
-    └── verify.py           # script de test
+    ├── source.json
+    ├── raw_file.csv
+    ├── extract.csv
+    ├── extract.json
+    ├── extract_params.json
+    └── computed.json
 ```
 
-## Contraintes de qualite
+Le corrigé n'est **jamais** un fichier séparé : il se place après `\exocorrection` dans l'environnement `EXO`.
 
-- **Verifier les calculs** : recalculer moyenne, mediane, quartiles sur les donnees extraites
-- **Coherence des unites** : toujours preciser les unites (habitants, euros, km, degres...)
-- **Arrondis** : adapter au niveau (entiers en 6e-5e, 1 decimale en 4e-3e, 2 en lycee)
-- **Citation obligatoire** : toute donnee data.gouv.fr doit etre sourcee
+## Contraintes de qualité
 
-## Limites techniques a connaitre
+- **Vérifier les calculs** : recalculer moyenne, médiane, quartiles sur les données extraites
+- **Cohérence des unités** : toujours préciser les unités (habitants, euros, km, degrés…)
+- **Arrondis** : adapter au niveau (entiers en 6e-5e, 1 décimale en 4e-3e, 2 au lycée)
+- **Citation obligatoire** : toute donnée data.gouv.fr doit être sourcée
+- **Programme** : se limiter aux outils du programme officiel du niveau visé
 
-- API Tabulaire : CSV <= 100 Mo, XLSX <= 12,5 Mo
-- Pagination : max 200 lignes par requete (iterer si besoin)
-- Pas de jointures entre datasets
-- Qualite des donnees variable selon les producteurs
+## Limites techniques à connaître
 
-## Integration LaTeX (bfcours)
+- API Tabulaire : CSV ≤ 100 Mo, XLSX ≤ 12,5 Mo
+- Pagination : 200 lignes maximum par requête (itérer si besoin)
+- Pas de jointures entre jeux de données
+- Qualité des données variable selon les producteurs
 
-Pour la sortie LaTeX, utiliser les environnements bfcours :
-- `\begin{exercice}` pour l'enonce
-- `\begin{corrige}` pour le corrige
-- `\begin{tabular}` pour les tableaux de donnees
-- Commandes TikZ/pgfplots pour les diagrammes si demandes
+## Intégration LaTeX (bfcours)
+
+Pour la sortie LaTeX, charger le skill `bfcours-latex` (et `choix-didactiques` pour le fond). Environnements réels du paquet :
+
+- `EXO` pour l'exercice **et** son corrigé : `\def\rdifficulty{n}` (1 à 3) avant, `\begin{EXO}{Titre sans virgule ni math}{code_competence}`, énoncé, puis `\exocorrection`, puis la correction, `\end{EXO}`
+- `\tcbitempoint{n}` pour les points de chaque question, `\acc{Calculer}` pour les verbes d'action et la forme de réponse attendue
+- `tcbenumerate` pour les questions (jamais `enumerate`), `MultiColonnes` pour la mise en page
+- `tcbtab` pour les tableaux de données (jamais `tabular`) : la première ligne est l'en-tête, pas de virgule dans le titre
+- Au collège, espaces réponses (`\repsim`, `\tcfillcrep`, `crep`) ; au lycée, seulement sur demande
+
+Gabarit :
+
+```latex
+\def\rdifficulty{1.5}
+\begin{EXO}{Statistiques sur les licences sportives}{code_competence}
+Chapeau : la Fédération… a publié le nombre de licenciés par sport.
+
+\begin{tcbtab}[Licenciés par fédération en 2024]{l|c}
+Fédération & Licenciés\\
+\hline
+Football & 2\,200\,000\\
+Tennis & 1\,000\,000\\
+\end{tcbtab}
+
+\begin{tcbenumerate}
+    \tcbitem \tcbitempoint{1}\acc{Calculer} le nombre total de licenciés.
+    \tcbitem \tcbitempoint{2}\acc{Calculer} la proportion de licenciés au football, \acc{en pourcentage arrondi à l'unité}.
+\end{tcbenumerate}
+
+{\footnotesize Source : data.gouv.fr — Licences sportives (Ministère des Sports, 2024)}
+
+\exocorrection
+
+\begin{tcbenumerate}
+    \tcbitem $2\,200\,000 + 1\,000\,000 = 3\,200\,000$.
+    \tcbitem $\dfrac{2\,200\,000}{3\,200\,000} \approx 69\,\%$.
+\end{tcbenumerate}
+\end{EXO}
+```
+
+Diagrammes éventuels en TikZ/pgfplots.
 
 ## Ressources additionnelles
 
-### Fichiers de reference
+### Fichiers de référence
 
-- **`references/datasets-catalogue.md`** — Datasets pre-identifies par theme avec IDs et mots-cles de recherche
-- **`references/notions-par-niveau.md`** — Notions statistiques par niveau scolaire (6e a Terminale) avec attendus du programme
+- **`references/datasets-catalogue.md`** : jeux de données pré-identifiés par thème avec mots-clés de recherche
+- **`references/notions-par-niveau.md`** : notions statistiques par niveau scolaire (6e à Terminale) avec attendus du programme
 
 ### Scripts du pipeline
 
-- **`scripts/download.py`** — Telecharge le fichier brut et genere source.json
-- **`scripts/extract.py`** — Filtre, selectionne colonnes, trie, exporte extract.csv + extract.json
-- **`scripts/verify.py`** — Verifie computed.json contre extract.csv, affiche OK/FAIL
+- **`scripts/download.py`** : télécharge le fichier brut et génère `source.json`
+- **`scripts/extract.py`** : filtre, sélectionne les colonnes, trie, exporte `extract.csv` et `extract.json`
+- **`scripts/verify.py`** : vérifie `computed.json` contre `extract.csv`, affiche OK/FAIL

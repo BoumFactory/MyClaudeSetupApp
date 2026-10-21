@@ -1,155 +1,155 @@
-# Notions Statistiques et Probabilites par Niveau Scolaire
+# Notions statistiques et probabilités par niveau scolaire
 
-Reference des attendus du programme pour adapter les exercices generes.
+Référence des attendus du programme pour adapter les exercices générés.
 
 ## 6e — Initiation
 
 ### Notions au programme
-- Lire et interpreter un tableau, un graphique (diagramme en batons, circulaire)
+- Lire et interpréter un tableau, un graphique (diagramme en bâtons, circulaire)
 - Effectifs
 - Proportions simples (fractions, pourcentages de base)
 
-### Type d'exercice adapte
+### Type d'exercice adapté
 - 3-4 questions de lecture directe
 - Tableau simple (5-10 valeurs, nombres entiers)
-- "Combien de...", "Quel est le plus/moins..."
-- Construire un diagramme en batons
+- « Combien de… », « Quel est le plus/moins… »
+- Construire un diagramme en bâtons
 
-### Donnees ideales
+### Données idéales
 - Entiers naturels, petits nombres (< 1000)
-- Categories simples (villes, sports, mois)
+- Catégories simples (villes, sports, mois)
 
-## 5e — Proportionnalite et frequences
+## 5e — Proportionnalité et fréquences
 
 ### Notions au programme
-- Frequences (notion)
-- Proportionnalite appliquee aux statistiques
+- Fréquences (notion)
+- Proportionnalité appliquée aux statistiques
 - Pourcentages
-- Diagrammes (batons, circulaires)
+- Diagrammes (bâtons, circulaires)
 
-### Type d'exercice adapte
-- Calculer des frequences en fractions puis pourcentages
-- Verifier la proportionnalite dans un tableau
+### Type d'exercice adapté
+- Calculer des fréquences en fractions puis pourcentages
+- Vérifier la proportionnalité dans un tableau
 - Construire un diagramme circulaire (avec angles)
 - 4-5 questions
 
-### Donnees ideales
+### Données idéales
 - 8-15 valeurs, entiers
-- Donnees a proportionnalite exploitable
+- Données à proportionnalité exploitable
 
-## 4e — Moyenne et etendue
+## 4e — Moyenne et étendue
 
 ### Notions au programme
-- Moyenne (simple et ponderee)
-- Etendue
-- Frequences
-- Interpreter des statistiques
+- Moyenne (simple et pondérée)
+- Étendue
+- Fréquences
+- Interpréter des statistiques
 
-### Type d'exercice adapte
-- Calculer la moyenne d'une serie
-- Calculer la moyenne ponderee (notes, frequences)
-- Determiner l'etendue
-- Comparer deux series via moyenne et etendue
+### Type d'exercice adapté
+- Calculer la moyenne d'une série
+- Calculer la moyenne pondérée (notes, fréquences)
+- Déterminer l'étendue
+- Comparer deux séries via moyenne et étendue
 - 5-6 questions progressives
 
-### Donnees ideales
-- 10-20 valeurs, entiers ou 1 decimale
-- Deux series a comparer (ex: deux villes, deux annees)
+### Données idéales
+- 10-20 valeurs, entiers ou 1 décimale
+- Deux séries à comparer (ex. : deux villes, deux années)
 
-## 3e — Mediane et quartiles (initiation)
+## 3e — Médiane et quartiles (initiation)
 
 ### Notions au programme
-- Mediane
-- Etendue (consolidation)
-- Frequences cumulees
+- Médiane
+- Étendue (consolidation)
+- Fréquences cumulées
 - Notion de quartiles (certains programmes)
-- Probabilites (experience aleatoire, frequence et probabilite)
+- Probabilités (expérience aléatoire, fréquence et probabilité)
 
-### Type d'exercice adapte
-- Ranger une serie et trouver la mediane
-- Comparer moyenne et mediane, interpreter
-- Tableau de frequences cumulees
-- Probabilite comme frequence sur grand echantillon
+### Type d'exercice adapté
+- Ranger une série et trouver la médiane
+- Comparer moyenne et médiane, interpréter
+- Tableau de fréquences cumulées
+- Probabilité comme fréquence sur grand échantillon
 - 5-7 questions
 
-### Donnees ideales
-- 15-25 valeurs (impair prefere pour la mediane)
-- Contexte motivant (resultats DNB, temperatures...)
+### Données idéales
+- 15-25 valeurs (impair préféré pour la médiane)
+- Contexte motivant (résultats DNB, températures…)
 
-## 2nde — Statistiques descriptives completes
+## 2nde — Statistiques descriptives complètes
 
 ### Notions au programme
-- Moyenne, mediane, quartiles Q1 et Q3
-- Ecart interquartile
-- Variance et ecart-type (introduction)
-- Diagrammes en boites (boites a moustaches)
-- Echantillonnage, fluctuation
+- Moyenne, médiane, quartiles Q1 et Q3
+- Écart interquartile
+- Variance et écart-type (introduction)
+- Diagrammes en boîtes (boîtes à moustaches)
+- Échantillonnage, fluctuation
 
-### Type d'exercice adapte
-- Calcul complet : moyenne, mediane, Q1, Q3, ecart interquartile
-- Construire un diagramme en boites
-- Comparer deux series par diagrammes en boites
-- Interpreter la dispersion
+### Type d'exercice adapté
+- Calcul complet : moyenne, médiane, Q1, Q3, écart interquartile
+- Construire un diagramme en boîtes
+- Comparer deux séries par diagrammes en boîtes
+- Interpréter la dispersion
 - 6-8 questions
 
-### Donnees ideales
-- 20-40 valeurs, 1-2 decimales acceptables
-- Deux populations a comparer
+### Données idéales
+- 20-40 valeurs, 1-2 décimales acceptables
+- Deux populations à comparer
 
-## 1ere generale — Statistiques avancees et probabilites
+## 1re générale — Statistiques avancées et probabilités
 
 ### Notions au programme
-- Ecart-type (calcul et interpretation)
+- Écart-type (calcul et interprétation)
 - Variance
-- Probabilites conditionnelles
-- Variables aleatoires
+- Probabilités conditionnelles
+- Variables aléatoires
 - Loi binomiale (introduction)
-- Echantillonnage et intervalle de fluctuation
+- Échantillonnage et intervalle de fluctuation
 
-### Type d'exercice adapte
-- Calcul de variance et ecart-type
-- Arbre de probabilites avec donnees reelles
-- Modelisation par loi binomiale
+### Type d'exercice adapté
+- Calcul de variance et d'écart-type
+- Arbre de probabilités avec données réelles
+- Modélisation par loi binomiale
 - Intervalle de confiance
 - 6-10 questions
 
-### Donnees ideales
-- 30-50 valeurs, decimales acceptees
-- Donnees avec sous-categories (pour probabilites conditionnelles)
+### Données idéales
+- 30-50 valeurs, décimales acceptées
+- Données avec sous-catégories (pour probabilités conditionnelles)
 
-## Terminale — Statistiques inferentielles et lois
+## Terminale — Statistiques inférentielles et lois
 
 ### Notions au programme
 - Loi normale, loi binomiale
 - Intervalle de confiance
 - Estimation
-- Tests (selon specialite)
-- Series chronologiques (tendance, saisonnalite)
+- Tests (selon spécialité)
+- Séries chronologiques (tendance, saisonnalité)
 
-### Type d'exercice adapte
-- Ajustement affine sur donnees reelles
-- Test d'adequation a une loi
-- Intervalle de confiance sur proportion
-- Analyse de series temporelles
+### Type d'exercice adapté
+- Ajustement affine sur données réelles
+- Test d'adéquation à une loi
+- Intervalle de confiance sur une proportion
+- Analyse de séries temporelles
 - 8-12 questions (TP)
 
-### Donnees ideales
+### Données idéales
 - 50-100 valeurs pour les lois
-- Series temporelles (annees, mois)
-- Donnees avec proportion exploitable
+- Séries temporelles (années, mois)
+- Données avec proportion exploitable
 
-## Regles transversales
+## Règles transversales
 
 ### Adaptation du vocabulaire
-- 6e-5e : "nombre de", "part de", "graphique"
-- 4e-3e : "moyenne", "mediane", "frequence", "serie statistique"
-- 2nde+ : "quartile", "ecart-type", "variance", "distribution", "echantillon"
+- 6e-5e : « nombre de », « part de », « graphique »
+- 4e-3e : « moyenne », « médiane », « fréquence », « série statistique »
+- 2nde+ : « quartile », « écart-type », « variance », « distribution », « échantillon »
 
 ### Progression des questions
-Toujours suivre : lecture → calcul → interpretation → esprit critique
+Toujours suivre : lecture → calcul → interprétation → esprit critique
 
-### Volume de donnees par format
-| Format | 6e-5e | 4e-3e | 2nde | 1ere-Tle |
+### Volume de données par format
+| Format | 6e-5e | 4e-3e | 2nde | 1re-Tle |
 |--------|-------|-------|------|----------|
 | Exercice court | 5-10 | 10-20 | 15-30 | 20-40 |
 | TP / DM | 10-20 | 20-40 | 30-60 | 50-100 |
