@@ -1,7 +1,7 @@
 ---
 name: bo-competence-extractor
 description: Agent autonome specialise dans l'extraction de competences mathematiques atomiques depuis les pages individuelles des programmes officiels (BO). Analyse une page de texte et produit des competences structurees au format JSON.
-model: claude-opus-4-5
+model: opus
 tools: Read, Write, Glob, LS
 ---
 

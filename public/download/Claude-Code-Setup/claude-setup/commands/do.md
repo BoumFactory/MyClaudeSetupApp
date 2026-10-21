@@ -84,12 +84,12 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 │                                                                             │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │
 │  │   CRÉER     │  │  MODIFIER   │  │  RECHERCHER │  │   AUTRE     │        │
-│  │  (nouveau)  │  │ (existant)  │  │  (explorer) │  │  (perso)    │        │
+│  │  (nouveau)  │  │ (existant)  │  │  (explorer) │  │  (autre)    │        │
 │  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘        │
 │         │                │                │                │               │
 │         ▼                ▼                ▼                ▼               │
-│    → Q2 Format     → Q3 Ampleur    outillage/        perso/ ou            │
-│                                    recherche/        experimental/         │
+│    → Q2 Format     → Q3 Ampleur    outillage/        experimental/        │
+│                                    recherche/                              │
 └─────────────────────────────────────────────────────────────────────────────┘
                                     │
         ┌───────────────────────────┼───────────────────────────┐
@@ -103,7 +103,7 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 │   → Q2a           │   │   modif locale    │   │ /search-report            │
 │                   │   │   → meta-low      │   │                           │
 │ ○ HTML (Web)      │   │                   │   │ /continueBO               │
-│   → Q2b           │   │ ○ Plusieurs       │   │ /routine-matin            │
+│   → Q2b           │   │ ○ Plusieurs       │   │                           │
 │                   │   │   modifs, 1 skill │   │ /vocal-correction         │
 │ ○ Figure          │   │   → meta-mid      │   │                           │
 │   → Q2c           │   │                   │   └───────────────────────────┘
@@ -145,7 +145,7 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 │  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘             │
 │           │                    │                    │                      │
 │           ▼                    ▼                    ▼                      │
-│      /createHtml          /createReveals        /animate                   │
+│      /createHtml          /createReveals        /moodleise                 │
 │      → meta-high          → meta-mid            → meta-mid                 │
 └─────────────────────────────────────────────────────────────────────────────┘
 
@@ -309,7 +309,7 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 │  │  ✓ Présentation Reveal.js                                           │   │
 │  │  ✓ Adaptation de document                                           │   │
 │  │                                                                     │   │
-│  │  Commandes : /animate, /createReveals, /adaptTex...                 │   │
+│  │  Commandes : /createHtml, /createReveals, /adaptTex...              │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 │                                    │                                        │
 │                          NON ──────┴────── OUI → meta-mid                   │
@@ -337,7 +337,7 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 | Question | Réponse | Action |
 |----------|---------|--------|
 | Créer du neuf ? | LaTeX | Q2a → /createTex, skill qcm-creator, /optiLatex |
-| | HTML | Q2b → /createHtml, /createReveals, /animate |
+| | HTML | Q2b → /createHtml, /createReveals |
 | | Figure | Q2c → TikZ (latex-geometry) ou cetz (bfcours-typst) |
 | | Notebook | Q2d → jupyter-notebook-creator |
 | | Moodle | Q2e → /moodleise, /createGameMap |
@@ -360,11 +360,10 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 
 | Catégorie | Sous-catégories | Commandes associées |
 |-----------|-----------------|---------------------|
-| **creer/** | latex, html, moodle, evaluation | `/createTex`, `/createHtml`, `/createReveals`, `/animate`, `/makeEval`, `/makePythonEval`, `/bareme`, `/moodleise`, `/createGameMap` |
+| **creer/** | latex, html, moodle, evaluation | `/createTex`, `/createHtml`, `/createReveals`, `/makeEval`, `/makePythonEval`, `/bareme`, `/moodleise`, `/createGameMap` |
 | **modifier/** | latex, html, notebook | `/modifyTex`, `/adaptTex`, `/formatTexBetter`, `/adaptHtml`, `/notebook-audit` |
 | **outillage/** | recherche, chargement | `/searchMathSource`, `/search-report`, `/loadTexKnowledge` |
 | **experimental/** | - | `/vocal-correction` |
-| **perso/** | - | `/routine-matin` |
 
 ### 1.2 Détection des besoins multiples
 
@@ -570,7 +569,6 @@ for i in range(10):
 |----------|-------------|
 | `/createHtml` | Cours HTML interactif KaTeX |
 | `/createReveals` | Présentation Reveal.js |
-| `/animate` | Animation HTML interactive |
 
 #### creer/evaluation/
 | Commande | Cas d'usage |
@@ -678,10 +676,10 @@ Task(
 Task(
     subagent_type="meta-mid",
     prompt="""
-    Contexte: Animation interactive Pythagore
-    Objectif: Animation HTML montrant la preuve visuelle
-    Skills: interactive-animation
-    Destination: 1. Cours/4eme/Sequence-Pythagore/Animations/
+    Contexte: Diaporama Pythagore
+    Objectif: Présentation Reveal.js de la preuve visuelle, projetable en classe
+    Skills: reveals-presentation
+    Destination: 1. Cours/4eme/Sequence-Pythagore/Presentations/
     """
 )
 

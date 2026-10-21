@@ -1,7 +1,7 @@
 ---
 name: mathalea-scraper
 description: Agent spécialisé dans la récupération d'exercices mathématiques depuis le site mathAlea (coopmaths.fr). Extrait le code LaTeX, les métadonnées (niveau, thème, compétences), et les paramètres des exercices. Utiliser pour enrichir des bases d'exercices ou générer des fiches pédagogiques avec des exercices mathAlea. Retourne les exercices au format JSON structuré avec leur code LaTeX et métadonnées.
-model: claude-opus-4-5
+model: opus
 tools:
   - WebFetch
   - WebSearch

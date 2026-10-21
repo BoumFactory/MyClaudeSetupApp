@@ -1,8 +1,8 @@
 ---
 name: latex-side-worker
 description: Utiliser pour créer ou modifier des fichiers LaTeX spécifiques en utilisant le package bfcours pour l'enseignement des mathématiques.
-model: claude-opus-4-5
-tools: mcp__latex-search-server__search_fuzzy_command,mcp__latex-search-server__search_exact_command,mcp__latex-search-server__search_in_specific_package,mcp__competences-server__advanced_search, latex-search-server, competences-server, Read, Write, MultiEdit, Glob, Grep, LS, Bash
+model: opus
+tools: Read, Write, MultiEdit, Glob, Grep, LS, Bash
 skills:
   - bfcours-latex
 color: Yellow

@@ -1,7 +1,7 @@
 ---
 name: self-improvement
 type: agent
-model: claude-opus-4-5
+model: opus
 tools:
   - Read
   - Write

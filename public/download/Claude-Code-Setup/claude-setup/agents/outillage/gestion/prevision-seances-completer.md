@@ -102,7 +102,7 @@ seances:
 
 Chemin complet vers le dossier de la séquence à traiter.
 
-Exemple : `C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\1. Cours\2nde\Sequence-Vecteurs`
+Exemple : `<dossier du projet>\Cours\2nde\Sequence-Vecteurs`
 
 ## Protocole d'exécution
 

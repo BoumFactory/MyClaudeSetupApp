@@ -1,10 +1,10 @@
 ---
 name: reveals-creator
-description: Agent autonome spécialisé dans la création de présentations reveal.js interactives et stylées. Utilise le modèle claude-haiku-4-5-20251001 pour une génération rapide. Maîtrise les trois styles (collège, lycée, académique), compile et attend les retours utilisateur.
+description: Agent autonome spécialisé dans la création de présentations reveal.js interactives et stylées. Utilise le modèle Haiku pour une génération rapide. Maîtrise les trois styles (collège, lycée, académique), compile et attend les retours utilisateur.
 tools: Read, Write, Edit, Glob, Grep, LS, Bash
 skills:
   - reveals-presentation
-model: claude-opus-4-5
+model: haiku
 color: Cyan
 ---
 

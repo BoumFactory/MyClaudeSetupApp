@@ -13,7 +13,6 @@
 | `adaptHtml` | Adaptation de documents vers HTML/KaTeX |
 | `adaptTex` | Adaptation conceptuelle vers bfcours |
 | `agent-adaptTex` | Adaptation via agent dédié |
-| `animate` | Création d'animations interactives |
 | `bareme` | Génération de barèmes actions élèves |
 | `continueBO` | Poursuite extraction compétences BO |
 | `createHtml` | Création cours HTML/KaTeX |
@@ -29,7 +28,6 @@
 | `moodleise` | Création cours Moodle |
 | `notebook-audit` | Audit notebooks Jupyter |
 | `optiLatex` | Création LaTeX optimisée |
-| `routine-matin` | Journal d'actualités quotidien |
 | `search-report` | Recherche web et rapport |
 | `searchMathSource` | Recherche ressources maths |
 | `vocal-correction` | Corrections depuis transcriptions |
@@ -49,8 +47,7 @@
 │   │
 │   ├── html/                           # Documents Web
 │   │   ├── createHtml.md              # → createHtml
-│   │   ├── createReveals.md           # → createReveals
-│   │   └── animate.md                 # → animate
+│   │   └── createReveals.md           # → createReveals
 │   │
 │   ├── moodle/                         # Contenus Moodle
 │   │   └── moodleise.md               # → moodleise
@@ -88,9 +85,6 @@
 ├── experimental/                       # COMMANDES EN DÉVELOPPEMENT
 │   └── vocal-correction.md            # → vocal-correction
 │
-├── perso/                              # COMMANDES PERSONNELLES
-│   └── routine-matin.md               # → routine-matin
-│
 └── meta/                               # MÉTA-COMMANDES
     └── do.md                          # → do (orchestration)
 ```
@@ -106,7 +100,6 @@
 ### Créer / HTML
 - [ ] `createHtml` → `creer/html/createHtml.md`
 - [ ] `createReveals` → `creer/html/createReveals.md`
-- [ ] `animate` → `creer/html/animate.md`
 
 ### Créer / Moodle
 - [ ] `moodleise` → `creer/moodle/moodleise.md`
@@ -140,9 +133,6 @@
 ### Experimental
 - [ ] `vocal-correction` → `experimental/vocal-correction.md`
 
-### Perso
-- [ ] `routine-matin` → `perso/routine-matin.md`
-
 ### Meta
 - [ ] `do` → `meta/do.md`
 
@@ -152,13 +142,12 @@
 
 | Catégorie | Sous-catégories | Nb commandes |
 |-----------|-----------------|--------------|
-| `creer/` | latex, html, moodle, evaluation | 8 |
+| `creer/` | latex, html, moodle, evaluation | 7 |
 | `modifier/` | latex, html, notebook | 6 |
 | `outillage/` | recherche, chargement | 5 |
 | `experimental/` | - | 1 |
-| `perso/` | - | 1 |
 | `meta/` | - | 1 |
-| **Total** | | **23** |
+| **Total** | | **21** |
 
 ---
 

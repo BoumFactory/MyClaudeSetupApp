@@ -3,7 +3,7 @@ name: debug-tex-log
 description: Utiliser pour déboguer un fichier. Donner les chemins absolus vers les fichiers à inspecter.
 tools: Read
 color: Red
-model: claude-haiku-4-5-20251001
+model: haiku
 ---
 
 # Agent : Debugger de fichier latex

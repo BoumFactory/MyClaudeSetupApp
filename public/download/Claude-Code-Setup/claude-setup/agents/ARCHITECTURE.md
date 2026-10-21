@@ -17,7 +17,6 @@
 | `document-creator-worker` | Création documents LaTeX (templates) |
 | `error-investigator` | Analyse logs d'erreurs |
 | `eval-builder` | Génération d'évaluations complètes |
-| `interactive-animation-creator` | Création animations interactives |
 | `jupyter-notebook-creator` | Création notebooks Jupyter |
 | `latex-main-worker` | Édition LaTeX principale (bfcours) |
 | `latex-side-worker` | Édition LaTeX secondaire |
@@ -47,7 +46,6 @@
 │   │
 │   ├── html/                           # Documents Web
 │   │   ├── reveals-creator.md         # → Présentations reveal.js
-│   │   ├── interactive-animation-creator.md # → Animations
 │   │   └── competence-presentation-generator.md # → Présent. compétences
 │   │
 │   ├── notebook/                       # Notebooks
@@ -101,7 +99,6 @@
 
 ### Créer / HTML
 - [ ] `reveals-creator` → `creer/html/reveals-creator.md`
-- [ ] `interactive-animation-creator` → `creer/html/interactive-animation-creator.md`
 - [ ] `competence-presentation-generator` → `creer/html/competence-presentation-generator.md`
 
 ### Créer / Notebook
@@ -141,12 +138,12 @@
 
 | Catégorie | Sous-catégories | Nb agents |
 |-----------|-----------------|-----------|
-| `creer/` | latex, html, notebook, evaluation, documentation | 9 |
+| `creer/` | latex, html, notebook, evaluation, documentation | 8 |
 | `outillage/` | latex, extraction, gestion | 9 |
 | `experimental/` | - | 0 |
 | `perso/` | - | 0 |
 | `meta/` | error-investigator, self-improvement, meta-low, meta-mid, meta-high | 5 |
-| **Total** | | **23** |
+| **Total** | | **22** |
 
 ---
 

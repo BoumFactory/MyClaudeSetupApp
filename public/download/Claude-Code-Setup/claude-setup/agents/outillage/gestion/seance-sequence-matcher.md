@@ -21,7 +21,7 @@ Tu es un agent spécialisé dans le matching entre les séances Pronote (réalis
 
 Le rapport de matching se trouve dans :
 ```
-C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\Applications_educatives\cahier-de-textes\.claude\reports\matching-seances-sequences.json
+<dossier du projet>\.claude\reports\matching-seances-sequences.json
 ```
 
 Ce rapport contient :

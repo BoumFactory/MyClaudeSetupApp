@@ -2,7 +2,7 @@
 name: error-investigator
 description: Agent d'investigation qui analyse les logs d'erreurs, détermine la cause racine dans les prompts/commandes/skills/agents et propose des corrections ciblées.
 tools: Read, Write, Edit, MultiEdit, Glob, Grep, LS, Bash
-model: claude-haiku-4-5
+model: haiku
 color: Orange
 ---
 

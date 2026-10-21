@@ -286,7 +286,7 @@
         </div>
 
         <div class="box-info fragment" style="margin-top: 1.5em;">
-          <strong>Point clé :</strong> Même intelligence Claude (GPT-4 level) dans les deux interfaces.
+          <strong>Point clé :</strong> Mêmes modèles Claude (Opus 5.5, Sonnet 5.5…) dans les deux interfaces.
           Choisissez selon votre workflow, pas selon la performance.
         </div>
       </section>
@@ -304,16 +304,16 @@
 
         <div style="margin: 1.5em 0;" class="fragment">
           <h3 style="color: var(--claude-purple); font-size: 1.2em; margin-bottom: 0.5em;">
-            <i class="fas fa-handshake"></i> Cowork (Collaboration)
+            <i class="fas fa-handshake"></i> Cowork (agent de bureau)
           </h3>
-          <p>Espace partagé pour travailler à plusieurs. Idéal pour pair programming ou co-création.</p>
+          <p>Claude mène seul une tâche en plusieurs étapes dans un dossier que vous lui confiez : trier des fichiers, rédiger un document à partir de notes, produire un tableau. Offre payante. Attention : les suppressions sont définitives, sauvegardez le dossier avant.</p>
         </div>
 
         <div style="margin: 1.5em 0;" class="fragment">
           <h3 style="color: var(--claude-purple); font-size: 1.2em; margin-bottom: 0.5em;">
             <i class="fas fa-code"></i> Code
           </h3>
-          <p>Environnement spécialisé pour l'édition, le debugging et l'exécution de code. Intégration IDE.</p>
+          <p>Claude Code dans une fenêtre : accès direct aux fichiers d'un projet, écriture et exécution de code. Même moteur que Cowork et que la version terminal.</p>
         </div>
 
         <div class="box-tip fragment" style="margin-top: 1.5em;">
@@ -328,7 +328,7 @@
         <h3 style="margin-top: 1em; color: var(--secondary-color);">Prérequis</h3>
         <ul>
           <li><strong>Git</strong> (Git for Windows sur Windows)</li>
-          <li><strong>Compte Anthropic</strong> (<a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>)</li>
+          <li><strong>Un abonnement Claude</strong> (Pro, Max, Team ou Enterprise) ou un compte API sur <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a></li>
           <li>Terminal : bash, zsh, PowerShell ou CMD</li>
         </ul>
 
@@ -348,6 +348,7 @@ irm https://claude.ai/install.ps1 | iex</div>
 
         <div class="box-tip fragment" style="margin-top: 1em;">
           <strong>Node.js n'est plus nécessaire.</strong> L'installeur natif est autonome, plus rapide, et se met à jour automatiquement.
+          Autres voies : <span class="code-inline">winget install Anthropic.ClaudeCode</span> (Windows), <span class="code-inline">brew install --cask claude-code</span> (macOS).
         </div>
 
         <h3 style="margin-top: 1em; color: var(--secondary-color);">Premier lancement</h3>
@@ -387,6 +388,13 @@ claude</div>
           <strong>Utilisation :</strong> Tapez la commande dans la conversation (ex: <span class="code-inline">/help</span>)
           et appuyez sur Entrée.
         </div>
+
+        <div class="box-tip fragment" style="margin-top: 1em; font-size: 0.85em;">
+          <strong>À connaître aussi :</strong> <span class="code-inline">/model</span> change de modèle ·
+          <span class="highlight">Maj+Tab</span> passe en mode plan (Claude propose avant d'agir) ·
+          <span class="highlight">Échap</span> interrompt Claude ·
+          <span class="code-inline">claude --continue</span> reprend la dernière conversation, <span class="code-inline">claude --resume</span> en choisit une ancienne.
+        </div>
       </section>
 
       <!-- 6. Commandes personnalisées -->
@@ -394,11 +402,11 @@ claude</div>
         <h2>Commandes personnalisées</h2>
 
         <p style="margin-bottom: 1.5em;">
-          Créez vos propres workflows automatisés via le fichier <span class="code-inline">CLAUDE.md</span>
-          à la racine du projet.
+          Créez vos propres workflows : un fichier <span class="code-inline">.md</span> dans
+          <span class="code-inline">.claude/commands/</span>, ou un skill dans <span class="code-inline">.claude/skills/&lt;nom&gt;/SKILL.md</span>.
         </p>
 
-        <h3 style="color: var(--secondary-color); margin-bottom: 0.8em;">Exemples intégrés</h3>
+        <h3 style="color: var(--secondary-color); margin-bottom: 0.8em;">Exemples fournis dans le setup partagé</h3>
 
         <div style="margin: 1em 0;">
           <span class="command-badge">/createTex</span>
@@ -412,13 +420,13 @@ claude</div>
 
         <h3 style="color: var(--secondary-color); margin: 1.5em 0 0.8em 0;">Autocomplétion</h3>
         <p style="font-size: 0.95em;">
-          Appuyez sur <span class="highlight">Tab</span> pour afficher les commandes disponibles
-          et compléter automatiquement.
+          Tapez <span class="highlight">/</span> pour afficher le menu des commandes et skills disponibles,
+          puis <span class="highlight">Tab</span> pour compléter.
         </p>
 
         <div class="box-tip fragment" style="margin-top: 1.5em;">
-          <strong>Créez les vôtres :</strong> Éditez le fichier <span class="code-inline">CLAUDE.md</span>
-          pour ajouter des commandes spécifiques à votre workflow.
+          <strong>Créez les vôtres :</strong> le fichier <span class="code-inline">.claude/commands/maCommande.md</span>
+          contient simplement le prompt ; il s'appelle ensuite avec <span class="code-inline">/maCommande</span>.
         </div>
       </section>
 
@@ -427,12 +435,13 @@ claude</div>
         <h2>Le fichier CLAUDE.md</h2>
 
         <p style="margin-bottom: 1.5em;">
-          Fichier de configuration qui influence le comportement de Claude dans tous vos projets.
+          Fichier lu à chaque session : à la racine du projet (ce projet) ou dans <span class="code-inline">~/.claude/CLAUDE.md</span> (tous vos projets).
+          <span class="code-inline">/init</span> en crée un premier jet.
         </p>
 
         <h3 style="color: var(--secondary-color); margin-bottom: 0.8em;">Sans CLAUDE.md</h3>
         <div class="code-block">
-$ claude-code
+$ claude
 > Qu'est-ce que vous voulez faire ?
 > Je dois créer un fichier LaTeX...
 > [Vous répétez chaque fois le contexte]
@@ -452,7 +461,7 @@ Commandes disponibles :
 
         <p class="fragment" style="margin-top: 1.5em; font-size: 0.95em;">
           <i class="fas fa-bolt"></i> <strong>Résultat :</strong> Claude comprend immédiatement votre contexte
-          et met à disposition les commandes sans répétition.
+          et applique vos consignes sans que vous ayez à les répéter.
         </p>
       </section>
 
@@ -466,7 +475,7 @@ Commandes disponibles :
           <span style="color: var(--claude-dark); font-weight: bold; font-size: 1.1em;">Lire</span>
           <p style="margin: 0.3em 0; font-size: 0.95em;">Claude lit vos fichiers et comprend le code/contenu existant.</p>
           <p style="margin: 0.3em 0; font-size: 0.9em; color: var(--secondary-color);">
-            Utilisez <span class="code-inline">@contexte</span> ou partagez les chemins de fichiers.
+            Tapez <span class="code-inline">@</span> puis le début du nom du fichier (autocomplétion), ou donnez son chemin.
           </p>
         </div>
 
@@ -498,24 +507,27 @@ Commandes disponibles :
         <h2>La mémoire : gestion du contexte</h2>
 
         <p style="margin-bottom: 1.5em;">
-          Claude dispose d'une fenêtre de contexte limitée. Après ~100 messages, la conversation devient lente.
+          Claude dispose d'une fenêtre de contexte limitée. Quand elle se remplit, Claude Code résume automatiquement la conversation ; vous pouvez aussi le faire vous-même.
         </p>
 
         <h3 style="color: var(--secondary-color); margin-bottom: 1em;">Quand utiliser /compact</h3>
         <ul>
-          <li>Conversation dépasse 50-80 messages</li>
-          <li>Claude demande de résumer</li>
-          <li>Performance ralentit visiblement</li>
-          <li>Vous avez terminé une phase et commencez une nouvelle</li>
+          <li>Vous avez terminé une phase et en commencez une nouvelle sur le même sujet</li>
+          <li>Les réponses perdent le fil des consignes du début</li>
+          <li>Vous voulez choisir ce que le résumé garde : <span class="code-inline">/compact garde les décisions sur le barème</span></li>
         </ul>
 
         <h3 style="color: var(--secondary-color); margin: 1.5em 0 1em 0;">Fonctionnement de /compact</h3>
         <div class="code-block">
 $ /compact
 [Claude résume la conversation précédente]
-[Nouveau contexte compressé : ~10-15% de l'original]
+[Le résumé remplace l'historique détaillé]
 [Conversation continue avec mémoire compacte]
         </div>
+
+        <p class="fragment" style="font-size: 0.9em;">
+          Nouveau sujet ? Préférez <span class="code-inline">/clear</span> : une conversation neuve coûte moins qu'un résumé.
+        </p>
 
         <div class="box-tip fragment" style="margin-top: 1.5em;">
           <strong>Conseil :</strong> Utilisez <span class="code-inline">/compact</span> régulièrement
@@ -563,9 +575,9 @@ $ /compact
           Les mêmes concepts (commandes, contexte, fichiers) s'appliquent à :
         </p>
         <ul>
-          <li><strong>Gemini CLI</strong> (Google) : Installation via pip, commandes équivalentes</li>
-          <li><strong>Codex CLI</strong> (OpenAI) : Architecture similaire, configuration via .env</li>
-          <li><strong>Autres agents</strong> : Pattern standard commandes + contexte + fichiers</li>
+          <li><strong>Codex</strong> (OpenAI) : architecture similaire, fichier <span class="code-inline">AGENTS.md</span></li>
+          <li><strong>Antigravity</strong> (Google) : même principe, commandes et contexte équivalents</li>
+          <li>On peut faire à peu près la même chose avec chacun : c'est affaire de goût et d'habitudes.</li>
         </ul>
       </section>
 
@@ -593,6 +605,12 @@ $ /compact
             </a>
             - Code source et issues
           </li>
+          <li class="fragment">
+            <a href="https://academy.claude.com/courses/claude-code-101" target="_blank">
+              Claude Code 101
+            </a>
+            - Formation officielle gratuite (en anglais, environ 1 h 30)
+          </li>
         </ul>
       </section>
 
@@ -603,11 +621,11 @@ $ /compact
         <ul style="margin: 1em 0;">
           <li><strong>Deux interfaces :</strong> Desktop (GUI) ou CLI (terminal), même moteur</li>
           <li class="fragment"><strong>Installation :</strong> Installeur natif (sans Node.js), puis <span class="code-inline">claude</span></li>
-          <li class="fragment"><strong>Commandes :</strong> /help, /compact, /clear, /exit + personnalisées</li>
-          <li class="fragment"><strong>CLAUDE.md :</strong> Personnalise le comportement et ajoute des commandes</li>
+          <li class="fragment"><strong>Commandes :</strong> /help, /compact, /clear, /model + personnalisées ; Maj+Tab pour le mode plan</li>
+          <li class="fragment"><strong>CLAUDE.md :</strong> Personnalise le comportement ; commandes et skills dans <span class="code-inline">.claude/</span></li>
           <li class="fragment"><strong>Fichiers :</strong> Lire, écrire, modifier avec chemin absolu</li>
           <li class="fragment"><strong>Mémoire :</strong> /compact quand contexte saturé</li>
-          <li class="fragment"><strong>Transférable :</strong> Mêmes concepts sur Gemini, Codex, autres agents</li>
+          <li class="fragment"><strong>Transférable :</strong> Mêmes concepts sur Codex, Antigravity, autres agents</li>
         </ul>
 
       </section>

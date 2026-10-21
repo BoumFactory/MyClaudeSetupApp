@@ -37,11 +37,7 @@ Tu recevras via ton prompt d'invocation :
 
 2. **Extraire les compétences développées** :
    - Identifier les compétences du programme officiel
-   - Utiliser Bash pour appeler le serveur MCP competences-server :
-     ```bash
-     # Exemple d'utilisation du serveur competences
-     # (syntaxe à adapter selon l'implémentation du serveur)
-     ```
+   - Consulter le fichier du niveau dans `.claude/datas/competences/` ou le skill `programmes-officiels`
    - Classifier par type : Chercher, Modéliser, Représenter, Raisonner, Calculer, Communiquer
    - Créer une liste structurée des compétences identifiées
 
@@ -363,8 +359,8 @@ Présenter à l'utilisateur :
 - **Write/Edit/MultiEdit** : Création et modification de fichiers
 - **Bash** : Appel des scripts Python (create_document.py, quick_compile.py)
 - **Task** : Lancement de l'agent mathalea-scraper
-- **competences-server (MCP)** : Identification des compétences du programme
-- **latex-compiler-server (MCP)** : Compilation des documents
+- **Fichiers `.claude/datas/competences/`** et skill `programmes-officiels` : identification des compétences du programme
+- **Skill tex-compiling-skill** : compilation des documents (quick_compile.py)
 
 ## Bonnes pratiques
 

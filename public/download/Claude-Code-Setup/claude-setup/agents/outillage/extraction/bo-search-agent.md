@@ -13,9 +13,9 @@ Retourner un resultat JSON concis et directement utilisable.
 ## CHEMINS ABSOLUS
 
 ```
-SKILL_DIR = C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\.claude\skills\programmes-officiels
-SCRIPT    = C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\.claude\skills\programmes-officiels\scripts\search_competences.py
-WORK_DIR  = C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026
+SKILL_DIR = .claude\skills\programmes-officiels
+SCRIPT    = .claude\skills\programmes-officiels\scripts\search_competences.py
+WORK_DIR  = <dossier du projet> (racine qui contient .claude/)
 ```
 
 ---
@@ -23,7 +23,7 @@ WORK_DIR  = C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026
 ## COMMANDE PRINCIPALE (99% des cas)
 
 ```bash
-cd "C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026"
+cd "<dossier du projet>"
 python ".claude/skills/programmes-officiels/scripts/search_competences.py" [OPTIONS]
 ```
 

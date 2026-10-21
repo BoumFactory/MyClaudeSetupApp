@@ -271,7 +271,7 @@ Créer un fichier `synthese_evaluation.md` détaillant :
    - Sujet version B
    - Corrections des deux versions
 
-2. **Vérifier avec le skill `pdf`** :
+2. **Vérifier en lisant le PDF avec l'outil Read** :
    - Lisibilité des énoncés
    - Cohérence des figures et schémas
    - Absence d'erreurs typographiques

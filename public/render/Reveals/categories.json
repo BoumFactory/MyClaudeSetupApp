@@ -17,17 +17,17 @@
           "presentations": [
             {
               "slug": "architecture-claude-code-reveals",
-              "comment": "Vue d'ensemble complète de l'architecture de ma configuration Claude Code. Découvrez comment agents, skills, commandes et serveurs MCP s'articulent ensemble.",
+              "comment": "Vue d'ensemble complète de l'architecture de ma configuration Claude Code. Découvrez comment agents, skills, commandes, hooks et serveurs MCP s'articulent ensemble.",
               "tags": ["architecture", "vue d'ensemble", "agents", "skills"],
               "level": "débutant",
-              "updatedAt": "2026-03"
+              "updatedAt": "2026-10"
             },
             {
               "slug": "claude-code-interface",
-              "comment": "Guide détaillé de l'interface de Claude Code et de ses fonctionnalités principales. Apprenez à naviguer efficacement dans l'environnement et à utiliser les outils disponibles.",
+              "comment": "Guide de l'interface de Claude Code : application de bureau (Chat, Cowork, Code) et terminal, installation, commandes de base, mode plan, reprise de session et gestion du contexte.",
               "tags": ["interface", "navigation", "outils", "vue d'ensemble"],
               "level": "débutant",
-              "updatedAt": "2026-03"
+              "updatedAt": "2026-10"
             }
           ]
         },
@@ -38,10 +38,10 @@
           "presentations": [
             {
               "slug": "commandes-disponibles",
-              "comment": "Catalogue exhaustif de toutes les commandes disponibles dans ma configuration. Commandes slash, skills et raccourcis pour optimiser votre workflow pédagogique.",
+              "comment": "Catalogue des commandes fournies dans ma configuration : création, modification, orchestration avec /do, recherche, évaluations, Moodle et H5P.",
               "tags": ["commandes", "workflow", "productivité", "référence"],
               "level": "intermédiaire",
-              "updatedAt": "2026-03"
+              "updatedAt": "2026-10"
             }
           ]
         }
@@ -67,35 +67,7 @@
               "comment": "Système d'initialisation automatisée de projets LaTeX avec templates personnalisés. Créez rapidement des cours, fiches, évaluations et activités avec le package bfcours.",
               "tags": ["LaTeX", "documents", "templates", "automatisation"],
               "level": "intermédiaire",
-              "updatedAt": "2026-03"
-            }
-          ]
-        },
-        {
-          "id": "creation-images",
-          "name": "Génération d'images",
-          "description": "Agent et skill pour créer des images pédagogiques",
-          "presentations": [
-            {
-              "slug": "agent-make-images",
-              "comment": "Agent intelligent pour générer des images pédagogiques avec l'API Google Imagen. Optimisation automatique pour l'impression économique et les ressources éducatives.",
-              "tags": ["images", "IA générative", "pédagogie", "API"],
-              "level": "avancé",
-              "updatedAt": "2026-03"
-            }
-          ]
-        },
-        {
-          "id": "creation-skills",
-          "name": "Création de skills",
-          "description": "Système de création de nouveaux skills",
-          "presentations": [
-            {
-              "slug": "skill-creator-system",
-              "comment": "Framework complet pour créer vos propres skills personnalisés. Guide méthodologique et bonnes pratiques pour étendre les capacités de Claude Code.",
-              "tags": ["skills", "personnalisation", "framework", "développement"],
-              "level": "avancé",
-              "updatedAt": "2026-03"
+              "updatedAt": "2026-10"
             }
           ]
         },
@@ -105,32 +77,65 @@
           "description": "Outils de génération de diaporamas",
           "presentations": [
             {
-              "slug": "beamer-presentation-system",
-              "comment": "Système de génération automatisée de diaporamas Beamer LaTeX professionnels. Gestion avancée des overlays, animations et styles pédagogiques (collège, lycée, académique).",
-              "tags": ["LaTeX", "Beamer", "diaporamas", "automatisation"],
-              "level": "avancé",
-              "updatedAt": "2026-03"
-            },
-            {
               "slug": "reveals-presentation-system",
               "comment": "Création de présentations web interactives avec Reveal.js. Navigation fluide, animations modernes et adaptation responsive pour vos cours en ligne.",
               "tags": ["Reveal.js", "diaporamas", "web", "interactif"],
               "level": "intermédiaire",
-              "updatedAt": "2026-03"
+              "updatedAt": "2026-10"
             }
           ]
         },
         {
           "id": "programmes-officiels",
           "name": "Programmes officiels",
-          "description": "Extraction et structuration des programmes officiels",
+          "description": "Recherche et citation des programmes officiels",
           "presentations": [
             {
               "slug": "programmes-officiels-system",
-              "comment": "Système d'extraction et structuration des programmes officiels de l'Éducation Nationale. Recherche avancée de compétences et capacités pour vos fiches pédagogiques.",
+              "comment": "Recherche et citation des programmes de mathématiques de la rentrée 2026, du CM1 à la Terminale : formulation exacte du BO, page source, démonstrations exigibles et progression d'une notion de niveau en niveau.",
               "tags": ["programmes", "Éducation Nationale", "compétences", "référence"],
               "level": "intermédiaire",
-              "updatedAt": "2026-03"
+              "updatedAt": "2026-10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skills-experimentaux",
+      "name": "Skills expérimentaux",
+      "description": "Skills disponibles dans Claude-Code-Setup",
+      "icon": "Package",
+      "gradient": "from-violet-500/10 via-purple-500/10 to-fuchsia-500/10",
+      "color": "violet",
+      "borderColor": "border-violet-500/30",
+      "pattern": "circles",
+      "subcategories": [
+        {
+          "id": "skills-pedagogiques",
+          "name": "Skills pédagogiques",
+          "description": "Carnets Python, QCM et fiches de révision",
+          "presentations": [
+            {
+              "slug": "jupyter-notebook-skill",
+              "comment": "Carnets Jupyter pédagogiques en Python : structure en six blocs par notion, code complet ou à compléter selon le niveau, outils de navigation et de validation.",
+              "tags": ["Python", "carnets", "pédagogie", "skills"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-10"
+            },
+            {
+              "slug": "qcm-creator-skill",
+              "comment": "QCM de mathématiques au format bfcours (environnement Mcq du paquet rdmcq) avec des distracteurs construits sur les erreurs réelles des élèves, notamment pour les automatismes de l'épreuve anticipée de première.",
+              "tags": ["LaTeX", "bfcours", "QCM", "évaluation"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-10"
+            },
+            {
+              "slug": "blueprint-eval-skill",
+              "comment": "Fiche de révision HTML interactive tirée d'une évaluation : structure du contrôle, compétences prioritaires, quiz de cours et exercices fléchés, sans révéler le sujet.",
+              "tags": ["évaluation", "révision", "web", "compétences"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-10"
             }
           ]
         }
@@ -156,7 +161,7 @@
               "comment": "Guide complet du package LaTeX bfcours pour l'enseignement des mathématiques. Environnements prédéfinis, mise en page automatisée et outils de compilation optimisés.",
               "tags": ["LaTeX", "bfcours", "compilation", "mathématiques"],
               "level": "intermédiaire",
-              "updatedAt": "2026-03"
+              "updatedAt": "2026-10"
             }
           ]
         }
@@ -183,26 +188,24 @@
       "documents",
       "templates",
       "automatisation",
-      "images",
-      "IA générative",
       "pédagogie",
-      "API",
       "personnalisation",
-      "framework",
       "développement",
-      "Beamer",
       "diaporamas",
       "Reveal.js",
       "web",
       "interactif",
-      "applications",
-      "Flask",
       "programmes",
       "Éducation Nationale",
       "compétences",
       "bfcours",
       "compilation",
-      "mathématiques"
+      "mathématiques",
+      "Python",
+      "carnets",
+      "QCM",
+      "évaluation",
+      "révision"
     ],
     "availableLevels": ["débutant", "intermédiaire", "avancé"]
   }

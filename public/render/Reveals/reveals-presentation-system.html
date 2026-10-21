@@ -257,7 +257,7 @@
         <p class="fragment" style="margin-top: 2em;">
           <span class="tag">Skill</span>
           <span class="tag accent">Agent reveals-creator</span>
-          <span class="tag success">Claude Haiku 4.5</span>
+          <span class="tag success">Sous-agent dédié</span>
         </p>
         <p class="fragment smaller" style="margin-top: 1em;">
           <em>Une méta-présentation : Reveal.js qui explique comment créer des Reveal.js !</em>
@@ -352,15 +352,20 @@
 ├── references/
 │   ├── fragments-reveals.md           # ⭐ PRIORITÉ ABSOLUE
 │   ├── navigation-2d.md               # ⭐ TRÈS IMPORTANT
-│   ├── animations-transitions.md      # IMPORTANT
 │   ├── mathjax-integration.md         # ESSENTIEL
-│   ├── reveals-best-practices.md      # Bonnes pratiques
-│   ├── reveals-styles-guide.md        # Guide des 3 styles
-│   └── exercices-reveals.md           # Exercices avec temps
-└── templates/
-    ├── template-college.html
-    ├── template-lycee.html
-    └── template-academique.html</div>
+│   ├── configuration-reveal.md        # Options reveal.js
+│   ├── gabarits-slides.md · classes-css.md
+│   ├── exercices-structure.md · workflow-exercices.md
+│   └── interactive-pedagogy.md · scripts.md
+├── scripts/                           # PDF en PNG, images en base64, figures TikZ
+└── assets/
+    ├── presentation_cours.html        # Exemples complets
+    ├── presentation_exos.html
+    └── templates/
+        ├── template-college.html
+        ├── template-lycee.html
+        ├── template-academique.html
+        └── template-navigation-2d-demo.html</div>
         </section>
       </section>
 
@@ -374,7 +379,7 @@
           </div>
 
           <ul class="feature-list">
-            <li class="fragment"><i class="fas fa-microchip icon"></i> <strong>Modèle rapide</strong> : Claude Haiku 4.5 (génération < 1 min)</li>
+            <li class="fragment"><i class="fas fa-microchip icon"></i> <strong>Modèle au choix</strong> : réglé dans l'en-tête de l'agent (champ <code>model</code>) ; Sonnet 5.5 ou Opus 5.5 selon l'exigence</li>
             <li class="fragment"><i class="fas fa-brain icon"></i> <strong>Expert autonome</strong> : Utilise le skill reveals-presentation</li>
             <li class="fragment"><i class="fas fa-file-code icon"></i> <strong>HTML complet</strong> : Structure + CSS + JavaScript</li>
             <li class="fragment"><i class="fas fa-clock icon"></i> <strong>Attente retours</strong> : Ne force pas de modifications</li>
@@ -393,7 +398,7 @@
 
           <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
             <div class="step-number">1</div>
-            <div><strong>Lecture guides</strong> : 6 fichiers de référence (fragments, navigation 2D, etc.)</div>
+            <div><strong>Lecture guides</strong> : les fichiers de référence utiles (fragments, navigation 2D, etc.)</div>
           </div>
 
           <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
@@ -1388,7 +1393,7 @@ Reveal.on('slidechanged', event => {
               <h4 class="smaller"><i class="fas fa-robot icon"></i> L'agent fait</h4>
               <ul class="smaller">
                 <li>Choisit template lycée</li>
-                <li>Lit 6 guides de référence</li>
+                <li>Lit les guides de référence utiles</li>
                 <li>Crée structure HTML complète</li>
                 <li>Ajoute fragments progressifs</li>
                 <li>Configure navigation 2D</li>
@@ -1520,16 +1525,16 @@ Reveal.on('slidechanged', event => {
             <h4 class="smaller">Skill reveals-presentation</h4>
             <ul class="smaller">
               <li><code>SKILL.md</code> : Instructions agents</li>
-              <li><code>references/</code> : 7 guides détaillés</li>
-              <li><code>templates/</code> : 3 templates HTML</li>
+              <li><code>references/</code> : 10 guides détaillés</li>
+              <li><code>assets/templates/</code> : 3 templates HTML + une démo de navigation 2D</li>
             </ul>
           </div>
 
           <div class="box fragment" style="font-size: 0.85em;">
             <h4 class="smaller">Agent reveals-creator</h4>
             <ul class="smaller">
-              <li><code>.claude/agents/reveals-creator.md</code></li>
-              <li>Modèle : Claude Haiku 4.5</li>
+              <li><code>.claude/agents/creer/html/reveals-creator.md</code></li>
+              <li>Modèle : réglable dans l'en-tête de l'agent</li>
               <li>Autonome et expert</li>
             </ul>
           </div>

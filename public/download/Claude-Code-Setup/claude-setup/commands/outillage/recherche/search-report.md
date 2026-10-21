@@ -64,7 +64,7 @@ Pour les sources importantes trouvées, utilise `WebFetch` pour extraire :
 
 Crée un fichier HTML complet dans :
 ```
-C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\3. Ressources\6.search-reports\
+<dossier du projet>\rapports\
 ```
 
 **Nom du fichier** : `[sujet-slug]-[YYYY-MM-DD].html` (ex: `htmx-framework-2025-01-15.html`)

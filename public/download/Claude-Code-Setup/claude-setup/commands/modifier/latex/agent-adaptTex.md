@@ -21,7 +21,7 @@ Tu utiliseras à fond les agents latex-main-worker et latex-side-worker en les r
 
 Tu utilises le skill 'bfcours-latex' pour la création de documents latex si l'utilisateur ne précise rien sur l'architecture atomique.
 
-Tu utiliseras à fond le skill 'pdf' pour visualiser ta production et t'assurer que cela a bien la présentation escomptée.
+Tu lis le PDF compilé directement avec l'outil Read pour visualiser ta production et t'assurer que cela a bien la présentation escomptée.
 
 ## Philosophie de la commande
 
@@ -80,7 +80,7 @@ Ajoute des informations à tes agents 'latex-side-worker' de sorte à prendre en
 4. Implémenter les éventuels autres documents annexes nécessaires.
 5. Utiliser ton skill tex-compiling-skill pour compiler le fichier maître du projet créé.
 6. Si le document ne compile pas tu réutilise ton skill bfcours-latex en modifiant les erreurs jusqu'à ce que le fichier compile.
-7. Utilise ton skill pdf pour vérifier que le document est correct, que les figures sont bien affichées et que les informations données dessus sont correctes.
-8. Si tu repères des erreurs ou qu'il y a des modifications à faire, reviens à ton skill bfcours-latex pour corriger les erreurs, puis recompiler avec le skill tex-compiling-skill, puis vérification avec le skill pdf.
+7. Lis le PDF compilé avec l'outil Read pour vérifier que le document est correct, que les figures sont bien affichées et que les informations données dessus sont correctes.
+8. Si tu repères des erreurs ou qu'il y a des modifications à faire, reviens à ton skill bfcours-latex pour corriger les erreurs, puis recompiler avec le skill tex-compiling-skill, puis nouvelle lecture du PDF avec l'outil Read.
 9. Si tu remarque des erreurs fréquentes à éviter dans les agents side-worker, corrige leur prompt situé : .claude\agents\latex-side-worker.md
 10. Annoncer à l'utilisateur que la tache est terminée et demander s'il faut produire un document d'explication pédagogique dédié ( et sous quel format). Attendre jusqu'à ce que l'utilisateur réponde.

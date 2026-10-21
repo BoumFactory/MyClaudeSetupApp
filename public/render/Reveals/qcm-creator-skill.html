@@ -258,10 +258,10 @@
         </div>
 
         <ul class="smaller">
-          <li class="fragment"><i class="fas fa-file-pdf icon"></i> Basé sur l'analyse des <strong>sujets 0</strong> de 1ère</li>
-          <li class="fragment"><i class="fas fa-palette icon"></i> Style visuel <strong>BFCours</strong> intégré</li>
-          <li class="fragment"><i class="fas fa-random icon"></i> Questions <strong>mélangées automatiquement</strong></li>
-          <li class="fragment"><i class="fas fa-check-circle icon"></i> Correction <strong>surlignée</strong> automatique</li>
+          <li class="fragment"><i class="fas fa-file-pdf icon"></i> Basé sur l'analyse des <strong>sujets zéro</strong> de l'épreuve anticipée de 1re (partie automatismes)</li>
+          <li class="fragment"><i class="fas fa-palette icon"></i> Style visuel <strong>BFCours</strong> déjà chargé par bfcours : rien à ajouter au préambule</li>
+          <li class="fragment"><i class="fas fa-random icon"></i> Bonnes réponses <strong>réparties</strong> sur les quatre positions</li>
+          <li class="fragment"><i class="fas fa-check-circle icon"></i> Correction <strong>automatique</strong> dans la version corrigée : case cochée en rouge, fond teinté</li>
         </ul>
       </section>
 
@@ -290,7 +290,7 @@
           <pre class="fragment"><code class="language-latex">\begin{Mcq}[BFCours]
 
 \McqQuest[br=4]
-{L'\acc{opération} qui permet de calculer \acc{25\% de 480} est :}
+{L'\acc{opération} qui permet de calculer \acc{25~\% de 480} est :}
 {$\dfrac{480}{25 \times 100}$, $25 \times 480 \times 0{,}1$,
  $\dfrac{480 \times 100}{25}$, $\dfrac{1}{4} \times 480$}
 
@@ -309,7 +309,8 @@
           </div>
 
           <ul class="smaller fragment">
-            <li><strong><code>br=X</code></strong> : Numéro de la bonne réponse (1, 2, 3 ou 4)</li>
+            <li><strong><code>br=X</code></strong> : Numéro de la bonne réponse (1, 2, 3 ou 4) ; plusieurs bonnes réponses : <code>br={1,3}</code></li>
+            <li><strong>Propositions séparées par des virgules</strong> : une proposition qui contient une virgule se met entre accolades</li>
             <li><strong><code>\acc{texte}</code></strong> : Met en évidence un mot-clé</li>
             <li><strong><code>\encadrer[prop]{texte}</code></strong> : Encadre en couleur</li>
             <li><strong><code>\dfrac{}{}</code></strong> : Fraction display</li>
@@ -317,7 +318,22 @@
           </ul>
 
           <div class="warning-box fragment" style="font-size: 0.8em; margin-top: 1em;">
-            <p><i class="fas fa-exclamation-triangle icon"></i> Utiliser <code>0{,}21</code> et non <code>0.21</code> !</p>
+            <p><i class="fas fa-exclamation-triangle icon"></i> Utiliser <code>0{,}21</code> et non <code>0.21</code> ni <code>0,21</code> (la virgule couperait la proposition en deux) !</p>
+          </div>
+        </section>
+
+        <section>
+          <h3>Options utiles et coupure de page</h3>
+
+          <ul class="smaller fragment">
+            <li><code>\begin{Mcq}[BFCours, resume]</code> : poursuit la numérotation du bloc précédent</li>
+            <li><code>answer columns=4</code> : réponses courtes sur une ligne (2 colonnes par défaut)</li>
+            <li><code>correction=true</code> : affiche les bonnes réponses (bloc de correction après <code>\exocorrection</code>)</li>
+            <li><code>\McqMessage{…}</code> : donnée commune à plusieurs questions</li>
+          </ul>
+
+          <div class="warning-box fragment" style="font-size: 0.8em; margin-top: 1em;">
+            <p><i class="fas fa-exclamation-triangle icon"></i> Un bloc <code>Mcq</code> ne se coupe pas : s'il est trop long, des questions disparaissent du PDF. Découper les 12 questions en deux blocs (le second avec <code>resume</code>).</p>
           </div>
         </section>
       </section>
@@ -329,7 +345,7 @@
 
           <div class="grid-2">
             <div class="box fragment" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-flask icon"></i> 1ère Ens. Scientifique</h3>
+              <h3 class="smaller"><i class="fas fa-flask icon"></i> 1re sans spécialité maths</h3>
               <p class="smaller"><strong>Focus :</strong> Applications concrètes, calculs</p>
               <ul class="smaller">
                 <li>Pourcentages (4 questions)</li>
@@ -340,7 +356,7 @@
             </div>
 
             <div class="box fragment" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-square-root-alt icon"></i> 1ère Spécialité</h3>
+              <h3 class="smaller"><i class="fas fa-square-root-alt icon"></i> 1re spécialité maths</h3>
               <p class="smaller"><strong>Focus :</strong> Abstraction, raisonnement</p>
               <ul class="smaller">
                 <li>Algèbre avancée (3-4)</li>
@@ -359,7 +375,7 @@
         <section>
           <h3>Formulations types</h3>
 
-          <pre class="fragment"><code class="language-latex">% Ens. Scientifique - Pourcentages
+          <pre class="fragment"><code class="language-latex">% Sans spécialité - Pourcentages
 \McqQuest[br=X]
 {Le prix \acc{augmente de $A$\%}, puis \acc{augmente de $B$\%}.
 Après ces deux augmentations, on peut affirmer que :}
@@ -412,7 +428,7 @@ par la \acc{parabole} ci-contre. Laquelle ?}
 
           <div class="example-box fragment" style="font-size: 0.85em; margin-top: 1em;">
             <p><i class="fas fa-lightbulb icon"></i> Chaque distracteur correspond à une <strong>erreur typique d'élève</strong></p>
-            <p><i class="fas fa-warning icon"></i> A améliorer selon les besoins car l'agent atteint ici ses limites.</p>
+            <p><i class="fas fa-warning icon"></i> À relire et améliorer : c'est sur les distracteurs que l'agent atteint ses limites.</p>
           </div>
         </section>
       </section>
@@ -443,7 +459,7 @@ par la \acc{parabole} ci-contre. Laquelle ?}
 
         <div class="workflow-step fragment" style="font-size: 0.8em;">
           <div class="step-number">5</div>
-          <div><strong>Vérifier</strong> — Positions des bonnes réponses variées</div>
+          <div><strong>Vérifier</strong> — Positions des bonnes réponses variées, virgules protégées, bloc de correction identique, aucune question perdue à la compilation</div>
         </div>
       </section>
 
@@ -519,7 +535,7 @@ par la \acc{parabole} ci-contre. Laquelle ?}
               <li>Package <code>rdmcq</code> + style <code>BFCours</code></li>
               <li>Syntaxe <code>\McqQuest[br=X]{}{}</code></li>
               <li>Commandes <code>\acc{}</code>, <code>\encadrer{}</code></li>
-              <li>Correction automatique surlignée</li>
+              <li>Correction avec <code>correction=true</code></li>
             </ul>
           </div>
 

@@ -23,10 +23,8 @@
       "Bash(timeout:*)",
       "Bash(Remove-Item:*)",
       "Bash(git:*)",
-      "Skill(pdf)",
       "Skill(tex-document-creator)",
       "Skill(bfcours-latex)",
-      "Skill(skill-creator)",
       "Skill(tex-compiling-skill)"
     ],
     "deny": [
@@ -41,28 +39,10 @@
       "Write(**/.env.*)",
       "Edit(**/.env)",
       "Edit(.env)",
-      "Edit(**/.env.*)",
-      "Read(**2. Administratif/**)",
-      "Read(2. Administratif/**)",
-      "Write(**2. Administratif/**)",
-      "Write(2. Administratif/**)",
-      "Edit(**2. Administratif/**)",
-      "Edit(2. Administratif/**)",
-      "Glob(**2. Administratif/**)",
-      "Glob(2. Administratif/**)",
-      "Grep(**2. Administratif/**)",
-      "Grep(2. Administratif/**)"
+      "Edit(**/.env.*)"
     ],
     "ask": []
   },
-  "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "competences-server",
-    "latex-search-server",
-    "document-creator-server",
-    "pdf-analyzer-server",
-    "encoding-fixer-server"
-  ],
   "hooks": {
     "Notification": [
       {

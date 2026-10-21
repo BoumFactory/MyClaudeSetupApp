@@ -1,7 +1,7 @@
 ---
 name: programme-officiel-extractor
 description: Agent spécialisé pour extraire et structurer les programmes officiels de mathématiques depuis les PDF du BO. Produit des fichiers Markdown structurés avec les compétences par niveau.
-model: claude-sonnet-4-20250514
+model: sonnet
 tools:
   - Read
   - Write
@@ -135,7 +135,7 @@ Les compétences travaillées tout au long du cycle :
 
 ## Méthodologie
 
-1. **Utilise le skill `pdf`** pour analyser le PDF fourni
+1. **Lis le PDF avec l'outil Read** pour analyser le PDF fourni
    - Demande l'extraction complète du texte
    - Identifie la structure du document
    - Repère les sections principales
@@ -177,7 +177,7 @@ L'utilisateur te fournira :
 ## Workflow
 
 1. Lire le fichier `references_bo.json` pour les métadonnées
-2. Utiliser le skill `pdf` pour extraire le contenu du PDF
+2. Lire le PDF avec l'outil Read
 3. Analyser la structure du document
 4. Pour chaque thème, extraire :
    - Contenus

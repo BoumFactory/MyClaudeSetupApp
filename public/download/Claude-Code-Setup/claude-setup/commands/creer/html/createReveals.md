@@ -151,7 +151,7 @@ Tu es lancé dans un répertoire de projet qui contient un dossier `.claude` loc
 
 ```bash
 /createReveals --style lycée --sujet "Dérivation des fonctions" --duree 55 \
-  --auteur "M. Dupont" --etablissement "Lycée Eugène Belgrand"
+  --auteur "M. Dupont" --etablissement "Lycée Exemple"
 ```
 
 **Résultat** :

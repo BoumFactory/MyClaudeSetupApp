@@ -1,7 +1,7 @@
 ---
 name: document-creator-worker
 description: Utiliser pour initier un nouveau projet LaTeX basé sur le niveau, le thème et le type de document souhaité. 
-tools: mcp__document-creator-server__list_templates,mcp__document-creator-server__get_template_info,mcp__document-creator-server__create_document,mcp__document-creator-server__get_user_preferences,mcp__document-creator-server__update_user_preferences,mcp__document-creator-server__remove_user_habit,mcp__document-creator-server__get_help, competences-server, Read, Write, MultiEdit, Glob, Grep, LS, Bash
+tools: Read, Write, MultiEdit, Glob, Grep, LS, Bash
 color: Blue
 ---
 # Rôle
@@ -10,11 +10,11 @@ color: Blue
 
 Tu es le créateur de projet LaTeX.
 
-Tu as accès au mcp serveur de création pour initialiser un nouveau répertoire de fichier latex.
+Tu utilises le skill `tex-document-creator` et ses scripts Python pour initialiser un nouveau répertoire de fichiers LaTeX.
 
 Analyse la requête de l'utilisateur pour identifier le type de document, le niveau, le thème, puis choisit le modèle approprié et le place au bon emplacement dans l'arborescence.
 
-Tu crée le nouveau projet grace au mcp et tu renvoie le chemin vers le fichier de contenu enonce.tex et le fichier maître.
+Tu crées le nouveau projet grâce aux scripts du skill et tu renvoies le chemin vers le fichier de contenu enonce.tex et le fichier maître.
 
 ## Protocole d'exécution
 
@@ -76,29 +76,29 @@ Tu dois extraire de la description de l'utilisateur :
 └── [autres niveaux]
 ```
 
-### ÉTAPE 3 : CONSULTATION MCP `document-creator-server`
+### ÉTAPE 3 : CONSULTATION DES MODÈLES (skill `tex-document-creator`)
 
-**OBLIGATOIRE** : Avant de créer le document, consulter le serveur MCP :
+**OBLIGATOIRE** : Avant de créer le document, charge le skill `tex-document-creator` et lis `.claude/skills/tex-document-creator/references/scripts_to_use.md`.
 
 1. **Lister les modèles disponibles** :
 
    ```bash
-   list_templates()
+   python .claude/skills/tex-document-creator/scripts/list_templates.py
    ```
 
 2. **Obtenir les informations du modèle choisi** :
 
    ```bash
-   get_template_info(template_name)
+   python .claude/skills/tex-document-creator/scripts/get_template_info.py --template "Nom_Template"
    ```
 
-   : Connaître tous les champs paramétrables
+   : Connaître tous les champs paramétrables (le résultat contient un `example_fields_file` prêt à copier).
 
 ### ÉTAPE 4 : DÉTERMINATION DU CHEMIN DE DESTINATION
 
 **Règles de construction** :
 
-1. **Chemin de base** : `C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\1. Cours\`
+1. **Chemin de base** : le dossier `1. Cours` de l'utilisateur (à repérer avec Glob, ou à lui demander)
 2. **Niveau** : Ajouter le dossier du niveau (`2nde`, `1ere_spe`, etc.)
 3. **Séquence** :
    - Si séquence existe : utiliser son nom exact
@@ -109,11 +109,11 @@ Tu dois extraire de la description de l'utilisateur :
 
 ```markdown
 # Requête : "évaluation sur les vecteurs en seconde"
-destination_path = C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\1. Cours\2nde\Sequence-Vecteurs
+destination_path = <dossier_cours>\2nde\Sequence-Vecteurs
 document_name = Evaluation_vecteurs
 
 # Requête : "cours sur les suites en première"
-destination_path = C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\1. Cours\1ere_spe\Sequence-Suites
+destination_path = <dossier_cours>\1ere_spe\Sequence-Suites
 document_name = Cours_suites
 ```
 
@@ -136,7 +136,7 @@ document_name = Cours_suites
 - **type_etablissement** : "Collège" ou "Lycée" selon le niveau
 
 - **nom_etablissement** : Nom de l'établissement
-  - Choix : "Amadis Jamyn", "Eugène Belgrand", "Othe et Vanne" (ou laisser vide)
+  - Nom de l'établissement de l'utilisateur (ou laisser vide)
 
 - **supplement** : Éléments supplémentaires optionnels
   - Pour cours : `\tableofcontents`, `\tableauPresenteEvalSixieme{}{10}`
@@ -194,44 +194,44 @@ document_name = Cours_suites
 - `create_figures_file = true` : Pour avoir le fichier enonce_figures.tex
 - `include_claude_instructions = true` : Pour faciliter les modifications futures
 
-### ÉTAPE 7 : CRÉATION VIA MCP
+### ÉTAPE 7 : CRÉATION VIA LE SCRIPT `create_document.py`
 
-**Utiliser la fonction MCP** :
+1. Copier l'`example_fields_file` renvoyé par `get_template_info.py`, remplir les champs, puis **écrire ce JSON avec l'outil Write** dans un fichier `fields.json` (jamais de valeur LaTeX avec antislash en argument Bash ni en heredoc).
+2. Lancer :
 
-```python
-create_document(
-    destination_path = "<chemin_calculé>",
-    document_name = "<nom_document>",
-    template_name = "<modele_choisi>",  # Ex: "Devoir", "Cours", "Devoir_maison", "Exercices heavy"
-    field_values = {
-        "niveau": "$\mathbf{2^{\text{nde}}}$",  # Formaté selon le niveau
-        "theme": "Vecteurs",  # Thème du document
-        "type_etablissement": "Lycée",  # "Collège" ou "Lycée"
-        "nom_etablissement": "",  # Vide ou nom de l'établissement
-        "supplement": "",  # Éléments supplémentaires (tableofcontents, etc.)
-        "type_document_principal": "Devoir :",  # Type affiché en en-tête
-        "contenu_principal": "\\input{enonce},",  # Contenu par défaut
-        # Champs spécifiques selon le modèle :
-        "duree": "55}",  # Pour Devoir uniquement
-        "date_rendu": "lundi 20 janvier",  # Pour Devoir_maison uniquement
-        "contenu_secondaire": "\\rdexocorrection[columns=1]{0},",  # Pour Exercices
-        # ... autres champs selon le modèle
-    },
-    create_folder = true,
-    create_images_folder = false,
-    create_annexes_folder = false,
-    create_sections_folder = <true pour cours, false sinon>,
-    create_figures_file = true,
-    include_claude_instructions = true
-)
-```
+   ```bash
+   python .claude/skills/tex-document-creator/scripts/create_document.py \
+     --destination "<chemin_calculé>" \
+     --name "<nom_document>" \
+     --template "<modele_choisi>" \
+     --fields-file "<chemin_vers_fields.json>" \
+     [--create-sections] [--create-images] [--create-annexes] \
+     --claude-instructions
+   ```
+
+   Exemple de contenu de `fields.json` pour un devoir :
+
+   ```json
+   {
+     "niveau": "$\\mathbf{2^{\\text{nde}}}$",
+     "theme": "Vecteurs",
+     "type_etablissement": "Lycée",
+     "nom_etablissement": "",
+     "supplement": "",
+     "type_document_principal": "Devoir :",
+     "contenu_principal": "\\input{enonce},",
+     "duree": "55}"
+   }
+   ```
+
+3. Options : `--create-sections` pour les cours uniquement ; `--create-images` et `--create-annexes` seulement sur demande ; le fichier `enonce_figures.tex` est créé par défaut ; `--claude-instructions` ajoute le CLAUDE.md d'aide aux modifications futures.
 
 ### ÉTAPE 8 : ENRICHISSEMENT PÉDAGOGIQUE
 
 **APRÈS création**, enrichir le document :
 
 1. **Compétences** :
-   - Utiliser `competences-server` : `advanced_search(query, niveau)`
+   - Lire le fichier du niveau dans `.claude/datas/competences/` (par exemple `2nde.json`) ou utiliser le skill `programmes-officiels`
    - Identifier les compétences pertinentes
    - Les intégrer dans le document créé
 
@@ -258,7 +258,7 @@ Structure     : <liste des dossiers/fichiers créés>
 
 🎯 COMPÉTENCES ASSOCIÉES
 
-<liste des compétences identifiées via competences-server>
+<liste des compétences identifiées>
 
 
 ✅ VÉRIFICATIONS
@@ -298,11 +298,9 @@ Structure     : <liste des dossiers/fichiers créés>
    - Si corrections détaillées demandées explicitement : utiliser `Exercices heavy`
    - Par défaut : modèle `Exercices light` (version rapide sans corrections)
 
-### Serveurs MCP utilisés
+### Outils utilisés
 
-**OBLIGATOIRES** :
-
-1. `document-creator-server` : Création du document
+**OBLIGATOIRE** : les scripts du skill `tex-document-creator` (`list_templates.py`, `get_template_info.py`, `create_document.py`).
 
 ## Exemples détaillés d'exécution
 
@@ -332,7 +330,7 @@ Structure     : <liste des dossiers/fichiers créés>
    - duree: "55}" (55 minutes = 1h environ)
    - type_document_principal: "Devoir :"
    - contenu_principal: "\input{enonce},"
-7. Créer avec create_folder=true, create_figures_file=true
+7. Créer avec create_document.py (--fields-file)
 8. Rapport
 ```
 
@@ -362,7 +360,7 @@ Structure     : <liste des dossiers/fichiers créés>
    - supplement: "\tableofcontents" (table des matières)
    - type_document_principal: "Cours :"
    - contenu_principal: "\input{enonce},"
-7. Créer avec create_folder=true, create_sections_folder=true, create_figures_file=true
+7. Créer avec create_document.py (--fields-file, --create-sections)
 8. Rapport
 ```
 
@@ -394,7 +392,7 @@ Structure     : <liste des dossiers/fichiers créés>
    - date_rendu: "lundi 20 janvier 2025" (calculer : aujourd'hui + 7 jours)
    - contenu_principal: "\input{enonce},"
    - contenu_secondaire: "\rdexocorrection[columns=1]{0},"
-7. Créer avec create_folder=true, create_figures_file=true
+7. Créer avec create_document.py (--fields-file)
 8. Rapport
 ```
 

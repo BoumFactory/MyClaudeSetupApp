@@ -54,8 +54,8 @@ try {
   // Configuration de secours
   CONFIG = {
     packageDirs: [
-      "C:\\Users\\Utilisateur\\Documents\\Professionnel\\1. Reims 2023 - 2024\\1. Cours\\366_fonctionnement\\366_Archetype\\0. Entetes\\localtexmf\\tex\\latex\\BFcours",
-      "C:\\Users\\Utilisateur\\Documents\\Professionnel\\1. Reims 2023 - 2024\\1. Cours\\366_fonctionnement\\366_Archetype\\0. Entetes\\localtexmf\\tex\\latex\\BFcours_Chapter_commands"
+      "localtexmf/tex/latex/BFcours",
+      "localtexmf/tex/latex/BFcours_Chapter_commands"  // relatif au dossier du projet
     ],
     fileExtensions: ['.tex', '.sty', '.cls', '.dtx'],
     nbResultatMax: 20

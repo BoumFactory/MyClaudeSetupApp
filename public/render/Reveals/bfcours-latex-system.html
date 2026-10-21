@@ -333,7 +333,7 @@
         </div>
 
         <div class="fragment" style="margin-top:0.6em;font-size:0.7em;color:#7f8c8d;text-align:center;font-style:italic;">
-          Chaque skill est invocable séparément, ou enchaîné via <code>/createTex</code>
+          Chaque skill est invocable séparément, ou enchaîné par le skill <code>/latex</code> (qui ajoute une relecture visuelle avec <code>latex-visual-review</code>)
         </div>
       </section>
 
@@ -481,7 +481,7 @@
             <div class="example-box" style="font-size:0.8em;">
               <p><strong>Profils de compilation :</strong></p>
               <ul class="smaller">
-                <li><strong>lualatex_reims</strong> (par défaut) &mdash; LuaLaTeX 1 passe</li>
+                <li><strong>lualatex_reims_favorite</strong> (par défaut) &mdash; LuaLaTeX 1 passe</li>
                 <li><strong>simple</strong> &mdash; pdflatex 2 passes</li>
                 <li><strong>standard</strong> &mdash; pdflatex 3 passes</li>
                 <li><strong>complete</strong> &mdash; pdflatex 3 passes + biblio</li>
@@ -503,7 +503,7 @@
       <!-- SLIDE 6 : OUTILS COMPLÉMENTAIRES -->
       <section>
         <section>
-          <h2><i class="fas fa-toolbox icon" style="color:#9b59b6;"></i> Skills tiers utilisés</h2>
+          <h2><i class="fas fa-toolbox icon" style="color:#9b59b6;"></i> Outils complémentaires utilisés</h2>
 
           <!-- Diagramme des outils satellites -->
           <div class="fragment" style="display:flex;gap:0.8em;margin-top:1.2em;align-items:stretch;">
@@ -515,7 +515,7 @@
               </div>
               <p style="font-weight:700;text-align:center;color:#2c3e50;">latex-search</p>
               <ul class="smaller" style="margin-top:0.4em;">
-                <li>Un skill de recherche dans les packages</li>
+                <li>Un serveur MCP de recherche dans les packages</li>
                 <li>Recherche floue /exacte de commandes LaTeX</li>
                 <li><strong>Inclut localtexmf</strong> (vos packages perso)</li>
               </ul>
@@ -597,7 +597,7 @@ python .claude/skills/pdf2tikz/scripts/pdf2tikz.py doc.pdf --page 1 --svg-bridge
         <h2><i class="fas fa-route icon"></i> Workflow unifié : <code>/latex</code></h2>
 
         <div class="box fragment" style="text-align:center;">
-          <p><strong>Une seule commande enchaîne les 3 phases automatiquement</strong></p>
+          <p><strong>Un seul skill enchaîne toutes les étapes automatiquement</strong></p>
         </div>
 
         <!-- Diagramme horizontal du workflow unifié -->
@@ -637,6 +637,15 @@ python .claude/skills/pdf2tikz/scripts/pdf2tikz.py doc.pdf --page 1 --svg-bridge
 
           <div style="width:8px;"></div>
 
+          <!-- Relecture visuelle -->
+          <div style="background:#9b59b6;color:#fff;padding:0.5em 0.8em;text-align:center;font-size:0.7em;border-radius:0;">
+            <div style="font-weight:700;">latex-visual-review</div>
+            <div style="opacity:0.8;font-size:0.85em;">IA &bull; Mise en page</div>
+          </div>
+          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #9b59b6;"></div>
+
+          <div style="width:8px;"></div>
+
           <!-- Résultat -->
           <div style="background:#e74c3c;color:#fff;padding:0.5em 0.8em;border-radius:0 10px 10px 0;text-align:center;font-size:0.7em;font-weight:700;">
             <i class="fas fa-file-pdf"></i> PDF
@@ -645,12 +654,12 @@ python .claude/skills/pdf2tikz/scripts/pdf2tikz.py doc.pdf --page 1 --svg-bridge
 
         <div class="grid-2 fragment" style="margin-top:1.2em;font-size:0.8em;">
           <div class="box" style="border-color:#27ae60;">
-            <p><i class="fas fa-bolt icon" style="color:#27ae60;"></i> <strong>Phases scriptées (1 ; 2 & 4)</strong></p>
+            <p><i class="fas fa-bolt icon" style="color:#27ae60;"></i> <strong>Étapes scriptées (création, compilation)</strong></p>
             <p class="smaller">Résultat déterministe, fiabilité 100%. Les paramètres sont choisis par l'utilisateur ou déduits par l'agent.</p>
           </div>
           <div class="box" style="border-color:#3498db;">
-            <p><i class="fas fa-robot icon" style="color:#3498db;"></i> <strong>Phase IA (3)</strong></p>
-            <p class="smaller">L'agent rédige le contenu en s'appuyant sur les conventions, les exemples et le code LaTeX existant sur la machine.</p>
+            <p><i class="fas fa-robot icon" style="color:#3498db;"></i> <strong>Étapes IA (rédaction, relecture visuelle)</strong></p>
+            <p class="smaller">L'agent rédige le contenu en s'appuyant sur les conventions, les exemples et le code LaTeX existant sur la machine, puis contrôle le PDF page par page (colonnes, blancs, débordements).</p>
           </div>
         </div>
       </section>
@@ -772,6 +781,7 @@ $f(3) = 3^2 - 2 \times 3 + 1 = 4$
                 <li>Toujours <code>\acc{}</code>, <code>\voc{}</code>, <code>tcbenumerate</code></li>
                 <li>Templates personnalisables (demandez à l'agent)</li>
                 <li>Profils de compilation adaptables</li>
+                <li>Mêmes environnements en Typst : suite farfadet (skill <code>bfcours-typst</code>)</li>
               </ul>
             </div>
           </div>

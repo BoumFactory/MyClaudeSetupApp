@@ -1,7 +1,7 @@
 # /createTex - Création automatique de documents LaTeX pédagogiques
 
 ## Description
-Crée automatiquement un document LaTeX pédagogique en utilisant le serveur MCP `document-creator-server`. Analyse la requête de l'utilisateur pour identifier le type de document, le niveau, le thème, puis choisit le modèle approprié et le place au bon emplacement dans l'arborescence.
+Crée automatiquement un document LaTeX pédagogique en utilisant le skill `tex-document-creator`. Analyse la requête de l'utilisateur pour identifier le type de document, le niveau, le thème, puis choisit le modèle approprié et le place au bon emplacement dans l'arborescence.
 
 ## Usage
 ```

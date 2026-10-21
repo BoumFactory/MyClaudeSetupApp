@@ -37,7 +37,7 @@ Tu disposes des outils suivants :
 - **Read** : Lire des fichiers locaux
 - **Write** : Écrire des fichiers JSON de sortie
 - **Bash** : Exécuter des commandes shell si nécessaire
-- **Skill** : Utiliser le skill `pdf` pour lire et analyser les PDFs
+- **Skill** : Lire les PDF directement avec l'outil Read
 
 # Processus de travail
 
@@ -45,7 +45,7 @@ Tu disposes des outils suivants :
 
 Pour chaque PDF fourni (Seconde, Première) :
 
-1. Utilise le skill `pdf` pour lire le contenu du PDF
+1. Lis avec l'outil Read le contenu du PDF
 2. Identifie la structure du document (sections, thèmes, parties)
 3. Repère toutes les mentions de :
    - "Python"
@@ -222,7 +222,7 @@ Output: seconde_python.json
 ```
 
 **Processus** :
-1. Lecture du PDF avec skill `pdf`
+1. Lecture du PDF avec l'outil Read
 2. Recherche de mentions "Python", "algorithme", "programmation"
 3. Extraction du contexte pour chaque mention
 4. Structuration en JSON

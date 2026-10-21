@@ -294,7 +294,6 @@
           <li class="fragment">Les Commandes : slash commands</li>
           <li class="fragment">Les Hooks : automatisation</li>
           <li class="fragment">Les Serveurs MCP : protocole standard</li>
-          <li class="fragment">Workflow concret : exemple complet</li>
           <li class="fragment">Multi-plateforme et conclusion</li>
         </ol>
       </section>
@@ -484,7 +483,7 @@ Tu es un expert en [DOMAINE]
             <h3>Avantages</h3>
             <ul style="font-size: 0.9em;">
               <li class="fragment">Contexte réduit et ciblé</li>
-              <li class="fragment">Utilisation de modèles légers (Haiku)</li>
+              <li class="fragment">Utilisation de modèles légers (Haiku 5.5, Sonnet 5.5)</li>
               <li class="fragment">Isolation du contexte principal</li>
               <li class="fragment">Rapport final autonome</li>
             </ul>
@@ -513,8 +512,8 @@ Tu es un expert en [DOMAINE]
 
             <div class="fragment">
               <div class="example-box">
-                <p><strong>beamer-worker</strong></p>
-                <p style="font-size: 0.8em;">Présentations Beamer avec overlays</p>
+                <p><strong>jupyter-notebook-creator</strong></p>
+                <p style="font-size: 0.8em;">Carnets Jupyter pédagogiques</p>
               </div>
             </div>
 
@@ -537,13 +536,13 @@ Tu es un expert en [DOMAINE]
 ├── agents/
 │   ├── latex-main-worker.md
 │   ├── debug-tex-log.md
-│   ├── beamer-worker.md
+│   ├── jupyter-notebook-creator.md
 │   └── reveals-creator.md
 │
 └── agents-data/
-    ├── latex-templates/
-    ├── beamer-examples/
-    └── error-patterns/</pre>
+    ├── main-latex-knowledge.md
+    ├── tkz-euclide-master/
+    └── nicematrix-expert/</pre>
           </div>
 
           <div class="box fragment" style="margin-top: 1em;">
@@ -599,15 +598,15 @@ Tu es un expert en [DOMAINE]
 
             <div class="fragment">
               <div class="example-box">
-                <p><strong>pdf-extraction</strong></p>
-                <p style="font-size: 0.8em;">Extraction et analyse de PDFs</p>
+                <p><strong>qcm-creator</strong></p>
+                <p style="font-size: 0.8em;">QCM bfcours avec distracteurs issus des erreurs d'élèves</p>
               </div>
             </div>
 
             <div class="fragment">
               <div class="example-box">
-                <p><strong>educational-app-builder</strong></p>
-                <p style="font-size: 0.8em;">Génération d'apps web éducatives</p>
+                <p><strong>jupyter-notebook</strong></p>
+                <p style="font-size: 0.8em;">Carnets Python pédagogiques</p>
               </div>
             </div>
           </div>
@@ -621,19 +620,17 @@ Tu es un expert en [DOMAINE]
           <div class="tree-structure">
 <pre>skills/
 └── tex-compiling-skill/
-    ├── README.md (description)
-    ├── skill.md (instructions complètes)
-    ├── examples/ (exemples d'utilisation)
-    ├── scripts/
-    │   ├── compile.py
-    │   └── error-parser.py
-    └── templates/ (templates LaTeX)</pre>
+    ├── SKILL.md (en-tête name + description, puis instructions)
+    ├── references/ (documentation lue à la demande)
+    └── scripts/
+        ├── compile.py
+        └── error-parser.py</pre>
           </div>
 
           <div class="box fragment" style="margin-top: 1em;">
             <p><strong>Activation :</strong> Le skill n'est chargé en contexte <span class="highlight">que si nécessaire</span>, de deux manières :</p>
             <ul style="margin-top:0.4em;font-size:0.85em;">
-              <li><i class="fas fa-user" style="color:var(--secondary-color);margin-right:0.3em;"></i><strong>Par l'utilisateur</strong> — via une commande slash (<code>/createTex</code>, <code>/commit</code>...)</li>
+              <li><i class="fas fa-user" style="color:var(--secondary-color);margin-right:0.3em;"></i><strong>Par l'utilisateur</strong> — en tapant <code>/</code> suivi de son nom (<code>/qcm-creator</code>, <code>/bfcours-latex</code>...)</li>
               <li><i class="fas fa-robot" style="color:var(--success-color);margin-right:0.3em;"></i><strong>Par l'agent lui-même</strong> — il détecte le besoin et déclenche le skill automatiquement</li>
             </ul>
           </div>
@@ -670,12 +667,12 @@ Tu es un expert en [DOMAINE]
             </div>
             <div class="box">
               <p><code>.claude/skills/</code></p>
-              <p style="font-size:0.85em;">Fusion possible : une commande peut vivre dans un skill</p>
+              <p style="font-size:0.85em;">Commandes et skills sont désormais fusionnés : <code>.claude/commands/deploy.md</code> et <code>.claude/skills/deploy/SKILL.md</code> créent tous deux <code>/deploy</code></p>
             </div>
         </div>
 
         <div class="fragment" style="margin-top:1em;font-size:0.8em;color:#7f8c8d;text-align:center;">
-          Ex. : <code>/createBeamer</code>, <code>/commit</code>, <code>/ficheTexnique</code> — un seul fichier <code>.md</code> chacun
+          Ex. : <code>/createTex</code>, <code>/makeEval</code>, <code>/createReveals</code> — un seul fichier <code>.md</code> chacun
         </div>
         </section>
       </section>
@@ -690,11 +687,11 @@ Tu es un expert en [DOMAINE]
           <h2>Hooks : Automatisation transparente</h2>
 
           <div class="box fragment">
-            <p><strong>Définition :</strong> Scripts qui s'exécutent automatiquement avant ou après certaines opérations (PreToolUse / PostToolUse)</p>
+            <p><strong>Définition :</strong> Scripts qui s'exécutent automatiquement à des moments précis de la session : ouverture (SessionStart), envoi d'un message (UserPromptSubmit), avant ou après un outil (PreToolUse / PostToolUse), fin de réponse (Stop)…</p>
           </div>
 
           <div class="fragment" style="margin-top: 1.5em;">
-            <h3>Deux types de hooks</h3>
+            <h3>Les deux plus utilisés</h3>
           </div>
 
           <div class="grid-2">
@@ -728,12 +725,9 @@ Tu es un expert en [DOMAINE]
           </div>
 
           <div class="config-code fragment">
-<pre>Hook PostToolUse (Write):
-{
-  "action": "fix-encoding",
-  "encoding": "UTF-8",
-  "target": "all-generated-files"
-}
+<pre>Hook PostToolUse sur Write et Edit
+→ lance check-encoding.ps1
+  sur le fichier qui vient d'être écrit
 
 Résultat : Tous les fichiers écrits
 sont automatiquement en UTF-8</pre>
@@ -751,21 +745,19 @@ sont automatiquement en UTF-8</pre>
 
           <div class="tree-structure">
 <pre>.claude/
-└── config/
-    └── settings.json
+└── settings.json
 
 {
   "hooks": {
     "PostToolUse": [
       {
-        "tool": "Write",
-        "action": "fix-encoding",
-        "encoding": "UTF-8"
-      },
-      {
-        "tool": "Edit",
-        "action": "fix-encoding",
-        "encoding": "UTF-8"
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -File .claude/scripts/check-encoding.ps1"
+          }
+        ]
       }
     ]
   }
@@ -864,16 +856,16 @@ sont automatiquement en UTF-8</pre>
           </div>
 
           <div class="box fragment" style="margin-top: 1em;">
-            <p><strong>Configuration :</strong> Référencé dans le <code>settings.json</code> de Claude Code</p>
+            <p><strong>Configuration :</strong> Déclaré dans le fichier <code>.mcp.json</code> à la racine du projet, ou ajouté avec <code>claude mcp add</code></p>
           </div>
 
           <div class="nav-hint fragment">↑ Dépendances isolées et gérées</div>
         </section>
       </section>
 
-      <!-- ========== PARTIE 9 : MULTI-PLATEFORME ========== -->
+      <!-- ========== PARTIE 8 : MULTI-PLATEFORME ========== -->
       <section data-transition="convex">
-        <h2><span class="icon">🌍</span> Partie 9</h2>
+        <h2><span class="icon">🌍</span> Partie 8</h2>
         <h3>Multi-plateforme et conclusion</h3>
       </section>
 
@@ -896,6 +888,8 @@ sont automatiquement en UTF-8</pre>
         <div class="box fragment" style="margin-top: 1em;">
           <p><strong>Documentation Claude Code :</strong><br>
           <a href="https://code.claude.com/docs/fr/" target="_blank">code.claude.com/docs/fr/</a></p>
+          <p style="margin-top:0.5em;"><strong>Formation officielle gratuite (en anglais) :</strong><br>
+          <a href="https://academy.claude.com/courses/claude-code-101" target="_blank">Claude Code 101</a> (environ 1 h 30)</p>
         </div>
 
         <div class="box fragment" style="margin-top: 1.5em;">

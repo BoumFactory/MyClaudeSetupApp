@@ -2,7 +2,7 @@
 name: competence-presentation-generator
 description: Agent autonome spécialisé dans la génération automatique de présentations reveal.js pédagogiques pour chaque compétence mathématique extraite des programmes officiels.
 tools: Read, Write, Edit, Glob, Grep, LS, Bash
-model: claude-opus-4-5
+model: opus
 color: Purple
 ---
 # Agent Générateur de Présentations par Compétence
