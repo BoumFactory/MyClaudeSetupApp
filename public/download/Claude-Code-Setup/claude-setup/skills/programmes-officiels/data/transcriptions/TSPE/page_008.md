@@ -1,0 +1,91 @@
+---
+niveau: TSPE
+page: 8
+pdf: tspe.pdf
+page_folder: TSPE
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/TSPE/page_008.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: true
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 8 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/TSPE/page_008.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+En classe de première, l’étude des suites est abordée sous un angle essentiellement algébrique. En classe terminale, on 
+commence l’étude de la convergence. 
+La notion de limite est présentée de manière intuitive, en s’appuyant notamment sur la vision géométrique et sur l’écriture 
+décimale. On explicite ensuite les définitions mais la maitrise complète du formalisme n’est pas un attendu. 
+Les objectifs sont plutôt d’installer une pratique solide des aspects opératoires (détermination de limites) et d’introduire la 
+problématique des théorèmes d’existence, notamment la convergence d’une suite croissante majorée. 
+Lors de l’étude d’une suite, on distingue les aspects globaux des aspects asymptotiques. Les élèves doivent disposer d’un 
+répertoire d’exemples suffisamment riche pour éviter les confusions entre propriétés. 
+Les suites interagissent avec les autres parties du programme. Outre leurs interventions en analyse, de nombreux problèmes de 
+probabilités conduisent naturellement à étudier un modèle probabiliste dépendant d’un entier n. 
+En classe terminale, le thème des fonctions s’enrichit avec la notion de fonction convexe, l’étude des fonctions 
+trigonométrique, l’introduction du logarithme et un travail autour des notions de limite et de continuité. 
+Le travail sur les limites, de même nature que celui mené sur les suites, combine présentation intuitive et pratique d’exemples 
+élémentaires. À travers le théorème des valeurs intermédiaires, l’étude de la continuité permet de préciser les arguments 
+assurant qu’une équation du type ƒ (𝑥) = k a des solutions. 
+Le dernier volet du programme d'analyse porte sur les équations différentielles et le calcul intégral. 
+On introduit d'abord la notion de primitive d'une fonction continue ƒ, que l'on présente comme « problème inverse » de celui 
+de la dérivation ou, de façon équivalente, comme résolution de l'équation différentielle 𝑦’ = ƒ. On étudie ensuite les équations 
+différentielles linéaires de la forme 𝑦’ = a𝑦 + b, d'importance fondamentale pour des questions de modélisation. 
+L’intégrale est introduite à partir de la notion intuitive d’aire, sur laquelle on ne soulève aucune difficulté théorique. On fait 
+ensuite le lien avec la notion de primitive, et on présente la technique d’intégration par parties, qui enrichit considérablement 
+les calculs possibles. 
+La méthode des rectangles fournit des encadrements pertinents de sommes pour lesquelles on ne dispose pas de formule 
+exacte ; c’est l’occasion de faire dialoguer simultanément analyse et géométrie, discret et continu. 
+Histoire des mathématiques 
+Le calcul infinitésimal, qui contient les fonctions usuelles, le calcul différentiel et intégral ont historiquement précédé la notion 
+de limite qui en donnera des fondements rigoureux. 
+On trouve des anticipations du calcul intégral chez Archimède (longueur du cercle, quadrature de la parabole, cubature des 
+solides), Liu-Hui (volume d'un cylindre), Ibn al-Haytham (volume d’un paraboloïde) puis, bien plus tard, chez Grégoire de Saint-
+Vincent (méthode d’exhaustion) ou encore chez Galilée ou Cavalieri (méthode des indivisibles). 
+Les procédés par lesquels les mathématiciens ont construit et tabulé le logarithme et les fonctions trigonométriques illustrent 
+les liens entre discret et continu et fournissent une source féconde d'activités. On peut mentionner les méthodes de Ptolémée 
+et d’Al Kashi, la méthode de Briggs ou l’utilisation de développements en série. Ces travaux, dont certains ont été anticipés 
+hors d’Europe, par exemple en Inde par l’école du Kerala, indiquent une perception intuitive claire des questions de 
+convergence. 
+Le calcul différentiel s'est développé de concert avec la physique mathématique au XVIIe siècle. Parmi les initiateurs, Fermat, 
+Huygens, Pascal et Barrow reconnaissent que le problème des aires (le calcul intégral) est le problème inverse de celui des 
+tangentes (la dérivation) ; ce thème peut être abordé à partir des travaux sur la quadrature de l'hyperbole. 
+Les travaux de Newton et Leibniz révèlent deux visions et deux pratiques différentes du calcul infinitésimal. La justification de 
+telles méthodes nécessitait une mise au point de la notion de limite. Des fondations solides sont proposées dans le Cours 
+d'Analyse de Cauchy (1821, 1823), qui définit précisément la notion de limites et en fait le point de départ de l'analyse. 
+Parallèlement, les résolutions d’équations différentielles, provenant de la mécanique ou des mathématiques elles-mêmes, se 
+structurent notamment en lien avec les séries (Newton, Euler, D'Alembert, Lagrange, Cauchy, Clairaut, Riccati) et illustrent là 
+encore les ponts entre le discret et le continu. 
+Suites 
+Contenus 
+− La suite (𝑢𝑛) tend vers + ∞ si tout intervalle de la forme [A ; +∞[ contient toutes les valeurs un à partir d'un certain rang. Cas 
+des suites croissantes non majorées. Suite tendant vers – ∞. 
+− La suite (𝑢𝑛) converge vers le nombre réel 𝓁 si tout intervalle ouvert contenant 𝓁 contient toutes les valeurs 𝑢𝑛 à partir d'un 
+certain rang. 
+− Limites et comparaison. Théorèmes des gendarmes. 
+− Opérations sur les limites. 
+− Comportement d’une suite géométrique (q n) où q est un nombre réel. 
+− Théorème admis : toute suite croissante majorée (ou décroissante minorée) converge. 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

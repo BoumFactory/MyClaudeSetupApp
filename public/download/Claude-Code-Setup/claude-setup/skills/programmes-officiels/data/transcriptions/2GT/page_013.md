@@ -1,0 +1,63 @@
+---
+niveau: 2GT
+page: 13
+pdf: 2gt.pdf
+page_folder: 2GT
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/2GT/page_013.png
+transcription_meta:
+  date: "2026-05-19T00:00:00Z"
+  status: clean
+  confidence: 0.96
+  has_formulas: true
+  has_tables: false
+  source: "fitz get_text('text') + relecture multimodale partielle"
+---
+
+# Page 13 — Probabilités (suite et fin)
+
+## Probabilités (suite)
+
+En classe de seconde on insiste sur le fait qu'une loi de probabilité (par exemple une équiprobabilité) est une hypothèse du modèle choisi et ne se démontre pas. Le choix du modèle peut résulter d'hypothèses implicites d'équiprobabilité (par exemple, lancers de pièces ou dés équilibrés, tirage au hasard dans une population) qu'il est recommandable d'expliciter ; il peut aussi résulter d'une application d'une version vulgarisée de la loi des grands nombres, où un modèle est construit à partir de fréquences observées pour un phénomène réel (par exemple : lancer de punaise, sexe d'un enfant à la naissance). Dans tous les cas, on distingue nettement le modèle probabiliste abstrait et la situation réelle.
+
+> L'enseignement en classe de seconde s'organise autour des objectifs suivants :
+>
+> - introduire la notion de probabilité conditionnelle, sous-jacente dans toute modélisation probabiliste, et mettre en évidence la problématique de l'inversion des conditionnements ;
+> - calculer des probabilités à l'aide de probabilités conditionnelles et d'arbres de probabilité.
+
+Les notions de statistique descriptive sont articulées avec le cours de probabilités. Une population statistique peut être étudiée d'un point de vue probabiliste en considérant l'expérience aléatoire de tirage au sort avec équiprobabilité dans la population. Un lien est ainsi fait entre des notions statistiques (sous-population, proportion, fréquence conditionnelle) et les notions probabilistes analogues (évènement, probabilité, probabilité conditionnelle) ; dans ce contexte, on met en évidence les relations :
+
+$$P(A) = \dfrac{\operatorname{Card}(A)}{\operatorname{Card}(\Omega)} \qquad \text{et} \qquad P_B(A) = \dfrac{\operatorname{Card}(A \cap B)}{\operatorname{Card}(B)}$$
+
+Des situations issues de différents domaines (économique, industriel, médical, etc.) sont proposées. Ce travail permet notamment de donner du sens au vocabulaire des tests diagnostiques : faux positifs, faux négatifs, spécificité et sensibilité d'un test.
+
+### Histoire des mathématiques
+
+L'histoire des probabilités fournit un cadre pour dégager les éléments de la mathématisation du hasard. Un exemple est le problème des partis, dit aussi du chevalier de Méré, l'échange de lettres entre Pascal et Fermat sur ce point puis les travaux de Pascal, Fermat et Huygens qui en découlent. Le problème du duc de Toscane ou les travaux de Leibniz sur le jeu de dés peuvent aussi être évoqués.
+
+Les probabilités conditionnelles peuvent être l'objet d'un travail historique en anglais ; elles apparaissent en effet dans des travaux de Bayes et de Moivre, écrits en anglais au XVIIIe siècle, même si c'est Laplace qui en a élaboré la notion. Les questions traitées par ces auteurs peuvent parfois surprendre ; néanmoins, les probabilités conditionnelles sont omniprésentes dans la vie courante et leur utilisation inappropriée mène facilement à de fausses affirmations.
+
+### Contenus
+
+- Version vulgarisée de la loi des grands nombres : « Lorsque $n$ est grand, sauf exception, la fréquence observée est proche de la probabilité. »
+- Probabilité conditionnelle d'un évènement $B$ sachant un évènement $A$ de probabilité non nulle. Notation $P_A(B)$.
+- Arbres de probabilité, application au calcul de probabilités.
+
+### Capacités attendues
+
+- Observer la loi des grands nombres à l'aide d'une simulation sur Python ou tableur.
+- Construire un arbre pondéré ou un tableau en lien avec une situation donnée. Passer du registre de la langue naturelle au registre symbolique et inversement.
+- Calculer des probabilités conditionnelles lorsque les évènements sont présentés sous forme de tableau croisé d'effectifs (tirage au sort avec équiprobabilité d'un individu dans une population) ou d'un arbre de probabilité.
+- Interpréter les pondérations de chaque branche d'un arbre en termes de probabilités, et notamment de probabilités conditionnelles.
+- Faire le lien entre la définition des probabilités conditionnelles et la multiplication des probabilités des branches du chemin correspondant.
+- Distinguer en situation $P_A(B)$ et $P_B(A)$, par exemple dans des situations de type « faux positifs ».
+
+> Le calcul de la probabilité d'un évènement connaissant ses probabilités conditionnelles relatives à une partition de l'univers n'est pas un attendu du programme.
+
+## Notes de l'agent
+
+- Page finale 2GT. 3 contenus probas + 6 capacités probas.
+- Notion clé : probabilité conditionnelle $P_A(B)$, arbres pondérés, loi des grands nombres vulgarisée.
+- HORS-PROGRAMME explicite : formule des probabilités totales (à mentionner dans les compétences extraites comme limitation).
+- Toutes les transcriptions 2GT (13/13) sont maintenant `clean`.

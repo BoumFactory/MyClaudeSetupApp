@@ -1,4 +1,6 @@
 import { Parcours, Capsule } from '@/types/tutorial'
+import { TYPST_CAPSULES_A } from './parcours-typst-a'
+import { TYPST_CAPSULES_B } from './parcours-typst-b'
 
 /**
  * Définition des parcours de formation
@@ -26,23 +28,35 @@ export const PARCOURS: Parcours[] = [
     description: 'Structurer ses prompts, invoquer les bons outils, co-construire avec l\'IA',
     icon: 'MessageSquareText',
     color: 'violet',
-    capsules: ['pc-structure', 'pc-sources', 'pc-skills-agents', 'pc-idea-challenger', 'pc-preplan', 'pc-adversarial', 'pc-synthesis', 'pc-models'],
+    capsules: ['pc-structure', 'pc-sources', 'pc-skills-agents', 'pc-grill-me', 'pc-preplan', 'pc-adversarial', 'pc-synthesis', 'pc-models'],
   },
   {
     id: 'claude-code',
     title: 'Agents CLI',
-    description: 'Maîtriser les agents CLI : Claude Code, Codex et Gemini CLI',
+    description: 'Maîtriser un agent en ligne de commande : Claude Code (idées transposables à Codex et Antigravity)',
     icon: 'Terminal',
     color: 'cosmic',
-    capsules: ['cc-install', 'cc-config', 'cc-commands', 'cc-dotclaude', 'cc-bfcours-setup'],
+    capsules: ['cc-install', 'cc-config', 'cc-commands', 'cc-dotclaude', 'cc-bfcours-setup', 'cc-se-former'],
   },
   {
     id: 'avance',
     title: 'Avancé',
-    description: 'Architecture agents, skills et hooks',
+    description: 'Architecture agents, skills, hooks et grands chantiers',
     icon: 'Sparkles',
     color: 'nebula',
-    capsules: ['av-architecture', 'av-meta-prompt', 'av-skill-creator', 'av-hooks', 'av-share', 'av-subagents', 'av-teamplay'],
+    capsules: ['av-architecture', 'av-creer-skill', 'av-hooks', 'av-share', 'av-subagents', 'av-chantier'],
+  },
+  {
+    id: 'typst',
+    title: 'Typst avec farfadet',
+    description: 'Rédiger, compiler et convertir ses documents de maths en Typst',
+    icon: 'FileCode2',
+    color: 'emerald',
+    capsules: [
+      'ty-demarrer', 'ty-syntaxe', 'ty-socle-modele', 'ty-didactique', 'ty-enum-colonnes',
+      'ty-maths', 'ty-exo', 'ty-crep', 'ty-qcm', 'ty-tableaux', 'ty-geom', 'ty-extras-latex',
+      'ty-rd-calcul', 'ty-rd-supports', 'ty-avec-claude',
+    ],
   },
 ]
 
@@ -70,7 +84,7 @@ export const CAPSULES: Record<string, Capsule> = {
 
         <h4>Agent principal vs sous-agents</h4>
         <p>
-          Quand vous lancez Claude Code ou Gemini CLI, vous parlez à un <strong>agent principal</strong> :
+          Quand vous lancez Claude Code (ou Codex, ou Antigravity), vous parlez à un <strong>agent principal</strong> :
           c'est votre interlocuteur direct, celui qui comprend votre demande et décide comment y répondre.
         </p>
         <p>
@@ -88,13 +102,13 @@ export const CAPSULES: Record<string, Capsule> = {
         <h4>Les 5 briques d'un système agentique</h4>
         <p>
           Ce que nous présentons ici fonctionne avec <strong>Claude Code</strong>,
-          <strong>Gemini CLI</strong>, ou tout autre agent en ligne de commande.
+          <strong>Codex</strong> (OpenAI), <strong>Antigravity</strong> (Google) ou tout autre agent du même genre.
           Le principe reste le même : un système composé de 5 briques.
         </p>
         <ul>
           <li><strong>Agent principal</strong> : votre interlocuteur, le cerveau qui planifie, orchestre le travail et invoque des sous-agents si nécessaire</li>
           <li><strong>Skills</strong> : des savoir-faire spécialisés (LaTeX, images, présentations...) que l'agent ou ses sous-agents peuvent utiliser</li>
-          <li><strong>Instructions</strong> : des fichiers (CLAUDE.md, GEMINI.md) qui définissent le comportement de l'agent</li>
+          <li><strong>Instructions</strong> : des fichiers (CLAUDE.md pour Claude Code, AGENTS.md pour Codex) qui définissent le comportement de l'agent</li>
           <li><strong>Références</strong> : de la documentation et des exemples que l'agent peut consulter</li>
           <li><strong>Scripts</strong> : des programmes déterministes qui éliminent l'aléatoire (compilation, conversion...)</li>
         </ul>
@@ -203,42 +217,65 @@ export const CAPSULES: Record<string, Capsule> = {
     order: 0,
     sections: {
       info: `
+        <div style="padding: 0.75rem 1rem; margin-bottom: 1rem; background: rgba(52,211,153,0.08); border-radius: 8px; border-left: 3px solid rgba(52,211,153,0.4);">
+          <p style="margin: 0 0 0.4rem 0;"><strong>Le guide officiel</strong></p>
+          <ul style="margin: 0;">
+            <li><a href="https://support.claude.com/fr/articles/10065433-installer-claude-desktop" target="_blank" rel="noopener noreferrer">Installer Claude Desktop</a> (centre d'aide, en français)</li>
+            <li><a href="https://support.claude.com/fr/collections/16163169-bureau-claude" target="_blank" rel="noopener noreferrer">Tous les articles d'aide sur Claude Desktop</a> (en français)</li>
+            <li><a href="https://code.claude.com/docs/fr/desktop-quickstart" target="_blank" rel="noopener noreferrer">Démarrer avec l'onglet Code</a> (doc en français)</li>
+            <li><a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener noreferrer">Cours Claude 101</a>, leçon « How you'll work with Claude on your desktop » (gratuit, en anglais)</li>
+          </ul>
+        </div>
         <h3>Qu'est-ce que Claude Desktop ?</h3>
         <p>
-          Claude Desktop est l'application native d'Anthropic, disponible sur <strong>Windows</strong>
-          et <strong>macOS</strong>. C'est une interface graphique qui vous permet de dialoguer avec
-          Claude directement depuis votre bureau, sans passer par un navigateur web.
+          Claude Desktop est l'application d'Anthropic pour <strong>Windows</strong> (10 ou plus récent),
+          <strong>macOS</strong> (13 ou plus récent) et <strong>Linux</strong> (en bêta). Vous dialoguez avec
+          Claude depuis votre bureau, sans passer par un navigateur web.
         </p>
-        <p>L'application propose trois modes de travail :</p>
+        <p>L'application réunit trois façons de travailler :</p>
         <ul>
-          <li><strong>Chat</strong> : conversation classique, comme sur <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">claude.ai</a></li>
-          <li><strong>Cowork</strong> : un agent autonome qui travaille en arrière-plan sur vos tâches (macOS uniquement)</li>
-          <li><strong>Code</strong> : Claude Code avec interface graphique, pour coder sans terminal (nécessite le mode développeur)</li>
+          <li><strong>Chat</strong> : conversation classique, comme sur <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">claude.ai</a> (offre gratuite comprise)</li>
+          <li><strong>Cowork</strong> : Claude mène seul une tâche longue (rapport, tableur, diaporama, rangement de fichiers) dans les dossiers que vous lui ouvrez (offres payantes)</li>
+          <li><strong>Code</strong> : Claude Code avec une interface graphique, pour travailler sur vos fichiers sans terminal (offres payantes)</li>
         </ul>
-        <p>
-          Claude Desktop utilise le <strong>même moteur</strong> que Claude Code CLI. Les deux outils
-          partagent la même intelligence, seule l'interface change. C'est le point d'entrée idéal
-          si vous débutez avec l'IA.
+        <p style="font-size: 0.9em; color: #94a3b8;">
+          Anthropic est en train de fusionner Chat et Cowork en une seule conversation : selon votre compte,
+          vous verrez deux choix « Chat » et « Cowork » près de la zone de saisie, ou une seule zone où Claude
+          décide lui-même s'il répond ou s'il mène une tâche
+          (<a href="https://support.claude.com/fr/articles/16761823-claude-cowork-et-chat-sont-un-seul-claude" target="_blank" rel="noopener noreferrer">explication officielle</a>).
         </p>
-        <h4>Un écosystème ouvert</h4>
         <p>
-          Claude Desktop n'est qu'une option parmi d'autres. D'autres plateformes proposent des
-          expériences similaires : <strong>Gemini</strong> (Google), <strong>ChatGPT</strong> (OpenAI),
-          <strong>Codex</strong>, <strong>Antigravity</strong>, etc. Les concepts que vous apprenez ici
-          — agents, skills, prompts — sont <strong>transférables</strong> d'un outil à l'autre.
-          Tout ce que nous présentons sur ce site est <strong>adaptable</strong> à la plateforme de votre choix.
+          L'onglet Code utilise le <strong>même moteur</strong> que Claude Code en ligne de commande :
+          seule l'interface change. Desktop est le point d'entrée idéal si vous débutez avec l'IA.
+        </p>
+        <h4>Et les autres outils ?</h4>
+        <p>
+          Deux plateformes permettent aujourd'hui de faire à peu près la même chose :
+          <strong>Codex</strong> (OpenAI) et <strong>Antigravity</strong> (Google).
+          Le choix dépend surtout de vos goûts et de vos habitudes. Ce site détaille Claude
+          parce que c'est l'outil de l'auteur et que le setup partagé est conçu pour lui ;
+          les idées (agents, skills, consignes) se transposent d'un outil à l'autre.
         </p>
         <div class="doc-links">
-          <span class="doc-links-label">Telecharger / Acceder</span>
+          <span class="doc-links-label">Télécharger / Accéder</span>
           <div class="doc-links-buttons">
-            <a href="https://claude.ai/download" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Claude Desktop
+            <a href="https://claude.com/download" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Télécharger Claude Desktop
+            </a>
+            <a href="https://support.claude.com/fr/articles/10065433-installer-claude-desktop" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Guide officiel d'installation (en français)
+            </a>
+            <a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Cours officiel : Claude 101 (gratuit, en anglais)
+            </a>
+            <a href="https://code.claude.com/docs/fr/desktop" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Onglet Code de Desktop (doc en français)
+            </a>
+            <a href="https://learn.chatgpt.com/docs" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-openai">
+              Codex (OpenAI)
             </a>
             <a href="https://antigravity.google/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-google">
               Antigravity (Google)
-            </a>
-            <a href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-openai">
-              Codex CLI (OpenAI)
             </a>
           </div>
         </div>
@@ -248,27 +285,26 @@ export const CAPSULES: Record<string, Capsule> = {
         <ol>
           <li>
             <strong>Téléchargez</strong> l'application depuis
-            <a href="https://claude.ai/download" target="_blank" rel="noopener noreferrer">claude.ai/download</a>
+            <a href="https://claude.com/download" target="_blank" rel="noopener noreferrer">claude.com/download</a> :
+            cliquez sur « Download » sous <strong>Windows</strong> ou <strong>macOS</strong>
           </li>
           <li>
-            <strong>Installez</strong> l'application :
-            <ul style="margin-top: 0.5rem;">
-              <li><strong>Windows</strong> : double-cliquez le fichier .exe et suivez l'assistant d'installation</li>
-              <li><strong>macOS</strong> : ouvrez le .dmg et glissez l'icône Claude dans le dossier Applications</li>
-            </ul>
+            <strong>Ouvrez le fichier téléchargé</strong> pour terminer l'installation
+            (sur Linux, l'installation passe par <code>apt</code> : suivez le guide officiel)
           </li>
           <li>
-            <strong>Lancez</strong> l'application et connectez-vous avec votre compte Claude
+            <strong>Lancez</strong> Claude depuis le menu Démarrer (Windows) ou le dossier Applications (macOS),
+            puis connectez-vous avec votre compte Claude
           </li>
           <li>
-            <strong>Activez le mode développeur</strong> pour accéder à l'onglet Code :
-            Paramètres > Développeur > Activer
-          </li>
-          <li>
-            <strong>Découvrez les 3 onglets</strong> : Chat (conversation simple), Cowork (agent autonome sur macOS),
-            Code (Claude Code avec interface)
+            <strong>Repérez Chat, Cowork et Code</strong> : Chat et Cowork se choisissent près de la zone de saisie,
+            Code est un onglet en haut de la fenêtre. Aucun réglage préalable n'est nécessaire.
           </li>
         </ol>
+        <p style="font-size: 0.9em; color: #94a3b8;">
+          L'application évolue vite : si un menu a changé de nom, l'aide officielle
+          (<a href="https://support.claude.com" target="_blank" rel="noopener noreferrer">support.claude.com</a>) donne toujours le chemin à jour.
+        </p>
       `,
       pratique: `
         <div class="exercise-card">
@@ -283,13 +319,12 @@ export const CAPSULES: Record<string, Capsule> = {
           <details class="exercise-solution">
             <summary>Voir la solution</summary>
             <div class="solution-content">
-              <p>Claude devrait vous expliquer qu'il a besoin de l'<strong>extension filesystem</strong> pour accéder à vos fichiers. Il vous guidera vers :</p>
+              <p>Claude devrait vous proposer l'une de ces voies :</p>
               <ol>
-                <li>Paramètres > Développeur > Activer le mode développeur</li>
-                <li>Menu Extensions > Activer "filesystem"</li>
-                <li>Pointer le filesystem vers votre dossier de travail</li>
+                <li><strong>L'extension Filesystem</strong> dans l'onglet Chat : Paramètres > Extensions > Parcourir les extensions, installer « Filesystem » puis lui indiquer votre dossier de travail</li>
+                <li><strong>L'onglet Cowork ou Code</strong>, qui travaillent directement dans un dossier que vous choisissez</li>
               </ol>
-              <p>Une fois activé, Claude peut lire, créer et modifier des fichiers directement sur votre machine. C'est la base pour toute utilisation productive.</p>
+              <p>Une fois l'accès donné, Claude peut lire, créer et modifier des fichiers directement sur votre machine. C'est la base pour toute utilisation productive.</p>
             </div>
           </details>
         </div>
@@ -323,14 +358,15 @@ export const CAPSULES: Record<string, Capsule> = {
           <details class="exercise-solution">
             <summary>Voir la solution</summary>
             <div class="solution-content">
-              <p>Le menu des paramètres est accessible via l'<strong>icône engrenage</strong> en haut à droite de la fenêtre. Vous y trouverez :</p>
+              <p>Les paramètres s'ouvrent depuis le <strong>menu de votre compte</strong> (vos initiales, en bas à gauche) > <strong>Paramètres</strong>. Vous y trouverez notamment :</p>
               <ul>
-                <li><strong>Général</strong> : langue, thème, raccourcis clavier</li>
-                <li><strong>Développeur</strong> : activer/désactiver le mode développeur (nécessaire pour l'onglet Code et les Extensions)</li>
-                <li><strong>Extensions</strong> : gérer les serveurs MCP (filesystem, etc.)</li>
-                <li><strong>Abonnement</strong> : détails de votre plan et consommation</li>
+                <li><strong>Général</strong> : votre nom, vos instructions pour Claude, vos préférences</li>
+                <li><strong>Utilisation</strong> : votre consommation</li>
+                <li><strong>Cowork</strong> et <strong>Claude Code</strong> : les réglages propres à ces deux façons de travailler</li>
+                <li><strong>Extensions</strong> : installer des outils locaux comme Filesystem (accès à vos fichiers)</li>
+                <li><strong>Développeur</strong> : réservé aux réglages techniques (serveurs MCP déclarés à la main)</li>
               </ul>
-              <p>Le paramètre le plus important pour la suite du parcours est le <strong>mode développeur</strong> — activez-le si ce n'est pas déjà fait.</p>
+              <p>Repérez aussi le bouton <strong>Personnaliser</strong> dans la barre latérale gauche : il rassemble <strong>compétences</strong> (skills), <strong>connecteurs</strong> et <strong>plugins</strong> au même endroit. C'est ce dont vous aurez besoin dans la suite du parcours.</p>
             </div>
           </details>
         </div>
@@ -347,6 +383,13 @@ export const CAPSULES: Record<string, Capsule> = {
     order: 1,
     sections: {
       info: `
+        <div style="padding: 0.75rem 1rem; margin-bottom: 1rem; background: rgba(52,211,153,0.08); border-radius: 8px; border-left: 3px solid rgba(52,211,153,0.4);">
+          <p style="margin: 0 0 0.4rem 0;"><strong>Le guide officiel</strong></p>
+          <ul style="margin: 0;">
+            <li><a href="https://support.claude.com/fr/articles/10949351-demarrage-avec-les-serveurs-mcp-locaux-sur-claude-desktop" target="_blank" rel="noopener noreferrer">Installer une extension de bureau</a> (centre d'aide, en français)</li>
+            <li><a href="https://support.claude.com/fr/articles/13345190-demarrer-avec-claude-cowork" target="_blank" rel="noopener noreferrer">Démarrer avec Claude Cowork</a>, qui travaille directement dans un dossier (en français)</li>
+          </ul>
+        </div>
         <h3>Configuration via les menus</h3>
         <p>
           La configuration de Claude Desktop se fait entièrement via les menus de l'application.
@@ -355,17 +398,21 @@ export const CAPSULES: Record<string, Capsule> = {
         <p>Voici les trois étapes principales :</p>
         <ol>
           <li>
-            <strong>Activer le mode développeur</strong> (Paramètres > Développeur) pour accéder
-            aux extensions avancées
+            <strong>Ouvrir les Paramètres</strong> (menu de votre compte : vos initiales, en bas à gauche)
           </li>
           <li>
-            <strong>Explorer les Extensions</strong> disponibles dans le menu (suites Office,
-            filesystem, etc.)
+            <strong>Explorer les Extensions</strong> disponibles (Paramètres > Extensions > Parcourir les extensions)
           </li>
           <li>
-            <strong>Activer le serveur filesystem</strong> pour donner à Claude accès à vos fichiers
+            <strong>Installer l'extension Filesystem</strong> pour donner à Claude accès à vos fichiers
           </li>
         </ol>
+        <p style="font-size: 0.9em; color: #94a3b8;">
+          La rubrique <strong>Paramètres > Développeur</strong> (bouton « Edit Config ») n'est utile que pour déclarer
+          à la main un serveur MCP dans un fichier de configuration : vous n'en avez pas besoin pour les extensions du catalogue.
+          Si vous utilisez Cowork ou l'onglet Code, vous n'avez même pas besoin de Filesystem :
+          il suffit de choisir le dossier de travail au lancement de la tâche.
+        </p>
         <p>
           Une fois le filesystem activé, Claude peut lire et créer des fichiers directement sur
           votre machine. C'est comme donner une main au programme — il peut enfin toucher vos documents.
@@ -373,14 +420,14 @@ export const CAPSULES: Record<string, Capsule> = {
         <div class="doc-links">
           <span class="doc-links-label">Documentation officielle</span>
           <div class="doc-links-buttons">
-            <a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Claude Settings
+            <a href="https://support.claude.com/fr/articles/10949351-demarrage-avec-les-serveurs-mcp-locaux-sur-claude-desktop" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Extensions de bureau (aide en français)
             </a>
-            <a href="https://antigravity.google/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-google">
-              Antigravity (Google)
+            <a href="https://support.claude.com/fr/articles/13345190-demarrer-avec-claude-cowork" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Démarrer avec Cowork (aide en français)
             </a>
-            <a href="https://developers.openai.com/codex/config-basic/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-openai">
-              Codex Config (OpenAI)
+            <a href="https://modelcontextprotocol.io/docs/develop/connect-local-servers" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Déclarer un serveur MCP à la main (en anglais)
             </a>
           </div>
         </div>
@@ -390,16 +437,13 @@ export const CAPSULES: Record<string, Capsule> = {
         <p>Voici comment naviguer :</p>
         <ol>
           <li>
-            <strong>Ouvrez les Paramètres</strong> : cliquez sur l'icône engrenage en haut à droite
+            <strong>Ouvrez les Paramètres</strong> : cliquez sur vos initiales en bas à gauche, puis sur « Paramètres »
           </li>
           <li>
-            <strong>Rendez-vous à "Développeur"</strong> et activez le mode développeur
+            <strong>Cliquez sur « Extensions »</strong> dans le menu de gauche, puis sur « Parcourir les extensions »
           </li>
           <li>
-            <strong>Retournez au menu principal</strong> et cliquez sur "Extensions"
-          </li>
-          <li>
-            <strong>Cherchez "filesystem"</strong> dans la liste des extensions disponibles
+            <strong>Cherchez « Filesystem »</strong> dans le catalogue et installez-la
           </li>
           <li>
             <strong>Activez-le</strong> et pointez vers votre dossier de travail (par exemple,
@@ -433,8 +477,8 @@ export const CAPSULES: Record<string, Capsule> = {
 - planning.docx</code></pre>
               <p>Si Claude répond qu'il n'a pas accès aux fichiers, vérifiez que :</p>
               <ul>
-                <li>Le mode développeur est bien activé</li>
-                <li>L'extension filesystem est activée et pointe vers le bon dossier</li>
+                <li>L'extension Filesystem est installée et activée (Paramètres > Extensions)</li>
+                <li>Elle pointe vers le bon dossier</li>
                 <li>Vous avez redémarré la conversation après l'activation</li>
               </ul>
             </div>
@@ -469,27 +513,44 @@ export const CAPSULES: Record<string, Capsule> = {
     order: 2,
     sections: {
       info: `
+        <div style="padding: 0.75rem 1rem; margin-bottom: 1rem; background: rgba(52,211,153,0.08); border-radius: 8px; border-left: 3px solid rgba(52,211,153,0.4);">
+          <p style="margin: 0 0 0.4rem 0;"><strong>Le guide officiel</strong></p>
+          <ul style="margin: 0;">
+            <li><a href="https://support.claude.com/fr/articles/10949351-demarrage-avec-les-serveurs-mcp-locaux-sur-claude-desktop" target="_blank" rel="noopener noreferrer">Extensions de bureau</a> (centre d'aide, en français)</li>
+            <li><a href="https://support.claude.com/fr/articles/11176164-utiliser-les-connecteurs-pour-etendre-les-capacites-de-claude" target="_blank" rel="noopener noreferrer">Utiliser les connecteurs</a> (en français)</li>
+            <li><a href="https://support.claude.com/fr/articles/14328846-parcourez-les-competences-connecteurs-et-plugins-dans-un-seul-repertoire" target="_blank" rel="noopener noreferrer">Compétences, connecteurs et plugins dans « Personnaliser »</a> (en français)</li>
+            <li><a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener noreferrer">Cours Claude 101</a>, leçons « Working with skills » et « Connecting your tools » (gratuit, en anglais)</li>
+          </ul>
+        </div>
         <h3>Panorama des possibilités</h3>
         <p>
           Maintenant que le filesystem est activé (capsule précédente), découvrez tout ce qui existe.
-          Claude Desktop propose trois catégories de extensibilité :
+          Claude Desktop propose quatre façons d'étendre Claude :
         </p>
         <ol>
           <li>
-            <strong>Extensions intégrées</strong> (un clic dans le menu) : filesystem, suites Office,
-            et autres outils de base
+            <strong>Extensions de bureau</strong> (Paramètres > Extensions) : des outils qui tournent
+            sur votre ordinateur, installés en un clic depuis un catalogue (Filesystem, etc.)
           </li>
           <li>
-            <strong>Connecteurs intégrés</strong> (menu ... > Connectors) : Google Drive, Notion,
-            Slack, etc. sans configuration manuelle
+            <strong>Connecteurs</strong> (Personnaliser > Connecteurs, ou bouton <strong>+</strong> près de la zone de saisie) :
+            Google Drive, Notion, Slack, etc., avec une simple connexion à votre compte
+          </li>
+          <li>
+            <strong>Compétences (skills) et plugins</strong> (bouton <strong>Personnaliser</strong> dans la barre latérale gauche) :
+            des savoir-faire et des paquets d'outils prêts à l'emploi
           </li>
           <li>
             <strong>Serveurs MCP communautaires</strong> : catalogue sur
             <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer">
             github.com/modelcontextprotocol/servers
-            </a>
+            </a>, à déclarer à la main (Paramètres > Développeur)
           </li>
         </ol>
+        <p>
+          Extensions et connecteurs reposent tous sur le même protocole, <strong>MCP</strong>
+          (Model Context Protocol) : une prise standard qui permet à Claude d'utiliser un outil extérieur.
+        </p>
         <p>
           Ces extensions ouvrent des possibilités infinies : lire vos fichiers, chercher sur internet,
           vous connecter à Google Drive, Notion, Slack, etc.
@@ -500,11 +561,20 @@ export const CAPSULES: Record<string, Capsule> = {
             <a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
               Protocole MCP
             </a>
-            <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              MCP dans Claude Code
+            <a href="https://code.claude.com/docs/fr/mcp" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              MCP dans Claude Code (doc en français)
             </a>
-            <a href="https://geminicli.com/docs/extensions/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-google">
-              Extensions Gemini CLI
+            <a href="https://anthropic.skilljar.com/introduction-to-model-context-protocol" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Cours officiel : Introduction to MCP (développeurs, en anglais)
+            </a>
+            <a href="https://support.claude.com/fr/articles/10949351-demarrage-avec-les-serveurs-mcp-locaux-sur-claude-desktop" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Extensions de bureau (aide en français)
+            </a>
+            <a href="https://support.claude.com/fr/articles/11176164-utiliser-les-connecteurs-pour-etendre-les-capacites-de-claude" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Connecteurs (aide en français)
+            </a>
+            <a href="https://support.claude.com/fr/articles/14328846-parcourez-les-competences-connecteurs-et-plugins-dans-un-seul-repertoire" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Personnaliser : compétences, connecteurs, plugins (aide en français)
             </a>
           </div>
         </div>
@@ -514,10 +584,10 @@ export const CAPSULES: Record<string, Capsule> = {
         <p>Tout se passe dans les menus de l'application :</p>
         <ol>
           <li>
-            Cliquez sur les <strong>trois barres</strong> (☰) en haut à gauche de la fenêtre
+            Cliquez sur <strong>vos initiales</strong> en bas à gauche de la fenêtre
           </li>
           <li>
-            Allez dans <strong>Fichier → Paramètres</strong>
+            Choisissez <strong>Paramètres</strong>
           </li>
           <li>
             Dans la fenêtre qui s'affiche, cliquez sur <strong>Extensions</strong> dans le menu de gauche
@@ -534,8 +604,10 @@ export const CAPSULES: Record<string, Capsule> = {
         <h4>Connecteurs intégrés</h4>
         <p>
           En plus des extensions, Claude Desktop propose des <strong>Connecteurs</strong> (Google Drive,
-          Notion, Slack...) accessibles via le menu <strong>... > Connectors</strong> en haut à droite
-          de la fenêtre de chat. Ces connecteurs s'activent en un clic et ne nécessitent pas d'installation.
+          Notion, Slack...) accessibles via <strong>Personnaliser > Connecteurs</strong> (barre latérale gauche),
+          ou via le bouton <strong>+</strong> à côté de la zone de saisie > <strong>Connecteurs</strong> >
+          <strong>Gérer les connecteurs</strong>. Ils ne nécessitent pas d'installation : cliquez sur
+          « Connecter » puis connectez-vous au service.
         </p>
       `,
       pratique: `
@@ -546,7 +618,7 @@ export const CAPSULES: Record<string, Capsule> = {
           <div class="exercise-body">
             <p>Ouvrez Claude Desktop et accédez au catalogue d'extensions :</p>
             <ol>
-              <li>☰ (trois barres en haut à gauche) → <strong>Fichier</strong> → <strong>Paramètres</strong></li>
+              <li>Vos initiales (en bas à gauche) → <strong>Paramètres</strong></li>
               <li><strong>Extensions</strong> → <strong>Parcourir les extensions</strong></li>
             </ol>
             <p>Parcourez le catalogue et identifiez <strong>2 extensions</strong> qui seraient utiles dans votre discipline. Pour chacune, notez : son nom, ce qu'elle fait, et en quoi elle vous serait utile.</p>
@@ -557,11 +629,10 @@ export const CAPSULES: Record<string, Capsule> = {
               <p>Voici quelques extensions pertinentes pour un enseignant :</p>
               <ul>
                 <li><strong>Filesystem</strong> : accès en lecture/écriture aux fichiers locaux — indispensable pour créer et modifier des documents directement sur votre machine</li>
-                <li><strong>Brave Search</strong> : recherche web — permet à Claude de chercher des informations récentes (programmes officiels mis à jour, exercices en ligne...)</li>
-                <li><strong>Google Drive</strong> : accès à votre Drive — Claude peut lire et organiser vos documents partagés</li>
-                <li><strong>Puppeteer</strong> : navigation web automatisée — Claude peut visiter des pages et en extraire du contenu pédagogique</li>
+                <li>Une extension qui pilote une application de bureau que vous utilisez déjà (bureautique, calendrier, messagerie…) : Claude agit directement dedans</li>
+                <li>Une extension de recherche ou de lecture de pages web : Claude va chercher des informations récentes (programmes officiels mis à jour, ressources en ligne…)</li>
               </ul>
-              <p>Le catalogue est régulièrement enrichi. N'hésitez pas à y revenir de temps en temps pour découvrir de nouvelles extensions.</p>
+              <p>Google Drive, Notion ou Slack ne sont pas des extensions mais des <strong>connecteurs</strong> (exercice suivant). Le catalogue change souvent : les noms exacts varient, revenez-y de temps en temps.</p>
             </div>
           </details>
         </div>
@@ -570,7 +641,7 @@ export const CAPSULES: Record<string, Capsule> = {
             <span class="exercise-badge">Exercice bonus</span>
           </div>
           <div class="exercise-body">
-            <p>Activez un <strong>Connecteur intégré</strong> : dans une fenêtre de chat, cliquez sur <strong>...</strong> (trois points en haut à droite) → <strong>Connectors</strong>. Choisissez un service (Google Drive, Notion, Slack...) et suivez l'authentification.</p>
+            <p>Activez un <strong>Connecteur</strong> : dans une fenêtre de chat, cliquez sur le bouton <strong>+</strong> à côté de la zone de saisie → <strong>Connecteurs</strong> → <strong>Gérer les connecteurs</strong> (ou passez par Personnaliser → Connecteurs). Choisissez un service (Google Drive, Notion, Slack...) et suivez l'authentification.</p>
             <p>Testez-le ensuite en demandant à Claude : <em>"Quels outils as-tu à disposition ?"</em></p>
           </div>
           <details class="exercise-solution">
@@ -596,14 +667,23 @@ export const CAPSULES: Record<string, Capsule> = {
     title: 'Projets',
     description: 'Organiser votre travail avec les Projets Claude Desktop',
     parcours: 'claude-desktop',
-    order: 3,
+    order: 4,
     sections: {
       info: `
+        <div style="padding: 0.75rem 1rem; margin-bottom: 1rem; background: rgba(52,211,153,0.08); border-radius: 8px; border-left: 3px solid rgba(52,211,153,0.4);">
+          <p style="margin: 0 0 0.4rem 0;"><strong>Le guide officiel</strong></p>
+          <ul style="margin: 0;">
+            <li><a href="https://support.claude.com/fr/articles/9517075-qu-est-ce-que-les-projets" target="_blank" rel="noopener noreferrer">Qu'est-ce que les projets ?</a> (centre d'aide, en français)</li>
+            <li><a href="https://support.claude.com/fr/articles/9519177-comment-creer-et-gerer-des-projets" target="_blank" rel="noopener noreferrer">Comment créer et gérer des projets</a> (en français)</li>
+            <li><a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener noreferrer">Cours Claude 101</a>, leçon « Introduction to projects » (gratuit, en anglais)</li>
+          </ul>
+        </div>
         <h3>Qu'est-ce qu'un Projet ?</h3>
         <p>
           Un <strong>Projet</strong> dans Claude Desktop est un espace de travail dédié à un sujet.
           Il regroupe vos conversations, vos fichiers et vos <strong>instructions personnalisées</strong>
-          dans un même endroit.
+          dans un même endroit. Les projets sont ouverts à tous, offre gratuite comprise
+          (cinq projets au plus avec un compte gratuit).
         </p>
         <p>Concrètement, un Projet vous permet de :</p>
         <ul>
@@ -616,6 +696,20 @@ export const CAPSULES: Record<string, Capsule> = {
           à un assistant avant de lui confier une mission. Plus le dossier est précis,
           plus le travail rendu sera pertinent.
         </p>
+        <div class="doc-links">
+          <span class="doc-links-label">Documentation officielle</span>
+          <div class="doc-links-buttons">
+            <a href="https://support.claude.com/fr/articles/9519177-comment-creer-et-gerer-des-projets" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Créer et gérer des projets (aide en français)
+            </a>
+            <a href="https://support.claude.com/fr/articles/9517075-qu-est-ce-que-les-projets" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Qu'est-ce que les projets ? (aide en français)
+            </a>
+            <a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Cours officiel : Claude 101 (gratuit, en anglais)
+            </a>
+          </div>
+        </div>
       `,
       exemple: `
         <h3>Créer un Projet pas à pas</h3>
@@ -625,14 +719,14 @@ export const CAPSULES: Record<string, Capsule> = {
             <img src="/images/claude-desktop/projects/overview.png" alt="Vue d'ensemble des projets dans Claude Desktop" style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin: 0.75rem 0;" />
           </li>
           <li>
-            <p>Remplissez le formulaire : donnez un <strong>nom</strong> à votre projet et décrivez brièvement <strong>ce que vous essayez de faire</strong> :</p>
+            <p>Remplissez le formulaire : donnez un <strong>nom</strong> à votre projet et décrivez brièvement <strong>ce que vous essayez de faire</strong>. Attention : Claude ne lit ni le nom ni la description, ils servent seulement à vous repérer. Les consignes pour Claude vont dans les <strong>Instructions</strong> (étape suivante).</p>
             <img src="/images/claude-desktop/projects/new.png" alt="Formulaire de création de projet" style="max-width: 400px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin: 0.75rem 0;" />
           </li>
           <li>
             <p>Une fois créé, vous accédez à l'espace du projet. Sur la droite, vous pouvez :</p>
             <ul>
-              <li>Écrire des <strong>Instructions</strong> que Claude relira systématiquement</li>
-              <li>Ajouter des <strong>Fichiers</strong> de référence (PDF, texte, images...)</li>
+              <li>Écrire des <strong>Instructions</strong> que Claude relira systématiquement (« Définir les instructions du projet »)</li>
+              <li>Ajouter des <strong>Fichiers</strong> de référence (PDF, texte, images...) avec le bouton <strong>+</strong> de la base de connaissances</li>
             </ul>
             <img src="/images/claude-desktop/projects/setup.png" alt="Configuration du projet avec instructions et fichiers" style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin: 0.75rem 0;" />
           </li>
@@ -648,7 +742,7 @@ export const CAPSULES: Record<string, Capsule> = {
             <ol>
               <li>Sidebar gauche → <strong>Projets</strong> → <strong>+ Nouveau projet</strong></li>
               <li>Nom : <em>"Analyse didactique"</em></li>
-              <li>Dans les <strong>Instructions</strong> (panneau droit, icône crayon), copiez-collez ce texte :</li>
+              <li>Dans les <strong>Instructions</strong> (panneau de droite), copiez-collez ce texte :</li>
             </ol>
             <pre style="margin: 0.75rem 0; padding: 1rem; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 0.82em; white-space: pre-wrap; border-left: 3px solid rgba(129,140,248,0.4); line-height: 1.5;">Tu es un conseiller pédagogique expérimenté. Quand je dépose un document (cours, exercices, chapitre de manuel...), produis une analyse didactique complète sous forme de plan de séance(s).
 
@@ -728,6 +822,13 @@ FORMAT HTML : document autonome avec styles inline, sobre, imprimable, bien stru
     order: 3,
     sections: {
       info: `
+        <div style="padding: 0.75rem 1rem; margin-bottom: 1rem; background: rgba(52,211,153,0.08); border-radius: 8px; border-left: 3px solid rgba(52,211,153,0.4);">
+          <p style="margin: 0 0 0.4rem 0;"><strong>Le guide officiel</strong></p>
+          <ul style="margin: 0;">
+            <li><a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener noreferrer">Cours Claude 101</a>, leçons « Your first conversation with Claude » et « Getting better results » (gratuit, en anglais)</li>
+            <li><a href="https://support.claude.com/fr/articles/13345190-demarrer-avec-claude-cowork" target="_blank" rel="noopener noreferrer">Démarrer avec Claude Cowork</a>, pour confier une tâche entière sur vos fichiers (centre d'aide, en français)</li>
+          </ul>
+        </div>
         <h3>Comment bien formuler une demande</h3>
         <p>
           La qualité de la réponse de Claude dépend directement de la qualité de votre demande
@@ -758,6 +859,17 @@ FORMAT HTML : document autonome avec styles inline, sobre, imprimable, bien stru
           précédente), Claude peut directement créer et modifier des fichiers sur votre machine.
           Vous pouvez lui demander de créer un exercice, il va l'écrire dans un vrai fichier.
         </p>
+        <div class="doc-links">
+          <span class="doc-links-label">Documentation officielle</span>
+          <div class="doc-links-buttons">
+            <a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Cours officiel : Claude 101 (gratuit, en anglais)
+            </a>
+            <a href="https://support.claude.com/fr/articles/13345190-demarrer-avec-claude-cowork" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Démarrer avec Cowork (aide en français)
+            </a>
+          </div>
+        </div>
       `,
       exemple: `
         <h3>Exemple de workflow complet avec fichiers</h3>
@@ -867,87 +979,85 @@ en difficulté. Sauvegarde-la dans exercice_differentie.txt</code></pre>
             <strong>Un terminal</strong> : Git Bash ou PowerShell sur Windows ; Terminal sur macOS/Linux
           </li>
           <li>
-            <strong>Un compte</strong> sur la plateforme de votre choix (Claude, Gemini, Codex)
+            <strong>Un compte Claude</strong> avec un abonnement Pro, Max, Team ou Enterprise, ou un compte Console (API).
+            L'offre gratuite de claude.ai ne donne pas accès à Claude Code.
           </li>
           <li>
-            <strong>Node.js 18+</strong> : nécessaire uniquement pour Gemini CLI et Codex.
-            Claude Code dispose désormais d'un installateur natif qui ne requiert pas Node.js.
-            Téléchargez Node.js si besoin sur <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">nodejs.org</a>
+            <strong>Pas besoin de Node.js</strong> : l'installateur natif de Claude Code s'en passe.
+            Node.js reste utile plus tard pour certains outils (serveurs MCP, scripts).
           </li>
           <li>
-            <strong>Windows</strong> : <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener noreferrer">Git for Windows</a> est requis pour Claude Code natif
+            <strong>Windows</strong> : <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener noreferrer">Git for Windows</a> est conseillé
+            (Claude Code utilise alors Git Bash pour ses commandes). Sans lui, Claude Code passe par PowerShell.
+          </li>
+        </ul>
+        <h4>Et les autres outils ?</h4>
+        <p>
+          Deux plateformes permettent aujourd'hui de faire à peu près la même chose que Claude Code :
+        </p>
+        <ul>
+          <li>
+            <strong>Codex</strong> (OpenAI) : l'agent d'OpenAI, utilisable dans l'application de bureau ChatGPT
+            (Windows, macOS, Linux), en ligne de commande, dans un éditeur de code ou en ligne.
+            On s'y connecte avec son compte ChatGPT.
+            <a href="https://learn.chatgpt.com/docs" target="_blank" rel="noopener noreferrer">Documentation officielle de Codex</a>
+          </li>
+          <li>
+            <strong>Antigravity</strong> (Google) : la plateforme d'agents de Google, sous forme d'application de bureau,
+            d'éditeur de code et d'outil en ligne de commande (Windows, macOS, Linux).
+            On s'y connecte avec son compte Google.
+            <a href="https://antigravity.google/" target="_blank" rel="noopener noreferrer">Site officiel d'Antigravity</a>
           </li>
         </ul>
         <p>
-          Claude Code est l'outil présenté ici, mais les concepts sont <strong>identiques</strong>
-          sur d'autres CLI comme <strong>Gemini CLI</strong> ou <strong>Codex</strong>.
-          Les agents, skills et CLAUDE.md s'adaptent facilement à n'importe quelle plateforme.
+          Le choix dépend avant tout de vos goûts et de vos habitudes. Ce site détaille Claude Code
+          parce que c'est l'outil de l'auteur et que le setup partagé est conçu pour lui ;
+          les idées (agents, skills, fichier d'instructions) se transposent d'un outil à l'autre.
         </p>
         <div class="doc-links">
           <span class="doc-links-label">Documentation officielle</span>
           <div class="doc-links-buttons">
-            <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Installation Claude Code
+            <a href="https://academy.claude.com/courses/claude-code-101" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Cours officiel : Claude Code 101 (gratuit, en anglais)
             </a>
-            <a href="https://code.claude.com/docs/en/quickstart" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Quickstart
+            <a href="https://code.claude.com/docs/fr/setup" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Installation (doc en français)
             </a>
-            <a href="https://geminicli.com/docs/get-started/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-google">
-              Gemini CLI Get Started
+            <a href="https://code.claude.com/docs/fr/quickstart" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Démarrage rapide (doc en français)
             </a>
-            <a href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-openai">
-              Codex CLI Docs
+            <a href="https://learn.chatgpt.com/docs" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-openai">
+              Codex (OpenAI)
+            </a>
+            <a href="https://antigravity.google/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-google">
+              Antigravity (Google)
             </a>
           </div>
         </div>
       `,
       exemple: `
-        <h3>Guide d'installation</h3>
-        <p>Choisissez votre CLI et suivez les étapes :</p>
+        <h3>Guide d'installation de Claude Code</h3>
 
-        <div class="cli-tabs" data-cli-tabs>
-          <div class="cli-tabs-nav">
-            <button class="cli-tab-btn active" data-tab-brand="anthropic" data-tab-target="tab-claude">Claude Code</button>
-            <button class="cli-tab-btn" data-tab-brand="google" data-tab-target="tab-gemini">Gemini CLI</button>
-            <button class="cli-tab-btn" data-tab-brand="openai" data-tab-target="tab-codex">Codex CLI</button>
-          </div>
-
-          <div class="cli-tab-panel active" id="tab-claude">
+        <div>
+          <div>
             <h4>Installation native (recommandée)</h4>
             <p>Claude Code ne nécessite plus Node.js. Utilisez l'installateur natif :</p>
             <p><strong>macOS / Linux / WSL :</strong></p>
             <pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
             <p><strong>Windows PowerShell :</strong></p>
             <pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
-            <p><strong>Alternatives :</strong> <code>brew install --cask claude-code</code> (Homebrew) ou <code>winget install Anthropic.ClaudeCode</code> (WinGet)</p>
+            <p><strong>Alternatives :</strong> <code>brew install --cask claude-code</code> (Homebrew) ou <code>winget install Anthropic.ClaudeCode</code> (WinGet). L'installateur natif se met à jour tout seul ; avec Homebrew ou WinGet, pensez à faire les mises à jour vous-même.</p>
+            <p><strong>Vérifier :</strong> fermez puis rouvrez le terminal et tapez <code>claude --version</code>. Un numéro de version doit s'afficher.</p>
             <h4>Lancer</h4>
             <pre><code>cd votre-dossier-de-travail
 claude</code></pre>
             <p>Au premier lancement, suivez les instructions d'authentification à l'écran.</p>
             <p><em>Vérification :</em> <code>claude doctor</code> vérifie que tout est correctement installé.</p>
           </div>
-
-          <div class="cli-tab-panel" id="tab-gemini">
-            <h4>Prérequis</h4>
-            <p><a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.js</a> et npm doivent être installés (<code>node --version</code> pour vérifier).</p>
-            <h4>Installation</h4>
-            <pre><code>npm install -g @google/gemini-cli</code></pre>
-            <h4>Lancer</h4>
-            <pre><code>gemini</code></pre>
-            <p>Au premier lancement, suivez les instructions pour connecter votre compte Google.</p>
-          </div>
-
-          <div class="cli-tab-panel" id="tab-codex">
-            <h4>Prérequis</h4>
-            <p><a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.js</a> et npm. Compte ChatGPT Plus/Pro/Business ou clé API OpenAI. macOS ou Linux (Windows via WSL).</p>
-            <h4>Installation</h4>
-            <pre><code>npm i -g @openai/codex</code></pre>
-            <h4>Lancer</h4>
-            <pre><code>codex</code></pre>
-            <p>Authentification avec votre compte ChatGPT ou clé API au premier lancement.</p>
-            <p><em>Mise à jour :</em> <code>npm i -g @openai/codex@latest</code></p>
-          </div>
         </div>
+        <p style="font-size: 0.9em; color: #94a3b8;">
+          Pour Codex ou Antigravity, suivez le guide d'installation de leur site officiel (liens dans la partie précédente).
+        </p>
       `,
       pratique: `
         <div class="exercise-card">
@@ -985,9 +1095,9 @@ claude</code></pre>
               <ul>
                 <li>Les blocs de code sont colorés syntaxiquement</li>
                 <li>Les listes sont indentées proprement</li>
-                <li>La <strong>statusline</strong> en bas affiche le modèle, les tokens consommés et le coût</li>
+                <li>Sous la zone de saisie, une petite ligne rappelle le mode de permission en cours et quelques raccourcis (vous pourrez y ajouter une <strong>statusline</strong> personnalisée, voir la capsule « Commandes essentielles »)</li>
               </ul>
-              <p>Pour quitter, tapez <code>/exit</code> ou utilisez le raccourci <code>Ctrl+C</code> puis confirmez.</p>
+              <p>Pour quitter, tapez <code>/exit</code> ou appuyez deux fois sur <code>Ctrl+C</code>.</p>
             </div>
           </details>
         </div>
@@ -1003,8 +1113,9 @@ claude</code></pre>
           <details class="exercise-solution">
             <summary>Voir la solution</summary>
             <div class="solution-content">
-              <p>Avec ce flag, Claude ne vous demande plus la permission avant de lire/écrire des fichiers ou exécuter des commandes. Il agit en <strong>autonomie complète</strong>.</p>
-              <p>C'est utile pour des <strong>modifications de routine</strong> où vous faites confiance à l'agent : corrections mineures, mise en forme, tâches prévisibles. À éviter sur des projets sensibles ou quand vous découvrez un nouveau codebase.</p>
+              <p>Avec ce flag, Claude ne vous demande plus la permission avant de lire/écrire des fichiers ou exécuter des commandes. Il agit en <strong>autonomie complète</strong> (mode <code>bypassPermissions</code>). Seules vos règles d'interdiction (<code>deny</code>, voir capsule suivante) continuent de s'appliquer.</p>
+              <p>C'est utile pour des <strong>modifications de routine</strong> où vous faites confiance à l'agent : corrections mineures, mise en forme, tâches prévisibles. À éviter sur des projets sensibles ou quand vous découvrez un nouveau dossier.</p>
+              <p><strong>Alternative plus sûre :</strong> le <strong>mode auto</strong>. Un second modèle vérifie chaque action à votre place et bloque celles qui semblent risquées. Dans les versions récentes, c'est le mode de départ par défaut. Appuyez sur <code>Maj+Tab</code> pendant une session pour passer d'un mode à l'autre (manuel, acceptation des modifications, plan, auto) : le mode actif s'affiche sous la zone de saisie.</p>
             </div>
           </details>
         </div>
@@ -1051,17 +1162,14 @@ claude</code></pre>
         <div class="doc-links">
           <span class="doc-links-label">Documentation officielle</span>
           <div class="doc-links-buttons">
-            <a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Claude Code Settings
+            <a href="https://code.claude.com/docs/fr/settings" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Paramètres (doc en français)
             </a>
-            <a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              CLAUDE.md & Memory
+            <a href="https://code.claude.com/docs/fr/memory" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              CLAUDE.md et mémoire (doc en français)
             </a>
-            <a href="https://geminicli.com/docs/reference/configuration/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-google">
-              Gemini CLI Config
-            </a>
-            <a href="https://developers.openai.com/codex/config-basic/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-openai">
-              Codex Config
+            <a href="https://code.claude.com/docs/fr/permissions" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Permissions (doc en français)
             </a>
           </div>
         </div>
@@ -1095,9 +1203,9 @@ Je travaille avec des classes de 6ème à 3ème.
       SKILL.md           -> Instructions principales
       references/        -> Docs de référence
       scripts/           -> Scripts exécutables
-    image-generator/
+    qcm-creator/
       SKILL.md
-      scripts/generate.py
+      references/distracteurs.md
   commands/              -> Commandes slash rapides
     createTex.md
     adaptTex.md
@@ -1132,8 +1240,9 @@ echo "papillon" > secret/mot-de-passe.txt</code></pre>
             <summary>Voir la solution</summary>
             <div class="solution-content">
               <p>Claude tente de lire le fichier, reçoit une erreur de permission de son propre système de sécurité, et vous répond qu'il <strong>n'a pas le droit</strong> d'accéder aux fichiers du dossier <code>secret/</code>.</p>
-              <p>Cela démontre que les <strong>settings de permission sont plus forts</strong> que le flag <code>--dangerously-skip-permissions</code>. La sécurité configurée dans <code>settings.json</code> prime toujours.</p>
+              <p>Cela démontre que les <strong>règles d'interdiction (<code>deny</code>) sont plus fortes</strong> que le flag <code>--dangerously-skip-permissions</code> : la documentation officielle précise qu'elles bloquent dans tous les modes.</p>
               <p>C'est un mécanisme essentiel : vous pouvez travailler en mode autonome tout en protégeant certains dossiers sensibles (notes, données personnelles des élèves, etc.).</p>
+              <p><strong>Limite à connaître :</strong> ces règles couvrent les outils de Claude (lecture, écriture, commandes comme <code>cat</code>), mais pas un script Python ou Node qui ouvrirait lui-même le fichier. Pour une protection totale, la documentation renvoie au <em>sandbox</em> (bac à sable) du système.</p>
             </div>
           </details>
         </div>
@@ -1161,29 +1270,32 @@ echo "papillon" > secret/mot-de-passe.txt</code></pre>
           <li><code>/init</code> : <strong>à lancer en premier dans tout nouveau projet</strong>. Claude analyse votre dossier (fichiers, dépendances, structure) et génère un fichier <code>CLAUDE.md</code> qui le guidera dans toutes les conversations futures. C'est le point de départ pour que Claude comprenne votre projet sans que vous ayez à tout lui expliquer à chaque fois.</li>
           <li><code>/compact</code> : compacte la conversation pour économiser la mémoire (indispensable en sessions longues)</li>
           <li><code>/clear</code> : efface la conversation et repart à zéro</li>
+          <li><code>/model</code> : change de modèle (Opus, Sonnet, Haiku…) et règle le niveau d'effort</li>
+          <li><code>/resume</code> : rouvre une conversation précédente, choisie dans une liste</li>
+          <li><code>/usage</code> : affiche votre consommation (session en cours et limites de votre abonnement)</li>
+          <li><code>/context</code> : montre ce qui occupe la mémoire de travail de Claude (fichiers, outils, conversation)</li>
           <li><code>/config</code> : ouvre la configuration interactive de Claude Code</li>
-          <li><code>/status</code> : affiche l'état de la session (modèle, tokens consommés...)</li>
           <li><code>/exit</code> : quitte Claude Code</li>
         </ul>
         <h4>Commandes terminal (hors session)</h4>
         <p>Ces commandes se lancent directement dans le terminal, avant ou après une session Claude :</p>
         <ul>
           <li><code>claude</code> : lance une nouvelle session interactive</li>
-          <li><code>claude resume</code> : <strong>reprend la dernière conversation</strong> là où vous l'aviez laissée. Très pratique quand vous avez fermé le terminal par erreur ou quand vous reprenez le travail le lendemain.</li>
-          <li><code>claude continue</code> : similaire à resume, reprend la conversation la plus récente</li>
+          <li><code>claude --continue</code> (ou <code>claude -c</code>) : <strong>reprend la dernière conversation</strong> du dossier courant, là où vous l'aviez laissée. Très pratique quand vous avez fermé le terminal par erreur ou quand vous reprenez le travail le lendemain.</li>
+          <li><code>claude --resume</code> (ou <code>claude -r</code>) : affiche la liste des conversations passées pour en choisir une</li>
           <li><code>claude doctor</code> : vérifie que tout est correctement installé et configuré</li>
-          <li><code>claude update</code> : met à jour Claude Code vers la dernière version</li>
+          <li><code>claude update</code> : met à jour Claude Code vers la dernière version (l'installateur natif le fait aussi tout seul)</li>
         </ul>
         <h4>Fonctionnalités avancées intégrées</h4>
         <ul>
           <li>
-            <strong>ultrathink</strong> : en ajoutant le mot <code>ultrathink</code> dans votre message, vous activez la réflexion approfondie. Le modèle prend plus de temps pour réfléchir avant de répondre, produisant des résultats plus précis et structurés sur les tâches complexes.
+            <strong>ultrathink</strong> : en ajoutant le mot <code>ultrathink</code> dans votre message, vous demandez à Claude de réfléchir plus longuement <em>pour ce message seulement</em>. Pour régler durablement la profondeur de réflexion, utilisez plutôt <code>/effort</code> (niveaux <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, <code>max</code>).
           </li>
           <li>
-            <strong>Statusline</strong> : la barre d'état en bas du terminal affiche en temps réel le modèle utilisé, les tokens consommés, le coût de la session et l'état de la connexion. Pour l'activer ou la personnaliser, demandez simplement à Claude : <em>"Configure ma statusline"</em> — il s'en occupera pour vous.
+            <strong>Statusline</strong> : une barre d'état personnalisable sous la zone de saisie, qui peut afficher le modèle utilisé, le remplissage du contexte, le coût estimé de la session… Elle n'existe pas par défaut : tapez <code>/statusline</code> suivi de ce que vous voulez voir, et Claude écrit le script et le réglage pour vous.
           </li>
           <li>
-            <strong>Mode plan</strong> : Claude peut planifier les étapes d'une tâche complexe avant de l'exécuter. Demandez-lui de "planifier" ou "faire un plan" et il décomposera le travail en étapes.
+            <strong>Mode plan</strong> : Claude lit vos fichiers et propose un plan, sans rien modifier tant que vous ne l'avez pas validé. Appuyez sur <code>Maj+Tab</code> jusqu'à voir <code>plan mode on</code> sous la zone de saisie, ou lancez <code>claude --permission-mode plan</code>.
           </li>
         </ul>
         <p>
@@ -1193,17 +1305,17 @@ echo "papillon" > secret/mot-de-passe.txt</code></pre>
         <div class="doc-links">
           <span class="doc-links-label">Documentation officielle</span>
           <div class="doc-links-buttons">
-            <a href="https://code.claude.com/docs/en/cli-reference" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              CLI Reference
+            <a href="https://code.claude.com/docs/fr/cli-reference" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Référence CLI (doc en français)
             </a>
-            <a href="https://code.claude.com/docs/en/slash-commands" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Slash Commands
+            <a href="https://code.claude.com/docs/fr/commands" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Commandes slash (doc en français)
             </a>
-            <a href="https://code.claude.com/docs/en/common-workflows" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Common Workflows
+            <a href="https://code.claude.com/docs/fr/common-workflows" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Workflows courants (doc en français)
             </a>
-            <a href="https://developers.openai.com/codex/cli/slash-commands/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-openai">
-              Codex Commands
+            <a href="https://code.claude.com/docs/fr/statusline" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Statusline (doc en français)
             </a>
           </div>
         </div>
@@ -1214,12 +1326,14 @@ echo "papillon" > secret/mot-de-passe.txt</code></pre>
         <pre><code>/init              → À faire EN PREMIER : génère votre CLAUDE.md
 /help              → Affiche l'aide complète
 /compact           → Compacte la conversation (libère du contexte)
-/config            → Configuration interactive
-/status            → Voir le modèle, les tokens, le coût</code></pre>
+/model             → Changer de modèle et d'effort
+/resume            → Rouvrir une conversation passée
+/usage             → Voir sa consommation
+/config            → Configuration interactive</code></pre>
         <h4>Commandes terminal (hors session)</h4>
         <pre><code>claude             → Nouvelle session
-claude resume      → Reprendre la dernière conversation
-claude continue    → Idem, reprend la conversation récente
+claude --continue  → Reprendre la dernière conversation (ou claude -c)
+claude --resume    → Choisir une conversation passée (ou claude -r)
 claude doctor      → Vérifier l'installation
 claude update      → Mettre à jour</code></pre>
         <h4>ultrathink en action</h4>
@@ -1233,15 +1347,18 @@ ultrathink Crée un exercice sur Pythagore pour les 4ème</code></pre>
           Avec <code>ultrathink</code>, Claude réfléchit plus longuement et produit un exercice
           mieux structuré, avec une progression plus soignée et des cas de figure variés.
           C'est particulièrement utile pour les tâches créatives ou les problèmes complexes.
+          Les modèles récents réfléchissent déjà avant de répondre : <code>ultrathink</code> pousse
+          simplement cette réflexion plus loin sur un message précis.
         </p>
         <h4>La statusline</h4>
         <p>
-          En bas du terminal, vous voyez en permanence une ligne comme :
+          Une fois configurée avec <code>/statusline</code>, vous voyez en permanence sous la zone de saisie une ligne comme :
         </p>
-        <pre><code>claude-sonnet-4  ●  12.4k tokens  ●  $0.08  ●  session 14min</code></pre>
+        <pre><code>Opus 5.5  ●  contexte 18 %  ●  0,42 $  ●  session 14 min</code></pre>
         <p>
           Elle vous aide à surveiller votre consommation et à savoir quand utiliser
-          <code>/compact</code> pour libérer du contexte.
+          <code>/compact</code> pour libérer du contexte. Avec un abonnement (Pro, Max…), le coût
+          affiché est une estimation au tarif de l'API : ce n'est pas ce que vous payez.
         </p>
       `,
       pratique: `
@@ -1298,8 +1415,8 @@ ultrathink Crée un exercice sur Pythagore pour les 4ème</code></pre>
             <span class="exercise-badge">Exercice 3</span>
           </div>
           <div class="exercise-body">
-            <p>Faites quelques échanges avec Claude et surveillez la <strong>statusline</strong> en bas du terminal. Observez les tokens consommés. Puis tapez <code>/compact</code>.</p>
-            <p>Comment le compteur change-t-il ?</p>
+            <p>Faites quelques échanges avec Claude, puis tapez <code>/context</code> pour voir combien de place occupe la conversation. Tapez ensuite <code>/compact</code>, puis de nouveau <code>/context</code>.</p>
+            <p>Comment le remplissage change-t-il ?</p>
           </div>
           <details class="exercise-solution">
             <summary>Voir la solution</summary>
@@ -1310,7 +1427,12 @@ ultrathink Crée un exercice sur Pythagore pour les 4ème</code></pre>
                 <li>Claude <strong>résume la conversation</strong> en conservant les points essentiels et en supprimant les détails verbeux</li>
                 <li>La conversation <strong>continue normalement</strong> — Claude se souvient du contexte important</li>
               </ul>
-              <p><strong>Règle pratique :</strong> utilisez <code>/compact</code> quand vous approchez des 50-60k tokens, ou quand vous sentez que les réponses deviennent moins pertinentes (signe que le contexte est trop chargé).</p>
+              <p><strong>Règles pratiques :</strong></p>
+              <ul>
+                <li>Les modèles récents ont une très grande mémoire de travail (un million de tokens) et Claude Code compacte tout seul quand elle est presque pleine. Vous n'avez donc pas à surveiller un seuil précis.</li>
+                <li>Utilisez <code>/compact</code> quand vous changez d'étape dans un même travail, ou quand les réponses deviennent moins pertinentes. Vous pouvez préciser quoi garder : <code>/compact garde les décisions sur le barème</code>.</li>
+                <li>Utilisez plutôt <code>/clear</code> quand vous passez à un tout autre sujet : c'est gratuit et repartir de zéro coûte moins cher qu'une longue conversation.</li>
+              </ul>
             </div>
           </details>
         </div>
@@ -1320,20 +1442,19 @@ ultrathink Crée un exercice sur Pythagore pour les 4ème</code></pre>
           </div>
           <div class="exercise-body">
             <p>Demandez à Claude de configurer votre statusline :</p>
-            <pre style="margin: 0.5rem 0; padding: 0.75rem; background: rgba(0,0,0,0.2); border-radius: 6px; font-size: 0.85em;">Configure ma statusline</pre>
-            <p>Claude va vous proposer différentes options d'affichage et configurer la barre d'état en bas du terminal pour vous.</p>
+            <pre style="margin: 0.5rem 0; padding: 0.75rem; background: rgba(0,0,0,0.2); border-radius: 6px; font-size: 0.85em;">/statusline affiche le modèle, le pourcentage de contexte utilisé et le coût de la session</pre>
+            <p>Claude écrit un petit script et configure la barre d'état sous la zone de saisie pour vous.</p>
           </div>
           <details class="exercise-solution">
             <summary>Voir la solution</summary>
             <div class="solution-content">
-              <p>Claude configure le fichier <code>~/.claude/settings.json</code> pour activer et personnaliser la statusline. Vous devriez voir apparaître en bas du terminal :</p>
+              <p>Claude crée un script dans le dossier <code>~/.claude/</code> et ajoute un réglage <code>statusLine</code> dans <code>~/.claude/settings.json</code>. Vous devriez voir apparaître sous la zone de saisie :</p>
               <ul>
-                <li>Le <strong>modèle</strong> utilisé (ex: claude-sonnet-4)</li>
-                <li>Le <strong>nombre de tokens</strong> consommés dans la session</li>
-                <li>Le <strong>coût estimé</strong> de la session en cours</li>
-                <li>La <strong>durée</strong> de la session</li>
+                <li>Le <strong>modèle</strong> utilisé (ex : Opus 5.5)</li>
+                <li>Le <strong>pourcentage de contexte</strong> déjà rempli</li>
+                <li>Le <strong>coût estimé</strong> de la session en cours (indicatif si vous avez un abonnement)</li>
               </ul>
-              <p>C'est un bon réflexe de garder un œil sur ces indicateurs, surtout le compteur de tokens qui vous dit quand il est temps de faire un <code>/compact</code>.</p>
+              <p>C'est un bon réflexe de garder un œil sur ces indicateurs, surtout le remplissage du contexte qui vous dit quand un <code>/compact</code> ou un <code>/clear</code> serait utile. Pour la retirer : <code>/statusline supprime-la</code>.</p>
             </div>
           </details>
         </div>
@@ -1352,7 +1473,7 @@ ultrathink Crée un exercice sur Pythagore pour les 4ème</code></pre>
       info: `
         <h3>Le dossier .claude : manager du contexte</h3>
         <p>
-          Le dossier <code>.claude/</code> (ou <code>.gemini/</code>, <code>.codex/</code> chez les concurrents)
+          Le dossier <code>.claude/</code> (d'autres outils, comme Codex, ont leur équivalent)
           est le centre névralgique de votre configuration. Il contient tout ce qui permet à l'agent
           de <strong>comprendre votre contexte</strong> et de <strong>savoir quoi faire</strong>.
         </p>
@@ -1360,7 +1481,7 @@ ultrathink Crée un exercice sur Pythagore pour les 4ème</code></pre>
         <ul>
           <li>
             <strong>agents/</strong> : sous-processus spécialisés avec leurs propres instructions.
-            Chaque agent est un fichier Markdown décrivant une mission précise (créer du LaTeX, déboguer, générer des images...).
+            Chaque agent est un fichier Markdown décrivant une mission précise (créer du LaTeX, déboguer une compilation, préparer un QCM...).
           </li>
           <li>
             <strong>skills/</strong> : savoir-faire invocables via <code>/nom-du-skill</code>.
@@ -1378,24 +1499,27 @@ ultrathink Crée un exercice sur Pythagore pour les 4ème</code></pre>
           Le fichier <code>CLAUDE.md</code> à la racine orchestre l'ensemble : il définit le contexte,
           les règles, la stack technique, et indique à l'agent quels outils sont à sa disposition.
         </p>
-        <h4>Équivalences multi-fournisseur</h4>
+        <h4>Et chez les autres ?</h4>
         <ul>
           <li><strong>Claude Code</strong> : <code>.claude/</code> + <code>CLAUDE.md</code></li>
-          <li><strong>Gemini CLI</strong> : <code>.gemini/</code> + <code>GEMINI.md</code></li>
-          <li><strong>OpenAI Codex</strong> : <code>.codex/</code> + <code>AGENTS.md</code></li>
+          <li><strong>Codex</strong> (OpenAI) : <code>.codex/</code> + <code>AGENTS.md</code></li>
+          <li><strong>Antigravity</strong> (Google) : ses propres fichiers de règles et de skills (voir <a href="https://antigravity.google/docs/getting-started" target="_blank" rel="noopener noreferrer">sa documentation</a>)</li>
         </ul>
-        <p>Les concepts sont identiques d'un outil à l'autre — seuls les noms changent.</p>
+        <p>Les concepts sont les mêmes d'un outil à l'autre ; seuls les noms changent.</p>
         <div class="doc-links">
           <span class="doc-links-label">Documentation officielle</span>
           <div class="doc-links-buttons">
-            <a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Memory & CLAUDE.md
+            <a href="https://code.claude.com/docs/fr/memory" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              CLAUDE.md et mémoire (doc en français)
             </a>
-            <a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Settings & Permissions
+            <a href="https://code.claude.com/docs/fr/settings" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Paramètres et permissions (doc en français)
             </a>
-            <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Sub-agents & Skills
+            <a href="https://code.claude.com/docs/fr/skills" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Skills (doc en français)
+            </a>
+            <a href="https://code.claude.com/docs/fr/sub-agents" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Sous-agents (doc en français)
             </a>
           </div>
         </div>
@@ -1406,7 +1530,7 @@ ultrathink Crée un exercice sur Pythagore pour les 4ème</code></pre>
   agents/
     latex-main-worker.md   → Orchestre la création de documents LaTeX
     debug-tex-log.md       → Analyse les erreurs de compilation
-    image-gen-agent.md     → Génère des illustrations
+    correction-agent.md    → Rédige des corrigés détaillés
 
   skills/
     bfcours-latex/             → Un skill = un DOSSIER
@@ -1455,7 +1579,7 @@ CLAUDE.md                      → Instructions permanentes du projet</code></pr
               <p>Voici ce que vous devriez observer :</p>
               <ul>
                 <li><strong>Un agent</strong> (ex : <code>latex-main-worker.md</code>) : contient un rôle ("orchestre la création LaTeX"), des étapes de workflow, et des références à d'autres skills. Il est invoqué <strong>automatiquement</strong> par l'agent principal quand la demande concerne du LaTeX.</li>
-                <li><strong>Un skill</strong> (ex : <code>bfcours-latex.md</code>) : contient un frontmatter YAML (nom, description, triggers) puis des instructions détaillées. Il est invoqué <strong>manuellement</strong> via <code>/bfcours-latex</code>.</li>
+                <li><strong>Un skill</strong> (ex : <code>bfcours-latex/SKILL.md</code>) : contient un frontmatter YAML (nom, description qui dit quand l'utiliser) puis des instructions détaillées. Vous pouvez l'invoquer <strong>manuellement</strong> via <code>/bfcours-latex</code>, et Claude le charge aussi <strong>tout seul</strong> quand votre demande correspond à sa description.</li>
               </ul>
               <p>La distinction clé : un agent est un <strong>sous-processus autonome</strong> (il a sa propre conversation), tandis qu'un skill est un <strong>ensemble d'instructions</strong> chargé dans la conversation en cours.</p>
             </div>
@@ -1515,7 +1639,7 @@ CLAUDE.md                      → Instructions permanentes du projet</code></pr
           pour l'enseignement des mathématiques. Téléchargeable depuis ce site, il contient :
         </p>
         <ul>
-          <li><strong>Agents spécialisés</strong> : création LaTeX, débogage de compilation, génération d'images, présentations...</li>
+          <li><strong>Agents spécialisés</strong> : création LaTeX, débogage de compilation, présentations...</li>
           <li><strong>Skills thématiques</strong> : <code>/bfcours-latex</code> (contenu pédagogique), <code>/reveals-presentation</code> (présentations web), <code>/programmes-officiels</code> (programmes du B.O.), etc.</li>
           <li><strong>Commandes organisées</strong> : <code>/creer:latex:createTex</code>, <code>/modifier:latex:adaptTex</code>, <code>/creer:html:createReveals</code>...</li>
           <li><strong>Hooks automatiques</strong> : correction d'encodage UTF-8 après chaque modification de fichier</li>
@@ -1579,18 +1703,19 @@ CLAUDE.md                      → Instructions permanentes du projet</code></pr
             <span class="exercise-badge">Exercice 2 : créer votre propre skill</span>
           </div>
           <div class="exercise-body">
-            <p>Identifiez une tâche que vous faites souvent et que le setup ne couvre pas. Utilisez <code>/skill-creator</code> pour créer votre propre skill. Testez-le et affinez-le.</p>
+            <p>Identifiez une tâche que vous faites souvent et que le setup ne couvre pas. Installez le <strong>skill-creator officiel d'Anthropic</strong> (une seule fois) puis demandez-lui de créer votre propre skill. Testez-le et affinez-le.</p>
+            <pre><code>/plugin install skill-creator@claude-plugins-official</code></pre>
           </div>
           <details class="exercise-solution">
             <summary>Voir la solution</summary>
             <div class="solution-content">
-              <p>Exemples de skills utiles à créer :</p>
+              <p>Exemples de demandes, à taper après l'installation :</p>
               <ul>
-                <li><strong>Commentaires de bulletin</strong> : <code>/skill-creator crée un skill qui génère des appréciations de bulletin à partir du niveau et du comportement de l'élève</code></li>
-                <li><strong>Fiches méthode</strong> : <code>/skill-creator crée un skill qui génère des fiches méthode sur une technique de calcul</code></li>
-                <li><strong>Activité de groupe</strong> : <code>/skill-creator crée un skill qui planifie une activité de groupe avec rôles différenciés</code></li>
+                <li><strong>Commentaires de bulletin</strong> : <code>Utilise skill-creator pour créer un skill qui génère des appréciations de bulletin à partir des notes et des remarques que je lui donne</code></li>
+                <li><strong>Fiches méthode</strong> : <code>Utilise skill-creator pour créer un skill qui génère des fiches méthode sur une technique de calcul</code></li>
+                <li><strong>Activité de groupe</strong> : <code>Utilise skill-creator pour créer un skill qui planifie une activité de groupe avec rôles différenciés</code></li>
               </ul>
-              <p>Le skill-creator vous posera des questions pour préciser vos besoins, puis générera un dossier <code>.claude/skills/votre-skill/</code> contenant un <code>SKILL.md</code> (instructions principales) et éventuellement des fichiers de support (références, scripts, exemples). Testez-le immédiatement avec <code>/votre-skill</code> suivi d'une demande concrète.</p>
+              <p>Le skill-creator vous posera des questions pour préciser vos besoins, puis générera un dossier <code>.claude/skills/votre-skill/</code> contenant un <code>SKILL.md</code> (instructions principales) et éventuellement des fichiers de support (références, scripts, exemples). Testez-le immédiatement avec <code>/votre-skill</code> suivi d'une demande concrète. La capsule « Créer un skill » du parcours Avancé détaille la démarche.</p>
             </div>
           </details>
         </div>
@@ -1602,6 +1727,196 @@ CLAUDE.md                      → Instructions permanentes du projet</code></pr
     },
     duration: '15 min',
     tags: ['bfcours', 'skills', 'workflow'],
+  },
+  'cc-se-former': {
+    id: 'cc-se-former',
+    title: 'Se former avec Anthropic',
+    description: 'Les cours officiels gratuits d\'Anthropic : lesquels suivre, dans quel ordre, et comment les combiner avec ce site',
+    parcours: 'claude-code',
+    order: 5,
+    sections: {
+      info: `
+        <h3>Les cours officiels sont la référence</h3>
+        <p>
+          Anthropic publie des <strong>cours gratuits</strong> sur Claude, Claude Code et l'usage de l'IA
+          en classe. Ils sont faits par les équipes qui conçoivent les outils, mis à jour à chaque
+          nouveauté, et souvent mieux construits que n'importe quel tutoriel maison.
+          <strong>Commencez par eux.</strong>
+        </p>
+        <p>
+          Les tutoriels de ce site sont un <strong>complément</strong> : le point de vue d'un enseignant
+          de mathématiques français, des exemples tirés de la classe, et le mode d'emploi du setup
+          partagé ici (skills LaTeX et Typst, agents, commandes).
+        </p>
+        <p style="padding: 0.75rem 1rem; background: rgba(245,158,11,0.08); border-radius: 8px; border-left: 3px solid rgba(245,158,11,0.4); font-size: 0.95em;">
+          <strong>Tous les cours sont en anglais.</strong> Astuce : la traduction intégrée du navigateur
+          (clic droit sur la page > « Traduire en français » dans Chrome ou Edge) rend les leçons très
+          lisibles. Les vidéos ont en général des sous-titres que l'on peut traduire automatiquement.
+        </p>
+
+        <h4>Les cours à connaître</h4>
+        <div style="margin: 1rem 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <tr style="border-bottom: 2px solid rgba(255,255,255,0.15);">
+              <th style="text-align: left; padding: 0.6rem; color: #a78bfa;">Cours</th>
+              <th style="text-align: left; padding: 0.6rem; color: #a78bfa;">À qui il sert</th>
+              <th style="text-align: left; padding: 0.6rem; color: #a78bfa;">Durée</th>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 0.6rem;"><a href="https://academy.claude.com/courses/claude-code-101" target="_blank" rel="noopener noreferrer"><strong>Claude Code 101</strong></a></td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Le meilleur point d'entrée pour Claude Code : installation, premières sessions, CLAUDE.md, bonnes habitudes. Débutants.</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">environ 1 h 30 (12 leçons)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 0.6rem;"><a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener noreferrer"><strong>Claude 101</strong></a></td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Les usages quotidiens de Claude (application web et Desktop) : projets, fichiers, connecteurs.</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">—</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 0.6rem;"><a href="https://anthropic.skilljar.com/ai-fluency-framework-foundations" target="_blank" rel="noopener noreferrer"><strong>AI Fluency: Framework &amp; Foundations</strong></a></td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Tout le monde. Un cadre en quatre compétences (le « 4D ») pour travailler avec une IA de façon efficace, critique et responsable.</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">environ 4 h</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 0.6rem;"><a href="https://anthropic.skilljar.com/ai-fluency-for-educators" target="_blank" rel="noopener noreferrer"><strong>AI Fluency for educators</strong></a></td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Enseignants : le même cadre appliqué à la préparation de cours et à l'accompagnement des élèves.</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">—</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 0.6rem;"><a href="https://anthropic.skilljar.com/path/ai-fluency-for-pk-12-educators" target="_blank" rel="noopener noreferrer"><strong>AI Fluency for pK-12 Educators</strong></a> (parcours)</td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Enseignants du primaire au lycée, avec un volet pour les formateurs qui animent des ateliers.</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">plusieurs cours</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 0.6rem;"><a href="https://anthropic.skilljar.com/teaching-ai-fluency" target="_blank" rel="noopener noreferrer"><strong>Teaching AI Fluency</strong></a></td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Formateurs et enseignants qui veulent enseigner ce cadre à d'autres (élèves ou collègues).</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">—</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 0.6rem;"><a href="https://anthropic.skilljar.com/introduction-to-agent-skills" target="_blank" rel="noopener noreferrer"><strong>Introduction to agent skills</strong></a></td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Utilisateurs de Claude Code qui veulent comprendre et écrire des skills.</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">—</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 0.6rem;"><a href="https://anthropic.skilljar.com/introduction-to-subagents" target="_blank" rel="noopener noreferrer"><strong>Introduction to subagents</strong></a></td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Utilisateurs de Claude Code qui veulent déléguer à des sous-agents.</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">—</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 0.6rem;"><a href="https://anthropic.skilljar.com/claude-code-in-action" target="_blank" rel="noopener noreferrer"><strong>Claude Code in Action</strong></a></td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Niveau intermédiaire, orienté développement logiciel. Utile si vous codez vos propres outils.</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">—</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.6rem;"><a href="https://anthropic.skilljar.com/introduction-to-model-context-protocol" target="_blank" rel="noopener noreferrer"><strong>Introduction to Model Context Protocol</strong></a></td>
+              <td style="padding: 0.6rem; color: #d1d5db;">Développeurs (Python) qui veulent créer leurs propres connecteurs MCP.</td>
+              <td style="padding: 0.6rem; color: #9ca3af;">—</td>
+            </tr>
+          </table>
+        </div>
+        <p style="font-size: 0.9em; color: #94a3b8;">
+          « — » : durée non indiquée. Le <a href="https://anthropic.skilljar.com/" target="_blank" rel="noopener noreferrer">catalogue complet</a>
+          compte une vingtaine de cours. Tous sont gratuits ; il suffit de créer un compte.
+        </p>
+
+        <div class="doc-links">
+          <span class="doc-links-label">Documentation officielle en français</span>
+          <div class="doc-links-buttons">
+            <a href="https://code.claude.com/docs/fr/quickstart" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Démarrage rapide
+            </a>
+            <a href="https://code.claude.com/docs/fr/best-practices" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Bonnes pratiques
+            </a>
+            <a href="https://code.claude.com/docs/fr/skills" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Skills
+            </a>
+          </div>
+        </div>
+      `,
+      exemple: `
+        <h3>Quel cours pour quel profil ?</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin: 1rem 0;">
+          <div style="padding: 0.85rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 8px;">
+            <strong style="color: #86efac;">« Je n'ai jamais utilisé d'IA pour préparer mes cours »</strong>
+            <p style="margin: 0.5rem 0 0; color: #d1d5db; font-size: 0.9em;">
+              Claude 101, puis AI Fluency for educators. Ensuite, le parcours Claude Desktop de ce site.
+            </p>
+          </div>
+          <div style="padding: 0.85rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 8px;">
+            <strong style="color: #93c5fd;">« Je veux passer à Claude Code »</strong>
+            <p style="margin: 0.5rem 0 0; color: #d1d5db; font-size: 0.9em;">
+              Claude Code 101 en entier. Puis le parcours Agents CLI de ce site pour installer le setup partagé.
+            </p>
+          </div>
+          <div style="padding: 0.85rem; background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.2); border-radius: 8px;">
+            <strong style="color: #d8b4fe;">« Je veux créer mes propres outils »</strong>
+            <p style="margin: 0.5rem 0 0; color: #d1d5db; font-size: 0.9em;">
+              Introduction to agent skills et Introduction to subagents. Puis le parcours Avancé de ce site.
+            </p>
+          </div>
+          <div style="padding: 0.85rem; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 8px;">
+            <strong style="color: #fbbf24;">« J'anime des formations »</strong>
+            <p style="margin: 0.5rem 0 0; color: #d1d5db; font-size: 0.9em;">
+              Le parcours AI Fluency for pK-12 Educators, puis Teaching AI Fluency.
+            </p>
+          </div>
+        </div>
+        <p>
+          <strong>Ce que ce site ajoute :</strong> les cours officiels expliquent l'outil ;
+          ici, vous trouvez des exemples de classe (un cours sur les fractions, une évaluation
+          avec barème), la mise en page LaTeX ou Typst des documents élèves, et un dossier
+          <code>.claude/</code> prêt à copier.
+        </p>
+      `,
+      pratique: `
+        <h3>Votre plan de formation en 3 étapes</h3>
+        <div class="exercise-card">
+          <div class="exercise-header">
+            <span class="exercise-badge">Étape 1 — cette semaine</span>
+          </div>
+          <div class="exercise-body">
+            <p>Suivez <strong>Claude Code 101</strong> (environ 1 h 30). Gardez Claude Code ouvert à côté et refaites chaque manipulation dans un dossier d'essai.</p>
+          </div>
+          <details class="exercise-solution">
+            <summary>À quoi faire attention</summary>
+            <div class="solution-content">
+              <p>Notez les commandes que vous ne connaissiez pas et comparez avec la capsule « Commandes essentielles » de ce site. Si une manipulation diffère, c'est le cours officiel qui a raison : il est mis à jour plus souvent.</p>
+            </div>
+          </details>
+        </div>
+        <div class="exercise-card">
+          <div class="exercise-header">
+            <span class="exercise-badge">Étape 2 — le mois suivant</span>
+          </div>
+          <div class="exercise-body">
+            <p>Suivez <strong>AI Fluency for educators</strong>, à votre rythme (une leçon par semaine suffit). Pour chaque leçon, essayez l'idée sur un vrai document de votre progression.</p>
+          </div>
+          <details class="exercise-solution">
+            <summary>À quoi faire attention</summary>
+            <div class="solution-content">
+              <p>Le cadre « 4D » vous aide à décider quoi confier à l'IA, comment le lui demander, et comment vérifier le résultat. C'est le complément idéal du parcours « Communiquer avec un système d'agents IA » de ce site.</p>
+            </div>
+          </details>
+        </div>
+        <div class="exercise-card">
+          <div class="exercise-header">
+            <span class="exercise-badge">Étape 3 — quand vous êtes à l'aise</span>
+          </div>
+          <div class="exercise-body">
+            <p>Suivez <strong>Introduction to agent skills</strong>, puis créez votre premier skill avec la capsule « Créer un skill » du parcours Avancé.</p>
+          </div>
+          <details class="exercise-solution">
+            <summary>À quoi faire attention</summary>
+            <div class="solution-content">
+              <p>Choisissez une tâche que vous refaites chaque semaine (une fiche d'exercices type, un barème, un compte rendu). C'est le meilleur candidat pour un premier skill.</p>
+            </div>
+          </details>
+        </div>
+      `,
+    },
+    duration: '10 min',
+    tags: ['formation', 'anthropic', 'ressources'],
   },
 
   // --- Avance ---
@@ -1636,7 +1951,8 @@ CLAUDE.md                      → Instructions permanentes du projet</code></pr
         <h4>Les hooks</h4>
         <p>
           Les <strong>hooks</strong> sont des scripts automatiques déclenchés par des événements :
-          <code>PreToolUse</code> (avant une action) et <code>PostToolUse</code> (après une action).
+          par exemple <code>PreToolUse</code> (avant une action), <code>PostToolUse</code> (après une action),
+          <code>SessionStart</code> (au démarrage) ou <code>Stop</code> (quand Claude a fini de répondre).
           Configurés dans <code>settings.json</code>, ils permettent d'automatiser des tâches
           récurrentes sans intervention manuelle.
         </p>
@@ -1648,20 +1964,14 @@ CLAUDE.md                      → Instructions permanentes du projet</code></pr
         <div class="doc-links">
           <span class="doc-links-label">Documentation officielle</span>
           <div class="doc-links-buttons">
-            <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Sub-agents Claude
+            <a href="https://code.claude.com/docs/fr/sub-agents" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Sous-agents (doc en français)
             </a>
-            <a href="https://code.claude.com/docs/en/slash-commands" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Skills & Commands
+            <a href="https://code.claude.com/docs/fr/skills" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Skills (doc en français)
             </a>
-            <a href="https://ai.google.dev/gemini-api/docs/function-calling" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-google">
-              Gemini Function Calling
-            </a>
-            <a href="https://geminicli.com/docs/extensions/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-google">
-              Gemini CLI Extensions
-            </a>
-            <a href="https://developers.openai.com/codex/cli/features/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-openai">
-              Codex CLI Features
+            <a href="https://code.claude.com/docs/fr/hooks-guide" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Hooks (doc en français)
             </a>
           </div>
         </div>
@@ -1748,8 +2058,9 @@ CLAUDE.md                      → Instructions permanentes du projet</code></pr
             <div class="solution-content">
               <pre><code>Agent principal
   ├── /programmes-officiels → récupérer les attendus du B.O.
-  ├── /meta-prompt → générer un prompt de qualité pour les questions
-  ├── /educational-app-builder → créer l'interface web
+  ├── /qcm-creator → rédiger les questions et des distracteurs
+  │                  construits sur les erreurs réelles des élèves
+  ├── /html-katex-compiler → créer la page web (formules KaTeX)
   │     ├── Générer le HTML/CSS/JS
   │     ├── Intégrer les questions
   │     └── Ajouter la correction interactive
@@ -1763,206 +2074,96 @@ CLAUDE.md                      → Instructions permanentes du projet</code></pr
     duration: '15 min',
     tags: ['architecture', 'agents'],
   },
-  'av-meta-prompt': {
-    id: 'av-meta-prompt',
-    title: 'Meta-prompt',
-    description: 'Créer des prompts optimisés avec le meta-prompt',
+  'av-creer-skill': {
+    id: 'av-creer-skill',
+    title: 'Créer un skill',
+    description: 'Fabriquer vos propres skills avec le skill-creator officiel d\'Anthropic, ou à partir d\'une ressource avec resource-to-skill',
     parcours: 'avance',
     order: 1,
-    sections: {
-      info: `
-        <h3>Le meta-prompt : un prompt qui génère des prompts</h3>
-        <p>
-          Un <strong>meta-prompt</strong> est un prompt spécialisé qui permet à Claude de
-          <strong>produire lui-même des prompts de qualité</strong> à partir d'une simple demande.
-          Au lieu d'écrire vos prompts à la main, vous décrivez ce que vous voulez et le
-          meta-prompt génère un prompt optimisé, structuré et testé.
-        </p>
-        <p>
-          Le skill <code>/meta-prompt</code> embarque <strong>23 techniques de prompt engineering</strong>
-          issues des meilleures pratiques 2025-2026 (Anthropic, OpenAI, Google, Meta). Il propose
-          trois workflows :
-        </p>
-        <ul>
-          <li>
-            <strong>Création</strong> (<code>/meta-prompt create</code>) : pipeline complet en 6 phases —
-            clarification de la demande → sélection des techniques adaptées → spécification →
-            génération du prompt → diagnostic qualité → transformation en skill réutilisable
-          </li>
-          <li>
-            <strong>Refactoring</strong> (<code>/meta-prompt refactor</code>) : amélioration d'un
-            prompt existant en 4 phases — analyse → diagnostic → application de techniques → diff
-          </li>
-          <li>
-            <strong>Diagnostic</strong> (<code>/meta-prompt diagnose</code>) : évaluation et scoring
-            d'un prompt sur 8 axes de qualité (clarté, spécificité, structure, etc.)
-          </li>
-        </ul>
-        <h4>Lien avec le skill-creator</h4>
-        <p>
-          Le skill <code>/skill-creator</code> (fourni par Anthropic) est également une forme de
-          meta-prompt : il transforme une description en skill structuré. Le pipeline typique est :
-        </p>
-        <ol>
-          <li>Idée vague → <code>/meta-prompt create</code> → prompt optimisé</li>
-          <li>Prompt optimisé → <code>/skill-creator</code> → skill réutilisable dans <code>.claude/skills/</code></li>
-        </ol>
-      `,
-      exemple: `
-        <h3>Pipeline complet : de l'idée au skill</h3>
-        <h4>Étape 1 : l'idée de départ</h4>
-        <pre><code>/meta-prompt create
-Je veux un truc qui génère des QCM</code></pre>
-        <h4>Étape 2 : le meta-prompt pose des questions</h4>
-        <p>Claude vous interroge pour préciser la demande :</p>
-        <ul>
-          <li>Pour quel niveau ? (6ème, 3ème, seconde...)</li>
-          <li>Combien de questions par QCM ?</li>
-          <li>Quel type de distracteurs ? (erreurs courantes, pièges calculatoires...)</li>
-          <li>Format de sortie ? (LaTeX, HTML, texte brut)</li>
-        </ul>
-        <h4>Étape 3 : sélection automatique des techniques</h4>
-        <p>Le meta-prompt choisit les techniques adaptées au contexte :</p>
-        <pre><code>Contexte "Éducation/Exercices" →
-  ✓ Rôle expert (professeur de mathématiques)
-  ✓ Few-shot (exemples de QCM bien construits)
-  ✓ Structured Output (format JSON/LaTeX structuré)
-  ✓ Constitutional (vérification pédagogique)</code></pre>
-        <h4>Étape 4 : prompt généré et testé</h4>
-        <p>Le meta-prompt produit un prompt structuré avec rôle, contexte, instructions, contraintes et format de sortie.</p>
-        <h4>Étape 5 : transformation en skill</h4>
-        <pre><code>/skill-creator
-Transforme ce prompt en skill réutilisable</code></pre>
-        <p>
-          Résultat : un dossier <code>.claude/skills/qcm-generator/SKILL.md</code> que vous pouvez
-          invoquer avec <code>/qcm-generator</code> à chaque fois que vous avez besoin d'un QCM.
-        </p>
-      `,
-      pratique: `
-        <div class="exercise-card">
-          <div class="exercise-header">
-            <span class="exercise-badge">Exercice : le pipeline complet</span>
-          </div>
-          <div class="exercise-body">
-            <ol>
-              <li><strong>Choisissez</strong> une tâche répétitive de votre quotidien : générer des exercices, créer des fiches de révision, rédiger des commentaires de bulletin, préparer des activités de groupe...</li>
-              <li><strong>Lancez</strong> <code>/meta-prompt create</code> et décrivez cette tâche en une phrase. Observez les questions que Claude pose pour préciser votre besoin.</li>
-              <li><strong>Examinez</strong> le prompt généré : est-il plus précis que ce que vous auriez écrit à la main ? Quelles techniques a-t-il choisies ?</li>
-            </ol>
-          </div>
-          <details class="exercise-solution">
-            <summary>Voir la solution</summary>
-            <div class="solution-content">
-              <p>Voici un exemple avec la tâche "générer des fiches de révision" :</p>
-              <ol>
-                <li><strong>Commande</strong> : <code>/meta-prompt create je veux générer des fiches de révision pour mes élèves</code></li>
-                <li><strong>Questions posées par Claude</strong> : niveau, matière, format (A4, A5, recto-verso ?), contenu souhaité (définitions, exemples, exercices types ?), style visuel</li>
-                <li><strong>Techniques sélectionnées</strong> : Rôle expert + Few-shot (exemple de fiche modèle) + Structured Output (format LaTeX) + Chain-of-Thought (progression logique du contenu)</li>
-              </ol>
-              <p>Le prompt généré est généralement <strong>3 à 5 fois plus détaillé</strong> que ce qu'on écrirait spontanément. Il inclut des contraintes auxquelles on ne pense pas (vérification des prérequis, variété des exercices, cohérence avec le programme...).</p>
-            </div>
-          </details>
-        </div>
-        <div class="exercise-card">
-          <div class="exercise-header">
-            <span class="exercise-badge">Défi enchaînement</span>
-          </div>
-          <div class="exercise-body">
-            <p>Prenez le prompt généré par l'exercice précédent et transformez-le en skill avec <code>/skill-creator</code>.</p>
-            <p>Testez le skill obtenu sur une demande réelle. Est-il meilleur qu'un prompt écrit à la main ?</p>
-          </div>
-          <details class="exercise-solution">
-            <summary>Voir la solution</summary>
-            <div class="solution-content">
-              <p>La commande : <code>/skill-creator transforme ce prompt en skill réutilisable</code></p>
-              <p>Le skill-creator va :</p>
-              <ol>
-                <li>Extraire les instructions du prompt généré</li>
-                <li>Structurer le fichier avec un frontmatter YAML (nom, description, triggers)</li>
-                <li>Organiser les instructions en sections claires (Rôle, Étapes, Règles, Format)</li>
-                <li>Créer le dossier <code>.claude/skills/votre-skill/</code> avec <code>SKILL.md</code> + fichiers de support</li>
-              </ol>
-              <p>Testez avec : <code>/votre-skill crée une fiche de révision sur les équations pour les 4ème</code>. Le résultat devrait être nettement plus structuré et complet qu'avec un prompt improvisé, car le skill intègre toutes les techniques de prompt engineering sélectionnées.</p>
-            </div>
-          </details>
-        </div>
-      `,
-    },
-    duration: '15 min',
-    tags: ['meta-prompt', 'prompt-engineering'],
-  },
-  'av-skill-creator': {
-    id: 'av-skill-creator',
-    title: 'Créateur de skills',
-    description: 'Créer vos propres skills pour Claude',
-    parcours: 'avance',
-    order: 2,
     sections: {
       info: `
         <h3>Qu'est-ce qu'un skill ?</h3>
         <p>
           Un <strong>skill</strong> est un <strong>dossier</strong> placé dans <code>.claude/skills/</code>
+          (pour un projet) ou dans <code>~/.claude/skills/</code> (pour tous vos projets)
           qui enseigne à Claude un savoir-faire spécialisé. Il s'invoque en tapant
-          <code>/nom-du-skill</code> suivi de votre demande, ou Claude peut le charger automatiquement
-          quand c'est pertinent.
+          <code>/nom-du-skill</code> suivi de votre demande, et Claude le charge aussi tout seul
+          quand votre demande correspond à sa description.
         </p>
         <h4>Structure d'un skill</h4>
         <pre style="margin: 0.75rem 0; padding: 0.75rem; background: rgba(0,0,0,0.2); border-radius: 6px; font-size: 0.85em;"><code>mon-skill/
 ├── SKILL.md           # Point d'entrée (obligatoire)
 ├── references/        # Documentation de référence
-│   └── api-docs.md
+│   └── programme.md
 ├── scripts/           # Scripts exécutables par Claude
-│   └── validate.sh
+│   └── compiler.py
 ├── examples/          # Exemples de sortie attendue
-│   └── sample.md
-└── templates/         # Templates à remplir
-    └── template.md</code></pre>
+│   └── fiche-type.tex
+└── templates/         # Modèles à remplir
+    └── modele.tex</code></pre>
         <p>Le fichier <code>SKILL.md</code> est composé de :</p>
         <ul>
           <li>
-            <strong>Un frontmatter YAML</strong> (entre <code>---</code>) : métadonnées du skill
-            (nom, description, outils autorisés, mode d'invocation)
+            <strong>Un en-tête YAML</strong> (entre deux lignes <code>---</code>) : le <code>name</code> du skill
+            et surtout sa <code>description</code>, qui dit <em>ce qu'il fait et quand l'utiliser</em>.
+            C'est elle que Claude lit pour décider de charger le skill.
           </li>
           <li>
-            <strong>Un corps Markdown</strong> : les instructions spécialisées que Claude
-            suit lorsque le skill est invoqué
+            <strong>Un corps Markdown</strong> : les instructions que Claude suit lorsque le skill est chargé
           </li>
         </ul>
         <p>
           Les fichiers de support permettent de garder le <code>SKILL.md</code> concis (moins de 500 lignes recommandées)
-          tout en donnant accès à Claude à de la documentation détaillée, des scripts, et des exemples.
-          Claude ne les charge que quand il en a besoin.
+          tout en donnant à Claude accès à de la documentation détaillée, des scripts et des exemples.
+          Claude ne les ouvre que quand il en a besoin.
         </p>
-        <h4>Le skill-creator</h4>
-        <p>
-          La commande <code>/skill-creator</code> est un skill qui aide à en créer d'autres.
-          Décrivez le savoir-faire que vous souhaitez encapsuler, et il génère un dossier
-          skill complet dans <code>.claude/skills/</code>.
+
+        <h4>Deux façons de créer un skill</h4>
+        <ul>
+          <li>
+            <strong>Le skill-creator officiel d'Anthropic</strong> : vous décrivez le savoir-faire,
+            il vous pose des questions, écrit le dossier complet, puis peut le tester et l'améliorer.
+            Il s'installe en une commande depuis la marketplace officielle :
+            <pre><code>/plugin install skill-creator@claude-plugins-official</code></pre>
+          </li>
+          <li>
+            <strong>Le skill <code>resource-to-skill</code></strong> (fourni avec le setup de ce site) :
+            vous lui donnez une <em>ressource</em> (un PDF, une vidéo, une page web, un dossier de code)
+            et il en tire un skill opérationnel, avec ses références et ses scripts, puis un rapport
+            de relecture. Pratique pour « capitaliser » une méthode trouvée en ligne.
+          </li>
+        </ul>
+        <p style="padding: 0.75rem 1rem; background: rgba(139,92,246,0.08); border-radius: 8px; border-left: 3px solid rgba(139,92,246,0.4); font-size: 0.95em;">
+          <strong>Pour aller plus loin :</strong> le cours officiel gratuit <em>Introduction to agent skills</em>
+          (en anglais) explique en détail comment Claude choisit et charge un skill.
         </p>
         <div class="doc-links">
-          <span class="doc-links-label">Documentation officielle</span>
+          <span class="doc-links-label">Formation et documentation officielles</span>
           <div class="doc-links-buttons">
-            <a href="https://code.claude.com/docs/en/slash-commands" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Skills & Slash Commands
+            <a href="https://anthropic.skilljar.com/introduction-to-agent-skills" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Cours officiel : Introduction to agent skills (gratuit, en anglais)
             </a>
-            <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Custom Agents
+            <a href="https://code.claude.com/docs/fr/skills" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Skills (doc en français)
             </a>
-            <a href="https://developers.openai.com/codex/cli/features/" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-openai">
-              Codex CLI Features
+            <a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Le plugin skill-creator
+            </a>
+            <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Skills d'exemple d'Anthropic
             </a>
           </div>
         </div>
       `,
       exemple: `
-        <h3>Anatomie d'un skill</h3>
+        <h3>Anatomie d'un SKILL.md</h3>
         <p>Voici un exemple complet de skill pour générer des exercices de mathématiques :</p>
         <pre><code>---
 name: exercices-maths
-description: Génère des exercices de mathématiques progressifs
-triggers:
-  - exercices-maths
-  - ex-maths
+description: Génère une série d'exercices de mathématiques progressifs
+  avec corrigés, du collège au lycée. Utiliser dès que l'utilisateur
+  demande des exercices, une fiche d'entraînement ou des applications
+  directes sur une notion, même sans dire « exercices ».
 ---
 
 # Skill : exercices-maths
@@ -1971,6 +2172,10 @@ triggers:
 Créer une série d'exercices progressifs sur une notion donnée,
 adaptés au niveau précisé, avec corrigés détaillés.
 
+## Prérequis (étape 0)
+Avant de générer les exercices, invoquer le skill /programmes-officiels
+pour récupérer les attendus officiels du niveau et du thème donnés.
+
 ## Structure de sortie
 1. Titre et niveau
 2. Exercice 1 — facile (avec exemple résolu)
@@ -1978,25 +2183,29 @@ adaptés au niveau précisé, avec corrigés détaillés.
 4. Exercice 3 — difficile (avec coup de pouce)
 5. Corrigés complets
 
-## Prérequis (étape 0)
-Avant de générer les exercices, invoquer le skill /programmes-officiels
-pour récupérer les attendus officiels du niveau et du thème donnés.
-Les exercices doivent impérativement porter sur les compétences
-et capacités du programme en vigueur.
-
 ## Règles
 - Utiliser le vouvoiement
 - Varier les types de questions (calcul, problème, QCM)
-- Inclure un encadré "Je retiens" avec la définition clé
-- Pour la création du contenu de chaque exercice, utiliser ultrathink
-  pour une réflexion approfondie sur la pertinence pédagogique,
-  la progressivité et la variété des questions
+- Inclure un encadré « Je retiens » avec la définition clé
+- Vérifier chaque résultat numérique avant de l'écrire
 
 ## Format de sortie
-LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
+LaTeX si le niveau est collège ou lycée, Markdown sinon.
+Voir examples/fiche-type.tex pour la mise en page attendue.</code></pre>
         <p>
           Ce skill s'invoque avec : <code>/exercices-maths crée des exercices sur Pythagore pour la 4ème</code>.
-          Claude suit alors exactement les instructions du fichier.
+          Grâce à sa description, Claude le chargera aussi tout seul si vous écrivez simplement
+          <em>« il me faut une fiche d'entraînement sur Pythagore »</em>.
+        </p>
+
+        <h4>Partir d'une ressource avec resource-to-skill</h4>
+        <pre><code>/resource-to-skill voici une vidéo sur la méthode des « problèmes ouverts »
+https://www.youtube.com/watch?v=...
+Fais-en un skill qui m'aide à préparer une séance de ce type.</code></pre>
+        <p>
+          Le skill récupère la matière (transcription, texte, captures), en extrait le savoir-faire
+          et écrit un skill qui <em>fait faire</em> la méthode, au lieu d'un simple résumé.
+          Il termine par une page de relecture : vous vérifiez, vous corrigez, c'est prêt.
         </p>
       `,
       pratique: `
@@ -2005,19 +2214,21 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
             <span class="exercise-badge">Exercice 1 : créer votre premier skill</span>
           </div>
           <div class="exercise-body">
-            <p>Lancez <code>/skill-creator</code> et décrivez un skill pour votre tâche la plus répétitive (fiches de révision, exercices d'un certain type, bilans de compétences...).</p>
+            <p>Installez le skill-creator (une seule fois), puis décrivez un skill pour votre tâche la plus répétitive (fiches de révision, exercices d'un certain type, bilans de compétences...).</p>
+            <pre><code>/plugin install skill-creator@claude-plugins-official</code></pre>
           </div>
           <details class="exercise-solution">
             <summary>Voir la solution</summary>
             <div class="solution-content">
-              <p>Exemple de commande : <code>/skill-creator crée un skill qui génère des fiches de révision pour le collège avec définitions, propriétés et exercices types</code></p>
+              <p>Exemple de demande : <code>/skill-creator:skill-creator crée un skill qui génère des fiches de révision pour le collège avec définitions, propriétés et exercices types</code> (ou simplement : <em>« Utilise skill-creator pour créer un skill qui… »</em>).</p>
               <p>Le skill-creator va :</p>
               <ol>
                 <li>Vous poser des questions pour préciser (format, niveau, contenu...)</li>
                 <li>Créer un dossier <code>.claude/skills/fiche-revision/</code> avec <code>SKILL.md</code></li>
-                <li>Y inclure un frontmatter YAML et des instructions structurées</li>
+                <li>Y écrire un en-tête YAML avec une description précise, et des instructions structurées</li>
+                <li>Vous proposer de le tester sur quelques demandes et de l'améliorer</li>
               </ol>
-              <p>Vérifiez le fichier généré : il doit contenir au minimum un rôle, des étapes, des règles et un format de sortie.</p>
+              <p>Vérifiez le fichier généré : il doit contenir au minimum une description claire, un rôle, des étapes, des règles et un format de sortie.</p>
             </div>
           </details>
         </div>
@@ -2037,25 +2248,41 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
 - Inclure un schéma descriptif pour chaque propriété géométrique
 - Limiter à une page recto-verso maximum
 - Utiliser des couleurs pour distinguer définitions (bleu) et propriétés (rouge)</code></pre>
-              <p>Retestez le skill modifié. L'affinage itératif est la clé : un skill s'améliore à chaque utilisation.</p>
+              <p>Retestez le skill modifié. L'affinage itératif est la clé : un skill s'améliore à chaque utilisation. Vous pouvez aussi demander au skill-creator : <em>« améliore le skill fiche-revision : il oublie souvent les schémas »</em>.</p>
             </div>
           </details>
         </div>
-        <p>
-          L'objectif est de pratiquer <code>/skill-creator</code>, pas de créer un fichier
-          Markdown à la main. Le skill-creator fait le gros du travail pour vous.
-        </p>
+        <div class="exercise-card">
+          <div class="exercise-header">
+            <span class="exercise-badge">Exercice 3 : capitaliser une ressource</span>
+          </div>
+          <div class="exercise-body">
+            <p>Choisissez une ressource dont vous aimeriez que Claude « retienne la méthode » : un PDF de formation, une vidéo, un article de didactique. Donnez-la à <code>/resource-to-skill</code> et relisez le rapport produit.</p>
+          </div>
+          <details class="exercise-solution">
+            <summary>Voir la solution</summary>
+            <div class="solution-content">
+              <p>Dans le rapport de relecture, vérifiez trois points :</p>
+              <ul>
+                <li><strong>La description</strong> dit-elle clairement quand utiliser le skill ?</li>
+                <li><strong>Les instructions</strong> font-elles faire la méthode (étapes, critères), ou se contentent-elles de la résumer ?</li>
+                <li><strong>Les références</strong> contiennent-elles ce qui sera utile plus tard (exemples, grilles, citations exactes) ?</li>
+              </ul>
+              <p>Corrigez ce qui ne va pas directement dans le <code>SKILL.md</code>, puis testez le skill sur une vraie demande.</p>
+            </div>
+          </details>
+        </div>
       `,
     },
     duration: '20 min',
-    tags: ['skills', 'creation'],
+    tags: ['skills', 'creation', 'skill-creator'],
   },
   'av-hooks': {
     id: 'av-hooks',
     title: 'Hooks et automatisations',
     description: 'Automatiser des tâches avec les hooks Claude',
     parcours: 'avance',
-    order: 3,
+    order: 2,
     sections: {
       info: `
         <h3>Les hooks : des scripts déclenchés automatiquement</h3>
@@ -2064,7 +2291,7 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
           lorsque Claude effectue certaines actions. Ils éliminent les tâches manuelles
           répétitives en les déclenchant sans intervention de votre part.
         </p>
-        <p>Il existe deux types de hooks :</p>
+        <p>Chaque hook est rattaché à un <strong>événement</strong>. Il en existe une trentaine ; voici les plus utiles :</p>
         <ul>
           <li>
             <strong>PreToolUse</strong> : s'exécute <em>avant</em> qu'un outil soit utilisé.
@@ -2074,7 +2301,30 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
             <strong>PostToolUse</strong> : s'exécute <em>après</em> qu'un outil a été utilisé.
             Utile pour transformer le résultat, déclencher une compilation, corriger un fichier.
           </li>
+          <li>
+            <strong>UserPromptSubmit</strong> : s'exécute quand vous envoyez un message, avant que Claude le lise.
+            Utile pour ajouter automatiquement un rappel ou un contexte.
+          </li>
+          <li>
+            <strong>SessionStart</strong> / <strong>SessionEnd</strong> : au début et à la fin d'une session.
+            Utile pour charger un état, faire un rappel, nettoyer.
+          </li>
+          <li>
+            <strong>Stop</strong> : quand Claude a fini de répondre (et <strong>SubagentStop</strong> pour un sous-agent).
+            Utile pour lancer une vérification finale.
+          </li>
+          <li>
+            <strong>Notification</strong> : quand Claude Code veut attirer votre attention (permission à accorder, attente).
+          </li>
+          <li>
+            <strong>PreCompact</strong> : juste avant que la conversation soit compactée.
+          </li>
         </ul>
+        <p>
+          La plupart des hooks lancent une <strong>commande</strong> (type <code>command</code>). Il existe aussi
+          des hooks qui interrogent un modèle (<code>prompt</code>), un sous-agent (<code>agent</code>),
+          une adresse web (<code>http</code>) ou un outil MCP (<code>mcp_tool</code>).
+        </p>
         <p>Les hooks se configurent dans le fichier <code>settings.json</code> de votre dossier <code>.claude/</code>.</p>
         <h4>Exemple concret</h4>
         <p>
@@ -2086,11 +2336,11 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
         <div class="doc-links">
           <span class="doc-links-label">Documentation officielle</span>
           <div class="doc-links-buttons">
-            <a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Hooks Reference
+            <a href="https://code.claude.com/docs/fr/hooks-guide" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Guide des hooks (doc en français)
             </a>
-            <a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
-              Settings (hooks config)
+            <a href="https://code.claude.com/docs/fr/hooks" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Référence des hooks (doc en français)
             </a>
           </div>
         </div>
@@ -2106,7 +2356,7 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
         "hooks": [
           {
             "type": "command",
-            "command": "python scripts/fix-encoding.py $CLAUDE_FILE_PATHS"
+            "command": "python .claude/scripts/fix-encoding.py"
           }
         ]
       }
@@ -2116,9 +2366,10 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
         <p>Chaque hook est défini par trois éléments :</p>
         <ul>
           <li><strong>matcher</strong> : l'outil ciblé (ex. <code>Write</code>, <code>Edit</code>, ou une regex comme <code>Write|Edit</code>)</li>
-          <li><strong>type</strong> : toujours <code>"command"</code> pour un script shell</li>
-          <li><strong>command</strong> : la commande à exécuter. <code>$CLAUDE_FILE_PATHS</code> contient le chemin du fichier modifié.</li>
+          <li><strong>type</strong> : <code>"command"</code> pour lancer un script (le cas le plus courant)</li>
+          <li><strong>command</strong> : la commande à exécuter. Le script reçoit sur son entrée standard un petit texte JSON qui décrit l'action, dont le chemin du fichier modifié (<code>tool_input.file_path</code>).</li>
         </ul>
+        <p>Pour vérifier vos hooks, tapez <code>/hooks</code> dans une session : la liste des hooks actifs s'affiche.</p>
         <p>
           Dans cet exemple, chaque fois que Claude écrit ou modifie un fichier, le script
           <code>fix-encoding.py</code> corrige automatiquement l'encodage UTF-8. Les accents
@@ -2139,7 +2390,7 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
             </ol>
             <pre><code>{
   "hooks": {
-    "PostToolUse": [
+    "PreToolUse": [
       {
         "matcher": "AskUserQuestion",
         "hooks": [
@@ -2169,7 +2420,8 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
               <p>Si cela ne fonctionne pas, vérifiez :</p>
               <ul>
                 <li><strong>JSON valide</strong> : pas de virgule en trop, accolades bien fermées. Utilisez un validateur JSON en ligne en cas de doute.</li>
-                <li><strong>Hooks existants</strong> : si vous avez déjà des hooks dans votre <code>settings.json</code>, ajoutez cette entrée dans le tableau existant <code>PostToolUse</code> plutôt que d'en créer un nouveau.</li>
+                <li><strong>Hooks existants</strong> : si vous avez déjà des hooks dans votre <code>settings.json</code>, ajoutez cette entrée dans le tableau existant <code>PreToolUse</code> plutôt que d'en créer un nouveau.</li>
+                <li><strong>Pourquoi PreToolUse ?</strong> Le son doit retentir <em>au moment</em> où Claude pose sa question, donc avant l'outil <code>AskUserQuestion</code>. Pour être aussi prévenu quand Claude attend une permission, ajoutez le même son sur l'événement <code>Notification</code>.</li>
                 <li><strong>Commande correcte</strong> : testez la commande PowerShell seule dans un terminal pour vérifier qu'elle joue bien un son.</li>
               </ul>
               <p>Ce hook est un bon point de départ pour comprendre le mécanisme. Vous pouvez ensuite créer des hooks plus utiles : compiler automatiquement un fichier LaTeX après modification, lancer des tests, etc.</p>
@@ -2186,7 +2438,7 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
     title: 'Partager sa configuration',
     description: 'Publier et découvrir des skills via les marketplaces',
     parcours: 'avance',
-    order: 4,
+    order: 3,
     sections: {
       info: `
         <h3>Les écosystèmes de partage</h3>
@@ -2195,27 +2447,26 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
           et registres pour partager et découvrir des skills, plugins et extensions.
           Ce n'est plus limité au copier-coller de fichiers.
         </p>
-        <h4>Claude Code — Skill Hub</h4>
+        <h4>Claude Code — plugins et marketplaces</h4>
         <ul>
-          <li><strong>Marketplace officielle</strong> : <code>claude-plugins-official</code>, accessible via <code>/plugin install nom</code></li>
-          <li><strong>Standard ouvert</strong> : format Agent Skills (SKILL.md), adopté aussi par OpenAI</li>
-          <li><strong>Publication</strong> : soumettez vos skills via <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer">la documentation officielle</a></li>
-          <li><strong>Documentation</strong> : <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer">docs.anthropic.com/en/docs/claude-code/overview</a></li>
+          <li><strong>Plugin</strong> : un paquet qui regroupe des skills, des agents, des hooks et des serveurs MCP, installable d'une seule commande</li>
+          <li><strong>Marketplace officielle</strong> : <code>claude-plugins-official</code>, déjà connue de Claude Code. Tapez <code>/plugin</code> pour ouvrir l'onglet <strong>Découvrir</strong> et chercher en tapant, ou installez directement avec <code>/plugin install nom@claude-plugins-official</code></li>
+          <li><strong>Autres marketplaces</strong> : n'importe quel dépôt GitHub peut en être une. On l'ajoute une fois avec <code>/plugin marketplace add propriétaire/dépôt</code> (exemple : <code>anthropics/skills</code>, les skills d'exemple d'Anthropic)</li>
+          <li><strong>Catalogue en ligne</strong> : <a href="https://claude.com/marketplace" target="_blank" rel="noopener noreferrer">claude.com/marketplace</a></li>
+          <li><strong>Standard ouvert</strong> : format Agent Skills (SKILL.md), lu aussi par d'autres outils comme Codex</li>
+          <li><strong>Documentation</strong> : <a href="https://code.claude.com/docs/fr/discover-plugins" target="_blank" rel="noopener noreferrer">installer des plugins (doc en français)</a> · <a href="https://code.claude.com/docs/fr/plugins" target="_blank" rel="noopener noreferrer">créer et publier un plugin</a></li>
         </ul>
-        <h4>Gemini CLI — Extensions Gallery</h4>
-        <ul>
-          <li><strong>Galerie officielle</strong> : <a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener noreferrer">github.com/google-gemini/gemini-cli</a>, classée par popularité</li>
-          <li><strong>Installation</strong> : <code>gemini extensions install &lt;URL GitHub&gt;</code></li>
-          <li><strong>Partenaires</strong> : Figma, Postman, Shopify, Stripe, et plus</li>
-          <li><strong>Documentation</strong> : <a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener noreferrer">github.com/google-gemini/gemini-cli</a></li>
-        </ul>
-        <h4>OpenAI Codex CLI — SkillsMP</h4>
-        <ul>
-          <li><strong>Registre communautaire</strong> : SkillsMP (71 000+ skills compatibles)</li>
-          <li><strong>Installation</strong> : <code>npx skills add</code></li>
-          <li><strong>Configuration</strong> : fichiers TOML (<code>~/.codex/config.toml</code>)</li>
-          <li><strong>Documentation</strong> : <a href="https://github.com/openai/codex" target="_blank" rel="noopener noreferrer">github.com/openai/codex</a></li>
-        </ul>
+        <h4>Et chez les autres ?</h4>
+        <p>
+          <a href="https://learn.chatgpt.com/docs" target="_blank" rel="noopener noreferrer">Codex</a> (OpenAI) et
+          <a href="https://antigravity.google/" target="_blank" rel="noopener noreferrer">Antigravity</a> (Google)
+          ont aussi leurs skills, plugins ou extensions. Un skill au format SKILL.md se réutilise
+          souvent tel quel ou presque : consultez leur documentation pour savoir où le ranger.
+        </p>
+        <p style="font-size: 0.9em; color: #94a3b8;">
+          Des registres communautaires de skills existent aussi. Leur contenu n'est pas vérifié :
+          lisez un skill (et ses scripts) avant de l'installer, comme vous le feriez pour un logiciel.
+        </p>
         <h4>Le partage classique reste valide</h4>
         <p>
           Vous pouvez toujours partager via <strong>Git</strong> (committez <code>.claude/</code>),
@@ -2223,28 +2474,25 @@ LaTeX si le niveau est collège ou lycée, Markdown sinon.</code></pre>
         </p>
       `,
       exemple: `
-        <h3>Comparaison des écosystèmes</h3>
-        <pre><code>Plateforme     | Marketplace          | Installation CLI                  | Standard
----------------+----------------------+-----------------------------------+-----------
-Claude Code    | Skill Hub            | /plugin install nom               | SKILL.md
-Gemini CLI     | Extensions Gallery   | gemini extensions install URL     | Propriétaire
-Codex CLI      | SkillsMP             | npx skills add                    | SKILL.md</code></pre>
-        <h4>Installer un skill depuis un marketplace</h4>
+        <h3>Installer un plugin depuis une marketplace</h3>
         <p>Exemple avec Claude Code :</p>
-        <pre><code># Découvrir les plugins disponibles
-/plugin search latex
+        <pre><code># Parcourir les plugins disponibles (onglet Découvrir, recherche en tapant)
+/plugin
 
-# Installer un plugin
-/plugin install latex-helper</code></pre>
-        <p>Exemple avec Gemini CLI :</p>
-        <pre><code># Parcourir la galerie
-# → geminicli.com/extensions/browse/
+# Installer le skill-creator officiel d'Anthropic
+/plugin install skill-creator@claude-plugins-official
 
-# Installer une extension
-gemini extensions install https://github.com/exemple/extension</code></pre>
+# Ajouter la marketplace des skills d'exemple d'Anthropic, puis installer
+/plugin marketplace add anthropics/skills
+/plugin install document-skills@anthropic-agent-skills</code></pre>
+        <p>
+          Avant d'installer, la fiche du plugin indique ce qu'il ajoute (skills, agents, hooks…)
+          et vous demande une <strong>portée</strong> : pour vous dans tous vos projets, pour tout le
+          projet, ou pour vous dans ce projet seulement.
+        </p>
         <p>
           Le format <strong>SKILL.md</strong> est un standard ouvert : un skill écrit pour
-          Claude Code peut être réutilisé avec Codex CLI (et inversement).
+          Claude Code peut être réutilisé avec Codex (et inversement).
         </p>
       `,
       pratique: `
@@ -2253,19 +2501,19 @@ gemini extensions install https://github.com/exemple/extension</code></pre>
             <span class="exercise-badge">Exercice 1 : explorer un catalogue</span>
           </div>
           <div class="exercise-body">
-            <p>Rendez-vous sur le <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener noreferrer">Skill Hub Claude Code</a> ou la <a href="https://geminicli.com/extensions/" target="_blank" rel="noopener noreferrer">galerie Gemini CLI</a>.</p>
-            <p>Identifiez 2 skills/extensions qui vous seraient utiles. Installez-en un et testez-le.</p>
+            <p>Tapez <code>/plugin</code> dans Claude Code (onglet Découvrir), ou parcourez le <a href="https://claude.com/marketplace" target="_blank" rel="noopener noreferrer">catalogue en ligne</a> ou le dépôt <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener noreferrer">anthropics/skills</a>.</p>
+            <p>Identifiez 2 plugins ou skills qui vous seraient utiles. Installez-en un et testez-le.</p>
           </div>
           <details class="exercise-solution">
             <summary>Voir la solution</summary>
             <div class="solution-content">
-              <p>Sur le Skill Hub, cherchez par mots-clés liés à votre discipline. Pour un enseignant de maths, des skills intéressants pourraient être :</p>
+              <p>Dans l'onglet Découvrir, tapez des mots-clés liés à votre usage. Pour un enseignant de maths, des pistes intéressantes :</p>
               <ul>
-                <li><strong>latex-helper</strong> : assistance à la rédaction LaTeX avec templates éducatifs</li>
-                <li><strong>diagram-generator</strong> : génération de diagrammes et schémas</li>
-                <li><strong>pdf-reader</strong> : lecture et analyse de documents PDF</li>
+                <li><strong>document-skills</strong> (marketplace <code>anthropic-agent-skills</code>) : lire et produire des fichiers Word, Excel, PowerPoint et PDF</li>
+                <li><strong>skill-creator</strong> (marketplace officielle) : créer et améliorer vos propres skills</li>
+                <li><strong>math-proof</strong> ou <strong>math-olympiad</strong> (marketplace officielle) : à tester pour la rédaction de démonstrations</li>
               </ul>
-              <p>Pour installer : <code>/plugin install nom-du-skill</code> puis testez avec une demande concrète. Si le skill ne correspond pas exactement à vos besoins, utilisez-le comme base et créez votre propre version avec <code>/skill-creator</code>.</p>
+              <p>Pour installer : <code>/plugin install nom@marketplace</code> puis testez avec une demande concrète. Si le skill ne correspond pas exactement à vos besoins, utilisez-le comme base et créez votre propre version avec le skill-creator (capsule « Créer un skill »).</p>
             </div>
           </details>
         </div>
@@ -2283,7 +2531,7 @@ gemini extensions install https://github.com/exemple/extension</code></pre>
               <pre><code># Mes 3 skills indispensables
 
 1. /bfcours-latex — Génère des cours LaTeX complets avec mise en page pro
-2. /exercices-maths — Crée des séries d'exercices progressifs avec corrigés
+2. /qcm-creator — Rédige des QCM avec des distracteurs tirés des erreurs d'élèves
 3. /programmes-officiels — Vérifie la conformité avec le B.O. en vigueur
 
 ## Pour démarrer
@@ -2304,7 +2552,7 @@ Tapez / pour voir les skills disponibles.</code></pre>
     title: 'Orchestrer des sous-agents spécialisés',
     description: 'Répartir une tâche complexe entre plusieurs agents dédiés pilotés par un agent principal',
     parcours: 'avance',
-    order: 5,
+    order: 4,
     sections: {
       info: `
         <h3>Diviser pour mieux produire</h3>
@@ -2365,10 +2613,24 @@ Tapez / pour voir les skills disponibles.</code></pre>
         </ul>
 
         <p style="padding: 0.75rem 1rem; background: rgba(245,158,11,0.08); border-radius: 8px; border-left: 3px solid rgba(245,158,11,0.4); font-size: 0.95em;">
-          <strong>Rappel choix de modèle :</strong> l'agent principal est en Opus (planification).
-          Les sous-agents de production sont en Sonnet (rapport qualité/coût optimal).
-          Les tâches répétitives simples passent en Haiku avec des instructions très détaillées.
+          <strong>Rappel choix de modèle :</strong> l'agent principal est en Opus (aujourd'hui Opus 5.5, planification).
+          Les sous-agents de production sont en Sonnet (Sonnet 5.5, rapport qualité/coût optimal).
+          Les tâches répétitives simples passent en Haiku (Haiku 5.5) avec des instructions très détaillées.
+          Fable 5.1, plus puissant et plus cher, se réserve aux chantiers les plus difficiles.
+          Dans la définition d'un agent, il suffit d'écrire <code>model: sonnet</code> ou <code>model: haiku</code> :
+          Claude Code choisit la dernière version.
         </p>
+        <div class="doc-links">
+          <span class="doc-links-label">Pour aller plus loin</span>
+          <div class="doc-links-buttons">
+            <a href="https://code.claude.com/docs/fr/sub-agents" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Sous-agents (doc en français)
+            </a>
+            <a href="https://anthropic.skilljar.com/introduction-to-subagents" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Cours officiel : Introduction to subagents (en anglais)
+            </a>
+          </div>
+        </div>
       `,
       exemple: `
         <h3>Exemple : produire une séquence complète</h3>
@@ -2450,130 +2712,185 @@ Vérifie la cohérence entre tous les documents.</code></pre>
     tags: ['sous-agents', 'orchestration', 'parallèle'],
   },
 
-  'av-teamplay': {
-    id: 'av-teamplay',
-    title: 'TeamPlay : équipes d\'agents (expérimental)',
-    description: 'Organiser une équipe complète d\'agents spécialisés avec mémoire partagée — avancé et expérimental',
+  'av-chantier': {
+    id: 'av-chantier',
+    title: 'Mener un grand chantier',
+    description: 'Cadrer un projet trop gros pour une seule conversation : cahier des charges avec specs-creator, carte sur plusieurs sessions avec wayfinder, décisions avec grill-me',
     parcours: 'avance',
-    order: 6,
+    order: 5,
     sections: {
       info: `
-        <h3>Au-delà des sous-agents : les équipes persistantes</h3>
-        <p style="padding: 0.75rem 1rem; background: rgba(245,158,11,0.08); border-radius: 8px; border-left: 3px solid rgba(245,158,11,0.4); font-size: 0.95em;">
-          <strong>Capsule expérimentale.</strong> Le concept de TeamPlay est fonctionnel mais
-          avancé. Il n'est <strong>jamais nécessaire</strong> pour les travaux d'enseignement courants.
-          Les sous-agents classiques (capsule précédente) couvrent 99% des besoins.
-          Cette capsule est là pour les curieux et les power users.
-        </p>
-
+        <h3>Quand un projet dépasse une conversation</h3>
         <p>
-          La différence entre des sous-agents et une <strong>équipe TeamPlay</strong>, c'est
-          la <em>persistance</em> et la <em>spécialisation profonde</em>. Dans un TeamPlay :
+          Une fiche d'exercices tient dans une conversation. Une <strong>application pour vos élèves</strong>,
+          une <strong>progression annuelle complète</strong> ou un <strong>paquet de documents pour toute
+          une équipe</strong>, non : il faudra plusieurs sessions, et chaque nouvelle session repart
+          sans mémoire de la précédente.
         </p>
-        <ul>
-          <li>Chaque agent a son <strong>propre skill</strong> avec des connaissances métier</li>
-          <li>Chaque agent a une <strong>mémoire persistante</strong> (fichier STATUS.md) qui survit entre les sessions</li>
-          <li>Les agents ont des <strong>périmètres stricts</strong> : chacun ne touche qu'à ses fichiers</li>
-          <li>Un <strong>coordinateur Opus</strong> dispatche les tâches au bon agent</li>
-        </ul>
+        <p>
+          Le risque : l'IA invente ce que vous n'avez pas précisé, change d'avis d'une session à l'autre,
+          et vous découvrez au bout de trois soirées qu'elle a construit autre chose que ce que vous vouliez.
+          La parade : <strong>écrire les décisions avant de construire</strong>. Trois skills du setup
+          partagé s'en chargent.
+        </p>
 
-        <h4>Comment ça marche</h4>
-        <div style="padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; margin: 1rem 0;">
-          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; font-size: 0.85em;">
-            <div>
-              <strong style="color: #d8b4fe;">Coordinateur (Opus)</strong>
-              <ul style="color: #9ca3af; font-size: 0.9em; padding-left: 1rem; margin-top: 0.5rem;">
-                <li>Lit l'état global</li>
-                <li>Identifie les tâches</li>
-                <li>Dispatche aux agents</li>
-                <li>Valide les résultats</li>
-              </ul>
-            </div>
-            <div>
-              <strong style="color: #93c5fd;">Agents spécialisés (Sonnet)</strong>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;">
-                <div style="padding: 0.4rem; background: rgba(59,130,246,0.1); border-radius: 4px; font-size: 0.8em; color: #93c5fd;">Agent Cours</div>
-                <div style="padding: 0.4rem; background: rgba(59,130,246,0.1); border-radius: 4px; font-size: 0.8em; color: #93c5fd;">Agent Exercices</div>
-                <div style="padding: 0.4rem; background: rgba(59,130,246,0.1); border-radius: 4px; font-size: 0.8em; color: #93c5fd;">Agent Évaluation</div>
-                <div style="padding: 0.4rem; background: rgba(59,130,246,0.1); border-radius: 4px; font-size: 0.8em; color: #93c5fd;">Agent Diaporama</div>
-              </div>
-              <p style="color: #6b7280; font-size: 0.8em; margin-top: 0.5rem;">Chacun avec son skill, sa mémoire, son périmètre</p>
-            </div>
+        <h4>Les trois outils</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin: 1rem 0;">
+          <div style="padding: 0.85rem; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); border-radius: 8px;">
+            <strong style="color: #c4b5fd;">specs-creator — le cahier des charges</strong>
+            <p style="margin: 0.5rem 0 0; color: #d1d5db; font-size: 0.88em;">
+              Fabrique en grande partie seul un <strong>dossier de spécifications</strong> : vision, usages,
+              fonctionnement, critères de réussite, journal des décisions, plan de construction, et un
+              <code>CLAUDE.md</code> qui indexe le tout. Il enquête et décide seul les détails ;
+              il ne vous fait trancher que l'essentiel.
+            </p>
+          </div>
+          <div style="padding: 0.85rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 8px;">
+            <strong style="color: #93c5fd;">wayfinder — la carte sur plusieurs sessions</strong>
+            <p style="margin: 0.5rem 0 0; color: #d1d5db; font-size: 0.88em;">
+              Pour un chantier vraiment gros, il dessine une <strong>carte</strong> : la destination,
+              puis une série de <strong>tickets de décision</strong> (une question à trancher par ticket,
+              de la taille d'une session). Chaque session lit la carte, règle un ticket, met la carte à jour.
+            </p>
+          </div>
+          <div style="padding: 0.85rem; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 8px;">
+            <strong style="color: #fbbf24;">grill-me — trancher</strong>
+            <p style="margin: 0.5rem 0 0; color: #d1d5db; font-size: 0.88em;">
+              L'interview par manches de questions à choix, avec une recommandation pour chacune
+              (voir la capsule « Se faire interviewer avant d'agir »). specs-creator et wayfinder
+              l'appellent dès qu'une décision vous revient.
+            </p>
           </div>
         </div>
-
-        <h4>Disponibilité</h4>
         <p>
-          Le skill <code>teamPlay</code> est disponible uniquement dans le
-          <strong>bundle Power User</strong>. Il nécessite une configuration spécifique
-          avec des skills par module et une structure de mémoire dédiée.
+          <strong>En bonus : <code>domain-modeling</code>.</strong> Sur un projet qui dure, les mots
+          dérivent (« séance », « activité », « chapitre » finissent par désigner la même chose, ou pas).
+          Ce skill tient un glossaire (<code>CONTEXT.md</code>) et un registre des décisions importantes,
+          pour que chaque session parle la même langue.
         </p>
+
+        <h4>Lequel choisir ?</h4>
+        <ul>
+          <li><strong>Projet de taille moyenne</strong> (une petite application, un paquet de ressources) : <code>specs-creator</code> seul suffit.</li>
+          <li><strong>Projet flou et très gros</strong> (plusieurs semaines, beaucoup d'inconnues) : <code>wayfinder</code> d'abord pour éclaircir la route, puis <code>specs-creator</code> pour le cahier des charges final.</li>
+          <li><strong>Une seule décision à prendre</strong> : <code>grill-me</code> directement.</li>
+        </ul>
+        <p style="padding: 0.75rem 1rem; background: rgba(245,158,11,0.08); border-radius: 8px; border-left: 3px solid rgba(245,158,11,0.4); font-size: 0.95em;">
+          <strong>Ce n'est jamais nécessaire</strong> pour les travaux d'enseignement courants : cours,
+          fiches, évaluations se font très bien en une conversation, avec un bon pré-plan.
+          Ces outils servent quand vous construisez quelque chose qui durera.
+        </p>
+        <div class="doc-links">
+          <span class="doc-links-label">Documentation officielle</span>
+          <div class="doc-links-buttons">
+            <a href="https://code.claude.com/docs/fr/best-practices" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Bonnes pratiques (doc en français)
+            </a>
+            <a href="https://code.claude.com/docs/fr/common-workflows" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Reprendre une conversation, mode plan (doc en français)
+            </a>
+          </div>
+        </div>
       `,
       exemple: `
-        <h3>Cas d'usage : projet logiciel avec équipe</h3>
-        <p>
-          L'exemple type de TeamPlay est un projet logiciel avec plusieurs modules.
-          Le coordinateur Opus reçoit une demande, identifie les modules concernés,
-          et dispatche à chaque agent spécialisé.
-        </p>
-
+        <h3>Exemple : une application de révision pour vos élèves</h3>
         <div style="margin: 1rem 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden;">
           <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: rgba(99,102,241,0.08);">
             <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(99,102,241,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #a5b4fc; flex-shrink: 0;">U</div>
             <div style="flex: 1;">
-              <p style="margin: 0; color: #d1d5db;"><code>/teamPlay audit+fix</code></p>
+              <pre style="margin: 0; font-size: 0.82em; background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 6px; color: #d1d5db;"><code>/specs-creator Je voudrais une petite application web
+où mes élèves de 2de révisent les automatismes de calcul :
+des séries courtes, une correction immédiate, et un bilan
+que je peux consulter.</code></pre>
             </div>
           </div>
           <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: rgba(255,255,255,0.03);">
             <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(16,185,129,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #6ee7b7; flex-shrink: 0;">IA</div>
-            <div style="flex: 1; font-size: 0.85em; color: #d1d5db;">
-              <p style="margin: 0 0 0.5rem;"><span style="color: #d8b4fe;">Coordinateur</span> — Lecture des STATUS.md de 9 modules</p>
-              <p style="margin: 0 0 0.5rem;">9 agents lancés en parallèle (audit)...</p>
-              <p style="margin: 0 0 0.5rem;"><span style="color: #93c5fd;">Agent Dashboard</span> — 11/11 features OK<br>
-              <span style="color: #93c5fd;">Agent Generator</span> — 18/20 features, 2 manquantes → fix lancé<br>
-              <span style="color: #93c5fd;">Agent Evaluation</span> — 22/24 features, 2 bugs → fix lancé<br>
-              <em style="color: #6b7280;">... (6 autres agents)</em></p>
-              <p style="margin: 0.5rem 0 0; color: #4ade80;">Rapport : 95% de parité, 3 fixes appliqués, build validé ✅</p>
+            <div style="flex: 1; font-size: 0.88em; color: #d1d5db;">
+              <p style="margin: 0 0 0.5rem;">J'ai fait le tour des points techniques et choisi seul ce qui est secondaire (thème, format des séries, stockage local). Trois décisions vous reviennent :</p>
+              <p style="margin: 0 0 0.25rem;"><strong>Q1 — Comptes élèves :</strong> A) pas de compte, un code de classe (recommandé : aucune donnée personnelle) / B) un compte par élève</p>
+              <p style="margin: 0 0 0.25rem;"><strong>Q2 — Hébergement :</strong> A) une page à ouvrir dans le navigateur, sans serveur (recommandé) / B) un site en ligne</p>
+              <p style="margin: 0;"><strong>Q3 — Bilan professeur :</strong> A) export d'un fichier à importer (recommandé) / B) tableau de bord en ligne</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.05);">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(16,185,129,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #6ee7b7; flex-shrink: 0;">IA</div>
+            <div style="flex: 1; font-size: 0.88em; color: #d1d5db;">
+              <p style="margin: 0 0 0.5rem;">Dossier écrit :</p>
+              <pre style="margin: 0; font-size: 0.85em; background: rgba(0,0,0,0.3); padding: 0.6rem; border-radius: 6px;"><code>specs/
+  CLAUDE.md              → index, à lire en premier
+  01-vision.md
+  02-usages.md           → l'élève, le professeur, un jour type
+  03-fonctionnel.md
+  04-technique.md
+  05-criteres.md         → ce qui prouve que c'est fini
+  06-decisions.md        → les 3 décisions et leurs raisons
+  07-plan.md             → étapes de construction</code></pre>
             </div>
           </div>
         </div>
-
-        <p style="padding: 0.75rem 1rem; background: rgba(245,158,11,0.08); border-radius: 8px; border-left: 3px solid rgba(245,158,11,0.4); font-size: 0.95em;">
-          <strong>Pour l'enseignement :</strong> ce niveau d'organisation n'est pas nécessaire
-          pour créer des cours ou des exercices. Les sous-agents simples (capsule précédente)
-          suffisent largement. TeamPlay est conçu pour des projets logiciels ou des productions
-          à très grande échelle.
+        <p>
+          Dans une nouvelle session (ou avec un sous-agent), il suffit ensuite de dire :
+          <em>« Lis specs/CLAUDE.md et construis l'étape 1 du plan. »</em>
+          L'agent repart des décisions écrites, pas de votre mémoire.
+        </p>
+        <h4>Et avec wayfinder</h4>
+        <p>
+          Pour un chantier plus flou (par exemple « refondre toute ma progression de 2de avec des
+          supports Typst »), <code>/wayfinder</code> écrit d'abord la <strong>destination</strong>,
+          puis des tickets comme « Quel découpage en chapitres ? », « Quel format pour les fiches
+          d'exercices ? ». Vous en réglez un par session ; la carte garde la liste des décisions prises.
         </p>
       `,
       pratique: `
-        <h3>Réflexion : quand passer au TeamPlay ?</h3>
-
         <div class="exercise-card">
           <div class="exercise-header">
-            <span class="exercise-badge">Exercice</span>
-            <span style="font-weight: 600; color: white;">Sous-agents classiques ou TeamPlay ?</span>
+            <span class="exercise-badge">Exercice 1 : choisir le bon outil</span>
           </div>
           <div class="exercise-body">
-            <p>Pour chaque situation, indiquez si des sous-agents classiques suffisent ou si TeamPlay serait pertinent :</p>
-            <p><strong>1.</strong> Produire un cours + exercices + évaluation sur un chapitre</p>
-            <p><strong>2.</strong> Gérer un site web avec 9 modules, chacun avec son propre code source</p>
-            <p><strong>3.</strong> Créer une banque de 50 exercices classés par compétence</p>
-            <p><strong>4.</strong> Maintenir une application avec mémoire des décisions passées entre sessions</p>
+            <p>Pour chaque projet, indiquez l'outil le plus adapté : une conversation normale, <code>grill-me</code>, <code>specs-creator</code> ou <code>wayfinder</code>.</p>
+            <ol>
+              <li>Une évaluation de 4e sur les fractions</li>
+              <li>Hésiter entre deux formats pour vos fiches de révision</li>
+              <li>Une petite application de QCM chronométrés pour la classe</li>
+              <li>Construire, sur l'année, une banque de ressources partagée avec votre équipe</li>
+            </ol>
           </div>
           <details class="exercise-solution">
-            <summary>Voir les réponses</summary>
+            <summary>Voir une proposition</summary>
             <div class="solution-content">
-              <p><strong>1. Sous-agents classiques</strong> — 3-4 agents ponctuels, pas besoin de mémoire persistante.</p>
-              <p><strong>2. TeamPlay</strong> — 9 modules = 9 agents avec périmètres stricts et mémoire. C'est le cas d'usage type.</p>
-              <p><strong>3. Sous-agents classiques</strong> — Des agents Haiku en parallèle avec instructions détaillées suffisent.</p>
-              <p><strong>4. TeamPlay</strong> — La mémoire persistante (STATUS.md) entre sessions est la valeur ajoutée clé.</p>
+              <ol>
+                <li><strong>Conversation normale</strong> : un document, une session, avec un bon pré-plan.</li>
+                <li><strong>grill-me</strong> : une seule décision ; les questions à choix vous aident à trancher.</li>
+                <li><strong>specs-creator</strong> : projet de taille moyenne, qu'un agent pourra construire ensuite en une ou deux sessions.</li>
+                <li><strong>wayfinder</strong> puis <strong>specs-creator</strong> : beaucoup d'inconnues, plusieurs semaines, plusieurs personnes. La carte évite de tout redécider à chaque session. <code>domain-modeling</code> aide à fixer le vocabulaire commun.</li>
+              </ol>
+            </div>
+          </details>
+        </div>
+        <div class="exercise-card">
+          <div class="exercise-header">
+            <span class="exercise-badge">Exercice 2 : votre premier dossier de specs</span>
+          </div>
+          <div class="exercise-body">
+            <p>Pensez à un outil que vous aimeriez avoir (une page de révision, un générateur de fiches, un tableau de suivi). Lancez <code>/specs-creator</code> en le décrivant en trois ou quatre phrases. Répondez aux questions, puis lisez le fichier des décisions.</p>
+          </div>
+          <details class="exercise-solution">
+            <summary>Ce que vous devez observer</summary>
+            <div class="solution-content">
+              <ul>
+                <li>L'IA vous pose <strong>peu de questions</strong> : seulement celles qui changent vraiment le résultat.</li>
+                <li>Chaque question arrive avec des <strong>options et une recommandation</strong>.</li>
+                <li>Le journal des décisions dit <strong>pourquoi</strong> chaque choix a été fait : dans trois mois, vous saurez encore pourquoi.</li>
+                <li>Le plan de construction découpe le travail en étapes qu'un agent peut réaliser une par une.</li>
+              </ul>
             </div>
           </details>
         </div>
       `,
     },
-    duration: '~8 min',
-    tags: ['teamplay', 'équipe', 'expérimental'],
+    duration: '15 min',
+    tags: ['specs', 'wayfinder', 'grill-me', 'projet'],
   },
 
   // --- Prompt Craft : Parler à une IA ---
@@ -2702,6 +3019,20 @@ Enseignant de maths expérimenté
           mathématique produit par l'IA. Les modèles peuvent halluciner des théorèmes ou
           faire des erreurs de calcul.
         </p>
+        <div class="doc-links">
+          <span class="doc-links-label">Formations et guides officiels</span>
+          <div class="doc-links-buttons">
+            <a href="https://anthropic.skilljar.com/ai-fluency-framework-foundations" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Cours officiel : AI Fluency (gratuit, en anglais)
+            </a>
+            <a href="https://anthropic.skilljar.com/ai-fluency-for-educators" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              AI Fluency for educators (enseignants)
+            </a>
+            <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Bonnes pratiques de prompt (en anglais)
+            </a>
+          </div>
+        </div>
       `,
       exemple: `
         <h3>Deux scénarios pour voir l'impact</h3>
@@ -2820,72 +3151,61 @@ Créer un QCM progressif (facile → difficile)
         </p>
       `,
       pratique: `
-        <h3>Testez avec le vrai skill Meta-Prompt</h3>
+        <h3>À vous de structurer</h3>
         <p>
-          Ce que vous allez copier ci-dessous n'est pas un simple exemple — c'est le
-          <strong>vrai skill professionnel</strong> utilisé par les agents IA pour optimiser
-          des prompts. Vous copiez les mêmes instructions qu'un agent Claude Code recevrait.
+          Prenez une demande que vous feriez vraiment cette semaine et réécrivez-la avec les
+          quatre titres de la capsule : <code># Rôle</code>, <code># Contexte</code>,
+          <code># Tâche</code>, <code># Format</code>. Envoyez les deux versions (brute et structurée)
+          dans deux conversations séparées et comparez.
         </p>
 
-        <div style="margin: 1.5rem 0;">
-          <h4>Mode d'emploi</h4>
-          <ol>
-            <li>Écrivez votre demande dans la zone de texte ci-dessous</li>
-            <li>Cliquez sur "Copier le tout" — votre demande sera ajoutée au skill complet</li>
-            <li>Collez dans Claude Desktop, Claude Code, ou toute autre IA</li>
-            <li>Observez : l'IA applique les 23 techniques de prompt engineering pour restructurer votre demande</li>
-          </ol>
-        </div>
-
-        <div style="position: relative; margin: 1.5rem 0;">
-          <div style="font-size: 0.8rem; color: #a78bfa; font-weight: 600; margin-bottom: 0.5rem;">SKILL META-PROMPT (142 lignes — aperçu)</div>
-          <pre id="meta-prompt-preview" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(139,92,246,0.3); border-radius: 8px 8px 0 0; padding: 1rem; font-size: 0.78em; line-height: 1.5; overflow: hidden; max-height: 12rem; color: #d1d5db;"><code># Meta-Prompt - Fabrique de Prompts Optimises
-
-Skill central pour creer, refactorer et optimiser des prompts
-selon les techniques de pointe 2025-2026.
-
-## Declenchement
-- Creer un nouveau prompt pour une tache specifique
-- Ameliorer/refactorer un prompt existant
-- Diagnostiquer la qualite d'un prompt
-
-## Trois workflows
-### Workflow 1 : Creation
-Pipeline complet en 6 phases obligatoires :
-clarification → techniques → specification → generation
-→ diagnostic → livrable
-...</code></pre>
-          <div style="background: linear-gradient(transparent, rgba(0,0,0,0.6)); height: 3rem; margin-top: -3rem; position: relative; border-radius: 0; pointer-events: none;"></div>
-          <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.3); border-top: none; border-radius: 0 0 8px 8px; padding: 0.75rem 1rem;">
-            <div style="font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.5rem;">Votre demande (sera ajoutée à la fin du skill) :</div>
-            <textarea id="user-request-input" placeholder="Ex : Crée-moi un exercice sur les équations en 4ème avec correction détaillée..." style="width: 100%; min-height: 60px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 0.75rem; color: #e0e0f0; font-family: inherit; font-size: 0.85rem; resize: vertical;"></textarea>
+        <div class="exercise-card" style="margin-top: 1.5rem;">
+          <div class="exercise-header">
+            <span class="exercise-badge">Exercice</span>
+            <span style="font-weight: 600; color: white;">Structurer une demande brute</span>
           </div>
-        </div>
+          <div class="exercise-body">
+            <p>Réécrivez cette demande en Markdown structuré :</p>
+            <p><em>« Fais-moi des exercices sur les pourcentages pour ma classe, avec la correction. »</em></p>
+          </div>
+          <details class="exercise-solution">
+            <summary>Voir une proposition</summary>
+            <div class="solution-content">
+              <pre><code># Rôle
+Tu es professeur de mathématiques en collège.
 
-        <button onclick="
-          var skillContent = '# Meta-Prompt - Fabrique de Prompts Optimises\\n\\nSkill central pour creer, refactorer et optimiser des prompts selon les techniques de pointe 2025-2026. Chaque prompt produit est transforme en livrable reutilisable (skill, agent ou commande).\\n\\n## Declenchement\\n\\n- Creer un nouveau prompt pour une tache specifique\\n- Ameliorer/refactorer un prompt existant\\n- Diagnostiquer la qualite d\\'un prompt\\n- Comprendre quelle technique appliquer selon un contexte\\n- Preparer un prompt avant de creer un skill ou un agent\\n\\n## Trois workflows\\n\\n### Workflow 1 : Creation\\n\\nPipeline complet en 6 phases obligatoires : clarification → techniques → specification → generation → diagnostic → livrable.\\n\\nPhases :\\n1. Challenger la demande — Clarifier sur 7 dimensions\\n2. Selectionner les techniques — Choisir dans le catalogue selon la matrice de decision\\n3. Specifier — Formulaire HTML interactif ou questions structurees\\n4. Generer — Appliquer les techniques, produire le prompt structure\\n5. Diagnostiquer — Scoring automatique 8 axes, corriger les faiblesses\\n6. Rendre utile — Transformer en livrable\\n\\n### Workflow 2 : Refactoring\\n\\nAmelioration d\\'un prompt existant en 4 phases : charger → diagnostiquer → appliquer techniques → presenter diff.\\n\\n### Workflow 3 : Diagnostic\\n\\nEvaluation et scoring d\\'un prompt sur 8 axes de qualite (1-5 par axe).\\n\\n## Matrice de decision rapide\\n\\n| Contexte | Techniques prioritaires |\\n|----------|------------------------|\\n| Logiciel/Code | Role expert + XML tags + CoT structure + Structured Output + ReAct |\\n| Education/Cours | Role pedagogique + Few-shot + CoT + Constitutional (verification) |\\n| Analyse de donnees | RAG + Structured Output + Self-Consistency + CoT |\\n| Generation creative | Role + Temperature guidance + Few-shot style + Constitutional |\\n| Agent autonome | System prompt architecture + ReAct + State management + Agentic 3-reminders |\\n| Classification/Tri | Structured Output + Few-shot + Zero-shot CoT |\\n\\n## Structure obligatoire d\\'un prompt genere\\n\\nTout prompt produit respecte cette structure :\\n\\n# [Titre descriptif]\\n## Role\\n## Contexte\\n## Instructions\\n## Contraintes\\n## Format de sortie\\n## Exemples\\n## Variables\\n## Criteres de qualite (auto-verification)\\n\\n## Regles de generation\\n\\n1. XML tags pour toute donnee variable\\n2. Forme imperative\\n3. Variables en SCREAMING_SNAKE_CASE\\n4. Minimum 2 exemples si format de sortie precis\\n5. Integrer raisonnement etape par etape pour taches complexes\\n6. Toujours specifier le format exact de sortie\\n7. Criteres d\\'auto-verification en fin de prompt\\n8. Instructions critiques en debut ET en fin de prompt';
-          var userReq = document.getElementById('user-request-input').value;
-          var full = skillContent + (userReq ? '\\n\\n---\\n\\n# Ma demande\\n\\n' + userReq : '');
-          navigator.clipboard.writeText(full).then(function(){
-            var b = event.target;
-            b.textContent = '✅ Copié ! (' + full.length + ' caractères)';
-            b.style.background = 'linear-gradient(135deg, rgba(34,197,94,0.4), rgba(16,185,129,0.4))';
-            setTimeout(function(){ b.textContent = '📋 Copier le tout (skill + votre demande)'; b.style.background = 'linear-gradient(135deg, rgba(139,92,246,0.4), rgba(99,102,241,0.4))'; }, 2500);
-          });
-        " style="width: 100%; padding: 0.75rem; background: linear-gradient(135deg, rgba(139,92,246,0.4), rgba(99,102,241,0.4)); border: 1px solid rgba(139,92,246,0.5); color: #e0e0f0; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;">📋 Copier le tout (skill + votre demande)</button>
+# Contexte
+Classe de 4ème, fin du chapitre sur la proportionnalité.
+Les élèves savent calculer un pourcentage simple ;
+ils confondent encore augmentation et coefficient multiplicateur.
+
+# Tâche
+Rédige 5 exercices progressifs sur les pourcentages :
+- 2 calculs directs (appliquer un taux)
+- 2 situations d'évolution (hausse, baisse)
+- 1 problème en contexte (soldes successifs)
+
+# Format
+- Fichier LaTeX, énoncés numérotés
+- Correction détaillée après chaque exercice
+- Une page maximum pour les énoncés</code></pre>
+              <p>Le contexte (« ils confondent encore… ») est souvent la ligne qui change le plus le résultat : l'IA construit alors des exercices qui travaillent cette difficulté précise.</p>
+            </div>
+          </details>
+        </div>
 
         <h4 style="margin-top: 1.5rem;">Auto-vérification</h4>
         <p>Après avoir testé, vérifiez :</p>
         <ul>
-          <li>✅ L'IA a-t-elle appliqué la structure Rôle/Contexte/Tâche/Format ?</li>
-          <li>✅ A-t-elle ajouté des détails que vous aviez oubliés ?</li>
-          <li>✅ Le format de sortie est-il explicitement spécifié (type de fichier + structure) ?</li>
-          <li>✅ Des critères d'auto-vérification sont-ils présents ?</li>
+          <li>✅ La réponse à la version structurée respecte-t-elle le format demandé (type de fichier, structure) ?</li>
+          <li>✅ Le niveau et la difficulté visée sont-ils respectés ?</li>
+          <li>✅ Avez-vous eu besoin de moins d'allers-retours qu'avec la version brute ?</li>
+          <li>✅ Le contenu mathématique est-il juste ? (à vérifier dans tous les cas)</li>
         </ul>
         <p style="padding: 0.75rem 1rem; background: rgba(16,185,129,0.08); border-radius: 8px; border-left: 3px solid rgba(16,185,129,0.4); font-size: 0.95em;">
-          <strong>Ce que vous venez de faire :</strong> vous avez utilisé un skill professionnel
-          de 142 lignes pour optimiser votre prompt. C'est exactement ce que fait un agent IA
-          quand vous tapez <code>/meta-prompt</code> dans Claude Code.
+          <strong>Et si vous ne savez pas quoi mettre dans le contexte ?</strong> Laissez l'IA
+          vous interviewer : c'est l'objet de la capsule « Se faire interviewer avant d'agir »
+          (skill <code>grill-me</code>).
         </p>
       `,
     },
@@ -3133,7 +3453,7 @@ Ajoute les figures TikZ correspondant à mes descriptions.</code></pre>
     title: 'Choisir le bon modèle',
     description: 'Adapter la puissance du modèle à la complexité de la tâche pour optimiser coût et qualité',
     parcours: 'prompt-craft',
-    order: 1,
+    order: 7,
     sections: {
       info: `
         <h3>Tous les modèles ne se valent pas — et c'est une force</h3>
@@ -3147,7 +3467,9 @@ Ajoute les figures TikZ correspondant à mes descriptions.</code></pre>
 
         <h4>Ce que proposent les fournisseurs</h4>
         <p style="padding: 0.5rem 0.75rem; background: rgba(245,158,11,0.08); border-radius: 6px; border-left: 3px solid rgba(245,158,11,0.3); font-size: 0.85em; color: #fbbf24; margin-bottom: 0.75rem;">
-          Les noms et versions de modèles changent très fréquemment. On ne les affiche pas ici pour éviter les mises à jour perpétuelles. Ce qui compte, c'est le <strong>principe des niveaux</strong>.
+          Les noms et versions de modèles changent très fréquemment. Ce qui compte, c'est le <strong>principe des niveaux</strong>.
+          Pour repère, en octobre 2026 : <strong>Haiku 5.5</strong>, <strong>Sonnet 5.5</strong>, <strong>Opus 5.5</strong> et <strong>Fable 5.1</strong>.
+          La liste à jour est sur la <a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noopener noreferrer">page officielle des modèles</a>.
         </p>
         <div style="margin: 1rem 0; overflow-x: auto;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
@@ -3161,9 +3483,10 @@ Ajoute les figures TikZ correspondant à mes descriptions.</code></pre>
               <td style="padding: 0.75rem; color: #d1d5db;">
                 <span style="display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(34,197,94,0.15); color: #86efac; font-size: 0.8em; margin-right: 0.25rem;">Haiku</span>
                 <span style="display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(59,130,246,0.15); color: #93c5fd; font-size: 0.8em; margin-right: 0.25rem;">Sonnet</span>
-                <span style="display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(168,85,247,0.15); color: #d8b4fe; font-size: 0.8em;">Opus</span>
+                <span style="display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(168,85,247,0.15); color: #d8b4fe; font-size: 0.8em; margin-right: 0.25rem;">Opus</span>
+                <span style="display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(236,72,153,0.15); color: #f9a8d4; font-size: 0.8em;">Fable</span>
               </td>
-              <td style="padding: 0.75rem; color: #9ca3af;">3 niveaux distincts (Haiku, Sonnet, Opus) + mode "ultrathink" pour la réflexion étendue</td>
+              <td style="padding: 0.75rem; color: #9ca3af;">4 niveaux distincts (Haiku, Sonnet, Opus, Fable) + un réglage d'effort (<code>/effort</code>) et le mot-clé « ultrathink » pour réfléchir plus longtemps</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
               <td style="padding: 0.75rem; font-weight: 600; color: #d1d5db;">OpenAI (GPT / Codex)</td>
@@ -3173,7 +3496,7 @@ Ajoute les figures TikZ correspondant à mes descriptions.</code></pre>
               <td style="padding: 0.75rem; color: #9ca3af;">Un modèle principal avec différents modes de réflexion (thinking tokens)</td>
             </tr>
             <tr>
-              <td style="padding: 0.75rem; font-weight: 600; color: #d1d5db;">Google (Gemini CLI)</td>
+              <td style="padding: 0.75rem; font-weight: 600; color: #d1d5db;">Google (Gemini, dans Antigravity)</td>
               <td style="padding: 0.75rem; color: #d1d5db;">
                 <span style="display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(255,255,255,0.1); color: #d1d5db; font-size: 0.8em; margin-right: 0.25rem;">Flash / Preview</span>
                 <span style="display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(255,255,255,0.1); color: #d1d5db; font-size: 0.8em;">Pro</span>
@@ -3184,20 +3507,21 @@ Ajoute les figures TikZ correspondant à mes descriptions.</code></pre>
         </div>
 
         <p style="padding: 0.75rem 1rem; background: rgba(139,92,246,0.08); border-radius: 8px; border-left: 3px solid rgba(139,92,246,0.4); font-size: 0.95em;">
-          <strong>L'avantage Claude :</strong> 3 niveaux de modèle = un levier majeur
+          <strong>L'avantage Claude :</strong> 4 niveaux de modèle = un levier majeur
           d'optimisation. Vous choisissez la puissance en fonction de la tâche, pas l'inverse.
+          Dans Claude Code, la commande <code>/model</code> change de modèle en cours de session.
         </p>
 
         <h4>La règle : adapter la puissance à la tâche</h4>
         <p>Le piège, c'est de toujours utiliser le modèle le plus puissant. Pourquoi ?</p>
         <ul>
-          <li><strong>Coût :</strong> Opus coûte ~15x plus cher que Haiku en tokens. Pour 100 demandes simples, la différence est énorme.</li>
+          <li><strong>Coût</strong> (tarifs de l'API, octobre 2026) : Opus 5.5 coûte environ 2 fois plus cher que Sonnet 5.5 et une quarantaine de fois plus cher que Haiku 5.5 ; Fable 5.1 coûte 2,5 fois Opus. Avec un abonnement, ce coût se traduit en limites d'usage atteintes plus ou moins vite.</li>
           <li><strong>Sur-interprétation :</strong> un modèle très puissant peut <em>surtraiter</em> une demande simple. Demandez à un philosophe un rapport succinct : il fera 3 pages avec des nuances là où vous vouliez 5 lignes.</li>
-          <li><strong>Vitesse :</strong> Haiku répond en 2-3 secondes, Opus peut prendre 30 secondes à 2 minutes.</li>
+          <li><strong>Vitesse :</strong> Haiku répond en quelques secondes. Opus et surtout Fable peuvent réfléchir une à plusieurs minutes sur une tâche complexe.</li>
         </ul>
 
         <h4>Guide de choix</h4>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin: 1rem 0;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.75rem; margin: 1rem 0;">
           <div style="padding: 0.75rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 8px;">
             <strong style="color: #86efac; font-size: 0.9em;">Haiku — le rapide</strong>
             <ul style="margin: 0.5rem 0 0; padding-left: 1rem; color: #9ca3af; font-size: 0.8em;">
@@ -3226,18 +3550,44 @@ Ajoute les figures TikZ correspondant à mes descriptions.</code></pre>
               <li>Adversarial review</li>
               <li>Création de skills</li>
               <li>Pré-plans ambitieux</li>
+              <li>Modèle par défaut de Claude Code, recommandé par Anthropic pour la plupart des usages</li>
+            </ul>
+          </div>
+          <div style="padding: 0.75rem; background: rgba(236,72,153,0.08); border: 1px solid rgba(236,72,153,0.2); border-radius: 8px;">
+            <strong style="color: #f9a8d4; font-size: 0.9em;">Fable — le chercheur</strong>
+            <ul style="margin: 0.5rem 0 0; padding-left: 1rem; color: #9ca3af; font-size: 0.8em;">
+              <li>Problèmes très difficiles</li>
+              <li>Longs chantiers autonomes</li>
+              <li>Quand Opus, même à effort élevé, ne suffit pas</li>
+              <li>Le plus lent et le plus cher : à choisir explicitement</li>
             </ul>
           </div>
         </div>
 
-        <h4>Le mode ultrathink (Opus)</h4>
+        <h4>Régler la réflexion : effort et ultrathink</h4>
         <p>
-          Avec Claude Code, vous pouvez activer le mode <strong>ultrathink</strong> sur Opus.
-          L'agent prend alors un temps de réflexion étendu avant de répondre — il "pense plus longtemps".
+          Les modèles récents réfléchissent toujours un peu avant de répondre. Dans Claude Code, la commande
+          <code>/effort</code> règle la profondeur de cette réflexion pour toute la session
+          (de <code>low</code> à <code>max</code>). Le mot <strong>ultrathink</strong> glissé dans un message
+          la pousse plus loin pour ce message seulement.
           C'est utile pour les tâches qui nécessitent une planification fine ou un raisonnement complexe.
           À éviter pour les demandes simples : c'est comme demander à un architecte de dessiner
           un plan pour accrocher un tableau.
         </p>
+        <div class="doc-links">
+          <span class="doc-links-label">Documentation officielle</span>
+          <div class="doc-links-buttons">
+            <a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Les modèles Claude (en anglais)
+            </a>
+            <a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Tarifs de l'API (en anglais)
+            </a>
+            <a href="https://code.claude.com/docs/fr/model-config" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Choisir le modèle et l'effort dans Claude Code (doc en français)
+            </a>
+          </div>
+        </div>
       `,
       exemple: `
         <h3>La même demande, 3 modèles, 3 résultats</h3>
@@ -3349,9 +3699,9 @@ Inclus un exemple numérique.</code></pre>
             <summary>Voir les réponses</summary>
             <div class="solution-content">
               <p><strong>1. A) Haiku</strong> — Correction simple, pas besoin de réflexion profonde. Rapide et pas cher.</p>
-              <p><strong>2. B) Sonnet</strong> — Production standard de contenu pédagogique. Sonnet est le modèle par défaut pour la majorité des tâches.</p>
-              <p><strong>3. C) Opus</strong> — Architecture multi-agents = raisonnement complexe et planification. C'est le terrain d'Opus.</p>
-              <p><strong>4. A) Haiku</strong> — Tâche répétitive et simple. 20 reformulations = beaucoup de tokens. Haiku sera 15x moins cher et suffisamment bon.</p>
+              <p><strong>2. B) Sonnet</strong> — Production standard de contenu pédagogique : Sonnet s'en sort très bien pour deux fois moins cher qu'Opus. Opus, modèle par défaut de Claude Code, fera un peu mieux sur la progression des exercices : c'est un arbitrage coût / finesse.</p>
+              <p><strong>3. C) Opus</strong> — Architecture multi-agents = raisonnement complexe et planification. C'est le terrain d'Opus (Fable seulement si Opus échoue).</p>
+              <p><strong>4. A) Haiku</strong> — Tâche répétitive et simple. 20 reformulations = beaucoup de tokens. Haiku sera une vingtaine de fois moins cher que Sonnet et suffisamment bon.</p>
               <hr style="border-color: rgba(255,255,255,0.1); margin: 1rem 0;" />
               <p><strong>En pratique, la meilleure architecture combine les trois :</strong></p>
               <ul>
@@ -3381,7 +3731,7 @@ Inclus un exemple numérique.</code></pre>
     title: 'Invoquer les bons outils au bon moment',
     description: 'Déclencher skills et agents par leur nom, cibler des fichiers, contrôler le workflow',
     parcours: 'prompt-craft',
-    order: 1,
+    order: 2,
     sections: {
       info: `
         <h3>Skills et agents : vos raccourcis vers l'expertise</h3>
@@ -3393,8 +3743,8 @@ Inclus un exemple numérique.</code></pre>
         </p>
         <p>
           Un <strong>agent</strong>, c'est un <em>collègue spécialiste</em> que l'IA peut appeler
-          à l'aide. L'agent <code>beamer-worker</code> par exemple est un expert en diaporamas Beamer :
-          il prend la tâche, la traite de A à Z, et renvoie le résultat.
+          à l'aide. L'agent <code>debug-tex-log</code> par exemple est un expert des erreurs de compilation LaTeX :
+          il prend le fichier qui plante, cherche la cause et renvoie la correction à faire.
         </p>
 
         <h4>Les 3 façons d'invoquer un skill</h4>
@@ -3446,28 +3796,24 @@ Inclus un exemple numérique.</code></pre>
               <td style="padding: 0.5rem; color: #d1d5db;">Diaporama interactif HTML</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-              <td style="padding: 0.5rem;"><code>/createBeamer</code></td>
-              <td style="padding: 0.5rem; color: #d1d5db;">Diaporama Beamer (PDF)</td>
+              <td style="padding: 0.5rem;"><code>/bfcours-typst</code></td>
+              <td style="padding: 0.5rem; color: #d1d5db;">Cours et fiches en Typst avec la suite farfadet</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-              <td style="padding: 0.5rem;"><code>/create-app</code></td>
-              <td style="padding: 0.5rem; color: #d1d5db;">Application éducative Flask</td>
+              <td style="padding: 0.5rem;"><code>/latex-geometry</code></td>
+              <td style="padding: 0.5rem; color: #d1d5db;">Figures de géométrie TikZ</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-              <td style="padding: 0.5rem;"><code>/image-generator</code></td>
-              <td style="padding: 0.5rem; color: #d1d5db;">Images pédagogiques (Imagen)</td>
+              <td style="padding: 0.5rem;"><code>/qcm-creator</code></td>
+              <td style="padding: 0.5rem; color: #d1d5db;">QCM avec distracteurs tirés des erreurs d'élèves</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
               <td style="padding: 0.5rem;"><code>/programmes-officiels</code></td>
               <td style="padding: 0.5rem; color: #d1d5db;">Extraire les compétences du BO</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-              <td style="padding: 0.5rem;"><code>/meta-prompt</code></td>
-              <td style="padding: 0.5rem; color: #d1d5db;">Optimiser un prompt</td>
-            </tr>
             <tr>
-              <td style="padding: 0.5rem;"><code>/ficheTexnique</code></td>
-              <td style="padding: 0.5rem; color: #d1d5db;">Fiche technique d'une ressource</td>
+              <td style="padding: 0.5rem;"><code>/grill-me</code></td>
+              <td style="padding: 0.5rem; color: #d1d5db;">Se faire interviewer pour préciser une demande</td>
             </tr>
           </table>
         </details>
@@ -3565,172 +3911,185 @@ Vérifie la cohérence entre le diaporama et les exercices</code></pre>
     tags: ['skills', 'agents', 'workflow'],
   },
 
-  'pc-idea-challenger': {
-    id: 'pc-idea-challenger',
-    title: 'Clarifier avant d\'agir',
-    description: 'Quand votre demande est trop vague, faire préciser par l\'IA avant de produire',
+  'pc-grill-me': {
+    id: 'pc-grill-me',
+    title: 'Se faire interviewer avant d\'agir',
+    description: 'Quand votre demande est trop vague, laisser l\'IA vous interviewer par questions à choix avant de produire',
     parcours: 'prompt-craft',
     order: 3,
     sections: {
       info: `
-        <h3>Le réflexe qui change tout : se faire challenger</h3>
+        <h3>Le réflexe qui change tout : se faire interviewer</h3>
         <p>
-          Vous avez une idée, mais elle est floue. "Fais-moi un truc sur les fractions",
-          "j'aimerais une activité sympa pour les 4ème"... L'IA peut exécuter ça, mais
-          le résultat sera <em>aussi flou que votre demande</em>.
+          Vous avez une idée, mais elle est floue. « Fais-moi un truc sur les fractions »,
+          « j'aimerais une activité sympa pour les 4ème »... L'IA peut exécuter ça, mais
+          le résultat sera <em>aussi flou que votre demande</em> : elle comblera les trous à votre place.
         </p>
         <p>
           La solution : avant de produire quoi que ce soit, demander à l'IA de
-          <strong>vous poser des questions</strong> pour préciser votre pensée.
-          C'est le rôle du skill <code>idea-challenger</code>.
+          <strong>vous poser des questions</strong> jusqu'à ce que vous soyez d'accord sur tout.
+          C'est le rôle du skill <code>grill-me</code>, fourni avec le setup de ce site.
         </p>
 
         <h4>Comment ça marche</h4>
-        <p>Le skill analyse votre demande sur <strong>7 dimensions</strong> :</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; margin: 1rem 0;">
-          <div style="padding: 0.5rem; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); border-radius: 6px; text-align: center;">
-            <div style="font-size: 0.8em; font-weight: 600; color: #c4b5fd;">Objectif</div>
-            <div style="font-size: 0.7em; color: #9ca3af;">Quel résultat final ?</div>
+        <ul>
+          <li>
+            <strong>Votre demande devient un arbre de décisions.</strong> Certaines se tranchent tout de suite
+            (le niveau, le format) ; d'autres dépendent des premières (le nombre d'exercices dépend du format).
+          </li>
+          <li>
+            <strong>L'IA pose les questions par manches.</strong> À chaque manche, toutes les questions
+            qu'on peut poser maintenant ; celles qui dépendent d'une réponse attendent la manche suivante.
+          </li>
+          <li>
+            <strong>Chaque question propose des options concrètes et une recommandation argumentée.</strong>
+            Vous cliquez, ou vous répondez librement.
+          </li>
+          <li>
+            <strong>Elle cherche elle-même les faits.</strong> Ce qu'elle peut vérifier (vos fichiers, votre
+            progression, le programme), elle le vérifie au lieu de vous le demander. Vous ne tranchez que
+            les vraies décisions.
+          </li>
+          <li>
+            <strong>À la fin, un récapitulatif</strong> d'une ligne par décision, et elle attend votre
+            confirmation avant d'agir.
+          </li>
+        </ul>
+
+        <h4>Deux façons de répondre</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin: 1rem 0;">
+          <div style="padding: 0.75rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 8px;">
+            <strong style="color: #93c5fd; font-size: 0.9em;">Dans le terminal</strong>
+            <p style="margin: 0.5rem 0 0; color: #9ca3af; font-size: 0.85em;">Des questions à choix s'affichent directement dans Claude Code ; on répond avec les flèches.</p>
           </div>
-          <div style="padding: 0.5rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 6px; text-align: center;">
-            <div style="font-size: 0.8em; font-weight: 600; color: #93c5fd;">Public</div>
-            <div style="font-size: 0.7em; color: #9ca3af;">Pour qui exactement ?</div>
-          </div>
-          <div style="padding: 0.5rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 6px; text-align: center;">
-            <div style="font-size: 0.8em; font-weight: 600; color: #86efac;">Périmètre</div>
-            <div style="font-size: 0.7em; color: #9ca3af;">Quelles limites ?</div>
-          </div>
-          <div style="padding: 0.5rem; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 6px; text-align: center;">
-            <div style="font-size: 0.8em; font-weight: 600; color: #fbbf24;">Format</div>
-            <div style="font-size: 0.7em; color: #9ca3af;">Quel livrable ?</div>
-          </div>
-          <div style="padding: 0.5rem; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 6px; text-align: center;">
-            <div style="font-size: 0.8em; font-weight: 600; color: #f87171;">Contraintes</div>
-            <div style="font-size: 0.7em; color: #9ca3af;">Quelles obligations ?</div>
-          </div>
-          <div style="padding: 0.5rem; background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 6px; text-align: center;">
-            <div style="font-size: 0.8em; font-weight: 600; color: #22d3ee;">Contexte</div>
-            <div style="font-size: 0.7em; color: #9ca3af;">Dans quel cadre ?</div>
-          </div>
-          <div style="padding: 0.5rem; background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.2); border-radius: 6px; text-align: center;">
-            <div style="font-size: 0.8em; font-weight: 600; color: #d8b4fe;">Qualité</div>
-            <div style="font-size: 0.7em; color: #9ca3af;">Critères de réussite ?</div>
+          <div style="padding: 0.75rem; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); border-radius: 8px;">
+            <strong style="color: #c4b5fd; font-size: 0.9em;">Sur une page web</strong>
+            <p style="margin: 0.5rem 0 0; color: #9ca3af; font-size: 0.85em;">Toute la manche s'ouvre dans le navigateur : on clique, on peut <strong>dicter</strong> ses commentaires au micro, puis « Copier les réponses » et coller dans la conversation.</p>
           </div>
         </div>
 
-        <p>
-          Pour chaque dimension floue, il vous pose <strong>maximum 4 questions par round</strong>,
-          avec des choix suggérés. Il itère jusqu'à ce que votre demande soit à 4/5 de clarté
-          sur chaque axe.
-        </p>
-
         <h4>Quand l'utiliser</h4>
         <ul>
-          <li>Votre demande est vague : "fais-moi quelque chose sur les équations"</li>
-          <li>Vous avez une idée mais pas de plan : "j'aimerais une séquence originale"</li>
+          <li>Votre demande est vague : « fais-moi quelque chose sur les équations »</li>
+          <li>Vous avez une idée mais pas de plan : « j'aimerais une séquence originale »</li>
           <li>Avant de lancer une tâche complexe impliquant plusieurs skills</li>
-          <li>Quand vous voulez <strong>préciser votre propre pensée</strong> — l'IA vous sert de miroir</li>
+          <li>Quand vous voulez <strong>préciser votre propre pensée</strong> : l'IA vous sert de miroir</li>
         </ul>
-
-        <h4>Le résultat</h4>
         <p>
-          À la fin du processus, le skill génère un <strong>fichier .md structuré</strong>
-          contenant un prompt optimisé prêt à l'emploi — avec rôle, contexte, instructions,
-          contraintes et format de sortie. Vous pouvez l'utiliser directement ou le passer
-          à un autre skill.
+          Il suffit de taper <code>/grill-me</code> suivi de votre idée, ou d'écrire
+          <em>« pose-moi des questions avant de te lancer »</em>.
         </p>
 
         <p style="padding: 0.75rem 1rem; background: rgba(139,92,246,0.08); border-radius: 8px; border-left: 3px solid rgba(139,92,246,0.4); font-size: 0.95em;">
-          <strong>Intégration avec meta-prompt :</strong> le skill <code>meta-prompt</code>
-          invoque automatiquement <code>idea-challenger</code> en Phase 1 quand votre demande
-          est trop vague. Vous n'avez même pas besoin de l'appeler manuellement si vous utilisez
-          déjà <code>/meta-prompt</code>.
+          <strong>Sans le setup ?</strong> Le principe marche avec n'importe quelle IA. Terminez votre demande par :
+          <em>« Avant de produire quoi que ce soit, pose-moi tes questions par séries, avec des options
+          et ta recommandation pour chacune, jusqu'à ce que tout soit clair. Puis récapitule et attends mon accord. »</em>
         </p>
+        <div class="doc-links">
+          <span class="doc-links-label">Pour aller plus loin</span>
+          <div class="doc-links-buttons">
+            <a href="https://anthropic.skilljar.com/ai-fluency-framework-foundations" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Cours officiel : AI Fluency (déléguer et décrire, en anglais)
+            </a>
+            <a href="https://code.claude.com/docs/fr/best-practices" target="_blank" rel="noopener noreferrer" class="doc-link doc-link-anthropic">
+              Bonnes pratiques Claude Code (doc en français)
+            </a>
+          </div>
+        </div>
       `,
       exemple: `
-        <h3>Un exemple concret : de "vague" à "précis"</h3>
+        <h3>Un exemple concret : de « vague » à « précis »</h3>
 
         <div style="margin: 1rem 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden;">
           <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: rgba(99,102,241,0.08);">
             <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(99,102,241,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #a5b4fc; flex-shrink: 0;">U</div>
             <div style="flex: 1;">
-              <p style="margin: 0; color: #d1d5db;">"J'aimerais un truc bien sur les probabilités pour mes 3ème"</p>
+              <p style="margin: 0; color: #d1d5db;"><code>/grill-me</code> « J'aimerais un truc bien sur les probabilités pour mes 3ème »</p>
             </div>
           </div>
 
           <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: rgba(255,255,255,0.03);">
             <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(16,185,129,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #6ee7b7; flex-shrink: 0;">IA</div>
             <div style="flex: 1; font-size: 0.9em;">
-              <p style="margin: 0 0 0.75rem; color: #6ee7b7; font-weight: 600;">Idea Challenger — Round 1</p>
-              <p style="margin: 0 0 0.5rem; color: #d1d5db;"><strong>Q1 — Objectif :</strong> Quel type de document ? <span style="color: #9ca3af;">A) Cours complet / B) Activité découverte / C) Exercices / D) Évaluation</span></p>
-              <p style="margin: 0 0 0.5rem; color: #d1d5db;"><strong>Q2 — Format :</strong> Quel support ? <span style="color: #9ca3af;">A) LaTeX imprimable / B) Diaporama / C) App interactive / D) Autre</span></p>
-              <p style="margin: 0; color: #d1d5db;"><strong>Q3 — Contexte :</strong> C'est pour quand dans votre séquence ? <span style="color: #9ca3af;">A) Introduction / B) Milieu / C) Fin / D) Révision</span></p>
+              <p style="margin: 0 0 0.75rem; color: #6ee7b7; font-weight: 600;">Manche 1</p>
+              <p style="margin: 0 0 0.5rem; color: #d1d5db;"><strong>Q1 — Document :</strong> <span style="color: #9ca3af;">A) Activité de découverte (recommandé si c'est une introduction) / B) Cours / C) Exercices / D) Évaluation</span></p>
+              <p style="margin: 0 0 0.5rem; color: #d1d5db;"><strong>Q2 — Support :</strong> <span style="color: #9ca3af;">A) LaTeX imprimable (recommandé : vos autres documents sont en LaTeX) / B) Diaporama / C) Page interactive</span></p>
+              <p style="margin: 0; color: #d1d5db;"><strong>Q3 — Moment :</strong> <span style="color: #9ca3af;">A) Introduction / B) Milieu de séquence / C) Révision</span></p>
             </div>
           </div>
 
           <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: rgba(99,102,241,0.08);">
             <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(99,102,241,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #a5b4fc; flex-shrink: 0;">U</div>
             <div style="flex: 1;">
-              <p style="margin: 0; color: #d1d5db;">"B, A, et c'est pour l'intro. Ils n'ont jamais vu les probas."</p>
+              <p style="margin: 0; color: #d1d5db;">« A, A, A. Ils n'ont jamais vu les probas. »</p>
             </div>
           </div>
 
           <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: rgba(255,255,255,0.03);">
             <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(16,185,129,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #6ee7b7; flex-shrink: 0;">IA</div>
             <div style="flex: 1; font-size: 0.9em;">
-              <p style="margin: 0 0 0.5rem; color: #6ee7b7; font-weight: 600;">Clarté : 4/5 — prêt pour la génération</p>
-              <p style="margin: 0; color: #d1d5db;">Prompt structuré généré → <code>prompt-activite-probas-3eme.md</code></p>
+              <p style="margin: 0 0 0.75rem; color: #6ee7b7; font-weight: 600;">Manche 2 (débloquée par vos réponses)</p>
+              <p style="margin: 0 0 0.5rem; color: #d1d5db;"><strong>Q4 — Expérience :</strong> <span style="color: #9ca3af;">A) Lancers de dés réels en binômes (recommandé : manipuler avant de formaliser) / B) Simulation sur tableur</span></p>
+              <p style="margin: 0; color: #d1d5db;"><strong>Q5 — Durée :</strong> <span style="color: #9ca3af;">A) Une séance de 55 min (recommandé) / B) Deux séances</span></p>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.05);">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(16,185,129,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #6ee7b7; flex-shrink: 0;">IA</div>
+            <div style="flex: 1; font-size: 0.9em;">
+              <p style="margin: 0 0 0.5rem; color: #6ee7b7; font-weight: 600;">Récapitulatif — je lance si vous confirmez</p>
+              <p style="margin: 0; color: #d1d5db;">Activité de découverte · LaTeX · introduction (aucun prérequis) · lancers de dés en binômes · une séance de 55 min.</p>
             </div>
           </div>
         </div>
 
         <p style="padding: 0.75rem 1rem; background: rgba(16,185,129,0.08); border-radius: 8px; border-left: 3px solid rgba(16,185,129,0.4); font-size: 0.95em;">
-          En 2 échanges, la demande "un truc bien sur les probas" est devenue
-          "activité de découverte en LaTeX pour introduction aux probabilités en 3ème,
-          première fois que les élèves abordent la notion". L'IA sait exactement quoi produire.
+          En deux manches, « un truc bien sur les probas » est devenu
+          « activité de découverte en LaTeX pour introduire les probabilités en 3ème, une séance,
+          avec une vraie expérience de lancers ». L'IA sait exactement quoi produire, et vous aussi.
         </p>
       `,
       pratique: `
-        <h3>Testez avec le vrai skill Idea Challenger</h3>
+        <h3>Testez par vous-même</h3>
         <p>
-          Comme pour le meta-prompt de la capsule 1, vous copiez ici le <strong>vrai skill professionnel</strong>
-          utilisé par les agents IA. Il contient le workflow complet de clarification (225 lignes)
-          + les conventions Anthropic de prompt engineering (190 lignes).
-          Écrivez votre demande, puis copiez le tout.
+          Si vous avez le setup de ce site, tapez <code>/grill-me</code> suivi d'une idée encore floue
+          pour votre prochaine séquence. Sinon, utilisez la phrase donnée dans l'onglet « Info »
+          avec n'importe quelle IA.
         </p>
 
         <h4 style="margin-top: 1.5rem;">Ce que vous devez observer</h4>
         <ul>
-          <li>✅ L'IA vous pose des questions <strong>avec des choix</strong>, pas des questions ouvertes</li>
-          <li>✅ Chaque round affine la compréhension (la demande se précise à chaque échange)</li>
-          <li>✅ Au bout de 2-3 rounds, l'IA vous propose un prompt structuré</li>
+          <li>✅ L'IA vous pose des questions <strong>avec des choix</strong> et une recommandation, pas des questions ouvertes</li>
+          <li>✅ Les questions arrivent <strong>par manches</strong> : la suivante dépend de vos réponses</li>
+          <li>✅ Elle ne vous demande pas ce qu'elle peut vérifier elle-même</li>
+          <li>✅ Elle termine par un <strong>récapitulatif</strong> et attend votre accord</li>
           <li>✅ Vous découvrez des aspects auxquels vous n'aviez <strong>pas pensé</strong></li>
         </ul>
 
         <div class="exercise-card" style="margin-top: 1.5rem;">
           <div class="exercise-header">
             <span class="exercise-badge">Exercice</span>
-            <span style="font-weight: 600; color: white;">Identifier les dimensions manquantes</span>
+            <span style="font-weight: 600; color: white;">Anticiper les questions</span>
           </div>
           <div class="exercise-body">
-            <p>Pour chaque demande, identifiez les dimensions qui manquent :</p>
-            <p><strong>1.</strong> "Fais-moi un cours sur Thalès"</p>
-            <p style="color: #9ca3af; font-size: 0.85em;">Dimensions manquantes : ...</p>
-            <p><strong>2.</strong> "Crée un exercice de calcul littéral en LaTeX pour mes 4ème, 6 questions progressives avec correction"</p>
-            <p style="color: #9ca3af; font-size: 0.85em;">Dimensions manquantes : ...</p>
+            <p>Pour chaque demande, listez les questions qu'une bonne interview vous poserait :</p>
+            <p><strong>1.</strong> « Fais-moi un cours sur Thalès »</p>
+            <p style="color: #9ca3af; font-size: 0.85em;">Questions attendues : ...</p>
+            <p><strong>2.</strong> « Crée un exercice de calcul littéral en LaTeX pour mes 4ème, 6 questions progressives avec correction »</p>
+            <p style="color: #9ca3af; font-size: 0.85em;">Questions attendues : ...</p>
           </div>
           <details class="exercise-solution">
             <summary>Voir les réponses</summary>
             <div class="solution-content">
-              <p><strong>1.</strong> Il manque presque tout : <em>Public</em> (quel niveau ?), <em>Format</em> (LaTeX, diaporama ?), <em>Périmètre</em> (combien de pages ?), <em>Contexte</em> (introduction ou révision ?), <em>Contraintes</em> (programme officiel ?). Seul l'objectif est vaguement défini.</p>
-              <p><strong>2.</strong> Beaucoup mieux ! Il manque surtout le <em>Contexte</em> (où dans la séquence ?) et éventuellement les <em>Contraintes</em> (notion de simple ou double distributivité ?). Mais c'est suffisamment clair pour produire quelque chose de correct.</p>
+              <p><strong>1.</strong> Presque tout reste à décider : <em>quel niveau</em> (3ème ? 2de ?), <em>quel format</em> (LaTeX, diaporama ?), <em>quelle longueur</em>, <em>quel moment</em> de la séquence (découverte ou institutionnalisation ?), <em>quelles exigences</em> du programme. Seul le thème est fixé.</p>
+              <p><strong>2.</strong> Beaucoup mieux ! Il reste surtout le <em>moment</em> (application directe ou révision ?) et le <em>contenu</em> (simple ou double distributivité ? factorisation ?). Une seule manche suffira.</p>
             </div>
           </details>
         </div>
       `,
     },
     duration: '~8 min',
-    tags: ['clarification', 'idea-challenger', 'questions'],
+    tags: ['clarification', 'grill-me', 'questions'],
   },
 
   'pc-preplan': {
@@ -3738,7 +4097,7 @@ Vérifie la cohérence entre le diaporama et les exercices</code></pre>
     title: 'Co-construire un pré-plan interactif',
     description: 'Faire produire un plan annotable avant la production finale pour un résultat optimal',
     parcours: 'prompt-craft',
-    order: 2,
+    order: 4,
     sections: {
       info: `
         <h3>Spoiler : vous lisez un pré-plan depuis le début</h3>
@@ -3911,7 +4270,7 @@ Vérifie la cohérence entre le diaporama et les exercices</code></pre>
     title: 'La revue par les pairs : adversarial review',
     description: 'Faire critiquer un plan par plusieurs agents aux points de vue différents',
     parcours: 'prompt-craft',
-    order: 3,
+    order: 5,
     sections: {
       info: `
         <h3>Pourquoi un seul point de vue ne suffit pas</h3>
@@ -4167,7 +4526,7 @@ suite aux critiques.</code></pre>
           <div style="padding: 0.6rem; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 6px; text-align: center;">
             <div style="font-size: 1.1rem;">💡</div>
             <div style="font-size: 0.75em; font-weight: 600; color: #fbbf24;">Clarifier</div>
-            <div style="font-size: 0.65em; color: #9ca3af;">Idea-challenger</div>
+            <div style="font-size: 0.65em; color: #9ca3af;">Grill-me</div>
           </div>
           <div style="padding: 0.6rem; background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 6px; text-align: center;">
             <div style="font-size: 1.1rem;">🤝</div>
@@ -4408,6 +4767,10 @@ Appliquer les corrections.</code></pre>
     duration: '~8 min',
     tags: ['synthèse', 'combinaison', 'récapitulatif'],
   },
+
+  // --- Typst avec farfadet (parcours-typst-a.ts et parcours-typst-b.ts) ---
+  ...TYPST_CAPSULES_A,
+  ...TYPST_CAPSULES_B,
 }
 
 /**

@@ -307,46 +307,17 @@ Toujours rédiger la correction **avant** d'attribuer les points. L'atomisation 
 }
 ```
 
-## Exemples Complets
-
-### Exemple : DS Calculs et Géométrie (2nde)
-
-| Exercice | Type | Coef | Actions | Points |
-|----------|------|------|---------|--------|
-| Ex 1 : QCM | Calcul | 1 | 12 | 12 |
-| Ex 2 : Calcul littéral | Algèbre | 1 | 13 | 13 |
-| Ex 3 : Intervalles | Algèbre | 1 | 12 | 12 |
-| Ex 4 : Géométrie | Géométrie | 0.5 | 26 | 13 |
-| **Total** | | | **63** | **50** |
-
-- Note cible : 20
-- Ratio : 20/50 = 0.4
-- Densité : 63/20 = 3.15 (standard)
-
-### Grille de Conversion
-
-Pour ce DS, avec ratio 0.4 :
-
-| Points bruts | Note /20 |
-|--------------|----------|
-| 50 | 20 |
-| 45 | 18 |
-| 40 | 16 |
-| 35 | 14 |
-| 30 | 12 |
-| 25 | 10 |
-
 ## Rappels Critiques
 
 1. **Toujours atomiser la correction d'abord** avant d'attribuer les points
 2. **Un critère = une action** = quelque chose de visible dans la copie
-3. **Coefficient 0.5 pour la géométrie** (actions moins cognitives)
+3. **Coefficient 0.5 pour la géométrie** (actions moins cognitives) : choix personnel, réglable selon vos pratiques
 4. **Utiliser l'interface HTML** pour la correction interactive
 5. **Analyser la densité** pour calibrer vos évaluations
 6. **Comparer les productivités** pour un suivi objectif des élèves
 
 ## Références
 
-- Interface de correction : `bareme.html` (monolithique, portable)
+- Interface de correction : `templates/bareme.html` (monolithique, portable)
 - Template JSON : Généré automatiquement depuis le document LaTeX
 - Intégration : Skill `bfcours-latex` pour la rédaction

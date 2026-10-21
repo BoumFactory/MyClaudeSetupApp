@@ -1,0 +1,83 @@
+{
+  "mode": "m4",
+  "steps": [
+    {
+      "msg": "capture jeu_01_m4_tolerance.png"
+    }
+  ],
+  "errors": [],
+  "m4": [
+    {
+      "interaction": "numeric true",
+      "attendu": "0,4",
+      "saisi": "0,1",
+      "verdict": "FAUX"
+    },
+    {
+      "interaction": "numeric true",
+      "attendu": "0,25",
+      "saisi": "0,26",
+      "verdict": "FAUX"
+    },
+    {
+      "interaction": "numeric true",
+      "attendu": "1500",
+      "saisi": "1600",
+      "verdict": "FAUX"
+    },
+    {
+      "interaction": "numeric true",
+      "attendu": "12,75",
+      "saisi": "12,57",
+      "verdict": "FAUX"
+    },
+    {
+      "interaction": "numeric true",
+      "attendu": "0,18/0.18",
+      "saisi": "0,19",
+      "verdict": "FAUX"
+    },
+    {
+      "interaction": "numeric true",
+      "attendu": "parallèle",
+      "saisi": "paralèle",
+      "verdict": "FAUX"
+    },
+    {
+      "interaction": "défaut",
+      "attendu": "0,4",
+      "saisi": "0,1",
+      "verdict": "FAUX"
+    },
+    {
+      "interaction": "défaut",
+      "attendu": "0,25",
+      "saisi": "0,26",
+      "verdict": "JUSTE"
+    },
+    {
+      "interaction": "défaut",
+      "attendu": "1500",
+      "saisi": "1600",
+      "verdict": "JUSTE"
+    },
+    {
+      "interaction": "défaut",
+      "attendu": "12,75",
+      "saisi": "12,57",
+      "verdict": "JUSTE"
+    },
+    {
+      "interaction": "défaut",
+      "attendu": "0,18/0.18",
+      "saisi": "0,19",
+      "verdict": "JUSTE"
+    },
+    {
+      "interaction": "défaut",
+      "attendu": "parallèle",
+      "saisi": "paralèle",
+      "verdict": "JUSTE"
+    }
+  ]
+}

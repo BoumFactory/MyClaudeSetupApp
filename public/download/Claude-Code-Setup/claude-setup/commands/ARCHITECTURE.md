@@ -6,7 +6,7 @@
 
 ---
 
-## Inventaire Automatique des Commandes (27 commandes)
+## Inventaire Automatique des Commandes (23 commandes)
 
 | Commande | Description courte |
 |----------|-------------------|
@@ -16,14 +16,10 @@
 | `animate` | Création d'animations interactives |
 | `bareme` | Génération de barèmes actions élèves |
 | `continueBO` | Poursuite extraction compétences BO |
-| `create-app` | Création d'applications éducatives |
-| `createBeamer` | Création diaporamas Beamer |
 | `createHtml` | Création cours HTML/KaTeX |
-| `createImage` | Création d'images et visuels |
 | `createReveals` | Création présentations reveal.js |
 | `createTex` | Création documents LaTeX |
 | `do` | Méta-commande d'orchestration |
-| `ficheTexnique` | Production fiches techniques |
 | `formatTexBetter` | Édition LaTeX compacte |
 | `loadSkillKnowledge` | Chargement connaissances skills |
 | `loadTexKnowledge` | Chargement connaissances LaTeX |
@@ -49,7 +45,6 @@
 │   │
 │   ├── latex/                          # Documents LaTeX
 │   │   ├── createTex.md               # → createTex
-│   │   ├── createBeamer.md            # → createBeamer
 │   │   └── optiLatex.md               # → optiLatex
 │   │
 │   ├── html/                           # Documents Web
@@ -59,12 +54,6 @@
 │   │
 │   ├── moodle/                         # Contenus Moodle
 │   │   └── moodleise.md               # → moodleise
-│   │
-│   ├── media/                          # Contenus visuels
-│   │   └── createImage.md             # → createImage
-│   │
-│   ├── application/                    # Applications
-│   │   └── create-app.md              # → create-app
 │   │
 │   └── evaluation/                     # Évaluations
 │       ├── makeEval.md                # → makeEval
@@ -92,9 +81,6 @@
 │   │   ├── search-report.md           # → search-report
 │   │   └── continueBO.md              # → continueBO
 │   │
-│   ├── documentation/                  # Production de documentation
-│   │   └── ficheTexnique.md           # → ficheTexnique
-│   │
 │   └── chargement/                     # Chargement de connaissances
 │       ├── loadTexKnowledge.md        # → loadTexKnowledge
 │       └── loadSkillKnowledge.md      # → loadSkillKnowledge
@@ -115,7 +101,6 @@
 
 ### Créer / LaTeX
 - [ ] `createTex` → `creer/latex/createTex.md`
-- [ ] `createBeamer` → `creer/latex/createBeamer.md`
 - [ ] `optiLatex` → `creer/latex/optiLatex.md`
 
 ### Créer / HTML
@@ -125,12 +110,6 @@
 
 ### Créer / Moodle
 - [ ] `moodleise` → `creer/moodle/moodleise.md`
-
-### Créer / Media
-- [ ] `createImage` → `creer/media/createImage.md`
-
-### Créer / Application
-- [ ] `create-app` → `creer/application/create-app.md`
 
 ### Créer / Evaluation
 - [ ] `makeEval` → `creer/evaluation/makeEval.md`
@@ -154,9 +133,6 @@
 - [ ] `search-report` → `outillage/recherche/search-report.md`
 - [ ] `continueBO` → `outillage/recherche/continueBO.md`
 
-### Outillage / Documentation
-- [ ] `ficheTexnique` → `outillage/documentation/ficheTexnique.md`
-
 ### Outillage / Chargement
 - [ ] `loadTexKnowledge` → `outillage/chargement/loadTexKnowledge.md`
 - [ ] `loadSkillKnowledge` → `outillage/chargement/loadSkillKnowledge.md`
@@ -176,13 +152,13 @@
 
 | Catégorie | Sous-catégories | Nb commandes |
 |-----------|-----------------|--------------|
-| `creer/` | latex, html, moodle, media, application, evaluation | 11 |
+| `creer/` | latex, html, moodle, evaluation | 8 |
 | `modifier/` | latex, html, notebook | 6 |
-| `outillage/` | recherche, documentation, chargement | 6 |
+| `outillage/` | recherche, chargement | 5 |
 | `experimental/` | - | 1 |
 | `perso/` | - | 1 |
 | `meta/` | - | 1 |
-| **Total** | | **27** |
+| **Total** | | **23** |
 
 ---
 

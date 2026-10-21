@@ -23,13 +23,6 @@ const tierColors: Record<PackageTier, { border: string; bg: string; badge: strin
     text: 'text-cosmic-400',
     glow: 'hover:shadow-[0_0_30px_rgba(139,92,246,0.15)]',
   },
-  word: {
-    border: 'border-sky-500/30 hover:border-sky-400/50',
-    bg: 'bg-sky-950/20',
-    badge: 'bg-sky-500/20 text-sky-300 border-sky-500/30',
-    text: 'text-sky-400',
-    glow: 'hover:shadow-[0_0_30px_rgba(56,189,248,0.1)]',
-  },
   avance: {
     border: 'border-purple-500/30 hover:border-purple-400/50',
     bg: 'bg-purple-950/20',
@@ -169,7 +162,6 @@ export default function DownloadAIPackagesPage() {
 
   const generaliste = AI_PACKAGES.find(p => p.id === 'generaliste')!
   const latex = AI_PACKAGES.find(p => p.id === 'latex')!
-  const word = AI_PACKAGES.find(p => p.id === 'word')!
   const avance = AI_PACKAGES.find(p => p.id === 'avance')!
 
   return (
@@ -202,10 +194,9 @@ export default function DownloadAIPackagesPage() {
         </div>
       </div>
 
-      {/* Tier 2 — LaTeX + Word (côte à côte) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-6">
+      {/* Tier 2 — LaTeX Enseignant */}
+      <div className="max-w-md mx-auto mb-6">
         <PackageCard pkg={latex} downloading={downloading} onDownload={handleDirectDownload} />
-        <PackageCard pkg={word} downloading={downloading} onDownload={handleDirectDownload} />
       </div>
 
       {/* Connector */}
@@ -228,7 +219,7 @@ export default function DownloadAIPackagesPage() {
           <div>
             <h3 className="font-medium text-amber-300 text-sm mb-1">Bundles inclusifs</h3>
             <p className="text-xs text-white/50">
-              Les bundles spécialisés (LaTeX et Word Enseignant) incluent le Généraliste.
+              Le bundle LaTeX Enseignant inclut le Généraliste.
               Le Power User inclut tout. Il est inutile d'ajouter un bundle déjà couvert par un autre.
               Le panier vous préviendra en cas de doublons.
             </p>

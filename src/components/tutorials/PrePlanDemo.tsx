@@ -52,14 +52,14 @@ export function PrePlanDemo() {
 
   const supportsLabels = {
     latex: 'Documents LaTeX (bfcours)',
-    slideshow: 'Diaporama de cours',
+    slideshow: 'Diaporama de cours (reveal.js)',
     exerciseSheet: 'Fiche d\'exercices séparée',
     qcm: 'QCM d\'évaluation interactif',
   };
 
   const supportsSkills = {
     latex: '/skills/tex-document-creator',
-    slideshow: '/skills/beamer-presentation',
+    slideshow: '/skills/reveals-presentation',
     exerciseSheet: '/skills/tex-document-creator',
     qcm: '/skills/qcm-creator',
   };

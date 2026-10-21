@@ -42,6 +42,83 @@ Pour les emphases visuelles dans LaTeX, utiliser :
 - `\textbf{texte}` pour le gras (mais préférer `\acc{}`)
 - Texte simple pour les explications
 
+## Règles typographiques générales
+
+### Point final dans les listes : seulement si l'item est une phrase
+
+**RÈGLE** : un item de liste (itemize, enumerate, tcbenumerate, MultiColonnes avec puces) se
+termine par un **point final si — et seulement si — c'est une phrase** : une consigne, une
+proposition rédigée, une explication. Un item qui n'est qu'une **expression mathématique nue**
+(un calcul à effectuer, une expression à simplifier, une égalité à démontrer) **ne prend pas de
+point** : le point y est lu comme un symbole parasite collé à la formule.
+
+```latex
+% CORRECT — phrases : point final
+\begin{tcbenumerate}[2]
+    \tcbitem \acc{Calculer} la valeur de $f(3)$.
+    \tcbitem \acc{En déduire} le signe de $f$.
+\end{tcbenumerate}
+
+% CORRECT — expressions nues : pas de point
+\begin{tcbenumerate}[3]
+    \tcbitem $2^{12}$
+    \tcbitem $4^{6}$
+    \tcbitem $\dfrac{2^{20}}{2^{8}}$
+\end{tcbenumerate}
+
+% INCORRECT — point parasite après une expression nue
+\begin{tcbenumerate}[3]
+    \tcbitem $2^{12}$.
+    \tcbitem $4^{6}$.
+\end{tcbenumerate}
+
+% INCORRECT — phrase sans point
+\begin{tcbenumerate}[2]
+    \tcbitem \acc{Calculer} la valeur de $f(3)$
+\end{tcbenumerate}
+```
+
+**Critère opérationnel** : si le contenu de l'item est un **unique groupe `$...$` sans aucun texte
+autour**, c'est une expression nue -> pas de point. Dès qu'il y a un verbe, un connecteur ou un
+quantificateur rédigé (« Pour tout réel $x$, $\sqrt{x^{2}}=|x|$. », « Si $a$ est impair, alors
+$a^{2}$ est impair. »), c'est une phrase -> point final.
+
+La règle vaut **aussi dans les corrections** : un item de correction qui n'est qu'une chaîne de
+calculs (`$B=\dfrac{4}{5}\div\dfrac{6}{5}=\dots=\dfrac{2}{3}$`) ne prend pas de point, alors qu'un
+item rédigé (« Le numérateur vaut ... Donc $A=\dots$ ») le garde.
+
+### Accents français obligatoires
+
+Les accents français (é, è, ê, à, ù, ç, î, ô, etc.) doivent **toujours** être présents et correctement encodés dans les documents. Ne jamais écrire de texte français sans accents.
+
+```latex
+% CORRECT
+Déterminer l'équation réduite de la droite passant par les points $A$ et $B$.
+
+% INCORRECT (accents manquants)
+Determiner l'equation reduite de la droite passant par les points $A$ et $B$.
+```
+
+### Commande \Coordonnees pour les coordonnées de points
+
+**RÈGLE OBLIGATOIRE** : Pour écrire les coordonnées d'un point, utiliser **systématiquement** la commande `\Coordonnees` du package bfcours.
+
+**Définition** : `\newcommand{\Coordonnees}[3][]{$#1(#2~;~#3)$}`
+
+**Syntaxe** : `\Coordonnees[label]{x}{y}`
+
+```latex
+% CORRECT
+Le point \Coordonnees[A]{2}{3} appartient à la droite.
+On place les points \Coordonnees[A]{-1}{4} et \Coordonnees[B]{3}{-2}.
+
+% INCORRECT (écriture manuelle)
+Le point $A(2~;~3)$ appartient à la droite.
+On place les points $A(-1;4)$ et $B(3;-2)$.
+```
+
+**Attention** : Ne pas écrire `A(x;y)` ou `$A(x~;~y)$` manuellement. Toujours passer par `\Coordonnees`.
+
 ## Environnements de structure
 
 Il s'agit des environnements pour présenter en colonne, centrer, énumérer et les tableaux.
@@ -176,6 +253,48 @@ Exemple complexe avec imbrication :
 - Dans le cas d'imbrication, le premier niveau doit avoir une bordure pour clarifier la présentation.
 - Il est naturel et puissant de terminer un tcbenumerate pour le reprendre plus bas avec une autre géométrie en saisissant le bon index de départ.
 
+**Heuristique pour choisir le nombre de colonnes** (évaluer chaque énoncé d'EXO) :
+
+| Profil des items | Choix recommandé | Exemple |
+|------------------|------------------|---------|
+| 2 items courts (1 ligne) | `[2]` | « Déterminer $f'(x)$. » / « En déduire $f''(x)$. » |
+| 3 items courts (1 ligne) | `[3]` | « Conjecturer. » / « Démontrer. » / « Confirmer. » |
+| 4-6 items moyens (1-2 lignes) | `[2]` | Étude complète d'une fonction |
+| Items longs (3+ lignes ou maths affichées) | `[1]` | Affirmations vrai-faux à justifier |
+| Items asymétriques (1 long + plusieurs courts) | `[1]` puis sous-`tcbenumerate[2 ou 3]` | Voir ci-dessous |
+
+**Reformulation pour gagner en compacité** : avant de baisser à `[1]`, essayer de raccourcir l'énoncé sans en altérer le sens (« suivant les valeurs de $x$ » → « selon $x$ », « la fonction $f$ définie sur $\R$ par » → « $f : \R \to \R$ »). L'objectif est de tenir sur 1-2 lignes par item pour permettre `[2]` ou `[3]`.
+
+### Respecter la structure de l'énoncé source (sous-questions a/b)
+
+**RÈGLE CRITIQUE** : Quand un énoncé source possède une numérotation hiérarchique (1.a, 1.b, 2.a, 2.b...), **ne pas l'aplatir** en une simple liste 1, 2, 3, 4. La hiérarchie porte du sens pédagogique (regroupement thématique, progression).
+
+Utiliser l'imbrication `tcbenumerate` :
+
+```latex
+\begin{tcbenumerate}[1]
+\tcbitem \tcbitempoint{4}
+\begin{tcbenumerate}[2][1][alph]
+\tcbitem \acc{Étudier} les variations de $C$.
+\tcbitem \acc{Tracer} la courbe représentative.
+\end{tcbenumerate}
+\tcbitem \tcbitempoint{4}On dit que les rendements sont décroissants lorsque $C_m$ est croissant.
+\begin{tcbenumerate}[2][1][alph]
+\tcbitem \acc{Étudier} les variations de $C_m$.
+\tcbitem À quoi cela correspond-il pour $C$ ?
+\end{tcbenumerate}
+\tcbitem \tcbitempoint{3}\acc{Déterminer} ce nombre.
+\end{tcbenumerate}
+```
+
+L'utilisateur peut explicitement demander d'aplatir, mais par défaut la fidélité à l'énoncé prime sur l'aplatissement.
+
+**Compactage des corrections** : à l'inverse, dans les corrections, mieux vaut éviter les `\\` à répétition et les sauts de ligne forcés. Préférer :
+- regrouper les calculs en une seule ligne avec des `\iff` ou des `;` quand c'est court ;
+- conserver des `\begin{itemize}` brefs pour énumérer les cas (signe, intervalles) plutôt que des phrases successives.
+
+**Mode maths affiché — INTERDIT** : NE JAMAIS utiliser `\[ ... \]` ni `$$ ... $$`. Pour une équation à mettre en valeur, utiliser le mode `$...$` inline éventuellement avec un saut de ligne avant/après, ou un environnement `align*` / `gather*` quand plusieurs lignes sont nécessaires. La raison : `\[ ... \]` casse le rythme typographique du document bfcours et produit un espacement disgracieux.
+
 Définition latex de tcbenumerate :
 
 ```latex
@@ -281,6 +400,26 @@ Tous les tableaux doivent utiliser tcbtab dans bfcours. Il est basé sur l'envir
 **Note critique tcbtab** : La première ligne du contenu doit être l'entête directement contrairement à tabular qui nécessite un hline.
 
 **Le titre** : Uniquement le titre, sans clé.
+
+**⚠️ RÈGLE CRITIQUE : jamais de virgule dans le titre d'un `tcbtab`**
+
+Le titre optionnel de `tcbtab` est injecté dans `title=#1` d'un `\newtcolorbox`, donc **parsé comme une liste de clés tcolorbox**. Une virgule y démarre une fausse clé et provoque une erreur fatale :
+
+```
+Package pgfkeys Error: I do not know the key '/tcb/deux écritures'
+```
+
+C'est exactement la même contrainte que pour les titres d'`EXO`. Remplacer la virgule par un tiret cadratin `--`, un point-virgule ou deux-points.
+
+```latex
+% INCORRECT (erreur pgfkeys fatale)
+\begin{tcbtab}[Le même nombre, deux écritures]{c|c|c}
+
+% CORRECT
+\begin{tcbtab}[Le même nombre -- deux écritures]{c|c|c}
+```
+
+Les accents, apostrophes et `--` dans le titre ne posent aucun problème : **seule la virgule** est interdite.
 
 ```latex
 \begin{tcbtab}[Titre du tableau]{structure tabular}%
@@ -412,9 +551,10 @@ Voici le code qui a été défini dans bfcours et que tu peux utiliser :
 - Citation : \frquote{expr}
 - Notation degré ( obligatoire ) : a$^{\circ}$
 - encadrer ( une formule, un résultat.. ) : \encadrer[couleur]{mot} ou \encadrer[couleur]{$maths$}
-  - **⚠️ CRITIQUE** : La commande `\encadrer` **sort du mode maths** même si elle est appelée dans un environnement mathématique. Il faut donc **TOUJOURS ré-entrer en mode maths** à l'intérieur de `\encadrer` quand on encadre des maths.
-  - **Exemple correct** : `\[u_{\text{display}} = \encadrer[red]{$\dfrac{5}{6}$} - 4\]`
-  - **Exemple incorrect** : `\[\encadrer[red]{\dfrac{5}{6}}\]` (provoque une erreur de compilation)
+  - Sensible au mode maths depuis le 22/07/2026 : appelée dans `$...$` ou `\[...\]`, elle garde le mode maths et son style (`\[P = \dfrac{1}{2} = \encadrer[prop]{0{,}5}\]` est correct) ; hors maths, on met soi-même les `$...$` à l'intérieur (`\encadrer{$x+1$}`). Ne vaut PAS pour `\acc`, qui reste `\acc{$...$}` et jamais dans `\[...\]`.
+- outil du cours ( correction d'exercice ) : \outilcours{texte} ou \outilcours[Étiquette]{texte}
+  - Ligne grise « ▹ *Outil du cours :* … » qui nomme la méthode ou la propriété du cours à mobiliser, pour la distinguer de la **rédaction attendue sur copie** qui suit en noir. À placer en tête de chaque `\tcbitem` de correction, suivie d'une ligne vide ; l'argument optionnel remplace l'étiquette (`[Rappel]`).
+  - Gabarit de correction « modèle de rédaction » : `\outilcours{...}`, phrase qui situe le calcul, formule générale puis calcul en `\[...\]` (jamais de fraction en ligne isolée, `parskip` nul dans un `\tcbitem`), résultat `\encadrer[prop]{...}`, phrase de conclusion. Une question par `\begin{tcbenumerate}[1][n]` pour que la correction reste sécable entre les questions. Exemple complet : `1. Cours/1ere-techno-TC/Sequence-Probabilites_conditionnelles/Exercices/enonce.tex`.
 - logique : \Si ; \Alors ; \Donc ; \Mais ; \SSI ; \Et
 
 ### Cas d'utilisation de \acc{}
@@ -679,7 +819,92 @@ contenu
 
 ### Environnements disponibles
 
-Propriete, Definition, Remarque, Demonstration, Theoreme, Activite, Notation, Exemple
+Propriete, Definition, Remarque, Demonstration, Theoreme, Activite, Notation, Exemple, ContreExemple, Methode
+
+### ⚠️ Règle : séparer Methode et Exemple d'application
+
+**Ne jamais mettre l'application d'une méthode à l'intérieur de l'environnement `Methode`.**
+
+L'environnement `Methode` ne doit contenir **que les étapes théoriques** (la marche à suivre générale). L'exemple d'application qui illustre la méthode sur un cas concret doit être placé dans un environnement `Exemple` **séparé**, juste après.
+
+**Pourquoi ?**
+
+- **Lisibilité** : la méthode reste un bloc de référence court et générique, l'exemple reste un bloc indépendant facilement repérable.
+- **Évite les bugs de mise en page** : un `Exemple` (ou tout contenu long avec `tcbenumerate`) imbriqué dans `Methode` qui se casse sur deux pages provoque la duplication du titre du bloc et un rendu cassé.
+
+**À faire** :
+
+```latex
+\begin{Methode}[Étudier la convexité d'une fonction]
+Pour étudier la convexité de $f$ sur un intervalle $I$ :
+\begin{tcbenumerate}[1]
+    \tcbitem Vérifier que $f$ est deux fois dérivable sur $I$.
+    \tcbitem Calculer $f'(x)$ puis $f''(x)$.
+    \tcbitem Étudier le signe de $f''(x)$ sur $I$.
+    \tcbitem Conclure selon le signe.
+\end{tcbenumerate}
+\end{Methode}
+
+\begin{Exemple}
+\acc{Application} : étudions la convexité de $f(x)=x^4$ sur $\R$.
+\begin{tcbenumerate}[1]
+    \tcbitem $f$ est polynomiale, deux fois dérivable sur $\R$.
+    \tcbitem $f'(x)=4x^3$ et $f''(x)=12x^2$.
+    \tcbitem Pour tout $x\in\R$, $12x^2\geqslant 0$, donc $f''\geqslant 0$.
+    \tcbitem $f$ est convexe sur $\R$.
+\end{tcbenumerate}
+\end{Exemple}
+```
+
+**À NE PAS faire** :
+
+```latex
+% INCORRECT : application dans la méthode -> risque de duplication de titre au break
+\begin{Methode}[Étudier la convexité]
+Pour étudier la convexité de $f$ sur $I$ :
+\begin{tcbenumerate}[1]
+    \tcbitem ...
+\end{tcbenumerate}
+
+\acc{Application} : ...   % INTERDIT, sortir dans un Exemple séparé
+\begin{tcbenumerate}[1]
+    \tcbitem ...
+\end{tcbenumerate}
+\end{Methode}
+```
+
+### ⚠️ Bloc didactique coupé en fin de page : titre fantôme sur la page suivante
+
+**Symptôme visuel** : quelques glyphes parasites isolés (fragments de mots en gras) apparaissent au haut d'une page, décalés à gauche d'une colonne de texte, sans rapport avec le contenu.
+
+**Cause** : les environnements didactiques bfcours sont `breakable` et posent leur titre en `attach boxed title`. Quand le bloc se coupe entre deux pages, tcolorbox **redessine le titre** au haut de la portion suivante, mais celui-ci est recouvert par le fond blanc du contenu : il n'en dépasse que quelques lettres. Le titre se retrouve alors présent **deux fois** dans le PDF.
+
+**Détection fiable** (à faire systématiquement après compilation d'un cours) : extraire les titres `\begin{Env}[...]` du source, puis vérifier qu'aucun n'apparaît sur deux pages du corps du PDF.
+
+```python
+import fitz, re, io
+pages = [' '.join(p.get_text().replace(chr(8217), "'").split()) for p in fitz.open(pdf)]
+# pour chaque titre normalisé : len([i for i,t in enumerate(pages,1) if titre in t and i>2]) doit valoir 1
+```
+
+Attention à deux pièges de comparaison : le PDF rend l'apostrophe droite `'` en apostrophe typographique `’` (à normaliser), et un titre préfixe d'un autre (`Droite des moindres carrés` ⊂ `Droite des moindres carrés de notre série`) produit un faux positif.
+
+**Correctifs, par ordre de préférence** :
+
+1. **Scinder le bloc** en plusieurs environnements plus courts. C'est presque toujours meilleur pédagogiquement : un `Exemple` qui enchaîne trois situations devient trois `Exemple` titrés séparément.
+2. **Alléger le bloc** : sortir une figure volumineuse de la `Definition` pour la placer juste avant, dans un `MultiColonnes` autonome.
+3. **Réserver la place** avec `needspace` (`\usepackage{needspace}` dans le préambule du fichier maître, le package n'est pas chargé par `bfcours.sty`) :
+
+   ```latex
+   \Needspace*{11\baselineskip}
+   \begin{Exemple}[Une suite croissante]
+   ...
+   \end{Exemple}
+   ```
+
+   Compter environ 1 `\baselineskip` par ligne rendue, plus 2 pour le titre et les marges du bloc.
+
+**Itérer** : déplacer un bloc en repousse un autre en fin de page (effet domino). Recompiler et relancer la détection après chaque `\Needspace` ajouté, jusqu'à zéro bloc coupé (2 à 3 passes suffisent en pratique).
 
 ### Code LaTeX d'un des environnements didactiques
 
@@ -741,6 +966,66 @@ Propriete, Definition, Remarque, Demonstration, Theoreme, Activite, Notation, Ex
 \end{tcolorbox}
 }
 ```
+
+## Code Python : environnement BFCodePython
+
+`bfcours.sty` ne charge **pas** les boîtes de code (la ligne `\RequirePackage{bfcours-lightLST}` y est commentée, comme `ProfLycee`). Pour afficher un programme Python, charger le package dans le préambule du fichier maître, **après** `bfcours-fonts` (les boîtes utilisent `\faPython` de `fontawesome5`, fourni par `bfcours-fonts`) :
+
+```latex
+\usepackage{bfcours}
+\usepackage{bfcours-fonts}
+\usepackage{bfcours-lightLST} % boîtes BFCodePython
+```
+
+Environnements disponibles : `BFCodePython` (sans numéros de ligne), `BFCodePythonNum` (numérotées, 1er numéro en argument), `BFCodePythonAlt` et `BFCodePythonAltNum` (variante graphique).
+
+```latex
+\begin{BFCodePython}
+def u(n):
+    return 2*n + 3
+
+print(u(50))   # affiche 103
+\end{BFCodePython}
+```
+
+Les accents français dans les commentaires passent sans problème (`inputencoding=utf8` est déclaré dans le style `MonPython`).
+
+**⚠️ CONTRAINTE MAJEURE : jamais de `BFCodePython` dans un environnement didactique.**
+
+Les environnements didactiques (`Definition`, `Methode`, `Exemple`, `Remarque`...) capturent leur contenu en **argument body** (`+b` de `xparse`). Le verbatim ne survit pas à cette tokenisation : la compilation casse avec `\begin{lstlisting} ... ended by \end{...}` ou `Emergency stop`. C'est la même contrainte que pour un `EXO` avec `save lower`.
+
+Placer le bloc de code **dans le flux du document**, encadré par des phrases de cours, et réserver l'environnement didactique au commentaire de la méthode :
+
+```latex
+\begin{Methode}[Calculer les termes d'une suite au tableur]
+...étapes théoriques uniquement...
+\end{Methode}
+
+Le mode par \acc{récurrence} se traduit par une \acc{boucle} \texttt{for} :
+
+\begin{BFCodePython}
+v = 100
+for i in range(10):
+    v = 0.8 * v
+print(v)
+\end{BFCodePython}
+```
+
+## Fichier maître : la boîte du niveau de \chapitre
+
+La commande `\chapitre[niveau]{thème}{type d'établissement}{établissement}{supplément}{type de document}` place le niveau dans une `tcolorbox` de **largeur fixe 1,5 cm** (définie dans `bfcours-exoplus.sty`). Un niveau plus long **déborde silencieusement** et vient chevaucher le titre du document dans le bandeau.
+
+Les valeurs standard (`$\mathbf{2^{\text{nde}}}$`, `$\mathbf{1^{\text{ère}}}$`, `$\mathbf{T^{\text{Le}}}$`) tiennent. Pour un niveau composé (séries technologiques, options), empiler sur deux lignes :
+
+```latex
+\chapitre[
+    \shortstack{$\mathbf{1^{\text{ère}}}$\\[-2pt]{\scriptsize techno}}%
+    ]{
+    Suites numériques%
+    }{ Lycée }{ Établissement exemple }{ }{ Cours : }
+```
+
+Toujours vérifier le bandeau de la page 1 sur le PDF rendu : le débordement ne produit **aucun avertissement** dans le `.log`.
 
 ## Environnement générique bfEnv
 
@@ -840,6 +1125,32 @@ Les documents bfcours incluent des presets TikZ pour la géométrie. Ces styles 
 \pointCorrection{x}{y}{Label}{position}  % Point en rouge pour corrections
 ```
 
+### Figures placées dans une colonne de MultiColonnes
+
+Une `tikzpicture` insérée dans un `\tcbitem` est **rognée au bord de la colonne** si elle est trop large : le symptôme typique est un label d'axe coupé en plein mot (« $n$ (séance »), accompagné d'un `Overfull \hbox` dans le `.log`.
+
+Deux réflexes :
+
+1. **Ancrer les labels d'axes vers l'intérieur de la figure.** Un node `below right` en bout de flèche déborde vers la droite ; `above left` le fait au contraire s'étendre vers l'intérieur, dans la zone laissée libre par le nuage.
+
+   ```latex
+   % INCORRECT : le label déborde à droite et se fait rogner
+   \draw[->,>=stealth,thick] (0,0) -- (7.6,0) node[below right,font=\scriptsize] {$n$ (séances)};
+
+   % CORRECT : le label reste dans la boîte
+   \draw[->,>=stealth,thick] (0,0) -- (7.3,0) node[above left,font=\scriptsize] {$n$ (séances)};
+   ```
+
+2. **Piloter la taille par `x=` et `y=` plutôt que par `scale`.** Deux unités indépendantes permettent d'ajuster la largeur (contrainte par la colonne) sans écraser la hauteur. Dans une `MultiColonnes{2}` sur `\textwidth` = 19 cm, viser **6,5 cm de large maximum**, labels d'axes compris — soit environ `x=0.70cm` pour un repère de $0$ à $7$.
+
+   ```latex
+   \begin{tikzpicture}[x=0.70cm,y=0.058cm,baseline=(current bounding box.center)]
+   ```
+
+   `baseline=(current bounding box.center)` est indispensable pour que la figure s'aligne correctement avec le texte de la colonne voisine.
+
+Toujours contrôler `grep -c "Overfull .hbox" <log>` après ajout d'une figure : un débordement supérieur à ~2 pt est visible à l'impression.
+
 ### Exemple d'utilisation
 
 ```latex
@@ -856,4 +1167,295 @@ Les documents bfcours incluent des presets TikZ pour la géométrie. Ces styles 
 \end{tikzpicture}
 ```
 
-**Note** : Toujours utiliser `node[point]` ou `\pointC` pour placer des points, jamais `\fill ... circle`.
+### ⚠️ RÈGLE ABSOLUE : Tous les points en cross out
+
+**Tout point mathématique tracé dans une figure TikZ DOIT être représenté par une croix (cross out)**, jamais par un disque rempli, un cercle plein ou un point Unicode. C'est la convention universelle en mathématiques (collège, lycée, prépa, université). « C'est comme ça qu'on fait des maths. »
+
+S'applique à **tous les contextes** sans exception :
+
+- Points d'une figure géométrique (sommets, milieux, intersections)
+- Points d'une courbe (points de tangence, points de sécante, points remarquables)
+- Points d'inflexion, extrema locaux, racines
+- Points dans une activité, un exercice, un cours, une évaluation
+
+**Toujours faire** :
+
+```latex
+% Point neutre (noir)
+\node[point] at (1,2) {};
+
+% Point coloré (la couleur s'applique au trait de la croix)
+\node[point,blue] at (-1,1) {};
+\node[point,red!80!black] at (2,4) {};
+
+% Point d'inflexion / point remarquable - croix plus grosse
+\node[point,green!50!black,line width=1.2pt,minimum size=7pt] at (0,0) {};
+
+% Boucle sur plusieurs points (ex : points de tangence)
+\foreach \a in {-1.5,-0.5,0.5,1.5} \node[point,blue] at (\a,{\a*\a}) {};
+
+% Equivalent via la commande haut niveau (avec label)
+\pointC{0.5}{1.5}{E}{above left}
+\pointCorrection{2}{3}{F}{above right}  % en rouge pour les corrections
+```
+
+**À NE JAMAIS faire** :
+
+```latex
+% INTERDIT : disque rempli
+\node[circle,fill=blue,inner sep=1.3pt] at (1,2) {};
+\fill[blue] (1,2) circle (2pt);
+
+% INTERDIT : caractere Unicode ou puce
+\node at (1,2) {•};
+\node at (1,2) {\textbullet};
+
+% INTERDIT : cercle plein dessine via draw
+\draw[fill=red] (1,2) circle (0.05);
+```
+
+**Pourquoi** : la croix (cross out) marque la position exacte par l'intersection des deux traits, contrairement à un disque qui n'indique que le centre approximatif. C'est la convention pédagogique attendue, du collège à la terminale.
+
+**Style officiel défini dans le préambule bfcours** :
+```latex
+point/.style={cross out, draw, minimum size=5pt, line width=0.8pt, inner sep=0pt}
+point correction/.style={cross out, draw, minimum size=5pt, line width=1.2pt, inner sep=0pt, red}
+```
+
+## Comportements normaux à connaître avant d'écrire
+
+Ces trois comportements ne sont pas des bugs : c'est à celui qui écrit le document de les connaître. Ne pas les « diagnostiquer » ni chercher à les corriger dans le package.
+
+- **`\tcfillcrep` demande deux passes de compilation.** Il mesure la place restante sur la ligne à partir de la passe précédente : après une seule passe, le rendu est faux (contenu mal placé ou qui déborde). Juger le rendu seulement après `quick_compile.py --passes 2`. Il reste réservé aux réponses courtes en fin de ligne ; une phrase va dans `\repsim` ou `\repline`.
+- **`halign=center` d'une tcolorbox justifie un texte long.** Une ligne courte est centrée ; un paragraphe de plusieurs lignes est justifié, seule la dernière ligne reste centrée. C'est le comportement prévu. Pour centrer chaque ligne d'un texte long (titre en gros corps, par exemple), écrire `halign=flush center`.
+- **`tcbraster` (et `tcbitemize`) ne forme sa grille que dans une tcolorbox.** Posé nu dans le corps du document, il empile ses boîtes les unes sous les autres. L'imbriquer dans une tcolorbox conteneur, par exemple `\begin{tcolorbox}[blankest, nobeforeafter] … \end{tcolorbox}`. `MultiColonnes` fournit déjà ce conteneur.
+
+## Anti-patterns sans message d'erreur
+
+Pièges bfcours qui compilent sans avertissement (ou avec un message trompeur) mais produisent un rendu faux — le `.log` ne les signale pas, seule la relecture du PDF les révèle. Ces comportements viennent de LaTeX lui-même ou d'interactions entre paquets, pas d'un bug de bfcours : pas de correctif dans le package, seulement une manière de l'éviter.
+
+### 1. `\resizebox` pour caler un mot sur une largeur de cellule
+
+**Symptôme** : le mot déborde sur la ligne du dessus, ou la marge basse du bandeau semble amputée — sans erreur ni warning.
+
+**Cause** : `\resizebox` ne redimensionne que la largeur/hauteur demandées, il ne réserve pas l'espace vertical d'origine du contenu. Un `\mbox` composé uniquement de capitales a par ailleurs une profondeur (depth) quasi nulle, ce qui ampute toute marge basse calculée dessus.
+
+**À faire** : mesurer la largeur cible avec `\settowidth`, choisir un `\fontsize` qui produit un mot de cette largeur, et envelopper le résultat d'un `\strut` pour restaurer une hauteur/profondeur cohérente.
+
+```latex
+% INCORRECT : ne réserve pas sa hauteur, chevauche la ligne du dessus
+\resizebox{2cm}{!}{\textbf{MATERIEL}}
+
+% CORRECT
+\newlength{\largeurcible}
+\settowidth{\largeurcible}{MATERIEL}
+\mbox{\strut\fontsize{14}{16}\selectfont MATERIEL}
+```
+
+### 2. bfcours-fonts écrase la taille de `\documentclass`
+
+**Symptôme** : `\documentclass[14pt]{...}` n'a visiblement aucun effet, tout le corps de texte reste à sa taille par défaut.
+
+**Cause** : `bfcours-fonts` charge `\usepackage[fontsize=12]{scrextend}`, qui réinitialise silencieusement la taille de police globale et écrase l'option de taille passée à `\documentclass`.
+
+**À faire** : ne pas compter sur l'option de taille de la classe dans un document chargeant bfcours-fonts (affiche, etc.) ; calibrer chaque bloc de texte explicitement avec `\fontsize{..}{..}\selectfont`.
+
+```latex
+% INCORRECT : sans effet avec bfcours-fonts
+\documentclass[14pt]{article}
+
+% CORRECT : taille fixée bloc par bloc
+{\fontsize{18}{20}\selectfont Titre de bloc}
+```
+
+### 3. Noms réservés : ne jamais redéfinir `\lg`, `\deg`, `\min`, `\max`, `\arg`, `\det`...
+
+**Symptôme** : compilation cassée ou comportement incohérent après avoir déclaré une longueur ou une commande personnelle nommée `\lg` (ou un autre opérateur mathématique standard).
+
+**Cause** : `\lg` est déjà l'opérateur logarithme natif de LaTeX, au même titre que `\deg`, `\min`, `\max`, `\arg`, `\det`, `\sin`... Le redéfinir via `\newlength`/`\newcommand` écrase silencieusement l'opérateur existant.
+
+**À faire** : préfixer systématiquement les noms de longueurs et commandes personnelles, ne jamais utiliser le nom nu d'un opérateur mathématique.
+
+```latex
+% INCORRECT
+\newlength{\lg}
+
+% CORRECT
+\newlength{\lgCellule}
+```
+
+### 4. xcolor : composer une couleur déjà mélangée
+
+**Symptôme** : `Undefined color '25'`, `Undefined color '70'`, ou une cascade `Missing number` / `Illegal unit` en aval — typiquement dans un `\foreach` ou une macro qui reçoit une couleur en argument.
+
+**Cause** : xcolor ne sait composer qu'une expression `couleur!pourcentage!couleur` à la fois. Si la couleur reçue en argument (ou itérée dans un `\foreach`) est déjà un mélange (`black!45`, `black!75`), la composer une seconde fois par simple concaténation (`#2!70!black`, `\c!25!white`) produit une chaîne invalide (`black!45!70!black`).
+
+**À faire** : figer la couleur reçue avec `\colorlet` dans un identifiant neuf avant de composer.
+
+```latex
+% INCORRECT : #2 peut déjà être un mélange (ex. black!75)
+\newcommand{\Picto}[2]{\draw[#2!70!black] (0,0) circle (1);}
+
+% CORRECT : on fige la couleur avant de composer
+\newcommand{\Picto}[2]{%
+    \colorlet{couleurPicto}{#2}%
+    \draw[couleurPicto!70!black] (0,0) circle (1);
+}
+```
+
+### 5. `\underbrace` dans un `crep` seyes
+
+**Symptôme** : l'accolade et son annotation débordent sous la ligne de base et se superposent au texte de la ligne suivante — aucun avertissement dans le `.log`.
+
+**Cause** : la grille seyes du `crep` fixe un interligne rigide pour aligner les lignes du cahier. Un élément qui descend en profondeur (underbrace, indice de grande taille) n'a pas d'espace réservé et mord sur la ligne suivante.
+
+**À faire** : placer toute formule annotée par un `\underbrace` en **dernière ligne** du `crep`, jamais au milieu.
+
+```latex
+% INCORRECT : underbrace au milieu du crep -> chevauche la ligne suivante
+\begin{crep}
+$P(A) = \underbrace{P(A \cap B)}_{=0,2} + P(A \cap \bar B)$
+Donc $P(A \cap \bar B) = \dots$
+\end{crep}
+
+% CORRECT : underbrace en dernière ligne
+\begin{crep}
+Donc $P(A \cap \bar B) = \dots$
+
+$P(A) = \underbrace{P(A \cap B)}_{=0,2} + P(A \cap \bar B)$
+\end{crep}
+```
+
+### 6. Icônes fontawesome5 indéfinies (`\faFileAlt`, `\faShieldAlt`...)
+
+**Symptôme** : `Undefined control sequence` sur `\faFileAlt` ou `\faShieldAlt`, alors que les entrées `file-alt` et `shield-alt` existent bien dans la documentation fontawesome5.
+
+**Cause** : bfcours charge à la fois `fontawesome` (v4) et `fontawesome5` ; pour certaines icônes renommées entre les deux versions, l'entrée du mapping v5 a un premier argument vide (collision de nom avec la v4) : aucune macro `\faXxx` n'est générée pour elles.
+
+**À faire** : utiliser systématiquement la macro générique `\faIcon{nom-avec-tirets}`, dont l'existence ne dépend pas du mapping court.
+
+```latex
+% INCORRECT : Undefined control sequence
+\faFileAlt \faShieldAlt
+
+% CORRECT
+\faIcon{file-alt} \faIcon{shield-alt}
+```
+
+### 7. `\degres` (babel-french) rendu en « r caron » avec bfcours-fonts
+
+**Symptôme** : le symbole degré s'affiche comme un « ř » dans le PDF (ex. « n°1 » devient « nř1 »), sans erreur de compilation.
+
+**Cause** : bfcours-fonts change la police active ; le glyphe attendu par la commande babel-french `\degres` n'existe pas dans cette police, et un glyphe de substitution visuellement proche — mais faux — est utilisé à la place.
+
+**À faire** : utiliser `\textdegree` en mode texte, ou la notation `$^{\circ}$` en mode math (déjà la convention bfcours pour les angles, voir plus haut) ; ne jamais utiliser `\degres`.
+
+```latex
+% INCORRECT : rendu "nř1" au lieu de "n°1"
+Devoir surveillé n\degres{}1
+
+% CORRECT
+Devoir surveillé n\textdegree{}1
+```
+
+### 8. `couleur1`/`couleur2`/`couleur3` sont des styles TikZ, pas des couleurs xcolor
+
+**Symptôme** : `Undefined color 'couleur1'` (ou une variante avec un pourcentage, `couleur1!10`) en essayant d'utiliser `couleur1`, `couleur2` ou `couleur3` comme couleur (`colback=`, `\color{}`, mélange `!`).
+
+**Cause** : ces trois noms sont des styles `\tikzset` (`couleur1/.style={blue}`, etc. — voir la section « Styles TikZ pour la géométrie » ci-dessus), enregistrés uniquement dans l'espace de noms des styles TikZ, jamais déclarés comme couleurs xcolor.
+
+**À faire** : dans un contexte TikZ, les utiliser tels quels comme option de style (`[couleur1]`) ; dans un contexte xcolor (mélange, `colback`, `\color{}`), utiliser la couleur réelle qu'ils désignent (`blue`, `red`, `green!60!black`).
+
+```latex
+% INCORRECT : couleur1 n'est pas une couleur xcolor
+\draw[couleur1!10] (0,0) circle (1);
+
+% CORRECT : style TikZ tel quel
+\draw[couleur1] (0,0) circle (1);
+% CORRECT : couleur xcolor réelle si un mélange est nécessaire
+\draw[blue!10] (0,0) circle (1);
+```
+
+### 9. `MultiColonnes` après un `\tcbitem` court : la ligne vide reste obligatoire
+
+**Symptôme** : dans une correction d'EXO, un `MultiColonnes` qui suit immédiatement un court texte de `\tcbitem` (sans ligne vide entre les deux) se place à côté ou au-dessus du texte au lieu d'être dessous.
+
+**Cause** : cas particulier de la règle déjà documentée plus haut (« Présentation en grille avec MultiColonnes », ligne vide obligatoire avant `\begin{MultiColonnes}`) : un texte de `\tcbitem` très court laisse croire, à tort, que la contrainte ne s'applique qu'aux longs paragraphes. Elle s'applique identiquement.
+
+**À faire** : toujours séparer un `\tcbitem` de texte du `MultiColonnes` qui suit par une ligne vide, y compris quand le texte est court.
+
+```latex
+% INCORRECT : pas de ligne vide -> le bloc se place mal
+\tcbitem[boxrule=0.4pt,colframe=black] Points du cercle à 30$^\circ$ :
+\begin{MultiColonnes}{2}
+\tcbitem \textbullet Point $A$
+\tcbitem \textbullet Point $B$
+\end{MultiColonnes}
+
+% CORRECT
+\tcbitem[boxrule=0.4pt,colframe=black] Points du cercle à 30$^\circ$ :
+
+\begin{MultiColonnes}{2}
+\tcbitem \textbullet Point $A$
+\tcbitem \textbullet Point $B$
+\end{MultiColonnes}
+```
+
+Par la même contrainte de largeur fixe des colonnes, un `\encadrer` ou un `\tcfillcrep` dont le contenu est trop long pour sa colonne est **rogné sans avertissement** dans un `MultiColonnes` : raccourcir le contenu ou réduire le nombre de colonnes plutôt que de laisser déborder.
+
+### 10. `\ExoSaut` par défaut (6,5 cm) trop court pour un EXO insécable avec figure
+
+**Symptôme** : le bandeau titre d'un exercice reste isolé en bas de page, son corps (un `MultiColonnes` avec figure, ~9 cm) démarrant en haut de la page suivante — aucun avertissement dans le `.log`.
+
+**Cause** : `\ExoSaut` est une macro locale déclarée en tête d'un `enonce.tex` de fiche d'exercices (pas dans le package bfcours), qui force un saut de page conditionnel si la place restante sur la page est inférieure à un seuil par défaut de 6,5 cm. Si le premier bloc insécable de l'exercice suivant est plus haut que ce seuil, le calcul ne protège pas assez et le bandeau se retrouve seul en bas de page.
+
+**À faire** : donner explicitement à `\ExoSaut` un seuil couvrant la hauteur réelle du bloc insécable qui suit, via son argument optionnel. Revérifier ce seuil après tout réordonnancement d'exercices (déplacer un exercice invalide les seuils déjà calibrés pour ses voisins).
+
+```latex
+% INCORRECT : seuil par défaut (6.5cm) trop court pour un corps de ~9cm
+\ExoSaut
+\input{Exercice/coordonnees_lecture_somme}
+
+% CORRECT : seuil explicite couvrant la hauteur réelle du bloc suivant
+\ExoSaut[10.5cm]
+\input{Exercice/coordonnees_lecture_somme}
+```
+
+### 11. Formule isolée dans un `\tcbitem` : `parskip` nul, collée au texte
+
+**Symptôme** : dans un `\tcbitem` de `tcbenumerate`/`MultiColonnes`, une formule en mode `$...$` inline placée sur sa propre ligne (ou un `\encadrer` en fin de ligne) se colle visuellement au texte qui précède ou qui suit, rendu illisible.
+
+**Cause** : `\tcbitem` fixe `parskip` à 0 en interne ; un `\setlength{\parskip}` placé après `\exocorrection` est sans effet, le contenu de l'EXO étant rejoué via `save lower`.
+
+**À faire** : ne jamais isoler une formule en mode inline sur sa propre ligne dans un `\tcbitem` ; la passer en mode display (`align*` pour plusieurs lignes, ou intégrer la formule dans la phrase).
+
+```latex
+% INCORRECT : formule isolée en inline, collée au texte
+\tcbitem Le taux d'évolution est
+$\tau = \dfrac{V_f - V_i}{V_i}$
+donc le résultat est \encadrer[defi]{$\tau \approx 0,12$}
+
+% CORRECT : formule en mode display
+\tcbitem Le taux d'évolution est :
+\begin{align*}
+\tau = \dfrac{V_f - V_i}{V_i}
+\end{align*}
+Donc \encadrer[defi]{$\tau \approx 0,12$}.
+```
+
+### 12. Argument vide de `\chapitre` écrit sur sa propre ligne : `\par` fatal
+
+**Symptôme** : `Paragraph ended before \chapitre was complete` suivi de `Too many }s` (parfois en double, un jeu par appel de `\chapitre`).
+
+**Cause** : `\chapitre` n'est pas déclaré `\long` ; une ligne blanche à l'intérieur d'un de ses arguments produit un `\par` implicite, ce qui met fin prématurément à l'argument en cours de lecture. Un générateur de fichier maître qui écrit un argument vide sur sa propre ligne (`{` puis retour à la ligne puis `}`) déclenche systématiquement l'erreur.
+
+**À faire** : écrire tous les arguments de `\chapitre`, y compris les arguments vides, sur la **même ligne** que les accolades voisines — jamais un `{` seul suivi d'un retour à la ligne.
+
+```latex
+% INCORRECT : argument vide sur sa propre ligne -> \par fatal
+\chapitre[...]{Probabilités conditionnelles}{Lycée}{Établissement exemple}{
+}{Exercices :}
+
+% CORRECT : argument vide sur la même ligne
+\chapitre[...]{Probabilités conditionnelles}{Lycée}{Établissement exemple}{ }{Exercices :}
+```

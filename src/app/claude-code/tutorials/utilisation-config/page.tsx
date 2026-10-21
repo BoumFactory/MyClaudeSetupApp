@@ -171,18 +171,8 @@ export default function UtilisationConfigPage() {
                 </div>
                 <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-800 text-muted-foreground">
                   <Terminal className="w-4 h-4" />
-                  <span>/createBeamer</span>
-                  <span className="text-xs text-muted-foreground ml-auto">Créer diaporama Beamer</span>
-                </div>
-                <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-800 text-muted-foreground">
-                  <Terminal className="w-4 h-4" />
                   <span>/createReveals</span>
                   <span className="text-xs text-muted-foreground ml-auto">Créer présentation Reveal.js</span>
-                </div>
-                <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-slate-800 text-muted-foreground">
-                  <Terminal className="w-4 h-4" />
-                  <span>/create-app</span>
-                  <span className="text-xs text-muted-foreground ml-auto">Créer application éducative</span>
                 </div>
               </div>
             </div>
@@ -280,7 +270,7 @@ export default function UtilisationConfigPage() {
                   { name: "tex-document-creator", desc: "Créer un document LaTeX", highlight: true },
                   { name: "bfcours-latex", desc: "Éditer avec package bfcours" },
                   { name: "reveals-presentation", desc: "Présentations web Reveal.js" },
-                  { name: "image-generator", desc: "Générer des images IA" },
+                  { name: "grill-me", desc: "Affiner une idée par une interview" },
                   { name: "tex-compiling-skill", desc: "Compiler du LaTeX" },
                   { name: "programmes-officiels", desc: "Citer les programmes BO" },
                 ].map((skill) => (
@@ -375,10 +365,7 @@ export default function UtilisationConfigPage() {
                   { name: "/modifier:latex:adaptTex", desc: "Adapter un document existant", highlight: true },
                   { name: "/creer:latex:createTex", desc: "Créer un document LaTeX" },
                   { name: "/modifier:latex:modifyTex", desc: "Modifier un document LaTeX" },
-                  { name: "/creer:latex:createBeamer", desc: "Créer un diaporama Beamer" },
                   { name: "/creer:html:createReveals", desc: "Créer une présentation Reveal.js" },
-                  { name: "/creer:application:create-app", desc: "Créer une application éducative" },
-                  { name: "/outillage:documentation:ficheTexnique", desc: "Générer une fiche technique" },
                   { name: "/do", desc: "Mode intelligent (choix auto)", highlight: true },
                 ].map((cmd) => (
                   <div key={cmd.name} className={`flex items-center gap-2 p-2 rounded border ${(cmd as any).highlight ? 'bg-cosmic-950/40 border-cosmic-600' : 'bg-slate-950/50 border-slate-800'}`}>

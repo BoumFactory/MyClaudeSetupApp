@@ -100,7 +100,7 @@ Produit :
 
 #### 3c. Construire la chaine de verification
 
-Apres redaction du corrige, executer `scripts/build_computed.py` ou ecrire
+Apres redaction du corrige, ecrire
 manuellement `_data/computed.json` en declarant chaque calcul :
 
 ```json

@@ -316,7 +316,7 @@ Créer un fichier `synthese_evaluation.md` détaillant :
 ## Agents utilisés
 
 - **mathalea-scraper** (optionnel) : Recherche et récupère des exercices sur coopmaths.fr si demandé par l'utilisateur
-- **qcm-builder** : Génère automatiquement un QCM adapté au niveau (si activé, par défaut 6 questions @ 1 pt)
+- **Skill `qcm-creator`** (LaTeX) ou `bfcours-typst` (farfadet-qcm) : génère un QCM adapté au niveau (si activé, par défaut 6 questions @ 1 pt)
 
 **⚠️ IMPORTANT - Gestion du contexte .claude** :
 

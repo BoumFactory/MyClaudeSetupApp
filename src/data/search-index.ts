@@ -128,13 +128,6 @@ export function buildSearchIndex(): SearchableItem[] {
       tags: ['configuration', 'claude code', 'setup'],
     },
     {
-      id: 'google-api-setup',
-      title: 'Configuration API Google',
-      description: 'Activer l\'API Google Imagen pour la génération d\'images',
-      url: '/claude-code/tutorials/google-api-setup',
-      tags: ['api', 'google', 'imagen', 'configuration'],
-    },
-    {
       id: 'bfcours-setup',
       title: 'Configuration bfcours',
       description: 'Installer et configurer le package LaTeX bfcours',
@@ -169,19 +162,23 @@ export function buildSearchIndex(): SearchableItem[] {
     'claude-code-interface': 'Interface Claude Code',
     'commandes-disponibles': 'Commandes disponibles',
     'tex-document-creator-system': 'Tex Document Creator',
-    'agent-make-images': 'Agent Make Images',
-    'skill-creator-system': 'Skill Creator',
-    'beamer-presentation-system': 'Beamer Presentation',
     'reveals-presentation-system': 'Reveals Presentation',
     'programmes-officiels-system': 'Programmes Officiels',
     'bfcours-latex-system': 'Package bfcours LaTeX',
-    'educational-app-builder-system': 'Educational App Builder',
     'jupyter-notebook-skill': 'Jupyter Notebook',
-    'interactive-animation-skill': 'Interactive Animation',
     'qcm-creator-skill': 'QCM Creator',
-    'infography-generator-skill': 'Infography Generator',
     'blueprint-eval-skill': 'Blueprint Eval',
   }
+
+  // Présentations de skills retirés : fichiers conservés, mais ni menu ni recherche
+  const removedPresentations = new Set([
+    'skill-creator-system',
+    'beamer-presentation-system',
+    'educational-app-builder-system',
+    'interactive-animation-skill',
+    'infography-generator-skill',
+    'agent-make-images',
+  ])
 
   const categories = categoriesData as any
 
@@ -189,6 +186,7 @@ export function buildSearchIndex(): SearchableItem[] {
     for (const category of categories.categories) {
       for (const subcategory of category.subcategories || []) {
         for (const presentation of subcategory.presentations || []) {
+          if (removedPresentations.has(presentation.slug)) continue
           const title = presentationTitles[presentation.slug]
             || presentation.slug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())
 
@@ -246,6 +244,19 @@ export function buildSearchIndex(): SearchableItem[] {
       },
     })
   }
+
+  // ============ 4b. Packages Typst ============
+  items.push({
+    id: 'pkg-typst-farfadet',
+    title: 'Packages Typst farfadet',
+    description:
+      'farfadet : 25 paquets Typst pour cours, exercices et évaluations de maths. Installation en une commande, documentation PDF, application Écriture Typst et vidéo de démonstration.',
+    category: 'package',
+    categoryLabel: 'Package Typst',
+    tags: ['typst', 'farfadet', 'bfcours-typst', 'forge', 'écriture typst', 'application', 'installation', 'tinymist', 'package'],
+    url: '/claude-code/download-typst-packages',
+    icon: '📄',
+  })
 
   // ============ 5. Applications ============
   const applications = [

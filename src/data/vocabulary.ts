@@ -100,9 +100,9 @@ export const VOCABULARY: VocabTerm[] = [
     definition: '<b>Document intermédiaire</b> produit par l\'IA pour <b>valider vos choix</b> avant la production finale.',
   },
   {
-    term: 'Meta-prompt',
-    aliases: ['meta-prompt', 'Meta-Prompt', 'méta-prompt'],
-    definition: '<b>Prompt qui génère des prompts</b>. Technique avancée pour produire des instructions optimisées.',
+    term: 'Grill-me',
+    aliases: ['grill-me', 'Grill-me', 'Grill-Me'],
+    definition: '<b>Skill d\'interview</b> : l\'IA vous pose des questions à choix, manche par manche, pour <b>clarifier un plan</b> avant de produire.',
   },
   {
     term: 'Adversarial review',

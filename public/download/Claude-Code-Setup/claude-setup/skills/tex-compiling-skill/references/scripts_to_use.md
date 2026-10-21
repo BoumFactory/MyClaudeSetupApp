@@ -16,6 +16,7 @@ python ".claude/skills/tex-compiling-skill/scripts/quick_compile.py" --file "che
 **Arguments** :
 - `--file` (OBLIGATOIRE) : Chemin vers le fichier .tex
 - `--passes` (optionnel) : Nombre de passes (défaut: 1)
+- `--verifier-texte` (optionnel) : Vérifie via pymupdf que le PDF contient du texte (pages, nombre de caractères)
 
 **Exemples** :
 ```bash
@@ -24,23 +25,35 @@ python ".claude/skills/tex-compiling-skill/scripts/quick_compile.py" --file "1. 
 
 # Compilation avec 2 passes
 python ".claude/skills/tex-compiling-skill/scripts/quick_compile.py" --file "Evaluations/DS01.tex" --passes 2
+
+# Avec vérification du contenu texte du PDF
+python ".claude/skills/tex-compiling-skill/scripts/quick_compile.py" --file "Evaluations/DS01.tex" --verifier-texte
 ```
 
 **Comportement** :
 - Utilise LuaLaTeX avec shell-escape (profil Reims)
+- Ne supprime jamais le PDF avant de compiler ; compare son état (mtime + taille) avant/après pour juger si CETTE compilation l'a réellement réécrit
+- Analyse systématiquement le `.log` (erreurs `fichier:ligne:` sur `.tex`/`.sty`/`.cls`, lignes `!`, motifs d'échec muet)
+- Pose un verrou `.quick_compile.lock` par dossier le temps de la compilation (attente automatique si un autre maître du même dossier compile déjà, nettoyage des verrous orphelins)
 - Nettoie automatiquement les fichiers auxiliaires
-- Affiche les erreurs principales si échec
-- Retourne JSON avec le statut
+- Retourne JSON avec le statut et l'analyse complète
 
 **Sortie JSON** :
 ```json
 {
-  "status": "success|error",
-  "message": "Compilation réussie|échouée",
+  "status": "success|success_with_errors|error",
+  "message": "...",
   "pdf_generated": true|false,
-  "pdf_path": "chemin/vers/fichier.pdf"
+  "pdf_fresh": true|false,
+  "pdf_path": "chemin/vers/fichier.pdf",
+  "passes_run": 1,
+  "return_codes": [0],
+  "errors": [{"file": "./enonce.tex", "line": 42, "message": "..."}],
+  "warnings": ["..."]
 }
 ```
+
+`status: "success_with_errors"` signifie qu'un PDF a bien été réécrit mais que des erreurs sont présentes dans le `.log` : ne jamais le traiter comme un succès sans relire le rendu. Voir `SKILL.md` pour le détail des trois statuts et des motifs d'échec muet détectés.
 
 ---
 
@@ -171,9 +184,9 @@ En cas d'échec, les scripts affichent :
 ```
 ❌ Compilation échouée
 
-📋 Erreurs principales:
-   Ligne 42: Undefined control sequence
-   Ligne 58: Missing $ inserted
+📋 Erreurs (fichier:ligne quand disponible):
+   ./enonce.tex:42: Undefined control sequence.
+   ./enonce.tex:58: Missing $ inserted.
 
 💡 Pour déboguer, lancez:
    python ".claude/skills/tex-compiling-skill/scripts/analyze_latex_log.py" --log "fichier.log"
@@ -181,10 +194,8 @@ En cas d'échec, les scripts affichent :
 
 ### Tolérance aux Erreurs
 
-Les scripts implémentent une tolérance intelligente :
-- Si un PDF est généré malgré un code retour d'erreur, la compilation continue
-- Particulièrement utile avec bfcours qui génère des erreurs sur la première passe
-- Les erreurs sont affichées mais ne bloquent pas si le PDF existe
+- **`quick_compile.py`** ne se fie plus jamais à la seule présence d'un PDF sur le disque : il compare son état avant/après (mtime + taille) et analyse systématiquement le `.log`. Un code retour non nul sur une passe intermédiaire (`--passes 2` ou plus) n'interrompt pas l'enchaînement — utile avec bfcours dont la première passe génère des erreurs qui se résolvent à la suivante — mais seul l'état du `.log` et le code retour de la **dernière** passe déterminent le statut final (`success` / `success_with_errors` / `error`). Voir `SKILL.md`.
+- **`compile_document.py`** conserve son ancienne logique de tolérance (PDF présent malgré un code retour d'erreur ⇒ compilation considérée réussie) : à utiliser en connaissance de cause, ou préférer `quick_compile.py` pour un diagnostic fiable.
 
 ---
 

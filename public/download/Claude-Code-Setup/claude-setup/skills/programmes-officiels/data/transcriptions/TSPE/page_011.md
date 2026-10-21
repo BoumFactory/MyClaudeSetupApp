@@ -1,0 +1,102 @@
+---
+niveau: TSPE
+page: 11
+pdf: tspe.pdf
+page_folder: TSPE
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/TSPE/page_011.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: true
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 11 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/TSPE/page_011.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+Fonctions sinus et cosinus 
+Contenus 
+− Fonctions trigonométriques sinus et cosinus. Parité, périodicité. Courbes représentatives. 
+− Dérivées, variations. 
+Capacités attendues 
+− Lier la représentation graphique des fonctions sinus et cosinus et le cercle trigonométrique. 
+− Traduire graphiquement la parité et la périodicité des fonctions sinus et cosinus. 
+− Résoudre une équation du type cos(𝑥) = a, une inéquation de la forme cos(𝑥) ⩽ a sur [-π,π].  
+− Dans le cadre de la résolution de problème, notamment géométrique, étudier une fonction simple définie à partir de 
+fonctions trigonométriques, pour déterminer des variations, un optimum. 
+Approfondissement possible 
+− Fonction tangente. 
+Primitives, équations différentielles 
+Cette section introduit la notion d’équation différentielle sur des cas simples. Les élèves découvrent en situation le concept 
+d’équation dont l’inconnue est une fonction. L’équation 𝑦’ = ƒ  est l’occasion de définir la notion de primitive. Par définition, la 
+recherche d’une primitive est l’opération inverse de la dérivation, ce qui permet de traiter les cas usuels par lecture inverse du 
+tableau des dérivées. Il est utile d’admettre ici que toute fonction continue sur un intervalle admet des primitives, résultat qui 
+est démontré dans la section sur le calcul intégral. On note aussi que, pour certaines fonctions, on ne dispose pas de primitive 
+explicite. 
+L’équation 𝑦’ = a𝑦 + b est l’occasion de réinvestir les propriétés de la fonction exponentielle. Lorsque b = 0, on remarque que la 
+somme de deux solutions et le produit d’une solution par une constante sont encore solutions. 
+Pour travailler le concept d’équation différentielle, on peut donner d’autres exemples d’équations différentielles, dont on peut 
+donner des solutions sans en faire de résolution complète : 𝑦’ = 𝑦2, 𝑦′′ + 𝜔2𝑦 = 0. Aucune connaissance n’est exigible sur ces 
+exemples. 
+Contenus 
+− Équation différentielle 𝑦’ =  𝑓. Notion de primitive d’une fonction continue sur un intervalle. Deux primitives d’une même 
+fonction continue sur un intervalle diffèrent d’une constante. 
+− Primitives des fonctions de référence : 𝑥 ↦  𝑥𝑛 pour 𝑛 ∈  ℤ, 𝑥 ↦ 1
+√𝑥 , exponentielle, sinus, cosinus. 
+− Équation différentielle 𝑦’ = a𝑦, où a est un nombre réel ; allure des courbes. Équation différentielle 𝑦’ = a𝑦 + b. 
+Capacités attendues 
+− Calculer une primitive en utilisant les primitives de référence et les fonctions de la forme (v’ ○ u) × u’. 
+− Pour une équation différentielle 𝑦’ = a𝑦 + b (a ≠ 0) : déterminer une solution particulière constante ; utiliser cette solution 
+pour déterminer toutes les solutions. 
+− Pour une équation différentielle 𝑦’ = a𝑦 + 𝑓 : à partir de la donnée d’une solution particulière, déterminer toutes les 
+solutions. 
+Démonstrations 
+− Deux primitives d’une même fonction continue sur un intervalle diffèrent d’une constante. 
+− Résolution de l’équation différentielle 𝑦’ = a𝑦 où a est un nombre réel. 
+Approfondissements possibles 
+− Autres exemples d’équations différentielles, éventuellement en lien avec une modélisation, par exemple l’équation logistique. 
+Exemple d’algorithme 
+− Résolution par la méthode d’Euler de 𝑦’ = 𝑓, de 𝑦’ = a𝑦 + b. 
+Calcul intégral 
+La définition de l’intégrale s’appuie sur la notion intuitive d’aire rencontrée au collège. Les élèves développent une vision 
+graphique de l’intégrale et maitrisent le calcul approché, en liaison avec la méthode des rectangles et le calcul exact par les 
+primitives. 
+On met en regard les écritures∫ ƒ(𝑥)d𝑥
+b
+a
+ et ∑
+ƒ
+𝑛
+𝑖=1 (𝑥 i)Δ𝑥.  
+Contenus 
+− Définition de l’intégrale d'une fonction continue positive définie sur un segment [a,b], comme aire sous la courbe 
+représentative de ƒ. Notation ∫ ƒ(𝑥)d𝑥
+b
+a
+. 
+− Théorème : si ƒ est une fonction continue positive sur [a,b], alors la fonction 𝐹a définie sur [a,b] par 𝐹a(𝑥) = ∫ ƒ(t )dt
+x
+a
+  est la 
+primitive de ƒ qui s’annule en a. 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

@@ -1,0 +1,2 @@
+/* Plugin blocs (code, terminal, compile) : chargé à côté du moteur, voir references/bloc-code.md */
+(function(){var b;try{b=document.currentScript.src.replace(/[^\/]*$/,'')+'plugins-canvas/';}catch(e){b='/plugins-canvas/';}self.PLUG_BASE=b;if(typeof importScripts==='function'){importScripts(b+'blocs.js');}else{document.write('<script src="'+b+'blocs.js"><\/script>');}})();

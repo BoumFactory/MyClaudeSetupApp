@@ -415,6 +415,48 @@ Reveal.initialize({
 \frac{x^2}{y}
 ```
 
+### Limite connue : une formule dans `<s>` ou avec `text-decoration` n'est pas barrée
+
+**Symptôme** : placer une formule MathJax à l'intérieur d'un `<s>...</s>`, ou lui
+appliquer `style="text-decoration: line-through"`, n'affiche **aucune** barre. MathJax
+remplace le texte source par un élément personnalisé `<mjx-container>` (rendu SVG ou
+CHTML) : `text-decoration` ne traverse pas cette frontière, contrairement à `color` ou
+`font-weight` qui, eux, sont généralement hérités correctement.
+
+```html
+<!-- NE FONCTIONNE PAS : aucune barre visible -->
+<s>\(x^2 + 1\)</s>
+<p style="text-decoration: line-through;">\(x^2 + 1\)</p>
+```
+
+**Solution recommandée** : utiliser la commande LaTeX `\cancel{...}` (extension
+`cancel` de MathJax), qui dessine réellement la barre à l'intérieur du rendu
+mathématique :
+
+```html
+\(\cancel{x^2 + 1}\)
+```
+
+Cela nécessite de charger l'extension dans la configuration MathJax de reveal.js :
+
+```javascript
+Reveal.initialize({
+  math: {
+    mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+    config: 'TeX-AMS_HTML-full',
+    tex: {
+      packages: { '[+]': ['cancel'] }
+    }
+  },
+  plugins: [ RevealMath ]
+});
+```
+
+**Solution de repli** si l'extension `cancel` n'est pas chargée : ne pas mettre la
+formule en MathJax pour ce cas précis, et écrire le contenu barré en HTML simple
+(`<s>2x + 3 = 9</s>` en texte, sans délimiteurs `\(...\)`) — imparfait typographiquement
+mais fonctionnel sans configuration supplémentaire.
+
 ## Bonnes pratiques
 
 ### ✅ À FAIRE

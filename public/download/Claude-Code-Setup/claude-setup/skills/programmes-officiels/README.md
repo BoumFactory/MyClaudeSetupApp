@@ -1,197 +1,65 @@
-# Skill : Programmes Officiels de Mathématiques
+# programmes-officiels
 
-## 📋 Description
+Skill Claude Code de référence pour les **nouveaux programmes officiels de mathématiques** applicables à la **rentrée 2026** (Éducation Nationale française).
 
-Ce skill permet de rechercher et citer précisément les éléments des programmes officiels de l'Éducation Nationale française (du cycle 3 au lycée).
+## Sources couvertes
 
-## 📁 Structure des données
+- **Lycée** (7 PDF) : BO Hebdo 14 du 2 avril 2026
+- **Cycle 4** (1 PDF) : BO n°10 du 5 mars 2026 (annexe 2)
+- **Cycle 3** (1 PDF) : BO du cycle 3 (rentrée 2026) — CM1, CM2, 6e
 
-### Emplacement des fichiers
+Les PDF du BO sont des documents publics ; chaque compétence cite son PDF et sa page.
 
-```
-.claude/skills/programmes-officiels/
-├── data/                           # Données structurées des programmes
-│   ├── cycle3.json                 # Cycle 3 (CM1, CM2, 6ème)
-│   ├── cycle4.json                 # Cycle 4 (5ème, 4ème, 3ème) [à finaliser]
-│   ├── seconde.json                # 2nde générale et technologique
-│   ├── premiere_spe.json           # 1ère spécialité mathématiques [à créer]
-│   ├── terminale_spe.json          # Terminale spécialité mathématiques
-│   ├── premiere_ens_sci.json       # 1ère enseignement scientifique
-│   └── terminale_ens_sci.json      # Terminale enseignement scientifique [à créer]
-│
-├── pdf/                            # PDFs sources du BO
-│   ├── cycle3_v2.pdf
-│   ├── cycle4_v2.pdf
-│   ├── seconde.pdf
-│   ├── premiere_spe_v2.pdf
-│   ├── terminale_spe.pdf
-│   ├── premiere_ens_sci.pdf
-│   └── terminale_ens_sci.pdf
-│
-├── references_bo.json              # Métadonnées de tous les programmes
-├── README.md                       # Ce fichier
-└── consulter_competences.py        # Programme de consultation
-```
+## Public
 
-## 🎯 Utilisation
+Professeurs de mathématiques de l'école élémentaire (CM1/CM2), du collège et du lycée. Le contenu est dense, technique, et cite verbatim le BO.
 
-### 1. Consulter une compétence par code
+## Principe d'architecture
 
-```python
-from consulter_competences import chercher_competence
+- **JSON-first** : un fichier `data/json/{NIVEAU}.json` par niveau, validable par un JSON Schema.
+- **Markdown dérivé** : auto-généré depuis les JSON via un script idempotent (`06_export_markdown.py`), pour usage humain et RAG.
+- **Preuve visuelle** : chaque compétence référence un PNG de la page BO source.
+- **Pipeline reproductible** : PDF → split → images → **bullets extraits par script Python** → JSON → indexes → markdown.
 
-# Rechercher par code unique
-comp = chercher_competence("6-NC-001")
-print(comp["intitule"])
-```
+### Directive anti-régurgitation
 
-### 2. Lister les compétences d'un niveau
+Le champ `formulation_bo` et toute citation BO verbatim proviennent strictement de `scripts/build/04_extract_bullets.py` (extraction PyMuPDF). **Aucune génération LLM** ne reproduit le texte du BO. Le LLM n'intervient que pour l'**analyse** (classification de domaine, atomicité, prérequis, liens, parsers spécialisés).
 
-```python
-from consulter_competences import lister_competences_niveau
+## Démarrage rapide
 
-# Toutes les compétences de 6ème
-competences_6e = lister_competences_niveau("6eme")
-```
-
-### 3. Rechercher par thème
-
-```python
-from consulter_competences import chercher_par_theme
-
-# Compétences sur les fractions en 6ème
-fractions = chercher_par_theme("6eme", "fractions")
-```
-
-### 4. Rechercher par mots-clés
-
-```python
-from consulter_competences import chercher_mots_cles
-
-# Toutes les compétences contenant "dérivée"
-derivees = chercher_mots_cles("dérivée")
-```
-
-## 📊 Structure des données JSON
-
-### Format général
-
-```json
-{
-  "niveau": "6ème|5ème|...|TERMINALE_SPE",
-  "cycle": "Cycle 3|Cycle 4|...",
-  "reference_bo": "BO n°X du JJ/MM/AAAA",
-  "domaines": [
-    {
-      "nom": "Nombres et calculs",
-      "code": "NC",
-      "competences": [
-        {
-          "code": "6-NC-001",
-          "intitule": "Composer, décomposer les grands nombres entiers...",
-          "capacites": ["...", "..."],
-          "connaissances": ["...", "..."],
-          "attendus": "..."
-        }
-      ]
-    }
-  ]
-}
-```
-
-### Codes des niveaux
-
-| Code fichier | Niveau | Cycle |
-|--------------|--------|-------|
-| `cycle3.json` | CM1, CM2, 6ème | Cycle 3 |
-| `cycle4.json` | 5ème, 4ème, 3ème | Cycle 4 |
-| `seconde.json` | 2nde | Lycée |
-| `premiere_spe.json` | 1ère Spé | Lycée |
-| `terminale_spe.json` | Tale Spé | Lycée |
-| `premiere_ens_sci.json` | 1ère Ens. Sci. | Lycée |
-| `terminale_ens_sci.json` | Tale Ens. Sci. | Lycée |
-
-### Codes des domaines
-
-| Code | Domaine | Niveaux |
-|------|---------|---------|
-| `NC` | Nombres et calculs | Collège |
-| `GM` | Grandeurs et mesures | Collège |
-| `EG` | Espace et géométrie | Collège |
-| `OGD` | Organisation et gestion de données | Collège |
-| `ALG` | Algèbre | Lycée |
-| `ANA` | Analyse | Lycée |
-| `GEO` | Géométrie | Lycée |
-| `PROB` | Probabilités et statistiques | Lycée |
-| `ALGO` | Algorithmique et programmation | Lycée |
-
-## 🔍 Format des codes de compétences
-
-### Collège
-```
-{niveau}-{domaine}-{numéro}
-```
-Exemples :
-- `6-NC-001` : 6ème, Nombres et calculs, compétence 1
-- `5-EG-012` : 5ème, Espace et géométrie, compétence 12
-
-### Lycée
-```
-{niveau}-{domaine}-{numéro}
-```
-Exemples :
-- `2-ALG-005` : 2nde, Algèbre, compétence 5
-- `1SPE-ANA-018` : 1ère Spé, Analyse, compétence 18
-- `TSPE-GEO-007` : Tale Spé, Géométrie, compétence 7
-
-## 📈 Statistiques
-
-### Compétences extraites par niveau
-
-| Niveau | Nb compétences | Statut |
-|--------|----------------|--------|
-| Cycle 3 (6ème) | 50 | ✅ Complet |
-| Cycle 4 (5ème-4ème-3ème) | À finaliser | ⚠️ En cours |
-| 2nde | 37 | ✅ Complet |
-| 1ère Spé | 83 | ✅ Complet |
-| Tale Spé | À extraire | ⏳ À faire |
-| 1ère Ens. Sci. | 35 | ✅ Complet |
-| Tale Ens. Sci. | 30 | ✅ Complet |
-| **TOTAL** | **235+** | En construction |
-
-## 🛠️ Maintenance
-
-### Ajouter un nouveau programme
-
-1. Télécharger le PDF officiel du BO dans `pdf/`
-2. Mettre à jour `references_bo.json`
-3. Lancer l'agent d'extraction :
 ```bash
-claude-code task --agent programme-officiel-extractor \
-  --pdf "pdf/nouveau_programme.pdf" \
-  --output "data/nouveau_programme.json"
+# Chercher « théorème de Pythagore »
+python scripts/search.py --keyword "Pythagore"
+
+# Lister toutes les démonstrations exigibles en TSPE
+python scripts/search.py --niveau TSPE --type demonstration
+
+# Détail complet d'une compétence
+python scripts/get.py 2GT-NB-008
 ```
 
-### Mettre à jour un programme existant
+Seul Python 3 est nécessaire pour consulter ; PyMuPDF (`pip install pymupdf`) n'est utile que pour reconstruire la base avec un nouveau BO.
 
-1. Sauvegarder l'ancienne version
-2. Relancer l'extraction avec le nouveau PDF
-3. Comparer les différences avec un diff JSON
+## Mettre à jour avec un nouveau BO
 
-## 📚 Références
+1. Déposer le nouveau PDF dans `data/pdf/` (et adapter `data/pdf/_mapping.json` si besoin).
+2. Relancer les scripts de `scripts/build/` dans l'ordre `01` → `07`.
+3. Valider : `python scripts/validate.py`.
 
-- [Éduscol - Programmes](https://eduscol.education.fr/139/programmes-de-l-ecole-et-du-college)
-- [BO Éducation Nationale](https://www.education.gouv.fr/pid285/le-bulletin-officiel.html)
-- [Ressources Éduscol Mathématiques](https://eduscol.education.fr/154/mathematiques-cycle-3-et-4)
+## Performance
 
-## 🤝 Contribution
+| Opération | Mesuré |
+|-----------|--------|
+| Recherche FTS5 plein texte | ~0,8 ms |
+| Recherche par code | < 1 ms |
+| Validation complète | < 1 s |
+| Build des indexes (1076 compétences) | < 5 s |
 
-Pour signaler une erreur ou proposer une amélioration :
-1. Identifier la compétence concernée (code)
-2. Vérifier dans le PDF source du BO
-3. Proposer la correction avec référence précise (page du BO)
+## Limites connues
 
----
+- Graphe `progressions.json` : prérequis et liens à 0 arête (à enrichir par analyse ciblée, sans toucher à `formulation_bo`).
+- Transcriptions des tableaux complexes : partielles (`python scripts/validate.py` signale les pages manquantes).
 
-*Dernière mise à jour : Octobre 2025*
-*Version : 1.0*
+## Licence et contribution
+
+Knowledge base ouverte aux enseignants. Pas de modification directe des markdowns dérivés : éditer les JSON et regénérer.

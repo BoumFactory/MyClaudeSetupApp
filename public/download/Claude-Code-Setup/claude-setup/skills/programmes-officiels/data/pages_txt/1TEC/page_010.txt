@@ -1,0 +1,54 @@
+ 
+Contenus 
+− Indépendance de deux évènements. 
+− Formule des probabilités totales. 
+Capacités attendues 
+− Savoir utiliser ou justifier l’indépendance de deux évènements. 
+− Dans les cas simples, calculer une probabilité à l’aide de la formule des probabilités totales. 
+Commentaires 
+− L’indépendance de deux évènements repose sur la définition suivante : pour un évènement A de probabilité non nulle, 𝐵 
+est indépendant de 𝐴 si 𝑃𝐴(𝐵) =  𝑃(𝐵). On démontre que la propriété d’indépendance est symétrique lorsque 𝐴 et 𝐵 sont 
+de probabilités non nulles. 
+Modèle associé à une expérience aléatoire à plusieurs épreuves indépendantes 
+Contenus 
+− Probabilité associée à la répétition d’épreuves aléatoires identiques et indépendantes de Bernoulli. 
+Capacités attendues 
+− Représenter par un arbre de probabilités la répétition de 𝑛 épreuves aléatoires identiques et indépendantes de Bernoulli 
+avec 𝑛 ⩽ 4 afin de calculer des probabilités. 
+Variables aléatoires 
+Contenus 
+− Variable aléatoire discrète : loi de probabilité, espérance. 
+− Loi de Bernoulli (0,1) de paramètre 𝑝, espérance. 
+Capacités attendues 
+− Interpréter en situation les écritures {𝑋 =  𝑎}, {𝑋 ⩽ 𝑎} où 𝑋 désigne une variable aléatoire et calculer les probabilités 
+correspondantes 𝑃(𝑋 =  𝑎), 𝑃(𝑋 ⩽ 𝑎). 
+− Calculer et interpréter en contexte l'espérance d'une variable aléatoire discrète. 
+− Reconnaitre une situation aléatoire modélisée par une loi de Bernoulli. 
+− Simuler 𝑁 échantillons de taille 𝑛 d’une loi de Bernoulli et représenter les fréquences observées des 1 par un histogramme 
+ou un nuage de points. 
+− Interpréter sur des exemples la distance à 𝑝 de la fréquence observée des 1 dans un échantillon de taille 𝑛 d’une loi de 
+Bernoulli de paramètre 𝑝. 
+Commentaires 
+− On s’abstient de tout formalisme sur les variables aléatoires. Elles sont essentiellement manipulées en contexte pour 
+modéliser des situations dans lesquelles les issues sont des nombres aléatoires. 
+− La simulation d'échantillons de taille 𝑛 d'une loi de Bernoulli de paramètre 𝑝 permet d’observer la fluctuation 
+d’échantillonnage. 
+− Sur des simulations de 𝑁 échantillons (𝑁 de l’ordre de plusieurs centaines), on évalue le pourcentage d’échantillons dont la 
+fréquence observée des 1 se situe à une distance 𝑠, 2𝑠 ou 3𝑠 de 𝑝 où 𝑠 désigne l’écart-type de la série des fréquences 
+observées. Sans développer de théorie de décision ou de test, et en prenant appui sur des simulations et des 
+représentations (histogramme, nuage de points), on fait percevoir, pour une observation donnée, la diversité des 
+interprétations possibles de la distance à 𝑝 (paramètre du modèle) de la fréquence des 1 : situation fréquente ou situation 
+rare dans le cadre du modèle. 
+− Sur des simulations, on constate que la série des fréquences observées des 1 dans 𝑁 échantillons de taille 𝑛 d’une loi de 
+Bernoulli a un écart-type de l’ordre de 
+1
+√𝑛. Pour plusieurs valeurs de 𝑛 on représente 
+1
+√𝑛 en abscisse et, en ordonnée, 
+l’écart-type s des fréquences observées des 1 dans 𝑁 échantillons (plusieurs centaines) de taille 𝑛. On peut commenter ce 
+résultat en observant que pour diviser la dispersion par 𝑘 il faut multiplier la taille de l’échantillon par 𝑘2. 
+Situations algorithmiques (sauf série STD2A) 
+− Simuler des échantillons de taille 𝑛 d’une loi de Bernoulli à partir d’un générateur de nombres aléatoires entre 0 et 1. 
+− Représenter par un histogramme ou par un nuage de points les fréquences observées des 1 dans 𝑁 échantillons de taille 𝑛 
+d’une loi de Bernoulli. 
+Compter le nombre de valeurs situées dans un intervalle de la forme [𝑝 - 𝑘𝑠 ;  𝑝 +  𝑘𝑠] pour 𝑘 ∈ {1; 2; 3}. 

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibilité — __TITRE__</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+:root{
+  --bg:#f6f5f1; --paper:#ffffff; --paper2:#f1f0ea; --ink:#1d2129; --ink2:#454b56; --muted:#6b717c;
+  --line:#e2e0d8; --accent:#1f5f7a; --accent-soft:#e3eef3;
+  --bloquant:#c62828; --bloquant-soft:#fdecec; --important:#c76a00; --important-soft:#fff3e2;
+  --confort:#2563a8; --confort-soft:#e8f0fb; --ok:#15803d; --ok-soft:#e8f6ed;
+  --vig:#8a5a00; --vig-soft:#fff8e6; --arb:#6b3fa0; --arb-soft:#f3edfb;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,10,.05),0 4px 14px rgba(20,20,10,.04);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.62 "Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 150px}
+/* En-tête */
+.hero{padding:34px 0 22px;border-bottom:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .4em;font-weight:750;letter-spacing:-.01em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px}
+.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:13px;color:var(--ink2)}
+.chip b{color:var(--ink)}
+.src{font:12.5px/1.4 ui-monospace,Consolas,monospace;color:var(--muted);word-break:break-all}
+.note{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:14px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 18px;box-shadow:var(--shadow)}
+.note:empty{display:none}
+.n-main{display:flex;align-items:baseline;gap:4px}
+.n-main b{font-size:34px;line-height:1;color:var(--important)}
+.n-main.max b{color:var(--ok)}
+.n-main small{color:var(--muted);font-size:14px}
+.n-main span{color:var(--muted);font-size:12.5px;margin-left:6px}
+.delta{font-weight:800;font-size:13px;border-radius:6px;padding:1px 6px;margin-left:8px}
+.delta.up{background:var(--ok-soft);color:var(--ok)} .delta.down{background:var(--bloquant-soft);color:var(--bloquant)}
+.n-obs{display:flex;gap:8px;flex-wrap:wrap}
+.n-obs span{font-size:13px;font-weight:700;border-radius:999px;padding:3px 11px}
+.n-obs .bloquant{background:var(--bloquant-soft);color:var(--bloquant)} .n-obs .important{background:var(--important-soft);color:var(--important)} .n-obs .confort{background:var(--confort-soft);color:var(--confort)}
+.n-etat{font-size:13.5px;color:var(--ink2);flex:1;min-width:240px}
+.verdict{margin-top:16px;background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;padding:14px 18px;font-size:16px;box-shadow:var(--shadow)}
+/* Navigation */
+nav.toc{position:sticky;top:0;z-index:30;background:rgba(246,245,241,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -22px;padding:9px 22px;display:flex;gap:6px;flex-wrap:wrap}
+nav.toc a{text-decoration:none;color:var(--ink2);font-size:13.5px;padding:5px 12px;border-radius:999px}
+nav.toc a:hover{background:var(--paper2);color:var(--ink)}
+h2{font-size:21px;margin:42px 0 6px;font-weight:720}
+.lead{color:var(--muted);margin:0 0 16px;max-width:860px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+/* Synthèse */
+.synth{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+@media(max-width:860px){.synth{grid-template-columns:1fr}}
+.synth .card{padding:16px 20px}
+.synth h3{margin:0 0 8px;font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.synth ol,.synth ul{margin:0;padding-left:20px}
+.synth li{margin-bottom:6px}
+.counts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.count{flex:1;min-width:110px;border-radius:12px;padding:10px 14px;border:1px solid var(--line);background:var(--paper)}
+.count .n{font-size:26px;font-weight:800;line-height:1}
+.count .l{font-size:12.5px;color:var(--muted)}
+.count.bloquant .n{color:var(--bloquant)} .count.important .n{color:var(--important)} .count.confort .n{color:var(--confort)}
+.forts li::marker{color:var(--ok)}
+/* Tableaux */
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;background:var(--paper2)}
+tr:last-child td{border-bottom:none}
+td ul{margin:0;padding-left:18px}
+.tag-deduit{font-size:11px;background:var(--vig-soft);color:var(--vig);border-radius:6px;padding:1px 7px;margin-left:6px;white-space:nowrap}
+/* Grille */
+.dimname{font-weight:700}
+.dimdesc{font-size:12.5px;color:var(--muted)}
+.scale{display:flex;gap:3px;min-width:200px}
+.scale span{flex:1;text-align:center;font-size:12px;padding:5px 4px;border-radius:6px;background:var(--paper2);color:#a3a7ae;border:1px solid transparent}
+.scale span.on.aucun{background:var(--bloquant-soft);color:var(--bloquant);border-color:#f2b9b9;font-weight:700}
+.scale span.on.partiel{background:var(--important-soft);color:var(--important);border-color:#f3d09f;font-weight:700}
+.scale span.on.avance{background:var(--ok-soft);color:var(--ok);border-color:#a9dcbb;font-weight:700}
+.na{font-size:12.5px;color:var(--muted);font-style:italic;background:var(--paper2);border-radius:6px;padding:5px 9px;display:inline-block}
+.idlink{display:inline-block;font:700 11.5px/1 ui-monospace,Consolas,monospace;padding:4px 7px;border-radius:6px;margin:2px 3px 0 0;text-decoration:none;border:1px solid var(--line);background:var(--paper2);color:var(--ink2)}
+.idlink.bloquant{background:var(--bloquant-soft);color:var(--bloquant);border-color:#f2b9b9}
+.idlink.important{background:var(--important-soft);color:var(--important);border-color:#f3d09f}
+.idlink.confort{background:var(--confort-soft);color:var(--confort);border-color:#bcd2f0}
+/* Aperçus */
+.apercus{display:flex;gap:16px;overflow-x:auto;padding-bottom:6px}
+.apercus figure{margin:0;flex:0 0 auto;width:min(420px,80vw)}
+.apercus img{width:100%;border:1px solid var(--line);border-radius:10px;cursor:zoom-in;background:#fff;box-shadow:var(--shadow)}
+.apercus figcaption{font-size:12.5px;color:var(--muted);text-align:center;margin-top:4px}
+/* Filtres */
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin:6px 0 18px;align-items:center}
+.filters button{background:var(--paper);border:1px solid var(--line);color:var(--ink2);border-radius:999px;padding:5px 13px;cursor:pointer;font-size:13px}
+.filters button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.filters .sep{width:1px;height:22px;background:var(--line);margin:0 4px}
+h3.exo{font-size:17px;margin:30px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line);display:flex;gap:10px;align-items:baseline}
+h3.exo small{font-weight:500;color:var(--muted);font-size:13.5px}
+/* Constat */
+.constat{margin-bottom:18px;border-left:6px solid var(--line);transition:box-shadow .15s,background .15s}
+.constat.bloquant{border-left-color:var(--bloquant)} .constat.important{border-left-color:var(--important)} .constat.confort{border-left-color:var(--confort)}
+.constat.retenu{box-shadow:0 0 0 2px #8fcfa6,var(--shadow);background:#fbfefc}
+.constat .head{display:flex;gap:14px;align-items:flex-start;padding:16px 20px 6px}
+.check{width:24px;height:24px;margin-top:2px;accent-color:var(--ok);cursor:pointer;flex:0 0 auto}
+.constat .ttl{font-weight:720;font-size:17px;line-height:1.35;cursor:pointer}
+.cid{font:700 12px ui-monospace,Consolas,monospace;color:var(--muted);margin-right:6px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.badge{font-size:11.5px;font-weight:650;padding:2px 9px;border-radius:999px;border:1px solid var(--line);background:var(--paper2);color:var(--ink2)}
+.badge.bloquant{background:var(--bloquant-soft);color:var(--bloquant);border-color:#f2b9b9}
+.badge.important{background:var(--important-soft);color:var(--important);border-color:#f3d09f}
+.badge.confort{background:var(--confort-soft);color:var(--confort);border-color:#bcd2f0}
+.badge.dim{background:var(--accent-soft);color:var(--accent);border-color:#c3dbe6}
+.constat .body{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px;padding:8px 20px 18px 58px}
+@media(max-width:940px){.constat .body{grid-template-columns:1fr;padding-left:20px}}
+.shots img{width:100%;border:1px solid var(--line);border-radius:10px;cursor:zoom-in;background:#fff;display:block;margin-bottom:8px}
+.shots .noshot{font-size:13px;color:var(--muted);font-style:italic;background:var(--paper2);border-radius:10px;padding:14px}
+.field{margin-bottom:12px}
+.field>b{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px}
+.source{font-size:12px;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:1px 7px;white-space:nowrap}
+.box{border-radius:10px;padding:9px 12px;font-size:14px;margin-top:10px}
+.box b{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:1px}
+.box.preserve{background:var(--ok-soft);color:#14532d} .box.preserve b{color:var(--ok)}
+.box.vigilance{background:var(--vig-soft);color:#5c3d00} .box.vigilance b{color:var(--vig)}
+.box.arbitrage{background:var(--arb-soft);color:#3f2366} .box.arbitrage b{color:var(--arb)}
+.pistes{grid-column:1/-1;border-top:1px dashed var(--line);padding-top:12px}
+.pistes>b{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.piste{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--paper)}
+.piste.on{border-color:#8fcfa6;background:var(--ok-soft)}
+.piste input{width:19px;height:19px;margin-top:2px;accent-color:var(--ok);cursor:pointer;flex:0 0 auto}
+.piste .pt{font-weight:650}
+.piste .pd{font-size:14px;color:var(--ink2)}
+.reco{font-size:11px;font-weight:700;color:#fff;background:var(--ok);border-radius:999px;padding:1px 8px;margin-left:8px;white-space:nowrap}
+.reco-why{font-size:13px;color:var(--ok);margin-top:4px;font-style:italic}
+.effort{font-size:11px;color:var(--muted);margin-left:6px;white-space:nowrap}
+.avap{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+@media(max-width:700px){.avap{grid-template-columns:1fr}}
+.avap div{border-radius:8px;padding:7px 10px;font-size:13.5px;white-space:pre-wrap}
+.avap .av{background:#fbeeee;border:1px solid #f0caca}
+.avap .ap{background:#ebf7ef;border:1px solid #b8e2c6}
+.mini-tab{border-collapse:collapse;margin:4px 0;font-size:12.5px;width:auto;white-space:normal}
+.mini-tab th,.mini-tab td{border:1px solid rgba(0,0,0,.18);padding:3px 8px;text-align:center;background:rgba(255,255,255,.6)}
+.mini-tab th{font-size:12px;text-transform:none;letter-spacing:0;color:inherit}
+.avap small{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;opacity:.7}
+.remark{grid-column:1/-1}
+textarea{width:100%;background:var(--paper2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:9px 12px;font:inherit;font-size:14.5px;resize:vertical;min-height:44px}
+textarea:focus{outline:none;border-color:var(--accent);background:#fff}
+/* Passation */
+.pass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.pass-grid{grid-template-columns:1fr}}
+.pass-col h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.pitem{padding:12px 14px;margin-bottom:10px}
+.pitem.retenu{box-shadow:0 0 0 2px #8fcfa6,var(--shadow)}
+.pitem .ph{display:flex;gap:10px;align-items:flex-start}
+.pitem .pt{font-weight:650;cursor:pointer}
+.pitem .pd{font-size:13.5px;color:var(--ink2);margin:4px 0 8px 33px}
+.pitem textarea{min-height:36px;font-size:13.5px}
+/* Mesures */
+.st-ok{color:var(--ok);font-weight:700} .st-ko{color:var(--bloquant);font-weight:700} .st-moy{color:var(--important);font-weight:700}
+/* Envoi */
+.send{padding:18px 20px}
+.send pre{background:#fbfaf6;border:1px solid var(--line);border-radius:10px;padding:14px;max-height:420px;overflow:auto;white-space:pre-wrap;font:12.5px/1.5 ui-monospace,Consolas,monospace;color:#2b2f36}
+/* Barre d'action */
+.actionbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.97);border-top:1px solid var(--line);box-shadow:0 -3px 16px rgba(0,0,0,.06);padding:11px 22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.actionbar .stat{font-size:14px;color:var(--ink2)} .actionbar .stat b{font-size:19px;color:var(--ok)}
+.spacer{flex:1}
+.btn{border:none;border-radius:10px;padding:10px 17px;font-weight:700;cursor:pointer;font-size:14px;font-family:inherit}
+.btn-main{background:var(--accent);color:#fff} .btn-main:hover{background:#174a60}
+.btn-ghost{background:transparent;border:1px solid var(--line);color:var(--ink2)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;font-weight:700;padding:11px 20px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:60}
+.toast.show{opacity:1}
+/* Visionneuse */
+.lightbox{position:fixed;inset:0;background:rgba(15,17,20,.86);z-index:80;display:none;align-items:center;justify-content:center;overflow:auto;cursor:zoom-in}
+.lightbox.show{display:flex}
+.lightbox img{max-width:94vw;max-height:92vh;background:#fff;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.lightbox.full{align-items:flex-start;justify-content:flex-start;cursor:zoom-out}
+.lightbox.full img{max-width:none;max-height:none;margin:20px}
+.lightbox .hint{position:fixed;top:12px;right:18px;color:#fff;font-size:13px;opacity:.8}
+.foot{margin-top:40px;color:var(--muted);font-size:12.5px;text-align:center}
+@media print{nav.toc,.actionbar,.filters,.remark,textarea,.send,.toast,.lightbox{display:none!important}body{background:#fff}.card{box-shadow:none}.constat{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">Audit d'accessibilité · référentiel Éduscol « Rendre les mathématiques accessibles pour tous » (2026)</div>
+    <h1 id="titre"></h1>
+    <div class="chips" id="chips"></div>
+    <div class="src" id="src"></div>
+    <div class="note" id="note"></div>
+    <div class="verdict" id="verdict"></div>
+  </header>
+
+  <nav class="toc">
+    <a href="#synthese">Synthèse</a><a href="#objectifs">Objectifs à préserver</a><a href="#grille">Grille Éduscol</a>
+    <a href="#carte">Carte des constats</a><a href="#constats">Constats et pistes</a><a href="#passation">Passation</a>
+    <a href="#mesures">Mesures</a><a href="#envoi">Transmettre à l'agent</a>
+  </nav>
+
+  <h2 id="synthese">Synthèse</h2>
+  <div class="synth">
+    <div class="card"><h3>Priorités</h3><ol id="priorites"></ol>
+      <div class="counts" id="counts"></div></div>
+    <div class="card"><h3>Ce qui fonctionne déjà</h3><ul class="forts" id="forts"></ul></div>
+  </div>
+
+  <h2 id="objectifs">Ce que l'évaluation doit préserver</h2>
+  <p class="lead">Objectif et critères de réussite de chaque exercice. Une amélioration d'accessibilité lève les obstacles <em>étrangers</em> à ces objectifs ; elle ne touche ni l'objectif ni les critères (<span class="source">[OBJ] p. 3</span>).</p>
+  <div class="card tablewrap"><table id="tab-obj"></table></div>
+
+  <h2 id="grille">Grille d'analyse du niveau d'accessibilisation</h2>
+  <p class="lead">La grille Éduscol en neuf dimensions, complétée pour ce sujet. Les codes renvoient aux constats détaillés plus bas.</p>
+  <div class="card tablewrap"><table id="tab-grille"></table></div>
+
+  <h2 id="carte">Carte des constats</h2>
+  <p class="lead">Chaque page de l'énoncé avec ses zones repérées. Clic : agrandir ; second clic : taille réelle.</p>
+  <div class="apercus" id="apercus"></div>
+
+  <h2 id="constats">Constats et pistes d'amélioration</h2>
+  <p class="lead">L'agent a <b>présélectionné</b> une piste dans chaque constat (badge « Recommandée ») et coché les constats qu'il conseille de traiter. Ajuste : décoche, choisis une autre piste, annote. Ta remarque est transmise telle quelle à l'agent et prime sur la piste. Tout est sauvegardé dans ce navigateur ; « Réinitialiser » rétablit la présélection.</p>
+  <div class="filters" id="filters"></div>
+  <div id="liste"></div>
+
+  <h2 id="passation">Conditions de passation</h2>
+  <p class="lead">Ce qui se joue autour du sujet, avant, pendant et après l'épreuve (<span class="source">[VERS] p. 2-3</span>). Certaines actions se traduisent dans le document (une ligne d'en-tête), d'autres dans ta pratique.</p>
+  <div class="pass-grid" id="pass"></div>
+
+  <h2 id="mesures">Mesures de mise en forme</h2>
+  <p class="lead">Relevées automatiquement dans le PDF, sur les pages de l'énoncé seulement.</p>
+  <div class="card tablewrap"><table id="tab-mesures"></table></div>
+
+  <h2 id="envoi">Transmettre à l'agent</h2>
+  <div class="card send">
+    <div class="field"><b>Remarques générales (facultatif)</b>
+      <textarea id="rem-gen" rows="3" placeholder="Consignes valables pour toutes les modifications : contraintes de pages, élèves particuliers, ce qu'il ne faut surtout pas toucher..."></textarea></div>
+    <div class="field"><b>Aperçu du prompt copié</b><pre id="apercu-prompt"></pre></div>
+  </div>
+  <div class="foot" id="foot"></div>
+</div>
+
+<div class="actionbar">
+  <div class="stat"><b id="n-sel">0</b> constat(s) retenu(s) · <span id="n-pass">0</span> action(s) de passation · <span id="n-rem">0</span> remarque(s)</div>
+  <div class="spacer"></div>
+  <button class="btn btn-ghost" onclick="reinit()">Réinitialiser</button>
+  <button class="btn btn-ghost" onclick="location.hash='envoi'">Voir le prompt</button>
+  <button class="btn btn-main" id="btn-copy" onclick="copier()">Copier le prompt pour l'agent</button>
+</div>
+<div class="toast" id="toast"></div>
+<div class="lightbox" id="lb" onclick="lbClic(event)"><span class="hint">Clic : taille réelle · Échap : fermer</span><img id="lb-img" alt=""></div>
+
+<script id="donnees" type="application/json">__DATA__</script>
+<script>
+const D = JSON.parse(document.getElementById('donnees').textContent);
+const E = D.evaluation || {};
+const CAP = (D.captures && D.captures.constats) || {};
+const APER = (D.captures && D.captures.apercus) || {};
+const M = D.mesures || {};
+const DIMS = {
+  mise_en_forme:['Mise en forme des documents','Police lisible, interligne et couleurs dédiés, zonage, absence de visuels distracteurs et de justification des textes'],
+  ancrages_linguistiques:['Ancrages linguistiques','Vocabulaire expliqué, glossaire, contextualisation'],
+  sequencage:['Séquençage des tâches élèves','Objectifs ciblés, découpage en étapes, progressivité, sens explicité'],
+  non_verbal:['Communication non verbale','Gestes, pictogrammes pertinents, supports visuels'],
+  materiel:['Matériel de manipulation','Outils concrets, supports kinesthésiques, supports numériques'],
+  repetition:['Répétition et renforcement','Répétition variée, réactivation des acquis'],
+  appartenance:["Sentiment d'appartenance",'Rôle social dans le groupe, coopération, synthèse collective'],
+  autonomie:['Autonomie',"Choix, outils d'aide, étayage, auto-évaluation, fiche mémo"],
+  reussite:['Sentiment de réussite','Tâches dans la zone proximale de développement, feedback positif, valorisation'],
+};
+const GRAV = {bloquant:'Bloquant', important:'Important', confort:'Confort'};
+const esc = s => (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LS = 'audit-acc-' + (D.id || E.fichier_source || 'eval');
+let S; try{ S = JSON.parse(localStorage.getItem(LS)||'{}'); }catch(e){ S = {}; }
+S.c = S.c||{}; S.p = S.p||{}; S.g = S.g||'';
+const save = () => { try{ localStorage.setItem(LS, JSON.stringify(S)); }catch(e){} majPrompt(); };
+const constats = D.constats || [];
+const byId = {}; constats.forEach(c=>byId[c.id]=c);
+/* Présélection de l'agent : piste recommandée cochée dans chaque constat, constats et
+   actions de passation « à retenir » cochés. Ne s'applique qu'aux éléments jamais touchés. */
+const recIdx = c => { const i = (c.pistes||[]).findIndex(p=>p.recommandee); return i >= 0 ? i : 0; };
+function appliquerDefauts(){
+  constats.forEach(c=>{ if(!S.c[c.id]) S.c[c.id] = {on: !!c.a_retenir, pistes: (c.pistes||[]).length ? {[recIdx(c)]: true} : {}}; });
+  (D.passation||[]).forEach(p=>{ if(!S.p[p.id]) S.p[p.id] = {on: !!p.a_retenir}; });
+}
+appliquerDefauts();
+
+/* En-tête */
+document.getElementById('titre').textContent = E.titre || 'Évaluation';
+const DED = E.champs_deduits || [];
+const chips = [['Niveau','niveau'],['Durée','duree'],['Barème','bareme'],['Type','type_evaluation'],['Échéance','echeance'],['Analysé le','date_analyse']];
+document.getElementById('chips').innerHTML = chips.filter(c=>E[c[1]]).map(c=>`<span class="chip">${esc(c[0])} : <b>${esc(E[c[1]])}</b>${DED.includes(c[1])?'<span class="tag-deduit">déduit</span>':''}</span>`).join('');
+document.getElementById('src').textContent = E.fichier_source ? 'Source : ' + E.fichier_source : '';
+const sy = D.synthese || {};
+document.getElementById('verdict').innerHTML = esc(sy.verdict || '');
+/* Note d'accessibilité (calculée par generer_rapport.py) */
+(function(){
+  const n = D.note; if(!n || n.indice==null) return;
+  const p = D.note_precedente;
+  const delta = (a,b) => { const x = a-b; return x===0 ? '' : `<span class="delta ${x>0?'up':'down'}">${x>0?'+':''}${x}</span>`; };
+  document.getElementById('note').innerHTML = `
+    <div class="n-main ${n.maximum?'max':''}"><b>${n.indice}</b><small>/100</small><span>indice de grille</span>${p?delta(n.indice,p.indice):''}</div>
+    <div class="n-obs"><span class="bloquant">${n.bloquant} bloquant(s)</span><span class="important">${n.important} important(s)</span><span class="confort">${n.confort} confort</span></div>
+    <div class="n-etat">${n.maximum?'Note maximale : toutes les dimensions applicables sont avancées et il ne reste aucun obstacle bloquant ni important.':'Maximum : indice 100, zéro bloquant, zéro important.'}${p?`<br><span class="dimdesc">Audit précédent (${esc(p.dossier)}) : ${p.indice}/100 · ${p.bloquant} bloquant(s) · ${p.important} important(s) · ${p.confort} confort</span>`:''}</div>`;
+})();
+
+/* Synthèse */
+document.getElementById('priorites').innerHTML = (sy.priorites||[]).map(p=>{
+  const t = typeof p === 'string' ? {texte:p} : p;
+  const liens = (t.constats||[]).map(lienId).join('');
+  return `<li>${esc(t.texte)} ${liens}</li>`;}).join('');
+document.getElementById('forts').innerHTML = (sy.points_forts||[]).map(f=>`<li>${esc(f)}</li>`).join('') || '<li style="list-style:none;color:var(--muted)">—</li>';
+const cnt = g => constats.filter(c=>c.gravite===g).length;
+document.getElementById('counts').innerHTML = ['bloquant','important','confort'].map(g=>`<div class="count ${g}"><div class="n">${cnt(g)}</div><div class="l">${GRAV[g]}</div></div>`).join('');
+function lienId(id){ const c = byId[id]; return `<a class="idlink ${c?esc(c.gravite):''}" href="#${esc(id)}" title="${c?esc(c.titre):''}">${esc(id)}</a>`; }
+
+/* Objectifs */
+const objs = D.objectifs || [];
+document.getElementById('tab-obj').innerHTML = '<tr><th>Exercice</th><th>Objectif évalué</th><th>Critères de réussite</th></tr>' +
+  objs.map(o=>`<tr><td><b>${esc(o.exercice)}</b><div class="dimdesc">${esc(o.intitule||'')}</div></td><td>${esc(o.objectif)}${o.deduit?'<span class="tag-deduit">déduit du sujet</span>':''}</td><td><ul>${(o.criteres_reussite||[]).map(c=>`<li>${esc(c)}</li>`).join('')}</ul></td></tr>`).join('');
+
+/* Grille */
+const grille = {}; (D.grille||[]).forEach(g=>grille[g.dimension]=g);
+document.getElementById('tab-grille').innerHTML = '<tr><th style="width:26%">Dimension</th><th style="width:22%">Niveau</th><th>Appréciation</th><th style="width:13%">Constats</th></tr>' +
+  Object.keys(DIMS).map(k=>{
+    const g = grille[k] || {}; const n = g.niveau || 'non_applicable';
+    const scale = n==='non_applicable' ? '<span class="na">Non applicable au sujet</span>' :
+      `<div class="scale">${['aucun','partiel','avance'].map(l=>`<span class="${l} ${l===n?'on':''}">${({aucun:'Aucun',partiel:'Partiel',avance:'Avancé'})[l]}</span>`).join('')}</div>`;
+    return `<tr><td><div class="dimname">${DIMS[k][0]}</div><div class="dimdesc">${DIMS[k][1]}</div></td><td>${scale}</td><td>${esc(g.justification||'')}</td><td>${(g.constats||[]).map(lienId).join('')}</td></tr>`;
+  }).join('');
+
+/* Carte */
+document.getElementById('apercus').innerHTML = Object.keys(APER).sort((a,b)=>a-b).map(p=>`<figure><img src="${esc(APER[p])}" alt="Page ${esc(p)}" onclick="lb(this.src)"><figcaption>Page ${esc(p)}</figcaption></figure>`).join('') || '<div class="lead">Aucune capture.</div>';
+
+/* Constats */
+let filtre = 'tous';
+const dimsPresentes = [...new Set(constats.map(c=>c.dimension))];
+const F = [['tous','Tous'],['retenus','Retenus'],['|'],['bloquant','Bloquants'],['important','Importants'],['confort','Confort'],['|']].concat(dimsPresentes.map(d=>['d:'+d,(DIMS[d]||[d])[0]]));
+document.getElementById('filters').innerHTML = F.map(f=>f[0]==='|'?'<span class="sep"></span>':`<button data-f="${esc(f[0])}" class="${f[0]==='tous'?'active':''}" onclick="setFiltre('${esc(f[0])}')">${esc(f[1])}</button>`).join('');
+function setFiltre(f){ filtre=f; document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('active',b.dataset.f===f)); rendreListe(); }
+function visible(c){
+  if(filtre==='tous') return true;
+  if(filtre==='retenus') return !!(S.c[c.id]&&S.c[c.id].on);
+  if(filtre.startsWith('d:')) return c.dimension===filtre.slice(2);
+  return c.gravite===filtre;
+}
+function carte(c){
+  const st = S.c[c.id] || {}; const pist = st.pistes || {};
+  const shots = (CAP[c.id]||[]).map(s=>`<img src="${esc(s.fichier)}" alt="Zone ${esc(c.id)}, page ${esc(s.page)}" loading="lazy" onclick="lb(this.src)">`).join('')
+    || '<div class="noshot">Constat global : il porte sur l’ensemble du sujet.</div>';
+  const pistes = (c.pistes||[]).map((p,i)=>`<label class="piste ${pist[i]?'on':''}">
+      <input type="checkbox" ${pist[i]?'checked':''} onchange="ckPiste('${esc(c.id)}',${i},this.checked)">
+      <div style="flex:1"><span class="pt">${esc(p.titre)}</span>${p.recommandee?'<span class="reco">Recommandée</span>':''}${p.effort?`<span class="effort">effort ${esc(p.effort)}</span>`:''}
+        <div class="pd">${esc(p.detail||'')}</div>
+        ${p.recommandee&&p.pourquoi_recommandee?`<div class="reco-why">Pourquoi celle-ci : ${esc(p.pourquoi_recommandee)}</div>`:''}
+        ${(p.avant||p.apres)?`<div class="avap">${p.avant?`<div class="av"><small>Avant</small>${avap(p.avant)}</div>`:''}${p.apres?`<div class="ap"><small>Après</small>${avap(p.apres)}</div>`:''}</div>`:''}
+      </div></label>`).join('');
+  return `<div class="card constat ${esc(c.gravite)} ${st.on?'retenu':''}" id="${esc(c.id)}">
+    <div class="head"><input class="check" type="checkbox" ${st.on?'checked':''} onchange="ckConstat('${esc(c.id)}',this.checked)" title="Retenir ce constat">
+      <div style="flex:1"><div class="ttl" onclick="this.closest('.constat').querySelector('.check').click()"><span class="cid">${esc(c.id)}</span>${esc(c.titre)}</div>
+        <div class="badges"><span class="badge ${esc(c.gravite)}">${esc(GRAV[c.gravite]||c.gravite)}</span>
+          <span class="badge dim">${esc((DIMS[c.dimension]||[c.dimension])[0])}</span>
+          ${c.code?`<span class="badge">${esc(c.code)}</span>`:''}${c.question?`<span class="badge">${esc(c.question)}</span>`:''}</div></div></div>
+    <div class="body">
+      <div class="shots">${shots}</div>
+      <div>
+        <div class="field"><b>Constat</b>${esc(c.observation)}</div>
+        <div class="field"><b>Pourquoi c'est un obstacle</b>${esc(c.pourquoi)} ${c.source?`<span class="source">${esc(c.source)}</span>`:''}</div>
+        ${c.eleves_concernes?`<div class="field"><b>Élèves concernés</b>${esc(c.eleves_concernes)}</div>`:''}
+        ${c.preserve?`<div class="box preserve"><b>Ce qui est préservé</b>${esc(c.preserve)}</div>`:''}
+        ${c.vigilance?`<div class="box vigilance"><b>Vigilance</b>${esc(c.vigilance)}</div>`:''}
+        ${c.arbitrage?`<div class="box arbitrage"><b>Arbitrage avec tes contraintes</b>${esc(c.arbitrage)}</div>`:''}
+      </div>
+      <div class="pistes"><b>Pistes proposées — coche celles à appliquer</b>${pistes}</div>
+      <div class="remark"><textarea placeholder="Ta remarque pour l'agent (précision, variante, refus d'une partie...)" oninput="remC('${esc(c.id)}',this.value)">${esc(st.rem||'')}</textarea></div>
+    </div></div>`;
+}
+/* Avant / après : les lignes « a | b | c » forment un tableau, le reste est du texte */
+function avap(t){
+  const lignes = String(t).split('\n'); let h = '', tab = [];
+  const vider = () => { if(tab.length){ h += '<table class="mini-tab">' + tab.map((l,i)=>'<tr>'+l.split('|').map(x=>`<${i?'td':'th'}>${esc(x.trim())}</${i?'td':'th'}>`).join('')+'</tr>').join('') + '</table>'; tab = []; } };
+  lignes.forEach(l=>{ if(l.includes('|')) tab.push(l.replace(/^\s*\||\|\s*$/g,'')); else { vider(); h += esc(l) + '\n'; } });
+  vider(); return h.replace(/\n$/,'');
+}
+function rendreListe(){
+  const groupes = []; const idx = {};
+  constats.filter(visible).forEach(c=>{ const k = c.exercice || 'Ensemble du sujet'; if(!(k in idx)){ idx[k]=groupes.length; groupes.push([k,[]]); } groupes[idx[k]][1].push(c); });
+  const obj = {}; objs.forEach(o=>obj[o.exercice]=o);
+  document.getElementById('liste').innerHTML = groupes.map(([k,cs])=>`<h3 class="exo">${esc(k)} <small>${esc(obj[k]?obj[k].intitule||'':'')}</small></h3>${cs.map(carte).join('')}`).join('') || '<p class="lead">Aucun constat pour ce filtre.</p>';
+  maths(document.getElementById('liste'));
+}
+function ckConstat(id,v){ const st = S.c[id] = S.c[id]||{}; st.on = v; st.pistes = st.pistes||{};
+  if(v && !Object.values(st.pistes).some(Boolean) && (byId[id].pistes||[]).length) st.pistes[recIdx(byId[id])] = true;
+  save(); rendreListe(); }
+function ckPiste(id,i,v){ const st = S.c[id] = S.c[id]||{}; st.pistes = st.pistes||{}; st.pistes[i] = v; if(v) st.on = true; save(); rendreListe(); }
+function remC(id,v){ const st = S.c[id] = S.c[id]||{}; st.rem = v; save(); }
+
+/* Passation */
+const pass = D.passation || [];
+const MOM = {avant:'Avant l’évaluation', pendant:'Pendant', apres:'Après'};
+function rendrePass(){
+  document.getElementById('pass').innerHTML = Object.keys(MOM).map(m=>`<div class="pass-col"><h4>${MOM[m]}</h4>${pass.filter(p=>p.moment===m).map(p=>{
+    const st = S.p[p.id]||{};
+    return `<div class="card pitem ${st.on?'retenu':''}"><div class="ph"><input class="check" type="checkbox" ${st.on?'checked':''} onchange="ckP('${esc(p.id)}',this.checked)">
+      <div class="pt" onclick="this.parentNode.querySelector('input').click()">${esc(p.titre)}</div></div>
+      <div class="pd">${esc(p.detail||'')} ${p.source?`<span class="source">${esc(p.source)}</span>`:''}</div>
+      <textarea placeholder="Remarque..." oninput="remP('${esc(p.id)}',this.value)">${esc(st.rem||'')}</textarea></div>`;}).join('') || '<div class="lead">—</div>'}</div>`).join('');
+}
+function ckP(id,v){ S.p[id]=S.p[id]||{}; S.p[id].on=v; save(); rendrePass(); }
+function remP(id,v){ S.p[id]=S.p[id]||{}; S.p[id].rem=v; save(); }
+
+/* Mesures */
+(function(){
+  const rows = [];
+  const fmt = v => v==null?'—':String(v).replace('.',',');
+  const st = (ok,moy) => ok?'<span class="st-ok">conforme</span>':(moy?'<span class="st-moy">à la limite</span>':'<span class="st-ko">en deçà</span>');
+  if(M.police_dominante) rows.push(['Police dominante', M.police_dominante, 'Arial ou police sans empattement', /arial|helvet|sans|calibri|verdana|luciole|opendys|tahoma/i.test(M.police_dominante)?st(true):st(false,true)]);
+  if(M.corps_dominant_pt) rows.push(['Corps du texte', fmt(M.corps_dominant_pt)+' pt', '12 ou 14 pt', M.corps_dominant_pt>=12?st(true):st(false,M.corps_dominant_pt>=11)]);
+  if(M.part_texte_corps_inferieur_10pt!=null) rows.push(['Texte en corps < 10 pt', Math.round(M.part_texte_corps_inferieur_10pt*100)+' %', 'aucun texte utile', M.part_texte_corps_inferieur_10pt<0.02?st(true):st(false,M.part_texte_corps_inferieur_10pt<0.08)]);
+  if(M.interligne_median) rows.push(['Interligne (écart / corps)', fmt(M.interligne_median), '1,3 à 1,5', M.interligne_median>=1.3?st(true):st(false,M.interligne_median>=1.2)]);
+  if(M.part_lignes_justifiees!=null) rows.push(['Lignes justifiées (paragraphes)', Math.round(M.part_lignes_justifiees*100)+' %', 'texte aligné à gauche', M.part_lignes_justifiees<0.3?st(true):st(false,M.part_lignes_justifiees<0.6)]);
+  if(M.zones_cote_a_cote_par_page) rows.push(['Blocs côte à côte (par page)', Object.entries(M.zones_cote_a_cote_par_page).map(([p,n])=>`p. ${p} : ${n}`).join(' · '), 'présentation linéaire', '<span class="dimdesc">indicateur : à lire avec les captures</span>']);
+  if(M.pages_enonce) rows.push(["Pages d'énoncé", M.pages_enonce.join(', '), '', '']);
+  document.getElementById('tab-mesures').innerHTML = '<tr><th>Mesure</th><th>Valeur relevée</th><th>Repère [GRILLE] / [EX]</th><th>État</th></tr>' +
+    rows.map(r=>`<tr><td>${r[0]}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${r[3]}</td></tr>`).join('') +
+    (D.mesures_commentaire?`<tr><td colspan="4" class="dimdesc">${esc(D.mesures_commentaire)}</td></tr>`:'');
+})();
+
+/* Prompt */
+function prompt(){
+  const L = [];
+  const retenus = constats.filter(c=>S.c[c.id]&&S.c[c.id].on);
+  const remSeules = constats.filter(c=>!(S.c[c.id]&&S.c[c.id].on) && (S.c[c.id]&&(S.c[c.id].rem||'').trim()));
+  const passR = pass.filter(p=>S.p[p.id]&&S.p[p.id].on);
+  L.push(`# Appliquer les améliorations d'accessibilité retenues — ${E.titre||''}`, '');
+  L.push("Utilise le skill `audit-accessibilite-eval`, section « Appliquer les modifications retenues ». L'enseignant a relu l'audit et choisi ce qui suit ; ne fais rien d'autre.", '');
+  L.push('## Fichiers');
+  L.push(`- Source à modifier : \`${E.fichier_source||'?'}\``);
+  (E.fichiers_a_modifier||[]).filter(f=>f!==E.fichier_source).forEach(f=>L.push(`- Également : \`${f}\``));
+  if(E.fichier_pdf) L.push(`- PDF analysé : \`${E.fichier_pdf}\``);
+  if(D.dossier_audit) L.push(`- Audit complet : \`${D.dossier_audit}\` (rapport.html, constats.json, captures/)`);
+  L.push('', "## Ce qui ne doit pas changer");
+  objs.forEach(o=>L.push(`- **${o.exercice}** — objectif : ${o.objectif} Critères de réussite : ${(o.criteres_reussite||[]).join(' ; ')}`));
+  (E.contraintes_enseignant||[]).forEach(c=>L.push(`- Contrainte de l'enseignant : ${c}`));
+  L.push('', `## Modifications retenues (${retenus.length})`);
+  retenus.forEach(c=>{
+    const st = S.c[c.id]; const ps = (c.pistes||[]).filter((p,i)=>st.pistes&&st.pistes[i]);
+    L.push('', `### ${c.id} · ${c.exercice||''}${c.question?' '+c.question:''} — ${c.titre}`);
+    L.push(`*${GRAV[c.gravite]||c.gravite} · ${(DIMS[c.dimension]||[c.dimension])[0]}${c.code?' · '+c.code:''}*`);
+    const z = (c.zones||[]).map(z=>`page ${z.page}${z.ancre?` — « ${z.ancre}${z.ancre_fin?' … '+z.ancre_fin:''} »`:''}`).join(' ; ');
+    if(z) L.push(`**Où :** ${z}`);
+    L.push(`**Constat :** ${c.observation}`);
+    if(ps.length){ L.push('**Piste(s) retenue(s) :**'); ps.forEach(p=>{ L.push(`- ${p.titre} : ${p.detail||''}`); if(p.avant) L.push(`  - Avant : ${p.avant}`); if(p.apres) L.push(`  - Après : ${p.apres}`); }); }
+    else L.push("**Piste :** aucune cochée — choisis la plus adaptée parmi celles de constats.json et dis laquelle.");
+    if(c.preserve) L.push(`**À préserver :** ${c.preserve}`);
+    if(c.vigilance) L.push(`**Vigilance :** ${c.vigilance}`);
+    const r = (st.rem||'').trim(); if(r) L.push(`**Remarque de l'enseignant (prioritaire sur la piste) :** ${r}`);
+  });
+  if(passR.length){ L.push('', '## Conditions de passation retenues');
+    L.push("Traduis dans le document ce qui peut l'être (en-tête, consigne générale) ; liste le reste dans ton compte rendu comme actions pour l'enseignant.");
+    passR.forEach(p=>{ L.push(`- **${p.titre}** (${MOM[p.moment]||p.moment}) : ${p.detail||''}${(S.p[p.id].rem||'').trim()?` — Remarque : ${S.p[p.id].rem.trim()}`:''}`); }); }
+  if(remSeules.length){ L.push('', "## Remarques sur des constats non retenus (pour information, ne rien modifier)");
+    remSeules.forEach(c=>L.push(`- ${c.id} — ${c.titre} : ${S.c[c.id].rem.trim()}`)); }
+  if((S.g||'').trim()){ L.push('', "## Remarques générales de l'enseignant", S.g.trim()); }
+  /* Écarts avec la présélection : le signal des préférences de l'enseignant */
+  const ecarts = [];
+  constats.forEach(c=>{ const st = S.c[c.id]||{}; const ri = recIdx(c);
+    if(!!c.a_retenir && !st.on) ecarts.push(`- ${c.id} (${c.code||c.dimension}) — « ${c.titre} » : recommandé, **écarté** par l'enseignant.`);
+    else if(!c.a_retenir && st.on) ecarts.push(`- ${c.id} (${c.code||c.dimension}) — « ${c.titre} » : non recommandé, **retenu** par l'enseignant.`);
+    if(st.on && (c.pistes||[]).length > 1){
+      const ch = (c.pistes||[]).map((p,i)=>i).filter(i=>st.pistes&&st.pistes[i]);
+      if(!(ch.length===1 && ch[0]===ri)) ecarts.push(`- ${c.id} — piste recommandée « ${c.pistes[ri].titre} » ; choisie(s) : ${ch.map(i=>'« '+c.pistes[i].titre+' »').join(', ')||'aucune'}.`);
+    }
+  });
+  pass.forEach(p=>{ const on = !!(S.p[p.id]&&S.p[p.id].on); if(on !== !!p.a_retenir) ecarts.push(`- ${p.id} — « ${p.titre} » : ${p.a_retenir?'recommandé, écarté':'non recommandé, retenu'}.`); });
+  if(ecarts.length){ L.push('', "## Écarts avec la présélection de l'agent", "Ces écarts disent les préférences de l'enseignant : voir l'étape « Faire remonter les préférences » du skill.", ...ecarts); }
+  L.push('', "## Consignes d'exécution",
+    "1. Lis le fichier source en entier avant toute modification ; les numéros de page et les ancres ci-dessus situent chaque zone.",
+    "2. Applique uniquement les modifications listées. La remarque de l'enseignant prime sur la piste ; en cas de contradiction avec « Ce qui ne doit pas changer », arrête-toi sur ce point et signale-le.",
+    "3. Conserve le barème total et la répartition des points, sauf demande contraire explicite.",
+    "4. Si la source est un .tex bfcours : charge le skill `bfcours-latex`, garde le corrigé cohérent avec l'énoncé modifié, recompile, rends les pages en PNG et regarde-les.",
+    "5. Vérifie le nombre de pages et les contraintes de mise en page de l'enseignant ; signale tout dépassement au lieu de le masquer.",
+    "6. Termine par un tableau : identifiant · fait / adapté / non fait · ce qui a changé · raison si adapté ou non fait.",
+    "7. Fais remonter les préférences durables (écarts répétés, remarques de portée générale) dans la section « Retours de l'enseignant » de `.claude/skills/bfcours-latex/references/conception-evaluations-accessibles.md`, en suivant l'étape « Faire remonter les préférences » du skill `audit-accessibilite-eval`.");
+  return L.join('\n');
+}
+function majPrompt(){
+  document.getElementById('apercu-prompt').textContent = prompt();
+  const n = constats.filter(c=>S.c[c.id]&&S.c[c.id].on).length;
+  document.getElementById('n-sel').textContent = n;
+  document.getElementById('n-pass').textContent = pass.filter(p=>S.p[p.id]&&S.p[p.id].on).length;
+  document.getElementById('n-rem').textContent = Object.values(S.c).concat(Object.values(S.p)).filter(s=>(s.rem||'').trim()).length + ((S.g||'').trim()?1:0);
+}
+const remGen = document.getElementById('rem-gen'); remGen.value = S.g; remGen.addEventListener('input',()=>{ S.g = remGen.value; save(); });
+function toast(t){ const e = document.getElementById('toast'); e.textContent = t; e.classList.add('show'); setTimeout(()=>e.classList.remove('show'),2000); }
+function copier(){
+  const t = prompt();
+  const repli = () => { const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); toast('Prompt copié ✓'); }catch(e){ location.hash='envoi'; toast('Copie impossible : sélectionne l’aperçu'); } ta.remove(); };
+  if(navigator.clipboard && window.isSecureContext!==false){ navigator.clipboard.writeText(t).then(()=>toast('Prompt copié ✓ — colle-le dans Claude Code'), repli); } else repli();
+}
+function reinit(){ const b = document.getElementById('btn-copy');
+  if(b.dataset.confirm){ S = {c:{},p:{},g:''}; appliquerDefauts(); remGen.value=''; save(); rendreListe(); rendrePass(); delete b.dataset.confirm; toast('Présélection de l’agent rétablie'); return; }
+  b.dataset.confirm = '1'; toast('Clique encore sur « Réinitialiser » : tes choix et remarques seront effacés'); setTimeout(()=>delete b.dataset.confirm, 3500); }
+
+/* Visionneuse : 1er clic plein écran ajusté, 2e clic taille réelle */
+function lb(src){ const l = document.getElementById('lb'); document.getElementById('lb-img').src = src; l.classList.remove('full'); l.classList.add('show'); }
+function lbClic(e){ const l = document.getElementById('lb'); if(l.classList.contains('full')){ l.classList.remove('show','full'); } else { l.classList.add('full'); } }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') document.getElementById('lb').classList.remove('show','full'); });
+
+function maths(el){ if(window.renderMathInElement) renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false}); }
+document.getElementById('foot').textContent = `${constats.length} constat(s) · ${pass.length} action(s) de passation · généré le ${E.date_analyse||''} par le skill audit-accessibilite-eval`;
+rendreListe(); rendrePass(); majPrompt();
+window.addEventListener('load', ()=>maths(document.body));
+</script>
+</body>
+</html>

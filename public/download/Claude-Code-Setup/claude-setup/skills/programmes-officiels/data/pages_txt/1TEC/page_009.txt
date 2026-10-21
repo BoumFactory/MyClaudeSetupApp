@@ -1,0 +1,56 @@
+ 
+Commentaires 
+− La notion de nombre dérivé gagne à être illustrée dans des contextes variés : 
+− dans le cadre d’un mouvement rectiligne, il est possible d’interpréter le taux de variation de la position du point mobile 
+entre deux instants comme une vitesse moyenne et le nombre dérivé comme une vitesse instantanée ; 
+− dans un cadre économique, le nombre dérivé est relié au coût marginal. 
+− À l’aide d’un logiciel de géométrie dynamique, on visualise la position limite des sécantes à une courbe en un point. 
+− Il est recommandé de ne pas donner la définition formelle de la notion de limite et de s’en tenir à une approche intuitive à 
+partir d’exemples. Le vocabulaire et la notation correspondants sont introduits à l’occasion du travail sur la notion de 
+nombre dérivé. 
+− Il est possible de démontrer que la dérivée d’une fonction monotone est de signe constant. La réciproque (admise) 
+s’appuie sur l’interprétation géométrique du nombre dérivé comme coefficient directeur de la tangente. 
+Statistiques et probabilités 
+En statistiques, à la suite des couples de variables qualitatives étudiés en classe de seconde, on introduit en première 
+technologique l’étude des séries statistiques à deux variables quantitatives. 
+En probabilités, les objectifs sont les suivants : 
+− utiliser la notion de probabilité conditionnelle pour définir l’indépendance de deux évènements ; 
+− modéliser des cas simples d’expériences aléatoires à plusieurs épreuves indépendantes ; 
+− introduire la notion de variable aléatoire. 
+La simulation est une composante importante de l’apprentissage des probabilités au cycle terminal. Elle permet d’observer la 
+fluctuation d’échantillonnage et de traiter des situations fréquemment rencontrées dans la vie sociale (sondages d’opinion, 
+données socioéconomiques, jeux de hasard, etc.) ou en sciences expérimentales (incertitude de mesure), tout en se prêtant à 
+des activités de programmation instructives. 
+Des activités de programmation, au tableur ou en langage Python, permettent d’automatiser certains calculs et d’obtenir des 
+résultats inaccessibles à la main.  
+Séries statistiques à deux variables quantitatives 
+Alors que le programme de la classe de seconde est consacré, dans sa partie relative aux statistiques, à l’étude de couples de 
+variables qualitatives, celui de la classe première technologique aborde l’étude de variables quantitatives, représentées par des 
+nuages de points. On procède à la recherche d’ajustements pertinents affines de ces nuages, dans le but de réaliser des 
+interpolations ou des extrapolations.  
+Contenus 
+− Nuage de points associé à une série statistique à deux variables quantitatives.  
+− Ajustement affine, point moyen. 
+Capacités attendues  
+− Représenter un nuage de points.  
+− Savoir calculer les coordonnées du point moyen. 
+− Déterminer et utiliser un ajustement affine. 
+− Interpoler ou extrapoler des valeurs inconnues à l’aide d’un ajustement affine. 
+Commentaires  
+− Plusieurs ajustements sont proposés (au jugé, droite de Mayer, moindres carrés) mais aucune connaissance théorique n’est 
+attendue. L’appréciation de leur qualité peut faire l’objet d’une discussion au sein de la classe.  
+− La méthode des moindres carrés est présentée : recherche d’une droite d’équation 𝑦 =  𝑎𝑥 +  𝑏 réalisant le minimum de 
+∑ (𝑦𝑖 − (𝑎𝑥𝑖 + 𝑏)
+𝑖
+)2 pour le nuage de points (𝑥𝑖, 𝑦𝑖). 
+− Les situations ou contextes réels, en lien notamment avec les enseignements de spécialité, sont privilégiés :  
+− données issues des domaines de la santé, de l’économie, de la gestion, des sciences sociales, etc. ;  
+− mesures expérimentales de grandeurs liées par une relation linéaire en physique-chimie (intensité et tension ; droite 
+d’étalonnage d’une concentration, etc.), en biotechnologies ou en sciences de l’ingénieur dans tous les domaines 
+(industriels, génie civil, etc.).  
+− Les élèves sont entrainés à exercer leur esprit critique sur la pertinence, au regard des données et de la situation étudiée, 
+d’une modélisation par ajustement affine et sur les limites des extrapolations faites dans ce cadre.  
+Probabilités conditionnelles : indépendance 
+La notion de probabilité conditionnelle permet d'introduire de manière intuitive l’indépendance de deux évènements : deux 
+évènements 𝐴 et 𝐵 sont dits indépendants si la probabilité conditionnelle de 𝐴 sachant 𝐵 est égale à la probabilité de 𝐴 (sous 
+réserve de la non-nullité de celle de 𝐵). 

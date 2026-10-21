@@ -15,8 +15,8 @@ Documentation technique pour la creation de contenus H5P Moodle.
 
 | Reference | Description |
 |-----------|-------------|
+| [moodleise.md](./moodleise.md) | Procedure complete de moodleisation d'une sequence (.mbz) |
 | [latex-h5p-guide.md](./latex-h5p-guide.md) | Gestion LaTeX/MathJax dans H5P |
-| [integration-image-generator.md](./integration-image-generator.md) | Creer des images pour H5P |
 
 ## Workflow recommande
 
@@ -24,7 +24,7 @@ Documentation technique pour la creation de contenus H5P Moodle.
 
 ```
 1. Concevoir le contenu pedagogique
-2. [Optionnel] Generer image de fond avec image-generator
+2. [Optionnel] Fournir ou generer une image de fond
 3. Creer Image Hotspots avec h5p_image_hotspots.py
 4. Tester dans Moodle
 ```
@@ -56,18 +56,3 @@ Documentation technique pour la creation de contenus H5P Moodle.
 | `h5p_advanced_generator.py` | Tous types avances |
 | `h5p_image_hotspots.py` | Image Hotspots |
 | `generate_course_mbz.py` | Package Moodle complet |
-
-## Skill image-generator
-
-Pour creer des images de fond :
-
-```bash
-python ".claude/skills/creer/media/image-generator/scripts/generate_image.py" \
-  --prompt "Description detaillee..." \
-  --type "infographic" \
-  --output "chemin/image.png"
-```
-
-Chemin : `.claude/skills/creer/media/image-generator/`
-
-Types disponibles : `infographic`, `schema`, `photo`, `illustration`, `geometry`, `graph`

@@ -1,0 +1,95 @@
+---
+niveau: A_DETERMINER
+  # cycle4 : choisir parmi ['5E', '4E', '3E'] en lisant la page (5E / 4E / 3E)
+page: 9
+pdf: cycle4.pdf
+page_folder: cycle4
+bo_reference: "BO n°10 du 5 mars 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo10"
+page_image: ../../pages/cycle4/page_009.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: true
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 9 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/cycle4/page_009.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+ 
+Tester si une égalité entre expressions algébriques comportant une variable est vraie ou fausse. 
+Déterminer si une expression littérale est une somme ou un produit. 
+Exploiter les relations k(a + b) = ka + kb ou k(a – b) = ka – kb pour factoriser, ou développer une expression littérale. 
+Réduire une expression littérale de la forme a𝑥 + b, où a et b sont des nombres décimaux. 
+Démontrer une propriété générale par le calcul littéral. 
+Utiliser un contre-exemple pour démontrer qu’une assertion est fausse. 
+Formuler des conjectures en s’appuyant sur un langage algorithmique ou un tableur. 
+Donner à la lettre le statut d’inconnue. 
+Modéliser des problèmes relevant des opérations à trous par des équations du type a𝑥 = c ou 𝑥 + b = c . 
+Résoudre des équations du type a𝑥 = c ou 𝑥 + b = c par des méthodes arithmétiques s'appuyant sur les opérations inverses. 
+Prolongements possibles : mises en perspective historiques et culturelles 
+− Lien avec Al Khwarizmi pour qui la résolution des problèmes fait appel à la « chose » qu’on cherche. 
+− Spécificité de la résolution des équations du type 𝑥 + b = c (« Al-jabr ») et du type a𝑥 = c (« Al-hatt ») chez Al Khwarizmi. 
+Quatrième 
+Opérations sur les nombres relatifs 
+Automatismes 
+− Manipulation de sommes et différences de nombre relatifs. 
+− Opposé d’un nombre, somme des opposés. 
+− Entretien des tables de multiplication. 
+− Multiplier et diviser par 10, 100, 1 000. 
+− Compléter des multiplications à trou : 5 × ... = 3 ; faire le lien entre multiplication et division. 
+− Multiplication comme addition itérée : 3 + 3 + 3 + 3 = 4 × 3. 
+Objectifs d’apprentissage  
+Multiplier deux nombres relatifs : d’abord dans le cas où un seul des facteurs est négatif, puis, grâce à la distributivité, dans le 
+cas où les deux facteurs sont négatifs.  
+Diviser deux nombres relatifs. 
+Savoir calculer un enchainement d’opérations avec des nombres relatifs. 
+Utiliser le vocabulaire (somme, quotient, etc.) à partir d’un enchainement d’opérations dans un programme de calcul et 
+inversement. 
+Nombres rationnels 
+Automatismes 
+− Addition et soustraction de fractions de dénominateurs quelconques mais simples. 
+− Comparaison de fractions. 
+− Savoir qu’une fraction est aussi le quotient : 
+3
+7  (le nombre, qui, multiplié par 7 donne 3, donc savoir que 7 × 
+3
+7 = 3). 
+− Savoir que prendre la fraction d’un nombre revient à multiplier la fraction par ce nombre. 
+Objectifs d’apprentissage 
+Simplifier une fraction. 
+Définir la notion de nombre rationnel : le quotient de deux nombres entiers relatifs. 
+Exprimer l’opposé d’un nombre rationnel. 
+Calculer le produit de nombres rationnels. 
+Calculer et représenter la fraction d’une fraction, d’un nombre, d’une quantité. 
+Définir l’inverse d’un nombre et connaitre sa notation. 
+Déterminer l’inverse d’une fraction. 
+Diviser des fractions. 
+Calculer la valeur d’expressions comportant plusieurs opérations avec des fractions. 
+Résoudre des problèmes mobilisant les opérations sur les fractions : addition, soustraction, multiplication, division, inverse. 
+Puissances 
+Automatismes 
+− Connaitre et reconnaitre les carrés parfaits des entiers de 0 à 12. 
+− Multiplier et diviser par 10, 100, 1 000 ; savoir compléter 1 200 = 1,2 × … 
+− Puissances simples : 2² = 4 ; 23 = 8 ; 33 = 27. 
+− 10² = 100 ; 103 = 1 000. 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

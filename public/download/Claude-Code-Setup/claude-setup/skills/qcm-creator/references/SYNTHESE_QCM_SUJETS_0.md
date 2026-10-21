@@ -1,5 +1,8 @@
 # Synthèse comparative : Sujets 0 de QCM de Mathématiques 1ère
 
+> Source : sujets zéro de l'épreuve anticipée de mathématiques publiés sur Éduscol (voie générale, avec et sans spécialité mathématiques) : https://eduscol.education.gouv.fr/5688/epreuve-anticipee-de-mathematiques-aux-baccalaureats-general-et-technologique
+> « Ens. Scientifique » désigne ci-dessous le sujet des élèves de voie générale **sans** spécialité mathématiques.
+
 ## 1. Tableau comparatif des deux sujets
 
 | Aspect | Sujet - Ens. Scientifique | Sujet - Spécialité Maths |

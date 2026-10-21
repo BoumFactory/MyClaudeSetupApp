@@ -1,0 +1,95 @@
+---
+niveau: TTEC
+page: 6
+pdf: ttec.pdf
+page_folder: TTEC
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/TTEC/page_006.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: true
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 6 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/TTEC/page_006.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+ 
+Géométrie dans l’espace 
+Contenus 
+Perspective centrale 
+− Projection centrale. 
+− Propriétés de conservation (alignement, contact) ou de non conservation (longueurs, milieux, rapports de longueurs, 
+angles, parallélisme) ; cas particulier des plans frontaux. 
+− Point de fuite d’une droite. 
+− Point de fuite principal. 
+− Ligne de fuite d’un plan non frontal, ligne d’horizon. 
+− Image d’un quadrillage, de solides simples (parallélépipède rectangle, prisme, pyramide). 
+Capacités attendues 
+− Utiliser le vocabulaire usuel de la perspective centrale. 
+− Utiliser les propriétés d’une projection centrale. 
+− Utiliser la conservation de forme dans les plans frontaux. 
+− Utiliser la position relative de l’image de deux droites parallèles. 
+− Construire l’image d’un quadrillage ou d’un parallélépipède rectangle ayant au moins une arête en vraie grandeur. 
+Commentaires 
+− La situation dite de « l’ombre au flambeau » (source ponctuelle) portée sur un plan constitue une approche adaptée de la 
+projection centrale. 
+− L’utilisation d’un logiciel de géométrie dynamique facilite la compréhension des différentes notions de cette partie du 
+programme. 
+− Des situations simples où un plan frontal est disponible sont proposées. Des situations plus générales sont analysées en lien 
+avec la photographie. 
+− Des « esquisses » de représentation d’objets comme le cylindre et le cône sont construites en les inscrivant dans un solide 
+simple et en prenant appui sur les points de contact. 
+Automatismes 
+Comme indiqué dans le programme de la classe de première, cette partie du programme vise à construire et à entretenir des 
+habiletés dans les domaines du calcul, de l’information chiffrée et des représentations graphiques. Il s’agit d’automatiser le 
+recours à des connaissances, des procédures, des méthodes et des stratégies, afin de permettre aux élèves de les mobiliser plus 
+rapidement. Leur acquisition permet aux élèves une meilleure réussite dans l’apprentissage des mathématiques, participe du 
+développement de leur esprit critique par une meilleure maitrise des chiffres et du calcul et leur permet une meilleure lecture 
+et compréhension des représentations de données dont les graphiques. 
+Les capacités attendues énoncées ci-dessous n’ont pas vocation à faire l’objet d’un chapitre d’enseignement spécifique car les 
+notions qui les sous-tendent ont été travaillées dans les classes antérieures et doivent être entretenues et consolidées au cours 
+de l’année. Cependant les nouvelles notions du programme peuvent donner lieu également à un travail d’automatisation tout 
+le long de l’année. Elles relèvent d’un entrainement régulier privilégiant l'activité mentale. Les différents thèmes proposés 
+doivent être travaillés tout au long des deux années et la présentation par blocs thématiques ne signifie pas, bien au contraire, 
+qu’il faille les aborder les uns après les autres. Les modalités de mise en œuvre peuvent être variées et prendre appui sur 
+différents supports : à l’oral, à l’écrit, individuellement ou en groupe, utilisant éventuellement des outils numériques de vidéo-
+projection, de recensement instantané des réponses etc. 
+En classe terminale, le travail sur les automatismes se poursuit. Au-delà d’une plus grande rapidité dans l’exécution des tâches, 
+il s’enrichit à travers : 
+− une complexification des variables didactiques comme par exemple la nature des nombres utilisés (entiers, fractions ou 
+paramètres) dans la factorisation de 𝑥² – 9, 𝑥² – 
+4
+9 , 4𝑥² – k² ; 
+− l’enchainement de plusieurs automatismes ; 
+− des changements de registre comme la détermination du signe de –2(𝑥 – 1)(𝑥 – 3) à partir d’une image mentale de la 
+courbe représentative de la fonction correspondante ; 
+− l’automatisation de quelques connaissances ou procédures relatives aux notions installées en classe de première comme, 
+par exemple, le lien entre le signe de la dérivée et le sens de variation de la fonction, la reconnaissance d’une situation 
+contextualisée se modélisant par une suite géométrique, etc. 
+Les automatismes propres à la classe terminale figurent dans les tirets en italique. 
+Capacités attendues 
+Proportions et pourcentages 
+− Calculer, appliquer, exprimer une proportion sous différentes formes (décimale, fractionnaire, pourcentage). 
+− Calculer la proportion d’une proportion. 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

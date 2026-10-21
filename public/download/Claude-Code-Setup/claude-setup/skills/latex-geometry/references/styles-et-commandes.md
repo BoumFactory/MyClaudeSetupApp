@@ -12,7 +12,7 @@
 
 | Style | Description | Exemple d'utilisation |
 |-------|-------------|----------------------|
-| `quadrillage` | Grille d'aide en gris clair | `\draw[quadrillage] (-1,-1) grid (5,4);` |
+| `quadrillage` | Grille grise, **un trait par unité du repère** quelle que soit l'échelle (`step={(1,1)}`, 0,5 pt) | `\draw[quadrillage] (-1,-1) grid (5,4);` |
 | `epais` | Trait épais (1.2pt) | `\draw[epais] (0,0) -- (2,2);` |
 | `axe` | Flèche pour axes | `\draw[axe] (0,0) -- (5,0);` |
 

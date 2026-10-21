@@ -1,0 +1,70 @@
+{
+  "registry_version": 1,
+  "comment": "Routage des ressources vers les methodes d'extraction. La maturite et les lacunes font foi dans le module Python (MATURITY, GAPS), pas ici. Ajouter une entree ici quand on cree une methode: sans cela le routeur ne la trouvera pas.",
+  "methods": {
+    "video_youtube": {
+      "module": "m_video_youtube",
+      "label": "Video en ligne (YouTube, Vimeo, Dailymotion, tout site gere par yt-dlp)",
+      "url_patterns": [
+        "youtube\\.com/(watch|shorts|live)",
+        "youtu\\.be/",
+        "vimeo\\.com/\\d+",
+        "dailymotion\\.com/video",
+        "twitch\\.tv/videos"
+      ],
+      "extensions": [],
+      "requires": ["yt-dlp", "ffmpeg"]
+    },
+    "video_local": {
+      "module": "m_video_local",
+      "label": "Fichier video local",
+      "url_patterns": [],
+      "extensions": [".mp4", ".mkv", ".mov", ".webm", ".avi", ".m4v", ".mp3", ".wav", ".m4a"],
+      "requires": ["ffmpeg"]
+    },
+    "pdf": {
+      "module": "m_pdf",
+      "label": "PDF natif ou scanne",
+      "url_patterns": ["\\.pdf($|\\?)"],
+      "extensions": [".pdf"],
+      "requires": ["pymupdf"]
+    },
+    "office": {
+      "module": "m_office",
+      "label": "Document bureautique (docx, odt, pptx, xlsx)",
+      "url_patterns": [],
+      "extensions": [".docx", ".odt", ".pptx", ".xlsx"],
+      "requires": []
+    },
+    "image": {
+      "module": "m_image",
+      "label": "Image isolee (capture d'ecran, schema, photo)",
+      "url_patterns": [],
+      "extensions": [".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tif", ".tiff"],
+      "requires": []
+    },
+    "text": {
+      "module": "m_text",
+      "label": "Fichier texte ou code source isole",
+      "url_patterns": [],
+      "extensions": [".md", ".markdown", ".txt", ".rst", ".tex", ".sty", ".py", ".js", ".ts", ".tsx", ".jsx", ".json", ".yml", ".yaml", ".toml", ".csv", ".html", ".css", ".sh", ".ps1", ".sql", ".srt", ".vtt"],
+      "requires": []
+    },
+    "codebase": {
+      "module": "m_codebase",
+      "label": "Dossier de projet (code, configuration, corpus)",
+      "url_patterns": [],
+      "extensions": [],
+      "requires": [],
+      "handles_directories": true
+    },
+    "web": {
+      "module": "m_web",
+      "label": "Page web / documentation en ligne",
+      "url_patterns": ["^https?://"],
+      "extensions": [],
+      "requires": ["beautifulsoup4"],
+      "fallback_for_urls": true
+    }
+  }
+}

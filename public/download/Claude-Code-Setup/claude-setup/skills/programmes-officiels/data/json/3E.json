@@ -1,0 +1,2239 @@
+{
+  "meta": {
+    "niveau": "3E",
+    "nom": "Troisième",
+    "cycle": "C4",
+    "bo_reference": "BO n°10 du 5 mars 2026",
+    "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+    "pdf": "cycle4.pdf",
+    "applicable_a_partir_de": "Rentrée 2026",
+    "generated": "2026-05-21T20:18:35+00:00",
+    "agent_version": "v2.0-mechanical",
+    "total_competences": 62,
+    "status": "mechanical_extraction",
+    "_note_status": "Extraction mécanique depuis bullets BO (script 05_competences_from_bullets.py). Aucune régurgitation LLM. Champ formulation_bo strictement issu du PDF."
+  },
+  "stats": {
+    "by_domaine": {
+      "NB": 14,
+      "AL": 10,
+      "GEO": 16,
+      "STA": 5,
+      "PR": 4,
+      "AN": 8,
+      "ALGO": 5
+    },
+    "by_type": {
+      "capacite": 50,
+      "approfondissement": 12
+    }
+  },
+  "objectifs": "Programme officiel du niveau 3E (Troisième), BO n°10 du 5 mars 2026. Voir le PDF source (cycle4.pdf) pour les objectifs détaillés dans le préambule.",
+  "automatismes": [
+    "Additionner, soustraire, multiplier et diviser des fractions.",
+    "Puissance comme multiplication itérée : 3 × 3 × 3 × 3 = 3⁴.",
+    "Multiplication de puissances d’exposant positif d’un nombre.",
+    "Multiplication de puissances de même exposant positif de deux nombres.",
+    "Donner les carrés des nombres entiers compris entre 0 et 12.",
+    "Factoriser un nombre entier positif : 60 = 2² × 3 × 5.",
+    "Simplifier une fraction dont le numérateur et le dénominateur sont dans une même table de multiplication, par exemple 15/35 et 63/14.",
+    "Trouver un dénominateur commun à deux fractions pour les additionner, les soustraire ou les comparer.",
+    "Appliquer les critères de divisibilité par 2, 3, 5, 9.",
+    "Résoudre des équations du type a𝑥 = c, 𝑥 + b = c, a𝑥 + b = c.",
+    "Simplifier des expressions littérales.",
+    "Calculer la valeur d’une expression algébrique avec des puissances ou non.",
+    "Donner la nature d’une expression littérale : 3𝑥 + 2 est une somme, 5 (𝑥 + 4) est un produit.",
+    "Développer et factoriser une expression simple.",
+    "Donner l’expression générique d’un nombre pair, d’un nombre impair.",
+    "Prendre l’opposé d’une expression : savoir que – (5 – 4𝑥) = –5 + 4𝑥.",
+    "Placer sur une droite graduée un point dont l’abscisse est un nombre relatif.",
+    "Repérer un nombre relatif sur une droite graduée.",
+    "Dans le plan muni d’un repère orthogonal : lire les coordonnées d’un point donné.",
+    "Dans le plan muni d’un repère orthogonal : placer un point de coordonnées données.",
+    "Reconnaitre des solides (pavé droit, cube, prisme droit, cylindre, pyramide, cône).",
+    "Connaitre et utiliser les formules du volume d’une pyramide ou d’un cône.",
+    "Donner la nature d’une face d’une pyramide représentée en perspective cavalière.",
+    "Identifier les patrons de pyramides données (par exemple inscrites dans un cube).",
+    "Utiliser la propriété du triangle rectangle et de son cercle circonscrit.",
+    "Écrire l’égalité de Pythagore dans un triangle rectangle.",
+    "Utiliser la droite des milieux pour prouver que des droites sont parallèles, pour calculer une longueur, pour prouver qu’un point est le milieu d’un côté.",
+    "Mobiliser les connaissances sur la symétrie axiale, le demi-tour, la translation.",
+    "Calculer une moyenne.",
+    "Donner une médiane pour une série comportant un petit nombre de valeurs.",
+    "Calculer l’étendue d’une série.",
+    "Partager une somme en deux parts selon un certain ratio.",
+    "Partager une masse en trois parts selon un certain ratio.",
+    "Partager une somme entre deux personnes âgées de 20 et 30 ans proportionnellement à leur âge.",
+    "Calculer le pourcentage d’une quantité.",
+    "Calculer la distance réelle entre deux villes, connaissant la distance entre ces villes sur une carte routière dont l’échelle est connue.",
+    "Appliquer, dans des cas simples, une augmentation ou une diminution exprimée en pourcentages, en utilisant ou non le coefficient multiplicateur."
+  ],
+  "automatismes_detailed": [
+    {
+      "text": "Additionner, soustraire, multiplier et diviser des fractions.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 10,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_010.png"
+      }
+    },
+    {
+      "text": "Puissance comme multiplication itérée : 3 × 3 × 3 × 3 = 3⁴.",
+      "sous_domaine": "Puissances",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 10,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_010.png"
+      }
+    },
+    {
+      "text": "Multiplication de puissances d’exposant positif d’un nombre.",
+      "sous_domaine": "Puissances",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 10,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_010.png"
+      }
+    },
+    {
+      "text": "Multiplication de puissances de même exposant positif de deux nombres.",
+      "sous_domaine": "Puissances",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 10,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_010.png"
+      }
+    },
+    {
+      "text": "Donner les carrés des nombres entiers compris entre 0 et 12.",
+      "sous_domaine": "Racine carrée",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Factoriser un nombre entier positif : 60 = 2² × 3 × 5.",
+      "sous_domaine": "Multiples et diviseurs",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Simplifier une fraction dont le numérateur et le dénominateur sont dans une même table de multiplication, par exemple 15/35 et 63/14.",
+      "sous_domaine": "Multiples et diviseurs",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png",
+        "_note": "fraction dictée par l’utilisateur depuis le BO"
+      }
+    },
+    {
+      "text": "Trouver un dénominateur commun à deux fractions pour les additionner, les soustraire ou les comparer.",
+      "sous_domaine": "Multiples et diviseurs",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Appliquer les critères de divisibilité par 2, 3, 5, 9.",
+      "sous_domaine": "Multiples et diviseurs",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Résoudre des équations du type a𝑥 = c, 𝑥 + b = c, a𝑥 + b = c.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Simplifier des expressions littérales.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Calculer la valeur d’une expression algébrique avec des puissances ou non.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Donner la nature d’une expression littérale : 3𝑥 + 2 est une somme, 5 (𝑥 + 4) est un produit.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Développer et factoriser une expression simple.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Donner l’expression générique d’un nombre pair, d’un nombre impair.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Prendre l’opposé d’une expression : savoir que – (5 – 4𝑥) = –5 + 4𝑥.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 11,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_011.png"
+      }
+    },
+    {
+      "text": "Placer sur une droite graduée un point dont l’abscisse est un nombre relatif.",
+      "sous_domaine": "Repérage sur une droite et dans le plan",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Repérer un nombre relatif sur une droite graduée.",
+      "sous_domaine": "Repérage sur une droite et dans le plan",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Dans le plan muni d’un repère orthogonal : lire les coordonnées d’un point donné.",
+      "sous_domaine": "Repérage sur une droite et dans le plan",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Dans le plan muni d’un repère orthogonal : placer un point de coordonnées données.",
+      "sous_domaine": "Repérage sur une droite et dans le plan",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Reconnaitre des solides (pavé droit, cube, prisme droit, cylindre, pyramide, cône).",
+      "sous_domaine": "Représentation de l’espace",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Connaitre et utiliser les formules du volume d’une pyramide ou d’un cône.",
+      "sous_domaine": "Représentation de l’espace",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Donner la nature d’une face d’une pyramide représentée en perspective cavalière.",
+      "sous_domaine": "Représentation de l’espace",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Identifier les patrons de pyramides données (par exemple inscrites dans un cube).",
+      "sous_domaine": "Représentation de l’espace",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Utiliser la propriété du triangle rectangle et de son cercle circonscrit.",
+      "sous_domaine": "Triangles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Écrire l’égalité de Pythagore dans un triangle rectangle.",
+      "sous_domaine": "Triangles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Utiliser la droite des milieux pour prouver que des droites sont parallèles, pour calculer une longueur, pour prouver qu’un point est le milieu d’un côté.",
+      "sous_domaine": "Triangles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Mobiliser les connaissances sur la symétrie axiale, le demi-tour, la translation.",
+      "sous_domaine": "Translations et vecteurs",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 15,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_015.png"
+      }
+    },
+    {
+      "text": "Calculer une moyenne.",
+      "sous_domaine": "Statistiques",
+      "domaine": "STA",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 17,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_017.png"
+      }
+    },
+    {
+      "text": "Donner une médiane pour une série comportant un petit nombre de valeurs.",
+      "sous_domaine": "Statistiques",
+      "domaine": "STA",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 17,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_017.png"
+      }
+    },
+    {
+      "text": "Calculer l’étendue d’une série.",
+      "sous_domaine": "Statistiques",
+      "domaine": "STA",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 17,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_017.png"
+      }
+    },
+    {
+      "text": "Partager une somme en deux parts selon un certain ratio.",
+      "sous_domaine": "Proportionnalité",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 19,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_019.png"
+      }
+    },
+    {
+      "text": "Partager une masse en trois parts selon un certain ratio.",
+      "sous_domaine": "Proportionnalité",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 19,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_019.png"
+      }
+    },
+    {
+      "text": "Partager une somme entre deux personnes âgées de 20 et 30 ans proportionnellement à leur âge.",
+      "sous_domaine": "Proportionnalité",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 19,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_019.png"
+      }
+    },
+    {
+      "text": "Calculer le pourcentage d’une quantité.",
+      "sous_domaine": "Proportionnalité",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 19,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_019.png"
+      }
+    },
+    {
+      "text": "Calculer la distance réelle entre deux villes, connaissant la distance entre ces villes sur une carte routière dont l’échelle est connue.",
+      "sous_domaine": "Proportionnalité",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 19,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_019.png"
+      }
+    },
+    {
+      "text": "Appliquer, dans des cas simples, une augmentation ou une diminution exprimée en pourcentages, en utilisant ou non le coefficient multiplicateur.",
+      "sous_domaine": "Proportionnalité",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 19,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_019.png"
+      }
+    }
+  ],
+  "competences_by_theme": {
+    "NB": {
+      "Nombres rationnels": [
+        {
+          "code": "3E-NB-001",
+          "intitule": "Mettre une fraction sous forme irréductible.",
+          "fingerprint": "mettre_une_fraction_sous_forme_irreductible",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres rationnels",
+          "type": "capacite",
+          "formulation_bo": "Mettre une fraction sous forme irréductible.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 10,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_010.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-002",
+          "intitule": "Rendre irréductible une fraction.",
+          "fingerprint": "rendre_irreductible_une_fraction",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres rationnels",
+          "type": "capacite",
+          "formulation_bo": "Rendre irréductible une fraction.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 10,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_010.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-003",
+          "intitule": "Résoudre des problèmes faisant appel à des fractions.",
+          "fingerprint": "resoudre_des_problemes_faisant_appel_a_des_fractio",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres rationnels",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes faisant appel à des fractions.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 10,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_010.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-004",
+          "intitule": "Notation des ensembles des entiers naturels, des entiers relatifs, des décimaux, des rationnels.",
+          "fingerprint": "notation_des_ensembles_des_entiers_naturels_des_en",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres rationnels",
+          "type": "approfondissement",
+          "formulation_bo": "Notation des ensembles des entiers naturels, des entiers relatifs, des décimaux, des rationnels.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 10,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_010.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Puissances": [
+        {
+          "code": "3E-NB-005",
+          "intitule": "Définir les puissances d’exposant négatif d’un nombre.",
+          "fingerprint": "definir_les_puissances_d_exposant_negatif_d_un_nom",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Définir les puissances d’exposant négatif d’un nombre.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 10,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_010.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-006",
+          "intitule": "Multiplier et diviser des puissances.",
+          "fingerprint": "multiplier_et_diviser_des_puissances",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Multiplier et diviser des puissances.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 10,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_010.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-007",
+          "intitule": "L’échiquier de Sissa.",
+          "fingerprint": "l_echiquier_de_sissa",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "approfondissement",
+          "formulation_bo": "L’échiquier de Sissa.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-008",
+          "intitule": "Le papyrus de Rhind.",
+          "fingerprint": "le_papyrus_de_rhind",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "approfondissement",
+          "formulation_bo": "Le papyrus de Rhind.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-009",
+          "intitule": "Déterminer la notation scientifique d'un nombre.",
+          "fingerprint": "determiner_la_notation_scientifique_d_un_nombre",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Déterminer la notation scientifique d'un nombre.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "3E-NB-010",
+          "intitule": "Résoudre des problèmes notamment en utilisant la notation scientifique.",
+          "fingerprint": "resoudre_des_problemes_notamment_en_utilisant_la_n",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes notamment en utilisant la notation scientifique.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        }
+      ],
+      "Racine carrée": [
+        {
+          "code": "3E-NB-011",
+          "intitule": "Résoudre analytiquement et graphiquement des équations de la forme 𝑥2 = a.",
+          "fingerprint": "resoudre_analytiquement_et_graphiquement_des_equat",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Racine carrée",
+          "type": "capacite",
+          "formulation_bo": "Résoudre analytiquement et graphiquement des équations de la forme 𝑥2 = a.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-012",
+          "intitule": "Résoudre des problèmes utilisant la racine carrée.",
+          "fingerprint": "resoudre_des_problemes_utilisant_la_racine_carree",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Racine carrée",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes utilisant la racine carrée.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-013",
+          "intitule": "Notion de parabole et de faisceaux convergents vers son foyer. Lien avec les paraboles pour capter les chaines de télévision.",
+          "fingerprint": "notion_de_parabole_et_de_faisceaux_convergents_ver",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Racine carrée",
+          "type": "approfondissement",
+          "formulation_bo": "Notion de parabole et de faisceaux convergents vers son foyer. Lien avec les paraboles pour capter les chaines de télévision.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-NB-014",
+          "intitule": "Algorithmes d’extraction de racines carrées.",
+          "fingerprint": "algorithmes_d_extraction_de_racines_carrees",
+          "niveau": "3E",
+          "domaine": "NB",
+          "sous_domaine": "Racine carrée",
+          "type": "approfondissement",
+          "formulation_bo": "Algorithmes d’extraction de racines carrées.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "Calcul littéral et algébrique": [
+        {
+          "code": "3E-AL-001",
+          "intitule": "Simplifier des expressions produits ou des rapports comportant des facteurs communs.",
+          "fingerprint": "simplifier_des_expressions_produits_ou_des_rapport",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Simplifier des expressions produits ou des rapports comportant des facteurs communs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AL-002",
+          "intitule": "Utiliser la double distributivité pour développer et factoriser des expressions dont le facteur est apparent.",
+          "fingerprint": "utiliser_la_double_distributivite_pour_developper",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Utiliser la double distributivité pour développer et factoriser des expressions dont le facteur est apparent.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AL-003",
+          "intitule": "Résoudre analytiquement et graphiquement une inéquation du premier degré du type a𝑥 ⩾ b.",
+          "fingerprint": "resoudre_analytiquement_et_graphiquement_une_inequ",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Résoudre analytiquement et graphiquement une inéquation du premier degré du type a𝑥 ⩾ b.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AL-004",
+          "intitule": "Résoudre une équation produit nul.",
+          "fingerprint": "resoudre_une_equation_produit_nul",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Résoudre une équation produit nul.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AL-005",
+          "intitule": "Manipuler les trois identités remarquables pour développer et factoriser : a 2 + 2ab + b 2 = (a + b) 2 a 2 – 2ab + b 2 = (a – b) 2 a 2 – b 2 = (a – b) (a + b)",
+          "fingerprint": "manipuler_les_trois_identites_remarquables_pour_de",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Manipuler les trois identités remarquables pour développer et factoriser : a 2 + 2ab + b 2 = (a + b) 2 a 2 – 2ab + b 2 = (a – b) 2 a 2 – b 2 = (a – b) (a + b)",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AL-006",
+          "intitule": "Pratiquer un raisonnement par analyse-synthèse dans le cadre d’une résolution d’équation.",
+          "fingerprint": "pratiquer_un_raisonnement_par_analyse_synthese_dan",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Pratiquer un raisonnement par analyse-synthèse dans le cadre d’une résolution d’équation.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AL-007",
+          "intitule": "Étude de l’identité de Sophie Germain.",
+          "fingerprint": "etude_de_l_identite_de_sophie_germain",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "approfondissement",
+          "formulation_bo": "Étude de l’identité de Sophie Germain.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 11,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_011.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Proportionnalité": [
+        {
+          "code": "3E-AL-008",
+          "intitule": "Traduire une augmentation ou une diminution en pourcentages.",
+          "fingerprint": "traduire_une_augmentation_ou_une_diminution_en_pou",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Traduire une augmentation ou une diminution en pourcentages.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AL-009",
+          "intitule": "Relier la représentation graphique d’une situation de proportionnalité avec le théorème de Thalès.",
+          "fingerprint": "relier_la_representation_graphique_d_une_situation",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Relier la représentation graphique d’une situation de proportionnalité avec le théorème de Thalès.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AL-010",
+          "intitule": "Connaitre et utiliser les fonctions linéaires.",
+          "fingerprint": "connaitre_et_utiliser_les_fonctions_lineaires",
+          "niveau": "3E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Connaitre et utiliser les fonctions linéaires.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "GEO": {
+      "Représentation de l’espace": [
+        {
+          "code": "3E-GEO-001",
+          "intitule": "Définir la boule et la sphère.",
+          "fingerprint": "definir_la_boule_et_la_sphere",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "capacite",
+          "formulation_bo": "Définir la boule et la sphère.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-002",
+          "intitule": "Définir les grands cercles, le diamètre.",
+          "fingerprint": "definir_les_grands_cercles_le_diametre",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "capacite",
+          "formulation_bo": "Définir les grands cercles, le diamètre.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-003",
+          "intitule": "Visualiser et réaliser des sections de pavé parallèlement à une face, de cylindre parallèlement ou perpendiculairement à son axe, d’une boule.",
+          "fingerprint": "visualiser_et_realiser_des_sections_de_pave_parall",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "capacite",
+          "formulation_bo": "Visualiser et réaliser des sections de pavé parallèlement à une face, de cylindre parallèlement ou perpendiculairement à son axe, d’une boule.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-004",
+          "intitule": "Connaitre et utiliser la formule du volume d’une boule de rayon donné.",
+          "fingerprint": "connaitre_et_utiliser_la_formule_du_volume_d_une_b",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "capacite",
+          "formulation_bo": "Connaitre et utiliser la formule du volume d’une boule de rayon donné.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-005",
+          "intitule": "La formule du volume, trouvée au IIIe siècle avant J.-C., d’après une intuition d’Archimède comme étant 2/3 du cylindre qui contient la boule.",
+          "fingerprint": "la_formule_du_volume_trouv_e_au_iiie_si_cle_avant_",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "approfondissement",
+          "formulation_bo": "La formule du volume, trouvée au IIIe siècle avant J.-C., d’après une intuition d’Archimède comme étant 2/3 du cylindre qui contient la boule.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-006",
+          "intitule": "Les cinq polyèdres réguliers de l’espace et les illustrations de Léonard de Vinci pour le traité mathématique De divina proportione de Luca Pacioli.",
+          "fingerprint": "les_cinq_poly_dres_r_guliers_de_l_espace_et_les_il",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "approfondissement",
+          "formulation_bo": "Les cinq polyèdres réguliers de l’espace et les illustrations de Léonard de Vinci pour le traité mathématique De divina proportione de Luca Pacioli.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Triangles": [
+        {
+          "code": "3E-GEO-007",
+          "intitule": "Connaitre et appliquer le théorème de Thalès, sa réciproque, sa contraposée (configurations des triangles emboités et configuration dite du papillon).",
+          "fingerprint": "connaitre_et_appliquer_le_theoreme_de_thales_sa_re",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Connaitre et appliquer le théorème de Thalès, sa réciproque, sa contraposée (configurations des triangles emboités et configuration dite du papillon).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-008",
+          "intitule": "Connaitre et utiliser les lignes trigonométriques dans le triangle rectangle : cosinus, sinus, tangente.",
+          "fingerprint": "connaitre_et_utiliser_les_lignes_trigonometriques",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Connaitre et utiliser les lignes trigonométriques dans le triangle rectangle : cosinus, sinus, tangente.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-009",
+          "intitule": "Repères historiques autour du théorème de Thalès, qui n’est pas appelé comme cela dans les autres pays.",
+          "fingerprint": "reperes_historiques_autour_du_theoreme_de_thales_q",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Repères historiques autour du théorème de Thalès, qui n’est pas appelé comme cela dans les autres pays.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-010",
+          "intitule": "Construction des polygones réguliers à la règle et au compas.",
+          "fingerprint": "construction_des_polygones_reguliers_a_la_regle_et",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Construction des polygones réguliers à la règle et au compas.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Translations et vecteurs": [
+        {
+          "code": "3E-GEO-011",
+          "intitule": "Définir et utiliser la translation : définition ponctuelle avec parallélogramme.",
+          "fingerprint": "definir_et_utiliser_la_translation_definition_ponc",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Translations et vecteurs",
+          "type": "capacite",
+          "formulation_bo": "Définir et utiliser la translation : définition ponctuelle avec parallélogramme.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-012",
+          "intitule": "Définir et utiliser les notions de vecteur, de vecteurs égaux, de vecteur nul, d’opposé d’un vecteur.",
+          "fingerprint": "definir_et_utiliser_les_notions_de_vecteur_de_vect",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Translations et vecteurs",
+          "type": "capacite",
+          "formulation_bo": "Définir et utiliser les notions de vecteur, de vecteurs égaux, de vecteur nul, d’opposé d’un vecteur.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 15,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-013",
+          "intitule": "Savoir qu’un hexagone est obtenu à partir de triangles équilatéraux.",
+          "fingerprint": "savoir_qu_un_hexagone_est_obtenu_a_partir_de_trian",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Translations et vecteurs",
+          "type": "approfondissement",
+          "formulation_bo": "Savoir qu’un hexagone est obtenu à partir de triangles équilatéraux.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-014",
+          "intitule": "Lien avec les fractales comme les flocons de Von Koch ou les triangles de Sierpinski.",
+          "fingerprint": "lien_avec_les_fractales_comme_les_flocons_de_von_k",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Translations et vecteurs",
+          "type": "approfondissement",
+          "formulation_bo": "Lien avec les fractales comme les flocons de Von Koch ou les triangles de Sierpinski.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-GEO-015",
+          "intitule": "Définir et utiliser la somme de deux vecteurs par enchaînement de deux translations.",
+          "fingerprint": "definir_et_utiliser_la_somme_de_deux_vecteurs_par",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Translations et vecteurs",
+          "type": "capacite",
+          "formulation_bo": "Définir et utiliser la somme de deux vecteurs par enchaînement de deux translations.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png",
+            "_note": "page corrigée (réf. d'origine hors PDF)"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "3E-GEO-016",
+          "intitule": "Découvrir et utiliser la relation de Chasles.",
+          "fingerprint": "decouvrir_et_utiliser_la_relation_de_chasles",
+          "niveau": "3E",
+          "domaine": "GEO",
+          "sous_domaine": "Translations et vecteurs",
+          "type": "capacite",
+          "formulation_bo": "Découvrir et utiliser la relation de Chasles.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png",
+            "_note": "page corrigée (réf. d'origine hors PDF)"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        }
+      ]
+    },
+    "STA": {
+      "Statistiques": [
+        {
+          "code": "3E-STA-001",
+          "intitule": "Calculer des effectifs cumulés croissants.",
+          "fingerprint": "calculer_des_effectifs_cumules_croissants",
+          "niveau": "3E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Calculer des effectifs cumulés croissants.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 17,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-STA-002",
+          "intitule": "Donner les quartiles et la médiane d’une série donnée sous forme de tableau d’effectifs ou de diagramme en barres.",
+          "fingerprint": "donner_les_quartiles_et_la_mediane_d_une_serie_don",
+          "niveau": "3E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Donner les quartiles et la médiane d’une série donnée sous forme de tableau d’effectifs ou de diagramme en barres.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 17,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-STA-003",
+          "intitule": "Construire et utiliser des boites à moustache pour représenter les valeurs de position d’une série statistique.",
+          "fingerprint": "construire_et_utiliser_des_boites_a_moustache_pour",
+          "niveau": "3E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Construire et utiliser des boites à moustache pour représenter les valeurs de position d’une série statistique.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 17,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-STA-004",
+          "intitule": "Comprendre et interpréter des données statistiques.",
+          "fingerprint": "comprendre_et_interpreter_des_donnees_statistiques",
+          "niveau": "3E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Comprendre et interpréter des données statistiques.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 17,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-STA-005",
+          "intitule": "Utiliser le tableur pour calculer une moyenne, une médiane et l’étendue d’une série statistique.",
+          "fingerprint": "utiliser_le_tableur_pour_calculer_une_moyenne_une",
+          "niveau": "3E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Utiliser le tableur pour calculer une moyenne, une médiane et l’étendue d’une série statistique.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 17,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "PR": {
+      "Probabilités": [
+        {
+          "code": "3E-PR-001",
+          "intitule": "Connaitre et savoir appliquer la relation 𝑃(𝐴 ∪ 𝐵) + 𝑃(𝐴 ∩ 𝐵) = 𝑃(𝐴) + 𝑃(𝐵).",
+          "fingerprint": "connaitre_et_savoir_appliquer_la_relation",
+          "niveau": "3E",
+          "domaine": "PR",
+          "sous_domaine": "Probabilités",
+          "type": "capacite",
+          "formulation_bo": "Connaitre et savoir appliquer la relation 𝑃(𝐴 ∪ 𝐵) + 𝑃(𝐴 ∩ 𝐵) = 𝑃(𝐴) + 𝑃(𝐵).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-PR-002",
+          "intitule": "Simuler des expériences aléatoires indépendantes.",
+          "fingerprint": "simuler_des_experiences_aleatoires_independantes",
+          "niveau": "3E",
+          "domaine": "PR",
+          "sous_domaine": "Probabilités",
+          "type": "capacite",
+          "formulation_bo": "Simuler des expériences aléatoires indépendantes.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-PR-003",
+          "intitule": "Observer la stabilisation des fréquences lorsqu’on augmente le nombre de répétitions de l’expérience aléatoire, faire le lien entre fréquence et probabilité selon le nombre de répétitions.",
+          "fingerprint": "observer_la_stabilisation_des_frequences_lorsqu_on",
+          "niveau": "3E",
+          "domaine": "PR",
+          "sous_domaine": "Probabilités",
+          "type": "capacite",
+          "formulation_bo": "Observer la stabilisation des fréquences lorsqu’on augmente le nombre de répétitions de l’expérience aléatoire, faire le lien entre fréquence et probabilité selon le nombre de répétitions.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-PR-004",
+          "intitule": "Problème de l’erreur de D’Alembert.",
+          "fingerprint": "probleme_de_l_erreur_de_d_alembert",
+          "niveau": "3E",
+          "domaine": "PR",
+          "sous_domaine": "Probabilités",
+          "type": "approfondissement",
+          "formulation_bo": "Problème de l’erreur de D’Alembert.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "AN": {
+      "Fonctions": [
+        {
+          "code": "3E-AN-001",
+          "intitule": "Utiliser les différentes représentations d’une fonction.",
+          "fingerprint": "utiliser_les_differentes_representations_d_une_fon",
+          "niveau": "3E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Utiliser les différentes représentations d’une fonction.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AN-002",
+          "intitule": "Définir et connaitre le vocabulaire : image, antécédents.",
+          "fingerprint": "definir_et_connaitre_le_vocabulaire_image_antecede",
+          "niveau": "3E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Définir et connaitre le vocabulaire : image, antécédents.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AN-003",
+          "intitule": "Méthode de simple fausse position (pour les problèmes du type 𝑦 = a𝑥).",
+          "fingerprint": "methode_de_simple_fausse_position_pour_les_problem",
+          "niveau": "3E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "approfondissement",
+          "formulation_bo": "Méthode de simple fausse position (pour les problèmes du type 𝑦 = a𝑥).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-AN-004",
+          "intitule": "Résoudre graphiquement des équations et des inéquations linéaires.",
+          "fingerprint": "resoudre_graphiquement_des_equations_et_des_inequ",
+          "niveau": "3E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Résoudre graphiquement des équations et des inéquations linéaires.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png",
+            "_note": "page corrigée (réf. d'origine hors PDF)"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "3E-AN-005",
+          "intitule": "Relier fonctions linéaires et proportionnalité.",
+          "fingerprint": "relier_fonctions_lineaires_et_proportionnalite",
+          "niveau": "3E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Relier fonctions linéaires et proportionnalité.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png",
+            "_note": "page corrigée (réf. d'origine hors PDF)"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "3E-AN-006",
+          "intitule": "Définir et utiliser les fonctions affines.",
+          "fingerprint": "definir_et_utiliser_les_fonctions_affines",
+          "niveau": "3E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Définir et utiliser les fonctions affines.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png",
+            "_note": "page corrigée (réf. d'origine hors PDF)"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "3E-AN-007",
+          "intitule": "Déterminer graphiquement les coefficients d'une fonction affine.",
+          "fingerprint": "determiner_graphiquement_les_coefficients_d_une_fon",
+          "niveau": "3E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Déterminer graphiquement les coefficients d'une fonction affine.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png",
+            "_note": "page corrigée (réf. d'origine hors PDF)"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "3E-AN-008",
+          "intitule": "Représenter la fonction carré.",
+          "fingerprint": "representer_la_fonction_carre",
+          "niveau": "3E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Représenter la fonction carré.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png",
+            "_note": "page corrigée (réf. d'origine hors PDF)"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        }
+      ]
+    },
+    "ALGO": {
+      "La pensée informatique": [
+        {
+          "code": "3E-ALGO-001",
+          "intitule": "Approfondir la notion de variables.",
+          "fingerprint": "approfondir_la_notion_de_variables",
+          "niveau": "3E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Approfondir la notion de variables.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-ALGO-002",
+          "intitule": "Utiliser des conditions composées.",
+          "fingerprint": "utiliser_des_conditions_composees",
+          "niveau": "3E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Utiliser des conditions composées.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-ALGO-003",
+          "intitule": "Utiliser une boucle conditionnelle.",
+          "fingerprint": "utiliser_une_boucle_conditionnelle",
+          "niveau": "3E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Utiliser une boucle conditionnelle.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-ALGO-004",
+          "intitule": "Structurer des programmes.",
+          "fingerprint": "structurer_des_programmes",
+          "niveau": "3E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Structurer des programmes.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "3E-ALGO-005",
+          "intitule": "Écrire un programme donné pour réaliser un objectif ou résoudre un problème.",
+          "fingerprint": "ecrire_un_programme_donne_pour_realiser_un_objecti",
+          "niveau": "3E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Écrire un programme donné pour réaliser un objectif ou résoudre un problème.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    }
+  }
+}

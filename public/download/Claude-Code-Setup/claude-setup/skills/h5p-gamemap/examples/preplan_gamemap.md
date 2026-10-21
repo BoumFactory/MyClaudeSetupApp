@@ -28,7 +28,7 @@
 
 ## Image de fond
 
-- **Source** : archipel_suites.png
+- **Source** : image de carte d'archipel fournie (chemin à indiquer)
 - **Dimensions** : 1920x1080
 
 ---

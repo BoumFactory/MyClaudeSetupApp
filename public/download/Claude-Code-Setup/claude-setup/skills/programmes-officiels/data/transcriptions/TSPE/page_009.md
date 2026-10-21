@@ -1,0 +1,91 @@
+---
+niveau: TSPE
+page: 9
+pdf: tspe.pdf
+page_folder: TSPE
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/TSPE/page_009.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: true
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 9 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/TSPE/page_009.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+Capacités attendues 
+− Établir la convergence d’une suite, ou sa divergence vers + ∞ ou – ∞. 
+− Raisonner par récurrence pour établir une propriété d’une suite. 
+− Étudier des phénomènes d’évolution modélisables par une suite. 
+Démonstrations 
+− Toute suite croissante non majorée tend vers + ∞. 
+− Limite de (q n), après démonstration par récurrence de l’inégalité de Bernoulli. 
+− Divergence vers + ∞ d’une suite minorée par une suite divergeant vers + ∞. 
+− Limite en + ∞ et en – ∞ de la fonction exponentielle. 
+Exemples d’algorithme 
+− Recherche de seuils. Recherche de valeurs approchées de 𝜋, e, √2, 
+1 + √5
+2
+, ln(2), etc. 
+Approfondissements possibles 
+− Propriétés et utilisation des suites adjacentes. 
+− Exemples de suites vérifiant une relation de récurrence linéaire d’ordre 2 à coefficients constants. 
+− Exemples d’application de la méthode de Newton. Étude de la convergence de la méthode de Héron. 
+Limites des fonctions 
+Les opérations sur les limites sont admises. L’utilisation de la composition des limites se fait en contexte. 
+Contenus 
+− Limite finie ou infinie d'une fonction en + ∞, en – ∞, en un point. Asymptote parallèle à un axe de coordonnées. 
+− Limites faisant intervenir les fonctions de référence étudiées en classe de première : puissances entières, racine carrée, 
+fonction exponentielle. 
+− Limites et comparaison. 
+− Opérations sur les limites. 
+Capacités attendues 
+− Déterminer dans des cas simples la limite d’une suite ou d’une fonction en un point, en ± ∞, en utilisant les limites usuelles, 
+les croissances comparées, les opérations sur les limites, des majorations, minorations ou encadrements, la factorisation du 
+terme prépondérant dans une somme. 
+− Faire le lien entre l’existence d’une asymptote parallèle à un axe et celle de la limite correspondante. 
+Démonstration 
+− Croissance comparée de 𝑥 ↦ 𝑥𝑛 et exp en + ∞. 
+Approfondissements possibles 
+− Asymptotes obliques. Branches infinies. 
+Compléments sur la dérivation 
+L’étude de la dérivation, commencée en classe de première, est étendue par l’étude de la dérivée d’une fonction composée et 
+l’introduction de la dérivée seconde. 
+L’étude des fonctions convexes permet de réinvestir et d’enrichir le travail entamé en classe de première sur les dérivées. Elles 
+donnent l’occasion de raisonner en diversifiant les registres : représentations graphiques, tableaux de variations, expressions 
+symboliques. 
+Contenus 
+− Composée de deux fonctions, notation v ○ u. Relation (v ○ u)’ = (v’ ○ u) × u’ pour la dérivée de la composée de deux 
+fonctions dérivables. 
+− Dérivée seconde d’une fonction. 
+− Fonction convexe sur un intervalle : définition par la position relative de la courbe représentative et des sécantes. Pour une 
+fonction deux fois dérivable, équivalence admise avec la position par rapport aux tangentes, la croissance de 𝑓’, la 
+positivité de 𝑓’’. 
+− Point d’inflexion. 
+Capacités attendues 
+− Calculer la dérivée d’une fonction donnée par une formule simple mettant en jeu opérations algébriques et composition. 
+− Calculer la fonction dérivée, déterminer les limites et étudier les variations d'une fonction construite simplement à partir 
+des fonctions de référence. 
+− Démontrer des inégalités en utilisant la convexité d’une fonction. 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

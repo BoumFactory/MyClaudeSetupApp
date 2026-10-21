@@ -9,7 +9,7 @@ import {
   Monitor,
   Terminal,
   Sparkles,
-  MessageSquareText,
+  MessageSquareText, FileCode2,
   Settings,
   Wrench,
   RotateCcw,
@@ -18,7 +18,6 @@ import {
   FileText,
   Globe,
   Image,
-  Key,
   Layers,
   PenTool,
 } from "lucide-react"
@@ -36,7 +35,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Monitor,
   Terminal,
   Sparkles,
-  MessageSquareText,
+  MessageSquareText, FileCode2,
 }
 
 /** Mapping couleurs vers classes Tailwind complètes pour chaque card */
@@ -134,7 +133,6 @@ const INSTALL_GUIDES = [
     guides: [
       { title: 'Utilisation et config', href: '/claude-code/tutorials/utilisation-config', icon: Layers, color: 'text-violet-400', description: 'Commandes, skills, agents et fichiers de configuration' },
       { title: 'Setup BFCours', href: '/claude-code/tutorials/bfcours-setup', icon: PenTool, color: 'text-rose-400', description: 'Installer le package LaTeX pédagogique complet' },
-      { title: 'API Google (Imagen)', href: '/claude-code/tutorials/google-api-setup', icon: Key, color: 'text-amber-400', description: 'Clé API pour la génération d\'images IA' },
     ],
   },
 ]
@@ -206,9 +204,9 @@ const COMPETENCES = [
     color: 'text-orange-400',
     bg: 'bg-orange-500/10',
     items: [
-      { label: 'Identifier les dimensions manquantes d\'une demande', parcours: 'prompt-craft', capsule: 'pc-idea-challenger' },
-      { label: 'Se faire challenger par l\'IA pour préciser sa pensée', parcours: 'prompt-craft', capsule: 'pc-idea-challenger' },
-      { label: 'Obtenir un prompt .md structuré à partir d\'une idée vague', parcours: 'prompt-craft', capsule: 'pc-idea-challenger' },
+      { label: 'Répondre à une interview pour faire émerger les décisions à prendre', parcours: 'prompt-craft', capsule: 'pc-grill-me' },
+      { label: 'Se faire interroger par l\'IA (grill-me) pour préciser sa pensée', parcours: 'prompt-craft', capsule: 'pc-grill-me' },
+      { label: 'Passer d\'une idée vague à un plan validé avant de produire', parcours: 'prompt-craft', capsule: 'pc-grill-me' },
     ],
   },
   {
@@ -251,11 +249,44 @@ const COMPETENCES = [
     bg: 'bg-nebula-500/10',
     items: [
       { label: 'Configurer le CLAUDE.md et les hooks', parcours: 'avance', capsule: 'av-hooks' },
-      { label: 'Créer ses propres skills', parcours: 'avance', capsule: 'av-skill-creator' },
+      { label: 'Créer ses propres skills', parcours: 'avance', capsule: 'av-creer-skill' },
       { label: 'Partager sa configuration entre collègues', parcours: 'avance', capsule: 'av-share' },
       { label: 'Orchestrer des sous-agents spécialisés en parallèle', parcours: 'avance', capsule: 'av-subagents' },
-      { label: 'Organiser une équipe d\'agents persistante (TeamPlay)', parcours: 'avance', capsule: 'av-teamplay' },
+      { label: 'Piloter un grand chantier sur plusieurs sessions (specs-creator, wayfinder)', parcours: 'avance', capsule: 'av-chantier' },
     ],
+  },
+  {
+    domaine: 'Se former avec Anthropic',
+    icon: '🎓',
+    color: 'text-sky-400',
+    bg: 'bg-sky-500/10',
+    items: [
+      { label: 'Suivre les cours officiels gratuits (Claude Code 101, AI Fluency…)', parcours: 'claude-code', capsule: 'cc-se-former' },
+    ],
+  },
+]
+
+/** Cours officiels gratuits d'Anthropic (en anglais) */
+const FORMATIONS_ANTHROPIC = [
+  {
+    title: 'Claude Code 101',
+    href: 'https://academy.claude.com/courses/claude-code-101',
+    description: 'Le meilleur point d\'entrée pour débuter : environ 1 h 30, 12 leçons.',
+  },
+  {
+    title: 'AI Fluency for educators',
+    href: 'https://anthropic.skilljar.com/ai-fluency-for-educators',
+    description: 'Utiliser l\'IA de façon efficace, éthique et responsable, pensé pour les enseignants.',
+  },
+  {
+    title: 'Introduction to agent skills',
+    href: 'https://anthropic.skilljar.com/introduction-to-agent-skills',
+    description: 'Comprendre et écrire des skills, ces fiches de consignes réutilisables de Claude Code.',
+  },
+  {
+    title: 'Claude Code in Action',
+    href: 'https://anthropic.skilljar.com/claude-code-in-action',
+    description: 'Niveau intermédiaire : travailler au quotidien avec Claude Code.',
   },
 ]
 
@@ -380,6 +411,7 @@ export default function TutorialsPage() {
   const cli = PARCOURS.find(p => p.id === 'claude-code')
   const promptCraft = PARCOURS.find(p => p.id === 'prompt-craft')
   const avance = PARCOURS.find(p => p.id === 'avance')
+  const typst = PARCOURS.find(p => p.id === 'typst')
 
   return (
     <div className="space-y-16">
@@ -458,6 +490,18 @@ export default function TutorialsPage() {
           )}
         </div>
 
+        {/* Parcours Typst (hors du flux principal) */}
+        {typst && (
+          <div className="max-w-5xl mx-auto pt-6 space-y-3">
+            <p className="text-center text-sm text-muted-foreground">
+              Pour rédiger vos documents de maths en Typst : rédiger, compiler et convertir avec farfadet
+            </p>
+            <div className="max-w-lg mx-auto">
+              <ParcoursCard parcours={typst} />
+            </div>
+          </div>
+        )}
+
         {/* Lien parcours libre */}
         <p className="text-center text-sm text-muted-foreground pt-4">
           Ou{' '}
@@ -468,6 +512,40 @@ export default function TutorialsPage() {
             explorez librement toutes les capsules
           </Link>
         </p>
+      </section>
+
+      {/* ===== SE FORMER AVEC ANTHROPIC ===== */}
+      <section className="glass-card rounded-xl p-8 space-y-5 border-l-4 border-sky-400 max-w-5xl mx-auto">
+        <div className="space-y-2">
+          <h2 className="text-2xl font-bold flex items-center gap-3">
+            <GraduationCap className="w-6 h-6 text-sky-400" />
+            Se former avec Anthropic
+          </h2>
+          <p className="text-muted-foreground">
+            Anthropic, l&apos;éditeur de Claude, propose des cours officiels gratuits (en anglais).
+            Ils complètent bien ces tutoriels.{' '}
+            <Link
+              href="/claude-code/tutorials/parcours/claude-code/cc-se-former"
+              className="underline hover:text-white transition-colors"
+            >
+              Voir comment choisir son cours
+            </Link>
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-3">
+          {FORMATIONS_ANTHROPIC.map((f) => (
+            <a
+              key={f.href}
+              href={f.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-card rounded-lg p-4 hover:bg-white/10 transition-all duration-200 border border-white/10 hover:border-sky-400/40 block"
+            >
+              <div className="text-sm font-semibold text-gray-200">{f.title} &rarr;</div>
+              <div className="text-xs text-muted-foreground mt-1">{f.description}</div>
+            </a>
+          ))}
+        </div>
       </section>
 
       {/* ===== RÉFÉRENTIEL DE COMPÉTENCES ===== */}

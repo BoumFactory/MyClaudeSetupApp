@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Démo blocs code — aperçu</title>
+<!-- Aperçu d'une capsule « moteur canvas ». Le contenu est dans spec.js : ce fichier ne se modifie pas. -->
+<style>
+  body { margin: 0; background: #05060d; overflow: hidden; }
+  #cv-toile { position: absolute; left: 50%; top: 0; transform: translateX(-50%); }
+  #cv-erreurs { position: fixed; left: 10px; top: 10px; right: 10px; z-index: 999; white-space: pre-wrap;
+    background: #7f1d1d; color: #fff; font: 15px/1.4 monospace; padding: 12px; border-radius: 8px; }
+</style>
+<script src="moteur-canvas/prep.js"></script>
+<script src="moteur-canvas/theme.js"></script>
+<script>window.MathJax = CV.configMathJax();</script>
+<script src="moteur-canvas/vendor/tex-svg-full.js"></script>
+<script src="moteur-canvas/vendor/gsap.min.js"></script>
+<script src="moteur-canvas/ancres.js"></script>
+<script src="moteur-canvas/texte.js"></script>
+<script src="moteur-canvas/elements.js"></script>
+<script src="moteur-canvas/composants.js"></script>
+<script src="moteur-canvas/figure.js"></script>
+<script src="moteur-canvas/dessin.js"></script>
+<script src="moteur-canvas/gestes.js"></script>
+<script src="moteur-canvas/moteur.js"></script>
+<script src="data/transcript.js"></script>
+<script src="data/temps-forts.js" onerror="this.remove()"></script>
+<script src="spec.js"></script>
+</head>
+<body>
+<canvas id="cv-toile"></canvas>
+<div id="cv-ui"></div>
+<pre id="cv-erreurs" hidden></pre>
+<script src="moteur-canvas/apercu.js"></script>
+</body>
+</html>

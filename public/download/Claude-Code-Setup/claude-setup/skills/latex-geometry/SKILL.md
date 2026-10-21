@@ -65,6 +65,40 @@ Pour tracer un repère orthonormé avec quadrillage et axes gradués :
 \end{tikzpicture}
 ```
 
+### ⚠️ RÈGLE CRITIQUE : le pas de `grid` est une LONGUEUR, pas une unité du repère
+
+Le pas par défaut de `grid` vaut **1 cm**, une dimension physique. Dès que l'échelle du repère
+n'est pas `x=1cm, y=1cm` — c'est le cas de toute figure redimensionnée pour tenir dans une
+colonne — le quadrillage ne tombe plus sur les graduations, **silencieusement** :
+
+```latex
+% INCORRECT : dans ce repère, les lignes tombent tous les 1,47 en x et 2,22 en y
+\begin{tikzpicture}[x=0.68cm,y=0.45cm]
+    \draw[gray!45] (-1,0) grid (3,10);
+
+% CORRECT : step reçoit une COORDONNÉE -> un trait par unité du repère
+\begin{tikzpicture}[x=0.68cm,y=0.45cm]
+    \draw[gray!45,line width=0.5pt,step={(1,1)}] (-1,0) grid (3,10);
+```
+
+Attention : `step=1`, `xstep=1` et `ystep=1` sont eux aussi interprétés comme **1 cm** et ne
+corrigent donc rien. Seule la forme coordonnée `step={(1,1)}` (accolades obligatoires) fonctionne.
+Le piège est invisible dans un repère `scale=` pur (où x et y valent 1 cm), et n'apparaît que
+lorsqu'on pilote la taille par `x=..cm` / `y=..cm`.
+
+**Trois contrôles à faire sur toute figure avec quadrillage** :
+
+1. `step={(1,1)}` présent dès que `x=` ou `y=` diffère de `1cm` ;
+2. **une graduation en face de chaque ligne** du quadrillage, sur les deux axes — un axe gradué
+   de 2 en 2 sur un quadrillage au pas 1 est illisible pour un élève ;
+3. trait du quadrillage en `gray!45, line width=0.5pt` — en dessous de 0,4 pt les lignes
+   disparaissent à l'écran et au vidéoprojecteur (l'impression, elle, les rend toujours).
+
+Privilégier un repère **orthonormé** (`x=y`) : il rend le quadrillage carré, donc les pentes
+lisibles. Quand l'amplitude en ordonnée l'interdit (une parabole qui monte à 10), réduire plutôt
+l'intervalle représenté que l'échelle : sur $y = x^2$, prendre $A(1;1)$ et $B(2;4)$ plutôt que
+$B(3;9)$ divise la hauteur par deux sans rien perdre du propos.
+
 ### Placer des points
 
 Utiliser la commande `\point{x}{y}{label}{position}` :

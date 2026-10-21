@@ -1,0 +1,71 @@
+− Sous les hypothèses du théorème, relation ∫ ƒ(𝑥)𝑑𝑥 = 𝐹(b) − 𝐹(a)
+b
+a
+ où 𝐹 est une primitive quelconque de ƒ. Notation [𝐹(𝑥)]a
+b. 
+− Théorème : toute fonction continue sur un intervalle admet des primitives. 
+− Définition par les primitives de∫ ƒ(𝑥)d𝑥
+b
+a
+ lorsque ƒ est une fonction continue de signe quelconque sur un intervalle 
+contenant a et b. 
+− Linéarité, positivité et intégration des inégalités. Relation de Chasles. 
+− Valeur moyenne d’une fonction. 
+− Intégration par parties. 
+Capacités attendues 
+− Estimer graphiquement ou encadrer une intégrale, une valeur moyenne. 
+− Calculer une intégrale à l’aide d’une primitive, à l’aide d’une intégration par parties. 
+− Majorer (minorer) une intégrale à partir d'une majoration (minoration) d'une fonction par une autre fonction. 
+− Calculer l’aire entre deux courbes. 
+− Étudier une suite d’intégrales, vérifiant éventuellement une relation de récurrence. 
+− Interpréter une intégrale, une valeur moyenne dans un contexte issu d’une autre discipline. 
+Démonstrations 
+− Pour une fonction positive croissante ƒ sur [a,b], la fonction 𝑥 ↦ ∫ ƒ(t )dt
+𝑥
+a
+  est une primitive de ƒ. Pour toute primitive F de ƒ, 
+relation ∫ ƒ(𝑥)d𝑥
+b
+a
+ = F(b) - F(a). 
+− Intégration par parties. 
+Approfondissements possibles 
+− Approximation d'une aire par l'utilisation de suites adjacentes. 
+− Encadrement de 𝐻𝑛 = ∑
+1
+𝑘
+𝑛
+𝑘=1  par des intégrales. 
+Exemples d’algorithme 
+− Méthodes des rectangles, des milieux, des trapèzes. 
+− Méthode de Monte-Carlo. 
+− Algorithme de Brouncker pour le calcul de ln(2). 
+Probabilités 
+Objectifs 
+Dans cette partie, on diversifie et on approfondit les modèles probabilistes rencontrés, en exploitant des situations où 
+interviennent les probabilités conditionnelles, l’indépendance, les variables aléatoires. Un axe majeur est l’étude de la 
+succession d’un nombre quelconque d’épreuves aléatoires indépendantes. 
+Le schéma de Bernoulli est fondamental : succession de n épreuves identiques indépendantes à deux issues. L’univers est 
+formalisé par {0,1} n (ou {a,b} n) mais il importe d’exploiter la représentation à l’aide d’arbres, et de conserver l’intuition des 
+situations concrètes familières : tirage avec remise dans une urne de Bernoulli, lancers de pièce, etc. L’indépendance des 
+expériences se traduit par la propriété multiplicative : la probabilité d’une liste de résultats est égale au produit des 
+probabilités des résultats. 
+On l’introduit en s’appuyant sur le programme de la classe de première, avant d’enrichir cette approche par de nouveaux 
+outils. Une première étape est la traduction du schéma de Bernoulli en termes de variables aléatoires, ce qui conduit à 
+introduire la notion de variables aléatoires indépendantes, l’indépendance étant prise ici au sens d’indépendance mutuelle. 
+Les deux premiers indicateurs relatifs à une variable aléatoire, l’espérance et la variance, ont été introduits en classe de 
+première. On en approfondit l’étude dans le cadre des variables aléatoires finies. La linéarité de l’espérance donne un outil très 
+puissant permettant de déterminer l’espérance d’une variable aléatoire sans avoir à en déterminer la loi. L’additivité de la 
+variance pour les variables indépendantes est présentée dans le cadre de la succession d’épreuves indépendantes. Elle permet 
+d’établir l’expression de la variance de la moyenne d’un échantillon d’une variable aléatoire. 
+Dans la troisième section, l’inégalité de Bienaymé-Tchebychev explicite le rôle de la variance comme indicateur de dispersion. 
+Tous ces outils se conjuguent pour établir l’inégalité de concentration pour la moyenne d’un échantillon d’une variable 
+aléatoire, qui justifie l’apparition du facteur 1/√𝑛 en théorie de l’estimation, aperçue expérimentalement en classe de seconde, 
+et permet d’aboutir à la démonstration de la loi des grands nombres. 
+Histoire des mathématiques 
+La parution de l’Ars Conjectandi de Jacques Bernoulli (1713), reprenant notamment d’anciens travaux de Huygens, marque une 
+rupture dans l'histoire des probabilités. On y trouve la première étude de la distribution binomiale, introduite dans le cadre 
+d'un tirage sans remise pour un modèle d'urne. 
+Un résultat majeur de cet ouvrage est son « théorème d’or », la loi des grands nombres, qui relie fréquences et probabilité, 
+valide le principe de l'échantillonnage et est le premier exemple de « théorème limite » en théorie des probabilités. Le 
+mathématicien français Bienaymé (en 1853, publication en 1867) et le mathématicien russe Tchebychev (en 1867) démontrent 

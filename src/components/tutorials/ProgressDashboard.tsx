@@ -1,6 +1,6 @@
 'use client'
 
-import { Zap, Monitor, Terminal, Sparkles, MessageSquareText, RotateCcw } from 'lucide-react'
+import { Zap, Monitor, Terminal, Sparkles, MessageSquareText, FileCode2, RotateCcw } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ProgressBar } from '@/components/tutorials/ProgressBar'
@@ -13,7 +13,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Monitor,
   Terminal,
   Sparkles,
-  MessageSquareText,
+  MessageSquareText, FileCode2,
 }
 
 /** Mapping couleurs vers classes pour les icones */

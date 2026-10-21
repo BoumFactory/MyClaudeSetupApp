@@ -26,6 +26,12 @@ export function Footer() {
       icon: Package,
       description: "Packages LaTeX personnalisés"
     },
+    {
+      title: "Packages Typst",
+      url: "https://forge.apps.education.fr/romaindeschamps/farfadet",
+      icon: Package,
+      description: "farfadet : paquets Typst pour les maths (Forge des communs numériques)"
+    },
   ]
 
   return (
@@ -93,9 +99,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Dépôts GitHub */}
+          {/* Dépôts GitHub et Forge */}
           <div className="space-y-3">
-            <h3 className="font-semibold">Ressources GitHub</h3>
+            <h3 className="font-semibold">Dépôts de code</h3>
             <ul className="space-y-2">
               {githubRepos.map((repo) => {
                 const Icon = repo.icon

@@ -1,0 +1,92 @@
+---
+niveau: TSPE
+page: 4
+pdf: tspe.pdf
+page_folder: TSPE
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/TSPE/page_004.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: true
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 4 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/TSPE/page_004.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+Programme 
+Vocabulaire ensembliste et logique 
+L’apprentissage des notations mathématiques et de la logique est transversal à tous les chapitres du programme. Aussi, il 
+importe d’y travailler d’abord dans des contextes où ils se présentent naturellement, puis de prévoir des temps où les concepts 
+et types de raisonnement sont étudiés, après avoir été rencontrés plusieurs fois en situation. 
+Les élèves doivent connaitre les notions d’élément d’un ensemble, de sous-ensemble, d’ensemble vide, d’appartenance et 
+d’inclusion, de réunion, d’intersection et de complémentaire et savoir utiliser les symboles de base correspondants : Ø, ∈, ⊂, ∩, 
+∪, { … }, ainsi que la notation des ensembles de nombres et des intervalles. Ils connaissent également la notion de couple, de 
+triplet et plus généralement de n-uplet et celle de produit cartésien. 
+Pour le complémentaire d’un sous-ensemble A de E, on utilise la notation A̅ des probabilités, ou la notation E \ A. On utilise la 
+notation Card(A) pour le cardinal (nombre d’éléments) d’un ensemble fini A. 
+La notion de fonction, que les élèves manipulent depuis le cycle 4, est mise en évidence dans les diverses parties du programme : 
+fonctions d’une variable réelle, suites, variables aléatoires, exemples en géométrie. La notion de bijection est rencontrée 
+naturellement en analyse, en géométrie (notamment bijection entre le plan et ℝ2, l’espace et ℝ3), en dénombrement. La 
+composition de deux fonctions est utilisée principalement dans le cadre des fonctions d’une variable réelle. 
+Le symbole de somme ∑ peut être introduit et utilisé pour écrire certaines expressions de façon concise, mais la manipulation 
+de ce symbole pour démontrer des égalités n’est pas un objectif du programme. 
+Les élèves apprennent en situation à : 
+− reconnaitre ce qu’est une proposition mathématique, à utiliser des variables pour écrire des propositions mathématiques ; 
+− lire et écrire des propositions contenant les connecteurs « et », « ou » ; 
+− formuler la négation de propositions simples, pouvant contenir un ou deux quantificateurs ; 
+− mobiliser un contre-exemple pour montrer qu'une proposition est fausse ; 
+− formuler une implication, une équivalence logique, et à les mobiliser dans un raisonnement simple ; 
+− formuler la réciproque d’une implication, ou sa contraposée ; 
+− lire et écrire des propositions contenant une quantification universelle ou existentielle (les symboles ∀ et ∃ ne sont pas 
+exigibles) ; 
+− raisonner par disjonctions des cas, par l’absurde, par contraposée ; 
+− raisonner par équivalence, utiliser une propriété caractéristique ; 
+− distinguer condition nécessaire et condition suffisante ; 
+− démontrer une propriété par récurrence. 
+Algorithmique et programmation 
+La démarche algorithmique est, depuis les origines, une composante essentielle de l’activité mathématique. Au collège, en 
+mathématiques et en technologie, les élèves ont appris à écrire, mettre au point et exécuter un programme simple. Les classes 
+de seconde et de première ont permis de consolider les acquis du collège (notion de variable, type, de variables, affectation, 
+instruction conditionnelle, boucle notamment), d’introduire et d’utiliser la notion de fonction informatique et de liste. En 
+algorithmique et programmation, le programme reprend les programmes de seconde et de première sans introduire de notion 
+nouvelle, afin de consolider le travail des classes précédentes. 
+Les algorithmes peuvent être écrits en langage naturel ou utiliser le langage Python. On utilise le symbole « ← » pour désigner 
+l’affection dans un algorithme écrit en langage naturel. L’accent est mis sur la programmation modulaire qui permet de 
+découper une tâche complexe en tâches plus simples. 
+L’algorithmique trouve naturellement sa place dans toutes les parties du programme et aide à la compréhension et à la 
+construction des notions mathématiques. 
+Histoire des mathématiques 
+De nombreux textes témoignent d’une préoccupation algorithmique au long de l’Histoire. Lorsqu’un texte historique a une 
+visée algorithmique, transformer les méthodes qu’il présente en un algorithme, voire en un programme, ou inversement, est 
+l’occasion de travailler des changements de registre qui donnent du sens au formalisme mathématique. 
+− Notion de liste 
+La génération des listes en compréhension et en extension est mise en lien avec la notion d’ensemble. Les conditions 
+apparaissant dans les listes définies en compréhension permettent de travailler la logique. Afin d’éviter des confusions, on se 
+limite aux listes sans présenter d’autres types de collections. 
+Capacités attendues 
+− Générer une liste (en extension, par ajouts successifs ou en compréhension). 
+− Manipuler des éléments d’une liste (ajouter, supprimer, etc.) et leurs indices. 
+− Parcourir une liste. 
+− Itérer sur les éléments d’une liste. 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

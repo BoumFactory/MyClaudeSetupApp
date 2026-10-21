@@ -381,33 +381,33 @@ export default function ClaudeCodeConfigPage() {
             <div>
               <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors">Générer des présentations</h4>
               <p className="text-sm text-muted-foreground">
-                Reveal.js interactives ou diaporamas Beamer
+                Diaporamas web interactifs avec Reveal.js
               </p>
             </div>
           </Link>
 
           <Link
-            href="/claude-code/presentations/educational-app-builder-system"
+            href="/claude-code/download-typst-packages"
             className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
           >
             <Package className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
             <div>
-              <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors">Créer des applications</h4>
+              <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors">Rédiger en Typst</h4>
               <p className="text-sm text-muted-foreground">
-                Applications éducatives interactives Flask
+                Cours et fiches de maths avec la suite farfadet, compilation rapide
               </p>
             </div>
           </Link>
 
           <Link
-            href="/claude-code/presentations/skill-creator-system"
+            href="/claude-code/tutorials/parcours/prompt-craft/pc-grill-me"
             className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
           >
             <Zap className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
             <div>
-              <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors">Automatiser vos tâches</h4>
+              <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors">Préciser une idée avant de produire</h4>
               <p className="text-sm text-muted-foreground">
-                Agents spécialisés et skills personnalisés
+                Le skill grill-me vous interroge pour affiner votre demande
               </p>
             </div>
           </Link>
@@ -484,21 +484,6 @@ export default function ClaudeCodeConfigPage() {
               </p>
             </div>
           </a>
-
-          <Link
-            href="/claude-code/tutorials/google-api-setup"
-            className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
-          >
-            <Sparkles className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
-            <div>
-              <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors">
-                Configuration API Google
-              </h4>
-              <p className="text-xs text-muted-foreground">
-                Pour la génération d'images IA
-              </p>
-            </div>
-          </Link>
         </div>
       </section>
     </div>

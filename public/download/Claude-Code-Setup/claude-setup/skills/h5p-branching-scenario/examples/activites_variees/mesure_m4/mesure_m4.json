@@ -1,0 +1,24 @@
+{
+  "title": "Mesure M4 : tolérance aux fautes sur des nombres",
+  "scoring": "no-score",
+  "nodes": [
+    {
+      "type": "course_presentation",
+      "title": "M4",
+      "nextContentId": -1,
+      "slides": [
+        {
+          "content": "<p>M4</p>",
+          "interactions": [
+            {"type": "blanks", "numeric": true, "x": 1, "y": 8, "width": 48, "height": 90,
+             "description": "numeric true",
+             "text": "a *0,4* b *0,25* c *1500* d *12,75* e *0,18/0.18* f *parallèle*"},
+            {"type": "blanks", "x": 51, "y": 8, "width": 48, "height": 90,
+             "description": "défaut",
+             "text": "a *0,4* b *0,25* c *1500* d *12,75* e *0,18/0.18* f *parallèle*"}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -168,20 +168,9 @@ h5p = H5PImageHotspotsGenerator.create_labeled_diagram(
 )
 ```
 
-## Integration avec image-generator
+## Image de fond
 
-Pour creer l'image de fond avant de generer le H5P :
-
-```bash
-# 1. Generer l'image avec le skill image-generator
-python ".claude/skills/creer/media/image-generator/scripts/generate_image.py" \
-  --prompt "Schema conceptuel des suites numeriques..." \
-  --type "infographic" \
-  --output "images/suites_exploration.png"
-
-# 2. Utiliser l'image dans le H5P
-# Voir h5p_image_hotspots.py
-```
+Fournir l'image de fond (ou la generer avec l'outil de generation d'images disponible, par exemple « Schema conceptuel des suites numeriques », 1920x1080), puis l'utiliser dans le H5P : voir `h5p_image_hotspots.py`.
 
 ## Bonnes pratiques
 

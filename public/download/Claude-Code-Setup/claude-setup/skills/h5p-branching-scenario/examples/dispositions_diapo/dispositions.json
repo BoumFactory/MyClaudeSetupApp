@@ -1,0 +1,69 @@
+{
+  "title": "Dispositions de diapositive",
+  "_source": "Exemple de démonstration du champ `layout` (30/09/2026) : une diapositive par disposition, chacune avec un texte long et un QCM sans coordonnées.",
+  "scoring": "dynamic-score",
+  "includeInteractionsScores": true,
+  "randomizeBranchingQuestions": true,
+  "startScreen": {
+    "title": "Dispositions",
+    "subtitle": "Plein cadre, texte à gauche, texte en haut"
+  },
+  "endScreens": [
+    {"title": "Parcours terminé", "subtitle": "Les trois dispositions ont été parcourues.", "score": 0}
+  ],
+  "nodes": [
+    {
+      "type": "course_presentation",
+      "title": "Trois dispositions",
+      "nextContentId": -1,
+      "slides": [
+        {
+          "layout": "full",
+          "content": "<h3>1. Disposition « full »</h3><p>Le texte occupe tout le cadre, comme avant l'ajout du champ. Avec un QCM sans coordonnées, l'activité est placée à 40 % de la hauteur : ce texte court ne la touche pas.</p>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "question": "Quelle disposition est appliquée lorsque le champ est absent ?",
+              "answers": [
+                {"text": "full", "correct": true, "feedback": "Oui : c'est la valeur par défaut."},
+                {"text": "text-left", "correct": false, "feedback": "Non : elle doit être demandée."},
+                {"text": "text-top", "correct": false, "feedback": "Non : elle doit être demandée."}
+              ]
+            }
+          ]
+        },
+        {
+          "layout": "text-left",
+          "content": "<h3>2. Disposition « text-left »</h3><p>Dans cette disposition, le texte occupe la colonne de gauche, sur environ 45 % de la largeur. L'activité est placée dans la colonne de droite, sans que l'auteur du préplan ait à calculer la moindre coordonnée.</p><p>Le texte peut donc être long : une consigne détaillée, un rappel de cours, un tableau de valeurs décrit en quelques lignes, l'énoncé complet d'un problème avec ses données chiffrées. Il reste lisible sur un écran de 1366 pixels de large, et le QCM voisin n'en cache aucune ligne.</p><p>Les propositions du QCM, elles, restent entièrement visibles, avec le bouton de vérification.</p>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "question": "Où se place l'activité avec la disposition « text-left » ?",
+              "answers": [
+                {"text": "À droite du texte", "correct": true, "feedback": "Oui : le texte occupe la colonne de gauche."},
+                {"text": "Par-dessus le texte", "correct": false, "feedback": "Non : c'est le défaut que la disposition évite."},
+                {"text": "Sous le texte", "correct": false, "feedback": "Non : c'est la disposition « text-top »."},
+                {"text": "Sur une autre diapositive", "correct": false, "feedback": "Non : texte et activité partagent la diapositive."}
+              ]
+            }
+          ]
+        },
+        {
+          "layout": "text-top",
+          "content": "<h3>3. Disposition « text-top »</h3><p>Ici, le texte occupe le haut de la diapositive, sur toute la largeur, et l'activité se place dessous. Cette disposition convient à un texte court ou moyen, qui tient en quelques lignes larges, avec un QCM dont les propositions sont brèves. Un champ facultatif, text_height, règle la part de hauteur donnée au texte (25 % par défaut).</p>",
+          "interactions": [
+            {
+              "type": "multichoice",
+              "question": "Où se place l'activité avec la disposition « text-top » ?",
+              "answers": [
+                {"text": "Sous le texte", "correct": true, "feedback": "Oui : le texte occupe le haut de la diapositive."},
+                {"text": "À droite du texte", "correct": false, "feedback": "Non : c'est la disposition « text-left »."},
+                {"text": "Par-dessus le texte", "correct": false, "feedback": "Non : les deux rectangles ne se recouvrent pas."}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

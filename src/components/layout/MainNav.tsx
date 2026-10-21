@@ -22,6 +22,7 @@ import {
   Shuffle,
   FileVideo2,
   FileText,
+  FileCode2,
   History,
   Settings,
   AlignJustify,
@@ -125,6 +126,12 @@ export function MainNav() {
               description: "Structurer ses prompts et invoquer les bons outils"
             },
             {
+              title: "Typst avec farfadet",
+              href: "/claude-code/tutorials/parcours/typst",
+              icon: FileCode2,
+              description: "Cours et exercices de maths en Typst"
+            },
+            {
               title: "Avancé",
               href: "/claude-code/tutorials/parcours/avance",
               icon: Sparkles,
@@ -182,12 +189,6 @@ export function MainNav() {
           icon: Wrench,
           description: "Configuration d'API et services tiers",
           presentations: [
-            {
-              title: "API Google",
-              href: "/claude-code/tutorials/google-api-setup",
-              icon: Wrench,
-              description: "Configuration de l'API Google"
-            },
             {
               title: "Utilisation et config",
               href: "/claude-code/tutorials/utilisation-config",
@@ -249,34 +250,10 @@ export function MainNav() {
               description: "Création de documents LaTeX"
             },
             {
-              title: "Agent Make Images",
-              href: "/claude-code/presentations/agent-make-images",
-              icon: Presentation,
-              description: "Génération d'images IA"
-            },
-            {
-              title: "Skill Creator",
-              href: "/claude-code/presentations/skill-creator-system",
-              icon: Presentation,
-              description: "Création de skills"
-            },
-            {
-              title: "Beamer Presentation",
-              href: "/claude-code/presentations/beamer-presentation-system",
-              icon: Presentation,
-              description: "Diaporamas Beamer LaTeX"
-            },
-            {
               title: "Reveals Presentation",
               href: "/claude-code/presentations/reveals-presentation-system",
               icon: Presentation,
               description: "Présentations web Reveal.js"
-            },
-            {
-              title: "Educational App Builder",
-              href: "/claude-code/presentations/educational-app-builder-system",
-              icon: Presentation,
-              description: "Applications éducatives Flask"
             },
             {
               title: "Programmes Officiels",
@@ -299,22 +276,10 @@ export function MainNav() {
               description: "Notebooks pédagogiques Python"
             },
             {
-              title: "Interactive Animation",
-              href: "/claude-code/presentations/interactive-animation-skill",
-              icon: Presentation,
-              description: "Animations mathématiques HTML/JS"
-            },
-            {
               title: "QCM Creator",
               href: "/claude-code/presentations/qcm-creator-skill",
               icon: Presentation,
               description: "QCM mathématiques rdmcq"
-            },
-            {
-              title: "Infography Generator",
-              href: "/claude-code/presentations/infography-generator-skill",
-              icon: Presentation,
-              description: "Infographies éducatives Gemini 3 Pro"
             },
             {
               title: "Blueprint Eval",
@@ -377,6 +342,13 @@ export function MainNav() {
           href: "/claude-code/download-latex-packages",
           icon: FileText,
           description: "bfcours prêt à installer pour MikTeX",
+          highlighted: "cosmic"
+        },
+        {
+          title: "Packages Typst",
+          href: "/claude-code/download-typst-packages",
+          icon: FileCode2,
+          description: "farfadet : 25 paquets Typst pour les maths",
           highlighted: "cosmic"
         },
         {

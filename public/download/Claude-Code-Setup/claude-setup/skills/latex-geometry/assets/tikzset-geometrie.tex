@@ -14,7 +14,10 @@
 
 \tikzset{
     % ===== GRILLES ET AXES =====
-    quadrillage/.style={help lines, gray!40},
+    % step={(1,1)} : pas exprimé en UNITÉS DU REPÈRE et non en cm (le défaut de
+    % grid est 1cm, ce qui décale le quadrillage dès que x= ou y= diffère de 1cm).
+    % line width=0.5pt : en dessous, les lignes disparaissent à l'écran.
+    quadrillage/.style={gray!45, line width=0.5pt, step={(1,1)}},
     epais/.style={thick, line width=1.2pt},
     axe/.style={->, >=stealth, thick, black},
     %

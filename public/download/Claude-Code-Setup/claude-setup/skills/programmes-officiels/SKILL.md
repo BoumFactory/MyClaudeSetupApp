@@ -1,319 +1,212 @@
 ---
 name: programmes-officiels
-description: Rechercher et citer precisement les elements des programmes officiels de l'Education Nationale francaise (college et lycee). Utiliser pour sourcer les competences, capacites et contenus du programme dans les fiches pedagogiques et documents administratifs.
+description: Rechercher et citer précisément les éléments des nouveaux programmes officiels de mathématiques applicables à la rentrée 2026 (Éducation Nationale française), du cycle 3 (CM1/CM2/6e) à la Terminale. Utiliser pour sourcer compétences, capacités, démonstrations exigibles et algorithmes Python. Base JSON par niveau + miroir markdown avec preuve visuelle des pages BO.
 ---
 
-# Skill Programmes Officiels
+# Skill `programmes-officiels`
 
-Ce skill permet de rechercher, extraire et citer precisement les elements des programmes officiels de l'Education Nationale francaise pour les mathematiques du CM1 a la Terminale.
+Base de connaissances **JSON-first** des programmes officiels de mathématiques (rentrée 2026) :
 
----
+- **Lycée** : 2GT, 1SPE, 1ENS, 1TEC, TSPE, TCOMP, TTEC — BO Hebdo 14 du 2 avril 2026
+- **Cycle 4** : 5E, 4E, 3E — BO n°10 du 5 mars 2026
+- **Cycle 3** : CM1, CM2, 6E — BO du cycle 3 (rentrée 2026)
 
-## DEMO RAPIDE (5 min)
+## Quand utiliser ce skill
 
-Voici une sequence de commandes pour montrer les fonctionnalites principales :
+- Sourcer une compétence officielle pour une fiche pédagogique, un devoir, une progression annuelle.
+- Vérifier qu'une notion est au programme (et à quel niveau).
+- Citer la **formulation BO exacte** d'un attendu (capacité, contenu, démonstration exigible, algorithme).
+- Retrouver l'**image-preuve** de la page BO d'où provient la compétence.
+- Tracer la **progression verticale** d'une notion (cycle 3 → cycle 4 → lycée).
+
+## Commandes principales
+
+### 🔎 Recherche libre
 
 ```bash
-cd "C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026"
+# Recherche FTS5 plein texte (accents normalisés, wildcards supportés)
+python scripts/search.py --keyword "dérivée"
+python scripts/search.py --keyword "pythagore" --niveau 4E
+python scripts/search.py --keyword "fraction*" --niveau CM1   # wildcard pour singulier+pluriel
 
-# 1. STATS GLOBALES - Vue d'ensemble
-python ".claude/skills/programmes-officiels/scripts/search_competences.py" --stats
-
-# 2. RECHERCHE PAR MOT-CLE - Ex: "Pythagore" tous niveaux
-python ".claude/skills/programmes-officiels/scripts/search_competences.py" --keyword "pythagore" --all-levels
-
-# 3. RECHERCHE PAR NIVEAU - Ex: Suites en 1ere Spe
-python ".claude/skills/programmes-officiels/scripts/search_competences.py" --niveau 1S --keyword "suite"
-
-# 4. RECHERCHE PAR DOMAINE - Ex: Geometrie en 3eme
-python ".claude/skills/programmes-officiels/scripts/search_competences.py" --niveau 3 --domaine G
-
-# 5. COMPETENCE PRECISE - Format detaille
-python ".claude/skills/programmes-officiels/scripts/search_competences.py" --code 3G12 --format medium
-
-# 6. OUVRIR LA SOURCE - Voir la page du BO
-python ".claude/skills/programmes-officiels/scripts/open_source_page.py" --code 3G12
-
-# 7. VALIDATION - Verifier coherence base
-python ".claude/skills/programmes-officiels/scripts/validate_json_vs_source.py"
+# Recherche structurée
+python scripts/search.py --niveau 2GT --domaine GEO
+python scripts/search.py --niveau TSPE --type demonstration
 ```
 
-### Points forts a montrer
-
-| Fonctionnalite | Commande demo |
-|----------------|---------------|
-| **5500+ competences** | `--stats` |
-| **Recherche intelligente** | `--keyword "vecteur"` (trouve aussi "vectoriel") |
-| **Multi-niveaux** | `--all-levels` |
-| **Tracabilite BO** | `open_source_page.py --code XXX` |
-| **Validation qualite** | `validate_json_vs_source.py` (90% OK) |
-
----
-
-## REGLE ABSOLUE : UTILISER LES SCRIPTS
-
-**JAMAIS acceder directement aux fichiers JSON** dans `data/extractions/`, `data/aggregated/` ou `data/normalized/`.
-
-**TOUJOURS utiliser les scripts de recherche** pour interroger la base de competences.
-
----
-
-## FORMAT DES CODES NORMALISES
-
-```
-[niveau][filiere][theme][index]-[palier]
-```
-
-### Exemples
-
-| Code | Signification |
-|------|---------------|
-| `6N1` | 6eme, Nombres, competence 1 |
-| `1SY16` | 1ere Spe, Analyse, competence 16 |
-| `0EA5` | Term. Expert, Algebre, competence 5 |
-| `3G12-2` | 3eme, Geometrie, competence 12, palier 2 |
-
----
-
-## CODES DE NIVEAU
-
-| Code | Niveau | Aliases |
-|------|--------|---------|
-| `6` | 6eme (C3) | C3, 6E |
-| `5` | 5eme | 5E |
-| `4` | 4eme | 4E |
-| `3` | 3eme | 3E |
-| `2G` | 2nde GT | 2GT, SECONDE |
-| `2H` | 2nde STHR | 2STHR |
-| `1S` | 1ere Spe | 1SPE, PREMIERE |
-| `1T` | 1ere Techno | 1TECHNO |
-| `1E` | 1ere Ens.Sci | 1ENS_SCI |
-| `0S` | Term. Spe | TSPE, TERMINALE |
-| `0C` | Term. Comp | TCOMP |
-| `0E` | Term. Expert | TEXP |
-| `0T` | Term. Techno | TTECHNO |
-
----
-
-## CODES DE DOMAINE
-
-| Lettre | Domaine |
-|--------|---------|
-| `N` | Nombres |
-| `A` | Algebre |
-| `Y` | Analyse (analYse) |
-| `L` | Algorithmique (aLgorithmique) |
-| `G` | Geometrie |
-| `R` | Grandeurs (gRandeurs) |
-| `S` | Statistiques |
-| `P` | Probabilites |
-| `T` | Trigonometrie |
-| `O` | Logique (lOgique) |
-
----
-
-## SCRIPTS DE RECHERCHE
-
-### Script principal
+### 🎯 CLI ergonomiques (un script = une question)
 
 ```bash
-cd "C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026"
-python ".claude/skills/programmes-officiels/scripts/search_competences.py" [options]
+# Détail complet d'une compétence (intitulé + formulation BO verbatim + source PDF/page)
+python scripts/get.py CM1-NB-014
+python scripts/get.py TSPE-AN-031 --format json
+# → suggère des codes proches si le code est inconnu
+
+# Toutes les démonstrations exigibles d'un niveau
+python scripts/demos.py --niveau TSPE                # 18 démos en TSPE
+python scripts/demos.py --niveau TSPE --domaine AN   # filtré sur Analyse
+
+# Tous les algorithmes Python attendus
+python scripts/algos.py --niveau 1SPE                # liste des algos
+python scripts/algos.py --niveau TSPE --code         # avec code Python
+
+# Progression verticale d'une notion (CM1 → … → TSPE)
+python scripts/progression.py "fraction*"            # de la fraction unitaire CM1 au quotient TSPE
+python scripts/progression.py "pythagore"
+python scripts/progression.py "derivation"
+
+# Vue d'ensemble du skill (compteurs par niveau / domaine / type)
+python scripts/stats.py
+python scripts/stats.py --niveau TSPE                # drill-down
+
+# Comparer deux niveaux (par sous-domaines) — révèle nouveautés / abandons
+python scripts/compare.py CM2 6E --domaine NB
+python scripts/compare.py 5E 4E --domaine GEO
+python scripts/compare.py 1SPE 1TEC --domaine STA    # spécialité vs voie techno
 ```
 
-### Options
+Tous les scripts ci-dessus acceptent `--format json` pour usage programmatique (RAG, API, scripts).
 
-| Option | Description |
-|--------|-------------|
-| `--niveau 1S` | Niveau (code ou alias) |
-| `--keyword "suite"` | Recherche par mot-cle (avec synonymes par defaut) |
-| `--domaine Y` | Filtrer par domaine (lettre ou nom) |
-| `--code 1SY16` | Recherche par code exact |
-| `--all-levels` | Rechercher tous niveaux |
-| `--exact` | Recherche exacte (desactive les synonymes) |
-| `--limit 20` | Limite de resultats (defaut: 20) |
-| `--format json` | Format: short, medium, json |
-| `--stats` | Statistiques globales |
-| `--list-niveaux` | Lister les niveaux |
-| `--list-domaines` | Lister les domaines |
-| `--list-synonyms` | Lister les synonymes de recherche |
-
-### Exemples
+### 🛠 Maintenance
 
 ```bash
-# Suites en 1ere Spe
-python search_competences.py --niveau 1S --keyword "suite" --format json
+# Validation globale du skill (schéma, codes uniques, sources, transcriptions)
+python scripts/validate.py
 
-# Nombres en 6eme
-python search_competences.py --niveau 6 --domaine N
-
-# Recherche par code exact
-python search_competences.py --code 1SY16 --format medium
-
-# Pythagore tous niveaux
-python search_competences.py --keyword "pythagore" --all-levels
-
-# Statistiques
-python search_competences.py --stats
+# Suite pytest complète (anti-régurgitation, golden queries, md_sync, etc.)
+python -m pytest tests/
 ```
 
----
+## Prouver une citation
 
-## STATISTIQUES
+Toute affirmation sur le programme doit pouvoir être prouvée : donner le **chemin du BO** (`data/pdf/<niveau>.pdf`) et la **page** (champ `source.page` de la compétence), et au besoin l'image de la page (`data/pages/<niveau>/page_NNN.png`) ou son texte brut (`data/pages_txt/…`). `python scripts/get.py <CODE>` affiche ces références.
 
-**Total : 4017 competences**
+Les scripts de construction (`scripts/build/`) servent à **mettre à jour les programmes avec un nouveau BO** : remplacer le PDF dans `data/pdf/`, puis relancer le pipeline (voir plus bas).
 
-| Niveau | Code | Competences |
-|--------|------|-------------|
-| 6eme (C3) | 6 | 906 |
-| 5eme | 5 | 309 |
-| 4eme | 4 | 205 |
-| 3eme | 3 | 197 |
-| 2nde GT | 2G | 232 |
-| 2nde STHR | 2H | 276 |
-| 1ere Spe | 1S | 213 |
-| 1ere Techno | 1T | 317 |
-| 1ere Ens.Sci | 1E | 163 + 169 |
-| Term. Spe | 0S | 476 + 246 |
-| Term. Comp | 0C | 70 |
-| Term. Expert | 0E | 207 |
-| Term. Techno | 0T | 18 |
+## Niveaux et codes
 
----
+| Code | Niveau | Cycle | PDF source |
+|------|--------|-------|------------|
+| `CM1` `CM2` `6E` | Cycle 3 (école + 6e) | C3 | `cycle3.pdf` |
+| `5E` `4E` `3E` | Cycle 4 (collège) | C4 | `cycle4.pdf` |
+| `2GT` | Seconde générale et technologique | Lycée | `2gt.pdf` |
+| `1SPE` | 1ère spécialité maths | Lycée | `1spe.pdf` |
+| `1ENS` | 1ère maths dans l'enseignement scientifique | Lycée | `1ens.pdf` |
+| `1TEC` | 1ère voie technologique | Lycée | `1tec.pdf` |
+| `TSPE` | Terminale spécialité maths | Lycée | `tspe.pdf` |
+| `TCOMP` | Terminale maths complémentaires | Lycée | `tcomp.pdf` |
+| `TTEC` | Terminale voie technologique | Lycée | `ttec.pdf` |
 
-## FORMAT JSON DES COMPETENCES
+## Domaines
+
+| Code | Domaine |
+|------|---------|
+| `NB` | Nombres et calculs |
+| `AL` | Algèbre |
+| `AN` | Analyse |
+| `GEO` | Géométrie |
+| `GM` | Grandeurs et mesures |
+| `STA` | Statistiques |
+| `PR` | Probabilités |
+| `OGD` | Organisation et gestion de données |
+| `ALGO` | Algorithmique et programmation |
+| `TRG` | Trigonométrie |
+| `LOG` | Vocabulaire ensembliste et logique |
+
+## Types
+
+| Type | Sens |
+|------|------|
+| `contenu` | Définition, propriété, théorème |
+| `capacite` | Savoir-faire, application |
+| `demonstration` | Démonstration exigible au programme |
+| `algorithme` | Programme Python/Scratch attendu |
+| `approfondissement` | Extension possible non exigible |
+
+## Architecture & directive anti-régurgitation
+
+```
+data/
+├── pdf/{niveau}.pdf                            # 9 PDFs sources (7 lycée + cycle4 + cycle3)
+├── pages_txt/{folder}/page_NNN.txt             # Texte brut PyMuPDF
+├── pages_pdf/{folder}/page_NNN.pdf             # PDFs page isolée
+├── pages/{folder}/page_NNN.png                 # PNG ~1200 px (preuve visuelle)
+├── bullets/{folder}/page_NNN.json              # Bullets BO verbatim — extrait Python
+├── transcriptions/{niveau}/page_NNN.md         # Optionnel — cas tableaux complexes uniquement
+├── json/
+│   ├── schema.json                             # JSON Schema validateur
+│   ├── {NIVEAU}.json                           # SOURCE DE VÉRITÉ par niveau (généré mécaniquement)
+│   ├── all_flat.json                           # Dérivé : liste plate globale
+│   └── _backup/                                # Anciennes versions (avant pivot mécanique)
+├── markdown/{cycle}/{niveau}/{dom}/{code}.md   # Miroir auto-généré (RAG-ready)
+├── index.json                                  # Index principal
+├── search_index.sqlite                         # FTS5 SQLite
+└── progressions.json                           # Graphe prérequis/liens
+```
+
+> 🔒 **Directive anti-régurgitation**
+> Le champ `formulation_bo` et toute citation BO verbatim proviennent **strictement** du script `04_extract_bullets.py` (extraction PyMuPDF du texte du PDF). **Aucune génération LLM** ne reproduit le texte du BO. Le LLM est utilisé pour l'**analyse** : classification de domaine, atomicité, prérequis, liens, parsers spécialisés.
+
+**Source de vérité** : les `data/json/{NIVEAU}.json`. Le markdown est dérivé via `06_export_markdown.py` (idempotent). **On n'édite jamais un MD à la main.**
+
+**Pipeline de construction (Python pur jusqu'aux JSON niveau)** :
+
+```
+PDF → 01_split_pdfs.py → pages_txt/
+    → 02_generate_page_images.py → pages/*.png
+    → 04_extract_bullets.py → bullets/*.json     (0 LLM, formulation_bo verbatim)
+    → 05_competences_from_bullets.py → json/*.json  (0 LLM, mapping sous_domaine→domaine)
+    → 05_build_indexes.py + 06_export_markdown.py + 07_build_progressions.py
+```
+
+## État
+
+Pipeline mécanique opérationnel sur les 13 niveaux :
+
+- **1076 compétences** extraites mécaniquement, **0 régurgitation LLM** (`formulation_bo` strictement issu du PDF via PyMuPDF).
+- **Cycle 3** : CM1 (128), CM2 (112), 6E (103). Mode "bulletless" du parser : sous "Objectifs d'apprentissage", chaque ligne MAJ = bullet implicite, ligne min = continuation (le BO cycle 3 n'utilise pas de caractères de puce).
+- **Cycle 4** : 5E (15), 4E (11), 3E (14). Bullets explicites + détection des titres "Cinquième/Quatrième/Troisième" pour le split.
+- **Lycée** : 2GT (134), 1SPE (114), 1ENS (19), 1TEC (63), TSPE (180), TCOMP (136), TTEC (47).
+- **Automatismes** : 917 entrées indexées (FTS5 dédié).
+- **Validation** : `validate.py` 4/4 OK ; `pytest` 66/66 OK ; FTS5 query ~0.8 ms.
+
+Limites résiduelles : prérequis/liens à 0 edges ; 1ENS reste à 19 compétences (BO bi-colonne, cohérent avec un programme allégé).
+
+Pour mettre à jour avec un nouveau BO : remplacer le PDF dans `data/pdf/`, puis relancer le pipeline `scripts/build/` (voir « Cycle de mise à jour »).
+
+## Format d'une compétence (extrait JSON)
 
 ```json
 {
-  "code": "1SY16",
-  "old_code": "1SPE-AN-311",
-  "intitule": "Definir une suite arithmetique",
-  "niveau": "1S",
-  "domaine": "Y",
-  "domaine_nom": "ANALYSE",
-  "sous_domaine": "Suites numeriques",
-  "type": "contenu",
-  "description": "Connaitre la definition d'une suite arithmetique",
-  "formulation_bo": "Suites arithmetiques : exemples, definition",
-  "source": {
-    "pdf": "1GT.pdf",
-    "page": 5
-  }
+  "code": "2GT-NB-008",
+  "intitule": "Démonstration : √2 est irrationnel",
+  "niveau": "2GT",
+  "domaine": "NB",
+  "type": "demonstration",
+  "formulation_bo": "Le nombre réel √2 est irrationnel.",
+  "demonstrations_exigibles": ["Par l'absurde : ..."],
+  "prerequis": ["2GT-NB-003", "2GT-LOG-003"],
+  "source": {"pdf": "2gt.pdf", "page": 7, "page_image": "../pages/2GT/page_007.png"},
+  "tags": ["démonstration", "absurde", "irrationnel", "exigible"]
 }
 ```
 
-Le champ `source` indique le PDF et la page d'origine de la competence dans le BO.
+## Performance
 
-### Types de competences
+- Recherche FTS5 : < 1 ms p95
+- Validation complète : < 1 s
+- Build complet des indexes : < 5 s
 
-- `contenu` : Definitions, proprietes, theoremes
-- `capacite` : Savoir-faire, applications
-- `demonstration` : Preuves exigibles au programme
-- `algorithme` : Programmes Python/Scratch attendus
-- `approfondissement` : Extensions non obligatoires
+## Cycle de mise à jour
 
----
-
-## OUVRIR LA PAGE SOURCE
-
-Le script `open_source_page.py` permet d'ouvrir directement la page PDF d'origine d'une competence.
-
-### Usage
+Lors de l'ajout/modification d'une compétence :
 
 ```bash
-cd "C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026"
-python ".claude/skills/programmes-officiels/scripts/open_source_page.py" --code 5G40
+# 1. Éditer data/json/{NIVEAU}.json (source de vérité)
+# 2. Re-générer indexes et markdown :
+python scripts/build/05_build_indexes.py
+python scripts/build/06_export_markdown.py
+python scripts/build/07_build_progressions.py
+# 3. Valider :
+python scripts/validate.py
 ```
-
-### Options
-
-| Option | Description |
-|--------|-------------|
-| `--code 5G40` | Code de la competence a consulter |
-| `--viewer edge` | Visualiseur (auto, vscode, edge, chrome, default_pdf) |
-| `--folder` ou `-f` | Ouvrir le dossier (pour naviguer vers pages suivantes) |
-| `--list-viewers` | Lister les visualiseurs disponibles |
-| `--set-default vscode` | Definir le visualiseur par defaut |
-| `--info` | Afficher les infos sans ouvrir le PDF |
-
-### Configuration
-
-Le fichier `config.json` a la racine du skill permet de configurer :
-
-```json
-{
-  "viewer": {
-    "default": "auto",
-    "preferences": ["vscode", "edge", "chrome"]
-  }
-}
-```
-
-- `auto` : Detection automatique du meilleur visualiseur
-- `vscode` : VS Code (necessite extension PDF)
-- `edge` : Microsoft Edge
-- `chrome` : Google Chrome
-- `default_pdf` : Application PDF par defaut du systeme
-
----
-
-## AUTRES SCRIPTS
-
-| Script | Usage |
-|--------|-------|
-| `open_source_page.py` | Ouvrir la page source PDF d'une competence |
-| `renormalize_codes.py` | Renormaliser les codes apres extraction |
-| `aggregate_competences.py` | Agreger apres nouvelles extractions |
-| `search_advanced.py` | Recherche avancee multi-criteres |
-| `get_demonstrations.py` | Demonstrations exigibles |
-| `check_in_program.py` | Verifier si une notion est au programme |
-
----
-
-## AGENTS ASSOCIES
-
-- `bo-competence-extractor` : Extraction depuis pages PDF
-- `bo-search-agent` : Recherche de competences (preservant le contexte)
-
----
-
-## SYSTEME DE SYNONYMES
-
-La recherche utilise automatiquement des synonymes pour elargir les resultats. Exemples :
-
-| Mot-cle | Synonymes automatiques |
-|---------|------------------------|
-| `milieu` | milieux, centre, median, mediane |
-| `identite remarquable` | (a+b)^2, (a-b)^2, a^2-b^2, developpement, factorisation |
-| `repere` | reperes, orthonorme, coordonnees, abscisse, ordonnee |
-| `vecteur` | vecteurs, vectoriel, translation, composantes |
-| `intervalle` | intervalles, borne, bornes, ouvert, ferme |
-
-Utilisez `--list-synonyms` pour voir la liste complete.
-Utilisez `--exact` pour desactiver les synonymes.
-
----
-
-## LIMITATIONS CONNUES
-
-### Donnees incompletes
-
-Certaines competences du programme ne sont pas encore extraites :
-
-| Niveau | Domaine | Probleme |
-|--------|---------|----------|
-| 2GT | GEOMETRIE | Seulement 1 competence (geometrie reperee manquante) |
-
-Les competences de **geometrie reperee** (coordonnees, milieu, distance, vecteurs) sont dans le programme de 2nde mais classees dans NOMBRES ou ALGEBRE, pas GEOMETRIE.
-
-**Workaround** : Chercher par mot-cle plutot que par domaine.
-
----
-
-## NOTES
-
-- **Toujours utiliser les scripts**, jamais les JSON directement
-- Les programmes evoluent : verifier la date du BO cite
-- Les approfondissements possibles ne sont pas exigibles
-- Pour les documents officiels (inspecteurs), privilegier les citations exactes
-- **Encodage** : Le script force UTF-8, compatible Windows

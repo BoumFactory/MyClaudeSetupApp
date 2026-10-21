@@ -1,4 +1,4 @@
-export type PackageTier = 'generaliste' | 'latex' | 'word' | 'avance'
+export type PackageTier = 'generaliste' | 'latex' | 'avance'
 
 export interface AIPackage {
   id: PackageTier
@@ -19,10 +19,11 @@ export interface AIPackage {
 
 // Skills de base partagés par tous les bundles
 const BASE_SKILLS = [
-  'meta-prompt',
-  'skill-creator',
-  'image-generator',
-  'adversarial-optimisation',
+  'grill-me',
+  'wayfinder',
+  'domain-modeling',
+  'specs-creator',
+  'resource-to-skill',
 ]
 
 // Agents de base partagés par tous les bundles
@@ -37,16 +38,20 @@ const BASE_AGENTS = [
 // Commandes de base partagées par tous les bundles
 const BASE_COMMANDS = [
   'do.md',
-  'meta',
 ]
 
-// Skills bureautiques partagés par Word enseignant et le généraliste
-const OFFICE_SKILLS = [
-  'docx',
-  'xlsx',
-  'pptx',
-  'pdf',
-  'odt',
+// Skills pédagogiques sans LaTeX, partagés par le bundle LaTeX et le Power User
+const CONTENT_SKILLS = [
+  'programmes-officiels',
+  'progression-builder',
+  'h5p-branching-scenario',
+  'h5p-gamemap',
+  'moodle-course-creator',
+  'make-blueprint-eval',
+  'bareme-actions-eleves',
+  'audit-accessibilite-eval',
+  'stats-datagouv',
+  'reveals-presentation',
 ]
 
 export const AI_PACKAGES: AIPackage[] = [
@@ -54,13 +59,12 @@ export const AI_PACKAGES: AIPackage[] = [
     id: 'generaliste',
     name: 'Généraliste',
     subtitle: 'Briques de base pour expérimenter',
-    description: 'Le socle commun pour ceux qui veulent explorer Claude Code librement. Skills de base, outils bureautiques, création de prompts et d\'images. Idéal pour construire sa propre configuration.',
+    description: 'Le socle commun pour ceux qui veulent explorer Claude Code librement. Interview pour affiner une idée, cahier des charges prêt à construire, transformation d\'une ressource en skill. Idéal pour construire sa propre configuration.',
     icon: '🧩',
     color: 'emerald',
     tier: 1,
     skills: [
       ...BASE_SKILLS,
-      ...OFFICE_SKILLS,
     ],
     agentPaths: BASE_AGENTS,
     commandPaths: BASE_COMMANDS,
@@ -70,41 +74,38 @@ export const AI_PACKAGES: AIPackage[] = [
     agentsDataPaths: [],
     claudeMdFile: 'CLAUDE-simple.md',
     highlights: [
-      'Skills bureautiques (Word, Excel, PowerPoint, PDF)',
-      'Générateur de prompts optimisés',
-      'Création d\'images IA',
-      'Créateur de skills personnalisés',
+      'Interview serrée pour affiner une idée (grill-me)',
+      'Carte de chantier sur plusieurs sessions (wayfinder)',
+      'Cahier des charges prêt à construire (specs-creator)',
+      'Transformer une ressource en skill (resource-to-skill)',
       'Agents de base (diagnostic, auto-amélioration)',
-      'Review adversariale (optimisation multi-agents)',
     ],
   },
   {
     id: 'latex',
     name: 'LaTeX Enseignant',
     subtitle: 'Documents pédagogiques LaTeX',
-    description: 'Le bundle Généraliste + l\'arsenal complet LaTeX : cours, exercices, évaluations, présentations Beamer et Reveal.js, QCM, contenus H5P et Moodle, programmes officiels.',
+    description: 'Le bundle Généraliste + l\'arsenal complet LaTeX : cours, exercices, évaluations, QCM, présentations Reveal.js, contenus H5P et Moodle, programmes officiels et progressions.',
     icon: '📐',
     color: 'cosmic',
     tier: 2,
     skills: [
       ...BASE_SKILLS,
-      ...OFFICE_SKILLS,
       // LaTeX
       'bfcours-latex',
+      'latex',
+      'adaptTex',
       'tex-document-creator',
       'tex-compiling-skill',
-      'beamer-presentation',
-      'latex',
       'latex-geometry',
+      'latex-visual-review',
       'pdf2tikz',
-      'programmes-officiels',
-      'reveals-presentation',
-      // Évaluation & contenus pédagogiques
       'qcm-creator',
-      'h5p-branching-scenario',
-      'h5p-gamemap',
-      'moodle-course-creator',
-      'make-blueprint-eval',
+      'html-katex-compiler',
+      // Typst
+      'bfcours-typst',
+      // Évaluation & contenus pédagogiques
+      ...CONTENT_SKILLS,
     ],
     agentPaths: [
       ...BASE_AGENTS,
@@ -125,7 +126,6 @@ export const AI_PACKAGES: AIPackage[] = [
       'modifier/latex',
       'modifier/html',
       'outillage/chargement',
-      'outillage/documentation',
       'outillage/recherche',
     ],
     dataPaths: [
@@ -139,100 +139,39 @@ export const AI_PACKAGES: AIPackage[] = [
       'progression-6eme.json',
       'progression-server-user-preferences.json',
       'reveal-templates',
-      'QF-models',
     ],
     agentsDataPaths: [
       'main-latex-knowledge.md',
       'tkz-euclide-master',
       'nicematrix-expert',
       'proflycee-expert',
-      'tcolorbox-expert',
     ],
     claudeMdFile: 'CLAUDE-simple.md',
     highlights: [
       'Tout le bundle Généraliste inclus',
-      'Package bfcours pour documents éducatifs',
-      'Compilation LaTeX automatisée',
-      'Présentations Beamer et Reveal.js',
-      'QCM et évaluations automatisées',
+      'Package bfcours pour documents éducatifs (LaTeX et Typst)',
+      'Compilation LaTeX automatisée et relecture visuelle',
+      'QCM au format bfcours et barèmes',
+      'Présentations Reveal.js',
       'Contenus H5P et Moodle',
-      'Extraction des programmes officiels',
+      'Programmes officiels sourcés et progressions',
       'Géométrie LaTeX et conversion PDF→TikZ',
-    ],
-  },
-  {
-    id: 'word',
-    name: 'Word Enseignant',
-    subtitle: 'Documents pédagogiques Word',
-    description: 'Le bundle Généraliste + le générateur de documents Word style "Loiseau", les skills Moodle et les outils bureautiques avancés pour l\'enseignement.',
-    icon: '📝',
-    color: 'sky',
-    tier: 2,
-    skills: [
-      ...BASE_SKILLS,
-      ...OFFICE_SKILLS,
-      // Word spécialisé
-      'docx-loiseau',
-      // Contenus pédagogiques
-      'qcm-creator',
-      'h5p-branching-scenario',
-      'h5p-gamemap',
-      'moodle-course-creator',
-      'programmes-officiels',
-      'make-blueprint-eval',
-    ],
-    agentPaths: [
-      ...BASE_AGENTS,
-      'creer/documentation',
-      'creer/evaluation',
-      'creer/html',
-    ],
-    commandPaths: [
-      ...BASE_COMMANDS,
-      'creer/evaluation',
-      'creer/html',
-      'creer/moodle',
-      'modifier/html',
-      'outillage/documentation',
-      'outillage/recherche',
-    ],
-    dataPaths: [
-      'user-settings.json',
-      'competences',
-      'competences.json',
-      'competence-server-user-preferences.json',
-      'QF-models',
-    ],
-    agentsDataPaths: [],
-    claudeMdFile: 'CLAUDE-simple.md',
-    highlights: [
-      'Tout le bundle Généraliste inclus',
-      'Générateur Word "L\'Oiseau" (mise en page pro)',
-      'QCM et évaluations automatisées',
-      'Contenus H5P et Moodle',
-      'Extraction des programmes officiels',
-      'Skills bureautiques complets',
     ],
   },
   {
     id: 'avance',
     name: 'Power User',
     subtitle: 'L\'arsenal complet',
-    description: 'Tous les bundles réunis + les skills avancés : applications éducatives, animations interactives, fiches techniques, infographies, notebooks Jupyter, et bien plus. Avec le CLAUDE.md auto-amélioration.',
+    description: 'Tous les bundles réunis + les skills avancés : capsules vidéo animées, notebooks Jupyter, cartes mentales, et bien plus. Avec le CLAUDE.md auto-amélioration.',
     icon: '🚀',
     color: 'purple',
     tier: 3,
     skills: [
       ...BASE_SKILLS,
-      ...OFFICE_SKILLS,
-      'bfcours-latex', 'tex-document-creator', 'tex-compiling-skill', 'beamer-presentation',
-      'latex', 'latex-geometry', 'pdf2tikz', 'programmes-officiels', 'reveals-presentation',
-      'docx-loiseau',
-      'qcm-creator', 'h5p-branching-scenario', 'h5p-gamemap', 'moodle-course-creator',
-      'tex-fiche-technique', 'educational-app-builder', 'infography-generator',
-      'interactive-animation', 'jupyter', 'jsxgraph', 'html-katex-compiler',
-      'mind-map-creator', 'icons-generator', 'agent-generator', 'make-blueprint-eval',
-      'bareme-actions-eleves', 'self-improve', 'stats-datagouv', 'teamPlay',
+      ...CONTENT_SKILLS,
+      'bfcours-latex', 'latex', 'adaptTex', 'tex-document-creator', 'tex-compiling-skill',
+      'latex-geometry', 'latex-visual-review', 'pdf2tikz', 'qcm-creator', 'html-katex-compiler',
+      'bfcours-typst', 'capsule-video', 'jupyter-notebook', 'mind-map-creator',
     ],
     agentPaths: ['*'],
     commandPaths: ['*'],
@@ -241,10 +180,8 @@ export const AI_PACKAGES: AIPackage[] = [
     claudeMdFile: 'CLAUDE-autoAmelioration.md',
     highlights: [
       'Tous les bundles précédents inclus',
-      'Création d\'applications éducatives Flask',
-      'Animations interactives HTML/JS',
-      'Fiches techniques pédagogiques',
-      'Infographies et notebooks Jupyter',
+      'Capsules vidéo animées avec voix de synthèse',
+      'Notebooks Jupyter et cartes mentales',
       'CLAUDE.md avec auto-amélioration',
       'Tous les agents et commandes',
     ],
@@ -254,7 +191,7 @@ export const AI_PACKAGES: AIPackage[] = [
 /**
  * Returns true if pkgA fully includes pkgB.
  * Power User (tier 3) includes everything.
- * Tier 2 packages (latex, word) include Généraliste (tier 1) but NOT each other.
+ * Tier 2 package (latex) includes Généraliste (tier 1).
  * Same package includes itself.
  */
 export function packageIncludes(pkgAId: PackageTier, pkgBId: PackageTier): boolean {

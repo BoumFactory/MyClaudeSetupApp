@@ -8,7 +8,7 @@ import { Capsule } from '@/components/tutorials/Capsule'
 import { QuickViewGraph } from '@/components/tutorials/QuickViewGraph'
 import { SkillDecisionTree } from '@/components/tutorials/SkillDecisionTree'
 import { PrePlanDemo } from '@/components/tutorials/PrePlanDemo'
-import { IdeaChallengerCopy } from '@/components/tutorials/IdeaChallengerCopy'
+import { GrillMeCopy } from '@/components/tutorials/GrillMeCopy'
 import type { Parcours, Capsule as CapsuleType } from '@/types/tutorial'
 
 interface CapsulePageContentProps {
@@ -36,9 +36,9 @@ export function CapsulePageContent({
         pratique: <SkillDecisionTree />,
       }
     }
-    if (capsule.id === 'pc-idea-challenger') {
+    if (capsule.id === 'pc-grill-me') {
       return {
-        pratique: <IdeaChallengerCopy />,
+        pratique: <GrillMeCopy />,
       }
     }
     if (capsule.id === 'pc-preplan') {

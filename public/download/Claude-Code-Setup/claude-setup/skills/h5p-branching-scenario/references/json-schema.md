@@ -37,7 +37,7 @@
 | `scoring` | string | non | `no-score` | Mode de scoring |
 | `enableBackwardsNavigation` | bool | non | `true` | Bouton retour |
 | `forceContentFinished` | bool | non | `false` | Obliger à finir chaque contenu |
-| `randomizeBranchingQuestions` | bool | non | `false` | Mélanger les alternatives |
+| `randomizeBranchingQuestions` | bool | non | `true` | Mélanger les alternatives à chaque tentative (OBLIGATOIRE pour éviter le pattern « toujours la première bonne réponse ») |
 | `includeInteractionsScores` | bool | non | `true` | Compter les scores des interactions (dynamic-score) |
 | `nodes` | array | oui | - | Liste des nœuds du parcours |
 | `endScreens` | array | non | auto | Écrans de fin |
@@ -110,9 +110,36 @@ Seul `endScreenScore` (configuré manuellement par nœud terminal via `feedback.
 - Chaque noeud terminal (`nextContentId: -1`) doit avoir un `feedback.score`
 - Les endScreens définissent les paliers de score visibles
 
-### Recommandation
+### Recommandation — choix du mode
 
-Utiliser **`static-end-score`** pour tous les parcours destines a Moodle :
+**Pour un parcours d'évaluation avec QCM (le cas standard) : utiliser `dynamic-score`.**
+
+Avantages :
+- H5P **comptabilise automatiquement** les bonnes réponses (somme des `feedback.endScreenScore` des alternatives choisies)
+- L'élève voit son score réel à la fin, sans avoir à s'auto-évaluer (l'auto-évaluation honnête est INTERDITE — voir SKILL.md)
+- Le score remonte au LMS via xAPI si `includeInteractionsScores: true`
+
+Configuration type :
+
+```json
+{
+  "scoring": "dynamic-score",
+  "includeInteractionsScores": true,
+  "randomizeBranchingQuestions": true,
+  "nodes": [
+    {
+      "type": "branching_question",
+      "question": "...",
+      "alternatives": [
+        {"text": "Bonne réponse", "nextContentId": 5, "feedback": {"title": "Bravo", "subtitle": "...", "score": 1}},
+        {"text": "Mauvaise réponse", "nextContentId": 4, "feedback": {"title": "Faux", "subtitle": "...", "score": 0}}
+      ]
+    }
+  ]
+}
+```
+
+**Pour un parcours linéaire à embranchements narratifs (sans QCM scorés) : `static-end-score`** avec un `feedback.score` sur chaque nœud terminal et des `endScreens` paliers :
 
 ```json
 {
@@ -147,7 +174,8 @@ Chaque nœud est un objet dans le tableau `nodes`. Son **index** (0, 1, 2...) es
 | `course_presentation` | Diaporama H5P avec quiz embarqués | `slides` (avec `interactions`) |
 | `interactive_video` | Vidéo avec questions aux timestamps | `videoUrl`, `interactions` |
 | `video` | Vidéo YouTube ou fichier | `videoUrl` |
-| `image` | Image simple | `image`, `alt` |
+| `image` | Image simple | `image` (chemin local ou objet H5P), `alt` |
+| `image_hotspots` | Image à zones cliquables (H5P.ImageHotspots 1.10) | `image`, `hotspots` — voir « Activités variées » |
 
 ### Noeud commun
 
@@ -255,9 +283,15 @@ Pour les maths, syntaxe MathJax : `\(formule\)` inline, `\[formule\]` display.
 | `multichoice` | QCM | `question`, `answers` [{text, correct, feedback}] |
 | `truefalse` | Vrai/Faux | `question`, `correct` (bool), `feedback_correct`, `feedback_incorrect` |
 | `dragtext` | Glisser-déposer | `description`, `text` (avec *mots* à placer) |
-| `blanks` | Texte à trous | `description`, `text` (avec *réponses* dans les trous) |
+| `blanks` | Texte à trous | `description`, `text` (avec *réponses* dans les trous), `numeric` (bool), `acceptSpellingErrors` (bool) — voir « Réponses saisies » |
 | `singlechoiceset` | Serie de choix uniques | `questions` [{question, answers}] (1ere reponse = correcte) |
 | `markthewords` | Marquer les mots | `description`, `text` (mots corrects entoures de *asterisques*) |
+| `summary` | Affirmation juste à choisir, étape par étape (H5P.Summary 1.10) | `intro`, `statements` [{correct, wrong[], tip}] |
+| `dragquestion` | Glisser-déposer sur une image (H5P.DragQuestion 1.14) | `image`, `zones` [{label, x, y, width, height, correct[]}], `draggables` [{text}] |
+| `dialogcards` | Cartes recto-verso (H5P.Dialogcards 1.9) | `cards` [{front, back}], `description`, `mode` |
+
+`imagehotspots` n'existe PAS comme interaction : H5P.ImageHotspots n'est pas autorisée dans une
+diapositive par CoursePresentation 1.25 (le validateur le refuse). Utiliser le nœud `image_hotspots`.
 
 #### Position des interactions
 
@@ -268,7 +302,46 @@ Pour les maths, syntaxe MathJax : `\(formule\)` inline, `\[formule\]` display.
 | `width` | number (0-100) | Largeur (% du canvas) |
 | `height` | number (0-100) | Hauteur (% du canvas) |
 
-**IMPORTANT** : Les scores des quiz dans CoursePresentation ne remontent PAS au carnet Moodle. Ils sont uniquement utiles pour l'apprentissage.
+#### Disposition de la diapositive : champ `layout` (30/09/2026)
+
+Sans champ `layout`, le texte d'une diapositive occupe **tout le cadre** (0, 0, 100, 100) : une activité
+placée par-dessus le recouvre. Le champ `layout`, porté par la **diapositive**, règle la répartition.
+
+| Champ de la diapositive | Valeurs | Effet |
+|-------------------------|---------|-------|
+| `layout` | `"full"` (défaut) | Texte plein cadre, activité à ses coordonnées par défaut (x 5, y 40, largeur 90, hauteur 55) : **comportement historique, archive identique**. |
+| | `"text-left"` | Texte dans la colonne de gauche (x 0, largeur 45 %) ; activité à droite (x 47, y 3, largeur 53 %, hauteur 94 %). |
+| | `"text-top"` | Texte en haut (hauteur 25 %, pleine largeur) ; activité dessous (x 3, y 27, largeur 94 %, hauteur 71 %). |
+| `text_width` | nombre 10 à 90 | Facultatif, avec `text-left` : largeur du texte, en % (défaut 45). |
+| `text_height` | nombre 10 à 90 | Facultatif, avec `text-top` : hauteur du texte, en % (défaut 25). |
+
+Une interaction qui porte ses propres `x`, `y`, `width`, `height` **les garde** : seuls les champs absents
+reçoivent la valeur de la disposition.
+
+```json
+{
+  "layout": "text-left",
+  "content": "<h3>Le tableau</h3><p>Énoncé long, données chiffrées…</p>",
+  "interactions": [
+    {"type": "multichoice", "question": "Calculer …", "answers": [ … ]}
+  ]
+}
+```
+
+Le validateur refuse une valeur de `layout` inconnue et avertit quand le rectangle du texte et celui d'une
+interaction se recouvrent (rectangles calculés, coordonnées propres comprises), quand l'activité sort du
+cadre, ou quand un texte de plus de 250 caractères reste en `full` avec une activité.
+
+Choisir `text-left` pour un énoncé long (tableau, arbre décrit, données) et `text-top` pour un texte
+de quelques lignes. Un QCM qui affiche ses retours défile dans son cadre s'il est trop bas : ne pas
+descendre `text_height` au-delà de 35 avec un QCM à trois propositions ou plus.
+
+**Un outil amont qui produit le preplan doit émettre `layout`** (une valeur par diapositive)
+plutôt que d'écrire « texte à gauche, activité à droite » dans le texte du prompt : le générateur applique
+alors la répartition, sans que le rédacteur calcule de coordonnées. Exemple jouable, avec captures à
+1366 × 768 : `examples/dispositions_diapo/`.
+
+**Scores** : en `dynamic-score` avec `includeInteractionsScores: true` (défaut), les scores des quiz de CoursePresentation remontent au carnet Moodle ; en `static-end-score`, non. Détail : SKILL.md, « REGLES CRITIQUES > 1 » (correction du 26/07/2026).
 
 ### Noeud interactive_video
 
@@ -326,10 +399,14 @@ Pour les maths, syntaxe MathJax : `\(formule\)` inline, `\[formule\]` display.
 {
   "title": "Schema recapitulatif",
   "type": "image",
+  "image": "figures/schema.png",
   "alt": "Schema des fractions",
   "nextContentId": 2
 }
 ```
+
+`image` : chemin local (relatif au dossier du preplan), copié dans l'archive — voir « Images
+locales ». Un objet H5P déjà formé (`{path, mime, width, height}`) reste accepté tel quel.
 
 ## EndScreens (ecrans de fin)
 
@@ -403,17 +480,232 @@ nodes[5] -> nextContentId: -1         (fin scenario -> endScreens[1])
 
 **ATTENTION** : pas de LaTeX/MathJax dans le texte markthewords.
 
+## Activités variées (ajout du 30/09/2026)
+
+Quatre types ajoutés le 30/09/2026, que des outils amont peuvent
+reprendre tels quels (ne pas les modifier à la légère). Exemple complet et jouable :
+`examples/activites_variees/` (preplan, figures, archive, captures du lecteur réel).
+
+| Type | Où | Librairie | Autorisation vérifiée |
+|------|----|-----------|-----------------------|
+| `summary` | interaction de diapositive | H5P.Summary 1.10 | `semantics.json` de CoursePresentation 1.25 |
+| `dragquestion` | interaction de diapositive | H5P.DragQuestion 1.14 | idem |
+| `dialogcards` | interaction de diapositive | H5P.Dialogcards 1.9 | idem |
+| `image_hotspots` | **nœud** | H5P.ImageHotspots 1.10 | `semantics.json` de BranchingScenario 1.8 (absente de la liste de CoursePresentation 1.25) |
+
+Libellés d'interface en français écrits par le générateur. Scores : `summary` et `dragquestion`
+comptent dans la note de la présentation ; `dialogcards` et `image_hotspots` n'exposent aucun
+score (pas de `getMaxScore` dans leur code) : activités de mémorisation et de découverte.
+
+### Images locales
+
+Tout champ `image` de ces types (et du nœud `image`) accepte un **chemin local** : relatif au
+dossier du preplan, ou absolu. Formats : PNG, JPEG, GIF. Le générateur copie le fichier dans
+`content/images/<nom>-<empreinte>.<ext>` et lit ses dimensions dans l'en-tête. Le validateur
+signale une image introuvable ou d'un autre format.
+
+### Positions en pourcentages du cadre de l'image
+
+Toutes les positions (zones de dépôt, étiquettes, points cliquables) s'expriment en **% du cadre
+de l'image** : `x`, `y` = coin haut gauche, `width`, `height` = taille, de 0 à 100, axe vertical
+vers le bas. Astuce : dessiner la figure dans un repère `[0, 100] x [0, 100]` qui couvre
+exactement l'image (voir `examples/activites_variees/make_images.py`) ; les coordonnées de dessin
+sont alors directement les pourcentages.
+
+### Interaction summary
+
+```json
+{
+  "type": "summary",
+  "x": 4, "y": 14, "width": 92, "height": 84,
+  "intro": "À chaque étape, choisis l'affirmation juste.",
+  "statements": [
+    {"correct": "La probabilité d'un chemin est le produit des probabilités de ses branches.",
+     "wrong": ["La probabilité d'un chemin est la somme des probabilités de ses branches."],
+     "tip": "Pense à P(A ∩ B)."}
+  ]
+}
+```
+
+- Chaque étape : une affirmation juste (`correct`), au moins une fausse (`wrong`), un indice
+  facultatif (`tip`). H5P mélange l'affichage ; l'élève avance quand il a trouvé la juste. Note :
+  1 point par étape réussie **du premier coup** (`summary.js` l. 106-115).
+- MathJax **accepté** (rendu vérifié dans le lecteur).
+
+### Interaction dragquestion
+
+```json
+{
+  "type": "dragquestion",
+  "x": 42, "y": 2, "width": 56, "height": 96,
+  "image": "arbre_a_completer.png",
+  "zones": [
+    {"label": "Branche vers A", "x": 17.5, "y": 25, "width": 11, "height": 8, "correct": [0]},
+    {"label": "Branche vers Ā", "x": 17.5, "y": 47, "width": 11, "height": 8, "correct": [1]}
+  ],
+  "draggables": [
+    {"text": "0,3", "width": 10, "height": 7},
+    {"text": "0,7", "width": 10, "height": 7},
+    {"text": "0,5", "width": 10, "height": 7}
+  ]
+}
+```
+
+| Champ | Requis | Description |
+|-------|--------|-------------|
+| `image` | oui | chemin local de la figure (fond de l'exercice) |
+| `zones[].x/y/width/height` | oui | zone de dépôt, en % du cadre de l'image |
+| `zones[].correct` | oui | indices (dans `draggables`) des étiquettes justes pour cette zone |
+| `zones[].label` | non | nom lu par les lecteurs d'écran (`Zone n` par défaut) ; texte brut |
+| `zones[].showLabel` / `tip` / `feedbackCorrect` / `feedbackIncorrect` / `single` / `autoAlign` | non | options H5P (défauts : `false`, `""`, `""`, `""`, `false`, `true`) |
+| `draggables[].text` | oui | texte de l'étiquette, **texte brut sans MathJax** |
+| `draggables[].x/y` | non | position de départ en % ; **absents : rangement automatique en rangées centrées dans la bande du bas** (10,5 % de hauteur par rangée, 12 x 9 % par défaut) |
+| `draggables[].width/height` | non | taille en % (défaut 12 x 9) |
+| `draggables[].allowedZones` | non | indices des zones où l'étiquette peut être posée (défaut : toutes) |
+| `penalties` | non | `true` : une étiquette mal placée retire 1 point (défaut `false`) |
+| `zoneOpacity` | non | opacité du fond gris des zones, 0-100 (défaut 40 : la figure reste lisible dessous) |
+| `zoneHighlight` | non | `dragging` (défaut), `always`, `never` |
+
+- Une étiquette qui n'est juste nulle part est un **distracteur** (ici `0,5`).
+- **Réserver une bande libre en bas de l'image** pour les étiquettes rangées automatiquement ;
+  le validateur signale une zone qui y empiète.
+- **Hauteur de l'élément** : l'image prend toute la largeur de l'élément et garde ses
+  proportions ; il faut en plus environ 25 % de la hauteur de la diapositive pour le retour, la
+  barre de score et « Réessayer » après vérification (mesuré : sinon l'élément défile et coupe le
+  haut de l'image). Règle : `height ≥ width x 1,98 x (hauteur/largeur de l'image) + 25`. Le
+  validateur calcule la largeur maximale. Mise en page conseillée : consigne à gauche en lignes
+  courtes (`<br>`), image à droite sur presque toute la hauteur.
+- Conversion (pour mémoire) : `x`, `y` restent en % ; `width`/`height` passent en em avec
+  `size.width = 640` (référence d'échelle, police des étiquettes environ 15 px).
+
+### Interaction dialogcards
+
+```json
+{
+  "type": "dialogcards",
+  "x": 15, "y": 12, "width": 70, "height": 86,
+  "description": "Lis le recto, réponds dans ta tête, puis retourne la carte.",
+  "cards": [
+    {"front": "Probabilité de \\(\\overline{A}\\) ?", "back": "\\(P(\\overline{A}) = 1 - P(A)\\)"},
+    {"front": "Probabilité d'un chemin ?", "back": "Le produit des probabilités de ses branches.",
+     "tipFront": "Suis le chemin de gauche à droite.", "image": "figure.png"}
+  ],
+  "mode": "normal",
+  "random": false
+}
+```
+
+- `front` / `back` requis ; `tipFront`, `tipBack`, `image`, `imageAlt` facultatifs ; `title`
+  facultatif. `mode` : `normal` (défaut, on feuillette) ou `repetition` (l'élève dit s'il savait,
+  les cartes ratées reviennent).
+- MathJax **accepté** (rendu vérifié au recto comme au verso).
+
+### Nœud image_hotspots
+
+```json
+{
+  "type": "image_hotspots",
+  "title": "Explorer l'arbre complet",
+  "image": "arbre_complet.png",
+  "alt": "Arbre pondéré complet.",
+  "icon": "plus",
+  "color": "#1f6feb",
+  "hotspots": [
+    {"x": 88, "y": 5, "header": "Chemin A puis B",
+     "text": "<p>\\(P(A\\cap B)=0{,}3\\times 0{,}6=0{,}18\\)</p>"},
+    {"x": 37, "y": 23, "width": 6, "height": 8, "header": "Nœud A",
+     "text": "<p>Somme 1 : \\(0{,}6+0{,}4=1\\).</p>"}
+  ],
+  "nextContentId": 3
+}
+```
+
+- Un point cliquable est un **point** : sans `width`/`height`, (`x`, `y`) est le **centre** de
+  l'icône ; avec, c'est le coin haut gauche d'un rectangle et l'icône va en son centre. Centres
+  mesurés dans le lecteur égaux au preplan.
+- `header` et/ou `text` (HTML, MathJax accepté) requis ; `icon` parmi `plus`, `minus`, `times`,
+  `check`, `question`, `info`, `exclamation` ; `color` de l'icône ; `fullscreen: true` pour
+  ouvrir la bulle en plein écran.
+- Placer le point **à côté** de ce qu'il commente : l'icône masque ce qu'elle recouvre.
+- Nœud de contenu ordinaire : `nextContentId`, `feedback`, `forceContentFinished` forcé à
+  `disabled` (aucun signal « terminé »).
+
+## Réponses saisies (textes à trous)
+
+Syntaxe H5P.Blanks 1.14 (`js/blanks.js` l. 735-760) : `*réponse1/réponse2/réponse3:indice*`.
+
+- `/` sépare les réponses acceptées : **une fraction ne peut pas s'écrire `2/5`** dans un trou
+  (lu « 2 OU 5 »). Demander la fraction en deux trous (numérateur, dénominateur) ou l'écriture
+  décimale, et le dire dans la consigne.
+- `:` introduit un **indice** : `*12:30*` attend « 12 » (et affiche l'indice « 30 »).
+- Nombres : donner la virgule ET le point (`*0,4/0.4*`), les zéros non significatifs si le
+  contexte le permet (`*0,40*`), jamais de MathJax.
+
+### Tolérance aux fautes (mesure M4)
+
+| Champ d'interaction | `acceptSpellingErrors` écrit |
+|---------------------|------------------------------|
+| aucun (défaut, mots) | `true` |
+| `"numeric": true` | `false` |
+| `"acceptSpellingErrors": true/false` | la valeur donnée (prioritaire) |
+
+Lecture de `js/cloze.js` l. 43-60 : la tolérance ne distingue pas les nombres des mots. Elle ne
+dépend que de la **longueur** de la réponse attendue : plus de 3 caractères, une erreur tolérée
+(distance de Damerau-Levenshtein, qui compte aussi une inversion de deux caractères) ; plus de
+9, deux. Mesure dans le lecteur réel (`examples/activites_variees/mesure_m4/`), réponses
+attendues `0,4`, `0,25`, `1500`, `12,75`, `0,18/0.18`, `parallèle` :
+
+| Saisi | Défaut (tolérance) | `numeric: true` |
+|-------|--------------------|-----------------|
+| `0,1` (attendu `0,4`) | faux (3 caractères : aucune tolérance) | faux |
+| `0,26` (attendu `0,25`) | **juste** | faux |
+| `1600` (attendu `1500`) | **juste** | faux |
+| `12,57` (attendu `12,75`) | **juste** (inversion) | faux |
+| `0,19` (attendu `0,18`) | **juste** | faux |
+| `paralèle` (attendu `parallèle`) | juste | faux |
+
+Donc : **toujours `numeric: true` pour une réponse chiffrée**. Avertissements du validateur :
+`ANSWER_SINGLE_FORM` (décimal sans son autre écriture), `ANSWER_SLASH_FRACTION` (`*5/3*`),
+`ANSWER_TIP_COLON` (`*12:30*`), `ANSWER_NUMERIC_TOLERANCE` (nombre de plus de 3 caractères avec
+la tolérance active).
+
 ## forceContentFinished (par noeud)
 
-Chaque noeud peut definir `forceContentFinished` pour controler le bouton "Continuer" :
+⚠️ **Deux champs homonymes, de types DIFFERENTS** (`h5p_libs/H5P.BranchingScenario-1.8/semantics.json`) :
+
+| Champ | Type | Défaut |
+|-------|------|--------|
+| `branchingScenario.content[].forceContentFinished` (par nœud) | `select` → **CHAINE** | `"useBehavioural"` |
+| `branchingScenario.behaviour.forceContentFinished` (global) | `boolean` | `false` |
+
+Le champ **par nœud** admet **TROIS** valeurs, toutes valides :
 
 | Valeur | Effet | Quand l'utiliser |
 |--------|-------|------------------|
-| `"disabled"` (DÉFAUT) | Bouton Continuer toujours actif | **Texte, Image, Vidéo** — ces types ne signalent PAS "finished" |
-| `"enabled"` | BLOQUE le bouton tant que le contenu n'a pas signalé "finished" | CoursePresentation avec quiz obligatoires, InteractiveVideo |
-| `"useBehavioural"` | Suit le setting global `behaviour.forceContentFinished` | Quand on veut un comportement uniforme |
+| `"useBehavioural"` (DÉFAUT du schema) | Suit le réglage global `behaviour.forceContentFinished` | `course_presentation` / `interactive_video` que le réglage global doit piloter |
+| `"enabled"` | BLOQUE le bouton tant que le contenu n'a pas signalé "finished" via xAPI | UNIQUEMENT `course_presentation` ou `interactive_video` avec quiz obligatoires |
+| `"disabled"` | Ne bloque JAMAIS, même si le réglage global vaut `true` | `text`, `image`, `video`, `branching_question` : ces types ne signalent jamais "finished" |
 
-**BUG CONNU** : `"enabled"` sur un nœud `text` ou `image` = bouton Continuer bloqué à jamais (AdvancedText ne signale jamais "finished"). Toujours utiliser `"disabled"` pour ces types.
+⛔ **Le vrai piège n'est pas `"disabled"`, c'est le BOOLEEN.** Le lecteur compare en `===` **strict** sur des chaines (`src/scripts/libraryScreen.js` l. 524-527) :
+
+```js
+params.content[id].forceContentFinished === 'enabled'
+|| params.content[id].forceContentFinished === 'useBehavioural' && params.behaviour.forceContentFinished === true
+```
+
+Un `true`/`false` ne satisfait aucune branche : le verrou est **désactivé en silence, nœud par nœud**, y compris quand le réglage global le demande. Mesuré dans le vrai lecteur (h5p-standalone), paquets identiques à un champ près :
+
+| Champ par nœud | Global | Bouton « Continuer » |
+|----------------|--------|----------------------|
+| `false` (booléen) | `true` | **actif** — aucun verrou |
+| `"useBehavioural"` | `true` | **verrouillé** — « Terminez le contenu pour continuer » |
+| `"disabled"` | `true` | **actif** — c'est exactement le sens du mot |
+| `true` (booléen) | `false` | **actif** — aucun verrou |
+| `"enabled"` | `false` | **verrouillé** |
+
+**Ce que fait le générateur** (`_resolve_force_content_finished`, corrigé le 25/07/2026) : il écrit **toujours l'une des trois chaines**. Absent → `"useBehavioural"` ; ancien booléen `true` → `"enabled"`, `false` → `"useBehavioural"` ; valeur hors schéma → refusée par `validators.py` (erreur bloquante). Sur un nœud `text` / `image` / `video` / `branching_question`, il écrit `"disabled"` : un verrou y serait définitif, et hériter d'un global à `true` bloquerait l'élève pour toujours.
+
+**BUG CONNU** : `"enabled"` sur un nœud `text`, `image` ou `video` = bouton Continuer bloqué à jamais (ces types ne signalent jamais "finished" via xAPI). Le générateur y écrit `"disabled"` automatiquement, avec un message.
 
 ```json
 {

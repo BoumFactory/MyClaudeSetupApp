@@ -76,315 +76,101 @@ export default function ClaudeCodeInstallPage() {
         </p>
       </section>
 
-      {/* Disclaimer - Alternative Gemini CLI */}
+      {/* Les autres outils : Codex et Antigravity */}
       <section className="glass-card rounded-xl p-8 space-y-4 border-2 border-blue-500/30 bg-blue-950/20">
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
             <AlertCircle className="w-5 h-5 text-white" />
           </div>
           <div className="space-y-3">
-            <h2 className="text-2xl font-bold text-blue-300">Alternative : Gemini CLI</h2>
+            <h2 className="text-2xl font-bold text-blue-300">Et les autres outils ?</h2>
             <p className="text-muted-foreground">
-              <strong className="text-foreground">Important :</strong> Claude Code n'est pas la seule option disponible.
-              Vous pouvez remplacer l'ensemble de cette configuration par un setup avec <strong className="text-blue-300">Gemini CLI</strong>
-              de Google, qui offre des fonctionnalités similaires avec quelques différences mineures.
+              Claude Code n'est pas la seule option. Deux plateformes permettent aujourd'hui de faire
+              à peu près la même chose :
             </p>
+            <ul className="space-y-2 text-sm text-muted-foreground ml-4">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span>
+                  <strong className="text-foreground">Codex</strong> (OpenAI) : l'agent d'OpenAI, utilisable dans
+                  l'application de bureau ChatGPT (Windows, macOS, Linux), en ligne de commande, dans un éditeur de code
+                  ou en ligne. On s'y connecte avec son compte ChatGPT.{" "}
+                  <a href="https://learn.chatgpt.com/docs" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline inline-flex items-center gap-1">
+                    Documentation officielle <ExternalLink className="w-3 h-3" />
+                  </a>
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span>
+                  <strong className="text-foreground">Antigravity</strong> (Google) : la plateforme d'agents de Google,
+                  sous forme d'application de bureau, d'éditeur de code et d'outil en ligne de commande
+                  (Windows, macOS, Linux). On s'y connecte avec son compte Google.{" "}
+                  <a href="https://antigravity.google/" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline inline-flex items-center gap-1">
+                    Site officiel <ExternalLink className="w-3 h-3" />
+                  </a>
+                </span>
+              </li>
+            </ul>
 
-            <div className="space-y-2 mt-4">
-              <h3 className="font-semibold text-blue-300">Pourquoi Gemini CLI ?</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground ml-4">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>Fonctionnalités équivalentes à Claude Code pour la génération de documents</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>Intégration native avec l'écosystème Google (Drive, Docs, etc.)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>Tarification potentiellement différente (à vérifier selon vos besoins)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <AlertCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-amber-300">Quelques retards possibles sur les toutes dernières fonctionnalités par rapport à Claude</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="mt-6 p-4 bg-blue-950/40 border border-blue-800 rounded-lg">
+            <div className="mt-4 p-4 bg-blue-950/40 border border-blue-800 rounded-lg">
               <p className="text-sm text-muted-foreground">
-                <strong className="text-blue-300">Note :</strong> Ce tutoriel se concentre sur Claude Code car c'est l'outil que j'utilise
-                personnellement pour éviter de changer d'outil régulièrement. Cependant, vous êtes libre de choisir l'alternative
-                qui correspond le mieux à vos besoins et à votre budget. Les concepts et méthodes présentés ici sont
-                transposables à d'autres CLI d'IA.
+                <strong className="text-blue-300">Lequel choisir ?</strong> Le choix dépend avant tout de vos goûts
+                et de vos habitudes. Ce site détaille Claude Code parce que c'est l'outil que j'utilise et que le setup
+                partagé est conçu pour lui. Les idées présentées (agents, skills, fichier d'instructions) se transposent
+                d'un outil à l'autre.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Comparatif Tarifs */}
-      <section className="space-y-6">
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-lg cosmic-gradient flex items-center justify-center">
-              <CreditCard className="w-5 h-5 text-white" />
-            </div>
-            <h2 className="text-3xl font-bold">Comparatif des tarifs</h2>
+      {/* Quel abonnement ? */}
+      <section className="glass-card rounded-xl p-8 space-y-4 border-2 border-cosmic-500/30">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="w-10 h-10 rounded-lg cosmic-gradient flex items-center justify-center">
+            <CreditCard className="w-5 h-5 text-white" />
           </div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Claude (Anthropic) vs Gemini (Google)
-          </p>
-          <p className="text-muted-foreground max-w-3xl mx-auto">
-            Comparaison des plans d'abonnement pour utiliser les CLI d'IA dans votre terminal
-          </p>
+          <h2 className="text-2xl font-bold">Quel abonnement Claude ?</h2>
         </div>
 
-        {/* Tableau comparatif */}
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* Claude (Anthropic) */}
-          <div className="glass-card rounded-xl p-6 border-2 border-cosmic-500/30">
-            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-              <Sparkles className="w-6 h-6 text-cosmic-400" />
-              Claude (Anthropic)
-            </h3>
-
-            <div className="space-y-3">
-              {/* Plan Free */}
-              <div className="p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800">
-                <h4 className="font-semibold mb-2">Plan Free</h4>
-                <p className="text-xl font-bold text-foreground mb-2">Gratuit</p>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-cosmic-400 flex-shrink-0 mt-0.5" />
-                    <span>Accès limité aux modèles</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-cosmic-400 flex-shrink-0 mt-0.5" />
-                    <span>Pour tester le CLI</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Plan Pro - RECOMMANDÉ */}
-              <div className="p-4 rounded-lg bg-emerald-950/30 border-2 border-emerald-500 relative">
-                <div className="absolute -top-2 -right-2 bg-emerald-500 text-white px-2 py-0.5 text-xs font-bold rounded">
-                  RECOMMANDÉ
-                </div>
-                <h4 className="font-semibold mb-2 text-emerald-300">Plan Pro</h4>
-                <p className="text-xl font-bold text-foreground mb-2">~20€/mois</p>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span>5× les usages du plan Free</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span>Accès prioritaire aux modèles</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span className="font-semibold text-emerald-300">Parfait pour l'enseignement</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Note */}
-              <div className="p-3 bg-cosmic-950/50 border border-cosmic-800 rounded text-xs text-muted-foreground">
-                <strong className="text-foreground">Note :</strong> Pas besoin de l'API pour utiliser Claude Code.
-                Le plan Pro suffit pour créer vos ressources pédagogiques.
-              </div>
-            </div>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800">
+            <h3 className="font-semibold mb-2">Offre gratuite</h3>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-cosmic-400 flex-shrink-0 mt-0.5" />
+                <span>Discussion sur le web, l'application de bureau et le mobile</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <AlertCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                <span className="text-amber-300">Claude Code non inclus</span>
+              </li>
+            </ul>
           </div>
 
-          {/* Gemini (Google) */}
-          <div className="glass-card rounded-xl p-6 border-2 border-blue-500/30">
-            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-              <Code2 className="w-6 h-6 text-blue-400" />
-              Gemini (Google)
-            </h3>
-
-            <div className="space-y-3">
-              {/* Plan Gratuit */}
-              <div className="p-4 rounded-lg bg-blue-950/30 border border-blue-800">
-                <h4 className="font-semibold mb-2">Plan Gratuit</h4>
-                <p className="text-xl font-bold text-foreground mb-2">Gratuit</p>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>Accès limité à certains modèles</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>Jetons d'entrée/sortie sans frais</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>Accès à Google AI Studio</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <AlertCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-amber-300">Données utilisées pour améliorer les produits</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Plan Payant */}
-              <div className="p-4 rounded-lg bg-blue-950/30 border border-blue-800">
-                <h4 className="font-semibold mb-2 text-blue-300">Plan Payant (API)</h4>
-                <p className="text-xl font-bold text-foreground mb-2">À l'usage</p>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>Limites de débit plus élevées</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>API Batch (réduction -50%)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>Modèles avancés (Gemini 2.5 Pro, 2.0 Flash)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>Données NON utilisées pour améliorer</span>
-                  </li>
-                </ul>
-                <div className="mt-3 p-2 bg-blue-950/50 rounded text-xs">
-                  <p className="font-semibold text-blue-300 mb-1">Exemples de tarifs :</p>
-                  <p className="text-muted-foreground">• Gemini 2.0 Flash : $0.30 entrée / $2.50 sortie par 1M tokens</p>
-                  <p className="text-muted-foreground">• Gemini 2.5 Pro : $1.25-$2.50 entrée / $10-$15 sortie par 1M tokens</p>
-                </div>
-              </div>
-
-              {/* Note */}
-              <div className="p-3 bg-blue-950/50 border border-blue-800 rounded text-xs text-muted-foreground">
-                <strong className="text-foreground">Note :</strong> Le plan gratuit peut suffire pour débuter.
-                Tarification au paiement à l'utilisation pour la production.
-              </div>
+          <div className="p-4 rounded-lg bg-emerald-950/30 border-2 border-emerald-500 relative">
+            <div className="absolute -top-2 -right-2 bg-emerald-500 text-white px-2 py-0.5 text-xs font-bold rounded">
+              RECOMMANDÉ
             </div>
-          </div>
-
-          {/* OpenAI Codex */}
-          <div className="glass-card rounded-xl p-6 border-2 border-purple-500/30">
-            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-              <Terminal className="w-6 h-6 text-purple-400" />
-              OpenAI Codex
-            </h3>
-
-            <div className="space-y-3">
-              {/* Plan Plus */}
-              <div className="p-4 rounded-lg bg-purple-950/30 border border-purple-800">
-                <h4 className="font-semibold mb-2">ChatGPT Plus</h4>
-                <p className="text-xl font-bold text-foreground mb-2">~20$/mois</p>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span>Codex inclus dans l'abonnement</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span>30-150 messages locaux / 5h</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span>5-40 tâches cloud / 5h</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span>Limite hebdomadaire partagée</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Plan Pro */}
-              <div className="p-4 rounded-lg bg-purple-950/30 border border-purple-800">
-                <h4 className="font-semibold mb-2 text-purple-300">ChatGPT Pro</h4>
-                <p className="text-xl font-bold text-foreground mb-2">Prix supérieur</p>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span>300-1500 messages locaux / 5h</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span>50-400 tâches cloud / 5h</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span>Pour usage intensif toute la journée</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Option API */}
-              <div className="p-4 rounded-lg bg-purple-950/30 border border-purple-800">
-                <h4 className="font-semibold mb-2 text-purple-300">Extension via API</h4>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Possibilité d'utiliser une clé API OpenAI pour étendre l'usage local (CLI et IDE).
-                  Tarification aux tarifs standards de l'API OpenAI.
-                </p>
-              </div>
-
-              {/* Note */}
-              <div className="p-3 bg-purple-950/50 border border-purple-800 rounded text-xs text-muted-foreground">
-                <strong className="text-foreground">Note :</strong> Codex spécialisé pour le code.
-                Business/Enterprise : plans avec crédits flexibles disponibles.
-              </div>
-            </div>
+            <h3 className="font-semibold mb-2 text-emerald-300">Offre Pro</h3>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span>Claude Code inclus (ainsi que Cowork dans l'application de bureau)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span>Abonnement mensuel fixe : suffisant pour créer vos ressources pédagogiques</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Disclaimer Codex */}
-        <div className="glass-card rounded-xl p-4 border border-purple-500/30 bg-purple-950/10">
-          <p className="text-sm text-muted-foreground">
-            <strong className="text-purple-300">Note sur OpenAI Codex :</strong> Ajouté ici uniquement pour comparatif.
-            Je ne l'utilise pas personnellement, mais il peut être une alternative intéressante pour certains utilisateurs,
-            notamment ceux déjà abonnés à ChatGPT Plus.
-          </p>
-        </div>
-
-        {/* Recommandation finale */}
-        <div className="glass-card rounded-xl p-6 border border-emerald-500/30 bg-emerald-950/20">
-          <div className="flex gap-3">
-            <AlertCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-            <div className="space-y-3">
-              <div>
-                <h3 className="font-semibold text-emerald-300 mb-1">Recommandation pour l'enseignement</h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  <strong className="text-emerald-300">Claude Pro (~20€/mois)</strong> : Simple, fixe, parfait pour créer des ressources pédagogiques sans se soucier de la consommation.
-                </p>
-                <p className="text-sm text-muted-foreground mb-2">
-                  <strong className="text-blue-300">Gemini Gratuit/Payant</strong> : Alternative intéressante avec plan gratuit généreux.
-                  Le plan payant à l'usage peut être économique selon votre utilisation.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  <strong className="text-purple-300">OpenAI Codex (ChatGPT Plus ~20$/mois)</strong> : Bonne option si vous êtes déjà abonné à ChatGPT Plus.
-                  Spécialisé pour le code avec limites de messages par période.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-emerald-300 mb-1">Pourquoi je partage Claude Code</h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  <strong className="text-foreground">Aucune solution n'est parfaite.</strong> Je partage simplement ma façon de faire
-                  avec Claude Code car je suis personnellement plus à l'aise avec cet outil :
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-4">
-                  <li>Plus transparent dans son fonctionnement</li>
-                  <li>Plus pragmatique pour mes besoins d'enseignement</li>
-                  <li>Documentation claire et accessible</li>
-                </ul>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Mais vous êtes libre de choisir Gemini CLI ou d'autres alternatives selon vos préférences.
-                  Les concepts et méthodes présentés dans ce tutoriel sont transposables à d'autres outils CLI d'IA.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="text-sm text-muted-foreground">
+          Pas besoin de l'API pour utiliser Claude Code. Les offres et les tarifs évoluent : consultez la page officielle{" "}
+          <a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer" className="text-cosmic-400 hover:underline">claude.com/pricing</a>.
+        </p>
       </section>
 
       {/* Installation */}
@@ -411,7 +197,7 @@ export default function ClaudeCodeInstallPage() {
                 <p className="font-semibold text-emerald-300 mb-1">Bonne nouvelle ! Node.js n'est plus obligatoire</p>
                 <p className="text-sm text-muted-foreground">
                   Depuis les dernières mises à jour, Claude Code propose une <strong className="text-foreground">installation native</strong> qui
-                  ne nécessite plus Node.js. L'installation via npm est désormais <strong className="text-amber-300">dépréciée</strong>.
+                  ne nécessite plus Node.js. L'installation via npm (Node.js 22 ou plus récent) reste possible, mais <strong className="text-amber-300">secondaire</strong>.
                 </p>
               </div>
             </div>
@@ -430,14 +216,17 @@ export default function ClaudeCodeInstallPage() {
               <CheckCircle className="w-5 h-5 text-cosmic-400 mt-0.5 flex-shrink-0" />
               <div>
                 <p className="font-semibold">Un compte Anthropic/Claude</p>
-                <p className="text-sm text-muted-foreground">Avec un abonnement actif (Pro recommandé à ~20€/mois)</p>
+                <p className="text-sm text-muted-foreground">
+                  Avec un abonnement payant actif (le plan Pro suffit pour débuter ; tarifs actuels sur{" "}
+                  <a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer" className="text-cosmic-400 hover:underline">claude.com/pricing</a>)
+                </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-950/30 border border-slate-700/50">
               <CheckCircle className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
               <div className="flex-1">
-                <p className="font-semibold text-slate-300">Node.js (version 18+) — <span className="text-amber-400 text-sm">Optionnel</span></p>
+                <p className="font-semibold text-slate-300">Node.js (version 22+) — <span className="text-amber-400 text-sm">Optionnel</span></p>
                 <p className="text-sm text-muted-foreground mb-2">
                   Plus requis pour l'installation native. Utile pour les serveurs MCP et certains outils avancés.
                 </p>
@@ -497,7 +286,7 @@ export default function ClaudeCodeInstallPage() {
                       https://claude.ai <ExternalLink className="w-3 h-3" />
                     </a></li>
                     <li>Créez un compte ou connectez-vous</li>
-                    <li>Souscrivez à l'abonnement Mini (20€/mois)</li>
+                    <li>Souscrivez à un abonnement payant donnant accès à Claude Code (le plan Pro suffit pour débuter, voir <a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer" className="text-cosmic-400 hover:underline">claude.com/pricing</a>)</li>
                   </ol>
                 </div>
               </div>
@@ -531,6 +320,18 @@ export default function ClaudeCodeInstallPage() {
                     <div className="p-4 bg-slate-950/50 rounded-lg border border-slate-800">
                       <p className="text-sm font-semibold text-cosmic-300 mb-2">Windows PowerShell :</p>
                       <CodeBlock code="irm https://claude.ai/install.ps1 | iex" language="powershell" />
+                    </div>
+
+                    {/* Windows WinGet */}
+                    <div className="p-4 bg-slate-950/50 rounded-lg border border-slate-800">
+                      <p className="text-sm font-semibold text-cosmic-300 mb-2">Windows (WinGet) :</p>
+                      <CodeBlock code="winget install Anthropic.ClaudeCode" language="powershell" />
+                    </div>
+
+                    {/* macOS Homebrew */}
+                    <div className="p-4 bg-slate-950/50 rounded-lg border border-slate-800">
+                      <p className="text-sm font-semibold text-cosmic-300 mb-2">macOS (Homebrew) :</p>
+                      <CodeBlock code="brew install --cask claude-code" language="bash" />
                     </div>
 
                     {/* Windows CMD */}
@@ -720,7 +521,7 @@ export default function ClaudeCodeInstallPage() {
             </a>
 
             <a
-              href="https://docs.anthropic.com/"
+              href="https://platform.claude.com/docs/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
@@ -738,7 +539,7 @@ export default function ClaudeCodeInstallPage() {
             </a>
 
             <a
-              href="https://www.anthropic.com/learn"
+              href="https://academy.claude.com/courses/claude-code-101"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 hover:scale-105 transition-all group"
@@ -746,11 +547,11 @@ export default function ClaudeCodeInstallPage() {
               <Sparkles className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors flex items-center gap-1">
-                  Tutoriels Anthropic
+                  Cours Claude Code 101
                   <ExternalLink className="w-3 h-3" />
                 </h4>
                 <p className="text-xs text-muted-foreground">
-                  Guides d'apprentissage
+                  Cours officiel gratuit (en anglais)
                 </p>
               </div>
             </a>
@@ -972,9 +773,9 @@ export default function ClaudeCodeInstallPage() {
           <div className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800">
             <KeyRound className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
             <div>
-              <h4 className="font-semibold mb-1">Ajouter une clé API Google</h4>
+              <h4 className="font-semibold mb-1">Écrire en Typst</h4>
               <p className="text-sm text-muted-foreground">
-                Pour la génération d'images
+                Avec la suite farfadet, alternative plus rapide à LaTeX
               </p>
             </div>
           </div>

@@ -420,5 +420,5 @@ Un bon Game Map raconte une histoire, pas une succession de quiz.
 ## Références
 
 - **Exemple officiel** : `gamemap_example/content/content.json`
-- **Script actuel** : `generer_archipel_final.py`
+- **Générateur** : `scripts/generate_gamemap.py`
 - **Documentation H5P** : https://h5p.org/documentation/developers/

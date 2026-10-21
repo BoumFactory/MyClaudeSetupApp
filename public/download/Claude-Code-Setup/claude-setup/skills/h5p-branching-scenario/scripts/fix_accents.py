@@ -260,7 +260,8 @@ def main():
         description='Corrige les accents français dans un preplan H5P JSON'
     )
     parser.add_argument('--input', '-i', required=True, help='Fichier JSON du preplan')
-    parser.add_argument('--output', '-o', help='Fichier de sortie (défaut: remplace input)')
+    parser.add_argument('--output', '-o', help='Fichier de sortie (défaut: <nom>_fixed.json, non destructif)')
+    parser.add_argument('--in-place', action='store_true', help='Écraser le fichier d\'entrée au lieu de créer _fixed.json')
 
     args = parser.parse_args()
 
@@ -289,8 +290,13 @@ def main():
     print("Validation des endScreens...")
     corr_count, added_count = validate_and_add_endscreens(data)
 
-    # Sauvegarder
-    output_path = Path(args.output) if args.output else input_path
+    # Sauvegarder (non destructif par defaut : <nom>_fixed.json)
+    if args.output:
+        output_path = Path(args.output)
+    elif args.in_place:
+        output_path = input_path
+    else:
+        output_path = input_path.with_name(input_path.stem + '_fixed.json')
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(output_path, 'w', encoding='utf-8') as f:

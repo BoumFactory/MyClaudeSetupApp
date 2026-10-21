@@ -1,0 +1,2 @@
+/* Plugin trois (three.js r159 + scènes 3D) : chargé à côté du moteur, voir references/trois-d.md */
+(function(){var b;try{b=document.currentScript.src.replace(/[^\/]*$/,'')+'plugins-canvas/';}catch(e){b='/plugins-canvas/';}self.PLUG_BASE=b;self.__warn3=console.warn;console.warn=function(){};if(typeof importScripts==='function'){importScripts(b+'three.min.js',b+'trois.js');}else{document.write('<script src="'+b+'three.min.js"><\/script><script src="'+b+'trois.js"><\/script>');}})();

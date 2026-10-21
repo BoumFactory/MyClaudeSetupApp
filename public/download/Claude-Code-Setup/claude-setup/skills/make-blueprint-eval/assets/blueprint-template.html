@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprint - [Chapitre] - Préparation au contrôle</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* En-tête compact */
+        .header {
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .header h1 { font-size: 1.5em; margin-bottom: 5px; }
+        .header .info { display: flex; justify-content: center; gap: 20px; font-size: 0.9em; }
+
+        /* Onglets */
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .tab {
+            padding: 8px 15px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .tab:hover { background: #d0d0d0; }
+        .tab.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Contenu des onglets */
+        .tab-content {
+            display: none;
+            padding: 15px;
+            border: 2px solid #667eea;
+            border-radius: 0 10px 10px 10px;
+            background: #fafafa;
+        }
+        .tab-content.active { display: block; }
+
+        /* Structure du contrôle */
+        .structure-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .structure-table th, .structure-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .structure-table th { background: #667eea; color: white; }
+        .structure-table tr:nth-child(even) { background: #f5f5f5; }
+
+        /* Compétences */
+        .competence {
+            background: white;
+            padding: 10px;
+            margin: 8px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 0 8px 8px 0;
+        }
+        .competence h4 { color: #667eea; margin-bottom: 5px; }
+        .niveau { color: #ffc107; }
+
+        /* Questions */
+        .question {
+            background: #fff3cd;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+        .question summary { cursor: pointer; font-weight: 500; }
+        .question .reponse {
+            margin-top: 8px;
+            padding: 8px;
+            background: #d4edda;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        /* Exercices fléchés */
+        .exercice-fleche {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #28a745;
+        }
+        .exercice-fleche .notion { font-weight: 500; color: #28a745; }
+        .exercice-fleche .numeros { color: #666; }
+
+        /* Conseils */
+        .conseil {
+            padding: 8px;
+            margin: 5px 0;
+            background: #e7f3ff;
+            border-radius: 5px;
+        }
+        .conseil::before { content: "💡 "; }
+
+        /* Priorité */
+        .priorite-haute { border-left-color: #dc3545 !important; }
+        .priorite-moyenne { border-left-color: #ffc107 !important; }
+        .priorite-basse { border-left-color: #28a745 !important; }
+
+        /* Impression */
+        @media print {
+            .tabs { display: none; }
+            .tab-content {
+                display: block !important;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+                margin-bottom: 10px;
+            }
+            body { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 Blueprint - [Titre du chapitre]</h1>
+        <div class="info">
+            <span>⏱️ [Durée] min</span>
+            <span>📊 /20 points</span>
+            <span>🧮 Calculatrice: [Oui/Non]</span>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('structure')">📋 Structure</button>
+        <button class="tab" onclick="showTab('competences')">🎯 Compétences</button>
+        <button class="tab" onclick="showTab('questions')">❓ Quiz révision</button>
+        <button class="tab" onclick="showTab('exercices')">📝 Exercices types</button>
+        <button class="tab" onclick="showTab('conseils')">💡 Conseils</button>
+    </div>
+
+    <!-- ONGLET 1 : Structure -->
+    <div id="structure" class="tab-content active">
+        <h3>Structure du contrôle</h3>
+        <table class="structure-table">
+            <tr>
+                <th>Partie</th>
+                <th>Type</th>
+                <th>Points</th>
+                <th>Durée conseillée</th>
+            </tr>
+            <!-- Remplir dynamiquement -->
+        </table>
+    </div>
+
+    <!-- ONGLET 2 : Compétences -->
+    <div id="competences" class="tab-content">
+        <h3>Ce que tu dois maîtriser</h3>
+        <!-- Liste des compétences avec niveau -->
+    </div>
+
+    <!-- ONGLET 3 : Questions de compréhension -->
+    <div id="questions" class="tab-content">
+        <h3>Vérifie ta compréhension du cours</h3>
+        <p><em>Clique sur chaque question pour voir la réponse</em></p>
+        <!-- Questions avec details/summary -->
+    </div>
+
+    <!-- ONGLET 4 : Exercices fléchés -->
+    <div id="exercices" class="tab-content">
+        <h3>Exercices à travailler en priorité</h3>
+        <!-- Liste notion → exercices -->
+    </div>
+
+    <!-- ONGLET 5 : Conseils -->
+    <div id="conseils" class="tab-content">
+        <h3>Conseils de révision</h3>
+        <!-- Conseils personnalisés -->
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

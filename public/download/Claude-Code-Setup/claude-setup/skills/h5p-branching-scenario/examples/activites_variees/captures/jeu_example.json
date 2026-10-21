@@ -1,0 +1,96 @@
+{
+  "mode": "example",
+  "steps": [
+    {
+      "msg": "capture jeu_01_summary_erreur.png"
+    },
+    {
+      "msg": "capture jeu_02_summary_etape2_mathjax.png"
+    },
+    {
+      "msg": "capture jeu_03_summary_termine.png"
+    },
+    {
+      "msg": "summary",
+      "score": "Ton résultatÉtape 3 sur 3Progression : 3/3Réponses fausses : 1"
+    },
+    {
+      "msg": "capture jeu_04_dragquestion_zones_en_rouge.png"
+    },
+    {
+      "msg": "dragquestion",
+      "draggables": 6,
+      "zones": 6
+    },
+    {
+      "msg": "hauteur élément avant vérification",
+      "scroll": 515,
+      "client": 515
+    },
+    {
+      "msg": "capture jeu_05_dragquestion_deposees.png"
+    },
+    {
+      "msg": "capture jeu_06_dragquestion_verifiee.png"
+    },
+    {
+      "msg": "hauteur élément après vérification",
+      "scroll": 515,
+      "client": 515
+    },
+    {
+      "msg": "dragquestion verifiee",
+      "corrects": 4,
+      "fausses": 2,
+      "score": "star"
+    },
+    {
+      "msg": "capture jeu_07_dialogcards_recto.png"
+    },
+    {
+      "msg": "capture jeu_08_dialogcards_verso_mathjax.png"
+    },
+    {
+      "msg": "capture jeu_09_blanks_0-19.png"
+    },
+    {
+      "msg": "blanks 0,19 (numeric / défaut)",
+      "verdicts": [
+        "FAUX",
+        "JUSTE"
+      ]
+    },
+    {
+      "msg": "imagehotspots",
+      "points": 4
+    },
+    {
+      "msg": "centres des points mesurés en % de l image",
+      "centres": [
+        [
+          88.0,
+          5.0
+        ],
+        [
+          40.0,
+          27.0
+        ],
+        [
+          6.0,
+          40.0
+        ],
+        [
+          88.0,
+          49.0
+        ]
+      ]
+    },
+    {
+      "msg": "capture jeu_10_imagehotspots_bulle_noeud_A.png"
+    },
+    {
+      "msg": "capture jeu_11_imagehotspots_bulle_2.png"
+    }
+  ],
+  "errors": []
+}

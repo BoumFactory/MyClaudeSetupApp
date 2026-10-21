@@ -2,11 +2,9 @@
 
 Skill pour creer des cours Moodle complets avec support H5P avance : parcours gamifies, quiz varies, capsules interactives.
 
-## Commande associee
+## Procedure « moodleise »
 
-```
-/moodleise <chemin_dossier_sequence>
-```
+Pour transformer un dossier de sequence en cours Moodle (.mbz) : lire `references/moodleise.md` (modes Simple / Enrichi / Parcours complet, facade d'accueil, configuration JSON, previsualisation, generation du .mbz, rapport final). Ce fichier remplace la commande `/moodleise`.
 
 ## Quand utiliser ce skill
 
@@ -87,6 +85,21 @@ question = r"Calculer \\(x^2\\) pour x=3"
 
 ---
 
+## Dépôt élève → correction débloquée (Devoir + achèvement + restriction)
+
+`generate_course_mbz.py --config` accepte dans le JSON :
+
+- `"type": "assign"` : Devoir avec remise de fichiers, sans note. Options : `max_files` (5), `filetypes` (`"image,.pdf"`), `require_submit_button` (false : le dépôt vaut remise), `completion_on_submit` (true : achevé dès la remise).
+- `"type": "feedback"` : questionnaire natif Moodle (module Feedback), sans note, anonyme par défaut, une seule réponse par élève, résultats visibles du seul enseignant. Champs : `items` (liste ordonnée de `{"type": "multichoice", "name", "options": [...], "required"}` en choix unique, `{"type": "textarea", "name", "required"}` en texte libre, `{"type": "pagebreak"}` ou `{"type": "label", "name": "<html>"}`), `anonymous` (true), `multiple_submit` (false), `autonumbering` (false), `thanks` (message d'envoi), `completion_on_submit` (false). Format non testé en restauration réelle.
+- `"key": "ex1"` sur n'importe quelle activité, et `"unlock_after": "ex1"` (ou une liste de clés) sur l'activité à débloquer. Option `show_greyed` (true : visible en grisé avec la condition affichée).
+- `"completion": "manual" | "view" | "none"` sur une activité ordinaire.
+- `"display": 1` sur un `file` : vidéo ou PDF intégré dans la page.
+- `settings.enable_completion: true` est **obligatoire** pour que les conditions fonctionnent. À la restauration dans un cours existant, ce réglage n'est pas repris : il faut l'activer dans le cours.
+
+Exemple de configuration : `example_config.json`. `validate_mbz.py` ne contrôle pas encore les Devoirs.
+
+---
+
 ## Creer un Parcours Gamifie
 
 ### Exemple complet
@@ -140,18 +153,11 @@ with open("parcours.h5p", "wb") as f:
 
 ---
 
-## Integration avec image-generator
+## Image de fond
 
-Pour creer une image de fond thematique :
+Image de fond thematique : fournie par l'utilisateur, ou produite avec l'outil de generation d'images dont il dispose (prompt type : « Illustration d'une echelle a gravir avec des etapes numerotees, style gamifie, fond colore », 1920x1080, sans texte).
 
-```bash
-python ".claude/skills/creer/media/image-generator/scripts/generate_image.py" \\
-  --prompt "Illustration d'une echelle a gravir avec des etapes numerotees, style gamifie, fond colore" \\
-  --type "illustration" \\
-  --output "image_parcours.png"
-```
-
-Puis utiliser l'image dans le parcours :
+Utiliser l'image dans le parcours :
 
 ```python
 H5PCoursePresentation.create_gamified_course(
@@ -173,7 +179,7 @@ H5PCoursePresentation.create_gamified_course(
    - V/F pour les proprietes
    - Texte a trous pour le vocabulaire
    - Drag&Drop pour les associations
-4. [Optionnel] Generer image de fond avec image-generator
+4. [Optionnel] Fournir ou generer une image de fond
 5. Generer le H5P avec le script
 6. Tester dans Moodle
 ```
@@ -187,7 +193,7 @@ Voir le dossier `references/` :
 - `h5p-course-presentation.md` : Details Course Presentation
 - `h5p-image-hotspots.md` : Details Image Hotspots (et limites)
 - `latex-h5p-guide.md` : Guide LaTeX
-- `integration-image-generator.md` : Creer des images
+- `moodleise.md` : Procedure complete de moodleisation d'une sequence
 
 ---
 
@@ -214,10 +220,7 @@ Voir le dossier `references/` :
 
 ## Exemple : Capsule Suites Numeriques
 
-Voir `1. Cours/1ere/Sequence-Suites_numeriques/Capsule_H5P/` :
-- `parcours_suites.h5p` : Parcours complet (echelle + 7 quiz + navigation)
-- `echelle_v2.png` : Image de fond (echelle a gravir)
-- `generer_parcours_hotspot.py` : Script de generation
+Parcours complet (echelle + 7 quiz + navigation), genere avec `h5p_course_presentation.py` a partir d'une image de fond « echelle a gravir ».
 
 ### Structure du parcours
 - Slide 1 : Image echelle avec 7 boutons colores cliquables
@@ -265,7 +268,7 @@ Task(
     - Types variés : max 40% QCM, min 1 DragText, min 1 Blanks
     - Feedbacks explicatifs pour chaque réponse
     - Style "aventure" avec 4 vies
-    - Image de fond thématique (utiliser image-generator si besoin)
+    - Image de fond thématique (generer une image si besoin)
     - Préplan + validation + génération H5P
 
     Retourne le chemin du fichier .h5p généré.

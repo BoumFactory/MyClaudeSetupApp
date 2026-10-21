@@ -34,7 +34,7 @@ EXCEPTION : SingleChoiceSet (qui enchaîne déjà plusieurs questions)
 
 **AVANT de générer le H5P final, TOUJOURS :**
 
-1. Vérifier/créer l'image de fond (via `image-user` si nécessaire)
+1. Vérifier l'image de fond fournie par l'utilisateur (sinon fond neutre)
 2. Lancer le script de prévisualisation des hotspots
 3. Attendre la validation de l'utilisateur
 
@@ -457,7 +457,7 @@ Question: Une image de fond existe déjà. Que souhaitez-vous faire ?
 
 Options:
 1. Utiliser l'image existante (Recommandé) - [nom_fichier.png]
-2. Générer une nouvelle image - L'agent image-user créera une carte thématique
+2. Fournir une autre image - Je donnerai le chemin vers la nouvelle carte
 ```
 
 #### Si aucune image n'est trouvée
@@ -468,44 +468,22 @@ Options:
 Question: Aucune image de fond trouvée. Que souhaitez-vous faire ?
 
 Options:
-1. Générer une image thématique (Recommandé) - L'agent image-user créera une carte d'aventure
+1. Fournir une image de fond (Recommandé) - Je donnerai le chemin vers ma carte
 2. Continuer sans image - Le Game Map utilisera un fond neutre
 3. Je fournirai une image plus tard - Arrêter ici pour que je puisse en ajouter une
 ```
 
-#### Génération d'image via agent image-user
+#### Image fournie par l'utilisateur
 
-**Si l'utilisateur choisit de générer une image**, lancer l'agent `image-user` :
+**Si l'utilisateur choisit de fournir une image**, lui demander le chemin et vérifier qu'elle existe.
 
-```python
-Task(
-    subagent_type="image-user",
-    prompt=f"""
-    Génère une image de fond pour un Game Map H5P.
+Rappeler à l'utilisateur ce qu'une bonne image de fond doit contenir :
 
-    **Chemin du skill** : `.claude/skills/creer/media/image-generator/scripts/generate_image.py`
-    **Dossier de sortie** : `{dossier_sortie}`
-    **Nom du fichier** : `background_{theme_slug}.png`
-    **Dimensions** : 1920x1080
+- format paysage (1920 x 1080 conseillé) ;
+- un chemin sinueux avec des points d'étape bien visibles (un par spot voulu) ;
+- aucun texte ni formule sur l'image.
 
-    **Contexte pédagogique** :
-    - Niveau : {niveau}
-    - Thème : {theme}
-
-    **Style demandé** :
-    - Carte d'aventure/fantastique style jeu de rôle
-    - Un chemin sinueux traversant un paysage thématique
-    - Points d'étape circulaires visibles le long du chemin (pour placer les hotspots)
-    - Couleurs accueillantes et lumineuses
-    - PAS de texte ni de formules mathématiques sur l'image
-    - Ambiance adaptée à des élèves de {age_eleves} ans
-
-    Retourne le chemin complet du fichier créé.
-    """
-)
-```
-
-**Attendre la fin de l'agent** avant de continuer à l'étape suivante.
+L'image n'est pas générée par le paquet : l'utilisateur la crée avec l'outil de son choix ou la prend dans une banque d'images libres de droits.
 
 ### ÉTAPE 6 : VALIDATION VISUELLE DES POSITIONS (CRITIQUE - NE JAMAIS SAUTER)
 
@@ -521,7 +499,7 @@ import os
 background = "[chemin]/background.png"
 if not os.path.exists(background):
     # ERREUR : Impossible de continuer sans image
-    raise FileNotFoundError("Image de fond manquante - utilisez /createImage d'abord")
+    raise FileNotFoundError("Image de fond manquante - fournissez d'abord une image de fond")
 ```
 
 **2. Lancer l'outil de prévisualisation**
@@ -711,8 +689,7 @@ theme_pattern = r'Sequence-([^/]+)'  # ou Chapitre-
      │     └─► Respecter la règle des 40% QCM
      │
      ├─► PHASE VISUELLE
-     │     ├─► Vérifier/générer image de fond
-     │     │       └─► /createImage si manquante
+     │     ├─► Vérifier l'image de fond fournie
      │     ├─► Lancer hotspot_preview.py
      │     └─► Attendre validation utilisateur
      │

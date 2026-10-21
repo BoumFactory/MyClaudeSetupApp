@@ -142,8 +142,151 @@ class MoodleCourseGenerator:
         self.sections.append(section)
         return self.section_counter
 
+    def _find_activity(self, activity_id: int) -> Dict:
+        """Retrouve une activité par son identifiant"""
+        for section in self.sections:
+            for activity in section['activities']:
+                if activity['id'] == activity_id:
+                    return activity
+        raise KeyError(f"Activité introuvable : {activity_id}")
+
+    def set_completion(self, activity_id: int, mode: int = 2, view: bool = False):
+        """
+        Règle l'achèvement d'une activité.
+
+        Args:
+            mode: 0 = aucun, 1 = manuel (l'élève coche), 2 = automatique (conditions)
+            view: en mode automatique, achevée dès que l'élève l'a consultée
+        """
+        activity = self._find_activity(activity_id)
+        activity['completion'] = mode
+        activity['completionview'] = 1 if view else 0
+
+    def add_unlock_condition(self, activity_id: int, required_ids: List[int],
+                             show_greyed: bool = True):
+        """
+        Restreint l'accès à une activité : elle n'est disponible qu'une fois
+        TOUTES les activités `required_ids` achevées (condition « Achèvement d'activité »).
+        Les identifiants de modules sont remappés par Moodle à la restauration.
+
+        Args:
+            show_greyed: True = activité visible en grisé avec la condition affichée,
+                         False = activité totalement masquée tant que la condition n'est pas remplie
+        """
+        activity = self._find_activity(activity_id)
+        conditions = [{"type": "completion", "cm": rid, "e": 1} for rid in required_ids]
+        activity['availability'] = json.dumps({
+            "op": "&",
+            "c": conditions,
+            "showc": [show_greyed] * len(conditions)
+        })
+
+    def add_assign(self, section_id: int, name: str, intro: str = "",
+                   max_files: int = 5, filetypes: str = "image,.pdf",
+                   max_bytes: int = 0, require_submit_button: bool = False,
+                   completion_on_submit: bool = True, visible: bool = False,
+                   online_text: bool = False) -> int:
+        """
+        Ajoute un Devoir (remise de fichiers), sans note par défaut.
+
+        Args:
+            max_files: nombre maximal de fichiers déposés
+            filetypes: types acceptés (syntaxe Moodle : "image,.pdf")
+            max_bytes: taille maximale par fichier (0 = limite du site)
+            require_submit_button: True = l'élève doit cliquer « Envoyer le devoir »
+                                   (sinon le dépôt vaut remise)
+            completion_on_submit: achèvement automatique dès la remise
+            online_text: True = remise en texte en ligne (aucun fichier demandé)
+
+        Returns:
+            ID de l'activité créée
+        """
+        self.activity_counter += 1
+        activity_id = self.activity_counter
+
+        activity = {
+            'id': activity_id,
+            'type': 'assign',
+            'name': name,
+            'intro': intro,
+            'visible': 1 if visible else 0,
+            'contextid': 1000 + activity_id,
+            'section_id': section_id,
+            'max_files': max_files,
+            'filetypes': filetypes,
+            'max_bytes': max_bytes,
+            'submissiondrafts': 1 if require_submit_button else 0,
+            'completionsubmit': 1 if completion_on_submit else 0,
+            'online_text': online_text,
+        }
+        if completion_on_submit:
+            activity['completion'] = 2
+
+        for section in self.sections:
+            if section['id'] == section_id:
+                activity['section_number'] = section['number']
+                section['activities'].append(activity)
+                break
+
+        return activity_id
+
+    def add_feedback(self, section_id: int, name: str, intro: str = "",
+                     items: List[Dict] = None, anonymous: bool = True,
+                     multiple_submit: bool = False, autonumbering: bool = False,
+                     thanks: str = "", completion_on_submit: bool = False,
+                     visible: bool = False) -> int:
+        """
+        Ajoute une activité Feedback (questionnaire natif, sans note).
+
+        Args:
+            items: liste de questions, dans l'ordre. Chaque item est un dict :
+                   {"type": "multichoice", "name": "...", "options": ["Oui", "Non"],
+                    "required": True, "label": "q1"}   (choix unique, boutons radio)
+                   {"type": "textarea", "name": "...", "required": False,
+                    "width": 40, "height": 5}           (réponse texte longue)
+                   {"type": "pagebreak"} / {"type": "label", "name": "<html>"}
+                   (saut de page / texte d'information, sans réponse)
+            anonymous: True = réponses anonymes (le professeur ne voit pas les noms)
+            multiple_submit: True = plusieurs réponses par élève (défaut : une seule)
+            autonumbering: numérotation automatique des questions par Moodle
+            thanks: message affiché après l'envoi (HTML)
+            completion_on_submit: achèvement automatique dès l'envoi
+
+        Returns:
+            ID de l'activité créée
+        """
+        self.activity_counter += 1
+        activity_id = self.activity_counter
+
+        activity = {
+            'id': activity_id,
+            'type': 'feedback',
+            'name': name,
+            'intro': intro,
+            'visible': 1 if visible else 0,
+            'contextid': 1000 + activity_id,
+            'section_id': section_id,
+            'items': items or [],
+            'anonymous': 1 if anonymous else 2,
+            'multiple_submit': 1 if multiple_submit else 0,
+            'autonumbering': 1 if autonumbering else 0,
+            'thanks': thanks,
+            'completionsubmit': 1 if completion_on_submit else 0,
+        }
+        if completion_on_submit:
+            activity['completion'] = 2
+
+        for section in self.sections:
+            if section['id'] == section_id:
+                activity['section_number'] = section['number']
+                section['activities'].append(activity)
+                break
+
+        return activity_id
+
     def add_file_resource(self, section_id: int, name: str, filepath: str,
-                          description: str = "", visible: bool = False) -> int:
+                          description: str = "", visible: bool = False,
+                          display: int = 0, filename: str = None) -> int:
         """
         Ajoute un fichier (PDF, etc.) a une section
 
@@ -153,6 +296,9 @@ class MoodleCourseGenerator:
             filepath: Chemin vers le fichier local
             description: Description de la ressource
             visible: Visibilite (defaut: cache)
+            display: 0 = automatique, 1 = intégré à la page (vidéo, PDF),
+                     2 = forcer le téléchargement, 3 = ouvrir directement
+            filename: nom du fichier dans Moodle (défaut : nom du fichier local)
 
         Returns:
             ID de l'activite creee
@@ -167,7 +313,7 @@ class MoodleCourseGenerator:
 
         # Ajouter le fichier a l'index
         file_info = self._add_file_to_index(
-            filepath, content,
+            filename or filepath, content,
             component='mod_resource',
             filearea='content',
             itemid=0,
@@ -182,6 +328,7 @@ class MoodleCourseGenerator:
             'visible': 1 if visible else 0,
             'contextid': contextid,
             'file_info': file_info,
+            'display': display,
             'section_id': section_id  # Reference a la section
         }
 
@@ -611,7 +758,7 @@ class MoodleCourseGenerator:
     <tobemigrated>0</tobemigrated>
     <legacyfiles>0</legacyfiles>
     <legacyfileslast>$@NULL@$</legacyfileslast>
-    <display>0</display>
+    <display>{activity.get('display', 0)}</display>
     <displayoptions>a:1:{{s:10:"printintro";i:1;}}</displayoptions>
     <filterfiles>0</filterfiles>
     <revision>1</revision>
@@ -1053,6 +1200,138 @@ class MoodleCourseGenerator:
   </question_category>
 </question_categories>'''
 
+    def _generate_assign_xml(self, activity: Dict) -> str:
+        """Genere le XML d'un Devoir (remise de fichiers, sans note)"""
+        configs = [
+            ('file', 'assignsubmission', 'enabled', '0' if activity.get('online_text') else '1'),
+            ('file', 'assignsubmission', 'maxfilesubmissions', str(activity['max_files'])),
+            ('file', 'assignsubmission', 'maxsubmissionsizebytes', str(activity['max_bytes'])),
+            ('file', 'assignsubmission', 'filetypeslist', activity['filetypes']),
+            ('onlinetext', 'assignsubmission', 'enabled', '1' if activity.get('online_text') else '0'),
+            ('comments', 'assignsubmission', 'enabled', '0'),
+            ('comments', 'assignfeedback', 'enabled', '1'),
+            ('comments', 'assignfeedback', 'commentinline', '0'),
+            ('file', 'assignfeedback', 'enabled', '0'),
+            ('editpdf', 'assignfeedback', 'enabled', '0'),
+            ('offline', 'assignfeedback', 'enabled', '0'),
+        ]
+        configs_xml = ""
+        for i, (plugin, subtype, name, value) in enumerate(configs, start=1):
+            configs_xml += f'''      <plugin_config id="{activity['id'] * 100 + i}">
+        <plugin>{plugin}</plugin>
+        <subtype>{subtype}</subtype>
+        <name>{name}</name>
+        <value>{self._escape_xml(value)}</value>
+      </plugin_config>
+'''
+        return f'''<?xml version="1.0" encoding="UTF-8"?>
+<activity id="{activity['id']}" moduleid="{activity['id']}" modulename="assign" contextid="{activity['contextid']}">
+  <assign id="{activity['id']}">
+    <name>{self._escape_xml(activity['name'])}</name>
+    <intro>{self._escape_xml(activity.get('intro', ''))}</intro>
+    <introformat>1</introformat>
+    <alwaysshowdescription>1</alwaysshowdescription>
+    <submissiondrafts>{activity['submissiondrafts']}</submissiondrafts>
+    <sendnotifications>0</sendnotifications>
+    <sendlatenotifications>0</sendlatenotifications>
+    <sendstudentnotifications>1</sendstudentnotifications>
+    <duedate>0</duedate>
+    <cutoffdate>0</cutoffdate>
+    <gradingduedate>0</gradingduedate>
+    <allowsubmissionsfromdate>0</allowsubmissionsfromdate>
+    <grade>0</grade>
+    <timemodified>{self.timestamp}</timemodified>
+    <completionsubmit>{activity['completionsubmit']}</completionsubmit>
+    <requiresubmissionstatement>0</requiresubmissionstatement>
+    <teamsubmission>0</teamsubmission>
+    <requireallteammemberssubmit>0</requireallteammemberssubmit>
+    <teamsubmissiongroupingid>0</teamsubmissiongroupingid>
+    <blindmarking>0</blindmarking>
+    <hidegrader>0</hidegrader>
+    <revealidentities>0</revealidentities>
+    <attemptreopenmethod>untilpass</attemptreopenmethod>
+    <maxattempts>-1</maxattempts>
+    <markingworkflow>0</markingworkflow>
+    <markingallocation>0</markingallocation>
+    <markinganonymous>0</markinganonymous>
+    <preventsubmissionnotingroup>0</preventsubmissionnotingroup>
+    <activity></activity>
+    <activityformat>1</activityformat>
+    <timelimit>0</timelimit>
+    <submissionattachments>0</submissionattachments>
+    <userflags>
+    </userflags>
+    <submissions>
+    </submissions>
+    <grades>
+    </grades>
+    <plugin_configs>
+{configs_xml}    </plugin_configs>
+    <overrides>
+    </overrides>
+  </assign>
+</activity>'''
+
+    def _generate_feedback_xml(self, activity: Dict) -> str:
+        """Genere le XML d'une activité Feedback (format de sauvegarde mod_feedback)"""
+        items_xml = ""
+        position = 0
+        for item in activity['items']:
+            kind = item.get('type', 'multichoice')
+            position += 1
+            required = 1 if item.get('required', False) else 0
+            label = item.get('label', '')
+            if kind == 'multichoice':
+                # r = boutons radio (choix unique), séparateur >>>>> puis options séparées par |
+                presentation = "r>>>>>" + "|".join(item['options'])
+                typ, hasvalue, options = 'multichoice', 1, ''
+            elif kind == 'textarea':
+                presentation = f"{item.get('width', 40)}|{item.get('height', 5)}"
+                typ, hasvalue, options = 'textarea', 1, ''
+            elif kind == 'pagebreak':
+                presentation, typ, hasvalue, options, required = '', 'pagebreak', 0, '', 0
+            elif kind == 'label':
+                presentation, typ, hasvalue, options, required = item.get('name', ''), 'label', 0, '', 0
+            else:
+                raise ValueError(f"Type d'item feedback inconnu : {kind}")
+            name = '' if kind in ('pagebreak', 'label') else item['name']
+            items_xml += f'''        <item id="{activity['id'] * 100 + position}">
+          <template>0</template>
+          <name>{self._escape_xml(name)}</name>
+          <label>{self._escape_xml(label)}</label>
+          <presentation>{self._escape_xml(presentation)}</presentation>
+          <typ>{typ}</typ>
+          <hasvalue>{hasvalue}</hasvalue>
+          <position>{position}</position>
+          <required>{required}</required>
+          <dependitem>0</dependitem>
+          <dependvalue></dependvalue>
+          <options>{options}</options>
+        </item>
+'''
+        return f'''<?xml version="1.0" encoding="UTF-8"?>
+<activity id="{activity['id']}" moduleid="{activity['id']}" modulename="feedback" contextid="{activity['contextid']}">
+  <feedback id="{activity['id']}">
+    <name>{self._escape_xml(activity['name'])}</name>
+    <intro>{self._escape_xml(activity.get('intro', ''))}</intro>
+    <introformat>1</introformat>
+    <anonymous>{activity['anonymous']}</anonymous>
+    <email_notification>0</email_notification>
+    <multiple_submit>{activity['multiple_submit']}</multiple_submit>
+    <autonumbering>{activity['autonumbering']}</autonumbering>
+    <site_after_submit></site_after_submit>
+    <page_after_submit>{self._escape_xml(activity.get('thanks', ''))}</page_after_submit>
+    <page_after_submitformat>1</page_after_submitformat>
+    <publish_stats>0</publish_stats>
+    <timeopen>0</timeopen>
+    <timeclose>0</timeclose>
+    <timemodified>{self.timestamp}</timemodified>
+    <completionsubmit>{activity['completionsubmit']}</completionsubmit>
+    <items>
+{items_xml}    </items>
+  </feedback>
+</activity>'''
+
     def _generate_module_xml(self, activity: Dict) -> str:
         """Genere module.xml pour une activite"""
         section_id = activity.get('section_id', 1)
@@ -1071,12 +1350,12 @@ class MoodleCourseGenerator:
   <visibleold>1</visibleold>
   <groupmode>0</groupmode>
   <groupingid>0</groupingid>
-  <completion>0</completion>
+  <completion>{activity.get('completion', 0)}</completion>
   <completiongradeitemnumber>$@NULL@$</completiongradeitemnumber>
   <completionpassgrade>0</completionpassgrade>
-  <completionview>0</completionview>
+  <completionview>{activity.get('completionview', 0)}</completionview>
   <completionexpected>0</completionexpected>
-  <availability>$@NULL@$</availability>
+  <availability>{self._escape_xml(activity['availability']) if activity.get('availability') else '$@NULL@$'}</availability>
   <showdescription>0</showdescription>
   <downloadcontent>1</downloadcontent>
   <lang></lang>
@@ -1204,6 +1483,12 @@ class MoodleCourseGenerator:
                     elif activity['type'] == 'h5pactivity':
                         (activity_path / "h5pactivity.xml").write_text(
                             self._generate_h5pactivity_xml(activity), encoding='utf-8')
+                    elif activity['type'] == 'assign':
+                        (activity_path / "assign.xml").write_text(
+                            self._generate_assign_xml(activity), encoding='utf-8')
+                    elif activity['type'] == 'feedback':
+                        (activity_path / "feedback.xml").write_text(
+                            self._generate_feedback_xml(activity), encoding='utf-8')
 
                     # Fichiers communs
                     (activity_path / "module.xml").write_text(
@@ -1301,6 +1586,8 @@ def main():
         )
 
         skipped_files = []
+        keys = {}      # clé déclarée dans le JSON -> id d'activité
+        pending = []   # (act, id) à traiter après création : completion, unlock_after
 
         for sec in config.get('sections', []):
             section_id = gen.add_section(
@@ -1310,7 +1597,29 @@ def main():
             )
 
             for act in sec.get('activities', []):
-                if act['type'] == 'file':
+                created_before = gen.activity_counter
+                if act['type'] == 'assign':
+                    gen.add_assign(
+                        section_id, act['name'], act.get('intro', ''),
+                        max_files=act.get('max_files', 5),
+                        filetypes=act.get('filetypes', 'image,.pdf'),
+                        max_bytes=act.get('max_bytes', 0),
+                        require_submit_button=act.get('require_submit_button', False),
+                        completion_on_submit=act.get('completion_on_submit', True),
+                        visible=act.get('visible', False)
+                    )
+                elif act['type'] == 'feedback':
+                    gen.add_feedback(
+                        section_id, act['name'], act.get('intro', ''),
+                        items=act.get('items', []),
+                        anonymous=act.get('anonymous', True),
+                        multiple_submit=act.get('multiple_submit', False),
+                        autonumbering=act.get('autonumbering', False),
+                        thanks=act.get('thanks', ''),
+                        completion_on_submit=act.get('completion_on_submit', False),
+                        visible=act.get('visible', False)
+                    )
+                elif act['type'] == 'file':
                     # Verifier que le fichier est valide (pas une source)
                     if not MoodleCourseGenerator.is_valid_file(act['path']):
                         skipped_files.append(act['path'])
@@ -1322,7 +1631,8 @@ def main():
                     gen.add_file_resource(
                         section_id, act['name'], act['path'],
                         act.get('description', ''),
-                        act.get('visible', False)
+                        act.get('visible', False),
+                        display=act.get('display', 0)
                     )
                 elif act['type'] == 'page':
                     gen.add_page(
@@ -1343,6 +1653,27 @@ def main():
                         h5p_type=act.get('h5p_type', 'questionset'),
                         visible=act.get('visible', False)
                     )
+
+                if gen.activity_counter > created_before:
+                    new_id = gen.activity_counter
+                    if 'key' in act:
+                        keys[act['key']] = new_id
+                    pending.append((act, new_id))
+
+        # Achèvement et restrictions d'accès (les clés peuvent viser une activité plus loin)
+        for act, act_id in pending:
+            if 'completion' in act:
+                # "manual" | "view" | "none"
+                mode = {'none': (0, False), 'manual': (1, False), 'view': (2, True)}[act['completion']]
+                gen.set_completion(act_id, mode[0], view=mode[1])
+            if act.get('unlock_after'):
+                required = act['unlock_after']
+                required = [required] if isinstance(required, str) else required
+                missing = [k for k in required if k not in keys]
+                if missing:
+                    raise SystemExit(f"unlock_after : clé(s) inconnue(s) {missing} dans « {act['name']} »")
+                gen.add_unlock_condition(act_id, [keys[k] for k in required],
+                                         show_greyed=act.get('show_greyed', True))
 
         if skipped_files:
             print(f"Fichiers sources exclus ({len(skipped_files)}):")

@@ -1,0 +1,92 @@
+---
+niveau: TSPE
+page: 13
+pdf: tspe.pdf
+page_folder: TSPE
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/TSPE/page_013.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: false
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 13 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/TSPE/page_013.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+l’inégalité qui porte leur nom, en parlant de fréquences d’échantillons plutôt que de variables aléatoires. Ils fournissent ainsi la 
+possibilité d’une démonstration plus simple de la loi des grands nombres. 
+Au début du XIXe siècle, la modélisation des erreurs de mesure va devenir centrale pour faire de la statistique une science à 
+part entière. Lagrange et Laplace développent une approche probabiliste de la théorie des erreurs. Gauss (1809, 1821), après 
+Legendre (1805), imagine une méthode des moindres carrés qu’il applique avec succès à la prédiction de la position d’un 
+astéroïde. Il y propose de comprendre l’écart-type comme une « erreur moyenne à craindre ». 
+L’introduction de méthodes statistiques en sociologie est l’œuvre du mathématicien et astronome belge Quételet dans les années 
+1830. Il réfléchit à la distribution de données autour de la moyenne, ce qui sera approfondi notamment par l’Anglais Galton. 
+Succession d’épreuves indépendantes, schéma de Bernoulli 
+Contenus 
+− Modèle de la succession d’épreuves indépendantes : la probabilité d’une issue (x1, …, xn) est égale au produit des 
+probabilités des composantes xi. Représentation par un produit cartésien, par un arbre. 
+− Épreuve de Bernoulli, loi de Bernoulli. 
+− Schéma de Bernoulli : répétition de n épreuves de Bernoulli indépendantes. 
+− Loi binomiale ℬ(n,p) : loi du nombre de succès. Expression à l’aide des coefficients binomiaux. 
+Capacités attendues 
+− Modéliser une situation par une succession d’épreuves indépendantes, ou une succession de deux ou trois épreuves 
+quelconques. Représenter la situation par un arbre. Calculer une probabilité en utilisant l’indépendance, des probabilités 
+conditionnelles, la formule des probabilités totales. 
+− Modéliser une situation par un schéma de Bernoulli, par une loi binomiale. 
+− Utiliser l’expression de la loi binomiale pour résoudre un problème de seuil, de comparaison, d’optimisation relatif à des 
+probabilités de nombre de succès. 
+− Dans le cadre d’une résolution de problème modélisé par une variable binomiale X, calculer numériquement une 
+probabilité du type P(X = k), P(X ⩽ k), P(k ⩽ X ⩽ k’ ), en s’aidant au besoin d’un algorithme ; chercher un intervalle I pour 
+lequel la probabilité P(X ∈ I ) est inférieure à une valeur donnée α, ou supérieure à 1 – α. 
+Démonstration 
+− Expression de la probabilité de k succès dans le schéma de Bernoulli. 
+Exemples d’algorithme 
+− Simulation de la planche de Galton. 
+− Problème de la surréservation. Étant donné une variable aléatoire binomiale X et un réel strictement positif α, 
+détermination du plus petit entier k tel que P(X > k) ⩽ α. 
+− Simulation d’un échantillon d’une variable aléatoire. 
+Approfondissements possibles 
+− Loi géométrique. 
+− Introduction de la loi de Poisson comme limite de lois binomiales. Interprétation (évènements rares). 
+Sommes de variables aléatoires 
+Cette section prolonge le programme de la classe de première sur les variables aléatoires en considérant des modèles 
+probabilistes où interviennent deux ou plusieurs variables aléatoires, l’intérêt se portant sur leur somme, et notamment sur 
+l’espérance et la variance de cette somme. 
+Les élèves ont déjà eu l’occasion, dans les classes antérieures, de rencontrer des exemples qui entrent dans ce cadre : lancers 
+de deux dés, tirage de boules numérotées dans une urne (avec ou sans remise), roues de loterie, etc. En classe terminale, le 
+schéma de Bernoulli est un exemple fondamental, où le nombre de succès peut être représenté comme somme de variables de 
+Bernoulli indépendantes de même loi ; plus généralement, le modèle de la succession d’épreuves indépendantes fournit 
+naturellement des exemples de variables aléatoires indépendantes. 
+L’objectif est de rendre l’élève capable d’utiliser la linéarité de l’espérance pour des variables aléatoires quelconque et 
+l’additivité de la variance pour des variables indépendantes dans diverses situations. Il s’agit de développer l’intuition 
+probabiliste, les compétences de calcul et de raisonnement sur les variables aléatoires. 
+La démonstration de la linéarité de l’espérance nécessite de formaliser les variables aléatoires comme des fonctions sur 
+l’univers et d’utiliser l’expression de l’espérance comme moyenne pondérée sur l’ensemble des issues. Les professeurs peuvent 
+choisir de l’admettre, ou de la justifier sur un exemple. 
+Les variables indépendantes considérées dans le programme sont toujours envisagées dans le cadre de la succession 
+d’épreuves indépendantes. L’hypothèse d’indépendance étant constitutive du modèle considéré, toute question visant à 
+justifier l’indépendance de variables aléatoires données a priori est en dehors des objectifs du programme. 
+L’additivité de la variance pour la somme de deux variables indépendantes est admise. La relation E(XY) = E(X)E(Y) pour des 
+variables indépendantes n’est pas un attendu du programme. 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

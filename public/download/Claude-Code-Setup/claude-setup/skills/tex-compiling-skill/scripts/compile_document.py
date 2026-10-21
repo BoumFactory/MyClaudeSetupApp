@@ -184,8 +184,8 @@ Usage pour l'agent:
         "--clean",
         dest="clean_aux",
         action="store_true",
-        default=True,
-        help="Nettoyer les fichiers auxiliaires (défaut: activé)"
+        default=False,
+        help="Nettoyer les fichiers auxiliaires (défaut: désactivé)"
     )
 
     parser.add_argument(

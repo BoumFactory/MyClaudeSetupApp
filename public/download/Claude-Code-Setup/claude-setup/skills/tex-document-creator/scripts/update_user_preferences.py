@@ -28,7 +28,7 @@ async def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Exemples:
-  python update_user_preferences.py --default-values '{"niveau": "2nde", "nom_etablissement": "Claudel"}'
+  python update_user_preferences.py --default-values '{"niveau": "2nde", "nom_etablissement": "Exemple"}'
   python update_user_preferences.py --favorite-options '{"type_etablissement": "Lycée"}'
   python update_user_preferences.py --structure-options '{"create_folder": true, "create_sections_folder": true}'
         """

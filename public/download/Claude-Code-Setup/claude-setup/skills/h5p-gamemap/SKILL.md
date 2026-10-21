@@ -11,11 +11,11 @@ Génère des parcours pédagogiques gamifiés au format H5P Game Map pour Moodle
 /createGameMap [chemin] [--style STYLE] [--etapes N] [--output DOSSIER]
 ```
 
-### 2. Délégation par agent meta-high (intégration /moodleise)
+### 2. Délégation par agent (intégration /moodleise)
 
-Ce skill est automatiquement utilisé par `/moodleise` en modes **Enrichi** ou **Parcours complet**.
+Ce skill est utilisé par `/moodleise` (skill `moodle-course-creator`) en modes **Enrichi** ou **Parcours complet**.
 
-L'agent principal lance un `meta-high` avec le prompt :
+L'agent principal lance un agent (`meta-high`) avec le prompt :
 ```
 Utilise le skill h5p-gamemap (/createGameMap) pour créer un parcours gamifié complet.
 Contexte : [niveau], [thème], [contenu pédagogique extrait]
@@ -36,7 +36,7 @@ Voir la commande `/createGameMap` pour l'arbre de décision complet.
 ### 1. Génération du préplan
 
 ```bash
-/createGameMap "1. Cours/1ere/Sequence-Suites/Capsule_H5P/" --preplan --theme "Suites numériques" --niveau 1ere
+/createGameMap "<dossier de la séquence>/Capsule_H5P/" --preplan --theme "Suites numériques" --niveau 1ere
 ```
 
 Cela génère un fichier `preplan_gamemap.md` à modifier.
@@ -54,7 +54,7 @@ L'utilisateur modifie le fichier Markdown :
 Avant de générer le H5P final, lancer l'outil de prévisualisation :
 
 ```bash
-python ".claude/skills/creer/moodle/h5p-gamemap/scripts/hotspot_preview.py" \
+python ".claude/skills/h5p-gamemap/scripts/hotspot_preview.py" \
   --image "chemin/background.png" \
   --positions "chemin/preplan_gamemap.md" \
   --update-preplan
@@ -67,7 +67,7 @@ L'utilisateur peut alors repositionner visuellement les hotspots sur la carte.
 Après validation du préplan :
 
 ```bash
-/createGameMap "1. Cours/1ere/Sequence-Suites/Capsule_H5P/" --from-preplan
+/createGameMap "<dossier de la séquence>/Capsule_H5P/" --from-preplan
 ```
 
 ---
@@ -162,7 +162,7 @@ Les positions x/y en % ne correspondent pas toujours visuellement à l'image de 
 **⚠️ TOUJOURS lancer le script de prévisualisation AVANT de générer le H5P final :**
 
 ```bash
-python ".claude/skills/creer/moodle/h5p-gamemap/scripts/hotspot_preview.py" \
+python ".claude/skills/h5p-gamemap/scripts/hotspot_preview.py" \
   --image "[dossier]/background.png" \
   --positions "[dossier]/preplan_gamemap.md" \
   --update-preplan
@@ -423,7 +423,7 @@ L'outil `hotspot_preview.py` crée un fichier signal `.done` ou `.cancelled` pou
 - Python 3.8+
 - Modules obligatoires : `json`, `zipfile`, `uuid`, `pathlib`, `re`
 - Modules pour prévisualisation : `tkinter`, `pillow`
-- Optionnel : Skill `image-generator` pour les fonds
+- Optionnel : un outil de génération d'images pour les fonds
 
 Installation des dépendances GUI :
 ```bash
@@ -434,6 +434,5 @@ pip install pillow
 
 ## Voir aussi
 
-- `ETAT_DES_LIEUX.md` - Documentation technique complète
-- `templates/PREPLAN_TEMPLATE.md` - Template de préplan
-- `examples/` - Exemples de parcours
+- `references/ETAT_DES_LIEUX.md` - Documentation technique complète
+- `examples/preplan_gamemap.md` - Exemple de préplan

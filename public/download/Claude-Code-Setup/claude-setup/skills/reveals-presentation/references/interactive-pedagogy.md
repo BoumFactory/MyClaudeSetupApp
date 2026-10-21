@@ -291,7 +291,7 @@ Reveal.on('slidechanged', event => {
 
 Un pad de navigation visuel peut être ajouté en bas à droite de l'écran avec des boutons directionnels actifs/inactifs selon le contenu disponible.
 
-Voir template : `.claude/datas/reveal-templates/template-navigation-2d-demo.html`
+Voir template : `assets/templates/template-navigation-2d-demo.html`
 
 ## Exemples complets
 

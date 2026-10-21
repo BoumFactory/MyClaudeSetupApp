@@ -29,8 +29,10 @@ VISUALISEUR_TEMPLATE = '''<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualiseur H5P Branching Scenario</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <!-- polyfill.io retire (domaine mort depuis 2024, bloquait le chargement). -->
+    <!-- MathJax sur jsDelivr (fiable) ; en l'absence de reseau, le contenu reste lisible (LaTeX brut). -->
+    <script>window.MathJax = { tex: { inlineMath: [['\\\\(','\\\\)']], displayMath: [['\\\\[','\\\\]']] } };</script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -232,6 +234,26 @@ VISUALISEUR_TEMPLATE = '''<!DOCTYPE html>
             border-left: 3px solid #3498db;
             border-radius: 4px;
         }
+
+        .slide-preview {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 14px;
+            margin: 12px 0;
+            background: #fff;
+        }
+        body.dark-mode .slide-preview { background:#252525; border-color:#444; }
+        .slide-num {
+            font-size: 12px; text-transform: uppercase; letter-spacing: .5px;
+            color: #888; margin-bottom: 8px;
+        }
+        .slide-body { line-height: 1.6; }
+        .quiz-preview {
+            margin-top: 10px; padding: 10px; border-radius: 4px;
+            background: #eef6ff; border-left: 3px solid #2980b9;
+        }
+        body.dark-mode .quiz-preview { background:#1f2d3a; }
+        .quiz-answer { padding: 3px 0; }
 
         body.dark-mode .alternative {
             background: #2a2a2a;
@@ -494,10 +516,12 @@ VISUALISEUR_TEMPLATE = '''<!DOCTYPE html>
         function showNodePreview(idx) {
             currentNode = idx;
             const content = document.getElementById('content-area');
-            document.querySelectorAll('.tree-item button').forEach((btn, i) => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+            // Repère le bouton par index (robuste : ne dépend pas du global
+            // event, qui est indéfini lors d'un appel programmatique ou sur Firefox).
+            const buttons = document.querySelectorAll('.tree-item button');
+            buttons.forEach((btn) => btn.classList.remove('active'));
+            const activeBtn = buttons[idx + 1];  // bouton 0 = titre (idx -1)
+            if (activeBtn) activeBtn.classList.add('active');
 
             if (idx === -1) {
                 content.innerHTML = `
@@ -546,10 +570,20 @@ VISUALISEUR_TEMPLATE = '''<!DOCTYPE html>
                 } else if (node.type === 'course_presentation') {
                     html += `<h3>Diapositives (${node.slides?.length || 0})</h3>`;
                     (node.slides || []).forEach((slide, i) => {
-                        html += `<p><strong>Slide ${i+1}:</strong> ${slide.content?.substring(0, 100) || '(vide)'}...</p>`;
+                        html += `<div class="slide-preview"><div class="slide-num">Diapositive ${i+1}</div>`;
+                        html += `<div class="slide-body">${slide.content || '<em>(vide)</em>'}</div>`;
+                        (slide.interactions || []).forEach((it) => {
+                            html += `<div class="quiz-preview"><strong>Quiz (${it.type||'?'})</strong> : ${it.question||''}`;
+                            (it.answers || []).forEach((a) => {
+                                const ok = a.correct ? '✅' : '⬜';
+                                html += `<div class="quiz-answer">${ok} ${a.text||''}${a.feedback?` <small>— ${a.feedback}</small>`:''}</div>`;
+                            });
+                            html += `</div>`;
+                        });
+                        html += `</div>`;
                     });
                 } else {
-                    html += `<h3>Contenu</h3><p>${node.content || '(vide)'}</p>`;
+                    html += `<h3>Contenu</h3><div>${node.content || '<em>(vide)</em>'}</div>`;
                 }
 
                 if (node.feedback) {
@@ -566,6 +600,9 @@ VISUALISEUR_TEMPLATE = '''<!DOCTYPE html>
             }
 
             displayRemarks();
+            if (window.MathJax && MathJax.typesetPromise) {
+                MathJax.typesetPromise([content]).catch(function(){});
+            }
         }
 
         function showEmptyState() {
@@ -580,7 +617,7 @@ VISUALISEUR_TEMPLATE = '''<!DOCTYPE html>
 
         function addRemark() {
             if (currentNode === null) {
-                alert('Sélectionnez un nœud d\'abord');
+                alert("Sélectionnez un nœud d'abord");
                 return;
             }
 
@@ -657,7 +694,13 @@ VISUALISEUR_TEMPLATE = '''<!DOCTYPE html>
             preplan = __EMBEDDED_PREPLAN__;
             document.getElementById('file-input-section').style.display = 'none';
             renderTree();
-            showEmptyState();
+            // Auto-sélection d'un nœud via ?node=N (capture par l'agent), sinon aperçu vide.
+            const nParam = new URLSearchParams(location.search).get('node');
+            if (nParam !== null && preplan.nodes && preplan.nodes[parseInt(nParam,10)]) {
+                showNodePreview(parseInt(nParam, 10));
+            } else {
+                showEmptyState();
+            }
         }
     </script>
 </body>

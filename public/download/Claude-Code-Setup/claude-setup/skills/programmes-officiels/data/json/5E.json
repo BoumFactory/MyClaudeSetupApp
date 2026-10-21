@@ -1,0 +1,3963 @@
+{
+  "meta": {
+    "niveau": "5E",
+    "nom": "Cinquième",
+    "cycle": "C4",
+    "bo_reference": "BO n°10 du 5 mars 2026",
+    "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+    "pdf": "cycle4.pdf",
+    "applicable_a_partir_de": "Rentrée 2026",
+    "generated": "2026-05-21T20:18:35+00:00",
+    "agent_version": "v2.0-mechanical",
+    "total_competences": 121,
+    "status": "mechanical_extraction",
+    "_note_status": "Extraction mécanique depuis bullets BO (script 05_competences_from_bullets.py). Aucune régurgitation LLM. Champ formulation_bo strictement issu du PDF.",
+    "automatismes_source": "Liste-des-automatismes-5e.pdf (extraction mécanique) ; sous-domaines & pages alignés BO cycle4.pdf, vérifiés visuellement (R-13)."
+  },
+  "stats": {
+    "by_domaine": {
+      "NB": 35,
+      "AL": 21,
+      "GEO": 39,
+      "STA": 7,
+      "PR": 4,
+      "AN": 8,
+      "ALGO": 7
+    },
+    "by_type": {
+      "capacite": 106,
+      "approfondissement": 15
+    }
+  },
+  "objectifs": "Programme officiel du niveau 5E (Cinquième), BO n°10 du 5 mars 2026. Voir le PDF source (cycle4.pdf) pour les objectifs détaillés dans le préambule.",
+  "automatismes": [
+    "Mobiliser les critères de divisibilité par 2, 5 et 10 vus en CM1 et CM2.",
+    "Déterminer le quotient et le reste dans une division euclidienne, par exemple, savoir que 17 = 3 × 5 + 2.",
+    "Utiliser les tables de multiplication pour factoriser des nombres entiers décomposables en produit de deux nombres différents de 1, par exemple, 21 = 3 × 7.",
+    "Savoir calculer des produits en lien avec les tables : 0,6 × 7 ; 40 × 0,03.",
+    "Multiplier et diviser par 10, 100, 1 000.",
+    "Additionner et soustraire des décimaux, par exemple, 2,7 + 1,4 ; 3,4 – 0,8.",
+    "Additionner, soustraire, multiplier des nombres décimaux à une ou deux décimales.",
+    "Savoir que pour compléter une addition à trou, on utilise une soustraction : 2 +... = 7 se complète en calculant 7 – 2.",
+    "Entretenir la connaissance et l’utilisation des tables de multiplication.",
+    "Entretenir l’écriture décimale des fractions simples comme 1/2 ; 1/4 ; 3/4 ; 3/2 ; 4/2 ; 5/2 ; 1/10 ; 100/100 ; 7/1.",
+    "Faire vivre la notion de nombre quotient en complétant des multiplications à trou : 3 × … = 7 puis 3 × 7/3 = …",
+    "Lire l’abscisse d’un point sur une droite graduée en tiers, en quarts, en moitiés, en dixièmes.",
+    "Reconnaitre des fractions égales : 2/3 = …/15 ; 4/7 = …/14.",
+    "Comparer deux fractions : 2/7 et 5/7 ; 8/12 et 8/21 ; 3/4 et 7/18 ; 8/3 et 6/7.",
+    "Écrire une fraction sous la forme d’une somme d’un nombre entier et d’une fraction inférieure à 1 : 17/5 = 3 + 2/5.",
+    "Addition et soustraction de fractions simples : 3/5 + 4/5 ; 1 – 2/3 ; 4/7 – 2/21 ; 3 + 2/5 ; 2/5 + 1/4.",
+    "Prendre une fraction simple d’un nombre : le 1/3 de 18 ; le 1/4 de 12.",
+    "Prendre 1 %, 10 % ou 50 % d’un nombre, en lien avec la proportionnalité.",
+    "Écrire un même nombre sous de multiples formes, par exemple dire que 1,2 = 12/10 = 6/5 = 1 + 1/5 = 120 % = 120/100 etc.",
+    "Entretenir les tables de multiplications.",
+    "Connaitre les unités d’aires et de volume.",
+    "Identifier des régularités et poursuivre une suite de motifs évolutive.",
+    "Trouver le nombre d’éléments pour une étape donnée dans une suite de motifs évolutive.",
+    "Identifier la structure d’un motif évolutif en repérant une régularité.",
+    "Nombre quotient.",
+    "Placer sur une demi-droite graduée un point dont l’abscisse est un nombre décimal.",
+    "Repérer un nombre décimal sur une demi-droite graduée.",
+    "Reconnaitre des vues (de dessus, dessous…) d’empilements de cubes.",
+    "Dénombrer des cubes dans des empilements.",
+    "Reconnaitre un cube, un pavé représenté en perspective cavalière.",
+    "Reconnaitre un patron d’un cube.",
+    "Reconnaitre et construire le symétrique d’une figure par symétrie axiale, dont l’axe est vertical, horizontal, ou en diagonale sur quadrillage.",
+    "Construire le symétrique, par rapport à un axe, d’un point, d’une figure, sur feuille blanche.",
+    "Reconnaitre et citer sur une configuration géométrique des angles : angle plein, plat, nul, droit ; angles opposés par le sommet, adjacents, supplémentaires, aigus, obtus.",
+    "Savoir qu’un angle droit mesure 90°, qu’un angle plat mesure 180°.",
+    "Reconnaitre une bissectrice.",
+    "Connaitre les mesures des angles de l’équerre dont dispose l’élève (30° 60° 90° ou 45° 45° 90°).",
+    "Reconnaitre un triangle isocèle, équilatéral ou rectangle à partir d’un schéma codé.",
+    "Connaitre la somme des angles d’un triangle, calculer le 3e angle d’un triangle connaissant les mesures des deux autres.",
+    "Connaitre la notion de médiatrice, de cercle circonscrit.",
+    "Reconnaitre en justifiant un quadrilatère, un parallélogramme, un rectangle, un losange, un carré, un trapèze, un pentagone, un hexagone dans des figures complexes.",
+    "Exploiter le codage d’une figure pour identifier des parallélogrammes particuliers.",
+    "Positionner sur une échelle de probabilité les évènements du type : évènement impossible ; évènement certain ; obtenir pile en lançant une pièce équilibrée ; obtenir une valeur donnée en lançant un dé équilibré ; obtenir une couleur d’une boule lors du tirage dans une urne ; ne pas obtenir la bonne combinaison au loto ; obtenir 10 fois de suite la valeur 1 en lançant un dé à six faces.",
+    "Donner la probabilité sous diverses formes (fraction, décimale, pourcentage) pour les cinq premiers évènements ci-dessus.",
+    "Lier l’expression « une chance sur quatre » (par exemple) et la probabilité 1/4.",
+    "Reconnaitre si une situation donnée entre dans le cadre de la proportionnalité ou non.",
+    "Dans des situations simples, mobiliser une procédure adaptée (propriété de linéarité pour la multiplication ou l’addition, retour à l’unité) pour résoudre un problème lié à la proportionnalité. Par exemple : à partir d’une recette pour 4 personnes, on sait donner (ou verbaliser la procédure) les quantités lorsque l’on passe à 2, 8 ou 6 personnes ; si l’on connait le prix d’un kilogramme de tomates, on sait comment calculer le prix de 3 kg ou de 4,3 kg de tomates ; lors de l’élection des délégués de la classe, 4 élèves se présentent. Chaque élève a voté pour un seul candidat. Voici les résultats : Alexis 6, Chloé 12, Salma 3, Djibril 3, Total 24. Calculer le pourcentage de voix de chaque candidat."
+  ],
+  "automatismes_detailed": [
+    {
+      "text": "Mobiliser les critères de divisibilité par 2, 5 et 10 vus en CM1 et CM2.",
+      "sous_domaine": "Opérations",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 7,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_007.png"
+      }
+    },
+    {
+      "text": "Déterminer le quotient et le reste dans une division euclidienne, par exemple, savoir que 17 = 3 × 5 + 2.",
+      "sous_domaine": "Opérations",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 7,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_007.png"
+      }
+    },
+    {
+      "text": "Utiliser les tables de multiplication pour factoriser des nombres entiers décomposables en produit de deux nombres différents de 1, par exemple, 21 = 3 × 7.",
+      "sous_domaine": "Opérations",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 7,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_007.png"
+      }
+    },
+    {
+      "text": "Savoir calculer des produits en lien avec les tables : 0,6 × 7 ; 40 × 0,03.",
+      "sous_domaine": "Opérations",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 7,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_007.png"
+      }
+    },
+    {
+      "text": "Multiplier et diviser par 10, 100, 1 000.",
+      "sous_domaine": "Opérations",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 7,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_007.png"
+      }
+    },
+    {
+      "text": "Additionner et soustraire des décimaux, par exemple, 2,7 + 1,4 ; 3,4 – 0,8.",
+      "sous_domaine": "Opérations",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 7,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_007.png"
+      }
+    },
+    {
+      "text": "Additionner, soustraire, multiplier des nombres décimaux à une ou deux décimales.",
+      "sous_domaine": "Nombres relatifs",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 7,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_007.png"
+      }
+    },
+    {
+      "text": "Savoir que pour compléter une addition à trou, on utilise une soustraction : 2 +... = 7 se complète en calculant 7 – 2.",
+      "sous_domaine": "Nombres relatifs",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 7,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_007.png"
+      }
+    },
+    {
+      "text": "Entretenir la connaissance et l’utilisation des tables de multiplication.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Entretenir l’écriture décimale des fractions simples comme 1/2 ; 1/4 ; 3/4 ; 3/2 ; 4/2 ; 5/2 ; 1/10 ; 100/100 ; 7/1.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Faire vivre la notion de nombre quotient en complétant des multiplications à trou : 3 × … = 7 puis 3 × 7/3 = …",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Lire l’abscisse d’un point sur une droite graduée en tiers, en quarts, en moitiés, en dixièmes.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Reconnaitre des fractions égales : 2/3 = …/15 ; 4/7 = …/14.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Comparer deux fractions : 2/7 et 5/7 ; 8/12 et 8/21 ; 3/4 et 7/18 ; 8/3 et 6/7.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Écrire une fraction sous la forme d’une somme d’un nombre entier et d’une fraction inférieure à 1 : 17/5 = 3 + 2/5.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Addition et soustraction de fractions simples : 3/5 + 4/5 ; 1 – 2/3 ; 4/7 – 2/21 ; 3 + 2/5 ; 2/5 + 1/4.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Prendre une fraction simple d’un nombre : le 1/3 de 18 ; le 1/4 de 12.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Prendre 1 %, 10 % ou 50 % d’un nombre, en lien avec la proportionnalité.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Écrire un même nombre sous de multiples formes, par exemple dire que 1,2 = 12/10 = 6/5 = 1 + 1/5 = 120 % = 120/100 etc.",
+      "sous_domaine": "Nombres rationnels",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Entretenir les tables de multiplications.",
+      "sous_domaine": "Puissances",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Connaitre les unités d’aires et de volume.",
+      "sous_domaine": "Puissances",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Identifier des régularités et poursuivre une suite de motifs évolutive.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Trouver le nombre d’éléments pour une étape donnée dans une suite de motifs évolutive.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Identifier la structure d’un motif évolutif en repérant une régularité.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Nombre quotient.",
+      "sous_domaine": "Calcul littéral et algébrique",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 8,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_008.png"
+      }
+    },
+    {
+      "text": "Placer sur une demi-droite graduée un point dont l’abscisse est un nombre décimal.",
+      "sous_domaine": "Repérage sur une droite et dans le plan",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 12,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_012.png"
+      }
+    },
+    {
+      "text": "Repérer un nombre décimal sur une demi-droite graduée.",
+      "sous_domaine": "Repérage sur une droite et dans le plan",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 12,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_012.png"
+      }
+    },
+    {
+      "text": "Reconnaitre des vues (de dessus, dessous…) d’empilements de cubes.",
+      "sous_domaine": "Représentation de l’espace",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 12,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_012.png"
+      }
+    },
+    {
+      "text": "Dénombrer des cubes dans des empilements.",
+      "sous_domaine": "Représentation de l’espace",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 12,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_012.png"
+      }
+    },
+    {
+      "text": "Reconnaitre un cube, un pavé représenté en perspective cavalière.",
+      "sous_domaine": "Représentation de l’espace",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 12,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_012.png"
+      }
+    },
+    {
+      "text": "Reconnaitre un patron d’un cube.",
+      "sous_domaine": "Représentation de l’espace",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 12,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_012.png"
+      }
+    },
+    {
+      "text": "Reconnaitre et construire le symétrique d’une figure par symétrie axiale, dont l’axe est vertical, horizontal, ou en diagonale sur quadrillage.",
+      "sous_domaine": "Transformations",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 12,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_012.png"
+      }
+    },
+    {
+      "text": "Construire le symétrique, par rapport à un axe, d’un point, d’une figure, sur feuille blanche.",
+      "sous_domaine": "Transformations",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 12,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_012.png"
+      }
+    },
+    {
+      "text": "Reconnaitre et citer sur une configuration géométrique des angles : angle plein, plat, nul, droit ; angles opposés par le sommet, adjacents, supplémentaires, aigus, obtus.",
+      "sous_domaine": "Angles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 13,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_013.png"
+      }
+    },
+    {
+      "text": "Savoir qu’un angle droit mesure 90°, qu’un angle plat mesure 180°.",
+      "sous_domaine": "Angles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 13,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_013.png"
+      }
+    },
+    {
+      "text": "Reconnaitre une bissectrice.",
+      "sous_domaine": "Angles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 13,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_013.png"
+      }
+    },
+    {
+      "text": "Connaitre les mesures des angles de l’équerre dont dispose l’élève (30° 60° 90° ou 45° 45° 90°).",
+      "sous_domaine": "Angles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 13,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_013.png"
+      }
+    },
+    {
+      "text": "Reconnaitre un triangle isocèle, équilatéral ou rectangle à partir d’un schéma codé.",
+      "sous_domaine": "Triangles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 13,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_013.png"
+      }
+    },
+    {
+      "text": "Connaitre la somme des angles d’un triangle, calculer le 3e angle d’un triangle connaissant les mesures des deux autres.",
+      "sous_domaine": "Triangles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 13,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_013.png"
+      }
+    },
+    {
+      "text": "Connaitre la notion de médiatrice, de cercle circonscrit.",
+      "sous_domaine": "Triangles",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 13,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_013.png"
+      }
+    },
+    {
+      "text": "Reconnaitre en justifiant un quadrilatère, un parallélogramme, un rectangle, un losange, un carré, un trapèze, un pentagone, un hexagone dans des figures complexes.",
+      "sous_domaine": "Parallélogrammes",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 13,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_013.png"
+      }
+    },
+    {
+      "text": "Exploiter le codage d’une figure pour identifier des parallélogrammes particuliers.",
+      "sous_domaine": "Parallélogrammes",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 13,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_013.png"
+      }
+    },
+    {
+      "text": "Positionner sur une échelle de probabilité les évènements du type : évènement impossible ; évènement certain ; obtenir pile en lançant une pièce équilibrée ; obtenir une valeur donnée en lançant un dé équilibré ; obtenir une couleur d’une boule lors du tirage dans une urne ; ne pas obtenir la bonne combinaison au loto ; obtenir 10 fois de suite la valeur 1 en lançant un dé à six faces.",
+      "sous_domaine": "Probabilités",
+      "domaine": "PR",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 16,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_016.png"
+      }
+    },
+    {
+      "text": "Donner la probabilité sous diverses formes (fraction, décimale, pourcentage) pour les cinq premiers évènements ci-dessus.",
+      "sous_domaine": "Probabilités",
+      "domaine": "PR",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 16,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_016.png"
+      }
+    },
+    {
+      "text": "Lier l’expression « une chance sur quatre » (par exemple) et la probabilité 1/4.",
+      "sous_domaine": "Probabilités",
+      "domaine": "PR",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 16,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_016.png"
+      }
+    },
+    {
+      "text": "Reconnaitre si une situation donnée entre dans le cadre de la proportionnalité ou non.",
+      "sous_domaine": "Proportionnalité",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 18,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_018.png"
+      }
+    },
+    {
+      "text": "Dans des situations simples, mobiliser une procédure adaptée (propriété de linéarité pour la multiplication ou l’addition, retour à l’unité) pour résoudre un problème lié à la proportionnalité. Par exemple : à partir d’une recette pour 4 personnes, on sait donner (ou verbaliser la procédure) les quantités lorsque l’on passe à 2, 8 ou 6 personnes ; si l’on connait le prix d’un kilogramme de tomates, on sait comment calculer le prix de 3 kg ou de 4,3 kg de tomates ; lors de l’élection des délégués de la classe, 4 élèves se présentent. Chaque élève a voté pour un seul candidat. Voici les résultats : Alexis 6, Chloé 12, Salma 3, Djibril 3, Total 24. Calculer le pourcentage de voix de chaque candidat.",
+      "sous_domaine": "Proportionnalité",
+      "domaine": "AL",
+      "source": {
+        "pdf": "cycle4.pdf",
+        "page": 18,
+        "bo_reference": "BO n°10 du 5 mars 2026",
+        "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+        "page_image": "../pages/cycle4/page_018.png"
+      }
+    }
+  ],
+  "competences_by_theme": {
+    "NB": {
+      "Opérations": [
+        {
+          "code": "5E-NB-001",
+          "intitule": "Additionner, soustraire, multiplier et diviser pour résoudre des problèmes et contrôler la vraisemblance de son résultat.",
+          "fingerprint": "additionner_soustraire_multiplier_et_diviser_pour",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Additionner, soustraire, multiplier et diviser pour résoudre des problèmes et contrôler la vraisemblance de son résultat.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-002",
+          "intitule": "Connaitre le sens et les situations d’emploi de ces opérations.",
+          "fingerprint": "connaitre_le_sens_et_les_situations_d_emploi_de_ce",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Connaitre le sens et les situations d’emploi de ces opérations.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-003",
+          "intitule": "Diviser par un nombre décimal.",
+          "fingerprint": "diviser_par_un_nombre_decimal",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Diviser par un nombre décimal.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-004",
+          "intitule": "Enchainer des opérations.",
+          "fingerprint": "enchainer_des_operations",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Enchainer des opérations.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-005",
+          "intitule": "Traduire un problème, une succession donnée d’opérations, un programme de calcul, en une seule expression, en faisant appel ou non à des parenthèses.",
+          "fingerprint": "traduire_un_probleme_une_succession_donnee_d_opera",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Traduire un problème, une succession donnée d’opérations, un programme de calcul, en une seule expression, en faisant appel ou non à des parenthèses.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-006",
+          "intitule": "Nommer un calcul, distinguer sommes et produits, termes et facteurs.",
+          "fingerprint": "nommer_un_calcul_distinguer_sommes_et_produits_ter",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Nommer un calcul, distinguer sommes et produits, termes et facteurs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-007",
+          "intitule": "Connaitre et utiliser les priorités opératoires.",
+          "fingerprint": "connaitre_et_utiliser_les_priorites_operatoires",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Connaitre et utiliser les priorités opératoires.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-008",
+          "intitule": "Connaitre et utiliser la distributivité simple sur des exemples numériques.",
+          "fingerprint": "connaitre_et_utiliser_la_distributivite_simple_sur",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Connaitre et utiliser la distributivité simple sur des exemples numériques.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-009",
+          "intitule": "Utiliser les notions de multiples et diviseurs.",
+          "fingerprint": "utiliser_les_notions_de_multiples_et_diviseurs",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Utiliser les notions de multiples et diviseurs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-010",
+          "intitule": "Connaitre les critères de divisibilité par 3 et par 9.",
+          "fingerprint": "connaitre_les_criteres_de_divisibilite_par_3_et_pa",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Connaitre les critères de divisibilité par 3 et par 9.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-011",
+          "intitule": "Mobiliser un algorithme dans le cadre du calcul numérique.",
+          "fingerprint": "mobiliser_un_algorithme_dans_le_cadre_du_calcul_nu",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "capacite",
+          "formulation_bo": "Mobiliser un algorithme dans le cadre du calcul numérique.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-012",
+          "intitule": "Notion de nombre premier et développements sur ce thème (existence d’un nombre infini de nombres premiers, crible d’Ératosthène, etc.)",
+          "fingerprint": "notion_de_nombre_premier_et_d_veloppements_sur_ce_",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Opérations",
+          "type": "approfondissement",
+          "formulation_bo": "Notion de nombre premier et développements sur ce thème (existence d’un nombre infini de nombres premiers, crible d’Ératosthène, etc.)",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Nombres relatifs": [
+        {
+          "code": "5E-NB-013",
+          "intitule": "Définir les nombres relatifs.",
+          "fingerprint": "definir_les_nombres_relatifs",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Définir les nombres relatifs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-014",
+          "intitule": "Définir l’opposé et la valeur absolue d’un nombre.",
+          "fingerprint": "definir_l_oppose_et_la_valeur_absolue_d_un_nombre",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Définir l’opposé et la valeur absolue d’un nombre.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-015",
+          "intitule": "Définir la notion de nombre positif, strictement positif, négatif, strictement négatif.",
+          "fingerprint": "definir_la_notion_de_nombre_positif_strictement_po",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Définir la notion de nombre positif, strictement positif, négatif, strictement négatif.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-016",
+          "intitule": "Utiliser les nombres relatifs pour représenter des grandeurs observables qui peuvent prendre des valeurs inférieures à zéro (température, temps, altitude, etc.), en particulier dans le cadre de la résolution de problèmes.",
+          "fingerprint": "utiliser_les_nombres_relatifs_pour_representer_des",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Utiliser les nombres relatifs pour représenter des grandeurs observables qui peuvent prendre des valeurs inférieures à zéro (température, temps, altitude, etc.), en particulier dans le cadre de la résolution de problèmes.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 7,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-017",
+          "intitule": "Premières apparitions des nombres négatifs avec Brahmagupta (600), dont l’existence était toujours niée au XVIIe siècle.",
+          "fingerprint": "premieres_apparitions_des_nombres_negatifs_avec_br",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "approfondissement",
+          "formulation_bo": "Premières apparitions des nombres négatifs avec Brahmagupta (600), dont l’existence était toujours niée au XVIIe siècle.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-018",
+          "intitule": "Lire l'abscisse d'un nombre relatif sur une droite graduée et placer un nombre relatif d'abscisse donnée.",
+          "fingerprint": "lire_l_abscisse_d_un_nombre_relatif_sur_une_droite",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Lire l'abscisse d'un nombre relatif sur une droite graduée et placer un nombre relatif d'abscisse donnée.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-NB-019",
+          "intitule": "Comparer et ranger dans l'ordre croissant et décroissant des nombres décimaux relatifs.",
+          "fingerprint": "comparer_et_ranger_dans_l_ordre_croissant_et_decro",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Comparer et ranger dans l'ordre croissant et décroissant des nombres décimaux relatifs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-NB-020",
+          "intitule": "Additionner deux nombres décimaux relatifs.",
+          "fingerprint": "additionner_deux_nombres_decimaux_relatifs",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Additionner deux nombres décimaux relatifs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-NB-021",
+          "intitule": "Additionner plusieurs nombres décimaux relatifs.",
+          "fingerprint": "additionner_plusieurs_nombres_decimaux_relatifs",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Additionner plusieurs nombres décimaux relatifs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-NB-022",
+          "intitule": "Soustraire deux nombres décimaux relatifs.",
+          "fingerprint": "soustraire_deux_nombres_decimaux_relatifs",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Soustraire deux nombres décimaux relatifs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-NB-023",
+          "intitule": "Connaître et justifier les situations dans lesquelles des parenthèses sont indispensables au sens des écritures.",
+          "fingerprint": "connaitre_et_justifier_les_situations_dans_lesquelle",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Connaître et justifier les situations dans lesquelles des parenthèses sont indispensables au sens des écritures.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-NB-024",
+          "intitule": "Simplifier l'écriture de sommes comportant des parenthèses.",
+          "fingerprint": "simplifier_l_ecriture_de_sommes_comportant_des_paren",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Simplifier l'écriture de sommes comportant des parenthèses.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-NB-025",
+          "intitule": "Enchaîner additions et soustractions de décimaux relatifs.",
+          "fingerprint": "enchainer_additions_et_soustractions_de_decimaux_re",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Enchaîner additions et soustractions de décimaux relatifs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-NB-026",
+          "intitule": "Résoudre des problèmes mobilisant addition et soustraction de nombres décimaux relatifs.",
+          "fingerprint": "resoudre_des_problemes_mobilisant_addition_et_soust",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres relatifs",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes mobilisant addition et soustraction de nombres décimaux relatifs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        }
+      ],
+      "Nombres rationnels": [
+        {
+          "code": "5E-NB-027",
+          "intitule": "Comparer des fractions.",
+          "fingerprint": "comparer_des_fractions",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres rationnels",
+          "type": "capacite",
+          "formulation_bo": "Comparer des fractions.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-028",
+          "intitule": "Additionner et soustraire des fractions de dénominateurs quelconques.",
+          "fingerprint": "additionner_et_soustraire_des_fractions_de_denomin",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres rationnels",
+          "type": "capacite",
+          "formulation_bo": "Additionner et soustraire des fractions de dénominateurs quelconques.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-029",
+          "intitule": "Résoudre des problèmes avec des additions et soustractions de fractions.",
+          "fingerprint": "resoudre_des_problemes_avec_des_additions_et_soust",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Nombres rationnels",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes avec des additions et soustractions de fractions.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Puissances": [
+        {
+          "code": "5E-NB-030",
+          "intitule": "Découvrir la notion de puissance d’un nombre et sa notation dans le cas du carré et du cube.",
+          "fingerprint": "decouvrir_la_notion_de_puissance_d_un_nombre_et_sa",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Découvrir la notion de puissance d’un nombre et sa notation dans le cas du carré et du cube.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-031",
+          "intitule": "Connaitre les carrés des entiers de 0 à 12.",
+          "fingerprint": "connaitre_les_carres_des_entiers_de_0_a_12",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Connaitre les carrés des entiers de 0 à 12.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-032",
+          "intitule": "Connaitre le cube de 10.",
+          "fingerprint": "connaitre_le_cube_de_10",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Connaitre le cube de 10.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-033",
+          "intitule": "Savoir écrire un nombre sous la forme d’une puissance 2 ou 3.",
+          "fingerprint": "savoir_ecrire_un_nombre_sous_la_forme_d_une_puissa",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Savoir écrire un nombre sous la forme d’une puissance 2 ou 3.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-034",
+          "intitule": "Calculer la valeur numérique d’expressions contenant des puissances simples, additions, soustractions et produits.",
+          "fingerprint": "calculer_la_valeur_numerique_d_expressions_contena",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Calculer la valeur numérique d’expressions contenant des puissances simples, additions, soustractions et produits.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-NB-035",
+          "intitule": "Calculer la valeur d’une expression littérale contenant une puissance simple.",
+          "fingerprint": "calculer_la_valeur_d_une_expression_litterale_cont",
+          "niveau": "5E",
+          "domaine": "NB",
+          "sous_domaine": "Puissances",
+          "type": "capacite",
+          "formulation_bo": "Calculer la valeur d’une expression littérale contenant une puissance simple.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "Calcul littéral et algébrique": [
+        {
+          "code": "5E-AL-001",
+          "intitule": "Produire des formules (double, triple, carré, successeur, prédécesseur, aire, périmètre, etc.).",
+          "fingerprint": "produire_des_formules_double_triple_carre_successe",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Produire des formules (double, triple, carré, successeur, prédécesseur, aire, périmètre, etc.).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-002",
+          "intitule": "Calculer la valeur d’une expression littérale par substitution.",
+          "fingerprint": "calculer_la_valeur_d_une_expression_litterale_par",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Calculer la valeur d’une expression littérale par substitution.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 8,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-003",
+          "intitule": "Lien avec Al Khwarizmi pour qui la résolution des problèmes fait appel à la « chose » qu’on cherche.",
+          "fingerprint": "lien_avec_al_khwarizmi_pour_qui_la_resolution_des",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "approfondissement",
+          "formulation_bo": "Lien avec Al Khwarizmi pour qui la résolution des problèmes fait appel à la « chose » qu’on cherche.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-004",
+          "intitule": "Spécificité de la résolution des équations du type 𝑥 + b = c (« Al-jabr ») et du type a𝑥 = c (« Al-hatt ») chez Al Khwarizmi.",
+          "fingerprint": "specificite_de_la_resolution_des_equations_du_type",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "approfondissement",
+          "formulation_bo": "Spécificité de la résolution des équations du type 𝑥 + b = c (« Al-jabr ») et du type a𝑥 = c (« Al-hatt ») chez Al Khwarizmi.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-005",
+          "intitule": "Tester si une égalité entre expressions algébriques comportant une variable est vraie ou fausse.",
+          "fingerprint": "tester_si_une_egalite_entre_expressions_algebrique",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Tester si une égalité entre expressions algébriques comportant une variable est vraie ou fausse.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-AL-006",
+          "intitule": "Déterminer si une expression littérale est une somme ou un produit.",
+          "fingerprint": "determiner_si_une_expression_litterale_est_une_somm",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Déterminer si une expression littérale est une somme ou un produit.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-AL-007",
+          "intitule": "Exploiter les relations k(a + b) = ka + kb ou k(a – b) = ka – kb pour factoriser, ou développer une expression littérale.",
+          "fingerprint": "exploiter_les_relations_k_a_b_ka_kb_ou_k_a_b_ka",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Exploiter les relations k(a + b) = ka + kb ou k(a – b) = ka – kb pour factoriser, ou développer une expression littérale.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-AL-008",
+          "intitule": "Réduire une expression littérale de la forme ax + b, où a et b sont des nombres décimaux.",
+          "fingerprint": "reduire_une_expression_litterale_de_la_forme_ax_b",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Réduire une expression littérale de la forme ax + b, où a et b sont des nombres décimaux.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-AL-009",
+          "intitule": "Démontrer une propriété générale par le calcul littéral.",
+          "fingerprint": "demonstrer_une_propriete_generale_par_le_calcul_lit",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Démontrer une propriété générale par le calcul littéral.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-AL-010",
+          "intitule": "Utiliser un contre-exemple pour démontrer qu'une assertion est fausse.",
+          "fingerprint": "utiliser_un_contre_exemple_pour_demontrer_qu_une_a",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Utiliser un contre-exemple pour démontrer qu'une assertion est fausse.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-AL-011",
+          "intitule": "Formuler des conjectures en s'appuyant sur un langage algorithmique ou un tableur.",
+          "fingerprint": "formuler_des_conjectures_en_s_appuyant_sur_un_langa",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Formuler des conjectures en s'appuyant sur un langage algorithmique ou un tableur.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-AL-012",
+          "intitule": "Donner à la lettre le statut d'inconnue.",
+          "fingerprint": "donner_a_la_lettre_le_statut_d_inconnue",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Donner à la lettre le statut d'inconnue.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-AL-013",
+          "intitule": "Modéliser des problèmes relevant des opérations à trous par des équations du type ax = c ou x + b = c.",
+          "fingerprint": "modeliser_des_problemes_relevant_des_operations_a_t",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Modéliser des problèmes relevant des opérations à trous par des équations du type ax = c ou x + b = c.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        },
+        {
+          "code": "5E-AL-014",
+          "intitule": "Résoudre des équations du type ax = c ou x + b = c par des méthodes arithmétiques s'appuyant sur les opérations inverses.",
+          "fingerprint": "resoudre_des_equations_du_type_ax_c_ou_x_b_c_par",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Calcul littéral et algébrique",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des équations du type ax = c ou x + b = c par des méthodes arithmétiques s'appuyant sur les opérations inverses.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 9,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-25T00:00:00+00:00",
+            "agent_version": "v2.0-regis-diff",
+            "confidence": 0.95,
+            "verified": false,
+            "extraction_method": "cross_reference_regis"
+          }
+        }
+      ],
+      "Proportionnalité": [
+        {
+          "code": "5E-AL-015",
+          "intitule": "Utiliser des proportions, des pourcentages.",
+          "fingerprint": "utiliser_des_proportions_des_pourcentages",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Utiliser des proportions, des pourcentages.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-016",
+          "intitule": "Calculer, appliquer des proportions, des pourcentages.",
+          "fingerprint": "calculer_appliquer_des_proportions_des_pourcentage",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Calculer, appliquer des proportions, des pourcentages.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-017",
+          "intitule": "Identifier des situations de proportionnalité dans des contextes concrets (prix, recettes, distances, échelles).",
+          "fingerprint": "identifier_des_situations_de_proportionnalite_dans",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Identifier des situations de proportionnalité dans des contextes concrets (prix, recettes, distances, échelles).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-018",
+          "intitule": "Utiliser un coefficient de proportionnalité dans des contextes concrets (prix unitaire, vitesse moyenne, échelle, etc.).",
+          "fingerprint": "utiliser_un_coefficient_de_proportionnalite_dans_d",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Utiliser un coefficient de proportionnalité dans des contextes concrets (prix unitaire, vitesse moyenne, échelle, etc.).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-019",
+          "intitule": "Représenter une situation de proportionnalité par un tableau ou un graphique.",
+          "fingerprint": "representer_une_situation_de_proportionnalite_par",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Représenter une situation de proportionnalité par un tableau ou un graphique.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-020",
+          "intitule": "Reconnaitre une situation de proportionnalité à partir d’un tableau ou d’un graphique.",
+          "fingerprint": "reconnaitre_une_situation_de_proportionnalite_a_pa",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Reconnaitre une situation de proportionnalité à partir d’un tableau ou d’un graphique.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AL-021",
+          "intitule": "Reconnaitre graphiquement qu’un nuage de points est ou n’est pas associé à une situation de proportionnalité entre données discrètes.",
+          "fingerprint": "reconnaitre_graphiquement_qu_un_nuage_de_points_es",
+          "niveau": "5E",
+          "domaine": "AL",
+          "sous_domaine": "Proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Reconnaitre graphiquement qu’un nuage de points est ou n’est pas associé à une situation de proportionnalité entre données discrètes.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 18,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "GEO": {
+      "Repérage sur une droite et dans le plan": [
+        {
+          "code": "5E-GEO-001",
+          "intitule": "Sur une droite graduée : lire l’abscisse d’un point donné.",
+          "fingerprint": "sur_une_droite_gradu_e_lire_l_abscisse_d_un_point_",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Repérage sur une droite et dans le plan",
+          "type": "capacite",
+          "formulation_bo": "Sur une droite graduée : lire l’abscisse d’un point donné.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.1-visual-fix-s10",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-002",
+          "intitule": "Sur une droite graduée : placer un point d’abscisse donnée.",
+          "fingerprint": "sur_une_droite_gradu_e_placer_un_point_d_abscisse_",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Repérage sur une droite et dans le plan",
+          "type": "capacite",
+          "formulation_bo": "Sur une droite graduée : placer un point d’abscisse donnée.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.1-visual-fix-s10",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-003",
+          "intitule": "Dans le plan muni d’un repère orthogonal : lire les coordonnées d’un point donné.",
+          "fingerprint": "dans_le_plan_muni_d_un_rep_re_orthogonal_lire_les_",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Repérage sur une droite et dans le plan",
+          "type": "capacite",
+          "formulation_bo": "Dans le plan muni d’un repère orthogonal : lire les coordonnées d’un point donné.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.1-visual-fix-s10",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-004",
+          "intitule": "Dans le plan muni d’un repère orthogonal : placer un point de coordonnées données.",
+          "fingerprint": "dans_le_plan_muni_d_un_rep_re_orthogonal_placer_un",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Repérage sur une droite et dans le plan",
+          "type": "capacite",
+          "formulation_bo": "Dans le plan muni d’un repère orthogonal : placer un point de coordonnées données.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.1-visual-fix-s10",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Représentation de l’espace": [
+        {
+          "code": "5E-GEO-005",
+          "intitule": "Construire et mettre en relation différentes représentations en perspectives cavalières des solides suivants : pavé droit, cube, cylindre de révolution, prisme droit.",
+          "fingerprint": "construire_et_mettre_en_relation_differentes_repre",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "capacite",
+          "formulation_bo": "Construire et mettre en relation différentes représentations en perspectives cavalières des solides suivants : pavé droit, cube, cylindre de révolution, prisme droit.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-006",
+          "intitule": "Savoir mettre en relation une représentation en perspective cavalière et un patron d’un pavé, d’un prisme droit ou d’un cylindre de révolution.",
+          "fingerprint": "savoir_mettre_en_relation_une_representation_en_pe",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "capacite",
+          "formulation_bo": "Savoir mettre en relation une représentation en perspective cavalière et un patron d’un pavé, d’un prisme droit ou d’un cylindre de révolution.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-007",
+          "intitule": "Calculer le volume du cube, du pavé droit, du prisme droit.",
+          "fingerprint": "calculer_le_volume_du_cube_du_pave_droit_du_prisme",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "capacite",
+          "formulation_bo": "Calculer le volume du cube, du pavé droit, du prisme droit.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-008",
+          "intitule": "Connaitre et convertir des unités usuelles (volume et capacité).",
+          "fingerprint": "connaitre_et_convertir_des_unites_usuelles_volume",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "capacite",
+          "formulation_bo": "Connaitre et convertir des unités usuelles (volume et capacité).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-009",
+          "intitule": "Calculer l’aire du disque, le volume du cylindre de révolution.",
+          "fingerprint": "calculer_l_aire_du_disque_le_volume_du_cylindre_de",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "capacite",
+          "formulation_bo": "Calculer l’aire du disque, le volume du cylindre de révolution.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-010",
+          "intitule": "Solides de Platon, formule d’Euler.",
+          "fingerprint": "solides_de_platon_formule_d_euler",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "approfondissement",
+          "formulation_bo": "Solides de Platon, formule d’Euler.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-011",
+          "intitule": "Tableaux d’Escher pour jouer sur la perception de l’espace et des volumes.",
+          "fingerprint": "tableaux_d_escher_pour_jouer_sur_la_perception_de",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Représentation de l’espace",
+          "type": "approfondissement",
+          "formulation_bo": "Tableaux d’Escher pour jouer sur la perception de l’espace et des volumes.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Transformations": [
+        {
+          "code": "5E-GEO-012",
+          "intitule": "Définir le demi-tour, ou symétrie centrale.",
+          "fingerprint": "definir_le_demi_tour_ou_symetrie_centrale",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Transformations",
+          "type": "capacite",
+          "formulation_bo": "Définir le demi-tour, ou symétrie centrale.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-013",
+          "intitule": "Connaitre les propriétés du demi-tour.",
+          "fingerprint": "connaitre_les_proprietes_du_demi_tour",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Transformations",
+          "type": "capacite",
+          "formulation_bo": "Connaitre les propriétés du demi-tour.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 12,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_012.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-014",
+          "intitule": "Rosaces et pavages dans l’art du Moyen Âge.",
+          "fingerprint": "rosaces_et_pavages_dans_l_art_du_moyen_age",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Transformations",
+          "type": "approfondissement",
+          "formulation_bo": "Rosaces et pavages dans l’art du Moyen Âge.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-015",
+          "intitule": "Lien avec les formes vues dans la nature : flocon, alvéoles d’abeilles, fleurs.",
+          "fingerprint": "lien_avec_les_formes_vues_dans_la_nature_flocon_al",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Transformations",
+          "type": "approfondissement",
+          "formulation_bo": "Lien avec les formes vues dans la nature : flocon, alvéoles d’abeilles, fleurs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Angles": [
+        {
+          "code": "5E-GEO-016",
+          "intitule": "Caractériser le parallélisme par les angles : angles alternes internes, angles correspondants.",
+          "fingerprint": "caracteriser_le_parallelisme_par_les_angles_angles",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Angles",
+          "type": "capacite",
+          "formulation_bo": "Caractériser le parallélisme par les angles : angles alternes internes, angles correspondants.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-017",
+          "intitule": "Éléments d’Euclide (Livre I, proposition 27 ou 28).",
+          "fingerprint": "elements_d_euclide_livre_i_proposition_27_ou_28",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Angles",
+          "type": "approfondissement",
+          "formulation_bo": "Éléments d’Euclide (Livre I, proposition 27 ou 28).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Triangles": [
+        {
+          "code": "5E-GEO-018",
+          "intitule": "Connaitre la somme des angles d’un triangle et savoir la démontrer.",
+          "fingerprint": "connaitre_la_somme_des_angles_d_un_triangle_et_sav",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Connaitre la somme des angles d’un triangle et savoir la démontrer.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-019",
+          "intitule": "Construire des triangles à partir de données partielles.",
+          "fingerprint": "construire_des_triangles_a_partir_de_donnees_parti",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Construire des triangles à partir de données partielles.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-020",
+          "intitule": "Connaitre les propriétés des médiatrices et du cercle circonscrit dans le cas de triangles particuliers.",
+          "fingerprint": "connaitre_les_proprietes_des_mediatrices_et_du_cer",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Connaitre les propriétés des médiatrices et du cercle circonscrit dans le cas de triangles particuliers.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-021",
+          "intitule": "Calculer l’aire d’un triangle.",
+          "fingerprint": "calculer_l_aire_d_un_triangle",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Calculer l’aire d’un triangle.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-022",
+          "intitule": "Définir et tracer les hauteurs dans un triangle.",
+          "fingerprint": "definir_et_tracer_les_hauteurs_dans_un_triangle",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Définir et tracer les hauteurs dans un triangle.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-023",
+          "intitule": "Savoir que les hauteurs d’un triangle sont concourantes.",
+          "fingerprint": "savoir_que_les_hauteurs_d_un_triangle_sont_concour",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Savoir que les hauteurs d’un triangle sont concourantes.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-024",
+          "intitule": "Définir et tracer les médianes dans un triangle.",
+          "fingerprint": "definir_et_tracer_les_medianes_dans_un_triangle",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Définir et tracer les médianes dans un triangle.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-025",
+          "intitule": "Démontrer qu’une médiane partage un triangle en deux triangles d’aires égales.",
+          "fingerprint": "demontrer_qu_une_mediane_partage_un_triangle_en_de",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Démontrer qu’une médiane partage un triangle en deux triangles d’aires égales.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-026",
+          "intitule": "Utiliser ces propriétés dans le cas de triangles particuliers.",
+          "fingerprint": "utiliser_ces_proprietes_dans_le_cas_de_triangles_p",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Utiliser ces propriétés dans le cas de triangles particuliers.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-027",
+          "intitule": "Droite d’Euler, cercle des neufs points.",
+          "fingerprint": "droite_d_euler_cercle_des_neufs_points",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "approfondissement",
+          "formulation_bo": "Droite d’Euler, cercle des neufs points.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-028",
+          "intitule": "En suivant un programme de construction donné, l’élève construit, à la règle et au compas, un pentagone régulier.",
+          "fingerprint": "en_suivant_un_programme_de_construction_donne_l_el",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "approfondissement",
+          "formulation_bo": "En suivant un programme de construction donné, l’élève construit, à la règle et au compas, un pentagone régulier.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-029",
+          "intitule": "Construction d’ogives en lien avec l’art gothique.",
+          "fingerprint": "construction_d_ogives_en_lien_avec_l_art_gothique",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "approfondissement",
+          "formulation_bo": "Construction d’ogives en lien avec l’art gothique.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-030",
+          "intitule": "Construction de rosaces trilobées, du triangle de Reuleaux.",
+          "fingerprint": "construction_de_rosaces_trilobees_du_triangle_de_r",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "approfondissement",
+          "formulation_bo": "Construction de rosaces trilobées, du triangle de Reuleaux.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-031",
+          "intitule": "Différents instruments de mesure.",
+          "fingerprint": "differents_instruments_de_mesure",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "approfondissement",
+          "formulation_bo": "Différents instruments de mesure.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Parallélogrammes": [
+        {
+          "code": "5E-GEO-032",
+          "intitule": "Définir le parallélogramme.",
+          "fingerprint": "definir_le_parallelogramme",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Parallélogrammes",
+          "type": "capacite",
+          "formulation_bo": "Définir le parallélogramme.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-033",
+          "intitule": "Construire des parallélogrammes.",
+          "fingerprint": "construire_des_parallelogrammes",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Parallélogrammes",
+          "type": "capacite",
+          "formulation_bo": "Construire des parallélogrammes.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-034",
+          "intitule": "Connaitre les propriétés caractéristiques des côtés opposés et des diagonales.",
+          "fingerprint": "connaitre_les_proprietes_caracteristiques_des_cote",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Parallélogrammes",
+          "type": "capacite",
+          "formulation_bo": "Connaitre les propriétés caractéristiques des côtés opposés et des diagonales.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-035",
+          "intitule": "Utiliser une propriété caractéristique sur les diagonales ou les côtés pour les construire ou donner la nature du quadrilatère.",
+          "fingerprint": "utiliser_une_propriete_caracteristique_sur_les_dia",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Parallélogrammes",
+          "type": "capacite",
+          "formulation_bo": "Utiliser une propriété caractéristique sur les diagonales ou les côtés pour les construire ou donner la nature du quadrilatère.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-036",
+          "intitule": "Définir les parallélogrammes particuliers (rectangle, losange, carré).",
+          "fingerprint": "definir_les_parallelogrammes_particuliers_rectangl",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Parallélogrammes",
+          "type": "capacite",
+          "formulation_bo": "Définir les parallélogrammes particuliers (rectangle, losange, carré).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-037",
+          "intitule": "Connaitre les propriétés caractéristiques.",
+          "fingerprint": "connaitre_les_proprietes_caracteristiques",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Parallélogrammes",
+          "type": "capacite",
+          "formulation_bo": "Connaitre les propriétés caractéristiques.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-038",
+          "intitule": "Savoir calculer l’aire d’un parallélogramme et de figures complexes.",
+          "fingerprint": "savoir_calculer_l_aire_d_un_parallelogramme_et_de",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Parallélogrammes",
+          "type": "capacite",
+          "formulation_bo": "Savoir calculer l’aire d’un parallélogramme et de figures complexes.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-GEO-039",
+          "intitule": "Résoudre des problèmes faisant appel à des conversions d’unités de longueur et d’unités d’aires.",
+          "fingerprint": "resoudre_des_problemes_faisant_appel_a_des_convers",
+          "niveau": "5E",
+          "domaine": "GEO",
+          "sous_domaine": "Parallélogrammes",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes faisant appel à des conversions d’unités de longueur et d’unités d’aires.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 13,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_013.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "STA": {
+      "Statistiques": [
+        {
+          "code": "5E-STA-001",
+          "intitule": "Recueillir et organiser des données.",
+          "fingerprint": "recueillir_et_organiser_des_donnees",
+          "niveau": "5E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Recueillir et organiser des données.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-STA-002",
+          "intitule": "Calculer des effectifs et des fréquences (exprimées sous forme décimale, fractionnaire ou de pourcentage).",
+          "fingerprint": "calculer_des_effectifs_et_des_frequences_exprimees",
+          "niveau": "5E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Calculer des effectifs et des fréquences (exprimées sous forme décimale, fractionnaire ou de pourcentage).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-STA-003",
+          "intitule": "Lire et interpréter des informations présentées sous forme de tableaux, de diagrammes et de graphiques.",
+          "fingerprint": "lire_et_interpreter_des_informations_presentees_so",
+          "niveau": "5E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Lire et interpréter des informations présentées sous forme de tableaux, de diagrammes et de graphiques.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-STA-004",
+          "intitule": "Représenter, sur papier ou à l’aide d’un tableur-grapheur, des données sous la forme d’un tableau, d’un diagramme (diagramme en barres, diagramme circulaire) ou d’un graphique cartésien.",
+          "fingerprint": "representer_sur_papier_ou_a_l_aide_d_un_tableur_gr",
+          "niveau": "5E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Représenter, sur papier ou à l’aide d’un tableur-grapheur, des données sous la forme d’un tableau, d’un diagramme (diagramme en barres, diagramme circulaire) ou d’un graphique cartésien.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-STA-005",
+          "intitule": "Choisir une représentation adaptée à ce qu’il convient de mettre en avant.",
+          "fingerprint": "choisir_une_representation_adaptee_a_ce_qu_il_conv",
+          "niveau": "5E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Choisir une représentation adaptée à ce qu’il convient de mettre en avant.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-STA-006",
+          "intitule": "Calculer et interpréter la moyenne simple d’une série de données.",
+          "fingerprint": "calculer_et_interpreter_la_moyenne_simple_d_une_se",
+          "niveau": "5E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "capacite",
+          "formulation_bo": "Calculer et interpréter la moyenne simple d’une série de données.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-STA-007",
+          "intitule": "Étude des diagrammes de Florence Nightingale.",
+          "fingerprint": "etude_des_diagrammes_de_florence_nightingale",
+          "niveau": "5E",
+          "domaine": "STA",
+          "sous_domaine": "Statistiques",
+          "type": "approfondissement",
+          "formulation_bo": "Étude des diagrammes de Florence Nightingale.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 16,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_016.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "PR": {
+      "Probabilités": [
+        {
+          "code": "5E-PR-001",
+          "intitule": "Aborder les questions relatives au hasard à partir de problèmes simples.",
+          "fingerprint": "aborder_les_questions_relatives_au_hasard_a_partir",
+          "niveau": "5E",
+          "domaine": "PR",
+          "sous_domaine": "Probabilités",
+          "type": "capacite",
+          "formulation_bo": "Aborder les questions relatives au hasard à partir de problèmes simples.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 17,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-PR-002",
+          "intitule": "Utiliser le vocabulaire des probabilités dans des contextes concrets : expérience aléatoire, issue, évènement.",
+          "fingerprint": "utiliser_le_vocabulaire_des_probabilites_dans_des",
+          "niveau": "5E",
+          "domaine": "PR",
+          "sous_domaine": "Probabilités",
+          "type": "capacite",
+          "formulation_bo": "Utiliser le vocabulaire des probabilités dans des contextes concrets : expérience aléatoire, issue, évènement.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 17,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-PR-003",
+          "intitule": "Attribuer des probabilités dans des cas simples (équiprobabilité).",
+          "fingerprint": "attribuer_des_probabilites_dans_des_cas_simples_eq",
+          "niveau": "5E",
+          "domaine": "PR",
+          "sous_domaine": "Probabilités",
+          "type": "capacite",
+          "formulation_bo": "Attribuer des probabilités dans des cas simples (équiprobabilité).",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 17,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-PR-004",
+          "intitule": "Répéter matériellement une expérience aléatoire simple. Enregistrer les résultats observés dans un tableau d’effectifs et de fréquences.",
+          "fingerprint": "repeter_materiellement_une_experience_aleatoire_si",
+          "niveau": "5E",
+          "domaine": "PR",
+          "sous_domaine": "Probabilités",
+          "type": "capacite",
+          "formulation_bo": "Répéter matériellement une expérience aléatoire simple. Enregistrer les résultats observés dans un tableau d’effectifs et de fréquences.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 17,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "AN": {
+      "Fonctions": [
+        {
+          "code": "5E-AN-001",
+          "intitule": "Introduire l’expression : « en fonction de » dans des contextes concrets ou mathématiques.",
+          "fingerprint": "introduire_l_expression_en_fonction_de_dans_des_co",
+          "niveau": "5E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Introduire l’expression : « en fonction de » dans des contextes concrets ou mathématiques.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AN-002",
+          "intitule": "Produire un tableau de valeurs.",
+          "fingerprint": "produire_un_tableau_de_valeurs",
+          "niveau": "5E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Produire un tableau de valeurs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AN-003",
+          "intitule": "Lire et interpréter un tableau de valeurs.",
+          "fingerprint": "lire_et_interpreter_un_tableau_de_valeurs",
+          "niveau": "5E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Lire et interpréter un tableau de valeurs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AN-004",
+          "intitule": "Placer dans un repère orthogonal donné des points correspondant à un tableau de valeurs.",
+          "fingerprint": "placer_dans_un_repere_orthogonal_donne_des_points",
+          "niveau": "5E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Placer dans un repère orthogonal donné des points correspondant à un tableau de valeurs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AN-005",
+          "intitule": "Lire et interpréter un graphique cartésien donné par une courbe ou un nuage de points.",
+          "fingerprint": "lire_et_interpreter_un_graphique_cartesien_donne_p",
+          "niveau": "5E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Lire et interpréter un graphique cartésien donné par une courbe ou un nuage de points.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AN-006",
+          "intitule": "Traduire la relation de dépendance entre deux grandeurs par un tableau de valeurs à partir d’une formule.",
+          "fingerprint": "traduire_la_relation_de_dependance_entre_deux_gran",
+          "niveau": "5E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Traduire la relation de dépendance entre deux grandeurs par un tableau de valeurs à partir d’une formule.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AN-007",
+          "intitule": "Produire une formule simple représentant la dépendance de deux grandeurs.",
+          "fingerprint": "produire_une_formule_simple_representant_la_depend",
+          "niveau": "5E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Produire une formule simple représentant la dépendance de deux grandeurs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-AN-008",
+          "intitule": "Caractériser graphiquement la proportionnalité.",
+          "fingerprint": "caracteriser_graphiquement_la_proportionnalite",
+          "niveau": "5E",
+          "domaine": "AN",
+          "sous_domaine": "Fonctions",
+          "type": "capacite",
+          "formulation_bo": "Caractériser graphiquement la proportionnalité.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 19,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "ALGO": {
+      "La pensée informatique": [
+        {
+          "code": "5E-ALGO-001",
+          "intitule": "Manipuler des instructions simples et les séquencer.",
+          "fingerprint": "manipuler_des_instructions_simples_et_les_sequence",
+          "niveau": "5E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Manipuler des instructions simples et les séquencer.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-ALGO-002",
+          "intitule": "Identifier les entrées et sorties d’un programme.",
+          "fingerprint": "identifier_les_entrees_et_sorties_d_un_programme",
+          "niveau": "5E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Identifier les entrées et sorties d’un programme.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-ALGO-003",
+          "intitule": "Représenter des formules sous la forme d’une expression informatique dans un langage de programmation par blocs.",
+          "fingerprint": "representer_des_formules_sous_la_forme_d_une_expre",
+          "niveau": "5E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Représenter des formules sous la forme d’une expression informatique dans un langage de programmation par blocs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-ALGO-004",
+          "intitule": "Calculer la valeur de formules à l’aide d’une suite d’instruction dans un langage de programmation par blocs.",
+          "fingerprint": "calculer_la_valeur_de_formules_a_l_aide_d_une_suit",
+          "niveau": "5E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Calculer la valeur de formules à l’aide d’une suite d’instruction dans un langage de programmation par blocs.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-ALGO-005",
+          "intitule": "Prévoir la valeur d’une expression informatique avant son exécution.",
+          "fingerprint": "prevoir_la_valeur_d_une_expression_informatique_av",
+          "niveau": "5E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Prévoir la valeur d’une expression informatique avant son exécution.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-ALGO-006",
+          "intitule": "Analyser un programme simple donné et modifier ses paramètres.",
+          "fingerprint": "analyser_un_programme_simple_donne_et_modifier_ses",
+          "niveau": "5E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Analyser un programme simple donné et modifier ses paramètres.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "5E-ALGO-007",
+          "intitule": "Effectuer une boucle inconditionnelle simple permettant de répéter une séquence linéaire d’instructions un nombre précis de fois.",
+          "fingerprint": "effectuer_une_boucle_inconditionnelle_simple_perme",
+          "niveau": "5E",
+          "domaine": "ALGO",
+          "sous_domaine": "La pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Effectuer une boucle inconditionnelle simple permettant de répéter une séquence linéaire d’instructions un nombre précis de fois.",
+          "source": {
+            "pdf": "cycle4.pdf",
+            "page": 20,
+            "bo_reference": "BO n°10 du 5 mars 2026",
+            "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10",
+            "page_image": "../pages/cycle4/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    }
+  }
+}

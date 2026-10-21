@@ -23,10 +23,17 @@ python ".claude/skills/tex-compiling-skill/scripts/quick_compile.py" --file "che
 python ".claude/skills/tex-compiling-skill/scripts/quick_compile.py" --file "chemin/vers/fichier.tex" --passes 2
 ```
 
+**Avec vérification du contenu texte du PDF** (pages, nombre de caractères, via pymupdf) :
+
+```bash
+python ".claude/skills/tex-compiling-skill/scripts/quick_compile.py" --file "chemin/vers/fichier.tex" --verifier-texte
+```
+
 - Utilise LuaLaTeX avec shell-escape (profil Reims)
 - 1 passe par défaut
-- Nettoie automatiquement les fichiers auxiliaires
-- Retourne JSON avec le statut de compilation
+- Ne supprime jamais le PDF avant de compiler (l'utilisateur peut être en train de le lire) ; la réussite est déterminée en comparant l'état du PDF avant/après
+- Verrouille le dossier le temps de la compilation (voir « Compilation concurrente » plus bas)
+- Retourne JSON avec le statut de compilation et l'analyse complète du `.log`
 
 ### 2. compile_document.py - Compilation avec profils
 
@@ -90,16 +97,19 @@ python ".claude/skills/tex-compiling-skill/scripts/quick_compile.py" --file "mon
 python ".claude/skills/tex-compiling-skill/scripts/compile_document.py" --file "mon_document.tex" --type "standard"
 ```
 
-## Logique de Tolérance aux Erreurs
+## Logique de Vérification de Réussite
 
-Les scripts implémentent une tolérance intelligente :
-- Si un PDF est généré malgré un code retour d'erreur, la compilation continue
-- Utile pour les erreurs bfcours qui se résolvent aux passes suivantes
-- Les erreurs sont toujours affichées mais ne bloquent pas si le PDF existe
+`quick_compile.py` ne se fie plus jamais à la seule présence d'un fichier PDF sur le disque (un vieux PDF périmé y reste toujours présent puisque le script ne le supprime jamais avant de compiler). Trois statuts distincts sont possibles :
+
+- **`success`** : le PDF a été réécrit par CETTE compilation (mtime + taille comparés à l'état d'avant) **ET** le `.log` ne contient aucune ligne `!` ni aucune erreur `fichier:ligne:` **ET** le code retour de la dernière passe est 0.
+- **`success_with_errors`** : le PDF a bien été réécrit par cette compilation, mais des erreurs sont présentes dans le `.log` (ou le code retour de la dernière passe est non nul) — **du contenu peut manquer**, ne jamais considérer le document terminé dans ce cas sans relire le rendu.
+- **`error`** : soit aucun PDF n'a été produit, soit le PDF présent est celui d'AVANT la compilation (non réécrit) — la compilation a réellement échoué, même si un vieux PDF traîne dans le dossier.
+
+Pendant les passes intermédiaires (`--passes 2` ou plus), un code retour non nul n'interrompt pas l'enchaînement : c'est fréquent avec bfcours (références non encore résolues) et cela se corrige souvent à la passe suivante. Seuls l'état du `.log` et le code retour de la **dernière** passe déterminent le statut final. Un échec de lancement (LuaLaTeX introuvable, timeout) interrompt en revanche immédiatement les passes restantes.
 
 ## Sortie JSON
 
-Tous les scripts retournent du JSON sur stdout :
+Tous les scripts retournent du JSON sur stdout. Pour `quick_compile.py`, le contrat complet est :
 
 **Succès** :
 ```json
@@ -107,18 +117,49 @@ Tous les scripts retournent du JSON sur stdout :
   "status": "success",
   "message": "Compilation réussie",
   "pdf_generated": true,
-  "pdf_path": "chemin/vers/fichier.pdf"
+  "pdf_fresh": true,
+  "pdf_path": "chemin/vers/fichier.pdf",
+  "passes_run": 1,
+  "return_codes": [0],
+  "errors": [],
+  "warnings": []
 }
 ```
 
-**Échec** :
+**PDF produit malgré des erreurs** (statut intermédiaire, à ne jamais confondre avec un succès) :
+```json
+{
+  "status": "success_with_errors",
+  "message": "PDF produit malgré des erreurs signalées dans le .log : du contenu peut manquer, vérifier le rendu avant de considérer le document terminé",
+  "pdf_generated": true,
+  "pdf_fresh": true,
+  "pdf_path": "chemin/vers/fichier.pdf",
+  "return_codes": [1],
+  "errors": [{"file": "./enonce.tex", "line": 13, "message": "Undefined control sequence."}],
+  "warnings": ["Undefined control sequence : commande LaTeX inconnue (1 occurrence)"]
+}
+```
+
+**Échec réel** (PDF absent, ou PDF présent mais NON réécrit par cette compilation) :
 ```json
 {
   "status": "error",
-  "message": "Compilation échouée",
-  "pdf_generated": false
+  "message": "Compilation échouée : le PDF existant n'a pas été réécrit par cette compilation",
+  "pdf_generated": true,
+  "pdf_fresh": false,
+  "pdf_path": "chemin/vers/fichier.pdf",
+  "errors": [{"file": "./Activite_Equation_Coeur.tex", "line": 2, "message": "Emergency stop."}],
+  "warnings": ["Emergency stop : la compilation s'est interrompue brutalement (1 occurrence)"]
 }
 ```
+
+**Champs additionnels** :
+- `pdf_fresh` (bool) : le PDF a bien été réécrit par CETTE compilation (comparaison mtime + taille avant/après). C'est ce champ, et non `pdf_generated`, qu'il faut lire pour savoir si la compilation a réellement produit quelque chose de nouveau.
+- `errors` : TOUTES les erreurs du `.log` — celles au format `fichier:ligne: message` (`-file-line-error`, quel que soit le fichier : `.tex`, `.sty`, `.cls`) avec `file`/`line` renseignés, et les autres lignes `! message` sans position connue (`file`/`line` alors à `null`).
+- `warnings` : motifs d'échec muet détectés dans le `.log` (voir section dédiée ci-dessous).
+- `text_check` (présent seulement avec `--verifier-texte`) : `{"available": true, "pages": N, "chars": N, "has_text": bool}`.
+
+Les clés historiques (`status`, `message`, `pdf_generated`, `pdf_path`) restent toujours présentes : les agents qui ne lisent que ces champs continuent de fonctionner sans modification.
 
 ## Messages d'Erreur Informatifs
 
@@ -131,13 +172,38 @@ Exemple :
 ```
 ❌ Compilation échouée
 
-📋 Erreurs principales:
-   Ligne 42: Undefined control sequence
-   Ligne 58: Missing $ inserted
+📋 Erreurs (fichier:ligne quand disponible):
+   ./enonce.tex:42: Undefined control sequence.
+   ./enonce.tex:58: Missing $ inserted.
 
 💡 Pour déboguer, lancez:
    python ".claude/skills/tex-compiling-skill/scripts/analyze_latex_log.py" --log "fichier.log"
 ```
+
+## Détection des échecs muets
+
+Certains défauts ne provoquent aucune erreur fatale mais font disparaître du contenu du PDF **sans avertissement explicite**. `quick_compile.py` analyse systématiquement le `.log` (plus seulement en cas d'échec) et remonte dans `warnings` :
+
+- `\vsplit needs a \vbox` / `Incompatible list can't be unboxed` — un tableau ou bloc tcolorbox non sécable a été rogné, les derniers items ont disparu.
+- `Package tcolorbox Warning: ... upper box part has become overfull` — un raster (`tcbenumerate`) déborde, du contenu est tronqué.
+- `Emergency stop`, `Missing $ inserted`, `Undefined control sequence`, `Paragraph ended before` — signalés même quand ils n'interrompent pas la compilation jusqu'à `\end{document}`.
+
+Deux défauts classiques restent **invisibles dans le `.log`** par nature et ne peuvent pas être détectés par une regex :
+- du texte qui déborde d'une tcolorbox sans déclencher d'`Overfull \hbox` ;
+- un marqueur de gabarit resté en commentaire (document rendu presque vide).
+
+Pour ces deux cas, utiliser `--verifier-texte` (nombre de pages/caractères anormalement bas = signal d'alerte) et, pour tout document non trivial, relire le rendu avec le skill `latex-visual-review` ou un rendu PDF → PNG : **ne jamais considérer un document terminé sur la seule foi du JSON de compilation.**
+
+## Compilation concurrente : un verrou par dossier
+
+**Ne jamais compiler en parallèle deux maîtres d'un même dossier** (ex. `Exercices.tex` et `Exercices_ELEVE.tex`) : ils partagent des fichiers auxiliaires bfcours (`bfpoints_*`, `.comp`, `.voc`, sauvegardes rdexo) qui s'écrasent mutuellement, dégradant silencieusement la mise en page sans la moindre erreur.
+
+`quick_compile.py` pose un verrou `.quick_compile.lock` (PID + horodatage) dans le dossier du fichier compilé, le temps de la compilation :
+- une seconde compilation lancée dans le même dossier **attend** la fin de la première (jusqu'à 5 minutes), avec un message d'attente affiché toutes les 10 secondes ;
+- au-delà du délai maximal, elle échoue explicitement (`status: "error"`) plutôt que de risquer un écrasement silencieux ;
+- un verrou orphelin (processus mort, ou plus vieux que 15 minutes) est détecté et nettoyé automatiquement, sans jamais toucher au processus lui-même.
+
+**Règle pratique** : compiler séquentiellement les maîtres d'un même dossier, jamais en tâches de fond simultanées.
 
 ## Bonnes Pratiques : Maintenir CLAUDE.md à jour
 
@@ -214,6 +280,8 @@ Cette pratique permet aux agents suivants de reprendre le travail efficacement s
 
 - **TOUJOURS** utiliser `quick_compile.py` sauf besoin spécifique
 - **TOUJOURS** mettre à jour CLAUDE.md après compilation réussie
+- **TOUJOURS** lire `pdf_fresh` et `status` (pas seulement `pdf_generated`) avant d'annoncer une réussite : un vieux PDF périmé reste présent sur le disque même en cas d'échec
+- **NE JAMAIS** compiler en parallèle deux maîtres d'un même dossier — compiler séquentiellement (le verrou `.quick_compile.lock` fait attendre automatiquement, mais mieux vaut ne pas y recourir systématiquement)
 - Les chemins de fichiers doivent être entre guillemets si espaces
 - Tous les scripts sont dans `.claude/skills/tex-compiling-skill/scripts/`
 - Les scripts nettoient automatiquement les fichiers auxiliaires (sauf `--no-clean`)

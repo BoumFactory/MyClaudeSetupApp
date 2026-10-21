@@ -1,0 +1,89 @@
+---
+niveau: A_DETERMINER
+  # cycle4 : choisir parmi ['5E', '4E', '3E'] en lisant la page (5E / 4E / 3E)
+page: 16
+pdf: cycle4.pdf
+page_folder: cycle4
+bo_reference: "BO n°10 du 5 mars 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo10"
+page_image: ../../pages/cycle4/page_016.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: false
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 16 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/cycle4/page_016.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+ 
+Définir et utiliser la somme de deux vecteurs par enchainement de deux translations. 
+Découvrir et utiliser la relation de Chasles. 
+Prolongements possibles : mises en perspective historiques et culturelles 
+− Savoir qu’un hexagone est obtenu à partir de triangles équilatéraux. 
+− Lien avec les fractales comme les flocons de Von Koch ou les triangles de Sierpinski. 
+Organisation et gestion de données et probabilités 
+Statistiques 
+Certaines des notions travaillées dans ce thème ont déjà été abordées lors des cycles précédents. Au cycle 4, les élèves sont 
+confrontés à diverses situations de travail sur des données : les utiliser, les représenter, les interpréter. Ils sont amenés à 
+analyser et à comparer, en particulier pour dégager des informations pertinentes. Ce travail permet de développer leur esprit 
+critique, de les éclairer pour prendre des décisions et de les mettre en garde sur des manipulations par des présentations 
+trompeuses. 
+La compétence Communiquer est particulièrement travaillée dans la résolution des exercices de cette partie du programme. 
+La compétence Représenter est très souvent mobilisée dans cette partie du programme. Il est important que les élèves 
+réalisent des représentations sur leurs cahiers. 
+Cette partie du programme est propice à l’utilisation du tableur. Les professeurs et les élèves devront y avoir recours aussi 
+fréquemment que possible. 
+Probabilités 
+Au cycle 3, les élèves ont travaillé sur les notions élémentaires de probabilité : ils savent qu’une probabilité est un nombre 
+compris entre 0 et 1 et qu’elle peut s’exprimer sous la forme d’une fraction, d’un nombre décimal ou d’un pourcentage. Ils ont 
+calculé des probabilités dans des situations simples d’équiprobabilité. 
+Au cycle 4 on formalise la notion de probabilité dans le cas fini en s’appuyant sur le langage des ensembles et on précise les 
+premiers éléments de calcul des probabilités. 
+L'élève rencontre des situations familières (par exemple, lancers de pièces ou de dés équilibrés, tirage au hasard dans une 
+population) où il utilise le modèle de l'équiprobabilité. L'équiprobabilité est une hypothèse qui ne se démontre pas, mais qui 
+peut être jugée pertinente par un argument de symétrie. Elle peut faire l'objet d'une discussion en classe et être confrontée à 
+l’expérience. 
+Dans d’autres cas, un modèle probabiliste peut être construit à partir de fréquences observées (par exemple : sexe d’un enfant 
+à la naissance) en s’appuyant sur l’idée de stabilisation des fréquences (loi des grands nombres). 
+Dans tous les cas, on distingue la situation réelle du modèle probabiliste utilisé pour la décrire. 
+Cinquième 
+Statistiques 
+Objectifs d’apprentissage 
+Recueillir et organiser des données. 
+Calculer des effectifs et des fréquences (exprimées sous forme décimale, fractionnaire ou de pourcentage). 
+Lire et interpréter des informations présentées sous forme de tableaux, de diagrammes et de graphiques. 
+Représenter, sur papier ou à l’aide d’un tableur-grapheur, des données sous la forme d’un tableau, d’un diagramme 
+(diagramme en barres, diagramme circulaire) ou d’un graphique cartésien. 
+Choisir une représentation adaptée à ce qu’il convient de mettre en avant. 
+Calculer et interpréter la moyenne simple d’une série de données. 
+Prolongements possibles : mises en perspective historiques et culturelles 
+− Étude des diagrammes de Florence Nightingale. 
+Probabilités 
+Automatismes 
+− Positionner sur une échelle de probabilité les évènements du type : 
+• évènement impossible ; 
+• évènement certain ; 
+• obtenir pile en lançant une pièce équilibrée ; 
+• obtenir une valeur donnée en lançant un dé équilibré ; 
+• obtenir une couleur d’une boule lors du tirage dans une urne ; 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

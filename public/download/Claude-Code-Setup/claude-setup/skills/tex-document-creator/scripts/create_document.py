@@ -27,15 +27,27 @@ async def main():
         description="Crée un document à partir d'un modèle",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Exemples (nouveau format recommandé):
-  python create_document.py --destination "./Test" --name "Mon_Cours" --template "Cours" \\
-    --field "niveau=$\\mathbf{2^{\\text{nde}}}$" --field "theme=Vecteurs" \\
-    --field "type_etablissement=Lycée" --field "nom_etablissement=Camille Claudel"
+Exemple RECOMMANDE (--fields-file) :
+  1. Ecrire le fichier de champs avec l'outil Write (jamais via Bash/heredoc,
+     Git Bash altere les antislashs des valeurs LaTeX comme $\\mathbf{...}$) :
 
+     fields.json :
+     {
+       "niveau": "$\\mathbf{2^{\\text{nde}}}$",
+       "theme": "Vecteurs",
+       "type_etablissement": "Lycee",
+       "nom_etablissement": "Lycée Exemple"
+     }
+
+  2. Lancer le script :
+     python create_document.py --destination "./Test" --name "Mon_Cours" \\
+       --template "Cours" --fields-file "./fields.json" --create-sections
+
+Exemples (format --field, pour un champ isole ou une valeur sans antislash) :
   python create_document.py --destination "." --name "DS_Fonctions" --template "Devoir" \\
-    --field "niveau=$\\mathbf{1^{\\text{ère}}}$" --field "duree=55" --create-sections
+    --field "theme=Fonctions" --field "duree=55" --create-sections
 
-Exemples (ancien format JSON, legacy):
+Exemples (ancien format JSON en ligne de commande, legacy - deconseille) :
   python create_document.py --destination "./Test" --name "Mon_Cours" --template "Cours" \\
     --fields '{"niveau": "2nde", "theme": "Vecteurs"}'
         """
@@ -67,9 +79,20 @@ Exemples (ancien format JSON, legacy):
     )
 
     parser.add_argument(
+        "--fields-file",
+        dest="fields_file",
+        required=False,
+        help=(
+            "RECOMMANDE : chemin vers un fichier JSON (écrit avec l'outil Write) contenant "
+            "les valeurs des champs, ex. {\"niveau\": \"$\\\\mathbf{2^{\\\\text{nde}}}$\"}. "
+            "Évite les problèmes d'échappement des antislashs LaTeX en Bash/Git Bash."
+        )
+    )
+
+    parser.add_argument(
         "--fields",
         required=False,
-        help="[LEGACY] Dictionnaire JSON des valeurs de champs"
+        help="[LEGACY] Dictionnaire JSON des valeurs de champs passé en ligne de commande"
     )
 
     parser.add_argument(
@@ -122,11 +145,39 @@ Exemples (ancien format JSON, legacy):
 
     args = parser.parse_args()
 
-    # Parser les champs - priorité au nouveau format --field
+    # Parser les champs - priorité : --fields-file (base) puis --field (surcouche/override),
+    # avec --fields (legacy) comme base alternative si --fields-file n'est pas fourni.
     field_values = {}
 
+    if args.fields_file:
+        fields_file_path = Path(args.fields_file)
+        if not fields_file_path.exists():
+            print(f"❌ ERREUR: Fichier --fields-file introuvable: {fields_file_path}", file=sys.stderr)
+            sys.exit(1)
+        try:
+            with open(fields_file_path, 'r', encoding='utf-8') as f:
+                loaded = json.load(f)
+        except json.JSONDecodeError as e:
+            print(f"❌ ERREUR: JSON invalide dans --fields-file ({fields_file_path}): {e}", file=sys.stderr)
+            sys.exit(1)
+        if not isinstance(loaded, dict):
+            print(
+                "❌ ERREUR: --fields-file doit contenir un objet JSON de la forme "
+                "{\"champ\": \"valeur\", ...}",
+                file=sys.stderr
+            )
+            sys.exit(1)
+        field_values.update({str(k): ("" if v is None else str(v)) for k, v in loaded.items()})
+    elif args.fields:
+        # Legacy format : --fields JSON en ligne de commande (sujet aux problèmes d'échappement)
+        try:
+            field_values.update(json.loads(args.fields))
+        except json.JSONDecodeError as e:
+            print(f"❌ ERREUR: Format JSON invalide pour --fields: {e}", file=sys.stderr)
+            sys.exit(1)
+
     if args.fields_list:
-        # Nouveau format : --field nom=valeur
+        # --field nom=valeur : complète ou surcharge les champs déjà chargés
         for field_arg in args.fields_list:
             if '=' not in field_arg:
                 print(f"❌ ERREUR: Format invalide pour --field: '{field_arg}'", file=sys.stderr)
@@ -134,15 +185,13 @@ Exemples (ancien format JSON, legacy):
                 sys.exit(1)
             key, value = field_arg.split('=', 1)
             field_values[key.strip()] = value
-    elif args.fields:
-        # Legacy format : --fields JSON
-        try:
-            field_values = json.loads(args.fields)
-        except json.JSONDecodeError as e:
-            print(f"❌ ERREUR: Format JSON invalide pour --fields: {e}", file=sys.stderr)
-            sys.exit(1)
-    else:
-        print("❌ ERREUR: Vous devez fournir au moins un --field ou --fields", file=sys.stderr)
+
+    fields_source_provided = bool(args.fields_file or args.fields or args.fields_list)
+    if not field_values and not fields_source_provided:
+        print(
+            "❌ ERREUR: Aucun champ fourni. Utilisez --fields-file (recommandé), --field ou --fields.",
+            file=sys.stderr
+        )
         sys.exit(1)
 
     print(f"📝 Création du document: {args.name}", file=sys.stderr)
@@ -183,6 +232,12 @@ Exemples (ancien format JSON, legacy):
             for d in created_folders:
                 print(f"   - {d}", file=sys.stderr)
 
+        warnings = result.get("warnings", [])
+        if warnings:
+            print(f"\n⚠️  Avertissements (non bloquants):", file=sys.stderr)
+            for w in warnings:
+                print(f"   - {w}", file=sys.stderr)
+
         next_steps = result.get("next_steps", [])
         if next_steps:
             print(f"\n⏭️  Prochaines étapes:", file=sys.stderr)
@@ -192,6 +247,18 @@ Exemples (ancien format JSON, legacy):
         print(f"❌ Erreur: {result.get('message', 'Erreur inconnue')}", file=sys.stderr)
         if "missing_fields" in result:
             print(f"   Champs manquants: {', '.join(result['missing_fields'])}", file=sys.stderr)
+        if "example_fields_file" in result:
+            print(
+                "\n   Exemple de fields-file à compléter (écrire ce JSON avec l'outil Write, "
+                "compléter les <A_COMPLETER:...>, puis relancer avec --fields-file) :",
+                file=sys.stderr
+            )
+            print(
+                "   " + json.dumps(result["example_fields_file"], ensure_ascii=False, indent=2).replace("\n", "\n   "),
+                file=sys.stderr
+            )
+        if "hint" in result:
+            print(f"\n   💡 {result['hint']}", file=sys.stderr)
 
     # Sortie JSON pour l'agent
     print(result_json)

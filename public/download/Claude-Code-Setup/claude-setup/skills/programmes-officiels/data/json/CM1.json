@@ -1,0 +1,3925 @@
+{
+  "meta": {
+    "niveau": "CM1",
+    "nom": "Cours moyen première année",
+    "cycle": "C3",
+    "bo_reference": "BO du cycle 3 (rentrée 2026)",
+    "bo_url": "https://www.education.gouv.fr/bo/2026",
+    "pdf": "cycle3.pdf",
+    "applicable_a_partir_de": "Rentrée 2026",
+    "generated": "2026-05-21T20:18:35+00:00",
+    "agent_version": "v2.0-mechanical",
+    "total_competences": 142,
+    "status": "mechanical_extraction",
+    "_note_status": "Extraction mécanique depuis bullets BO (script 05_competences_from_bullets.py). Aucune régurgitation LLM. Champ formulation_bo strictement issu du PDF."
+  },
+  "stats": {
+    "by_domaine": {
+      "NB": 73,
+      "AL": 6,
+      "GM": 29,
+      "GEO": 21,
+      "OGD": 3,
+      "PR": 6,
+      "ALGO": 4
+    },
+    "by_type": {
+      "capacite": 142
+    }
+  },
+  "objectifs": "Programme officiel du niveau CM1 (Cours moyen première année), BO du cycle 3 (rentrée 2026). Voir le PDF source (cycle3.pdf) pour les objectifs détaillés dans le préambule.",
+  "automatismes": [],
+  "automatismes_detailed": [],
+  "competences_by_theme": {
+    "NB": {
+      "Les nombres entiers": [
+        {
+          "code": "CM1-NB-001",
+          "intitule": "Comparer et dénombrer des collections en les organisant",
+          "fingerprint": "comparer_et_denombrer_des_collections_en_les_organ",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Comparer et dénombrer des collections en les organisant",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-002",
+          "intitule": "Construire des collections de cardinal donné",
+          "fingerprint": "construire_des_collections_de_cardinal_donne",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Construire des collections de cardinal donné",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-003",
+          "intitule": "Connaître et utiliser les relations entre les unités de numération",
+          "fingerprint": "connaitre_et_utiliser_les_relations_entre_les_unit",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser les relations entre les unités de numération",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-004",
+          "intitule": "Connaître la suite écrite et la suite orale des nombres jusqu’à 999 999",
+          "fingerprint": "connaitre_la_suite_ecrite_et_la_suite_orale_des_no",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Connaître la suite écrite et la suite orale des nombres jusqu’à 999 999",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-005",
+          "intitule": "Connaître la valeur des chiffres en fonction de leur position dans un nombre",
+          "fingerprint": "connaitre_la_valeur_des_chiffres_en_fonction_de_le",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Connaître la valeur des chiffres en fonction de leur position dans un nombre",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-006",
+          "intitule": "Connaître et utiliser diverses représentations d’un nombre et passer de l’une à l’autre",
+          "fingerprint": "connaitre_et_utiliser_diverses_representations_d_u",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser diverses représentations d’un nombre et passer de l’une à l’autre",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-007",
+          "intitule": "Comprendre et savoir utiliser les expressions « égal à », « supérieur à », « inférieur à », « compris entre … et … »",
+          "fingerprint": "comprendre_et_savoir_utiliser_les_expressions_egal",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Comprendre et savoir utiliser les expressions « égal à », « supérieur à », « inférieur à », « compris entre … et … »",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-008",
+          "intitule": "Comparer, encadrer, intercaler des nombres entiers en utilisant les symboles =, < et >",
+          "fingerprint": "comparer_encadrer_intercaler_des_nombres_entiers_e",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Comparer, encadrer, intercaler des nombres entiers en utilisant les symboles =, < et >",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-009",
+          "intitule": "Ordonner des nombres dans l’ordre croissant ou décroissant",
+          "fingerprint": "ordonner_des_nombres_dans_l_ordre_croissant_ou_dec",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Ordonner des nombres dans l’ordre croissant ou décroissant",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-010",
+          "intitule": "Savoir placer des nombres et repérer des points sur une demi-droite graduée",
+          "fingerprint": "savoir_placer_des_nombres_et_reperer_des_points_su",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Savoir placer des nombres et repérer des points sur une demi-droite graduée",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-011",
+          "intitule": "Savoir reconnaître les multiples de 2, de 5 et de 10 à partir de leur écriture chiffrée",
+          "fingerprint": "savoir_reconnaitre_les_multiples_de_2_de_5_et_de_1",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Savoir reconnaître les multiples de 2, de 5 et de 10 à partir de leur écriture chiffrée",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-012",
+          "intitule": "Savoir déterminer si un nombre entier donné est un multiple d’un nombre entier inférieur ou égal à 10",
+          "fingerprint": "savoir_determiner_si_un_nombre_entier_donne_est_un",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Savoir déterminer si un nombre entier donné est un multiple d’un nombre entier inférieur ou égal à 10",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-013",
+          "intitule": "Savoir déterminer si un nombre entier inférieur ou égal à 10 est un diviseur d’un nombre entier donné",
+          "fingerprint": "savoir_determiner_si_un_nombre_entier_inferieur_ou",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers",
+          "type": "capacite",
+          "formulation_bo": "Savoir déterminer si un nombre entier inférieur ou égal à 10 est un diviseur d’un nombre entier donné",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les fractions": [
+        {
+          "code": "CM1-NB-014",
+          "intitule": "comme au CE1, les fractions sont utilisées pour représenter une partie d’un tout dans le cadre d’un partage de ce tout en",
+          "fingerprint": "comme_au_ce1_les_fractions_sont_utilisees_pour_rep",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "comme au CE1, les fractions sont utilisées pour représenter une partie d’un tout dans le cadre d’un partage de ce tout en",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-015",
+          "intitule": "dans la continuité du CE2, les fractions sont utilisées pour mesurer des grandeurs lorsque les nombres entiers ne sont pas",
+          "fingerprint": "dans_la_continuite_du_ce2_les_fractions_sont_utili",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "dans la continuité du CE2, les fractions sont utilisées pour mesurer des grandeurs lorsque les nombres entiers ne sont pas",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 5,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_005.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-016",
+          "intitule": "le travail sur la mesure de longueurs à l’aide de fractions permet d’introduire le repérage de points sur une demi-droite",
+          "fingerprint": "le_travail_sur_la_mesure_de_longueurs_a_l_aide_de",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "le travail sur la mesure de longueurs à l’aide de fractions permet d’introduire le repérage de points sur une demi-droite",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-017",
+          "intitule": "au CM1, les fractions acquièrent également le statut d’opérateur multiplicatif pour le cas particulier des fractions unitaires ;",
+          "fingerprint": "au_cm1_les_fractions_acquierent_egalement_le_statu",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "au CM1, les fractions acquièrent également le statut d’opérateur multiplicatif pour le cas particulier des fractions unitaires ;",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-018",
+          "intitule": "Savoir interpréter, représenter, écrire et lire des fractions",
+          "fingerprint": "savoir_interpreter_representer_ecrire_et_lire_des",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "Savoir interpréter, représenter, écrire et lire des fractions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-019",
+          "intitule": "Savoir écrire une fraction supérieure à 1 comme la somme d’un entier et d’une fraction inférieure à 1",
+          "fingerprint": "savoir_ecrire_une_fraction_superieure_a_1_comme_la",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "Savoir écrire une fraction supérieure à 1 comme la somme d’un entier et d’une fraction inférieure à 1",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-020",
+          "intitule": "Savoir écrire la somme d’un entier et d’une fraction inférieure à 1 comme une unique fraction",
+          "fingerprint": "savoir_ecrire_la_somme_d_un_entier_et_d_une_fracti",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "Savoir écrire la somme d’un entier et d’une fraction inférieure à 1 comme une unique fraction",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-021",
+          "intitule": "Savoir encadrer une fraction par deux nombres entiers consécutifs",
+          "fingerprint": "savoir_encadrer_une_fraction_par_deux_nombres_enti",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "Savoir encadrer une fraction par deux nombres entiers consécutifs",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-022",
+          "intitule": "Savoir placer une fraction ou la somme d’un nombre entier et d’une fraction inférieure à un sur une demi-droite graduée",
+          "fingerprint": "savoir_placer_une_fraction_ou_la_somme_d_un_nombre",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "Savoir placer une fraction ou la somme d’un nombre entier et d’une fraction inférieure à un sur une demi-droite graduée",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-023",
+          "intitule": "Savoir repérer un point d’une demi-droite graduée par une fraction ou par la somme d’un nombre entier et d’une fraction",
+          "fingerprint": "savoir_reperer_un_point_d_une_demi_droite_graduee",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "Savoir repérer un point d’une demi-droite graduée par une fraction ou par la somme d’un nombre entier et d’une fraction",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-024",
+          "intitule": "Comparer des fractions",
+          "fingerprint": "comparer_des_fractions",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "Comparer des fractions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-025",
+          "intitule": "Additionner et soustraire des fractions",
+          "fingerprint": "additionner_et_soustraire_des_fractions",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "Additionner et soustraire des fractions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-026",
+          "intitule": "Déterminer une fraction d’une quantité ou d’une grandeur",
+          "fingerprint": "determiner_une_fraction_d_une_quantite_ou_d_une_gr",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les fractions",
+          "type": "capacite",
+          "formulation_bo": "Déterminer une fraction d’une quantité ou d’une grandeur",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les nombres décimaux": [
+        {
+          "code": "CM1-NB-027",
+          "intitule": "la partie « Grandeurs et mesures » où les nombres décimaux sont largement utilisés ;",
+          "fingerprint": "la_partie_grandeurs_et_mesures_ou_les_nombres_deci",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "la partie « Grandeurs et mesures » où les nombres décimaux sont largement utilisés ;",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-028",
+          "intitule": "les sous-parties « Calcul mental » et « Les quatre opérations » où sont présentées des compétences calculatoires que",
+          "fingerprint": "les_sous_parties_calcul_mental_et_les_quatre_opera",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "les sous-parties « Calcul mental » et « Les quatre opérations » où sont présentées des compétences calculatoires que",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-029",
+          "intitule": "la sous-partie « Résolution de problèmes » où les nombres décimaux prennent tout leur sens.",
+          "fingerprint": "la_sous_partie_resolution_de_problemes_ou_les_nomb",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "la sous-partie « Résolution de problèmes » où les nombres décimaux prennent tout leur sens.",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-030",
+          "intitule": "Interpréter, représenter, écrire et lire des fractions décimales",
+          "fingerprint": "interpreter_representer_ecrire_et_lire_des_fractio",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Interpréter, représenter, écrire et lire des fractions décimales",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-031",
+          "intitule": "Connaître et utiliser les relations entre unités simples, dixièmes et centièmes",
+          "fingerprint": "connaitre_et_utiliser_les_relations_entre_unites_s",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser les relations entre unités simples, dixièmes et centièmes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-032",
+          "intitule": "Placer une fraction décimale sur une demi-droite graduée et repérer un point d’une demi-droite graduée par une fraction décimale",
+          "fingerprint": "placer_une_fraction_decimale_sur_une_demi_droite_g",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Placer une fraction décimale sur une demi-droite graduée et repérer un point d’une demi-droite graduée par une fraction décimale",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-033",
+          "intitule": "Écrire une fraction décimale supérieure à 1 comme la somme d’un nombre entier et d’une fraction décimale inférieure à 1",
+          "fingerprint": "ecrire_une_fraction_decimale_superieure_a_1_comme",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Écrire une fraction décimale supérieure à 1 comme la somme d’un nombre entier et d’une fraction décimale inférieure à 1",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-034",
+          "intitule": "Écrire une fraction décimale supérieure à 1 comme la somme d’un nombre entier et de fractions décimales ayant un numérateur inférieur à 10",
+          "fingerprint": "ecrire_une_fraction_decimale_superieure_a_1_comme",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Écrire une fraction décimale supérieure à 1 comme la somme d’un nombre entier et de fractions décimales ayant un numérateur inférieur à 10",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-035",
+          "intitule": "Comparer, encadrer, intercaler des fractions décimales en utilisant les symboles =, < et >",
+          "fingerprint": "comparer_encadrer_intercaler_des_fractions_decimal",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Comparer, encadrer, intercaler des fractions décimales en utilisant les symboles =, < et >",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-036",
+          "intitule": "Ordonner des fractions décimales dans l’ordre croissant ou décroissant",
+          "fingerprint": "ordonner_des_fractions_decimales_dans_l_ordre_croi",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Ordonner des fractions décimales dans l’ordre croissant ou décroissant",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-037",
+          "intitule": "Passer d’une écriture sous forme d’une fraction décimale ou d’une somme de fractions décimales à une écriture à virgule et réciproquement",
+          "fingerprint": "passer_d_une_ecriture_sous_forme_d_une_fraction_de",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Passer d’une écriture sous forme d’une fraction décimale ou d’une somme de fractions décimales à une écriture à virgule et réciproquement",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-038",
+          "intitule": "Interpréter, représenter, écrire et lire des nombres décimaux (écriture à virgule)",
+          "fingerprint": "interpreter_representer_ecrire_et_lire_des_nombres",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Interpréter, représenter, écrire et lire des nombres décimaux (écriture à virgule)",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-039",
+          "intitule": "Placer un nombre décimal en écriture à virgule sur une demi-droite graduée et repérer un point d’une demi-droite graduée par un nombre décimal",
+          "fingerprint": "placer_un_nombre_decimal_en_ecriture_a_virgule_sur",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Placer un nombre décimal en écriture à virgule sur une demi-droite graduée et repérer un point d’une demi-droite graduée par un nombre décimal",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-040",
+          "intitule": "Savoir donner la partie entière et l’arrondi à l’entier d’un nombre décimal",
+          "fingerprint": "savoir_donner_la_partie_entiere_et_l_arrondi_a_l_e",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Savoir donner la partie entière et l’arrondi à l’entier d’un nombre décimal",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-041",
+          "intitule": "Comparer, encadrer, intercaler, ordonner, par ordre croissant ou décroissant, des nombres décimaux donnés par leur écriture à virgule en utilisant les symboles =, < et >",
+          "fingerprint": "comparer_encadrer_intercaler_ordonner_par_ordre_cr",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres décimaux",
+          "type": "capacite",
+          "formulation_bo": "Comparer, encadrer, intercaler, ordonner, par ordre croissant ou décroissant, des nombres décimaux donnés par leur écriture à virgule en utilisant les symboles =, < et >",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 6,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_006.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Le calcul mental": [
+        {
+          "code": "CM1-NB-042",
+          "intitule": "mémoriser des faits numériques qui peuvent être restitués de façon quasi instantanée ;",
+          "fingerprint": "memoriser_des_faits_numeriques_qui_peuvent_etre_re",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Le calcul mental",
+          "type": "capacite",
+          "formulation_bo": "mémoriser des faits numériques qui peuvent être restitués de façon quasi instantanée ;",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-043",
+          "intitule": "utiliser les connaissances sur la numération pour effectuer rapidement des calculs, en s’appuyant notamment sur la",
+          "fingerprint": "utiliser_les_connaissances_sur_la_numeration_pour",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Le calcul mental",
+          "type": "capacite",
+          "formulation_bo": "utiliser les connaissances sur la numération pour effectuer rapidement des calculs, en s’appuyant notamment sur la",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-044",
+          "intitule": "maîtriser des procédures de calcul mental efficaces qui seront progressivement automatisées.",
+          "fingerprint": "maitriser_des_procedures_de_calcul_mental_efficace",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Le calcul mental",
+          "type": "capacite",
+          "formulation_bo": "maîtriser des procédures de calcul mental efficaces qui seront progressivement automatisées.",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Mémoriser des faits numériques": [
+        {
+          "code": "CM1-NB-045",
+          "intitule": "Connaître des faits numériques usuels relatifs aux nombres entiers",
+          "fingerprint": "connaitre_des_faits_numeriques_usuels_relatifs_aux",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Connaître des faits numériques usuels relatifs aux nombres entiers",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-046",
+          "intitule": "Connaître quelques relations entre des fractions usuelles",
+          "fingerprint": "connaitre_quelques_relations_entre_des_fractions_u",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Connaître quelques relations entre des fractions usuelles",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-047",
+          "intitule": "Connaître l’écriture décimale de fractions usuelles",
+          "fingerprint": "connaitre_l_ecriture_decimale_de_fractions_usuelle",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Connaître l’écriture décimale de fractions usuelles",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-048",
+          "intitule": "Utiliser ses connaissances en numération pour calculer mentalement",
+          "fingerprint": "utiliser_ses_connaissances_en_numeration_pour_calc",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Utiliser ses connaissances en numération pour calculer mentalement",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-049",
+          "intitule": "Ajouter ou soustraire un nombre entier inférieur à 10, d’unités, de dizaines, de centaines, de dixièmes ou de centièmes à un nombre décimal, lorsqu’il n’y a pas de retenue",
+          "fingerprint": "ajouter_ou_soustraire_un_nombre_entier_inferieur_a",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Ajouter ou soustraire un nombre entier inférieur à 10, d’unités, de dizaines, de centaines, de dixièmes ou de centièmes à un nombre décimal, lorsqu’il n’y a pas de retenue",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-050",
+          "intitule": "Multiplier un nombre entier par 10, 100 ou 1 000",
+          "fingerprint": "multiplier_un_nombre_entier_par_10_100_ou_1_000",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Multiplier un nombre entier par 10, 100 ou 1 000",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-051",
+          "intitule": "Multiplier un nombre décimal par 10",
+          "fingerprint": "multiplier_un_nombre_decimal_par_10",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Multiplier un nombre décimal par 10",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-052",
+          "intitule": "Diviser un nombre décimal par 10",
+          "fingerprint": "diviser_un_nombre_decimal_par_10",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Diviser un nombre décimal par 10",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-053",
+          "intitule": "Apprendre des procédures de calcul mental",
+          "fingerprint": "apprendre_des_procedures_de_calcul_mental",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Apprendre des procédures de calcul mental",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-054",
+          "intitule": "Ajouter ou soustraire 8, 9, 18, 19, 28, 29, 38 ou 39, à un nombre",
+          "fingerprint": "ajouter_ou_soustraire_8_9_18_19_28_29_38_ou_39_a_u",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Ajouter ou soustraire 8, 9, 18, 19, 28, 29, 38 ou 39, à un nombre",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-055",
+          "intitule": "Multiplier un nombre entier inférieur à 10 par un nombre entier de dizaines ou de centaines",
+          "fingerprint": "multiplier_un_nombre_entier_inferieur_a_10_par_un",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Multiplier un nombre entier inférieur à 10 par un nombre entier de dizaines ou de centaines",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-056",
+          "intitule": "Multiplier un nombre entier par 4 ou par 8",
+          "fingerprint": "multiplier_un_nombre_entier_par_4_ou_par_8",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Multiplier un nombre entier par 4 ou par 8",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-057",
+          "intitule": "Multiplier un nombre entier par 5",
+          "fingerprint": "multiplier_un_nombre_entier_par_5",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Multiplier un nombre entier par 5",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-058",
+          "intitule": "Utiliser la distributivité de la multiplication par rapport à l’addition dans des cas simples",
+          "fingerprint": "utiliser_la_distributivite_de_la_multiplication_pa",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Mémoriser des faits numériques",
+          "type": "capacite",
+          "formulation_bo": "Utiliser la distributivité de la multiplication par rapport à l’addition dans des cas simples",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les quatre opérations": [
+        {
+          "code": "CM1-NB-059",
+          "intitule": "Estimer le résultat d’une opération",
+          "fingerprint": "estimer_le_resultat_d_une_operation",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les quatre opérations",
+          "type": "capacite",
+          "formulation_bo": "Estimer le résultat d’une opération",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-060",
+          "intitule": "Savoir effectuer un calcul contenant des parenthèses",
+          "fingerprint": "savoir_effectuer_un_calcul_contenant_des_parenthes",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les quatre opérations",
+          "type": "capacite",
+          "formulation_bo": "Savoir effectuer un calcul contenant des parenthèses",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-061",
+          "intitule": "Poser en colonnes et effectuer des additions et des soustractions de nombres décimaux",
+          "fingerprint": "poser_en_colonnes_et_effectuer_des_additions_et_de",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les quatre opérations",
+          "type": "capacite",
+          "formulation_bo": "Poser en colonnes et effectuer des additions et des soustractions de nombres décimaux",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-062",
+          "intitule": "Poser et effectuer des multiplications de deux nombres entiers",
+          "fingerprint": "poser_et_effectuer_des_multiplications_de_deux_nom",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les quatre opérations",
+          "type": "capacite",
+          "formulation_bo": "Poser et effectuer des multiplications de deux nombres entiers",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-063",
+          "intitule": "Poser et effectuer des multiplications d’un nombre décimal par un nombre entier inférieur à 10",
+          "fingerprint": "poser_et_effectuer_des_multiplications_d_un_nombre",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les quatre opérations",
+          "type": "capacite",
+          "formulation_bo": "Poser et effectuer des multiplications d’un nombre décimal par un nombre entier inférieur à 10",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-064",
+          "intitule": "Poser et effectuer des divisions euclidiennes avec un diviseur à un chiffre",
+          "fingerprint": "poser_et_effectuer_des_divisions_euclidiennes_avec",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "Les quatre opérations",
+          "type": "capacite",
+          "formulation_bo": "Poser et effectuer des divisions euclidiennes avec un diviseur à un chiffre",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 7,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_007.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "La résolution de problèmes": [
+        {
+          "code": "CM1-NB-065",
+          "intitule": "Résoudre des problèmes additifs en une étape des types « parties-tout » et « comparaison »",
+          "fingerprint": "resoudre_des_problemes_additifs_en_une_etape_des_t",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "La résolution de problèmes",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes additifs en une étape des types « parties-tout » et « comparaison »",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 8,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-066",
+          "intitule": "Résoudre des problèmes additifs en deux ou trois étapes",
+          "fingerprint": "resoudre_des_problemes_additifs_en_deux_ou_trois_e",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "La résolution de problèmes",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes additifs en deux ou trois étapes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 8,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-067",
+          "intitule": "Résoudre des problèmes multiplicatifs de type « parties-tout » en une étape",
+          "fingerprint": "resoudre_des_problemes_multiplicatifs_de_type_part",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "La résolution de problèmes",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes multiplicatifs de type « parties-tout » en une étape",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 8,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-068",
+          "intitule": "Résoudre des problèmes de comparaison multiplicative",
+          "fingerprint": "resoudre_des_problemes_de_comparaison_multiplicati",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "La résolution de problèmes",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes de comparaison multiplicative",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 8,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-069",
+          "intitule": "Résoudre des problèmes mixtes en deux ou trois étapes",
+          "fingerprint": "resoudre_des_problemes_mixtes_en_deux_ou_trois_eta",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "La résolution de problèmes",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes mixtes en deux ou trois étapes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 8,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-070",
+          "intitule": "Résoudre des problèmes de dénombrement",
+          "fingerprint": "resoudre_des_problemes_de_denombrement",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "La résolution de problèmes",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes de dénombrement",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 8,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-071",
+          "intitule": "Résoudre des problèmes d’optimisation",
+          "fingerprint": "resoudre_des_problemes_d_optimisation",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "La résolution de problèmes",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes d’optimisation",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 8,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_008.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "La proportionnalité": [
+        {
+          "code": "CM1-NB-072",
+          "intitule": "Identifier une situation de proportionnalité",
+          "fingerprint": "identifier_une_situation_de_proportionnalite",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "La proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Identifier une situation de proportionnalité",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 26,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_026.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-NB-073",
+          "intitule": "Savoir résoudre un problème de proportionnalité",
+          "fingerprint": "savoir_resoudre_un_probleme_de_proportionnalite",
+          "niveau": "CM1",
+          "domaine": "NB",
+          "sous_domaine": "La proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Savoir résoudre un problème de proportionnalité",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 26,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_026.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "Algèbre": [
+        {
+          "code": "CM1-AL-001",
+          "intitule": "Trouver le nombre manquant dans une égalité à trous",
+          "fingerprint": "trouver_le_nombre_manquant_dans_une_egalite_a_trou",
+          "niveau": "CM1",
+          "domaine": "AL",
+          "sous_domaine": "Algèbre",
+          "type": "capacite",
+          "formulation_bo": "Trouver le nombre manquant dans une égalité à trous",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 9,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-AL-002",
+          "intitule": "Déterminer la valeur d’un nombre inconnu en utilisant un symbole ou une lettre pour le représenter",
+          "fingerprint": "determiner_la_valeur_d_un_nombre_inconnu_en_utilis",
+          "niveau": "CM1",
+          "domaine": "AL",
+          "sous_domaine": "Algèbre",
+          "type": "capacite",
+          "formulation_bo": "Déterminer la valeur d’un nombre inconnu en utilisant un symbole ou une lettre pour le représenter",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 9,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-AL-003",
+          "intitule": "Résoudre des problèmes algébriques",
+          "fingerprint": "resoudre_des_problemes_algebriques",
+          "niveau": "CM1",
+          "domaine": "AL",
+          "sous_domaine": "Algèbre",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes algébriques",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 9,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-AL-004",
+          "intitule": "Exécuter un programme de calcul",
+          "fingerprint": "executer_un_programme_de_calcul",
+          "niveau": "CM1",
+          "domaine": "AL",
+          "sous_domaine": "Algèbre",
+          "type": "capacite",
+          "formulation_bo": "Exécuter un programme de calcul",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 9,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-AL-005",
+          "intitule": "Identifier et formuler une règle de calcul pour poursuivre une suite de nombres",
+          "fingerprint": "identifier_et_formuler_une_regle_de_calcul_pour_po",
+          "niveau": "CM1",
+          "domaine": "AL",
+          "sous_domaine": "Algèbre",
+          "type": "capacite",
+          "formulation_bo": "Identifier et formuler une règle de calcul pour poursuivre une suite de nombres",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 9,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-AL-006",
+          "intitule": "Identifier des régularités et poursuivre une suite de motifs évolutive",
+          "fingerprint": "identifier_des_regularites_et_poursuivre_une_suite",
+          "niveau": "CM1",
+          "domaine": "AL",
+          "sous_domaine": "Algèbre",
+          "type": "capacite",
+          "formulation_bo": "Identifier des régularités et poursuivre une suite de motifs évolutive",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 9,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_009.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "GM": {
+      "Les longueurs": [
+        {
+          "code": "CM1-GM-001",
+          "intitule": "Connaître et utiliser les unités de longueur du millimètre au kilomètre et les symboles associés",
+          "fingerprint": "connaitre_et_utiliser_les_unites_de_longueur_du_mi",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser les unités de longueur du millimètre au kilomètre et les symboles associés",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-002",
+          "intitule": "Connaître les relations entre les unités de longueur",
+          "fingerprint": "connaitre_les_relations_entre_les_unites_de_longue",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Connaître les relations entre les unités de longueur",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-003",
+          "intitule": "Choisir une unité adaptée pour exprimer une longueur",
+          "fingerprint": "choisir_une_unite_adaptee_pour_exprimer_une_longue",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Choisir une unité adaptée pour exprimer une longueur",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-004",
+          "intitule": "Comparer des longueurs",
+          "fingerprint": "comparer_des_longueurs",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Comparer des longueurs",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-005",
+          "intitule": "Disposer de quelques longueurs de référence",
+          "fingerprint": "disposer_de_quelques_longueurs_de_reference",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Disposer de quelques longueurs de référence",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-006",
+          "intitule": "Estimer la longueur d’un objet ou d’une distance",
+          "fingerprint": "estimer_la_longueur_d_un_objet_ou_d_une_distance",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Estimer la longueur d’un objet ou d’une distance",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-007",
+          "intitule": "Savoir ce qu’est le périmètre d’une figure plane",
+          "fingerprint": "savoir_ce_qu_est_le_perimetre_d_une_figure_plane",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Savoir ce qu’est le périmètre d’une figure plane",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-008",
+          "intitule": "Déterminer le périmètre d’un polygone en utilisant une règle graduée",
+          "fingerprint": "determiner_le_perimetre_d_un_polygone_en_utilisant",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Déterminer le périmètre d’un polygone en utilisant une règle graduée",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-009",
+          "intitule": "Résoudre des problèmes mettant en jeu les longueurs des côtés d’un polygone et son périmètre",
+          "fingerprint": "resoudre_des_problemes_mettant_en_jeu_les_longueur",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes mettant en jeu les longueurs des côtés d’un polygone et son périmètre",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les masses": [
+        {
+          "code": "CM1-GM-010",
+          "intitule": "Connaître et utiliser les unités de masse du milligramme au kilogramme et la tonne, et les symboles associés",
+          "fingerprint": "connaitre_et_utiliser_les_unites_de_masse_du_milli",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les masses",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser les unités de masse du milligramme au kilogramme et la tonne, et les symboles associés",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-011",
+          "intitule": "Connaître les relations entre les unités de masse",
+          "fingerprint": "connaitre_les_relations_entre_les_unites_de_masse",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les masses",
+          "type": "capacite",
+          "formulation_bo": "Connaître les relations entre les unités de masse",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-012",
+          "intitule": "Choisir une unité adaptée pour exprimer une masse",
+          "fingerprint": "choisir_une_unite_adaptee_pour_exprimer_une_masse",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les masses",
+          "type": "capacite",
+          "formulation_bo": "Choisir une unité adaptée pour exprimer une masse",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-013",
+          "intitule": "Comparer des masses",
+          "fingerprint": "comparer_des_masses",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les masses",
+          "type": "capacite",
+          "formulation_bo": "Comparer des masses",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-014",
+          "intitule": "Disposer de quelques masses de référence",
+          "fingerprint": "disposer_de_quelques_masses_de_reference",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les masses",
+          "type": "capacite",
+          "formulation_bo": "Disposer de quelques masses de référence",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-015",
+          "intitule": "Estimer la masse d’un objet",
+          "fingerprint": "estimer_la_masse_d_un_objet",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les masses",
+          "type": "capacite",
+          "formulation_bo": "Estimer la masse d’un objet",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les contenances": [
+        {
+          "code": "CM1-GM-016",
+          "intitule": "Connaître et utiliser les unités de contenance du millilitre à l’hectolitre et les symboles associés",
+          "fingerprint": "connaitre_et_utiliser_les_unites_de_contenance_du",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les contenances",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser les unités de contenance du millilitre à l’hectolitre et les symboles associés",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-017",
+          "intitule": "Connaître les relations entre les unités de contenance",
+          "fingerprint": "connaitre_les_relations_entre_les_unites_de_conten",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les contenances",
+          "type": "capacite",
+          "formulation_bo": "Connaître les relations entre les unités de contenance",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-018",
+          "intitule": "Choisir une unité adaptée pour exprimer une contenance",
+          "fingerprint": "choisir_une_unite_adaptee_pour_exprimer_une_conten",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les contenances",
+          "type": "capacite",
+          "formulation_bo": "Choisir une unité adaptée pour exprimer une contenance",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-019",
+          "intitule": "Comparer des contenances",
+          "fingerprint": "comparer_des_contenances",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les contenances",
+          "type": "capacite",
+          "formulation_bo": "Comparer des contenances",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les aires": [
+        {
+          "code": "CM1-GM-020",
+          "intitule": "Comparer les aires de différentes figures planes",
+          "fingerprint": "comparer_les_aires_de_differentes_figures_planes",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les aires",
+          "type": "capacite",
+          "formulation_bo": "Comparer les aires de différentes figures planes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-021",
+          "intitule": "Déterminer des aires",
+          "fingerprint": "determiner_des_aires",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les aires",
+          "type": "capacite",
+          "formulation_bo": "Déterminer des aires",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-022",
+          "intitule": "Connaître et utiliser les centimètres carrés pour exprimer des aires",
+          "fingerprint": "connaitre_et_utiliser_les_centimetres_carres_pour",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les aires",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser les centimètres carrés pour exprimer des aires",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les angles": [
+        {
+          "code": "CM1-GM-023",
+          "intitule": "Utiliser le lexique spécifique associé aux angles",
+          "fingerprint": "utiliser_le_lexique_specifique_associe_aux_angles",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les angles",
+          "type": "capacite",
+          "formulation_bo": "Utiliser le lexique spécifique associé aux angles",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-024",
+          "intitule": "Comprendre et utiliser les notations des angles",
+          "fingerprint": "comprendre_et_utiliser_les_notations_des_angles",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les angles",
+          "type": "capacite",
+          "formulation_bo": "Comprendre et utiliser les notations des angles",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-025",
+          "intitule": "Comparer des angles",
+          "fingerprint": "comparer_des_angles",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Les angles",
+          "type": "capacite",
+          "formulation_bo": "Comparer des angles",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 17,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_017.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Le repérage dans le temps et les durées": [
+        {
+          "code": "CM1-GM-026",
+          "intitule": "Lire l’heure sur une horloge à aiguilles",
+          "fingerprint": "lire_l_heure_sur_une_horloge_a_aiguilles",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Le repérage dans le temps et les durées",
+          "type": "capacite",
+          "formulation_bo": "Lire l’heure sur une horloge à aiguilles",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 18,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-027",
+          "intitule": "Positionner les aiguilles d’une horloge correspondant à une heure donnée en heure et minute",
+          "fingerprint": "positionner_les_aiguilles_d_une_horloge_correspond",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Le repérage dans le temps et les durées",
+          "type": "capacite",
+          "formulation_bo": "Positionner les aiguilles d’une horloge correspondant à une heure donnée en heure et minute",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 18,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-028",
+          "intitule": "Comparer et mesurer des durées écoulées entre deux instants affichés sur une horloge (instants et durées sont exprimés en heure et minute)",
+          "fingerprint": "comparer_et_mesurer_des_durees_ecoulees_entre_deux",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Le repérage dans le temps et les durées",
+          "type": "capacite",
+          "formulation_bo": "Comparer et mesurer des durées écoulées entre deux instants affichés sur une horloge (instants et durées sont exprimés en heure et minute)",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 18,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GM-029",
+          "intitule": "Résoudre des problèmes à une ou deux étapes impliquant des durées",
+          "fingerprint": "resoudre_des_problemes_a_une_ou_deux_etapes_impliq",
+          "niveau": "CM1",
+          "domaine": "GM",
+          "sous_domaine": "Le repérage dans le temps et les durées",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes à une ou deux étapes impliquant des durées",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 18,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_018.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "GEO": {
+      "La géométrie plane": [
+        {
+          "code": "CM1-GEO-001",
+          "intitule": "Utiliser le vocabulaire géométrique approprié dans le contexte d’apprentissage des notions correspondantes",
+          "fingerprint": "utiliser_le_vocabulaire_geometrique_approprie_dans",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Utiliser le vocabulaire géométrique approprié dans le contexte d’apprentissage des notions correspondantes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-002",
+          "intitule": "Utiliser les outils géométriques usuels : règle, règle graduée, équerre et compas",
+          "fingerprint": "utiliser_les_outils_geometriques_usuels_regle_regl",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Utiliser les outils géométriques usuels : règle, règle graduée, équerre et compas",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-003",
+          "intitule": "Connaître les codes usuels utilisés en géométrie",
+          "fingerprint": "connaitre_les_codes_usuels_utilises_en_geometrie",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Connaître les codes usuels utilisés en géométrie",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-004",
+          "intitule": "Décrire et reconnaître un cercle et un disque comme un ensemble de points caractérisés par leur distance à un point donné",
+          "fingerprint": "decrire_et_reconnaitre_un_cercle_et_un_disque_comm",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Décrire et reconnaître un cercle et un disque comme un ensemble de points caractérisés par leur distance à un point donné",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-005",
+          "intitule": "Reconnaître et utiliser la notion de perpendicularité",
+          "fingerprint": "reconnaitre_et_utiliser_la_notion_de_perpendicular",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Reconnaître et utiliser la notion de perpendicularité",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-006",
+          "intitule": "Reconnaître et utiliser la notion de parallélisme",
+          "fingerprint": "reconnaitre_et_utiliser_la_notion_de_parallelisme",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Reconnaître et utiliser la notion de parallélisme",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-007",
+          "intitule": "Reconnaître et nommer les figures suivantes en faisant référence à leur définition : triangle, triangle rectangle, triangle isocèle, triangle équilatéral, quadrilatère, carré, rectangle et losange",
+          "fingerprint": "reconnaitre_et_nommer_les_figures_suivantes_en_fai",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Reconnaître et nommer les figures suivantes en faisant référence à leur définition : triangle, triangle rectangle, triangle isocèle, triangle équilatéral, quadrilatère, carré, rectangle et losange",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-008",
+          "intitule": "Connaître les propriétés de parallélisme des côtés opposés, des égalités de longueurs et d’angles pour les figures usuelles : triangle rectangle, triangle isocèle, triangle équilatéral, carré, rectangle et losange.",
+          "fingerprint": "connaitre_les_proprietes_de_parallelisme_des_cotes",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Connaître les propriétés de parallélisme des côtés opposés, des égalités de longueurs et d’angles pour les figures usuelles : triangle rectangle, triangle isocèle, triangle équilatéral, carré, rectangle et losange.",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-009",
+          "intitule": "Reproduire ou construire un carré, un rectangle, un triangle, un triangle rectangle ou un cercle ou des assemblages de ces figures sur tout support (papier quadrillé, pointé ou uni), avec une règle graduée, une équerre ou un compas.",
+          "fingerprint": "reproduire_ou_construire_un_carre_un_rectangle_un",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Reproduire ou construire un carré, un rectangle, un triangle, un triangle rectangle ou un cercle ou des assemblages de ces figures sur tout support (papier quadrillé, pointé ou uni), avec une règle graduée, une équerre ou un compas.",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-010",
+          "intitule": "Construire une figure géométrique composée de segments, de droites, de polygones usuels et de cercles.",
+          "fingerprint": "construire_une_figure_geometrique_composee_de_segm",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "La géométrie plane",
+          "type": "capacite",
+          "formulation_bo": "Construire une figure géométrique composée de segments, de droites, de polygones usuels et de cercles.",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les solides": [
+        {
+          "code": "CM1-GEO-011",
+          "intitule": "Nommer un cube, une boule, un pavé, un cône, une pyramide, un cylindre et un prisme droit",
+          "fingerprint": "nommer_un_cube_une_boule_un_pave_un_cone_une_pyram",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Les solides",
+          "type": "capacite",
+          "formulation_bo": "Nommer un cube, une boule, un pavé, un cône, une pyramide, un cylindre et un prisme droit",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-012",
+          "intitule": "Décrire un cube, un pavé, une pyramide et un prisme droit en faisant référence à des propriétés et en utilisant le vocabulaire approprié",
+          "fingerprint": "decrire_un_cube_un_pave_une_pyramide_et_un_prisme",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Les solides",
+          "type": "capacite",
+          "formulation_bo": "Décrire un cube, un pavé, une pyramide et un prisme droit en faisant référence à des propriétés et en utilisant le vocabulaire approprié",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-013",
+          "intitule": "Connaître le nombre et la nature des faces d’un cube ou d’un pavé",
+          "fingerprint": "connaitre_le_nombre_et_la_nature_des_faces_d_un_cu",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Les solides",
+          "type": "capacite",
+          "formulation_bo": "Connaître le nombre et la nature des faces d’un cube ou d’un pavé",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-014",
+          "intitule": "Connaître la nature des faces d’une pyramide",
+          "fingerprint": "connaitre_la_nature_des_faces_d_une_pyramide",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Les solides",
+          "type": "capacite",
+          "formulation_bo": "Connaître la nature des faces d’une pyramide",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-015",
+          "intitule": "Connaître la nature des faces d’un prisme droit",
+          "fingerprint": "connaitre_la_nature_des_faces_d_un_prisme_droit",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Les solides",
+          "type": "capacite",
+          "formulation_bo": "Connaître la nature des faces d’un prisme droit",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-016",
+          "intitule": "Construire un cube, un pavé, une pyramide ou un prisme droit",
+          "fingerprint": "construire_un_cube_un_pave_une_pyramide_ou_un_pris",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Les solides",
+          "type": "capacite",
+          "formulation_bo": "Construire un cube, un pavé, une pyramide ou un prisme droit",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-017",
+          "intitule": "Reconnaître un patron d’un cube",
+          "fingerprint": "reconnaitre_un_patron_d_un_cube",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Les solides",
+          "type": "capacite",
+          "formulation_bo": "Reconnaître un patron d’un cube",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-018",
+          "intitule": "Construire un patron d’un cube",
+          "fingerprint": "construire_un_patron_d_un_cube",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Les solides",
+          "type": "capacite",
+          "formulation_bo": "Construire un patron d’un cube",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Le repérage dans l’espace": [
+        {
+          "code": "CM1-GEO-019",
+          "intitule": "Connaître et utiliser le vocabulaire lié aux déplacements",
+          "fingerprint": "connaitre_et_utiliser_le_vocabulaire_lie_aux_depla",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Le repérage dans l’espace",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser le vocabulaire lié aux déplacements",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-020",
+          "intitule": "Comprendre, utiliser et produire une suite d’instructions qui décrivent un déplacement en utilisant un vocabulaire spatial précis",
+          "fingerprint": "comprendre_utiliser_et_produire_une_suite_d_instru",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Le repérage dans l’espace",
+          "type": "capacite",
+          "formulation_bo": "Comprendre, utiliser et produire une suite d’instructions qui décrivent un déplacement en utilisant un vocabulaire spatial précis",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-GEO-021",
+          "intitule": "Résoudre des problèmes portant sur des assemblages de cubes",
+          "fingerprint": "resoudre_des_problemes_portant_sur_des_assemblages",
+          "niveau": "CM1",
+          "domaine": "GEO",
+          "sous_domaine": "Le repérage dans l’espace",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes portant sur des assemblages de cubes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 21,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_021.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "OGD": {
+      "Organisation et gestion de données": [
+        {
+          "code": "CM1-OGD-001",
+          "intitule": "Recueillir des données et produire un tableau, un diagramme en barres ou un ensemble de points dans un repère pour les présenter",
+          "fingerprint": "recueillir_des_donnees_et_produire_un_tableau_un_d",
+          "niveau": "CM1",
+          "domaine": "OGD",
+          "sous_domaine": "Organisation et gestion de données",
+          "type": "capacite",
+          "formulation_bo": "Recueillir des données et produire un tableau, un diagramme en barres ou un ensemble de points dans un repère pour les présenter",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-OGD-002",
+          "intitule": "Lire et interpréter les données d’un tableau à simple ou double entrée, d’un diagramme en barres ou d’une courbe",
+          "fingerprint": "lire_et_interpreter_les_donnees_d_un_tableau_a_sim",
+          "niveau": "CM1",
+          "domaine": "OGD",
+          "sous_domaine": "Organisation et gestion de données",
+          "type": "capacite",
+          "formulation_bo": "Lire et interpréter les données d’un tableau à simple ou double entrée, d’un diagramme en barres ou d’une courbe",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-OGD-003",
+          "intitule": "Résoudre des problèmes en une ou plusieurs étapes en utilisant les données d’un tableau à simple ou double entrée, d’un diagramme en barres ou d’une courbe",
+          "fingerprint": "resoudre_des_problemes_en_une_ou_plusieurs_etapes",
+          "niveau": "CM1",
+          "domaine": "OGD",
+          "sous_domaine": "Organisation et gestion de données",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes en une ou plusieurs étapes en utilisant les données d’un tableau à simple ou double entrée, d’un diagramme en barres ou d’une courbe",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "PR": {
+      "Les probabilités": [
+        {
+          "code": "CM1-PR-001",
+          "intitule": "Identifier des expériences aléatoires",
+          "fingerprint": "identifier_des_experiences_aleatoires",
+          "niveau": "CM1",
+          "domaine": "PR",
+          "sous_domaine": "Les probabilités",
+          "type": "capacite",
+          "formulation_bo": "Identifier des expériences aléatoires",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-PR-002",
+          "intitule": "Identifier toutes les issues possibles lors d’une expérience aléatoire simple",
+          "fingerprint": "identifier_toutes_les_issues_possibles_lors_d_une",
+          "niveau": "CM1",
+          "domaine": "PR",
+          "sous_domaine": "Les probabilités",
+          "type": "capacite",
+          "formulation_bo": "Identifier toutes les issues possibles lors d’une expérience aléatoire simple",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-PR-003",
+          "intitule": "Comprendre et utiliser le vocabulaire approprié : « impossible », « possible », « certain », « probable », « peu probable », « une chance sur deux »",
+          "fingerprint": "comprendre_et_utiliser_le_vocabulaire_approprie_im",
+          "niveau": "CM1",
+          "domaine": "PR",
+          "sous_domaine": "Les probabilités",
+          "type": "capacite",
+          "formulation_bo": "Comprendre et utiliser le vocabulaire approprié : « impossible », « possible », « certain », « probable », « peu probable », « une chance sur deux »",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-PR-004",
+          "intitule": "Comparer des issues d’expériences aléatoires ou des évènements selon leur probabilité de réalisation",
+          "fingerprint": "comparer_des_issues_d_experiences_aleatoires_ou_de",
+          "niveau": "CM1",
+          "domaine": "PR",
+          "sous_domaine": "Les probabilités",
+          "type": "capacite",
+          "formulation_bo": "Comparer des issues d’expériences aléatoires ou des évènements selon leur probabilité de réalisation",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-PR-005",
+          "intitule": "Comprendre que ce n’est pas parce qu’il y a deux issues possibles que chacune a une chance sur deux de se réaliser",
+          "fingerprint": "comprendre_que_ce_n_est_pas_parce_qu_il_y_a_deux_i",
+          "niveau": "CM1",
+          "domaine": "PR",
+          "sous_domaine": "Les probabilités",
+          "type": "capacite",
+          "formulation_bo": "Comprendre que ce n’est pas parce qu’il y a deux issues possibles que chacune a une chance sur deux de se réaliser",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-PR-006",
+          "intitule": "Reconnaître des situations d’équiprobabilité",
+          "fingerprint": "reconnaitre_des_situations_d_equiprobabilite",
+          "niveau": "CM1",
+          "domaine": "PR",
+          "sous_domaine": "Les probabilités",
+          "type": "capacite",
+          "formulation_bo": "Reconnaître des situations d’équiprobabilité",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "ALGO": {
+      "Initiation à la pensée informatique": [
+        {
+          "code": "CM1-ALGO-001",
+          "intitule": "choisir un nombre entier ;",
+          "fingerprint": "choisir_un_nombre_entier",
+          "niveau": "CM1",
+          "domaine": "ALGO",
+          "sous_domaine": "Initiation à la pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "choisir un nombre entier ;",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 28,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_028.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-ALGO-002",
+          "intitule": "ajouter 2 au nombre choisi ;",
+          "fingerprint": "ajouter_2_au_nombre_choisi",
+          "niveau": "CM1",
+          "domaine": "ALGO",
+          "sous_domaine": "Initiation à la pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "ajouter 2 au nombre choisi ;",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 28,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_028.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-ALGO-003",
+          "intitule": "multiplier le résultat trouvé à l’étape précédente par 4 ;",
+          "fingerprint": "multiplier_le_resultat_trouve_a_l_etape_precedente",
+          "niveau": "CM1",
+          "domaine": "ALGO",
+          "sous_domaine": "Initiation à la pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "multiplier le résultat trouvé à l’étape précédente par 4 ;",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 28,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_028.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "CM1-ALGO-004",
+          "intitule": "écrire le nombre obtenu.",
+          "fingerprint": "ecrire_le_nombre_obtenu",
+          "niveau": "CM1",
+          "domaine": "ALGO",
+          "sous_domaine": "Initiation à la pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "écrire le nombre obtenu.",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 28,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_028.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    }
+  }
+}

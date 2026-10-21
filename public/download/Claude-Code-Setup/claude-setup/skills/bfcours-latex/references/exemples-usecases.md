@@ -1,6 +1,6 @@
 # Exemples d'Utilisation Professionnels BFCours
 
-Ce fichier pointe vers les exemples réels d'utilisation de bfcours situés dans `.claude\agents-data\usecase\`.
+Ce fichier pointe vers les exemples réels d'utilisation de bfcours situés dans le dossier `assets/usecase/` du skill bfcours-latex.
 
 ## Organisation des Exemples
 
@@ -22,9 +22,9 @@ Les exemples sont organisés en dossiers représentant chacun une partie de la s
 Pour trouver des exemples d'utilisation d'un environnement spécifique :
 
 ```
-Grep: pattern="\\begin{Definition}" path=".claude/agents-data/usecase" output_mode="content"
-Grep: pattern="\\begin{EXO}" path=".claude/agents-data/usecase" output_mode="content"
-Grep: pattern="\\begin{MultiColonnes}" path=".claude/agents-data/usecase" output_mode="content"
+Grep: pattern="\\begin{Definition}" path=".claude/skills/bfcours-latex/assets/usecase" output_mode="content"
+Grep: pattern="\\begin{EXO}" path=".claude/skills/bfcours-latex/assets/usecase" output_mode="content"
+Grep: pattern="\\begin{MultiColonnes}" path=".claude/skills/bfcours-latex/assets/usecase" output_mode="content"
 ```
 
 ### Recherche par Type de Contenu
@@ -33,32 +33,32 @@ Pour trouver des exemples de contenu spécifique :
 
 ```
 # Exemples de tableaux
-Grep: pattern="\\begin{tcbtab}" path=".claude/agents-data/usecase" output_mode="content" -A=10
+Grep: pattern="\\begin{tcbtab}" path=".claude/skills/bfcours-latex/assets/usecase" output_mode="content" -A=10
 
 # Exemples d'énumérations
-Grep: pattern="\\begin{tcbenumerate}" path=".claude/agents-data/usecase" output_mode="content" -A=10
+Grep: pattern="\\begin{tcbenumerate}" path=".claude/skills/bfcours-latex/assets/usecase" output_mode="content" -A=10
 
 # Exemples d'espaces réponses
-Grep: pattern="\\begin{crep}" path=".claude/agents-data/usecase" output_mode="content" -A=5
+Grep: pattern="\\begin{crep}" path=".claude/skills/bfcours-latex/assets/usecase" output_mode="content" -A=5
 
 # Exemples de figures TikZ
-Grep: pattern="\\tikzfig" path=".claude/agents-data/usecase" output_mode="content"
+Grep: pattern="\\tikzfig" path=".claude/skills/bfcours-latex/assets/usecase" output_mode="content"
 
 # Exemples d'exercices avec points
-Grep: pattern="\\tcbitempoint" path=".claude/agents-data/usecase" output_mode="content" -A=3
+Grep: pattern="\\tcbitempoint" path=".claude/skills/bfcours-latex/assets/usecase" output_mode="content" -A=3
 ```
 
 ### Recherche par Niveau de Complexité
 
 ```
 # Cours complexe et atomique
-Read: ".claude/agents-data/usecase/[dossier_cours]/*.tex"
+Read: ".claude/skills/bfcours-latex/assets/usecase/Cours_second_degre/*.tex"
 
 # Cours simple et non atomique
-Read: ".claude/agents-data/usecase/[dossier_cours_partie2]/*.tex"
+Read: ".claude/skills/bfcours-latex/assets/usecase/Cours_Partie2_second_degre/*.tex"
 
 # Exercices avec corrections détaillées
-Grep: pattern="\\exocorrection" path=".claude/agents-data/usecase" output_mode="content" -A=20
+Grep: pattern="\\exocorrection" path=".claude/skills/bfcours-latex/assets/usecase" output_mode="content" -A=20
 ```
 
 ## Bonnes Pratiques
@@ -75,9 +75,9 @@ Grep: pattern="\\exocorrection" path=".claude/agents-data/usecase" output_mode="
 
 ## Chemin Complet
 
-Tous les exemples se trouvent dans :
+Tous les exemples se trouvent dans le dossier `assets/usecase/` du skill bfcours-latex :
 ```
-C:\Users\Utilisateur\Documents\Professionnel\1. Reims 2025 - 2026\.claude\skills\assets\usecase\
+D:\Applications\math-teacher-soul\.claude\skills\bfcours-latex\assets\usecase\
 ```
 
 Utiliser ce chemin pour les recherches Grep et les lectures Read.

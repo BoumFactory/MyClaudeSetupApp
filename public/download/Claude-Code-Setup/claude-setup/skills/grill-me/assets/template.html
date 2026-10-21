@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITRE__</title>
+<style>
+:root {
+  --fond: #f4f6fb;
+  --carte: #ffffff;
+  --texte: #1d2433;
+  --doux: #5b6578;
+  --bord: #d5dbe8;
+  --accent: #2f5fd0;
+  --accent-fond: #e8eefc;
+  --vert: #1f8a4c;
+  --vert-fond: #e5f5ec;
+  --rouge: #d6291f;
+  --ambre-fond: #fff6e0;
+  --ambre-bord: #f0cf7a;
+}
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  padding-bottom: 130px;
+  overflow-x: hidden;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+header, main, .sommaire, .progression { max-width: 820px; margin: 0 auto; padding-left: 14px; padding-right: 14px; }
+header { padding-top: 16px; }
+.entete { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+h1 { font-size: 1.35rem; margin: 0 0 4px; line-height: 1.25; overflow-wrap: anywhere; }
+.contexte { margin: 0 0 10px; color: var(--doux); overflow-wrap: anywhere; }
+.outils { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  background: var(--carte); border: 1px solid var(--bord); border-radius: 8px;
+  padding: 7px 12px; min-height: 38px;
+}
+.btn:hover { border-color: var(--accent); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn.primaire { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.btn.primaire:hover { filter: brightness(1.08); }
+.progression { margin-top: 8px; }
+.progression .texte { font-size: .85rem; color: var(--doux); display: flex; justify-content: space-between; }
+.barre { height: 6px; background: var(--bord); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.barre > i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .25s; }
+.sommaire { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.sommaire button {
+  border: 1px solid var(--bord); background: var(--carte); border-radius: 999px;
+  padding: 3px 10px 3px 8px; font-size: .85rem; display: inline-flex; align-items: center; gap: 6px; min-height: 30px;
+}
+.sommaire button.courant { border-color: var(--accent); background: var(--accent-fond); font-weight: 600; }
+.pastille { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--bord); background: #fff; flex: none; }
+.repondue .pastille { background: var(--vert); border-color: var(--vert); }
+main { margin-top: 14px; }
+.carte {
+  background: var(--carte); border: 1px solid var(--bord); border-radius: 14px;
+  padding: 20px 18px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(30, 45, 90, .06);
+}
+.carte[hidden] { display: none; }
+body.focus .carte { padding: 26px 24px; }
+.carte h2 { font-size: 1.2rem; margin: 0 0 10px; line-height: 1.3; overflow-wrap: anywhere; }
+.carte h2 small { color: var(--accent); font-weight: 600; margin-right: 6px; }
+.type { font-size: .8rem; color: var(--doux); margin: -4px 0 10px; }
+.corps p { margin: 0 0 .7em; overflow-wrap: anywhere; }
+.corps ul { margin: 0 0 .7em; padding-left: 1.3em; }
+.corps code, .tbody code, .reco code { background: #eef1f7; border-radius: 4px; padding: 1px 5px; font-family: Consolas, "Courier New", monospace; font-size: .92em; }
+.corps a, .tbody a, .reco a { color: var(--accent); }
+.reco { background: var(--ambre-fond); border: 1px solid var(--ambre-bord); border-radius: 10px; padding: 10px 14px; margin: 12px 0; }
+.reco b.titre { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: #8a6a10; margin-bottom: 2px; }
+.options { display: grid; gap: 10px; margin: 14px 0 6px; }
+.tile {
+  position: relative; display: flex; gap: 12px; align-items: flex-start; cursor: pointer;
+  border: 2px solid var(--bord); border-radius: 12px; padding: 12px 14px; background: #fff;
+  transition: border-color .12s, background .12s;
+}
+.tile:hover { border-color: #9fb3e6; }
+.tile.on { border-color: var(--accent); background: var(--accent-fond); }
+.tile input { position: absolute; opacity: 0; pointer-events: none; }
+.tile .marque {
+  flex: none; width: 22px; height: 22px; border: 2px solid var(--doux); margin-top: 2px;
+  display: grid; place-items: center; background: #fff; border-radius: 50%;
+}
+.tile.multi .marque { border-radius: 6px; }
+.tile.on .marque { border-color: var(--accent); background: var(--accent); }
+.tile.on .marque::after { content: "✓"; color: #fff; font-size: 14px; line-height: 1; font-weight: 700; }
+.tile .tbody { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.tile .label { font-weight: 600; }
+.tile .desc { color: var(--doux); font-size: .93rem; margin-top: 2px; }
+.tile .touche { flex: none; font-size: .75rem; color: var(--doux); border: 1px solid var(--bord); border-radius: 5px; padding: 0 6px; margin-top: 2px; }
+.badge { display: inline-block; background: var(--vert-fond); color: var(--vert); border: 1px solid #9fd5b6; border-radius: 999px; font-size: .72rem; font-weight: 700; padding: 0 8px; margin-left: 8px; vertical-align: 1px; white-space: nowrap; }
+.aucune { margin: 4px 0 0; }
+.aucune.on { border-color: var(--accent); background: var(--accent-fond); }
+.commentaire { margin-top: 16px; }
+.commentaire label { display: block; font-size: .85rem; color: var(--doux); margin-bottom: 4px; }
+.zone { display: flex; gap: 8px; align-items: flex-start; }
+.zone textarea {
+  flex: 1; min-width: 0; width: 100%; resize: none; overflow: hidden; min-height: 70px;
+  font: inherit; padding: 10px 12px; border: 1px solid var(--bord); border-radius: 10px; background: #fff; color: var(--texte);
+}
+.zone textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+.micro { flex: none; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--bord); background: #fff; font-size: 1.2rem; padding: 0; }
+.micro.actif { background: var(--rouge); border-color: var(--rouge); color: #fff; animation: pulse 1.2s infinite; }
+.micro.demarrage { background: #f59a1b; border-color: #f59a1b; color: #fff; }
+.etatmicro { font-size: .85rem; font-weight: 600; min-height: 0; margin-top: 4px; }
+.etatmicro.demarrage { color: #b86e00; }
+.etatmicro.ecoute { color: var(--rouge); }
+.micro:disabled { opacity: .4; cursor: not-allowed; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(214, 41, 31, .5); } 70% { box-shadow: 0 0 0 12px rgba(214, 41, 31, 0); } 100% { box-shadow: 0 0 0 0 rgba(214, 41, 31, 0); } }
+.interim { color: #8a93a6; font-style: italic; min-height: 1.2em; font-size: .93rem; margin-top: 4px; overflow-wrap: anywhere; }
+.msgmicro { color: var(--rouge); font-size: .85rem; margin-top: 2px; }
+.nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.aide { font-size: .78rem; color: var(--doux); margin-top: 12px; }
+body:not(.focus) .nav, body:not(.focus) .aide, body:not(.focus) .touche { display: none; }
+.barre-bas {
+  position: fixed; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, .97);
+  border-top: 1px solid var(--bord); padding: 8px 14px; z-index: 20;
+}
+.barre-bas .in { max-width: 820px; margin: 0 auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.compteur { flex: 1 1 100%; font-size: .85rem; color: var(--doux); }
+.barre-bas .btn { flex: 1 1 auto; }
+.toast {
+  position: fixed; left: 50%; bottom: 120px; transform: translateX(-50%); background: #1d2433; color: #fff;
+  padding: 9px 16px; border-radius: 8px; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 40; max-width: 90vw; text-align: center;
+}
+.toast.visible { opacity: 1; }
+.voile { position: fixed; inset: 0; background: rgba(20, 28, 50, .45); display: none; align-items: center; justify-content: center; z-index: 30; padding: 14px; }
+.voile.ouvert { display: flex; }
+.modale { background: #fff; border-radius: 12px; max-width: 720px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; padding: 16px; }
+.modale h3 { margin: 0 0 8px; }
+.modale pre { flex: 1; overflow: auto; background: #f4f6fb; border: 1px solid var(--bord); border-radius: 8px; padding: 10px; margin: 0 0 12px; white-space: pre-wrap; overflow-wrap: anywhere; font: .88rem/1.45 Consolas, "Courier New", monospace; }
+.modale .actions { display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; }
+@media (max-width: 520px) {
+  body.focus .carte, .carte { padding: 16px 12px; }
+  .tile { padding: 10px; }
+  .tile .touche { display: none; }
+}
+</style>
+</head>
+<body class="focus">
+<header>
+  <div class="entete">
+    <div>
+      <h1 id="titre"></h1>
+      <p class="contexte" id="contexte"></p>
+    </div>
+    <div class="outils">
+      <button class="btn" id="bascule" type="button"></button>
+      <button class="btn" id="reinit" type="button">Réinitialiser</button>
+    </div>
+  </div>
+</header>
+<div class="progression">
+  <div class="texte"><span id="progtexte"></span><span id="progrep"></span></div>
+  <div class="barre"><i id="progbarre"></i></div>
+</div>
+<nav class="sommaire" id="sommaire" aria-label="Sommaire des questions"></nav>
+<main id="cartes"></main>
+
+<div class="barre-bas">
+  <div class="in">
+    <div class="compteur" id="compteur"></div>
+    <button class="btn" id="apercu" type="button">Aperçu</button>
+    <button class="btn primaire" id="copier" type="button">Copier les réponses</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<div class="voile" id="voile">
+  <div class="modale" role="dialog" aria-modal="true" aria-label="Aperçu des réponses">
+    <h3>Aperçu des réponses</h3>
+    <pre id="apercutexte"></pre>
+    <div class="actions">
+      <button class="btn" id="fermer" type="button">Fermer</button>
+      <button class="btn primaire" id="copier2" type="button">Copier les réponses</button>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+const D = /*__DONNEES__*/{};
+const QS = D.questions || [];
+const CLE = "grillme:" + D.titre + ":" + QS.length;
+
+/* ---------- utilitaires ---------- */
+function el(tag, cls, texte) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (texte !== undefined) e.textContent = texte;
+  return e;
+}
+function echapper(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+function inline(s) {
+  const codes = [];
+  let t = echapper(s).replace(/`([^`]+)`/g, function (_m, c) {
+    codes.push("<code>" + c + "</code>");
+    return "\u0000" + (codes.length - 1) + "\u0001";
+  });
+  t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  t = t.replace(/\*([^*\n]+)\*/g, "<em>$1</em>");
+  return t.replace(/\u0000(\d+)\u0001/g, function (_m, n) { return codes[Number(n)]; });
+}
+function markdown(src) {
+  const lignes = String(src || "").split("\n");
+  let sortie = "", para = [], liste = [];
+  function fermerPara() { if (para.length) { sortie += "<p>" + para.map(inline).join("<br>") + "</p>"; para = []; } }
+  function fermerListe() { if (liste.length) { sortie += "<ul>" + liste.map(function (x) { return "<li>" + inline(x) + "</li>"; }).join("") + "</ul>"; liste = []; } }
+  lignes.forEach(function (l) {
+    if (!l.trim()) { fermerPara(); fermerListe(); return; }
+    const m = l.match(/^\s*[-*]\s+(.*)$/);
+    if (m) { fermerPara(); liste.push(m[1]); }
+    else { fermerListe(); para.push(l.trim()); }
+  });
+  fermerPara(); fermerListe();
+  return sortie;
+}
+let toastTimer = null;
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("visible");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { t.classList.remove("visible"); }, 2200);
+}
+
+/* ---------- état ---------- */
+function etatInitial() {
+  return {
+    cur: 0,
+    mode: "focus",
+    rep: QS.map(function (q) {
+      const sel = [];
+      q.options.forEach(function (o, i) { if (o.reco) sel.push(i); });
+      return { sel: sel, none: false, txt: "" };
+    })
+  };
+}
+let S = etatInitial();
+function charger() {
+  try {
+    const brut = localStorage.getItem(CLE);
+    if (!brut) return;
+    const x = JSON.parse(brut);
+    if (!x || !Array.isArray(x.rep) || x.rep.length !== QS.length) return;
+    x.rep.forEach(function (r, i) {
+      const n = QS[i].options.length;
+      S.rep[i] = {
+        sel: (Array.isArray(r.sel) ? r.sel : []).filter(function (k) { return Number.isInteger(k) && k >= 0 && k < n; }),
+        none: !!r.none,
+        txt: typeof r.txt === "string" ? r.txt : ""
+      };
+    });
+    if (Number.isInteger(x.cur) && x.cur >= 0 && x.cur < QS.length) S.cur = x.cur;
+    if (x.mode === "all" || x.mode === "focus") S.mode = x.mode;
+  } catch (e) { /* stockage indisponible */ }
+}
+function sauver() {
+  try { localStorage.setItem(CLE, JSON.stringify(S)); } catch (e) { /* ignoré */ }
+}
+function repondue(i) {
+  const r = S.rep[i];
+  return r.sel.length > 0 || r.none || r.txt.trim() !== "";
+}
+
+/* ---------- cartes ---------- */
+const cartes = [];   // { carte, tuiles:[{lab,inp}], ta, aucune, mic, interim, msg }
+
+function construireCarte(q, i) {
+  const carte = el("section", "carte");
+  carte.id = "q" + (i + 1);
+  const h = el("h2");
+  h.appendChild(el("small", "", "Q" + (i + 1)));
+  h.appendChild(document.createTextNode(q.titre));
+  carte.appendChild(h);
+  const typeTxt = q.type === "multiple" ? "Plusieurs réponses possibles" : q.type === "unique" ? "Une seule réponse" : "Réponse libre";
+  carte.appendChild(el("div", "type", typeTxt));
+  const corps = el("div", "corps");
+  corps.innerHTML = markdown(q.corps);
+  carte.appendChild(corps);
+  if (q.reco) {
+    const r = el("div", "reco");
+    r.appendChild(el("b", "titre", "Ma recommandation"));
+    const s = el("span");
+    s.innerHTML = inline(q.reco);
+    r.appendChild(s);
+    carte.appendChild(r);
+  }
+
+  const info = { carte: carte, tuiles: [], ta: null, aucune: null, mic: null, interim: null, msg: null };
+  if (q.options.length) {
+    const box = el("div", "options");
+    const multi = q.type === "multiple";
+    q.options.forEach(function (o, k) {
+      const lab = el("label", "tile" + (multi ? " multi" : ""));
+      const inp = document.createElement("input");
+      inp.type = multi ? "checkbox" : "radio";
+      inp.name = "q" + i;
+      inp.addEventListener("change", function () {
+        if (multi) {
+          S.rep[i].sel = info.tuiles.map(function (t, j) { return t.inp.checked ? j : -1; }).filter(function (j) { return j >= 0; });
+        } else {
+          S.rep[i].sel = inp.checked ? [k] : [];
+        }
+        S.rep[i].none = false;
+        rafraichirCarte(i);
+        majGlobal();
+        inp.blur();
+      });
+      const marque = el("span", "marque");
+      const tb = el("div", "tbody");
+      const l = el("span", "label", o.label);
+      tb.appendChild(l);
+      if (o.reco) tb.appendChild(el("span", "badge", "Recommandé"));
+      if (o.desc) {
+        const d = el("div", "desc");
+        d.innerHTML = inline(o.desc);
+        tb.appendChild(d);
+      }
+      lab.appendChild(inp);
+      lab.appendChild(marque);
+      lab.appendChild(tb);
+      if (k < 9) lab.appendChild(el("span", "touche", String(k + 1)));
+      box.appendChild(lab);
+      info.tuiles.push({ lab: lab, inp: inp });
+    });
+    carte.appendChild(box);
+    const non = el("button", "btn aucune", "Aucune ne me va");
+    non.type = "button";
+    non.addEventListener("click", function () {
+      S.rep[i].sel = [];
+      S.rep[i].none = true;
+      rafraichirCarte(i);
+      majGlobal();
+      info.ta.focus();
+    });
+    info.aucune = non;
+    carte.appendChild(non);
+  }
+
+  const com = el("div", "commentaire");
+  const lab = el("label", "", q.options.length ? "Commentaire, nuance ou réponse alternative" : "Votre réponse");
+  lab.htmlFor = "ta" + i;
+  com.appendChild(lab);
+  const zone = el("div", "zone");
+  const ta = document.createElement("textarea");
+  ta.id = "ta" + i;
+  ta.rows = 3;
+  ta.addEventListener("input", function () {
+    S.rep[i].txt = ta.value;
+    ajuster(ta);
+    majGlobal();
+  });
+  const mic = el("button", "micro", "🎤");
+  mic.type = "button";
+  mic.setAttribute("aria-label", "Dicter");
+  if (!SR) {
+    mic.disabled = true;
+    mic.title = "Dictée indisponible : ouvrir dans Chrome ou Edge";
+  } else {
+    mic.title = "Dicter (démarrer / arrêter)";
+    mic.addEventListener("click", function () { basculerMicro(i); });
+  }
+  zone.appendChild(ta);
+  zone.appendChild(mic);
+  com.appendChild(zone);
+  const etat = el("div", "etatmicro");
+  const interim = el("div", "interim");
+  const msg = el("div", "msgmicro");
+  com.appendChild(etat);
+  com.appendChild(interim);
+  com.appendChild(msg);
+  carte.appendChild(com);
+  info.ta = ta; info.mic = mic; info.interim = interim; info.msg = msg; info.etat = etat;
+
+  const nav = el("div", "nav");
+  const prec = el("button", "btn", "← Précédent");
+  prec.type = "button";
+  prec.disabled = i === 0;
+  prec.addEventListener("click", function () { aller(i - 1); });
+  const suiv = el("button", "btn primaire", i === QS.length - 1 ? "Terminer et voir l'aperçu" : "Suivant →");
+  suiv.type = "button";
+  suiv.addEventListener("click", suivant);
+  nav.appendChild(prec);
+  nav.appendChild(suiv);
+  carte.appendChild(nav);
+  carte.appendChild(el("div", "aide", "Raccourcis : 1-9 choisir une option · Entrée ou → suivant · ← précédent · t pour écrire un commentaire"));
+  carte.appendChild(el("div", "aide", "Astuce : la dictée Windows (Win + H) marche aussi dans chaque zone de texte, sans autorisation."));
+
+  cartes.push(info);
+  return carte;
+}
+
+function ajuster(ta) {
+  ta.style.height = "auto";
+  ta.style.height = Math.max(70, ta.scrollHeight + 2) + "px";
+}
+function rafraichirCarte(i) {
+  const r = S.rep[i], c = cartes[i];
+  c.tuiles.forEach(function (t, k) {
+    const on = r.sel.indexOf(k) >= 0;
+    t.inp.checked = on;
+    t.lab.classList.toggle("on", on);
+  });
+  if (c.aucune) c.aucune.classList.toggle("on", r.none);
+  if (c.ta.value !== r.txt) c.ta.value = r.txt;
+  ajuster(c.ta);
+}
+
+/* ---------- affichage global ---------- */
+const sommaireBtns = [];
+function construireSommaire() {
+  const s = document.getElementById("sommaire");
+  QS.forEach(function (q, i) {
+    const b = el("button");
+    b.type = "button";
+    b.title = q.titre;
+    b.appendChild(el("span", "pastille"));
+    b.appendChild(document.createTextNode("Q" + (i + 1)));
+    b.addEventListener("click", function () {
+      if (S.mode === "focus") aller(i);
+      else cartes[i].carte.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    s.appendChild(b);
+    sommaireBtns.push(b);
+  });
+}
+function majGlobal() {
+  let n = 0;
+  QS.forEach(function (_q, i) {
+    const ok = repondue(i);
+    if (ok) n++;
+    sommaireBtns[i].classList.toggle("repondue", ok);
+    sommaireBtns[i].classList.toggle("courant", S.mode === "focus" && i === S.cur);
+  });
+  document.getElementById("compteur").textContent = n + " / " + QS.length + " question" + (QS.length > 1 ? "s" : "") + " répondue" + (n > 1 ? "s" : "");
+  const focus = S.mode === "focus";
+  document.getElementById("progtexte").textContent = focus ? "Question " + (S.cur + 1) + " / " + QS.length : QS.length + " questions";
+  document.getElementById("progrep").textContent = n + " répondue" + (n > 1 ? "s" : "");
+  document.getElementById("progbarre").style.width = (focus ? (S.cur + 1) / QS.length : n / QS.length) * 100 + "%";
+  sauver();
+}
+function afficher() {
+  const focus = S.mode === "focus";
+  document.body.classList.toggle("focus", focus);
+  document.getElementById("bascule").textContent = focus ? "Voir toutes les questions" : "Mode une question à la fois";
+  cartes.forEach(function (c, i) { c.carte.hidden = focus && i !== S.cur; });
+  majGlobal();
+}
+function aller(i) {
+  if (i < 0 || i >= QS.length) return;
+  arreterMicro();
+  S.cur = i;
+  afficher();
+  window.scrollTo(0, 0);
+}
+function suivant() {
+  if (S.cur < QS.length - 1) aller(S.cur + 1);
+  else ouvrirApercu();
+}
+
+/* ---------- texte des réponses ---------- */
+function texteReponses() {
+  const lignes = ["# Réponses — " + D.titre];
+  QS.forEach(function (q, i) {
+    const r = S.rep[i];
+    const entete = "Q" + (i + 1) + " — " + q.titre + " : ";
+    if (!repondue(i)) { lignes.push(entete + "NON RÉPONDU"); return; }
+    let choix;
+    if (r.sel.length) {
+      choix = r.sel.slice().sort(function (a, b) { return a - b; }).map(function (k) { return q.options[k].label; }).join(" + ");
+      const reco = [];
+      q.options.forEach(function (o, k) { if (o.reco) reco.push(k); });
+      const sel = r.sel.slice().sort(function (a, b) { return a - b; });
+      if (reco.length && reco.length === sel.length && reco.every(function (k, j) { return k === sel[j]; })) choix += " (recommandé)";
+    } else if (r.none) {
+      choix = "aucune option ne convient";
+    } else {
+      choix = "(pas d'option)";
+    }
+    lignes.push(entete + choix);
+    const t = r.txt.trim();
+    if (t) t.split("\n").forEach(function (l) { lignes.push("  > " + l); });
+  });
+  return lignes.join("\n");
+}
+function copierTexte(texte) {
+  function repli() {
+    const ta = document.createElement("textarea");
+    ta.value = texte;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  function fin(ok) { toast(ok ? "Réponses copiées" : "Copie impossible : sélectionnez le texte de l'aperçu à la main"); if (!ok) ouvrirApercu(); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texte).then(function () { fin(true); }, function () { fin(repli()); });
+  } else {
+    fin(repli());
+  }
+}
+function ouvrirApercu() {
+  document.getElementById("apercutexte").textContent = texteReponses();
+  document.getElementById("voile").classList.add("ouvert");
+}
+function fermerApercu() { document.getElementById("voile").classList.remove("ouvert"); }
+
+/* ---------- dictée vocale ---------- */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+let rec = null;          // instance en cours (une neuve à chaque démarrage)
+let micQ = -1;           // zone dont le micro est voulu (-1 : aucune)
+let micCible = -1;       // zone qui reçoit les résultats de la session en cours
+let micVoulu = false;
+let micSuivant = -1;     // zone à démarrer dès que l'écoute précédente est finie
+
+function messageMicro(i, texte) { if (cartes[i]) cartes[i].msg.textContent = texte || ""; }
+function etatMicro(i, etat) {
+  const c = cartes[i];
+  if (!c) return;
+  c.mic.classList.toggle("demarrage", etat === "demarrage");
+  c.mic.classList.toggle("actif", etat === "ecoute");
+  c.etat.className = "etatmicro" + (etat ? " " + etat : "");
+  c.etat.textContent = etat === "demarrage" ? "Démarrage du micro… patientez"
+    : etat === "ecoute" ? "À l'écoute, parlez" : "";
+  if (!etat) c.interim.textContent = "";
+}
+function arreterMicro() {
+  micVoulu = false;
+  micSuivant = -1;
+  if (micQ >= 0) etatMicro(micQ, "");
+  micQ = -1;
+  if (rec) { try { rec.stop(); } catch (e) { /* ignoré */ } }
+}
+function creerReconnaissance() {
+  const r = new SR();
+  r.lang = "fr-FR";
+  r.continuous = true;
+  r.interimResults = true;
+  // chaque handler ignore les événements d'une ancienne instance
+  r.onaudiostart = function () {
+    if (r !== rec) return;
+    if (micVoulu && micQ >= 0) etatMicro(micQ, "ecoute");
+  };
+  r.onresult = function (e) {
+    if (r !== rec) return;
+    const c = cartes[micCible];
+    if (!c) return;
+    let inter = "";
+    for (let k = e.resultIndex; k < e.results.length; k++) {
+      const res = e.results[k];
+      if (res.isFinal) {
+        const t = res[0].transcript.trim();
+        if (t) {
+          const ta = c.ta;
+          ta.value += (ta.value && !/\s$/.test(ta.value) ? " " : "") + t;
+          S.rep[micCible].txt = ta.value;
+          ajuster(ta);
+          majGlobal();
+        }
+      } else {
+        inter += res[0].transcript;
+      }
+    }
+    c.interim.textContent = inter;
+  };
+  r.onerror = function (e) {
+    if (r !== rec) return;
+    const i = micQ >= 0 ? micQ : micCible;
+    if (e.error === "not-allowed" || e.error === "service-not-allowed") {
+      messageMicro(i, "Micro refusé : autorisez le micro pour cette page (icône à gauche de l'adresse), puis réessayez.");
+      arreterMicro();
+    } else if (e.error === "audio-capture") {
+      messageMicro(i, "Aucun micro détecté.");
+      arreterMicro();
+    } else if (e.error === "network") {
+      messageMicro(i, "Dictée indisponible : connexion au service vocal impossible.");
+      arreterMicro();
+    } else if (e.error === "no-speech") {
+      messageMicro(i, "Aucune voix captée : vérifiez le micro choisi pour cette page (icône à gauche de l'adresse).");
+    } else if (e.error === "aborted") {
+      // Chrome n'a qu'une dictée à la fois : un autre onglet l'a prise, ne pas la reprendre
+      // (sinon deux onglets se la volent en boucle et rien n'est transcrit)
+      messageMicro(i, "Dictée arrêtée : un autre onglet utilise le micro. Fermez-le puis recliquez.");
+      arreterMicro();
+    } else {
+      messageMicro(i, "Dictée interrompue (" + e.error + ").");
+    }
+  };
+  r.onend = function () {
+    if (r !== rec) return;
+    if (micSuivant >= 0) {
+      const n = micSuivant;
+      micSuivant = -1;
+      demarrerSur(n);
+    } else if (micVoulu && micQ >= 0) {
+      // Chrome coupe l'écoute de lui-même : repartir avec une instance neuve
+      const q = micQ;
+      etatMicro(q, "demarrage");
+      setTimeout(function () {
+        if (micVoulu && micQ === q) demarrerSur(q);
+      }, 100);
+    } else {
+      etatMicro(micCible, "");
+    }
+  };
+  return r;
+}
+function demarrerSur(i) {
+  messageMicro(i, "");
+  micQ = i;
+  micCible = i;
+  micVoulu = true;
+  etatMicro(i, "demarrage");
+  // une instance neuve à chaque démarrage : Chrome ne renvoie plus de résultats
+  // quand on relance une instance déjà arrêtée
+  if (rec) { try { rec.abort(); } catch (e) { /* ignoré */ } }
+  rec = creerReconnaissance();
+  try { rec.start(); } catch (e) { messageMicro(i, "Impossible de démarrer la dictée."); arreterMicro(); }
+}
+// onglet masqué : libérer la dictée pour ne pas la disputer à un autre onglet
+document.addEventListener("visibilitychange", function () {
+  if (document.hidden && micVoulu) arreterMicro();
+});
+function basculerMicro(i) {
+  if (!SR) return;
+  if (micVoulu && micQ === i) { arreterMicro(); return; }
+  if (micVoulu && rec) {
+    // une dictée est en cours sur une autre zone : l'arrêter proprement, puis repartir ici
+    etatMicro(micQ, "");
+    micQ = -1;
+    micVoulu = false;
+    micSuivant = i;
+    etatMicro(i, "demarrage");
+    try { rec.stop(); } catch (e) { micSuivant = -1; demarrerSur(i); return; }
+    setTimeout(function () {
+      if (micSuivant === i) { micSuivant = -1; demarrerSur(i); }
+    }, 1000);
+  } else {
+    demarrerSur(i);
+  }
+}
+
+/* ---------- clavier ---------- */
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") { fermerApercu(); return; }
+  if (S.mode !== "focus" || e.ctrlKey || e.altKey || e.metaKey) return;
+  if (document.getElementById("voile").classList.contains("ouvert")) return;
+  const cible = e.target;
+  if (cible && (cible.tagName === "TEXTAREA" || cible.tagName === "BUTTON" || cible.tagName === "SELECT")) return;
+  const q = QS[S.cur];
+  if (/^[1-9]$/.test(e.key)) {
+    const t = cartes[S.cur].tuiles[Number(e.key) - 1];
+    if (t) {
+      e.preventDefault();
+      if (q.type === "multiple" || !t.inp.checked) t.inp.click();
+    }
+  } else if (e.key === "Enter" || e.key === "ArrowRight") {
+    e.preventDefault();
+    suivant();
+  } else if (e.key === "ArrowLeft") {
+    e.preventDefault();
+    aller(S.cur - 1);
+  } else if (e.key === "t" || e.key === "T") {
+    e.preventDefault();
+    cartes[S.cur].ta.focus();
+  }
+});
+
+/* ---------- démarrage ---------- */
+function demarrer() {
+  document.getElementById("titre").textContent = D.titre || "Manche";
+  const ctx = document.getElementById("contexte");
+  ctx.textContent = D.contexte || "";
+  ctx.hidden = !D.contexte;
+  charger();
+  const main = document.getElementById("cartes");
+  QS.forEach(function (q, i) { main.appendChild(construireCarte(q, i)); });
+  construireSommaire();
+  QS.forEach(function (_q, i) { rafraichirCarte(i); });
+  afficher();
+
+  document.getElementById("bascule").addEventListener("click", function () {
+    arreterMicro();
+    S.mode = S.mode === "focus" ? "all" : "focus";
+    afficher();
+    window.scrollTo(0, 0);
+  });
+  document.getElementById("reinit").addEventListener("click", function () {
+    if (!window.confirm("Effacer toutes les réponses de cette manche ?")) return;
+    arreterMicro();
+    S = etatInitial();
+    try { localStorage.removeItem(CLE); } catch (e) { /* ignoré */ }
+    QS.forEach(function (_q, i) { rafraichirCarte(i); });
+    afficher();
+    toast("Réponses réinitialisées");
+  });
+  document.getElementById("apercu").addEventListener("click", ouvrirApercu);
+  document.getElementById("fermer").addEventListener("click", fermerApercu);
+  document.getElementById("voile").addEventListener("click", function (e) { if (e.target.id === "voile") fermerApercu(); });
+  document.getElementById("copier").addEventListener("click", function () { copierTexte(texteReponses()); });
+  document.getElementById("copier2").addEventListener("click", function () { copierTexte(texteReponses()); });
+}
+demarrer();
+</script>
+</body>
+</html>

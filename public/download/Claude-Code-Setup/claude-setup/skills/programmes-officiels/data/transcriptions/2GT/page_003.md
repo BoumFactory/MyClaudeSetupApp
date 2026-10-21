@@ -1,0 +1,64 @@
+---
+niveau: 2GT
+page: 3
+pdf: 2gt.pdf
+page_folder: 2GT
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/2GT/page_003.png
+transcription_meta:
+  date: "2026-05-19T00:00:00Z"
+  status: clean
+  confidence: 0.98
+  has_formulas: false
+  has_tables: false
+  source: "fitz get_text('text') + relecture multimodale"
+---
+
+# Page 3 — Préambule (fin) : trace écrite, travail personnel, lignes directrices, organisation
+
+## Trace écrite
+
+Disposer d'une trace de cours claire, explicite et structurée est une aide essentielle à l'apprentissage des mathématiques. Faisant suite aux étapes importantes de recherche, d'appropriation individuelle ou collective, la trace écrite récapitule de façon organisée les connaissances, les méthodes et les stratégies étudiées en classe. Explicitant les liens entre les différentes notions ainsi que leurs objectifs, éventuellement enrichie par des exemples ou des schémas, elle constitue pour l'élève une véritable référence vers laquelle il peut se tourner autant que de besoin. Sa consultation régulière (notamment au moment de la recherche d'exercices et de problèmes, sous la conduite des professeurs ou en autonomie) favorise à la fois la mémorisation et le développement de compétences.
+
+Les professeurs doivent avoir le souci de la bonne qualité (mathématique et rédactionnelle) des traces écrites figurant au tableau et dans les cahiers d'élèves. En particulier, il est essentiel de bien distinguer le statut des énoncés (conjecture, définition, propriété — admise ou démontrée —, démonstration, théorème).
+
+## Travail personnel des élèves
+
+Si la classe est le lieu privilégié pour la mise en activité mathématique des élèves, les travaux hors du temps scolaire sont indispensables pour consolider les apprentissages. Fréquents, de longueur raisonnable et de nature variée, ces travaux sont essentiels à la formation des élèves. Individuels ou en groupe, évalués à l'écrit ou à l'oral, ces travaux sont conçus de façon à prendre en compte la diversité des élèves et permettent le développement des qualités d'initiatives, tout en assurant la stabilisation des connaissances et des compétences. Ils peuvent être proposés pour approfondir, réviser ou remédier. Ces travaux doivent avoir des objectifs explicites, être adaptés au niveau des élèves, et prendre en compte la diversité de leurs besoins. Ils doivent faire l'objet d'un retour individualisé par les professeurs.
+
+> Les professeurs précisent le cadre et les modalités d'usage des outils d'intelligence artificielle dans le travail personnel des élèves.
+
+## Quelques lignes directrices pour l'enseignement
+
+Les professeurs veillent à créer, dans la classe de mathématiques, une atmosphère de travail favorable aux apprentissages, combinant bienveillance et exigence. Il est important de développer chez chaque élève des attitudes positives à l'égard des mathématiques et sa capacité à résoudre des problèmes stimulants.
+
+Il est important d'encourager chaque élève, fille ou garçon, à s'engager dans une recherche mathématique, individuellement ou en équipe, développant ainsi confiance en soi et sentiment d'efficacité personnelle. L'élève cherche, essaie des pistes, prend le risque de se tromper, sans craindre l'erreur, mais en en tirant profit grâce aux professeurs, qui l'aident à l'identifier, à l'analyser et la comprendre. Ce travail sur l'erreur participe à la construction de ses apprentissages.
+
+Les problèmes proposés aux élèves contribuent à donner du sens aux notions étudiées. Ils peuvent être internes aux mathématiques, provenir de l'histoire des mathématiques, être issus des autres disciplines ou du monde réel, en prenant garde que la simple inclusion de références au monde réel ne suffit pas toujours à transformer un exercice de routine en un bon problème. Dans tous les cas, ils doivent être bien conçus et motivants, afin de développer les connaissances et compétences mathématiques du programme et susciter des vocations scientifiques.
+
+Les professeurs veillent à établir un équilibre entre divers temps de l'apprentissage :
+
+- les temps de recherche, d'activité, de manipulation ;
+- les temps de dialogue et d'échange, de verbalisation ;
+- les temps de cours, où les professeurs exposent avec précision, présentent certaines démonstrations et permettent aux élèves d'accéder à l'abstraction ;
+- les temps où sont présentés et discutés des exemples, pour vérifier la bonne compréhension de tous les élèves ;
+- les exercices et problèmes, allant progressivement de l'application la plus directe au thème d'étude ;
+- les rituels, afin de consolider les connaissances et les méthodes.
+
+## Organisation du programme
+
+> Le programme s'organise en quatre parties thématiques : « Nombres et calculs, algèbre », « Géométrie », « Fonctions », « Statistiques et probabilités », et trois parties transversales : « Vocabulaire ensembliste et logique », « Algorithmique et programmation » et « Automatismes ».
+
+Cette organisation n'est cependant pas un plan de cours : il est essentiel d'exploiter les interactions entre les différentes parties, qu'elles soient thématiques ou transversales, en adoptant un enseignement en spirale.
+
+Les parties transversales recensent les connaissances et capacités attendues qui doivent être travaillées tout au long de l'année. Elles ne donnent pas lieu à des séquences de cours spécifiques mais font cependant l'objet d'un enseignement explicite.
+
+Les connaissances du collège sont systématiquement réactivées à travers des problèmes. Elles n'ont pas vocation à faire l'objet de chapitres de révisions. Le travail sur les automatismes favorise leur réactivation.
+
+Démontrer est une composante fondamentale de l'activité mathématique. Le programme identifie quelques démonstrations exemplaires, mettant en œuvre des types de raisonnement divers, que les élèves découvrent selon des modalités variées : présentation par les professeurs, élaboration par les élèves sous la direction du professeur, devoirs à la maison, etc.
+
+## Notes de l'agent
+
+- Fin de la partie préambule. Le programme proprement dit commence page 4 avec « Vocabulaire ensembliste et logique » et « Algorithmique et programmation ».
+- Aucune compétence atomique à extraire ici — page transversale.

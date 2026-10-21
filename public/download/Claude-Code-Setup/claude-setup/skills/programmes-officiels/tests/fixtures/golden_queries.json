@@ -1,0 +1,718 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "generated_at": "2026-05-19",
+    "purpose": "Requêtes de référence figées contre l'index FTS5 (search_index.sqlite). Couvre 10 niveaux × types × domaines × notions emblématiques. Toute régression de classification ou d'extraction sera capturée ici.",
+    "schema": {
+      "query": {
+        "keyword": "mot-clé FTS5 (recherche unicode61 remove_diacritics 2)",
+        "niveau": "filtre structurel post-FTS sur les compétences",
+        "domaine": "filtre structurel",
+        "type": "filtre structurel",
+        "scope": "competences | automatismes (défaut competences)"
+      },
+      "expect": {
+        "must_contain_codes": "tous ces codes doivent être présents dans le résultat",
+        "must_contain_one_of": "au moins un de ces codes",
+        "must_not_contain_codes": "aucun de ces codes",
+        "min_results": "≥ N résultats",
+        "max_results": "≤ N résultats",
+        "all_niveau_in": "tous les résultats ont un niveau dans cette liste",
+        "all_type_in": "tous les résultats ont un type dans cette liste"
+      }
+    }
+  },
+  "queries": [
+    {
+      "id": "GQ-C-01",
+      "category": "college",
+      "note": "Pythagore — extrait comme approfondissement 4E (BO 2026 cycle 4)",
+      "query": {
+        "keyword": "pythagore",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 1,
+        "must_contain_one_of": [
+          "4E-GEO-010",
+          "4E-GEO-014"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C-02",
+      "category": "college",
+      "note": "Thalès — capacité 4E + automatismes 2GT/3E",
+      "query": {
+        "keyword": "thales",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 1,
+        "must_contain_one_of": [
+          "3E-AL-011",
+          "3E-GEO-007",
+          "3E-GEO-010",
+          "2GT-GEO-004"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C-03",
+      "category": "college",
+      "note": "Thalès dans les automatismes cycle 4 (3E)",
+      "query": {
+        "keyword": "thales",
+        "scope": "automatismes"
+      },
+      "expect": {
+        "min_results": 0
+      }
+    },
+    {
+      "id": "GQ-C-04",
+      "category": "college",
+      "note": "Fractions : essentiellement présentes dans les automatismes du cycle 4",
+      "query": {
+        "keyword": "fraction",
+        "scope": "automatismes"
+      },
+      "expect": {
+        "min_results": 3
+      }
+    },
+    {
+      "id": "GQ-C-05",
+      "category": "college",
+      "note": "Proportionnalité dans les automatismes cycle 4 (3E)",
+      "query": {
+        "keyword": "proportionnalite",
+        "scope": "automatismes"
+      },
+      "expect": {
+        "min_results": 2
+      }
+    },
+    {
+      "id": "GQ-C-06",
+      "category": "college",
+      "note": "Calcul littéral — automatismes (cycle 4 + 2GT) ; pas de compétence atomique extraite cycle 4",
+      "query": {
+        "keyword": "litteral",
+        "scope": "automatismes"
+      },
+      "expect": {
+        "min_results": 2
+      }
+    },
+    {
+      "id": "GQ-C-07",
+      "category": "college",
+      "note": "Puissances — compétence 2GT-AL-011 et automatismes cycle 4 (3E)",
+      "query": {
+        "keyword": "puissance",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 1,
+        "must_contain_one_of": [
+          "2GT-AL-034",
+          "2GT-NB-004"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C-08",
+      "category": "college",
+      "note": "Racine carrée — apparaît en 2GT (compétence) et automatismes 3E",
+      "query": {
+        "keyword": "racine carre",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 1,
+        "must_contain_one_of": [
+          "1SPE-AN-012",
+          "2GT-AN-022",
+          "2GT-AN-039"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C-09",
+      "category": "college",
+      "note": "Médiane/moyenne — automatismes répartis sur cycle 4 et lycée",
+      "query": {
+        "keyword": "moyenne OR mediane",
+        "scope": "automatismes"
+      },
+      "expect": {
+        "min_results": 3
+      }
+    },
+    {
+      "id": "GQ-C-10",
+      "category": "college",
+      "note": "Médiane d'une série statistique — capacité 2GT",
+      "query": {
+        "keyword": "mediane",
+        "niveau": "2GT",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "2GT-STA-007",
+          "2GT-STA-008"
+        ],
+        "min_results": 1
+      }
+    },
+    {
+      "id": "GQ-L-01",
+      "category": "lycee",
+      "note": "Ensembles de nombres N, Z, D, Q, R — 2GT",
+      "query": {
+        "keyword": "ensemble",
+        "niveau": "2GT",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 1,
+        "must_contain_one_of": [
+          "2GT-AL-023",
+          "2GT-AL-026",
+          "2GT-AL-032",
+          "2GT-AN-012"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-02",
+      "category": "lycee",
+      "note": "Vecteurs en 2GT (contenu et capacité)",
+      "query": {
+        "keyword": "vecteur",
+        "niveau": "2GT",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 3,
+        "all_niveau_in": [
+          "2GT"
+        ],
+        "must_contain_one_of": [
+          "2GT-GEO-009",
+          "2GT-GEO-010",
+          "2GT-GEO-011"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-03",
+      "category": "lycee",
+      "note": "Probabilités conditionnelles : nouveau programme 2GT (2026) — bloc compétences",
+      "query": {
+        "keyword": "conditionnelle",
+        "niveau": "2GT",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "2GT-STA-010",
+          "2GT-STA-011",
+          "2GT-STA-028"
+        ],
+        "min_results": 3,
+        "all_niveau_in": [
+          "2GT"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-04",
+      "category": "lycee",
+      "note": "Python apparaît explicitement dans certaines compétences 2GT",
+      "query": {
+        "keyword": "python",
+        "niveau": "2GT",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 1
+      }
+    },
+    {
+      "id": "GQ-L-05",
+      "category": "lycee",
+      "note": "Dérivée en 1SPE",
+      "query": {
+        "keyword": "derivee",
+        "niveau": "1SPE",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "1SPE-AN-015",
+          "1SPE-AN-020",
+          "1SPE-AN-021",
+          "1SPE-AN-023"
+        ],
+        "min_results": 4,
+        "all_niveau_in": [
+          "1SPE"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-06",
+      "category": "lycee",
+      "note": "Produit scalaire en 1SPE",
+      "query": {
+        "keyword": "produit scalaire",
+        "niveau": "1SPE",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "1SPE-GEO-007",
+          "1SPE-GEO-008"
+        ],
+        "min_results": 3,
+        "all_niveau_in": [
+          "1SPE"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-07",
+      "category": "lycee",
+      "note": "Suites (arithmétique/géométrique) en 1SPE",
+      "query": {
+        "keyword": "suite",
+        "niveau": "1SPE",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "1SPE-AL-010",
+          "1SPE-AL-011",
+          "1SPE-AL-013"
+        ],
+        "min_results": 3,
+        "all_niveau_in": [
+          "1SPE"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-08",
+      "category": "lycee",
+      "note": "Fonction polynôme du second degré en 1SPE",
+      "query": {
+        "keyword": "second degre",
+        "niveau": "1SPE",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "1SPE-AN-011",
+          "1SPE-AN-042",
+          "1SPE-AL-002",
+          "1SPE-AL-006"
+        ],
+        "min_results": 3,
+        "all_niveau_in": [
+          "1SPE"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-09",
+      "category": "lycee",
+      "note": "Couverture 1ENS (programme allégé : 19 capacités principalement en AL)",
+      "query": {
+        "niveau": "1ENS",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 30,
+        "all_niveau_in": [
+          "1ENS"
+        ],
+        "all_type_in": [
+          "capacite"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-10",
+      "category": "lycee",
+      "note": "Modèle linéaire / régression — voie technologique 1TEC",
+      "query": {
+        "keyword": "modele",
+        "niveau": "1TEC",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 1,
+        "all_niveau_in": [
+          "1TEC"
+        ],
+        "must_contain_one_of": [
+          "1TEC-AN-023"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-11",
+      "category": "lycee",
+      "note": "Logarithme népérien en TSPE",
+      "query": {
+        "keyword": "logarithme neperien",
+        "niveau": "TSPE",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "TSPE-AN-049",
+          "TSPE-AN-052",
+          "TSPE-AN-053"
+        ],
+        "min_results": 2,
+        "all_niveau_in": [
+          "TSPE"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-12",
+      "category": "lycee",
+      "note": "Exponentielle en TSPE",
+      "query": {
+        "keyword": "exponentielle",
+        "niveau": "TSPE",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 5,
+        "all_niveau_in": [
+          "TSPE"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-13",
+      "category": "lycee",
+      "note": "Intégrale / intégration en TSPE",
+      "query": {
+        "keyword": "integrale",
+        "niveau": "TSPE",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "TSPE-AN-078",
+          "TSPE-AN-079",
+          "TSPE-AN-080"
+        ],
+        "min_results": 4,
+        "all_niveau_in": [
+          "TSPE"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-14",
+      "category": "lycee",
+      "note": "Primitive en TSPE",
+      "query": {
+        "keyword": "primitive",
+        "niveau": "TSPE",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "TSPE-AN-079",
+          "TSPE-AN-084"
+        ],
+        "min_results": 3,
+        "all_niveau_in": [
+          "TSPE"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-15",
+      "category": "lycee",
+      "note": "Limite en TSPE (notion centrale, multiples démonstrations)",
+      "query": {
+        "keyword": "limite",
+        "niveau": "TSPE",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_codes": [
+          "TSPE-AN-013"
+        ],
+        "min_results": 3,
+        "all_niveau_in": [
+          "TSPE"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-16",
+      "category": "lycee",
+      "note": "Géométrie dans l'espace — vecteurs de l'espace TSPE",
+      "query": {
+        "keyword": "espace",
+        "niveau": "TSPE",
+        "domaine": "GEO",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 1,
+        "all_niveau_in": [
+          "TSPE"
+        ],
+        "must_contain_one_of": [
+          "TSPE-GEO-002",
+          "TSPE-GEO-003",
+          "TSPE-GEO-012"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-17",
+      "category": "lycee",
+      "note": "Loi binomiale — émerge en TSPE (PR) et TTEC (GM)",
+      "query": {
+        "keyword": "binomiale",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "TSPE-PR-052",
+          "TTEC-GM-002"
+        ],
+        "min_results": 2
+      }
+    },
+    {
+      "id": "GQ-L-18",
+      "category": "lycee",
+      "note": "Lois à densité en TCOMP",
+      "query": {
+        "keyword": "densite",
+        "niveau": "TCOMP",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "TCOMP-PR-018",
+          "TCOMP-PR-041",
+          "TCOMP-PR-042",
+          "TCOMP-PR-043"
+        ],
+        "min_results": 3,
+        "all_niveau_in": [
+          "TCOMP"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-19",
+      "category": "lycee",
+      "note": "Convexité — TSPE et TCOMP",
+      "query": {
+        "keyword": "convexite",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 2
+      }
+    },
+    {
+      "id": "GQ-L-20",
+      "category": "structurel",
+      "note": "Couverture démonstrations exigibles TSPE — cible ≥ 15 d'après spec §6.4",
+      "query": {
+        "niveau": "TSPE",
+        "type": "demonstration",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 15,
+        "all_niveau_in": [
+          "TSPE"
+        ],
+        "all_type_in": [
+          "demonstration"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-21",
+      "category": "structurel",
+      "note": "Algorithmes Python 1SPE",
+      "query": {
+        "niveau": "1SPE",
+        "type": "algorithme",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 8,
+        "all_niveau_in": [
+          "1SPE"
+        ],
+        "all_type_in": [
+          "algorithme"
+        ]
+      }
+    },
+    {
+      "id": "GQ-L-22",
+      "category": "structurel",
+      "note": "Couverture globale des démonstrations exigibles tous niveaux",
+      "query": {
+        "type": "demonstration",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 40,
+        "all_type_in": [
+          "demonstration"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C3-01",
+      "category": "cycle3",
+      "note": "Numération décimale au CM1 — capacités essentielles (wildcard pour couvrir décimal/décimaux)",
+      "query": {
+        "keyword": "decimal*",
+        "niveau": "CM1",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 4,
+        "all_niveau_in": [
+          "CM1"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C3-02",
+      "category": "cycle3",
+      "note": "Fractions au CM1 — fraction unitaire, sens partie d'un tout (wildcard fraction/fractions)",
+      "query": {
+        "keyword": "fraction*",
+        "niveau": "CM1",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_one_of": [
+          "CM1-NB-014"
+        ],
+        "min_results": 8,
+        "all_niveau_in": [
+          "CM1"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C3-03",
+      "category": "cycle3",
+      "note": "Cercle au CM2 — définition d'un cercle (extrait emblématique)",
+      "query": {
+        "keyword": "cercle",
+        "niveau": "CM2",
+        "scope": "competences"
+      },
+      "expect": {
+        "must_contain_codes": [
+          "CM2-GEO-006"
+        ],
+        "min_results": 1,
+        "all_niveau_in": [
+          "CM2"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C3-04",
+      "category": "cycle3",
+      "note": "Aires au CM2 — déterminer et calculer (wildcard aire/aires)",
+      "query": {
+        "keyword": "aire*",
+        "niveau": "CM2",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 3,
+        "all_niveau_in": [
+          "CM2"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C3-05",
+      "category": "cycle3",
+      "note": "Fractions en 6e — sens quotient, premières opérations algébriques",
+      "query": {
+        "keyword": "fraction*",
+        "niveau": "6E",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 4,
+        "all_niveau_in": [
+          "6E"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C3-06",
+      "category": "cycle3",
+      "note": "Probabilités cycle 3 — introduites dès le CM1, étendues en 6e",
+      "query": {
+        "keyword": "probabilite*",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 5
+      }
+    },
+    {
+      "id": "GQ-C3-07",
+      "category": "cycle3",
+      "note": "Cercle en 6e — étoffé par construction et propriétés (wildcard cercle/cercles)",
+      "query": {
+        "keyword": "cercle*",
+        "niveau": "6E",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 3,
+        "all_niveau_in": [
+          "6E"
+        ]
+      }
+    },
+    {
+      "id": "GQ-C3-08",
+      "category": "structurel",
+      "note": "Couverture cycle 3 — 13 niveaux désormais (CM1+CM2+6E+10 anciens)",
+      "query": {
+        "niveau": "CM1",
+        "scope": "competences"
+      },
+      "expect": {
+        "min_results": 100,
+        "all_niveau_in": [
+          "CM1"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Programme officiel d'un niveau scolaire — programmes-officiels",
+  "description": "Validateur pour un fichier data/json/{NIVEAU}.json (un par niveau).",
+  "type": "object",
+  "required": ["meta", "stats", "competences_by_theme"],
+  "additionalProperties": true,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["niveau", "nom", "bo_reference", "pdf", "applicable_a_partir_de", "generated", "total_competences"],
+      "properties": {
+        "niveau": {"type": "string", "enum": ["CM1", "CM2", "6E", "5E", "4E", "3E", "2GT", "1SPE", "1ENS", "1TEC", "TSPE", "TCOMP", "TTEC"]},
+        "nom": {"type": "string"},
+        "cycle": {"type": "string", "enum": ["C3", "C4", "Lycée"]},
+        "bo_reference": {"type": "string"},
+        "bo_url": {"type": "string"},
+        "pdf": {"type": "string"},
+        "applicable_a_partir_de": {"type": "string"},
+        "remplace": {"type": "string"},
+        "generated": {"type": "string"},
+        "agent_version": {"type": "string"},
+        "total_competences": {"type": "integer", "minimum": 0},
+        "status": {"type": "string", "description": "partial_demo | complete | etc."}
+      }
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "by_domaine": {"type": "object"},
+        "by_type": {"type": "object"}
+      }
+    },
+    "objectifs": {"type": "string"},
+    "automatismes": {"type": "array", "items": {"type": "string"}},
+    "competences_by_theme": {
+      "type": "object",
+      "description": "Organisé par domaine UPPERCASE > sous_domaine > liste de compétences",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/competence"}
+        }
+      }
+    }
+  },
+  "definitions": {
+    "competence": {
+      "type": "object",
+      "required": ["code", "intitule", "niveau", "domaine", "type", "formulation_bo", "source"],
+      "additionalProperties": true,
+      "properties": {
+        "code": {"type": "string", "pattern": "^[A-Z0-9]+-[A-Z]{2,4}-[0-9]{3}$"},
+        "intitule": {"type": "string", "minLength": 5},
+        "fingerprint": {"type": "string", "pattern": "^[a-zA-Z0-9_]+$"},
+        "niveau": {"type": "string", "enum": ["CM1", "CM2", "6E", "5E", "4E", "3E", "2GT", "1SPE", "1ENS", "1TEC", "TSPE", "TCOMP", "TTEC"]},
+        "domaine": {"type": "string", "enum": ["NB", "AL", "AN", "GEO", "GM", "STA", "PR", "OGD", "ALGO", "TRG", "LOG"]},
+        "sous_domaine": {"type": "string"},
+        "type": {"type": "string", "enum": ["contenu", "capacite", "demonstration", "algorithme", "approfondissement"]},
+        "formulation_bo": {"type": "string", "description": "Citation EXACTE du BO"},
+        "description_detaillee": {"type": "string"},
+        "connaissances_associees": {"type": "array", "items": {"type": "string"}},
+        "capacites_attendues": {"type": "array", "items": {"type": "string"}},
+        "demonstrations_exigibles": {"type": "array", "items": {"type": "string"}},
+        "algorithmes_attendus": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "titre": {"type": "string"},
+              "code_python": {"type": "string"},
+              "description": {"type": "string"}
+            }
+          }
+        },
+        "exemples": {"type": "array", "items": {"type": "string"}},
+        "liens_transversaux": {"type": "array", "items": {"type": "string"}},
+        "source": {
+          "type": "object",
+          "required": ["pdf", "page", "bo_reference", "page_image"],
+          "properties": {
+            "pdf": {"type": "string"},
+            "page": {"type": "integer", "minimum": 1},
+            "bo_reference": {"type": "string"},
+            "bo_url": {"type": "string"},
+            "page_image": {"type": "string"}
+          }
+        },
+        "prerequis": {"type": "array", "items": {"type": "string"}},
+        "liens": {"type": "array", "items": {"type": "string"}},
+        "remplace": {"type": "array", "items": {"type": "string"}},
+        "tags": {"type": "array", "items": {"type": "string"}},
+        "extraction_meta": {
+          "type": "object",
+          "properties": {
+            "date": {"type": "string"},
+            "agent_version": {"type": "string"},
+            "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+            "verified": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  }
+}

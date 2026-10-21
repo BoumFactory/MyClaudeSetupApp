@@ -172,46 +172,22 @@ Créer un livre interactif H5P structuré par chapitres :
 Question: Pour le parcours gamifié (Game Map), avez-vous une image de fond ?
 
 Options:
-1. Générer une image thématique (Recommandé) - L'agent image-user créera une carte d'aventure adaptée au thème
-2. J'ai déjà une image - Je fournirai le chemin vers mon image existante
+1. Fournir une image de fond (Recommandé) - Je donnerai le chemin vers ma carte d'aventure
+2. Image plus tard - Arrêter ici pour que j'ajoute mon image
 3. Pas d'image - Utiliser un fond neutre (moins immersif)
 ```
 
-**Si l'utilisateur choisit de générer une image**, lancer l'agent `image-user` :
+**Si l'utilisateur fournit une image**, lui demander le chemin et vérifier qu'elle existe.
 
-```python
-Task(
-    subagent_type="image-user",
-    prompt=f"""
-    Génère une image de fond pour un Game Map H5P.
+Rappeler à l'utilisateur ce qu'une bonne image de fond doit contenir :
 
-    **Chemin du skill** : `.claude/skills/creer/media/image-generator/scripts/generate_image.py`
-    **Dossier de sortie** : `{dossier}/Moodle_Course/` ou `{dossier}/Capsule_H5P/` si existant
-    **Nom du fichier** : `background_{theme_slug}.png`
-    **Dimensions** : 1920x1080
+- format paysage (1920 x 1080 conseillé) ;
+- un chemin sinueux avec des points d'étape bien visibles (un par spot voulu) ;
+- aucun texte ni formule sur l'image.
 
-    **Contexte pédagogique** :
-    - Niveau : {niveau}
-    - Thème : {theme}
+L'image n'est pas générée par le paquet : l'utilisateur la crée avec l'outil de son choix ou la prend dans une banque d'images libres de droits.
 
-    **Style demandé** :
-    - Carte d'aventure/fantastique style jeu de rôle
-    - Un chemin sinueux traversant un paysage thématique
-    - Points d'étape circulaires visibles le long du chemin (pour placer les hotspots)
-    - Couleurs accueillantes et lumineuses
-    - PAS de texte ni de formules mathématiques sur l'image
-    - Ambiance adaptée aux élèves du niveau concerné
-
-    Retourne le chemin complet du fichier créé.
-    """
-)
-```
-
-**Donner le nombre de spots voulus !**
-
-**Attendre la fin de l'agent image-user** avant de lancer la génération du Game Map.
-
-**Si l'utilisateur a une image existante**, lui demander le chemin et vérifier qu'elle existe.
+**Donner le nombre de spots voulus au moment de lancer le Game Map.**
 
 #### Étape 4bis-B : Lancement de l'agent meta-high pour le Game Map
 

@@ -223,7 +223,7 @@ export default function ClaudeCodePage() {
                 </CardTitle>
                 <CardDescription>
                   Guides pas à pas pour installer et configurer votre environnement complet :
-                  VS Code & MikTeX, package bfcours, Claude Code CLI et API Google (optionnel).
+                  VS Code & MikTeX, package bfcours, Claude Code et premiers réglages.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -243,7 +243,7 @@ export default function ClaudeCodePage() {
                     </div>
                     <div className="flex items-center gap-2 text-sm">
                       <div className="w-6 h-6 rounded-full nebula-gradient flex items-center justify-center text-white font-bold text-xs">4</div>
-                      <span className="text-muted-foreground">API Google</span>
+                      <span className="text-muted-foreground">Premiers réglages</span>
                     </div>
                   </div>
                   <div className="text-cosmic-400 font-semibold group-hover:underline">

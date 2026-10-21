@@ -520,7 +520,7 @@ $$x = \frac{-b \pm \sqrt{\Delta}}{2a}$$
 
 ## Quand Choisir HTML vs LaTeX ?
 
-| Critère | HTML (ce skill) | LaTeX (/createTex) |
+| Critère | HTML (ce skill) | LaTeX (skill bfcours-latex) |
 |---------|-----------------|-------------------|
 | **Usage** | Projection, web | Impression, documents officiels |
 | **Interactivité** | Oui (univers, dark mode) | Non (PDF statique) |

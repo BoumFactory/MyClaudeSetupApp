@@ -23,7 +23,7 @@ interface StepOverride {
   type: string;
 }
 
-const FORMAT_OPTIONS = ['LaTeX (bfcours)', 'HTML interactif', 'Diaporama Reveals', 'PDF simple'];
+const FORMAT_OPTIONS = ['LaTeX (bfcours)', 'Typst (farfadet)', 'Diaporama Reveals', 'Page HTML avec formules'];
 const NIVEAU_OPTIONS = ['6ème', '5ème', '4ème', '3ème', '2nde', '1ère', 'Terminale'];
 const THEME_OPTIONS = [
   'Nombres et calculs',
@@ -45,7 +45,7 @@ const SOURCE_OPTIONS = [
   'Mon cours personnel',
   'Pas de source spécifique',
 ];
-const TYPE_OPTIONS = ['Statique (document)', 'Dynamique (application web)'];
+const TYPE_OPTIONS = ['Statique (document)', 'Interactif (page HTML)'];
 
 export function SkillDecisionTree() {
   const [state, setState] = useState<StepState>({
@@ -75,9 +75,9 @@ export function SkillDecisionTree() {
 
     const formatMap: Record<string, string> = {
       'LaTeX (bfcours)': 'bfcours-latex',
-      'HTML interactif': 'educational-app-builder',
+      'Typst (farfadet)': 'bfcours-typst',
       'Diaporama Reveals': 'reveals-presentation',
-      'PDF simple': 'pdf',
+      'Page HTML avec formules': 'html-katex-compiler',
     };
 
     const format = overrides.format || state.format;
@@ -90,16 +90,15 @@ export function SkillDecisionTree() {
     }
 
     if (theme === 'Géométrie') {
-      skills.add('image-generator');
-      skills.add('pdf2tikz');
+      skills.add('latex-geometry');
     }
 
     if (source === 'Programmes officiels (BO)') {
       skills.add('programmes-officiels');
     }
 
-    if (type === 'Dynamique (application web)' && format !== 'HTML interactif') {
-      skills.add('educational-app-builder');
+    if (type === 'Interactif (page HTML)' && format !== 'Page HTML avec formules') {
+      skills.add('html-katex-compiler');
     }
 
     return Array.from(skills);
@@ -116,12 +115,11 @@ export function SkillDecisionTree() {
 
     const skills = getSkillsForState();
     const skillMappings: Record<string, string> = {
-      'bfcours-latex': '/createTex',
-      'educational-app-builder': '/create-app',
-      'reveals-presentation': '/createReveals',
-      'pdf': '/pdf',
-      'image-generator': '/generate-image',
-      'pdf2tikz': '/pdf2tikz',
+      'bfcours-latex': '/bfcours-latex',
+      'bfcours-typst': '/bfcours-typst',
+      'reveals-presentation': '/reveals-presentation',
+      'html-katex-compiler': '/html-katex-compiler',
+      'latex-geometry': '/latex-geometry',
       'programmes-officiels': '/programmes-officiels',
     };
 
@@ -151,7 +149,7 @@ export function SkillDecisionTree() {
 
     prompt += '## Étape 2 : Création du QCM\n';
     const primarySkill = skills.find(
-      (s) => s === 'bfcours-latex' || s === 'educational-app-builder' || s === 'reveals-presentation'
+      (s) => s === 'bfcours-latex' || s === 'bfcours-typst' || s === 'html-katex-compiler' || s === 'reveals-presentation'
     );
     if (primarySkill && skillMappings[primarySkill]) {
       prompt += `${skillMappings[primarySkill]}\n`;
@@ -162,8 +160,7 @@ export function SkillDecisionTree() {
 
     if (theme === 'Géométrie') {
       prompt += 'Pour les figures géométriques :\n';
-      prompt += `${skillMappings['image-generator']}\n`;
-      prompt += `${skillMappings['pdf2tikz']}\n\n`;
+      prompt += `${skillMappings['latex-geometry']}\n\n`;
     }
 
     prompt += '## Étape 3 : Vérification\n';

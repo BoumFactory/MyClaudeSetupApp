@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-05-19",
+  "description": "Mapping des PDFs sources renommés vers les niveaux et leurs métadonnées BO. cycle4.pdf couvre 3 niveaux (5E/4E/3E) ; l'affectation page→niveau est faite en phase 4 (transcription).",
+  "files": {
+    "2gt.pdf": {
+      "niveaux": ["2GT"],
+      "page_folder": "2GT",
+      "original_name": "Seconde_GT_mathematiques.pdf",
+      "size_bytes": 334862,
+      "cycle": "Lycée",
+      "bo_reference": "BO Hebdo 14 du 2 avril 2026",
+      "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo14"
+    },
+    "1spe.pdf": {
+      "niveaux": ["1SPE"],
+      "page_folder": "1SPE",
+      "original_name": "Premiere_generale_specialite_mathematiques.pdf",
+      "size_bytes": 354852,
+      "cycle": "Lycée",
+      "bo_reference": "BO Hebdo 14 du 2 avril 2026",
+      "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo14"
+    },
+    "1ens.pdf": {
+      "niveaux": ["1ENS"],
+      "page_folder": "1ENS",
+      "original_name": "Premiere_generale_mathematiques_dans_enseignement_scientifique.pdf",
+      "size_bytes": 240027,
+      "cycle": "Lycée",
+      "bo_reference": "BO Hebdo 14 du 2 avril 2026",
+      "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo14"
+    },
+    "1tec.pdf": {
+      "niveaux": ["1TEC"],
+      "page_folder": "1TEC",
+      "original_name": "Premiere_technologique_mathematiques.pdf",
+      "size_bytes": 284276,
+      "cycle": "Lycée",
+      "bo_reference": "BO Hebdo 14 du 2 avril 2026",
+      "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo14"
+    },
+    "tspe.pdf": {
+      "niveaux": ["TSPE"],
+      "page_folder": "TSPE",
+      "original_name": "Terminale_generale_specialite_mathematiques.pdf",
+      "size_bytes": 511499,
+      "cycle": "Lycée",
+      "bo_reference": "BO Hebdo 14 du 2 avril 2026",
+      "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo14"
+    },
+    "tcomp.pdf": {
+      "niveaux": ["TCOMP"],
+      "page_folder": "TCOMP",
+      "original_name": "Terminale_generale_mathematiques_complementaires.pdf",
+      "size_bytes": 374632,
+      "cycle": "Lycée",
+      "bo_reference": "BO Hebdo 14 du 2 avril 2026",
+      "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo14"
+    },
+    "ttec.pdf": {
+      "niveaux": ["TTEC"],
+      "page_folder": "TTEC",
+      "original_name": "Terminale_technologique_mathematiques.pdf",
+      "size_bytes": 346019,
+      "cycle": "Lycée",
+      "bo_reference": "BO Hebdo 14 du 2 avril 2026",
+      "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo14"
+    },
+    "cycle4.pdf": {
+      "niveaux": ["5E", "4E", "3E"],
+      "page_folder": "cycle4",
+      "split_strategy": "Affectation page→niveau effectuée en phase 4 (transcription). Les images PNG et pages PDF/TXT restent sous cycle4/ ; les transcriptions sont rangées sous 5E/, 4E/, 3E/ selon le contenu de la page.",
+      "original_name": "Annexe 2 – Programme de mathématiques pour le cycle 4-480716.pdf",
+      "size_bytes": 405199,
+      "cycle": "C4",
+      "bo_reference": "BO n°10 du 5 mars 2026",
+      "bo_url": "https://www.education.gouv.fr/bo/2026/Hebdo10"
+    },
+    "cycle3.pdf": {
+      "niveaux": ["CM1", "CM2", "6E"],
+      "page_folder": "cycle3",
+      "split_strategy": "Affectation page→niveau via détection des titres BO ‘Cours moyen première année’/‘Cours moyen deuxième année’/‘Sixième’. Sources copiées depuis programmes-officiels-v1 (extraction PyMuPDF d'origine).",
+      "original_name": "cycle3_v2.pdf (programmes-officiels-v1)",
+      "size_bytes": 527151,
+      "cycle": "C3",
+      "bo_reference": "BO du cycle 3 (rentrée 2026)",
+      "bo_url": "https://www.education.gouv.fr/bo/2026"
+    }
+  },
+  "totals": {
+    "pdfs": 9,
+    "niveaux_couverts": 13,
+    "size_total_bytes": 3378517
+  }
+}

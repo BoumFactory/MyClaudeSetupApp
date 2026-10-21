@@ -207,7 +207,7 @@ def _pattern_remediation_loop(title: str, max_retries: int = 2) -> Dict:
             "feedback": {"title": "A retravailler", "subtitle": "__TODO_REM_FAIL_FB__", "score": 30},
             "meta": {"purpose": "conclusion", "difficulty": "easy", "branch": "remediation_fail", "estimated_time_seconds": 30}
         }
-    ],
+    ]
     end_screens = [
         {"title": "Excellent !", "subtitle": "__TODO_END_EXCELLENT__", "score": 100},
         {"title": "Bien !", "subtitle": "__TODO_END_BIEN__", "score": 70},

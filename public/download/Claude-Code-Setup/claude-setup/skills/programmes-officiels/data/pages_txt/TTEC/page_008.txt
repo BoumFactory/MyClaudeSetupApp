@@ -1,0 +1,60 @@
+ 
+Capacités attendues 
+− Prouver que trois nombres sont (ou ne sont pas) les termes consécutifs d’une suite arithmétique ou géométrique. 
+− Déterminer la raison d’une suite arithmétique ou géométrique modélisant une évolution. 
+− Exprimer en fonction de n le terme général d’une suite arithmétique ou géométrique. 
+− Calculer la somme des n premiers termes d’une suite arithmétique ou géométrique. 
+− Reconnaitre une situation relevant du calcul d’une somme de termes consécutifs d’une suite arithmétique ou géométrique. 
+Commentaires 
+− Le calcul de valeurs acquises, lors de placements à intérêts composés à taux constant avec versements réguliers, fournit 
+une situation relevant du calcul d’une somme de termes consécutifs d'une suite géométrique. 
+− Le lien est fait entre les suites arithmétiques (respectivement géométriques) et l’expression « croissance linéaire » 
+(respectivement « croissance exponentielle ») du langage courant. 
+− La notation  est travaillée sur des exemples variés (somme de carrés, de cubes, d’inverse, etc.). 
+Situations algorithmiques 
+− Écrire en langage Python une fonction qui calcule la somme des n premiers carrés, des n premiers cubes ou des n premiers 
+inverses ; établir le lien entre l’écriture de la somme à l’aide du symbole , et les composantes de l’algorithme 
+(initialisation, sortie de boucle, accumulateur, compteur). 
+Fonctions exponentielles 
+Contenus 
+Les fonctions 𝑥 ↦  a𝑥 (a >  0) comme modèle continu d’évolution relative constante 
+− Définition de la fonction 𝑥 ↦  a𝑥 pour x positif comme prolongement à des valeurs non entières positives de la suite 
+géométrique (a𝑛)𝑛∈ℕ ; extension à ℝ_ en posant a−𝑥 =
+1
+a𝑥 . 
+− Sens de variation selon les valeurs de a. 
+− Allure de la courbe représentative selon les valeurs de a. 
+− Propriétés algébriques : a𝑥 + 𝑦 = a𝑥a𝑦 ; a𝑥 −𝑦 =
+ a𝑥
+a𝑦  ; a𝑛𝑥 = (a𝑥)𝑛 pour 𝑛 entier relatif. 
+− Cas particulier de l’exposant 
+1
+𝑛 pour calculer un taux d’évolution moyen équivalent à 𝑛 évolutions successives. 
+Capacités attendues 
+− Connaitre et utiliser le sens de variation des fonctions de la forme  𝑥 ↦  k a𝑥, selon le signe de k et les valeurs de a. 
+− Connaitre les propriétés algébriques des fonctions exponentielles et les utiliser pour transformer des écritures numériques 
+ou littérales. 
+− Calculer le taux d’évolution moyen équivalent à des évolutions successives. 
+Commentaires 
+− Les propriétés algébriques de la fonction 𝑥 ↦  a𝑥 sont admises, par extension des propriétés des puissances entières. Le 
+lien est fait avec les suites géométriques. 
+− Le parallèle est fait entre le sens de variation de la fonction 𝑥 ↦  a𝑥 et celui des suites géométriques. 
+− Le calcul du taux d’évolution moyen se fait dans des contextes variés (taux mensuel équivalent à un taux annuel, évolution 
+moyenne d’une population sur une période, etc.). 
+Situations algorithmiques 
+− Intercaler entre deux points déjà construits un troisième point ayant pour abscisse (respectivement pour ordonnée) la 
+moyenne arithmétique (respectivement géométrique) des abscisses (respectivement des ordonnées) des deux points 
+initiaux. 
+Fonction logarithme décimal 
+Contenus 
+− Définition du logarithme décimal de b pour b >  0 comme l’unique solution de l’équation 10𝑥 =  b ; notation log. 
+− Sens de variation. 
+− Propriétés algébriques : log (ab)  =  log (a)  +  log (b), log (an) = n  log (a) et log (
+a
+b )  =  log (a)  -  log (b), pour 𝑛 entier naturel, a et b 
+réels strictement positifs. 
+Capacités attendues 
+− Utiliser le logarithme décimal pour résoudre une équation du type a𝑥 = b ou 𝑥a = b d’inconnue 𝑥 réelle, une inéquation du 
+type a𝑥 < b ou 𝑥a < b d’inconnue 𝑥 réelle ou du type a𝑛 < b d’inconnue 𝑛 entier naturel. 
+− Utiliser les propriétés algébriques de la fonction logarithme décimal pour transformer des expressions numériques ou 
+littérales. 

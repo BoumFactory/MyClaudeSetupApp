@@ -1,0 +1,97 @@
+---
+niveau: TTEC
+page: 10
+pdf: ttec.pdf
+page_folder: TTEC
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/TTEC/page_010.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: true
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 10 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/TTEC/page_010.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+ 
+− Les élèves sont entrainés à exercer leur esprit critique sur la pertinence, au regard des données et de la situation étudiée, 
+d’une modélisation par ajustement affine et sur les limites des extrapolations faites dans ce cadre. 
+Situations algorithmiques 
+− Automatiser le calcul de Σ𝑖 (𝑦𝑖 - (a𝑥𝑖 + b))
+2. 
+− Rechercher un couple (a,b) minimisant cette expression parmi un ensemble fini de couples proposés par les élèves ou 
+générés par balayage, tirage aléatoire, etc. 
+Probabilités conditionnelles 
+Contenus 
+− Formule des probabilités totales pour une partition de l’univers. 
+Capacités attendues 
+− Construire un arbre de probabilités associé à une situation aléatoire donnée. 
+− Interpréter les pondérations de chaque branche d’un arbre en termes de probabilités, et notamment de probabilités 
+conditionnelles. 
+− Faire le lien entre la définition des probabilités conditionnelles et la multiplication des probabilités des branches du 
+chemin correspondant. 
+− Utiliser un arbre de probabilités pour calculer des probabilités. 
+− Calculer la probabilité d’un évènement connaissant ses probabilités conditionnelles relatives à une partition de l’univers. 
+Commentaires 
+− La formule des probabilités totales est mise en relation avec l’arbre. Elle est démontrée dans le cas d'une partition de 
+l'univers en deux ou trois évènements, la notion de partition d’un ensemble étant présentée sans formalisme. 
+Variables aléatoires discrètes finies 
+Contenus 
+− Espérance d’une variable aléatoire discrète. 
+− Loi binomiale 𝐵(𝑛, 𝑝) ; espérance. 
+− Coefficients binomiaux (𝑛
+𝑘) ; triangle de Pascal. 
+Capacités attendues 
+− Calculer l’espérance d’une variable aléatoire discrète dans des cas simples et l’interpréter. 
+− Calculer des coefficients binomiaux (𝑛
+𝑘) à l’aide du triangle de Pascal pour 𝑛 ⩽ 10. 
+− Reconnaitre une situation relevant de la loi binomiale et en identifier le couple de paramètres. 
+− Lorsque la variable aléatoire X suit une loi binomiale : 
+− interpréter l’évènement {𝑋 =  𝑘} sur un arbre de probabilité ; 
+− calculer les probabilités des évènements {𝑋 = 0}, {𝑋 = 1}, {𝑋 = 𝑛}, {𝑋 = 𝑛 − 1} et de ceux qui s’en déduisent par réunion ; 
+− calculer la probabilité de l’évènement {𝑋 = 𝑘} à l’aide des coefficients binomiaux. 
+Commentaires 
+− La loi binomiale formalise le travail fait en classe de première sur la répétition d’épreuves indépendantes selon une même 
+loi de Bernoulli. La valeur de l’espérance est admise. 
+− Pour des valeurs de 𝑛 inférieures ou égales à 4, comme en classe de première, la représentation de l’arbre permet de 
+dénombrer les chemins et de calculer les probabilités correspondantes. 
+− Pour des valeurs de 𝑛 plus grandes, l’arbre sert d’image mentale et le nombre de chemins associés à l’évènement est donné 
+ou déterminé à l’aide du triangle de Pascal. 
+− Le coefficient binomial (𝑛
+𝑘) est défini comme le nombre de chemins associés à l’évènement {X = k} dans un arbre 
+représentant un schéma de Bernoulli de taille n. 
+− La formule de Pascal (𝑛
+𝑘) = (𝑛−1
+𝑘−1) + (𝑛−1
+𝑘 ) est établie à partir d’un raisonnement sur le nombre de chemins dans l’arbre. 
+Situations algorithmiques 
+− Générer un triangle de Pascal de taille n donnée. 
+− Représenter par un diagramme en bâtons la loi de probabilité d’une loi binomiale (𝑛, 𝑝). Faire le lien avec l’histogramme 
+des fréquences observées des 1 lors de la simulation de 𝑁 échantillons de taille 𝑛 d'une loi de Bernoulli de paramètre 𝑝 
+faite en classe de première. 
+− Calculer l’espérance Σ𝑥𝑖𝑝𝑖 d’une variable aléatoire suivant une loi de probabilité donnée ; cas particulier d’une variable 
+aléatoire suivant la loi binomiale 𝐵(𝑛, 𝑝). 
+− Représenter graphiquement l’espérance de lois binomiales 𝐵(𝑛, 𝑝) à 𝑝 fixé et 𝑛 variable, à 𝑛 fixé et 𝑝 variable puis faire le 
+lien avec l’expression admise de l’espérance. 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

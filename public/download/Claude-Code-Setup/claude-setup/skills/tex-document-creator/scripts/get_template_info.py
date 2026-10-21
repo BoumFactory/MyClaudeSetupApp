@@ -50,14 +50,17 @@ Exemples:
     # Affichage humain sur stderr
     if result.get("status") == "success":
         fields = result.get("fields", {})
+        required_fields = result.get("required_fields", [])
         print(f"\n✅ Modèle: {result.get('template', '')}", file=sys.stderr)
         print(f"\n📋 Champs à remplir ({len(fields)}):\n", file=sys.stderr)
 
         for field_name, field_info in fields.items():
             field_type = field_info.get("type", "text")
             default = field_info.get("default", "")
+            required = field_info.get("required", field_name in required_fields)
 
-            print(f"   • {field_name} ({field_type})", file=sys.stderr)
+            marker = "OBLIGATOIRE" if required else "optionnel"
+            print(f"   • {field_name} ({field_type}, {marker})", file=sys.stderr)
 
             if field_type == "choice":
                 options = field_info.get("options", [])
@@ -69,6 +72,17 @@ Exemples:
             if "user_default" in field_info:
                 print(f"     Préférence utilisateur: {field_info['user_default']}", file=sys.stderr)
 
+            print("", file=sys.stderr)
+
+        if required_fields:
+            print(f"⚠️  Champs obligatoires (aucun défaut exploitable): {', '.join(required_fields)}\n", file=sys.stderr)
+
+        example_fields_file = result.get("example_fields_file")
+        if example_fields_file:
+            print("📄 Exemple de fields-file complet (à copier avec Write, compléter les", file=sys.stderr)
+            print("   <A_COMPLETER:...>, puis lancer create_document.py --fields-file <chemin>) :\n", file=sys.stderr)
+            for line in json.dumps(example_fields_file, ensure_ascii=False, indent=2).splitlines():
+                print(f"   {line}", file=sys.stderr)
             print("", file=sys.stderr)
 
         # Options de structure

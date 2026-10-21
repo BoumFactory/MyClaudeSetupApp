@@ -1,0 +1,230 @@
+{
+ "source": "table de renommage de la suite",
+ "genere": "2026-10-21",
+ "segments": [
+  {
+   "paquet": "farfadet-socle",
+   "texte": "`regler-socle` → `setbfsocle`"
+  },
+  {
+   "paquet": "farfadet-socle",
+   "texte": "`regler-couleurs` (qui était dans didactique) → `setbfcolors`"
+  },
+  {
+   "paquet": "farfadet-didactique",
+   "texte": "`regler-environnements`, `definir-style-environnement`, `regler-anki` → `setbfenvironments` (`pour: \"anki\"`)"
+  },
+  {
+   "paquet": "farfadet-didactique",
+   "texte": "`regler-sectionnement` → `setbfsections` (clés `colback`/`height`/`numbering` → `couleur`/`hauteur`/`numerotation`)"
+  },
+  {
+   "paquet": "farfadet-enum",
+   "texte": "`regler-enum`, `definir-style-enum`, `reinitialiser-enum`, `setColonnesBaseStyle`, `setcolonnesbasestyle` → `setbfenum(pour: \"MultiColonnes\", …)`"
+  },
+  {
+   "paquet": "farfadet-qcm",
+   "texte": "`regler-qcm`, `definir-style-qcm`, `setrdmcqcb`, `setrdmcqrb` (→ `setrdmcq(pour:)` / `definir:`)"
+  },
+  {
+   "paquet": "farfadet-extras",
+   "texte": "`regler-extras`, `definir-style-extras`, `reinitialiser-extras`, `SetColorForColoredSmallBoxes` (→ `setbfextras(pour: \"film\", ColoredSmallBox: …)`)"
+  },
+  {
+   "paquet": "rdtime, rdratio, rdgrid, rdarithm",
+   "texte": "`definir-style-rdtime`, `definir-style-rdratio`, `definir-style-rdgrid`, `definir-style-rdarithm` (→ `definir:`)"
+  },
+  {
+   "paquet": "farfadet-socle",
+   "texte": "36 → 20"
+  },
+  {
+   "paquet": "farfadet-socle",
+   "texte": "`SiCorrection`, `TFCorrection` → `ifcorrection`"
+  },
+  {
+   "paquet": "farfadet-socle",
+   "texte": "quinze lecteurs de macros d'état jamais lus (`currentBackgroundColor`, `currentFrameColor`, `currentTitleColor`, `currentColContainerBackgroundColor`, `currentColContainerFrameColor`, `currentTableFrameColor`, `currentTableColbackColor`, `currentTableColupperColor`, `currentSecondaryTable…Color`, `lienInterneColor`, `boitecouleur`) → `xcolor(\"<macro>\")`"
+  },
+  {
+   "paquet": "farfadet-didactique",
+   "texte": "75 → 37"
+  },
+  {
+   "paquet": "farfadet-enum",
+   "texte": "24 → 11, puis 10"
+  },
+  {
+   "paquet": "farfadet-enum",
+   "texte": "`Colonnes` → `MultiColonnes`"
+  },
+  {
+   "paquet": "farfadet-enum",
+   "texte": "`tcbitemize` → `tcbraster`"
+  },
+  {
+   "paquet": "farfadet-enum",
+   "texte": "`bfdEnumNumI/II/III`, `bfdEnumLabelI/II/III` → clé `niveau:` (et `format:`)."
+  },
+  {
+   "paquet": "farfadet-tableaux",
+   "texte": "16 → 10"
+  },
+  {
+   "paquet": "farfadet-tableaux",
+   "texte": "`tcbtabc` → `tcbtab(align: center)`"
+  },
+  {
+   "paquet": "farfadet-tableaux",
+   "texte": "`tcbtabx` → `tcbtab(couleurs: \"secondaire\", width: …)`"
+  },
+  {
+   "paquet": "farfadet-tableaux",
+   "texte": "`tcbtabcomp` → `tcbtab(style: \"CompTab\", align: none)`"
+  },
+  {
+   "paquet": "farfadet-tableaux",
+   "texte": "clé `position` → `align`."
+  },
+  {
+   "paquet": "farfadet-crep",
+   "texte": "58 → 22"
+  },
+  {
+   "paquet": "farfadet-crep",
+   "texte": "`tcautocrep` → `tccrep(auto)`"
+  },
+  {
+   "paquet": "farfadet-crep",
+   "texte": "`dotfills` → `tcfillcrep[]`"
+  },
+  {
+   "paquet": "farfadet-crep",
+   "texte": "`repline` → `crep(lines:)`"
+  },
+  {
+   "paquet": "farfadet-crep",
+   "texte": "`seyestabx` → `seyestab(largeur:)`"
+  },
+  {
+   "paquet": "farfadet-crep",
+   "texte": "`seyesarraydelims` → `seyesarray(delims: (g, d))`"
+  },
+  {
+   "paquet": "farfadet-crep",
+   "texte": "`seyesskip` → `seyestab/seyesarray(skip:)`"
+  },
+  {
+   "paquet": "farfadet-crep",
+   "texte": "`sline` → `table.hline()`"
+  },
+  {
+   "paquet": "farfadet-crep",
+   "texte": "supprimés : `bg`, `Question`, `boiteT`, `insertbox`, `inserT`, `score`, `scoreRD`, `emptySquare`, `repegal`, `repModa*`, `repfill`, `SiCrep`, `TFCrep`, `masquerSiProf`, `masquerTrouver`, `bf-crep` (miroir)"
+  },
+  {
+   "paquet": "farfadet-exo",
+   "texte": "88 → 75"
+  },
+  {
+   "paquet": "farfadet-exo",
+   "texte": "`exo` → `EXO`"
+  },
+  {
+   "paquet": "farfadet-exo",
+   "texte": "`exoeval` → `EXOEVAL`"
+  },
+  {
+   "paquet": "farfadet-exo",
+   "texte": "`dystcbitempoint` → clé `dys` d'`itempoint`"
+  },
+  {
+   "paquet": "farfadet-exo",
+   "texte": "`tcbitempoint` (soir du 07/10/2026) fusionné dans `itempoint` (l'ancien `\\itempoint` gris devient `itempoint(variante: \"gris\")`)"
+  },
+  {
+   "paquet": "farfadet-exo",
+   "texte": "`setemoji` → clé `emoji`"
+  },
+  {
+   "paquet": "farfadet-qcm",
+   "texte": "43 → 5"
+  },
+  {
+   "paquet": "farfadet-maths",
+   "texte": "47 → 30"
+  },
+  {
+   "paquet": "farfadet-maths",
+   "texte": "`formuleTable` → `encadrer(couleur: \"red\")`"
+  },
+  {
+   "paquet": "farfadet-maths",
+   "texte": "`CrochetGSize`, `CrochetDSize` → clé `taille:` de `CrochetG`/`CrochetD`"
+  },
+  {
+   "paquet": "farfadet-modele",
+   "texte": "15 → 8"
+  },
+  {
+   "paquet": "farfadet-modele",
+   "texte": "`modeles`, `modele-documentation` → `modele(nom, …)`"
+  },
+  {
+   "paquet": "farfadet-modele",
+   "texte": "clés de `bfcours` : `taille` → `fontsize`, `equations-a-gauche` → `fleqn`"
+  },
+  {
+   "paquet": "farfadet-extras",
+   "texte": "29 → 9"
+  },
+  {
+   "paquet": "farfadet-extras",
+   "texte": "`filmboxClipImage`, `filmboxClipTex`, `filmTrois`, `filmQuatre`, `filmCinq`, `filmSix`, `filmMethodeQuatre` → `filmbox(mode:, n:)`"
+  },
+  {
+   "paquet": "farfadet-extras",
+   "texte": "`BFCodePythonNum`, `BFCodePythonAlt`, `BFCodePythonAltNum` → `BFCodePython(numeros:, style: \"sobre\")`"
+  },
+  {
+   "paquet": "farfadet-extras",
+   "texte": "`wrapfigure` → `habiller`."
+  },
+  {
+   "paquet": "farfadet-latex",
+   "texte": "4 → 2"
+  },
+  {
+   "paquet": "rdboites",
+   "texte": "aucun nom du module `rd` supprimé"
+  },
+  {
+   "paquet": "rdgrid",
+   "texte": "`rdgridequilateral`, `rdgridhexagon`, `rdgridrhexagon`, `rdgridisometric` → `rdgrid(type: \"equi\" \\"
+  },
+  {
+   "paquet": "rdarithm",
+   "texte": "18 → 12"
+  },
+  {
+   "paquet": "rdarithm",
+   "texte": "`DecompFPA`, `DecompFPB`, `DecompFPC` → `DecompFP(mise-en-page: \"etapes\" \\"
+  },
+  {
+   "paquet": "rdarithm",
+   "texte": "`PGCD`, `PPCM` supprimés (gardés : `pgcd`, `ppcm`, sans argument : opérateur)"
+  },
+  {
+   "paquet": "rdtime, rdratio",
+   "texte": "aucun nom de calcul supprimé"
+  },
+  {
+   "paquet": "",
+   "texte": "`bfdSetColors*`, `bfdResetColors*` et les doubles exports de couleurs disparaissent (le socle seul les exporte) ; `regler-couleurs` → `setbfcolors`."
+  },
+  {
+   "paquet": "",
+   "texte": "`SiCorrection`, `TFCorrection`, `SiCrep`, `TFCrep`, `masquerSiProf`, `masquerTrouver` → `ifcorrection`."
+  }
+ ]
+}

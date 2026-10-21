@@ -1,0 +1,95 @@
+---
+niveau: 1TEC
+page: 6
+pdf: 1tec.pdf
+page_folder: 1TEC
+bo_reference: "BO Hebdo 14 du 2 avril 2026"
+bo_url: "https://www.education.gouv.fr/bo/2026/Hebdo14"
+page_image: ../../pages/1TEC/page_006.png
+transcription_meta:
+  date: "2026-05-19T16:33:58+00:00"
+  status: skeleton          # passer à 'clean' après ultrathink
+  confidence: 0.5           # ré-évaluer après nettoyage
+  has_formulas: true
+  has_tables: true
+  source: "fitz get_text('text')"
+---
+
+# Page 6 — [Titre à déduire]
+
+> [TRANSCRIPTION SQUELETTE — à raffiner par l'agent en ultrathink]
+>
+> Étapes obligatoires :
+> 1. Consulter l'image-preuve `../../pages/1TEC/page_006.png` (capacité multimodale).
+> 2. Réparer les formules LaTeX cassées (`$...$` inline, `$$...$$` display).
+> 3. Restaurer les tableaux markdown si présents.
+> 4. Préserver les citations BO en blockquote `>` (verbatim).
+> 5. Mettre `status: clean` et ajuster `confidence`.
+
+## Texte brut (matière première à raffiner)
+
+```text-brut
+ 
+Géométrie dans l’espace 
+Contenus 
+Repérage 
+− Coordonnées d’un point dans un repère orthonormal de l’espace. 
+− Distance entre deux points. 
+Perspective cavalière 
+− Projection sur un plan parallèlement à une droite. 
+− Propriétés conservées (milieux, contacts, rapports de longueurs) et non conservées (longueurs, angles) par une projection 
+parallèle. 
+Solides 
+− Cylindres de révolution. 
+− Sections planes d’un cube. 
+− Sections planes d’un cylindre de révolution ; ellipses. 
+Capacités attendues 
+− Utiliser la représentation en perspective cavalière d’un quadrillage ou d’un cube pour représenter d’autres objets. 
+− Représenter en perspective ou en vraie grandeur des sections planes. 
+− Construire des sections planes de cubes et de cylindres de révolution. 
+− Construire un parallélogramme circonscrit à une ellipse. 
+− Construire l’image perspective d’un cercle à partir d’un carré circonscrit au cercle. 
+Automatismes 
+Cette partie du programme vise à construire et à entretenir des habiletés dans les domaines du calcul, de l’information chiffrée 
+et des représentations graphiques. Il s’agit d'automatiser le recours à des connaissances, des procédures, des méthodes et des 
+stratégies afin de permettre aux élèves de les mobiliser plus rapidement. Leur acquisition permet aux élèves une meilleure 
+réussite dans l’apprentissage des mathématiques, participe du développement de leur esprit critique par une meilleure 
+maitrise des chiffres et du calcul et leur permet une meilleure lecture et compréhension des représentations de données dont 
+les graphiques. 
+Les capacités attendues énoncées ci-dessous n’ont pas vocation à faire l’objet d’un chapitre d’enseignement spécifique car les 
+notions qui les sous-tendent ont été travaillées dans les classes antérieures et doivent être entretenues et consolidées au cours 
+de l’année. Cependant les nouvelles notions du programme peuvent donner lieu également à un travail d’automatisation tout 
+le long de l’année. Elles relèvent d’un entrainement régulier privilégiant l'activité mentale. Les différents thèmes proposés 
+doivent être travaillés tout au long de l’année et la présentation par blocs thématiques ne signifie pas, bien au contraire, qu’il 
+faille les aborder les uns après les autres. Les modalités de mise en œuvre peuvent être variées et prendre appui sur différents 
+supports : à l’oral, à l’écrit, individuellement ou en groupe, utilisant éventuellement des outils numériques de vidéo-projection, 
+de recensement instantané des réponses, etc.  
+À la liste ci-dessous s’ajoute la liste des automatismes travaillés en classe de seconde, qui doivent être entretenus en classe de 
+première. 
+Capacités attendues 
+Évolutions et variations 
+− Appliquer un taux d’évolution pour calculer une valeur finale ou initiale. 
+− Calculer un taux d’évolution, l’exprimer en pourcentage. 
+− Calculer le taux d’évolution équivalent à plusieurs évolutions successives. 
+− Calculer un taux d’évolution réciproque. 
+Calcul numérique et algébrique 
+− Résoudre une équation produit nul. 
+− Déterminer le signe d’une expression du premier degré, d’une expression factorisée du second degré. 
+− Développer, factoriser, réduire une expression algébrique simple. 
+Fonctions et représentations 
+− Résoudre graphiquement une équation, une inéquation du type : 𝑓(𝑥) =  𝑘, 𝑓(𝑥) <  𝑘, etc. 
+− Déterminer graphiquement le signe d’une fonction ou son tableau de variations. 
+− Tracer une droite donnée par son équation réduite ou par un point et son coefficient directeur. 
+− Lire graphiquement l’équation réduite d’une droite. 
+− Déterminer le coefficient directeur d’une droite à partir des coordonnées de deux de ses points. 
+Statistiques 
+− Lire un graphique, un histogramme, un diagramme en barres ou circulaire, un diagramme en boite ou toute autre 
+représentation (repérer l’origine du repère, les unités de graduations ou les échelle, etc.). 
+− Passer du graphique aux données et vice-versa. 
+− Calculer et interpréter des indicateurs statistiques pour une série statistique. 
+
+```
+
+## Notes de l'agent (décisions, ambiguïtés)
+
+(à remplir lors du raffinement ultrathink)

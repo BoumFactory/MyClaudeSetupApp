@@ -1,0 +1,3086 @@
+{
+  "meta": {
+    "niveau": "6E",
+    "nom": "Sixième",
+    "cycle": "C3",
+    "bo_reference": "BO du cycle 3 (rentrée 2026)",
+    "bo_url": "https://www.education.gouv.fr/bo/2026",
+    "pdf": "cycle3.pdf",
+    "applicable_a_partir_de": "Rentrée 2026",
+    "generated": "2026-05-21T20:18:35+00:00",
+    "agent_version": "v2.0-mechanical",
+    "total_competences": 103,
+    "status": "mechanical_extraction",
+    "_note_status": "Extraction mécanique depuis bullets BO (script 05_competences_from_bullets.py). Aucune régurgitation LLM. Champ formulation_bo strictement issu du PDF."
+  },
+  "stats": {
+    "by_domaine": {
+      "NB": 49,
+      "AL": 5,
+      "GM": 14,
+      "GEO": 24,
+      "OGD": 4,
+      "PR": 3,
+      "ALGO": 4
+    },
+    "by_type": {
+      "capacite": 98,
+      "approfondissement": 5
+    }
+  },
+  "objectifs": "Programme officiel du niveau 6E (Sixième), BO du cycle 3 (rentrée 2026). Voir le PDF source (cycle3.pdf) pour les objectifs détaillés dans le préambule.",
+  "automatismes": [
+    "L’élève restitue de manière automatique les résultats suivants, relatifs aux relations entre 1/1000, 1/100, 1/10 et 1 : 1 = 10 × 1/10 ; 10 = 100 × 1/100 ; 100 = 1 000 × 1/1000 ; 1/10 = 10 × 1/100 ; 1/100 = 10 × 1/1000 ; 1 = 10 × 1/10 = 100 × 1/100 = 1 000 × 1/1000.",
+    "L’élève restitue de manière automatique les équivalences d’écriture suivantes : 1/10 = 0,1 ; 1/100 = 0,01 ; 1/1000 = 0,001.",
+    "L’élève passe de manière automatique d’une écriture sous forme de fraction décimale ou de somme de fractions décimales à une écriture décimale, et inversement.",
+    "L’élève applique de manière automatique la procédure de multiplication d’un nombre décimal par 1, par 10, par 100 ou par 1 000, en lien avec la numération.",
+    "Il applique de manière automatique la procédure de division d’un nombre décimal par 1, par 10, par 100 ou par 1 000.",
+    "L’élève lit l’heure sur un cadran à aiguilles ou sur un affichage digital (heures, minutes et secondes).",
+    "L’élève place les aiguilles pour qu’une horloge indique une heure donnée.",
+    "L’élève connaît les unités de mesure de durées jour, heure, minute et seconde et les relations qui les lient.",
+    "L’élève sait combien de jours il y a dans une année (bissextile ou non), combien d’années il y a dans un siècle, et dans un",
+    "L’élève sait qu’une demi-heure c’est 30 minutes, qu’un quart d’heure c’est 15 minutes, que trois quarts d’heure c’est",
+    "L’élève connaît le lexique et le codage des objets de base de la géométrie plane : angle droit, égalité de longueurs,",
+    "Il reconnaît un carré, un rectangle, un triangle.",
+    "Il reconnaît si une figure possède un ou plusieurs axes de symétrie.",
+    "Il sait coder des angles droits et des longueurs égales.",
+    "L’élève sait repérer des relations multiplicatives simples entre des nombres (double, quadruple, moitié, tiers, quart).",
+    "Il associe de manière automatique les expressions du type : « 4 fois plus grand, 4 fois plus petit, 5 fois plus, 5 fois moins »"
+  ],
+  "automatismes_detailed": [
+    {
+      "text": "L’élève restitue de manière automatique les résultats suivants, relatifs aux relations entre 1/1000, 1/100, 1/10 et 1 : 1 = 10 × 1/10 ; 10 = 100 × 1/100 ; 100 = 1 000 × 1/1000 ; 1/10 = 10 × 1/100 ; 1/100 = 10 × 1/1000 ; 1 = 10 × 1/10 = 100 × 1/100 = 1 000 × 1/1000.",
+      "sous_domaine": "Les nombres entiers et décimaux",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 13,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_013.png",
+        "_note": "fractions transcrites visuellement du PNG (texte PDF illisible)"
+      }
+    },
+    {
+      "text": "L’élève restitue de manière automatique les équivalences d’écriture suivantes : 1/10 = 0,1 ; 1/100 = 0,01 ; 1/1000 = 0,001.",
+      "sous_domaine": "Les nombres entiers et décimaux",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 13,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_013.png",
+        "_note": "fractions transcrites visuellement du PNG (texte PDF illisible)"
+      }
+    },
+    {
+      "text": "L’élève passe de manière automatique d’une écriture sous forme de fraction décimale ou de somme de fractions décimales à une écriture décimale, et inversement.",
+      "sous_domaine": "Les nombres entiers et décimaux",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 13,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_013.png",
+        "_note": "fractions transcrites visuellement du PNG (texte PDF illisible)"
+      }
+    },
+    {
+      "text": "L’élève applique de manière automatique la procédure de multiplication d’un nombre décimal par 1, par 10, par 100 ou par 1 000, en lien avec la numération.",
+      "sous_domaine": "Les nombres entiers et décimaux",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 13,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_013.png",
+        "_note": "fractions transcrites visuellement du PNG (texte PDF illisible)"
+      }
+    },
+    {
+      "text": "Il applique de manière automatique la procédure de division d’un nombre décimal par 1, par 10, par 100 ou par 1 000.",
+      "sous_domaine": "Les nombres entiers et décimaux",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 13,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_013.png",
+        "_note": "fractions transcrites visuellement du PNG (texte PDF illisible)"
+      }
+    },
+    {
+      "text": "L’élève lit l’heure sur un cadran à aiguilles ou sur un affichage digital (heures, minutes et secondes).",
+      "sous_domaine": "Le repérage dans le temps et les durées",
+      "domaine": "GM",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 20,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_020.png"
+      }
+    },
+    {
+      "text": "L’élève place les aiguilles pour qu’une horloge indique une heure donnée.",
+      "sous_domaine": "Le repérage dans le temps et les durées",
+      "domaine": "GM",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 20,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_020.png"
+      }
+    },
+    {
+      "text": "L’élève connaît les unités de mesure de durées jour, heure, minute et seconde et les relations qui les lient.",
+      "sous_domaine": "Le repérage dans le temps et les durées",
+      "domaine": "GM",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 20,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_020.png"
+      }
+    },
+    {
+      "text": "L’élève sait combien de jours il y a dans une année (bissextile ou non), combien d’années il y a dans un siècle, et dans un",
+      "sous_domaine": "Le repérage dans le temps et les durées",
+      "domaine": "GM",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 20,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_020.png"
+      }
+    },
+    {
+      "text": "L’élève sait qu’une demi-heure c’est 30 minutes, qu’un quart d’heure c’est 15 minutes, que trois quarts d’heure c’est",
+      "sous_domaine": "Le repérage dans le temps et les durées",
+      "domaine": "GM",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 20,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_020.png"
+      }
+    },
+    {
+      "text": "L’élève connaît le lexique et le codage des objets de base de la géométrie plane : angle droit, égalité de longueurs,",
+      "sous_domaine": "Étude de configurations planes",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 23,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_023.png"
+      }
+    },
+    {
+      "text": "Il reconnaît un carré, un rectangle, un triangle.",
+      "sous_domaine": "Étude de configurations planes",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 23,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_023.png"
+      }
+    },
+    {
+      "text": "Il reconnaît si une figure possède un ou plusieurs axes de symétrie.",
+      "sous_domaine": "Étude de configurations planes",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 23,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_023.png"
+      }
+    },
+    {
+      "text": "Il sait coder des angles droits et des longueurs égales.",
+      "sous_domaine": "Étude de configurations planes",
+      "domaine": "GEO",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 23,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_023.png"
+      }
+    },
+    {
+      "text": "L’élève sait repérer des relations multiplicatives simples entre des nombres (double, quadruple, moitié, tiers, quart).",
+      "sous_domaine": "La proportionnalité",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 27,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_027.png"
+      }
+    },
+    {
+      "text": "Il associe de manière automatique les expressions du type : « 4 fois plus grand, 4 fois plus petit, 5 fois plus, 5 fois moins »",
+      "sous_domaine": "La proportionnalité",
+      "domaine": "NB",
+      "source": {
+        "pdf": "cycle3.pdf",
+        "page": 27,
+        "bo_reference": "BO du cycle 3 (rentrée 2026)",
+        "bo_url": "https://www.education.gouv.fr/bo/2026",
+        "page_image": "../pages/cycle3/page_027.png"
+      }
+    }
+  ],
+  "competences_by_theme": {
+    "NB": {
+      "Les nombres entiers et décimaux": [
+        {
+          "code": "6E-NB-001",
+          "intitule": "Connaître et utiliser la valeur des chiffres selon leur rang dans l’écriture d’un nombre",
+          "fingerprint": "connaitre_et_utiliser_la_valeur_des_chiffres_selon",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser la valeur des chiffres selon leur rang dans l’écriture d’un nombre",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-002",
+          "intitule": "Connaître les liens entre les unités de numération unité, dizaine, centaine, millier, dixième, centième, millième",
+          "fingerprint": "connaitre_les_liens_entre_les_unites_de_numeration",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Connaître les liens entre les unités de numération unité, dizaine, centaine, millier, dixième, centième, millième",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-003",
+          "intitule": "Connaître des grands nombres entiers",
+          "fingerprint": "connaitre_des_grands_nombres_entiers",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Connaître des grands nombres entiers",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-004",
+          "intitule": "Reconnaître un nombre décimal",
+          "fingerprint": "reconnaitre_un_nombre_decimal",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Reconnaître un nombre décimal",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-005",
+          "intitule": "Connaître la définition d’un pourcentage",
+          "fingerprint": "connaitre_la_definition_d_un_pourcentage",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Connaître la définition d’un pourcentage",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-006",
+          "intitule": "Associer et utiliser différentes écritures d’un nombre décimal : écriture à virgule, fraction, nombre mixte, pourcentage",
+          "fingerprint": "associer_et_utiliser_differentes_ecritures_d_un_no",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Associer et utiliser différentes écritures d’un nombre décimal : écriture à virgule, fraction, nombre mixte, pourcentage",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-007",
+          "intitule": "Placer sur une demi-droite graduée un point dont l’abscisse est un nombre décimal",
+          "fingerprint": "placer_sur_une_demi_droite_graduee_un_point_dont_l",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Placer sur une demi-droite graduée un point dont l’abscisse est un nombre décimal",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-008",
+          "intitule": "Repérer un nombre décimal sur une demi-droite graduée",
+          "fingerprint": "reperer_un_nombre_decimal_sur_une_demi_droite_grad",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Repérer un nombre décimal sur une demi-droite graduée",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-009",
+          "intitule": "Comparer deux nombres décimaux",
+          "fingerprint": "comparer_deux_nombres_decimaux",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Comparer deux nombres décimaux",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-010",
+          "intitule": "Ordonner une liste de nombres décimaux",
+          "fingerprint": "ordonner_une_liste_de_nombres_decimaux",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Ordonner une liste de nombres décimaux",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-011",
+          "intitule": "Donner la valeur arrondie à l’unité, au dixième ou au centième, d’un nombre décimal",
+          "fingerprint": "donner_la_valeur_arrondie_a_l_unite_au_dixieme_ou",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Donner la valeur arrondie à l’unité, au dixième ou au centième, d’un nombre décimal",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-012",
+          "intitule": "Déterminer ou connaître la valeur arrondie de certains nombres non décimaux",
+          "fingerprint": "determiner_ou_connaitre_la_valeur_arrondie_de_cert",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Déterminer ou connaître la valeur arrondie de certains nombres non décimaux",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-013",
+          "intitule": "Encadrer un nombre décimal par deux nombres décimaux, intercaler un nombre décimal entre deux nombres décimaux",
+          "fingerprint": "encadrer_un_nombre_decimal_par_deux_nombres_decima",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Encadrer un nombre décimal par deux nombres décimaux, intercaler un nombre décimal entre deux nombres décimaux",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-014",
+          "intitule": "Additionner et soustraire des nombres décimaux",
+          "fingerprint": "additionner_et_soustraire_des_nombres_decimaux",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Additionner et soustraire des nombres décimaux",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-015",
+          "intitule": "Multiplier un nombre entier ou un nombre décimal par 0,1, par 0,01, et par 0,001",
+          "fingerprint": "multiplier_un_nombre_entier_ou_un_nombre_decimal_p",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Multiplier un nombre entier ou un nombre décimal par 0,1, par 0,01, et par 0,001",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-016",
+          "intitule": "Connaître le lien avec la division par 10, 100 et par 1 000",
+          "fingerprint": "connaitre_le_lien_avec_la_division_par_10_100_et_p",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Connaître le lien avec la division par 10, 100 et par 1 000",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-017",
+          "intitule": "Comprendre le sens de la multiplication de deux nombres décimaux",
+          "fingerprint": "comprendre_le_sens_de_la_multiplication_de_deux_no",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Comprendre le sens de la multiplication de deux nombres décimaux",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-018",
+          "intitule": "Calculer le produit de deux nombres décimaux",
+          "fingerprint": "calculer_le_produit_de_deux_nombres_decimaux",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Calculer le produit de deux nombres décimaux",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-019",
+          "intitule": "Contrôler les résultats à l’aide d’ordres de grandeur",
+          "fingerprint": "controler_les_resultats_a_l_aide_d_ordres_de_grand",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Contrôler les résultats à l’aide d’ordres de grandeur",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-020",
+          "intitule": "Résoudre des problèmes mettant en jeu des multiplications entre des nombres décimaux",
+          "fingerprint": "resoudre_des_problemes_mettant_en_jeu_des_multipli",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes mettant en jeu des multiplications entre des nombres décimaux",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-021",
+          "intitule": "Diviser un nombre décimal par un nombre entier non nul inférieur à 10",
+          "fingerprint": "diviser_un_nombre_decimal_par_un_nombre_entier_non",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Diviser un nombre décimal par un nombre entier non nul inférieur à 10",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-022",
+          "intitule": "Résoudre des problèmes mettant en jeu des divisions décimales",
+          "fingerprint": "resoudre_des_problemes_mettant_en_jeu_des_division",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes mettant en jeu des divisions décimales",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-023",
+          "intitule": "Effectuer la division euclidienne d’un nombre entier par un nombre entier inférieur à 100",
+          "fingerprint": "effectuer_la_division_euclidienne_d_un_nombre_enti",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Effectuer la division euclidienne d’un nombre entier par un nombre entier inférieur à 100",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-024",
+          "intitule": "Résoudre des problèmes mettant en jeu des divisions euclidiennes",
+          "fingerprint": "resoudre_des_problemes_mettant_en_jeu_des_division",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes mettant en jeu des divisions euclidiennes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-025",
+          "intitule": "la découverte d’écritures des nombres à partir de lettres ou de dessins : numérations acrophoniques grecque, romaine, hiéroglyphique égyptienne",
+          "fingerprint": "la_d_couverte_d_critures_des_nombres_partir_de_let",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "approfondissement",
+          "formulation_bo": "la découverte d’écritures des nombres à partir de lettres ou de dessins : numérations acrophoniques grecque, romaine, hiéroglyphique égyptienne",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-026",
+          "intitule": "la découverte d’algorithmes opératoires, développés dans plusieurs traditions mathématiques, comme la multiplication par jalousies ou en tableau",
+          "fingerprint": "la_d_couverte_d_algorithmes_op_ratoires_d_velopp_s",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "approfondissement",
+          "formulation_bo": "la découverte d’algorithmes opératoires, développés dans plusieurs traditions mathématiques, comme la multiplication par jalousies ou en tableau",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-027",
+          "intitule": "la manipulation d’abaques à jetons ou de bouliers pour remobiliser le principe de la numération et la notion de base de numération",
+          "fingerprint": "la_manipulation_d_abaques_jetons_ou_de_bouliers_po",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "approfondissement",
+          "formulation_bo": "la manipulation d’abaques à jetons ou de bouliers pour remobiliser le principe de la numération et la notion de base de numération",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-028",
+          "intitule": "la découverte de la numération sexagésimale paléo-babylonienne, qui repose sur les mêmes principes mathématiques que le système utilisé pour exprimer des durées en heures, minutes et secondes. Le passage de ce système de numération au système décimal (et vice versa) est un autre contexte que celui des durées pour travailler la division euclidienne",
+          "fingerprint": "la_d_couverte_de_la_num_ration_sexag_simale_pal_o_",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "approfondissement",
+          "formulation_bo": "la découverte de la numération sexagésimale paléo-babylonienne, qui repose sur les mêmes principes mathématiques que le système utilisé pour exprimer des durées en heures, minutes et secondes. Le passage de ce système de numération au système décimal (et vice versa) est un autre contexte que celui des durées pour travailler la division euclidienne",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-029",
+          "intitule": "la découverte de l’écriture des nombres décimaux utilisée par Simon Stevin de Bruges pour illustrer le lien entre numération décimale et fractions décimales",
+          "fingerprint": "la_d_couverte_de_l_criture_des_nombres_d_cimaux_ut",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Les nombres entiers et décimaux",
+          "type": "approfondissement",
+          "formulation_bo": "la découverte de l’écriture des nombres décimaux utilisée par Simon Stevin de Bruges pour illustrer le lien entre numération décimale et fractions décimales",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 14,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_014.png"
+          },
+          "tags": [
+            "approfondissement"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Le sens quotient d’une fraction": [
+        {
+          "code": "6E-NB-030",
+          "intitule": "Relier une fraction au résultat exact de la division de son numérateur par son dénominateur",
+          "fingerprint": "relier_une_fraction_au_resultat_exact_de_la_divisi",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Le sens quotient d’une fraction",
+          "type": "capacite",
+          "formulation_bo": "Relier une fraction au résultat exact de la division de son numérateur par son dénominateur",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 15,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-031",
+          "intitule": "Comprendre et connaître la définition du quotient d’un entier a par un entier b non nul",
+          "fingerprint": "comprendre_et_connaitre_la_definition_du_quotient",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Le sens quotient d’une fraction",
+          "type": "capacite",
+          "formulation_bo": "Comprendre et connaître la définition du quotient d’un entier a par un entier b non nul",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 15,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-032",
+          "intitule": "Compléter des égalités à trous multiplicatives",
+          "fingerprint": "completer_des_egalites_a_trous_multiplicatives",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Le sens quotient d’une fraction",
+          "type": "capacite",
+          "formulation_bo": "Compléter des égalités à trous multiplicatives",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 15,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-033",
+          "intitule": "Placer une fraction sur une demi-droite graduée dans des cas simples",
+          "fingerprint": "placer_une_fraction_sur_une_demi_droite_graduee_da",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Le sens quotient d’une fraction",
+          "type": "capacite",
+          "formulation_bo": "Placer une fraction sur une demi-droite graduée dans des cas simples",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 15,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-034",
+          "intitule": "Graduer un segment de longueur donnée",
+          "fingerprint": "graduer_un_segment_de_longueur_donnee",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Le sens quotient d’une fraction",
+          "type": "capacite",
+          "formulation_bo": "Graduer un segment de longueur donnée",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 15,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-035",
+          "intitule": "Savoir que la fraction a/b peut représenter un nombre entier, un nombre décimal non entier ou un nombre non décimal",
+          "fingerprint": "savoir_que_la_fraction_a_b_peut_repr_senter_un_nom",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Le sens quotient d’une fraction",
+          "type": "capacite",
+          "formulation_bo": "Savoir que la fraction a/b peut représenter un nombre entier, un nombre décimal non entier ou un nombre non décimal",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 15,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": true,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "La fraction comme opérateur multiplicatif": [
+        {
+          "code": "6E-NB-036",
+          "intitule": "Utiliser une multiplication pour appliquer une fraction à un nombre entier",
+          "fingerprint": "utiliser_une_multiplication_pour_appliquer_une_fra",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "La fraction comme opérateur multiplicatif",
+          "type": "capacite",
+          "formulation_bo": "Utiliser une multiplication pour appliquer une fraction à un nombre entier",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 15,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_015.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Comparer des fractions": [
+        {
+          "code": "6E-NB-037",
+          "intitule": "Établir des égalités de fractions",
+          "fingerprint": "etablir_des_egalites_de_fractions",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Comparer des fractions",
+          "type": "capacite",
+          "formulation_bo": "Établir des égalités de fractions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-038",
+          "intitule": "Comparer et encadrer des fractions",
+          "fingerprint": "comparer_et_encadrer_des_fractions",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Comparer des fractions",
+          "type": "capacite",
+          "formulation_bo": "Comparer et encadrer des fractions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-039",
+          "intitule": "Ordonner une liste de nombres écrits sous forme de fractions ou de nombres mixtes",
+          "fingerprint": "ordonner_une_liste_de_nombres_ecrits_sous_forme_de",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Comparer des fractions",
+          "type": "capacite",
+          "formulation_bo": "Ordonner une liste de nombres écrits sous forme de fractions ou de nombres mixtes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-040",
+          "intitule": "Effectuer des opérations sur les fractions",
+          "fingerprint": "effectuer_des_operations_sur_les_fractions",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Comparer des fractions",
+          "type": "capacite",
+          "formulation_bo": "Effectuer des opérations sur les fractions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-041",
+          "intitule": "Additionner et soustraire des fractions",
+          "fingerprint": "additionner_et_soustraire_des_fractions",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Comparer des fractions",
+          "type": "capacite",
+          "formulation_bo": "Additionner et soustraire des fractions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-042",
+          "intitule": "Multiplier une fraction par un nombre entier",
+          "fingerprint": "multiplier_une_fraction_par_un_nombre_entier",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Comparer des fractions",
+          "type": "capacite",
+          "formulation_bo": "Multiplier une fraction par un nombre entier",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-043",
+          "intitule": "Résoudre des problèmes mettant en jeu des fractions",
+          "fingerprint": "resoudre_des_problemes_mettant_en_jeu_des_fraction",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Comparer des fractions",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes mettant en jeu des fractions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-044",
+          "intitule": "Inventer des problèmes mettant en jeu des fractions",
+          "fingerprint": "inventer_des_problemes_mettant_en_jeu_des_fraction",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "Comparer des fractions",
+          "type": "capacite",
+          "formulation_bo": "Inventer des problèmes mettant en jeu des fractions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "La proportionnalité": [
+        {
+          "code": "6E-NB-045",
+          "intitule": "Connaître la définition de la proportionnalité entre deux grandeurs et la mettre en lien avec des expressions de la vie courante",
+          "fingerprint": "connaitre_la_definition_de_la_proportionnalite_ent",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "La proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Connaître la définition de la proportionnalité entre deux grandeurs et la mettre en lien avec des expressions de la vie courante",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 27,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_027.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-046",
+          "intitule": "Identifier si une situation relève du « modèle » de la proportionnalité",
+          "fingerprint": "identifier_si_une_situation_releve_du_modele_de_la",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "La proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Identifier si une situation relève du « modèle » de la proportionnalité",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 27,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_027.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-047",
+          "intitule": "Résoudre un problème de proportionnalité en choisissant une procédure adaptée : propriété de linéarité pour la multiplication ou l’addition, retour à l’unité",
+          "fingerprint": "resoudre_un_probleme_de_proportionnalite_en_choisi",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "La proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Résoudre un problème de proportionnalité en choisissant une procédure adaptée : propriété de linéarité pour la multiplication ou l’addition, retour à l’unité",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 27,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_027.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-048",
+          "intitule": "Représenter une situation de proportionnalité à l’aide d’un tableau ou de notations symboliques",
+          "fingerprint": "representer_une_situation_de_proportionnalite_a_l",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "La proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "Représenter une situation de proportionnalité à l’aide d’un tableau ou de notations symboliques",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 27,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_027.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-NB-049",
+          "intitule": "S’initier à la résolution de problèmes d’échelles",
+          "fingerprint": "s_initier_a_la_resolution_de_problemes_d_echelles",
+          "niveau": "6E",
+          "domaine": "NB",
+          "sous_domaine": "La proportionnalité",
+          "type": "capacite",
+          "formulation_bo": "S’initier à la résolution de problèmes d’échelles",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 27,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_027.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "Pourcentages": [
+        {
+          "code": "6E-AL-001",
+          "intitule": "Comprendre le sens d’un pourcentage",
+          "fingerprint": "comprendre_le_sens_d_un_pourcentage",
+          "niveau": "6E",
+          "domaine": "AL",
+          "sous_domaine": "Pourcentages",
+          "type": "capacite",
+          "formulation_bo": "Comprendre le sens d’un pourcentage",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-AL-002",
+          "intitule": "Calculer une proportion (rapport entre une partie et le tout) et l’exprimer sous forme de pourcentage dans des cas simples",
+          "fingerprint": "calculer_une_proportion_rapport_entre_une_partie_e",
+          "niveau": "6E",
+          "domaine": "AL",
+          "sous_domaine": "Pourcentages",
+          "type": "capacite",
+          "formulation_bo": "Calculer une proportion (rapport entre une partie et le tout) et l’exprimer sous forme de pourcentage dans des cas simples",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-AL-003",
+          "intitule": "Appliquer un pourcentage à une grandeur ou à un nombre",
+          "fingerprint": "appliquer_un_pourcentage_a_une_grandeur_ou_a_un_no",
+          "niveau": "6E",
+          "domaine": "AL",
+          "sous_domaine": "Pourcentages",
+          "type": "capacite",
+          "formulation_bo": "Appliquer un pourcentage à une grandeur ou à un nombre",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Algèbre": [
+        {
+          "code": "6E-AL-004",
+          "intitule": "Utiliser des modèles pré-algébriques pour résoudre des problèmes algébriques",
+          "fingerprint": "utiliser_des_modeles_pre_algebriques_pour_resoudre",
+          "niveau": "6E",
+          "domaine": "AL",
+          "sous_domaine": "Algèbre",
+          "type": "capacite",
+          "formulation_bo": "Utiliser des modèles pré-algébriques pour résoudre des problèmes algébriques",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-AL-005",
+          "intitule": "Identifier la structure d’un motif évolutif en repérant une régularité et en identifiant une structure",
+          "fingerprint": "identifier_la_structure_d_un_motif_evolutif_en_rep",
+          "niveau": "6E",
+          "domaine": "AL",
+          "sous_domaine": "Algèbre",
+          "type": "capacite",
+          "formulation_bo": "Identifier la structure d’un motif évolutif en repérant une régularité et en identifiant une structure",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 16,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_016.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "GM": {
+      "Les longueurs": [
+        {
+          "code": "6E-GM-001",
+          "intitule": "Savoir que le périmètre du disque est proportionnel à son diamètre",
+          "fingerprint": "savoir_que_le_perimetre_du_disque_est_proportionne",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Savoir que le périmètre du disque est proportionnel à son diamètre",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 19,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-002",
+          "intitule": "Connaître la formule du périmètre d’un disque",
+          "fingerprint": "connaitre_la_formule_du_perimetre_d_un_disque",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Connaître la formule du périmètre d’un disque",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 19,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-003",
+          "intitule": "Calculer le périmètre d’un disque",
+          "fingerprint": "calculer_le_perimetre_d_un_disque",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Calculer le périmètre d’un disque",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 19,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-004",
+          "intitule": "Calculer des périmètres de figures composées",
+          "fingerprint": "calculer_des_perimetres_de_figures_composees",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Calculer des périmètres de figures composées",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 19,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-005",
+          "intitule": "Résoudre des problèmes impliquant des longueurs",
+          "fingerprint": "resoudre_des_problemes_impliquant_des_longueurs",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les longueurs",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes impliquant des longueurs",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 19,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les aires": [
+        {
+          "code": "6E-GM-006",
+          "intitule": "Effectuer des conversions d’aire",
+          "fingerprint": "effectuer_des_conversions_d_aire",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les aires",
+          "type": "capacite",
+          "formulation_bo": "Effectuer des conversions d’aire",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 19,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-007",
+          "intitule": "Connaître la formule de l’aire d’un carré ou d’un rectangle",
+          "fingerprint": "connaitre_la_formule_de_l_aire_d_un_carre_ou_d_un",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les aires",
+          "type": "capacite",
+          "formulation_bo": "Connaître la formule de l’aire d’un carré ou d’un rectangle",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 19,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-008",
+          "intitule": "Calculer l’aire d’un carré ou d’un rectangle",
+          "fingerprint": "calculer_l_aire_d_un_carre_ou_d_un_rectangle",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les aires",
+          "type": "capacite",
+          "formulation_bo": "Calculer l’aire d’un carré ou d’un rectangle",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 19,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_019.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Les volumes": [
+        {
+          "code": "6E-GM-009",
+          "intitule": "Connaître l’unité centimètre cube",
+          "fingerprint": "connaitre_l_unite_centimetre_cube",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les volumes",
+          "type": "capacite",
+          "formulation_bo": "Connaître l’unité centimètre cube",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-010",
+          "intitule": "Comparer des volumes",
+          "fingerprint": "comparer_des_volumes",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les volumes",
+          "type": "capacite",
+          "formulation_bo": "Comparer des volumes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-011",
+          "intitule": "Déterminer un volume",
+          "fingerprint": "determiner_un_volume",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Les volumes",
+          "type": "capacite",
+          "formulation_bo": "Déterminer un volume",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Le repérage dans le temps et les durées": [
+        {
+          "code": "6E-GM-012",
+          "intitule": "Effectuer des calculs sur des horaires et des durées",
+          "fingerprint": "effectuer_des_calculs_sur_des_horaires_et_des_dure",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Le repérage dans le temps et les durées",
+          "type": "capacite",
+          "formulation_bo": "Effectuer des calculs sur des horaires et des durées",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-013",
+          "intitule": "Résoudre des problèmes impliquant des horaires et des durées",
+          "fingerprint": "resoudre_des_problemes_impliquant_des_horaires_et",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Le repérage dans le temps et les durées",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes impliquant des horaires et des durées",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GM-014",
+          "intitule": "Convertir des durées",
+          "fingerprint": "convertir_des_durees",
+          "niveau": "6E",
+          "domaine": "GM",
+          "sous_domaine": "Le repérage dans le temps et les durées",
+          "type": "capacite",
+          "formulation_bo": "Convertir des durées",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 20,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_020.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "GEO": {
+      "Distances": [
+        {
+          "code": "6E-GEO-001",
+          "intitule": "Connaître et utiliser la définition de la distance entre deux points",
+          "fingerprint": "connaitre_et_utiliser_la_definition_de_la_distance",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Distances",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser la définition de la distance entre deux points",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-002",
+          "intitule": "Connaître et utiliser la définition du milieu d’un segment",
+          "fingerprint": "connaitre_et_utiliser_la_definition_du_milieu_d_un",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Distances",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser la définition du milieu d’un segment",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Cercles et disques": [
+        {
+          "code": "6E-GEO-003",
+          "intitule": "Connaître les définitions d’un cercle, d’un disque, d’un rayon, d’un diamètre, d’une corde",
+          "fingerprint": "connaitre_les_definitions_d_un_cercle_d_un_disque",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Cercles et disques",
+          "type": "capacite",
+          "formulation_bo": "Connaître les définitions d’un cercle, d’un disque, d’un rayon, d’un diamètre, d’une corde",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-004",
+          "intitule": "Comprendre la définition d’un cercle et celle d’un disque sous la forme d’ensembles de points",
+          "fingerprint": "comprendre_la_definition_d_un_cercle_et_celle_d_un",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Cercles et disques",
+          "type": "capacite",
+          "formulation_bo": "Comprendre la définition d’un cercle et celle d’un disque sous la forme d’ensembles de points",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-005",
+          "intitule": "Résoudre des problèmes mettant en jeu des distances à un point",
+          "fingerprint": "resoudre_des_problemes_mettant_en_jeu_des_distance",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Cercles et disques",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes mettant en jeu des distances à un point",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-006",
+          "intitule": "Médiatrice d’un segment",
+          "fingerprint": "mediatrice_d_un_segment",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Cercles et disques",
+          "type": "capacite",
+          "formulation_bo": "Médiatrice d’un segment",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-007",
+          "intitule": "Connaître la définition de la médiatrice d’un segment",
+          "fingerprint": "connaitre_la_definition_de_la_mediatrice_d_un_segm",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Cercles et disques",
+          "type": "capacite",
+          "formulation_bo": "Connaître la définition de la médiatrice d’un segment",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-008",
+          "intitule": "Comprendre et utiliser la propriété caractéristique de la médiatrice d’un segment",
+          "fingerprint": "comprendre_et_utiliser_la_propriete_caracteristiqu",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Cercles et disques",
+          "type": "capacite",
+          "formulation_bo": "Comprendre et utiliser la propriété caractéristique de la médiatrice d’un segment",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-009",
+          "intitule": "Résoudre des problèmes en s’appuyant sur la propriété caractéristique de la médiatrice",
+          "fingerprint": "resoudre_des_problemes_en_s_appuyant_sur_la_propri",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Cercles et disques",
+          "type": "capacite",
+          "formulation_bo": "Résoudre des problèmes en s’appuyant sur la propriété caractéristique de la médiatrice",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Angles": [
+        {
+          "code": "6E-GEO-010",
+          "intitule": "Connaître et utiliser les angles ainsi que le lexique et les notations qui s’y rapportent : angle droit, angle plat, angle plein, angle nul, angle aigu, angle obtus, angles opposés par le sommet, angles adjacents, angles supplémentaires",
+          "fingerprint": "connaitre_et_utiliser_les_angles_ainsi_que_le_lexi",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Angles",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser les angles ainsi que le lexique et les notations qui s’y rapportent : angle droit, angle plat, angle plein, angle nul, angle aigu, angle obtus, angles opposés par le sommet, angles adjacents, angles supplémentaires",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-011",
+          "intitule": "Mesurer un angle",
+          "fingerprint": "mesurer_un_angle",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Angles",
+          "type": "capacite",
+          "formulation_bo": "Mesurer un angle",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-012",
+          "intitule": "Construire un angle de mesure donnée",
+          "fingerprint": "construire_un_angle_de_mesure_donnee",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Angles",
+          "type": "capacite",
+          "formulation_bo": "Construire un angle de mesure donnée",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-013",
+          "intitule": "Bissectrice d’un angle saillant",
+          "fingerprint": "bissectrice_d_un_angle_saillant",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Angles",
+          "type": "capacite",
+          "formulation_bo": "Bissectrice d’un angle saillant",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-014",
+          "intitule": "Connaître la définition de la bissectrice d’un angle saillant",
+          "fingerprint": "connaitre_la_definition_de_la_bissectrice_d_un_ang",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Angles",
+          "type": "capacite",
+          "formulation_bo": "Connaître la définition de la bissectrice d’un angle saillant",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-015",
+          "intitule": "Utiliser la définition de la bissectrice d’un angle pour effectuer des constructions et résoudre des problèmes",
+          "fingerprint": "utiliser_la_definition_de_la_bissectrice_d_un_angl",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Angles",
+          "type": "capacite",
+          "formulation_bo": "Utiliser la définition de la bissectrice d’un angle pour effectuer des constructions et résoudre des problèmes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Triangles": [
+        {
+          "code": "6E-GEO-016",
+          "intitule": "Construire des triangles",
+          "fingerprint": "construire_des_triangles",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Construire des triangles",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-017",
+          "intitule": "Connaître et utiliser les propriétés angulaires des triangles particuliers : triangle rectangle, triangle isocèle, triangle équilatéral",
+          "fingerprint": "connaitre_et_utiliser_les_proprietes_angulaires_de",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser les propriétés angulaires des triangles particuliers : triangle rectangle, triangle isocèle, triangle équilatéral",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-018",
+          "intitule": "Connaître la valeur de la somme des mesures des angles d’un triangle",
+          "fingerprint": "connaitre_la_valeur_de_la_somme_des_mesures_des_an",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Connaître la valeur de la somme des mesures des angles d’un triangle",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-019",
+          "intitule": "L’utiliser pour calculer des angles, effectuer des constructions et résoudre des problèmes",
+          "fingerprint": "l_utiliser_pour_calculer_des_angles_effectuer_des",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "L’utiliser pour calculer des angles, effectuer des constructions et résoudre des problèmes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-020",
+          "intitule": "Savoir que les médiatrices d’un triangle sont concourantes",
+          "fingerprint": "savoir_que_les_mediatrices_d_un_triangle_sont_conc",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Savoir que les médiatrices d’un triangle sont concourantes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-021",
+          "intitule": "Connaître et construire le cercle circonscrit à un triangle",
+          "fingerprint": "connaitre_et_construire_le_cercle_circonscrit_a_un",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Triangles",
+          "type": "capacite",
+          "formulation_bo": "Connaître et construire le cercle circonscrit à un triangle",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "Symétrie axiale": [
+        {
+          "code": "6E-GEO-022",
+          "intitule": "Connaître la définition du symétrique d’un point par rapport à une droite",
+          "fingerprint": "connaitre_la_definition_du_symetrique_d_un_point_p",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Symétrie axiale",
+          "type": "capacite",
+          "formulation_bo": "Connaître la définition du symétrique d’un point par rapport à une droite",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-GEO-023",
+          "intitule": "Connaître et utiliser les propriétés de la symétrie axiale pour effectuer des constructions",
+          "fingerprint": "connaitre_et_utiliser_les_proprietes_de_la_symetri",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "Symétrie axiale",
+          "type": "capacite",
+          "formulation_bo": "Connaître et utiliser les propriétés de la symétrie axiale pour effectuer des constructions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 23,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_023.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ],
+      "La vision dans l’espace": [
+        {
+          "code": "6E-GEO-024",
+          "intitule": "Voir dans l’espace des assemblages de cubes",
+          "fingerprint": "voir_dans_l_espace_des_assemblages_de_cubes",
+          "niveau": "6E",
+          "domaine": "GEO",
+          "sous_domaine": "La vision dans l’espace",
+          "type": "capacite",
+          "formulation_bo": "Voir dans l’espace des assemblages de cubes",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 24,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_024.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "OGD": {
+      "Organisation et gestion de données": [
+        {
+          "code": "6E-OGD-001",
+          "intitule": "Planifier une enquête et recueillir des données",
+          "fingerprint": "planifier_une_enquete_et_recueillir_des_donnees",
+          "niveau": "6E",
+          "domaine": "OGD",
+          "sous_domaine": "Organisation et gestion de données",
+          "type": "capacite",
+          "formulation_bo": "Planifier une enquête et recueillir des données",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 26,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_026.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-OGD-002",
+          "intitule": "Réaliser des mesures et les consigner dans un tableau",
+          "fingerprint": "realiser_des_mesures_et_les_consigner_dans_un_tabl",
+          "niveau": "6E",
+          "domaine": "OGD",
+          "sous_domaine": "Organisation et gestion de données",
+          "type": "capacite",
+          "formulation_bo": "Réaliser des mesures et les consigner dans un tableau",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 26,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_026.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-OGD-003",
+          "intitule": "Construire un tableau simple pour présenter des données (observations, caractères)",
+          "fingerprint": "construire_un_tableau_simple_pour_presenter_des_do",
+          "niveau": "6E",
+          "domaine": "OGD",
+          "sous_domaine": "Organisation et gestion de données",
+          "type": "capacite",
+          "formulation_bo": "Construire un tableau simple pour présenter des données (observations, caractères)",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 26,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_026.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-OGD-004",
+          "intitule": "Faire un choix en filtrant les données d’un tableau selon un critère",
+          "fingerprint": "faire_un_choix_en_filtrant_les_donnees_d_un_tablea",
+          "niveau": "6E",
+          "domaine": "OGD",
+          "sous_domaine": "Organisation et gestion de données",
+          "type": "capacite",
+          "formulation_bo": "Faire un choix en filtrant les données d’un tableau selon un critère",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 26,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_026.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "PR": {
+      "Les probabilités": [
+        {
+          "code": "6E-PR-001",
+          "intitule": "Savoir que la probabilité d’un évènement est un nombre compris entre 0 et 1",
+          "fingerprint": "savoir_que_la_probabilite_d_un_evenement_est_un_no",
+          "niveau": "6E",
+          "domaine": "PR",
+          "sous_domaine": "Les probabilités",
+          "type": "capacite",
+          "formulation_bo": "Savoir que la probabilité d’un évènement est un nombre compris entre 0 et 1",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 26,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_026.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-PR-002",
+          "intitule": "Calculer des probabilités dans des situations simples d’équiprobabilité",
+          "fingerprint": "calculer_des_probabilites_dans_des_situations_simp",
+          "niveau": "6E",
+          "domaine": "PR",
+          "sous_domaine": "Les probabilités",
+          "type": "capacite",
+          "formulation_bo": "Calculer des probabilités dans des situations simples d’équiprobabilité",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 26,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_026.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-PR-003",
+          "intitule": "Comparer des résultats d’une expérience aléatoire répétée à une probabilité calculée",
+          "fingerprint": "comparer_des_resultats_d_une_experience_aleatoire",
+          "niveau": "6E",
+          "domaine": "PR",
+          "sous_domaine": "Les probabilités",
+          "type": "capacite",
+          "formulation_bo": "Comparer des résultats d’une expérience aléatoire répétée à une probabilité calculée",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 26,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_026.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    },
+    "ALGO": {
+      "Initiation à la pensée informatique": [
+        {
+          "code": "6E-ALGO-001",
+          "intitule": "Identifier une instruction ou une séquence d’instructions",
+          "fingerprint": "identifier_une_instruction_ou_une_sequence_d_instr",
+          "niveau": "6E",
+          "domaine": "ALGO",
+          "sous_domaine": "Initiation à la pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Identifier une instruction ou une séquence d’instructions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 28,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_028.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-ALGO-002",
+          "intitule": "Produire et exécuter une séquence d’instructions",
+          "fingerprint": "produire_et_executer_une_sequence_d_instructions",
+          "niveau": "6E",
+          "domaine": "ALGO",
+          "sous_domaine": "Initiation à la pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Produire et exécuter une séquence d’instructions",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 28,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_028.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-ALGO-003",
+          "intitule": "Répéter à la main une séquence d’instructions pour accomplir une tâche imposée",
+          "fingerprint": "repeter_a_la_main_une_sequence_d_instructions_pour",
+          "niveau": "6E",
+          "domaine": "ALGO",
+          "sous_domaine": "Initiation à la pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Répéter à la main une séquence d’instructions pour accomplir une tâche imposée",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 28,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_028.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        },
+        {
+          "code": "6E-ALGO-004",
+          "intitule": "Programmer la construction d’un chemin simple",
+          "fingerprint": "programmer_la_construction_d_un_chemin_simple",
+          "niveau": "6E",
+          "domaine": "ALGO",
+          "sous_domaine": "Initiation à la pensée informatique",
+          "type": "capacite",
+          "formulation_bo": "Programmer la construction d’un chemin simple",
+          "source": {
+            "pdf": "cycle3.pdf",
+            "page": 28,
+            "bo_reference": "BO du cycle 3 (rentrée 2026)",
+            "bo_url": "https://www.education.gouv.fr/bo/2026",
+            "page_image": "../pages/cycle3/page_028.png"
+          },
+          "tags": [
+            "capacite"
+          ],
+          "extraction_meta": {
+            "date": "2026-05-21T20:18:35+00:00",
+            "agent_version": "v2.0-mechanical",
+            "confidence": 0.9,
+            "verified": false,
+            "extraction_method": "mechanical_from_bullets"
+          }
+        }
+      ]
+    }
+  }
+}

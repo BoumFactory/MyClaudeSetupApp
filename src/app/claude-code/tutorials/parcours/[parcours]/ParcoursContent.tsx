@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Zap, Monitor, Terminal, Sparkles, MessageSquareText, ChevronRight, CheckCircle } from 'lucide-react'
+import { Zap, Monitor, Terminal, Sparkles, MessageSquareText, FileCode2, ChevronRight, CheckCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { ProgressBar } from '@/components/tutorials/ProgressBar'
@@ -13,7 +13,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Monitor,
   Terminal,
   Sparkles,
-  MessageSquareText,
+  MessageSquareText, FileCode2,
 }
 
 const COLOR_MAP: Record<string, { border: string; hover: string; badge: string }> = {

@@ -1,0 +1,74 @@
+% Test fixture : enonce.tex bfcours minimal pour valider atomize/monolithize.
+% Couvre : titres [opt], titres {obl}, environnements imbriqués (MultiColonnes,
+% tcbenumerate, center, crep), EXO contenant des Definition (qui NE doivent
+% PAS être extraites car non top-level), commentaires `%`, et un \input
+% existant à préserver. Inclut aussi des EXO précédés de \def\rdifficulty
+% pour valider l'absorption arrière.
+
+\section{Premier chapitre}
+
+\subsection{Notions de base}
+
+\begin{Definition}[Variable aléatoire réelle]
+Une\voc{variable aléatoire réelle} associe à chaque issue un \acc{nombre réel}.
+\begin{MultiColonnes}{2}
+    \tcbitem $X : \omega \mapsto X(\omega) \in \R$
+    \tcbitem On dit \acc{discrète} si finie.
+\end{MultiColonnes}
+\end{Definition}
+
+\begin{Propriete}{Existence et unicité}
+Il existe une \emph{unique} fonction $f$ telle que $f' = f$ et $f(0) = 1$.
+\end{Propriete}
+
+% Le commentaire suivant ne doit PAS perturber le parser :
+% \begin{Definition}[Fausse définition commentée] ... \end{Definition}
+
+\begin{Exemple}[Pièce truquée -- deux lancers]
+\begin{tcbenumerate}[2]
+    \tcbitem $P(X = 0) = \dfrac{4}{9}$.
+    \tcbitem $P(X = 1) = \dfrac{4}{9}$.
+\end{tcbenumerate}
+\vspace{-0.3cm}\end{Exemple}
+
+\subsection{Exercices}
+
+\def\rdifficulty{1}
+\begin{EXO}{Calcul d'espérance}{1SP23}
+\begin{Definition}[Définition imbriquée dans EXO]
+Cette définition est dans un EXO : elle NE doit PAS être atomisée séparément.
+Elle doit toutefois suivre l'EXO dans son fichier atomisé.
+\end{Definition}
+
+\begin{tcbenumerate}[2]
+    \tcbitem \tcbitempoint{2}\acc{Calculer} $E(X)$.
+    \tcbitem \tcbitempoint{1}\acc{Conclure}.
+\end{tcbenumerate}
+
+\exocorrection
+
+$E(X) = 2$.
+\end{EXO}
+
+\def\rdifficulty{2.5}
+\begin{EXO}{Tirage compliqué}{1SP24}
+Un EXO avec sa difficulté juste au-dessus.
+\exocorrection
+La correction.
+\end{EXO}
+
+\section{Deuxième chapitre}
+
+\input{sections/Definition/def_existante.tex}
+
+\begin{Remarque}
+Une remarque sans titre.
+\end{Remarque}
+
+\begin{EXO}{EXO sans rdifficulty}{}
+Cet EXO n'a pas de \verb|\def\rdifficulty| au-dessus.
+\end{EXO}
+
+\begin{Demonstration}[Cas n°2]
+On a $\Phi(x) = 0$ donc \encadrer[defi]{$f$ ne s'annule pas}.
+\end{Demonstration}

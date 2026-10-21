@@ -1,0 +1,4487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Progression en mathématiques</title>
+<style>
+/* ===== VARIABLES & RESET ===== */
+:root {
+  --gray: #ccc;
+  --gray-dark: #e5e5e5;
+  --gray-bg: #f5f5f5;
+  --accent: #0078d7;
+  
+  /* Variables de couleurs de thèmes : injectées dynamiquement par _applyConfigStyles() */
+
+  /* Couleurs du bloc commentaire */
+  --comment-border:  #c8a200;
+  --comment-header:  #fdf7cc;
+  --comment-body:    #fffde8;
+
+  /* Couleurs par défaut des séquences */
+  --seq-header-bg: #e5e5e5;
+  --seq-body-bg:   #f5f5f5;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  overflow: hidden; /* évite le double scrollbar */
+}
+
+/* ===== LAYOUT ===== */
+#container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#leftPanel {
+  width: 40%;
+  border-right: 1px solid var(--gray);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0; /* Padding déplacé dans l'en-tête et le contenu */
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  padding: 10px;
+  border-bottom: 1px solid var(--gray);
+  flex-shrink: 0;
+}
+
+
+.left-title {
+  margin-bottom: 8px;
+}
+
+.left-title-main {
+  font-weight: bold;
+  font-size: 1em;
+  color: #222;
+  margin-bottom: 2px;
+}
+
+.left-title-sub {
+  font-size: 0.8em;
+  color: #666;
+  line-height: 1.3;
+  font-style: italic;
+}
+
+
+
+#leftContent {
+  padding: 10px;
+  flex: 1;
+}
+
+#leftPanel.hidden {
+  display: none;
+}
+
+#toggleLeftFoldBtn {
+  width: 100%;
+  padding: 6px;
+  cursor: pointer;
+  background: var(--gray-bg);
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+#toggleLeftFoldBtn:hover {
+  background: var(--gray-dark);
+}
+
+#splitter {
+  width: 5px;
+  cursor: col-resize;
+  background: #eee;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+#splitter:hover,
+#splitter.active {
+  background: var(--accent);
+}
+
+#splitter.hidden {
+  display: none;
+}
+
+#rightPanel {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  min-width: 0; /* évite dépassement flex */
+}
+
+/* ===== BOUTON GLOBAL ===== */
+#toggleLeftGlobal {
+  position: fixed;
+  top: 10px;
+  /* Par défaut : bouton dans le coin sup-droit du panneau gauche.
+     La valeur left est mise à jour dynamiquement par JS au redimensionnement. */
+  z-index: 1000;
+  cursor: pointer;
+  transition: left 0.15s ease;
+}
+
+#leftPanel,
+#rightPanel {
+  position: relative;
+}
+
+/* ===== HEADER & TOOLBAR ===== */
+.header {
+  border-bottom: 1px solid var(--gray);
+  margin-bottom: 10px;
+}
+
+.header h2 {
+  margin: 6px 0;
+}
+
+
+#progressionTitle {
+  margin: 0px 0;
+}
+
+.header h2:focus {
+  outline: 2px solid var(--accent);
+  border-radius: 2px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+/* Toast de confirmation de sauvegarde */
+#saveToast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: #2a7a2a;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 9999;
+  white-space: nowrap;
+}
+
+#saveToast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Toast d'annulation de suppression de séquence */
+#undoToast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #333;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.88em;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.28);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 9998;
+  white-space: nowrap;
+}
+
+#undoToast.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#undoToast button {
+  background: white;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#undoToast button:hover {
+  background: #e8e8e8;
+}
+
+#undoToast-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #aaa;
+  border-radius: 0 0 8px 8px;
+  width: 100%;
+  transform-origin: left;
+  transition: none;
+}
+
+#undoToast.visible #undoToast-bar {
+  animation: undoBarShrink 5s linear forwards;
+}
+
+@keyframes undoBarShrink {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ===== PANNEAU GAUCHE ===== */
+/* Espace entre blocs de thème */
+#leftContent > details {
+  margin-bottom: 6px;
+}
+
+#leftContent > details + details {
+  margin-top: 10px;
+}
+
+/* Details/Summary niveau 1 (thème) */
+#leftContent > details > summary {
+  font-weight: bold;
+  padding: 5px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  list-style: none; /* supprime le triangle natif */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+#leftContent > details > summary::before {
+  content: '▶';
+  font-size: 0.7em;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+#leftContent > details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+/* Couleurs de thème : règles [data-color] générées dynamiquement par _applyConfigStyles() */
+
+/*
+ * Thème dont tous les objectifs ont été déplacés (compteur = 0)
+ * Le summary passe en grisé pour signaler visuellement l'épuisement
+ */
+#leftContent > details > summary.exhausted {
+  background: #999 !important;
+  color: #eee !important;
+  font-style: italic;
+}
+
+/* Details/Summary niveau 2 (sous-thème) */
+#leftContent > details > details {
+  margin-left: 12px;
+  margin-top: 0;
+}
+
+/* Espace après le titre de thème, avant le premier sous-thème */
+#leftContent > details > details:first-of-type {
+  margin-top: 6px;
+}
+
+#leftContent > details > details > summary {
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  color: #444;
+  user-select: none;
+  list-style: none;
+  transition: filter 0.15s;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Sous-thème coloré (couleur injectée via style inline) */
+#leftContent > details > details > summary[data-subcolor] {
+  color: white;
+}
+
+#leftContent > details > details > summary[data-subcolor]:hover {
+  filter: brightness(1.1);
+}
+
+
+#leftContent > details > details .objectif {
+  margin-left: 18px; /* ajustable */
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Premier objectif : colle le titre du sous-thème */
+#leftContent > details > details .objectif:first-of-type {
+  margin-top: 0;
+  border-radius: 0;
+}
+
+/* Dernier objectif : arrondi en bas */
+#leftContent > details > details .objectif:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+/* Espace entre sous-thèmes (sauf le premier) */
+#leftContent > details > details + details {
+  margin-top: 8px;
+}
+
+#leftContent > details > details > summary {
+  display: flex;
+  align-items: center;
+}
+
+#leftContent > details > details > summary span:first-child {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+
+/* ===== OBJECTIFS ===== */
+.objectif {
+  padding: 5px 8px;
+  margin: 0;
+  border-radius: 4px;
+  cursor: grab;
+  color: white;
+  font-size: 0.88em;
+  transition: transform 0.15s ease, filter 0.15s ease, opacity 0.15s ease,
+              box-shadow 0.15s ease;
+  user-select: none;
+}
+
+/* Dans la dropzone d'une séquence, on remet l'espacement */
+.dropzone > .objectif {
+  margin: 4px 0;
+  border-radius: 4px;
+}
+
+.objectif:hover {
+  transform: translateX(4px);
+  filter: brightness(1.1);
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+}
+
+/*
+ * État "en vol" : l'original reste visible mais indique clairement
+ * qu'il est déplacé (opacité + pointillé + pas de hover transform)
+ */
+.objectif.dragging {
+  opacity: 0.35;
+  cursor: grabbing;
+  outline: 2px dashed rgba(255,255,255,0.7);
+  outline-offset: 2px;
+  transform: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Couleurs objectifs selon thème : règles [data-color] générées dynamiquement par _applyConfigStyles() */
+
+/* Objectif épuisé (plus dans le panneau gauche) */
+.objectif.used {
+  opacity: 0.45;
+  text-decoration: line-through;
+}
+
+/*
+ * Bouton ✕ de suppression d'un objectif dans une dropzone.
+ * Affiché au hover de l'objectif parent.
+ */
+.objectif {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.objectif-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-remove-objectif {
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.25);
+  border: none;
+  color: white;
+  border-radius: 3px;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  display: none;         /* masqué par défaut */
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+/* Affiché uniquement dans les dropzones (pas dans le panneau gauche) */
+.dropzone .objectif:hover .btn-remove-objectif {
+  display: flex;
+}
+
+/* Masquer les checkboxes dans les dropzones (panneau droit) */
+.dropzone .objectif-check { display: none; }
+
+.btn-remove-objectif:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+/*
+ * Bouton ✕ de suppression d'une séquence entière,
+ * dans le header de la séquence.
+ */
+.btn-remove-seq {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.2);
+  color: #555;
+  border-radius: 3px;
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-remove-seq:hover {
+  background: #c0392b;
+  color: white;
+  border-color: #c0392b;
+}
+
+/*
+ * Zone de retour gauche : panneau gauche devient une dropzone
+ * pendant le drag d'un objectif venant de la droite.
+ */
+#leftPanel.drop-target {
+  outline: 2px dashed var(--accent);
+  outline-offset: -3px;
+  background: rgba(0,120,215,0.04);
+}
+
+/* ===== SEQUENCES ===== */
+#sequences {
+  min-height: 40px;
+}
+
+/*
+ * Quand un objectif est en vol, on met en évidence
+ * légèrement le conteneur global des séquences
+ */
+#sequences.drag-active {
+  border-radius: 4px;
+  outline: 1px dashed rgba(0,120,215,0.3);
+  outline-offset: 4px;
+}
+
+.sequence {
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  margin: 10px 0;
+  background: var(--seq-body-bg);
+  transition: box-shadow 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+}
+
+/*
+ * Séquence en cours de déplacement : soulevée visuellement
+ */
+.sequence.dragging {
+  opacity: 0.45;
+  cursor: grabbing;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+  transform: scale(0.98);
+}
+
+/*
+ * Fantôme de positionnement entre séquences
+ * (injecté par JS pour montrer où la séquence va atterrir)
+ */
+.sequence-ghost {
+  border: 2px dashed var(--accent);
+  border-radius: 4px;
+  background: rgba(0,120,215,0.06);
+  margin: 10px 0;
+  pointer-events: none;
+  transition: height 0.1s ease;
+}
+
+.sequence-header {
+  background: var(--seq-header-bg);
+  padding: 6px 8px;
+  font-weight: bold;
+  cursor: grab;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 3px 3px 0 0;
+  user-select: none;
+  transition: background 0.15s ease;
+}
+
+.sequence-header:active {
+  cursor: grabbing;
+}
+
+.sequence-header span[contenteditable] {
+  flex: 1;
+  outline: none;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.sequence-header span[contenteditable]:focus {
+  outline: 2px solid var(--accent);
+  background: white;
+}
+
+.sequence.collapsed .dropzone {
+  display: none;
+}
+
+/* ===== DROPZONE ===== */
+.dropzone {
+  border-top: 1px dashed var(--gray);
+  min-height: 36px;
+  padding: 6px;
+  transition: background 0.15s ease, border-color 0.15s ease, min-height 0.15s ease;
+  position: relative;
+}
+
+/*
+ * Highlight de TOUTES les dropzones valides pendant un drag d'objectif :
+ * signal global "tu peux déposer ici"
+ */
+.drag-active .dropzone {
+  border-top-color: var(--accent);
+  background: rgba(0,120,215,0.04);
+  min-height: 48px;
+}
+
+/*
+ * La dropzone survolée en ce moment précis
+ */
+.dropzone.drag-over {
+  background: rgba(0,120,215,0.12);
+  border-top: 2px solid var(--accent);
+  box-shadow: inset 0 0 0 1px rgba(0,120,215,0.25);
+}
+
+/* Message état vide */
+.dropzone:empty::before,
+.dropzone.is-empty::before {
+  content: 'Glissez des objectifs ici…';
+  color: #aaa;
+  font-size: 0.82em;
+  font-style: italic;
+  display: block;
+  text-align: center;
+  padding: 6px 0;
+}
+
+/*
+ * Ligne d'insertion : indique précisément où l'objectif
+ * va être inséré dans la liste
+ */
+.drop-indicator {
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 3px 0;
+  pointer-events: none;
+  position: relative;
+  /* Pastilles aux extrémités pour renforcer la visibilité */
+}
+.drop-indicator::before,
+.drop-indicator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.drop-indicator::before { left: -4px; }
+.drop-indicator::after  { right: -4px; }
+
+/* Flèche de pliage de la séquence */
+.sequence-toggle {
+  font-size: 0.65em;
+  color: #666;
+  transition: transform 0.2s;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-right: 2px;
+  cursor: pointer;
+}
+
+.sequence:not(.collapsed) .sequence-toggle {
+  transform: rotate(90deg);
+}
+
+/* ===== COMMENTAIRES ===== */
+
+/*
+ * Bloc commentaire : inséré dans la séquence, après la dropzone.
+ * Fond crème légèrement teinté, bordure gauche colorée pour le différencier
+ * des objectifs (qui sont colorés plein).
+ */
+.commentaire {
+  border: 1px solid color-mix(in srgb, var(--comment-border) 50%, #fff);
+  border-left: 3px solid var(--comment-border);
+  border-radius: 0 4px 4px 0;
+  background: var(--comment-body);
+  margin: 0 6px 6px;
+  font-size: 0.88em;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+
+/* Header pliable du commentaire */
+.commentaire-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: var(--comment-header);
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.commentaire-header:hover {
+  filter: brightness(0.96);
+}
+
+.commentaire.open .commentaire-header {
+  border-bottom-color: color-mix(in srgb, var(--comment-border) 50%, #fff);
+}
+
+/* Triangle de pliage */
+.commentaire-toggle {
+  font-size: 0.65em;
+  color: color-mix(in srgb, var(--comment-border) 80%, #000);
+  transition: transform 0.2s;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.commentaire.open .commentaire-toggle {
+  transform: rotate(90deg);
+}
+
+/* Étiquette fixe "Commentaire / Ressource" */
+.commentaire-label {
+  font-weight: bold;
+  color: color-mix(in srgb, var(--comment-border) 60%, #000);
+  flex: 1;
+  font-size: 0.9em;
+  cursor: text;
+  border-radius: 3px;
+  padding: 0 3px;
+  margin: 0 -3px;
+  outline: none;
+  transition: background 0.15s;
+}
+
+.commentaire-label:hover {
+  background: color-mix(in srgb, var(--comment-border) 12%, transparent);
+}
+
+.commentaire-label:focus {
+  background: color-mix(in srgb, var(--comment-border) 18%, transparent);
+}
+
+/* Bouton supprimer le commentaire */
+.btn-remove-comment {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  color: #c0392b;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  opacity: 0.55;
+  transition: opacity 0.15s;
+}
+
+.btn-remove-comment:hover {
+  opacity: 1;
+}
+
+/* Corps du commentaire */
+.commentaire-body {
+  display: none;
+  padding: 7px 10px;
+  color: #333;
+  line-height: 1.5;
+  outline: none;
+  min-height: 28px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.commentaire.open .commentaire-body {
+  display: block;
+}
+
+.commentaire-body:empty::before {
+  content: 'Saisir un commentaire, une ressource, un lien…';
+  color: color-mix(in srgb, var(--comment-border) 70%, #888);
+  font-style: italic;
+  pointer-events: none;
+}
+
+/* Mise en forme automatique des URLs dans le corps */
+.commentaire-body a {
+  color: #0056b3;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.commentaire-body a:hover {
+  color: #003d82;
+}
+
+/* Picker couleur individuelle d'une séquence */
+.seq-color-picker {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 2px;
+}
+
+.seq-color-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.7);
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.25);
+  transition: transform 0.15s, box-shadow 0.15s;
+  flex-shrink: 0;
+  display: block;
+}
+
+.seq-color-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.4);
+}
+
+.seq-color-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  z-index: 500;
+  min-width: 190px;
+}
+
+.seq-color-dropdown.open {
+  display: block;
+}
+
+.seq-color-dropdown-title {
+  font-size: 0.75em;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.seq-color-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+  font-size: 0.82em;
+  color: #555;
+}
+
+.seq-color-row:last-child { margin-bottom: 0; }
+
+.seq-color-row label { flex: 1; white-space: nowrap; }
+
+.seq-color-row input[type="color"] {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.seq-color-reset {
+  margin-top: 8px;
+  width: 100%;
+  padding: 4px;
+  font-size: 0.78em;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #555;
+  transition: background 0.15s;
+}
+
+.seq-color-reset:hover { background: #e8e8e8; }
+
+@media print {
+  .seq-color-picker { display: none !important; }
+}
+
+/* Bouton "➕ Commentaire" dans le header de séquence */
+.btn-add-comment {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.18);
+  color: #555;
+  border-radius: 3px;
+  height: 22px;
+  padding: 0 6px;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 4px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-add-comment:hover {
+  background: var(--comment-border);
+  color: white;
+  border-color: var(--comment-border);
+}
+
+/* Masquer les commentaires dans la séquence repliée */
+.sequence.collapsed .commentaire {
+  display: none;
+}
+
+/* ===== SÉPARATEUR ===== */
+.separateur {
+  display: flex;
+  align-items: center;
+  margin: 14px 0;
+  position: relative;
+  cursor: grab;
+  user-select: none;
+}
+
+.separateur:active {
+  cursor: grabbing;
+}
+
+/*
+ * En cours de déplacement : même traitement visuel que .sequence.dragging
+ */
+.separateur.dragging {
+  opacity: 0.4;
+  cursor: grabbing;
+}
+
+/*
+ * Les deux bras horizontaux de la ligne (pseudo-éléments du wrapper)
+ */
+.separateur-line {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 22px;
+}
+
+/* Ligne gauche */
+.separateur-line::before,
+.separateur-line::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  border-radius: 1px;
+  /* couleur injectée via --sep-color sur .separateur-line */
+  background: var(--sep-color, #c8a200);
+  opacity: 0.55;
+}
+
+/* Badge texte central */
+.separateur-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sep-color, #c8a200);
+  color: white;
+  font-size: 0.82em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  border-radius: 12px;
+  padding: 3px 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  position: relative;
+  z-index: 1;
+}
+
+/* Icône drag discret à gauche du badge */
+.separateur-grip {
+  font-size: 0.75em;
+  opacity: 0.6;
+  cursor: grab;
+  flex-shrink: 0;
+}
+
+.separateur-text {
+  outline: none;
+  cursor: text;
+  min-width: 20px;
+  white-space: nowrap;
+}
+
+.separateur-text:empty::before {
+  content: 'Période / Thème…';
+  opacity: 0.55;
+  font-style: italic;
+  font-weight: normal;
+  pointer-events: none;
+}
+
+/* Palette + bouton supprimer : affichés au hover du séparateur */
+.separateur-actions {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  right: 0;
+  z-index: 5;
+}
+
+.separateur:hover .separateur-actions {
+  display: flex;
+}
+
+/* Palette de couleurs */
+.separateur-colors {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  align-items: center;
+}
+
+.sep-color-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+}
+
+.sep-color-dot:hover {
+  transform: scale(1.3);
+}
+
+.sep-color-dot.active {
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.5);
+  transform: scale(1.15);
+}
+
+/* Bouton supprimer */
+.btn-remove-sep {
+  width: 18px;
+  height: 18px;
+  background: rgba(0,0,0,0.12);
+  border: 1px solid rgba(0,0,0,0.18);
+  color: #555;
+  border-radius: 50%;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.btn-remove-sep:hover {
+  background: #c0392b;
+  color: white;
+  border-color: #c0392b;
+}
+
+/* ===== PRINT ===== */
+@media print {
+  #leftPanel,
+  #splitter,
+  .toolbar,
+  #toggleLeftGlobal,
+  .btn-remove-objectif,
+  .btn-remove-seq,
+  .btn-remove-sep,
+  .btn-add-comment,
+  .btn-remove-comment,
+  .commentaire-toggle,
+  .sequence-toggle,
+  .separateur-colors,
+  .separateur-actions,
+  .separateur-grip {
+    display: none !important;
+  }
+
+  /* Commentaires toujours dépliés à l'impression */
+  .commentaire {
+    border-left: 3px solid var(--comment-border) !important;
+    background: var(--comment-body) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    margin: 3pt 0 0;
+  }
+
+  .commentaire-header {
+    background: var(--comment-header) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    border-bottom: 1px solid color-mix(in srgb, var(--comment-border) 50%, #fff);
+  }
+
+  .commentaire-body {
+    display: block !important;
+  }
+
+  .separateur-line::before,
+  .separateur-line::after {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .separateur-badge {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    overflow: visible;
+    font-family: sans-serif;
+    font-size: 11pt;
+    color: #000;
+  }
+
+  #container {
+    height: auto;
+    overflow: visible;
+    display: block;
+  }
+
+  #rightPanel {
+    width: 100%;
+    overflow: visible;
+    padding: 0;
+  }
+
+  /* En-tête imprimé avec le titre de la progression et la date */
+  #rightPanel .header::before {
+    content: 'Progression pédagogique — ' attr(data-title);
+    display: block;
+    font-size: 8pt;
+    color: #666;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Numérotation des pages via CSS Paged Media */
+  @page {
+    margin: 1.5cm 2cm;
+    @bottom-right {
+      content: 'Page ' counter(page) ' / ' counter(pages);
+      font-size: 8pt;
+      color: #888;
+    }
+    @top-left {
+      content: attr(data-title, 'Progression');
+      font-size: 8pt;
+      color: #888;
+    }
+  }
+
+  .sequence {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #aaa;
+    margin: 8pt 0;
+  }
+
+  .sequence-header {
+    background: var(--seq-header-bg) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .objectif {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    /* Réaffichage sans flex pour l'impression (le bouton ✕ est hidden) */
+  }
+
+  /* Séquences numérotées à l'impression */
+  #sequences {
+    counter-reset: seq-counter;
+  }
+
+  .sequence-header::before {
+    counter-increment: seq-counter;
+    content: counter(seq-counter) '. ';
+    font-weight: bold;
+  }
+}
+
+/* ===== PANNEAU CONFIGURATION ===== */
+.config-panel {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 320px;
+  height: 100vh;
+  background: white;
+  box-shadow: -4px 0 15px rgba(0,0,0,0.15);
+  z-index: 2000;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.config-panel.open {
+  right: 0;
+}
+
+.config-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  z-index: 1999;
+  display: none;
+  backdrop-filter: blur(2px);
+}
+
+.config-panel.open + .config-overlay {
+  display: block;
+}
+
+.config-header {
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.config-header h3 { margin: 0; font-size: 1.1em; color: #333; }
+
+.btn-close-config {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #888;
+  padding: 5px;
+}
+
+.btn-close-config:hover { color: #333; }
+
+.config-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.config-section {
+  margin-bottom: 25px;
+}
+
+.config-section h4 {
+  margin: 0 0 12px;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 6px;
+}
+
+.config-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  color: #444;
+  cursor: pointer;
+}
+
+.config-option select {
+  flex: 1;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.config-color-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.config-color-item label {
+  flex: 1;
+  font-size: 0.85em;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.config-color-item input[type="color"] {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.config-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.config-toolbar button {
+  width: 100%;
+  padding: 8px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.config-toolbar button:hover {
+  background: #e5e5e5;
+}
+
+/* ==== SÉLECTION MULTIPLE ==== */
+
+/* Checkbox de sélection sur les objectifs du panneau gauche */
+.objectif-check {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  margin-right: 4px;
+  accent-color: white;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.objectif-check:hover { opacity: 1; }
+.objectif-check:checked { opacity: 1; }
+
+/* Objectif sélectionné (coché) */
+.objectif.selected {
+  outline: 2px solid rgba(255,255,255,0.9);
+  outline-offset: -2px;
+  filter: brightness(1.15);
+}
+
+/* Barre de sélection flottante */
+#selectionBar {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #333;
+  color: white;
+  padding: 8px 12px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85em;
+  z-index: 20;
+  border-top: 2px solid var(--accent);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.25);
+}
+#selectionBar.visible { display: flex; }
+#selectionBar .sel-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#selectionBar button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 0.85em;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+#selectionBar button:hover { filter: brightness(1.2); }
+#selectionBar .btn-clear {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+#selectionBar select {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: #555;
+  color: white;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+/* ==== ENRICHISSEMENTS PROGRESSION-BUILDER V2 ==== */
+
+/* Code de compétence affiché avant le texte */
+.objectif-code {
+  font-weight: 700;
+  font-size: 0.78em;
+  opacity: 0.85;
+  white-space: nowrap;
+  margin-right: 4px;
+}
+
+/* Badge "opt." pour les approfondissements BO */
+.opt-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 5px;
+  font-size: 0.7em;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 3px;
+  vertical-align: middle;
+  cursor: help;
+}
+
+.objectif.optionnel { opacity: 0.88; }
+
+/* Pied de source BO (page PDF, référence, lien) — masqué par défaut */
+.objectif-meta {
+  display: none;
+  font-size: 0.72em;
+  opacity: 0.92;
+  margin-top: 5px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  white-space: normal;
+}
+.objectif-meta a { color: white; text-decoration: underline; }
+.objectif-meta a:hover { opacity: 0.8; }
+
+/* État étendu (double-clic) : texte complet + source BO */
+.objectif.expanded {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  padding-bottom: 6px;
+}
+.objectif.expanded .objectif-text {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.4;
+}
+.objectif.expanded .objectif-meta { display: block; }
+
+/* Hint visuel : chevron extensible */
+.objectif .expand-hint {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  font-size: 0.75em;
+  pointer-events: none;
+}
+.objectif.expanded .expand-hint { display: none; }
+
+/* À l'impression : tout étendu, source visible */
+@media print {
+  .objectif { white-space: normal !important; overflow: visible !important; }
+  .objectif .objectif-meta { display: block !important; font-size: 0.7em; opacity: 0.8; }
+  .objectif .expand-hint { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+<button id="toggleLeftGlobal"
+        aria-label="Afficher/Cacher le panneau des objectifs"
+        title="Afficher / Cacher le panneau des objectifs"
+        onclick="App.toggleLeftPanel()">👁️</button>
+
+<div id="container">
+
+  <div id="leftPanel">
+<div class="left-header">
+  <div class="left-title">
+    <div class="left-title-main">Liste des objectifs et 🛠 Automatismes</div>
+    <div class="left-title-sub">
+      Glisser-déposer les objectifs à droite. Double-clic pour voir la source BO.
+    </div>
+    <div id="globalCounter" style="font-size:0.78em; color:#666; margin-top:4px; font-weight:600;"></div>
+  </div>
+
+  <button id="toggleLeftFoldBtn" onclick="App.toggleLeftFold()">
+    📂 Tout plier / déplier
+  </button>
+</div>
+    <div id="leftContent"></div>
+    <div id="selectionBar">
+      <div class="sel-row">
+        <span id="selectionCount">0 sélectionnés</span>
+        <button class="btn-clear" onclick="App.clearSelection()">✕</button>
+      </div>
+      <div class="sel-row">
+        <select id="selectionTarget" title="Séquence de destination"></select>
+        <button onclick="App.moveSelection()" title="Déplacer dans la séquence choisie">▶ Déplacer</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="splitter" aria-hidden="true"></div>
+
+  <div id="rightPanel">
+  
+<div style="background-color:#ffffff; padding:0; margin:0;">
+    <div style="display:flex; align-items:center;">
+<img alt="Logo Académie Reims" style="height: 80px; margin-right: 10px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MSIgdmlld0JveD0iMCAwIDE1MCAxNTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxNTEiIGZpbGw9IndoaXRlIi8+PHJlY3Qgd2lkdGg9IjU1IiBoZWlnaHQ9IjIwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMCAyMCkiIGZpbGw9IndoaXRlIi8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Mi43NCAzNy42NEM0Mi45NSAzNy40MyA0My4xNyAzNy4yIDQzLjM4IDM2Ljk2QzQzLjc3IDM2LjUxIDQ0LjE5IDM2LjA4IDQ0LjY0IDM1LjY4QzQ0Ljc3IDM1LjU2IDQ0LjkxIDM1LjQ1IDQ1LjA1IDM1LjM1QzQ1LjA3IDM1LjMzIDQ1LjA4IDM1LjMgNDUuMDkgMzUuMjdDNDUuMSAzNS4yNSA0NS4xMSAzNS4yMiA0NS4xMyAzNS4yQzQ1LjAzIDM1LjI0IDQ0Ljk2IDM1LjI5IDQ0Ljg4IDM1LjM1QzQ0LjgxIDM1LjQxIDQ0LjczIDM1LjQ2IDQ0LjY0IDM1LjVDNDQuNiAzNS41IDQ0LjU2IDM1LjQ2IDQ0LjYgMzUuNDJMNDUgMzUuMTJDNDQuOTkgMzUuMTIgNDQuOTkgMzUuMTIgNDQuOTggMzUuMTJDNDQuOTQgMzUuMTIgNDQuOTQgMzUuMDggNDQuOTQgMzUuMDVDNDQuNDUgMzQuOTcgNDQuMDggMzUuMzEgNDMuNzQgMzUuNjFMNDMuNzMgMzUuNjFDNDMuNjggMzUuNjQgNDMuNjMgMzUuNjEgNDMuNTkgMzUuNTlDNDMuNTcgMzUuNTggNDMuNTUgMzUuNTggNDMuNTQgMzUuNThDNDMuMjQgMzUuNjggNDIuOTkgMzUuODYgNDIuNzMgMzYuMDRMNDIuNzMgMzYuMDRDNDIuNSAzNi4yMSA0Mi4yNiAzNi4zOCA0MS45OSAzNi40OFYzNi40MUM0MS45IDM2LjQ0IDQxLjggMzYuNDggNDEuNzEgMzYuNTJDNDEuNTggMzYuNTggNDEuNDUgMzYuNjQgNDEuMzEgMzYuNjdDNDEuMDUgMzYuNzMgNDAuODIgMzYuNzIgNDAuNTkgMzYuNzFINDAuNTlINDAuNTlINDAuNTlINDAuNTlINDAuNTlINDAuNTlDNDAuNTIgMzYuNzEgNDAuNDQgMzYuNzEgNDAuMzcgMzYuNzFDMzkuOSAzNi43NyAzOS40NCAzNi44NSAzOC45OSAzNi45NUwzOC45NyAzNi45NkwzOC45NiAzNi45NkwzOC45NSAzNi45NkMzOC43MSAzNy4wMyAzOC40NyAzNy4xMyAzOC4yNSAzNy4yNUMzOC4yNCAzNy4yNSAzOC4yMyAzNy4yNiAzOC4yMiAzNy4yNkMzOC4yIDM3LjI5IDM4LjE4IDM3LjMxIDM4LjE3IDM3LjMzQzM4LjEgMzcuNDIgMzguMDEgMzcuNSAzNy45MSAzNy41NUMzNy43NCAzNy42NCAzNy42IDM3Ljc3IDM3LjQ2IDM3Ljg5QzM3LjQgMzcuOTQgMzcuMzQgMzggMzcuMjggMzguMDVDMzcuMjYgMzguMDYgMzcuMjQgMzguMDYgMzcuMjIgMzguMDZDMzcuMTYgMzguMTIgMzcuMSAzOC4xOCAzNy4wMyAzOC4yNEwzNy4wMyAzOC4yNEwzNy4wMyAzOC4yNEwzNy4wMyAzOC4yNEwzNy4wMyAzOC4yNEwzNy4wMyAzOC4yNEwzNy4wMyAzOC4yNEwzNy4wMyAzOC4yNEMzNi44OSAzOC4zOCAzNi43NSAzOC41MiAzNi42MSAzOC42NUMzNi41OCAzOC42NiAzNi41NCAzOC42NyAzNi41IDM4LjY2QzM2LjUxIDM4LjY1IDM2LjUxIDM4LjYzIDM2LjUyIDM4LjYyQzM2LjU1IDM4LjU3IDM2LjU5IDM4LjUyIDM2LjYyIDM4LjQ2QzM2LjY2IDM4LjQgMzYuNjkgMzguMzQgMzYuNzMgMzguMjlDMzYuNzggMzguMjEgMzYuODQgMzguMTMgMzYuODkgMzguMDZDMzYuOSAzOC4wNCAzNi45IDM4LjAyIDM2Ljg5IDM4LjAxQzM2Ljg4IDM3Ljk5IDM2Ljg2IDM3Ljk5IDM2Ljg0IDM3Ljk5QzM3LjAzIDM3LjgxIDM3LjI0IDM3LjY1IDM3LjQ3IDM3LjUxQzM3LjQ1IDM3LjUyIDM3LjQxIDM3LjUgMzcuNDMgMzcuNDdDMzcuNDQgMzcuNDUgMzcuNDYgMzcuNDMgMzcuNDcgMzcuNDFDMzcuNDggMzcuMzkgMzcuNDggMzcuMzggMzcuNDkgMzcuMzdDMzcuNSAzNy4zNiAzNy41IDM3LjM0IDM3LjUxIDM3LjMzQzM3LjUgMzcuMzMgMzcuNDkgMzcuMzIgMzcuNDkgMzcuMzFMMzcuNDggMzcuM0MzNy40MiAzNy4zNCAzNy4zNiAzNy4zOCAzNy4zIDM3LjQzQzM3LjI3IDM3LjQ1IDM3LjI1IDM3LjQ4IDM3LjIyIDM3LjUyTDM3LjIyIDM3LjUyQzM3LjE2IDM3LjU5IDM3LjEgMzcuNjcgMzcgMzcuNjdDMzYuOTggMzcuNjcgMzYuOTYgMzcuNjcgMzYuOTQgMzcuNjdDMzYuOTMgMzcuNjYgMzYuOTIgMzcuNjYgMzYuOSAzNy42NUwzNi45MSAzNy42NEwzNi45MiAzNy42M0wzNi45MiAzNy42MkwzNi45NCAzNy41OUwzNi45NSAzNy41N0wzNi45NiAzNy41NkwzNi45NyAzNy41M0MzNi45OCAzNy41MiAzNi45OSAzNy41IDM3IDM3LjQ4TDM3LjAxIDM3LjQ3TDM3LjAxIDM3LjQ2TDM3LjAyIDM3LjQ1QzM3LjAzIDM3LjQzIDM3LjA0IDM3LjQxIDM3LjA1IDM3LjM5TDM3LjA1IDM3LjM5TDM3LjA3IDM3LjM3TDM3LjA5IDM3LjMzTDM3LjExIDM3LjNMMzcuMTEgMzcuM0wzNy4xMSAzNy4zTDM3LjExIDM3LjNMMzcuMTEgMzcuM0wzNy4xMiAzNy4yOEwzNy4xMyAzNy4yNkMzNy4xNCAzNy4yNCAzNy4xNCAzNy4yMyAzNy4xMyAzNy4yMkMzNy4xMyAzNy4yIDM3LjEyIDM3LjE5IDM3LjEgMzcuMTlDMzcuMTcgMzcuMSAzNy4yNiAzNy4wMiAzNy4zNiAzNi45NkgzNy4zNUMzNy40NSAzNi45MSAzNy41NSAzNi44NiAzNy42NSAzNi44TDM3LjY1IDM2LjhMMzcuNjUgMzYuOEMzNy42OSAzNi43NyAzNy43NCAzNi43NSAzNy43OCAzNi43MkMzNy44IDM2LjcxIDM3LjgxIDM2LjcgMzcuODIgMzYuNjlMMzcuODUgMzYuNjdDMzcuNjMgMzYuNzQgMzcuNDMgMzYuODQgMzcuMjQgMzYuOTZDMzcuMjIgMzYuOTcgMzcuMiAzNi45OCAzNy4xOCAzN0MzNy4xNSAzNy4wMSAzNy4xMSAzNi45OSAzNy4wOSAzNi45NkMzNy4wOCAzNi45NiAzNy4wOCAzNi45NSAzNy4wOCAzNi45NEMzNy4xIDM2Ljg5IDM3LjE1IDM2Ljg2IDM3LjIgMzYuODNDMzcuMjMgMzYuOCAzNy4yNyAzNi43OCAzNy4zIDM2Ljc1QzM3LjM0IDM2Ljc1IDM3LjM4IDM2Ljc1IDM3LjM4IDM2Ljc5QzM4LjEzIDM2LjIgMzkuMDUgMzYuMDYgMzkuOTggMzUuOTNDNDAuNTUgMzUuODUgNDEuMTIgMzUuNzYgNDEuNjUgMzUuNThMNDEuOTkgMzUuMzVDNDIuMDkgMzUuMzEgNDIuMTcgMzUuMjQgNDIuMjcgMzUuMTdDNDIuMzUgMzUuMSA0Mi40NSAzNS4wMyA0Mi41NiAzNC45N0M0Mi44NiAzNC43NiA0My4wOSAzNC40NiA0My4yIDM0LjFDNDMuMiAzNC4wNyA0My4xOCAzNC4wNSA0My4xNiAzNC4wM0M0Mi42OSAzNC41NCA0Mi4xMiAzNC45NiA0MS41IDM1LjI3QzQwLjkzIDM1LjU3IDQwLjMyIDM1LjYyIDM5LjcxIDM1LjY2QzM5LjQ3IDM1LjY4IDM5LjI0IDM1LjcgMzkgMzUuNzNDMzkuMDQgMzUuNjUgMzkuMTIgMzUuNjUgMzkuMTkgMzUuNjVDMzkuMTkgMzUuNTYgMzkuMjQgMzUuNTIgMzkuMyAzNS40N0MzOS4zMSAzNS40NSAzOS4zMyAzNS40NCAzOS4zNCAzNS40MkgzOS40NkMzOS40OCAzNS40MiAzOS40OSAzNS40MSAzOS41IDM1LjM5QzM5LjUxIDM1LjM3IDM5LjUxIDM1LjM1IDM5LjUzIDM1LjM1QzM5LjYxIDM1LjM1IDM5LjcyIDM1LjMxIDM5LjY5IDM1LjMxQzM5LjYzIDM1LjIzIDM5LjU0IDM1LjI3IDM5LjQ0IDM1LjNDMzkuMzUgMzUuMzMgMzkuMjUgMzUuMzcgMzkuMTYgMzUuMzFDMzkuMTkgMzUuMjggMzkuMiAzNS4yMyAzOS4yMSAzNS4xOUMzOS4yMiAzNS4xNCAzOS4yMyAzNS4xIDM5LjI3IDM1LjA4SDM5LjQyQzM5LjQzIDM1LjAzIDM5LjQ1IDM0Ljk3IDM5LjUgMzQuOTNDMzkuODMgMzQuNzMgNDAuMTYgMzQuNTYgNDAuNDcgMzQuMzhDNDAuNjkgMzQuMjcgNDAuOTEgMzQuMTUgNDEuMTIgMzQuMDNDNDEuMDggMzQuMDMgNDEuMDQgMzQuMDQgNDEgMzQuMDZDNDAuOTQgMzQuMDkgNDAuODkgMzQuMTEgNDAuODIgMzQuMDZDNDAuODYgMzQuMDYgNDAuODYgMzQuMDQgNDAuODYgMzQuMDFDNDAuODYgMzMuOTggNDAuODYgMzMuOTUgNDAuODkgMzMuOTVDNDEuMTMgMzMuODkgNDEuMzUgMzMuNzggNDEuNTYgMzMuNjhDNDEuNzIgMzMuNiA0MS44OSAzMy41MiA0Mi4wNyAzMy40NkM0Mi4wMSAzMy40NiA0MS45NyAzMy40NyA0MS45MiAzMy40OUM0MS44MyAzMy41MSA0MS43NSAzMy41MyA0MS42NSAzMy40NkM0MS42OCAzMy40NSA0MS43IDMzLjQzIDQxLjcyIDMzLjQxQzQxLjc2IDMzLjM4IDQxLjggMzMuMzUgNDEuODggMzMuMzVWMzMuMjNDNDEuODggMzMuMiA0MS45MiAzMy4yIDQxLjk1IDMzLjJDNDEuOTIgMzMuMTkgNDEuOSAzMy4xOCA0MS44OCAzMy4xNkM0MS45IDMzLjEyIDQxLjk0IDMzLjExIDQxLjk4IDMzLjFDNDIuMDIgMzMuMDkgNDIuMDcgMzMuMDggNDIuMSAzMy4wNEM0Mi4wNyAzMy4wNCA0MS45OSAzMy4wNCA0MS45OSAzMy4wMUM0Mi4xIDMyLjg2IDQyLjI5IDMyLjgyIDQyLjQ4IDMyLjc4QzQyLjQ2IDMyLjc0IDQyLjQzIDMyLjc0IDQyLjM5IDMyLjc0QzQyLjM2IDMyLjc0IDQyLjMzIDMyLjc0IDQyLjMzIDMyLjdDNDIuMzMgMzIuNjcgNDIuMzcgMzIuNjcgNDIuNDEgMzIuNjdINDIuMzNDNDIuMjcgMzIuNjQgNDIuMjggMzIuNTggNDIuMjkgMzIuNTVMNDIuMjkgMzIuNTVDNDIuMjkgMzIuNTMgNDIuMjkgMzIuNTIgNDIuMjkgMzIuNTJDNDIuNDQgMzIuMzQgNDIuNDkgMzIuMTMgNDIuNTQgMzEuOTJDNDIuNTcgMzEuODEgNDIuNiAzMS43MSA0Mi42MyAzMS42MUM0Mi42IDMxLjYxIDQyLjU2IDMxLjYxIDQyLjU2IDMxLjU3QzQyLjE5IDMxLjk3IDQxLjYxIDMyLjEzIDQxLjA2IDMyLjI3TDQxLjAxIDMyLjI5SDQwLjgyQzQwLjYxIDMyLjM3IDQwLjM3IDMyLjM2IDQwLjE4IDMyLjI1QzQwLjA5IDMyLjIgNDAuMDIgMzIuMTQgMzkuOTUgMzIuMDhDMzkuOTEgMzIuMDQgMzkuODYgMzEuOTkgMzkuOCAzMS45NUMzOS41IDMxLjc2IDM5LjE5IDMxLjYxIDM4Ljg1IDMxLjQ5QzM3LjkyIDMxLjE5IDM2LjkzIDMxLjA1IDM1Ljk0IDMxLjA4QzM2LjIyIDMwLjkzIDM2LjUxIDMwLjg3IDM2LjggMzAuODFDMzYuOTUgMzAuNzggMzcuMTEgMzAuNzUgMzcuMjcgMzAuN0MzNy4zNiAzMC42NyAzNy40NSAzMC42NCAzNy41NSAzMC42MkMzOC4wOSAzMC40NSAzOC42MSAzMC4yOSAzOS4xOSAzMC4zMkMzOS4xMiAzMC4zIDM5LjAyIDMwLjMxIDM4LjkzIDMwLjMxQzM4Ljg5IDMwLjMyIDM4Ljg1IDMwLjMyIDM4LjgyIDMwLjMyQzM4LjM5IDMwLjI5IDM3Ljk2IDMwLjM4IDM3LjUyIDMwLjQ4QzM3LjQxIDMwLjUgMzcuMyAzMC41MyAzNy4xOSAzMC41NUMzNyAzMC41OSAzNi44MiAzMC42NCAzNi42NCAzMC43QzM2LjQ2IDMwLjc2IDM2LjI4IDMwLjgxIDM2LjA5IDMwLjg1QzM2LjAxIDMwLjg4IDM1Ljk0IDMwLjkzIDM1Ljg3IDMwLjk4QzM1Ljc2IDMxLjA2IDM1LjY1IDMxLjE0IDM1LjQ5IDMxLjEyVjMxQzM1Ljg3IDMwLjU1IDM2LjMyIDMwLjEgMzYuOTMgMzAuMDZDMzcuNSAyOS45NiAzOC4wNSAzMC4wMyAzOC42MiAzMC4xTDM4LjYyIDMwLjFDMzguNzIgMzAuMTEgMzguODIgMzAuMTIgMzguOTMgMzAuMTNDMzkuNDEgMzAuMTggMzkuODkgMzAuMjcgNDAuMzYgMzAuNEM0MC40NyAzMC40IDQwLjUzIDMwLjQ5IDQwLjU4IDMwLjU4QzQwLjYzIDMwLjY1IDQwLjY3IDMwLjcyIDQwLjc0IDMwLjc0QzQwLjgzIDMwLjc3IDQwLjkyIDMwLjc3IDQxLjAxIDMwLjc4QzQxLjE1IDMwLjc5IDQxLjI5IDMwLjggNDEuNDIgMzAuODlDNDEuNDIgMzAuODYgNDEuNDIgMzAuODQgNDEuNDEgMzAuODFDNDEuNDEgMzAuNzYgNDEuNCAzMC43MSA0MS40MiAzMC42NkM0MS41MSAzMC41OCA0MS42MSAzMC42IDQxLjcgMzAuNjJDNDEuNzggMzAuNjQgNDEuODUgMzAuNjYgNDEuOTEgMzAuNjJDNDIuMTIgMzAuNSA0MS45MiAzMC4zIDQxLjczIDMwLjFDNDEuNjQgMzAuMDEgNDEuNTUgMjkuOTIgNDEuNSAyOS44M0M0MS41IDI5LjggNDEuNTIgMjkuNzggNDEuNTQgMjkuNzZDNDEuNjMgMjkuODMgNDEuNzEgMjkuOTIgNDEuNzkgMzBDNDEuOTkgMzAuMTkgNDIuMTggMzAuMzggNDIuNDQgMzAuNTFDNDIuNjMgMzAuNTkgNDMuMDkgMzAuNyA0My4wMSAzMC40N0M0Mi44OCAzMC4xOCA0Mi42NSAyOS45MyA0Mi40MyAyOS42N0M0Mi4zMyAyOS41NiA0Mi4yMyAyOS40NSA0Mi4xNCAyOS4zNFYyOS4xOUM0Mi4wOSAyOS4xOSA0Mi4wNyAyOS4xNyA0Mi4wNSAyOS4xNEM0Mi4wNSAyOS4xMyA0Mi4wNCAyOS4xMiA0Mi4wMyAyOS4xMVYyOC45NkM0MS45MyAyOC45MSA0MS45MSAyOC44NCA0MS44OSAyOC43NkM0MS44OCAyOC43MSA0MS44NyAyOC42NiA0MS44NCAyOC42MkM0MS43OCAyOC41MiA0MS43NyAyOC4zOSA0MS43NyAyOC4yNkM0MS43NiAyOC4xNSA0MS43NiAyOC4wNCA0MS43MyAyNy45NEM0MS42NiAyNy43MyA0MS42MSAyNy41MiA0MS41NyAyNy4zQzQxLjUzIDI3LjA1IDQxLjQ4IDI2LjgxIDQxLjQzIDI2LjU3TDQxLjQzIDI2LjU3TDQxLjQzIDI2LjU3TDQxLjQzIDI2LjU3TDQxLjQzIDI2LjU3QzQxLjM1IDI2LjIxIDQxLjI4IDI1Ljg1IDQxLjIzIDI1LjQ5QzQxLjE4IDI0LjkzIDQxLjQ1IDI0LjQ3IDQxLjc0IDIzLjk5QzQxLjgzIDIzLjg1IDQxLjkxIDIzLjcxIDQxLjk5IDIzLjU2QzQyLjI1IDIzLjEgNDIuNTYgMjIuNjUgNDMuMDUgMjIuMzVDNDMuMTYgMjEuOSA0My40NiAyMS41MiA0My43NiAyMS4xNEw0My43NyAyMS4xNEM0NC4wNyAyMC43NyA0NC41NyAyMC41NSA0NC45MyAyMC4zOEM0NS4yNiAyMC4yNCA0NS42IDIwLjExIDQ1Ljk0IDIwSDIwVjQwSDM4LjM3QzM4Ljg3IDM5LjY0IDM5LjM3IDM5LjQxIDM5Ljk3IDM5LjE0QzQwLjIzIDM5LjAyIDQwLjUxIDM4Ljg5IDQwLjgxIDM4Ljc0QzQwLjg3IDM4LjcxIDQwLjk0IDM4LjY4IDQxLjAxIDM4LjY0TDQxLjAxIDM4LjY0TDQxLjAxIDM4LjY0TDQxLjAxIDM4LjY0QzQxLjU0IDM4LjM4IDQyLjQyIDM3Ljk2IDQyLjc0IDM3LjY0Wk0zNi43NCAzNC45QzM2Ljc2IDM0Ljc2IDM2LjkgMzQuNzIgMzcuMDMgMzQuNjlDMzcuMDkgMzQuNjcgMzcuMTUgMzQuNjUgMzcuMTkgMzQuNjNMMzcuMjEgMzQuNjJMMzcuMjMgMzQuNjFMMzcuMjMgMzQuNjFDMzcuMyAzNC41NyAzNy4zOSAzNC41MiAzNy40NiAzNC41NkMzNy41IDM0LjYyIDM3LjU1IDM0LjY0IDM3LjYxIDM0LjY1QzM3LjY1IDM0LjY2IDM3LjY5IDM0LjY3IDM3LjcyIDM0LjcxQzM3LjU4IDM0Ljg0IDM3LjQyIDM0Ljg2IDM3LjI1IDM0Ljg3QzM3LjE0IDM0Ljg4IDM3LjAzIDM0Ljg5IDM2LjkzIDM0LjkzQzM2LjkxIDM0LjkzIDM2Ljg4IDM0Ljk0IDM2Ljg2IDM0Ljk0QzM2Ljc5IDM0Ljk1IDM2LjcxIDM0Ljk1IDM2Ljc0IDM0LjlaTTMyLjMyIDMyLjFDMzEuOTggMzIuNzggMzEuNTcgMzMuNDIgMzEuMTEgMzQuMDNDMzEuMTEgMzQuMDYgMzEuMTIgMzQuMDggMzEuMTQgMzQuMUMzMi4wNSAzMy4wOCAzMi44OCAzMi4yMSAzNC4wNSAzMS40OUMzNC4wOCAzMS40OCAzNC4wNyAzMS40OSAzNC4wNiAzMS41MUMzNC4wMyAzMS41NCAzNCAzMS41OSAzNC4wOSAzMS41N0MzNC40OCAzMS40OCAzNC42NiAzMS4xNSAzNC44MyAzMC44MkMzNC44NyAzMC43NCAzNC45MSAzMC42NiAzNC45NiAzMC41OUMzNS4xNCAzMC4zIDM1LjM5IDMwLjEyIDM1LjY0IDI5LjkzQzM1LjgzIDI5LjggMzYuMDEgMjkuNjcgMzYuMTcgMjkuNDlDMzYuMTcgMjkuNTMgMzYuMTYgMjkuNTcgMzYuMTMgMjkuNkMzNi4xNiAyOS42MyAzNi4yIDI5LjY1IDM2LjI1IDI5LjY0QzM2LjMxIDI5LjU5IDM2LjM4IDI5LjU3IDM2LjQ1IDI5LjU1QzM2LjU1IDI5LjUzIDM2LjY0IDI5LjUgMzYuNyAyOS40MkMzNi4zOSAyOS4yOSAzNi4wNCAyOS4yOCAzNS43MiAyOS4zOEMzNC45MiAyOS43NiAzNC4yNCAzMC4zNiAzMy42IDMxLjA0QzMzLjIxIDMxLjQ1IDMyLjgxIDMxLjgzIDMyLjMyIDMyLjFaTTM0LjE3IDMxLjc2QzM0LjE0IDMxLjgzIDM0LjA4IDMxLjg4IDM0LjAyIDMxLjkxQzMzLjk4IDMxLjkxIDMzLjk0IDMxLjkxIDMzLjk0IDMxLjg3QzMzLjk3IDMxLjcxIDM0LjA5IDMxLjU4IDM0LjI0IDMxLjUzQzM0LjI4IDMxLjUzIDM0LjI4IDMxLjU3IDM0LjI4IDMxLjYxQzM0LjI2IDMxLjY1IDM0LjI0IDMxLjY3IDM0LjIyIDMxLjY5QzM0LjIgMzEuNzEgMzQuMTggMzEuNzMgMzQuMTcgMzEuNzZaTTM1Ljk5IDM3LjQ0QzM2LjAyIDM3LjQxIDM1Ljk5IDM3LjM5IDM1Ljk0IDM3LjM4QzM1Ljk4IDM3LjM1IDM2LjAxIDM3LjMxIDM2LjA0IDM3LjI3QzM2LjA3IDM3LjIgMzUuODcgMzcuMjEgMzUuODQgMzcuMjRDMzUuODEgMzcuMjYgMzUuNzggMzcuMjkgMzUuNzUgMzcuMzJDMzUuNyAzNy4zNyAzNS42NSAzNy40MiAzNS42IDM3LjQ3QzM1LjU2IDM3LjUxIDM1LjUyIDM3LjU1IDM1LjQ4IDM3LjU5QzM1LjQyIDM3LjY0IDM1LjM3IDM3LjY5IDM1LjMyIDM3LjczQzM1LjI1IDM3Ljc5IDM1LjQ2IDM3LjgyIDM1LjUxIDM3Ljc4QzM1LjU2IDM3Ljc0IDM1LjYgMzcuNjkgMzUuNjUgMzcuNjVDMzUuNjcgMzcuNjUgMzUuNjkgMzcuNjQgMzUuNzEgMzcuNjRDMzUuODEgMzcuNTkgMzUuOTEgMzcuNTMgMzUuOTkgMzcuNDRaTTM1LjM1IDM2Ljk2TDM1LjMgMzdDMzUuMTggMzcuMDkgMzUuMDUgMzcuMTcgMzQuOTIgMzcuMjVDMzQuOCAzNy4zMiAzNC42NyAzNy4zOCAzNC41NSAzNy40NEMzNC41MSAzNy40NiAzNC40NiAzNy40OCAzNC40MiAzNy41QzM0LjQyIDM3LjQ5IDM0LjQyIDM3LjQ5IDM0LjQxIDM3LjQ5QzM0LjQgMzcuNDcgMzQuMzcgMzcuNDYgMzQuMzUgMzcuNDdDMzQuMjEgMzcuNTUgMzQuMDggMzcuNjUgMzMuOTcgMzcuNzZDMzMuOTUgMzcuNzggMzMuOTQgMzcuOCAzMy45MiAzNy44MUMzMy44OSAzNy44NCAzMy44OCAzNy44NSAzMy44NiAzNy44N0wzMy44NSAzNy44OEMzMy44NSAzNy44OCAzMy44NSAzNy44OCAzMy44NSAzNy44OEwzMy44NSAzNy44OEMzMy44MiAzNy45MSAzMy44IDM3Ljk0IDMzLjc3IDM3Ljk3QzMzLjc1IDM3Ljk5IDMzLjc0IDM4LjAxIDMzLjcyIDM4LjAyQzMzLjY5IDM4LjA0IDMzLjYzIDM4LjA0IDMzLjYzIDM3Ljk5VjM3Ljk5TDMzLjYzIDM3Ljk5QzMzLjYxIDM4IDMzLjU5IDM4LjAxIDMzLjU3IDM4LjAyQzMzLjU1IDM4LjAzIDMzLjUzIDM4LjA0IDMzLjUxIDM4LjA1TDMzLjUxIDM4LjA1QzMzLjUgMzguMDUgMzMuNDkgMzguMDUgMzMuNDggMzguMDVDMzMuNDcgMzguMDUgMzMuNDYgMzguMDUgMzMuNDYgMzguMDZDMzMuNDEgMzguMSAzMy4zNiAzOC4xMyAzMy4zMiAzOC4xN0MzMy4yNCAzOC4yNSAzMy4xNyAzOC4zMiAzMy4xIDM4LjQxTDMzLjA5IDM4LjQyTDMzLjA4IDM4LjQ0QzMzLjA3IDM4LjQ0IDMzLjA3IDM4LjQ1IDMzLjA3IDM4LjQ1TDMzLjA2IDM4LjQ2TDMzLjA2IDM4LjQ2TDMzLjA1IDM4LjQ4TDMzLjA0IDM4LjQ5QzMzLjAzIDM4LjUgMzMuMDIgMzguNTEgMzMgMzguNTFMMzMgMzguNUMzMi45OSAzOC41IDMyLjk5IDM4LjQ5IDMyLjk5IDM4LjQ5TDMyLjk4IDM4LjQ4TDMyLjk4IDM4LjQ3QzMyLjk3IDM4LjQ1IDMyLjk2IDM4LjQzIDMyLjk1IDM4LjQxTDMyLjk0IDM4LjQxTDMyLjk0IDM4LjRMMzIuOTQgMzguMzlDMzIuOTggMzguMzUgMzMuMDIgMzguMyAzMy4wNSAzOC4yNUwzMy4wNiAzOC4yNEMzMy4wNyAzOC4yMyAzMy4wOSAzOC4yMSAzMy4xIDM4LjJMMzMuMTYgMzguMTFDMzMuMTcgMzguMTEgMzMuMTcgMzguMSAzMy4xOCAzOC4xTDMzLjE5IDM4LjA4QzMzLjIzIDM4LjAzIDMzLjI3IDM3Ljk4IDMzLjMxIDM3LjkzTDMzLjMxIDM3LjkyTDMzLjMxIDM3LjkxQzMzLjMyIDM3LjkxIDMzLjMyIDM3LjkgMzMuMzIgMzcuOUMzMy4zNCAzNy44NyAzMy4zNiAzNy44NCAzMy4zOCAzNy44MkMzMy4zOSAzNy43OSAzMy40IDM3Ljc3IDMzLjQyIDM3Ljc0TDMzLjQyIDM3Ljc0TDMzLjQyIDM3LjczQzMzLjQzIDM3LjczIDMzLjQzIDM3LjcyIDMzLjQzIDM3LjcyQzMzLjQzIDM3LjcyIDMzLjQzIDM3LjcyIDMzLjQzIDM3LjcxQzMzLjQ0IDM3LjY4IDMzLjQ2IDM3LjY2IDMzLjQ3IDM3LjYzTDMzLjQ3IDM3LjYyTDMzLjQ3IDM3LjYxQzMzLjQ3IDM3LjYgMzMuNDggMzcuNiAzMy40OCAzNy41OUMzMy40OCAzNy41OCAzMy40OSAzNy41NiAzMy40OSAzNy41NUMzMy40OSAzNy41NSAzMy40OSAzNy41NCAzMy40OSAzNy41NEwzMy41IDM3LjUzTDMzLjUgMzcuNTNDMzMuNSAzNy41MSAzMy41IDM3LjUgMzMuNTEgMzcuNDhDMzMuNTEgMzcuNDggMzMuNTEgMzcuNDcgMzMuNSAzNy40NkMzMy41NCAzNy4zOSAzMy41OSAzNy4zMiAzMy42NSAzNy4yNUMzMy42NSAzNy4yNiAzMy42NSAzNy4yNiAzMy42NCAzNy4yNkwzMy42NCAzNy4yNkMzMy42NCAzNy4yNiAzMy42NCAzNy4yNiAzMy42MyAzNy4yNkMzMy42IDM3LjI4IDMzLjU4IDM3LjMxIDMzLjU1IDM3LjMzQzMzLjU0IDM3LjM1IDMzLjUyIDM3LjM3IDMzLjQ5IDM3LjM5QzMzLjQ1IDM3LjQyIDMzLjM4IDM3LjM3IDMzLjQyIDM3LjMzQzMzLjQ2IDM3LjMgMzMuNDggMzcuMjggMzMuNTEgMzcuMjVDMzMuNTcgMzcuMTggMzMuNjQgMzcuMTEgMzMuNzEgMzcuMDVMMzMuNzIgMzcuMDRDMzMuNzYgMzcuMDEgMzMuNzkgMzYuOTkgMzMuODIgMzYuOTZDMzMuODMgMzYuOTYgMzMuODMgMzYuOTYgMzMuODQgMzYuOTVMMzMuODQgMzYuOTVDMzMuODcgMzYuOTIgMzMuODkgMzYuODggMzMuOTIgMzYuODVMMzMuOTMgMzYuODVDMzMuOTMgMzYuODUgMzMuOTMgMzYuODUgMzMuOTMgMzYuODVDMzQuMTUgMzYuNjQgMzQuNDYgMzYuNTYgMzQuNzggMzYuNDhDMzQuOTkgMzYuNDMgMzUuMTkgMzYuMzggMzUuMzggMzYuMjlDMzUuNDggMzYuMjUgMzUuNiAzNi4yNyAzNS43MSAzNi4yOUMzNS44MSAzNi4zIDM1LjkgMzYuMzEgMzUuOTggMzYuMjlDMzYuMSAzNi4yOCAzNi4yMiAzNi4zMSAzNi4zMiAzNi4zN0MzNi4wNiAzNi41MSAzNS44MSAzNi42NyAzNS41NyAzNi44MkMzNS41IDM2Ljg3IDM1LjQzIDM2LjkxIDM1LjM2IDM2Ljk2TDM1LjM1IDM2Ljk2Wk0zNS45OCAzNC4yNUgzNi4yOEMzNi4yNiAzNC4zIDM2LjIgMzQuMyAzNi4xNyAzNC4zMUMzNi4xNCAzNC4zMSAzNi4xMiAzNC4zMSAzNi4xMyAzNC4zM0MzNi4yNSAzNC40NCAzNi40NyAzNC40IDM2LjYyIDM0LjMzQzM2Ljc0IDM0LjI2IDM2Ljg3IDM0LjI0IDM3IDM0LjI1QzM3LjA0IDM0LjI1IDM3LjA0IDM0LjE4IDM3LjA0IDM0LjE0QzM3LjE0IDM0LjE3IDM3LjI0IDM0LjE4IDM3LjM0IDM0LjE4QzM4LjI1IDMzLjk5IDM5LjEyIDMzLjggMzkuOTUgMzMuMzhDMzkuMTEgMzIuNzQgMzguMDggMzIuNDUgMzcuMDcgMzIuMTdMMzcuMDcgMzIuMTdMMzcuMDcgMzIuMTdDMzYuODkgMzIuMTIgMzYuNzIgMzIuMDcgMzYuNTUgMzIuMDJDMzYuNTkgMzIuMDIgMzYuNjIgMzIuMDQgMzYuNjYgMzIuMDVDMzYuNzQgMzIuMDcgMzYuODEgMzIuMSAzNi44OSAzMi4wMkMzNi43OSAzMS45NCAzNi42NyAzMS45MyAzNi41NiAzMS45MUMzNi40NiAzMS45IDM2LjM3IDMxLjg5IDM2LjI4IDMxLjgzQzM2LjI5IDMxLjgzIDM2LjMgMzEuODQgMzYuMzEgMzEuODRDMzYuMzUgMzEuODUgMzYuNDEgMzEuODYgMzYuNDMgMzEuOEMzNi4yMyAzMS43IDM2LjAzIDMxLjY2IDM1LjgzIDMxLjYzTDM1LjgzIDMxLjYzQzM1LjczIDMxLjYxIDM1LjYzIDMxLjYgMzUuNTMgMzEuNTdDMzUuNzEgMzEuNTQgMzUuODQgMzEuMzggMzUuODMgMzEuMTlDMzUuODMgMzEuMTUgMzUuNzUgMzEuMTUgMzUuNzIgMzEuMTVDMzUuMjYgMzEuMzggMzQuOTYgMzEuOCAzNC43NyAzMi4yOUMzNC45NCAzMi4zOCAzNS4xMiAzMi4zNyAzNS4zIDMyLjM2QzM1LjQxIDMyLjM2IDM1LjUxIDMyLjM1IDM1LjYgMzIuMzZDMzUuNTIgMzIuNDUgMzUuMzkgMzIuNDcgMzUuMjcgMzIuNDlDMzUuMjMgMzIuNSAzNS4xOSAzMi41MSAzNS4xNSAzMi41MUMzNS4wMyAzMi41NCAzNC45MiAzMi42MyAzNC45NiAzMi43QzM0Ljk4IDMyLjczIDM1LjAxIDMyLjc1IDM1LjA1IDMyLjc2QzM0Ljk2IDMyLjc4IDM0Ljg4IDMyLjgzIDM0LjgxIDMyLjg5QzM0LjkyIDMyLjk3IDM1LjAzIDMyLjk2IDM1LjEzIDMyLjk0QzM1LjE4IDMyLjk0IDM1LjIyIDMyLjkzIDM1LjI2IDMyLjkzQzM1LjI2IDMyLjk4IDM1LjMgMzMgMzUuMzMgMzMuMDFMMzUuMzMgMzMuMDFDMzUuMzUgMzMuMDIgMzUuMzYgMzMuMDMgMzUuMzggMzMuMDRDMzUuMjEgMzMuMSAzNS4wOCAzMy4yMyAzNSAzMy4zOEMzNC45NSAzMy41IDM0Ljg3IDMzLjU3IDM0Ljc4IDMzLjY0TDM0Ljc4IDMzLjY0QzM0LjcyIDMzLjY5IDM0LjY3IDMzLjc0IDM0LjYyIDMzLjhWMzMuOTFDMzQuNDkgMzQuMDMgMzQuMzYgMzQuMTMgMzQuMjMgMzQuMjNMMzQuMjMgMzQuMjNDMzMuOTcgMzQuNDMgMzMuNzIgMzQuNjIgMzMuNTIgMzQuOUMzMy41NiAzNC45IDMzLjU2IDM0LjkzIDMzLjU2IDM0Ljk3QzMzLjUzIDM1LjAyIDMzLjQ4IDM1LjA2IDMzLjQzIDM1LjA5QzMzLjM3IDM1LjEzIDMzLjMyIDM1LjE3IDMzLjMgMzUuMjRDMzMuMyAzNS4yNyAzMy4zIDM1LjMxIDMzLjM0IDM1LjMxQzMzLjU3IDM1LjIzIDMzLjc4IDM1LjEgMzMuOTggMzQuOTdDMzQuMTcgMzQuODYgMzQuMzUgMzQuNzQgMzQuNTUgMzQuNjdDMzQuNzEgMzQuNjMgMzQuODUgMzQuNTYgMzQuOTggMzQuNDlDMzUuMSAzNC40MiAzNS4yMiAzNC4zNiAzNS4zNCAzNC4zM0MzNS40MyAzNC4zMSAzNS41NCAzNC4yOCAzNS42NCAzNC4yNUwzNS42NCAzNC4yNUwzNS42NCAzNC4yNUMzNS43NSAzNC4yMyAzNS44NSAzNC4yIDM1Ljk0IDM0LjE4QzM1Ljk0IDM0LjIyIDM1Ljk0IDM0LjI1IDM1Ljk4IDM0LjI1Wk0zNy43MiAzNy41OEMzNy43MyAzNy41OCAzNy43MyAzNy41OCAzNy43MyAzNy41OEwzNy43NCAzNy41N0MzNy43OSAzNy41MyAzNy44NSAzNy40OCAzNy44OSAzNy40M0MzNy44OSAzNy40MiAzNy44OCAzNy40MiAzNy44OCAzNy40MkMzNy44OCAzNy40MiAzNy44OCAzNy40MiAzNy44NyAzNy40MkMzNy44MiAzNy40NyAzNy43NyAzNy41MiAzNy43MiAzNy41OFpNNDUuMSAzNS4xTDQ1LjAyIDM1LjE2QzQ1LjA2IDM1LjE2IDQ1LjEgMzUuMTUgNDUuMSAzNS4xWiIgZmlsbD0iIzAwMDA5MSIvPjxwYXRoIGQ9Ik03NSAyMEg1My40OUM1My41NiAyMC4wMiA1My42MyAyMC4wNiA1My42OSAyMC4wOUM1My44NiAyMC4xOSA1NC4wOSAyMC4zMSA1NC4yMyAyMC4zOEM1NC41MiAyMC41MiA1NC43NyAyMC43MyA1NC45NSAyMC45OUM1NS4wMyAyMS4xIDU1LjE0IDIxLjMzIDU1LjA3IDIxLjQ4QzU0Ljk5IDIxLjY3IDU0Ljk1IDIxLjk3IDU0Ljc2IDIyLjA1QzU0LjU0IDIyLjE2IDU0LjI0IDIyLjE2IDUzLjk3IDIyLjEyQzUzLjgyIDIyLjEyIDUzLjY2IDIyLjA5IDUzLjUyIDIyLjA1QzU0LjA4IDIyLjI3IDU0LjYxIDIyLjU0IDU0Ljk5IDIzLjA3QzU1LjAzIDIzLjE0IDU1LjE4IDIzLjE4IDU1LjMzIDIzLjE4QzU1LjM3IDIzLjE4IDU1LjM3IDIzLjI2IDU1LjM3IDIzLjI5QzU1LjI5IDIzLjM3IDU1LjIyIDIzLjQxIDU1LjI2IDIzLjUySDU1LjM3QzU1LjU2IDIzLjQ1IDU1LjUyIDIzLjA3IDU1Ljc4IDIzLjE4QzU1Ljk4IDIzLjMgNTYuMDQgMjMuNTUgNTUuOTQgMjMuNzVDNTUuNzkgMjMuODggNTUuNjQgMjQuMDEgNTUuNDggMjQuMTNDNTUuNDQgMjQuMjEgNTUuNDQgMjQuMzEgNTUuNDggMjQuMzlDNTUuNTggMjQuNTMgNTUuNjQgMjQuNjggNTUuNjcgMjQuODRDNTUuNzggMjUuMTEgNTUuODIgMjUuNDEgNTUuOTQgMjUuNjhDNTYuMDkgMjYuMjQgNTYuMjQgMjYuODEgNTYuMiAyNy4zOEM1Ni4yIDI3LjY4IDU2LjA1IDI3Ljk0IDU2LjE2IDI4LjI1QzU2LjI0IDI4LjU1IDU2LjQzIDI4Ljc3IDU2LjU4IDI5LjA0QzU2LjczIDI5LjI3IDU2Ljg4IDI5LjQyIDU2Ljk5IDI5LjY0QzU3LjIyIDMwLjAyIDU3LjY0IDMwLjQgNTcuNDUgMzAuODVDNTcuMzMgMzEuMTIgNTYuOTIgMzEuMDggNTYuNjUgMzEuMjNDNTYuNDMgMzEuNDIgNTYuNjIgMzEuNzIgNTYuNzMgMzEuOTFDNTYuOTIgMzIuMjUgNTYuNSAzMi40OCA1Ni4yNCAzMi41OUM1Ni4zMSAzMi43IDU2LjQ2IDMyLjY3IDU2LjUgMzIuNzRDNTYuNTQgMzIuOTMgNTYuNzMgMzMuMDQgNTYuNjIgMzMuMjNDNTYuNDYgMzMuNDYgNTYuMDEgMzMuNTcgNTYuMjQgMzMuOTFDNTYuMzkgMzQuMTggNTYuMjkgMzQuNDcgNTYuMiAzNC43NUM1Ni4wOSAzNS4wOSA1NS43OCAzNS4yNCA1NS41MiAzNS4zMUM1NS4yOSAzNS4zOCA1NS4wNCAzNS4zOSA1NC44IDM1LjM1QzU0LjczIDM1LjMxIDU0LjY2IDM1LjI4IDU0LjU4IDM1LjI3QzUzLjkzIDM1LjIgNTMuMjkgMzUuMDEgNTIuNjUgMzUuMDFDNTIuNDcgMzUuMDQgNTIuMjkgMzUuMDkgNTIuMTIgMzUuMTZDNTEuOTUgMzUuMjggNTEuOCAzNS40MiA1MS42NiAzNS41N0w1MS42NiAzNS41N0M1MS42MyAzNS42IDUxLjYgMzUuNjMgNTEuNTcgMzUuNjZDNTEuNTYgMzUuNjggNTEuNTQgMzUuNyA1MS41MyAzNS43MkM1MS41MSAzNS43MyA1MS41IDM1Ljc1IDUxLjQ5IDM1Ljc2QzUxLjM4IDM1LjkgNTEuMjggMzYuMDQgNTEuMiAzNi4xOUM1MS4xOSAzNi4yIDUxLjE4IDM2LjIxIDUxLjE4IDM2LjIyQzUxLjE3IDM2LjI0IDUxLjE2IDM2LjI2IDUxLjE1IDM2LjI4QzUxLjAzIDM2LjUgNTAuOTQgMzYuNzMgNTAuODYgMzYuOTdDNTAuNjEgMzcuODQgNTAuNzIgMzguNTggNTAuOSAzOC43NkM1MC45NSAzOC44MSA1Mi4xNSAzOS4xOCA1Mi45OCAzOS41NUM1My4yOSAzOS42OCA1My41OSAzOS44MyA1My44NyA0MEg3NVYyMFoiIGZpbGw9IiNFMTAwMEYiLz48cGF0aCBkPSJNNTQuNzcgMjcuM0M1NC45MiAyNy4zMyA1NS4xNCAyNy4zMyA1NS4xNCAyNy40MUM1NS4wNyAyNy43MSA1NC42MSAyNy43OSA1NC4zOSAyOC4wOUg1NC4yN0M1NC4xNiAyOC4xNyA1NC4yIDI4LjM1IDU0LjA5IDI4LjM1QzUzLjk3IDI4LjMzIDUzLjg1IDI4LjM0IDUzLjc0IDI4LjM5QzUzLjkgMjguNTQgNTQuMDkgMjguNjYgNTQuMzEgMjguNjJDNTQuMzggMjguNjQgNTQuNDIgMjguNyA1NC40MyAyOC43N0M1NC40NSAyOC43NyA1NC40OCAyOC43NSA1NC41IDI4LjczQzU0LjU0IDI4LjczIDU0LjU4IDI4LjczIDU0LjU4IDI4Ljc3VjI4LjkyQzU0LjQ2IDI5LjA3IDU0LjI3IDI5IDU0LjEyIDI5LjAzQzU0LjQxIDI5LjExIDU0LjcxIDI5LjExIDU0Ljk5IDI5LjAzQzU1LjIyIDI4Ljk2IDU0Ljk5IDI4LjU4IDU1LjE0IDI4LjM5QzU1LjA3IDI4LjM5IDU1LjE0IDI4LjI4IDU1LjA3IDI4LjI4QzU1LjE0IDI4LjIgNTUuMjIgMjguMDkgNTUuMjkgMjguMDVDNTUuMzggMjguMDUgNTUuNDcgMjguMDEgNTUuNTIgMjcuOTRDNTUuNTIgMjcuODYgNTUuMzcgMjcuODMgNTUuNDEgMjcuNzVDNTUuNjMgMjcuNiA1NS44MiAyNy4zNyA1NS43NSAyNy4xNEM1NS43MSAyNy4wMyA1NS40MSAyNy4wMyA1NS4yMiAyNi45NkM1NS4wMyAyNi44OCA1NC44IDI2Ljk2IDU0LjU4IDI2Ljk5QzU0LjM5IDI2Ljk5IDU0LjIgMjcuMTEgNTQuMDEgMjcuMTRDNTMuNzUgMjcuMjMgNTMuNTEgMjcuMzYgNTMuMjkgMjcuNTJDNTMuNTYgMjcuNDIgNTMuODQgMjcuMzUgNTQuMTIgMjcuM0M1NC4zNSAyNy4zIDU0LjU0IDI3LjI0IDU0Ljc3IDI3LjNaIiBmaWxsPSIjODA4MDgwIi8+PG1hc2sgaWQ9Im1hc2swIiBtYXNrLXR5cGU9ImFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIxOCIgeT0iMjAiIHdpZHRoPSI1NyIgaGVpZ2h0PSIyMCI+PHJlY3QgeD0iMTgiIHk9IjIwIiB3aWR0aD0iNTciIGhlaWdodD0iMjAiIGZpbGw9IiNDNEM0QzQiLz48L21hc2s+PHBhdGggZD0iTTE4LjMgNjVIMjEuMzJMMjIuNjYgNjEuMzZIMjguMjZMMjkuNiA2NUgzMi42MkwyNy4zMiA1MUgyMy42TDE4LjMgNjVaTTIzLjU0IDU4Ljk0TDI1LjQ2IDUzLjY4TDI3LjM4IDU4Ljk0SDIzLjU0Wk00MS4wMSA2Mi43NEMzOC4zNyA2Mi43NCAzNi40OSA2MC42OCAzNi40OSA1OEMzNi40OSA1NS4zMiAzOC4zNyA1My4yNiA0MS4wMSA1My4yNkM0Mi42MSA1My4yNiA0My44NyA1NC4wNCA0NC42NyA1NS4xOEw0Ni45MSA1My40NEM0NS42MyA1MS43NCA0My41NSA1MC42IDQxLjAxIDUwLjZDMzYuNTkgNTAuNiAzMy41NyA1NCAzMy41NyA1OEMzMy41NyA2MiAzNi41OSA2NS40IDQxLjAxIDY1LjRDNDMuNTUgNjUuNCA0NS42MyA2NC4yOCA0Ni45MSA2Mi41NEw0NC42NyA2MC44MkM0My44NyA2MS45NiA0Mi42MSA2Mi43NCA0MS4wMSA2Mi43NFpNNDcuODIgNjVINTAuODRMNTIuMTggNjEuMzZINTcuNzhMNTkuMTIgNjVINjIuMTRMNTYuODQgNTFINTMuMTJMNDcuODIgNjVaTTUzLjA2IDU4Ljk0TDU0Ljk4IDUzLjY4TDU2LjkgNTguOTRINTMuMDZaTTY0LjYgNjVINzAuMUM3NC41NCA2NSA3Ny41NCA2MS43OCA3Ny41NCA1OEM3Ny41NCA1NC4yMiA3NC41NCA1MSA3MC4xIDUxSDY0LjZWNjVaTTcwLjE0IDUzLjU4QzcyLjc0IDUzLjU4IDc0LjYyIDU1LjUgNzQuNjIgNThDNzQuNjIgNjAuNDggNzIuNzQgNjIuNDIgNzAuMTQgNjIuNDJINjcuNDRWNTMuNThINzAuMTRaTTg1LjkyIDQ5LjhMODguNTIgNDcuMUg4NS42TDgzLjM0IDQ5LjhIODUuOTJaTTgwLjU4IDY1SDg4Ljc0VjYyLjY0SDgzLjQyVjU5LjA0SDg3Ljk0VjU2LjY4SDgzLjQyVjUzLjM2SDg4Ljc0VjUxSDgwLjU4VjY1Wk05Mi4zNCA2NUg5NS4xOFY1NC45Nkw5OC4zIDYwLjJIMTAwLjNMMTAzLjQyIDU0Ljk2VjY1SDEwNi4yNlY1MUgxMDIuNzJMOTkuMyA1Ni44OEw5NS44OCA1MUg5Mi4zNFY2NVpNMTEwLjQ3IDY1SDExMy4zMVY1MUgxMTAuNDdWNjVaTTExNy41MiA2NUgxMjUuNjhWNjIuNjRIMTIwLjM2VjU5LjA0SDEyNC44OFY1Ni42OEgxMjAuMzZWNTMuMzZIMTI1LjY4VjUxSDExNy41MlY2NVpNMjAuMDYgODZIMjUuNTZDMzAgODYgMzMgODIuNzggMzMgNzlDMzMgNzUuMjIgMzAgNzIgMjUuNTYgNzJIMjAuMDZWODZaTTI1LjYgNzQuNThDMjguMiA3NC41OCAzMC4wOCA3Ni41IDMwLjA4IDc5QzMwLjA4IDgxLjQ4IDI4LjIgODMuNDIgMjUuNiA4My40MkgyMi45Vjc0LjU4SDI1LjZaTTM2LjA0IDg2SDQ0LjJWODMuNjRIMzguODhWODAuMDRINDMuNFY3Ny42OEgzOC44OFY3NC4zNkg0NC4yVjcySDM2LjA0Vjg2Wk01My4yOSA4Nkg1Ni4xM1Y4MC4zNEg1Ny41OUw2MS4zMyA4Nkg2NC42N0w2MC4yOSA3OS44QzYxLjczIDc5LjE0IDYyLjU1IDc3Ljg4IDYyLjU1IDc2LjE4QzYyLjU1IDczLjU4IDYwLjY1IDcyIDU3LjU3IDcySDUzLjI5Vjg2Wk01Ny43MyA3NC4zNkM1OC45MyA3NC4zNiA1OS42MyA3NS4wOCA1OS42MyA3Ni4xNEM1OS42MyA3Ny4yOCA1OC45MyA3Ny45OCA1Ny43MyA3Ny45OEg1Ni4xM1Y3NC4zNkg1Ny43M1pNNjYuNzcgODZINzQuOTNWODMuNjRINjkuNjFWODAuMDRINzQuMTNWNzcuNjhINjkuNjFWNzQuMzZINzQuOTNWNzJINjYuNzdWODZaTTc4LjUzIDg2SDgxLjM3VjcySDc4LjUzVjg2Wk04NS41OCA4Nkg4OC40MlY3NS45Nkw5MS41NCA4MS4ySDkzLjU0TDk2LjY2IDc1Ljk2Vjg2SDk5LjVWNzJIOTUuOTZMOTIuNTQgNzcuODhMODkuMTIgNzJIODUuNThWODZaTTEwMi40NSA4NC4wNkMxMDMuNjkgODUuNTQgMTA1LjI3IDg2LjQgMTA3LjYzIDg2LjRDMTEwLjIxIDg2LjQgMTEyLjI1IDg0LjgyIDExMi4yOSA4Mi4xOEMxMTIuMjkgNzcuMzggMTA1LjkzIDc4LjEgMTA1LjkzIDc1LjU2QzEwNS45MyA3NC43MiAxMDYuNTkgNzQuMDggMTA3LjU5IDc0LjA4QzEwOC42NSA3NC4wOCAxMDkuNTcgNzQuNzggMTEwLjM5IDc1Ljg0TDExMi40NyA3My45NkMxMTEuMjcgNzIuNTQgMTA5LjY3IDcxLjYgMTA3LjU3IDcxLjZDMTA0Ljg5IDcxLjYgMTAzLjA1IDczLjQ0IDEwMy4wNSA3NS42NkMxMDMuMDUgODAuNCAxMDkuNDEgNzkuNyAxMDkuNDEgODIuMjhDMTA5LjQxIDgzLjI4IDEwOC43MyA4My44OCAxMDcuNjEgODMuODhDMTA2LjQ3IDgzLjg4IDEwNS4zNSA4My4yNCAxMDQuNTEgODIuMTZMMTAyLjQ1IDg0LjA2WiIgZmlsbD0iIzFFMUUxRSIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNzEuOTYgMTIxLjdMNzAuMSAxMjMuNEg2OS42Mkw3MC43MiAxMjEuNDZINzEuOTZWMTIxLjdaTTcwLjYyIDEyOC4yOEg3MC4yMkM2OS43MiAxMjguODggNjkuMTYgMTI5LjM2IDY4LjYyIDEyOS4zNkM2OC4wNiAxMjkuMzYgNjcuNzggMTI5LjAyIDY3Ljc4IDEyOC4yOEM2Ny43OCAxMjcuOTggNjcuODIgMTI3LjY2IDY3Ljg4IDEyNy4zOEw3MS4xNCAxMjYuM0M3MS43OCAxMjQuNzggNzEuMDIgMTI0LjEyIDcwLjEyIDEyNC4xMkM2OC41OCAxMjQuMTIgNjYuODIgMTI2LjgyIDY2LjgyIDEyOC45OEM2Ni44MiAxMzAgNjcuMyAxMzAuNTYgNjguMDYgMTMwLjU2QzY4Ljk0IDEzMC41NCA2OS44NiAxMjkuNjggNzAuNjIgMTI4LjI4Wk02OS41IDEyNUM2OS45NCAxMjUgNzAuMzIgMTI1LjM0IDcwLjEyIDEyNi4xMkw2OC4xIDEyNi42NkM2OC40MiAxMjUuNyA2OS4wMiAxMjUgNjkuNSAxMjVaTTYzLjE0IDEyNS4wNEg2NC4yMkw2Mi41IDEyOS43NkM2Mi4zNCAxMzAuMTYgNjIuNTYgMTMwLjU2IDYyLjk4IDEzMC41NkM2NC4yIDEzMC41NiA2NS42NiAxMjkuNTIgNjYuMjIgMTI4LjA0SDY1LjkyQzY1LjQ4IDEyOC42NiA2NC41MiAxMjkuMzQgNjMuOCAxMjkuNDZMNjUuMzggMTI1LjA0SDY3TDY3LjIgMTI0LjM2SDY1LjYyTDY2LjIyIDEyMi42Nkg2NS42TDY0LjQ4IDEyNC4zNkw2My4xNCAxMjQuNTRWMTI1LjA0Wk02MS42NCAxMjQuMTRDNjEuODYgMTI0LjE0IDYyLjE2IDEyNC4zOCA2Mi4wMiAxMjQuODJMNjAuMDggMTI5LjUyQzYwLjU4IDEyOS40NCA2MS4xIDEyOC45NiA2MS40IDEyOC41Mkg2MS43MkM2MS4yNiAxMjkuNyA2MC4yMiAxMzAuNTYgNTkuMzIgMTMwLjU2QzU5LjEgMTMwLjU2IDU4Ljc4IDEzMC4zMiA1OC45NCAxMjkuODhMNjAuNzQgMTI1LjE4QzYwLjI0IDEyNS4yNiA1OS43MiAxMjUuNzQgNTkuNDIgMTI2LjE4SDU5LjEyQzU5LjU4IDEyNC45OCA2MC43IDEyNC4xNCA2MS42NCAxMjQuMTRaTTYyLjIgMTIyLjk0QzYyLjYgMTIyLjk0IDYyLjk0IDEyMi42MiA2Mi45NCAxMjIuMkM2Mi45NCAxMjEuOCA2Mi42IDEyMS40NiA2Mi4yIDEyMS40NkM2MS43OCAxMjEuNDYgNjEuNDYgMTIxLjggNjEuNDYgMTIyLjJDNjEuNDYgMTIyLjYgNjEuOCAxMjIuOTQgNjIuMiAxMjIuOTRaTTUzLjQ2IDEyNi44NEM1My45IDEyNS44OCA1My43NCAxMjUuNDQgNTMuNDYgMTI1LjQ0QzUzLjIyIDEyNS40NCA1Mi45NCAxMjUuNyA1Mi42NiAxMjYuMThINTIuMzZDNTIuODIgMTI1LjE2IDUzLjQyIDEyNC4xNCA1NC4wOCAxMjQuMTRDNTQuNjQgMTI0LjE0IDU0Ljg0IDEyNC43IDU0Ljg0IDEyNS4zMlYxMjYuMkM1NC45MyAxMjYuMDkgNTUuMDIgMTI1Ljk5IDU1LjExIDEyNS44OUw1NS4xMSAxMjUuODlDNTUuOTUgMTI0LjkgNTYuNiAxMjQuMTQgNTcuMzQgMTI0LjE0QzU3LjkyIDEyNC4xNCA1OC4yMiAxMjQuNSA1OC4yMiAxMjUuMDRDNTguMjIgMTI1LjM2IDU4LjEyIDEyNS43NiA1Ny45IDEyNi4xOEw1Ni4yNCAxMjkuNTJDNTYuNzQgMTI5LjQ0IDU3LjI2IDEyOC45NiA1Ny41NiAxMjguNTJINTcuODZDNTcuNCAxMjkuNzIgNTYuMjggMTMwLjU2IDU1LjM0IDEzMC41NkM1NC45MiAxMzAuNTYgNTQuNjggMTMwLjEyIDU0Ljg2IDEyOS43Nkw1Ni43OCAxMjYuMDZDNTcgMTI1LjY0IDU3LjA0IDEyNS4zNiA1Ni43IDEyNS4zNkM1Ni4yNCAxMjUuMzYgNTUuMTYgMTI2LjEyIDU0LjU4IDEyNi44Mkw1My4zMiAxMzAuMTRDNTMuMTggMTMwLjQ4IDUzLjA0IDEzMC41NiA1Mi43MiAxMzAuNTZDNTIuMiAxMzAuNTYgNTEuOTQgMTMwLjIyIDUyLjE4IDEyOS42OEw1My40NiAxMjYuODRaTTUyLjE2IDEyNS41NkM1Mi4zOCAxMjQuOCA1Mi4yNiAxMjQuMTIgNTEuNjggMTI0LjEyQzUwLjk2IDEyNC4xMiA1MC43MyAxMjQuNiA1MC4wMyAxMjYuMDhMNDkuOTggMTI2LjE4VjEyNS4zQzQ5Ljk4IDEyNC42OCA0OS43OCAxMjQuMTIgNDkuMjIgMTI0LjEyQzQ4LjU2IDEyNC4xMiA0Ny45NiAxMjUuMTQgNDcuNSAxMjYuMTZINDcuOEM0OC4xMiAxMjUuNyA0OC40MiAxMjUuNDIgNDguNjYgMTI1LjQyQzQ4Ljk0IDEyNS40MiA0OS4xIDEyNS44NiA0OC42NiAxMjYuODJMNDcuMzggMTI5LjY2QzQ3LjE0IDEzMC4yIDQ3LjQgMTMwLjU0IDQ3LjkyIDEzMC41NEM0OC4yNCAxMzAuNTQgNDguMzggMTMwLjQ2IDQ4LjUyIDEzMC4xMkw0OS43OCAxMjYuOEM1MC4xNCAxMjYuMzYgNTAuNDYgMTI1Ljk4IDUwLjg2IDEyNS41Nkg1Mi4xNlpNNDUuODQgMTI2LjEyQzQ2LjA0IDEyNS4zNCA0NS42NiAxMjUgNDUuMjIgMTI1QzQ0Ljc0IDEyNSA0NC4xNCAxMjUuNyA0My44MiAxMjYuNjZMNDUuODQgMTI2LjEyWk00Ni4zNCAxMjguMjhINDUuOTRDNDUuNDQgMTI4Ljg4IDQ0Ljg4IDEyOS4zNiA0NC4zNCAxMjkuMzZDNDMuNzggMTI5LjM2IDQzLjUgMTI5LjAyIDQzLjUgMTI4LjI4QzQzLjUgMTI3Ljk4IDQzLjU0IDEyNy42NiA0My42IDEyNy4zOEw0Ni44NiAxMjYuM0M0Ny41IDEyNC43OCA0Ni43NCAxMjQuMTIgNDUuODQgMTI0LjEyQzQ0LjMgMTI0LjEyIDQyLjU0IDEyNi44MiA0Mi41NCAxMjguOThDNDIuNTQgMTMwIDQzLjAyIDEzMC41NiA0My43OCAxMzAuNTZDNDQuNjYgMTMwLjU0IDQ1LjU4IDEyOS42OCA0Ni4zNCAxMjguMjhaTTM5Ljk0IDEyNS4wNEgzOC44NlYxMjQuNTRMNDAuMiAxMjQuMzZMNDEuMzIgMTIyLjY2SDQxLjk0TDQxLjM0IDEyNC4zNkg0Mi45Mkw0Mi43MiAxMjUuMDRINDEuMUwzOS41MiAxMjkuNDZDNDAuMjQgMTI5LjM0IDQxLjIgMTI4LjY2IDQxLjY0IDEyOC4wNEg0MS45NEM0MS4zOCAxMjkuNTIgMzkuOTIgMTMwLjU2IDM4LjcgMTMwLjU2QzM4LjI4IDEzMC41NiAzOC4wNiAxMzAuMTYgMzguMjIgMTI5Ljc2TDM5Ljk0IDEyNS4wNFpNMzMuMTQgMTI4LjdDMzMuMTQgMTI3LjI0IDM0Ljc2IDEyNS4yOCAzNS42NiAxMjUuMjhDMzUuODYgMTI1LjI4IDM2LjA2IDEyNS4zIDM2LjIyIDEyNS4zNkwzNS4yOCAxMjcuODhDMzQuNzQgMTI4LjU0IDMzLjkgMTI5LjM0IDMzLjUgMTI5LjM0QzMzLjI4IDEyOS4zNCAzMy4xNCAxMjkuMTQgMzMuMTQgMTI4LjdaTTM3LjYgMTIzLjgyTDM4LjEgMTIzLjg2TDM2LjM2IDEyNy44NkMzNS45NCAxMjguODIgMzYuMTIgMTI5LjI2IDM2LjM2IDEyOS4yNkMzNi42IDEyOS4yNiAzNi45IDEyOC45OCAzNy4yMiAxMjguNTJIMzcuNTJDMzcuMDYgMTI5LjU0IDM2LjQ2IDEzMC41NiAzNS44IDEzMC41NkMzNS4yNCAxMzAuNTYgMzQuOSAxMjkuOTYgMzUgMTI4Ljg4TDM1LjA0IDEyOC41TDM0LjkzIDEyOC42NUMzNC4yMSAxMjkuNjUgMzMuNTcgMTMwLjU2IDMyLjkgMTMwLjU2QzMyLjMyIDEzMC41NiAzMi4wMiAxMzAuMiAzMi4wMiAxMjkuNjZDMzIuMDIgMTI3LjM0IDM0LjU2IDEyNC4zOCAzNi45NCAxMjQuMzhIMzcuMDRMMzcuNiAxMjMuODJaTTMzLjAyIDEyNS41NkMzMy4yNCAxMjQuOCAzMy4xMiAxMjQuMTIgMzIuNTQgMTI0LjEyQzMxLjgyIDEyNC4xMiAzMS41OSAxMjQuNiAzMC44OSAxMjYuMDhMMzAuODQgMTI2LjE4VjEyNS4zQzMwLjg0IDEyNC42OCAzMC42NCAxMjQuMTIgMzAuMDggMTI0LjEyQzI5LjQyIDEyNC4xMiAyOC44MiAxMjUuMTQgMjguMzYgMTI2LjE2SDI4LjY2QzI4Ljk4IDEyNS43IDI5LjI4IDEyNS40MiAyOS41IDEyNS40MkMyOS43OCAxMjUuNDIgMjkuOTQgMTI1Ljg2IDI5LjUgMTI2LjgyTDI4LjIyIDEyOS42OEMyNy45OCAxMzAuMjIgMjguMjQgMTMwLjU2IDI4Ljc2IDEzMC41NkMyOS4wOCAxMzAuNTYgMjkuMjIgMTMwLjQ4IDI5LjM2IDEzMC4xNEwzMC42MiAxMjYuODJDMzAuOTggMTI2LjM4IDMxLjMgMTI2IDMxLjcgMTI1LjU4SDMzLjAyVjEyNS41NlpNMjQuNzggMTI5Ljk2TDI0LjY2IDEzMC4zMkgyMEwyMC4xMiAxMjkuOTRDMjEuNTYgMTI5LjY4IDIxLjggMTI5LjU2IDIyLjQgMTI3Ljk0TDIzLjcgMTI0LjQ2QzI0LjI4IDEyMi44NCAyNC4xNiAxMjIuNzIgMjIuOSAxMjIuNDZMMjMuMDIgMTIyLjFIMjkuMDhMMjguNzIgMTI0LjA0SDI4LjI4QzI4LjI4IDEyMi44OCAyOC4xNiAxMjIuNTggMjcuMDYgMTIyLjU4SDI2Ljc4QzI1LjcgMTIyLjU4IDI1LjU2IDEyMi43NCAyNS4yNiAxMjMuNThMMjQuNCAxMjUuOTJIMjUuNjZDMjYuNSAxMjUuOTIgMjYuODIgMTI1LjQgMjcuMiAxMjQuNzJIMjcuNjRMMjYuNiAxMjcuNTZIMjYuMTZDMjYuMjYgMTI2LjcgMjYuMjYgMTI2LjM2IDI1LjQ4IDEyNi4zNkgyNC4yMkwyMy42NCAxMjcuOTZDMjMuMDEgMTI5LjYyIDIzLjE5IDEyOS42NiAyNC42OSAxMjkuOTRDMjQuNzIgMTI5Ljk1IDI0Ljc1IDEyOS45NSAyNC43OCAxMjkuOTZaIiBmaWxsPSJibGFjayIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjguNzQgMTA2LjRMMjYuODggMTA3Ljc0VjEwNy43NkgyNi40TDI3LjUgMTA2LjE2SDI4Ljc0VjEwNi40Wk00MS43NCAxMTUuNzhMNDQuNzIgMTA3Ljg2TDQ0LjYyIDEwNy43NEw0Mi41NiAxMDcuOThWMTA4LjIyTDQyLjk2IDEwOC41MkM0My4zIDEwOC43OSA0My4yMSAxMDkuMDMgNDIuOTMgMTA5LjgxTDQyLjg4IDEwOS45NEw0MC42IDExNi4wMkM0MC40MiAxMTYuMzggNDAuNjYgMTE2LjgyIDQxLjA4IDExNi44MkM0Mi4wMiAxMTYuODIgNDMuMDIgMTE1Ljk2IDQzLjQ4IDExNC43OEg0My4xOEM0Mi44NiAxMTUuMjIgNDIuMjIgMTE1LjcgNDEuNzQgMTE1Ljc4Wk01NS40IDEwOS42OEw1Ny4yNiAxMDcuOThWMTA3Ljc0SDU2LjAyTDU0LjkyIDEwOS42OEg1NS40Wk01NS41MiAxMTQuNTRINTUuOTJDNTUuMTggMTE1Ljk2IDU0LjI2IDExNi44MiA1My4zOCAxMTYuODJDNTIuNjIgMTE2LjgyIDUyLjE0IDExNi4yNiA1Mi4xNCAxMTUuMjRDNTIuMTQgMTEzLjA4IDUzLjkgMTEwLjM4IDU1LjQ0IDExMC4zOEM1Ni4zMiAxMTAuMzggNTcuMSAxMTEuMDQgNTYuNDYgMTEyLjU2TDUzLjE4IDExMy42NEM1My4xMiAxMTMuOTIgNTMuMDggMTE0LjI0IDUzLjA4IDExNC41NEM1My4wOCAxMTUuMjggNTMuMzYgMTE1LjYyIDUzLjkyIDExNS42MkM1NC40NiAxMTUuNjIgNTUuMDIgMTE1LjE0IDU1LjUyIDExNC41NFpNNTUuNDIgMTEyLjM4QzU1LjYyIDExMS42MiA1NS4yNCAxMTEuMjggNTQuOCAxMTEuMjhDNTQuMzQgMTExLjI4IDUzLjc0IDExMS45OCA1My40IDExMi45Mkw1NS40MiAxMTIuMzhaTTQ5LjU0IDExMS4zMkg0OC40NlYxMTAuODJMNDkuOCAxMTAuNjRMNTAuOTIgMTA4Ljk0SDUxLjU0TDUwLjk0IDExMC42NEg1Mi41Mkw1Mi4zMiAxMTEuMzJINTAuN0w0OS4xMiAxMTUuNzRDNDkuODQgMTE1LjYyIDUwLjggMTE0Ljk0IDUxLjI0IDExNC4zMkg1MS41NEM1MC45OCAxMTUuOCA0OS41MiAxMTYuODQgNDguMyAxMTYuODRDNDcuODggMTE2Ljg0IDQ3LjY2IDExNi40NCA0Ny44MiAxMTYuMDRMNDkuNTQgMTExLjMyWk00Ny4zNCAxMTEuMDhDNDcuNDYgMTEwLjY0IDQ3LjE4IDExMC40IDQ2Ljk0IDExMC40QzQ2IDExMC40IDQ0Ljg4IDExMS4yNiA0NC40MiAxMTIuNDRINDQuNzJDNDUuMDIgMTEyIDQ1LjU0IDExMS41MiA0Ni4wNCAxMTEuNDRMNDQuMjQgMTE2LjE0QzQ0LjA4IDExNi41OCA0NC40IDExNi44MiA0NC42MiAxMTYuODJDNDUuNTIgMTE2LjgyIDQ2LjU2IDExNS45NiA0Ny4wMiAxMTQuNzhINDYuNzJDNDYuNDIgMTE1LjIyIDQ1LjkgMTE1LjcgNDUuNCAxMTUuNzhMNDcuMzQgMTExLjA4Wk00OC4yNiAxMDguNDhDNDguMjYgMTA4Ljg4IDQ3LjkyIDEwOS4yMiA0Ny41MiAxMDkuMjJDNDcuMTIgMTA5LjIyIDQ2Ljc4IDEwOC44OCA0Ni43OCAxMDguNDhDNDYuNzggMTA4LjA4IDQ3LjEgMTA3Ljc0IDQ3LjUyIDEwNy43NEM0Ny45MiAxMDcuNzQgNDguMjYgMTA4LjA4IDQ4LjI2IDEwOC40OFpNMzguMTYgMTExLjU2QzM3LjI2IDExMS41NiAzNS42NCAxMTMuNTIgMzUuNjQgMTE0Ljk4QzM1LjY0IDExNS40MiAzNS43OCAxMTUuNjIgMzYuMDIgMTE1LjYyQzM2LjQgMTE1LjYyIDM3LjI0IDExNC44MiAzNy43OCAxMTQuMTZMMzguNzIgMTExLjY0QzM4LjU0IDExMS41OCAzOC4zNiAxMTEuNTYgMzguMTYgMTExLjU2Wk00MC42IDExMC4xNEw0MC4xIDExMC4xTDM5LjU0IDExMC42NkgzOS40NEMzNy4wNiAxMTAuNjYgMzQuNTIgMTEzLjYyIDM0LjUyIDExNS45NEMzNC41MiAxMTYuNDggMzQuODIgMTE2Ljg0IDM1LjQgMTE2Ljg0QzM2LjA3IDExNi44NCAzNi43MSAxMTUuOTMgMzcuNDMgMTE0LjkzTDM3LjU0IDExNC43OEwzNy41IDExNS4xNkMzNy40IDExNi4yNCAzNy43NCAxMTYuODQgMzguMyAxMTYuODRDMzguOTYgMTE2Ljg0IDM5LjU2IDExNS44MiA0MC4wMiAxMTQuOEgzOS43MkMzOS40IDExNS4yNiAzOS4xIDExNS41NCAzOC44NiAxMTUuNTRDMzguNjIgMTE1LjU0IDM4LjQ0IDExNS4xIDM4Ljg2IDExNC4xNEw0MC42IDExMC4xNFpNMzAuNTIgMTE2LjYyQzI5LjY2IDExNi45NiAyOS4wNiAxMTcuMzYgMjkuMDYgMTE3Ljk4QzI5LjA2IDExOC41NiAyOS42IDExOC44IDMwLjcyIDExOC44QzMyLjIyIDExOC44IDMzLjA0IDExOC4zNiAzMy4wNCAxMTcuNzhDMzMuMDQgMTE3LjUyIDMyLjcgMTE3LjQgMzEuOCAxMTcuMUMzMS4yMiAxMTYuOTIgMzAuOCAxMTYuNzYgMzAuNTIgMTE2LjYyWk0zMS41MiAxMTQuMTZDMzEuMTIgMTE0LjE2IDMwLjk4IDExMy44MiAzMC45OCAxMTMuNDZDMzAuOTggMTEyLjMgMzEuNTQgMTEwLjg2IDMyLjQ0IDExMC44NkMzMi44NCAxMTAuODYgMzIuOTggMTExLjIgMzIuOTggMTExLjU2QzMyLjk2IDExMi43NCAzMi40IDExNC4xNiAzMS41MiAxMTQuMTZaTTMyLjI4IDExNi4wNEMzMy4zOCAxMTYuMzggMzQuMDYgMTE2LjY0IDM0LjA2IDExNy40QzM0LjA2IDExOC4zOCAzMi4yNiAxMTkuNTQgMzAuMDggMTE5LjUyQzI4LjgyIDExOS41MiAyNy43NCAxMTkuMTggMjcuNzQgMTE4LjM2QzI3Ljc0IDExNy41OCAyOC40NiAxMTYuOTQgMzAuMjIgMTE2LjQyQzI5Ljk4IDExNi4yNiAyOS44OCAxMTYuMDYgMjkuODggMTE1Ljc4QzI5Ljg4IDExNS4zIDMwLjMyIDExNC45MiAzMS4wOCAxMTQuNTZDMzAuMzQgMTE0LjQ2IDI5Ljg2IDExMy45IDI5Ljg2IDExMy4wOEMyOS44NiAxMTEuODIgMzAuOSAxMTAuMzggMzIuNTQgMTEwLjM4QzMyLjg4IDExMC4zOCAzMy4xOCAxMTAuNDYgMzMuNDIgMTEwLjYySDM1LjIyTDM1LjAyIDExMS4zSDMzLjk2QzM0LjAyIDExMS40OCAzNC4wNiAxMTEuNjggMzQuMDYgMTExLjlDMzQuMDYgMTEzLjEyIDMzLjA4IDExNC41MiAzMS41MiAxMTQuNkMzMS4xMiAxMTQuODIgMzAuOTIgMTE1LjEyIDMwLjkyIDExNS4zNkMzMC45MiAxMTUuNjQgMzEuMjUgMTE1Ljc0IDMxLjk3IDExNS45NUwzMS45NyAxMTUuOTVDMzIuMDcgMTE1Ljk4IDMyLjE3IDExNi4wMSAzMi4yOCAxMTYuMDRaTTI1Ljk0IDExMi42MkMyNi43MiAxMTIuNjIgMjYuNzQgMTEyLjk2IDI2LjYyIDExMy44MkgyNy4wNkwyOC4xIDExMC45OEgyNy42NkMyNy4yOCAxMTEuNjYgMjYuOTYgMTEyLjE4IDI2LjEyIDExMi4xOEgyNC40TDI1LjI0IDEwOS44NEMyNS41NCAxMDkgMjUuNjggMTA4Ljg0IDI2Ljc2IDEwOC44NEgyNy41MkMyOC42MiAxMDguODQgMjguNzQgMTA5LjE0IDI4Ljc0IDExMC4zSDI5LjE4TDI5LjU0IDEwOC4zNkgyMy4wMkwyMi45IDEwOC43MkMyNC4xNiAxMDguOTggMjQuMjggMTA5LjEgMjMuNyAxMTAuNzJMMjIuNCAxMTQuMjJDMjEuOCAxMTUuODQgMjEuNTYgMTE1Ljk2IDIwLjEgMTE2LjIyTDIwIDExNi42SDI3LjI0TDI4LjU0IDExNC41NEgyOC4wNEMyNy4yIDExNS4zNiAyNi4zNiAxMTYuMTIgMjQuNzIgMTE2LjEyQzIyLjkyIDExNi4xMiAyMi45NSAxMTYuMDMgMjMuNDkgMTE0LjU1QzIzLjUyIDExNC40NSAyMy41NiAxMTQuMzUgMjMuNiAxMTQuMjRMMjQuMiAxMTIuNjRIMjUuOTRWMTEyLjYyWiIgZmlsbD0iYmxhY2siLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTMxLjkyIDk1LjQ4QzMyLjMyIDk1LjQ4IDMyLjY2IDk1LjE0IDMyLjY2IDk0Ljc0QzMyLjY2IDk0LjM0IDMyLjMyIDk0IDMxLjkyIDk0QzMxLjUgOTQgMzEuMTggOTQuMzQgMzEuMTggOTQuNzRDMzEuMTggOTUuMTYgMzEuNSA5NS40OCAzMS45MiA5NS40OFpNMzMuNjYgMTAzLjA4QzM1LjIyIDEwMy4xIDM3Ljg0IDEwMC4yMiAzNy44NCA5OEMzNy44NCA5Ny4wNCAzNy42IDk2LjY4IDM2LjkyIDk2LjY4QzM2LjA4IDk2LjY4IDM1LjMgOTcuNTggMzQuNTIgOTguNjZMMzYuMiA5NC4xNkwzNi4xIDk0LjAyTDM0LjA0IDk0LjI2Vjk0LjVMMzQuNDQgOTQuOEMzNC43OSA5NS4wNyAzNC42OSA5NS4zNCAzNC4zOSA5Ni4xNEwzNC4zNiA5Ni4yMkwzMi41NCAxMDAuOThDMzIuMzggMTAxLjM4IDMyLjIgMTAxLjg2IDMyLjIgMTAxLjk4QzMyLjIgMTAyLjU0IDMyLjk2IDEwMy4wOCAzMy42NiAxMDMuMDhaTTU1LjE4IDk1Ljk2TDU3LjA0IDk0LjI2Vjk0LjAySDU1LjhMNTQuNyA5NS45Nkg1NS4xOFpNNTUuMyAxMDAuODJINTUuN0M1NC45NCAxMDIuMjQgNTQuMDIgMTAzLjEgNTMuMTQgMTAzLjA4QzUyLjM4IDEwMy4wOCA1MS45IDEwMi41NCA1MS45IDEwMS41MkM1MS45IDk5LjM2IDUzLjY2IDk2LjY2IDU1LjIgOTYuNjZDNTYuMDggOTYuNjYgNTYuODYgOTcuMzIgNTYuMjIgOTguODRMNTIuOTYgOTkuOTJDNTIuOSAxMDAuMiA1Mi44NiAxMDAuNTIgNTIuODYgMTAwLjgyQzUyLjg2IDEwMS41NiA1My4xNCAxMDEuOSA1My43IDEwMS45QzU0LjI0IDEwMS45IDU0LjggMTAxLjQyIDU1LjMgMTAwLjgyWk01NS4yIDk4LjY2QzU1LjQgOTcuOSA1NS4wMiA5Ny41NiA1NC41OCA5Ny41NkM1NC4xIDk3LjU2IDUzLjUgOTguMjYgNTMuMTggOTkuMkw1NS4yIDk4LjY2Wk00OS4zIDk3LjZINDguMjJWOTcuMUw0OS41NiA5Ni45Mkw1MC42OCA5NS4yMkg1MS4zTDUwLjcgOTYuOTJINTIuMjhMNTIuMDggOTcuNkg1MC40Nkw0OC44OCAxMDIuMDJDNDkuNiAxMDEuOSA1MC41NiAxMDEuMjIgNTEgMTAwLjZINTEuM0M1MC43NCAxMDIuMDggNDkuMjggMTAzLjEyIDQ4LjA2IDEwMy4xMkM0Ny42NCAxMDMuMTIgNDcuNDIgMTAyLjcyIDQ3LjU4IDEwMi4zMkw0OS4zIDk3LjZaTTQ3LjY2IDk4LjEyQzQ3Ljg4IDk3LjM2IDQ3Ljc2IDk2LjY4IDQ3LjE4IDk2LjY4QzQ2LjQ2IDk2LjY4IDQ2LjIzIDk3LjE2IDQ1LjUzIDk4LjY0TDQ1LjQ4IDk4Ljc0Vjk3Ljg2QzQ1LjQ4IDk3LjI0IDQ1LjI4IDk2LjY4IDQ0LjcyIDk2LjY4QzQ0LjA2IDk2LjY4IDQzLjQ2IDk3LjcgNDMgOTguNzJINDMuM0M0My42MiA5OC4yNiA0My45MiA5Ny45OCA0NC4xNCA5Ny45OEM0NC40MiA5Ny45OCA0NC41OCA5OC40MiA0NC4xNCA5OS4zOEw0Mi44NiAxMDIuMjJDNDIuNjIgMTAyLjc2IDQyLjg4IDEwMy4xIDQzLjQgMTAzLjFDNDMuNzIgMTAzLjEgNDMuODYgMTAzLjAyIDQ0IDEwMi42OEw0NS4yNiA5OS4zNkM0NS42MiA5OC45MiA0NS45NCA5OC41NCA0Ni4zNCA5OC4xMkg0Ny42NlpNNDEuMzIgOTguNjZDNDEuNTIgOTcuOSA0MS4xNCA5Ny41NiA0MC43IDk3LjU2QzQwLjIyIDk3LjU2IDM5LjY0IDk4LjI2IDM5LjMgOTkuMkw0MS4zMiA5OC42NlpNNDEuODIgMTAwLjgySDQxLjQyQzQwLjkyIDEwMS40MiA0MC4zNiAxMDEuOSAzOS44MiAxMDEuOUMzOS4yNiAxMDEuOSAzOC45OCAxMDEuNTYgMzguOTggMTAwLjgyQzM4Ljk4IDEwMC41MiAzOS4wMiAxMDAuMiAzOS4wOCA5OS45Mkw0Mi4zNCA5OC44NEM0Mi45OCA5Ny4zMiA0Mi4yMiA5Ni42NiA0MS4zMiA5Ni42NkMzOS43OCA5Ni42NiAzOC4wMiA5OS4zNiAzOC4wMiAxMDEuNTJDMzguMDIgMTAyLjU0IDM4LjUgMTAzLjA4IDM5LjI2IDEwMy4wOEM0MC4xNCAxMDMuMSA0MS4wNiAxMDIuMjQgNDEuODIgMTAwLjgyWk0zMy40MiAxMDEuNThDMzMuNDIgMTAxLjg0IDMzLjg4IDEwMi4xNCAzNC4yIDEwMi4xNEMzNS41IDEwMi4xNCAzNi43MiA5OS44IDM2LjcgOTguNUMzNi43IDk4LjA2IDM2LjQ4IDk3Ljg4IDM2LjE4IDk3Ljg4QzM1LjcgOTcuODggMzQuODIgOTguNiAzNC4yNiA5OS4yOEwzMy43NCAxMDAuNjhDMzMuNTYgMTAxLjE0IDMzLjQyIDEwMS41IDMzLjQyIDEwMS41OFpNMzEuMzIgOTYuNjhDMzEuNTYgOTYuNjggMzEuODQgOTYuOTIgMzEuNzIgOTcuMzZMMjkuOCAxMDIuMDZDMzAuMyAxMDEuOTggMzAuODIgMTAxLjUgMzEuMTIgMTAxLjA2SDMxLjQyQzMwLjk2IDEwMi4yNCAyOS45MiAxMDMuMSAyOS4wMiAxMDMuMUMyOC43OCAxMDMuMSAyOC40NiAxMDIuODYgMjguNjIgMTAyLjQyTDMwLjQyIDk3LjcyQzI5LjkyIDk3LjggMjkuNCA5OC4yOCAyOS4xIDk4LjcySDI4LjhDMjkuMjYgOTcuNTQgMzAuMzggOTYuNjggMzEuMzIgOTYuNjhaTTIzLjAyIDk0LjZIMjcuMzJMMjcuMiA5NC45OEMyNS43NCA5NS4yNCAyNS41IDk1LjM2IDI0LjkgOTYuOThMMjMuNjIgMTAwLjVDMjMgMTAyLjE4IDIzLjE2IDEwMi4zOCAyNC4yNiAxMDIuMzhDMjUuNjIgMTAyLjM4IDI2LjUxIDEwMS4zOSAyNy4yOSAxMDAuNTNDMjcuMzUgMTAwLjQ3IDI3LjQgMTAwLjQgMjcuNDYgMTAwLjM0SDI3Ljk2TDI2LjU0IDEwMi44NkgyMEwyMC4xMiAxMDIuNUMyMS41NiAxMDIuMjQgMjEuOCAxMDIuMTIgMjIuNCAxMDAuNUwyMy43IDk2Ljk2QzI0LjI4IDk1LjM0IDI0LjE2IDk1LjIyIDIyLjkgOTQuOTZMMjMuMDIgOTQuNloiIGZpbGw9ImJsYWNrIi8+PG1hc2sgaWQ9Im1hc2sxIiBtYXNrLXR5cGU9ImFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIxOCIgeT0iOTQiIHdpZHRoPSI1NCIgaGVpZ2h0PSIzNyI+PHJlY3QgeD0iMTgiIHk9Ijk0IiB3aWR0aD0iNTQiIGhlaWdodD0iMzciIGZpbGw9IiNDNEM0QzQiLz48L21hc2s+PC9zdmc+">
+      <div>
+        <h2 contenteditable="true"
+          aria-label="Titre de la progression"
+          id="progressionTitle">Progression en mathématiques</h2>
+        <div id="sous-titre" contenteditable="true" style="font-size:1em; color:#444; margin-top:4px; font-style:italic; outline:none;">Laboratoire de mathématiques - Collèges de Troyes</div>
+      </div>
+    </div>
+  </div>  
+  
+
+    <div class="toolbar" role="toolbar" aria-label="Actions">
+      <button onclick="App.addSequence()">➕ Séquence</button>
+      <button onclick="App.addSeparateur()">➖ Séparateur</button>
+      <button id="btnToggleRightFold" onclick="App.toggleRightFold()" title="Tout plier / déplier">▼ Tout plier</button>
+      <button id="btnExportHTML" onclick="App.exportHTML()">💾 HTML</button>
+      <button onclick="App.exportPDF()">🖨️ PDF</button>
+      <button onclick="App.exportProgressionJSON()" title="Exporter la progression en JSON">📋 JSON</button>
+      <button onclick="document.getElementById('importProgressionInput').click()" title="Importer une progression JSON">📂 Importer</button>
+      <button onclick="App.toggleConfigPanel()" title="Ouvrir les réglages">⚙️ Configuration</button>
+    </div>
+
+    <div id="saveToast" role="status" aria-live="polite">✓ Fichier sauvegardé</div>
+    <div id="undoToast" role="status" aria-live="polite">
+      <span id="undoToast-msg">Séquence supprimée</span>
+      <button id="undoToast-btn">Annuler</button>
+      <div id="undoToast-bar"></div>
+    </div>
+
+    <input type="file" id="importBiblioInput" accept=".json" style="display:none" onchange="App.importBiblio(this)">
+    <input type="file" id="importProgressionInput" accept=".json" style="display:none" onchange="App.importProgressionJSON(this)">
+
+    <div id="sequences" role="list" aria-label="Liste des séquences"></div>
+  </div>
+
+</div>
+
+<!-- Panneau de Configuration -->
+<div id="configPanel" class="config-panel">
+  <div class="config-header">
+    <h3>⚙️ Configuration</h3>
+    <button class="btn-close-config" onclick="App.toggleConfigPanel()">✕</button>
+  </div>
+  
+  <div class="config-content">
+    <section class="config-section">
+      <h4>🎨 Couleurs des thèmes</h4>
+      <div id="configColorsList"></div>
+    </section>
+
+    <section class="config-section">
+      <h4>💬 Couleurs des commentaires</h4>
+      <div id="configCommentColors"></div>
+    </section>
+
+    <section class="config-section">
+      <h4>📋 Couleurs par défaut des séquences</h4>
+      <div id="configSequenceColors"></div>
+      <p style="font-size:0.78em;color:#999;margin:6px 0 0;line-height:1.4;">
+        Ces couleurs s'appliquent aux séquences sans couleur individuelle.<br>
+        Chaque séquence peut aussi avoir ses propres couleurs via le bouton 🎨 dans son en-tête.
+      </p>
+    </section>
+
+    <section class="config-section">
+      <h4>🖨️ Options d'impression (PDF)</h4>
+      <label class="config-option">
+        <input type="checkbox" id="cfgPdfNumbers" onchange="App.updateConfig('pdf.showNumbers', this.checked)">
+        Afficher les numéros de séquences
+      </label>
+      <label class="config-option">
+        <input type="checkbox" id="cfgPdfDate" onchange="App.updateConfig('pdf.showDate', this.checked)">
+        Afficher la date d'impression
+      </label>
+      <label class="config-option">
+        Police par défaut :
+        <select id="cfgPdfFont" onchange="App.updateConfig('pdf.fontFamily', this.value)">
+          <option value="sans-serif">Sans-serif</option>
+          <option value="serif">Serif (Georgia)</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="config-section">
+      <h4>📤 Exports de la progression</h4>
+      <div class="config-toolbar">
+        <button onclick="App.exportMarkdown()" title="Exporter la progression au format Markdown (.md)">📝 Exporter en Markdown</button>
+        <button onclick="App.exportLatex()" title="Exporter la progression au format LaTeX (.tex)">📄 Exporter en LaTeX</button>
+      </div>
+    </section>
+
+    <section class="config-section">
+      <h4>📋 Import / Export de la progression</h4>
+      <div class="config-toolbar">
+        <button onclick="App.exportProgressionJSON()" title="Exporter la progression actuelle en JSON">📤 Exporter la progression (JSON)</button>
+        <button onclick="document.getElementById('importProgressionInput').click()" title="Importer une progression JSON">📥 Importer une progression (JSON)</button>
+      </div>
+      <p style="font-size:0.78em;color:#999;margin:6px 0 0;line-height:1.4;">
+        Le fichier JSON contient les séquences, séparateurs et commentaires.<br>
+        Les objectifs sont reliés par leur code au référentiel courant.
+      </p>
+    </section>
+
+    <section class="config-section">
+      <h4>💾 Import / Export du référentiel</h4>
+      <div id="configLibraryTools" class="config-toolbar">
+        <button onclick="App.exportBiblio()" title="Exporter le référentiel d'objectifs (JSON)">📤 Exporter le référentiel</button>
+        <button onclick="document.getElementById('importBiblioInput').click()" title="Importer un nouveau référentiel (JSON)">📥 Importer un référentiel</button>
+      </div>
+    </section>
+  </div>
+</div>
+<div id="configOverlay" class="config-overlay" onclick="App.toggleConfigPanel()"></div>
+
+<script>
+/**
+ * ============================================================
+ * APPLICATION — Gestion de progression pédagogique
+ * Encapsulée dans un namespace App pour éviter la pollution
+ * du scope global.
+ * ============================================================
+ */
+const App = (() => {
+
+  // ----------------------------------------------------------
+  // CONFIGURATION — Couleurs et options (Persistant)
+  // ----------------------------------------------------------
+  /* __CONFIG_START__ */
+  let CONFIG = {
+    colors: {
+      NB:   "#a30f33",
+      AL:   "#5d3d70",
+      AN:   "#1e5b9c",
+      GEO:  "#57117a",
+      GM:   "#c75c04",
+      STA:  "#2a6a48",
+      PR:   "#6da43e",
+      OGD:  "#007a8c",
+      ALGO: "#404040",
+      TRG:  "#006eb5",
+      LOG:  "#6e4b2f",
+      AUTO: "#444444"
+    },
+    comment: {
+      border:  "#c8a200",
+      header:  "#fdf7cc",
+      body:    "#fffde8"
+    },
+    sequence: {
+      headerBg: "#e5e5e5",
+      bodyBg:   "#f5f5f5"
+    },
+    pdf: {
+      showNumbers: false,
+      showDate: false,
+      fontFamily: "sans-serif"
+    }
+  };
+  /* __CONFIG_END__ */
+
+  // ----------------------------------------------------------
+  // DONNÉES — section isolée, facilement modifiable
+  // ----------------------------------------------------------
+  /* __DATA_START__ */
+  let DATA = {};
+  /* __DATA_END__ */
+
+  // ----------------------------------------------------------
+  // ÉTAT MODULE — variables privées, jamais globales
+  // ----------------------------------------------------------
+  let _leftOpen      = true;   // état plié/déplié du panneau gauche
+  let _isResizing    = false;  // état du splitter
+  let _draggedEl     = null;   // référence unique à l'élément en cours de drag
+  let _seqGhost      = null;   // placeholder visuel lors du réordonnancement des séquences
+  let _initialCounts = {};     // totaux initiaux d'objectifs par thème (pour affichage n/N)
+  let _srcCache      = '';     // source HTML complet, capturé après DOMContentLoaded
+
+  /** Applique les styles CSS basés sur la configuration et met à jour dynamiquement toutes les couleurs dépendantes */
+  function _applyConfigStyles() {
+    const root = document.documentElement;
+
+    if (CONFIG.colors) {
+      // Générer dynamiquement les variables CSS et les règles [data-color] pour
+      // chaque clé de CONFIG.colors. Cela remplace les règles CSS statiques codées
+      // en dur, et rend le système extensible sans toucher au CSS.
+      let dynamicCSS = ':root {\n';
+      let summaryRules = '';
+      let objectifRules = '';
+
+      Object.entries(CONFIG.colors).forEach(([key, val]) => {
+        // Variable CSS (pour les dégradés inline éventuels)
+        dynamicCSS += '  --color-' + key + ': ' + val + ';\n';
+        root.style.setProperty('--color-' + key, val);
+
+        // Règle summary de thème
+        summaryRules += '#leftContent > details > summary[data-color="' + key + '"] { background: var(--color-' + key + '); color: white; }\n';
+        // Règle objectif
+        objectifRules += '.objectif[data-color="' + key + '"] { background: var(--color-' + key + '); }\n';
+      });
+
+      dynamicCSS += '}\n' + summaryRules + objectifRules;
+
+      // Injecter ou mettre à jour la balise <style> dédiée
+      let styleEl = document.getElementById('dynamic-colors');
+      if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'dynamic-colors';
+        document.head.appendChild(styleEl);
+      }
+      styleEl.textContent = dynamicCSS;
+    }
+
+    // Variables commentaire
+    if (CONFIG.comment) {
+      root.style.setProperty('--comment-border', CONFIG.comment.border);
+      root.style.setProperty('--comment-header', CONFIG.comment.header);
+      root.style.setProperty('--comment-body',   CONFIG.comment.body);
+    }
+
+    // Variables séquence (couleurs globales par défaut)
+    if (CONFIG.sequence) {
+      root.style.setProperty('--seq-header-bg', CONFIG.sequence.headerBg);
+      root.style.setProperty('--seq-body-bg',   CONFIG.sequence.bodyBg);
+    }
+
+    // Mise à jour dynamique des sous-thèmes et objectifs (Panneau de gauche + Séquences)
+    Object.entries(DATA).forEach(([themeName, themeVal]) => {
+      // 1. Trouver le conteneur du thème dans le panneau gauche
+      const themeSummary = document.querySelector(`#leftContent summary[data-theme="${themeName}"]`);
+      if (!themeSummary) return;
+      const themeDetails = themeSummary.parentElement;
+
+      const baseColor = _resolveThemeColor(themeVal.color);
+      const subEntries = Object.entries(themeVal.themes);
+      const totalSubs  = subEntries.length;
+
+      subEntries.forEach(([subName, items], subIndex) => {
+        // Calculer la nouvelle couleur de dégradé
+        let newSubColor;
+        if (Array.isArray(items)) {
+          newSubColor = _subthemeGradientColor(baseColor, subIndex, totalSubs);
+        } else {
+          newSubColor = _resolveThemeColor(items.color) || _subthemeGradientColor(baseColor, subIndex, totalSubs);
+        }
+
+        // 2. Mettre à jour le titre du sous-thème dans le panneau de gauche
+        // On cherche le summary qui porte exactement ce nom de sous-thème dans ce thème
+        const subSummaries = [...themeDetails.querySelectorAll('summary')];
+        const subSummary = subSummaries.find(s => s.dataset.subtheme === subName);
+        if (subSummary) {
+          subSummary.style.backgroundColor = newSubColor;
+          subSummary.dataset.subcolor = newSubColor;
+        }
+
+        // 3. Mettre à jour TOUS les objectifs (dans le référentiel ET dans les séquences à droite)
+        // On utilise un sélecteur précis combinant thème et sous-thème
+        const selector = `.objectif[data-theme="${themeName}"][data-subtheme="${subName}"]`;
+        document.querySelectorAll(selector).forEach(obj => {
+          // Bug #3 fix : on ne touche QUE le style inline ; dataset.color conserve
+          // sa clé CSS (ex: "nc") pour que les sélecteurs CSS et _cssColorForObjectif
+          // restent cohérents.
+          obj.style.backgroundColor = newSubColor;
+        });
+      });
+    });
+  }
+
+  /**
+   * Supprime une séquence avec possibilité d'annulation pendant 5 secondes.
+   * La séquence est retirée du DOM immédiatement mais placée dans un état fantôme,
+   * et un toast propose de l'annuler. Si l'utilisateur n'agit pas, la suppression
+   * est confirmée (les objectifs retournent dans le panneau gauche).
+   */
+  function _deleteSequenceWithUndo(seq) {
+    const toast    = document.getElementById('undoToast');
+    const toastMsg = document.getElementById('undoToast-msg');
+    const toastBtn = document.getElementById('undoToast-btn');
+    const bar      = document.getElementById('undoToast-bar');
+
+    // Récupérer le titre pour le message
+    const titleSpan = seq.querySelector('.sequence-header span[contenteditable]');
+    const seqTitle  = titleSpan ? titleSpan.textContent.trim() : 'Séquence';
+
+    // Masquer sans supprimer : on retire du flux visuel mais on garde en mémoire
+    const placeholder = document.createComment('deleted-seq');
+    seq.parentNode.insertBefore(placeholder, seq);
+    seq.style.display = 'none';
+
+    // Annuler un éventuel undo précédent encore en cours :
+    // 1. Stopper le timer pour éviter un double appel de confirmDelete
+    // 2. Confirmer la suppression précédente immédiatement
+    if (toast._pendingDelete) {
+      clearTimeout(toast._timer);  // empêche le timer fantôme de re-déclencher confirmDelete
+      toast._timer = null;
+      toast._pendingDelete();
+    }
+
+    // Afficher le toast
+    toastMsg.textContent = `"${seqTitle}" supprimée`;
+    toast.classList.add('visible');
+    // Forcer le redémarrage de l'animation de la barre
+    bar.style.animation = 'none';
+    bar.offsetHeight; // reflow
+    bar.style.animation = '';
+
+    let cancelled = false;
+
+    const confirmDelete = () => {
+      if (cancelled) return;
+      toast._pendingDelete = null;
+      toast.classList.remove('visible');
+      // Renvoyer les objectifs dans le panneau gauche puis supprimer
+      seq.querySelectorAll('.objectif').forEach(obj => _returnObjectifToLeft(obj));
+      seq.remove();
+      placeholder.parentNode && placeholder.parentNode.removeChild(placeholder);
+      _renumberSequences();
+      updateCounts();
+    };
+
+    const cancelDelete = () => {
+      cancelled = true;
+      clearTimeout(toast._timer);
+      toast._pendingDelete = null;
+      toast.classList.remove('visible');
+      // Remettre la séquence en place
+      seq.style.display = '';
+      placeholder.parentNode && placeholder.parentNode.removeChild(placeholder);
+    };
+
+    toast._pendingDelete = confirmDelete;
+    toast._timer = setTimeout(confirmDelete, 5000);
+
+    // Rebrancher le bouton Annuler : on remplace le nœud pour effacer
+    // tout listener précédent, puis on attache sur le nouveau nœud.
+    const newBtn = toastBtn.cloneNode(true);
+    toastBtn.parentNode.replaceChild(newBtn, toastBtn);
+    newBtn.addEventListener('click', cancelDelete);
+  }
+
+  /** Affiche brièvement le toast de confirmation de sauvegarde */
+  function _showSaveToast() {
+    const toast = document.getElementById('saveToast');
+    if (!toast) return;
+    // Animation bouton
+    const btn = document.getElementById('btnExportHTML');
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Sauvegardé';
+      btn.style.background = '#2a7a2a';
+      btn.style.color = 'white';
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 2200);
+    }
+    // Toast
+    toast.classList.add('visible');
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove('visible'), 2500);
+  }
+
+  // ----------------------------------------------------------
+  // INITIALISATION
+  // ----------------------------------------------------------
+  function init(snapshot) {
+    // À ce stade le document est entièrement parsé (le script est en fin de body).
+    // outerHTML est donc complet et constitue notre source de référence pour l'export.
+    _srcCache = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+    if (snapshot) {
+      if (snapshot.config) CONFIG = snapshot.config;
+      // Restaurer le référentiel si présent dans le snapshot (nouveau format)
+      if (snapshot.data)   DATA   = snapshot.data;
+    }
+    _initSplitter();
+
+    // Vider le conteneur des séquences et réinitialiser le panneau gauche
+    // pour éviter les doublons lors de la réhydratation
+    const seqContainer = document.getElementById('sequences');
+    if (seqContainer) seqContainer.innerHTML = '';
+
+    const leftContent = document.getElementById('leftContent');
+    if (leftContent) leftContent.innerHTML = '';
+
+    _generateLeft(); // Toujours générer le panneau complet
+
+    // _applyConfigStyles() est appelé APRÈS _generateLeft() : les sous-thèmes
+    // doivent exister dans le DOM pour que les dégradés de couleur soient appliqués.
+    _applyConfigStyles();
+
+    // Mémoriser les totaux initiaux par thème (avant toute restauration)
+    _initialCounts = {};
+    document.querySelectorAll('#leftContent .objectif').forEach(obj => {
+      const theme = obj.dataset.theme;
+      if (!theme) return;
+      _initialCounts[theme] = (_initialCounts[theme] || 0) + 1;
+    });
+
+    _initSequencesDropzone();
+    _initLeftPanelReturn();
+
+    // Point 1 — Délégation globale unique pour fermer les dropdowns couleur de séquence.
+    // Un seul listener sur document remplace N listeners (un par séquence créée).
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.seq-color-picker')) {
+        document.querySelectorAll('.seq-color-dropdown.open')
+          .forEach(d => d.classList.remove('open'));
+      }
+    }, { capture: true });
+    
+    // Positionner le bouton sans le déplacer dans le DOM.
+    // Il reste enfant de <body> et son positionnement fixed est calculé par JS.
+    _positionToggleBtn();
+
+    if (snapshot) {
+      // Restaurer le titre
+      const titleEl = document.getElementById('progressionTitle');
+      if (titleEl && snapshot.title) titleEl.textContent = snapshot.title;
+      // Restaurer le sous-titre
+      const sousTitreEl = document.getElementById('sous-titre');
+      if (sousTitreEl && snapshot.sousTitre != null) sousTitreEl.textContent = snapshot.sousTitre;
+      // Restaurer les séquences sauvegardées
+      _restoreSequences(snapshot.sequences || []);
+      _renumberSequences();
+    }
+
+    // Repositionner le bouton si la fenêtre est redimensionnée
+    // (changement de largeur du viewport sans interaction avec le splitter)
+    window.addEventListener('resize', _positionToggleBtn);
+  }
+
+  // ----------------------------------------------------------
+  // POSITIONNEMENT DU BOUTON TOGGLE PANNEAU GAUCHE
+  // ----------------------------------------------------------
+  /**
+   * Place le bouton #toggleLeftGlobal en position fixed, collé sur le bord
+   * droit visible du panneau gauche (ou à gauche du viewport si caché).
+   * Appelé à l'init, au redimensionnement splitter et au toggle du panneau.
+   * Le bouton reste toujours dans <body> : aucune mutation DOM n'est nécessaire.
+   */
+  function _positionToggleBtn() {
+    const btn  = document.getElementById('toggleLeftGlobal');
+    const left = document.getElementById('leftPanel');
+    if (!btn) return;
+
+    if (left.classList.contains('hidden')) {
+      // Panneau caché : bouton collé au bord gauche du viewport
+      btn.style.left = '6px';
+    } else {
+      // Panneau visible : bouton collé sur son bord droit
+      const rect = left.getBoundingClientRect();
+      btn.style.left = (rect.right - btn.offsetWidth - 20) + 'px';
+    }
+  }
+
+  // ----------------------------------------------------------
+  // SPLITTER REDIMENSIONNABLE
+  // ----------------------------------------------------------
+  function _initSplitter() {
+    const splitter  = document.getElementById('splitter');
+    const leftPanel = document.getElementById('leftPanel');
+
+    splitter.addEventListener('mousedown', () => {
+      _isResizing = true;
+      splitter.classList.add('active');
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+    });
+
+    document.addEventListener('mousemove', e => {
+      if (!_isResizing) return;
+      const pct = (e.clientX / window.innerWidth) * 100;
+      // Bornes : 15% min, 70% max
+      leftPanel.style.width = Math.min(70, Math.max(15, pct)) + '%';
+      // Suivre le bord droit du panneau pendant le redimensionnement
+      _positionToggleBtn();
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (!_isResizing) return;
+      _isResizing = false;
+      splitter.classList.remove('active');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    });
+  }
+
+  // ----------------------------------------------------------
+  // LOGIQUE DE COULEURS ET CALCULS
+  // ----------------------------------------------------------
+  
+  const _resolveThemeColor = (colorKey) => {
+    const map = CONFIG.colors;
+
+    // Clé connue : résolution normale
+    if (map[colorKey]) return map[colorKey];
+
+    // Valeur hex directe : invalide dans DATA (doit être une clé nommée)
+    if (typeof colorKey === 'string' && colorKey.startsWith('#')) {
+      console.warn(
+        `[progression] Couleur hex directe "${colorKey}" dans DATA : ` +
+        `utiliser une clé nommée de CONFIG.colors (ex: "theme1"). ` +
+        `Substitution par la première couleur disponible.`
+      );
+      // Fallback sur la première couleur de CONFIG pour rester visible
+      const firstColor = Object.values(map)[0];
+      return firstColor || '#888';
+    }
+
+    // Clé inconnue
+    console.warn(
+      `[progression] Clé de couleur inconnue "${colorKey}" dans DATA : ` +
+      `elle n'existe pas dans CONFIG.colors. Substitution par gris.`
+    );
+    return '#888';
+  };
+
+  /** Génère une couleur dégradée pour un sous-thème à partir de la couleur du thème. */
+  const _subthemeGradientColor = (baseHex, index, total) => {
+    const hexToRgb = hex => ({
+      r: parseInt(hex.slice(1,3),16),
+      g: parseInt(hex.slice(3,5),16),
+      b: parseInt(hex.slice(5,7),16)
+    });
+
+    const rgbToHsl = ({r,g,b}) => {
+      r/=255; g/=255; b/=255;
+      const max = Math.max(r,g,b), min = Math.min(r,g,b);
+      let h, s, l = (max + min) / 2;
+
+      if (max === min) {
+        h = s = 0;
+      } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+        switch(max){
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+
+      return { h: h*360, s: s*100, l: l*100 };
+    };
+
+    const rgbToHex = ({r,g,b}) =>
+      '#' + [r,g,b].map(x => Math.round(x).toString(16).padStart(2,'0')).join('');
+
+    const hslToRgb = ({h,s,l}) => {
+      h/=360; s/=100; l/=100;
+
+      if (s === 0) {
+        const val = l * 255;
+        return { r: val, g: val, b: val };
+      }
+
+      const hue2rgb = (p,q,t) => {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1/6) return p + (q - p) * 6 * t;
+        if (t < 1/2) return q;
+        if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+        return p;
+      };
+
+      const q = l < 0.5 ? l * (1 + s) : l + s - l*s;
+      const p = 2*l - q;
+
+      return {
+        r: 255 * hue2rgb(p, q, h + 1/3),
+        g: 255 * hue2rgb(p, q, h),
+        b: 255 * hue2rgb(p, q, h - 1/3)
+      };
+    };
+
+    const baseHsl = rgbToHsl(hexToRgb(baseHex));
+    const t = total <= 1 ? 0 : index / (total - 1);
+
+    return rgbToHex(
+      hslToRgb({
+        h: baseHsl.h,
+        s: baseHsl.s,
+        l: Math.min(95, Math.max(0, baseHsl.l + t * 7)) // Bug #7 fix : clamp entre 0 et 95
+      })
+    );
+  };
+
+  // ----------------------------------------------------------
+  // PANNEAU GAUCHE — génération
+  // ----------------------------------------------------------
+
+  function _generateLeft() {
+    const content = document.getElementById('leftContent');
+    if (!content) return;
+    content.innerHTML = '';
+
+    Object.entries(DATA).forEach(([themeName, themeVal]) => {
+      const details = document.createElement('details');
+      details.open = true;
+
+      const summary = document.createElement('summary');
+      summary.dataset.theme = themeName;
+      summary.dataset.color = themeVal.color;
+      // Isoler le texte dans un span dédié : updateCounts() ne mettra à jour
+      // que ce nœud, préservant tout autre enfant éventuel du summary.
+      const themeLabel = document.createElement('span');
+      themeLabel.className = 'theme-label';
+      summary.appendChild(themeLabel);
+      details.appendChild(summary);
+
+      const subEntries = Object.entries(themeVal.themes);
+      const baseColor = _resolveThemeColor(themeVal.color);
+
+      subEntries.forEach(([subName, items], subIndex) => {
+        const subDetails = document.createElement('details');
+        subDetails.open = true;
+
+        // Déterminer la couleur du sous-thème
+        let subColor, subItems;
+        if (Array.isArray(items)) {
+          subColor = _subthemeGradientColor(baseColor, subIndex, subEntries.length);
+          subItems = items;
+        } else {
+          subColor = _resolveThemeColor(items.color) 
+            || _subthemeGradientColor(baseColor, subIndex, subEntries.length);
+          subItems = items.items || [];
+        }
+
+        const subSummary = document.createElement('summary');
+        subSummary.dataset.subtheme = subName;
+        const icon = document.createElement('span');
+        icon.textContent = '▸';
+        icon.style.marginRight = '6px';
+
+        subSummary.appendChild(icon);
+        subSummary.appendChild(document.createTextNode(subName));
+        subSummary.dataset.subcolor = subColor;
+        subSummary.style.background = subColor;
+        subDetails.appendChild(subSummary);
+
+        subItems.forEach(item => {
+          subDetails.appendChild(_createObjectif(item, themeName, subColor, subName, themeVal.color));
+        });
+
+        details.appendChild(subDetails);
+      });
+
+      content.appendChild(details);
+    });
+
+    updateCounts();
+  }
+
+  /**
+   * Restaure les séquences depuis le snapshot.
+   * Cherche l'objectif correspondant dans le panneau gauche et le déplace.
+   */
+  function _restoreSequences(sequences) {
+    sequences.forEach(item => {
+      if (item.type === 'separateur') {
+        addSeparateur(item.text, item.color);
+        return;
+      }
+
+      // Rétrocompatibilité : anciens snapshots sans champ type
+      const seqData = item;
+      const seq = addSequence(seqData.headerColor || null, seqData.bodyColor || null);
+
+      // Appliquer le titre sauvegardé
+      const titleSpan = seq.querySelector('.sequence-header span[contenteditable]');
+      if (titleSpan) titleSpan.textContent = seqData.title;
+
+      // Appliquer l'état collapsed
+      if (seqData.collapsed) seq.classList.add('collapsed');
+
+      const dropzone = seq.querySelector('.dropzone');
+      seqData.items.forEach(item => {
+        // Chercher par code d'abord (plus fiable), puis par texte+thème en fallback
+        let found = null;
+        if (item.code) {
+          found = document.querySelector(`#leftContent .objectif[data-code="${CSS.escape(item.code)}"]`);
+        }
+        if (!found) {
+          found = [...document.querySelectorAll('#leftContent .objectif')].find(o => {
+            const t = o.querySelector('.objectif-text');
+            return t && t.textContent === item.text && o.dataset.theme === item.theme;
+          });
+        }
+
+        if (found) {
+          dropzone.appendChild(found);
+        } else {
+          // Objectif introuvable dans le panneau gauche (cas où DATA a été modifié)
+          // On le recrée directement dans la dropzone
+          dropzone.appendChild(_createObjectif(item.text, item.theme, item.color, item.subtheme || ''));
+        }
+      });
+
+      // Restaurer les commentaires
+      (seqData.comments || []).forEach(c => {
+        const comment = _createCommentaire(c.html || '', c.label || '');
+        if (c.open) comment.classList.add('open');
+        seq.appendChild(comment);
+      });
+    });
+
+    updateCounts();
+  }
+
+  // ----------------------------------------------------------
+  // CRÉATION D'UN OBJECTIF (élément draggable)
+  // ----------------------------------------------------------
+  /**
+   * @param {string} text      - Libellé de l'objectif
+   * @param {string} theme     - Nom du thème (data-theme)
+   * @param {string} colorHex  - Couleur hex calculée (pour style inline de secours)
+   * @param {string} subtheme  - Nom du sous-thème
+   * @param {string} [colorKey]- Clé nommée de CONFIG.colors (ex: "theme1").
+   *                             Si fournie, dataset.color = colorKey et le CSS dynamique
+   *                             gère le fond ; sinon on tente une résolution inverse,
+   *                             puis on tombe back sur le style inline.
+   */
+  /**
+   * @param {string|object} textOrItem - Texte simple ou objet {text, code, type, page, boRef, boUrl}
+   */
+  function _createObjectif(textOrItem, theme, colorHex, subtheme, colorKey) {
+    const item = typeof textOrItem === 'object' ? textOrItem : { text: textOrItem };
+    const text = item.text || '';
+    const code = item.code || '';
+    const ctype = item.type || 'capacite';
+    const page = item.page || '';
+    const boRef = item.boRef || '';
+    const boUrl = item.boUrl || '';
+
+    const el = document.createElement('div');
+    el.className = 'objectif' + (ctype === 'approfondissement' ? ' optionnel' : '');
+    el.draggable = true;
+    el.dataset.theme = theme;
+    el.dataset.subtheme = subtheme || '';
+    if (code) el.dataset.code = code;
+    if (ctype) el.dataset.type = ctype;
+    if (page) el.dataset.page = String(page);
+    if (boRef) el.dataset.boRef = boRef;
+    if (boUrl) el.dataset.boUrl = boUrl;
+
+    let resolvedKey = colorKey;
+    if (!resolvedKey) {
+      const entry = Object.entries(CONFIG.colors).find(([, v]) => v === colorHex);
+      resolvedKey = entry ? entry[0] : null;
+    }
+
+    if (resolvedKey && CONFIG.colors[resolvedKey]) {
+      el.dataset.color = resolvedKey;
+    } else {
+      el.dataset.color = resolvedKey || '';
+      el.style.background = colorHex;
+    }
+    el.setAttribute('role', 'listitem');
+    el.setAttribute('aria-label', code ? `${code} – ${text}` : text);
+
+    // Checkbox de sélection multiple (panneau gauche uniquement, masquée dans dropzone via CSS)
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'objectif-check';
+    checkbox.title = 'Sélectionner pour déplacement groupé';
+    checkbox.addEventListener('click', e => e.stopPropagation());
+    checkbox.addEventListener('change', () => {
+      el.classList.toggle('selected', checkbox.checked);
+      _updateSelectionBar();
+    });
+    el.appendChild(checkbox);
+
+    const textSpan = document.createElement('span');
+    textSpan.className = 'objectif-text';
+    textSpan.textContent = code ? `${code} – ${text}` : text;
+    el.appendChild(textSpan);
+
+    if (ctype === 'approfondissement') {
+      const badge = document.createElement('span');
+      badge.className = 'opt-badge';
+      badge.title = 'Approfondissement optionnel — non exigible';
+      badge.textContent = 'opt.';
+      el.appendChild(badge);
+    }
+
+    // Pied de source BO
+    if (page || boRef || boUrl) {
+      const meta = document.createElement('div');
+      meta.className = 'objectif-meta';
+      const bits = [];
+      if (page) bits.push(`<a href="#" onclick="App.openPdfAtPage(${page}); event.preventDefault(); event.stopPropagation(); return false;" title="Page ${page}">📄 p.${page}</a>`);
+      if (boRef) bits.push(boRef);
+      if (boUrl) bits.push(`<a href="${boUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🔗 BO</a>`);
+      meta.innerHTML = bits.join(' · ');
+      el.appendChild(meta);
+    }
+
+    // Hint chevron pour signaler l'extensibilité
+    if (page || boRef || boUrl) {
+      const hint = document.createElement('span');
+      hint.className = 'expand-hint';
+      hint.textContent = '⌄';
+      el.appendChild(hint);
+      el.style.paddingRight = '18px';
+      el.style.position = 'relative';
+    }
+
+    const btnRemove = document.createElement('button');
+    btnRemove.className = 'btn-remove-objectif';
+    btnRemove.textContent = '✕';
+    btnRemove.setAttribute('aria-label', `Supprimer l'objectif : ${text}`);
+    btnRemove.setAttribute('title', 'Renvoyer dans le panneau gauche');
+    btnRemove.addEventListener('click', e => {
+      e.stopPropagation();
+      _returnObjectifToLeft(el);
+    });
+    el.appendChild(btnRemove);
+
+    el.addEventListener('dragstart', e => {
+      _draggedEl = el;
+
+      const ghost = el.cloneNode(true);
+      ghost.style.cssText = `
+        position: fixed; top: -200px; left: -200px;
+        opacity: 0.85; pointer-events: none;
+        width: ${el.offsetWidth}px;
+        padding: 5px 8px; border-radius: 4px;
+        background: ${getComputedStyle(el).backgroundColor};
+        color: white; font-size: 0.88em;
+        box-shadow: 4px 6px 16px rgba(0,0,0,0.35);
+        transform: rotate(-2deg);
+      `;
+      document.body.appendChild(ghost);
+      e.dataTransfer.setDragImage(ghost, el.offsetWidth / 2, 16);
+      requestAnimationFrame(() => ghost.remove());
+      requestAnimationFrame(() => el.classList.add('dragging'));
+
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', text);
+
+      // Signal global : dropzones droite + panneau gauche s'illuminent
+      document.getElementById('sequences').classList.add('drag-active');
+      // Le panneau gauche devient une cible de retour si l'objectif vient d'une dropzone
+      if (el.closest('.dropzone')) {
+        document.getElementById('leftPanel').classList.add('drop-target');
+      }
+    });
+
+    el.addEventListener('dragend', () => {
+      el.classList.remove('dragging');
+      _draggedEl = null;
+      _clearDropIndicators();
+      document.getElementById('sequences').classList.remove('drag-active');
+      document.getElementById('leftPanel').classList.remove('drop-target');
+      document.querySelectorAll('.dropzone.drag-over').forEach(dz => dz.classList.remove('drag-over'));
+      updateCounts();
+    });
+
+    return el;
+  }
+
+  /**
+   * Renvoie un objectif depuis une dropzone vers sa position d'origine
+   * dans le panneau gauche (sous le bon sous-thème).
+   */
+  function _returnObjectifToLeft(el) {
+    const theme = el.dataset.theme;
+    const code  = el.dataset.code || '';
+
+    let targetSubDetails = null;
+
+    // Recherche par code (fiable) puis par sous-thème
+    if (code) {
+      const original = document.querySelector(`#leftContent .objectif[data-code="${CSS.escape(code)}"]`);
+      if (original) {
+        targetSubDetails = original.closest('details');
+      }
+    }
+
+    if (!targetSubDetails) {
+      document.querySelectorAll('#leftContent > details').forEach(details => {
+        const summary = details.querySelector(':scope > summary');
+        if (summary && summary.dataset.theme === theme) {
+          details.querySelectorAll(':scope > details').forEach(subDetails => {
+            const subName = subDetails.querySelector(':scope > summary').dataset.subtheme;
+            if (DATA[theme] && DATA[theme].themes[subName]) {
+              const subData  = DATA[theme].themes[subName];
+              const subItems = Array.isArray(subData) ? subData : (subData.items || []);
+              const found = subItems.some(o => (o.code && o.code === code) || o.text === el.dataset.subtheme);
+              if (found) targetSubDetails = subDetails;
+            }
+          });
+        }
+      });
+    }
+
+    if (targetSubDetails) {
+      targetSubDetails.appendChild(el);
+    } else {
+      // Fallback : retour dans le premier details du thème
+      const themeDetails = document.querySelector(`#leftContent > details > summary[data-theme="${theme}"]`);
+      if (themeDetails) themeDetails.parentElement.appendChild(el);
+    }
+
+    updateCounts();
+  }
+
+  // ----------------------------------------------------------
+  // DROPZONE DES SÉQUENCES — réordonnancement des séquences
+  // ----------------------------------------------------------
+  function _initSequencesDropzone() {
+    const container = document.getElementById('sequences');
+
+    container.addEventListener('dragover', e => {
+      if (!_draggedEl) return;
+      const isSeq = _draggedEl.classList.contains('sequence');
+      const isSep = _draggedEl.classList.contains('separateur');
+      if (!isSeq && !isSep) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      const afterEl = _getDragAfterBlock(container, e.clientY);
+
+      if (!_seqGhost) {
+        _seqGhost = document.createElement('div');
+        _seqGhost.className = 'sequence-ghost';
+        _seqGhost.style.height = _draggedEl.offsetHeight + 'px';
+      }
+
+      if (afterEl) {
+        container.insertBefore(_seqGhost, afterEl);
+        container.insertBefore(_draggedEl, afterEl);
+      } else {
+        container.appendChild(_seqGhost);
+        container.appendChild(_draggedEl);
+      }
+    });
+
+    container.addEventListener('dragleave', e => {
+      if (!container.contains(e.relatedTarget)) {
+        _clearSeqGhost();
+      }
+    });
+
+    container.addEventListener('drop', e => {
+      if (!_draggedEl) return;
+      const isSeq = _draggedEl.classList.contains('sequence');
+      const isSep = _draggedEl.classList.contains('separateur');
+      if (!isSeq && !isSep) return;
+      _clearSeqGhost();
+      _renumberSequences();
+    });
+  }
+
+  /** Supprime le ghost de positionnement des séquences */
+  function _clearSeqGhost() {
+    if (_seqGhost) {
+      _seqGhost.remove();
+      _seqGhost = null;
+    }
+  }
+
+  // ----------------------------------------------------------
+  // RETOUR GAUCHE — panneau gauche comme zone de drop
+  // ----------------------------------------------------------
+  function _initLeftPanelReturn() {
+    const leftPanel = document.getElementById('leftPanel');
+
+    leftPanel.addEventListener('dragover', e => {
+      if (!_draggedEl || !_draggedEl.classList.contains('objectif')) return;
+      // Autoriser le drop seulement si l'objectif vient d'une dropzone
+      if (!_draggedEl.closest('.dropzone')) return;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    });
+
+    leftPanel.addEventListener('drop', e => {
+      if (!_draggedEl || !_draggedEl.classList.contains('objectif')) return;
+      if (!_draggedEl.closest('.dropzone')) return;
+      e.preventDefault();
+      leftPanel.classList.remove('drop-target');
+      _returnObjectifToLeft(_draggedEl);
+    });
+  }
+
+  /** Calcule l'élément (séquence ou séparateur) après lequel insérer, selon Y */
+  function _getDragAfterBlock(container, y) {
+    const siblings = [...container.querySelectorAll('.sequence:not(.dragging), .separateur:not(.dragging)')];
+    return siblings.find(el => {
+      const box = el.getBoundingClientRect();
+      return y < box.top + box.height / 2;
+    }) || null;
+  }
+
+  // ----------------------------------------------------------
+  // NUMÉROTATION INTERNE DES SÉQUENCES
+  // ----------------------------------------------------------
+  /**
+   * Attribue un data-seq-num à chaque séquence selon son ordre d'apparition
+   * dans le conteneur. Appelée après tout ajout, suppression confirmée ou
+   * réordonnancement par drag-and-drop.
+   * Le numéro est purement interne (non affiché à l'utilisateur) mais disponible
+   * pour l'export PDF, les aria-label, et tout traitement ordonné futur.
+   */
+  function _renumberSequences() {
+    document.querySelectorAll('#sequences .sequence').forEach((seq, i) => {
+      seq.dataset.seqNum = i + 1;
+    });
+  }
+
+  // ----------------------------------------------------------
+  // AJOUT D'UNE SÉQUENCE
+  // ----------------------------------------------------------
+  function addSequence(initHeaderColor, initBodyColor) {
+    const seq = document.createElement('div');
+    seq.className = 'sequence';
+    seq.draggable = true;
+    seq.setAttribute('role', 'listitem');
+
+    // — Header —
+    const header = document.createElement('div');
+    header.className = 'sequence-header';
+    header.setAttribute('aria-label', 'En-tête de séquence, cliquer pour plier/déplier');
+
+    const title = document.createElement('span');
+    title.contentEditable = 'true';
+    title.textContent = 'Nouvelle séquence';
+    title.setAttribute('aria-label', 'Titre de la séquence');
+
+    // Flèche de pliage/dépliage
+    const toggleArrow = document.createElement('span');
+    toggleArrow.className = 'sequence-toggle';
+    toggleArrow.textContent = '▶';
+    toggleArrow.setAttribute('aria-hidden', 'true');
+
+    // — Picker couleur individuel —
+    const colorPicker = document.createElement('div');
+    colorPicker.className = 'seq-color-picker';
+
+    const colorBtn = document.createElement('button');
+    colorBtn.className = 'seq-color-btn';
+    colorBtn.setAttribute('title', 'Couleur individuelle de cette séquence');
+    colorBtn.setAttribute('aria-label', 'Changer la couleur de cette séquence');
+
+    const colorDropdown = document.createElement('div');
+    colorDropdown.className = 'seq-color-dropdown';
+
+    const dropTitle = document.createElement('div');
+    dropTitle.className = 'seq-color-dropdown-title';
+    dropTitle.textContent = '🎨 Couleur de la séquence';
+
+    // Ligne header
+    const rowHeader = document.createElement('div');
+    rowHeader.className = 'seq-color-row';
+    const lblH = document.createElement('label');
+    lblH.textContent = 'En-tête';
+    const inputH = document.createElement('input');
+    inputH.type = 'color';
+    rowHeader.append(lblH, inputH);
+
+    // Ligne body
+    const rowBody = document.createElement('div');
+    rowBody.className = 'seq-color-row';
+    const lblB = document.createElement('label');
+    lblB.textContent = 'Corps';
+    const inputB = document.createElement('input');
+    inputB.type = 'color';
+    rowBody.append(lblB, inputB);
+
+    // Bouton reset
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'seq-color-reset';
+    resetBtn.textContent = '↺ Remettre les couleurs par défaut';
+
+    // Fonction utilitaire : lire la couleur courante depuis le CSS calculé ou CONFIG
+    const _getEffectiveHeaderColor = () =>
+      seq.dataset.headerColor || CONFIG.sequence.headerBg;
+    const _getEffectiveBodyColor = () =>
+      seq.dataset.bodyColor || CONFIG.sequence.bodyBg;
+
+    const _syncColorBtn = () => {
+      colorBtn.style.background = _getEffectiveHeaderColor();
+    };
+
+    const _applySeqColors = () => {
+      if (seq.dataset.headerColor) {
+        header.style.background = seq.dataset.headerColor;
+      } else {
+        header.style.background = '';
+      }
+      if (seq.dataset.bodyColor) {
+        seq.style.background = seq.dataset.bodyColor;
+      } else {
+        seq.style.background = '';
+      }
+      _syncColorBtn();
+    };
+
+    // Initialisation avec des couleurs sauvegardées
+    if (initHeaderColor) {
+      seq.dataset.headerColor = initHeaderColor;
+      inputH.value = initHeaderColor;
+    } else {
+      inputH.value = CONFIG.sequence.headerBg;
+    }
+    if (initBodyColor) {
+      seq.dataset.bodyColor = initBodyColor;
+      inputB.value = initBodyColor;
+    } else {
+      inputB.value = CONFIG.sequence.bodyBg;
+    }
+    _applySeqColors();
+
+    inputH.addEventListener('input', e => {
+      seq.dataset.headerColor = e.target.value;
+      _applySeqColors();
+    });
+    inputB.addEventListener('input', e => {
+      seq.dataset.bodyColor = e.target.value;
+      _applySeqColors();
+    });
+
+    resetBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      delete seq.dataset.headerColor;
+      delete seq.dataset.bodyColor;
+      inputH.value = CONFIG.sequence.headerBg;
+      inputB.value = CONFIG.sequence.bodyBg;
+      _applySeqColors();
+    });
+
+    // Ouvrir/fermer le dropdown
+    colorBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      // Fermer tous les autres dropdowns ouverts
+      document.querySelectorAll('.seq-color-dropdown.open').forEach(d => {
+        if (d !== colorDropdown) d.classList.remove('open');
+      });
+      // Sync des valeurs courantes avant ouverture
+      inputH.value = seq.dataset.headerColor || CONFIG.sequence.headerBg;
+      inputB.value = seq.dataset.bodyColor   || CONFIG.sequence.bodyBg;
+      colorDropdown.classList.toggle('open');
+
+      // Point 2 — Repositionner vers le haut si le dropdown sort du viewport
+      if (colorDropdown.classList.contains('open')) {
+        // Reset pour mesurer la position naturelle (vers le bas)
+        colorDropdown.style.top    = '';
+        colorDropdown.style.bottom = '';
+        requestAnimationFrame(() => {
+          const rect = colorDropdown.getBoundingClientRect();
+          if (rect.bottom > window.innerHeight - 8) {
+            colorDropdown.style.top    = 'auto';
+            colorDropdown.style.bottom = 'calc(100% + 6px)';
+          } else {
+            colorDropdown.style.top    = 'calc(100% + 6px)';
+            colorDropdown.style.bottom = 'auto';
+          }
+        });
+      }
+    });
+
+    // Empêcher le drag quand on interagit avec le picker
+    colorPicker.addEventListener('mousedown', e => e.stopPropagation());
+
+    colorDropdown.append(dropTitle, rowHeader, rowBody, resetBtn);
+    colorPicker.append(colorBtn, colorDropdown);
+
+    // Bouton ajouter un commentaire
+    const btnAddComment = document.createElement('button');
+    btnAddComment.className = 'btn-add-comment';
+    btnAddComment.innerHTML = '💬 <span>Commentaire</span>';
+    btnAddComment.setAttribute('aria-label', 'Ajouter un commentaire à cette séquence');
+    btnAddComment.setAttribute('title', 'Ajouter un commentaire / une ressource');
+    btnAddComment.addEventListener('click', e => {
+      e.stopPropagation();
+      const c = _createCommentaire();
+      seq.appendChild(c);
+      c.classList.add('open');
+      c.querySelector('.commentaire-body').focus();
+    });
+
+    // Bouton supprimer la séquence
+    const btnRemoveSeq = document.createElement('button');
+    btnRemoveSeq.className = 'btn-remove-seq';
+    btnRemoveSeq.textContent = '✕';
+    btnRemoveSeq.setAttribute('aria-label', 'Supprimer cette séquence');
+    btnRemoveSeq.setAttribute('title', 'Supprimer la séquence (les objectifs retournent dans le panneau gauche)');
+    btnRemoveSeq.addEventListener('click', e => {
+      e.stopPropagation();
+      _deleteSequenceWithUndo(seq);
+    });
+
+    // Clic sur le header collapse la séquence — pas sur les éléments interactifs
+    header.addEventListener('click', e => {
+      if (e.target === title
+        || e.target === btnRemoveSeq
+        || e.target.closest('.btn-add-comment')
+        || e.target.closest('.seq-color-picker')
+        || e.target === btnAddComment) return;
+      seq.classList.toggle('collapsed');
+    });
+
+    header.appendChild(toggleArrow);
+    header.appendChild(title);
+    header.appendChild(colorPicker);
+    header.appendChild(btnAddComment);
+    header.appendChild(btnRemoveSeq);
+
+    // — Drag de la séquence —
+    seq.addEventListener('dragstart', e => {
+      // Ne pas déclencher si on draggue un objectif interne
+      if (e.target !== seq && e.target !== header) return;
+      _draggedEl = seq;
+      seq.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.stopPropagation();
+    });
+
+    seq.addEventListener('dragend', () => {
+      seq.classList.remove('dragging');
+      if (_draggedEl === seq) _draggedEl = null;
+      _clearSeqGhost();
+    });
+
+    // — Dropzone —
+    const dropzone = _createDropzone();
+
+    seq.append(header, dropzone);
+    document.getElementById('sequences').appendChild(seq);
+    _renumberSequences();
+    return seq;
+  }
+
+  // ----------------------------------------------------------
+  // CRÉATION D'UN COMMENTAIRE dans une séquence
+  // ----------------------------------------------------------
+
+  /** Transforme les URLs brutes dans un nœud en liens cliquables.
+   * Idempotente : les nœuds texte déjà à l'intérieur d'un <a> sont ignorés
+   * pour éviter la création de liens imbriqués lors d'appels répétés (blur
+   * successifs après édition).
+   */
+  function _linkifyNode(el) {
+    const URL_RE = /https?:\/\/[^\s<>"']+/g;
+    // Filtre : ignorer les nœuds texte dont l'ancêtre immédiat est déjà un <a>
+    const filter = {
+      acceptNode(node) {
+        return node.parentNode && node.parentNode.nodeName === 'A'
+          ? NodeFilter.FILTER_REJECT
+          : NodeFilter.FILTER_ACCEPT;
+      }
+    };
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, filter, false);
+    const toReplace = [];
+    let node;
+    while ((node = walker.nextNode())) {
+      if (URL_RE.test(node.textContent)) toReplace.push(node);
+      URL_RE.lastIndex = 0;
+    }
+    toReplace.forEach(textNode => {
+      const frag = document.createDocumentFragment();
+      let last = 0;
+      let m;
+      URL_RE.lastIndex = 0;
+      while ((m = URL_RE.exec(textNode.textContent)) !== null) {
+        if (m.index > last) frag.appendChild(document.createTextNode(textNode.textContent.slice(last, m.index)));
+        const a = document.createElement('a');
+        a.href = m[0];
+        a.textContent = m[0];
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        frag.appendChild(a);
+        last = m.index + m[0].length;
+      }
+      if (last < textNode.textContent.length) frag.appendChild(document.createTextNode(textNode.textContent.slice(last)));
+      textNode.parentNode.replaceChild(frag, textNode);
+    });
+  }
+
+  function _createCommentaire(savedText, savedLabel) {
+    const comment = document.createElement('div');
+    comment.className = 'commentaire';
+
+    // — Header pliable —
+    const hdr = document.createElement('div');
+    hdr.className = 'commentaire-header';
+
+    const toggle = document.createElement('span');
+    toggle.className = 'commentaire-toggle';
+    toggle.textContent = '▶';
+    toggle.setAttribute('aria-hidden', 'true');
+
+    const label = document.createElement('span');
+    label.className = 'commentaire-label';
+    label.contentEditable = 'true';
+    label.setAttribute('aria-label', 'Titre du commentaire');
+    label.setAttribute('spellcheck', 'false');
+    label.textContent = savedLabel || 'Commentaire / Ressource';
+
+    // Sélectionner tout au premier focus si c'est le titre par défaut
+    label.addEventListener('focus', () => {
+      if (label.textContent === 'Commentaire / Ressource') {
+        const range = document.createRange();
+        range.selectNodeContents(label);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    });
+
+    // Remettre le titre par défaut si laissé vide
+    label.addEventListener('blur', () => {
+      if (!label.textContent.trim()) label.textContent = 'Commentaire / Ressource';
+    });
+
+    // Valider avec Entrée sans insérer de saut de ligne
+    label.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        label.blur();
+        // Ouvrir le corps si pas encore ouvert
+        if (!comment.classList.contains('open')) comment.classList.add('open');
+        body.focus();
+      }
+    });
+
+    // Empêcher le clic sur le label de déclencher le toggle du commentaire
+    label.addEventListener('click', e => e.stopPropagation());
+    // Empêcher le drag de la séquence quand on édite le titre
+    label.addEventListener('mousedown', e => e.stopPropagation());
+
+    const btnDel = document.createElement('button');
+    btnDel.className = 'btn-remove-comment';
+    btnDel.textContent = '✕';
+    btnDel.setAttribute('aria-label', 'Supprimer ce commentaire');
+    btnDel.setAttribute('title', 'Supprimer ce commentaire');
+    btnDel.addEventListener('click', e => { e.stopPropagation(); comment.remove(); });
+
+    hdr.appendChild(toggle);
+    hdr.appendChild(label);
+    hdr.appendChild(btnDel);
+
+    hdr.addEventListener('click', e => {
+      if (e.target === btnDel || e.target === label) return;
+      comment.classList.toggle('open');
+    });
+
+    // — Corps éditable —
+    const body = document.createElement('div');
+    body.className = 'commentaire-body';
+    body.contentEditable = 'true';
+    body.setAttribute('aria-label', 'Corps du commentaire');
+    body.setAttribute('spellcheck', 'true');
+
+    // Restauration du texte sauvegardé (innerHTML pour préserver les <a>)
+    if (savedText) body.innerHTML = savedText;
+
+    // Linkification à la sortie du focus
+    body.addEventListener('blur', () => {
+      _linkifyNode(body);
+    });
+
+    // Empêche le drag de la séquence quand on tape
+    body.addEventListener('mousedown', e => e.stopPropagation());
+
+    comment.appendChild(hdr);
+    comment.appendChild(body);
+    return comment;
+  }
+
+  // ----------------------------------------------------------
+  // CRÉATION D'UNE DROPZONE
+  // ----------------------------------------------------------
+  function _createDropzone() {
+    const dropzone = document.createElement('div');
+    dropzone.className = 'dropzone';
+    dropzone.setAttribute('role', 'list');
+    dropzone.setAttribute('aria-label', 'Zone de dépôt des objectifs');
+
+    dropzone.addEventListener('dragenter', e => {
+      if (!_draggedEl || !_draggedEl.classList.contains('objectif')) return;
+      e.preventDefault();
+      dropzone.classList.add('drag-over');
+    });
+
+    dropzone.addEventListener('dragleave', e => {
+      // Ne retirer la classe que si on quitte vraiment la dropzone
+      if (!dropzone.contains(e.relatedTarget)) {
+        dropzone.classList.remove('drag-over');
+        _clearDropIndicators(dropzone);
+      }
+    });
+
+    dropzone.addEventListener('dragover', e => {
+      if (!_draggedEl || !_draggedEl.classList.contains('objectif')) return;
+      e.preventDefault();
+      e.stopPropagation(); // évite l'interférence avec le dragover des séquences
+      e.dataTransfer.dropEffect = 'move';
+
+      // Calcul de la position d'insertion pour l'indicateur visuel
+      const afterEl = _getDragAfterObjectif(dropzone, e.clientY);
+      _clearDropIndicators(dropzone);
+      const indicator = document.createElement('div');
+      indicator.className = 'drop-indicator';
+      if (afterEl) {
+        dropzone.insertBefore(indicator, afterEl);
+      } else {
+        dropzone.appendChild(indicator);
+      }
+    });
+
+    dropzone.addEventListener('drop', e => {
+      if (!_draggedEl || !_draggedEl.classList.contains('objectif')) return;
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.remove('drag-over');
+      _clearDropIndicators(dropzone);
+
+      const afterEl = _getDragAfterObjectif(dropzone, e.clientY);
+      if (afterEl) {
+        dropzone.insertBefore(_draggedEl, afterEl);
+      } else {
+        dropzone.appendChild(_draggedEl);
+      }
+
+      // Multi-sélection : déplacer aussi les autres objectifs cochés
+      _handleMultiDrop(dropzone, _draggedEl);
+
+      updateCounts();
+    });
+
+    return dropzone;
+  }
+
+  /** Calcule l'objectif après lequel insérer, selon la position Y */
+  function _getDragAfterObjectif(container, y) {
+    const siblings = [...container.querySelectorAll('.objectif:not(.dragging)')];
+    return siblings.find(el => {
+      const box = el.getBoundingClientRect();
+      return y < box.top + box.height / 2;
+    }) || null;
+  }
+
+  /** Supprime tous les indicateurs d'insertion dans un conteneur (ou partout) */
+  function _clearDropIndicators(container) {
+    const scope = container || document;
+    scope.querySelectorAll('.drop-indicator').forEach(el => el.remove());
+  }
+
+  // ----------------------------------------------------------
+  // COMPTEURS (recalcul DOM — jamais incrémental)
+  // ----------------------------------------------------------
+  function updateCounts() {
+    const counts = {};
+
+    document.querySelectorAll('#leftContent .objectif').forEach(obj => {
+      const theme = obj.dataset.theme;
+      if (!theme) return;
+      counts[theme] = (counts[theme] || 0) + 1;
+    });
+
+    document.querySelectorAll('#leftContent > details').forEach(details => {
+      const summary = details.querySelector(':scope > summary');
+      if (!summary) return;
+      const theme = summary.dataset.theme;
+      if (!theme) return;
+      const n = counts[theme] || 0;
+      const N = _initialCounts[theme] || n; // fallback : N = n si pas encore initialisé
+
+      // Affichage n/N — mise à jour ciblée sur le span dédié pour préserver
+      // tout autre enfant DOM du summary (icônes, badges, etc.)
+      const label = summary.querySelector('.theme-label');
+      if (label) {
+        label.textContent = `${theme} (${n}/${N})`;
+      } else {
+        // Fallback pour les summaries générés sans span (compatibilité)
+        summary.textContent = `${theme} (${n}/${N})`;
+      }
+
+      if (n === 0) {
+        summary.classList.add('exhausted');
+      } else {
+        summary.classList.remove('exhausted');
+      }
+    });
+
+    // Compteur global
+    const totalInitial = Object.values(_initialCounts).reduce((a, b) => a + b, 0);
+    const totalLeft = Object.values(counts).reduce((a, b) => a + b, 0);
+    const placed = totalInitial - totalLeft;
+    const gc = document.getElementById('globalCounter');
+    if (gc) gc.textContent = `${placed} / ${totalInitial} placés — ${totalLeft} restants`;
+  }
+
+  // ----------------------------------------------------------
+  // TOGGLE PANNEAU GAUCHE
+  // ----------------------------------------------------------
+function toggleLeftPanel() {
+  const left     = document.getElementById('leftPanel');
+  const splitter = document.getElementById('splitter');
+
+  left.classList.toggle('hidden');
+  splitter.classList.toggle('hidden');
+
+  // Le bouton reste dans <body> — on recalcule seulement sa position fixed.
+  _positionToggleBtn();
+}
+
+  // ----------------------------------------------------------
+  // TOGGLE PLIER/DÉPLIER GAUCHE
+  // ----------------------------------------------------------
+  function toggleLeftFold() {
+    // Bug #4 fix : déduire l'état depuis le DOM plutôt que de basculer aveuglément,
+    // pour éviter la désynchronisation après replis/déplis manuels partiels.
+    const anyOpen = [...document.querySelectorAll('#leftContent details')].some(d => d.open);
+    _leftOpen = !anyOpen;
+    document.querySelectorAll('#leftContent details').forEach(d => {
+      d.open = _leftOpen;
+    });
+    const btn = document.getElementById('toggleLeftFoldBtn');
+    if (btn) {
+      btn.innerHTML = _leftOpen
+        ? '📂 Tout plier / déplier'
+        : '📁 Tout plier / déplier';
+    }
+
+    updateCounts();
+  }
+
+  // ----------------------------------------------------------
+  // TOGGLE PLIER/DÉPLIER DROITE
+  // ----------------------------------------------------------
+  function toggleRightFold() {
+    const sequences = document.querySelectorAll('.sequence');
+    const anyExpanded = [...sequences].some(seq => !seq.classList.contains('collapsed'));
+    sequences.forEach(seq => {
+      seq.classList.toggle('collapsed', anyExpanded);
+    });
+    const btn = document.getElementById('btnToggleRightFold');
+    // Le libellé décrit l'ACTION À VENIR (convention cohérente avec le HTML initial)
+    if (btn) btn.textContent = anyExpanded ? '▼ Tout plier' : '▶ Tout déplier';
+  }
+
+  // ----------------------------------------------------------
+  // EXPORT MARKDOWN — génère un document structuré
+  // ----------------------------------------------------------
+  function exportMarkdown() {
+    const title = document.getElementById('progressionTitle').textContent.trim() || 'Progression';
+    const subtitle = document.getElementById('sous-titre').textContent.trim();
+    
+    let md = `# ${title}\n\n`;
+    if (subtitle) md += `*${subtitle}*\n\n`;
+    
+    let seqIndex = 0;
+    document.querySelectorAll('#sequences > .sequence, #sequences > .separateur').forEach(el => {
+      if (el.classList.contains('separateur')) {
+        const text = el.querySelector('.separateur-text').textContent.trim();
+        md += `\n---\n## ${text || 'Période / Thème'}\n\n`;
+        return;
+      }
+      
+      seqIndex++;
+      const seqTitle = el.querySelector('.sequence-header span[contenteditable]').textContent.trim();
+      md += `### ${CONFIG.pdf.showNumbers ? seqIndex + '. ' : ''}${seqTitle}\n\n`;
+      
+      const objectifs = [...el.querySelectorAll('.dropzone .objectif')];
+      if (objectifs.length) {
+        objectifs.forEach(o => {
+          const text = o.querySelector('.objectif-text').textContent;
+          md += `- ${text}\n`;
+        });
+        md += '\n';
+      }
+      
+      const commentaires = [...el.querySelectorAll('.commentaire')];
+      commentaires.forEach(c => {
+        const cLabel = c.querySelector('.commentaire-label').textContent;
+        const cBody = c.querySelector('.commentaire-body').innerText; // Utilise innerText pour ignorer le HTML
+        md += `> **${cLabel}**\n> ${cBody.replace(/\n/g, '\n> ')}\n\n`;
+      });
+    });
+
+    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = title.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.md';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+  }
+
+  // ----------------------------------------------------------
+  // EXPORT LATEX — génère un fichier .tex compilable
+  // ----------------------------------------------------------
+  function exportLatex() {
+    const title = document.getElementById('progressionTitle').textContent.trim() || 'Progression';
+
+    // --- Helpers ---
+
+    /** Échappe les caractères spéciaux LaTeX dans une chaîne de texte brut. */
+    function _escapeTex(str) {
+      return String(str)
+        .replace(/\\/g,  '{\\textbackslash}')
+        .replace(/&/g,   '\\&')
+        .replace(/%/g,   '\\%')
+        .replace(/\$/g,  '\\$')
+        .replace(/#/g,   '\\#')
+        .replace(/_/g,   '\\_')
+        .replace(/\{/g,  '\\{')
+        .replace(/\}/g,  '\\}')
+        .replace(/~/g,   '{\\textasciitilde}')
+        .replace(/\^/g,  '{\\textasciicircum}')
+        .replace(/«\s*/g, '\\og ')
+        .replace(/\s*»/g, ' \\fg{}');
+    }
+
+    /**
+     * Convertit le innerHTML d'un bloc commentaire en LaTeX.
+     * Gère : liens <a href="..."> → \plink{url}, <br> → \newline,
+     * <strong>/<b> → \textbf{}, <em>/<i> → \textit{}, texte brut échappé.
+     */
+    function _htmlToTex(html) {
+      // On utilise un DOMParser pour parcourir le HTML proprement
+      const doc = new DOMParser().parseFromString('<div>' + html + '</div>', 'text/html');
+
+      function _nodeToTex(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          return _escapeTex(node.textContent);
+        }
+        if (node.nodeType !== Node.ELEMENT_NODE) return '';
+
+        const tag = node.tagName.toLowerCase();
+        const inner = [...node.childNodes].map(_nodeToTex).join('');
+
+        if (tag === 'a') {
+          const href = node.getAttribute('href') || '';
+          // Si le lien est une URL simple, on utilise \plink{}
+          return '\\plink{' + href + '}';
+        }
+        if (tag === 'strong' || tag === 'b') return '\\textbf{' + inner + '}';
+        if (tag === 'em'     || tag === 'i') return '\\textit{' + inner + '}';
+        if (tag === 'br')                    return '\\\\\n';
+        if (tag === 'p')                     return inner + '\n\n';
+        if (tag === 'ul' || tag === 'ol') {
+          const env = tag === 'ul' ? 'itemize' : 'enumerate';
+          return '\\begin{' + env + '}\n' + inner + '\\end{' + env + '}\n';
+        }
+        if (tag === 'li') return '  \\item ' + inner.trim() + '\n';
+        // Éléments génériques : on restitue le contenu
+        return inner;
+      }
+
+      return [...doc.querySelector('div').childNodes].map(_nodeToTex).join('').trim();
+    }
+
+    /**
+     * Convertit une couleur CSS (hex #rrggbb ou rgb(...)) en code HTML LaTeX (6 chiffres hex, sans #).
+     * Retourne null si la conversion échoue.
+     */
+    function _toLatexHex(cssColor) {
+      if (!cssColor) return null;
+      const s = cssColor.trim();
+      // Forme #rrggbb ou #rgb
+      const hexMatch = s.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+      if (hexMatch) {
+        const h = hexMatch[1];
+        return h.length === 3
+          ? (h[0]+h[0]+h[1]+h[1]+h[2]+h[2]).toUpperCase()
+          : h.toUpperCase();
+      }
+      // Forme rgb(r, g, b)
+      const rgbMatch = s.match(/^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/i);
+      if (rgbMatch) {
+        return [rgbMatch[1], rgbMatch[2], rgbMatch[3]]
+          .map(n => parseInt(n).toString(16).padStart(2, '0'))
+          .join('').toUpperCase();
+      }
+      return null;
+    }
+
+    // --- 1. Table de couleurs nommées (hex → nom LaTeX) ---
+    // On commence par enregistrer toutes les couleurs qui ont déjà un nom fixe.
+    // La table sert ensuite à résoudre n'importe quelle valeur CSS en nom LaTeX,
+    // et à déclarer des noms générés pour les couleurs anonymes (séparateurs,
+    // couleurs individuelles de séquences).
+    const _colorMap  = new Map(); // hex normalisé (majuscules) → nom LaTeX
+    const _extraDefs = [];        // {name, hex} couleurs supplémentaires à déclarer
+
+    /** Enregistre une couleur dans la table hex→nom (sans l'ajouter aux defs). */
+    function _registerNamed(name, hex) {
+      if (hex) _colorMap.set(hex.toUpperCase(), name);
+    }
+
+    /**
+     * Résout une couleur CSS en nom LaTeX.
+     * Si la couleur est déjà dans la table, retourne son nom.
+     * Sinon, déclare un nouveau nom généré, l'ajoute à _extraDefs et à la table.
+     * @param {string} cssColor  Valeur CSS (#rrggbb, rgb(...), …)
+     * @param {string} suggested Nom préféré si la couleur est inconnue
+     * @returns {string|null} Nom LaTeX, ou null si la couleur est invalide.
+     */
+    function _resolveColorName(cssColor, suggested) {
+      const hex = _toLatexHex(cssColor);
+      if (!hex) return null;
+      const key = hex.toUpperCase();
+      if (_colorMap.has(key)) return _colorMap.get(key);
+      // Couleur inconnue : on crée un nom unique
+      const name = suggested || ('color' + _extraDefs.length);
+      _colorMap.set(key, name);
+      _extraDefs.push({ name, hex: key });
+      return name;
+    }
+
+    // --- 2. Bloc \definecolor des thèmes (couleurs connues) ---
+    let colorDefs = '';
+    Object.entries(CONFIG.colors).forEach(([key, val]) => {
+      const hex = _toLatexHex(val);
+      if (hex) {
+        colorDefs += `\\definecolor{${key}}{HTML}{${hex}}\n`;
+        _registerNamed(key, hex);
+      }
+    });
+
+    // Couleurs des commentaires
+    const commentBorderHex = _toLatexHex(CONFIG.comment.border);
+    const commentHeaderHex = _toLatexHex(CONFIG.comment.header);
+    const commentBodyHex   = _toLatexHex(CONFIG.comment.body);
+    if (commentBorderHex) { colorDefs += `\\definecolor{commentborder}{HTML}{${commentBorderHex}}\n`; _registerNamed('commentborder', commentBorderHex); }
+    if (commentHeaderHex) { colorDefs += `\\definecolor{commenttitlebg}{HTML}{${commentHeaderHex}}\n`; _registerNamed('commenttitlebg', commentHeaderHex); }
+    if (commentBodyHex)   { colorDefs += `\\definecolor{commentbg}{HTML}{${commentBodyHex}}\n`;   _registerNamed('commentbg', commentBodyHex); }
+    colorDefs += `\\colorlet{commenttitlefg}{commentborder!60!black}\n`;
+    colorDefs += `\\colorlet{sepbg}{black!70}\n`;
+
+    // --- 3. Corps du document : séquences, séparateurs ---
+    // Les couleurs anonymes rencontrées ici seront accumulées dans _extraDefs.
+    let body = '';
+    let seqIndex  = 0;
+    let sepIndex  = 0;
+    let seqColIdx = 0;
+
+    document.querySelectorAll('#sequences > .sequence, #sequences > .separateur').forEach(el => {
+
+      // — Séparateur —
+      if (el.classList.contains('separateur')) {
+        const text    = el.querySelector('.separateur-text').textContent.trim();
+        const cssColor = el.dataset.color || '#c8a200';
+        sepIndex++;
+        const colorName = _resolveColorName(cssColor, `sepcolor${sepIndex}`);
+        const colorOpt  = colorName ? `colback=${colorName}` : '';
+        body += `\n\\psep${colorOpt ? '[' + colorOpt + ']' : ''}{${_escapeTex(text)}}\n`;
+        return;
+      }
+
+      // — Séquence —
+      seqIndex++;
+      const seqTitle = el.querySelector('.sequence-header span[contenteditable]').textContent.trim();
+
+      // Options de couleur individuelle de la séquence
+      const seqHeaderCss = el.dataset.headerColor || null;
+      const seqBodyCss   = el.dataset.bodyColor   || null;
+      let seqOpts = [];
+      if (seqHeaderCss) {
+        seqColIdx++;
+        const n = _resolveColorName(seqHeaderCss, `seqheader${seqColIdx}`);
+        if (n) seqOpts.push(`colbacktitle=${n}`);
+      }
+      if (seqBodyCss) {
+        seqColIdx++;
+        const n = _resolveColorName(seqBodyCss, `seqbody${seqColIdx}`);
+        if (n) seqOpts.push(`colback=${n}`);
+      }
+      const seqOptStr = seqOpts.length ? '[' + seqOpts.join(', ') + ']' : '';
+
+      body += `\n\\begin{psequence}${seqOptStr}{${_escapeTex(seqTitle)}}\n`;
+
+      // Objectifs et commentaires (dans l'ordre du DOM)
+      el.querySelectorAll('.dropzone > .objectif, .dropzone ~ .commentaire, .commentaire').forEach(child => {
+        if (child.classList.contains('objectif')) {
+          const text = child.querySelector('.objectif-text').textContent;
+
+          // Résolution de la couleur : priorité au data-color (nom de thème connu),
+          // sinon style inline (couleur de sous-thème calculée par dégradé).
+          let colorName = null;
+          const colorKey = child.dataset.color; // ex: "theme1"
+          if (colorKey && _colorMap.has(_toLatexHex(CONFIG.colors[colorKey] || '')?.toUpperCase() || '')) {
+            colorName = colorKey; // nom déjà connu
+          }
+          if (!colorName) {
+            const cssColor = child.style.backgroundColor || (colorKey ? CONFIG.colors[colorKey] : '') || '';
+            colorName = _resolveColorName(cssColor, colorKey || 'objcolor');
+          }
+
+          body += `\\pitem{${colorName || 'black'}}{${_escapeTex(text)}}\n`;
+
+        } else if (child.classList.contains('commentaire')) {
+          const labelEl = child.querySelector('.commentaire-label');
+          const bodyEl  = child.querySelector('.commentaire-body');
+          const label   = labelEl ? labelEl.textContent.trim() : 'Commentaire';
+          const texBody = bodyEl  ? _htmlToTex(bodyEl.innerHTML) : '';
+          body += `\\begin{pcomment}{${_escapeTex(label)}}\n${texBody}\n\\end{pcomment}\n`;
+        }
+      });
+
+      body += `\\end{psequence}\n`;
+    });
+
+    // Injecter les \definecolor supplémentaires (couleurs anonymes résolues à la volée)
+    if (_extraDefs.length) {
+      colorDefs += _extraDefs
+        .map(({ name, hex }) => `\\definecolor{${name}}{HTML}{${hex}}`)
+        .join('\n') + '\n';
+    }
+
+    // --- 4. Assemblage du fichier complet ---
+    // Le préambule statique (tout avant %%%%%%% Début zone à modifier dynamiquement)
+    // est reproduit tel quel depuis le template.
+    const staticPreamble = `\\documentclass[11pt, a4paper]{article}
+
+\\usepackage[most]{tcolorbox}
+\\usetikzlibrary{shapes.geometric}
+\\usepackage[sfdefault]{roboto}
+\\usepackage{titleps}
+\\usepackage{geometry}
+
+\\usepackage[french]{babel}
+\\usepackage[stretch, shrink, final, babel]{microtype}
+
+\\usepackage[unicode]{hyperref}
+
+\\hypersetup{
+    colorlinks=false,
+    linkbordercolor=1 1 1,
+    urlbordercolor=1 1 1,
+    pdfborder = {0 0 0}
+    }
+
+\\geometry{body={18cm,27cm}, centering, foot=6mm, headsep=7pt}
+
+
+%%% Numérotation des séquences
+
+\\newcounter{numsequence}
+
+\\newcommand\\gtcbset[1]{%
+\\begingroup%
+ \\globaldefs=1\\relax%
+ \\pgfqkeys{/tcb}{#1}%
+\\endgroup%
+}
+
+\\newcommand\\twodigits[1]{%
+\\ifnum#1<10 0#1\\else #1\\fi%
+}
+
+\\newcommand{\\formatnumseq}[1]{%
+\\tcbox[numseqbox]{#1}%
+}
+
+\\tcbset{
+    numseq/.style={
+        before title=\\formatnumseq{\\twodigits{\\thetcbcounter}}\\hspace*{1em}
+    },
+    numseqbox/.style={
+        enhanced jigsaw, on line, 
+        frame hidden, boxrule=0pt,
+        colback=white,
+        coltext=black!70,
+        boxsep=3pt, top=0pt, bottom=0pt, left=0pt, right=0pt,
+        width=2em,
+        tcbox width=forced center
+    }
+}
+
+\\newcommand{\\numseq}[1]{%
+\\foreach \\n in {#1} {%
+\\gtcbset{psequence \\n/.style={numseq}}%
+}%
+}
+
+
+%%% Titre du document
+
+\\newtcolorbox{ptitle}[1][]{
+enhanced jigsaw, sharp corners,
+opacityback=0,
+boxrule=0pt,
+boxsep=0pt, top=0pt, bottom=1ex, left=1em, right=1em,
+bottomrule=1pt,
+fontupper=\\bfseries\\Large,
+after skip=5mm,
+#1
+}
+
+
+%%% Séquences
+
+\\newtcolorbox[auto counter]{psequencebox}[2][]{
+enhanced jigsaw, sharp corners,
+adjusted title=#2,
+fonttitle=\\bfseries,
+rounded corners, arc=2mm,
+#1
+}
+\\newenvironment{psequence}[2][]%
+{%
+\\stepcounter{numsequence}%
+\\begin{psequencebox}[#1, psequence \\thenumsequence/.try]{#2}%
+\\begin{tcbraster}[raster columns=1, raster before skip=0pt, raster after skip=0pt, raster row skip=1mm]%
+}%
+{%
+\\end{tcbraster}%
+\\end{psequencebox}%
+}
+ 
+ 
+%%% Objectifs
+ 
+\\newtcolorbox{pitembox}[2][]{
+enhanced jigsaw, 
+rounded corners, arc=1mm,
+colback=#2,
+coltext=white,
+halign=justify,
+frame hidden, boxrule=0pt,
+boxsep=4pt, top=0pt, bottom=0pt, left=0pt, right=0pt,
+fontupper=\\small,
+after skip=1mm, before skip=1mm,
+#1
+}
+\\newcommand{\\pitem}[3][]{%
+\\begin{pitembox}[#1]{#2}
+#3
+\\end{pitembox}%
+}
+
+
+%%% Commentaires
+
+\\newtcolorbox{pcomment}[2][]{
+enhanced jigsaw,
+sharp corners,
+colback=commentbg,
+adjusted title=#2,
+colbacktitle=commenttitlebg,
+coltitle=commenttitlefg,
+fonttitle=\\footnotesize\\bfseries,
+coltext=black,
+halign=justify,
+colframe=commentborder,
+boxrule=0pt, leftrule=1pt,
+boxsep=2pt, top=2pt, bottom=0pt, left=2pt, right=2pt,
+toptitle=0pt, bottomtitle=0pt,
+fontupper=\\footnotesize,
+after skip=1mm, before skip=1mm,
+#1
+}
+
+%%% Liens dans commentaires
+
+\\newcommand{\\plink}[1]{%
+\\href{#1}{\\textit{#1}}%
+}
+
+
+%%% Ligne séparatrice
+
+\\newtcolorbox{psepbox}[1][]{
+enhanced jigsaw,
+frame hidden, interior hidden,
+colback=sepbg,
+halign=center,
+after skip=1mm, before skip=1mm,
+underlay={
+    \\draw[line width=1pt, tcbcolback] (frame.west)--(frame.east) 
+        node[midway, rounded corners=2mm, fill=tcbcolback, inner xsep=1em, inner ysep=1.5pt, node font=\\small] {\\tcbtitle} ;
+},
+detach title,
+#1
+}
+\\newcommand{\\psep}[2][]{%
+\\begin{psepbox}[adjusted title=#2, #1]
+\\phantom{Ép} 
+\\end{psepbox}%
+}
+
+
+%%% Pied de page
+
+\\newtcolorbox{pfooter}[1][]{%
+enhanced jigsaw, sharp corners,
+nobeforeafter,
+opacityback=0,
+boxsep=0pt,
+top=4pt, bottom=0pt, left=0pt, right=0pt,
+fontupper=\\footnotesize,
+boxrule=0pt,
+toprule=1pt
+#1
+}
+
+\\makeatletter
+\\newpagestyle{main}{
+\\setfoot[%
+\\begin{pfooter}
+\\thepage/\\@abspage@last\\hfill\\titredocument
+\\end{pfooter}
+][][]
+{%
+\\begin{pfooter}
+\\titredocument\\hfill\\thepage/\\@abspage@last
+\\end{pfooter}
+}{}{}
+}
+\\makeatother
+\\pagestyle{main}
+
+
+%%%%%%% Début zone à modifier dynamiquement
+`;
+
+    const numseqComment = CONFIG.pdf.showNumbers
+      ? `\\numseq{${Array.from({length: seqIndex}, (_, i) => i + 1).join(',')}}`
+      : `% Éventuelle numérotation des séquences :\n%\\numseq{1,2}`;
+
+    const out =
+      staticPreamble +
+      '\n' + colorDefs + '\n' +
+      `\\def\\titredocument{${_escapeTex(title)}}\n\n` +
+      `\\begin{document}\n` +
+      `\\begin{ptitle}\n\\titredocument\n\\end{ptitle}\n\n` +
+      numseqComment + '\n' +
+      body + '\n' +
+      `\\end{document}\n`;
+
+    // --- 4. Téléchargement ---
+    const safe = title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    const blob = new Blob([out], { type: 'text/plain;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = safe + '.tex';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+  }
+
+  // ----------------------------------------------------------
+  // EXPORT HTML
+  // Le SNAPSHOT est stocké dans une balise <script type="application/json">
+  // séparée du code JS. Le navigateur ne parse jamais son contenu comme JS
+  // et ne le normalise donc pas (pas de &quot;, pas d'encodage parasite).
+  // exportHTML() remplace le contenu de cette balise via une regex sur outerHTML.
+  // ----------------------------------------------------------
+  function exportHTML() {
+    const title     = document.getElementById('progressionTitle').textContent.trim() || 'Progression';
+    const sousTitre = document.getElementById('sous-titre').textContent.trim();
+
+    // --- 1. Collecter l'état des séquences et séparateurs ---
+    const savedItems = [];
+    document.querySelectorAll('#sequences > .sequence, #sequences > .separateur').forEach(el => {
+      if (el.classList.contains('sequence')) {
+        const seqTitle  = el.querySelector('.sequence-header span[contenteditable]').textContent.trim();
+        const collapsed = el.classList.contains('collapsed');
+        const items = [...el.querySelectorAll('.dropzone > .objectif')].map(o => ({
+          text:     o.querySelector('.objectif-text').textContent,
+          theme:    o.dataset.theme,
+          subtheme: o.dataset.subtheme || '',
+          color:    o.style.backgroundColor || CONFIG.colors[o.dataset.color] || o.dataset.color,
+          code:     o.dataset.code || '',
+          type:     o.dataset.type || '',
+          page:     o.dataset.page || '',
+          boRef:    o.dataset.boRef || '',
+          boUrl:    o.dataset.boUrl || '',
+        }));
+        const comments = [...el.querySelectorAll('.commentaire')].map(c => ({
+          label: c.querySelector('.commentaire-label').textContent,
+          html:  c.querySelector('.commentaire-body').innerHTML,
+          open:  c.classList.contains('open'),
+        }));
+        savedItems.push({
+          type: 'sequence',
+          title: seqTitle,
+          collapsed,
+          headerColor: el.dataset.headerColor || null,
+          bodyColor:   el.dataset.bodyColor   || null,
+          items,
+          comments,
+        });
+      } else if (el.classList.contains('separateur')) {
+        const text  = el.querySelector('.separateur-text').textContent.trim();
+        const color = el.dataset.color || SEP_COLORS[0].value;
+        savedItems.push({ type: 'separateur', text, color });
+      }
+    });
+
+    // --- 2. Snapshot complet ---
+    const snapshot = { title, sousTitre, config: CONFIG, data: DATA, sequences: savedItems };
+
+    // --- 3. Sérialiser le snapshot en JSON ---
+    // "\u003C/script>" doit être échappé dans le JSON pour éviter de fermer
+    // prématurément la balise de stockage dans le fichier exporté.
+    const safeJson = JSON.stringify(snapshot)
+      .replace(/\u003C\/script>/gi, '\u003C\/script>');
+
+    // --- 4. Injecter le snapshot dans le source ---
+    // _srcCache est capturé une fois dans init(), après DOMContentLoaded,
+    // quand le document est complètement parsé. Il est donc toujours complet.
+    const _ss = '__SNAPSHOT' + '_START__';
+    const _se = '__SNAPSHOT' + '_END__';
+    const snapRx = new RegExp('<!--\\s*' + _ss + '\\s*-->[\\s\\S]*?<!--\\s*' + _se + '\\s*-->');
+
+    const newSnapBlock =
+      '<!-- __SNAPSHOT' + '_START__ -->\n' +
+      '<script type=\"application/json\" id=\"__snapshot__\">' + safeJson + '<' + '/script>\n' +
+      '<!-- __SNAPSHOT' + '_END__ -->';
+
+    let out = _srcCache;
+    if (snapRx.test(out)) {
+      out = out.replace(snapRx, () => newSnapBlock);
+    } else {
+      console.warn('[exportHTML] Marqueurs snapshot introuvables.');
+    }
+
+    // --- 5. Mettre à jour le <title> de la page exportée ---
+    out = out.replace(/<title>[^<]*<\/title>/i, `<title>${title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</title>`);
+
+    // --- 6. Télécharger ---
+    // Normalisation Unicode pour conserver les lettres accentuées dans le nom de fichier :
+    // on décompose (NFD) pour séparer la lettre de son diacritique, puis on retire
+    // les diacritiques (catégorie Mn), et enfin on remplace tout caractère restant
+    // hors [a-z0-9] par un underscore.
+    const safe = title
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    const blob = new Blob([out], { type: 'text/html;charset=utf-8' });
+    const a    = document.createElement('a');
+    a.href     = URL.createObjectURL(blob);
+    a.download = safe + '.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+    _showSaveToast();
+  }
+
+  /**
+   * Échappe les caractères HTML spéciaux pour éviter toute injection XSS
+   * lors de la construction du document d'impression.
+   */
+  function _escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  // ----------------------------------------------------------
+  // EXPORT PDF — fenêtre d'impression dédiée avec mise en page maîtrisée
+  // ----------------------------------------------------------
+  function exportPDF() {
+    const title = document.getElementById('progressionTitle')
+                          .textContent.trim() || 'Progression';
+    const date  = new Date().toLocaleDateString('fr-FR', {
+      day: '2-digit', month: 'long', year: 'numeric'
+    });
+
+    // Collecter les séquences et séparateurs sous forme de HTML propre
+    let seqHTML = '';
+    let seqIndex = 0;
+    document.querySelectorAll('#sequences > .sequence, #sequences > .separateur').forEach(el => {
+      if (el.classList.contains('separateur')) {
+        const text  = el.querySelector('.separateur-text').textContent.trim();
+        const badge = el.querySelector('.separateur-badge');
+        const color = el.dataset.color || '#c8a200';
+        seqHTML += `
+          <div style="display:flex;align-items:center;margin:14pt 0 8pt;gap:0;">
+            <div style="flex:1;height:2px;background:${color};opacity:0.5;border-radius:1px;"></div>
+            <div style="background:${color};color:white;font-weight:bold;font-size:9pt;
+                        border-radius:10px;padding:3px 14px;margin:0 0;white-space:nowrap;
+                        -webkit-print-color-adjust:exact;print-color-adjust:exact;">
+              ${_escapeHtml(text)}
+            </div>
+            <div style="flex:1;height:2px;background:${color};opacity:0.5;border-radius:1px;"></div>
+          </div>`;
+        return;
+      }
+
+      seqIndex++;
+      const seqTitle = el.querySelector('.sequence-header span[contenteditable]')
+                          .textContent.trim();
+      const objectifs = [...el.querySelectorAll('.dropzone .objectif')];
+      const commentaires = [...el.querySelectorAll('.commentaire')];
+
+      const objHTML = objectifs.length
+        ? objectifs.map(o => {
+            const text  = o.querySelector('.objectif-text').textContent;
+            const color = o.style.backgroundColor || _cssColorForObjectif(o);
+            return `<li style="background:${color} !important;color:white !important;padding:4px 8px;
+                              border-radius:4px;margin:3px 0;font-size:10pt;
+                              list-style:none;-webkit-print-color-adjust:exact;print-color-adjust:exact;">${_escapeHtml(text)}</li>`;
+          }).join('')
+        : `<li style="color:#aaa;font-style:italic;font-size:9pt;list-style:none;">
+             (aucun objectif)
+           </li>`;
+
+      const commHTML = commentaires.map(c => {
+        const bodyHTML  = c.querySelector('.commentaire-body').innerHTML;
+        const cBorder   = CONFIG.comment.border;
+        const cHeaderBg = CONFIG.comment.header;
+        return `<div style="border-left:3px solid ${cBorder} !important;background:${cHeaderBg} !important;
+                            border-radius:0 3px 3px 0;margin:4pt 0 0;padding:4pt 8pt;
+                            font-size:9pt;color:#333 !important;-webkit-print-color-adjust:exact;
+                            print-color-adjust:exact;">
+                  <strong style="color:#333 !important;font-size:8.5pt;">Commentaire / Ressource</strong><br>
+                  <span>${bodyHTML}</span>
+                </div>`;
+      }).join('');
+
+      const seqHeaderBg = el.dataset.headerColor || CONFIG.sequence.headerBg;
+      const seqBodyBg   = el.dataset.bodyColor   || CONFIG.sequence.bodyBg;
+
+      seqHTML += `
+        <div class="seq-block" style="background:${seqBodyBg} !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;">
+          <div class="seq-header" style="background:${seqHeaderBg} !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;">${CONFIG.pdf.showNumbers ? seqIndex + '. ' : ''}${_escapeHtml(seqTitle)}</div>
+          <ul class="seq-body">${objHTML}</ul>
+          ${commHTML}
+        </div>`;
+    });
+
+    if (!seqHTML) {
+      seqHTML = `<p style="color:#888;font-style:italic;">Aucune séquence à imprimer.</p>`;
+    }
+
+    const printDoc = `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>${_escapeHtml(title)}</title>
+  <style>
+    * { 
+      box-sizing: border-box; 
+      -webkit-print-color-adjust: exact !important; 
+      print-color-adjust: exact !important; 
+    }
+    body {
+      font-family: ${CONFIG.pdf.fontFamily};
+      font-size: 11pt;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
+    /* En-tête de page */
+    .print-header {
+      border-bottom: 2px solid #333;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .print-header h1 {
+      margin: 0 0 4px;
+      font-size: 18pt;
+    }
+    .print-meta {
+      display: ${CONFIG.pdf.showDate ? 'block' : 'none'};
+      font-size: 9pt;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    /* Blocs séquence */
+    .seq-block {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      margin-bottom: 14pt;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .seq-header {
+      background: #e5e5e5 !important;
+      font-weight: bold;
+      font-size: 11pt;
+      padding: 6px 10px;
+      border-bottom: 1px solid #bbb;
+    }
+    .seq-body {
+      padding: 6px 10px;
+      margin: 0;
+    }
+    /* Numérotation des pages */
+    @page {
+      margin: 2cm 2.5cm 2.5cm;
+      @bottom-center {
+        content: counter(page) ' / ' counter(pages);
+        font-size: 8pt;
+        color: #888;
+      }
+      @top-right {
+        content: '${title.replace(/'/g, "\\'")}';
+        font-size: 8pt;
+        color: #888;
+        font-style: italic;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="print-header">
+    <h1>${_escapeHtml(title)}</h1>
+    <div class="print-meta">Imprimé le ${date}</div>
+  </div>
+  ${seqHTML}
+  <script>window.onload = () => { window.print(); window.onafterprint = () => window.close(); }<' + '/script>
+</body>
+</html>`;
+
+    const win = window.open('', '_blank', 'width=900,height=700');
+    if (!win) {
+      alert('Le popup d\'impression a été bloqué. Autorisez les popups pour ce site.');
+      return;
+    }
+    win.document.write(printDoc);
+    win.document.close();
+  }
+
+  /** Retourne la couleur hex d'un objectif pour l'export PDF.
+   * Lit d'abord CONFIG.colors[dataset.color] (clé nommée),
+   * puis le style inline de secours (objectifs orphelins), sinon gris. */
+  function _cssColorForObjectif(el) {
+    return CONFIG.colors[el.dataset.color]
+      || el.style.backgroundColor
+      || '#555';
+  }
+
+  // ----------------------------------------------------------
+  // IMPORT / EXPORT DU REFERENTIEL (DATA)
+  // ----------------------------------------------------------
+  function exportBiblio() {
+    try {
+      const dataStr = JSON.stringify(DATA, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'bibliotheque_objectifs.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Erreur lors de l'export du référentiel :", err);
+      alert("Une erreur est survenue lors de l'exportation.");
+    }
+  }
+
+  function importBiblio(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const proceed = window.confirm(
+      "ATTENTION : L'importation d'un nouveau référentiel va réinitialiser votre progression actuelle.\n\n" +
+      "Toutes les séquences et séparateurs seront supprimés. Voulez-vous continuer ?"
+    );
+
+    if (!proceed) {
+      input.value = '';
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const newData = JSON.parse(e.target.result);
+
+        // Validation intermédiaire
+        const isValid = Object.values(newData).every(theme => 
+          theme.color && theme.themes && typeof theme.themes === 'object'
+        );
+
+        if (!isValid) {
+          throw new Error("Structure de référentiel invalide (champs manquants)");
+        }
+
+        // Mise à jour de la source de vérité
+        DATA = newData;
+
+        // Reset Propre & Render Global
+        _resetApplication();
+        _generateLeft();
+        _applyConfigStyles(); // Recalculer le dégradé des sous-thèmes du nouveau référentiel
+        updateCounts();
+
+        alert("Référentiel importé avec succès !");
+
+      } catch (err) {
+        console.error("Erreur lors de l'import :", err);
+        alert("Échec de l'importation : Le fichier n'est pas un JSON de référentiel valide.");
+      } finally {
+        input.value = '';
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  /** Réinitialisation complète de l'état UI et des compteurs */
+  function _resetApplication() {
+    // Vider le plan de travail
+    const seqContainer = document.getElementById('sequences');
+    if (seqContainer) seqContainer.innerHTML = '';
+
+    // Reset des compteurs et états
+    _initialCounts = {};
+
+    // Reset du titre et sous-titre si nécessaire
+    const titleEl = document.getElementById('progressionTitle');
+    if (titleEl) titleEl.textContent = "Nouvelle Progression";
+    
+    const sousTitreEl = document.getElementById('sous-titre');
+    if (sousTitreEl) sousTitreEl.textContent = "Description de la progression...";
+  }
+
+  // ----------------------------------------------------------
+  // PANNEAU DE CONFIGURATION
+  // ----------------------------------------------------------
+  function toggleConfigPanel() {
+    const panel = document.getElementById('configPanel');
+    const isOpen = panel.classList.toggle('open');
+    if (isOpen) {
+      _renderConfigUI();
+    }
+  }
+
+  function _renderConfigUI() {
+    // PDF Options
+    document.getElementById('cfgPdfNumbers').checked = CONFIG.pdf.showNumbers;
+    document.getElementById('cfgPdfDate').checked    = CONFIG.pdf.showDate;
+    document.getElementById('cfgPdfFont').value      = CONFIG.pdf.fontFamily;
+
+    // — Couleurs des thèmes —
+    const colorsList = document.getElementById('configColorsList');
+    colorsList.innerHTML = '';
+    
+    const getThemeLabel = (colorKey) => {
+      const found = Object.entries(DATA).find(([name, val]) => val.color === colorKey);
+      return found ? found[0] : colorKey;
+    };
+
+    Object.entries(CONFIG.colors).forEach(([key, val]) => {
+      const item = document.createElement('div');
+      item.className = 'config-color-item';
+      const label = document.createElement('label');
+      label.textContent = getThemeLabel(key);
+      const input = document.createElement('input');
+      input.type = 'color';
+      input.value = val;
+      input.onchange = (e) => updateConfig(`colors.${key}`, e.target.value);
+      item.append(label, input);
+      colorsList.appendChild(item);
+    });
+
+    // — Couleurs du bloc commentaire —
+    const commentList = document.getElementById('configCommentColors');
+    commentList.innerHTML = '';
+    const commentFields = [
+      { key: 'border',  label: 'Couleur de la bordure' },
+      { key: 'header',  label: 'Fond de l\'en-tête'    },
+      { key: 'body',    label: 'Fond du corps'          },
+    ];
+    commentFields.forEach(({ key, label }) => {
+      const item = document.createElement('div');
+      item.className = 'config-color-item';
+      const lbl = document.createElement('label');
+      lbl.textContent = label;
+      const input = document.createElement('input');
+      input.type = 'color';
+      input.value = CONFIG.comment[key];
+      input.onchange = (e) => {
+        CONFIG.comment[key] = e.target.value;
+        _applyConfigStyles();
+      };
+      item.append(lbl, input);
+      commentList.appendChild(item);
+    });
+
+    // — Couleurs globales des séquences —
+    const seqList = document.getElementById('configSequenceColors');
+    seqList.innerHTML = '';
+    const seqFields = [
+      { key: 'headerBg', label: 'Fond de l\'en-tête (défaut)' },
+      { key: 'bodyBg',   label: 'Fond de la séquence (défaut)' },
+    ];
+    seqFields.forEach(({ key, label }) => {
+      const item = document.createElement('div');
+      item.className = 'config-color-item';
+      const lbl = document.createElement('label');
+      lbl.textContent = label;
+      const input = document.createElement('input');
+      input.type = 'color';
+      input.value = CONFIG.sequence[key];
+      input.onchange = (e) => {
+        CONFIG.sequence[key] = e.target.value;
+        _applyConfigStyles();
+        // Propager aux séquences qui n'ont pas de couleur individuelle
+        document.querySelectorAll('.sequence').forEach(seq => {
+          if (!seq.dataset.headerColor) seq.querySelector('.sequence-header').style.background = '';
+          if (!seq.dataset.bodyColor)   seq.style.background = '';
+        });
+      };
+      item.append(lbl, input);
+      seqList.appendChild(item);
+    });
+  }
+
+  function updateConfig(path, value) {
+    const keys = path.split('.');
+    let obj = CONFIG;
+    for (let i = 0; i < keys.length - 1; i++) {
+      obj = obj[keys[i]];
+    }
+    obj[keys[keys.length - 1]] = value;
+
+    if (path.startsWith('colors.') || path.startsWith('comment.') || path.startsWith('sequence.')) {
+      _applyConfigStyles();
+    }
+  }
+
+  // ----------------------------------------------------------
+  // AJOUT D'UN SÉPARATEUR
+  // ----------------------------------------------------------
+  const SEP_COLORS = [
+    { label: 'Doré',         value: '#c8a200' },
+    { label: 'Bleu acier',   value: '#4a6fa5' },
+    { label: 'Ardoise',      value: '#5a6a7a' },
+    { label: 'Terracotta',   value: '#b5533c' },
+    { label: 'Forêt',        value: '#3a7a4a' },
+    { label: 'Violet',       value: '#6b4f9e' },
+  ];
+
+  function addSeparateur(text, color) {
+    const initText  = (text  !== undefined) ? text  : '';
+    const initColor = color || SEP_COLORS[0].value;
+
+    const sep = document.createElement('div');
+    sep.className = 'separateur';
+    sep.draggable = true;
+    // Stocker la couleur en dataset (valeur hex brute) pour éviter que
+    // le navigateur normalise style.background en "rgb(...)" lors de la lecture.
+    sep.dataset.color = initColor;
+
+    // — Ligne avec badge central —
+    const line = document.createElement('div');
+    line.className = 'separateur-line';
+    line.style.setProperty('--sep-color', initColor);
+
+    // Badge central
+    const badge = document.createElement('div');
+    badge.className = 'separateur-badge';
+    badge.style.background = initColor;
+
+    // Icône grip
+    const grip = document.createElement('span');
+    grip.className = 'separateur-grip';
+    grip.textContent = '⠿';
+    grip.setAttribute('aria-hidden', 'true');
+
+    // Texte éditable
+    const textEl = document.createElement('span');
+    textEl.className = 'separateur-text';
+    textEl.contentEditable = 'true';
+    textEl.textContent = initText;
+    textEl.setAttribute('aria-label', 'Texte du séparateur');
+    textEl.addEventListener('mousedown', e => e.stopPropagation());
+    textEl.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); textEl.blur(); }
+    });
+
+    badge.appendChild(grip);
+    badge.appendChild(textEl);
+
+    // — Palette + Actions —
+    const actions = document.createElement('div');
+    actions.className = 'separateur-actions';
+
+    const colorGrid = document.createElement('div');
+    colorGrid.className = 'separateur-colors';
+
+    SEP_COLORS.forEach(c => {
+      const dot = document.createElement('div');
+      dot.className = 'sep-color-dot' + (c.value === initColor ? ' active' : '');
+      dot.style.background = c.value;
+      dot.onclick = () => {
+        colorGrid.querySelectorAll('.sep-color-dot').forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+        line.style.setProperty('--sep-color', c.value);
+        badge.style.background = c.value;
+        // Maintenir le dataset synchronisé (valeur hex brute, non normalisée)
+        sep.dataset.color = c.value;
+      };
+      colorGrid.appendChild(dot);
+    });
+
+    const btnDel = document.createElement('button');
+    btnDel.className = 'btn-remove-sep';
+    btnDel.textContent = '✕';
+    btnDel.onclick = () => sep.remove();
+
+    actions.append(colorGrid, btnDel);
+
+    line.appendChild(badge);
+    sep.append(line, actions);
+
+    // — Drag du séparateur —
+    sep.addEventListener('dragstart', e => {
+      if (e.target !== sep && e.target !== badge && e.target !== grip) return;
+      _draggedEl = sep;
+      sep.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+
+    sep.addEventListener('dragend', () => {
+      sep.classList.remove('dragging');
+      if (_draggedEl === sep) _draggedEl = null;
+      _clearSeqGhost();
+    });
+
+    document.getElementById('sequences').appendChild(sep);
+    // Focus auto si nouveau
+    if (text === undefined) setTimeout(() => textEl.focus(), 50);
+    return sep;
+  }
+
+  // ----------------------------------------------------------
+  // SÉLECTION MULTIPLE
+  // ----------------------------------------------------------
+  function _updateSelectionBar() {
+    const selected = document.querySelectorAll('#leftContent .objectif.selected');
+    const bar = document.getElementById('selectionBar');
+    const count = document.getElementById('selectionCount');
+    const select = document.getElementById('selectionTarget');
+    if (selected.length > 0) {
+      bar.classList.add('visible');
+      count.textContent = selected.length + ' sélectionné' + (selected.length > 1 ? 's' : '');
+      // Rafraîchir la liste des séquences
+      const seqs = document.querySelectorAll('#sequences .sequence');
+      const prevVal = select.value;
+      select.innerHTML = '';
+      if (seqs.length === 0) {
+        const opt = document.createElement('option');
+        opt.value = '__new__';
+        opt.textContent = '+ Nouvelle séquence';
+        select.appendChild(opt);
+      } else {
+        seqs.forEach((seq, i) => {
+          const title = seq.querySelector('.sequence-header span[contenteditable]');
+          const opt = document.createElement('option');
+          opt.value = String(i);
+          opt.textContent = (i + 1) + '. ' + (title ? title.textContent.trim() : 'Séquence');
+          select.appendChild(opt);
+        });
+        const optNew = document.createElement('option');
+        optNew.value = '__new__';
+        optNew.textContent = '+ Nouvelle séquence';
+        select.appendChild(optNew);
+      }
+      // Sélectionner la dernière séquence par défaut, ou restaurer la sélection
+      if (prevVal && select.querySelector(`option[value="${prevVal}"]`)) {
+        select.value = prevVal;
+      } else {
+        select.value = seqs.length > 0 ? String(seqs.length - 1) : '__new__';
+      }
+    } else {
+      bar.classList.remove('visible');
+    }
+  }
+
+  function clearSelection() {
+    document.querySelectorAll('#leftContent .objectif.selected').forEach(obj => {
+      obj.classList.remove('selected');
+      const cb = obj.querySelector('.objectif-check');
+      if (cb) cb.checked = false;
+    });
+    _updateSelectionBar();
+  }
+
+  function moveSelection() {
+    const selected = [...document.querySelectorAll('#leftContent .objectif.selected')];
+    if (!selected.length) return;
+
+    const select = document.getElementById('selectionTarget');
+    const targetVal = select ? select.value : '__new__';
+
+    let targetSeq;
+    if (targetVal === '__new__') {
+      targetSeq = addSequence();
+    } else {
+      const seqs = document.querySelectorAll('#sequences .sequence');
+      const idx = parseInt(targetVal, 10);
+      targetSeq = seqs[idx] || seqs[seqs.length - 1];
+      if (!targetSeq) targetSeq = addSequence();
+    }
+
+    const dropzone = targetSeq.querySelector('.dropzone');
+    if (!dropzone) return;
+
+    targetSeq.classList.remove('collapsed');
+
+    selected.forEach(obj => {
+      obj.classList.remove('selected');
+      const cb = obj.querySelector('.objectif-check');
+      if (cb) cb.checked = false;
+      dropzone.appendChild(obj);
+    });
+
+    _updateSelectionBar();
+    updateCounts();
+  }
+
+  // Drag multi-sélection : quand on drag un objectif sélectionné,
+  // tous les sélectionnés suivent
+  function _handleMultiDrop(dropzone, draggedEl) {
+    const selected = [...document.querySelectorAll('#leftContent .objectif.selected')];
+    if (selected.length > 1 && selected.includes(draggedEl)) {
+      selected.forEach(obj => {
+        if (obj !== draggedEl) {
+          obj.classList.remove('selected');
+          const cb = obj.querySelector('.objectif-check');
+          if (cb) cb.checked = false;
+          dropzone.appendChild(obj);
+        }
+      });
+      draggedEl.classList.remove('selected');
+      const cb = draggedEl.querySelector('.objectif-check');
+      if (cb) cb.checked = false;
+      _updateSelectionBar();
+    }
+  }
+
+  // ----------------------------------------------------------
+  // EXPORT / IMPORT PROGRESSION JSON
+  // ----------------------------------------------------------
+  function exportProgressionJSON() {
+    const title = document.getElementById('progressionTitle').textContent.trim() || 'Progression';
+    const savedItems = [];
+    document.querySelectorAll('#sequences > .sequence, #sequences > .separateur').forEach(el => {
+      if (el.classList.contains('sequence')) {
+        const seqTitle = el.querySelector('.sequence-header span[contenteditable]').textContent.trim();
+        const contenu = [];
+        el.querySelectorAll('.dropzone > .objectif').forEach(o => {
+          contenu.push({
+            type: 'objectif',
+            code: o.dataset.code || '',
+            text: o.querySelector('.objectif-text').textContent,
+            theme: o.dataset.theme || '',
+            subtheme: o.dataset.subtheme || '',
+          });
+        });
+        el.querySelectorAll('.commentaire').forEach(c => {
+          contenu.push({
+            type: 'commentaire',
+            label: c.querySelector('.commentaire-label').textContent,
+            html: c.querySelector('.commentaire-body').innerHTML,
+          });
+        });
+        savedItems.push({ type: 'sequence', titre: seqTitle, contenu });
+      } else if (el.classList.contains('separateur')) {
+        const text = el.querySelector('.separateur-text').textContent.trim();
+        const color = el.dataset.color || '#c8a200';
+        savedItems.push({ type: 'separateur', label: text, color });
+      }
+    });
+
+    const data = { niveau: document.title, titre: title, elements: savedItems };
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    const safe = title.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    a.download = safe + '_progression.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+    _showSaveToast();
+  }
+
+  function importProgressionJSON(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const prog = JSON.parse(e.target.result);
+        if (!prog.elements || !Array.isArray(prog.elements)) {
+          throw new Error('Format invalide : champ "elements" manquant');
+        }
+
+        const proceed = window.confirm(
+          'Importer cette progression ?\n\n' +
+          'Les séquences actuelles seront remplacées.\n' +
+          prog.elements.length + ' élément(s) détectés.'
+        );
+        if (!proceed) { input.value = ''; return; }
+
+        // Vider les séquences actuelles (retourner les objectifs à gauche)
+        document.querySelectorAll('#sequences .objectif').forEach(o => _returnObjectifToLeft(o));
+        document.getElementById('sequences').innerHTML = '';
+
+        if (prog.titre) {
+          const titleEl = document.getElementById('progressionTitle');
+          if (titleEl) titleEl.textContent = prog.titre;
+        }
+
+        // Restaurer
+        prog.elements.forEach(item => {
+          if (item.type === 'separateur') {
+            addSeparateur(item.label || item.text || '', item.color);
+            return;
+          }
+          if (item.type === 'sequence') {
+            const seq = addSequence();
+            const titleSpan = seq.querySelector('.sequence-header span[contenteditable]');
+            if (titleSpan) titleSpan.textContent = item.titre || 'Séquence';
+            const dropzone = seq.querySelector('.dropzone');
+
+            (item.contenu || []).forEach(c => {
+              if (c.type === 'objectif') {
+                let found = null;
+                if (c.code) found = document.querySelector(`#leftContent .objectif[data-code="${CSS.escape(c.code)}"]`);
+                if (!found && c.text) {
+                  found = [...document.querySelectorAll('#leftContent .objectif')].find(o =>
+                    o.querySelector('.objectif-text').textContent === c.text
+                  );
+                }
+                if (found) dropzone.appendChild(found);
+              } else if (c.type === 'commentaire') {
+                const comment = _createCommentaire(c.html || c.texte || '', c.label || '');
+                comment.classList.add('open');
+                seq.appendChild(comment);
+              }
+            });
+          }
+          if (item.type === 'vacances') {
+            addSeparateur(item.label || 'Vacances', '#c8a200');
+          }
+        });
+
+        updateCounts();
+        alert('Progression importée avec succès !');
+      } catch (err) {
+        console.error('Erreur import progression :', err);
+        alert('Erreur : ' + err.message);
+      } finally {
+        input.value = '';
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  // ----------------------------------------------------------
+  // PDF EMBARQUÉ — ouverture à la bonne page
+  // ----------------------------------------------------------
+  let __pdfBlobUrl = null;
+  function openPdfAtPage(page) {
+    if (!__pdfBlobUrl) {
+      const b64Node = document.getElementById('embeddedPdfB64');
+      if (!b64Node) { alert('Le PDF du programme n\'est pas embarqué dans cette fiche.'); return; }
+      const b64 = (b64Node.textContent || '').trim();
+      if (!b64) { alert('PDF embarqué vide.'); return; }
+      try {
+        const binary = atob(b64);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+        __pdfBlobUrl = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+      } catch (err) { console.error('Décodage PDF échoué :', err); return; }
+    }
+    window.open(__pdfBlobUrl + '#page=' + (parseInt(page, 10) || 1), '_blank');
+  }
+
+  // ----------------------------------------------------------
+  // DOUBLE-CLIC : EXPANSION D'UN OBJECTIF
+  // ----------------------------------------------------------
+  document.addEventListener('dblclick', e => {
+    if (e.target.tagName === 'A') return;
+    const obj = e.target.closest('.objectif');
+    if (!obj) return;
+    obj.classList.toggle('expanded');
+  });
+
+  // ----------------------------------------------------------
+  // API PUBLIQUE
+  // ----------------------------------------------------------
+  return {
+    init,
+    addSequence,
+    addSeparateur,
+    updateCounts,
+    toggleLeftPanel,
+    toggleLeftFold,
+    toggleRightFold,
+    exportHTML,
+    exportPDF,
+    exportMarkdown,
+    exportLatex,
+    exportBiblio,
+    importBiblio,
+    exportProgressionJSON,
+    importProgressionJSON,
+    openPdfAtPage,
+    moveSelection,
+    clearSelection,
+    toggleConfigPanel,
+    updateConfig
+  };
+
+})();
+
+</script>
+
+<!-- Snapshot de l'état sauvegardé. -->
+<!-- __SNAPSHOT_START__ -->
+<script type="application/json" id="__snapshot__"></script>
+<!-- __SNAPSHOT_END__ -->
+
+<!-- Lancement APRÈS la balise __snapshot__ : elle est dans le DOM quand getElementById() s'exécute. -->
+<script>
+(function () {
+  var el = document.getElementById('__snapshot__');
+  var snapshot = null;
+  if (el && el.textContent.trim()) {
+    try { snapshot = JSON.parse(el.textContent); } catch(e) { console.error('[snapshot] parse error', e); }
+  }
+  App.init(snapshot);
+})();
+</script>
+
+</body>
+</html>

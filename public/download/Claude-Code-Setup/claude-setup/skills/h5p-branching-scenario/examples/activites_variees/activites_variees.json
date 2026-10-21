@@ -1,0 +1,139 @@
+{
+  "title": "Arbre pondéré : activités variées",
+  "_source": "Exemple de démonstration du générateur (30/09/2026) : un type d'activité par diapositive. Figures produites par make_images.py, zones recopiées de sa sortie.",
+  "scoring": "dynamic-score",
+  "includeInteractionsScores": true,
+  "randomizeBranchingQuestions": true,
+  "startScreen": {
+    "title": "Arbre pondéré",
+    "subtitle": "Quatre façons de travailler un arbre de probabilités"
+  },
+  "endScreens": [
+    {"title": "Parcours terminé", "subtitle": "Tu as travaillé l'arbre pondéré sous quatre formes.", "score": 0}
+  ],
+  "nodes": [
+    {
+      "type": "text",
+      "title": "Situation",
+      "content": "<p>On choisit un élève au hasard dans un lycée.</p><ul><li>\\(A\\) : « l'élève est interne », avec \\(P(A)=0{,}3\\) ;</li><li>\\(B\\) : « l'élève déjeune à la cantine ».</li></ul><p>Parmi les internes, 60 % déjeunent à la cantine ; parmi les autres élèves, 20 %.</p>",
+      "nextContentId": 1
+    },
+    {
+      "type": "course_presentation",
+      "title": "Arbre pondéré : quatre activités",
+      "nextContentId": 2,
+      "slides": [
+        {
+          "content": "<h3>1. Les règles de l'arbre</h3>",
+          "interactions": [
+            {
+              "type": "summary",
+              "x": 4, "y": 14, "width": 92, "height": 84,
+              "intro": "À chaque étape, choisis l'affirmation juste.",
+              "statements": [
+                {
+                  "correct": "Les probabilités des branches issues d'un même nœud ont pour somme 1.",
+                  "wrong": ["Les probabilités de toutes les branches de l'arbre ont pour somme 1.",
+                            "Chaque branche porte une probabilité supérieure à 0,5."],
+                  "tip": "Regarde les deux branches qui partent du nœud A."
+                },
+                {
+                  "correct": "Sur la branche qui va de \\(A\\) à \\(B\\), on lit \\(P_A(B)\\).",
+                  "wrong": ["Sur la branche qui va de \\(A\\) à \\(B\\), on lit \\(P(A\\cap B)\\)."]
+                },
+                {
+                  "correct": "La probabilité d'un chemin est le produit des probabilités de ses branches.",
+                  "wrong": ["La probabilité d'un chemin est la somme des probabilités de ses branches."]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "content": "<h3>2. Compléter<br>l'arbre</h3><p>Glisse chaque<br>probabilité<br>sur sa branche,<br>puis vérifie.</p>",
+          "interactions": [
+            {
+              "type": "dragquestion",
+              "x": 42, "y": 2, "width": 56, "height": 96,
+              "image": "arbre_a_completer.png",
+              "zones": [
+                {"label": "Branche vers A", "x": 17.5, "y": 25.0, "width": 11, "height": 8, "correct": [0]},
+                {"label": "Branche vers Ā", "x": 17.5, "y": 47.0, "width": 11, "height": 8, "correct": [1]},
+                {"label": "Branche de A vers B", "x": 58.5, "y": 6.2, "width": 11, "height": 8, "correct": [2]},
+                {"label": "Branche de A vers B̄", "x": 58.5, "y": 21.8, "width": 11, "height": 8, "correct": [3]},
+                {"label": "Branche de Ā vers B", "x": 58.5, "y": 50.2, "width": 11, "height": 8, "correct": [4]},
+                {"label": "Branche de Ā vers B̄", "x": 58.5, "y": 65.8, "width": 11, "height": 8, "correct": [5]}
+              ],
+              "draggables": [
+                {"text": "0,3", "width": 10, "height": 7},
+                {"text": "0,7", "width": 10, "height": 7},
+                {"text": "0,6", "width": 10, "height": 7},
+                {"text": "0,4", "width": 10, "height": 7},
+                {"text": "0,2", "width": 10, "height": 7},
+                {"text": "0,8", "width": 10, "height": 7}
+              ]
+            }
+          ]
+        },
+        {
+          "content": "<h3>3. Cartes à retenir</h3>",
+          "interactions": [
+            {
+              "type": "dialogcards",
+              "x": 15, "y": 12, "width": 70, "height": 86,
+              "description": "Lis le recto, réponds dans ta tête, puis retourne la carte.",
+              "cards": [
+                {"front": "Probabilité de \\(\\overline{A}\\) ?", "back": "\\(P(\\overline{A}) = 1 - P(A)\\)"},
+                {"front": "Probabilité d'un chemin ?", "back": "Le produit des probabilités de ses branches."},
+                {"front": "Probabilité de \\(B\\) dans l'arbre ?", "back": "La somme des probabilités des chemins qui mènent à \\(B\\).", "tipFront": "Combien de chemins mènent à B ?"}
+              ]
+            }
+          ]
+        },
+        {
+          "content": "<h3>4. Réponses chiffrées</h3><p>Donne \\(P(A\\cap B)\\) en écriture décimale.</p>",
+          "interactions": [
+            {
+              "type": "blanks",
+              "numeric": true,
+              "x": 2, "y": 24, "width": 47, "height": 74,
+              "description": "Sans tolérance (numeric : true)",
+              "text": "P(A ∩ B) = *0,18/0.18*"
+            },
+            {
+              "type": "blanks",
+              "x": 51, "y": 24, "width": 47, "height": 74,
+              "description": "Avec tolérance (défaut des mots)",
+              "text": "P(A ∩ B) = *0,18/0.18*"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "image_hotspots",
+      "title": "Explorer l'arbre complet",
+      "image": "arbre_complet.png",
+      "alt": "Arbre pondéré complet : A 0,3 et Ā 0,7, puis B et B̄ sous chacun.",
+      "icon": "plus",
+      "color": "#1f6feb",
+      "hotspots": [
+        {"x": 37, "y": 23, "width": 6, "height": 8, "header": "Nœud A",
+         "text": "<p>Les deux branches issues de \\(A\\) ont pour somme 1 : \\(0{,}6+0{,}4=1\\).</p>"},
+        {"x": 88, "y": 5, "header": "Chemin A puis B",
+         "text": "<p>\\(P(A\\cap B)=0{,}3\\times 0{,}6=0{,}18\\) : on multiplie le long du chemin.</p>"},
+        {"x": 88, "y": 49, "header": "Chemin Ā puis B",
+         "text": "<p>\\(P(\\overline{A}\\cap B)=0{,}7\\times 0{,}2=0{,}14\\).</p>"},
+        {"x": 6, "y": 40, "header": "Probabilités totales",
+         "text": "<p>\\(P(B)=0{,}18+0{,}14=0{,}32\\) : on additionne les chemins qui mènent à \\(B\\).</p>"}
+      ],
+      "nextContentId": 3
+    },
+    {
+      "type": "text",
+      "title": "Bilan",
+      "content": "<p>Retiens : somme 1 à chaque nœud, produit le long d'un chemin, somme des chemins pour un événement.</p>",
+      "nextContentId": -1
+    }
+  ]
+}

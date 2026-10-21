@@ -1,381 +1,208 @@
 ---
 name: qcm-creator
-description: Connaissances supplémentaires à LaTeX pour éditer des QCM de qualité. Utiliser proactivement dès qu'il s'agit de créer un qcm dans un fichier.
+description: Rédige des QCM de mathématiques au format bfcours (environnement Mcq et commande McqQuest du paquet rdmcq, style BFCours chargé par bfcours) avec des distracteurs construits sur les erreurs réelles des élèves, notamment pour la partie « automatismes » de l'épreuve anticipée de mathématiques de première (12 questions, 4 propositions, une seule bonne réponse). Utiliser dès qu'il faut écrire, compléter, corriger ou mettre en page un QCM, un questionnaire à choix multiples, des « questions flash » ou des automatismes dans un fichier LaTeX bfcours, même si l'utilisateur ne prononce pas le mot « Mcq ».
 ---
 
-# QCM Creator - Skill pour création de QCM mathématiques avec style BFCours
+# QCM Creator — QCM au format bfcours
 
-## Description
+Un QCM bfcours s'écrit avec l'environnement `Mcq` et la commande `\McqQuest` du paquet `rdmcq`, habillés par le format `BFCours`. Ce skill donne la syntaxe exacte de ce format (voie principale) puis le savoir-faire pour écrire de bonnes questions (énoncés, distracteurs, progression).
 
-Skill spécialisé pour créer des QCM de mathématiques professionnels avec le package `rdmcq` et le style `BFCours`. Basé sur l'analyse des sujets 0 de 1ère (Ens. Scientifique et Spécialité).
+Charger aussi `bfcours-latex` pour le reste du document (EXO, `\acc`, `\encadrer`, `MultiColonnes`).
 
-## Structure d'un document QCM avec rdmcq
+---
 
-Respecter la structure du document existant.
+## 1. Ce que bfcours charge déjà
 
-Placer le qcm généré au bon endroit dans le document existant.
+`bfcours.sty` charge `rdmcq` (ligne 168) puis le format `rdmcq.bfcours.format` (ligne 182). Dans un document bfcours :
 
-Aucune en-tête supplémentaire requise car normalement déjà setup par l'utilisateur.
+- **rien à ajouter au préambule** ;
+- **ne jamais recopier le format** dans le document ni créer de fichier de format dans le dossier : la version installée fait foi ;
+- respecter la structure du document existant et insérer le QCM à sa place.
 
-### Format rdmcq.bfcours.format.sty
+Le format `BFCours` (`rdmcq.bfcours.format.sty`) : pastille noire numérotée à gauche de chaque question, propositions dans des boîtes à case à cocher, **2 colonnes de propositions par défaut** (`answer columns=2`, ligne 120), case cochée en rouge et fond teinté `prop!10` en mode correction.
 
-Ce fichier définit le style visuel des QCM. Il doit appelé dans l'entête. Par défaut chargé dans bfcours.
+Hors bfcours : `\usepackage{rdmcq}` puis un format livré avec rdmcq, par exemple `\input{rdmcq.boston.format.tex}` et `\begin{Mcq}[Boston]`.
 
-```latex
-%%%%%%%%%%%%%   BFCours (basé sur Boston mais plus clair et moins arrondi)
+---
 
-\definecolor{bfcours1}{HTML}{f5f5f5}  % Fond général plus clair
-% couleur prop définie dans bfcours-colors - chargé automatiquement
-\definecolor{bfcours3}{HTML}{f9f6f0}  % Beige très clair pour messages
-\definecolor{bfcours4}{HTML}{5a5245}  % Marron
+## 2. Syntaxe
 
-\newQuestionFormat{BFCours}{% boîte externe
-frame hidden,
-colback=white,
-opacityback=1,
-sharp corners, arc=1.5mm, auto outer arc, rounded corners=north,
-borderline north={0.4pt}{0pt}{black},
-borderline west={0.4pt}{0pt}{black},
-borderline east={0.4pt}{0pt}{black},
-}%
-{%   boîte interne
-    sidebyside, boxsep=4pt,
-    sidebyside gap=4pt,
-    lefthand width=2em,
-    sidebyside align=top seam, halign upper=center, halign lower=justify,
-    before upper={\tikz[baseline=(x.base), inner sep=1pt, outer sep=0pt] \node[circle, fill=black, text=white, font=\sffamily\bfseries\normalsize, minimum width=1.5em] (x) {\rdmcqQuestioncount};
-    \tcblower}
-}
-
-\newAnswerFormat{BFCours}{vertical}%
-        {%  Zone Réponse
-        enhanced jigsaw, frame hidden,
-        boxsep=3pt, opacityback=1, colback=white,
-        sharp corners, arc=1.5mm, auto outer arc, rounded corners=south,
-        borderline south={0.4pt}{0pt}{black},
-        borderline west={0.4pt}{0pt}{black},
-        borderline east={0.4pt}{0pt}{black},
-        }
-        [%  Mode Correction
-        colback=prop!10
-        ]%
-        {%  Réponses
-        enhanced jigsaw, colframe=black, colback=white, opacityback=0.90,
-        rounded corners, arc=1.5mm, auto outer arc, boxrule=0.8pt,
-        boxsep=3pt,
-        valign=center, halign=left,
-        before upper={\rdmcqcb[check color=red]{}\hspace*{0.5em}}
-        }
-
-\newAnswerFormat{BFCours}{horizontal}%
-        {%  Zone Réponse
-        enhanced jigsaw, frame hidden,
-        boxsep=3pt, opacityback=1, colback=white,
-        sharp corners, arc=1.5mm, auto outer arc, rounded corners=south,
-        borderline south={0.4pt}{0pt}{black},
-        borderline west={0.4pt}{0pt}{black},
-        borderline east={0.4pt}{0pt}{black},
-        }
-        [%  Mode Correction
-        colback=prop!10
-        ]%
-        {%  Réponses
-        enhanced jigsaw, colframe=black, colback=white, opacityback=0.90,
-        rounded corners, arc=1.5mm, auto outer arc, boxrule=0.8pt,
-        boxsep=3pt,
-        valign=center, halign=center,
-        before upper={\rdmcqcb[check color=red]{}\hspace*{0.5em}}
-        }
-
-\newMessageFormat{BFCours}%
-    {%  Left message
-    boxsep=5pt, colback=bfcours3, left=1em, frame engine=empty,
-    opacityback=1,
-    sharp corners, arc=1.5mm, auto outer arc, rounded corners=west,
-    overlay={
-        \begin{tcbclipinterior}
-            \fill[bfcours4] (interior.north west) rectangle ([xshift=1em]interior.south west)
-                node[midway, rotate=90, text=white, font=\sffamily\tiny\bfseries] {Info} ;
-        \end{tcbclipinterior}
-            }%
-    }
-    [%  Right message
-    boxsep=5pt, colback=bfcours3, right=1em, frame engine=empty,
-    opacityback=1,
-    sharp corners, arc=1.5mm, auto outer arc, rounded corners=east,
-    overlay={
-        \begin{tcbclipinterior}
-            \fill[bfcours4] (interior.south east) rectangle ([xshift=-1em]interior.north east) ;
-        \end{tcbclipinterior}
-            }%
-    ]
-
-\newFooterFormat{BFCours}%
-    {%  Left footer
-    enhanced jigsaw,
-    boxsep=5pt, colback=bfcours4,
-    sharp corners, arc=1.5mm, rounded corners=south, auto outer arc,
-    halign=center, valign=center, fontupper=\sffamily\bfseries\footnotesize,
-    coltext=white,
-    fuzzy shadow={0pt}{1mm}{0mm}{0.1mm}{bfcours4}
-    }
-
-\newHeaderFormat{BFCours}%
-    {%  Left header
-    enhanced jigsaw,
-    boxsep=5pt, colback=bfcours4,
-    sharp corners, arc=1.5mm, rounded corners=north, auto outer arc,
-    halign=center, valign=center, fontupper=\sffamily\bfseries\footnotesize,
-    coltext=white,
-    fuzzy shadow={0pt}{-1mm}{0mm}{0.1mm}{bfcours4}
-    }%
-
-\newMcqFormat[gather=BFCours, same width, row sep=1em,
-    question answer sep=-0.1pt,
-    answer columns=2, answer column sep=1em, answer row sep=0.3em]{BFCours}{0pt}
-```
-
-## Syntaxe rdmcq
-
-### Environnement principal
+### Environnement `Mcq`
 
 ```latex
 \begin{Mcq}[BFCours]
-% Questions ici
+  ... questions ...
 \end{Mcq}
 ```
 
-### Commande de question
+Options utiles (clés `/rdmcq`, à ajouter après `BFCours`, séparées par des virgules) :
+
+| Option | Effet | Source `rdmcq.sty` |
+|---|---|---|
+| `resume` | Poursuit la numérotation du bloc `Mcq` précédent (sinon elle repart à 1) | l. 76-79, 1341 |
+| `num start=n` | Commence la numérotation à `n` | l. 80 |
+| `answer columns=n` | Nombre de colonnes de propositions (4 pour des réponses très courtes, 1 pour des phrases) | l. 111 |
+| `orientation=vertical` | Propositions empilées sous la question (défaut : `horizontal`) | l. 71-74, 227 |
+| `correction=true` | Force l'affichage des bonnes réponses (case cochée, fond teinté) | l. 135-137 |
+| `width=…` | Largeur totale (défaut `\linewidth`) | l. 83, 231 |
+
+Le mode correction s'active aussi tout seul quand la version corrigée bfcours est activée (booléen de `rdcrep`, l. 1318-1322).
+
+### Question `\McqQuest`
 
 ```latex
-\McqQuest[br=NUMERO_BONNE_REPONSE]
-{ENONCE_QUESTION}
-{REPONSE_1, REPONSE_2, REPONSE_3, REPONSE_4}
+\McqQuest[br=3]
+{Énoncé de la question :}
+{Proposition 1, Proposition 2, Proposition 3, Proposition 4}
 ```
 
-**Paramètres :**
+- `br=n` : numéro de la bonne réponse. Plusieurs bonnes réponses : `br={1,3}` (liste, l. 1113-1115).
+- Le deuxième argument est une **liste séparée par des virgules** (l. 1117-1119). Conséquences :
+  - virgule décimale toujours protégée : `$0{,}5$`, jamais `$0,5$` (sinon la proposition est coupée en deux) ;
+  - une proposition qui contient elle-même une virgule (texte, ensemble, couple) se met entre accolades : `{oui, car $f(2) = 0$}`, `{$\{1, 2\}$}` ;
+  - les espaces autour des virgules sont ignorés.
+- L'énoncé peut contenir plusieurs paragraphes (ligne vide), `\acc{…}`, `\encadrer[prop]{…}`, une figure.
 
-- `br=X` : Numéro de la bonne réponse (1, 2, 3 ou 4)
-- Énoncé : Entre premières accolades `{}`
-- Réponses : Entre deuxièmes accolades `{}`, séparées par des virgules
+### Message commun `\McqMessage`
 
-### Commandes utiles dans les énoncés
-e
-- `\acc{texte}` : Met en accent/emphase un mot-clé
-- `\encadrer[prop]{texte}` : Encadre un élément en couleur prop ( liste d'éléments plus claire )
-- `\dfrac{}{}` : Fraction de taille display
-- `$...$` : Mode mathématique inline
+Bandeau « Info » en pleine largeur entre deux questions, pour une donnée partagée : `\McqMessage{Les questions 5 à 7 portent sur la fonction $f$ définie par $f(x) = x^2 - 4$.}` (l. 1084).
 
-## Exemple complet de QCM
+---
+
+## 3. Modèle complet dans un EXO
+
+Usage type, relevé dans des évaluations bfcours réelles :
 
 ```latex
+\def\rdifficulty{1}
+\begin{EXO}{Automatismes}{}
+\tcbitempoint{6}\textit{Pour chaque question, une seule réponse est correcte. Aucune justification n'est demandée.}
+
 \begin{Mcq}[BFCours]
 \McqQuest[br=4]
-{L'\acc{opération} qui permet de calculer \acc{25\% de 480} est :}
+{L'\acc{opération} qui permet de calculer \acc{25~\% de 480} est :}
 {$\dfrac{480}{25 \times 100}$, $25 \times 480 \times 0{,}1$, $\dfrac{480 \times 100}{25}$, $\dfrac{1}{4} \times 480$}
 
 \McqQuest[br=2]
-{Voici trois nombres : \encadrer[prop]{$A = \dfrac{1}{5}$}, \encadrer[prop]{$B = \dfrac{19}{100}$}, \encadrer[prop]{$C = 0{,}21$}.
+{Un appareil consomme \encadrer[defi]{$7{,}2 \times 10^6$} joules.
 
-Le classement par ordre croissant de ces trois nombres est :}
-{$A < B < C$, $A < C < B$, $B < A < C$, $C < B < A$}
+À combien de kWh cela correspond-il ? \hfill \encadrer[defi]{$1\,\text{kWh} = 3{,}6 \times 10^6\,\text{J}$}}
+{$0{,}5\,\text{kWh}$, $2\,\text{kWh}$, $5\,\text{kWh}$, $20\,\text{kWh}$}
+\end{Mcq}
 
-\McqQuest[br=3]
-{Le \acc{tiers d'un quart} correspond à la \acc{fraction} :}
-{$\dfrac{1}{7}$, $\dfrac{3}{4}$, $\dfrac{1}{3} \times 4$, $\dfrac{1}{12}$}
+\exocorrection
+\begin{Mcq}[BFCours, correction=true]
+... mêmes questions, recopiées à l'identique ...
+\end{Mcq}
 
-\McqQuest[br=4]
-{Quand on \acc{développe} $(x - 3)^2$ on obtient :}
-{$x^2 + 9$, $x^2 - 9$, $x^2 + 6x - 9$, $x^2 - 6x + 9$}
+\begin{tcbenumerate}[1]
+\tcbitem $25~\% = \dfrac{1}{4}$, donc on calcule $\dfrac{1}{4} \times 480$. \acc{Réponse 4.}
+\tcbitem $\dfrac{7{,}2 \times 10^6}{3{,}6 \times 10^6} = 2$. \acc{Réponse 2.}
+\end{tcbenumerate}
+\end{EXO}
+```
+
+- Titre d'EXO : texte pur, jamais de virgule ni de mode math.
+- Correction : le bloc recopié avec `correction=true`, suivi au besoin d'une justification courte par question.
+
+### Question avec figure
+
+La figure se place dans l'énoncé, en `MultiColonnes` (texte à gauche, figure centrée à droite) :
+
+```latex
+\McqQuest[br=1]
+{\begin{MultiColonnes}{2}
+\tcbitem On a représenté ci-contre une parabole $\mathcal{P}$.
+
+\acc{Une seule} des quatre fonctions ci-dessous peut être représentée par $\mathcal{P}$. Laquelle ?
+\tcbitem[halign=center,valign=center] \begin{tikzpicture}[scale=0.5] ... \end{tikzpicture}
+\end{MultiColonnes}}
+{$x \longmapsto 1{,}6(x+5)^2-4$, $x \longmapsto 1{,}6(x-5)^2-4$, $x \longmapsto -1{,}6(x+5)^2-4$, $x \longmapsto -1{,}6(x-5)^2-4$}
+```
+
+---
+
+## 4. Découper le QCM en blocs (coupure de page)
+
+Un bloc `Mcq` est **insécable** : s'il ne tient pas dans la place restante, il saute en entier à la page suivante ; s'il est trop grand pour la boîte d'un EXO, les dernières questions **disparaissent du PDF** (`Package tcolorbox Warning: The upper box part has become overfull`).
+
+Règle : couper en plusieurs blocs, le suivant ouvert par `\begin{Mcq}[BFCours, resume]`, et **dimensionner le premier bloc sur la place libre** de la page 1, pas au milieu arbitraire des 12 questions.
+
+```latex
+\begin{Mcq}[BFCours]
+... Q1 à Q5 (le dernier qui tient sous l'en-tête) ...
+\end{Mcq}
+
+\begin{Mcq}[BFCours, resume]
+... Q6 à Q12 ...
 \end{Mcq}
 ```
 
-## Types de questions par niveau (synthèse sujets 0)
+- Sous un en-tête d'évaluation complet (cartouche `chapEval` + encart « Première partie »), le premier bloc tient environ 5 questions ; sans en-tête lourd, davantage.
+- Une question avec figure ou à propositions longues consomme plus de place : couper plus tôt.
+- Après compilation : `grep -c "upper box part has become overfull"` sur le `.log` doit valoir 0 ; regarder la page 1 et avancer ou reculer la coupure d'une question (skill `latex-visual-review`, Recette M).
+- Faire la même coupure dans le bloc de correction.
 
-### 1ère Enseignement Scientifique
+---
 
-**Focus :** Applications concrètes, calcul, situations réelles
+## 5. Savoir-faire : écrire de bonnes questions
 
-**Domaines principaux :**
+Typologie détaillée des questions, formulations types et progression des deux sujets zéro de première : `references/SYNTHESE_QCM_SUJETS_0.md`. À lire avant de rédiger un QCM de type épreuve anticipée.
 
-1. **Pourcentages** (4 questions type)
-   - Calcul de pourcentage simple
-   - Variations successives (piège : +10% puis +10% ≠ +20%)
-   - Tableaux de contingence
-2. **Arithmétique de base** (3 questions)
-   - Comparaison fractions/décimaux
-   - Opérations fractionnaires (tiers d'un quart)
-   - Puissances et grands nombres
-3. **Fonctions simples** (2-3 questions)
-   - Image par fonction polynomiale
-   - Équation de droite à partir de graphique
-4. **Statistiques** (1-2 questions)
-   - Moyenne/médiane de séries
-   - Comparaison de données
+### Énoncés
 
-**Formulations types :**
+- Une question = une compétence ; 1 à 3 lignes ; variables définies (« Soit $x$ un réel… »).
+- Mots-clés en `\acc{…}` (toujours `\acc{$…$}`, jamais `$\acc{…}$`), données en `\encadrer[prop]{…}` ou `[defi]`.
+- Notation française : `0{,}21`, `\dfrac` pour les fractions, espaces insécables avant `\%` et les unités.
+- Calculatrice interdite à l'épreuve anticipée : des nombres qui se calculent de tête.
 
-```latex
-\McqQuest[br=X]
-{L'\acc{opération} qui permet de calculer \acc{X\% de Y} est :}
-{...}
+### Distracteurs
 
-\McqQuest[br=X]
-{Le prix \acc{augmente de $A$\%}, puis \acc{augmente de $B$\%}. 
+Chaque mauvaise réponse correspond à une erreur réelle et identifiable ; jamais de réponse absurde.
 
-Après ces deux augmentations, on peut affirmer que :}
-{le prix a augmenté de $X$\%, le prix a augmenté de $Y$\%, ...}
+| Famille | Exemples |
+|---|---|
+| Erreur de calcul classique | $(a+b)^2 = a^2 + b^2$ ; $25~\%$ de 480 calculé $25 \times 480$ |
+| Confusion de concepts | moyenne / médiane ; affine / carré ; +10 % puis +10 % = +20 % |
+| Erreur de signe ou de lecture | $(x-3)^2 = x^2 - 9$ ; pente lue à la place de l'ordonnée à l'origine |
+| Lecture littérale | « tiers d'un quart » lu $\dfrac{1}{3} \times 4$ au lieu de $\dfrac{1}{3} \times \dfrac{1}{4}$ |
 
-\McqQuest[br=X]
-{Voici trois nombres : $A = ...$, $B = ...$, $C = ...$. 
-
-Le classement par ordre croissant est :}
-{$A < B < C$, $A < C < B$, ...}
-```
-
-### 1ère Spécialité Mathématiques
-
-**Focus :** Abstraction, raisonnement, démonstrations
-
-**Domaines principaux :**
-
-1. **Algèbre avancée** (3-4 questions)
-   - Manipulations algébriques abstraites
-   - Équations fractionnaires
-   - Identités remarquables
-2. **Inéquations** (2-3 questions)
-   - Résolution graphique ($x^2 \geq 10$)
-   - Étude du signe de produits
-3. **Géométrie analytique** (2-3 questions)
-   - Vecteurs et produit scalaire
-   - Équations de cercles
-   - Équations de droites (4 formats)
-4. **Analyse de fonctions** (3-4 questions)
-   - Dérivées et variations
-   - Fonctions rationnelles
-   - Reconnaissance de paraboles
-
-**Formulations types :**
-
-```latex
-\McqQuest[br=X]
-{L'inéquation $x^2 \geq 10$ est équivalente à :}
-{$x \geq \sqrt{10}$, $x \leq -\sqrt{10}$ ou $x \geq \sqrt{10}$, ...}
-
-\McqQuest[br=X]
-{\acc{Une seule} des quatre fonctions ci-dessous est susceptible d'être représentée par la \acc{parabole} ci-contre. Laquelle ?}
-{$x \mapsto -x^2 + 10$, $x \mapsto -x^2 + 10x$, ...}
-
-\McqQuest[br=X]
-{Parmi ces trois fonctions, celles qui sont \acc{affines} sont :}
-{$f_1$ et $f_2$, $f_1$ uniquement, ...}
-```
-
-## Conception des distracteurs (mauvaises réponses)
-
-### Principes généraux
-
-1. **Erreurs de calcul classiques**
-   - Oubli de parenthèses : $(a+b)^2 = a^2 + b^2$ au lieu de $a^2 + 2ab + b^2$
-   - Priorités opératoires : $25\% \text{ de } 480 = 25 \times 480$ au lieu de $\frac{25 \times 480}{100}$
-2. **Confusions conceptuelles**
-   - Moyenne vs médiane
-   - Fonction affine vs fonction quadratique
-   - Augmentation de 10% puis 10% = augmentation de 20% (FAUX)
-3. **Erreurs de signe/notation**
-   - $(x-3)^2 = x^2 - 9$ au lieu de $x^2 - 6x + 9$
-   - $\frac{1}{3} \times 4$ au lieu de $\frac{1}{3} \times \frac{1}{4}$
-
-### Exemple détaillé
+Exemple commenté (le commentaire reste dans le source, pas dans le PDF) :
 
 ```latex
 \McqQuest[br=4]
 {Le \acc{tiers d'un quart} correspond à la fraction :}
-{
-  $\dfrac{1}{7}$,              % Erreur : addition 1/3 + 1/4
-  $\dfrac{3}{4}$,              % Erreur : inversion du calcul
-  $\dfrac{1}{3} \times 4$,     % Erreur : lecture littérale "tiers" × 4
-  $\dfrac{1}{12}$              % CORRECT : 1/3 × 1/4 = 1/12
-}
+{$\dfrac{1}{7}$, $\dfrac{3}{4}$, $\dfrac{1}{3} \times 4$, $\dfrac{1}{12}$}
+% 1/7 : 1/3 + 1/4 additionnés terme à terme ; 3/4 : inversion ;
+% 1/3 x 4 : lecture littérale ; 1/12 : correct
 ```
 
-## Structure d'évaluation complète
+### Structure d'un QCM d'automatismes (épreuve anticipée de première)
 
-### QCM (Partie 1) - 6 points
+- 12 questions, 4 propositions, une seule bonne réponse, 6 points (0,5 par question), 20 à 30 minutes.
+- Répartition : 3-4 algèbre, 2-3 géométrie, 2-3 fonctions, 1-2 statistiques et probabilités, 2-3 autres (pourcentages, suites…) ; jamais trois questions du même domaine d'affilée.
+- Progression : Q1-Q3 faciles, Q4-Q6 moyennes, Q7-Q9 moyennes à difficiles, Q10-Q12 difficiles.
+- Voie générale sans spécialité : contextes concrets, calcul. Spécialité : abstraction, lecture graphique, raisonnement.
 
-- 12 questions @ 0,5 point chacune
-- Durée recommandée : 20-30 minutes
-- Alternance difficulté : Facile - Moyen - Facile - Moyen - Difficile - Facile...
-- Alternance domaines : Éviter 3 algèbre consécutives
+---
 
-### Progression type (12 questions)
+## 6. Déroulé
 
-```
-Q1-Q3    : Facile (calculs directs, fractions, pourcentages)
-Q4-Q6    : Moyen (variations, comparaisons, équations simples)
-Q7-Q9    : Moyen-Difficile (fonctions, inéquations, géométrie)
-Q10-Q12  : Difficile (identités, stats, analyse)
-```
+1. Lire la source et les consignes (niveau, nombre de questions, thème, barème).
+2. Choisir les questions selon la structure ci-dessus et `references/SYNTHESE_QCM_SUJETS_0.md`.
+3. Construire les distracteurs (une erreur identifiée par distracteur).
+4. Écrire le QCM dans un EXO selon le modèle de la section 3, découpé en blocs (section 4).
+5. Vérifier :
+   - une seule bonne réponse par question (ou la liste `br={…}` voulue), résultat recalculé ;
+   - bonnes réponses réparties sur les positions 1 à 4 (pas toujours la même) ;
+   - aucune virgule décimale non protégée dans les propositions ;
+   - bloc de correction identique à l'énoncé, avec `correction=true` ;
+   - compilation sans `upper box part has become overfull`.
 
-## Bonnes pratiques
+---
 
-### 1. Clarté de l'énoncé
+## Sources
 
-- Définir explicitement les variables : "Soit $x$ un nombre réel..."
-- Utiliser `\acc{}` pour les mots-clés techniques
-- Encadrer les données importantes avec `\encadrer[prop]{}`
-
-### 2. Qualité mathématique
-
-- Vérifier l'unicité de la bonne réponse
-- S'assurer que les distracteurs sont plausibles
-- Utiliser la notation française : `0{,}21` au lieu de `0.21`
-
-### 3. Mise en page
-
-- Garder les énoncés concis (1-3 lignes max)
-- Utiliser `\dfrac` pour les fractions affichées
-- Espacer les options complexes avec retours à la ligne dans l'énoncé si nécessaire
-
-### 4. Correction intégrée
-
-- Les bonnes réponses seront surlignées automatiquement au bon moment
-- Le paramètre `br=X` définit la bonne réponse
-
-## Workflow de création
-
-0. **Analyser la source** pour obtenir les informations essentielles, consignes complémentaires etc...
-
-1. **Analyser le niveau cible**
-   - Ens. Scientifique → contextes réels, calculs
-   - Spécialité → abstraction, raisonnement
-
-2. **Sélectionner 12 questions** couvrant :
-   - 3-4 Algèbre
-   - 2-3 Géométrie
-   - 2-3 Fonctions
-   - 1-2 Stats/Proba
-   - 2-3 Autres (pourcentages, suites...)
-
-3. **Alterner les difficultés**
-   - Commencer facile (mise en confiance)
-   - Monter progressivement
-   - Questions 10-12 : plus difficiles
-
-4. **Concevoir les distracteurs**
-   - Reproduire erreurs classiques
-   - Vérifier plausibilité
-   - Éviter les réponses absurdes
-
-5. **Structurer le document**
-   - Créer `rdmcq.bfcours.format.tex` dans le dossier
-   - Préambule avec packages requis
-   - Environnement `\begin{Mcq}[BFCours]`
-   - Questions avec `\McqQuest[br=X]{...}{...}`
-   - Vérifier que les bonnes réponses ne sont pas toujours à la même position.
-
-## Ressources complémentaires
-
-- Sujets 0 analysés : voir `.claude\skills\qcm-creator\references\SYNTHESE_QCM_SUJETS_0.md`
-- Package rdmcq : documentation complète avec styles prédéfinis
-- Package rdcheckbox : pour personnaliser les checkboxes de réponse
+- `rdmcq.sty` (paquet rdmcq de la collection « ProfDeleuze », qui fournit aussi `rdexo`, `rdcrep`, `rdcheckbox`), fourni avec les paquets LaTeX bfcours à télécharger sur le même site que ce paquet de skills (dossier `latex-packages/ProfDeleuze/`) ; les numéros de ligne cités correspondent à cette version. À installer dans le texmf local (MiKTeX ou TeX Live) avec les fichiers bfcours.
+- `rdmcq.bfcours.format.sty` et `bfcours.sty` : dossier `latex-packages/BFcours/` du même téléchargement.
+- Sujets zéro de l'épreuve anticipée de mathématiques (Éduscol) : https://eduscol.education.gouv.fr/5688/epreuve-anticipee-de-mathematiques-aux-baccalaureats-general-et-technologique

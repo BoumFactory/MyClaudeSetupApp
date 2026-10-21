@@ -1,6 +1,35 @@
 {
   "changelogs": [
     {
+      "id": "2026-10-21",
+      "date": "2026-10-21",
+      "title": "Packages Typst, tutoriel Typst et mise à jour des tutoriels IA",
+      "categories": ["tutorials", "downloads", "skills"],
+      "changes": [
+        {
+          "title": "Nouvelle page : Packages Typst (farfadet)",
+          "details": "Présentation de la suite farfadet (25 paquets Typst pour les maths), commandes d'installation Windows, macOS et Linux, documentation PDF, application Écriture Typst et vidéo de prise en main. Tout est hébergé sur la Forge des communs numériques.",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Nouveau tutoriel : Typst avec farfadet",
+          "details": "Un parcours pas à pas pour écrire cours, exercices et évaluations en Typst, avec versions professeur et élève.",
+          "type": "feature"
+        },
+        {
+          "title": "Bundles IA rangés autrement",
+          "details": "29 skills nettoyés ; le bundle Word est supprimé. Les présentations des skills retirés ne figurent plus dans le menu ni dans la recherche.",
+          "type": "improvement"
+        },
+        {
+          "title": "Tutoriels IA mis à jour",
+          "details": "Contenus actualisés (installation, modèles, documentation officielle) et liens vers les formations officielles d'Anthropic.",
+          "type": "improvement"
+        }
+      ]
+    },
+    {
       "id": "2026-03-17",
       "date": "2026-03-17",
       "title": "Parcours \"Communiquer avec l'IA\", panier de téléchargement et refonte tutoriels",

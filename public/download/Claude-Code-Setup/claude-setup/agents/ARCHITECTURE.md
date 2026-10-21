@@ -6,12 +6,10 @@
 
 ---
 
-## Inventaire Automatique des Agents (28 agents)
+## Inventaire Automatique des Agents (23 agents)
 
 | Agent | Description courte |
 |-------|-------------------|
-| `app-creator-agent` | Création d'applications Flask éducatives |
-| `beamer-worker` | Création diaporamas Beamer |
 | `bo-competence-extractor` | Extraction compétences depuis BO |
 | `bo-search-agent` | Recherche dans les programmes BO |
 | `competence-presentation-generator` | Présentations reveal.js par compétence |
@@ -19,8 +17,6 @@
 | `document-creator-worker` | Création documents LaTeX (templates) |
 | `error-investigator` | Analyse logs d'erreurs |
 | `eval-builder` | Génération d'évaluations complètes |
-| `fiche-technique-agent` | Génération fiches techniques |
-| `image-user` | Génération d'images (Imagen) |
 | `interactive-animation-creator` | Création animations interactives |
 | `jupyter-notebook-creator` | Création notebooks Jupyter |
 | `latex-main-worker` | Édition LaTeX principale (bfcours) |
@@ -30,7 +26,6 @@
 | `programme-officiel-extractor` | Extraction programmes officiels |
 | `program-updater` | Mise à jour programmes |
 | `python-competences-extractor` | Extraction compétences Python |
-| `qcm-builder` | Création QCM LaTeX |
 | `reveals-creator` | Création présentations reveal.js |
 | `seance-sequence-matcher` | Association séances/séquences |
 | `self-improvement-agent` | Auto-amélioration du système |
@@ -48,20 +43,12 @@
 │   ├── latex/                          # Documents LaTeX
 │   │   ├── latex-main-worker.md       # → Édition principale bfcours
 │   │   ├── latex-side-worker.md       # → Édition secondaire
-│   │   ├── document-creator-worker.md # → Création depuis templates
-│   │   ├── beamer-worker.md           # → Diaporamas Beamer
-│   │   └── qcm-builder.md             # → QCM LaTeX
+│   │   └── document-creator-worker.md # → Création depuis templates
 │   │
 │   ├── html/                           # Documents Web
 │   │   ├── reveals-creator.md         # → Présentations reveal.js
 │   │   ├── interactive-animation-creator.md # → Animations
 │   │   └── competence-presentation-generator.md # → Présent. compétences
-│   │
-│   ├── media/                          # Contenus visuels
-│   │   └── image-user.md              # → Génération images
-│   │
-│   ├── application/                    # Applications
-│   │   └── app-creator-agent.md       # → Applications Flask
 │   │
 │   ├── notebook/                       # Notebooks
 │   │   └── jupyter-notebook-creator.md # → Notebooks Jupyter
@@ -70,7 +57,6 @@
 │   │   └── eval-builder.md            # → Construction évaluations
 │   │
 │   └── documentation/                  # Documentation
-│       ├── fiche-technique-agent.md   # → Fiches techniques
 │       └── student-prompt-builder.md  # → Prompts étudiants
 │
 ├── outillage/                          # OUTILS TECHNIQUES
@@ -112,19 +98,11 @@
 - [ ] `latex-main-worker` → `creer/latex/latex-main-worker.md`
 - [ ] `latex-side-worker` → `creer/latex/latex-side-worker.md`
 - [ ] `document-creator-worker` → `creer/latex/document-creator-worker.md`
-- [ ] `beamer-worker` → `creer/latex/beamer-worker.md`
-- [ ] `qcm-builder` → `creer/latex/qcm-builder.md`
 
 ### Créer / HTML
 - [ ] `reveals-creator` → `creer/html/reveals-creator.md`
 - [ ] `interactive-animation-creator` → `creer/html/interactive-animation-creator.md`
 - [ ] `competence-presentation-generator` → `creer/html/competence-presentation-generator.md`
-
-### Créer / Media
-- [ ] `image-user` → `creer/media/image-user.md`
-
-### Créer / Application
-- [ ] `app-creator-agent` → `creer/application/app-creator-agent.md`
 
 ### Créer / Notebook
 - [ ] `jupyter-notebook-creator` → `creer/notebook/jupyter-notebook-creator.md`
@@ -133,7 +111,6 @@
 - [ ] `eval-builder` → `creer/evaluation/eval-builder.md`
 
 ### Créer / Documentation
-- [ ] `fiche-technique-agent` → `creer/documentation/fiche-technique-agent.md`
 - [ ] `student-prompt-builder` → `creer/documentation/student-prompt-builder.md`
 
 ### Outillage / LaTeX
@@ -164,12 +141,12 @@
 
 | Catégorie | Sous-catégories | Nb agents |
 |-----------|-----------------|-----------|
-| `creer/` | latex, html, media, application, notebook, evaluation, documentation | 14 |
+| `creer/` | latex, html, notebook, evaluation, documentation | 9 |
 | `outillage/` | latex, extraction, gestion | 9 |
 | `experimental/` | - | 0 |
 | `perso/` | - | 0 |
 | `meta/` | error-investigator, self-improvement, meta-low, meta-mid, meta-high | 5 |
-| **Total** | | **28** |
+| **Total** | | **23** |
 
 ---
 

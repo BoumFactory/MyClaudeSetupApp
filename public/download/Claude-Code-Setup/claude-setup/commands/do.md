@@ -6,7 +6,7 @@ Point d'entrée unique et intelligent pour toutes les demandes pédagogiques. Ce
 - Analyse la demande (souvent vague) de l'utilisateur
 - Décompose en sous-tâches parallélisables
 - **Orchestre les méta-agents (meta-low, meta-mid, meta-high)** pour exécution concurrente
-- **Choisit la meilleure approche technique** (TikZ vs Image IA, LaTeX vs HTML, etc.)
+- **Choisit la meilleure approche technique** (LaTeX vs HTML, TikZ vs cetz, etc.)
 - **Détecte les demandes généralisables** en nouvelles commandes
 - Masque toute la complexité à l'utilisateur
 
@@ -21,7 +21,7 @@ Point d'entrée unique et intelligent pour toutes les demandes pédagogiques. Ce
 ```bash
 /do je voudrais un truc sur les vecteurs
 /do faire une éval avec un schéma sympa
-/do cours sur pythagore avec une infographie récap + animation
+/do cours sur pythagore avec une fiche d'exercices + animation
 /do 10 exercices progressifs sur les fractions pour 4eme
 /do adapter ce document externe vers mon style LaTeX
 ```
@@ -49,11 +49,11 @@ SINON
   → Séquentiel avec dépendances explicites
 ```
 
-**Exemple** : "Cours + Infographie + Animation"
+**Exemple** : "Cours + Exercices + Animation"
 ```python
 # PARALLÈLE : 3 agents simultanés
 Task(subagent_type="meta-high", prompt="Créer le cours LaTeX...")
-Task(subagent_type="meta-mid", prompt="Générer l'infographie...")
+Task(subagent_type="meta-mid", prompt="Créer la fiche d'exercices...")
 Task(subagent_type="meta-mid", prompt="Créer l'animation...")
 # SÉQUENTIEL ensuite : intégrer les résultats
 ```
@@ -101,14 +101,14 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 │                   │   │                   │   │                           │
 │ ○ LaTeX (PDF)     │   │ ○ 1 fichier,      │   │ /searchMathSource         │
 │   → Q2a           │   │   modif locale    │   │ /search-report            │
-│                   │   │   → meta-low      │   │ /ficheTexnique            │
+│                   │   │   → meta-low      │   │                           │
 │ ○ HTML (Web)      │   │                   │   │ /continueBO               │
 │   → Q2b           │   │ ○ Plusieurs       │   │ /routine-matin            │
 │                   │   │   modifs, 1 skill │   │ /vocal-correction         │
-│ ○ Image/Visuel    │   │   → meta-mid      │   │                           │
+│ ○ Figure          │   │   → meta-mid      │   │                           │
 │   → Q2c           │   │                   │   └───────────────────────────┘
 │                   │   │ ○ Restructuration │
-│ ○ Application     │   │   profonde        │
+│ ○ Notebook        │   │   profonde        │
 │   → Q2d           │   │   → meta-high     │
 │                   │   │                   │
 │ ○ Moodle          │   └───────────────────┘
@@ -123,13 +123,13 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐             │
-│  │ Cours/Exercices │  │   Diaporama     │  │   Optimisé/     │             │
-│  │ Fiche/Activité  │  │    Beamer       │  │   Autonome      │             │
+│  │ Cours/Exercices │  │      QCM        │  │   Optimisé/     │             │
+│  │ Fiche/Activité  │  │ (automatismes)  │  │   Autonome      │             │
 │  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘             │
 │           │                    │                    │                      │
 │           ▼                    ▼                    ▼                      │
-│      /createTex           /createBeamer        /optiLatex                  │
-│      → meta-high          → meta-high          → meta-mid                  │
+│      /createTex           skill qcm-creator    /optiLatex                  │
+│      → meta-high          → meta-mid           → meta-mid                  │
 │                                                                             │
 │  Skills requis : tex-document-creator + bfcours-latex                       │
 │  + latex-geometry si figures géométriques                                   │
@@ -150,37 +150,22 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  Q2c : CRÉER IMAGE - QUEL TYPE ?                                            │
+│  Q2c : CRÉER UNE FIGURE                                                     │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  TikZ suffisant ?  ──YES──►  Intégré dans /createTex (pas d'agent séparé)  │
-│        │                                                                    │
-│        NO                                                                   │
-│        │                                                                    │
-│        ▼                                                                    │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐             │
-│  │  Infographie    │  │  Photo/Réaliste │  │  Schéma annoté  │             │
-│  │   éducative     │  │   contexte      │  │   complexe      │             │
-│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘             │
-│           │                    │                    │                      │
-│           └────────────────────┼────────────────────┘                      │
-│                                ▼                                           │
-│                          /createImage                                      │
-│                          → meta-mid                                        │
+│  Figure de géométrie, courbe, arbre, schéma  ──►  TikZ dans le document     │
+│                                                  (skill latex-geometry)     │
+│  Document Typst  ──►  figure cetz (skill bfcours-typst)                     │
+│                                                                             │
+│  Pas d'agent séparé : la figure est écrite avec le document.                │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  Q2d : CRÉER APPLICATION                                                    │
+│  Q2d : CRÉER UN NOTEBOOK                                                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────┐  ┌─────────────────┐                                  │
-│  │   App Flask     │  │ Notebook Jupyter│                                  │
-│  │   éducative     │  │   pédagogique   │                                  │
-│  └────────┬────────┘  └────────┬────────┘                                  │
-│           │                    │                                           │
-│           ▼                    ▼                                           │
-│      /create-app         jupyter-notebook-creator (agent)                  │
-│      → meta-high         → meta-high                                       │
+│  Notebook Jupyter pédagogique  ──►  jupyter-notebook-creator (agent)        │
+│                                     → meta-high                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -259,7 +244,7 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  Mots-clés : "et", "avec", "plus", "+", virgule, liste                      │
-│  Exemples : "cours ET exercices", "éval AVEC image", "10 fiches"            │
+│  Exemples : "cours ET exercices", "éval AVEC figure", "10 fiches"           │
 │                                                                             │
 │       OUI                                              NON                  │
 │        │                                                │                   │
@@ -282,8 +267,8 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 │ │ Lancer    │ │ Phase 1 : Créations indépendantes (parallèle)         │    │
 │ │ tous les  │ │ Phase 2 : Intégration (séquentiel, meta-low)          │    │
 │ │ agents    │ │                                                       │    │
-│ │ en même   │ │ Exemple : cours + image intégrée dans le cours        │    │
-│ │ temps     │ │ → P1: meta-high(cours) // meta-mid(image)             │    │
+│ │ en même   │ │ Exemple : cours + figure intégrée dans le cours       │    │
+│ │ temps     │ │ → P1: meta-high(cours) // meta-mid(figure)            │    │
 │ │           │ │ → P2: meta-low(ajouter \includegraphics)              │    │
 │ └───────────┘ └───────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -319,12 +304,12 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 │  │  ✓ Plusieurs modifications dans 1+ fichiers                         │   │
 │  │  ✓ 1 skill à appliquer                                              │   │
 │  │  ✓ Renommage global (replace_all)                                   │   │
-│  │  ✓ Génération d'image IA                                            │   │
+│  │  ✓ Figure TikZ isolée                                               │   │
 │  │  ✓ Animation HTML simple                                            │   │
 │  │  ✓ Présentation Reveal.js                                           │   │
 │  │  ✓ Adaptation de document                                           │   │
 │  │                                                                     │   │
-│  │  Commandes : /createImage, /animate, /createReveals, /adaptTex...   │   │
+│  │  Commandes : /animate, /createReveals, /adaptTex...                 │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 │                                    │                                        │
 │                          NON ──────┴────── OUI → meta-mid                   │
@@ -337,10 +322,10 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 │  │  ✓ Multi-skills enchaînés                                           │   │
 │  │  ✓ Workflow complexe avec documentation                             │   │
 │  │  ✓ Adaptation contextuelle intelligente                             │   │
-│  │  ✓ Application complète                                             │   │
+│  │  ✓ Notebook Jupyter complet                                         │   │
 │  │  ✓ Cours Moodle complet                                             │   │
 │  │                                                                     │   │
-│  │  Commandes : /createTex, /createBeamer, /makeEval, /create-app...   │   │
+│  │  Commandes : /createTex, /makeEval, /moodleise...                   │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -351,10 +336,10 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 
 | Question | Réponse | Action |
 |----------|---------|--------|
-| Créer du neuf ? | LaTeX | Q2a → /createTex, /createBeamer |
+| Créer du neuf ? | LaTeX | Q2a → /createTex, skill qcm-creator, /optiLatex |
 | | HTML | Q2b → /createHtml, /createReveals, /animate |
-| | Image | Q2c → /createImage (si TikZ insuffisant) |
-| | App | Q2d → /create-app |
+| | Figure | Q2c → TikZ (latex-geometry) ou cetz (bfcours-typst) |
+| | Notebook | Q2d → jupyter-notebook-creator |
 | | Moodle | Q2e → /moodleise, /createGameMap |
 | | Évaluation | Q2f → /makeEval, /makePythonEval, /bareme |
 | Modifier existant ? | LaTeX | /modifyTex, /adaptTex, /formatTexBetter |
@@ -375,9 +360,9 @@ Suivre cet arbre **dans l'ordre** pour déterminer la stratégie d'exécution.
 
 | Catégorie | Sous-catégories | Commandes associées |
 |-----------|-----------------|---------------------|
-| **creer/** | latex, html, moodle, media, application, evaluation | `/createTex`, `/createHtml`, `/createBeamer`, `/createReveals`, `/animate`, `/createImage`, `/create-app`, `/makeEval`, `/makePythonEval`, `/bareme`, `/moodleise`, `/createGameMap` |
+| **creer/** | latex, html, moodle, evaluation | `/createTex`, `/createHtml`, `/createReveals`, `/animate`, `/makeEval`, `/makePythonEval`, `/bareme`, `/moodleise`, `/createGameMap` |
 | **modifier/** | latex, html, notebook | `/modifyTex`, `/adaptTex`, `/formatTexBetter`, `/adaptHtml`, `/notebook-audit` |
-| **outillage/** | recherche, documentation, chargement | `/searchMathSource`, `/search-report`, `/ficheTexnique`, `/loadTexKnowledge` |
+| **outillage/** | recherche, chargement | `/searchMathSource`, `/search-report`, `/loadTexKnowledge` |
 | **experimental/** | - | `/vocal-correction` |
 | **perso/** | - | `/routine-matin` |
 
@@ -389,7 +374,7 @@ Identifier si la demande implique **plusieurs ressources** :
 |-----------------|---------------|
 | "cours + exercices" | meta-high(cours) // meta-mid(exercices) |
 | "éval + barème" | meta-mid(éval) → meta-low(barème) |
-| "document + image" | meta-high(doc) // meta-mid(image) |
+| "document + figure" | meta-high(doc) // meta-mid(figure) |
 | "document + animation" | meta-high(doc) // meta-mid(animation) |
 | "batch N fichiers" | N × meta-low en parallèle |
 | "adapter + compiler" | meta-mid(adapt) → meta-low(compile) |
@@ -416,11 +401,11 @@ Identifier si la demande implique **plusieurs ressources** :
 |------|------------|
 | **Document LaTeX** | Cours, Exercices, Évaluation, Activité, DM, Fiche |
 | **Document HTML** | Cours interactif, Support de projection |
-| **Présentation** | Beamer (PDF), Reveal.js (web) |
-| **Image/Visuel** | Infographie, Photo, Schéma, Illustration, Animation |
-| **Application** | App Flask, Notebook Jupyter |
+| **Présentation** | Reveal.js (web) |
+| **Figure/Visuel** | Figure TikZ ou cetz, Schéma, Animation |
+| **Notebook** | Notebook Jupyter |
 | **Moodle** | Cours complet, Parcours gamifié |
-| **Autre** | Fiche technique, Recherche, Barème |
+| **Autre** | Recherche, Barème, QCM |
 
 #### 2. OÙ ? (Chemin de destination)
 
@@ -460,19 +445,18 @@ Identifier si la demande implique **plusieurs ressources** :
 
 ## ÉTAPE 3 : CHOIX TECHNIQUES AUTOMATIQUES
 
-### TikZ vs Image IA
+### Figures : TikZ ou cetz
 
-**RÈGLE** : Privilégier TikZ tant que le résultat est correct et modifiable.
+**RÈGLE** : toute figure est écrite en code, donc modifiable et nette à l'impression.
 
-| TikZ (par défaut) | Image IA (si TikZ insuffisant) |
-|-------------------|--------------------------------|
-| Figure géométrique de base | Mind map complexe |
-| Graphique de fonction | Infographie riche |
-| Arbre de probabilités | Schéma annoté type SVT |
-| Diagramme simple | Figure 3D réaliste |
-| Figure constructible | Contexte photo réaliste |
+| LaTeX : TikZ (skill `latex-geometry`) | Typst : cetz (skill `bfcours-typst`) |
+|---------------------------------------|--------------------------------------|
+| Figure géométrique | Figure géométrique |
+| Graphique de fonction | Graphique de fonction |
+| Arbre de probabilités | Arbre de probabilités |
+| Diagramme simple | Diagramme simple |
 
-**Critère** : "TikZ peut-il produire un résultat correct et utile ?" → Oui = TikZ
+Pour une carte mentale, utiliser le skill `mind-map-creator`.
 
 ### LaTeX vs HTML
 
@@ -481,14 +465,6 @@ Identifier si la demande implique **plusieurs ressources** :
 | Impression, documents officiels | Projection, consultation web |
 | Évaluations, fiches élèves | Cours projetés, révisions |
 | PDF statique | Interactif (dark mode, sélecteur) |
-
-### Beamer vs Reveal.js
-
-| Beamer (`/createBeamer`) | Reveal.js (`/createReveals`) |
-|-------------------------|------------------------------|
-| Environnement LaTeX pur | Interactivité web avancée |
-| Export PDF simple | Animations fluides |
-| Intégration bfcours | MathJax natif |
 
 ---
 
@@ -506,7 +482,7 @@ Task(subagent_type="meta-low", prompt="...")
 ```python
 # MÊME MESSAGE, plusieurs Task() = exécution parallèle
 Task(subagent_type="meta-high", prompt="Créer cours LaTeX sur [thème]...")
-Task(subagent_type="meta-mid", prompt="Générer infographie [thème]...")
+Task(subagent_type="meta-mid", prompt="Créer fiche d'exercices [thème]...")
 Task(subagent_type="meta-mid", prompt="Créer animation interactive [thème]...")
 ```
 
@@ -587,7 +563,6 @@ for i in range(10):
 | Commande | Cas d'usage |
 |----------|-------------|
 | `/createTex` | Créer document LaTeX (cours, exercices, fiche) |
-| `/createBeamer` | Diaporama Beamer avec overlays |
 | `/optiLatex` | Création LaTeX autonome optimisée |
 
 #### creer/html/
@@ -603,16 +578,6 @@ for i in range(10):
 | `/makeEval` | Générer évaluation complète |
 | `/makePythonEval` | Évaluation Python lycée |
 | `/bareme` | Générer barème actions élèves |
-
-#### creer/media/
-| Commande | Cas d'usage |
-|----------|-------------|
-| `/createImage` | Créer image/visuel (IA) |
-
-#### creer/application/
-| Commande | Cas d'usage |
-|----------|-------------|
-| `/create-app` | Application Flask éducative |
 
 #### creer/moodle/
 | Commande | Cas d'usage |
@@ -643,11 +608,6 @@ for i in range(10):
 | `/searchMathSource` | Rechercher ressources maths |
 | `/search-report` | Recherche web + rapport |
 | `/continueBO` | Poursuite extraction BO |
-
-#### outillage/documentation/
-| Commande | Cas d'usage |
-|----------|-------------|
-| `/ficheTexnique` | Fiche technique pédagogique |
 
 ---
 
@@ -688,12 +648,12 @@ Cela vous convient-il ?
 
 ### Exemple complet
 
-**Demande** : "Cours sur Pythagore avec infographie récap et animation"
+**Demande** : "Cours sur Pythagore avec fiche d'exercices et animation"
 
 ```python
 # ANALYSE
 # - Ressource principale : cours LaTeX
-# - Annexes : infographie (IA), animation (HTML)
+# - Annexes : fiche d'exercices (LaTeX), animation (HTML)
 # - Intégration : liens dans le cours
 
 # EXÉCUTION PARALLÈLE (même message)
@@ -709,10 +669,10 @@ Task(
 Task(
     subagent_type="meta-mid",
     prompt="""
-    Contexte: Infographie récapitulative Pythagore
-    Objectif: Générer une infographie claire et pédagogique
-    Skills: image-generator (type: infographic)
-    Destination: 4. Images/pythagore/
+    Contexte: Fiche d'exercices Pythagore
+    Objectif: Exercices progressifs, énoncés et corrigés
+    Skills: bfcours-latex
+    Destination: 1. Cours/4eme/Sequence-Pythagore/Exercices/
     """
 )
 Task(
@@ -728,7 +688,7 @@ Task(
 # INTÉGRATION SÉQUENTIELLE (après résultats)
 Task(
     subagent_type="meta-low",
-    prompt="Ajouter \\includegraphics{../../../4. Images/pythagore/infographie.png} dans le cours créé"
+    prompt="Ajouter dans le cours créé un renvoi vers la fiche d'exercices"
 )
 ```
 
@@ -782,7 +742,7 @@ En fin de tâche :
 
 ✅ Ressources créées :
 - `1. Cours/4eme/.../cours_pythagore.tex`
-- `4. Images/pythagore/infographie.png`
+- `1. Cours/4eme/.../Exercices/exercices_pythagore.tex`
 - `1. Cours/4eme/.../Animations/preuve_visuelle.html`
 
 ### Orchestration utilisée
@@ -801,7 +761,7 @@ Souhaitez-vous que j'applique des améliorations ?
 
 - **Paralléliser** : Lancer plusieurs Task() dans le même message si tâches indépendantes
 - **Méta-agents** : low (ciblé), mid (batch/skill), high (complexe)
-- **TikZ par défaut** : Image IA seulement si TikZ insuffisant
+- **Figures** : TikZ en LaTeX, cetz en Typst (jamais d'image générée)
 - **tex-document-creator + bfcours-latex** : Toujours pour création LaTeX
 - **Auto-amélioration** : Toujours en fin de tâche
 - **Détecter les patterns** : Proposer des commandes généralisables

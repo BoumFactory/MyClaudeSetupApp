@@ -285,7 +285,7 @@ Après correction, ajouter des champs :
 
 ### Exemple 3 : Skill incomplet
 
-**Erreur** : Skill `beamer-presentation` ne mentionne pas `\frquote` pour les citations
+**Erreur** : Skill `bfcours-latex` ne mentionne pas `\frquote` pour les citations
 
 **Cause** : Documentation manquante
 
