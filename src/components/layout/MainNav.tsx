@@ -126,10 +126,10 @@ export function MainNav() {
               description: "Structurer ses prompts et invoquer les bons outils"
             },
             {
-              title: "Typst avec farfadet",
-              href: "/claude-code/tutorials/parcours/typst",
+              title: "Formation Typst",
+              href: "/claude-code/tutorials/typst",
               icon: FileCode2,
-              description: "Cours et exercices de maths en Typst"
+              description: "45 leçons interactives avec farfadet, compilées dans le navigateur"
             },
             {
               title: "Avancé",

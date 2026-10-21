@@ -258,6 +258,18 @@ export function buildSearchIndex(): SearchableItem[] {
     icon: '📄',
   })
 
+  items.push({
+    id: 'formation-typst-interactive',
+    title: 'Formation Typst interactive',
+    description:
+      '45 leçons pour apprendre Typst et farfadet : éditeur et aperçu en direct, compilation dans le navigateur, cahier des charges vérifié automatiquement.',
+    category: 'tutoriel',
+    categoryLabel: 'Formation interactive',
+    tags: ['typst', 'farfadet', 'formation', 'tutoriel', 'exercices', 'tcbtab', 'tabvar', 'qcm', 'géométrie', 'rdopp', 'rdarithm'],
+    url: '/claude-code/tutorials/typst',
+    icon: '📄',
+  })
+
   // ============ 5. Applications ============
   const applications = [
     {

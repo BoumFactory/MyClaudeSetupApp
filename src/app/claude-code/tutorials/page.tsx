@@ -411,7 +411,6 @@ export default function TutorialsPage() {
   const cli = PARCOURS.find(p => p.id === 'claude-code')
   const promptCraft = PARCOURS.find(p => p.id === 'prompt-craft')
   const avance = PARCOURS.find(p => p.id === 'avance')
-  const typst = PARCOURS.find(p => p.id === 'typst')
 
   return (
     <div className="space-y-16">
@@ -491,16 +490,26 @@ export default function TutorialsPage() {
         </div>
 
         {/* Parcours Typst (hors du flux principal) */}
-        {typst && (
-          <div className="max-w-5xl mx-auto pt-6 space-y-3">
-            <p className="text-center text-sm text-muted-foreground">
-              Pour rédiger vos documents de maths en Typst : rédiger, compiler et convertir avec farfadet
-            </p>
-            <div className="max-w-lg mx-auto">
-              <ParcoursCard parcours={typst} />
+        <div className="max-w-5xl mx-auto pt-6 space-y-3">
+          <p className="text-center text-sm text-muted-foreground">
+            Pour rédiger vos documents de maths en Typst avec farfadet
+          </p>
+          <Link
+            href="/claude-code/tutorials/typst"
+            prefetch={false}
+            className="group block max-w-lg mx-auto glass-card p-6 rounded-xl border border-emerald-500/30 hover:border-emerald-500/60 transition-colors"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                <FileCode2 className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold group-hover:text-emerald-400 transition-colors">Formation Typst interactive</h3>
             </div>
-          </div>
-        )}
+            <p className="text-sm text-muted-foreground">
+              45 leçons avec éditeur et aperçu en direct : on écrit le code, le navigateur compile, le cahier des charges se coche tout seul.
+            </p>
+          </Link>
+        </div>
 
         {/* Lien parcours libre */}
         <p className="text-center text-sm text-muted-foreground pt-4">

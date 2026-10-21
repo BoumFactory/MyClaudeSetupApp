@@ -31,7 +31,8 @@ const DOC_URL = `${FORGE}/-/blob/main/farfadet-documentation.pdf`
 const README_URL = `${FORGE}/-/blob/main/README.md`
 const APP_URL = `${FORGE_RAW}/application/ecriture-typst.html`
 const APP_PAGE_URL = `${FORGE}/-/blob/main/application/ecriture-typst.html`
-const VIDEO_URL = `${FORGE_RAW}/application/capsule-prise-en-main.mp4`
+// Hébergée sur le site : la Forge ne gère pas les requêtes partielles, la balise <video> n'y lit pas le fichier
+const VIDEO_URL = '/videos/ecriture-typst-prise-en-main.mp4'
 
 const INSTALL_COMMANDS: { os: string; shell: string; command: string }[] = [
   {
@@ -348,11 +349,11 @@ export default function DownloadTypstPackagesPage() {
               Packages IA
             </Link>
             <Link
-              href="/claude-code/tutorials/parcours/typst"
+              href="/claude-code/tutorials/typst"
               prefetch={false}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg cosmic-gradient text-sm font-medium text-white hover:opacity-90 transition-opacity"
             >
-              Tutoriel : Typst avec farfadet
+              Formation Typst interactive
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

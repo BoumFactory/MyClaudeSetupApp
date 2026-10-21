@@ -1,6 +1,4 @@
 import { Parcours, Capsule } from '@/types/tutorial'
-import { TYPST_CAPSULES_A } from './parcours-typst-a'
-import { TYPST_CAPSULES_B } from './parcours-typst-b'
 
 /**
  * Définition des parcours de formation
@@ -45,18 +43,6 @@ export const PARCOURS: Parcours[] = [
     icon: 'Sparkles',
     color: 'nebula',
     capsules: ['av-architecture', 'av-creer-skill', 'av-hooks', 'av-share', 'av-subagents', 'av-chantier'],
-  },
-  {
-    id: 'typst',
-    title: 'Typst avec farfadet',
-    description: 'Rédiger, compiler et convertir ses documents de maths en Typst',
-    icon: 'FileCode2',
-    color: 'emerald',
-    capsules: [
-      'ty-demarrer', 'ty-syntaxe', 'ty-socle-modele', 'ty-didactique', 'ty-enum-colonnes',
-      'ty-maths', 'ty-exo', 'ty-crep', 'ty-qcm', 'ty-tableaux', 'ty-geom', 'ty-extras-latex',
-      'ty-rd-calcul', 'ty-rd-supports', 'ty-avec-claude',
-    ],
   },
 ]
 
@@ -4767,10 +4753,6 @@ Appliquer les corrections.</code></pre>
     duration: '~8 min',
     tags: ['synthèse', 'combinaison', 'récapitulatif'],
   },
-
-  // --- Typst avec farfadet (parcours-typst-a.ts et parcours-typst-b.ts) ---
-  ...TYPST_CAPSULES_A,
-  ...TYPST_CAPSULES_B,
 }
 
 /**
