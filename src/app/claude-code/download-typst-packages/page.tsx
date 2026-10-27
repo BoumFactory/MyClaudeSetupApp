@@ -335,18 +335,20 @@ export default function DownloadTypstPackagesPage() {
             <h2 className="text-lg font-bold text-white mb-1">Avec Claude Code</h2>
             <p className="text-sm text-white/60">
               Le skill <Code>bfcours-typst</Code> apprend à Claude à écrire, compiler et corriger des documents
-              farfadet. Il est fourni dans les bundles <strong className="text-white/80">LaTeX Enseignant</strong> et{' '}
+              farfadet, versions professeur et élève comprises. Sa présentation montre ce que fait l&apos;agent et
+              propose un pack dédié à ajouter au panier ; il est aussi fourni dans les bundles{' '}
+              <strong className="text-white/80">LaTeX Enseignant</strong> et{' '}
               <strong className="text-white/80">Power User</strong>.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/claude-code/download-ai-packages"
+              href="/claude-code/presentations/bfcours-typst-skill"
               prefetch={false}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm text-white/70 hover:text-white transition-colors"
             >
               <Package className="w-4 h-4" />
-              Packages IA
+              Le skill et son pack
             </Link>
             <Link
               href="/claude-code/tutorials/typst"

@@ -1,6 +1,6 @@
 \documentclass[a4paper,11pt,fleqn]{article}
 
-\usepackage[left=1cm,right=0.5cm,top=0.5cm,bottom=2cm]{geometry}
+\usepackage[left=1cm,right=1cm,top=0.5cm,bottom=2cm]{geometry}
 
 \usepackage{bfcours}
 \pgfplotsset{compat=1.18}
@@ -18,12 +18,9 @@ display level,
 save lower,
 score=\points,
 level=\rdifficulty,
-overlay={\node[inner sep=0pt,
-anchor=west,rotate=90, yshift=0.3cm]
-at (frame.south west) {\thetags[0]} ;}
-]
+overlay={\ifcorrection \node[inner sep=0pt,anchor=west,rotate=90, yshift=0.3cm] at (frame.south west) {\thetags[0]} ;\else \fi}
 }
-\setrdcrep{seyes, correction=true, correction color=monrose, correction font = \large\bfseries}
+\setrdcrep{seyes, correction=true, correction color=prop, correction font = \normalsize}
 
 \newcommand{\tikzinclude}[1]{%
     \stepcounter{tikzfigcounter}%
@@ -32,7 +29,7 @@ at (frame.south west) {\thetags[0]} ;}
 \input{enonce_figures}
 
 \hypersetup{
-    pdfauthor={R.Deschamps},
+    pdfauthor={},
     pdfsubject={},
     pdfkeywords={},
     pdfproducer={LuaLaTeX},
@@ -54,7 +51,7 @@ at (frame.south west) {\thetags[0]} ;}
     }{
     % type_etablissement : Collège,Lycée,
     }{
-    % nom_etablissement : Amadis Jamyn,Eugène Belgrand,CBPM
+    % nom_etablissement : Collège Exemple,Lycée Exemple,Autre établissement
     }{
     % supplement : ,\tableauPresenteEvalSixieme{}{10},\tableofcontents
     }{

@@ -433,7 +433,7 @@ L'agent vérifie :
 
 ```bash
 /createReveals --style lycée --sujet "Suites numériques" --duree 55 \
-  --exercices 5 --auteur "Prof. Martin" --etablissement "Lycée Jamyn"
+  --exercices 5 --auteur "Prof. Martin" --etablissement "Lycée Exemple"
 ```
 
 **Processus** :

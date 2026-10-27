@@ -20,6 +20,8 @@ import {
   Image,
   Layers,
   PenTool,
+  Video,
+  Wand2,
 } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -507,6 +509,50 @@ export default function TutorialsPage() {
             </div>
             <p className="text-sm text-muted-foreground">
               45 leçons avec éditeur et aperçu en direct : on écrit le code, le navigateur compile, le cahier des charges se coche tout seul.
+            </p>
+          </Link>
+        </div>
+
+        {/* Tutoriel vidéo (hors du flux principal) */}
+        <div className="max-w-5xl mx-auto pt-6 space-y-3">
+          <p className="text-center text-sm text-muted-foreground">
+            Pour transformer une correction ou un cours en vidéo animée
+          </p>
+          <Link
+            href="/claude-code/tutorials/capsules-video"
+            prefetch={false}
+            className="group block max-w-lg mx-auto glass-card p-6 rounded-xl border border-amber-500/30 hover:border-amber-500/60 transition-colors"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+                <Video className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold group-hover:text-amber-400 transition-colors">Créer des vidéos avec Claude Code</h3>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Capsules animées dont chaque geste suit la voix : quoi installer, commandes, installeur tout-en-un et tutoriel complet à lire ou à télécharger.
+            </p>
+          </Link>
+        </div>
+
+        {/* Tutoriel à étapes : créer son propre skill (hors du flux principal) */}
+        <div className="max-w-5xl mx-auto pt-6 space-y-3">
+          <p className="text-center text-sm text-muted-foreground">
+            Pour que l&apos;agent travaille comme vous, à partir de vos propres documents
+          </p>
+          <Link
+            href="/claude-code/tutorials/creer-un-skill"
+            prefetch={false}
+            className="group block max-w-lg mx-auto glass-card p-6 rounded-xl border border-violet-500/30 hover:border-violet-500/60 transition-colors"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                <Wand2 className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold group-hover:text-violet-400 transition-colors">Créer son propre skill</h3>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Six étapes, prompts prêts à copier : se faire interviewer (grill-me), laisser skill-creator écrire le skill, le tester sur un de vos cours, le rendre auto-améliorable.
             </p>
           </Link>
         </div>

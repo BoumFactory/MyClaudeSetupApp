@@ -162,12 +162,16 @@ export function buildSearchIndex(): SearchableItem[] {
     'claude-code-interface': 'Interface Claude Code',
     'commandes-disponibles': 'Commandes disponibles',
     'tex-document-creator-system': 'Tex Document Creator',
-    'reveals-presentation-system': 'Reveals Presentation',
+    'reveals-presentation-system': 'Skill reveals : de la demande au diaporama prêt à projeter',
     'programmes-officiels-system': 'Programmes Officiels',
-    'bfcours-latex-system': 'Package bfcours LaTeX',
+    'bfcours-latex-system': 'Skill latex : de la demande au PDF relu',
+    'bfcours-typst-skill': 'Skill Typst : de la demande aux PDF professeur et élève',
     'jupyter-notebook-skill': 'Jupyter Notebook',
     'qcm-creator-skill': 'QCM Creator',
     'blueprint-eval-skill': 'Blueprint Eval',
+    'bareme-actions-eleves-skill': 'Skill barème détaillé : du sujet corrigé au barème justifié',
+    'capsule-video-skill': 'Skill capsules vidéo : de la demande à la vidéo animée',
+    'creer-un-skill': 'Créer son propre skill : la démarche en six étapes',
   }
 
   // Présentations de skills retirés : fichiers conservés, mais ni menu ni recherche
@@ -270,6 +274,30 @@ export function buildSearchIndex(): SearchableItem[] {
     icon: '📄',
   })
 
+  items.push({
+    id: 'tuto-capsules-video',
+    title: 'Créer des vidéos avec Claude Code',
+    description:
+      'Capsules animées : une correction d\'exercice ou un cours devient une vidéo où chaque geste suit la voix. Installeur, skill capsule-video, voix de synthèse ou clonée, tuto tout-en-un à lire ou à télécharger.',
+    category: 'tutoriel',
+    categoryLabel: 'Tutoriel vidéo',
+    tags: ['vidéo', 'capsule', 'animation', 'voix', 'pocket tts', 'skill', 'capsule-video', 'tutoriel', 'correction', 'ffmpeg'],
+    url: '/claude-code/tutorials/capsules-video',
+    icon: '🎬',
+  })
+
+  items.push({
+    id: 'tuto-creer-un-skill',
+    title: 'Créer son propre skill avec skill-creator',
+    description:
+      'Tutoriel en six étapes : se faire interviewer par grill-me, laisser skill-creator écrire un skill qui rédige vos cours comme vous, le tester sur un cours connu, le rendre auto-améliorable. Prompts prêts à copier, pack grill-me à télécharger.',
+    category: 'tutoriel',
+    categoryLabel: 'Tutoriel à étapes',
+    tags: ['skill', 'skill-creator', 'créer un skill', 'grill-me', 'interview', 'plugin', 'anthropic', 'tutoriel', 'auto-amélioration', 'cours modèle'],
+    url: '/claude-code/tutorials/creer-un-skill',
+    icon: '🪄',
+  })
+
   // ============ 5. Applications ============
   const applications = [
     {
@@ -339,36 +367,6 @@ export function buildSearchIndex(): SearchableItem[] {
       categoryLabel: app.categoryLabel,
       tags: app.tags,
       url: app.url,
-    })
-  }
-
-  // ============ 6. Formations ============
-  const formations = [
-    {
-      id: 'formation-latex',
-      title: 'Formation LaTeX',
-      description: 'Formation complète pour maîtriser LaTeX et produire des documents mathématiques professionnels',
-      url: '/formations/latex',
-      tags: ['formation', 'latex', 'mathématiques', 'documents'],
-    },
-    {
-      id: 'formation-ia-latex',
-      title: 'Formation IA & LaTeX',
-      description: 'Combinaison de l\'IA et de LaTeX pour automatiser la création de ressources pédagogiques',
-      url: '/formations/ia-latex',
-      tags: ['formation', 'ia', 'latex', 'claude code', 'automatisation'],
-    },
-  ]
-
-  for (const formation of formations) {
-    items.push({
-      id: formation.id,
-      title: formation.title,
-      description: formation.description,
-      category: 'formation',
-      categoryLabel: 'Formation',
-      tags: formation.tags,
-      url: formation.url,
     })
   }
 

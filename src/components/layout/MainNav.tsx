@@ -28,7 +28,8 @@ import {
   AlignJustify,
   Wrench,
   MessageSquareText,
-  Search
+  Search,
+  Wand2
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useBackgroundAnimation } from "@/contexts/BackgroundAnimationContext"
@@ -49,44 +50,12 @@ export function MainNav() {
 
   const navItems = [
     {
-      title: "Formations",
-      href: "/formations",
-      icon: FileText,
-      featured: true, // Item mis en avant
-      submenu: [
-        {
-          title: "Formation IA & LaTeX",
-          href: "/formations/ia-latex",
-          icon: Sparkles,
-          description: "Document formatif sur les bases avec claude code"
-        },
-        {
-          title: "Formation LaTeX",
-          href: "/formations/latex",
-          icon: BookOpen,
-          description: "Document formatif sur LaTeX pour l'enseignement"
-        },
-        
-      ]
-    },
-    {
-      title: "Vidéos",
-      href: "/claude-code/videos",
-      icon: Video,
-      featured: true, // Item mis en avant
-      submenu: [
-        {
-          title: "Vidéos Claude Code",
-          href: "/claude-code/videos",
-          icon: FileVideo2,
-          description: "Démonstration de mon utilisation de Claude Code"
-        },
-      ]
-    },
-    {
       title: "Tutoriels",
       href: "/claude-code/tutorials",
       icon: GraduationCap,
+      featured: true, // Item mis en avant
+      accent: true, // Mise en valeur renforcée (badge + dégradé)
+      badge: "À la une",
       isMultiLevel: true,
       submenu: [
         {
@@ -136,6 +105,26 @@ export function MainNav() {
               href: "/claude-code/tutorials/parcours/avance",
               icon: Sparkles,
               description: "Architecture agents, skills et hooks"
+            },
+            {
+              title: "Créer son propre skill",
+              href: "/claude-code/tutorials/creer-un-skill",
+              icon: Wand2,
+              description: "Six étapes : interview, écriture, test, amélioration continue"
+            },
+          ]
+        },
+        {
+          title: "Créer des vidéos",
+          isCategory: true,
+          icon: Video,
+          description: "Capsules animées avec Claude Code",
+          presentations: [
+            {
+              title: "Capsules vidéo animées",
+              href: "/claude-code/tutorials/capsules-video",
+              icon: FileVideo2,
+              description: "Corrections et cours en vidéo, voix de synthèse ou clonée"
             },
           ]
         },
@@ -206,6 +195,20 @@ export function MainNav() {
       ]
     },
     {
+      title: "Vidéos",
+      href: "/claude-code/videos",
+      icon: Video,
+      featured: true, // Item mis en avant
+      submenu: [
+        {
+          title: "Vidéos Claude Code",
+          href: "/claude-code/videos",
+          icon: FileVideo2,
+          description: "Démonstration de mon utilisation de Claude Code"
+        },
+      ]
+    },
+    {
       title: "Présentations",
       href: "/claude-code/presentations",
       icon: Presentation,
@@ -250,16 +253,22 @@ export function MainNav() {
               description: "Création de documents LaTeX"
             },
             {
-              title: "Reveals Presentation",
+              title: "Skill reveals",
               href: "/claude-code/presentations/reveals-presentation-system",
               icon: Presentation,
-              description: "Présentations web Reveal.js"
+              description: "De la demande au diaporama prêt à projeter"
             },
             {
               title: "Programmes Officiels",
               href: "/claude-code/presentations/programmes-officiels-system",
               icon: Presentation,
               description: "Extraction programmes officiels"
+            },
+            {
+              title: "Skill capsules vidéo",
+              href: "/claude-code/presentations/capsule-video-skill",
+              icon: Presentation,
+              description: "De la demande à la vidéo animée"
             },
           ]
         },
@@ -287,6 +296,12 @@ export function MainNav() {
               icon: Presentation,
               description: "Fiches de révision interactives"
             },
+            {
+              title: "Skill barème détaillé",
+              href: "/claude-code/presentations/bareme-actions-eleves-skill",
+              icon: Presentation,
+              description: "Du sujet corrigé au barème justifié"
+            },
           ]
         },
         {
@@ -296,10 +311,16 @@ export function MainNav() {
           description: "Création et compilation LaTeX",
           presentations: [
             {
-              title: "Package bfcours",
+              title: "Skill latex",
               href: "/claude-code/presentations/bfcours-latex-system",
               icon: Presentation,
-              description: "Guide du package LaTeX"
+              description: "De la demande au PDF relu"
+            },
+            {
+              title: "Skill Typst",
+              href: "/claude-code/presentations/bfcours-typst-skill",
+              icon: Presentation,
+              description: "PDF professeur et élève avec farfadet"
             },
           ]
         },
@@ -475,6 +496,8 @@ export function MainNav() {
                                (item.href !== "/" && pathname.startsWith(item.href))
               const hasSubmenu = item.submenu && item.submenu.length > 0
               const isFeatured = (item as any).featured
+              const isAccent = (item as any).accent
+              const badge = (item as any).badge as string | undefined
 
               // Positionner à droite pour la moitié droite des éléments (évite débordement)
               const shouldAlignRight = itemIndex >= Math.ceil(navItems.length / 2)
@@ -493,12 +516,18 @@ export function MainNav() {
                         ? "bg-cosmic-900/50 text-cosmic-300 border border-cosmic-700"
                         : isFeatured
                         ? "text-foreground border border-cosmic-600/40 hover:border-cosmic-500/60 hover:bg-cosmic-900/30 hover:shadow-[0_0_12px_rgba(139,92,246,0.15)]"
-                        : "text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30"
+                        : "text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30",
+                      isAccent && "border border-amber-400/60 bg-gradient-to-r from-amber-500/20 to-cosmic-600/30 text-foreground font-semibold shadow-[0_0_14px_rgba(251,191,36,0.25)] hover:border-amber-300/80 hover:from-amber-500/30"
                     )}
                   >
-                    <Icon className={cn("w-4 h-4 lg:w-5 lg:h-5", isFeatured && "text-cosmic-400")} />
+                    <Icon className={cn("w-4 h-4 lg:w-5 lg:h-5", isFeatured && "text-cosmic-400", isAccent && "text-amber-300")} />
                     {/* Label visible sur grands écrans */}
                     <span className="hidden xl:inline text-xs font-medium">{item.title}</span>
+                    {badge && (
+                      <span className="hidden lg:inline-block rounded-full bg-amber-400 px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none tracking-wide text-slate-900">
+                        {badge}
+                      </span>
+                    )}
                     {hasSubmenu && (
                       <ChevronDown
                         className={cn(
@@ -696,6 +725,8 @@ export function MainNav() {
                 const hasSubmenu = item.submenu && item.submenu.length > 0
                 const isFeatured = (item as any).featured
                 const isMultiLevel = (item as any).isMultiLevel
+                const isAccent = (item as any).accent
+                const badge = (item as any).badge as string | undefined
 
                 return (
                   <div key={item.href}>
@@ -708,12 +739,18 @@ export function MainNav() {
                             ? "bg-cosmic-900/50 text-cosmic-300 border border-cosmic-700"
                             : isFeatured
                             ? "text-foreground border border-cosmic-600/40 hover:border-cosmic-500/60 hover:bg-cosmic-900/30"
-                            : "text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30"
+                            : "text-muted-foreground hover:text-foreground hover:bg-cosmic-900/30",
+                          isAccent && "border border-amber-400/60 bg-gradient-to-r from-amber-500/20 to-cosmic-600/30 text-foreground font-semibold"
                         )}
                       >
                         <div className="flex items-center gap-2">
-                          <Icon className={cn("w-4 h-4", isFeatured && "text-cosmic-400")} />
+                          <Icon className={cn("w-4 h-4", isFeatured && "text-cosmic-400", isAccent && "text-amber-300")} />
                           <span>{item.title}</span>
+                          {badge && (
+                            <span className="rounded-full bg-amber-400 px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none tracking-wide text-slate-900">
+                              {badge}
+                            </span>
+                          )}
                         </div>
                         <ChevronDown
                           className={cn(

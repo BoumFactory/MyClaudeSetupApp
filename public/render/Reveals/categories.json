@@ -78,8 +78,8 @@
           "presentations": [
             {
               "slug": "reveals-presentation-system",
-              "comment": "Création de présentations web interactives avec Reveal.js. Navigation fluide, animations modernes et adaptation responsive pour vos cours en ligne.",
-              "tags": ["Reveal.js", "diaporamas", "web", "interactif"],
+              "comment": "Le skill reveals : vous décrivez la séance ou joignez votre fiche, l'agent part du gabarit adapté au public, construit la séance de gauche à droite avec les détails en dessous, reprend vos figures TikZ puis contrôle chaque diapo. Pack téléchargeable et commandes d'installation sur la page.",
+              "tags": ["Reveal.js", "diaporamas", "web", "workflow"],
               "level": "intermédiaire",
               "updatedAt": "2026-10"
             }
@@ -94,6 +94,34 @@
               "slug": "programmes-officiels-system",
               "comment": "Recherche et citation des programmes de mathématiques de la rentrée 2026, du CM1 à la Terminale : formulation exacte du BO, page source, démonstrations exigibles et progression d'une notion de niveau en niveau.",
               "tags": ["programmes", "Éducation Nationale", "compétences", "référence"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-10"
+            }
+          ]
+        },
+        {
+          "id": "capsules-video",
+          "name": "Capsules vidéo",
+          "description": "De la demande à la vidéo animée",
+          "presentations": [
+            {
+              "slug": "capsule-video-skill",
+              "comment": "Le skill capsules vidéo : l'agent relit l'exercice, écrit le texte comme une copie modèle, le fait lire par une voix française locale (ou part de votre enregistrement), cale chaque geste sur un mot puis filme la vidéo MP4. Pack téléchargeable et commandes d'installation sur la page ; logiciels dans le tutoriel « Créer des vidéos ».",
+              "tags": ["vidéo", "capsules", "voix de synthèse", "workflow"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-10"
+            }
+          ]
+        },
+        {
+          "id": "creation-skills",
+          "name": "Créer ses skills",
+          "description": "De votre façon de faire à un skill qui travaille comme vous",
+          "presentations": [
+            {
+              "slug": "creer-un-skill",
+              "comment": "Créer son propre skill en six étapes : préparer (skill-creator d'Anthropic, grill-me, un cours modèle), se faire interviewer par grill-me, laisser skill-creator écrire le skill, le tester sur un cours connu, le rendre auto-améliorable, l'utiliser au quotidien. Tutoriel pas à pas avec prompts à copier et pack grill-me sur la page du tutoriel.",
+              "tags": ["skills", "personnalisation", "workflow", "pédagogie"],
               "level": "intermédiaire",
               "updatedAt": "2026-10"
             }
@@ -136,6 +164,13 @@
               "tags": ["évaluation", "révision", "web", "compétences"],
               "level": "intermédiaire",
               "updatedAt": "2026-10"
+            },
+            {
+              "slug": "bareme-actions-eleves-skill",
+              "comment": "Le skill barème détaillé : à partir d'un sujet et de son corrigé, l'agent découpe chaque corrigé en actions d'élève visibles sur la copie, calcule les points (actions × coefficient), la conversion sur 20 et la densité du sujet. Pack téléchargeable et commandes d'installation sur la page.",
+              "tags": ["évaluation", "compétences", "workflow", "bfcours"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-10"
             }
           ]
         }
@@ -153,13 +188,27 @@
       "subcategories": [
         {
           "id": "bfcours",
-          "name": "Package bfcours",
-          "description": "Utilisation et fonctionnalités du package bfcours",
+          "name": "Skill latex",
+          "description": "De la demande au PDF bfcours relu",
           "presentations": [
             {
               "slug": "bfcours-latex-system",
-              "comment": "Guide complet du package LaTeX bfcours pour l'enseignement des mathématiques. Environnements prédéfinis, mise en page automatisée et outils de compilation optimisés.",
-              "tags": ["LaTeX", "bfcours", "compilation", "mathématiques"],
+              "comment": "Le skill latex : vous décrivez le document en français, l'agent le crée à partir d'un modèle, l'écrit avec bfcours, le compile puis relit le PDF pour en améliorer la mise en page. Pack téléchargeable et commandes d'installation sur la page.",
+              "tags": ["LaTeX", "bfcours", "compilation", "workflow"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-10"
+            }
+          ]
+        },
+        {
+          "id": "typst",
+          "name": "Skill Typst",
+          "description": "De la demande aux PDF professeur et élève, avec farfadet",
+          "presentations": [
+            {
+              "slug": "bfcours-typst-skill",
+              "comment": "Le skill Typst : l'agent part de votre cours LaTeX bfcours (préconversion automatique) ou d'un document modèle, écrit avec la suite farfadet, compile d'un coup les versions professeur et élève, puis regarde les pages des deux. Pack téléchargeable et commandes d'installation sur la page ; la suite farfadet s'installe depuis la page Packages Typst.",
+              "tags": ["Typst", "farfadet", "compilation", "workflow"],
               "level": "intermédiaire",
               "updatedAt": "2026-10"
             }
@@ -205,7 +254,9 @@
       "carnets",
       "QCM",
       "évaluation",
-      "révision"
+      "révision",
+      "Typst",
+      "farfadet"
     ],
     "availableLevels": ["débutant", "intermédiaire", "avancé"]
   }

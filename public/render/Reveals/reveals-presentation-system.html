@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Formation IA & Mathématiques">
-  <meta name="description" content="Documentation du système de création de présentations reveal.js">
-  <title>Système de Création de Présentations Reveal.js</title>
+  <meta name="description" content="Le skill reveals-presentation : une demande en français, un diaporama web prêt à projeter">
+  <title>Le skill reveals : de votre demande au diaporama prêt à projeter</title>
 
   <!-- Reveal.js Core -->
   <link rel="stylesheet" href="assets/reveal/reset.css">
@@ -15,7 +15,6 @@
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Theme personnalisé académique -->
   <style>
     :root {
       --primary-color: #2c3e50;
@@ -23,8 +22,14 @@
       --accent-color: #e74c3c;
       --success-color: #27ae60;
       --warning-color: #f39c12;
+      --violet-color: #8e44ad;
       --text-color: #34495e;
+      --muted-color: #7f8c8d;
       --bg-light: #ecf0f1;
+      --step-create: #27ae60;
+      --step-write: #3498db;
+      --step-compile: #f39c12;
+      --step-review: #8e44ad;
     }
 
     .reveal {
@@ -37,1587 +42,829 @@
       color: var(--primary-color);
       font-weight: 600;
       text-transform: none;
+      letter-spacing: normal;
     }
 
-    .reveal h1 {
-      font-size: 2.2em;
-      margin-bottom: 0.5em;
-    }
+    .reveal h1 { font-size: 1.9em; margin-bottom: 0.3em; line-height: 1.15; }
 
     .reveal h2 {
-      font-size: 1.6em;
-      margin-bottom: 0.8em;
+      font-size: 1.4em;
+      margin-bottom: 0.6em;
       border-bottom: 3px solid var(--secondary-color);
-      padding-bottom: 0.3em;
+      padding-bottom: 0.25em;
     }
 
-    .reveal h3 {
-      font-size: 1.3em;
-      color: var(--secondary-color);
-      margin-top: 0.4em;
-    }
-
-    .reveal ul, .reveal ol {
-      margin: 1em 0;
-    }
-
-    .reveal li {
-      margin: 0.5em 0;
-      line-height: 1.5;
-    }
+    .reveal p, .reveal li { line-height: 1.45; }
+    .reveal ul { margin: 0.4em 0 0 1em; }
+    .reveal li { margin: 0.3em 0; }
 
     .reveal code {
       background: var(--bg-light);
-      padding: 0.2em 0.5em;
+      padding: 0.1em 0.4em;
       border-radius: 4px;
       font-family: 'Consolas', 'Monaco', monospace;
-      font-size: 0.95em;
-      color: var(--accent-color);
-    }
-
-    .reveal pre {
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      margin: 1em 0;
-    }
-
-    .reveal pre code {
-      background: #282c34;
-      color: #abb2bf;
-      padding: 1em;
-      max-height: 500px;
-      font-size: 0.75em;
-      line-height: 1.4;
-    }
-
-    .reveal .highlight {
-      color: var(--accent-color);
-      font-weight: 600;
-    }
-
-    .reveal .success {
-      color: var(--success-color);
-      font-weight: 600;
-    }
-
-    .reveal .warning {
-      color: var(--warning-color);
-      font-weight: 600;
-    }
-
-    .reveal .box {
-      background: var(--bg-light);
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--secondary-color);
-      margin: 1em 0;
-    }
-
-    .reveal .warning-box {
-      background: #fff3cd;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--warning-color);
-      margin: 1em 0;
-    }
-
-    .reveal .example-box {
-      background: #e8f5e9;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--success-color);
-      margin: 1em 0;
-    }
-
-    .reveal .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2em;
-      align-items: start;
-    }
-
-    .reveal .icon {
-      font-size: 1.2em;
-      margin-right: 0.3em;
-      vertical-align: middle;
-    }
-
-    .reveal section img {
-      border: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
-
-    .reveal .workflow-step {
-      display: flex;
-      align-items: center;
-      margin: 0.8em 0;
-      padding: 0.8em;
-      background: var(--bg-light);
-      border-radius: 8px;
-    }
-
-    .reveal .workflow-step .step-number {
-      background: var(--secondary-color);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      margin-right: 1em;
-      flex-shrink: 0;
-    }
-
-    .reveal .feature-list {
       font-size: 0.9em;
+      color: var(--accent-color);
     }
 
-    .reveal .feature-list li {
-      margin: 0.4em 0;
-    }
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.72em; }
+    .reveal .muted { color: var(--muted-color); }
 
-    .reveal .tree-structure {
-      font-family: 'Consolas', monospace;
-      font-size: 0.65em;
-      text-align: left;
-      background: #f8f9fa;
-      padding: 1em;
-      border-radius: 8px;
-      line-height: 1.6;
-      white-space: pre;
-    }
-
-    .reveal .subtitle {
-      color: var(--secondary-color);
-      font-size: 0.7em;
-      margin-top: 0.5em;
-    }
-
-    .reveal .tag {
+    /* Bulle de demande du professeur */
+    .reveal .demande {
       display: inline-block;
-      background: var(--secondary-color);
-      color: white;
+      background: #fff;
+      border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px;
+      padding: 0.6em 1em;
+      font-size: 0.85em;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18);
+      max-width: 90%;
+    }
+    .reveal .demande .qui {
+      display: block;
+      font-size: 0.7em;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 0.2em;
+    }
+
+    /* Résultat */
+    .reveal .resultat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      padding: 0.45em 1.1em;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.8em;
+      box-shadow: 0 6px 18px rgba(231,76,60,0.3);
+    }
+
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.2em; margin: 0.3em 0; }
+
+    /* Frise des quatre étapes */
+    .reveal .frise {
+      display: flex;
+      gap: 0.4em;
+      justify-content: center;
+      margin: 0 0 0.7em 0;
+      font-size: 0.55em;
+    }
+    .reveal .frise span {
       padding: 0.3em 0.8em;
       border-radius: 20px;
-      font-size: 0.7em;
+      background: var(--bg-light);
+      color: var(--muted-color);
       font-weight: 600;
-      margin: 0.2em;
+    }
+    .reveal .frise span.on { color: #fff; }
+    .reveal .frise span.on.c1 { background: var(--step-create); }
+    .reveal .frise span.on.c2 { background: var(--step-write); }
+    .reveal .frise span.on.c3 { background: var(--step-compile); }
+    .reveal .frise span.on.c4 { background: var(--step-review); }
+
+    /* Cartes d'étapes (diapo 2) */
+    .reveal .etapes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5em;
+      margin-top: 0.4em;
+    }
+    .reveal .etape {
+      border-radius: 12px;
+      padding: 0.7em 0.5em;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .reveal .etape i { font-size: 1.6em; margin-bottom: 0.2em; }
+    .reveal .etape .nom { font-weight: 700; font-size: 0.85em; }
+    .reveal .etape .quoi { font-size: 0.58em; opacity: 0.95; margin-top: 0.3em; line-height: 1.35; }
+    .reveal .etape.c1 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+    .reveal .etape.c2 { background: linear-gradient(135deg, #2980b9, #3498db); }
+    .reveal .etape.c3 { background: linear-gradient(135deg, #e67e22, #f39c12); }
+    .reveal .etape.c4 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+
+    /* Deux colonnes : ce que fait l'agent / ce que vous y gagnez */
+    .reveal .duo {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1em;
+      text-align: left;
+      align-items: start;
+    }
+    .reveal .bloc {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 0.6em 0.9em;
+      border-left: 5px solid var(--secondary-color);
+      font-size: 0.72em;
+    }
+    .reveal .bloc h3 { font-size: 1.05em; margin: 0 0 0.3em 0; }
+    .reveal .bloc ul { margin-left: 1em; }
+    .reveal .bloc.gain { background: #e8f5e9; border-color: var(--success-color); }
+    .reveal .bloc.gain h3 { color: var(--success-color); }
+    .reveal .bloc.note { background: #fff8e1; border-color: var(--warning-color); margin-top: 0.6em; }
+
+    /* Maquettes de diapositives (sans code) */
+    .reveal .mini {
+      background: #fff;
+      border: 1px solid #dfe6e9;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 0.35em 0.5em;
+      font-size: 0.42em;
+      text-align: left;
+      line-height: 1.3;
+    }
+    .reveal .mini .tete {
+      font-weight: 700; color: var(--primary-color); border-bottom: 1px solid #e3e8ec;
+      padding-bottom: 0.15em; margin-bottom: 0.25em; display: flex; justify-content: space-between; gap: 0.5em;
+    }
+    .reveal .mini .tete span { color: var(--muted-color); font-weight: 600; }
+    .reveal .mini .res {
+      display: inline-block; border: 2px solid var(--success-color); border-radius: 4px; padding: 0 0.4em;
+      color: var(--success-color); font-weight: 700; margin-top: 0.2em;
+    }
+    .reveal .mini .frag { color: #b0b8bf; }
+    .reveal .ligne { height: 0.5em; background: #dfe6e9; border-radius: 3px; margin: 0.3em 0; }
+
+    /* Grille 2D : fil principal → et piles ↓ */
+    .reveal .grille2d { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35em 0.6em; align-items: start; }
+    .reveal .grille2d .col { display: flex; flex-direction: column; gap: 0.3em; align-items: stretch; }
+    .reveal .grille2d .fl { text-align: center; color: var(--muted-color); font-size: 0.45em; line-height: 1; }
+    .reveal .grille2d .mini.haut { border-top: 3px solid var(--step-write); }
+    .reveal .axe-legende { font-size: 0.48em; color: var(--muted-color); margin-top: 0.4em; text-align: center; }
+
+    /* Avant / après */
+    .reveal .avant-apres { display: flex; gap: 0.7em; align-items: center; justify-content: center; }
+    .reveal .vignette { width: 8.5em; }
+    .reveal .vignette .legende { font-size: 0.55em; font-weight: 700; margin-bottom: 0.2em; text-align: center; }
+    .reveal .img4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.25em; }
+    .reveal .img2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.35em; }
+    .reveal .img { height: 2.3em; background: #d6eaf8; border: 1px solid #aed6f1; border-radius: 3px; }
+    .reveal .img4 .img { height: 1.5em; }
+
+    /* Livrables */
+    .reveal .livrables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.4em; }
+    .reveal .livrable {
+      background: #f8f9fa; border-radius: 10px; padding: 0.7em 0.6em; font-size: 0.66em; text-align: center;
+      border-top: 4px solid var(--secondary-color);
+    }
+    .reveal .livrable i { font-size: 1.8em; color: var(--secondary-color); margin-bottom: 0.2em; }
+    .reveal .livrable .titre { font-weight: 700; color: var(--primary-color); }
+
+    /* Installation */
+    .reveal .install { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; text-align: left; font-size: 0.66em; }
+    .reveal .install .carte { background: #f8f9fa; border-radius: 10px; padding: 0.55em 0.8em; border-left: 5px solid var(--success-color); }
+    .reveal .install .carte.deconseille { border-color: var(--warning-color); background: #fff8e1; }
+    .reveal .install .carte .titre { font-weight: 700; color: var(--primary-color); }
+    .reveal .install .badge { display: inline-block; font-size: 0.75em; font-weight: 700; padding: 0.05em 0.6em; border-radius: 10px; color: #fff; background: var(--success-color); margin-left: 0.3em; }
+    .reveal .install .carte.deconseille .badge { background: var(--warning-color); }
+    .reveal .install code { font-size: 0.95em; }
+
+    /* ===== Navigation à deux dimensions ===== */
+    .reveal .indice-details {
+      text-align: right;
+      margin-top: 0.9em;
+      font-size: 0.5em;
+      color: var(--muted-color);
+    }
+    .reveal .indice-details span {
+      display: inline-block;
+      border: 1px solid #d0d7de;
+      border-radius: 14px;
+      padding: 0.15em 0.8em;
+      background: #fff;
+    }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 2.2em; }
+    .reveal .aide-nav kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color);
     }
 
-    .reveal .tag.warning {
-      background: var(--warning-color);
+    /* Fil d'Ariane des diapos verticales */
+    .reveal .fil-detail {
+      display: flex; align-items: center; gap: 0.6em; justify-content: flex-start;
+      font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600;
+    }
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; }
+    .reveal .fil-detail .etiq.c0 { background: var(--primary-color); }
+    .reveal .fil-detail .etiq.c1 { background: var(--step-create); }
+    .reveal .fil-detail .etiq.c2 { background: var(--step-write); }
+    .reveal .fil-detail .etiq.c3 { background: var(--step-compile); }
+    .reveal .fil-detail .etiq.c4 { background: var(--step-review); }
+    .reveal h3.titre-detail {
+      font-size: 1.05em; text-align: left; margin: 0 0 0.5em 0;
+      padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light);
     }
 
-    .reveal .tag.success {
-      background: var(--success-color);
+    /* Contenus de détail */
+    .reveal .detail { font-size: 0.62em; text-align: left; }
+    .reveal .detail .bloc { font-size: 1em; }
+    .reveal .detail code, .reveal .fil-detail code { padding: 0 0.2em; }
+    .reveal h3.titre-detail code { color: inherit; font-size: 0.85em; padding: 0 0.25em; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .duo2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; align-items: start; }
+    .reveal .arbo {
+      font-family: 'Consolas', 'Monaco', monospace; background: #f8f9fa; border-radius: 8px;
+      padding: 0.6em 0.9em; line-height: 1.55; white-space: pre; font-size: 0.92em;
+    }
+    .reveal .arbo b { color: var(--primary-color); }
+    .reveal .arbo i { color: var(--muted-color); font-style: normal; }
+    .reveal pre.code {
+      width: 100%; box-shadow: none; margin: 0; font-size: 0.8em;
+    }
+    .reveal pre.code code {
+      display: block; background: #f8f9fa; color: #2c3e50; padding: 0.7em 0.9em;
+      border-radius: 8px; border-left: 4px solid var(--step-write); line-height: 1.45;
+      max-height: none; font-size: 1em; white-space: pre;
+    }
+    .reveal pre.code .cm { color: #95a5a6; }
+    .reveal pre.code .kw { color: #2980b9; font-weight: 700; }
+    .reveal pre.code .pt { color: #8e44ad; font-weight: 700; }
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.35em 0.5em; text-align: left; vertical-align: top;
+    }
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal .pastille {
+      display: inline-block; border-radius: 10px; padding: 0 0.55em; font-weight: 700; color: #fff; font-size: 0.9em; white-space: nowrap;
+    }
+    .reveal .p-ok { background: var(--success-color); }
+    .reveal .p-mid { background: var(--warning-color); }
+    .reveal .p-ko { background: var(--accent-color); }
+    .reveal .p-bleu { background: var(--secondary-color); }
+    .reveal .p-gris { background: #95a5a6; }
+    .reveal .p-violet { background: var(--step-review); }
+    .reveal .astuce {
+      background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px;
+      padding: 0.45em 0.8em; margin-top: 0.6em;
     }
 
-    .reveal .tag.accent {
-      background: var(--accent-color);
-    }
-
-    .reveal .smaller {
-      font-size: 0.85em;
-    }
-
-    .reveal .comparison-table {
-      font-size: 0.75em;
-      width: 100%;
-      margin: 1em 0;
-    }
-
-    .reveal .comparison-table td, .reveal .comparison-table th {
-      padding: 0.5em;
-      border: 1px solid #ddd;
-    }
-
-    .reveal .comparison-table th {
-      background: var(--secondary-color);
-      color: white;
-    }
-
-    .reveal .nav-hint {
-      color: var(--secondary-color);
-      font-style: italic;
-      margin-top: 1em;
-    }
+    /* Niveaux d'un cours (pile en 4 niveaux) */
+    .reveal .niveaux { display: flex; flex-direction: column; gap: 0.3em; }
+    .reveal .niveau { display: grid; grid-template-columns: 2.2em 1fr; gap: 0.6em; align-items: center;
+      background: #f8f9fa; border-radius: 8px; padding: 0.3em 0.6em; border-left: 4px solid var(--step-write); }
+    .reveal .niveau .n { font-weight: 700; color: #fff; background: var(--step-write); border-radius: 50%;
+      width: 1.8em; height: 1.8em; display: flex; align-items: center; justify-content: center; }
   </style>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- SLIDE 1 : TITRE -->
+      <!-- 1. Où l'on veut en venir -->
       <section>
-        <h1><i class="fas fa-presentation icon"></i> Création de Présentations Reveal.js Interactives</h1>
-        <p class="subtitle">Le système <code>reveals-presentation</code></p>
-        <p class="fragment" style="margin-top: 2em;">
-          <span class="tag">Skill</span>
-          <span class="tag accent">Agent reveals-creator</span>
-          <span class="tag success">Sous-agent dédié</span>
+        <h1><i class="fas fa-person-chalkboard" style="color:#e74c3c;"></i> Le skill <code style="font-size:0.85em;">reveals</code></h1>
+        <p class="subtitle">De votre demande, en français, à un diaporama prêt à projeter</p>
+
+        <div style="margin-top:1em;">
+          <div class="demande">
+            <span class="qui"><i class="fas fa-user"></i> Vous</span>
+            «&nbsp;Fais-moi un diaporama pour corriger en classe les exercices de ma fiche sur les vecteurs, en seconde.&nbsp;»
+            <i class="fas fa-paperclip muted"></i> <em>fiche.tex</em>
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="small muted" style="margin-bottom:0.4em;">L'agent cadre, construit, illustre, puis contrôle chaque diapo</div>
+          <div class="resultat"><i class="fas fa-check-circle"></i> Un diaporama web : une question par diapo, la correction révélée pas à pas</div>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
         </p>
-        <p class="fragment smaller" style="margin-top: 1em;">
-          <em>Une méta-présentation : Reveal.js qui explique comment créer des Reveal.js !</em>
+      </section>
+
+      <!-- 2. Le fil conducteur (+ pile : en coulisse) -->
+      <section>
+      <section>
+        <h2>Ce que fait l'agent, en quatre étapes</h2>
+        <div class="etapes">
+          <div class="etape c1 fragment">
+            <i class="fas fa-compass"></i>
+            <div class="nom">1. Cadrer</div>
+            <div class="quoi">Il repère le public, cours ou exercices, et part du bon gabarit</div>
+          </div>
+          <div class="etape c2 fragment">
+            <i class="fas fa-layer-group"></i>
+            <div class="nom">2. Construire</div>
+            <div class="quoi">Il écrit les diapos : la séance de gauche à droite, les détails en dessous</div>
+          </div>
+          <div class="etape c3 fragment">
+            <i class="fas fa-image"></i>
+            <div class="nom">3. Illustrer</div>
+            <div class="quoi">Il reprend les figures de votre document en images</div>
+          </div>
+          <div class="etape c4 fragment">
+            <i class="fas fa-clipboard-check"></i>
+            <div class="nom">4. Contrôler</div>
+            <div class="quoi">Il vérifie densité, formules et navigation avant de livrer</div>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Vous n'intervenez qu'au début (la demande) et à la fin (la relecture). L'étape 3 n'a lieu que si votre document contient des figures.
         </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- SLIDE 2 : SOMMAIRE -->
+      <!-- 2.1 En coulisse -->
       <section>
-        <h2>Au programme</h2>
-        <ol class="feature-list">
-          <li class="fragment" data-fragment-index="1"><i class="fas fa-info-circle icon"></i> Qu'est-ce que Reveal.js ?</li>
-          <li class="fragment" data-fragment-index="2"><i class="fas fa-graduation-cap icon"></i> Le skill reveals-presentation</li>
-          <li class="fragment" data-fragment-index="3"><i class="fas fa-robot icon"></i> L'agent reveals-creator</li>
-          <li class="fragment" data-fragment-index="4"><i class="fas fa-layer-group icon"></i> Les 3 styles (collège, lycée, académique)</li>
-          <li class="fragment" data-fragment-index="5"><i class="fas fa-th icon"></i> Navigation 2D multidirectionnelle</li>
-          <li class="fragment" data-fragment-index="6"><i class="fas fa-film icon"></i> Fragments et animations</li>
-          <li class="fragment" data-fragment-index="7"><i class="fas fa-code icon"></i> Structure HTML générée</li>
-          <li class="fragment" data-fragment-index="8"><i class="fas fa-lightbulb icon"></i> Bonnes pratiques</li>
-        </ol>
-      </section>
-
-      <!-- SLIDE 3 : QU'EST-CE QUE REVEAL.JS ? -->
-      <section>
-        <h2>Qu'est-ce que Reveal.js ?</h2>
-
-        <div class="box fragment">
-          <p><strong>Framework HTML/CSS/JavaScript pour créer des présentations web interactives</strong></p>
+        <div class="fil-detail"><span class="etiq c0">Les quatre étapes</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">En coulisse : un skill, des guides et trois scripts</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:17%;">Étape</th><th style="width:38%;">Ce que l'agent lit ou lance</th><th>Ce qu'il en tire</th></tr>
+            <tr><td><span class="pastille p-ok">1. Cadrer</span></td><td><code>assets/templates/</code> : gabarits collège, lycée, académique</td><td>Le design, les classes CSS et la configuration reveal.js, figés.</td></tr>
+            <tr><td><span class="pastille p-bleu">2. Construire</span></td><td><code>interactive-pedagogy.md</code> (cours)<br><code>exercices-structure.md</code> (exercices)<br><code>navigation-2d.md</code>, <code>fragments-reveals.md</code></td><td>La structure des piles verticales, l'ordre d'apparition au clic.</td></tr>
+            <tr><td><span class="pastille p-mid">3. Illustrer</span></td><td><code>extract_tikz_figures.py</code><br><code>convert_pdf_to_png.py</code></td><td>Les figures TikZ ou PDF converties en images PNG.</td></tr>
+            <tr><td><span class="pastille p-violet">4. Contrôler</span></td><td><code>mathjax-integration.md</code>, liste de vérification du skill<br><code>embed_images_base64.py</code></td><td>Les formules qui s'affichent, une diapo aérée.<br>Sur demande, un fichier unique à partager.</td></tr>
+          </table>
+          <div class="astuce">
+            <i class="fas fa-book-open"></i> Les guides sont lus <strong>avant</strong> d'écrire, selon le type de séance : la structure d'un cours et celle d'une correction d'exercices sont différentes.
+            Deux exemples complets (un cours, une séance d'exercices) servent de modèles.
+          </div>
         </div>
-
-        <ul class="feature-list">
-          <li class="fragment"><i class="fas fa-globe icon"></i> <strong>100% web</strong> : Fonctionne dans tous les navigateurs modernes</li>
-          <li class="fragment"><i class="fas fa-arrows-alt icon"></i> <strong>Navigation 2D</strong> : Horizontal (→) + Vertical (↓)</li>
-          <li class="fragment"><i class="fas fa-film icon"></i> <strong>Animations</strong> : Fragments pour révélation progressive</li>
-          <li class="fragment"><i class="fas fa-mobile-alt icon"></i> <strong>Responsive</strong> : S'adapte à tous les écrans</li>
-          <li class="fragment"><i class="fas fa-keyboard icon"></i> <strong>Contrôle total</strong> : Clavier, télécommande, tactile</li>
-        </ul>
+      </section>
       </section>
 
-      <!-- SLIDE 4 : POURQUOI REVEAL.JS POUR L'ENSEIGNEMENT ? -->
+      <!-- 3. Cadrer (+ pile) -->
       <section>
-        <h2>Pourquoi Reveal.js pour l'enseignement ?</h2>
+      <section>
+        <div class="frise"><span class="on c1">1. Cadrer</span><span>2. Construire</span><span>3. Illustrer</span><span>4. Contrôler</span></div>
+        <h2 style="border-color:var(--step-create);">Il part du gabarit adapté à votre public</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-create);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il lit votre demande et, si vous en joignez un, votre document.</li>
+              <li>Il reconnaît le public : collège, lycée ou conférence.</li>
+              <li>Il reconnaît le type de séance : cours ou correction d'exercices.</li>
+              <li>Il copie le gabarit correspondant et n'en touche jamais le design.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>La même présentation d'un diaporama à l'autre.</li>
+              <li>Aucun réglage de couleurs ni de polices.</li>
+              <li>Un texte lisible du fond de la classe.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-        <div class="grid-2">
+      <!-- 3.1 Les trois gabarits -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Cadrer</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-create);">Trois gabarits, un design figé</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:15%;">Style</th><th style="width:16%;">Pour</th><th style="width:11%;">Police</th><th style="width:16%;">Remplissage max</th><th>Ce qui le caractérise</th></tr>
+            <tr><td><span class="pastille p-ok">Collège</span></td><td>6e à 3e</td><td>22 px</td><td>60 %</td><td>Couleurs vives, animations fréquentes.</td></tr>
+            <tr><td><span class="pastille p-bleu">Lycée</span></td><td>2de à Terminale</td><td>20 px</td><td>70 %</td><td>Équilibre entre rigueur et accessibilité.</td></tr>
+            <tr><td><span class="pastille p-gris">Académique</span></td><td>Conférence</td><td>18 px</td><td>70 %</td><td>Sobre : théorèmes, définitions, démonstrations, bibliographie. Pas d'exercices chronométrés.</td></tr>
+          </table>
+          <div class="duo2" style="margin-top:0.7em;">
+            <div class="bloc note" style="margin-top:0;">
+              <h3><i class="fas fa-lock"></i> Ce que l'agent ne modifie jamais</h3>
+              <p>Le <code>&lt;head&gt;</code>, le style, les couleurs, les polices, la configuration reveal.js. Il ne remplit que le contenu des diapos, avec les classes déjà prévues : <code>box-info</code>, <code>exercise</code>, <code>result-box</code>…</p>
+            </div>
+            <div class="astuce" style="margin-top:0;">
+              <i class="fas fa-magnifying-glass-plus"></i> Les gabarits ont un zoom intégré : <strong>Ctrl +</strong> et <strong>Ctrl −</strong> grossissent le texte de 70 % à 200 %, <strong>Ctrl 0</strong> revient à la normale.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3.2 Cours ou exercices -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Cadrer</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-create);">Cours ou séance d'exercices : deux structures différentes</h3>
+        <div class="detail duo2" style="grid-template-columns:1.3fr 1fr;">
+          <table class="tab-detail">
+            <tr><th style="width:32%;"></th><th>Cours</th><th>Exercices</th></tr>
+            <tr><td>Rappels de cours</td><td>présents</td><td>absents : on va droit aux exercices</td></tr>
+            <tr><td>Diapo du fil principal</td><td>un concept, une question</td><td>l'énoncé complet</td></tr>
+            <tr><td>Diapos en dessous</td><td>réponse, remarques, questions fréquentes</td><td>une diapo par question</td></tr>
+            <tr><td>Durée affichée</td><td>par exercice proposé</td><td>par exercice et par question</td></tr>
+          </table>
           <div>
-            <h3 class="fragment" data-fragment-index="1"><i class="fas fa-check-circle icon success"></i> Avantages</h3>
-            <ul class="smaller fragment" data-fragment-index="1">
-              <li>Révélation progressive (pédagogie)</li>
-              <li>Formules mathématiques (MathJax)</li>
-              <li>Partage facile (fichier HTML)</li>
-              <li>Pas de compte Microsoft/Google</li>
-              <li>Open source et gratuit</li>
+            <div class="bloc" style="border-color:var(--step-create);">
+              <h3>Comment il tranche</h3>
+              <ul>
+                <li>Le nom du fichier : «&nbsp;Exo&nbsp;», «&nbsp;TD&nbsp;» ou «&nbsp;Cours&nbsp;», «&nbsp;Chapitre&nbsp;».</li>
+                <li>Le contenu : des exercices, ou des définitions et propriétés.</li>
+                <li>Votre demande, qui l'emporte.</li>
+              </ul>
+            </div>
+            <div class="astuce"><i class="fas fa-stopwatch"></i> Durée : compter 2 à 3 minutes par diapo. Une section compte 5 à 7 diapos.</div>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 4. Construire (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Cadrer</span><span class="on c2">2. Construire</span><span>3. Illustrer</span><span>4. Contrôler</span></div>
+        <h2 style="border-color:var(--step-write);">Il construit la séance, détails en dessous</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-write);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Le fil de la séance se déroule de gauche à droite.</li>
+              <li>Sous chaque diapo, les détails : réponse, correction d'une question, remarques.</li>
+              <li>Chaque clic dévoile l'étape suivante : vous gardez la main sur le rythme.</li>
+              <li>Les formules sont écrites en LaTeX et affichées proprement.</li>
             </ul>
           </div>
-
           <div>
-            <h3 class="fragment" data-fragment-index="2"><i class="fas fa-chalkboard-teacher icon"></i> Usage classe</h3>
-            <ul class="smaller fragment" data-fragment-index="2">
-              <li>Cours magistraux</li>
-              <li>Exercices interactifs</li>
-              <li>Démonstrations mathématiques</li>
-              <li>Présentations académiques</li>
-              <li>Formations enseignants</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 5 : LE SKILL REVEALS-PRESENTATION -->
-      <section>
-        <section>
-          <h2>Le skill reveals-presentation</h2>
-
-          <div class="box">
-            <p><strong>Expertise complète en création de présentations reveal.js éducatives</strong></p>
-          </div>
-
-          <ul class="feature-list">
-            <li class="fragment"><i class="fas fa-palette icon"></i> <strong>3 styles adaptés</strong> : Collège, Lycée, Académique</li>
-            <li class="fragment"><i class="fas fa-magic icon"></i> <strong>Fragments automatiques</strong> : Révélation progressive pédagogique</li>
-            <li class="fragment"><i class="fas fa-arrows-alt icon"></i> <strong>Navigation 2D</strong> : Horizontal + Vertical</li>
-            <li class="fragment"><i class="fas fa-calculator icon"></i> <strong>MathJax intégré</strong> : Formules mathématiques professionnelles</li>
-            <li class="fragment"><i class="fas fa-ruler icon"></i> <strong>Règles d'espacement</strong> : Maximum 70% rempli (60% collège)</li>
-          </ul>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la localisation du skill</p>
-        </section>
-
-        <section>
-          <h3>Structure du skill</h3>
-          <div class="tree-structure">.claude/skills/reveals-presentation/
-├── SKILL.md                           # Instructions pour agents
-├── references/
-│   ├── fragments-reveals.md           # ⭐ PRIORITÉ ABSOLUE
-│   ├── navigation-2d.md               # ⭐ TRÈS IMPORTANT
-│   ├── mathjax-integration.md         # ESSENTIEL
-│   ├── configuration-reveal.md        # Options reveal.js
-│   ├── gabarits-slides.md · classes-css.md
-│   ├── exercices-structure.md · workflow-exercices.md
-│   └── interactive-pedagogy.md · scripts.md
-├── scripts/                           # PDF en PNG, images en base64, figures TikZ
-└── assets/
-    ├── presentation_cours.html        # Exemples complets
-    ├── presentation_exos.html
-    └── templates/
-        ├── template-college.html
-        ├── template-lycee.html
-        ├── template-academique.html
-        └── template-navigation-2d-demo.html</div>
-        </section>
-      </section>
-
-      <!-- SLIDE 6 : L'AGENT REVEALS-CREATOR -->
-      <section>
-        <section>
-          <h2>L'agent reveals-creator</h2>
-
-          <div class="box">
-            <p><strong>Agent autonome spécialisé dans la génération de présentations reveal.js</strong></p>
-          </div>
-
-          <ul class="feature-list">
-            <li class="fragment"><i class="fas fa-microchip icon"></i> <strong>Modèle au choix</strong> : réglé dans l'en-tête de l'agent (champ <code>model</code>) ; Sonnet 5.5 ou Opus 5.5 selon l'exigence</li>
-            <li class="fragment"><i class="fas fa-brain icon"></i> <strong>Expert autonome</strong> : Utilise le skill reveals-presentation</li>
-            <li class="fragment"><i class="fas fa-file-code icon"></i> <strong>HTML complet</strong> : Structure + CSS + JavaScript</li>
-            <li class="fragment"><i class="fas fa-clock icon"></i> <strong>Attente retours</strong> : Ne force pas de modifications</li>
-          </ul>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir le workflow</p>
-        </section>
-
-        <section>
-          <h3>Workflow de l'agent (1/2)</h3>
-
-          <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
-            <div class="step-number">0</div>
-            <div><strong>Analyse demande</strong> : Public cible, durée, nombre de slides</div>
-          </div>
-
-          <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
-            <div class="step-number">1</div>
-            <div><strong>Lecture guides</strong> : les fichiers de référence utiles (fragments, navigation 2D, etc.)</div>
-          </div>
-
-          <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
-            <div class="step-number">2</div>
-            <div><strong>Création contenu</strong> : Structure HTML avec fragments et navigation</div>
-          </div>
-        </section>
-
-        <section>
-          <h3>Workflow de l'agent (2/2)</h3>
-
-          <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
-            <div class="step-number">3</div>
-            <div><strong>Configuration</strong> : Options reveal.js (navigation, transitions, MathJax)</div>
-          </div>
-
-          <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
-            <div class="step-number">4</div>
-            <div><strong>Test</strong> : Vérification dans navigateur (optionnel)</div>
-          </div>
-
-          <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
-            <div class="step-number">5</div>
-            <div><strong>Rapport</strong> : Détails + attente retours utilisateur</div>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 7 : LES 3 STYLES -->
-      <section>
-        <section>
-          <h2>Les 3 styles disponibles</h2>
-
-          <div class="box">
-            <p><strong>Chaque style est adapté à son public cible avec des règles précises</strong></p>
-          </div>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque style en détail</p>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-school icon"></i> Style Collège (6e-3e)</h3>
-
-          <div class="grid-2">
-            <div class="box" style="font-size: 0.85em;">
-              <h4 class="smaller">Caractéristiques</h4>
-              <ul class="smaller">
-                <li>Police : <strong>22px min</strong></li>
-                <li>Densité : <strong>Max 60%</strong></li>
-                <li>Items : <strong>5 max</strong></li>
-                <li>Lignes : <strong>8 max</strong></li>
-              </ul>
-            </div>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <h4 class="smaller">Style visuel</h4>
-              <ul class="smaller">
-                <li>Couleurs vives</li>
-                <li>Police ludique (Comic Neue)</li>
-                <li>Animations nombreuses</li>
-                <li>Boxes colorées</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-graduation-cap icon"></i> Style Lycée (2nde-Tale)</h3>
-
-          <div class="grid-2">
-            <div class="box" style="font-size: 0.85em;">
-              <h4 class="smaller">Caractéristiques</h4>
-              <ul class="smaller">
-                <li>Police : <strong>20px min</strong></li>
-                <li>Densité : <strong>Max 70%</strong></li>
-                <li>Items : <strong>6-7 max</strong></li>
-                <li>Lignes : <strong>10-12 max</strong></li>
-              </ul>
-            </div>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <h4 class="smaller">Style visuel</h4>
-              <ul class="smaller">
-                <li>Équilibre rigueur/accessibilité</li>
-                <li>Police moderne (Roboto)</li>
-                <li>Formules mathématiques</li>
-                <li>Couleurs professionnelles</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-university icon"></i> Style Académique (Conférences)</h3>
-
-          <div class="grid-2">
-            <div class="box" style="font-size: 0.85em;">
-              <h4 class="smaller">Caractéristiques</h4>
-              <ul class="smaller">
-                <li>Police : <strong>18px min</strong></li>
-                <li>Densité : <strong>Max 70%</strong></li>
-                <li>Items : <strong>7 max</strong></li>
-                <li>Lignes : <strong>12-14 max</strong></li>
-              </ul>
-            </div>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <h4 class="smaller">Style visuel</h4>
-              <ul class="smaller">
-                <li>Sobriété et élégance</li>
-                <li>Police serif (Lato)</li>
-                <li>Références bibliographiques</li>
-                <li>Couleurs discrètes</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3>Tableau comparatif</h3>
-
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Critère</th>
-                <th>Collège</th>
-                <th>Lycée</th>
-                <th>Académique</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Police</strong></td>
-                <td>22px (Comic Neue)</td>
-                <td>20px (Roboto)</td>
-                <td>18px (Lato)</td>
-              </tr>
-              <tr>
-                <td><strong>Densité max</strong></td>
-                <td>60%</td>
-                <td>70%</td>
-                <td>70%</td>
-              </tr>
-              <tr>
-                <td><strong>Items max</strong></td>
-                <td>5</td>
-                <td>6-7</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td><strong>Animations</strong></td>
-                <td>Nombreuses</td>
-                <td>Équilibrées</td>
-                <td>Sobres</td>
-              </tr>
-              <tr>
-                <td><strong>Couleurs</strong></td>
-                <td>Vives</td>
-                <td>Professionnelles</td>
-                <td>Discrètes</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </section>
-
-      <!-- SLIDE 8 : NAVIGATION 2D -->
-      <section>
-        <section>
-          <h2><i class="fas fa-arrows-alt icon"></i> Navigation 2D multidirectionnelle</h2>
-
-          <div class="box">
-            <p><strong>Structurer la présentation en 2 dimensions : horizontal ET vertical</strong></p>
-          </div>
-
-          <ul class="feature-list">
-            <li class="fragment"><i class="fas fa-arrow-right icon"></i> <strong>Axe horizontal (→)</strong> : Progression principale</li>
-            <li class="fragment"><i class="fas fa-arrow-down icon"></i> <strong>Axe vertical (↓)</strong> : Détails, approfondissements</li>
-            <li class="fragment"><i class="fas fa-th icon"></i> <strong>Mode grid</strong> : Conservation index vertical</li>
-            <li class="fragment"><i class="fas fa-undo icon"></i> <strong>Retour auto top</strong> : Évite de rester au niveau vertical</li>
-          </ul>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Cette présentation utilise la navigation 2D ! Essayez ↓</p>
-        </section>
-
-        <section>
-          <h3>Quand utiliser la navigation verticale ?</h3>
-
-          <div class="grid-2">
-            <div class="box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-check icon success"></i> Cas d'usage</h4>
-              <ul class="smaller">
-                <li>Démonstrations étape par étape</li>
-                <li>Exercices avec indices progressifs</li>
-                <li>Approfondissements optionnels</li>
-                <li>Différents niveaux de difficulté</li>
-                <li>Plus de 2 images à afficher</li>
-              </ul>
-            </div>
-
-            <div class="warning-box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-exclamation-triangle icon"></i> Règles</h4>
-              <ul class="smaller">
-                <li>Première slide : vue d'ensemble autonome</li>
-                <li>Profondeur max : 4-5 slides verticales</li>
-                <li>Toujours indiquer présence contenu ↓</li>
-                <li>Configurer <code>navigationMode: 'grid'</code></li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3>Structure HTML navigation 2D</h3>
-
-          <pre><code class="language-html">&lt;section&gt;
-  &lt;!-- Slide horizontale principale --&gt;
-  &lt;section&gt;
-    &lt;h2&gt;Concept principal&lt;/h2&gt;
-    &lt;p&gt;Vue d'ensemble autonome&lt;/p&gt;
-    &lt;p class="smaller"&gt;&lt;i class="fas fa-arrow-down"&gt;&lt;/i&gt;
-       Appuyez sur ↓ pour détails&lt;/p&gt;
-  &lt;/section&gt;
-
-  &lt;!-- Détails verticaux optionnels --&gt;
-  &lt;section&gt;
-    &lt;h3&gt;Détail 1&lt;/h3&gt;
-    &lt;p&gt;Premier approfondissement&lt;/p&gt;
-  &lt;/section&gt;
-
-  &lt;section&gt;
-    &lt;h3&gt;Détail 2&lt;/h3&gt;
-    &lt;p&gt;Deuxième approfondissement&lt;/p&gt;
-  &lt;/section&gt;
-&lt;/section&gt;</code></pre>
-        </section>
-
-        <section>
-          <h3>Configuration JavaScript</h3>
-
-          <pre><code class="language-javascript">Reveal.initialize({
-  navigationMode: 'grid',  // IMPORTANT !
-  controls: true,
-  controlsLayout: 'edges', // 4 flèches
-  slideNumber: 'h.v',      // Format 2.3
-
-  // ... autres options
-});
-
-// Forcer retour au top lors navigation horizontale
-let lastHorizontalIndex = 0;
-
-Reveal.on('slidechanged', event => {
-  const currentH = event.indexh;
-  const currentV = event.indexv;
-
-  if (currentH !== lastHorizontalIndex && currentV !== 0) {
-    Reveal.slide(currentH, 0);
-  }
-
-  lastHorizontalIndex = currentH;
-});</code></pre>
-        </section>
-      </section>
-
-      <!-- SLIDE 9 : FRAGMENTS ET ANIMATIONS -->
-      <section>
-        <section>
-          <h2><i class="fas fa-film icon"></i> Fragments et animations</h2>
-
-          <div class="box">
-            <p><strong>Révélation progressive pour une pédagogie dynamique</strong></p>
-          </div>
-
-          <ul class="feature-list">
-            <li class="fragment fade-in"><i class="fas fa-magic icon"></i> <code>class="fragment"</code> : Apparition au clic</li>
-            <li class="fragment fade-up"><i class="fas fa-arrow-up icon"></i> <code>fade-up</code> : Vient du bas</li>
-            <li class="fragment highlight-red"><i class="fas fa-highlighter icon"></i> <code>highlight-red</code> : Surlignage</li>
-            <li class="fragment grow"><i class="fas fa-expand icon"></i> <code>grow</code> : Agrandissement</li>
-          </ul>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir plus d'exemples</p>
-        </section>
-
-        <section>
-          <h3>Contrôle de l'ordre avec data-fragment-index</h3>
-
-          <div class="box" style="font-size: 0.85em;">
-            <p><strong>Problème :</strong> Par défaut, ordre du DOM</p>
-          </div>
-
-          <pre class="fragment"><code class="language-html">&lt;!-- Ordre explicite --&gt;
-&lt;div class="fragment" data-fragment-index="3"&gt;Troisième&lt;/div&gt;
-&lt;div class="fragment" data-fragment-index="1"&gt;Premier&lt;/div&gt;
-&lt;div class="fragment" data-fragment-index="2"&gt;Deuxième&lt;/div&gt;
-
-&lt;!-- Simultané --&gt;
-&lt;div class="fragment" data-fragment-index="1"&gt;A&lt;/div&gt;
-&lt;div class="fragment" data-fragment-index="1"&gt;B (en même temps)&lt;/div&gt;
-&lt;div class="fragment" data-fragment-index="2"&gt;C&lt;/div&gt;</code></pre>
-        </section>
-
-        <section>
-          <h3>Pattern Question/Réponse</h3>
-
-          <pre><code class="language-html">&lt;section&gt;
-  &lt;h2&gt;Exercice : Dérivée&lt;/h2&gt;
-
-  &lt;!-- Question présente dès le début --&gt;
-  &lt;div class="question"&gt;
-    &lt;p&gt;&lt;strong&gt;Question :&lt;/strong&gt;
-       Que vaut la dérivée de \(x^{2}\) ?&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;!-- Réponse apparaît au clic --&gt;
-  &lt;div class="fragment"&gt;
-    &lt;p&gt;&lt;em&gt;On utilise la règle :
-       \((x^n)' = n \cdot x^{n-1}\)&lt;/em&gt;&lt;/p&gt;
-    &lt;p class="answer"&gt;&lt;strong&gt;Réponse :&lt;/strong&gt;
-      &lt;span class="highlight"&gt;\(2x\)&lt;/span&gt;
-    &lt;/p&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code></pre>
-        </section>
-
-        <section>
-          <h3>Classes de fragments disponibles</h3>
-
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Classe</th>
-                <th>Effet</th>
-                <th>Usage</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>fragment</code></td>
-                <td>Apparition instantanée</td>
-                <td>Par défaut</td>
-              </tr>
-              <tr>
-                <td><code>fragment fade-in</code></td>
-                <td>Fondu entrant</td>
-                <td>Douceur</td>
-              </tr>
-              <tr>
-                <td><code>fragment fade-up</code></td>
-                <td>Depuis le bas</td>
-                <td>Dynamisme</td>
-              </tr>
-              <tr>
-                <td><code>fragment highlight-red</code></td>
-                <td>Surlignage rouge</td>
-                <td>Attention</td>
-              </tr>
-              <tr>
-                <td><code>fragment grow</code></td>
-                <td>Agrandissement</td>
-                <td>Emphase</td>
-              </tr>
-              <tr>
-                <td><code>fragment strike</code></td>
-                <td>Barré</td>
-                <td>Correction</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </section>
-
-      <!-- SLIDE 10 : RÈGLE FONDAMENTALE "2 PAR SLIDE" -->
-      <section>
-        <h2><i class="fas fa-exclamation-triangle icon warning"></i> Règle fondamentale : "2 par slide"</h2>
-
-        <div class="warning-box">
-          <p><strong>Maximum 2 éléments côte à côte par slide</strong></p>
-        </div>
-
-        <div class="grid-2">
-          <div class="box fragment" style="font-size: 0.85em;">
-            <h4 class="smaller"><i class="fas fa-check icon success"></i> Limite à 2</h4>
-            <ul class="smaller">
-              <li>Max 2 images côte à côte</li>
-              <li>Max 2 boxes côte à côte</li>
-              <li>Max 2 colonnes de contenu</li>
-            </ul>
-          </div>
-
-          <div class="example-box fragment" style="font-size: 0.85em;">
-            <h4 class="smaller"><i class="fas fa-lightbulb icon"></i> Si plus de 2 ?</h4>
-            <ul class="smaller">
-              <li>Créer slides DOWN supplémentaires</li>
-              <li>4 images = 2 slides (2+2)</li>
-              <li>6 avantages = 3 slides (2+2+2)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="box fragment" style="margin-top: 1em; font-size: 0.85em;">
-          <p><strong>Exemple :</strong> Escape game avec 4 images</p>
-          <ul class="smaller">
-            <li>Slide 0 : Vue d'ensemble + hint ↓</li>
-            <li>Slide DOWN 1 : 2 premières images (1/2)</li>
-            <li>Slide DOWN 2 : 2 dernières images (2/2)</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- SLIDE 11 : STRUCTURE HTML GÉNÉRÉE -->
-      <section>
-        <section>
-          <h2><i class="fas fa-code icon"></i> Structure HTML générée</h2>
-
-          <div class="box">
-            <p><strong>Fichier HTML autonome avec tout intégré (CSS, JavaScript, CDN)</strong></p>
-          </div>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la structure complète</p>
-        </section>
-
-        <section>
-          <h3>Structure de base (1/2)</h3>
-
-          <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="fr"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Titre de la présentation&lt;/title&gt;
-
-  &lt;!-- Reveal.js CSS --&gt;
-  &lt;link rel="stylesheet"
-    href="assets/reveal/reveal.css"&gt;
-  &lt;link rel="stylesheet"
-    href="assets/reveal/theme/white.css"&gt;
-
-  &lt;!-- Font Awesome (icônes) --&gt;
-  &lt;link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;
-
-  &lt;!-- CSS personnalisé selon style --&gt;
-  &lt;style&gt;
-    /* Styles adaptés au public cible */
-  &lt;/style&gt;
-&lt;/head&gt;</code></pre>
-        </section>
-
-        <section>
-          <h3>Structure de base (2/2)</h3>
-
-          <pre><code class="language-html">&lt;body&gt;
-  &lt;div class="reveal"&gt;
-    &lt;div class="slides"&gt;
-      &lt;!-- Slides ici --&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;!-- Scripts Reveal.js --&gt;
-  &lt;script src="assets/reveal/reveal.js"&gt;&lt;/script&gt;
-  &lt;script src="assets/reveal/plugin/math/math.js"&gt;&lt;/script&gt;
-  &lt;script src="assets/reveal/plugin/notes/notes.js"&gt;&lt;/script&gt;
-  &lt;script src="assets/reveal/plugin/highlight/highlight.js"&gt;&lt;/script&gt;
-
-  &lt;script&gt;
-    Reveal.initialize({
-      // Configuration
-    });
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-        </section>
-
-        <section>
-          <h3>Classes CSS utiles</h3>
-
-          <pre><code class="language-css">/* Mise en page */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2em;
-}
-
-/* Boxes colorées */
-.box {
-  background: #ecf0f1;
-  padding: 1em 1.5em;
-  border-left: 4px solid #3498db;
-}
-
-.warning-box {
-  background: #fff3cd;
-  border-left: 4px solid #f39c12;
-}
-
-.example-box {
-  background: #e8f5e9;
-  border-left: 4px solid #27ae60;
-}</code></pre>
-        </section>
-
-        <section>
-          <h3>Workflow steps</h3>
-
-          <pre><code class="language-css">.workflow-step {
-  display: flex;
-  align-items: center;
-  padding: 0.8em;
-  background: #ecf0f1;
-  border-radius: 8px;
-}
-
-.workflow-step .step-number {
-  background: #3498db;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  margin-right: 1em;
-}</code></pre>
-        </section>
-      </section>
-
-      <!-- SLIDE 12 : CONFIGURATION REVEAL.JS -->
-      <section>
-        <section>
-          <h2><i class="fas fa-cog icon"></i> Configuration Reveal.js</h2>
-
-          <div class="box">
-            <p><strong>Options JavaScript pour contrôler le comportement de la présentation</strong></p>
-          </div>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les options</p>
-        </section>
-
-        <section>
-          <h3>Configuration complète (1/2)</h3>
-
-          <pre><code class="language-javascript">Reveal.initialize({
-  // Navigation 2D
-  navigationMode: 'grid',
-  controls: true,
-  controlsLayout: 'edges',
-  controlsBackArrows: 'visible',
-  controlsTutorial: true,
-
-  // Progression
-  progress: true,
-  slideNumber: 'h.v',
-  hash: true,
-
-  // Dimensions
-  width: 1280,
-  height: 720,
-  margin: 0.1,</code></pre>
-        </section>
-
-        <section>
-          <h3>Configuration complète (2/2)</h3>
-
-          <pre><code class="language-javascript">  // Transitions
-  transition: 'slide',
-  transitionSpeed: 'default',
-
-  // Math
-  math: {
-    mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
-    config: 'TeX-AMS_HTML-full'
-  },
-
-  // Plugins
-  plugins: [
-    RevealMath,
-    RevealNotes,
-    RevealHighlight,
-    RevealZoom
-  ]
-});</code></pre>
-        </section>
-
-        <section>
-          <h3>Transitions disponibles</h3>
-
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Valeur</th>
-                <th>Effet</th>
-                <th>Usage</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>none</code></td>
-                <td>Pas de transition</td>
-                <td>Instantané</td>
-              </tr>
-              <tr>
-                <td><code>fade</code></td>
-                <td>Fondu enchaîné</td>
-                <td>Douceur</td>
-              </tr>
-              <tr>
-                <td><code>slide</code></td>
-                <td>Glissement horizontal</td>
-                <td>Recommandé</td>
-              </tr>
-              <tr>
-                <td><code>convex</code></td>
-                <td>Perspective convexe</td>
-                <td>Dynamique</td>
-              </tr>
-              <tr>
-                <td><code>zoom</code></td>
-                <td>Zoom avant/arrière</td>
-                <td>Impact</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </section>
-
-      <!-- SLIDE 13 : MATHJAX INTÉGRATION -->
-      <section>
-        <section>
-          <h2><i class="fas fa-calculator icon"></i> Intégration MathJax</h2>
-
-          <div class="box">
-            <p><strong>Formules mathématiques professionnelles dans reveal.js</strong></p>
-          </div>
-
-          <ul class="feature-list">
-            <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Obligatoire</strong> pour toutes les formules mathématiques</li>
-            <li class="fragment"><i class="fas fa-font icon"></i> <strong>Délimiteurs</strong> : \(...\) inline, \[...\] block</li>
-            <li class="fragment"><i class="fas fa-subscript icon"></i> <strong>LaTeX</strong> : Syntaxe standard (frac, sqrt, sum, etc.)</li>
-            <li class="fragment"><i class="fas fa-align-left icon"></i> <strong>Environnements</strong> : align, matrix, cases, etc.</li>
-          </ul>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir des exemples</p>
-        </section>
-
-        <section>
-          <h3>Exemples de formules</h3>
-
-          <div class="example-box">
-            <p><strong>Inline :</strong> La formule \(E = mc^2\) est célèbre.</p>
-          </div>
-
-          <div class="example-box fragment">
-            <p><strong>Block :</strong></p>
-            \[
-            \int_{a}^{b} f(x) \, dx = F(b) - F(a)
-            \]
-          </div>
-
-          <div class="example-box fragment">
-            <p><strong>Environnement align :</strong></p>
-            \begin{align}
-            (x+2)^2 &= x^2 + 2 \cdot x \cdot 2 + 2^2 \\
-            &= x^2 + 4x + 4
-            \end{align}
-          </div>
-        </section>
-
-        <section>
-          <h3>Code HTML pour MathJax</h3>
-
-          <pre><code class="language-html">&lt;!-- Inline --&gt;
-&lt;p&gt;La formule \(E = mc^2\) est célèbre.&lt;/p&gt;
-
-&lt;!-- Block --&gt;
-&lt;p&gt;\[
-  \int_{a}^{b} f(x) \, dx = F(b) - F(a)
-\]&lt;/p&gt;
-
-&lt;!-- Environnement align --&gt;
-&lt;p&gt;\begin{align}
-  (x+2)^2 &amp;= x^2 + 2 \cdot x \cdot 2 + 2^2 \\
-  &amp;= x^2 + 4x + 4
-\end{align}&lt;/p&gt;</code></pre>
-        </section>
-
-        <section>
-          <h3>Configuration MathJax</h3>
-
-          <pre><code class="language-javascript">Reveal.initialize({
-  // ... autres options ...
-
-  math: {
-    mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
-    config: 'TeX-AMS_HTML-full'
-  },
-
-  plugins: [
-    RevealMath,  // IMPORTANT : Plugin requis
-    RevealNotes,
-    RevealHighlight,
-    RevealZoom
-  ]
-});</code></pre>
-        </section>
-      </section>
-
-      <!-- SLIDE 14 : BONNES PRATIQUES -->
-      <section>
-        <section>
-          <h2><i class="fas fa-lightbulb icon"></i> Bonnes pratiques</h2>
-
-          <div class="box">
-            <p><strong>Règles pour créer des présentations révélées efficaces</strong></p>
-          </div>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les règles détaillées</p>
-        </section>
-
-        <section>
-          <h3>À FAIRE systématiquement</h3>
-
-          <div class="grid-2">
-            <div class="example-box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-check-circle icon success"></i> Contenu</h4>
-              <ul class="smaller">
-                <li>Lire guides de référence EN PRIORITÉ</li>
-                <li>Utiliser fragments pour révélation progressive</li>
-                <li>Intégrer MathJax pour formules</li>
-                <li>Respecter règle de densité (&lt; 70%)</li>
-                <li>Maximum 2 éléments côte à côte</li>
-              </ul>
-            </div>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-cog icon success"></i> Technique</h4>
-              <ul class="smaller">
-                <li>Configurer navigationMode: 'grid'</li>
-                <li>Inclure code retour au top</li>
-                <li>Tester dans navigateur</li>
-                <li>Vérifier sur mobile</li>
-                <li>Attendre retours utilisateur</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3>À NE JAMAIS FAIRE</h3>
-
-          <div class="grid-2">
-            <div class="warning-box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-times-circle icon warning"></i> Erreurs contenu</h4>
-              <ul class="smaller">
-                <li>Oublier MathJax pour formules</li>
-                <li>Créer slide &gt; 70% remplie</li>
-                <li>Mettre &gt; 2 images côte à côte</li>
-                <li>Mettre &gt; 2 boxes côte à côte</li>
-                <li>Police &lt; 18px (20px lycée, 22px collège)</li>
-              </ul>
-            </div>
-
-            <div class="warning-box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-bug icon warning"></i> Erreurs technique</h4>
-              <ul class="smaller">
-                <li>Mélanger contenu et sections imbriquées</li>
-                <li>Oublier balises de fermeture HTML</li>
-                <li>JavaScript complexe non testé</li>
-                <li>Fragments sans data-fragment-index</li>
-                <li>Oublier code retour au top</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3>Règle des 3-4 fragments</h3>
-
-          <div class="warning-box">
-            <p><strong>Maximum 3-4 fragments par slide</strong></p>
-            <p class="smaller">Trop de fragments = audience perdue</p>
-          </div>
-
-          <div class="grid-2 fragment">
-            <div class="box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-times icon accent"></i> Mauvais</h4>
-              <pre style="font-size: 0.7em;"><code>&lt;ul&gt;
-  &lt;li class="fragment"&gt;1&lt;/li&gt;
-  &lt;li class="fragment"&gt;2&lt;/li&gt;
-  &lt;!-- ... 8 autres --&gt;
-&lt;/ul&gt;</code></pre>
-            </div>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-check icon success"></i> Bon</h4>
-              <pre style="font-size: 0.7em;"><code>&lt;ul&gt;
-  &lt;li class="fragment"&gt;Groupe 1&lt;/li&gt;
-  &lt;li class="fragment"&gt;Groupe 2&lt;/li&gt;
-  &lt;li class="fragment"&gt;Groupe 3&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3>Checklist avant finalisation</h3>
-
-          <ul class="feature-list" style="font-size: 0.9em;">
-            <li class="fragment"><i class="fas fa-check-square icon"></i> Chaque slide &lt; 70% remplie</li>
-            <li class="fragment"><i class="fas fa-check-square icon"></i> Fragments testés et fonctionnels</li>
-            <li class="fragment"><i class="fas fa-check-square icon"></i> MathJax affiche toutes les formules</li>
-            <li class="fragment"><i class="fas fa-check-square icon"></i> Police lisible (≥ 18px)</li>
-            <li class="fragment"><i class="fas fa-check-square icon"></i> Navigation fluide (pas de slides cassées)</li>
-            <li class="fragment"><i class="fas fa-check-square icon"></i> Mode présentation fonctionne (touche S)</li>
-            <li class="fragment"><i class="fas fa-check-square icon"></i> Responsive testé (mobile/tablette)</li>
-          </ul>
-        </section>
-      </section>
-
-      <!-- SLIDE 15 : RACCOURCIS CLAVIER -->
-      <section>
-        <h2><i class="fas fa-keyboard icon"></i> Raccourcis clavier</h2>
-
-        <div class="grid-2">
-          <div class="box fragment" style="font-size: 0.85em;">
-            <h4 class="smaller">Navigation</h4>
-            <ul class="smaller">
-              <li><kbd>→</kbd> / <kbd>←</kbd> : Slides horizontales</li>
-              <li><kbd>↓</kbd> / <kbd>↑</kbd> : Slides verticales</li>
-              <li><kbd>Espace</kbd> : Slide suivante</li>
-              <li><kbd>Shift+Espace</kbd> : Slide précédente</li>
-              <li><kbd>Home</kbd> / <kbd>End</kbd> : Première / Dernière</li>
-            </ul>
-          </div>
-
-          <div class="box fragment" style="font-size: 0.85em;">
-            <h4 class="smaller">Affichage</h4>
-            <ul class="smaller">
-              <li><kbd>S</kbd> : Mode présentateur (notes)</li>
-              <li><kbd>F</kbd> : Plein écran</li>
-              <li><kbd>Esc</kbd> / <kbd>O</kbd> : Vue d'ensemble</li>
-              <li><kbd>B</kbd> / <kbd>.</kbd> : Écran noir (pause)</li>
-              <li><kbd>V</kbd> : Mode vidéo</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="example-box fragment" style="margin-top: 1em;">
-          <p><strong><i class="fas fa-info-circle icon"></i> Astuce :</strong> Appuyez sur <kbd>?</kbd> pour afficher l'aide complète !</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 16 : EXEMPLE CONCRET -->
-      <section>
-        <section>
-          <h2><i class="fas fa-code icon"></i> Exemple concret : Slide avec exercice</h2>
-
-          <div class="box">
-            <p><strong>Démonstration complète d'une slide interactive</strong></p>
-          </div>
-
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir le code</p>
-        </section>
-
-        <section>
-          <h3>Code HTML complet</h3>
-
-          <pre><code class="language-html">&lt;section class="exercise"&gt;
-  &lt;h2&gt;Exercice : Produit scalaire&lt;/h2&gt;
-
-  &lt;div class="exercise-header"&gt;
-    &lt;span class="difficulty"&gt;★★☆&lt;/span&gt;
-    &lt;span class="estimated-time"&gt;5 minutes&lt;/span&gt;
-  &lt;/div&gt;
-
-  &lt;!-- Énoncé --&gt;
-  &lt;div class="statement"&gt;
-    &lt;p&gt;&lt;strong&gt;Énoncé :&lt;/strong&gt; Calculer \(\vec{u} \cdot \vec{v}\) avec :&lt;/p&gt;
-    &lt;ul&gt;
-      &lt;li&gt;\(\|\vec{u}\| = 2\)&lt;/li&gt;
-      &lt;li&gt;\(\|\vec{v}\| = 3\)&lt;/li&gt;
-      &lt;li&gt;\(\widehat{(\vec{u},\vec{v})} = 60°\)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;</code></pre>
-        </section>
-
-        <section>
-          <h3>Code HTML complet (suite)</h3>
-
-          <pre><code class="language-html">  &lt;!-- Formule --&gt;
-  &lt;div class="fragment"&gt;
-    &lt;p&gt;&lt;em&gt;On utilise la formule :&lt;/em&gt;&lt;/p&gt;
-    &lt;p&gt;\(\vec{u} \cdot \vec{v} = \|\vec{u}\| \times \|\vec{v}\| \times \cos(\alpha)\)&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;!-- Application --&gt;
-  &lt;div class="fragment"&gt;
-    &lt;p&gt;&lt;em&gt;Application numérique :&lt;/em&gt;&lt;/p&gt;
-    &lt;p&gt;\(\vec{u} \cdot \vec{v} = 2 \times 3 \times \cos(60°) = 6 \times \frac{1}{2} = 3\)&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;!-- Résultat --&gt;
-  &lt;div class="fragment"&gt;
-    &lt;div class="result-box"&gt;
-      \(\vec{u} \cdot \vec{v} = 3\)
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code></pre>
-        </section>
-
-        <section>
-          <h3>Résultat visuel</h3>
-
-          <div class="box" style="background: #fff9e6;">
-            <h4>Exercice : Produit scalaire</h4>
-
-            <div style="display: flex; justify-content: space-between; font-size: 0.8em; margin: 0.5em 0;">
-              <span style="color: #ff9800;">★★☆</span>
-              <span style="color: #666;">5 minutes</span>
-            </div>
-
-            <div class="fragment">
-              <p style="font-size: 0.85em;"><strong>Énoncé :</strong> Calculer \(\vec{u} \cdot \vec{v}\) avec \(\|\vec{u}\| = 2\), \(\|\vec{v}\| = 3\), angle = 60°</p>
-            </div>
-
-            <div class="fragment">
-              <p style="font-size: 0.85em;"><em>Formule :</em> \(\vec{u} \cdot \vec{v} = \|\vec{u}\| \times \|\vec{v}\| \times \cos(\alpha)\)</p>
-            </div>
-
-            <div class="fragment">
-              <div style="background: #f0f0f0; border: 2px solid #333; padding: 0.5em; text-align: center;">
-                \(\vec{u} \cdot \vec{v} = 3\)
+            <div class="grille2d">
+              <div class="col">
+                <div class="mini haut"><div class="tete">Exercice 1 <span>8 min</span></div><div class="ligne"></div><div class="ligne" style="width:70%"></div></div>
+                <div class="fl"><i class="fas fa-arrow-down"></i></div>
+                <div class="mini"><div class="tete">Question a) <span>2 min</span></div><div class="res">résultat</div></div>
+                <div class="fl"><i class="fas fa-arrow-down"></i></div>
+                <div class="mini"><div class="tete">Question b) <span>3 min</span></div><div class="frag">au clic…</div></div>
+              </div>
+              <div class="col">
+                <div class="mini haut"><div class="tete">Exercice 2 <span>6 min</span></div><div class="ligne"></div><div class="ligne" style="width:55%"></div></div>
+                <div class="fl"><i class="fas fa-arrow-down"></i></div>
+                <div class="mini"><div class="tete">Question a) <span>3 min</span></div><div class="ligne" style="width:80%"></div></div>
+              </div>
+              <div class="col">
+                <div class="mini haut"><div class="tete">Exercice 3 <span>10 min</span></div><div class="ligne"></div><div class="ligne" style="width:65%"></div></div>
               </div>
             </div>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 17 : LIMITATIONS -->
-      <section>
-        <h2><i class="fas fa-exclamation-triangle icon warning"></i> Limitations importantes</h2>
-
-        <div class="grid-2">
-          <div class="warning-box fragment" style="font-size: 0.85em;">
-            <h4 class="smaller">Technique</h4>
-            <ul class="smaller">
-              <li>Nécessite navigateur moderne</li>
-              <li>Pas de mode hors ligne (CDN)</li>
-              <li>JavaScript requis</li>
-              <li>MathJax peut être lent</li>
-            </ul>
-          </div>
-
-          <div class="warning-box fragment" style="font-size: 0.85em;">
-            <h4 class="smaller">Utilisation</h4>
-            <ul class="smaller">
-              <li>Courbe d'apprentissage HTML/CSS</li>
-              <li>Pas d'édition WYSIWYG</li>
-              <li>Export PDF limité</li>
-              <li>Compatibilité mobile variable</li>
-            </ul>
+            <div class="axe-legende"><i class="fas fa-arrow-right"></i> la séance &nbsp;·&nbsp; <i class="fas fa-arrow-down"></i> la correction de chaque question</div>
           </div>
         </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-        <div class="box fragment" style="margin-top: 1em; font-size: 0.85em;">
-          <p><strong><i class="fas fa-lightbulb icon"></i> Solution :</strong> L'agent reveals-creator gère la complexité technique pour vous !</p>
+      <!-- 4.1 Un cours en quatre niveaux -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Construire</span> Détail 1 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-write);">Un cours : chaque notion en quatre niveaux</h3>
+        <div class="detail duo2" style="grid-template-columns:1.2fr 1fr;">
+          <div class="niveaux">
+            <div class="niveau"><span class="n">0</span><div><strong>Question ou concept</strong> — sur le fil principal. Active la réflexion avant la réponse.</div></div>
+            <div class="niveau"><span class="n">1</span><div><strong>Réponse, définition</strong> — avec 2 ou 3 exemples concrets et la formule.</div></div>
+            <div class="niveau"><span class="n">2</span><div><strong>Remarques</strong> — erreurs courantes, pièges, astuces.</div></div>
+            <div class="niveau"><span class="n">3</span><div><strong>Questions fréquentes</strong> — approfondissement, lien avec d'autres notions.</div></div>
+          </div>
+          <div>
+            <div class="mini" style="font-size:0.95em;">
+              <div class="tete">Qu'est-ce qu'un monôme ? <span>niveau 0</span></div>
+              <p style="margin:0.2em 0;">Un monôme est une expression algébrique particulière.</p>
+              <p style="margin:0.2em 0;"><strong>Question :</strong> quelle est sa forme générale ?</p>
+              <p class="muted" style="margin:0.2em 0;"><i class="fas fa-arrow-down"></i> Appuyez sur ↓ pour la définition</p>
+            </div>
+            <div class="astuce"><i class="fas fa-sliders"></i> Vous descendez aussi loin que votre classe le demande : une classe à l'aise s'arrête au niveau 1, une autre va jusqu'aux remarques.</div>
+          </div>
         </div>
       </section>
 
-      <!-- SLIDE 18 : POURQUOI UTILISER L'AGENT ? -->
+      <!-- 4.2 Une séance d'exercices -->
       <section>
-        <section>
-          <h2><i class="fas fa-robot icon"></i> Pourquoi utiliser l'agent reveals-creator ?</h2>
-
-          <div class="box">
-            <p><strong>L'agent fait tout le travail technique complexe automatiquement</strong></p>
+        <div class="fil-detail"><span class="etiq c2">2. Construire</span> Détail 2 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-write);">Une séance d'exercices : une diapo par question</h3>
+        <div class="detail duo2">
+          <div>
+            <ol>
+              <li><strong>Énoncé</strong> sur le fil principal : durée, titre, difficulté (★★☆), puis toutes les questions. Pas de figure à ce stade.</li>
+              <li><strong>Une diapo par question</strong>, en dessous : la question est rappelée en haut, avec sa durée.</li>
+              <li><strong>Trois clics au plus</strong> : la méthode, les calculs, le résultat encadré.</li>
+              <li><strong>Figure complète</strong> en dernière diapo, pour un exercice de géométrie.</li>
+            </ol>
           </div>
+          <div>
+            <table class="tab-detail">
+              <tr><th>Règle</th><th>Pourquoi</th></tr>
+              <tr><td>Durée de l'exercice = somme des durées des questions</td><td>Vous planifiez la séance.</td></tr>
+              <tr><td>Aucun rappel de cours</td><td>La séance reste centrée sur la correction.</td></tr>
+              <tr><td>Plus de 6 questions : énoncé coupé en deux</td><td>L'énoncé reste lisible.</td></tr>
+              <tr><td>Deux méthodes : côte à côte</td><td>Calcul et lecture graphique se comparent d'un coup d'œil.</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
 
-          <p class="smaller fragment nav-hint"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les avantages</p>
-        </section>
+      <!-- 4.3 Le code écrit -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Construire</span> Détail 3 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-write);">Ce qu'il écrit réellement pour une question</h3>
+        <div class="detail duo2" style="grid-template-columns:1.35fr 1fr;">
+<pre class="code"><code><span class="kw">&lt;section&gt;</span>
+  &lt;div class="<span class="pt">question-header</span>"&gt;
+    Question a) · ⏱️ 3 min &lt;/div&gt;
+  &lt;div class="<span class="pt">question-recall</span>"&gt;
+    Calculer les coordonnées de M. &lt;/div&gt;
+  &lt;div class="<span class="kw">fragment</span>"&gt;
+    <span class="cm">&lt;!-- 1. la méthode --&gt;</span> &lt;/div&gt;
+  &lt;div class="<span class="kw">fragment</span>"&gt;
+    \[x_M = \frac{2+6}{2} = 4\] &lt;/div&gt;
+  &lt;div class="<span class="kw">fragment</span>"&gt;
+    &lt;div class="<span class="pt">result-box</span>"&gt;\(M(4~;~3)\)&lt;/div&gt;
+  &lt;/div&gt;
+<span class="kw">&lt;/section&gt;</span></code></pre>
+          <div>
+            <ul>
+              <li><code>section</code> : une diapo ; une <code>section</code> qui en contient d'autres forme une pile verticale.</li>
+              <li><code>fragment</code> : apparaît au clic suivant ; <code>data-fragment-index</code> en fixe l'ordre.</li>
+              <li><code>question-header</code>, <code>result-box</code> : classes du gabarit, déjà mises en forme.</li>
+              <li>Formules entre <code>\( … \)</code> ou <code>\[ … \]</code>, rendues par MathJax.</li>
+            </ul>
+            <p class="muted">Un fichier HTML ordinaire : vous pouvez le rouvrir et le retoucher dans n'importe quel éditeur.</p>
+          </div>
+        </div>
+      </section>
+      </section>
 
-        <section>
-          <h3>Commande vague → Résultat professionnel</h3>
+      <!-- 5. Illustrer (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Cadrer</span><span>2. Construire</span><span class="on c3">3. Illustrer</span><span>4. Contrôler</span></div>
+        <h2 style="border-color:var(--step-compile);">Il reprend les figures de votre document</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-compile);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il repère chaque figure TikZ de votre fichier LaTeX.</li>
+              <li>Il la compile à part et la convertit en image nette.</li>
+              <li>Il la place sur la bonne diapo, souvent en fin d'exercice.</li>
+              <li>À la fin, sur demande : un seul fichier, images comprises.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Les figures de votre fiche, pas des figures redessinées.</li>
+              <li>Un diaporama à envoyer par mail ou à déposer sur l'ENT d'un seul fichier.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-          <div class="grid-2">
-            <div class="example-box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-user icon"></i> Vous dites</h4>
-              <p style="font-style: italic;">"Crée une présentation sur les dérivées pour mes 1ère"</p>
-            </div>
-
-            <div class="box" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-robot icon"></i> L'agent fait</h4>
-              <ul class="smaller">
-                <li>Choisit template lycée</li>
-                <li>Lit les guides de référence utiles</li>
-                <li>Crée structure HTML complète</li>
-                <li>Ajoute fragments progressifs</li>
-                <li>Configure navigation 2D</li>
-                <li>Intègre MathJax</li>
-              </ul>
+      <!-- 5.1 La chaîne des figures -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Illustrer</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-compile);">De la figure TikZ à l'image</h3>
+        <div class="detail duo2">
+          <div>
+            <ol>
+              <li><code>extract_tikz_figures.py</code> trouve chaque <code>tikzpicture</code> du fichier <code>.tex</code>.</li>
+              <li>Chacune devient un petit document autonome, compilé avec LuaLaTeX.</li>
+              <li>Le PDF obtenu est converti en PNG à 300 dpi, en essayant tour à tour pdftoppm, Ghostscript puis ImageMagick.</li>
+              <li>Les images sont numérotées <code>graph_01.png</code>, <code>graph_02.png</code>…</li>
+            </ol>
+            <p class="muted">Des figures déjà en PDF ? <code>convert_pdf_to_png.py</code> fait la seule conversion.</p>
+          </div>
+          <div>
+<div class="arbo"><b>vecteurs-correction/</b>
+├── <b>presentation.html</b>   <i>le diaporama</i>
+└── images_graphiques/
+    ├── graph_01.png      <i>figure 1</i>
+    └── graph_02.png      <i>figure 2</i></div>
+            <div class="bloc note">
+              <i class="fas fa-triangle-exclamation"></i> Le document de compilation ne charge que TikZ, pgfplots et quelques styles courants (points, vecteurs, axes). Une figure qui dépend d'autres paquets de votre préambule ne se compile pas : le script l'indique, et la figure est à reprendre.
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section>
-          <h3>Avantages de l'agent</h3>
-
-          <div class="grid-2">
-            <div class="example-box fragment" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-magic icon"></i> Automatisation</h4>
-              <ul class="smaller">
-                <li>Pas besoin de connaître HTML</li>
-                <li>Pas besoin de connaître CSS</li>
-                <li>Pas besoin de connaître JavaScript</li>
-                <li>Prompts experts auto-générés</li>
-              </ul>
+      <!-- 5.2 Version autonome -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Illustrer</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-compile);">Un fichier unique à partager</h3>
+        <div class="detail duo2">
+          <div>
+            <p><code>embed_images_base64.py</code> glisse chaque image <strong>dans</strong> le fichier HTML. On obtient <code>presentation_embedded.html</code>, qui se suffit à lui-même : plus de dossier d'images à joindre.</p>
+            <table class="tab-detail" style="margin-top:0.5em;">
+              <tr><th></th><th>Images à part</th><th>Version autonome</th></tr>
+              <tr><td>Partage</td><td><span class="pastille p-ko">dossier à joindre</span></td><td><span class="pastille p-ok">un fichier</span></td></tr>
+              <tr><td>Poids</td><td><span class="pastille p-ok">léger</span></td><td><span class="pastille p-mid">+ 300 à 500 Ko</span></td></tr>
+              <tr><td>Retouches</td><td><span class="pastille p-ok">faciles</span></td><td><span class="pastille p-ko">pénibles</span></td></tr>
+            </table>
+          </div>
+          <div>
+            <div class="bloc note" style="margin-top:0;">
+              <h3><i class="fas fa-clock"></i> Seulement à la fin</h3>
+              <p>La version autonome se fabrique une fois toutes les retouches faites : on continue de travailler sur la version aux images séparées, et on ne partage que le fichier autonome.</p>
             </div>
+            <div class="astuce"><i class="fas fa-wifi"></i> Les images sont incluses, mais reveal.js et les formules se chargent toujours en ligne : il faut une connexion à l'ouverture.</div>
+          </div>
+        </div>
+      </section>
+      </section>
 
-            <div class="example-box fragment" style="font-size: 0.85em;">
-              <h4 class="smaller"><i class="fas fa-graduation-cap icon"></i> Expertise</h4>
-              <ul class="smaller">
-                <li>Connaît bonnes pratiques</li>
-                <li>Respecte règles d'espacement</li>
-                <li>Adapte au public cible</li>
-                <li>Gère fragments pédagogiques</li>
-              </ul>
+      <!-- 6. Contrôler (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Cadrer</span><span>2. Construire</span><span>3. Illustrer</span><span class="on c4">4. Contrôler</span></div>
+        <h2 style="border-color:var(--step-review);">Il contrôle chaque diapo avant de livrer</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-review);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Une idée par diapo, jamais plus de 70 % de la surface remplie.</li>
+              <li>Au plus deux éléments côte à côte : le reste descend dans une diapo en dessous.</li>
+              <li>Il ouvre la présentation et vérifie navigation, apparitions au clic et formules.</li>
+            </ul>
+          </div>
+          <div class="avant-apres">
+            <div class="vignette">
+              <div class="legende" style="color:#e74c3c;">Avant : 4 figures</div>
+              <div class="mini" style="font-size:0.55em;">
+                <div class="ligne" style="width:60%"></div>
+                <div class="img4"><div class="img"></div><div class="img"></div><div class="img"></div><div class="img"></div></div>
+                <div class="ligne" style="width:85%"></div><div class="ligne" style="width:70%"></div>
+              </div>
+            </div>
+            <i class="fas fa-arrow-right" style="color:#8e44ad;"></i>
+            <div class="vignette" style="width:7em;">
+              <div class="legende" style="color:#27ae60;">Après : 2 diapos ↓</div>
+              <div class="mini" style="font-size:0.55em;"><div class="img2"><div class="img"></div><div class="img"></div></div></div>
+              <div class="fl" style="text-align:center;color:#7f8c8d;font-size:0.45em;margin:0.15em 0;"><i class="fas fa-arrow-down"></i></div>
+              <div class="mini" style="font-size:0.55em;"><div class="img2"><div class="img"></div><div class="img"></div></div></div>
             </div>
           </div>
-        </section>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-        <section>
-          <h3>Résultat : Gain de temps massif</h3>
-
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Tâche</th>
-                <th>Manuel</th>
-                <th>Avec agent</th>
-                <th>Gain</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Apprendre HTML/CSS</td>
-                <td>10-20h</td>
-                <td>0h</td>
-                <td class="success">100%</td>
-              </tr>
-              <tr>
-                <td>Créer structure</td>
-                <td>1-2h</td>
-                <td>2 min</td>
-                <td class="success">~95%</td>
-              </tr>
-              <tr>
-                <td>Ajouter fragments</td>
-                <td>30 min</td>
-                <td>Auto</td>
-                <td class="success">100%</td>
-              </tr>
-              <tr>
-                <td>Configurer navigation</td>
-                <td>15 min</td>
-                <td>Auto</td>
-                <td class="success">100%</td>
-              </tr>
-              <tr>
-                <td>Tester et corriger</td>
-                <td>30 min</td>
-                <td>5 min</td>
-                <td class="success">~85%</td>
-              </tr>
-            </tbody>
+      <!-- 6.1 Les règles de mise en page -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Contrôler</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-review);">Les règles de mise en page</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:36%;">Règle</th><th style="width:22%;">Seuil</th><th>Si elle est dépassée</th></tr>
+            <tr><td>Surface remplie</td><td>70 % (60 % au collège)</td><td>La diapo est coupée en deux diapos aérées.</td></tr>
+            <tr><td>Éléments côte à côte (images, encadrés, colonnes)</td><td>2 au plus</td><td>Le surplus descend dans une diapo en dessous.</td></tr>
+            <tr><td>Points d'une liste</td><td>7 au plus</td><td>Liste coupée, ou grille sur deux colonnes.</td></tr>
+            <tr><td>Taille du texte</td><td>18 px au moins</td><td>On allège la diapo plutôt que de réduire la police.</td></tr>
+            <tr><td>Lycée et conférence : la règle des 6</td><td>6 points, 6 mots, 6 diapos</td><td>Au-delà de 6 diapos sans pause, une question ou une activité.</td></tr>
+            <tr><td>Profondeur d'une pile</td><td>2 à 3 diapos, 5 au plus</td><td>Nouvelle diapo sur le fil principal.</td></tr>
           </table>
-
-          <div class="example-box fragment" style="margin-top: 1em;">
-            <p><strong><i class="fas fa-rocket icon"></i> Vous vous concentrez sur le CONTENU, pas la technique !</strong></p>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 19 : WORKFLOW UTILISATEUR -->
-      <section>
-        <h2><i class="fas fa-user-cog icon"></i> Workflow utilisateur typique</h2>
-
-        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
-          <div class="step-number">1</div>
-          <div>Demande à Claude : "Crée présentation reveal.js sur [sujet] pour [public]"</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
-          <div class="step-number">2</div>
-          <div>Agent reveals-creator s'active automatiquement</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
-          <div class="step-number">3</div>
-          <div>Fichier HTML généré (< 1 minute)</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
-          <div class="step-number">4</div>
-          <div>Ouvrir dans navigateur → Tester navigation</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
-          <div class="step-number">5</div>
-          <div>Demander ajustements si nécessaire (couleurs, contenu, animations)</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.85em;">
-          <div class="step-number">6</div>
-          <div>Présenter en classe ! 🎉</div>
+          <div class="astuce"><i class="fas fa-route"></i> Ordre de recours quand le contenu déborde : d'abord des diapos en dessous, puis deux colonnes, enfin une nouvelle diapo sur le fil principal.</div>
         </div>
       </section>
 
-      <!-- SLIDE 20 : RESSOURCES -->
+      <!-- 6.2 La vérification finale -->
       <section>
-        <h2><i class="fas fa-book icon"></i> Ressources et documentation</h2>
-
-        <div class="grid-2">
-          <div class="box" style="font-size: 0.85em;">
-            <h4 class="smaller">Skill reveals-presentation</h4>
-            <ul class="smaller">
-              <li><code>SKILL.md</code> : Instructions agents</li>
-              <li><code>references/</code> : 10 guides détaillés</li>
-              <li><code>assets/templates/</code> : 3 templates HTML + une démo de navigation 2D</li>
+        <div class="fil-detail"><span class="etiq c4">4. Contrôler</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-review);">La vérification finale, et les pièges connus</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-review);">
+            <h3>Avant de vous rendre la main</h3>
+            <ul>
+              <li>Ouverture dans le navigateur, via un petit serveur local.</li>
+              <li>Navigation complète : flèches, espace, aucune diapo vide ou cassée.</li>
+              <li>Apparitions au clic dans le bon ordre.</li>
+              <li>Toutes les formules affichées.</li>
+              <li>Durée estimée sur chaque exercice.</li>
+              <li>Mode présentateur (touche <strong>S</strong>) fonctionnel.</li>
+              <li>Orthographe et mathématiques relues.</li>
             </ul>
           </div>
-
-          <div class="box fragment" style="font-size: 0.85em;">
-            <h4 class="smaller">Agent reveals-creator</h4>
-            <ul class="smaller">
-              <li><code>.claude/agents/creer/html/reveals-creator.md</code></li>
-              <li>Modèle : réglable dans l'en-tête de l'agent</li>
-              <li>Autonome et expert</li>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-bug"></i> Pièges évités</h3>
+            <ul>
+              <li><strong>Formule barrée</strong> : barrer le texte ne barre pas une formule. L'agent utilise <code>\cancel{…}</code>.</li>
+              <li><strong>Pile mal imbriquée</strong> : une diapo qui mêle contenu et sous-diapos s'affiche mal ; chaque pile ne contient que des diapos.</li>
+              <li><strong>Clic de trop</strong> : l'indication «&nbsp;↓ Question b)&nbsp;» est toujours visible, jamais révélée au clic, pour descendre directement.</li>
             </ul>
           </div>
         </div>
-
-        <div class="box fragment" style="margin-top: 1em; font-size: 0.85em;">
-          <h4 class="smaller">Reveal.js officiel</h4>
-          <ul class="smaller">
-            <li><i class="fas fa-globe icon"></i> Site : <a href="https://revealjs.com" target="_blank">https://revealjs.com</a></li>
-            <li><i class="fas fa-book icon"></i> Documentation complète</li>
-            <li><i class="fas fa-code-branch icon"></i> GitHub : reveal/reveal.js</li>
-          </ul>
-        </div>
+      </section>
       </section>
 
-      <!-- SLIDE 21 : CONCLUSION -->
+      <!-- 7. Ce que vous obtenez (+ pile) -->
       <section>
-        <h2>En résumé</h2>
+      <section>
+        <h2>Ce que vous obtenez</h2>
+        <div class="livrables">
+          <div class="livrable fragment">
+            <i class="fas fa-person-chalkboard" style="color:#e74c3c;"></i>
+            <div class="titre">Le diaporama</div>
+            <div>Un fichier qui s'ouvre dans le navigateur, prêt à projeter en plein écran.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-file-code"></i>
+            <div class="titre">Ses sources</div>
+            <div>Un fichier HTML lisible et ses images, que vous pouvez reprendre à la main.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-comments" style="color:#27ae60;"></i>
+            <div class="titre">Des retouches en français</div>
+            <div>«&nbsp;Coupe la question c) en deux diapos&nbsp;», «&nbsp;ajoute les erreurs fréquentes&nbsp;».</div>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Votre rôle : demander, puis relire. Le contenu reste le vôtre, vérifiez-le comme le travail d'un collègue.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-        <div class="grid-2">
+      <!-- 7.1 Bien formuler sa demande -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 1 / 2</div>
+        <h3 class="titre-detail">Bien formuler sa demande</h3>
+        <div class="detail duo2">
           <div>
-            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Ce que vous avez vu</h3>
-            <ul class="smaller fragment" data-fragment-index="1">
-              <li>Reveal.js = framework web de présentations</li>
-              <li>3 styles adaptés (collège, lycée, académique)</li>
-              <li>Navigation 2D (→ horizontal, ↓ vertical)</li>
-              <li>Fragments pour révélation progressive</li>
-              <li>MathJax pour formules mathématiques</li>
-              <li>Agent reveals-creator autonome</li>
-            </ul>
+            <table class="tab-detail">
+              <tr><th style="width:38%;">Précisez…</th><th>Exemple</th></tr>
+              <tr><td>Le public</td><td>«&nbsp;en 4e&nbsp;», «&nbsp;pour une conférence&nbsp;»</td></tr>
+              <tr><td>Cours ou exercices</td><td>«&nbsp;pour corriger la fiche&nbsp;»</td></tr>
+              <tr><td>La durée</td><td>«&nbsp;20 minutes&nbsp;» : 8 à 10 diapos</td></tr>
+              <tr><td>La source</td><td>votre fichier <code>.tex</code>, figures comprises</td></tr>
+              <tr><td>Ce qu'on garde</td><td>«&nbsp;seulement les exercices 2 et 4&nbsp;»</td></tr>
+              <tr><td>Le partage</td><td>«&nbsp;une version à envoyer par mail&nbsp;»</td></tr>
+            </table>
           </div>
-
           <div>
-            <h3 class="fragment" data-fragment-index="2"><i class="fas fa-rocket icon"></i> Avantages clés</h3>
-            <ul class="smaller fragment" data-fragment-index="2">
-              <li>Création rapide (< 1 min)</li>
-              <li>Pas besoin de connaître HTML/CSS/JS</li>
-              <li>Résultat professionnel automatique</li>
-              <li>Adapté au public cible</li>
-              <li>100% web et portable</li>
-              <li>Open source et gratuit</li>
+            <div class="demande" style="font-size:1.05em;max-width:100%;">
+              <span class="qui"><i class="fas fa-user"></i> Vous</span>
+              «&nbsp;Un diaporama de cours sur le théorème de Pythagore pour une 4e, 20 minutes, avec les erreurs fréquentes.&nbsp;»
+            </div>
+            <div class="fleche-bas" style="text-align:center;"><i class="fas fa-arrow-down"></i></div>
+            <div class="bloc gain" style="font-size:1em;">
+              <ul>
+                <li>Le gabarit «&nbsp;collège&nbsp;» : grande police, couleurs vives.</li>
+                <li>Chaque notion en pile : la question, la réponse, puis les erreurs fréquentes en dessous.</li>
+                <li>Une dizaine de diapos, des apparitions au clic, les formules en LaTeX.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7.2 Retouches et limites -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 2 / 2</div>
+        <h3 class="titre-detail">Retouches et limites</h3>
+        <div class="detail duo2">
+          <div class="bloc gain">
+            <h3>Retouches qui marchent bien</h3>
+            <ul>
+              <li>«&nbsp;Coupe la question c) en deux diapos.&nbsp;»</li>
+              <li>«&nbsp;Mets la figure à côté des calculs.&nbsp;»</li>
+              <li>«&nbsp;Ajoute une diapo d'erreurs fréquentes sous la définition.&nbsp;»</li>
+              <li>«&nbsp;Fais apparaître le résultat en dernier.&nbsp;»</li>
+              <li>«&nbsp;Fais-en une version à envoyer par mail.&nbsp;»</li>
+            </ul>
+            <p class="muted">En classe : <strong>F</strong> plein écran, <strong>Échap</strong> vue d'ensemble, <strong>B</strong> écran noir, <strong>S</strong> notes du présentateur.</p>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-exclamation-triangle"></i> Limites</h3>
+            <ul>
+              <li>Une <strong>connexion internet</strong> est nécessaire à l'ouverture : reveal.js et l'affichage des formules se chargent en ligne.</li>
+              <li>Le design est <strong>figé</strong> : pour d'autres couleurs ou polices, modifiez le gabarit vous-même.</li>
+              <li>L'exactitude mathématique reste à vérifier par vous.</li>
+              <li>Pour un PDF : ajoutez <code>?print-pdf</code> à l'adresse, puis imprimez depuis le navigateur.</li>
             </ul>
           </div>
         </div>
-
-        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
-          <p style="font-size: 1.1em;"><strong><i class="fas fa-graduation-cap icon"></i> Le système parfait pour créer des présentations pédagogiques interactives sans effort technique !</strong></p>
-        </div>
+      </section>
       </section>
 
-      <!-- SLIDE 22 : MÉTA-INFORMATION -->
+      <!-- 8. L'installer -->
       <section>
-        <h2><i class="fas fa-info-circle icon"></i> Cette présentation elle-même...</h2>
-
-        <div class="example-box">
-          <p><strong>...a été créée avec le système qu'elle documente !</strong></p>
+        <h2>L'installer</h2>
+        <p class="small" style="margin-top:-0.3em;">
+          <i class="fas fa-shopping-basket" style="color:#3498db;"></i>
+          Sur la page de cette présentation, ajoutez le <strong>pack «&nbsp;Skill reveals&nbsp;»</strong> au panier, puis téléchargez l'archive.
+        </p>
+        <div class="install">
+          <div class="carte">
+            <div class="titre">Claude Code, dans le projet <span class="badge">recommandé</span></div>
+            Décompresser dans le dossier du projet : le skill arrive dans <code>.claude/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Claude Code, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.claude/skills/</code> : actif partout, même là où il n'a rien à faire.
+          </div>
+          <div class="carte">
+            <div class="titre">Codex, dans le projet <span class="badge">recommandé</span></div>
+            Copier le contenu de <code>.claude/</code> dans <code>.agents/</code> : le skill arrive dans <code>.agents/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Codex, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.agents/skills/</code>.
+          </div>
         </div>
-
-        <ul class="feature-list fragment">
-          <li><i class="fas fa-check icon success"></i> Générée par l'agent reveals-creator</li>
-          <li><i class="fas fa-check icon success"></i> Utilise le skill reveals-presentation</li>
-          <li><i class="fas fa-check icon success"></i> Style académique (vous lisez cette présentation)</li>
-          <li><i class="fas fa-check icon success"></i> Navigation 2D (testez avec ↓)</li>
-          <li><i class="fas fa-check icon success"></i> Fragments progressifs partout</li>
-          <li><i class="fas fa-check icon success"></i> HTML/CSS/JavaScript complet en un seul fichier</li>
-        </ul>
-
-        <div class="box fragment" style="margin-top: 1em;">
-          <p><strong>Temps de création :</strong> < 2 minutes de génération automatique</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 23 : QUESTIONS -->
-      <section>
-        <h1><i class="fas fa-question-circle icon"></i> Questions ?</h1>
-
-        <div class="box" style="margin-top: 2em;">
-          <p><strong>Prêt à créer vos présentations reveal.js ?</strong></p>
-          <p class="smaller">Demandez simplement à Claude avec l'agent reveals-creator !</p>
-        </div>
-
-        <p class="fragment" style="margin-top: 2em; font-size: 1.2em;">
-          <span class="tag success">Merci de votre attention !</span>
+        <p class="small muted" style="margin-top:0.7em;">
+          Prérequis : un navigateur récent et Python 3 ; pour reprendre des figures TikZ, une distribution LaTeX.
+          Puis demandez simplement : «&nbsp;<em>un diaporama de correction de cette fiche, en 2de</em>&nbsp;».
         </p>
       </section>
 
@@ -1627,68 +874,24 @@ Reveal.on('slidechanged', event => {
   <!-- Reveal.js Scripts -->
   <script src="assets/reveal/reveal.js"></script>
   <script src="assets/reveal/plugin/notes/notes.js"></script>
-  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
-  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
 
   <script>
     Reveal.initialize({
-      // Navigation 2D
-      navigationMode: 'grid',
+      // Navigation à deux dimensions : → fil principal, ↓ détails de l'étape
+      navigationMode: 'default',
       controls: true,
-      controlsLayout: 'edges',
-      controlsBackArrows: 'visible',
+      controlsLayout: 'bottom-right',
       controlsTutorial: true,
+      controlsBackArrows: 'faded',
       progress: true,
       slideNumber: 'h.v',
-      hash: true,
-
-      // Transitions
-      transition: 'slide',
-      transitionSpeed: 'default',
-
-      // Behavior
-      embedded: false,
       overview: true,
+      hash: true,
+      transition: 'slide',
       center: true,
-      touch: true,
-      loop: false,
-      rtl: false,
-      shuffle: false,
-
-      // Fragments
       fragments: true,
       fragmentInURL: true,
-
-      // Keyboard
-      keyboard: true,
-      keyboardCondition: null,
-
-      // Math
-      math: {
-        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
-        config: 'TeX-AMS_HTML-full'
-      },
-
-      // Plugins
-      plugins: [ RevealNotes, RevealHighlight, RevealZoom, RevealMath ]
-    });
-
-    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
-    let lastHorizontalIndex = 0;
-
-    Reveal.on('slidechanged', event => {
-      const currentH = event.indexh;
-      const currentV = event.indexv;
-
-      // Si on change de slide horizontale et qu'on n'est pas au top
-      if (currentH !== lastHorizontalIndex && currentV !== 0) {
-        // Revenir au top de la nouvelle slide
-        Reveal.slide(currentH, 0);
-      }
-
-      // Mettre à jour l'index horizontal
-      lastHorizontalIndex = currentH;
+      plugins: [ RevealNotes ]
     });
   </script>
 </body>

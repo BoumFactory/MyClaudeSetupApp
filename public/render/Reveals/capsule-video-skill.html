@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Le skill capsule-video : une demande en français, une vidéo MP4 animée dont chaque geste suit la voix">
+  <title>Le skill capsules vidéo : de votre demande à la vidéo animée</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="assets/reveal/reset.css">
+  <link rel="stylesheet" href="assets/reveal/reveal.css">
+  <link rel="stylesheet" href="assets/reveal/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --violet-color: #8e44ad;
+      --text-color: #34495e;
+      --muted-color: #7f8c8d;
+      --bg-light: #ecf0f1;
+      --step-create: #27ae60;
+      --step-write: #3498db;
+      --step-compile: #f39c12;
+      --step-review: #8e44ad;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .reveal h1 { font-size: 1.9em; margin-bottom: 0.3em; line-height: 1.15; }
+
+    .reveal h2 {
+      font-size: 1.4em;
+      margin-bottom: 0.6em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.25em;
+    }
+
+    .reveal p, .reveal li { line-height: 1.45; }
+    .reveal ul, .reveal ol { margin: 0.4em 0 0 1em; }
+    .reveal li { margin: 0.3em 0; }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9em;
+      color: var(--accent-color);
+    }
+
+    .reveal a { color: var(--secondary-color); }
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.72em; }
+    .reveal .muted { color: var(--muted-color); }
+
+    /* Bulle de demande du professeur */
+    .reveal .demande {
+      display: inline-block;
+      background: #fff;
+      border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px;
+      padding: 0.6em 1em;
+      font-size: 0.85em;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18);
+      max-width: 90%;
+    }
+    .reveal .demande .qui {
+      display: block;
+      font-size: 0.7em;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 0.2em;
+    }
+
+    /* Résultat */
+    .reveal .resultat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      padding: 0.45em 1.1em;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.8em;
+      box-shadow: 0 6px 18px rgba(231,76,60,0.3);
+    }
+
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.2em; margin: 0.3em 0; }
+
+    /* Frise des quatre étapes */
+    .reveal .frise {
+      display: flex;
+      gap: 0.4em;
+      justify-content: center;
+      margin: 0 0 0.7em 0;
+      font-size: 0.55em;
+    }
+    .reveal .frise span {
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      background: var(--bg-light);
+      color: var(--muted-color);
+      font-weight: 600;
+    }
+    .reveal .frise span.on { color: #fff; }
+    .reveal .frise span.on.c1 { background: var(--step-create); }
+    .reveal .frise span.on.c2 { background: var(--step-write); }
+    .reveal .frise span.on.c3 { background: var(--step-compile); }
+    .reveal .frise span.on.c4 { background: var(--step-review); }
+
+    /* Cartes d'étapes (diapo 2) */
+    .reveal .etapes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5em;
+      margin-top: 0.4em;
+    }
+    .reveal .etape {
+      border-radius: 12px;
+      padding: 0.7em 0.5em;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .reveal .etape i { font-size: 1.6em; margin-bottom: 0.2em; }
+    .reveal .etape .nom { font-weight: 700; font-size: 0.85em; }
+    .reveal .etape .quoi { font-size: 0.58em; opacity: 0.95; margin-top: 0.3em; line-height: 1.35; }
+    .reveal .etape.c1 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+    .reveal .etape.c2 { background: linear-gradient(135deg, #2980b9, #3498db); }
+    .reveal .etape.c3 { background: linear-gradient(135deg, #e67e22, #f39c12); }
+    .reveal .etape.c4 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+
+    /* Deux colonnes : ce que fait l'agent / ce que vous y gagnez */
+    .reveal .duo {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1em;
+      text-align: left;
+      align-items: start;
+    }
+    .reveal .bloc {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 0.6em 0.9em;
+      border-left: 5px solid var(--secondary-color);
+      font-size: 0.72em;
+    }
+    .reveal .bloc h3 { font-size: 1.05em; margin: 0 0 0.3em 0; }
+    .reveal .bloc ul { margin-left: 1em; }
+    .reveal .bloc.gain { background: #e8f5e9; border-color: var(--success-color); }
+    .reveal .bloc.gain h3 { color: var(--success-color); }
+    .reveal .bloc.note { background: #fff8e1; border-color: var(--warning-color); margin-top: 0.6em; }
+
+    /* Maquettes (sans code) */
+    .reveal .feuille {
+      background: #fff; border: 1px solid #dfe6e9; border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1); padding: 0.6em 0.8em;
+      font-size: 0.6em; text-align: left; line-height: 1.5;
+    }
+    .reveal .nowrap { white-space: nowrap; }
+    .reveal .detail kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color);
+    }
+    .reveal .feuille .tf { color: var(--step-write); font-weight: 700; font-family: 'Consolas', monospace; }
+    .reveal .feuille p { margin: 0 0 0.5em 0; }
+
+    /* Écran de capsule (thème nuit) */
+    .reveal .ecran {
+      background: radial-gradient(circle at 30% 20%, #1f2a44, #0d1324 70%);
+      border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      color: #e8ecf5; padding: 0.7em 0.8em 0.9em; font-size: 0.5em; text-align: left;
+      position: relative; aspect-ratio: 16 / 10;
+    }
+    .reveal .ecran .bandeau-c { font-weight: 700; color: #7fdbff; margin-bottom: 0.5em; }
+    .reveal .ecran table { border-collapse: collapse; font-size: 1em; margin: 0; }
+    .reveal .ecran td, .reveal .ecran th { border: 1px solid #44507a; padding: 0.2em 0.6em; text-align: center; color: #e8ecf5; }
+    .reveal .ecran th { color: #b3bddb; font-weight: 600; }
+    .reveal .ecran .halo { box-shadow: 0 0 0 2px #ffd166, 0 0 14px #ffd166; border-radius: 4px; }
+    .reveal .ecran .formule { margin-top: 0.8em; font-size: 1.25em; font-family: 'Cambria Math', 'Times New Roman', serif; }
+    .reveal .ecran .vol { color: #ff7ab6; font-weight: 700; }
+    .reveal .ecran .res { color: #7CFFB2; font-weight: 700; border: 2px solid #7CFFB2; border-radius: 6px; padding: 0 0.3em; }
+    .reveal .ecran .mention { position: absolute; right: 0.7em; bottom: 0.4em; font-size: 0.8em; color: #9aa6c7; }
+    .reveal .ecran .arc { position: absolute; color: #ff7ab6; font-size: 1.4em; }
+
+    /* Frise de mots horodatés */
+    .reveal .mots { display: flex; flex-wrap: wrap; gap: 0.25em; font-size: 0.55em; margin-top: 0.4em; }
+    .reveal .mots span { background: #fff; border: 1px solid #f0c27a; border-radius: 6px; padding: 0.1em 0.4em; }
+    .reveal .mots span small { display: block; color: var(--muted-color); font-size: 0.75em; font-family: 'Consolas', monospace; }
+    .reveal .mots span.ancre { background: #fdebd0; border-color: var(--step-compile); font-weight: 700; }
+    .reveal .onde { height: 2.2em; margin-top: 0.3em; border-radius: 6px;
+      background: repeating-linear-gradient(90deg, #f39c12 0 3px, transparent 3px 7px);
+      -webkit-mask: linear-gradient(180deg, transparent 0 30%, #000 30% 70%, transparent 70%);
+      opacity: 0.6; }
+
+    /* Livrables */
+    .reveal .livrables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.4em; }
+    .reveal .livrable {
+      background: #f8f9fa; border-radius: 10px; padding: 0.7em 0.6em; font-size: 0.66em; text-align: center;
+      border-top: 4px solid var(--secondary-color);
+    }
+    .reveal .livrable i { font-size: 1.8em; color: var(--secondary-color); margin-bottom: 0.2em; }
+    .reveal .livrable .titre { font-weight: 700; color: var(--primary-color); }
+
+    /* Installation */
+    .reveal .install { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5em; text-align: left; font-size: 0.6em; }
+    .reveal .install .carte { background: #f8f9fa; border-radius: 10px; padding: 0.5em 0.8em; border-left: 5px solid var(--success-color); }
+    .reveal .install .carte.deconseille { border-color: var(--warning-color); background: #fff8e1; }
+    .reveal .install .carte .titre { font-weight: 700; color: var(--primary-color); }
+    .reveal .install .badge { display: inline-block; font-size: 0.75em; font-weight: 700; padding: 0.05em 0.6em; border-radius: 10px; color: #fff; background: var(--success-color); margin-left: 0.3em; }
+    .reveal .install .carte.deconseille .badge { background: var(--warning-color); }
+    .reveal .install code { font-size: 0.95em; }
+    .reveal .logiciels {
+      background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px;
+      padding: 0.45em 0.8em; margin-top: 0.6em; font-size: 0.6em; text-align: left;
+    }
+
+    /* ===== Navigation à deux dimensions ===== */
+    .reveal .indice-details {
+      text-align: right;
+      margin-top: 0.9em;
+      font-size: 0.5em;
+      color: var(--muted-color);
+    }
+    .reveal .indice-details span {
+      display: inline-block;
+      border: 1px solid #d0d7de;
+      border-radius: 14px;
+      padding: 0.15em 0.8em;
+      background: #fff;
+    }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 1.6em; }
+    .reveal .aide-nav kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color);
+    }
+
+    /* Fil d'Ariane des diapos verticales */
+    .reveal .fil-detail {
+      display: flex; align-items: center; gap: 0.6em; justify-content: flex-start;
+      font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600;
+    }
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; }
+    .reveal .fil-detail .etiq.c0 { background: var(--primary-color); }
+    .reveal .fil-detail .etiq.c1 { background: var(--step-create); }
+    .reveal .fil-detail .etiq.c2 { background: var(--step-write); }
+    .reveal .fil-detail .etiq.c3 { background: var(--step-compile); }
+    .reveal .fil-detail .etiq.c4 { background: var(--step-review); }
+    .reveal h3.titre-detail {
+      font-size: 1.05em; text-align: left; margin: 0 0 0.5em 0;
+      padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light);
+    }
+
+    /* Contenus de détail */
+    .reveal .detail { font-size: 0.62em; text-align: left; }
+    .reveal .detail .bloc { font-size: 1em; }
+    .reveal .detail code, .reveal .fil-detail code { padding: 0 0.2em; }
+    .reveal h3.titre-detail code { color: inherit; font-size: 0.85em; padding: 0 0.25em; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .duo2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; align-items: start; }
+    .reveal .arbo {
+      font-family: 'Consolas', 'Monaco', monospace; background: #f8f9fa; border-radius: 8px;
+      padding: 0.6em 0.9em; line-height: 1.55; white-space: pre; font-size: 0.92em;
+    }
+    .reveal .arbo b { color: var(--primary-color); }
+    .reveal .arbo i { color: var(--muted-color); font-style: normal; }
+    .reveal pre.code {
+      width: 100%; box-shadow: none; margin: 0; font-size: 0.82em;
+    }
+    .reveal pre.code code {
+      display: block; background: #f8f9fa; color: #2c3e50; padding: 0.7em 0.9em;
+      border-radius: 8px; border-left: 4px solid var(--step-write); line-height: 1.45;
+      max-height: none; font-size: 1em; white-space: pre;
+    }
+    .reveal pre.code.c4 code { border-left-color: var(--step-review); }
+    .reveal pre.code .cm { color: #95a5a6; }
+    .reveal pre.code .kw { color: #2980b9; font-weight: 700; }
+    .reveal pre.code .pt { color: #8e44ad; font-weight: 700; }
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.3em 0.5em; text-align: left; vertical-align: top;
+    }
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal .pastille {
+      display: inline-block; border-radius: 10px; padding: 0 0.55em; font-weight: 700; color: #fff; font-size: 0.9em; white-space: nowrap;
+    }
+    .reveal .p-ok { background: var(--success-color); }
+    .reveal .p-mid { background: var(--warning-color); }
+    .reveal .p-ko { background: var(--accent-color); }
+    .reveal .p-bleu { background: var(--secondary-color); }
+    .reveal .p-violet { background: var(--violet-color); }
+    .reveal .p-gris { background: #95a5a6; }
+    .reveal .astuce {
+      background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px;
+      padding: 0.45em 0.8em; margin-top: 0.6em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1. Où l'on veut en venir -->
+      <section>
+        <h1><i class="fas fa-film" style="color:#e74c3c;"></i> Le skill <code style="font-size:0.85em;">capsule-video</code></h1>
+        <p class="subtitle">De votre demande, en français, à une vidéo animée dont chaque geste suit la voix</p>
+
+        <div style="margin-top:1em;">
+          <div class="demande">
+            <span class="qui"><i class="fas fa-user"></i> Vous</span>
+            «&nbsp;Fais-moi une capsule vidéo de correction de l'exercice 5 de ma fiche sur les probabilités conditionnelles.&nbsp;»
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="small muted" style="margin-bottom:0.4em;">L'agent prépare, écrit le texte, le fait dire par une voix, puis anime et filme</div>
+          <div class="resultat"><i class="fas fa-play-circle"></i> Une vidéo MP4 de quelques minutes, prête à partager</div>
+          <p class="small" style="margin-top:0.7em;">
+            <i class="fab fa-youtube" style="color:#e74c3c;"></i>
+            <a href="https://youtu.be/okn0E7I2tE0" target="_blank" rel="noopener noreferrer">Voir une capsule réalisée avec ce skill (vidéo de démonstration, 6 minutes)</a>
+          </p>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
+        </p>
+      </section>
+
+      <!-- 2. Le fil conducteur (+ pile : en coulisse) -->
+      <section>
+      <section>
+        <h2>Ce que fait l'agent, en quatre étapes</h2>
+        <div class="etapes">
+          <div class="etape c1 fragment">
+            <i class="fas fa-clipboard-check"></i>
+            <div class="nom">1. Préparer</div>
+            <div class="quoi">Il relit votre exercice en enseignant exigeant et retient vos goûts</div>
+          </div>
+          <div class="etape c2 fragment">
+            <i class="fas fa-pen-nib"></i>
+            <div class="nom">2. Écrire</div>
+            <div class="quoi">Il rédige le texte de la vidéo, comme une copie modèle dite à voix haute</div>
+          </div>
+          <div class="etape c3 fragment">
+            <i class="fas fa-microphone-alt"></i>
+            <div class="nom">3. Dire</div>
+            <div class="quoi">Une voix française lit le texte, ou il part de votre enregistrement</div>
+          </div>
+          <div class="etape c4 fragment">
+            <i class="fas fa-magic"></i>
+            <div class="nom">4. Animer</div>
+            <div class="quoi">Chaque geste se cale sur un mot dit, puis la vidéo est filmée</div>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Vous intervenez au début (la demande, quelques choix) et à la fin (regarder, demander des retouches). Le reste s'enchaîne tout seul, sur votre ordinateur, gratuitement.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 2.1 En coulisse -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Les quatre étapes</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">En coulisse : un seul skill, des scripts et des fiches de référence</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:15%;">Étape</th><th style="width:33%;">Ce qu'il lit ou lance</th><th>Ce que ça apporte</th></tr>
+            <tr><td><span class="pastille p-ok">1. Préparer</span></td><td><code>preferences.md</code>, <code>first_check.md</code></td><td>Vos choix déjà faits (annoncés, pas redemandés) ; à la première utilisation, six questions sur vos goûts.</td></tr>
+            <tr><td><span class="pastille p-bleu">2. Écrire</span></td><td><code>rigueur.md</code>, <code>voix-synthese.md</code><br><code>relire_script.py</code></td><td>Les règles d'une copie modèle et de l'écriture pour l'oreille ; une relecture automatique du texte avant toute voix.</td></tr>
+            <tr><td><span class="pastille p-mid">3. Dire</span></td><td><code>voix_pocket.py</code> (ou <code>voix.py</code>)<br><code>transcrire.py</code></td><td>La voix de synthèse, puis l'instant exact de chaque mot.</td></tr>
+            <tr><td><span class="pastille p-violet">4. Animer</span></td><td><code>moteur-canvas.md</code>, <code>gestes.md</code>, <code>design.md</code><br><code>rendre_canvas.py</code></td><td>Le fichier d'animation <code>spec.js</code>, puis le film MP4.</td></tr>
+          </table>
+          <div class="duo2" style="margin-top:0.6em;">
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-route"></i> <strong>Deux points de départ</strong> : sans audio, l'agent écrit le texte et une voix de synthèse le lit ; avec votre enregistrement (.m4a, .mp3, .wav), il le transcrit et l'anime tel quel.</div>
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-terminal"></i> Un point d'entrée court existe pour lancer soi-même : <code>capsule.py</code> (<code>nouvelle</code>, <code>relire</code>, <code>voix</code>, <code>caler</code>, <code>rendu</code>, <code>tout</code>).</div>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 3. Préparer (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span class="on c1">1. Préparer</span><span>2. Écrire</span><span>3. Dire</span><span>4. Animer</span></div>
+        <h2 style="border-color:var(--step-create);">Il relit l'exercice et vous pose peu de questions</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-create);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il relit votre exercice comme un collègue exigeant : une démarche plus simple ? un mot de vocabulaire flou ? une hypothèse sous-entendue ?</li>
+              <li>Il vous pose <strong>une seule salve</strong> de quatre questions au plus (voix, style, contenu), en proposant chaque fois l'option recommandée.</li>
+              <li>Il note vos choix pour la prochaine fois.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Une vidéo vue sans vous, donc sans approximation.</li>
+              <li>Pas d'interrogatoire : la fois suivante, l'agent annonce «&nbsp;thème nuit, 720p, comme d'habitude&nbsp;».</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 3.1 Les choix proposés -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Préparer</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-create);">Les choix qu'il vous propose, avec leur valeur par défaut</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:22%;">Choix</th><th style="width:34%;">Par défaut</th><th>Autres options</th></tr>
+            <tr><td>Source de la voix</td><td><span class="pastille p-ok">votre audio</span> si vous en joignez un</td><td>sinon texte rédigé par l'agent et lu par une voix de synthèse</td></tr>
+            <tr><td>Voix de synthèse</td><td>Pocket TTS, voix <code>estelle</code></td><td>autres voix du catalogue, votre propre voix clonée, une voix par passage ; Piper en secours</td></tr>
+            <tr><td>Contenu</td><td>rappel de l'énoncé + correction détaillée de chaque question</td><td>questions choisies, version courte «&nbsp;méthode seule&nbsp;»</td></tr>
+            <tr><td>Style</td><td>thème <strong>nuit</strong> (sombre, vif), sans sous-titres</td><td>thème jour (clair) ; sous-titres pour l'accessibilité</td></tr>
+            <tr><td>Formules</td><td><strong>grandes</strong> : une étape par écran</td><td>compactes : toute la rédaction visible</td></tr>
+            <tr><td>Qualité</td><td><strong>720p</strong></td><td>540p (léger), 1080p (projection) ; versions allégées</td></tr>
+          </table>
+          <p class="muted" style="margin-top:0.5em;">Ce qui figure déjà dans la demande ou dans vos préférences n'est pas redemandé. Une préférence se change d'une phrase : «&nbsp;je préfère les formules plus petites&nbsp;».</p>
+        </div>
+      </section>
+
+      <!-- 3.2 Revue critique et premier usage -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Préparer</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-create);">La revue critique du document, et la toute première fois</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-create);">
+            <h3><i class="fas fa-search"></i> Revue critique (toute vidéo qui explique un document)</h3>
+            <ol>
+              <li><strong>Démarche plus simple ?</strong> S'il y en a une : «&nbsp;démarche plus simple (recommandé) · garder celle du document · présenter les deux&nbsp;».</li>
+              <li><strong>Rigueur laissée à l'oral</strong> : droites <em>perpendiculaires</em> mais vecteurs <em>orthogonaux</em>, repère orthonormé sous-entendu, cas particuliers. La vidéo le dit.</li>
+              <li><strong>Lecture orale sans ambiguïté</strong> : «&nbsp;0 plus 2, le tout divisé par 2&nbsp;».</li>
+              <li>Les points relevés et les choix faits sont notés en tête du texte.</li>
+            </ol>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-hand-sparkles"></i> Première utilisation</h3>
+            <ul>
+              <li>L'agent vérifie que l'installeur est passé, sans rien télécharger lui-même.</li>
+              <li>Il propose six questions (deux minutes) : ambiance, taille des formules, rédaction pas à pas ou complète, contenu d'une correction, pointeur lumineux, voix.</li>
+              <li>Puis une capsule d'essai d'environ 30 secondes.</li>
+              <li>Une demande urgente passe avant : valeurs par défaut, questions plus tard.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 4. Écrire (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Préparer</span><span class="on c2">2. Écrire</span><span>3. Dire</span><span>4. Animer</span></div>
+        <h2 style="border-color:var(--step-write);">Il écrit le texte comme une copie modèle</h2>
+        <div class="duo">
+          <div>
+            <div class="bloc" style="border-color:var(--step-write);">
+              <h3>Ce que fait l'agent</h3>
+              <ul>
+                <li>Il découpe la correction en courts passages, écrits pour l'oreille.</li>
+                <li>Chaque calcul est une chaîne d'égalités dite «&nbsp;égale&nbsp;» ; les calculs annexes vont dans un encart «&nbsp;Brouillon&nbsp;».</li>
+                <li>Un outil relit le texte et bloque la voix tant qu'il reste une faute repérée.</li>
+              </ul>
+            </div>
+            <div class="bloc gain" style="margin-top:0.6em;">
+              <h3>Ce que vous y gagnez</h3>
+              <ul><li>Les élèves peuvent recopier l'écran tel quel : c'est une rédaction que vous accepteriez sur une copie.</li></ul>
+            </div>
+          </div>
+          <div class="feuille">
+            <p class="tf">## b10</p>
+            <p>Étape 2. Les 40 % portent sur tous les clients. 0,40 fois 600 égale 240 clients avec la carte.</p>
+            <p class="tf">## b11</p>
+            <p>Étape 3, et attention, c'est là le piège ! Les 75 % et les 30 % sont introduits par «&nbsp;chez les&nbsp;».</p>
+            <p class="tf">## b12</p>
+            <p>Ils ne s'appliquent pas à 600, mais au total de leur ligne.</p>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 4.1 Le fichier script.md -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Écrire</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-write);">Ce qu'il écrit réellement dans <code>script.md</code></h3>
+        <div class="detail duo2" style="grid-template-columns:1.3fr 1fr;">
+<pre class="code"><code><span class="cm">## Choix didactiques   (jamais lu à voix haute)</span>
+<span class="cm">- démarche du document gardée ; « chez les »</span>
+<span class="cm">  souligné : piège classique</span>
+
+<span class="kw">## b08 [pause 0.6]</span>
+Question 1 : le tableau croisé. La méthode
+tient en quatre étapes.
+
+<span class="kw">## b09 <span class="pt">[estelle]</span> [pause 0.6]</span>
+Étape 1, on dresse le tableau. En lignes :
+avec carte, sans carte. Dans le coin, le
+total : 600 clients.</code></pre>
+          <div>
+            <ul>
+              <li><code>## b09</code> : un <strong>temps fort</strong>, l'unité de la vidéo. Les gestes s'y accrochent.</li>
+              <li><code>[pause 0.6]</code> : le silence placé après, en secondes.</li>
+              <li><code>[estelle]</code> : une autre voix pour ce passage (facultatif).</li>
+              <li>Nombres en chiffres : ils sont convertis en mots avant la synthèse.</li>
+              <li>Un calcul intermédiaire par phrase.</li>
+            </ul>
+            <div class="astuce"><i class="fas fa-redo"></i> Pour modifier une phrase plus tard, on garde les numéros des temps forts (on insère <code>b12a</code>) : seuls les passages changés sont revoisés.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.2 Règles et relecture automatique -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Écrire</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-write);">Les règles de rigueur et la relecture automatique</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-write);">
+            <h3>Ce qu'il applique (<code>rigueur.md</code>)</h3>
+            <ul>
+              <li>Formule générale, puis valeurs, puis calcul ; parenthèses autour des négatifs.</li>
+              <li>Aucune étape sautée : √(9 + 16) = √25 = 5, pas √(9 + 16) = 5.</li>
+              <li>Le bon objet : on calcule <em>les coordonnées</em> d'un vecteur, pas «&nbsp;le vecteur&nbsp;».</li>
+              <li>Une conclusion nomme ses objets ; une équivalence se dit «&nbsp;si, et seulement si&nbsp;».</li>
+              <li>Valeur exacte, puis valeur approchée justifiée ; parallélisme écrit «&nbsp;//&nbsp;».</li>
+            </ul>
+          </div>
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:50%;">Repéré par <code>relire_script.py</code></th><th>Réécrit en</th></tr>
+              <tr><td>«&nbsp;… ça fait 240&nbsp;»</td><td>«&nbsp;… égale 240&nbsp;»</td></tr>
+              <tr><td>«&nbsp;Cas a&nbsp;» (lu «&nbsp;saza&nbsp;»)</td><td>«&nbsp;Premier cas&nbsp;»</td></tr>
+              <tr><td>«&nbsp;on calcule le vecteur&nbsp;»</td><td>«&nbsp;les coordonnées du vecteur&nbsp;»</td></tr>
+              <tr><td>«&nbsp;le triangle $R-I-S$&nbsp;»</td><td>«&nbsp;le triangle R I S&nbsp;»</td></tr>
+            </table>
+            <div class="astuce"><i class="fas fa-graduation-cap"></i> Chaque remarque de votre part sur une formulation devient une règle générale, cherchée dans toutes les capsules de la série.</div>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 5. Dire (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Préparer</span><span>2. Écrire</span><span class="on c3">3. Dire</span><span>4. Animer</span></div>
+        <h2 style="border-color:var(--step-compile);">Une voix lit le texte, mot à mot repéré</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-compile);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Une voix de synthèse française, installée sur votre ordinateur, lit chaque passage.</li>
+              <li>Il repère ensuite l'instant précis où chaque mot est prononcé.</li>
+              <li>Vous préférez parler ? Il part de votre enregistrement, le transcrit et vous signale les lapsus.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="bloc gain">
+              <h3>Ce que vous y gagnez</h3>
+              <ul><li>Aucun enregistrement à refaire : une phrase changée est revoisée seule.</li></ul>
+            </div>
+            <div class="onde"></div>
+            <div class="mots">
+              <span>0,40<small>41,2 s</small></span><span>fois<small>41,6</small></span><span>600<small>41,9</small></span><span class="ancre">égale<small>42,5</small></span><span>240<small>42,8</small></span>
+            </div>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 5.1 La chaîne audio -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Dire</span> Détail 1 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-compile);">La chaîne audio, entièrement locale</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:20%;">Outil</th><th style="width:22%;">Quand</th><th>Rôle</th></tr>
+            <tr><td><strong>Pocket TTS</strong></td><td><span class="pastille p-ok">par défaut</span></td><td>La voix de synthèse, sur le processeur. Voix du catalogue (<code>estelle</code>…) ou voix clonée. Les mots mal dits se corrigent dans <code>prononciation.json</code>.</td></tr>
+            <tr><td><strong>Piper</strong></td><td><span class="pastille p-gris">secours</span></td><td>Voix instantanées (siwis, tom, upmc) si Pocket TTS n'est pas installé.</td></tr>
+            <tr><td><strong>MFA</strong></td><td><span class="pastille p-ok">toujours</span></td><td>Cale le texte connu sur la voix : chaque mot à environ 20 ms près, aucun mot deviné.</td></tr>
+            <tr><td><strong>Parakeet</strong></td><td><span class="pastille p-mid">à la demande</span></td><td>Réécoute la voix (environ 0,5 s par passage) pour vérifier qu'aucun mot n'est sauté ; jusqu'à trois essais.</td></tr>
+            <tr><td><strong>Whisper</strong></td><td><span class="pastille p-bleu">votre audio</span></td><td>Transcrit vos enregistrements ; arbitre les alertes de Parakeet. Seul outil accéléré par une carte NVIDIA.</td></tr>
+          </table>
+          <p class="muted" style="margin-top:0.5em;">Par défaut, un essai par passage, sans contrôle séparé : l'agent ne lance les vérifications que si vous les demandez ou signalez un mot mal dit, et alors seulement sur ce passage.</p>
+        </div>
+      </section>
+
+      <!-- 5.2 Votre enregistrement -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Dire</span> Détail 2 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-compile);">Vous partez de votre enregistrement</h3>
+        <div class="detail duo2">
+          <div>
+            <div class="demande" style="font-size:1.1em;max-width:100%;">
+              <span class="qui"><i class="fas fa-user"></i> Vous</span>
+              «&nbsp;Mets en images ma correction de l'exercice 3.&nbsp;» <i class="fas fa-paperclip muted"></i> <em>correction.m4a</em>
+            </div>
+            <ol style="margin-top:0.7em;">
+              <li>Transcription, avec la liste des notations du sujet pour aider la reconnaissance.</li>
+              <li>L'agent lit <strong>toute</strong> la transcription. L'audio fait foi : s'il traite un autre exercice que le document joint, c'est l'audio qui est animé, et l'agent le dit.</li>
+              <li>Il vous rend deux listes : erreurs de reconnaissance et lapsus («&nbsp;150 sur 200&nbsp;» pour 250). L'écran affiche toujours le juste.</li>
+            </ol>
+          </div>
+          <div>
+            <div class="bloc" style="border-color:var(--step-compile);">
+              <h3>Options</h3>
+              <ul>
+                <li><strong>Nettoyer l'audio</strong> : blancs, «&nbsp;euh&nbsp;», reprises.</li>
+                <li><strong>Voix mixtes</strong> : votre voix, et une voix de synthèse pour certains passages (mention «&nbsp;Voix de synthèse&nbsp;» affichée pendant ces passages seulement).</li>
+                <li>Données non dites mais nécessaires : recalculées et signalées.</li>
+              </ul>
+            </div>
+            <div class="astuce"><i class="fas fa-comment-dots"></i> Votre audio n'est pas réécrit : les remarques de la revue critique vous sont rendues comme suggestions.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.3 Voix clonée -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Dire</span> Détail 3 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-compile);">Votre propre voix, clonée (facultatif)</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-compile);">
+            <h3>Comment</h3>
+            <ul>
+              <li>Un compte Hugging Face gratuit, pour accepter une fois les conditions du modèle de clonage de Pocket TTS.</li>
+              <li>Un échantillon de votre voix de 15 à 20 secondes, lu posément : le timbre et le débit du clone sont ceux de l'échantillon.</li>
+              <li>Seulement votre voix, ou celle d'une personne qui a donné son accord.</li>
+              <li>Un nom court déclaré dans les réglages : <code>[ma-voix]</code> devant un passage, ou voix par défaut.</li>
+            </ul>
+            <p class="muted">Pas à pas complet : <code>references/cloner-sa-voix.md</code>.</p>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-user-lock"></i> Une voix clonée est personnelle</h3>
+            <ul>
+              <li>L'échantillon et sa déclaration ne quittent jamais votre poste : on ne les partage pas avec le skill.</li>
+              <li>L'installeur écrit des réglages neufs, sans voix clonée ; le pack n'en contient aucune.</li>
+              <li>La mention «&nbsp;Voix de synthèse&nbsp;» reste affichée à l'écran, même avec votre voix clonée.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 6. Animer (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Préparer</span><span>2. Écrire</span><span>3. Dire</span><span class="on c4">4. Animer</span></div>
+        <h2 style="border-color:var(--step-review);">Chaque geste tombe sur le mot qui le dit</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-review);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il décrit chaque écran : énoncé, tableau, figure, formules.</li>
+              <li>Il accroche chaque geste à un mot : à «&nbsp;égale&nbsp;», le 240 s'envole du calcul vers sa case.</li>
+              <li>Le moteur met en page sans débordement possible, puis filme la vidéo en quelques secondes.</li>
+            </ul>
+          </div>
+          <div class="ecran">
+            <div class="bandeau-c">Question 1 · le tableau croisé</div>
+            <table>
+              <tr><th></th><th>Samedi</th><th>Autre</th><th>Total</th></tr>
+              <tr><th>Carte</th><td>…</td><td>…</td><td class="halo"><span class="vol">240</span></td></tr>
+              <tr><th>Sans</th><td>…</td><td>…</td><td>360</td></tr>
+              <tr><th>Total</th><td></td><td></td><td>600</td></tr>
+            </table>
+            <div class="formule">0,40 × 600 = <span class="res">240</span></div>
+            <div style="margin-top:0.6em;color:#9aa6c7;font-size:0.85em;"><i class="fas fa-volume-up"></i> «&nbsp;… 0,40 fois 600 <strong style="color:#ffd166;">égale</strong> 240&nbsp;» : le 240 s'envole vers sa case</div>
+            <span class="mention">Voix de synthèse</span>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 6.1 spec.js et ancres -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Animer</span> Détail 1 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-review);">Une capsule = un fichier de données, <code>spec.js</code></h3>
+        <div class="detail duo2" style="grid-template-columns:1.3fr 1fr;">
+<pre class="code c4"><code><span class="kw">CAPSULE</span>({
+  titre: 'Exercice 5', audio: 'audio.wav',
+  theme: 'nuit', mention: 'Voix de synthèse',
+  formules: 'grandes',
+  scenes: [ { id: 's-tab', gabarit: 'figure-panneau',
+              debut: <span class="pt">'@b09-0.3'</span>, … } ],
+  gestes(C) {
+    C.<span class="kw">montre</span>('#tab', <span class="pt">'@b09~"dresse"'</span>);
+    C.<span class="kw">vole</span>('#r240', '#case-carte', <span class="pt">'@b10~"égale"'</span>);
+    C.<span class="kw">allume</span>('#ligne-carte', <span class="pt">'@b12~"ligne"'</span>,
+             { jusque: '@b13' });
+  },
+});</code></pre>
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:45%;">Ancre</th><th>Sens</th></tr>
+              <tr><td><code>'@b10'</code></td><td>début du temps fort b10</td></tr>
+              <tr><td><code>'@b10.fin'</code></td><td>sa fin</td></tr>
+              <tr><td><code>'@b10~"égale"'</code></td><td>le mot «&nbsp;égale&nbsp;» dans b10</td></tr>
+              <tr><td><code>'#147'</code></td><td>le 147<sup>e</sup> mot (votre enregistrement)</td></tr>
+            </table>
+            <div class="astuce"><i class="fas fa-sync-alt"></i> Les ancres suivent les mots, pas des secondes : le même <code>spec.js</code> sert pour une autre voix, et survit à une phrase modifiée.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6.2 Éléments et gestes -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Animer</span> Détail 2 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-review);">Ce qu'il peut montrer, et les gestes disponibles</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-review);">
+            <h3>Éléments</h3>
+            <ul>
+              <li>Cartes, formules TeX (on peut viser un seul nombre dans une formule), tableaux.</li>
+              <li>Figures géométriques et graphiques, tracés trait par trait.</li>
+              <li>Tuiles algébriques (relatifs, calcul littéral).</li>
+              <li>Scènes 3D (géométrie dans l'espace), code qui s'écrit et terminal pour un tutoriel logiciel.</li>
+              <li>Musique de fond générée, discrète, sur demande.</li>
+            </ul>
+          </div>
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:32%;">Geste</th><th>Effet</th></tr>
+              <tr><td><code>vole</code></td><td>un nombre décolle en arc et atterrit à sa place</td></tr>
+              <tr><td><code>tombe</code></td><td>un résultat tombe avec rebond</td></tr>
+              <tr><td><code>allume</code></td><td>halo sur une ligne ou une colonne</td></tr>
+              <tr><td><code>compte</code></td><td>compteur animé, virgule française</td></tr>
+              <tr><td><code>compacte</code></td><td>un calcul déroulé se replie en son résultat</td></tr>
+              <tr><td><code>entoure</code>, <code>fleche</code></td><td>tracés «&nbsp;à la main&nbsp;»</td></tr>
+              <tr><td><code>secoue</code></td><td>«&nbsp;non !&nbsp;» sur une erreur fréquente</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6.3 Le rendu -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Animer</span> Détail 3 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-review);">Le tournage : rapide, sur n'importe quel PC</h3>
+        <div class="detail duo2">
+          <div>
+            <table class="tab-detail">
+              <tr><th>Qualité</th><th>Fichier</th><th>Usage</th></tr>
+              <tr><td><strong>720p</strong></td><td><code class="nowrap">capsule-envoi.mp4</code></td><td>par défaut ; capsules 3D toujours en 720p</td></tr>
+              <tr><td>540p</td><td><code class="nowrap">capsule-540p.mp4</code></td><td>léger, environ 2,2 Mo par minute</td></tr>
+              <tr><td>1080p</td><td><code>capsule.mp4</code></td><td>projection</td></tr>
+            </table>
+            <p style="margin-top:0.5em;"><strong>Durée mesurée</strong> : une capsule de 2 min 05 rendue en 9 s environ, 3 min 50 en 16 s (carte graphique) ; environ 1,2 fois plus lent sur une puce intégrée, 1,4 fois sans carte graphique.</p>
+          </div>
+          <div>
+            <div class="bloc note" style="margin-top:0;">
+              <h3><i class="fas fa-shield-alt"></i> Garde-fous</h3>
+              <ul>
+                <li>Le rendu refuse une capsule en erreur : mot d'ancre introuvable, identifiant en double, formule fausse, débordement. L'agent corrige.</li>
+                <li>Même fichier, mêmes images : aucun hasard ni horloge dans l'animation.</li>
+                <li>Un seul rendu à la fois ; le navigateur est ouvert et fermé par l'outil, jamais celui de l'utilisateur.</li>
+              </ul>
+            </div>
+            <p class="muted">Carte dédiée, puce intégrée ou processeur seul : le mode est choisi tout seul et annoncé.</p>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 7. Ce que vous obtenez (+ pile) -->
+      <section>
+      <section>
+        <h2>Ce que vous obtenez</h2>
+        <div class="livrables">
+          <div class="livrable fragment">
+            <i class="fas fa-file-video" style="color:#e74c3c;"></i>
+            <div class="titre">La vidéo MP4</div>
+            <div>Prête à déposer sur votre ENT ou Moodle, à projeter ou à envoyer.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-play"></i>
+            <div class="titre">Un aperçu à commenter</div>
+            <div>Une page qui rejoue la capsule : vous mettez en pause et notez vos remarques à l'instant voulu.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-comments" style="color:#27ae60;"></i>
+            <div class="titre">Des retouches en français</div>
+            <div>«&nbsp;Ralentis à la question 2&nbsp;», «&nbsp;thème clair&nbsp;» : seul ce qui change est refait.</div>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Votre rôle : demander, puis regarder. Le contenu reste le vôtre, vérifiez-le comme le travail d'un collègue.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 7.1 Formuler et diriger -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 1 / 2</div>
+        <h3 class="titre-detail">Bien formuler sa demande, puis diriger</h3>
+        <div class="detail duo2">
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:40%;">Précisez…</th><th>Exemple</th></tr>
+              <tr><td>Le type de vidéo</td><td>correction, explication de cours, tutoriel logiciel, vulgarisation</td></tr>
+              <tr><td>La source</td><td>l'énoncé, le corrigé, ou votre enregistrement joint</td></tr>
+              <tr><td>Le niveau</td><td>«&nbsp;en 2de&nbsp;»</td></tr>
+              <tr><td>Ce qu'on corrige</td><td>«&nbsp;questions 2 et 3 seulement&nbsp;»</td></tr>
+              <tr><td>La durée visée</td><td>«&nbsp;environ 3 minutes&nbsp;»</td></tr>
+            </table>
+          </div>
+          <div>
+            <div class="bloc" style="border-color:var(--secondary-color);">
+              <h3><i class="fas fa-film"></i> Diriger avec la page d'aperçu</h3>
+              <ul>
+                <li><kbd>Espace</kbd> lecture, <kbd>C</kbd> commenter à l'instant affiché.</li>
+                <li>«&nbsp;Copier pour Claude&nbsp;» : vos remarques horodatées, à coller dans la conversation.</li>
+                <li>L'ancienne version est sauvegardée ; seuls les passages modifiés sont revoisés et réanimés.</li>
+                <li>Les leçons générales sont retenues pour les capsules suivantes.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7.2 Séries et limites -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 2 / 2</div>
+        <h3 class="titre-detail">Une série entière, et les limites</h3>
+        <div class="detail duo2">
+          <div class="bloc gain">
+            <h3><i class="fas fa-layer-group"></i> Une fiche entière d'un coup</h3>
+            <ul>
+              <li>Un dossier par exercice ; l'agent écrit tous les textes.</li>
+              <li>Les voix se fabriquent en lot, en arrière-plan.</li>
+              <li>Trois ou quatre animateurs travaillent en parallèle, sur un brief commun ; la première capsule validée sert de modèle d'habillage aux suivantes.</li>
+              <li>Une file rend chaque capsule dès qu'elle est prête, une à la fois.</li>
+            </ul>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-exclamation-triangle"></i> Limites</h3>
+            <ul>
+              <li>Les mathématiques restent à vérifier par vous : la revue critique aide, elle ne remplace pas votre relecture.</li>
+              <li>Une voix de synthèse peut mal prononcer un nom propre : écoutez, signalez, il est corrigé.</li>
+              <li>Installation d'environ 6 Go et 20 à 40 minutes ; Windows testé, Linux et macOS non testés.</li>
+              <li>Une seule vidéo se tourne à la fois.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 8. L'installer -->
+      <section>
+        <h2>L'installer</h2>
+        <p class="small" style="margin-top:-0.3em;">
+          <i class="fas fa-shopping-basket" style="color:#3498db;"></i>
+          Sur la page de cette présentation, ajoutez le <strong>pack «&nbsp;Skill capsules vidéo&nbsp;»</strong> au panier, puis téléchargez l'archive.
+        </p>
+        <div class="install">
+          <div class="carte">
+            <div class="titre">Claude Code, dans le projet <span class="badge">recommandé</span></div>
+            Décompresser dans le dossier du projet : le skill arrive dans <code>.claude/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Claude Code, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.claude/skills/</code> : actif partout, même là où il n'a rien à faire.
+          </div>
+          <div class="carte">
+            <div class="titre">Codex, dans le projet <span class="badge">recommandé</span></div>
+            Copier le contenu de <code>.claude/</code> dans <code>.agents/</code> : le skill arrive dans <code>.agents/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Codex, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.agents/skills/</code>.
+          </div>
+        </div>
+        <div class="logiciels">
+          <i class="fas fa-tools" style="color:#3498db;"></i>
+          <strong>Puis les logiciels</strong> (Chromium, FFmpeg, voix Pocket TTS, MFA…) : l'installeur <code>installation/installer.ps1</code> du skill pose tout dans un seul dossier, sans espace ni accent, où vous travaillerez ensuite.
+          Pas à pas : <a href="https://bfcours.dev/claude-code/tutorials/capsules-video" target="_top">tutoriel «&nbsp;Créer des vidéos avec Claude Code&nbsp;»</a>.
+        </div>
+        <p class="small muted" style="margin-top:0.6em;">
+          Puis demandez simplement : «&nbsp;<em>une capsule de correction de l'exercice 2, en 2de</em>&nbsp;».
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="assets/reveal/reveal.js"></script>
+  <script src="assets/reveal/plugin/notes/notes.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation à deux dimensions : → fil principal, ↓ détails de l'étape
+      navigationMode: 'default',
+      controls: true,
+      controlsLayout: 'bottom-right',
+      controlsTutorial: true,
+      controlsBackArrows: 'faded',
+      progress: true,
+      slideNumber: 'h.v',
+      overview: true,
+      hash: true,
+      transition: 'slide',
+      center: true,
+      fragments: true,
+      fragmentInURL: true,
+      plugins: [ RevealNotes ]
+    });
+  </script>
+</body>
+</html>

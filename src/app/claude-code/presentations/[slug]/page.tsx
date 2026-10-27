@@ -4,6 +4,8 @@ import { scanPresentations } from "@/lib/file-scanner-server"
 import { PresentationViewer } from "@/components/presentations/PresentationViewer"
 import { Breadcrumb } from "@/components/layout/Breadcrumb"
 import { PresentationTracker } from "@/components/analytics/PageTracker"
+import { SkillPackPanel } from "@/components/skills/SkillPackPanel"
+import { SKILL_PAGES } from "@/data/skill-pages"
 import type { Metadata } from "next"
 
 interface PresentationPageProps {
@@ -25,6 +27,11 @@ export async function generateMetadata(
     return {
       title: "Présentation non trouvée",
     }
+  }
+
+  const skillPage = SKILL_PAGES[slug]
+  if (skillPage) {
+    return { title: skillPage.titre, description: skillPage.accroche }
   }
 
   return {
@@ -63,32 +70,40 @@ export default async function PresentationPage({ params }: PresentationPageProps
   // Les fichiers sont servis depuis le dossier public/ standard de Next.js
   const presentationUrl = `/render/Reveals/${presentation.filename}`
 
+  // Page de skill (flux + pack + installation) si le slug est déclaré dans SKILL_PAGES
+  const skillPage = SKILL_PAGES[slug]
+  const titre = skillPage?.titre ?? presentation.title
+  const description = skillPage?.accroche ?? presentation.description
+
   return (
     <div className="space-y-6">
       {/* Tracker analytics */}
-      <PresentationTracker slug={slug} title={presentation.title} />
+      <PresentationTracker slug={slug} title={titre} />
 
       <Breadcrumb
         items={[
           { label: "Claude Code", href: "/claude-code" },
           { label: "Présentations", href: "/claude-code/presentations" },
-          { label: presentation.title, href: `/claude-code/presentations/${slug}` }
+          { label: titre, href: `/claude-code/presentations/${slug}` }
         ]}
       />
 
       {/* Header */}
       <div className="glass-card rounded-xl p-6">
-        <h1 className="text-3xl font-bold mb-2">{presentation.title}</h1>
-        {presentation.description && (
-          <p className="text-muted-foreground">{presentation.description}</p>
+        <h1 className="text-3xl font-bold mb-2">{titre}</h1>
+        {description && (
+          <p className="text-muted-foreground">{description}</p>
         )}
       </div>
 
       {/* Viewer */}
       <PresentationViewer
         presentationUrl={presentationUrl}
-        title={presentation.title}
+        title={titre}
       />
+
+      {/* Flux du skill, pack à ajouter au panier, installation */}
+      {skillPage && <SkillPackPanel config={skillPage} />}
 
       {/* Instructions */}
       <div className="glass-card rounded-xl p-6">

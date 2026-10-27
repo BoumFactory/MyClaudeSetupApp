@@ -18,16 +18,13 @@ display level,
 save lower,
 score=\points,
 level=\rdifficulty,
-overlay={\node[inner sep=0pt,
-anchor=west,rotate=90, yshift=0.3cm]
-at (frame.south west) {\thetags[0]} ;}
-]
+overlay={\ifcorrection \node[inner sep=0pt,anchor=west,rotate=90, yshift=0.3cm] at (frame.south west) {\thetags[0]} ;\else \fi}
 }
-\setrdcrep{seyes, correction=true, correction color=monrose, correction font = \large\bfseries}
+\setrdcrep{seyes, correction=true, correction color=prop, correction font = \normalsize}
 
 
 \hypersetup{
-    pdfauthor={R.Deschamps},
+    pdfauthor={},
     pdfsubject={},
     pdfkeywords={},
     pdfproducer={LuaLaTeX},
@@ -61,7 +58,7 @@ at (frame.south west) {\thetags[0]} ;}
     }{
     % type_etablissement : Collège,Lycée
     }{
-    % nom_etablissement : Amadis Jamyn,Eugène Belgrand
+    % nom_etablissement : Collège Exemple,Lycée Exemple
     }{
     %
     }{

@@ -105,8 +105,9 @@ Créer `bareme.json` avec la structure :
 
 Copier le template `bareme.html` depuis :
 ```
-.claude\skills\outillage\evaluation\bareme-actions-eleves\templates\bareme.html
+.claude/skills/bareme-actions-eleves/templates/bareme.html
 ```
+(avec Codex : `.agents/skills/bareme-actions-eleves/templates/bareme.html`)
 
 Ou utiliser le template de référence existant si disponible dans le projet.
 

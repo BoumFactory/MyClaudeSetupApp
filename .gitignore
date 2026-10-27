@@ -74,6 +74,9 @@ wheels/
 
 # Claude config seulement à la racine (sans le slash final, seulement le dossier à la racine)
 /.claude
+# Idem pour la config Codex (copie de .claude créée à l'installation de Codex)
+/.agents
+/.codex
 
 # IDE
 .vscode/

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Le skill barème détaillé : un sujet d'évaluation et son corrigé, un barème calculé action par action et converti sur 20">
+  <title>Le skill barème détaillé : du sujet au barème justifié</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="assets/reveal/reset.css">
+  <link rel="stylesheet" href="assets/reveal/reveal.css">
+  <link rel="stylesheet" href="assets/reveal/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --violet-color: #8e44ad;
+      --text-color: #34495e;
+      --muted-color: #7f8c8d;
+      --bg-light: #ecf0f1;
+      --step-read: #27ae60;
+      --step-atom: #3498db;
+      --step-calc: #f39c12;
+      --step-analyse: #8e44ad;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .reveal h1 { font-size: 1.9em; margin-bottom: 0.3em; line-height: 1.15; }
+
+    .reveal h2 {
+      font-size: 1.4em;
+      margin-bottom: 0.6em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.25em;
+    }
+
+    .reveal p, .reveal li { line-height: 1.45; }
+    .reveal ul, .reveal ol { margin: 0.4em 0 0 1em; }
+    .reveal li { margin: 0.3em 0; }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9em;
+      color: var(--accent-color);
+    }
+
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.72em; }
+    .reveal .muted { color: var(--muted-color); }
+
+    /* Bulle de demande du professeur */
+    .reveal .demande {
+      display: inline-block;
+      background: #fff;
+      border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px;
+      padding: 0.6em 1em;
+      font-size: 0.85em;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18);
+      max-width: 90%;
+    }
+    .reveal .demande .qui {
+      display: block;
+      font-size: 0.7em;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 0.2em;
+    }
+
+    /* Résultat */
+    .reveal .resultat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      padding: 0.45em 1.1em;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.8em;
+      box-shadow: 0 6px 18px rgba(231,76,60,0.3);
+    }
+
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.2em; margin: 0.3em 0; }
+
+    /* Frise des quatre étapes */
+    .reveal .frise {
+      display: flex;
+      gap: 0.4em;
+      justify-content: center;
+      margin: 0 0 0.7em 0;
+      font-size: 0.55em;
+    }
+    .reveal .frise span {
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      background: var(--bg-light);
+      color: var(--muted-color);
+      font-weight: 600;
+    }
+    .reveal .frise span.on { color: #fff; }
+    .reveal .frise span.on.c1 { background: var(--step-read); }
+    .reveal .frise span.on.c2 { background: var(--step-atom); }
+    .reveal .frise span.on.c3 { background: var(--step-calc); }
+    .reveal .frise span.on.c4 { background: var(--step-analyse); }
+
+    /* Cartes d'étapes (diapo 2) */
+    .reveal .etapes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5em;
+      margin-top: 0.4em;
+    }
+    .reveal .etape {
+      border-radius: 12px;
+      padding: 0.7em 0.5em;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .reveal .etape i { font-size: 1.6em; margin-bottom: 0.2em; }
+    .reveal .etape .nom { font-weight: 700; font-size: 0.85em; }
+    .reveal .etape .quoi { font-size: 0.58em; opacity: 0.95; margin-top: 0.3em; line-height: 1.35; }
+    .reveal .etape.c1 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+    .reveal .etape.c2 { background: linear-gradient(135deg, #2980b9, #3498db); }
+    .reveal .etape.c3 { background: linear-gradient(135deg, #e67e22, #f39c12); }
+    .reveal .etape.c4 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+
+    /* Deux colonnes : ce que fait l'agent / ce que vous y gagnez */
+    .reveal .duo {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1em;
+      text-align: left;
+      align-items: start;
+    }
+    .reveal .bloc {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 0.6em 0.9em;
+      border-left: 5px solid var(--secondary-color);
+      font-size: 0.72em;
+    }
+    .reveal .bloc h3 { font-size: 1.05em; margin: 0 0 0.3em 0; }
+    .reveal .bloc ul { margin-left: 1em; }
+    .reveal .bloc.gain { background: #e8f5e9; border-color: var(--success-color); }
+    .reveal .bloc.gain h3 { color: var(--success-color); }
+    .reveal .bloc.note { background: #fff8e1; border-color: var(--warning-color); margin-top: 0.6em; }
+
+    /* Maquette : une question et ses actions */
+    .reveal .copie {
+      background: #fff;
+      border: 1px solid #dfe6e9;
+      border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      padding: 0.6em 0.8em;
+      font-size: 0.56em;
+      text-align: left;
+    }
+    .reveal .copie .q { font-weight: 700; color: var(--primary-color); margin-bottom: 0.4em; }
+    .reveal .copie .action {
+      display: flex; align-items: center; gap: 0.6em;
+      border-left: 4px solid var(--step-atom); background: #eaf4fb;
+      border-radius: 4px; padding: 0.25em 0.6em; margin: 0.3em 0;
+    }
+    .reveal .copie .action .n {
+      background: var(--step-atom); color: #fff; border-radius: 50%;
+      width: 1.5em; height: 1.5em; display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 700; flex-shrink: 0; font-size: 0.9em;
+    }
+    .reveal .copie .total { text-align: right; font-weight: 700; color: var(--step-atom); margin-top: 0.4em; }
+
+    /* Tableau de calcul */
+    .reveal table.calc { width: 100%; border-collapse: collapse; font-size: 0.56em; margin: 0; }
+    .reveal table.calc th, .reveal table.calc td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.3em 0.45em; text-align: right;
+    }
+    .reveal table.calc th { background: #f1f4f6; color: var(--primary-color); }
+    .reveal table.calc td:first-child, .reveal table.calc th:first-child { text-align: left; }
+    .reveal table.calc tr.somme td { font-weight: 700; border-top: 2px solid var(--primary-color); }
+    .reveal table.calc tr.note td { font-weight: 700; color: #fff; background: var(--step-calc); }
+
+    /* Jauge de densité */
+    .reveal .jauge { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.2em; font-size: 0.5em; margin-top: 0.3em; }
+    .reveal .jauge div { padding: 0.45em 0.3em; color: #fff; text-align: center; border-radius: 6px; font-weight: 600; }
+    .reveal .jauge .z1 { background: #5dade2; }
+    .reveal .jauge .z2 { background: #48c9b0; }
+    .reveal .jauge .z3 { background: #27ae60; outline: 3px solid var(--primary-color); }
+    .reveal .jauge .z4 { background: #e74c3c; }
+    .reveal .jauge small { display: block; font-weight: 400; opacity: 0.95; font-size: 0.95em; }
+
+    /* Encadré de synthèse produit par l'agent */
+    .reveal .synthese {
+      background: #2c3e50; color: #ecf0f1; border-radius: 10px; padding: 0.6em 0.9em;
+      font-size: 0.56em; text-align: left; font-family: 'Consolas', 'Monaco', monospace; line-height: 1.6;
+    }
+    .reveal .synthese b { color: #f9e79f; }
+    .reveal .synthese .t { color: #85c1e9; font-weight: 700; }
+
+    /* Maquette de l'interface bareme.html */
+    .reveal .ui { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.15); font-size: 0.8em; text-align: left; }
+    .reveal .ui .haut { background: linear-gradient(135deg, #34495e, #2c3e50); color: #fff; padding: 0.4em 0.6em; display: flex; justify-content: space-between; align-items: center; gap: 0.4em; }
+    .reveal .ui .haut .badges span { background: rgba(255,255,255,0.15); border-radius: 10px; padding: 0.05em 0.5em; margin-left: 0.25em; white-space: nowrap; }
+    .reveal .ui .onglets { background: #3d566e; display: flex; gap: 0.2em; padding: 0.25em 0.4em; flex-wrap: wrap; }
+    .reveal .ui .onglets span { color: #dfe6e9; padding: 0.1em 0.5em; border-radius: 6px; }
+    .reveal .ui .onglets span.on { background: #3498db; color: #fff; }
+    .reveal .ui .corps { background: #f4f6f7; padding: 0.4em 0.6em; }
+    .reveal .ui .crit { display: flex; gap: 0.5em; background: #fff; border-radius: 4px; padding: 0.15em 0.4em; margin: 0.2em 0; }
+    .reveal .ui .crit b { color: var(--step-calc); min-width: 1em; }
+    .reveal .ui .bas { background: #ecf0f1; padding: 0.3em 0.6em; display: flex; gap: 0.3em; flex-wrap: wrap; }
+    .reveal .ui .bas span { background: #fff; border: 1px solid #ccd; border-radius: 6px; padding: 0.05em 0.5em; }
+
+    /* Livrables */
+    .reveal .livrables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.4em; }
+    .reveal .livrable {
+      background: #f8f9fa; border-radius: 10px; padding: 0.7em 0.6em; font-size: 0.66em; text-align: center;
+      border-top: 4px solid var(--secondary-color);
+    }
+    .reveal .livrable i { font-size: 1.8em; color: var(--secondary-color); margin-bottom: 0.2em; }
+    .reveal .livrable .titre { font-weight: 700; color: var(--primary-color); }
+
+    /* Installation */
+    .reveal .install { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; text-align: left; font-size: 0.66em; }
+    .reveal .install .carte { background: #f8f9fa; border-radius: 10px; padding: 0.55em 0.8em; border-left: 5px solid var(--success-color); }
+    .reveal .install .carte.deconseille { border-color: var(--warning-color); background: #fff8e1; }
+    .reveal .install .carte .titre { font-weight: 700; color: var(--primary-color); }
+    .reveal .install .badge { display: inline-block; font-size: 0.75em; font-weight: 700; padding: 0.05em 0.6em; border-radius: 10px; color: #fff; background: var(--success-color); margin-left: 0.3em; }
+    .reveal .install .carte.deconseille .badge { background: var(--warning-color); }
+    .reveal .install code { font-size: 0.95em; }
+
+    /* ===== Navigation à deux dimensions ===== */
+    .reveal .indice-details {
+      text-align: right;
+      margin-top: 0.9em;
+      font-size: 0.5em;
+      color: var(--muted-color);
+    }
+    .reveal .indice-details span {
+      display: inline-block;
+      border: 1px solid #d0d7de;
+      border-radius: 14px;
+      padding: 0.15em 0.8em;
+      background: #fff;
+    }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 2.2em; }
+    .reveal .aide-nav kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color);
+    }
+
+    /* Fil d'Ariane des diapos verticales */
+    .reveal .fil-detail {
+      display: flex; align-items: center; gap: 0.6em; justify-content: flex-start;
+      font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600;
+    }
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; }
+    .reveal .fil-detail .etiq.c0 { background: var(--primary-color); }
+    .reveal .fil-detail .etiq.c1 { background: var(--step-read); }
+    .reveal .fil-detail .etiq.c2 { background: var(--step-atom); }
+    .reveal .fil-detail .etiq.c3 { background: var(--step-calc); }
+    .reveal .fil-detail .etiq.c4 { background: var(--step-analyse); }
+    .reveal h3.titre-detail {
+      font-size: 1.05em; text-align: left; margin: 0 0 0.5em 0;
+      padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light);
+    }
+
+    /* Contenus de détail */
+    .reveal .detail { font-size: 0.62em; text-align: left; }
+    .reveal .detail .bloc { font-size: 1em; }
+    .reveal .detail code, .reveal .fil-detail code { padding: 0 0.2em; }
+    .reveal h3.titre-detail code { color: inherit; font-size: 0.85em; padding: 0 0.25em; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .detail table.calc { font-size: 0.95em; }
+    .reveal .detail .synthese { font-size: 0.95em; }
+    .reveal .duo2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; align-items: start; }
+    .reveal .arbo {
+      font-family: 'Consolas', 'Monaco', monospace; background: #f8f9fa; border-radius: 8px;
+      padding: 0.6em 0.9em; line-height: 1.55; white-space: pre; font-size: 0.92em;
+    }
+    .reveal pre.code {
+      width: 100%; box-shadow: none; margin: 0; font-size: 0.82em;
+    }
+    .reveal pre.code code {
+      display: block; background: #f8f9fa; color: #2c3e50; padding: 0.7em 0.9em;
+      border-radius: 8px; border-left: 4px solid var(--step-atom); line-height: 1.45;
+      max-height: none; font-size: 1em; white-space: pre;
+    }
+    .reveal pre.code .cm { color: #27ae60; font-weight: 700; }
+    .reveal pre.code .kw { color: #2980b9; font-weight: 700; }
+    .reveal pre.code .pt { color: #8e44ad; font-weight: 700; }
+    .reveal pre.code .st { color: #c0392b; }
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.3em 0.5em; text-align: left; vertical-align: top;
+    }
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal .pastille {
+      display: inline-block; border-radius: 10px; padding: 0 0.55em; font-weight: 700; color: #fff; font-size: 0.9em; white-space: nowrap;
+    }
+    .reveal .p-ok { background: var(--success-color); }
+    .reveal .p-mid { background: var(--warning-color); }
+    .reveal .p-ko { background: var(--accent-color); }
+    .reveal .p-bleu { background: var(--secondary-color); }
+    .reveal .p-gris { background: #95a5a6; }
+    .reveal .p-violet { background: var(--violet-color); }
+    .reveal .astuce {
+      background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px;
+      padding: 0.45em 0.8em; margin-top: 0.6em;
+    }
+    .reveal .formule {
+      font-family: 'Consolas', 'Monaco', monospace; background: #fdf2e9; border-left: 4px solid var(--step-calc);
+      border-radius: 6px; padding: 0.45em 0.8em; line-height: 1.6; white-space: pre;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1. Où l'on veut en venir -->
+      <section>
+        <h1><i class="fas fa-balance-scale" style="color:#e74c3c;"></i> Le skill barème détaillé</h1>
+        <p class="subtitle">De votre sujet corrigé à un barème justifié, question par question</p>
+
+        <div style="margin-top:1em;">
+          <div class="demande">
+            <span class="qui"><i class="fas fa-user"></i> Vous</span>
+            «&nbsp;Établis le barème de mon DS de seconde, calculs et géométrie, noté sur 20.&nbsp;»
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="small muted" style="margin-bottom:0.4em;">L'agent lit le corrigé, compte ce que l'élève doit écrire, calcule et contrôle</div>
+          <div class="resultat"><i class="fas fa-check-circle"></i> 1 point = 1 action d'élève visible sur la copie, converti sur 20</div>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
+        </p>
+      </section>
+
+      <!-- 2. Le fil conducteur (+ pile : en coulisse) -->
+      <section>
+      <section>
+        <h2>Ce que fait l'agent, en quatre étapes</h2>
+        <div class="etapes">
+          <div class="etape c1 fragment">
+            <i class="fas fa-book-open"></i>
+            <div class="nom">1. Lire</div>
+            <div class="quoi">Il lit votre sujet et son corrigé, exercice par exercice</div>
+          </div>
+          <div class="etape c2 fragment">
+            <i class="fas fa-list-ol"></i>
+            <div class="nom">2. Atomiser</div>
+            <div class="quoi">Il découpe chaque corrigé en actions que l'élève doit écrire</div>
+          </div>
+          <div class="etape c3 fragment">
+            <i class="fas fa-calculator"></i>
+            <div class="nom">3. Calculer</div>
+            <div class="quoi">Il compte les actions, pondère par exercice et convertit sur 20</div>
+          </div>
+          <div class="etape c4 fragment">
+            <i class="fas fa-chart-bar"></i>
+            <div class="nom">4. Analyser</div>
+            <div class="quoi">Il mesure la densité du sujet et vous dit s'il est trop chargé</div>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Vous fournissez le sujet corrigé, puis vous relisez et ajustez. Le reste s'enchaîne seul.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 2.1 En coulisse -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Les quatre étapes</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">En coulisse : un skill, une commande, une interface</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:24%;">Élément</th><th style="width:30%;">Nom</th><th>Rôle</th></tr>
+            <tr><td><span class="pastille p-bleu">Méthode</span></td><td><code>bareme-actions-eleves</code></td><td>Les règles d'atomisation, les coefficients, les formules et les seuils de densité.</td></tr>
+            <tr><td><span class="pastille p-ok">Déroulé</span></td><td>commande <code>/bareme</code></td><td>Le protocole pas à pas : lire le <code>.tex</code>, détecter les types d'exercice, atomiser, écrire le JSON, afficher la synthèse.</td></tr>
+            <tr><td><span class="pastille p-mid">Interface</span></td><td><code>templates/bareme.html</code></td><td>Une page autonome, sans installation, pour relire et ajuster le barème.</td></tr>
+            <tr><td><span class="pastille p-gris">En amont</span></td><td><code>bfcours-latex</code></td><td>Le sujet rédigé avec ses corrigés. Ce skill appelle le barème après toute évaluation.</td></tr>
+          </table>
+          <div class="duo2" style="margin-top:0.6em;">
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-route"></i> Place dans le flux d'une évaluation : rédiger le sujet, rédiger les corrigés, <strong>puis</strong> le barème, puis corriger les copies.</div>
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-plug"></i> Aucun script ni module Python : l'agent lit, compte et écrit lui-même ; seule l'interface est un fichier fourni.</div>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 3. Lire (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span class="on c1">1. Lire</span><span>2. Atomiser</span><span>3. Calculer</span><span>4. Analyser</span></div>
+        <h2 style="border-color:var(--step-read);">Il part de votre sujet et de son corrigé</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-read);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il ouvre le document et repère chaque exercice, chaque question et son corrigé.</li>
+              <li>Il reconnaît le type d'exercice (calcul, géométrie, QCM…) pour choisir sa pondération.</li>
+              <li>Si un corrigé manque ou si un exercice mêle deux types, il vous pose la question.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Aucun tableau à préparer : la structure du barème est celle de votre sujet.</li>
+              <li>Un barème fondé sur ce que vous attendez vraiment, écrit dans le corrigé.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 3.1 Ce qu'il repère dans le fichier -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Lire</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-read);">Ce qu'il repère dans un sujet bfcours</h3>
+        <div class="detail duo2" style="grid-template-columns:1.3fr 1fr;">
+<pre class="code"><code><span class="kw">\begin{EXO}</span>{Probabilités conditionnelles}{}
+<span class="kw">\begin{tcbenumerate}</span>[1]
+  \tcbitem <span class="pt">\tcbitempoint{3}</span>\acc{Calculer} $P_A(W)$.
+  ...
+<span class="kw">\end{tcbenumerate}</span>
+<span class="kw">\exocorrection</span>
+<span class="cm">% le corrigé, question par question :</span>
+<span class="cm">% c'est lui qui sera atomisé</span>
+$P_A(W)=\dfrac{P(A\cap W)}{P(A)}$ ...
+<span class="kw">\end{EXO}</span></code></pre>
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:42%;">Il cherche</th><th>Pour en tirer</th></tr>
+              <tr><td>Le fichier maître, <code>enonce.tex</code>, <code>sections/*.tex</code></td><td>Tout le contenu, même découpé.</td></tr>
+              <tr><td><code>EXO</code> et son titre</td><td>Un exercice du barème, son type.</td></tr>
+              <tr><td><code>\tcbitempoint{N}</code></td><td>Les points que vous aviez prévus.</td></tr>
+              <tr><td><code>\exocorrection</code></td><td>Le corrigé à découper en actions.</td></tr>
+            </table>
+            <p class="muted" style="margin-top:0.5em;">Un sujet hors bfcours convient aussi, pourvu que son corrigé soit rédigé.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3.2 Type d'exercice et questions -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Lire</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-read);">Le type d'exercice, et les questions qu'il vous pose</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-read);">
+            <h3>Détection par le titre de l'exercice</h3>
+            <table class="tab-detail">
+              <tr><th>Mots du titre</th><th style="width:28%;">1 action =</th></tr>
+              <tr><td>géométrie, repère, figure, construction, tracer</td><td><span class="pastille p-mid">0,5 pt</span></td></tr>
+              <tr><td>QCM, calcul, littéral, équation, intervalle</td><td><span class="pastille p-ok">1 pt</span></td></tr>
+              <tr><td>tout le reste</td><td><span class="pastille p-ok">1 pt</span></td></tr>
+            </table>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-question-circle"></i> Il demande plutôt que deviner</h3>
+            <ul>
+              <li><strong>Corrigé absent</strong> : «&nbsp;Voulez-vous que je l'atomise moi-même ou que vous le rédigiez d'abord ?&nbsp;»</li>
+              <li><strong>Exercice mixte</strong> : «&nbsp;Ce problème mêle géométrie et calcul : coefficient 1 ou 0,5 ?&nbsp;»</li>
+              <li><strong>Note cible</strong> : 20 par défaut ; une autre valeur sur simple demande.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 4. Atomiser (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Lire</span><span class="on c2">2. Atomiser</span><span>3. Calculer</span><span>4. Analyser</span></div>
+        <h2 style="border-color:var(--step-atom);">Il découpe chaque corrigé en actions d'élève</h2>
+        <div class="duo">
+          <div>
+            <div class="bloc" style="border-color:var(--step-atom);">
+              <h3>Ce que fait l'agent</h3>
+              <ul>
+                <li>Une étape du corrigé que l'élève doit écrire devient une <strong>action</strong>.</li>
+                <li>Chaque action se voit sur la copie : faite ou pas faite, sans demi-mesure.</li>
+                <li>Il la décrit en une ligne, vérifiable au moment de corriger.</li>
+              </ul>
+            </div>
+            <div class="bloc gain" style="margin-top:0.6em;">
+              <h3>Ce que vous y gagnez</h3>
+              <ul><li>Chaque point se justifie : «&nbsp;1 point, c'est la formule posée&nbsp;».</li></ul>
+            </div>
+          </div>
+          <div class="copie">
+            <div class="q">3. Calculer P<sub>A</sub>(W).</div>
+            <div class="action"><span class="n">1</span> <span>Formule : P<sub>A</sub>(W) = P(A ∩ W) / P(A)</span></div>
+            <div class="action"><span class="n">2</span> Substitution : (450/1200) / (650/1200)</div>
+            <div class="action"><span class="n">3</span> Résultat : 450/650 = 9/13 ≈ 0,69</div>
+            <div class="total">3 actions → 3 points</div>
+            <div class="muted" style="font-size:0.85em;margin-top:0.3em;">Extrait d'un barème réel de première.</div>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 4.1 Les règles d'atomisation -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Atomiser</span> Détail 1 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-atom);">Les règles : une action = une trace</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-atom);">
+            <h3>Une action est…</h3>
+            <ul>
+              <li><strong>atomique</strong> : on ne peut pas la découper davantage ;</li>
+              <li><strong>observable</strong> : elle laisse une trace sur la copie ;</li>
+              <li><strong>binaire</strong> : réussie ou non, sans demi-point à ce niveau.</li>
+            </ul>
+            <h3 style="margin-top:0.5em;">Comptent pour une action</h3>
+            <ul>
+              <li>chaque calcul intermédiaire ;</li>
+              <li>chaque identification (identité remarquable, facteur commun…) ;</li>
+              <li>chaque conclusion ou réponse ;</li>
+              <li>chaque point placé sur un graphique.</li>
+            </ul>
+          </div>
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:40%;">Cas particulier</th><th>Règle</th></tr>
+              <tr><td>QCM</td><td>1 bonne réponse = 1 action, coefficient 1.</td></tr>
+              <tr><td>Problème ouvert, tâche complexe</td><td>Forfait de <strong>5 points</strong>, sans atomiser : la démarche est jugée globalement.</td></tr>
+              <tr><td>«&nbsp;Justifier&nbsp;»</td><td>1 action : la phrase de conclusion.</td></tr>
+              <tr><td>«&nbsp;Démontrer&nbsp;»</td><td>Autant d'actions que d'étapes.</td></tr>
+            </table>
+            <div class="astuce"><i class="fas fa-pen"></i> Le corrigé est rédigé <strong>avant</strong> le barème : c'est son découpage qui donne le nombre exact d'actions.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.2 Exemples d'atomisation -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Atomiser</span> Détail 2 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-atom);">Quatre exemples, du calcul à la géométrie</h3>
+        <div class="detail duo2">
+          <div>
+            <table class="tab-detail">
+              <tr><th colspan="2">Calculer 3/4 + 5/6 <span class="pastille p-ok">3 × 1 = 3 pts</span></th></tr>
+              <tr><td style="width:8%;">1</td><td>Même dénominateur (12)</td></tr>
+              <tr><td>2</td><td>Numérateurs transformés : 9/12 + 10/12</td></tr>
+              <tr><td>3</td><td>Addition : 19/12</td></tr>
+            </table>
+            <table class="tab-detail" style="margin-top:0.5em;">
+              <tr><th colspan="2">Développer (2x + 3)² <span class="pastille p-ok">4 × 1 = 4 pts</span></th></tr>
+              <tr><td style="width:8%;">1</td><td>Identité remarquable (a + b)² reconnue</td></tr>
+              <tr><td>2</td><td>a = 2x et b = 3 identifiés</td></tr>
+              <tr><td>3</td><td>Formule a² + 2ab + b² appliquée</td></tr>
+              <tr><td>4</td><td>Calcul : 4x² + 12x + 9</td></tr>
+            </table>
+          </div>
+          <div>
+            <table class="tab-detail">
+              <tr><th colspan="2">Placer A(−2 ; 1), B(4 ; 1), C(6 ; 5), D(0 ; 5) <span class="pastille p-mid">4 × 0,5 = 2 pts</span></th></tr>
+              <tr><td style="width:8%;white-space:nowrap;">1 à 4</td><td>Chaque point bien placé : 1 action</td></tr>
+            </table>
+            <table class="tab-detail" style="margin-top:0.5em;">
+              <tr><th colspan="2">Montrer que M(2 ; 3) est le milieu de [AC] <span class="pastille p-mid">3 × 0,5 = 1,5 pt</span></th></tr>
+              <tr><td style="width:8%;">1</td><td>Calcul x<sub>M</sub> = (−2 + 6)/2 = 2</td></tr>
+              <tr><td>2</td><td>Calcul y<sub>M</sub> = (1 + 5)/2 = 3</td></tr>
+              <tr><td>3</td><td>Conclusion : M(2 ; 3)</td></tr>
+            </table>
+            <p class="muted" style="margin-top:0.5em;">Les deux exemples de droite viennent d'un DS réel de seconde, exercice de géométrie repérée.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.3 Avant / après dans le .tex -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Atomiser</span> Détail 3 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-atom);">Dans le sujet : de l'estimation au compte exact</h3>
+        <div class="detail duo2">
+          <div>
+            <p><strong>Avant</strong> : une estimation à l'œil.</p>
+<pre class="code"><code><span class="pt">\tcbitempoint{3}</span>\acc{Développer} $(2x+3)^2$.</code></pre>
+            <p style="margin-top:0.6em;"><strong>Après</strong> : le compte des actions du corrigé.</p>
+<pre class="code"><code><span class="pt">\tcbitempoint{4}</span>\acc{Développer} $(2x+3)^2$
+  et \acc{réduire}.</code></pre>
+          </div>
+          <div>
+            <p>Le corrigé, annoté action par action :</p>
+<pre class="code"><code><span class="kw">\exocorrection</span>
+<span class="cm">% ACTION 1 : identité remarquable</span>
+On reconnaît $(a+b)^2$ avec
+$a = 2x$ et $b = 3$.
+<span class="cm">% ACTION 2 : application de la formule</span>
+$(2x+3)^2 = (2x)^2 + 2 \times 2x
+  \times 3 + 3^2$
+<span class="cm">% ACTION 3 : calcul final</span>
+$= 4x^2 + 12x + 9$</code></pre>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 5. Calculer (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Lire</span><span>2. Atomiser</span><span class="on c3">3. Calculer</span><span>4. Analyser</span></div>
+        <h2 style="border-color:var(--step-calc);">Il calcule les points, puis la note sur 20</h2>
+        <div class="duo" style="grid-template-columns:1fr 1.15fr;">
+          <div class="bloc" style="border-color:var(--step-calc);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il additionne les actions de chaque exercice.</li>
+              <li>Il les pondère : une action de géométrie vaut un demi-point.</li>
+              <li>Il en déduit le total libre, puis le coefficient qui ramène la note sur 20.</li>
+            </ul>
+            <p class="muted" style="margin-top:0.4em;">Vous gagnez un barème cohérent d'un exercice à l'autre, et d'un devoir à l'autre.</p>
+          </div>
+          <table class="calc">
+            <tr><th>DS de seconde (réel)</th><th>actions</th><th>× coef</th><th>points</th></tr>
+            <tr><td>1. QCM, calcul numérique</td><td>12</td><td>× 1</td><td>12</td></tr>
+            <tr><td>2. Calcul littéral</td><td>13</td><td>× 1</td><td>13</td></tr>
+            <tr><td>3. Intervalles, valeur absolue</td><td>12</td><td>× 1</td><td>12</td></tr>
+            <tr><td>4. Géométrie repérée</td><td>26</td><td>× 0,5</td><td>13</td></tr>
+            <tr class="somme"><td>Total libre</td><td>63</td><td></td><td>50</td></tr>
+            <tr class="note"><td colspan="3">Note sur 20 = points obtenus × 20/50</td><td>× 0,40</td></tr>
+          </table>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 5.1 Coefficients et formules -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Calculer</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-calc);">Coefficients par type d'exercice, et formules</h3>
+        <div class="detail duo2">
+          <div>
+            <table class="tab-detail">
+              <tr><th>Type d'exercice</th><th style="width:20%;">Coef.</th><th>Pourquoi</th></tr>
+              <tr><td>Calcul numérique, littéral</td><td>1</td><td>Charge cognitive standard</td></tr>
+              <tr><td>Résolution d'équations</td><td>1</td><td>Raisonnement structuré</td></tr>
+              <tr><td>Problème ouvert</td><td>1</td><td>Raisonnement complexe</td></tr>
+              <tr><td>QCM</td><td>1</td><td>1 action = 1 bonne réponse</td></tr>
+              <tr><td>Géométrie repérée ou pure</td><td>0,5</td><td>Actions plus mécaniques : placer, tracer, lire</td></tr>
+              <tr><td>Tâche complexe</td><td>1</td><td>Éventuellement 5 points forfaitaires</td></tr>
+            </table>
+            <p class="muted" style="margin-top:0.4em;">Le 0,5 de la géométrie est un choix de l'auteur du skill : réglable selon vos pratiques.</p>
+          </div>
+          <div>
+<div class="formule">Points question  = Σ actions × coef exercice
+Points exercice  = Σ points des questions
+Total libre      = Σ points des exercices
+Ratio            = note cible / total libre
+Note sur 20      = points obtenus × ratio</div>
+            <div class="astuce"><i class="fas fa-equals"></i> Exemple : 33 points obtenus sur 50 → 33 × 0,40 = <strong>13,2 / 20</strong>.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.2 Les fichiers produits -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Calculer</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-calc);">Ce qu'il écrit : <code>bareme.json</code> et l'interface <code>bareme.html</code></h3>
+        <div class="detail duo2" style="grid-template-columns:1fr 1.1fr;">
+<pre class="code"><code>{
+  <span class="kw">"titre"</span>: <span class="st">"DS Calculs et Géométrie"</span>,
+  <span class="kw">"noteCible"</span>: 20,
+  <span class="kw">"exercices"</span>: [{
+    <span class="kw">"titre"</span>: <span class="st">"Exercice 4 : Géométrie repérée"</span>,
+    <span class="kw">"coef"</span>: 0.5,
+    <span class="kw">"questions"</span>: [{
+      <span class="kw">"numero"</span>: <span class="st">"2"</span>,
+      <span class="kw">"enonce"</span>: <span class="st">"Montrer que M(2;3) est
+                 milieu de [AC]"</span>,
+      <span class="kw">"criteres"</span>: [
+        { <span class="kw">"points"</span>: 1, <span class="kw">"description"</span>:
+          <span class="st">"Calcul xM = (-2+6)/2 = 2"</span> },
+        ...
+      ]
+    }]
+  }]
+}</code></pre>
+          <div>
+            <div class="ui">
+              <div class="haut"><span>📋 DS Calculs et Géométrie</span><span class="badges"><span>50 pts → /20</span><span>×0,4</span><span>Densité 3,15</span></span></div>
+              <div class="onglets"><span>Ex. 1</span><span>Ex. 2</span><span>Ex. 3</span><span class="on">Ex. 4 · 13 pts</span><span>📊 Synthèse</span></div>
+              <div class="corps">
+                <div class="muted">1 action = 0,5 pt · 26 act. → 13 pts</div>
+                <div class="crit"><b>1</b> Calcul xM = (−2+6)/2 = 2</div>
+                <div class="crit"><b>1</b> Calcul yM = (1+5)/2 = 3</div>
+                <div class="crit"><b>1</b> Conclusion M(2 ; 3)</div>
+              </div>
+              <div class="bas"><span>Nouveau</span><span>Charger</span><span>Sauvegarder</span><span>Export CSV</span></div>
+            </div>
+            <ul style="margin-top:0.5em;">
+              <li>Un onglet par exercice : critères, points et coefficient modifiables, totaux recalculés.</li>
+              <li>Onglet Synthèse : tout le barème en accordéon, total, coefficient final, densité.</li>
+              <li>Export CSV pour le tableur.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 6. Analyser (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Lire</span><span>2. Atomiser</span><span>3. Calculer</span><span class="on c4">4. Analyser</span></div>
+        <h2 style="border-color:var(--step-analyse);">Il vous dit si le sujet est trop chargé</h2>
+        <div class="duo">
+          <div>
+            <div class="bloc" style="border-color:var(--step-analyse);">
+              <h3>Ce que fait l'agent</h3>
+              <ul>
+                <li>Il calcule la <strong>densité</strong> : nombre d'actions par point de la note.</li>
+                <li>Il la situe sur une échelle et vous recommande d'alléger, ou d'étoffer.</li>
+              </ul>
+            </div>
+            <div class="bloc gain" style="margin-top:0.6em;">
+              <h3>Ce que vous y gagnez</h3>
+              <ul><li>Un sujet calibré <strong>avant</strong> de le donner, et des devoirs comparables entre eux.</li></ul>
+            </div>
+          </div>
+          <div>
+            <div class="synthese">
+<span class="t">BARÈME GÉNÉRÉ</span> · DS Calculs et Géométrie · /20<br>
+Total actions &nbsp;&nbsp;: <b>63</b><br>
+Total points &nbsp;&nbsp;&nbsp;: <b>50</b><br>
+Ratio &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>0,40</b><br>
+Densité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>3,15</b> (standard)
+            </div>
+            <div class="jauge">
+              <div class="z1">légère<small>&lt; 2</small></div>
+              <div class="z2">accessible<small>2 à 3</small></div>
+              <div class="z3">standard<small>3 à 4</small></div>
+              <div class="z4">très dense<small>&gt; 4</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 6.1 Densité et durée -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Analyser</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-analyse);">Densité et durée : calibrer le sujet</h3>
+        <div class="detail duo2" style="grid-template-columns:1.15fr 1fr;">
+          <div>
+            <p><strong>Densité = total des actions ÷ note cible</strong></p>
+            <table class="tab-detail">
+              <tr><th style="width:18%;">Densité</th><th style="width:26%;">Lecture</th><th>Recommandation</th></tr>
+              <tr><td>&gt; 4</td><td><span class="pastille p-ko">très dense</span></td><td>Retirer des questions ou allonger la durée.</td></tr>
+              <tr><td>3 à 4</td><td><span class="pastille p-ok">standard</span></td><td>Rien à changer.</td></tr>
+              <tr><td>2 à 3</td><td><span class="pastille p-bleu">accessible</span></td><td>Convient à une évaluation diagnostique.</td></tr>
+              <tr><td>&lt; 2</td><td><span class="pastille p-gris">légère</span></td><td>Ajouter des questions ou baisser la note cible.</td></tr>
+            </table>
+          </div>
+          <div>
+            <p><strong>Temps estimé par action</strong></p>
+            <table class="tab-detail">
+              <tr><td>QCM simple</td><td>30 s</td></tr>
+              <tr><td>Calcul de base</td><td>1 à 2 min</td></tr>
+              <tr><td>Raisonnement</td><td>2 à 3 min</td></tr>
+              <tr><td>Construction géométrique</td><td>1 à 2 min</td></tr>
+              <tr><td>Rédaction d'une justification</td><td>2 min</td></tr>
+            </table>
+            <div class="astuce"><i class="fas fa-hourglass-half"></i> Règle : prévoir <strong>1,5 fois</strong> le temps théorique pour les élèves.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6.2 Comparer devoirs et élèves -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Analyser</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-analyse);">Comparer des devoirs, suivre des élèves</h3>
+        <div class="detail duo2">
+          <div>
+            <p><strong>Barèmes réels produits avec le skill</strong></p>
+            <table class="tab-detail">
+              <tr><th>Évaluation</th><th>Actions</th><th>Densité</th></tr>
+              <tr><td>DS de seconde, calculs et géométrie</td><td>63</td><td><span class="pastille p-ok">3,15</span></td></tr>
+              <tr><td>Version aménagée du même DS</td><td>40</td><td><span class="pastille p-bleu">2,00</span></td></tr>
+              <tr><td>Première, probabilités conditionnelles</td><td>38</td><td><span class="pastille p-gris">1,90</span></td></tr>
+              <tr><td>Tests de probabilités, 4<sup>e</sup> et 3<sup>e</sup></td><td>20</td><td><span class="pastille p-gris">1,00</span></td></tr>
+            </table>
+            <p class="muted" style="margin-top:0.4em;">La densité rend visible l'écart entre un sujet standard et sa version aménagée.</p>
+          </div>
+          <div class="bloc" style="border-color:var(--step-analyse);">
+            <h3>Productivité d'un élève</h3>
+<div class="formule" style="background:#f4ecf7;border-color:var(--step-analyse);">Productivité = actions réussies
+               ÷ total des actions × 100</div>
+            <p style="margin-top:0.4em;">Exemple : 41 actions réussies sur 63 → <strong>65 %</strong>.</p>
+            <p>Elle compare les élèves d'un devoir à l'autre, indépendamment des coefficients et de la note cible.</p>
+            <p class="muted">À calculer au tableur : l'interface sert au barème, pas à la saisie des copies.</p>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 7. Ce que vous obtenez (+ pile) -->
+      <section>
+      <section>
+        <h2>Ce que vous obtenez</h2>
+        <div class="livrables">
+          <div class="livrable fragment">
+            <i class="fas fa-list-check" style="color:#3498db;"></i>
+            <div class="titre">Le barème détaillé</div>
+            <div>Question par question, chaque point décrit par l'action qu'il récompense.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-calculator" style="color:#f39c12;"></i>
+            <div class="titre">La conversion sur 20</div>
+            <div>Le total libre et le coefficient à appliquer aux points obtenus.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-chart-bar" style="color:#8e44ad;"></i>
+            <div class="titre">Un diagnostic du sujet</div>
+            <div>Sa densité et, si besoin, quoi alléger ou étoffer.</div>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Votre rôle : relire les critères et valider les coefficients. Le barème reste le vôtre : modifiez-le dans l'interface ou en français.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 7.1 Bien formuler sa demande -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 1 / 2</div>
+        <h3 class="titre-detail">Bien formuler sa demande</h3>
+        <div class="detail duo2">
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:40%;">Précisez…</th><th>Exemple</th></tr>
+              <tr><td>Le sujet</td><td>le fichier <code>.tex</code> ou son dossier</td></tr>
+              <tr><td>La note cible</td><td>«&nbsp;sur 20&nbsp;», «&nbsp;sur 30&nbsp;»</td></tr>
+              <tr><td>Vos coefficients</td><td>«&nbsp;la géométrie compte comme le calcul&nbsp;»</td></tr>
+              <tr><td>Un forfait</td><td>«&nbsp;5 points pour la tâche complexe&nbsp;»</td></tr>
+              <tr><td>Le dossier de sortie</td><td>«&nbsp;range-le dans <code>correction/</code>&nbsp;»</td></tr>
+            </table>
+            <div class="astuce"><i class="fas fa-pen"></i> Rédigez les corrigés d'abord : sans eux, l'agent doit inventer les étapes attendues.</div>
+          </div>
+          <div>
+            <div class="demande" style="font-size:1.05em;max-width:100%;">
+              <span class="qui"><i class="fas fa-user"></i> Vous</span>
+              «&nbsp;/bareme DS_Fonctions, sur 30, la géométrie compte comme le calcul.&nbsp;»
+            </div>
+            <div class="fleche-bas" style="text-align:center;"><i class="fas fa-arrow-down"></i></div>
+            <div class="bloc gain" style="font-size:1em;">
+              <ul>
+                <li><code>bareme.json</code> et <code>bareme.html</code> rangés à côté du sujet.</li>
+                <li>Coefficient 1 partout, ratio calculé pour une note sur 30.</li>
+                <li>La synthèse : actions, points, ratio, densité et sa lecture.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7.2 Retouches et limites -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 2 / 2</div>
+        <h3 class="titre-detail">Retouches et limites</h3>
+        <div class="detail duo2">
+          <div class="bloc gain">
+            <h3>Retouches qui marchent bien</h3>
+            <ul>
+              <li>«&nbsp;Fusionne les deux premières actions de la question 2.&nbsp;»</li>
+              <li>«&nbsp;Passe l'exercice 4 au coefficient 1.&nbsp;»</li>
+              <li>«&nbsp;Le sujet est trop dense : que retirer ?&nbsp;»</li>
+              <li>«&nbsp;Reporte le nouveau compte dans les <code>\tcbitempoint</code>.&nbsp;»</li>
+            </ul>
+            <p class="muted">Ou directement dans l'interface : chaque modification recalcule les totaux.</p>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-exclamation-triangle"></i> Limites</h3>
+            <ul>
+              <li>Le barème vaut ce que vaut le corrigé : un corrigé qui saute des étapes donne trop peu d'actions.</li>
+              <li>Ouverte par double-clic, l'interface démarre vide : bouton <strong>Charger</strong>, puis <code>bareme.json</code>. Le chargement automatique demande un petit serveur local (Live Server…).</li>
+              <li>L'interface prépare le barème ; elle ne saisit pas les résultats des copies.</li>
+              <li>Les problèmes ouverts ne sont pas atomisés : forfait global.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 8. L'installer -->
+      <section>
+        <h2>L'installer</h2>
+        <p class="small" style="margin-top:-0.3em;">
+          <i class="fas fa-shopping-basket" style="color:#3498db;"></i>
+          Sur la page de cette présentation, ajoutez le <strong>pack «&nbsp;Skill barème détaillé&nbsp;»</strong> au panier, puis téléchargez l'archive.
+        </p>
+        <div class="install">
+          <div class="carte">
+            <div class="titre">Claude Code, dans le projet <span class="badge">recommandé</span></div>
+            Décompresser dans le dossier du projet : le skill arrive dans <code>.claude/skills/</code>, la commande dans <code>.claude/commands/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Claude Code, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.claude/skills/</code> : actif partout, même là où il n'a rien à faire.
+          </div>
+          <div class="carte">
+            <div class="titre">Codex, dans le projet <span class="badge">recommandé</span></div>
+            Copier le contenu de <code>.claude/</code> dans <code>.agents/</code> : le skill arrive dans <code>.agents/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Codex, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.agents/skills/</code>.
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:0.7em;">
+          Prérequis : un sujet avec son corrigé (idéalement en bfcours) et un navigateur. Ni Python, ni LaTeX.
+          Puis demandez : «&nbsp;<em>établis le barème de mon DS, sur 20</em>&nbsp;».
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="assets/reveal/reveal.js"></script>
+  <script src="assets/reveal/plugin/notes/notes.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation à deux dimensions : → fil principal, ↓ détails de l'étape
+      navigationMode: 'default',
+      controls: true,
+      controlsLayout: 'bottom-right',
+      controlsTutorial: true,
+      controlsBackArrows: 'faded',
+      progress: true,
+      slideNumber: 'h.v',
+      overview: true,
+      hash: true,
+      transition: 'slide',
+      center: true,
+      fragments: true,
+      fragmentInURL: true,
+      plugins: [ RevealNotes ]
+    });
+  </script>
+</body>
+</html>

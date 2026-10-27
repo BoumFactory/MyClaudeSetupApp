@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Formation IA & Mathématiques">
-  <meta name="description" content="Édition de documents LaTeX éducatifs avec le système bfcours">
-  <title>Édition LaTeX Éducatifs avec BFCours</title>
+  <meta name="description" content="Le skill latex : une demande en français, un PDF bfcours compilé et relu visuellement">
+  <title>Le skill latex : de votre demande au PDF relu</title>
 
   <!-- Reveal.js Core -->
   <link rel="stylesheet" href="assets/reveal/reset.css">
@@ -15,7 +15,6 @@
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Theme personnalisé lycée -->
   <style>
     :root {
       --primary-color: #2c3e50;
@@ -23,8 +22,14 @@
       --accent-color: #e74c3c;
       --success-color: #27ae60;
       --warning-color: #f39c12;
+      --violet-color: #8e44ad;
       --text-color: #34495e;
+      --muted-color: #7f8c8d;
       --bg-light: #ecf0f1;
+      --step-create: #27ae60;
+      --step-write: #3498db;
+      --step-compile: #f39c12;
+      --step-review: #8e44ad;
     }
 
     .reveal {
@@ -37,217 +42,272 @@
       color: var(--primary-color);
       font-weight: 600;
       text-transform: none;
+      letter-spacing: normal;
     }
 
-    .reveal h1 {
-      font-size: 2.2em;
-      margin-bottom: 0.5em;
-    }
+    .reveal h1 { font-size: 1.9em; margin-bottom: 0.3em; line-height: 1.15; }
 
     .reveal h2 {
-      font-size: 1.6em;
-      margin-bottom: 0.8em;
+      font-size: 1.4em;
+      margin-bottom: 0.6em;
       border-bottom: 3px solid var(--secondary-color);
-      padding-bottom: 0.3em;
+      padding-bottom: 0.25em;
     }
 
-    .reveal h3 {
-      font-size: 1.3em;
-      color: var(--secondary-color);
-      margin-top: 0.4em;
-    }
-
-    .reveal ul, .reveal ol {
-      margin: 1em 0;
-    }
-
-    .reveal li {
-      margin: 0.5em 0;
-      line-height: 1.5;
-    }
+    .reveal p, .reveal li { line-height: 1.45; }
+    .reveal ul { margin: 0.4em 0 0 1em; }
+    .reveal li { margin: 0.3em 0; }
 
     .reveal code {
       background: var(--bg-light);
-      padding: 0.2em 0.5em;
+      padding: 0.1em 0.4em;
       border-radius: 4px;
       font-family: 'Consolas', 'Monaco', monospace;
-      font-size: 0.95em;
-      color: var(--accent-color);
-    }
-
-    .reveal pre {
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      margin: 1em 0;
-    }
-
-    .reveal pre code {
-      background: #282c34;
-      color: #abb2bf;
-      padding: 1em;
-      max-height: 500px;
-      font-size: 0.85em;
-      line-height: 1.4;
-    }
-
-    .reveal .highlight {
-      color: var(--accent-color);
-      font-weight: 600;
-    }
-
-    .reveal .success {
-      color: var(--success-color);
-      font-weight: 600;
-    }
-
-    .reveal .warning {
-      color: var(--warning-color);
-      font-weight: 600;
-    }
-
-    .reveal .box {
-      background: var(--bg-light);
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--secondary-color);
-      margin: 1em 0;
-    }
-
-    .reveal .warning-box {
-      background: #fff3cd;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--warning-color);
-      margin: 1em 0;
-    }
-
-    .reveal .example-box {
-      background: #e8f5e9;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--success-color);
-      margin: 1em 0;
-    }
-
-    .reveal .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2em;
-      align-items: start;
-    }
-
-    .reveal .icon {
-      font-size: 1.2em;
-      margin-right: 0.3em;
-      vertical-align: middle;
-    }
-
-    .reveal section img {
-      border: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
-
-    .reveal .workflow-step {
-      display: flex;
-      align-items: center;
-      margin: 0.8em 0;
-      padding: 0.8em;
-      background: var(--bg-light);
-      border-radius: 8px;
-    }
-
-    .reveal .workflow-step .step-number {
-      background: var(--secondary-color);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      margin-right: 1em;
-      flex-shrink: 0;
-    }
-
-    .reveal .feature-list {
       font-size: 0.9em;
+      color: var(--accent-color);
     }
 
-    .reveal .feature-list li {
-      margin: 0.4em 0;
-    }
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.72em; }
+    .reveal .muted { color: var(--muted-color); }
 
-    .reveal .tree-structure {
-      font-family: 'Consolas', monospace;
-      font-size: 0.65em;
-      text-align: left;
-      background: #f8f9fa;
-      padding: 1em;
-      border-radius: 8px;
-      line-height: 1.6;
-      white-space: pre;
-    }
-
-    .reveal .subtitle {
-      color: var(--secondary-color);
-      font-size: 0.7em;
-      margin-top: 0.5em;
-    }
-
-    .reveal .tag {
+    /* Bulle de demande du professeur */
+    .reveal .demande {
       display: inline-block;
-      background: var(--secondary-color);
-      color: white;
+      background: #fff;
+      border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px;
+      padding: 0.6em 1em;
+      font-size: 0.85em;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18);
+      max-width: 90%;
+    }
+    .reveal .demande .qui {
+      display: block;
+      font-size: 0.7em;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 0.2em;
+    }
+
+    /* Résultat */
+    .reveal .resultat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      padding: 0.45em 1.1em;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.8em;
+      box-shadow: 0 6px 18px rgba(231,76,60,0.3);
+    }
+
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.2em; margin: 0.3em 0; }
+
+    /* Frise des quatre étapes */
+    .reveal .frise {
+      display: flex;
+      gap: 0.4em;
+      justify-content: center;
+      margin: 0 0 0.7em 0;
+      font-size: 0.55em;
+    }
+    .reveal .frise span {
       padding: 0.3em 0.8em;
       border-radius: 20px;
-      font-size: 0.7em;
+      background: var(--bg-light);
+      color: var(--muted-color);
       font-weight: 600;
-      margin: 0.2em;
+    }
+    .reveal .frise span.on { color: #fff; }
+    .reveal .frise span.on.c1 { background: var(--step-create); }
+    .reveal .frise span.on.c2 { background: var(--step-write); }
+    .reveal .frise span.on.c3 { background: var(--step-compile); }
+    .reveal .frise span.on.c4 { background: var(--step-review); }
+
+    /* Cartes d'étapes (diapo 2) */
+    .reveal .etapes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5em;
+      margin-top: 0.4em;
+    }
+    .reveal .etape {
+      border-radius: 12px;
+      padding: 0.7em 0.5em;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .reveal .etape i { font-size: 1.6em; margin-bottom: 0.2em; }
+    .reveal .etape .nom { font-weight: 700; font-size: 0.85em; }
+    .reveal .etape .quoi { font-size: 0.58em; opacity: 0.95; margin-top: 0.3em; line-height: 1.35; }
+    .reveal .etape.c1 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+    .reveal .etape.c2 { background: linear-gradient(135deg, #2980b9, #3498db); }
+    .reveal .etape.c3 { background: linear-gradient(135deg, #e67e22, #f39c12); }
+    .reveal .etape.c4 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+
+    /* Deux colonnes : ce que fait l'agent / ce que vous y gagnez */
+    .reveal .duo {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1em;
+      text-align: left;
+      align-items: start;
+    }
+    .reveal .bloc {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 0.6em 0.9em;
+      border-left: 5px solid var(--secondary-color);
+      font-size: 0.72em;
+    }
+    .reveal .bloc h3 { font-size: 1.05em; margin: 0 0 0.3em 0; }
+    .reveal .bloc ul { margin-left: 1em; }
+    .reveal .bloc.gain { background: #e8f5e9; border-color: var(--success-color); }
+    .reveal .bloc.gain h3 { color: var(--success-color); }
+    .reveal .bloc.note { background: #fff8e1; border-color: var(--warning-color); margin-top: 0.6em; }
+
+    /* Aperçu de document (maquette, sans code) */
+    .reveal .page {
+      background: #fff;
+      border: 1px solid #dfe6e9;
+      border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      padding: 0.6em;
+      font-size: 0.5em;
+      text-align: left;
+    }
+    .reveal .page .bandeau {
+      background: var(--primary-color);
+      color: #fff;
+      border-radius: 4px;
+      padding: 0.35em 0.6em;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+    }
+    .reveal .page .boite {
+      border-radius: 4px;
+      padding: 0.35em 0.6em;
+      margin-top: 0.45em;
+      border-left: 4px solid;
+    }
+    .reveal .page .def { background: #eaf4fb; border-color: #3498db; }
+    .reveal .page .prop { background: #fdf2e9; border-color: #e67e22; }
+    .reveal .page .exo { background: #f4ecf7; border-color: #8e44ad; position: relative; }
+    .reveal .page .pts {
+      position: absolute; right: 0.5em; top: 0.3em;
+      background: #8e44ad; color: #fff; border-radius: 10px; padding: 0 0.5em; font-weight: 700;
+    }
+    .reveal .page .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3em 1em; margin-top: 0.2em; }
+
+    /* Relecture visuelle : avant / après */
+    .reveal .avant-apres { display: flex; gap: 0.8em; align-items: center; justify-content: center; }
+    .reveal .vignette { width: 9.5em; }
+    .reveal .vignette .legende { font-size: 0.55em; font-weight: 700; margin-bottom: 0.2em; text-align: center; }
+    .reveal .vignette .page { font-size: 0.42em; min-height: 13em; }
+    .reveal .ligne { height: 0.55em; background: #dfe6e9; border-radius: 3px; margin: 0.35em 0; }
+    .reveal .vide { height: 4.5em; border: 2px dashed #e74c3c; border-radius: 4px; margin-top: 0.4em; color: #e74c3c; font-size: 0.9em; display: flex; align-items: center; justify-content: center; }
+
+    /* Livrables */
+    .reveal .livrables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.4em; }
+    .reveal .livrable {
+      background: #f8f9fa; border-radius: 10px; padding: 0.7em 0.6em; font-size: 0.66em; text-align: center;
+      border-top: 4px solid var(--secondary-color);
+    }
+    .reveal .livrable i { font-size: 1.8em; color: var(--secondary-color); margin-bottom: 0.2em; }
+    .reveal .livrable .titre { font-weight: 700; color: var(--primary-color); }
+
+    /* Installation */
+    .reveal .install { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; text-align: left; font-size: 0.66em; }
+    .reveal .install .carte { background: #f8f9fa; border-radius: 10px; padding: 0.55em 0.8em; border-left: 5px solid var(--success-color); }
+    .reveal .install .carte.deconseille { border-color: var(--warning-color); background: #fff8e1; }
+    .reveal .install .carte .titre { font-weight: 700; color: var(--primary-color); }
+    .reveal .install .badge { display: inline-block; font-size: 0.75em; font-weight: 700; padding: 0.05em 0.6em; border-radius: 10px; color: #fff; background: var(--success-color); margin-left: 0.3em; }
+    .reveal .install .carte.deconseille .badge { background: var(--warning-color); }
+    .reveal .install code { font-size: 0.95em; }
+
+    /* ===== Navigation à deux dimensions ===== */
+    /* Indice discret sur une diapo du fil principal qui a des détails en dessous */
+    .reveal .indice-details {
+      text-align: right;
+      margin-top: 0.9em;
+      font-size: 0.5em;
+      color: var(--muted-color);
+    }
+    .reveal .indice-details span {
+      display: inline-block;
+      border: 1px solid #d0d7de;
+      border-radius: 14px;
+      padding: 0.15em 0.8em;
+      background: #fff;
+    }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 2.2em; }
+    .reveal .aide-nav kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color);
     }
 
-    .reveal .tag.warning {
-      background: var(--warning-color);
+    /* Fil d'Ariane des diapos verticales */
+    .reveal .fil-detail {
+      display: flex; align-items: center; gap: 0.6em; justify-content: flex-start;
+      font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600;
+    }
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; }
+    .reveal .fil-detail .etiq.c0 { background: var(--primary-color); }
+    .reveal .fil-detail .etiq.c1 { background: var(--step-create); }
+    .reveal .fil-detail .etiq.c2 { background: var(--step-write); }
+    .reveal .fil-detail .etiq.c3 { background: var(--step-compile); }
+    .reveal .fil-detail .etiq.c4 { background: var(--step-review); }
+    .reveal h3.titre-detail {
+      font-size: 1.05em; text-align: left; margin: 0 0 0.5em 0;
+      padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light);
     }
 
-    .reveal .tag.success {
-      background: var(--success-color);
+    /* Contenus de détail */
+    .reveal .detail { font-size: 0.62em; text-align: left; }
+    .reveal .detail .bloc { font-size: 1em; }
+    .reveal .detail code, .reveal .fil-detail code { padding: 0 0.2em; }
+    .reveal h3.titre-detail code { color: inherit; font-size: 0.85em; padding: 0 0.25em; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .duo2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; align-items: start; }
+    .reveal .arbo {
+      font-family: 'Consolas', 'Monaco', monospace; background: #f8f9fa; border-radius: 8px;
+      padding: 0.6em 0.9em; line-height: 1.55; white-space: pre; font-size: 0.92em;
     }
-
-    .reveal .smaller {
-      font-size: 0.85em;
+    .reveal .arbo b { color: var(--primary-color); }
+    .reveal .arbo i { color: var(--muted-color); font-style: normal; }
+    .reveal pre.code {
+      width: 100%; box-shadow: none; margin: 0; font-size: 0.82em;
     }
-
-    .reveal .comparison-table {
-      font-size: 0.75em;
-      width: 100%;
-      margin: 1em 0;
+    .reveal pre.code code {
+      display: block; background: #f8f9fa; color: #2c3e50; padding: 0.7em 0.9em;
+      border-radius: 8px; border-left: 4px solid var(--step-write); line-height: 1.45;
+      max-height: none; font-size: 1em; white-space: pre;
     }
-
-    .reveal .comparison-table td, .reveal .comparison-table th {
-      padding: 0.5em;
-      border: 1px solid #ddd;
+    .reveal pre.code .cm { color: #95a5a6; }
+    .reveal pre.code .kw { color: #2980b9; font-weight: 700; }
+    .reveal pre.code .pt { color: #8e44ad; font-weight: 700; }
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.35em 0.5em; text-align: left; vertical-align: top;
     }
-
-    .reveal .comparison-table th {
-      background: var(--secondary-color);
-      color: white;
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal .pastille {
+      display: inline-block; border-radius: 10px; padding: 0 0.55em; font-weight: 700; color: #fff; font-size: 0.9em; white-space: nowrap;
     }
-
-    .reveal .env-card {
-      background: white;
-      padding: 0.8em;
-      border-radius: 8px;
-      border: 2px solid var(--bg-light);
-      margin: 0.5em 0;
-      font-size: 0.85em;
-    }
-
-    .reveal .env-card h4 {
-      color: var(--secondary-color);
-      font-size: 1em;
-      margin: 0 0 0.3em 0;
+    .reveal .p-ok { background: var(--success-color); }
+    .reveal .p-mid { background: var(--warning-color); }
+    .reveal .p-ko { background: var(--accent-color); }
+    .reveal .p-bleu { background: var(--secondary-color); }
+    .reveal .p-gris { background: #95a5a6; }
+    .reveal .astuce {
+      background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px;
+      padding: 0.45em 0.8em; margin-top: 0.6em;
     }
   </style>
 </head>
@@ -255,540 +315,549 @@
   <div class="reveal">
     <div class="slides">
 
-      <!-- SLIDE 1 : TITRE -->
+      <!-- 1. Où l'on veut en venir -->
       <section>
-        <h1><i class="fas fa-file-pdf icon"></i> Système LaTeX BFCours</h1>
-        <p class="subtitle">Pipeline en 3 skills : Créer &rarr; Rédiger &rarr; Compiler</p>
-        <p class="fragment" style="margin-top: 2em;">
-          <span class="tag">Formation GT IA & Maths</span>
-          <span class="tag success">Scripté + IA</span>
-          <span class="tag warning">Package bfcours</span>
+        <h1><i class="fas fa-file-pdf" style="color:#e74c3c;"></i> Le skill <code style="font-size:0.85em;">latex</code></h1>
+        <p class="subtitle">De votre demande, en français, à un PDF propre et relu</p>
+
+        <div style="margin-top:1em;">
+          <div class="demande">
+            <span class="qui"><i class="fas fa-user"></i> Vous</span>
+            «&nbsp;Fais-moi une fiche d'exercices sur les vecteurs en seconde, avec le corrigé.&nbsp;»
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="small muted" style="margin-bottom:0.4em;">L'agent crée, écrit, compile, puis relit le PDF page par page</div>
+          <div class="resultat"><i class="fas fa-check-circle"></i> Un PDF compilé, à la mise en page vérifiée</div>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
         </p>
       </section>
 
-      <!-- SLIDE 2 : LE PIPELINE EN 3 PHASES - DIAGRAMME PRINCIPAL -->
+      <!-- 2. Le fil conducteur (+ pile : en coulisse) -->
       <section>
-        <h2>Architecture : Pipeline en 3 phases</h2>
-
-        <div class="fragment" style="display:flex;flex-direction:column;gap:0;align-items:center;margin-top:0.4em;">
-
-          <!-- PHASE 1 : tex-document-creator -->
-          <div style="width:92%;display:flex;align-items:center;gap:0.8em;background:linear-gradient(135deg,#27ae60,#2ecc71);padding:0.6em 1em;border-radius:12px;box-shadow:0 4px 15px rgba(39,174,96,0.3);">
-            <div style="flex-shrink:0;background:rgba(255,255,255,0.2);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
-              <i class="fas fa-folder-plus" style="color:#fff;font-size:1.3em;"></i>
-            </div>
-            <div style="flex:1;color:#fff;">
-              <div style="font-weight:700;font-size:0.85em;">Phase 1 &mdash; tex-document-creator</div>
-              <div style="font-size:0.65em;opacity:0.9;">Templates &rarr; Script Python &rarr; Structure de projet</div>
-            </div>
-            <div style="flex-shrink:0;background:rgba(255,255,255,0.25);padding:0.3em 0.7em;border-radius:20px;font-size:0.6em;font-weight:700;color:#fff;">0 tokens</div>
+      <section>
+        <h2>Ce que fait l'agent, en quatre étapes</h2>
+        <div class="etapes">
+          <div class="etape c1 fragment">
+            <i class="fas fa-folder-plus"></i>
+            <div class="nom">1. Créer</div>
+            <div class="quoi">Il part du bon modèle : cours, devoir, fiche, DM…</div>
           </div>
-
-          <!-- Flèche 1 -->
-          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
-            <div style="width:3px;height:12px;background:linear-gradient(to bottom,#2ecc71,#3498db);"></div>
-            <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid #3498db;"></div>
+          <div class="etape c2 fragment">
+            <i class="fas fa-pen-nib"></i>
+            <div class="nom">2. Écrire</div>
+            <div class="quoi">Il rédige le contenu avec les environnements bfcours</div>
           </div>
-
-          <!-- PHASE 2 : bfcours-latex -->
-          <div style="width:92%;display:flex;align-items:center;gap:0.8em;background:linear-gradient(135deg,#2c3e50,#34495e);padding:0.6em 1em;border-radius:12px;box-shadow:0 4px 15px rgba(44,62,80,0.4);border:2px solid #3498db;">
-            <div style="flex-shrink:0;background:rgba(52,152,219,0.3);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
-              <i class="fas fa-robot" style="color:#3498db;font-size:1.3em;"></i>
-            </div>
-            <div style="flex:1;color:#fff;">
-              <div style="font-weight:700;font-size:0.85em;">Phase 2 &mdash; bfcours-latex</div>
-              <div style="font-size:0.65em;opacity:0.9;">Conventions + MCP &rarr; Agent IA &rarr; Contenu LaTeX</div>
-            </div>
-            <div style="flex-shrink:0;background:rgba(52,152,219,0.4);padding:0.3em 0.7em;border-radius:20px;font-size:0.6em;font-weight:700;color:#fff;">IA autonome</div>
+          <div class="etape c3 fragment">
+            <i class="fas fa-cogs"></i>
+            <div class="nom">3. Compiler</div>
+            <div class="quoi">Il produit le PDF et corrige seul les erreurs</div>
           </div>
-
-          <!-- Flèche 2 -->
-          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
-            <div style="width:3px;height:12px;background:linear-gradient(to bottom,#34495e,#f39c12);"></div>
-            <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid #f39c12;"></div>
-          </div>
-
-          <!-- PHASE 3 : tex-compiling-skill -->
-          <div style="width:92%;display:flex;align-items:center;gap:0.8em;background:linear-gradient(135deg,#f39c12,#e67e22);padding:0.6em 1em;border-radius:12px;box-shadow:0 4px 15px rgba(243,156,18,0.3);">
-            <div style="flex-shrink:0;background:rgba(255,255,255,0.2);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
-              <i class="fas fa-cogs" style="color:#fff;font-size:1.3em;"></i>
-            </div>
-            <div style="flex:1;color:#fff;">
-              <div style="font-weight:700;font-size:0.85em;">Phase 3 &mdash; tex-compiling-skill</div>
-              <div style="font-size:0.65em;opacity:0.9;">Profils &rarr; Script Python &rarr; PDF final</div>
-            </div>
-            <div style="flex-shrink:0;background:rgba(255,255,255,0.25);padding:0.3em 0.7em;border-radius:20px;font-size:0.6em;font-weight:700;color:#fff;">0 tokens</div>
-          </div>
-
-          <!-- Flèche finale -->
-          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
-            <div style="width:3px;height:12px;background:linear-gradient(to bottom,#e67e22,#e74c3c);"></div>
-            <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid #e74c3c;"></div>
-          </div>
-
-          <!-- RÉSULTAT -->
-          <div style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:0.5em 1.5em;border-radius:12px;font-weight:700;font-size:0.85em;box-shadow:0 6px 20px rgba(231,76,60,0.4);border:2px solid #fff;">
-            <i class="fas fa-check-circle" style="margin-right:0.4em;"></i>PDF compilé, prêt à imprimer
+          <div class="etape c4 fragment">
+            <i class="fas fa-eye"></i>
+            <div class="nom">4. Regarder</div>
+            <div class="quoi">Il relit les pages et améliore la mise en page</div>
           </div>
         </div>
-
-        <div class="fragment" style="margin-top:0.6em;font-size:0.7em;color:#7f8c8d;text-align:center;font-style:italic;">
-          Chaque skill est invocable séparément, ou enchaîné par le skill <code>/latex</code> (qui ajoute une relecture visuelle avec <code>latex-visual-review</code>)
-        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Vous n'intervenez qu'au début (la demande) et à la fin (la relecture). Les quatre étapes s'enchaînent toutes seules.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- SLIDE 3 : PHASE 1 - TEX-DOCUMENT-CREATOR -->
+      <!-- 2.1 En coulisse -->
       <section>
-        <section>
-          <h2 style="border-color:#27ae60;"><i class="fas fa-folder-plus icon" style="color:#27ae60;"></i> Phase 1 : tex-document-creator</h2>
-
-          <div style="display:flex;gap:1em;margin-top:1em;">
-            <!-- Colonne gauche : principe -->
-            <div style="flex:1;">
-              <div class="box fragment" style="border-color:#27ae60;">
-                <p><strong>100% scripté, 0 token IA</strong></p>
-                <p class="smaller">Scripts Python qui créent la structure de projet à partir de templates configurables.</p>
-              </div>
-
-              <div class="example-box fragment" style="font-size:0.8em;margin-top:0.8em;">
-                <p><strong>Scripts disponibles :</strong></p>
-                <ul class="smaller">
-                  <li><code>create_document.py</code> &mdash; Crée le projet complet</li>
-                  <li><code>list_templates.py</code> &mdash; Liste les templates</li>
-                  <li><code>get_template_info.py</code> &mdash; Champs d'un template</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Colonne droite : templates -->
-            <div style="flex:1;" class="fragment">
-              <div class="warning-box" style="font-size:0.8em;">
-                <p><i class="fas fa-puzzle-piece icon"></i> <strong>Templates fournis :</strong></p>
-                <p class="smaller">Cours, Devoir, DM, Exercices, Activité, AP, Plan de séquence, Fiche récap...</p>
-              </div>
-
-              <div class="box fragment" style="font-size:0.8em;margin-top:0.6em;border-color:#27ae60;">
-                <p><i class="fas fa-user-cog icon"></i> <strong>Vos propres templates ?</strong></p>
-                <p class="smaller">Demandez à l'agent comment intégrer vos modèles personnalisés au système.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3>Exemple : créer un cours</h3>
-          <pre><code class="language-bash" style="font-size:0.7em;">python .claude/skills/tex-document-creator/scripts/create_document.py \
-  --destination "C:/Cours/1ere_spe/Sequence-Derivees" \
-  --name "Cours_Derivees" \
-  --template "Cours" \
-  --field "niveau=$\mathbf{1^{\text{ère}}}$" \
-  --field "theme=Dérivation" \
-  --create-sections --claude-instructions</code></pre>
-
-          <div class="fragment" style="margin-top:0.8em;display:flex;gap:1em;font-size:0.8em;">
-            <div class="example-box" style="flex:1;">
-              <p><strong>Résultat :</strong> Structure complète créée en &lt; 1 sec</p>
-              <p class="smaller">Fichier principal, enonce.tex, sections/, enonce_figures.tex, CLAUDE.md</p>
-            </div>
-            <div class="box" style="flex:0.6;border-color:#27ae60;">
-              <p><strong>Fiabilité : 100%</strong></p>
-              <p class="smaller">Résultat déterministe, décidé par l'utilisateur via les paramètres.</p>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 4 : PHASE 2 - BFCOURS-LATEX -->
-      <section>
-        <section>
-          <h2 style="border-color:#3498db;"><i class="fas fa-robot icon" style="color:#3498db;"></i> Phase 2 : bfcours-latex</h2>
-
-          <div class="box fragment" style="border-color:#3498db;">
-            <p><strong>Le coeur IA du système</strong> &mdash; Rédaction de contenu pédagogique en respectant les conventions bfcours</p>
-          </div>
-
-          <!-- Diagramme compact des sources de l'agent -->
-          <div class="fragment" style="margin-top:0.8em;display:flex;gap:0.6em;align-items:stretch;">
-            <div style="flex:1;background:#e8f4f8;padding:0.6em;border-radius:8px;border-left:3px solid #3498db;font-size:0.75em;">
-              <p style="font-weight:700;color:#2c3e50;"><i class="fas fa-book"></i> Conventions</p>
-              <p class="smaller">Environnements didactiques, formatage, ligatures, espaces réponses</p>
-            </div>
-            <div style="flex:1;background:#e8f5e9;padding:0.6em;border-radius:8px;border-left:3px solid #27ae60;font-size:0.75em;">
-              <p style="font-weight:700;color:#2c3e50;"><i class="fas fa-search"></i> latex-search</p>
-              <p class="smaller">Recherche dans les packages LaTeX installés (localtexmf inclus)</p>
-            </div>
-            <div style="flex:1;background:#fff3cd;padding:0.6em;border-radius:8px;border-left:3px solid #f39c12;font-size:0.75em;">
-              <p style="font-weight:700;color:#2c3e50;"><i class="fas fa-graduation-cap"></i> Compétences</p>
-              <p class="smaller">Programmes officiels de l'Éducation Nationale (6e &rarr; Tle)</p>
-            </div>
-          </div>
-
-          <div class="fragment" style="margin-top:0.6em;font-size:0.75em;color:#7f8c8d;text-align:center;">
-            L'agent s'inspire du code LaTeX existant sur votre machine pour produire des documents techniques fidèles.
-          </div>
-        </section>
-
-        <section>
-          <h3>Conventions critiques (résumé)</h3>
-          <div class="grid-2" style="font-size:0.8em;">
-            <div>
-              <div class="warning-box" style="font-size:0.9em;">
-                <p><i class="fas fa-ban icon"></i> <strong>Remplacements obligatoires</strong></p>
-                <ul class="smaller">
-                  <li><code>enumerate</code> &rarr; <code>tcbenumerate</code></li>
-                  <li><code>tabular</code> &rarr; <code>tcbtab</code></li>
-                  <li><code>\textbf</code> &rarr; <code>\acc{}</code></li>
-                </ul>
-              </div>
-              <div class="box fragment">
-                <p><strong>Environnements didactiques :</strong></p>
-                <p class="smaller">Definition, Propriete, Theoreme, Demonstration, Exemple, Remarque, EXO</p>
-              </div>
-            </div>
-            <div>
-              <div class="example-box">
-                <p><strong>Formatage clé :</strong></p>
-                <ul class="smaller">
-                  <li><code>\acc{Calculer}</code> pour les verbes d'action</li>
-                  <li><code>\voc{mot}</code> pour le vocabulaire (1re occurrence)</li>
-                  <li><code>\tcbitempoint{N}</code> pour l'attribution des points</li>
-                  <li><code>\exocorrection</code> &mdash; correction intégrée dans l'EXO</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 5 : PHASE 3 - TEX-COMPILING-SKILL -->
-      <section>
-        <h2 style="border-color:#f39c12;"><i class="fas fa-cogs icon" style="color:#f39c12;"></i> Phase 3 : tex-compiling-skill</h2>
-
-        <div style="display:flex;gap:1em;margin-top:1em;">
-          <div style="flex:1;">
-            <div class="box fragment" style="border-color:#f39c12;">
-              <p><strong>100% scripté, 0 token IA</strong></p>
-              <p class="smaller">Scripts Python de compilation avec profils configurables et analyse d'erreurs automatique.</p>
-            </div>
-
-            <div class="fragment" style="margin-top:0.8em;">
-              <pre><code class="language-bash" style="font-size:0.75em;">python .claude/skills/tex-compiling-skill/scripts/quick_compile.py \
-  --file "Cours_Derivees.tex" --passes 2</code></pre>
-            </div>
-          </div>
-
-          <div style="flex:0.8;" class="fragment">
-            <div class="example-box" style="font-size:0.8em;">
-              <p><strong>Profils de compilation :</strong></p>
-              <ul class="smaller">
-                <li><strong>lualatex_reims_favorite</strong> (par défaut) &mdash; LuaLaTeX 1 passe</li>
-                <li><strong>simple</strong> &mdash; pdflatex 2 passes</li>
-                <li><strong>standard</strong> &mdash; pdflatex 3 passes</li>
-                <li><strong>complete</strong> &mdash; pdflatex 3 passes + biblio</li>
-              </ul>
-              <p class="smaller" style="margin-top:0.4em;font-style:italic;">L'agent sait choisir le bon profil selon le document.</p>
-            </div>
-          </div>
-        </div>
-        </section>
-        <section>
-          <div class="box" style="flex:1;border-color:#f39c12;">
-            <p><i class="fas fa-broom icon"></i> <strong>Nettoyage auto</strong> &mdash; supprime .aux, .log, .toc, etc.</p>
-          </div>
-          <div class="box" style="flex:1;border-color:#f39c12;">
-            <p><i class="fas fa-stethoscope icon"></i> <strong>Diagnostic JSON</strong> &mdash; erreurs avec n° de ligne + suggestions</p>
-          </div>
-      </section>
-
-      <!-- SLIDE 6 : OUTILS COMPLÉMENTAIRES -->
-      <section>
-        <section>
-          <h2><i class="fas fa-toolbox icon" style="color:#9b59b6;"></i> Outils complémentaires utilisés</h2>
-
-          <!-- Diagramme des outils satellites -->
-          <div class="fragment" style="display:flex;gap:0.8em;margin-top:1.2em;align-items:stretch;">
-
-            <!-- latex-search-server -->
-            <div style="flex:1;background:linear-gradient(135deg,#f5f7fa,#e8ecf1);padding:0.8em;border-radius:10px;border:2px solid #3498db;font-size:0.75em;">
-              <div style="text-align:center;margin-bottom:0.4em;">
-                <i class="fas fa-search" style="font-size:1.8em;color:#3498db;"></i>
-              </div>
-              <p style="font-weight:700;text-align:center;color:#2c3e50;">latex-search</p>
-              <ul class="smaller" style="margin-top:0.4em;">
-                <li>Un serveur MCP de recherche dans les packages</li>
-                <li>Recherche floue /exacte de commandes LaTeX</li>
-                <li><strong>Inclut localtexmf</strong> (vos packages perso)</li>
-              </ul>
-              <div style="margin-top:0.5em;background:#e8f4f8;padding:0.3em;border-radius:4px;font-size:0.85em;text-align:center;">
-                L'agent peut apprendre à utiliser un package grâce à son code source.
-              </div>
-            </div>
-
-            <!-- pdf2tikz -->
-            <div style="flex:1;background:linear-gradient(135deg,#fdf2f8,#f5e6f0);padding:0.8em;border-radius:10px;border:2px solid #9b59b6;font-size:0.75em;">
-              <div style="text-align:center;margin-bottom:0.4em;">
-                <i class="fas fa-vector-square" style="font-size:1.8em;color:#9b59b6;"></i>
-              </div>
-              <p style="font-weight:700;text-align:center;color:#2c3e50;">pdf2tikz</p>
-              <ul class="smaller" style="margin-top:0.4em;">
-                <li>Extraction vectorielle PDF &rarr; TikZ</li>
-                <li>Analyse de disposition (layout)</li>
-                <li><strong>Récupère les designs complexes</strong></li>
-              </ul>
-              <div style="margin-top:0.5em;background:#f5e6f0;padding:0.3em;border-radius:4px;font-size:0.85em;text-align:center;">
-                Toutes les informations nécessaires pour qu'un agent convertisse un document PDF existant en LaTeX
-              </div>
-            </div>
-
-            <!-- competences-server -->
-            <div style="flex:1;background:linear-gradient(135deg,#fef9e7,#fdebd0);padding:0.8em;border-radius:10px;border:2px solid #f39c12;font-size:0.75em;">
-              <div style="text-align:center;margin-bottom:0.4em;">
-                <i class="fas fa-graduation-cap" style="font-size:1.8em;color:#f39c12;"></i>
-              </div>
-              <p style="font-weight:700;text-align:center;color:#2c3e50;">Skill programmes-officiels</p>
-              <ul class="smaller" style="margin-top:0.4em;">
-                <li>Programmes officiels (BO)</li>
-                <li>Recherche par niveau et thème</li>
-                <li><strong>Analyse</strong> de couverture ou clarification.</li>
-              </ul>
-              <div style="margin-top:0.5em;background:#fef9e7;padding:0.3em;border-radius:4px;font-size:0.85em;text-align:center;">
-                Sourcing automatique des compétences avec preuve à l'appui.
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-vector-square icon" style="color:#9b59b6;"></i> pdf2tikz en détail</h3>
-
-          <div style="display:flex;gap:1em;">
-            <div style="flex:1;">
-              <div class="box fragment" style="font-size:0.85em;border-color:#9b59b6;">
-                <p><strong>Cas d'usage :</strong> Vous avez un PDF avec des figures géométriques, des graphiques ou une mise en page complexe que vous voulez reproduire en LaTeX éditable.</p>
-              </div>
-
-              <div class="fragment" style="margin-top:0.6em;">
-                <pre><code class="language-bash" style="font-size:0.7em;"># Analyser la disposition d'un document
-python .claude/skills/pdf2tikz/scripts/layout_analyze.py doc.pdf
-
-# Extraire les figures en TikZ
-python .claude/skills/pdf2tikz/scripts/pdf2tikz.py doc.pdf --page 1 --svg-bridge</code></pre>
-              </div>
-            </div>
-
-            <div style="flex:0.7;" class="fragment">
-              <div class="example-box" style="font-size:0.75em;">
-                <p><strong>Détections automatiques :</strong></p>
-                <ul class="smaller">
-                  <li>Zones multi-colonnes &rarr; <code>MultiColonnes</code></li>
-                  <li>Tableaux &rarr; <code>tcbtab</code></li>
-                  <li>Graphiques &rarr; code TikZ</li>
-                  <li>Boîtes colorées &rarr; <code>tcolorbox</code></li>
-                  <li>Flèches d'annotation</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 7 : WORKFLOW UNIFIÉ /createTex -->
-      <section>
-        <h2><i class="fas fa-route icon"></i> Workflow unifié : <code>/latex</code></h2>
-
-        <div class="box fragment" style="text-align:center;">
-          <p><strong>Un seul skill enchaîne toutes les étapes automatiquement</strong></p>
-        </div>
-
-        <!-- Diagramme horizontal du workflow unifié -->
-        <div class="fragment" style="display:flex;align-items:center;gap:0;margin-top:1em;justify-content:center;">
-          <!-- Phase 1 -->
-          <div style="background:#27ae60;color:#fff;padding:0.5em 0.8em;border-radius:10px 0 0 10px;text-align:center;font-size:0.7em;">
-            <div style="font-weight:700;">pdf2tikz / programmes-officiels</div>
-            <div style="opacity:0.8;font-size:0.85em;">Se documenter &bull; Script &bull; 0 tokens</div>
-          </div>
-          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #27ae60;"></div>
-
-          <div style="width:8px;"></div>
-          <div style="background:#27ae60;color:#fff;padding:0.5em 0.8em;border-radius:10px 0 0 10px;text-align:center;font-size:0.7em;">
-            <div style="font-weight:700;">tex-document-creator</div>
-            <div style="opacity:0.8;font-size:0.85em;">Script &bull; 0 tokens</div>
-          </div>
-          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #27ae60;"></div>
-
-          <div style="width:8px;"></div>
-
-          <!-- Phase 2 -->
-          <div style="background:#2c3e50;color:#fff;padding:0.5em 0.8em;text-align:center;font-size:0.7em;border:2px solid #3498db;border-radius:4px;">
-            <div style="font-weight:700;">bfcours-latex</div>
-            <div style="opacity:0.8;font-size:0.85em;">IA &bull; Rédaction</div>
-          </div>
-          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #2c3e50;"></div>
-
-          <div style="width:8px;"></div>
-          </div>
-          <div class="fragment" style="display:flex;align-items:center;gap:0;margin-top:1em;justify-content:center;">
-          <!-- Phase 3 -->
-          <div style="background:#f39c12;color:#fff;padding:0.5em 0.8em;text-align:center;font-size:0.7em;border-radius:0;">
-            <div style="font-weight:700;">tex-compiling-skill</div>
-            <div style="opacity:0.8;font-size:0.85em;">Script &bull; 0 tokens</div>
-          </div>
-          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #f39c12;"></div>
-
-          <div style="width:8px;"></div>
-
-          <!-- Relecture visuelle -->
-          <div style="background:#9b59b6;color:#fff;padding:0.5em 0.8em;text-align:center;font-size:0.7em;border-radius:0;">
-            <div style="font-weight:700;">latex-visual-review</div>
-            <div style="opacity:0.8;font-size:0.85em;">IA &bull; Mise en page</div>
-          </div>
-          <div style="width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-left:15px solid #9b59b6;"></div>
-
-          <div style="width:8px;"></div>
-
-          <!-- Résultat -->
-          <div style="background:#e74c3c;color:#fff;padding:0.5em 0.8em;border-radius:0 10px 10px 0;text-align:center;font-size:0.7em;font-weight:700;">
-            <i class="fas fa-file-pdf"></i> PDF
-          </div>
-        </div>
-
-        <div class="grid-2 fragment" style="margin-top:1.2em;font-size:0.8em;">
-          <div class="box" style="border-color:#27ae60;">
-            <p><i class="fas fa-bolt icon" style="color:#27ae60;"></i> <strong>Étapes scriptées (création, compilation)</strong></p>
-            <p class="smaller">Résultat déterministe, fiabilité 100%. Les paramètres sont choisis par l'utilisateur ou déduits par l'agent.</p>
-          </div>
-          <div class="box" style="border-color:#3498db;">
-            <p><i class="fas fa-robot icon" style="color:#3498db;"></i> <strong>Étapes IA (rédaction, relecture visuelle)</strong></p>
-            <p class="smaller">L'agent rédige le contenu en s'appuyant sur les conventions, les exemples et le code LaTeX existant sur la machine, puis contrôle le PDF page par page (colonnes, blancs, débordements).</p>
+        <div class="fil-detail"><span class="etiq c0">Les quatre étapes</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">En coulisse : un skill spécialisé par étape</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:17%;">Étape</th><th style="width:27%;">Skill appelé</th><th>Ce qu'il apporte</th></tr>
+            <tr><td><span class="pastille p-gris">0. Se documenter</span></td><td><code>programmes-officiels</code><br><code>pdf2tikz</code></td><td>Les attendus du programme du niveau visé.<br>Si vous fournissez un PDF : ses figures, extraites à l'identique.</td></tr>
+            <tr><td><span class="pastille p-ok">1. Créer</span></td><td><code>tex-document-creator</code></td><td>Le dossier et le fichier maître, tirés d'un modèle.</td></tr>
+            <tr><td><span class="pastille p-bleu">2. Écrire</span></td><td><code>bfcours-latex</code><br><code>choix-didactiques</code></td><td>La forme : environnements et conventions bfcours.<br>Le fond : jeux de données, symétrie énoncé / corrigé, format de fiche.</td></tr>
+            <tr><td><span class="pastille p-mid">3. Compiler</span></td><td><code>tex-compiling-skill</code></td><td>La compilation LuaLaTeX et le diagnostic des erreurs.</td></tr>
+            <tr><td><span class="pastille" style="background:var(--step-review);">4. Regarder</span></td><td><code>latex-visual-review</code></td><td>Les captures des pages, les mesures, la densification.</td></tr>
+          </table>
+          <div class="astuce">
+            <i class="fas fa-route"></i> L'ordre est imposé : structure → contenu → compilation → relecture visuelle.
+            Un document non relu visuellement n'est pas considéré comme terminé. Si le niveau manque dans votre demande, l'agent vous le demande.
           </div>
         </div>
       </section>
-
-      <!-- SLIDE 8 : ARCHITECTURE DE PROJET -->
-      <section>
-        <h2>Architecture de projet type</h2>
-
-        <div class="tree-structure" style="font-size:0.6em;">
-Nom_projet/
-├── Nom_projet.tex          # Fichier principal (compilé par Phase 3)
-├── ELEVE_Nom_projet.tex    # Variante sans corrections [optionnel]
-├── enonce.tex              # Contenu principal (rédigé par Phase 2)
-├── enonce_figures.tex      # Figures TikZ indexées par \tikzfig{CODE}
-├── CLAUDE.md               # Journal de bord pour les agents
-├── sections/               # Contenu réparti (cours longs)
-├── images/                 # Images PNG [optionnel]
-└── annexes/                # Scripts secondaires [optionnel]
-        </div>
-
-        <div class="grid-2 fragment" style="margin-top:0.8em;font-size:0.8em;">
-          <div class="box">
-            <p><i class="fas fa-folder-plus icon" style="color:#27ae60;"></i> <strong>Créé par Phase 1</strong></p>
-            <p class="smaller">Structure, fichier principal, fichiers d'entrée &mdash; tout est généré par le script.</p>
-          </div>
-          <div class="box">
-            <p><i class="fas fa-robot icon" style="color:#3498db;"></i> <strong>Rempli par Phase 2</strong></p>
-            <p class="smaller">L'agent écrit dans <code>enonce.tex</code> et <code>sections/</code>, jamais dans le fichier principal.</p>
-          </div>
-        </div>
       </section>
 
-      <!-- SLIDE 9 : ENVIRONNEMENTS DIDACTIQUES -->
+      <!-- 3. Créer (+ pile) -->
       <section>
-        <section>
-          <h2>Environnements didactiques bfcours</h2>
-
-          <pre class="fragment"><code class="language-latex">\begin{Definition}[Nombre dérivé]
-Soit $f$ une fonction définie sur un intervalle $I$
-et $a \in I$. On dit que $f$ est \voc{dérivable} en $a$ si...
-\end{Definition}
-
-\begin{Propriete}[Dérivées usuelles]
-Les \acc{fonctions usuelles} admettent les dérivées suivantes :
-\begin{tcbenumerate}[2]
-    \tcbitem $f(x) = x^n \Rightarrow f'(x) = nx^{n-1}$
-    \tcbitem $f(x) = \sin(x) \Rightarrow f'(x) = \cos(x)$
-\end{tcbenumerate}
-\end{Propriete}</code></pre>
-
-          <div class="grid-2 fragment" style="margin-top:0.6em;font-size:0.75em;">
-            <div class="env-card">
-              <p><strong>Cours :</strong> Definition, Propriete, Theoreme, Demonstration, Exemple, Remarque, Notation</p>
-            </div>
-            <div class="env-card">
-              <p><strong>Exercices :</strong> EXO avec <code>\tcbitempoint{N}</code>, <code>\exocorrection</code>, codes compétences</p>
-            </div>
+      <section>
+        <div class="frise"><span class="on c1">1. Créer</span><span>2. Écrire</span><span>3. Compiler</span><span>4. Regarder</span></div>
+        <h2 style="border-color:var(--step-create);">Il part toujours d'un modèle</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-create);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il choisit le modèle qui correspond à la demande : cours, devoir, DM, fiche d'exercices, activité…</li>
+              <li>Il remplit l'en-tête : niveau, thème, établissement.</li>
+              <li>Il range le tout dans un dossier prêt à recevoir le contenu.</li>
+            </ul>
           </div>
-        </section>
-
-        <section>
-          <h3><i class="fas fa-pencil-alt icon"></i> Exercices : environnement EXO</h3>
-
-          <pre class="fragment"><code class="language-latex">\def\rdifficulty{1.5}
-\begin{EXO}{Titre Compétence}{code_competence}
-\tcbitempoint{2}\acc{Calculer} la valeur de $f(3)$
-en donnant un \acc{résultat simplifié}.
-
-\exocorrection
-
-$f(3) = 3^2 - 2 \times 3 + 1 = 4$
-\end{EXO}</code></pre>
-
-          <div class="grid-2 fragment" style="margin-top:0.6em;font-size:0.8em;">
-            <div class="warning-box">
-              <p><strong>Collège</strong> : espaces réponses <strong>systématiques</strong></p>
-              <p class="smaller"><code>\repsim</code>, <code>\tcfillcrep</code>, <code>\begin{crep}</code></p>
-            </div>
-            <div class="box">
-              <p><strong>Lycée</strong> : espaces réponses <strong>optionnels</strong></p>
-              <p class="smaller">Rédaction sur copie par défaut.</p>
-            </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Le même en-tête et la même présentation d'un document à l'autre.</li>
+              <li>Aucun préambule à recopier.</li>
+              <li>Vos propres modèles peuvent s'y ajouter.</li>
+            </ul>
           </div>
-        </section>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- SLIDE 10 : CONCLUSION -->
+      <!-- 3.1 Le dossier créé -->
       <section>
-        <h2>En résumé</h2>
-
-        <!-- Mini-pipeline rappel -->
-        <div class="fragment" style="display:flex;align-items:center;justify-content:center;gap:0.3em;margin:0.8em 0;font-size:0.7em;">
-          <div style="background:#27ae60;color:#fff;padding:0.4em 0.8em;border-radius:8px;font-weight:600;">Créer <span style="opacity:0.7;">(script)</span></div>
-          <span style="color:#7f8c8d;font-size:1.3em;">&rarr;</span>
-          <div style="background:#2c3e50;color:#fff;padding:0.4em 0.8em;border-radius:8px;font-weight:600;border:2px solid #3498db;">Rédiger <span style="opacity:0.7;">(IA)</span></div>
-          <span style="color:#7f8c8d;font-size:1.3em;">&rarr;</span>
-          <div style="background:#f39c12;color:#fff;padding:0.4em 0.8em;border-radius:8px;font-weight:600;">Compiler <span style="opacity:0.7;">(script)</span></div>
-          <span style="color:#7f8c8d;font-size:1.3em;">&rarr;</span>
-          <div style="background:#e74c3c;color:#fff;padding:0.4em 0.8em;border-radius:8px;font-weight:700;">PDF</div>
-        </div>
-
-        <div class="grid-2 fragment" style="font-size:0.85em;">
+        <div class="fil-detail"><span class="etiq c1">1. Créer</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-create);">Le dossier qu'il crée</h3>
+        <div class="detail duo2">
+<div class="arbo"><b>Vecteurs_Exercices/</b>
+├── <b>Vecteurs_Exercices.tex</b>  <i>fichier maître</i>
+├── enonce.tex             <i>le contenu</i>
+├── enonce_figures.tex     <i>les figures</i>
+├── sections/              <i>cours long</i>
+├── images/                <i>si besoin</i>
+└── CLAUDE.md              <i>journal</i></div>
           <div>
-            <div class="example-box">
-              <p><i class="fas fa-check-circle icon success"></i> <strong>Points forts</strong></p>
-              <ul class="smaller">
-                <li>Phases 1 & 3 scriptées &rarr; 0 token, 100% fiable</li>
-                <li>Phase 2 IA &rarr; conventions bfcours + packages LaTeX locaux</li>
-                <li>Compétences officielles intégrées automatiquement</li>
-                <li>pdf2tikz pour récupérer des designs PDF existants</li>
+            <ul>
+              <li><strong>Fichier maître</strong> : en-tête, préambule bfcours, appel du contenu. C'est lui qu'on compile.</li>
+              <li><strong><code>enonce.tex</code></strong> : tout le contenu rédigé à l'étape suivante.</li>
+              <li><strong>Figures</strong> rangées à part, appelées par un code court.</li>
+              <li><strong><code>CLAUDE.md</code></strong> : le modèle utilisé, les réglages, l'état de compilation. L'agent suivant reprend sans repartir de zéro.</li>
+            </ul>
+            <div class="astuce">Au-delà d'environ 1000 lignes, le contenu est découpé : un fichier par définition, propriété ou exercice. Le PDF reste identique.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3.2 Les modèles et leurs champs -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Créer</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-create);">Les modèles, et ce qu'il vérifie avant d'écrire</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-create);">
+            <h3>Modèles fournis</h3>
+            <p>Cours · Devoir · Devoir maison · Exercices (léger ou complet) · Découverte · Récapitulatif de séance · Plan de séquence · AP · …</p>
+            <h3 style="margin-top:0.5em;">Champs remplis</h3>
+            <p>Niveau, thème, type d'établissement, nom de l'établissement, durée (devoir), sous-titre.</p>
+            <p class="muted">Le modèle annonce lui-même ses champs obligatoires : l'agent les lit avant de créer, il ne devine pas.</p>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-shield-alt"></i> Garde-fous automatiques</h3>
+            <ul>
+              <li>Un champ manque : <strong>rien n'est créé</strong>, l'agent complète et relance.</li>
+              <li>Les valeurs LaTeX (<code>2^{nde}</code>…) passent par un fichier, jamais par la ligne de commande, où les antislashs se perdent.</li>
+              <li>Niveau trop long pour la case du bandeau (plus de 5 caractères environ) : avertissement.</li>
+              <li>Un document existant n'est jamais écrasé sans accord.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 4. Écrire (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Créer</span><span class="on c2">2. Écrire</span><span>3. Compiler</span><span>4. Regarder</span></div>
+        <h2 style="border-color:var(--step-write);">Il rédige avec vos environnements</h2>
+        <div class="duo">
+          <div>
+            <div class="bloc" style="border-color:var(--step-write);">
+              <h3>Ce que fait l'agent</h3>
+              <ul>
+                <li>Définitions, propriétés, exemples, méthodes : chacun dans son encadré bfcours.</li>
+                <li>Exercices avec barème par question et corrigé intégré.</li>
+                <li>Un contenu adapté au niveau demandé.</li>
               </ul>
             </div>
+            <div class="bloc note">
+              <i class="fas fa-file-import"></i> Vous partez d'un PDF ? L'agent en reprend les figures à l'identique au lieu de les redessiner à l'œil.
+            </div>
+          </div>
+          <div class="page">
+            <div class="bandeau"><span>Vecteurs</span><span>2<sup>de</sup></span></div>
+            <div class="boite def"><strong>Définition</strong> — Deux vecteurs sont égaux s'ils ont même direction, même sens et même norme.</div>
+            <div class="boite prop"><strong>Propriété</strong> — Relation de Chasles : $\vec{AB}+\vec{BC}=\vec{AC}$</div>
+            <div class="boite exo"><span class="pts">3 pts</span><strong>Exercice 1</strong>
+              <div class="cols"><span>a) Construire…</span><span>b) Calculer…</span><span>c) Justifier…</span><span>d) Conclure…</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 4.1 Le code écrit -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Écrire</span> Détail 1 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-write);">Ce qu'il écrit réellement dans <code>enonce.tex</code></h3>
+        <div class="detail duo2" style="grid-template-columns:1.35fr 1fr;">
+<pre class="code"><code><span class="kw">\def\rdifficulty</span>{1}
+<span class="kw">\begin{EXO}</span>{Relation de Chasles}{}
+<span class="kw">\begin{tcbenumerate}</span>[2]
+  \tcbitem <span class="pt">\tcbitempoint{1}</span>\acc{Simplifier}
+    $\vec{AB}+\vec{BC}$.
+  \tcbitem <span class="pt">\tcbitempoint{2}</span>\acc{Simplifier}
+    $\vec{MA}-\vec{MB}$.
+<span class="kw">\end{tcbenumerate}</span>
+<span class="kw">\exocorrection</span>
+<span class="cm">% corrigé rédigé, question par question</span>
+<span class="kw">\begin{tcbenumerate}</span>[1]
+  \tcbitem $\vec{AB}+\vec{BC}=\vec{AC}$ ...
+<span class="kw">\end{tcbenumerate}</span>
+<span class="kw">\end{EXO}</span></code></pre>
+          <div>
+            <ul>
+              <li><code>EXO</code> : un exercice, énoncé <strong>et</strong> corrigé dans le même bloc, séparés par <code>\exocorrection</code>.</li>
+              <li><code>tcbenumerate[2]</code> : questions sur deux colonnes.</li>
+              <li><code>\tcbitempoint{2}</code> : la pastille de points de la question.</li>
+              <li><code>\rdifficulty</code> : la coche de difficulté.</li>
+              <li><code>\acc{…}</code> : le verbe de consigne mis en valeur.</li>
+            </ul>
+            <p class="muted">Cours : <code>Definition</code>, <code>Propriete</code>, <code>Exemple</code>, <code>Methode</code>, <code>Remarque</code>… Tableaux : <code>tcbtab</code>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.2 Les règles de rédaction -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Écrire</span> Détail 2 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-write);">Les règles qu'il applique en rédigeant</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-write);">
+            <h3>Fond (<code>choix-didactiques</code>)</h3>
+            <ul>
+              <li>Des données sans coïncidence trompeuse : l'élève doit passer par le calcul, pas par un raccourci.</li>
+              <li>Dans un exemple de cours, la conclusion est laissée à écrire par l'élève.</li>
+              <li>Un corrigé question par question, sur une colonne : il se projette item par item.</li>
+              <li>Exercices d'une séquence : une fiche d'application et une d'approfondissement.</li>
+            </ul>
+          </div>
+          <div class="bloc" style="border-color:var(--step-write);">
+            <h3>Forme (<code>bfcours-latex</code>)</h3>
+            <ul>
+              <li>Jamais <code>enumerate</code>, <code>itemize</code> ni <code>tabular</code> : les équivalents bfcours, qui se colorent et se mettent en colonnes.</li>
+              <li>Titres d'exercice sans virgule ni formule : ils cassent la compilation.</li>
+              <li>Espaces de réponse (lignes, cadres) : au collège ; au lycée, sur demande.</li>
+              <li>Points d'une question = nombre d'actions attendues de l'élève : le corrigé est rédigé <strong>avant</strong> le barème.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.3 Partir d'un document existant -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Écrire</span> Détail 3 / 3</div>
+        <h3 class="titre-detail" style="color:var(--step-write);">Vous partez d'un PDF : les figures sont extraites, pas redessinées</h3>
+        <div class="detail duo2">
+          <div>
+            <div class="demande" style="font-size:1.1em;max-width:100%;">
+              <span class="qui"><i class="fas fa-user"></i> Vous</span>
+              «&nbsp;Reprends l'exercice 2 de ce sujet en bfcours, avec sa figure.&nbsp;» <i class="fas fa-paperclip muted"></i> <em>sujet.pdf</em>
+            </div>
+            <ol style="margin-top:0.7em;">
+              <li>Le skill <code>pdf2tikz</code> lit les tracés vectoriels de la page : axes, courbes, points.</li>
+              <li>Il en tire une figure TikZ aux <strong>coordonnées exactes</strong>.</li>
+              <li>L'agent l'adapte au style bfcours (couleurs, étiquettes) sans toucher aux coordonnées.</li>
+            </ol>
           </div>
           <div>
-            <div class="warning-box">
-              <p><i class="fas fa-lightbulb icon"></i> <strong>À retenir</strong></p>
-              <ul class="smaller">
-                <li>Jamais <code>enumerate</code>, <code>tabular</code>, <code>\textbf</code></li>
-                <li>Toujours <code>\acc{}</code>, <code>\voc{}</code>, <code>tcbenumerate</code></li>
-                <li>Templates personnalisables (demandez à l'agent)</li>
-                <li>Profils de compilation adaptables</li>
-                <li>Mêmes environnements en Typst : suite farfadet (skill <code>bfcours-typst</code>)</li>
+            <table class="tab-detail">
+              <tr><th></th><th>Redessinée à l'œil</th><th>Extraite du PDF</th></tr>
+              <tr><td>Courbe</td><td><span class="pastille p-ko">approchée</span></td><td><span class="pastille p-ok">identique</span></td></tr>
+              <tr><td>Points lus</td><td><span class="pastille p-ko">décalés</span></td><td><span class="pastille p-ok">exacts</span></td></tr>
+              <tr><td>Retouche</td><td>à refaire</td><td>code TikZ modifiable</td></tr>
+            </table>
+            <div class="astuce"><i class="fas fa-lightbulb"></i> Joignez le PDF lui-même plutôt qu'une capture d'écran : l'extraction a besoin des tracés vectoriels.</div>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 5. Compiler (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Créer</span><span>2. Écrire</span><span class="on c3">3. Compiler</span><span>4. Regarder</span></div>
+        <h2 style="border-color:var(--step-compile);">Il compile et corrige seul</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-compile);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il lance la compilation, comme le bouton «&nbsp;Compiler&nbsp;» de votre éditeur.</li>
+              <li>Il lit les messages d'erreur, retrouve la ligne fautive et la corrige.</li>
+              <li>Il recommence jusqu'à obtenir un PDF sans erreur.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Plus de journal de compilation à déchiffrer.</li>
+              <li>Les fichiers de travail (<code>.aux</code>, <code>.log</code>…) sont nettoyés.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 5.1 Les trois verdicts -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Compiler</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-compile);">Trois verdicts, et aucun faux succès</h3>
+        <div class="detail">
+          <p>La compilation se fait avec LuaLaTeX. Le script compare le PDF <strong>avant</strong> et <strong>après</strong> : un ancien PDF resté dans le dossier ne passe jamais pour un nouveau.</p>
+          <table class="tab-detail" style="margin-top:0.5em;">
+            <tr><th style="width:24%;">Verdict</th><th style="width:38%;">Ce qu'il signifie</th><th>Ce que fait l'agent</th></tr>
+            <tr><td><span class="pastille p-ok">succès</span></td><td>PDF réécrit, aucune erreur dans le journal.</td><td>Passe à la relecture visuelle.</td></tr>
+            <tr><td><span class="pastille p-mid">succès avec erreurs</span></td><td>PDF réécrit, mais du contenu peut manquer.</td><td>Corrige, recompile. Ne déclare jamais le document terminé à ce stade.</td></tr>
+            <tr><td><span class="pastille p-ko">échec</span></td><td>Pas de nouveau PDF.</td><td>Lit l'erreur (fichier, ligne), corrige, recompile.</td></tr>
+          </table>
+          <div class="duo2" style="margin-top:0.6em;">
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-book-reader"></i> Le PDF n'est jamais supprimé avant la compilation : vous pouvez le garder ouvert pendant que l'agent travaille.</div>
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-lock"></i> Deux versions d'un même dossier (prof, élève) ne sont jamais compilées en même temps : elles partagent des fichiers de travail.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.2 Les erreurs corrigées -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Compiler</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-compile);">Les erreurs qu'il repère et corrige seul</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:36%;">Message du journal</th><th style="width:30%;">Cause habituelle</th><th>Correction</th></tr>
+            <tr><td><code>Undefined control sequence</code></td><td>Commande inconnue ou mal orthographiée.</td><td>Remplacée par la commande bfcours correcte.</td></tr>
+            <tr><td><code>Missing $ inserted</code></td><td>Formule hors du mode mathématique.</td><td>Délimiteurs <code>$…$</code> rétablis.</td></tr>
+            <tr><td><code>Paragraph ended before…</code></td><td>Ligne vide dans un argument (en-tête).</td><td>Ligne vide neutralisée.</td></tr>
+            <tr><td>Erreur fatale sur un titre d'exercice</td><td>Virgule ou formule dans le titre.</td><td>Titre réécrit (tiret, mots).</td></tr>
+          </table>
+          <p style="margin-top:0.6em;"><strong>Et les échecs muets</strong>, qui ne bloquent pas la compilation mais font disparaître du contenu :</p>
+          <ul>
+            <li>un tableau ou un encadré coupé en bas de page, dont les dernières lignes ont disparu ;</li>
+            <li>des questions en colonnes qui débordent de leur cadre et sont tronquées.</li>
+          </ul>
+          <p class="muted">Ce que le journal ne voit pas (texte qui dépasse d'un cadre, page presque vide) est rattrapé à l'étape suivante, en regardant les pages.</p>
+        </div>
+      </section>
+      </section>
+
+      <!-- 6. Regarder et améliorer (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Créer</span><span>2. Écrire</span><span>3. Compiler</span><span class="on c4">4. Regarder</span></div>
+        <h2 style="border-color:var(--step-review);">Il relit le PDF comme vous le feriez</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--step-review);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il photographie chaque page et la regarde.</li>
+              <li>Il repère les grands blancs, les débordements, les barèmes qui chevauchent le texte.</li>
+              <li>Il resserre les énoncés (colonnes) mais laisse de la place aux réponses et aux corrigés.</li>
+              <li>Si une retouche abîme le rendu, il revient en arrière.</li>
+            </ul>
+          </div>
+          <div class="avant-apres">
+            <div class="vignette">
+              <div class="legende" style="color:#e74c3c;">Avant : 3 pages</div>
+              <div class="page">
+                <div class="ligne" style="width:70%"></div>
+                <div class="ligne" style="width:40%"></div>
+                <div class="ligne" style="width:35%"></div>
+                <div class="ligne" style="width:45%"></div>
+                <div class="vide">blanc</div>
+              </div>
+            </div>
+            <i class="fas fa-arrow-right" style="color:#8e44ad;"></i>
+            <div class="vignette">
+              <div class="legende" style="color:#27ae60;">Après : 2 pages</div>
+              <div class="page">
+                <div class="ligne" style="width:70%"></div>
+                <div class="cols" style="display:grid;grid-template-columns:1fr 1fr;gap:0 0.6em;">
+                  <div class="ligne"></div><div class="ligne"></div>
+                  <div class="ligne"></div><div class="ligne"></div>
+                </div>
+                <div class="ligne" style="width:85%"></div>
+                <div class="ligne" style="width:60%"></div>
+                <div class="ligne" style="width:75%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 6.1 La boucle de relecture -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Regarder</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-review);">La boucle : mesurer, modifier, comparer, garder ou revenir</h3>
+        <div class="detail duo2">
+          <div>
+            <ol>
+              <li><strong>Version 0</strong> : le PDF est photographié page par page et mis de côté avec ses sources.</li>
+              <li><strong>Mesures</strong> : remplissage de chaque page, grands blancs, colonnes déséquilibrées, dernière page presque vide, images trop pixelisées (moins de 150 dpi).</li>
+              <li><strong>Plan</strong> : toutes les retouches possibles, classées par degré de confiance.</li>
+              <li><strong>Lot de 3 à 8 retouches</strong>, recompilation, nouvelles mesures, comparaison avec la version précédente.</li>
+              <li>On recommence, puis on garde la meilleure version.</li>
+            </ol>
+          </div>
+          <div>
+            <div class="bloc note" style="margin-top:0;">
+              <h3><i class="fas fa-undo"></i> Retour en arrière</h3>
+              <ul>
+                <li>Compilation cassée ou zone protégée touchée : annulation immédiate.</li>
+                <li>Deux lots sans gain, dont un qui dégrade : retour à la meilleure version.</li>
+                <li>Quatre lots au plus, sauf si vous en demandez davantage.</li>
+              </ul>
+            </div>
+            <div class="astuce"><i class="fas fa-balance-scale"></i> Le score guide, mais ne décide pas seul : à score égal, la version la plus lisible l'emporte.</div>
+            <p class="muted">Étape sautée pour un brouillon de moins d'une page.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6.2 Ce qu'il resserre, ce qu'il protège -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Regarder</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-review);">Ce qu'il resserre, ce qu'il protège</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:32%;">Zone</th><th style="width:22%;">Politique</th><th>Pourquoi</th></tr>
+            <tr><td>Énoncés d'exercices</td><td><span class="pastille p-ok">resserrés</span></td><td>C'est là qu'on gagne des pages : questions côte à côte.</td></tr>
+            <tr><td>Cours (définitions, propriétés…)</td><td><span class="pastille p-ok">resserrés</span></td><td>Blocs apparentés juxtaposés.</td></tr>
+            <tr><td>Activités</td><td><span class="pastille p-mid">avec prudence</span></td><td>Le déroulé prime sur la place.</td></tr>
+            <tr><td>Corrigés</td><td><span class="pastille p-ko">intouchés</span></td><td>Projetés item par item : la réponse suivante ne doit pas apparaître à l'écran.</td></tr>
+            <tr><td>Espaces de réponse des élèves</td><td><span class="pastille p-ko">intouchés</span></td><td>On resserre autour, jamais la place pour écrire.</td></tr>
+          </table>
+          <p style="margin-top:0.6em;"><strong>Ses leviers</strong> : passer des questions en 2 ou 3 colonnes (avec filets de séparation pour rester lisible), mettre une figure à côté de sa consigne, retirer les sauts de page devenus inutiles, recaler une pastille de points qui chevauche le texte.</p>
+          <p class="muted">Il ne reformule pas le contenu ; seules exceptions, signalées : un titre trop long, une remarque redondante.</p>
+        </div>
+      </section>
+      </section>
+
+      <!-- 7. Ce que vous obtenez (+ pile) -->
+      <section>
+      <section>
+        <h2>Ce que vous obtenez</h2>
+        <div class="livrables">
+          <div class="livrable fragment">
+            <i class="fas fa-file-pdf" style="color:#e74c3c;"></i>
+            <div class="titre">Le PDF</div>
+            <div>Compilé, relu, prêt à imprimer ou à projeter.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-file-code"></i>
+            <div class="titre">Les sources</div>
+            <div>Un dossier LaTeX propre, que vous pouvez reprendre à la main.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-comments" style="color:#27ae60;"></i>
+            <div class="titre">Des retouches en français</div>
+            <div>«&nbsp;Passe l'exercice 3 sur deux colonnes&nbsp;», «&nbsp;ajoute une question bonus&nbsp;».</div>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Votre rôle : demander, puis relire. Le contenu reste le vôtre, vérifiez-le comme le travail d'un collègue.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 7.1 Bien formuler sa demande -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 1 / 2</div>
+        <h3 class="titre-detail">Bien formuler sa demande</h3>
+        <div class="detail duo2">
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:40%;">Précisez…</th><th>Exemple</th></tr>
+              <tr><td>Le type de document</td><td>cours, devoir, DM, fiche d'exercices, activité</td></tr>
+              <tr><td>Le niveau</td><td>«&nbsp;en 4e&nbsp;» (sinon l'agent le demande)</td></tr>
+              <tr><td>Les notions</td><td>«&nbsp;réciproque comprise&nbsp;»</td></tr>
+              <tr><td>La durée, la longueur</td><td>«&nbsp;55 minutes&nbsp;», «&nbsp;sur 2 pages&nbsp;»</td></tr>
+              <tr><td>Les réponses élèves</td><td>«&nbsp;avec des espaces de réponse&nbsp;»</td></tr>
+              <tr><td>Une source</td><td>un PDF joint, un document existant</td></tr>
+            </table>
+          </div>
+          <div>
+            <div class="demande" style="font-size:1.05em;max-width:100%;">
+              <span class="qui"><i class="fas fa-user"></i> Vous</span>
+              «&nbsp;Une évaluation sur Pythagore en 4e, 55 minutes, réciproque comprise, avec des espaces de réponse, sur deux pages.&nbsp;»
+            </div>
+            <div class="fleche-bas" style="text-align:center;"><i class="fas fa-arrow-down"></i></div>
+            <div class="bloc gain" style="font-size:1em;">
+              <ul>
+                <li>Un dossier à partir du modèle «&nbsp;Devoir&nbsp;», durée dans l'en-tête.</li>
+                <li>Des exercices progressifs, une pastille de points par question, le corrigé intégré.</li>
+                <li>Une relecture qui vérifie qu'aucune pastille ne chevauche le texte, que les espaces de réponse restent assez grands et que le sujet tient sur deux pages.</li>
               </ul>
             </div>
           </div>
         </div>
+      </section>
 
-        <p class="fragment success" style="margin-top:1em;font-size:1.1em;text-align:center;">
-          <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
+      <!-- 7.2 Retouches et limites -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 2 / 2</div>
+        <h3 class="titre-detail">Retouches et limites</h3>
+        <div class="detail duo2">
+          <div class="bloc gain">
+            <h3>Retouches qui marchent bien</h3>
+            <ul>
+              <li>«&nbsp;Passe l'exercice 3 sur deux colonnes.&nbsp;»</li>
+              <li>«&nbsp;Fais tenir le devoir sur deux pages.&nbsp;»</li>
+              <li>«&nbsp;Ajoute une question bonus à l'exercice 2.&nbsp;»</li>
+              <li>«&nbsp;Remplace les valeurs de l'exercice 1.&nbsp;»</li>
+              <li>«&nbsp;Une pastille de points chevauche le texte page 2.&nbsp;»</li>
+            </ul>
+            <p class="muted">Chaque retouche est recompilée, puis relue.</p>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-exclamation-triangle"></i> Limites</h3>
+            <ul>
+              <li>La relecture porte sur la <strong>mise en page</strong> : l'exactitude mathématique reste à vérifier par vous.</li>
+              <li>Les corrigés sont volontairement aérés (projection) : ils prennent plus de place que les énoncés.</li>
+              <li>Il faut le paquet bfcours et une distribution LaTeX installés sur le poste.</li>
+              <li>Comptez quelques minutes pour un document complet : chaque passage de relecture recompile.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 8. L'installer -->
+      <section>
+        <h2>L'installer</h2>
+        <p class="small" style="margin-top:-0.3em;">
+          <i class="fas fa-shopping-basket" style="color:#3498db;"></i>
+          Sur la page de cette présentation, ajoutez le <strong>pack «&nbsp;Skill latex&nbsp;»</strong> au panier, puis téléchargez l'archive.
+        </p>
+        <div class="install">
+          <div class="carte">
+            <div class="titre">Claude Code, dans le projet <span class="badge">recommandé</span></div>
+            Décompresser dans le dossier du projet : les skills arrivent dans <code>.claude/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Claude Code, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.claude/skills/</code> : actif partout, même là où il n'a rien à faire.
+          </div>
+          <div class="carte">
+            <div class="titre">Codex, dans le projet <span class="badge">recommandé</span></div>
+            Copier le contenu de <code>.claude/</code> dans <code>.agents/</code> : les skills arrivent dans <code>.agents/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Codex, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.agents/skills/</code>.
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:0.7em;">
+          Prérequis : une distribution LaTeX (MiKTeX ou TeX Live), le paquet bfcours et Python.
+          Puis demandez simplement : «&nbsp;<em>une évaluation sur Pythagore en 4e</em>&nbsp;».
         </p>
       </section>
 
@@ -798,61 +867,25 @@ $f(3) = 3^2 - 2 \times 3 + 1 = 4$
   <!-- Reveal.js Scripts -->
   <script src="assets/reveal/reveal.js"></script>
   <script src="assets/reveal/plugin/notes/notes.js"></script>
-  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
-  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
+  <script src="assets/reveal/plugin/math/math.js"></script>
 
   <script>
     Reveal.initialize({
-      // Navigation 2D
-      navigationMode: 'grid',
+      // Navigation à deux dimensions : → fil principal, ↓ détails de l'étape
+      navigationMode: 'default',
       controls: true,
-      controlsLayout: 'edges',
-      controlsBackArrows: 'visible',
+      controlsLayout: 'bottom-right',
       controlsTutorial: true,
+      controlsBackArrows: 'faded',
       progress: true,
       slideNumber: 'h.v',
-      hash: true,
-
-      // Transitions
-      transition: 'slide',
-      transitionSpeed: 'default',
-
-      // Behavior
-      embedded: false,
       overview: true,
+      hash: true,
+      transition: 'slide',
       center: true,
-      touch: true,
-      loop: false,
-      rtl: false,
-      shuffle: false,
-
-      // Fragments
       fragments: true,
       fragmentInURL: true,
-
-      // Keyboard
-      keyboard: true,
-      keyboardCondition: null,
-
-      // Plugins
-      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
-    });
-
-    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
-    let lastHorizontalIndex = 0;
-
-    Reveal.on('slidechanged', event => {
-      const currentH = event.indexh;
-      const currentV = event.indexv;
-
-      // Si on change de slide horizontale et qu'on n'est pas au top
-      if (currentH !== lastHorizontalIndex && currentV !== 0) {
-        // Revenir au top de la nouvelle slide
-        Reveal.slide(currentH, 0);
-      }
-
-      // Mettre à jour l'index horizontal
-      lastHorizontalIndex = currentH;
+      plugins: [ RevealNotes, RevealMath.KaTeX ]
     });
   </script>
 </body>

@@ -1,6 +1,7 @@
 ---
 name: grill-me
-description: Interview serrée pour affiner un plan, une idée, un design ou une décision, par manches de questions à choix (dans le terminal, ou sur une page HTML cliquable avec dictée vocale). Déclencheurs : « grill-me », « grille-moi », « cuisine-moi », « challenge mon plan », « pose-moi des questions avant de te lancer », « interroge-moi », et l'appel par wayfinder.---
+description: Interview serrée pour affiner un plan, une idée, un design ou une décision, par manches de questions à choix (dans le terminal, ou sur une page HTML cliquable avec dictée vocale). Déclencheurs : « grill-me », « grille-moi », « cuisine-moi », « challenge mon plan », « pose-moi des questions avant de te lancer », « interroge-moi », et l'appel par wayfinder.
+---
 
 # Grill-me
 

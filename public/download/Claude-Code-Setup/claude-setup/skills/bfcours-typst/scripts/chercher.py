@@ -172,6 +172,10 @@ def par_cle(data, guides, cle):
 
 
 def main():
+    # Console Windows en cp1252 : sans cela, « → » ou « … » d'un résultat arrêtent le script
+    for flux in (sys.stdout, sys.stderr):
+        if hasattr(flux, "reconfigure"):
+            flux.reconfigure(encoding="utf-8", errors="replace")
     a = argparse.ArgumentParser(description="Recherche dans l'index bfcours-typst.")
     a.add_argument("requete", nargs="?", help="besoin en mots (« tableau de conversion », « zone de réponse »)")
     a.add_argument("--latex", help="nom d'une commande ou d'un environnement LaTeX bfcours (avec ou sans \\)")

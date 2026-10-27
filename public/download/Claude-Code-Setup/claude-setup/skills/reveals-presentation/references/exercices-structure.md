@@ -35,7 +35,7 @@ Une présentation est considérée comme "session d'exercices" si :
   <h2>Développements et factorisations</h2>
   <p>
     <small>Classe de <strong>2nde</strong></small><br>
-    <small>Lycée Camille Claudel</small>
+    <small>Lycée Exemple</small>
   </p>
 </section>
 ```

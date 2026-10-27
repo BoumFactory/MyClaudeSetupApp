@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Créer son propre skill avec skill-creator : interview grill-me, écriture, test sur un cours connu, amélioration continue">
+  <title>Créer son propre skill : la démarche en six étapes</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="assets/reveal/reset.css">
+  <link rel="stylesheet" href="assets/reveal/reveal.css">
+  <link rel="stylesheet" href="assets/reveal/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --violet-color: #8e44ad;
+      --text-color: #34495e;
+      --muted-color: #7f8c8d;
+      --bg-light: #ecf0f1;
+      --e1: #27ae60;  /* préparer */
+      --e2: #3498db;  /* interview */
+      --e3: #f39c12;  /* écrire */
+      --e4: #8e44ad;  /* tester */
+      --e5: #16a085;  /* auto-améliorer */
+      --e6: #34495e;  /* au quotidien */
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+    .reveal h1 { font-size: 1.9em; margin-bottom: 0.3em; line-height: 1.15; }
+    .reveal h2 {
+      font-size: 1.4em;
+      margin-bottom: 0.6em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.25em;
+    }
+    .reveal p, .reveal li { line-height: 1.45; }
+    .reveal ul { margin: 0.4em 0 0 1em; }
+    .reveal li { margin: 0.3em 0; }
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9em;
+      color: var(--accent-color);
+    }
+    .reveal a { color: var(--secondary-color); }
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.72em; }
+    .reveal .muted { color: var(--muted-color); }
+
+    /* Bulle de demande du professeur */
+    .reveal .demande {
+      display: inline-block; background: #fff; border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px; padding: 0.6em 1em; font-size: 0.8em; text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18); max-width: 90%;
+    }
+    .reveal .demande .qui { display: block; font-size: 0.7em; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.2em; }
+
+    /* Résultat */
+    .reveal .resultat {
+      display: inline-flex; align-items: center; gap: 0.5em;
+      background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff;
+      padding: 0.45em 1.1em; border-radius: 12px; font-weight: 700; font-size: 0.8em;
+      box-shadow: 0 6px 18px rgba(231,76,60,0.3);
+    }
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.2em; margin: 0.3em 0; }
+
+    /* Frise des six étapes */
+    .reveal .frise { display: flex; gap: 0.3em; justify-content: center; margin: 0 0 0.6em 0; font-size: 0.45em; flex-wrap: nowrap; }
+    .reveal .frise span { padding: 0.3em 0.7em; border-radius: 20px; background: var(--bg-light); color: var(--muted-color); font-weight: 600; white-space: nowrap; }
+    .reveal .frise span.on { color: #fff; }
+    .reveal .frise span.on.c1 { background: var(--e1); }
+    .reveal .frise span.on.c2 { background: var(--e2); }
+    .reveal .frise span.on.c3 { background: var(--e3); }
+    .reveal .frise span.on.c4 { background: var(--e4); }
+    .reveal .frise span.on.c5 { background: var(--e5); }
+    .reveal .frise span.on.c6 { background: var(--e6); }
+
+    /* Cartes d'étapes (diapo 2) */
+    .reveal .etapes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; margin-top: 0.4em; }
+    .reveal .etape { border-radius: 12px; padding: 0.6em 0.5em; color: #fff; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .reveal .etape i { font-size: 1.4em; margin-bottom: 0.15em; }
+    .reveal .etape .nom { font-weight: 700; font-size: 0.8em; }
+    .reveal .etape .quoi { font-size: 0.56em; opacity: 0.95; margin-top: 0.25em; line-height: 1.35; }
+    .reveal .etape.c1 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+    .reveal .etape.c2 { background: linear-gradient(135deg, #2980b9, #3498db); }
+    .reveal .etape.c3 { background: linear-gradient(135deg, #e67e22, #f39c12); }
+    .reveal .etape.c4 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+    .reveal .etape.c5 { background: linear-gradient(135deg, #138d75, #1abc9c); }
+    .reveal .etape.c6 { background: linear-gradient(135deg, #2c3e50, #5d6d7e); }
+
+    /* Deux colonnes */
+    .reveal .duo { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1em; text-align: left; align-items: start; }
+    .reveal .bloc { background: #f8f9fa; border-radius: 10px; padding: 0.6em 0.9em; border-left: 5px solid var(--secondary-color); font-size: 0.7em; }
+    .reveal .bloc h3 { font-size: 1.05em; margin: 0 0 0.3em 0; }
+    .reveal .bloc ul { margin-left: 1em; }
+    .reveal .bloc.gain { background: #e8f5e9; border-color: var(--success-color); }
+    .reveal .bloc.gain h3 { color: var(--success-color); }
+    .reveal .bloc.note { background: #fff8e1; border-color: var(--warning-color); margin-top: 0.6em; }
+
+    /* Livrables */
+    .reveal .livrables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.4em; }
+    .reveal .livrable { background: #f8f9fa; border-radius: 10px; padding: 0.7em 0.6em; font-size: 0.64em; text-align: center; border-top: 4px solid var(--secondary-color); }
+    .reveal .livrable i { font-size: 1.8em; color: var(--secondary-color); margin-bottom: 0.2em; }
+    .reveal .livrable .titre { font-weight: 700; color: var(--primary-color); }
+
+    /* Installation */
+    .reveal .install { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5em; text-align: left; font-size: 0.62em; }
+    .reveal .install .carte { background: #f8f9fa; border-radius: 10px; padding: 0.5em 0.8em; border-left: 5px solid var(--success-color); }
+    .reveal .install .carte.deconseille { border-color: var(--warning-color); background: #fff8e1; }
+    .reveal .install .carte .titre { font-weight: 700; color: var(--primary-color); }
+    .reveal .install .badge { display: inline-block; font-size: 0.75em; font-weight: 700; padding: 0.05em 0.6em; border-radius: 10px; color: #fff; background: var(--success-color); margin-left: 0.3em; }
+    .reveal .install .carte.deconseille .badge { background: var(--warning-color); }
+    .reveal .install code { font-size: 0.95em; }
+    .reveal .anthropic {
+      background: #f4ecf7; border-left: 5px solid var(--violet-color); border-radius: 10px;
+      padding: 0.45em 0.8em; font-size: 0.62em; text-align: left; margin: 0.2em 0 0.6em 0;
+    }
+
+    /* Boucle d'amélioration */
+    .reveal .boucle { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35em; margin: 0.3em 0 0.7em 0; }
+    .reveal .boucle div { background: #e8f8f5; border: 2px solid var(--e5); border-radius: 10px; padding: 0.45em 0.35em; font-size: 0.55em; text-align: center; position: relative; }
+    .reveal .boucle div b { display: block; color: var(--e5); font-size: 1.1em; margin-bottom: 0.15em; }
+    .reveal .boucle div i.fas { color: var(--e5); font-size: 1.4em; display: block; margin-bottom: 0.2em; }
+
+    /* Maquette de question grill-me */
+    .reveal .questions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; }
+    .reveal .question { background: #fff; border: 2px solid #d6eaf8; border-radius: 10px; padding: 0.5em 0.6em; text-align: left; box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+    .reveal .question .q { font-weight: 700; color: var(--primary-color); margin-bottom: 0.35em; }
+    .reveal .question .opt { border: 1px solid #dfe6e9; border-radius: 6px; padding: 0.15em 0.45em; margin: 0.22em 0; }
+    .reveal .question .opt.reco { border-color: var(--e2); background: #eaf4fb; font-weight: 600; }
+    .reveal .question .opt.reco::after { content: ' ★'; color: var(--e2); }
+    .reveal .question .pourquoi { color: var(--muted-color); font-size: 0.9em; margin-top: 0.35em; font-style: italic; }
+
+    /* ===== Navigation à deux dimensions ===== */
+    .reveal .indice-details { text-align: right; margin-top: 0.9em; font-size: 0.5em; color: var(--muted-color); }
+    .reveal .indice-details span { display: inline-block; border: 1px solid #d0d7de; border-radius: 14px; padding: 0.15em 0.8em; background: #fff; }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 2em; }
+    .reveal .aide-nav kbd { font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px; padding: 0 0.35em; background: #fafbfc; color: var(--primary-color); }
+
+    /* Fil d'Ariane des diapos verticales */
+    .reveal .fil-detail { display: flex; align-items: center; gap: 0.6em; justify-content: flex-start; font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600; }
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; }
+    .reveal .fil-detail .etiq.c0 { background: var(--primary-color); }
+    .reveal .fil-detail .etiq.c1 { background: var(--e1); }
+    .reveal .fil-detail .etiq.c2 { background: var(--e2); }
+    .reveal .fil-detail .etiq.c3 { background: var(--e3); }
+    .reveal .fil-detail .etiq.c4 { background: var(--e4); }
+    .reveal .fil-detail .etiq.c5 { background: var(--e5); }
+    .reveal .fil-detail .etiq.c6 { background: var(--e6); }
+    .reveal h3.titre-detail { font-size: 1.05em; text-align: left; margin: 0 0 0.5em 0; padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light); }
+
+    /* Contenus de détail */
+    .reveal .detail { font-size: 0.6em; text-align: left; }
+    .reveal .detail .bloc { font-size: 1em; }
+    .reveal .detail code { padding: 0 0.2em; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .duo2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; align-items: start; }
+    .reveal .arbo { font-family: 'Consolas', 'Monaco', monospace; background: #f8f9fa; border-radius: 8px; padding: 0.6em 0.9em; line-height: 1.55; white-space: pre; font-size: 0.9em; }
+    .reveal .arbo b { color: var(--primary-color); }
+    .reveal .arbo i { color: var(--muted-color); font-style: normal; }
+    .reveal pre.code { width: 100%; box-shadow: none; margin: 0; font-size: 0.82em; }
+    .reveal pre.code code {
+      display: block; background: #f8f9fa; color: #2c3e50; padding: 0.6em 0.9em;
+      border-radius: 8px; border-left: 4px solid var(--e2); line-height: 1.45;
+      max-height: none; font-size: 1em; white-space: pre-wrap;
+    }
+    .reveal pre.code .cm { color: #95a5a6; }
+    .reveal pre.code .kw { color: #2980b9; font-weight: 700; }
+    .reveal pre.code .rp { background: #fdebd0; color: #a04000; border-radius: 3px; padding: 0 0.15em; }
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td { border: none; border-bottom: 1px solid #e3e8ec; padding: 0.32em 0.5em; text-align: left; vertical-align: top; }
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal .pastille { display: inline-block; border-radius: 10px; padding: 0 0.55em; font-weight: 700; color: #fff; font-size: 0.9em; white-space: nowrap; }
+    .reveal .astuce { background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px; padding: 0.45em 0.8em; margin-top: 0.6em; }
+    .reveal .attention { background: #fff8e1; border-left: 5px solid var(--warning-color); border-radius: 8px; padding: 0.45em 0.8em; margin-top: 0.6em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1. Où l'on veut en venir -->
+      <section>
+        <h1><i class="fas fa-wand-magic-sparkles" style="color:#8e44ad;"></i> Créer son propre skill</h1>
+        <p class="subtitle">De votre façon de faire à un skill qui travaille comme vous</p>
+
+        <div style="margin-top:1em;">
+          <div class="demande">
+            <span class="qui"><i class="fas fa-user"></i> Vous</span>
+            «&nbsp;Crée-moi un skill qui rédige mes cours comme moi. Voici mon cours sur les fractions&nbsp;: tires-en les principes.&nbsp;»
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="small muted" style="margin-bottom:0.4em;">L'agent vous interroge, écrit le skill, le teste sur votre cours, puis apprend de vos retours</div>
+          <div class="resultat"><i class="fas fa-check-circle"></i> Un skill à vous, testé, qui s'affine à l'usage</div>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
+        </p>
+      </section>
+
+      <!-- 2. La démarche (+ pile : qui fait quoi) -->
+      <section>
+      <section>
+        <h2>La démarche, en six étapes</h2>
+        <div class="etapes">
+          <div class="etape c1 fragment"><i class="fas fa-box-open"></i><div class="nom">1. Préparer</div><div class="quoi">skill-creator, grill-me et un de vos cours</div></div>
+          <div class="etape c2 fragment"><i class="fas fa-comments"></i><div class="nom">2. Se faire interviewer</div><div class="quoi">L'agent précise l'idée avec vous, question par question</div></div>
+          <div class="etape c3 fragment"><i class="fas fa-pen-nib"></i><div class="nom">3. Laisser écrire</div><div class="quoi">skill-creator écrit le skill à partir de vos réponses</div></div>
+          <div class="etape c4 fragment"><i class="fas fa-vial"></i><div class="nom">4. Tester</div><div class="quoi">Il refait votre cours sans le regarder ; on compare</div></div>
+          <div class="etape c5 fragment"><i class="fas fa-rotate"></i><div class="nom">5. Auto-améliorer</div><div class="quoi">Un journal de vos retours, relu à chaque usage</div></div>
+          <div class="etape c6 fragment"><i class="fas fa-calendar-check"></i><div class="nom">6. Au quotidien</div><div class="quoi">Demander, relire, signaler</div></div>
+        </div>
+        <p class="fragment small muted" style="margin-top:0.9em;">
+          Vous décrivez, répondez et relisez. L'agent interroge, écrit, teste et met à jour.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 2.1 Qui fait quoi -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Les six étapes</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">En coulisse : qui fait quoi</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:17%;">Étape</th><th style="width:20%;">Outil</th><th>Ce que fait l'agent</th><th style="width:22%;">Votre rôle</th></tr>
+            <tr><td><span class="pastille" style="background:var(--e1);">1. Préparer</span></td><td>—</td><td>Rien encore.</td><td>Installer, choisir le cours modèle</td></tr>
+            <tr><td><span class="pastille" style="background:var(--e2);">2. Interview</span></td><td><code>grill-me</code></td><td>Lit votre cours, pose des manches de questions, récapitule les décisions.</td><td>Répondre, valider</td></tr>
+            <tr><td><span class="pastille" style="background:var(--e3);">3. Écriture</span></td><td><code>skill-creator</code><br><span class="muted">(Anthropic)</span></td><td>Écrit <code>SKILL.md</code> et ses fichiers d'appui.</td><td>Relire cinq minutes</td></tr>
+            <tr><td><span class="pastille" style="background:var(--e4);">4. Test</span></td><td>votre skill</td><td>Refait votre cours, le compare au vrai, propose des corrections du skill.</td><td>Juger, accepter</td></tr>
+            <tr><td><span class="pastille" style="background:var(--e5);">5. Amélioration</span></td><td>l'agent</td><td>Ajoute au skill un journal de retours et la consigne de le relire.</td><td>Valider</td></tr>
+            <tr><td><span class="pastille" style="background:var(--e6);">6. Quotidien</span></td><td>votre skill</td><td>Rédige, note vos remarques, propose des mises à jour.</td><td>Demander, relire, signaler</td></tr>
+          </table>
+          <div class="astuce">
+            <i class="fas fa-route"></i> L'ordre compte : on ne laisse rien écrire avant d'avoir répondu aux questions, et on ne fait pas confiance au skill avant de l'avoir testé sur un cas dont on connaît la réponse.
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 3. Préparer (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span class="on c1">1. Préparer</span><span>2. Interview</span><span>3. Écriture</span><span>4. Test</span><span>5. Amélioration</span><span>6. Quotidien</span></div>
+        <h2 style="border-color:var(--e1);">Trois ingrédients avant de commencer</h2>
+        <div class="duo">
+          <div>
+            <div class="bloc" style="border-color:var(--e1);">
+              <h3>Ce que vous faites</h3>
+              <ul>
+                <li>Vérifier que <strong>skill-creator</strong> est là, sinon l'activer : une commande.</li>
+                <li>Télécharger <strong>grill-me</strong> sur bfcours.dev et le décompresser dans le projet.</li>
+                <li>Choisir <strong>un cours</strong> dont vous êtes content, en fichier source.</li>
+                <li>Noter en quatre lignes votre façon de faire.</li>
+              </ul>
+            </div>
+            <div class="bloc note">
+              <i class="fas fa-circle-info"></i> skill-creator n'est pas dans le pack du site : il est fourni et maintenu par Anthropic.
+            </div>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Un outil officiel, tenu à jour par l'éditeur de Claude.</li>
+              <li>L'agent part de votre travail réel, pas d'un cours «&nbsp;moyen&nbsp;».</li>
+              <li>Tout se passe dans le dossier du projet.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 3.1 skill-creator : vérifier, activer -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Préparer</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--e1);">skill-creator : vérifier, activer</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--e1);">
+            <h3>Claude Code</h3>
+            <p><strong>Vérifier</strong> : tapez <code>/</code> puis <code>skill-creator</code>. Il est là si <code>/skill-creator:skill-creator</code> apparaît.</p>
+            <p><strong>Activer</strong>, dans une session :</p>
+            <pre class="code"><code>/plugin install skill-creator@claude-plugins-official</code></pre>
+            <ul>
+              <li>Claude Code ouvre la fiche du plugin : choisissez la portée (vous, ou ce projet seulement).</li>
+              <li>Si le message final le demande : <code>/reload-plugins</code>.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="bloc note" style="margin-top:0;">
+              <h3><i class="fas fa-store"></i> Catalogue absent ?</h3>
+              <p>Il s'ajoute au premier lancement de Claude Code dans un terminal. Sinon :</p>
+              <pre class="code"><code>/plugin marketplace add anthropics/claude-plugins-official</code></pre>
+            </div>
+            <div class="bloc" style="border-color:var(--e1);margin-top:0.6em;">
+              <h3>Codex</h3>
+              <p>Rien à installer : <code>$skill-creator</code> fait partie des skills intégrés.</p>
+            </div>
+            <p class="muted" style="font-size:0.85em;">Sources : documentation Claude Code (installer des plugins), dépôt <code>anthropics/claude-plugins-official</code>, documentation Codex (skills).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3.2 Le bon cours modèle -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Préparer</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--e1);">Le bon cours modèle</h3>
+        <div class="detail duo2">
+          <div class="bloc gain">
+            <h3>Le choisir</h3>
+            <ul>
+              <li>Un cours dont vous êtes content, typique de votre façon de faire.</li>
+              <li>Le <strong>fichier source</strong> (<code>.tex</code>, <code>.docx</code>, <code>.typ</code>, <code>.md</code>) plutôt que le PDF : l'agent y lit aussi la mise en forme.</li>
+              <li>Sans nom d'élève ni information personnelle.</li>
+              <li>Copié dans le projet : <code>modeles/mon-cours-modele.tex</code>.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="bloc" style="border-color:var(--e1);">
+              <h3>Votre façon de faire, en quatre lignes</h3>
+              <ul>
+                <li>J'ouvre chaque chapitre par une activité courte.</li>
+                <li>Définition, propriété, puis un exemple corrigé.</li>
+                <li>Une méthode encadrée par savoir-faire.</li>
+                <li>Jamais de démonstration de plus de dix lignes.</li>
+              </ul>
+            </div>
+            <div class="astuce">Ces lignes complètent le cours : elles disent ce qu'un seul exemple ne montre pas.</div>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 4. Interview (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Préparer</span><span class="on c2">2. Interview</span><span>3. Écriture</span><span>4. Test</span><span>5. Amélioration</span><span>6. Quotidien</span></div>
+        <h2 style="border-color:var(--e2);">Il vous interroge avant d'écrire</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--e2);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il lit votre cours et y relève lui-même ce qu'il peut y voir.</li>
+              <li>Il pose, par manches, toutes les questions qu'il peut poser : chacune avec ses options et sa recommandation.</li>
+              <li>Il récapitule, une ligne par décision, et attend votre accord avant d'écrire.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Vos habitudes implicites deviennent des règles écrites.</li>
+              <li>Vous validez plus que vous ne rédigez.</li>
+              <li>Un cahier des charges relu avant la première ligne.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 4.1 Une manche en exemple -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Interview</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--e2);">Une manche de questions, en exemple</h3>
+        <div class="detail">
+          <div class="questions">
+            <div class="question">
+              <div class="q">Q1 — Que reçoit le skill ?</div>
+              <div class="opt reco">Le titre de la notion</div>
+              <div class="opt">Une fiche du programme</div>
+              <div class="opt">Un ancien cours à reprendre</div>
+              <div class="pourquoi">Le plus simple à demander au quotidien.</div>
+            </div>
+            <div class="question">
+              <div class="q">Q2 — Que produit-il ?</div>
+              <div class="opt reco">Le cours seul</div>
+              <div class="opt">Cours + fiche d'exercices</div>
+              <div class="opt">Cours + version élève à trous</div>
+              <div class="pourquoi">Un skill, un usage : les autres viendront après.</div>
+            </div>
+            <div class="question">
+              <div class="q">Q3 — Votre cours ouvre sur une activité : à garder ?</div>
+              <div class="opt reco">Toujours</div>
+              <div class="opt">En début de chapitre</div>
+              <div class="opt">Jamais</div>
+              <div class="pourquoi">C'est ce que montre votre cours modèle.</div>
+            </div>
+          </div>
+          <div class="duo2" style="margin-top:0.7em;">
+            <div class="astuce" style="margin-top:0;">
+              <i class="fas fa-desktop"></i> Deux modes au choix : questions dans le terminal, ou page web cliquable avec dictée vocale.
+              Une question qui dépend d'une réponse attend la manche suivante.
+            </div>
+            <div class="astuce" style="margin-top:0;">
+              <i class="fas fa-reply"></i> Répondez court. «&nbsp;Comme dans mon cours&nbsp;» est une bonne réponse ; «&nbsp;je ne sais pas, propose&nbsp;» aussi.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.2 La demande -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Interview</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--e2);">La demande, en résumé</h3>
+        <div class="detail">
+<pre class="code"><code>Je veux créer un skill avec skill-creator, mais commence par
+une séance <span class="kw">grill-me</span> pour préciser l'idée avec moi.
+
+<span class="kw">L'idée</span>  un skill qui rédige mes cours de <span class="rp">[matière]</span> comme moi.
+<span class="kw">Ma façon de faire</span>  <span class="rp">[quatre lignes]</span>
+<span class="kw">Mon cours modèle</span>  <span class="rp">[modeles/mon-cours-modele.tex]</span> : lis-le ;
+  le skill en tire les principes, il ne le recopie pas.
+<span class="kw">La séance</span>  ce qu'il fait, reçoit, produit ; ce que tu peux lire
+  dans mon cours, cherche-le toi-même ; récapitulatif, puis ma validation.
+<span class="kw">Ensuite seulement</span>  skill-creator écrit le skill dans
+  .claude/skills/<span class="rp">[nom-du-skill]</span>/</code></pre>
+          <div class="astuce">
+            <i class="fas fa-copy"></i> La version complète, prête à copier, est à l'étape 2 du
+            <a href="https://bfcours.dev/claude-code/tutorials/creer-un-skill#etape-2" target="_top">tutoriel pas à pas</a>.
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 5. Écrire (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Préparer</span><span>2. Interview</span><span class="on c3">3. Écriture</span><span>4. Test</span><span>5. Amélioration</span><span>6. Quotidien</span></div>
+        <h2 style="border-color:var(--e3);">skill-creator écrit le skill</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--e3);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il transforme les décisions validées en consignes : la fiche <code>SKILL.md</code>.</li>
+              <li>Il range le détail (principes, exemples) dans des fichiers à part.</li>
+              <li>Il peut proposer des essais avec et sans le skill : facultatif.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Un simple dossier, lisible et modifiable.</li>
+              <li>Une description qui dit à l'agent quand s'en servir.</li>
+              <li>Une relecture de cinq minutes suffit.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 5.1 Anatomie -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Écriture</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--e3);">Anatomie d'un skill</h3>
+        <div class="detail duo2">
+<div class="arbo"><b>.claude/skills/mes-cours/</b>
+├── <b>SKILL.md</b>     <i>la fiche</i>
+├── references/  <i>principes, exemples</i>
+├── assets/      <i>gabarit (si utile)</i>
+└── scripts/     <i>tâche répétitive</i></div>
+<pre class="code"><code><span class="cm">---</span>
+<span class="kw">name:</span> mes-cours
+<span class="kw">description:</span> Rédige un cours de
+  maths dans le style du professeur…
+  À utiliser dès qu'il demande « le
+  cours sur … » ou « mon chapitre … ».
+<span class="cm">---</span>
+# Rédiger un cours
+## Avant d'écrire
+## Structure d'un chapitre
+## Ce qu'on n'écrit jamais</code></pre>
+        </div>
+        <div class="detail">
+          <ul>
+            <li>La <strong>description</strong> décide du déclenchement : elle doit citer vos vraies façons de demander.</li>
+            <li>skill-creator garde <code>SKILL.md</code> sous 500 lignes et renvoie le détail vers <code>references/</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5.2 Relire -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Écriture</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--e3);">Le relire en cinq minutes</h3>
+        <div class="detail duo2">
+          <div>
+            <div class="demande" style="font-size:1em;max-width:100%;">
+              <span class="qui"><i class="fas fa-user"></i> Vous</span>
+              «&nbsp;Présente-moi le skill en moins de 15 lignes : sa description, ses étapes, les principes retenus de mon cours, ses fichiers. Signale ce que tu as dû deviner.&nbsp;»
+            </div>
+            <div class="attention">
+              <i class="fas fa-folder-open"></i> Les essais proposés par skill-creator vont dans <code>mes-cours-workspace/</code> : à supprimer ensuite.
+            </div>
+          </div>
+          <div class="bloc gain" style="font-size:1em;">
+            <h3>Quatre vérifications</h3>
+            <ul>
+              <li>La description se déclencherait-elle sur vos demandes réelles ?</li>
+              <li>Retrouvez-vous vos principes et vos réponses à l'interview ?</li>
+              <li>Rien d'inventé que vous n'avez pas dit ?</li>
+              <li>Aucune information personnelle, si vous le partagez ?</li>
+            </ul>
+            <p class="muted">Il n'apparaît pas avec <code>/</code> ? Quittez puis relancez Claude Code.</p>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 6. Tester (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Préparer</span><span>2. Interview</span><span>3. Écriture</span><span class="on c4">4. Test</span><span>5. Amélioration</span><span>6. Quotidien</span></div>
+        <h2 style="border-color:var(--e4);">Il refait votre cours, sans le regarder</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--e4);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il rédige la notion de votre cours modèle à partir du seul skill.</li>
+              <li>Il compare son essai au vrai, critère par critère.</li>
+              <li>Pour chaque écart, il propose une correction du skill, avant / après.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Un test dont vous connaissez la bonne réponse.</li>
+              <li>On corrige le skill, pas le document : la suite en profite.</li>
+              <li>Un second test, sur une autre notion, vérifie qu'il ne fait pas que recopier.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 6.1 Critères -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Test</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--e4);">Quoi comparer</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:24%;">Critère</th><th>La question à se poser</th></tr>
+            <tr><td><strong>Structure</strong></td><td>Les mêmes blocs, dans le même ordre ?</td></tr>
+            <tr><td><strong>Ton et vocabulaire</strong></td><td>Les mots du programme, votre façon de vous adresser aux élèves ?</td></tr>
+            <tr><td><strong>Mise en forme</strong></td><td>Vos encadrés, vos couleurs, votre longueur ?</td></tr>
+            <tr><td><strong>Exactitude</strong></td><td>Définitions et propriétés justes, exemples corrects ?</td></tr>
+            <tr><td><strong>Exigence</strong></td><td>Le niveau de difficulté de vos exemples et exercices ?</td></tr>
+            <tr><td><strong>Copie</strong></td><td>Un contenu nouveau, ou votre cours recopié ?</td></tr>
+          </table>
+          <div class="astuce">
+            <i class="fas fa-eye-slash"></i> Pour que le test ait un sens, demandez à l'agent de n'ouvrir ni votre cours modèle ni sa copie éventuelle dans le dossier du skill.
+          </div>
+        </div>
+      </section>
+
+      <!-- 6.2 Corrections -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Test</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--e4);">Demander les corrections</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:20%;">Temps</th><th>Ce que vous demandez</th></tr>
+            <tr><td><span class="pastille" style="background:var(--e4);">Tester</span></td><td>«&nbsp;/mes-cours Rédige le cours sur les fractions pour une 5e, sans ouvrir mon cours modèle. Enregistre-le dans essais/.&nbsp;»</td></tr>
+            <tr><td><span class="pastille" style="background:var(--e4);">Comparer</span></td><td>«&nbsp;Compare l'essai à mon vrai cours, en tableau. Pour chaque écart, propose la correction du skill. N'applique rien.&nbsp;»</td></tr>
+            <tr><td><span class="pastille" style="background:var(--e4);">Corriger</span></td><td>«&nbsp;Applique les corrections 1, 3 et 4 au skill, puis refais le test.&nbsp;»</td></tr>
+            <tr><td><span class="pastille" style="background:var(--e4);">Élargir</span></td><td>«&nbsp;Teste-le sur les proportions. Qu'est-ce qui t'a manqué dans le skill ?&nbsp;»</td></tr>
+          </table>
+          <div class="attention">
+            <i class="fas fa-triangle-exclamation"></i> Retoucher l'essai à la main ne sert à rien pour la suite : ce sont les consignes du skill qu'il faut corriger.
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 7. Auto-améliorer (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Préparer</span><span>2. Interview</span><span>3. Écriture</span><span>4. Test</span><span class="on c5">5. Amélioration</span><span>6. Quotidien</span></div>
+        <h2 style="border-color:var(--e5);">Il apprend de vos retours</h2>
+        <p class="small" style="margin-top:-0.2em;">Une seule demande ajoute au skill un journal de vos remarques, et la règle pour s'en servir :</p>
+        <div class="boucle">
+          <div><i class="fas fa-book-open"></i><b>Usage</b>Il relit le journal, puis rédige.</div>
+          <div><i class="fas fa-circle-question"></i><b>Question</b>«&nbsp;Quelque chose à corriger&nbsp;?&nbsp;»</div>
+          <div><i class="fas fa-pen"></i><b>Journal</b>Votre remarque est notée, datée.</div>
+          <div><i class="fas fa-code-compare"></i><b>Proposition</b>Une remarque revient : avant / après.</div>
+          <div><i class="fas fa-user-check"></i><b>Accord</b>Vous validez, il met à jour.</div>
+        </div>
+        <div class="bloc gain" style="text-align:left;">
+          <strong>Ce que vous y gagnez</strong> : plus besoin de répéter vos préférences ; le skill ne change jamais ses consignes sans votre accord.
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 7.1 Le journal -->
+      <section>
+        <div class="fil-detail"><span class="etiq c5">5. Amélioration</span> Détail 1 / 1</div>
+        <h3 class="titre-detail" style="color:var(--e5);">Le journal <code>retours.md</code>, dans le dossier du skill</h3>
+        <div class="detail duo2">
+          <div>
+<pre class="code"><code style="border-left-color:var(--e5);"><span class="cm"># Retours sur le skill mes-cours</span>
+- 2026-11-04 · Pas de « on » dans les
+  définitions, toujours « nous ».
+  · <span class="kw">intégré</span>
+- 2026-11-12 · Exemples avec des nombres
+  simples avant les décimaux.
+  · <span class="kw">intégré</span>
+- 2026-11-20 · Une méthode « je vérifie »
+  après chaque propriété.
+  · <span class="rp">à traiter</span></code></pre>
+          </div>
+          <div class="bloc" style="border-color:var(--e5);">
+            <h3>Les règles ajoutées au skill</h3>
+            <ul>
+              <li>Lire <code>retours.md</code> au début de chaque usage.</li>
+              <li>Poser une seule question à la fin, noter la réponse.</li>
+              <li>Remarque récurrente : proposer la modification de <code>SKILL.md</code>, avant / après.</li>
+              <li>Ne rien appliquer sans accord ; sauvegarde datée avant (<code>sauvegardes/SKILL-AAAA-MM-JJ.md</code>).</li>
+              <li>Les petites préférences restent dans le journal : <code>SKILL.md</code> reste court.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 8. Au quotidien (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Préparer</span><span>2. Interview</span><span>3. Écriture</span><span>4. Test</span><span>5. Amélioration</span><span class="on c6">6. Quotidien</span></div>
+        <h2 style="border-color:var(--e6);">Au quotidien : demander, relire, signaler</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--e6);">
+            <h3>La routine</h3>
+            <ul>
+              <li>Demander en une phrase : «&nbsp;/mes-cours le cours sur les proportions pour une 4e&nbsp;».</li>
+              <li>Relire : l'exactitude mathématique reste votre affaire.</li>
+              <li>Signaler ce qui ne va pas, à la question finale.</li>
+              <li>De temps en temps, faire le bilan du journal.</li>
+            </ul>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-wrench"></i> Signes qu'il faut le retoucher</h3>
+            <ul>
+              <li>Vous corrigez deux fois la même chose.</li>
+              <li>Il ne se déclenche pas, ou hors de propos : revoir sa description.</li>
+              <li>Il recopie votre cours modèle.</li>
+              <li><code>SKILL.md</code> s'allonge : ranger le détail à part.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 8.1 Version de secours -->
+      <section>
+        <div class="fil-detail"><span class="etiq c6">6. Quotidien</span> Détail 1 / 1</div>
+        <h3 class="titre-detail" style="color:var(--e6);">Garder une version de secours</h3>
+        <div class="detail duo2">
+          <div>
+            <div class="demande" style="font-size:1em;max-width:100%;">
+              <span class="qui"><i class="fas fa-user"></i> Vous, avant une grosse modification</span>
+              «&nbsp;Fais une copie de secours du dossier du skill mes-cours dans sauvegardes-skills/mes-cours-2026-11-20/, à la racine du projet.&nbsp;»
+            </div>
+            <div class="demande" style="font-size:1em;max-width:100%;margin-top:0.6em;">
+              <span class="qui"><i class="fas fa-user"></i> Vous, si c'était mieux avant</span>
+              «&nbsp;Montre-moi ce qui diffère avec la sauvegarde du 20 novembre, puis remets-la si je confirme.&nbsp;»
+            </div>
+          </div>
+          <div>
+            <div class="attention" style="margin-top:0;">
+              <h3 style="font-size:1.05em;margin:0 0 0.3em 0;"><i class="fas fa-triangle-exclamation"></i> Jamais dans <code>.claude/skills/</code></h3>
+              Une copie rangée là serait chargée comme un second skill, au même nom : l'agent ne saurait plus lequel utiliser.
+            </div>
+            <div class="astuce">
+              <i class="fas fa-rotate"></i> Pour une retouche plus large, repassez par skill-creator : «&nbsp;améliore le skill mes-cours : il oublie les méthodes&nbsp;».
+            </div>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 9. Ce que vous obtenez (+ pile) -->
+      <section>
+      <section>
+        <h2>Ce que vous obtenez</h2>
+        <div class="livrables">
+          <div class="livrable"><i class="fas fa-folder-open"></i><div class="titre">Un skill à vous</div>Un dossier dans votre projet, lisible et modifiable, qui rédige à votre manière.</div>
+          <div class="livrable" style="border-color:var(--e4);"><i class="fas fa-vial-circle-check" style="color:var(--e4);"></i><div class="titre">Testé sur un cas connu</div>Comparé à votre propre cours, corrigé écart par écart.</div>
+          <div class="livrable" style="border-color:var(--e5);"><i class="fas fa-seedling" style="color:var(--e5);"></i><div class="titre">Qui s'affine</div>Un journal de vos retours et des mises à jour que vous validez.</div>
+        </div>
+        <p class="small" style="margin-top:1em;">
+          <i class="fas fa-user-tie" style="color:#3498db;"></i>
+          Votre rôle : décrire votre façon de faire, répondre aux questions, relire, signaler.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 9.1 Limites -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Bonnes pratiques et limites</h3>
+        <div class="detail duo2">
+          <div class="bloc gain">
+            <h3>Ce qui marche bien</h3>
+            <ul>
+              <li>Un skill par usage précis : «&nbsp;mes cours&nbsp;», puis «&nbsp;mes fiches d'exercices&nbsp;».</li>
+              <li>Un cours modèle typique, et quelques lignes sur ce qu'il ne montre pas.</li>
+              <li>Des remarques concrètes : «&nbsp;l'exemple 2 est trop difficile pour une 5e&nbsp;».</li>
+              <li>Le même skill sert dans plusieurs projets : copiez son dossier.</li>
+            </ul>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-triangle-exclamation"></i> Limites</h3>
+            <ul>
+              <li>L'exactitude mathématique reste à vérifier par vous.</li>
+              <li>Un seul cours modèle ne montre pas tout : le second test et le journal comblent les trous.</li>
+              <li>skill-creator évolue avec Anthropic : ses propositions peuvent changer d'une version à l'autre.</li>
+              <li>Un skill trop général se déclenche mal : mieux vaut deux skills précis.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 10. L'installer -->
+      <section>
+        <h2>L'installer</h2>
+        <div class="anthropic">
+          <strong><i class="fas fa-wand-magic-sparkles" style="color:var(--violet-color);"></i> skill-creator</strong> n'est pas inclus : il est fourni et maintenu par Anthropic.
+<br>Claude Code : <code style="white-space:nowrap;">/plugin install skill-creator@claude-plugins-official</code> · Codex : <code>$skill-creator</code>, intégré.
+        </div>
+        <p class="small" style="margin:0 0 0.5em 0;">
+          <i class="fas fa-shopping-basket" style="color:#3498db;"></i>
+          <strong>grill-me</strong> : sur le <a href="https://bfcours.dev/claude-code/tutorials/creer-un-skill" target="_top">tutoriel pas à pas</a>, ajoutez le <strong>pack «&nbsp;Skill grill-me&nbsp;»</strong> au panier, puis téléchargez l'archive.
+        </p>
+        <div class="install">
+          <div class="carte">
+            <div class="titre">Claude Code, dans le projet <span class="badge">recommandé</span></div>
+            Décompresser dans le dossier du projet : les skills arrivent dans <code>.claude/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Claude Code, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.claude/skills/</code> : actif partout, même là où il n'a rien à faire.
+          </div>
+          <div class="carte">
+            <div class="titre">Codex, dans le projet <span class="badge">recommandé</span></div>
+            Copier le contenu de <code>.claude/</code> dans <code>.agents/</code> : les skills arrivent dans <code>.agents/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Codex, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.agents/skills/</code>.
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:0.6em;">
+          Prérequis : Claude Code ou Codex ; Python 3 pour la page web de grill-me. Puis : «&nbsp;<em>Je veux créer un skill avec skill-creator, mais commence par une séance grill-me…</em>&nbsp;»
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="assets/reveal/reveal.js"></script>
+  <script src="assets/reveal/plugin/notes/notes.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation à deux dimensions : → fil principal, ↓ détails de l'étape
+      navigationMode: 'default',
+      controls: true,
+      controlsLayout: 'bottom-right',
+      controlsTutorial: true,
+      controlsBackArrows: 'faded',
+      progress: true,
+      slideNumber: 'h.v',
+      overview: true,
+      hash: true,
+      transition: 'slide',
+      center: true,
+      fragments: true,
+      fragmentInURL: true,
+      plugins: [ RevealNotes ]
+    });
+  </script>
+</body>
+</html>

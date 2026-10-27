@@ -14,8 +14,8 @@ import {
 } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 import { HelpCircle, X } from 'lucide-react'
-import { AI_PACKAGES, findRedundantPackages } from '@/data/ai-packages'
-import type { PackageTier } from '@/data/ai-packages'
+import { ALL_PACKAGES, findRedundantPackages } from '@/data/ai-packages'
+import type { PackageId } from '@/data/ai-packages'
 
 interface CartDrawerProps {
   /** Contrôle l'ouverture du drawer */
@@ -40,14 +40,14 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
     const packageItems = items.filter(i => i.id.startsWith('package-'))
     if (packageItems.length <= 1) return null
 
-    const packageIds = packageItems.map(i => i.id.replace('package-', '') as PackageTier)
+    const packageIds = packageItems.map(i => i.id.replace('package-', '') as PackageId)
     const { redundant, reason } = findRedundantPackages(packageIds)
 
     if (redundant.length === 0) return null
 
     return redundant.map(id => {
       const item = packageItems.find(i => i.id === `package-${id}`)!
-      const includedBy = AI_PACKAGES.find(p => p.id === reason[id])!
+      const includedBy = ALL_PACKAGES.find(p => p.id === reason[id])!
       return { item, includedByName: includedBy.name }
     })
   })()
@@ -62,7 +62,7 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
       // Download packages: deduplicate then download each non-redundant one
       if (packageItems.length > 0) {
         const pkgIds = packageItems
-          .map(i => i.id.replace('package-', '') as PackageTier)
+          .map(i => i.id.replace('package-', '') as PackageId)
 
         // Remove redundant packages (already included by others)
         const { redundant } = findRedundantPackages(pkgIds)

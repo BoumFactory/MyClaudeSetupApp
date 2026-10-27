@@ -1,21 +1,58 @@
 export type PackageTier = 'generaliste' | 'latex' | 'avance'
 
-export interface AIPackage {
-  id: PackageTier
+/** Packs dédiés à un skill (le skill + les skills qu'il appelle + leurs dépendances) */
+export type SkillPackId = 'skill-latex' | 'skill-reveals' | 'skill-capsule-video' | 'skill-bareme' | 'skill-typst'
+  | 'skill-grill-me'
+
+/** Tout identifiant téléchargeable par /api/download-package */
+export type PackageId = PackageTier | SkillPackId
+
+export interface AIPackage<Id extends string = PackageTier> {
+  id: Id
   name: string
   subtitle: string
   description: string
   icon: string
   color: string
-  tier: number // 1 = base, 2 = spécialisé, 3 = complet
+  tier: number // 0 = pack d'un skill, 1 = base, 2 = spécialisé, 3 = complet
   skills: string[]
   agentPaths: string[]
   commandPaths: string[]
   dataPaths: string[]
   agentsDataPaths: string[]
+  /** Fichiers de claude-setup/mcp_servers/ requis par les scripts des skills ('*' = tout) */
+  mcpServerPaths?: string[]
   claudeMdFile: string
   highlights: string[]
+  /**
+   * Pack d'un skill : l'archive ne contient que .claude/ (skills, mcp_servers, datas)
+   * et un LISEZMOI dans .claude/ — pas de CLAUDE.md, settings.json, hooks ni scripts partagés.
+   * Elle peut donc se décompresser directement dans un projet existant.
+   */
+  skillOnly?: boolean
+  /** Modules pip nécessaires aux scripts des skills (affichés dans la page et le LISEZMOI) */
+  pythonDeps?: string
+  /**
+   * Ligne finale de la liste du contenu, sur la page du pack.
+   * Absente : « Les modèles, guides et scripts Python dont ces skills ont besoin » ; null : aucune ligne.
+   */
+  annexes?: string | null
+  /**
+   * Prérequis du LISEZMOI pour un pack de skill sans page de skill (SKILL_PAGES) :
+   * par exemple un pack téléchargé depuis un tutoriel.
+   */
+  prerequis?: string[]
 }
+
+/**
+ * Serveurs Python importés par les scripts de tex-document-creator et tex-compiling-skill
+ * (ils remontent de quatre niveaux jusqu'à .claude/mcp_servers/).
+ */
+const LATEX_MCP_SERVERS = [
+  'document_creator_server.py',
+  'latex_compiler_server.py',
+  'requirements.txt',
+]
 
 // Skills de base partagés par tous les bundles
 const BASE_SKILLS = [
@@ -146,6 +183,7 @@ export const AI_PACKAGES: AIPackage[] = [
       'nicematrix-expert',
       'proflycee-expert',
     ],
+    mcpServerPaths: LATEX_MCP_SERVERS,
     claudeMdFile: 'CLAUDE-simple.md',
     highlights: [
       'Tout le bundle Généraliste inclus',
@@ -177,6 +215,7 @@ export const AI_PACKAGES: AIPackage[] = [
     commandPaths: ['*'],
     dataPaths: ['*'],
     agentsDataPaths: ['*'],
+    mcpServerPaths: ['*'],
     claudeMdFile: 'CLAUDE-autoAmelioration.md',
     highlights: [
       'Tous les bundles précédents inclus',
@@ -189,18 +228,224 @@ export const AI_PACKAGES: AIPackage[] = [
 ]
 
 /**
+ * Packs dédiés à un skill, téléchargeables depuis la page de présentation du skill.
+ * Chaque pack = le skill + les skills qu'il enchaîne + les fichiers dont leurs scripts ont besoin.
+ * Pour en déclarer un nouveau : ajouter l'id à SkillPackId, puis une entrée ici (tier 0, skillOnly).
+ */
+export const SKILL_PACKS: AIPackage<SkillPackId>[] = [
+  {
+    id: 'skill-latex',
+    name: 'Skill latex',
+    subtitle: 'De la demande au PDF relu',
+    description: 'Le skill latex et les skills qu\'il enchaîne : créer le document à partir d\'un modèle, l\'écrire avec bfcours, le compiler, puis relire le PDF et en améliorer la mise en page.',
+    icon: '📄',
+    color: 'cosmic',
+    tier: 0,
+    skills: [
+      'latex',                // orchestrateur
+      'tex-document-creator', // 1. créer
+      'bfcours-latex',        // 2. écrire
+      'tex-compiling-skill',  // 3. compiler
+      'latex-visual-review',  // 4. regarder et améliorer
+      'pdf2tikz',             // étape 0 : reprendre les figures d'un PDF source
+    ],
+    agentPaths: [],
+    commandPaths: [],
+    dataPaths: [
+      'latex-modeles',
+      'create-document-user-preferences.json',
+      'latex-compiler-preferences.json',
+    ],
+    agentsDataPaths: [],
+    mcpServerPaths: LATEX_MCP_SERVERS,
+    claudeMdFile: '',
+    skillOnly: true,
+    // mcp : serveurs de création/compilation ; pymupdf, numpy, Pillow : capture et mesure des pages
+    pythonDeps: 'mcp pymupdf numpy Pillow',
+    highlights: [
+      'latex : enchaîne les quatre étapes',
+      'tex-document-creator : crée le document à partir d\'un modèle',
+      'bfcours-latex : écrit le contenu avec les environnements bfcours',
+      'tex-compiling-skill : compile et corrige les erreurs',
+      'latex-visual-review : relit le PDF et améliore la mise en page',
+      'pdf2tikz : reprend les figures d\'un PDF source',
+    ],
+  },
+  {
+    id: 'skill-reveals',
+    name: 'Skill reveals',
+    subtitle: 'De la demande au diaporama prêt à projeter',
+    description: 'Le skill reveals-presentation : un diaporama reveal.js à partir d\'une demande ou d\'un document, sur trois gabarits (collège, lycée, conférence), fil de la séance de gauche à droite et détails en dessous, figures TikZ reprises en images.',
+    icon: '🎞️',
+    color: 'cosmic',
+    tier: 0,
+    // Le skill est autonome : gabarits et exemples dans assets/, guides dans references/,
+    // scripts en bibliothèque standard Python (LuaLaTeX et pdftoppm/Ghostscript/ImageMagick
+    // seulement pour les figures TikZ). L'agent reveals-creator et la commande /createReveals
+    // ne sont pas inclus : propres à Claude Code et redondants avec le skill.
+    skills: ['reveals-presentation'],
+    agentPaths: [],
+    commandPaths: [],
+    dataPaths: [],
+    agentsDataPaths: [],
+    mcpServerPaths: [],
+    claudeMdFile: '',
+    skillOnly: true,
+    highlights: [
+      'reveals-presentation : cadre, construit et contrôle le diaporama',
+      'Trois gabarits au design figé : collège, lycée, académique',
+      'Guides : cours en quatre niveaux, exercices à une diapo par question, navigation 2D',
+      'Deux présentations complètes servant de modèles (cours, exercices)',
+      'Scripts : figures TikZ et PDF en images, version autonome à partager',
+    ],
+  },
+  {
+    id: 'skill-capsule-video',
+    name: 'Skill capsules vidéo',
+    subtitle: 'De la demande à la vidéo animée',
+    description: 'Le skill capsule-video : une correction ou une explication devient une vidéo MP4 dont chaque geste suit la voix. L\'agent relit l\'exercice, écrit le texte comme une copie modèle, le fait lire par une voix de synthèse locale (ou part de votre enregistrement), cale chaque geste sur un mot puis filme la vidéo.',
+    icon: '🎬',
+    color: 'cosmic',
+    tier: 0,
+    // Le skill est autonome : moteur canvas (MathJax, GSAP, polices, three.js embarqués) dans assets/,
+    // scripts Python dans scripts/, installeur des logiciels dans installation/.
+    // Exclus : config.json (chemins du poste, voix clonée personnelle ; l'installeur en écrit un neuf),
+    // tout échantillon de voix, et les outils lourds (Chromium, FFmpeg, Pocket TTS, MFA, Parakeet,
+    // Whisper, Piper : ≈ 6 Go) que l'installeur télécharge dans le dossier choisi.
+    skills: ['capsule-video'],
+    agentPaths: [],
+    commandPaths: [],
+    dataPaths: [],
+    agentsDataPaths: [],
+    mcpServerPaths: [],
+    claudeMdFile: '',
+    skillOnly: true,
+    // Pas de pythonDeps : l'installeur crée ses propres environnements Python (rendu, Pocket, Parakeet, MFA)
+    highlights: [
+      'capsule-video : prépare, écrit, fait dire et anime la capsule',
+      'Moteur d\'animation canvas : formules, figures, tableaux, tuiles algébriques, scènes 3D',
+      'Guides : rigueur d\'une copie modèle, écriture pour l\'oreille, catalogue des gestes, design',
+      'Six capsules d\'exemple (correction, figure, tableau croisé, tuiles, tutoriel logiciel)',
+      'Installeur Windows (et Linux/macOS non testé) des logiciels gratuits, sans aucune voix clonée',
+    ],
+  },
+  {
+    id: 'skill-bareme',
+    name: 'Skill barème détaillé',
+    subtitle: 'Du sujet corrigé au barème justifié',
+    description: 'Le skill bareme-actions-eleves et la commande /bareme : l\'agent lit le sujet et son corrigé, découpe chaque corrigé en actions d\'élève visibles sur la copie, calcule les points (actions × coefficient), la conversion sur 20 et la densité du sujet.',
+    icon: '⚖️',
+    color: 'cosmic',
+    tier: 0,
+    // Aucun script : le skill n'a qu'une fiche (SKILL.md) et une interface HTML autonome (templates/bareme.html).
+    // La commande /bareme déroule le protocole ; bfcours-latex n'est pas embarqué (le sujet existe déjà).
+    skills: ['bareme-actions-eleves'],
+    agentPaths: [],
+    commandPaths: ['creer/evaluation/bareme.md'],
+    dataPaths: [],
+    agentsDataPaths: [],
+    mcpServerPaths: [],
+    claudeMdFile: '',
+    skillOnly: true,
+    highlights: [
+      'bareme-actions-eleves : règles d\'atomisation, coefficients, formules, seuils de densité',
+      'Commande /bareme : le protocole pas à pas, du .tex au barème',
+      'Interface bareme.html : relire et ajuster le barème, synthèse, export CSV',
+    ],
+    annexes: 'Aucun script ni module Python : l\'agent lit, compte et écrit lui-même',
+  },
+  {
+    id: 'skill-typst',
+    name: 'Skill Typst',
+    subtitle: 'De la demande aux PDF professeur et élève',
+    description: 'Le skill bfcours-typst et le skill typst : l\'agent part de votre cours LaTeX bfcours (préconversion automatique) ou d\'un document modèle, écrit avec la suite farfadet, compile les versions professeur et élève puis regarde les pages avant de livrer.',
+    icon: '🪶',
+    color: 'cosmic',
+    tier: 0,
+    // Skills autonomes : scripts Python (bibliothèque standard + module typst ; PyMuPDF pour les images
+    // de contrôle), index des fonctions dans bfcours-typst/scripts/donnees/. Aucun mcp_servers ni datas.
+    // La suite farfadet elle-même (paquets, polices, bfwatch) s'installe par la page Packages Typst
+    // (installateur de la Forge) : localiser.py la retrouve sans chemin en dur.
+    // Non inclus : typst-creation et typst-documentation (développement de paquets, pas de documents élèves).
+    skills: [
+      'bfcours-typst', // partir, écrire, compiler, regarder
+      'typst',         // le langage en plus long (facultatif)
+    ],
+    agentPaths: [],
+    commandPaths: [],
+    dataPaths: [],
+    agentsDataPaths: [],
+    mcpServerPaths: [],
+    claudeMdFile: '',
+    skillOnly: true,
+    pythonDeps: 'typst pymupdf',
+    highlights: [
+      'bfcours-typst : convertit, écrit, compile et contrôle les documents farfadet',
+      'convertir.py : préconversion d\'un .tex bfcours, rapport des points à reprendre',
+      'compiler.py : versions professeur et élève, extraits LaTeX, images de contrôle',
+      'chercher.py : la bonne fonction et ses options, aussi par nom de commande LaTeX',
+      'Documents complets à imiter : cours, fiche d\'exercices, évaluation, QCM',
+      'typst : le langage, les figures cetz, la correspondance LaTeX → Typst',
+    ],
+    annexes: 'La suite farfadet elle-même s\'installe à part, en une commande (page Packages Typst)',
+  },
+  {
+    id: 'skill-grill-me',
+    name: 'Skill grill-me',
+    subtitle: 'Se faire interviewer avant de se lancer',
+    description: 'Le skill grill-me seul : avant de produire, l\'agent vous interroge par manches de questions à choix, chacune avec sa recommandation, jusqu\'à ce que rien ne reste implicite. Il sert notamment à préciser un skill avant de le faire écrire par skill-creator. skill-creator n\'est pas inclus : il est fourni et maintenu par Anthropic.',
+    icon: '🎤',
+    color: 'cosmic',
+    tier: 0,
+    // Skill autonome : SKILL.md, guide du format de manche (references/), gabarit HTML et exemple (assets/),
+    // deux scripts en bibliothèque standard Python (page de manche, petit serveur local pour la dictée).
+    // Ni mcp_servers ni datas. wayfinder (qui peut l'appeler) n'est pas inclus.
+    // Téléchargé depuis le tutoriel « Créer son propre skill » (pas de page de skill dédiée).
+    skills: ['grill-me'],
+    agentPaths: [],
+    commandPaths: [],
+    dataPaths: [],
+    agentsDataPaths: [],
+    mcpServerPaths: [],
+    claudeMdFile: '',
+    skillOnly: true,
+    highlights: [
+      'grill-me : interview par manches, une recommandation argumentée par question',
+      'Deux modes : questions dans le terminal, ou page web cliquable avec dictée vocale',
+      'Récapitulatif des décisions, validé par vous avant toute action',
+    ],
+    annexes: 'Aucun module Python à installer : les scripts n\'utilisent que la bibliothèque standard',
+    prerequis: [
+      'Claude Code (ou Codex). Le mode terminal s\'appuie sur les questions à choix de Claude Code ; avec Codex, préférez la page web.',
+      'Python 3, seulement pour le mode page web (aucun module à installer).',
+      'Chrome ou Edge pour la dictée vocale de la page web (facultatif ; sinon Win + H sous Windows).',
+      'skill-creator n\'est pas inclus : il est fourni et maintenu par Anthropic. Claude Code : /plugin install skill-creator@claude-plugins-official. Codex : $skill-creator, intégré.',
+      'Tutoriel pas à pas : https://bfcours.dev/claude-code/tutorials/creer-un-skill',
+    ],
+  },
+]
+
+/** Bundles et packs de skills réunis (résolution des téléchargements et des doublons du panier) */
+export const ALL_PACKAGES: AIPackage<PackageId>[] = [...AI_PACKAGES, ...SKILL_PACKS]
+
+/**
  * Returns true if pkgA fully includes pkgB.
  * Power User (tier 3) includes everything.
  * Tier 2 package (latex) includes Généraliste (tier 1).
+ * Un bundle inclut un pack de skill (tier 0) s'il contient tous ses skills.
  * Same package includes itself.
  */
-export function packageIncludes(pkgAId: PackageTier, pkgBId: PackageTier): boolean {
+export function packageIncludes(pkgAId: PackageId, pkgBId: PackageId): boolean {
   if (pkgAId === pkgBId) return true
-  const a = AI_PACKAGES.find(p => p.id === pkgAId)
-  const b = AI_PACKAGES.find(p => p.id === pkgBId)
+  const a = ALL_PACKAGES.find(p => p.id === pkgAId)
+  const b = ALL_PACKAGES.find(p => p.id === pkgBId)
   if (!a || !b) return false
+  // Un pack de skill n'inclut aucun autre package
+  if (a.tier === 0) return false
   // Power User includes everything
   if (a.tier === 3) return true
+  // Pack de skill : inclus si le bundle en contient tous les skills
+  if (b.tier === 0) return b.skills.every(s => a.skills.includes(s))
   // Tier 2 includes only tier 1
   if (a.tier === 2 && b.tier === 1) return true
   return false
@@ -210,12 +455,12 @@ export function packageIncludes(pkgAId: PackageTier, pkgBId: PackageTier): boole
  * Find redundant packages in a list.
  * Returns packages that are already included by another package in the list.
  */
-export function findRedundantPackages(packageIds: PackageTier[]): {
-  redundant: PackageTier[]
-  reason: Record<PackageTier, PackageTier> // redundant → included by
+export function findRedundantPackages(packageIds: PackageId[]): {
+  redundant: PackageId[]
+  reason: Record<PackageId, PackageId> // redundant → included by
 } {
-  const redundant: PackageTier[] = []
-  const reason: Record<string, PackageTier> = {}
+  const redundant: PackageId[] = []
+  const reason: Record<string, PackageId> = {}
 
   for (const id of packageIds) {
     for (const otherId of packageIds) {
@@ -228,7 +473,7 @@ export function findRedundantPackages(packageIds: PackageTier[]): {
     }
   }
 
-  return { redundant, reason: reason as Record<PackageTier, PackageTier> }
+  return { redundant, reason: reason as Record<PackageId, PackageId> }
 }
 
 /**

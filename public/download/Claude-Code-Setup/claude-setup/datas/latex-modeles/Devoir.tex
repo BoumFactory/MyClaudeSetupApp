@@ -18,12 +18,8 @@ display level,
 save lower,
 score=\points,
 level=\rdifficulty,
-overlay={\node[inner sep=0pt,
-anchor=west,rotate=90, yshift=0.3cm]
-at (frame.south west) {\thetags[0]} ;}
-]
+overlay={\ifcorrection \node[inner sep=0pt,anchor=west,rotate=90, yshift=0.3cm] at (frame.south west) {\thetags[0]} ;\else \fi}
 }
-\setrdcrep{seyes, correction=true, correction color=monrose, correction font = \large\bfseries}
 
 \newcommand{\tikzinclude}[1]{%
     \stepcounter{tikzfigcounter}%
@@ -32,15 +28,13 @@ at (frame.south west) {\thetags[0]} ;}
 \input{enonce_figures}
 
 \hypersetup{
-    pdfauthor={R.Deschamps},
+    pdfauthor={},
     pdfsubject={},
     pdfkeywords={},
     pdfproducer={LuaLaTeX},
     pdfcreator={Boum Factory}
 }
-% Activer ou désactiver l'affichage des boîtes pour les points
-%\displayitempointsfalse % Ne pas afficher les boîtes
-\displayitempointstrue % Afficher les boîtes
+\displayitempointstrue
 \renewcommand{\boldsymbol}[1]{#1}
 
 \begin{document}
@@ -58,21 +52,20 @@ at (frame.south west) {\thetags[0]} ;}
     }{
     % type_etablissement : Collège,Lycée
     }{
-    % nom_etablissement : Othe et Vanne,Amadis Jamyn,Eugène Belgrand
+    % nom_etablissement : Collège Exemple,Lycée Exemple,Autre établissement
     }{
     \tableauEval{% duree : 10},15},30},55}%}
     }{
     Devoir :
     }
 
-\setrdcrep{seyes, correction=true, correction color=monrose, correction font = \large\bfseries}
+\setrdcrep{seyes, correction=false, correction color=monrose, correction font = \large\bfseries}
 
 
 \begin{None}
     \begin{tcbraster}[
         raster columns     = 3,
         raster width       = \textwidth,
-        %size               = fbox,
         raster equal height,
         raster column skip = 5pt,
         raster row skip    = 2pt
@@ -82,7 +75,7 @@ at (frame.south west) {\thetags[0]} ;}
         \end{tcolorbox}
         \begin{tcolorbox}[blankest, width=\textwidth]
             %\begin{minipage}[t]{0.85\textwidth}
-                \begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, top=1pt, bottom=1pt, left=1pt, right=1pt, boxrule=1pt, arc=2pt, auto outer arc, boxsep=0pt, nobeforeafter]%0.280
+                \begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, top=1pt, bottom=1pt, left=1pt, right=1pt, boxrule=1pt, arc=2pt, auto outer arc, boxsep=0pt, nobeforeafter]
                     \textbf{Bilan : \tccrep[seyes=false]{1.5cm}{}/\getsavedtotalpoints\phantom{A}\tccrep[seyes=false]{2cm}{}} 
                   \end{tcolorbox}
             %\end{minipage}\\
@@ -118,7 +111,7 @@ at (frame.south west) {\thetags[0]} ;}
     }{
     Solutions :
     }
-\setrdcrep{seyes, correction=true, correction color=monrose, correction font = \large\bfseries}
+\setrdcrep{seyes, correction=true, correction color=prop, correction font = \normalsize}
 \tcbset{
     rdexo/default/.cd,correction style/.style={
         before upper=%
