@@ -22,6 +22,9 @@ import {
   PenTool,
   Video,
   Wand2,
+  GitBranch,
+  Plug,
+  Blocks,
 } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -112,6 +115,7 @@ const INSTALL_GUIDES = [
       { title: 'Python', href: '/claude-code/tutorials/python-install', icon: Code2, color: 'text-yellow-400', description: 'Langage requis pour les scripts et skills avancés' },
       { title: 'Node.js', href: '/claude-code/tutorials/nodejs-install', icon: Globe, color: 'text-green-400', description: 'Environnement JavaScript pour Claude Code et les outils web' },
       { title: 'VS Code + MiKTeX', href: '/claude-code/tutorials/vscode-miktex', icon: FileText, color: 'text-sky-400', description: 'Éditeur de code et compilateur LaTeX pour les documents' },
+      { title: 'Git pour Windows', href: '/claude-code/tutorials/git-install', icon: GitBranch, color: 'text-orange-400', description: 'Git Bash, le terminal que Claude Code utilise sous Windows' },
     ],
   },
   {
@@ -135,6 +139,8 @@ const INSTALL_GUIDES = [
     guides: [
       { title: 'Utilisation et config', href: '/claude-code/tutorials/utilisation-config', icon: Layers, color: 'text-violet-400', description: 'Commandes, skills, agents et fichiers de configuration' },
       { title: 'Setup BFCours', href: '/claude-code/tutorials/bfcours-setup', icon: PenTool, color: 'text-rose-400', description: 'Installer le package LaTeX pédagogique complet' },
+      { title: 'Connecteurs et API', href: '/claude-code/tutorials/connecteurs', icon: Plug, color: 'text-sky-400', description: 'Connecteurs claude.ai, serveurs MCP et clés API : différences et précautions' },
+      { title: 'Les mods', href: '/claude-code/tutorials/mods', icon: Blocks, color: 'text-fuchsia-400', description: 'Personnaliser l\'interface de Claude Code : notifications, bandeaux, commandes' },
     ],
   },
 ]

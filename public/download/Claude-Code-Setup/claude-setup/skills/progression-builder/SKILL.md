@@ -33,8 +33,9 @@ Le skill couvre **deux flux** :
    collègues (autonome, à compléter ensuite à la main, à la souris).
 2. **Complétion guidée** d'une progression par dialogue avec
    l'enseignant : Claude construit un petit JSON décrivant la
-   progression puis un script Python l'injecte dans le HTML — évitant de
-   charger 100 KB de HTML dans le contexte de l'agent.
+   progression puis un script Python l'embarque dans la fiche, qui
+   s'ouvre déjà remplie — sans jamais charger les centaines de Ko du HTML
+   dans le contexte de l'agent.
 
 ## Quand déclencher ce skill
 
@@ -65,9 +66,9 @@ progression-builder/
 ├── scripts/
 │   ├── _utils.py                         # palette domaines, slugify, escape
 │   ├── generate_vierge.py                # niveau → HTML vierge
-│   ├── apply_progression.py              # HTML vierge + JSON → HTML rempli (+ stats couverture)
+│   ├── apply_progression.py              # fiche + JSON → fiche pré-remplie (snapshot embarqué, stats couverture)
 │   └── validate_progression.py           # JSON → rapport d'erreurs/warnings (codes, types, doublons)
-├── tests/                                 # suite pytest (~70 tests, < 1 s)
+├── tests/                                 # suite pytest (71 tests, quelques secondes)
 │   ├── conftest.py
 │   ├── test_utils.py
 │   ├── test_generate_vierge.py
@@ -218,7 +219,9 @@ PYTHONIOENCODING=utf-8 python scripts/validate_progression.py \
 ```
 
 Exit code 0 = OK, 1 = erreur(s) bloquante(s), 2 = warnings en mode
-`--strict`. Le rapport liste précisément les éléments fautifs.
+`--strict`. Le rapport liste précisément les éléments fautifs. Avec
+`--html fiche.html`, les codes valides sont lus dans le référentiel
+embarqué de la fiche (utile si elle a reçu un référentiel personnalisé).
 
 Puis appliquer :
 
@@ -229,31 +232,44 @@ PYTHONIOENCODING=utf-8 python scripts/apply_progression.py \
     --output out/progression_5E_v1.html
 ```
 
+Fonctionnement : la fiche (gabarit v2) n'a aucun objectif statique ; sa
+colonne gauche est construite en JS depuis l'objet `DATA`, puis
+`App.init(snapshot)` rejoue l'état enregistré dans la balise
+`<script type="application/json" id="__snapshot__">` (celle que réécrit
+le bouton « HTML » de la fiche). Le script convertit le JSON de
+progression en snapshot et l'écrit dans cette balise. À l'ouverture, la
+fiche déplace elle-même chaque objectif vers sa séquence : la fiche
+produite est autonome, pré-remplie, et garde toutes ses fonctions
+(glisser-déposer, exports HTML/PDF/JSON, impression, double-clic vers la
+source BO, lien vers le PDF embarqué).
+
 Le script :
 
-- grise automatiquement les compétences placées (impossibles à
-  re-glisser à gauche tant qu'on ne les retire pas à droite),
+- remplace les séquences de la fiche (on peut donc l'appliquer aussi à
+  une fiche déjà remplie ; son référentiel et sa configuration sont
+  conservés),
+- convertit les `vacances` en séparateurs dorés, et les `separateur`
+  internes à une séquence en commentaires « 🛠 label » (la fiche n'a pas
+  de séparateur interne),
 - affiche en fin de run un **récap de couverture par domaine** (placé /
   total, avec barres de progression),
-- signale en `[WARN]` tout code absent du leftPanel — typo ou code
-  inexistant dans le BO.
+- signale en `[WARN]` tout code absent du référentiel de la fiche (typo
+  ou code inexistant) et tout doublon : ils sont ignorés.
 
 Pour désactiver l'affichage des stats : `--no-stats`.
 
-## Mode 3 — Édition directe ponctuelle
+**Alternative sans script** : le bouton « 📂 Importer » de la fiche lit
+le même JSON (validé au préalable). L'enseignant peut ainsi charger une
+progression dans n'importe quelle fiche vierge, puis « HTML » pour
+l'enregistrer remplie.
 
-Pour 1–3 retouches ciblées sur un HTML déjà rempli (renommer une
-séquence, ajouter UNE compétence), travailler avec **Edit** directement
-sur le HTML. Patterns à connaître :
+## Mode 3 — Retouches ponctuelles
 
-- titre de séquence : `<div class="sequence-title" contenteditable="true" oninput="updateExport()">TITRE</div>`
-- objectif déposé : `<div class="right-objectif" data-code="CODE" …>TEXTE<span class="close-btn delete-right-objectif">×</span></div>`
-- vacances : `<div class="vacances"><div class="ligne"></div><div class="texte" …>LABEL</div>…`
-- ajouter un objectif à droite ⇒ **toujours** marquer son miroir gauche
-  comme `class="objectif grayed"` et `draggable="false"`.
-
-Au-delà de quelques retouches, repasser par Mode 2 (JSON + script) pour
-éviter les erreurs de cohérence.
+Ne pas éditer le HTML à la main : les séquences n'y existent que dans le
+snapshot JSON. Modifier le `progression.json` (ou le fichier produit par
+le bouton « 📋 JSON » de la fiche, en remettant `niveau` au code du
+niveau), le revalider et relancer `apply_progression.py`. Détail dans
+`references/workflow_conversation.md`.
 
 ## Gabarit et fiches vierges
 
@@ -275,7 +291,7 @@ directement distribuables.
 ## Tests rapides après modification
 
 ```bash
-# Suite pytest complète (~70 tests, < 1 s) — couvre les 13 niveaux,
+# Suite pytest complète (71 tests) — couvre les 13 niveaux,
 # les patches JS, validate_progression et apply_progression.
 PYTHONIOENCODING=utf-8 python -m pytest tests/ -q
 
@@ -285,12 +301,14 @@ for n in CM1 6E 4E 2GT TSPE; do
   PYTHONIOENCODING=utf-8 python scripts/generate_vierge.py --niveau "$n" --output "out/p_${n}.html"
 done
 
-# 2. validate puis apply
-PYTHONIOENCODING=utf-8 python scripts/validate_progression.py --progression out/test_progression_5E.json
+# 2. validate puis apply sur l'exemple fourni
+PYTHONIOENCODING=utf-8 python scripts/validate_progression.py --progression assets/exemple_progression.json
 PYTHONIOENCODING=utf-8 python scripts/apply_progression.py \
-    --html out/p_5E.html \
-    --progression out/test_progression_5E.json \
+    --html out/progression_5E_vierge.html \
+    --progression assets/exemple_progression.json \
     --output out/p_5E_rempli.html
+# 3. Contrôle visuel : capture via le skill capture-html (3 séquences,
+#    2 vacances, « 8 / 168 placés » en tête de la colonne gauche).
 ```
 
 Le HTML produit doit s'ouvrir directement dans Chrome/Firefox : drag &

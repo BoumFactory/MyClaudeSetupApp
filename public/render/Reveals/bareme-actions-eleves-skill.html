@@ -404,7 +404,7 @@
             <tr><td><span class="pastille p-bleu">Méthode</span></td><td><code>bareme-actions-eleves</code></td><td>Les règles d'atomisation, les coefficients, les formules et les seuils de densité.</td></tr>
             <tr><td><span class="pastille p-ok">Déroulé</span></td><td>commande <code>/bareme</code></td><td>Le protocole pas à pas : lire le <code>.tex</code>, détecter les types d'exercice, atomiser, écrire le JSON, afficher la synthèse.</td></tr>
             <tr><td><span class="pastille p-mid">Interface</span></td><td><code>templates/bareme.html</code></td><td>Une page autonome, sans installation, pour relire et ajuster le barème.</td></tr>
-            <tr><td><span class="pastille p-gris">En amont</span></td><td><code>bfcours-latex</code></td><td>Le sujet rédigé avec ses corrigés. Ce skill appelle le barème après toute évaluation.</td></tr>
+            <tr><td><span class="pastille p-gris">En amont</span></td><td><code>votre sujet</code></td><td>Le sujet et ses corrigés, que vous fournissez : ce pack ne les rédige pas (c'est le rôle du skill latex, présenté à part).</td></tr>
           </table>
           <div class="duo2" style="margin-top:0.6em;">
             <div class="astuce" style="margin-top:0;"><i class="fas fa-route"></i> Place dans le flux d'une évaluation : rédiger le sujet, rédiger les corrigés, <strong>puis</strong> le barème. La notation des copies se fait ensuite, hors du skill.</div>

@@ -110,6 +110,25 @@ export default function VSCodeMikTeXPage() {
                       </p>
                     </div>
                   </div>
+
+                  <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-medium">Mettre à jour juste après l&apos;installation</p>
+                      <p className="text-sm text-muted-foreground">
+                        Ouvrir la console MiKTeX, onglet « Updates », puis « Check for updates » et « Update now ».
+                        Une installation fraîche contient des paquets anciens : cette étape évite bien des erreurs de compilation.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-3 bg-emerald-950/30 border border-emerald-800 rounded-lg space-y-2">
+                  <p className="text-sm text-emerald-300 font-medium">Voie rapide : winget</p>
+                  <p className="text-sm text-muted-foreground">
+                    Dans PowerShell, cette commande installe MiKTeX sans passer par le site (pensez tout de même à la mise à jour ci-dessus) :
+                  </p>
+                  <CodeBlock code="winget install MiKTeX.MiKTeX" language="powershell" />
                 </div>
               </div>
 
@@ -176,9 +195,10 @@ export default function VSCodeMikTeXPage() {
                       <p className="font-medium text-emerald-300">Cocher "Ajouter au PATH"</p>
                       <p className="text-sm text-muted-foreground">
                         <strong className="text-foreground">Important :</strong> Pendant l'installation,
-                        cochez l'option "Ajouter au PATH". Cela permettra à VS Code d'accéder automatiquement
-                        aux exécutables TeX installés précédemment (MikTeX/LuaLaTeX), ainsi qu'à d'autres
-                        outils de développement présents sur votre système.
+                        laissez cochée l'option « Ajouter à PATH ». Elle permet d&apos;ouvrir un dossier dans VS Code
+                        depuis n&apos;importe quel terminal avec la commande <code className="px-1 rounded bg-muted">code .</code>,
+                        ce que Claude Code utilise volontiers. (MiKTeX, lui, s&apos;ajoute seul au PATH : VS Code trouve
+                        LuaLaTeX sans réglage.)
                       </p>
                     </div>
                   </div>
@@ -205,9 +225,15 @@ export default function VSCodeMikTeXPage() {
                   </div>
                 </div>
 
+                <div className="p-3 bg-emerald-950/30 border border-emerald-800 rounded-lg space-y-2 mt-4">
+                  <p className="text-sm text-emerald-300 font-medium">Voie rapide : winget</p>
+                  <CodeBlock code="winget install Microsoft.VisualStudioCode" language="powershell" />
+                </div>
+
                 <div className="glass-card p-4 bg-muted/30 mt-4">
                   <p className="text-sm text-muted-foreground">
                     <span className="font-semibold text-foreground">Note :</span> VS Code peut être remplacé par d'autres IDE comme Windsurf ou Cursor, qui offrent des fonctionnalités similaires.
+                    Claude Code propose aussi une extension VS Code officielle (« Claude Code », éditeur Anthropic) qui affiche la conversation dans un panneau de l&apos;éditeur.
                   </p>
                 </div>
               </div>
@@ -361,7 +387,7 @@ export default function VSCodeMikTeXPage() {
                     1
                   </div>
                   <p className="text-muted-foreground">
-                    Ouvrir les settings de l'extension LaTeX Workshop
+                    Ouvrir la palette de commandes : <code className="px-2 py-1 rounded bg-muted text-sm">Ctrl + Maj + P</code>
                   </p>
                 </div>
 
@@ -371,11 +397,14 @@ export default function VSCodeMikTeXPage() {
                   </div>
                   <div className="space-y-1">
                     <p className="text-muted-foreground">
-                      Utiliser la barre de recherche et taper :
+                      Taper puis choisir la commande :
                     </p>
                     <code className="block px-3 py-2 rounded-md bg-muted text-sm">
-                      &gt;latex workshop settings → &gt;settings Sync: Open User Settings(JSON)
+                      Preferences: Open User Settings (JSON)
                     </code>
+                    <p className="text-sm text-muted-foreground">
+                      (en français : « Préférences : Ouvrir les paramètres utilisateur (JSON) »)
+                    </p>
                   </div>
                 </div>
 

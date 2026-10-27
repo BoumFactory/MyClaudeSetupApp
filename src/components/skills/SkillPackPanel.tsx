@@ -99,7 +99,7 @@ export function SkillPackPanel({ config }: { config: SkillPageConfig }) {
       </section>
 
       {/* 2. Le pack */}
-      <SkillPackCard pack={pack} />
+      <SkillPackCard pack={pack} diaporama />
 
       {/* 3. Installation */}
       <SkillPackInstall pack={pack} prerequis={config.prerequis} />
@@ -111,7 +111,7 @@ export function SkillPackPanel({ config }: { config: SkillPageConfig }) {
  * Le pack : contenu, bouton « Ajouter au panier », bundles qui l'incluent déjà.
  * Réutilisable hors d'une page de skill (tutoriels).
  */
-export function SkillPackCard({ pack }: { pack: AIPackage<SkillPackId> }) {
+export function SkillPackCard({ pack, diaporama = false }: { pack: AIPackage<SkillPackId>; diaporama?: boolean }) {
   const cartItem: CartItem = {
     id: `package-${pack.id}`,
     name: `Pack ${pack.name}`,
@@ -135,6 +135,9 @@ export function SkillPackCard({ pack }: { pack: AIPackage<SkillPackId> }) {
             {pack.highlights.map(h => (
               <li key={h} className="flex gap-2"><Check className="w-4 h-4 mt-0.5 shrink-0 text-cosmic-300" />{h}</li>
             ))}
+            {diaporama && (
+              <li className="flex gap-2"><Check className="w-4 h-4 mt-0.5 shrink-0 text-cosmic-300" />Le diaporama de cette page, dans <code className="text-cosmic-300">.claude/diaporama/</code></li>
+            )}
             {pack.annexes !== null && (
               <li className="flex gap-2"><Check className="w-4 h-4 mt-0.5 shrink-0 text-cosmic-300" />{pack.annexes ?? 'Les modèles, guides et scripts Python dont ces skills ont besoin'}</li>
             )}

@@ -153,6 +153,12 @@ export function MainNav() {
               description: "Éditeur et compilateur LaTeX"
             },
             {
+              title: "Git pour Windows",
+              href: "/claude-code/tutorials/git-install",
+              icon: Download,
+              description: "Git Bash pour Claude Code"
+            },
+            {
               title: "Claude Desktop",
               href: "/claude-code/tutorials/claude-desktop-install",
               icon: Monitor,
@@ -189,6 +195,18 @@ export function MainNav() {
               href: "/claude-code/tutorials/bfcours-setup",
               icon: Wrench,
               description: "Configuration du package BFCours"
+            },
+            {
+              title: "Connecteurs et API",
+              href: "/claude-code/tutorials/connecteurs",
+              icon: Settings,
+              description: "Connecteurs claude.ai, MCP, clés API"
+            },
+            {
+              title: "Les mods",
+              href: "/claude-code/tutorials/mods",
+              icon: Wand2,
+              description: "Personnaliser l'interface de Claude Code"
             },
           ]
         },
@@ -259,10 +277,10 @@ export function MainNav() {
               description: "De la demande au diaporama prêt à projeter"
             },
             {
-              title: "Programmes Officiels",
+              title: "Skills programmes et progression",
               href: "/claude-code/presentations/programmes-officiels-system",
               icon: Presentation,
-              description: "Extraction programmes officiels"
+              description: "Du BO 2026 à la progression annuelle"
             },
             {
               title: "Skill capsules vidéo",

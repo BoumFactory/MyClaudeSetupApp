@@ -38,7 +38,20 @@ python scripts/search.py --niveau TSPE --type demonstration
 python scripts/get.py 2GT-NB-008
 ```
 
-Seul Python 3 est nécessaire pour consulter ; PyMuPDF (`pip install pymupdf`) n'est utile que pour reconstruire la base avec un nouveau BO.
+Seul Python 3 est nécessaire pour consulter. PyMuPDF (`pip install pymupdf`) n'est utile que pour :
+
+- régénérer les images de pages du BO (non fournies, pour alléger le skill) ;
+- reconstruire la base avec un nouveau BO.
+
+Les dossiers `data/pages/` (PNG) et `data/pages_pdf/` (pages PDF isolées) se recréent depuis `data/pdf/` :
+
+```bash
+python scripts/regenerer_pages.py --niveau 5E          # un niveau
+python scripts/regenerer_pages.py --niveau cycle4 --page 7 --png   # une page
+python scripts/regenerer_pages.py                      # tout
+```
+
+`python scripts/get.py <CODE>` régénère aussi seul l'image de la page citée quand PyMuPDF est installé.
 
 ## Mettre à jour avec un nouveau BO
 

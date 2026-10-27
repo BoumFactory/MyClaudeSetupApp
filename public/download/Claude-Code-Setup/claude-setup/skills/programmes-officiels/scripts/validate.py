@@ -6,7 +6,8 @@ validate.py — Validation globale du skill programmes-officiels.
 Vérifie :
   1. Tous les data/json/{NIVEAU}.json valident data/json/schema.json.
   2. Les codes de compétences sont uniques globalement.
-  3. Chaque source.page_image pointe vers un PNG existant.
+  3. Chaque source.page_image pointe vers un dossier de pages dont le PDF source existe
+     (les PNG eux-mêmes sont régénérables : scripts/regenerer_pages.py).
   4. Couverture : chaque page PDF a une transcription (sauf justification).
 
 Sortie :
@@ -81,6 +82,7 @@ def check_unique_codes() -> tuple[bool, list[str]]:
 def check_image_sources() -> tuple[bool, list[str]]:
     missing = []
     total = 0
+    mapping = json.load(open(DATA_DIR / "pdf" / "_mapping.json", encoding='utf-8'))["files"]
     for f in list_niveau_files():
         data = json.load(open(f, encoding='utf-8'))
         for dom, themes in data.get("competences_by_theme", {}).items():
@@ -92,10 +94,13 @@ def check_image_sources() -> tuple[bool, list[str]]:
                     if not img_rel:
                         missing.append((c["code"], "page_image absent"))
                         continue
-                    # Chemin relatif depuis data/json/
-                    img_abs = (JSON_DIR / img_rel).resolve()
-                    if not img_abs.exists():
-                        missing.append((c["code"], str(img_abs)))
+                    # Les PNG ne sont pas fournis (régénérables) : on vérifie
+                    # que le dossier correspond à un PDF source présent.
+                    folder = Path(img_rel).parent.name
+                    pdf_ok = any(e["page_folder"] == folder and (DATA_DIR / "pdf" / pdf).exists()
+                                 for pdf, e in mapping.items())
+                    if not pdf_ok:
+                        missing.append((c["code"], f"aucun PDF source pour {img_rel}"))
     if missing:
         msgs = [f"  {len(missing)}/{total} images source absentes :"]
         for code, path in missing[:10]:

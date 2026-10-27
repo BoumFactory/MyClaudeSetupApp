@@ -35,6 +35,31 @@ def load_all() -> list[dict]:
     return json.load(open(ALL_FLAT, encoding="utf-8"))["competences"]
 
 
+def ensure_image(page_image: str, pdf: str | None) -> str:
+    """Garantit la présence du PNG de la page (régénéré à la demande depuis data/pdf).
+
+    Retourne une note courte à afficher après le chemin (vide si l'image existe).
+    """
+    png = (SKILL_DIR / "data" / "json" / page_image).resolve()
+    if png.exists():
+        return ""
+    folder, name = png.parent.name, png.stem
+    try:
+        num = int(name.split("_")[1])
+    except (IndexError, ValueError):
+        return ""
+    cmd = f"python scripts/regenerer_pages.py --niveau {folder} --page {num} --png"
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    try:
+        import regenerer_pages
+        if regenerer_pages._import_fitz() is None:
+            return f"  [image non fournie ; pour la générer : pip install pymupdf, puis {cmd}]"
+        regenerer_pages.generer(folder, num, png=True, pdf=False, verbose=False)
+    except Exception as e:  # génération facultative : ne jamais bloquer l'affichage
+        return f"  [image non générée ({e}) ; commande : {cmd}]"
+    return "  [image régénérée à la demande]" if png.exists() else f"  [commande : {cmd}]"
+
+
 def render_text(c: dict) -> str:
     src = c.get("source", {})
     out = []
@@ -53,7 +78,7 @@ def render_text(c: dict) -> str:
     if src.get("bo_reference"):
         out.append(f"BO référence : {src['bo_reference']}")
     if src.get("page_image"):
-        out.append(f"Image-preuve : {src['page_image']}")
+        out.append(f"Image-preuve : {src['page_image']}{ensure_image(src['page_image'], src.get('pdf'))}")
     if src.get("bo_url"):
         out.append(f"BO URL       : {src['bo_url']}")
     if c.get("prerequis"):

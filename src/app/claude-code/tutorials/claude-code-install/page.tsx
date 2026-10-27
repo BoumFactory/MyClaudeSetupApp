@@ -242,7 +242,7 @@ export default function ClaudeCodeInstallPage() {
             <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-950/30 border border-slate-700/50">
               <CheckCircle className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
               <div className="flex-1">
-                <p className="font-semibold text-slate-300">Python x64 (version 3.8+) — <span className="text-amber-400 text-sm">Optionnel</span></p>
+                <p className="font-semibold text-slate-300">Python x64 (version 3.13 conseillée) — <span className="text-amber-400 text-sm">Optionnel</span></p>
                 <p className="text-sm text-muted-foreground mb-2">
                   Utile pour les fonctionnalités graphiques, IA et certains scripts avancés.
                 </p>
@@ -250,6 +250,23 @@ export default function ClaudeCodeInstallPage() {
                   <Link href="/claude-code/tutorials/python-install" className="flex items-center gap-2" prefetch={false}>
                     <Download className="w-4 h-4" />
                     Tutoriel d'installation de Python x64
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-950/30 border border-emerald-700/50">
+              <CheckCircle className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+              <div className="flex-1">
+                <p className="font-semibold text-slate-300">Git pour Windows — <span className="text-emerald-400 text-sm">Recommandé sous Windows</span></p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Il apporte Git Bash, le terminal dans lequel Claude Code exécute ses commandes. Sans lui,
+                  Claude Code passe par PowerShell, et une partie des skills partagés sur ce site (écrits pour Bash) fonctionne moins bien.
+                </p>
+                <Button asChild variant="outline" size="sm">
+                  <Link href="/claude-code/tutorials/git-install" className="flex items-center gap-2" prefetch={false}>
+                    <Download className="w-4 h-4" />
+                    Tutoriel d&apos;installation de Git
                   </Link>
                 </Button>
               </div>
@@ -626,7 +643,7 @@ export default function ClaudeCodeInstallPage() {
 
           <div className="space-y-2">
             <p className="text-sm font-semibold text-cosmic-300">Mettre à jour (si installé via npm)</p>
-            <CodeBlock code="npm update -g @anthropic-ai/claude-code" language="bash" />
+            <CodeBlock code="npm install -g @anthropic-ai/claude-code@latest" language="bash" />
           </div>
         </div>
       </section>

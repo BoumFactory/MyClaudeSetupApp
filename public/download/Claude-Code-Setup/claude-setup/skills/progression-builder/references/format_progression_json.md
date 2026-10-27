@@ -1,7 +1,8 @@
 # Format JSON d'une progression
 
 Le fichier JSON consommé par `scripts/apply_progression.py` décrit la
-*progression* à injecter dans une fiche vierge déjà générée. Sa structure
+*progression* à injecter dans une fiche déjà générée (vierge ou remplie).
+C'est aussi le format lu par le bouton « Importer » de la fiche. Sa structure
 volontairement plate permet à Claude de la construire incrémentalement
 au fil d'une conversation, sans manipuler le HTML lourd (~100 KB).
 
@@ -9,8 +10,9 @@ au fil d'une conversation, sans manipuler le HTML lourd (~100 KB).
 
 ```json
 {
-  "niveau": "5E",               // informatif (pour traçabilité), pas vérifié
-  "conserver_intro": true,      // si true (défaut), garde la séquence d'intro du vierge
+  "niveau": "5E",               // vérifié par validate_progression.py
+  "titre": "Progression 5e",    // facultatif : remplace le titre de la fiche
+  "sous_titre": "Année 2026-2027", // facultatif
   "elements": [
     {
       "type": "sequence",
@@ -42,16 +44,17 @@ au fil d'une conversation, sans manipuler le HTML lourd (~100 KB).
 
 | `type`     | Champs requis | Effet |
 |------------|---------------|-------|
-| `sequence` | `titre`, `contenu` | Crée un bloc `<div class="sequence open">` dans le rightPanel. |
-| `vacances` | `label` (optionnel, défaut `"Vacances"`) | Insère une bande "Vacances" entre deux séquences. |
+| `sequence` | `titre`, `contenu` | Crée une séquence dans la colonne droite (`"replie": true` pour la replier). |
+| `vacances` | `label` (optionnel, défaut `"Vacances"`) | Insère un séparateur doré entre deux séquences (`couleur` facultative). |
+| `separateur` | `label`, `color` (optionnels) | Séparateur libre entre deux séquences (format du bouton « JSON » de la fiche). |
 
 ### Items à l'intérieur d'une séquence (`contenu[*].type`)
 
 | `type`        | Champs requis | Effet |
 |---------------|---------------|-------|
-| `objectif`    | `code` | Cherche `code` dans la colonne gauche, récupère **sa couleur** et **son intitulé**, puis crée un `<div class="right-objectif">` correspondant. L'objectif est **automatiquement grisé** côté gauche. |
-| `commentaire` | `titre` (optionnel), `texte` (optionnel) | Bloc jaune contenteditable avec titre + zone de texte (les URL sont automatiquement transformées en liens cliquables côté JS). |
-| `separateur`  | `label` (optionnel, défaut `"Exos / RdP / Auto🛠"`) | Trait horizontal foncé séparant deux phases dans la séquence. |
+| `objectif`    | `code` | À l'ouverture, la fiche **déplace** l'objectif de la colonne gauche vers la séquence (couleur, intitulé, lien BO conservés) ; le compteur « placés / restants » est à jour. |
+| `commentaire` | `titre` (optionnel), `texte` (optionnel) | Commentaire jaune ouvert, placé sous les objectifs de la séquence. Les URL deviennent des liens, les retours à la ligne sont conservés. |
+| `separateur`  | `label` (optionnel, défaut `"Exos / RdP / Auto"`) | La fiche n'a pas de séparateur interne : il devient un commentaire « 🛠 label » qui indique le premier objectif de la phase. |
 
 ## Règles d'usage
 
@@ -61,11 +64,12 @@ au fil d'une conversation, sans manipuler le HTML lourd (~100 KB).
   par le script et **ignorés**.
 - L'ordre des `elements` est respecté tel quel : pas de tri automatique.
 - L'ordre des `contenu` à l'intérieur d'une séquence est lui aussi respecté.
-- Un même `code` placé deux fois sera dédupliqué côté UI (le JS marque le
-  bouton gauche grisé une seule fois). Évitez quand même les doublons.
-- `conserver_intro: false` supprime la séquence d'intro pré-remplie
-  (Programmes officiels + liens). Utile si l'enseignant veut tout
-  reconstruire à la main.
+- Un même `code` placé deux fois : seule la première place est gardée
+  (`[WARN]` du script, avertissement du validateur).
+- Les commentaires d'une séquence s'affichent toujours sous ses objectifs
+  (structure de la fiche) : leur position relative dans `contenu` est perdue.
+- `conserver_intro` (ancien gabarit) est accepté mais sans effet : les
+  fiches actuelles n'ont pas de séquence d'intro.
 
 ## Construction conversationnelle
 

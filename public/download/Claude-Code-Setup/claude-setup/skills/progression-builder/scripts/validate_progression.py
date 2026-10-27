@@ -23,15 +23,17 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _utils import codes_from_data, read_data  # noqa: E402
 
 DEFAULT_V2_JSON_DIR = (
     Path(__file__).resolve().parents[2] / "programmes-officiels" / "data" / "json"
 )
 
-VALID_ROOT_TYPES = {"sequence", "vacances"}
+VALID_ROOT_TYPES = {"sequence", "vacances", "separateur"}
 VALID_CONTENT_TYPES = {"objectif", "commentaire", "separateur"}
 VALID_NIVEAUX = {"CM1", "CM2", "6E", "5E", "4E", "3E",
                  "2GT", "1SPE", "1ENS", "1TEC", "TSPE", "TCOMP", "TTEC"}
@@ -66,9 +68,14 @@ def codes_from_v2_json(niveau: str) -> set[str]:
 
 
 def codes_from_html(html_path: Path) -> set[str]:
-    """Extrait les data-code présents dans le HTML vierge."""
+    """Codes du référentiel embarqué dans une fiche (objet DATA ou snapshot).
+
+    Le gabarit v2 n'a pas d'objectif statique (`data-code` n'existe qu'une
+    fois la page chargée) : on lit donc le référentiel JSON qui alimente la
+    colonne gauche.
+    """
     html_text = html_path.read_text(encoding="utf-8")
-    return set(re.findall(r'data-code="([^"]+)"', html_text))
+    return codes_from_data(read_data(html_text))
 
 
 # ---------------------------------------------------------------------------
@@ -127,6 +134,9 @@ def validate(progression: dict, valid_codes: set[str], report: Report) -> None:
 
         if kind == "vacances":
             nb_vacances += 1
+            continue
+        if kind == "separateur":
+            nb_separateurs += 1
             continue
 
         # Séquence

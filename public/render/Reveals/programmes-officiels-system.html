@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Formation IA & Mathématiques">
-  <meta name="description" content="Programmes Officiels de l'Éducation Nationale - Skill et Agent">
-  <title>Programmes Officiels de l'Éducation Nationale</title>
+  <meta name="description" content="Les skills programmes-officiels et progression-builder : chercher et citer le BO 2026 page à l'appui, puis construire une progression annuelle interactive">
+  <title>Les skills programmes et progression : du BO 2026 à la progression annuelle</title>
 
   <!-- Reveal.js Core -->
   <link rel="stylesheet" href="assets/reveal/reset.css">
@@ -15,7 +15,6 @@
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Theme personnalisé lycée -->
   <style>
     :root {
       --primary-color: #2c3e50;
@@ -23,8 +22,14 @@
       --accent-color: #e74c3c;
       --success-color: #27ae60;
       --warning-color: #f39c12;
+      --violet-color: #8e44ad;
       --text-color: #34495e;
+      --muted-color: #7f8c8d;
       --bg-light: #ecf0f1;
+      --step-1: #27ae60;
+      --step-2: #3498db;
+      --step-3: #f39c12;
+      --step-4: #8e44ad;
     }
 
     .reveal {
@@ -37,206 +42,304 @@
       color: var(--primary-color);
       font-weight: 600;
       text-transform: none;
+      letter-spacing: normal;
     }
 
-    .reveal h1 {
-      font-size: 2.2em;
-      margin-bottom: 0.5em;
-    }
+    .reveal h1 { font-size: 1.8em; margin-bottom: 0.3em; line-height: 1.15; }
 
     .reveal h2 {
-      font-size: 1.6em;
-      margin-bottom: 0.8em;
+      font-size: 1.35em;
+      margin-bottom: 0.6em;
       border-bottom: 3px solid var(--secondary-color);
-      padding-bottom: 0.3em;
+      padding-bottom: 0.25em;
     }
 
-    .reveal h3 {
-      font-size: 1.3em;
-      color: var(--secondary-color);
-      margin-top: 0.4em;
-    }
-
-    .reveal ul, .reveal ol {
-      margin: 1em 0;
-    }
-
-    .reveal li {
-      margin: 0.5em 0;
-      line-height: 1.5;
-    }
+    .reveal p, .reveal li { line-height: 1.45; }
+    .reveal ul, .reveal ol { margin: 0.4em 0 0 1em; }
+    .reveal li { margin: 0.3em 0; }
 
     .reveal code {
       background: var(--bg-light);
-      padding: 0.2em 0.5em;
+      padding: 0.1em 0.4em;
       border-radius: 4px;
       font-family: 'Consolas', 'Monaco', monospace;
-      font-size: 0.95em;
-      color: var(--accent-color);
-    }
-
-    .reveal pre {
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      margin: 1em 0;
-    }
-
-    .reveal pre code {
-      background: #282c34;
-      color: #abb2bf;
-      padding: 1em;
-      max-height: 500px;
-      font-size: 0.85em;
-      line-height: 1.4;
-    }
-
-    .reveal .highlight {
-      color: var(--accent-color);
-      font-weight: 600;
-    }
-
-    .reveal .success {
-      color: var(--success-color);
-      font-weight: 600;
-    }
-
-    .reveal .warning {
-      color: var(--warning-color);
-      font-weight: 600;
-    }
-
-    .reveal .box {
-      background: var(--bg-light);
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--secondary-color);
-      margin: 1em 0;
-    }
-
-    .reveal .warning-box {
-      background: #fff3cd;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--warning-color);
-      margin: 1em 0;
-    }
-
-    .reveal .example-box {
-      background: #e8f5e9;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--success-color);
-      margin: 1em 0;
-    }
-
-    .reveal .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2em;
-      align-items: start;
-    }
-
-    .reveal .icon {
-      font-size: 1.2em;
-      margin-right: 0.3em;
-      vertical-align: middle;
-    }
-
-    .reveal section img {
-      border: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
-
-    .reveal .workflow-step {
-      display: flex;
-      align-items: center;
-      margin: 0.8em 0;
-      padding: 0.8em;
-      background: var(--bg-light);
-      border-radius: 8px;
-    }
-
-    .reveal .workflow-step .step-number {
-      background: var(--secondary-color);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      margin-right: 1em;
-      flex-shrink: 0;
-    }
-
-    .reveal .feature-list {
       font-size: 0.9em;
+      color: var(--accent-color);
     }
 
-    .reveal .feature-list li {
-      margin: 0.4em 0;
-    }
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.72em; }
+    .reveal .muted { color: var(--muted-color); }
 
-    .reveal .tree-structure {
-      font-family: 'Consolas', monospace;
-      font-size: 0.65em;
-      text-align: left;
-      background: #f8f9fa;
-      padding: 1em;
-      border-radius: 8px;
-      line-height: 1.6;
-      white-space: pre;
-    }
-
-    .reveal .subtitle {
-      color: var(--secondary-color);
-      font-size: 0.7em;
-      margin-top: 0.5em;
-    }
-
-    .reveal .tag {
+    /* Bulle de demande du professeur */
+    .reveal .demande {
       display: inline-block;
-      background: var(--secondary-color);
-      color: white;
+      background: #fff;
+      border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px;
+      padding: 0.6em 1em;
+      font-size: 0.85em;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18);
+      max-width: 90%;
+    }
+    .reveal .demande .qui {
+      display: block;
+      font-size: 0.7em;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 0.2em;
+    }
+
+    /* Résultat */
+    .reveal .resultat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      padding: 0.45em 1.1em;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.78em;
+      box-shadow: 0 6px 18px rgba(231,76,60,0.3);
+    }
+
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.2em; margin: 0.3em 0; }
+
+    /* Frise des quatre étapes */
+    .reveal .frise {
+      display: flex;
+      gap: 0.4em;
+      justify-content: center;
+      margin: 0 0 0.7em 0;
+      font-size: 0.55em;
+    }
+    .reveal .frise span {
       padding: 0.3em 0.8em;
       border-radius: 20px;
-      font-size: 0.7em;
+      background: var(--bg-light);
+      color: var(--muted-color);
       font-weight: 600;
-      margin: 0.2em;
+    }
+    .reveal .frise span.on { color: #fff; }
+    .reveal .frise span.on.c1 { background: var(--step-1); }
+    .reveal .frise span.on.c2 { background: var(--step-2); }
+    .reveal .frise span.on.c3 { background: var(--step-3); }
+    .reveal .frise span.on.c4 { background: var(--step-4); }
+
+    /* Cartes d'étapes (diapo 2) */
+    .reveal .etapes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5em;
+      margin-top: 0.4em;
+    }
+    .reveal .etape {
+      border-radius: 12px;
+      padding: 0.7em 0.5em;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .reveal .etape i { font-size: 1.6em; margin-bottom: 0.2em; }
+    .reveal .etape .nom { font-weight: 700; font-size: 0.85em; }
+    .reveal .etape .quoi { font-size: 0.58em; opacity: 0.95; margin-top: 0.3em; line-height: 1.35; }
+    .reveal .etape .skill { font-size: 0.48em; opacity: 0.85; margin-top: 0.5em; font-family: 'Consolas', 'Monaco', monospace; }
+    .reveal .etape.c1 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+    .reveal .etape.c2 { background: linear-gradient(135deg, #2980b9, #3498db); }
+    .reveal .etape.c3 { background: linear-gradient(135deg, #e67e22, #f39c12); }
+    .reveal .etape.c4 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+
+    /* Deux colonnes : ce que fait l'agent / ce que vous y gagnez */
+    .reveal .duo {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 1em;
+      text-align: left;
+      align-items: start;
+    }
+    .reveal .bloc {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 0.6em 0.9em;
+      border-left: 5px solid var(--secondary-color);
+      font-size: 0.7em;
+    }
+    .reveal .bloc h3 { font-size: 1.05em; margin: 0 0 0.3em 0; }
+    .reveal .bloc ul { margin-left: 1em; }
+    .reveal .bloc.gain { background: #e8f5e9; border-color: var(--success-color); }
+    .reveal .bloc.gain h3 { color: var(--success-color); }
+    .reveal .bloc.note { background: #fff8e1; border-color: var(--warning-color); margin-top: 0.6em; }
+
+    /* Maquette : fiche de compétence */
+    .reveal .fiche {
+      background: #fff;
+      border: 1px solid #dfe6e9;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      padding: 0.6em 0.8em;
+      font-size: 0.56em;
+      text-align: left;
+    }
+    .reveal .fiche .code { display: inline-block; background: var(--step-2); color: #fff; border-radius: 6px; padding: 0 0.5em; font-weight: 700; font-family: 'Consolas', monospace; }
+    .reveal .fiche .bo {
+      border-left: 4px solid var(--step-2); background: #eaf4fb; border-radius: 4px;
+      padding: 0.35em 0.6em; margin: 0.45em 0; font-style: italic;
+    }
+    .reveal .fiche .src { color: var(--muted-color); }
+    .reveal .fiche .src b { color: var(--primary-color); }
+    .reveal .page-bo {
+      display: inline-flex; align-items: center; gap: 0.4em; margin-top: 0.3em;
+      border: 1px dashed var(--step-2); border-radius: 6px; padding: 0.15em 0.5em; color: var(--step-2); font-weight: 600;
     }
 
-    .reveal .tag.warning {
-      background: var(--warning-color);
+    /* Maquette : résultats de recherche */
+    .reveal .liste {
+      background: #fff; border: 1px solid #dfe6e9; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      font-size: 0.54em; text-align: left; overflow: hidden;
+    }
+    .reveal .liste .entete { background: var(--step-1); color: #fff; padding: 0.3em 0.7em; font-weight: 700; }
+    .reveal .liste .ligne { display: grid; grid-template-columns: 4.2em 1fr; gap: 0.6em; padding: 0.35em 0.7em; border-bottom: 1px solid #eef1f3; align-items: start; }
+    .reveal .liste .ligne:last-child { border-bottom: none; }
+    .reveal .liste .niv { background: #e8f5e9; color: var(--step-1); border-radius: 6px; text-align: center; font-weight: 700; padding: 0.05em 0; }
+    .reveal .liste .ligne small { display: block; color: var(--muted-color); }
+
+    /* Maquette : la fiche de progression */
+    .reveal .appli { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.15); font-size: 0.5em; text-align: left; display: grid; grid-template-columns: 1fr 1.15fr; background: #fff; border: 1px solid #dfe6e9; }
+    .reveal .appli > div { min-width: 0; overflow: hidden; }
+    .reveal .appli .seq .st, .reveal .appli .vac, .reveal .appli .titre { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .reveal .appli .gauche { background: #fafafa; border-right: 3px solid #e3e8ec; padding: 0.4em; }
+    .reveal .appli .gauche .tete { font-weight: 700; color: var(--primary-color); margin-bottom: 0.3em; }
+    .reveal .appli .dom { background: #a01030; color: #fff; border-radius: 4px; padding: 0.15em 0.45em; font-weight: 700; margin: 0.25em 0 0.15em; }
+    .reveal .appli .dom.geo { background: #1f6fb2; }
+    .reveal .appli .obj { background: #b5153a; color: #fff; border-radius: 3px; padding: 0.12em 0.45em; margin: 0.12em 0 0.12em 0.6em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .reveal .appli .obj.gris { opacity: 0.35; }
+    .reveal .appli .obj.geo { background: #2b80c5; }
+    .reveal .appli .droite { padding: 0.4em; }
+    .reveal .appli .titre { font-weight: 700; font-size: 1.15em; color: var(--primary-color); }
+    .reveal .appli .barre { display: flex; flex-wrap: wrap; gap: 0.25em; margin: 0.3em 0; }
+    .reveal .appli .barre span { border: 1px solid #c8d0d6; border-radius: 4px; padding: 0 0.4em; background: #f4f6f7; }
+    .reveal .appli .seq { border: 2px solid var(--step-3); border-radius: 6px; margin: 0.3em 0; }
+    .reveal .appli .seq .st { background: var(--step-3); color: #fff; font-weight: 700; padding: 0.1em 0.45em; }
+    .reveal .appli .seq .obj { margin-left: 0.3em; margin-right: 0.3em; }
+    .reveal .appli .vac { text-align: center; color: #a68400; font-weight: 700; border-top: 2px dashed #c8a200; margin: 0.4em 0; padding-top: 0.1em; }
+
+    /* Terminal sombre */
+    .reveal .synthese {
+      background: #2c3e50; color: #ecf0f1; border-radius: 10px; padding: 0.6em 0.9em;
+      font-size: 0.54em; text-align: left; font-family: 'Consolas', 'Monaco', monospace; line-height: 1.55; white-space: pre;
+    }
+    .reveal .synthese b { color: #f9e79f; font-weight: 400; }
+    .reveal .synthese .ok { color: #82e0aa; }
+    .reveal .synthese .ko { color: #f1948a; }
+    .reveal .synthese .t { color: #85c1e9; }
+
+    /* Conversation */
+    .reveal .conv { font-size: 0.56em; text-align: left; }
+    .reveal .detail .conv { font-size: 1em; }
+    .reveal .conv .agent, .reveal .conv .prof {
+      border-radius: 12px; padding: 0.35em 0.7em; margin: 0.3em 0; max-width: 92%;
+    }
+    .reveal .conv .agent { background: #fdf2e9; border-left: 4px solid var(--step-3); }
+    .reveal .conv .prof { background: #eaf4fb; border-left: 4px solid var(--step-2); margin-left: auto; }
+    .reveal .conv .qui { font-weight: 700; font-size: 0.85em; display: block; }
+
+    /* Livrables */
+    .reveal .livrables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.4em; }
+    .reveal .livrable {
+      background: #f8f9fa; border-radius: 10px; padding: 0.7em 0.6em; font-size: 0.64em; text-align: center;
+      border-top: 4px solid var(--secondary-color);
+    }
+    .reveal .livrable i { font-size: 1.8em; color: var(--secondary-color); margin-bottom: 0.2em; }
+    .reveal .livrable .titre { font-weight: 700; color: var(--primary-color); }
+
+    /* Installation */
+    .reveal .install { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; text-align: left; font-size: 0.64em; }
+    .reveal .install .carte { background: #f8f9fa; border-radius: 10px; padding: 0.55em 0.8em; border-left: 5px solid var(--success-color); }
+    .reveal .install .carte.deconseille { border-color: var(--warning-color); background: #fff8e1; }
+    .reveal .install .carte .titre { font-weight: 700; color: var(--primary-color); }
+    .reveal .install .badge { display: inline-block; font-size: 0.75em; font-weight: 700; padding: 0.05em 0.6em; border-radius: 10px; color: #fff; background: var(--success-color); margin-left: 0.3em; }
+    .reveal .install .carte.deconseille .badge { background: var(--warning-color); }
+    .reveal .install code { font-size: 0.95em; }
+    .reveal a.lien { color: var(--secondary-color); text-decoration: underline; }
+
+    /* ===== Navigation à deux dimensions ===== */
+    .reveal .indice-details {
+      text-align: right;
+      margin-top: 0.9em;
+      font-size: 0.5em;
+      color: var(--muted-color);
+    }
+    .reveal .indice-details span {
+      display: inline-block;
+      border: 1px solid #d0d7de;
+      border-radius: 14px;
+      padding: 0.15em 0.8em;
+      background: #fff;
+    }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 2em; }
+    .reveal .aide-nav kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color);
     }
 
-    .reveal .tag.success {
-      background: var(--success-color);
+    /* Fil d'Ariane des diapos verticales */
+    .reveal .fil-detail {
+      display: flex; align-items: center; gap: 0.6em; justify-content: flex-start;
+      font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600;
+    }
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; }
+    .reveal .fil-detail .etiq.c0 { background: var(--primary-color); }
+    .reveal .fil-detail .etiq.c1 { background: var(--step-1); }
+    .reveal .fil-detail .etiq.c2 { background: var(--step-2); }
+    .reveal .fil-detail .etiq.c3 { background: var(--step-3); }
+    .reveal .fil-detail .etiq.c4 { background: var(--step-4); }
+    .reveal h3.titre-detail {
+      font-size: 1.05em; text-align: left; margin: 0 0 0.5em 0;
+      padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light);
     }
 
-    .reveal .tag.accent {
-      background: var(--accent-color);
+    /* Contenus de détail */
+    .reveal .detail { font-size: 0.6em; text-align: left; }
+    .reveal .detail .bloc { font-size: 1em; }
+    .reveal .detail .synthese { font-size: 0.92em; }
+    .reveal .detail code, .reveal .fil-detail code { padding: 0 0.2em; }
+    .reveal h3.titre-detail code { color: inherit; font-size: 0.85em; padding: 0 0.25em; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .duo2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; align-items: start; }
+    .reveal .arbo {
+      font-family: 'Consolas', 'Monaco', monospace; background: #f8f9fa; border-radius: 8px;
+      padding: 0.6em 0.9em; line-height: 1.5; white-space: pre; font-size: 0.9em;
     }
-
-    .reveal .smaller {
-      font-size: 0.85em;
+    .reveal pre.code {
+      width: 100%; box-shadow: none; margin: 0; font-size: 0.82em;
     }
-
-    .reveal .comparison-table {
-      font-size: 0.75em;
-      width: 100%;
-      margin: 1em 0;
+    .reveal pre.code code {
+      display: block; background: #f8f9fa; color: #2c3e50; padding: 0.7em 0.9em;
+      border-radius: 8px; border-left: 4px solid var(--step-3); line-height: 1.45;
+      max-height: none; font-size: 1em; white-space: pre;
     }
-
-    .reveal .comparison-table td, .reveal .comparison-table th {
-      padding: 0.5em;
-      border: 1px solid #ddd;
+    .reveal pre.code .kw { color: #2980b9; font-weight: 700; }
+    .reveal pre.code .st { color: #c0392b; }
+    .reveal pre.code .cm { color: #27ae60; }
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.28em 0.5em; text-align: left; vertical-align: top;
     }
-
-    .reveal .comparison-table th {
-      background: var(--secondary-color);
-      color: white;
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal .pastille {
+      display: inline-block; border-radius: 10px; padding: 0 0.55em; font-weight: 700; color: #fff; font-size: 0.9em; white-space: nowrap;
+    }
+    .reveal .p-ok { background: var(--success-color); }
+    .reveal .p-mid { background: var(--warning-color); }
+    .reveal .p-ko { background: var(--accent-color); }
+    .reveal .p-bleu { background: var(--secondary-color); }
+    .reveal .p-gris { background: #95a5a6; }
+    .reveal .p-violet { background: var(--violet-color); }
+    .reveal .astuce {
+      background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px;
+      padding: 0.45em 0.8em; margin-top: 0.6em;
     }
   </style>
 </head>
@@ -244,618 +347,545 @@
   <div class="reveal">
     <div class="slides">
 
-      <!-- SLIDE 1 : TITRE -->
+      <!-- 1. Où l'on veut en venir -->
       <section>
-        <h1><i class="fas fa-graduation-cap icon"></i> Programmes Officiels de l'Éducation Nationale</h1>
-        <p class="subtitle">Le skill <code>programmes-officiels</code> : les programmes de la rentrée 2026, du CM1 à la Terminale</p>
-        <p class="fragment" style="margin-top: 2em;">
-          <span class="tag">Formation GT IA & Maths</span>
-          <span class="tag success">Conformité BO</span>
-          <span class="tag accent">Documentation automatisée</span>
+        <h1><i class="fas fa-landmark" style="color:#e74c3c;"></i> Les skills programmes et progression</h1>
+        <p class="subtitle">Du BO 2026 à votre progression annuelle, chaque compétence citée page à l'appui</p>
+
+        <div style="margin-top:1em;">
+          <div class="demande">
+            <span class="qui"><i class="fas fa-user"></i> Vous</span>
+            «&nbsp;Construis ma progression de 5<sup>e</sup> sur le nouveau programme : sept séquences, avec les vacances.&nbsp;»
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="small muted" style="margin-bottom:0.4em;">L'agent cherche dans le programme officiel, cite le BO mot pour mot, vous fait répartir les compétences et vérifie</div>
+          <div class="resultat"><i class="fas fa-check-circle"></i> Une fiche de progression interactive, chaque compétence tirée du BO avec sa page</div>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
         </p>
       </section>
 
-      <!-- SLIDE 2 : SOMMAIRE -->
+      <!-- 2. Le fil conducteur (+ pile : en coulisse) -->
       <section>
-        <h2>Au programme</h2>
-        <ol class="feature-list">
-          <li class="fragment" data-fragment-index="1"><i class="fas fa-book icon"></i> Le skill programmes-officiels</li>
-          <li class="fragment" data-fragment-index="2"><i class="fas fa-layer-group icon"></i> Niveaux et codes des compétences</li>
-          <li class="fragment" data-fragment-index="3"><i class="fas fa-lightbulb icon"></i> Quand utiliser ce skill</li>
-          <li class="fragment" data-fragment-index="4"><i class="fas fa-route icon"></i> Workflow d'utilisation</li>
-          <li class="fragment" data-fragment-index="5"><i class="fas fa-database icon"></i> Comment la base est construite</li>
-          <li class="fragment" data-fragment-index="6"><i class="fas fa-graduation-cap icon"></i> Conseils pratiques</li>
-        </ol>
-      </section>
-
-      <!-- SLIDE 3 : QU'EST-CE QUE LE SKILL ? -->
       <section>
-        <h2>Le skill programmes-officiels</h2>
-
-        <div class="box fragment">
-          <p><strong>Un skill Claude pour rechercher et citer les programmes officiels</strong></p>
+        <h2>Ce que fait l'agent, en quatre étapes</h2>
+        <div class="etapes">
+          <div class="etape c1 fragment">
+            <i class="fas fa-search"></i>
+            <div class="nom">1. Chercher</div>
+            <div class="quoi">Il trouve dans le programme du niveau les compétences, démonstrations et algorithmes qui vous concernent</div>
+            <div class="skill">programmes-officiels</div>
+          </div>
+          <div class="etape c2 fragment">
+            <i class="fas fa-quote-right"></i>
+            <div class="nom">2. Citer</div>
+            <div class="quoi">Il recopie la formulation du BO mot pour mot, avec le PDF et la page d'où elle vient</div>
+            <div class="skill">programmes-officiels</div>
+          </div>
+          <div class="etape c3 fragment">
+            <i class="fas fa-layer-group"></i>
+            <div class="nom">3. Construire</div>
+            <div class="quoi">Il prépare la fiche du niveau, puis répartit avec vous les compétences en séquences</div>
+            <div class="skill">progression-builder</div>
+          </div>
+          <div class="etape c4 fragment">
+            <i class="fas fa-clipboard-check"></i>
+            <div class="nom">4. Vérifier</div>
+            <div class="quoi">Il contrôle chaque code, signale les doublons et compte ce qui est placé sur le total du programme</div>
+            <div class="skill">progression-builder</div>
+          </div>
         </div>
-
-        <ul class="feature-list">
-          <li class="fragment"><i class="fas fa-search icon"></i> <strong>Recherche précise</strong> dans les Bulletins Officiels (BO)</li>
-          <li class="fragment"><i class="fas fa-quote-right icon"></i> <strong>Citations exactes</strong> des programmes, du CM1 à la Terminale</li>
-          <li class="fragment"><i class="fas fa-clipboard-check icon"></i> <strong>Référencement des compétences</strong> attendues</li>
-          <li class="fragment"><i class="fas fa-image icon"></i> <strong>Preuve visuelle</strong> : PDF, page et image de la page du BO</li>
-        </ul>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Vous choisissez les séquences et leur ordre ; l'agent garantit que tout vient du BO et que rien n'est oublié.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- SLIDE 4 : STRUCTURE DES PROGRAMMES -->
+      <!-- 2.1 En coulisse -->
       <section>
-        <section>
-          <h2>Structure des programmes officiels</h2>
-
-          <div class="box fragment" style="font-size: 0.9em;">
-            <p><strong>Les programmes sont organisés de manière hiérarchique</strong></p>
+        <div class="fil-detail"><span class="etiq c0">Les quatre étapes</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">En coulisse : deux skills qui travaillent ensemble</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:22%;">Skill</th><th style="width:36%;">Ce qu'il contient</th><th>Rôle</th></tr>
+            <tr><td><span class="pastille p-ok">programmes-officiels</span></td><td>Les PDF du BO, une base JSON par niveau, un index de recherche, l'image et le texte de chaque page</td><td>Chercher et citer : une question = un script (recherche, fiche d'une compétence, démonstrations, algorithmes, progression d'une notion, comparaison de niveaux).</td></tr>
+            <tr><td><span class="pastille p-mid">progression-builder</span></td><td>Un gabarit de fiche HTML, treize fiches vierges prêtes, trois scripts</td><td>Construire : générer la fiche d'un niveau, valider la progression décrite en JSON.</td></tr>
+          </table>
+          <div class="duo2" style="margin-top:0.6em;">
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-database"></i> Treize niveaux, du CM1 à la Terminale : <strong>1&nbsp;738 compétences</strong> (CM1, CM2, 6<sup>e</sup>, 5<sup>e</sup>, 4<sup>e</sup>, 3<sup>e</sup>, 2<sup>de</sup>, 1<sup>re</sup> spécialité, enseignement scientifique et techno, Terminale spécialité, complémentaires et techno), plus les automatismes.</div>
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-link"></i> progression-builder lit la base de programmes-officiels : les deux skills s'installent ensemble, côte à côte dans <code>skills/</code>.</div>
           </div>
-
-          <ul class="feature-list" style="font-size: 0.9em;">
-            <li class="fragment"><i class="fas fa-folder-open icon"></i> <strong>Thèmes</strong> : grandes catégories mathématiques (Nombres et calculs, Géométrie, etc.)</li>
-            <li class="fragment"><i class="fas fa-bullseye icon"></i> <strong>Attendus de fin d'année/cycle</strong> : objectifs généraux</li>
-            <li class="fragment"><i class="fas fa-tasks icon"></i> <strong>Connaissances et compétences</strong> : détail des notions</li>
-            <li class="fragment"><i class="fas fa-lightbulb icon"></i> <strong>Exemples d'activités</strong> : suggestions pédagogiques</li>
-          </ul>
-
-          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les thèmes mathématiques</p>
-        </section>
-
-        <section>
-          <h3>Thèmes mathématiques principaux</h3>
-
-          <div class="grid-2">
-            <div>
-              <div class="example-box" style="font-size: 0.85em;">
-                <h3 class="smaller"><i class="fas fa-calculator icon"></i> Collège</h3>
-                <ul class="smaller">
-                  <li>Nombres et calculs</li>
-                  <li>Grandeurs et mesures</li>
-                  <li>Espace et géométrie</li>
-                  <li>Organisation et gestion de données</li>
-                  <li>Algorithmique et programmation</li>
-                </ul>
-              </div>
-            </div>
-
-            <div>
-              <div class="example-box" style="font-size: 0.85em;">
-                <h3 class="smaller"><i class="fas fa-calculator icon"></i> Lycée</h3>
-                <ul class="smaller">
-                  <li>Algèbre</li>
-                  <li>Analyse</li>
-                  <li>Géométrie</li>
-                  <li>Probabilités et statistiques</li>
-                  <li>Algorithmique et programmation</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
+      </section>
       </section>
 
-      <!-- SLIDE 5 : NIVEAUX DISPONIBLES -->
+      <!-- 3. Chercher (+ pile) -->
       <section>
-        <section>
-          <h2>Niveaux disponibles</h2>
-
-          <div class="box fragment" style="font-size: 0.9em;">
-            <p><strong>Les nouveaux programmes de la rentrée 2026, du CM1 à la Terminale : 13 niveaux, environ 1 000 compétences</strong></p>
-          </div>
-
-          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir les niveaux et leurs codes</p>
-        </section>
-
-        <section>
-          <h3>École et collège</h3>
-          <div class="grid-2">
-            <div class="example-box" style="font-size: 0.8em;">
-              <p><i class="fas fa-file-pdf icon"></i> <strong>Cycle 3</strong> : <code>CM1</code> <code>CM2</code> <code>6E</code></p>
-              <p class="smaller">BO du cycle 3 (rentrée 2026)</p>
-            </div>
-
-            <div class="example-box" style="font-size: 0.8em;">
-              <p><i class="fas fa-file-pdf icon"></i> <strong>Cycle 4</strong> : <code>5E</code> <code>4E</code> <code>3E</code></p>
-              <p class="smaller">BO n°10 du 5 mars 2026</p>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3>Lycée</h3>
-
-          <div class="example-box" style="font-size: 0.75em;">
-            <p><i class="fas fa-file-pdf icon"></i> BO Hebdo 14 du 2 avril 2026</p>
-            <ul class="smaller">
-              <li><code>2GT</code> Seconde générale et technologique</li>
-              <li><code>1SPE</code> 1re spécialité · <code>1ENS</code> maths de l'enseignement scientifique · <code>1TEC</code> 1re voie technologique</li>
-              <li><code>TSPE</code> Terminale spécialité · <code>TCOMP</code> maths complémentaires · <code>TTEC</code> Terminale voie technologique</li>
-            </ul>
-          </div>
-
-          <div class="box fragment" style="font-size: 0.75em; margin-top: 0.8em;">
-            <p>Chaque compétence a un code : niveau, domaine, numéro. Exemple : <code>4E-NB-005</code> = 4e, Nombres et calculs, compétence n°5.</p>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 6 : QUAND UTILISER CE SKILL -->
       <section>
-        <h2>Quand utiliser ce skill ?</h2>
-
-        <div class="grid-2">
+        <div class="frise"><span class="on c1">1. Chercher</span><span>2. Citer</span><span>3. Construire</span><span>4. Vérifier</span></div>
+        <h2 style="border-color:var(--step-1);">Il trouve ce que dit le programme</h2>
+        <div class="duo">
           <div>
-            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-file-signature icon"></i> Fiches techniques</h3>
-              <p class="smaller">Pour les inspecteurs, justification pédagogique officielle</p>
+            <div class="bloc" style="border-color:var(--step-1);">
+              <h3>Ce que fait l'agent</h3>
+              <ul>
+                <li>Il cherche par mot (accents et pluriels compris), par niveau, par domaine ou par type.</li>
+                <li>Il liste les démonstrations exigibles et les algorithmes attendus d'un niveau.</li>
+                <li>Il suit une notion d'un niveau à l'autre, ou compare deux niveaux.</li>
+              </ul>
             </div>
-
-            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-calendar-alt icon"></i> Progressions annuelles</h3>
-              <p class="smaller">Planification conforme aux attendus de fin d'année</p>
+            <div class="bloc gain" style="margin-top:0.6em;">
+              <h3>Ce que vous y gagnez</h3>
+              <ul><li>Plus besoin de feuilleter le BO : la réponse arrive avec son code de compétence.</li></ul>
             </div>
           </div>
+          <div class="liste">
+            <div class="entete"><i class="fas fa-search"></i> «&nbsp;Où est Pythagore dans les programmes ?&nbsp;»</div>
+            <div class="ligne"><span class="niv">4E</span><span><b>4E-GEO-010</b> · Connaitre le théorème de Pythagore, sa réciproque, sa contraposée.<small>capacité · Triangles</small></span></div>
+            <div class="ligne"><span class="niv">4E</span><span><b>4E-GEO-014</b> · Quelques repères historiques autour de Pythagore et son œuvre.<small>approfondissement · Triangles</small></span></div>
+            <div class="ligne"><span class="niv">2GT</span><span><b>2GT-GEO-004</b> · Application simple du théorème de Pythagore, du théorème de Thalès<small>capacité · Géométrie</small></span></div>
+            <div class="ligne" style="color:var(--muted-color);"><span></span><span>Résultat réel de la base : 3 compétences sur 2 niveaux.</span></div>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
+      <!-- 3.1 Un script par question -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Chercher</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-1);">Une question, un script : l'agent choisit pour vous</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:36%;">Votre question</th><th style="width:30%;">Script appelé</th><th>Il répond par</th></tr>
+            <tr><td>«&nbsp;Les fractions en CM1 ?&nbsp;»</td><td><code>search.py --keyword "fraction*" --niveau CM1</code></td><td>Les compétences trouvées, avec leur citation et leur page.</td></tr>
+            <tr><td>«&nbsp;Que dit le BO de 2GT-NB-008 ?&nbsp;»</td><td><code>get.py 2GT-NB-008</code></td><td>La fiche complète de la compétence.</td></tr>
+            <tr><td>«&nbsp;Les démonstrations exigibles en seconde ?&nbsp;»</td><td><code>demos.py --niveau 2GT</code></td><td>Les 10 démonstrations du niveau.</td></tr>
+            <tr><td>«&nbsp;Les algorithmes de 1<sup>re</sup> spécialité ?&nbsp;»</td><td><code>algos.py --niveau 1SPE --code</code></td><td>Les algorithmes attendus, avec le code Python.</td></tr>
+            <tr><td>«&nbsp;La dérivation, de niveau en niveau ?&nbsp;»</td><td><code>progression.py "derivation"</code></td><td>La notion niveau par niveau.</td></tr>
+            <tr><td>«&nbsp;Qu'est-ce qui change de 1SPE à 1TEC en statistiques ?&nbsp;»</td><td><code>compare.py 1SPE 1TEC --domaine STA</code></td><td>Les sous-domaines propres à chaque niveau et ceux en commun.</td></tr>
+            <tr><td>«&nbsp;Combien de compétences par niveau ?&nbsp;»</td><td><code>stats.py</code></td><td>Les compteurs par niveau, domaine et type.</td></tr>
+          </table>
+          <p class="muted" style="margin-top:0.4em;">Tous ces scripts n'utilisent que Python, sans module à installer ; chacun accepte <code>--format json</code>.</p>
+        </div>
+      </section>
+
+      <!-- 3.2 Niveaux, domaines, types -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">1. Chercher</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-1);">Comment la base est rangée : niveaux, domaines, types</h3>
+        <div class="detail duo2" style="grid-template-columns:1.1fr 1fr;">
           <div>
-            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-check-circle icon"></i> Vérification conformité</h3>
-              <p class="smaller">S'assurer qu'un contenu respecte le programme officiel</p>
+            <table class="tab-detail">
+              <tr><th>Codes de niveau</th><th>Source</th></tr>
+              <tr><td><code>CM1</code> <code>CM2</code> <code>6E</code></td><td>BO du cycle 3, rentrée 2026</td></tr>
+              <tr><td><code>5E</code> <code>4E</code> <code>3E</code></td><td>BO n°&nbsp;10 du 5 mars 2026</td></tr>
+              <tr><td><code>2GT</code> <code>1SPE</code> <code>1ENS</code> <code>1TEC</code><br><code>TSPE</code> <code>TCOMP</code> <code>TTEC</code></td><td>BO Hebdo 14 du 2 avril 2026</td></tr>
+            </table>
+            <p style="margin-top:0.5em;">Un code de compétence se lit ainsi : <code>4E-GEO-010</code> = 4<sup>e</sup>, géométrie, 10<sup>e</sup> compétence.</p>
+          </div>
+          <div>
+            <table class="tab-detail">
+              <tr><th>Domaines</th><th>Types</th></tr>
+              <tr><td>
+                <code>NB</code> nombres et calculs<br><code>AL</code> algèbre · <code>AN</code> analyse<br><code>GEO</code> géométrie<br><code>GM</code> grandeurs et mesures<br><code>STA</code> statistiques · <code>PR</code> probabilités<br><code>ALGO</code> algorithmique<br><code>OGD</code>, <code>TRG</code>, <code>LOG</code>
+              </td><td>
+                <span class="pastille p-bleu">contenu</span><br><span class="pastille p-ok">capacité</span><br><span class="pastille p-violet">démonstration</span><br><span class="pastille p-mid">algorithme</span><br><span class="pastille p-gris">approfondissement</span>
+              </td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 4. Citer (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>1. Chercher</span><span class="on c2">2. Citer</span><span>3. Construire</span><span>4. Vérifier</span></div>
+        <h2 style="border-color:var(--step-2);">Il cite le BO mot pour mot, page à l'appui</h2>
+        <div class="duo">
+          <div>
+            <div class="bloc" style="border-color:var(--step-2);">
+              <h3>Ce que fait l'agent</h3>
+              <ul>
+                <li>Il donne la formulation officielle telle qu'elle est imprimée dans le BO.</li>
+                <li>Il indique le PDF et la page ; l'image et le texte de la page sont dans le skill.</li>
+                <li>Il ne réécrit jamais le texte officiel : il a été extrait du PDF par un script.</li>
+              </ul>
             </div>
-
-            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-quote-right icon"></i> Citations BO</h3>
-              <p class="smaller">Référencement exact pour documents administratifs</p>
+            <div class="bloc gain" style="margin-top:0.6em;">
+              <h3>Ce que vous y gagnez</h3>
+              <ul><li>Une citation sûre pour une fiche, un devoir ou une inspection, vérifiable en un clic.</li></ul>
             </div>
           </div>
+          <div class="fiche">
+            <span class="code">5E-NB-014</span> &nbsp;5<sup>e</sup> · Nombres relatifs · capacité
+            <div class="bo">«&nbsp;Définir l’opposé et la valeur absolue d’un nombre.&nbsp;»</div>
+            <div class="src"><b>Source</b> : cycle4.pdf, page 7</div>
+            <div class="src"><b>BO</b> : n°&nbsp;10 du 5 mars 2026</div>
+            <div class="page-bo"><i class="fas fa-file-image"></i> pages/cycle4/page_007.png</div>
+            <div class="muted" style="margin-top:0.5em;font-size:0.9em;">Fiche réelle, telle que la renvoie le skill.</div>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 4.1 Pas de texte inventé -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">2. Citer</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-2);">Aucun texte officiel écrit par l'IA</h3>
+        <div class="detail duo2" style="grid-template-columns:1fr 1.1fr;">
+          <div>
+            <p><strong>Comment la base a été construite</strong></p>
+            <div class="arbo">PDF du BO
+ → découpé en pages (texte, PDF, image)
+ → puces extraites mot pour mot   <span style="color:#27ae60;">0 IA</span>
+ → un JSON par niveau             <span style="color:#27ae60;">0 IA</span>
+ → index de recherche, Markdown</div>
+            <div class="astuce"><i class="fas fa-lock"></i> Le champ <code>formulation_bo</code> vient uniquement de l'extraction du PDF ; l'IA n'a servi qu'à classer (domaine, type). Un test automatique le vérifie.</div>
+          </div>
+          <div>
+            <p><strong>Ce que vous pouvez montrer</strong></p>
+            <table class="tab-detail">
+              <tr><th style="width:38%;">Preuve</th><th>Où</th></tr>
+              <tr><td>Le BO complet</td><td><code>data/pdf/cycle4.pdf</code></td></tr>
+              <tr><td>La page seule</td><td>le BO ouvert à la page 7 (<code>cycle4.pdf#page=7</code>)</td></tr>
+              <tr><td>Son image</td><td><code>data/pages/cycle4/page_007.png</code>, recréée à la demande par <code>get.py</code> (PyMuPDF facultatif)</td></tr>
+              <tr><td>Son texte brut</td><td><code>data/pages_txt/cycle4/page_007.txt</code></td></tr>
+            </table>
+            <p class="muted" style="margin-top:0.4em;">Dans la fiche de progression, un double-clic sur une compétence ouvre le BO embarqué à la bonne page.</p>
+          </div>
         </div>
       </section>
 
-      <!-- SLIDE 7 : WORKFLOW D'UTILISATION -->
+      <!-- 4.2 Nouveau BO -->
       <section>
-        <h2>Workflow d'utilisation</h2>
-
-        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
-          <div class="step-number">1</div>
-          <div><strong>Demander</strong> en français : « Que dit le programme de 4e sur les fractions ? »</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
-          <div class="step-number">2</div>
-          <div><strong>Rechercher</strong> : Claude lance <code>search.py</code> (recherche plein texte, filtrée par niveau)</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
-          <div class="step-number">3</div>
-          <div><strong>Détailler</strong> une compétence avec <code>get.py</code> : intitulé, formulation exacte du BO, page</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.9em;">
-          <div class="step-number">4</div>
-          <div><strong>Citer</strong> avec la preuve : PDF du BO, numéro de page, image de la page</div>
-        </div>
-      </section>
-
-      <!-- SLIDE 8 : EXEMPLE DE RECHERCHE -->
-      <section>
-        <section>
-          <h2>Exemple de recherche</h2>
-
-          <pre class="fragment" style="font-size: 0.6em;"><code class="language-bash">python scripts/search.py --keyword "fraction*" --niveau 4E</code></pre>
-
-          <pre class="fragment" style="font-size: 0.55em;"><code class="language-text">━━━ 4E-NB-005 (4E NB capacite) ━━━
-  Simplifier une fraction.
-  BO : « Simplifier une fraction. »
-  Source : cycle4.pdf p.9 — BO n°10 du 5 mars 2026
-
-━━━ 4E-NB-011 (4E NB capacite) ━━━
-  Déterminer l'inverse d'une fraction.
-  BO : « Déterminer l'inverse d'une fraction. »
-  Source : cycle4.pdf p.9 — BO n°10 du 5 mars 2026
-
-═══ Automatismes correspondants ═══
-  [4E] Savoir que prendre la fraction d'un nombre revient
-       à multiplier la fraction par ce nombre.</code></pre>
-
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir la citation formatée</p>
-        </section>
-
-        <section>
-          <h3>Citation formatée LaTeX</h3>
-          <pre><code class="language-latex">\textit{Programme de 4e (BO n°10 du 5 mars 2026, p.~9) :}
-
-« Simplifier une fraction. »
-« Déterminer l'inverse d'une fraction. »</code></pre>
-
-          <div class="example-box fragment" style="font-size: 0.8em;">
-            <p><i class="fas fa-check-circle icon success"></i> La formulation est recopiée du PDF officiel par un script : l'IA ne la réécrit jamais.</p>
+        <div class="fil-detail"><span class="etiq c2">2. Citer</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-2);">Un nouveau BO ? La base se reconstruit</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-2);">
+            <h3>Mettre à jour</h3>
+            <ol>
+              <li>Déposer le nouveau PDF dans <code>data/pdf/</code>.</li>
+              <li>Relancer les scripts de <code>scripts/build/</code>, de <code>01</code> à <code>07</code>.</li>
+              <li>Valider : <code>scripts/validate.py</code> (schéma, codes uniques, sources).</li>
+            </ol>
+            <p class="muted">Seule la reconstruction demande des modules : PyMuPDF pour lire le PDF, jsonschema pour la validation.</p>
           </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 9 : COMMANDES UTILES -->
-      <section>
-        <h2>Un script par question</h2>
-
-        <div class="grid-2" style="font-size: 0.75em;">
-          <div class="box fragment">
-            <p><code>demos.py --niveau TSPE</code></p>
-            <p class="smaller">Les démonstrations exigibles d'un niveau</p>
-            <p style="margin-top: 0.5em;"><code>algos.py --niveau 1SPE</code></p>
-            <p class="smaller">Les algorithmes Python attendus</p>
-          </div>
-          <div class="box fragment">
-            <p><code>progression.py "pythagore"</code></p>
-            <p class="smaller">Une notion du CM1 à la Terminale</p>
-            <p style="margin-top: 0.5em;"><code>compare.py 1SPE 1TEC --domaine STA</code></p>
-            <p class="smaller">Ce qui change entre deux niveaux</p>
-          </div>
-        </div>
-
-        <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
-          <p><i class="fas fa-comment icon"></i> Inutile de retenir ces commandes : posez la question, Claude choisit le script.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 10 : COMMENT LA BASE EST CONSTRUITE -->
-      <section>
-        <section>
-          <h2>Comment la base est construite</h2>
-
-          <div class="box fragment">
-            <p><strong>Des scripts Python lisent les PDF du BO. Aucune IA ne recopie le texte officiel.</strong></p>
-          </div>
-
-          <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.75em;">
-            <div class="step-number">1</div>
-            <div>Découpage du PDF en pages (texte, PDF et image de chaque page)</div>
-          </div>
-
-          <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.75em;">
-            <div class="step-number">2</div>
-            <div>Extraction des puces du BO, mot pour mot</div>
-          </div>
-
-          <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.75em;">
-            <div class="step-number">3</div>
-            <div>Un fichier JSON par niveau : la source de vérité</div>
-          </div>
-
-          <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.75em;">
-            <div class="step-number">4</div>
-            <div>Index de recherche, miroir Markdown et graphe des progressions</div>
-          </div>
-
-          <p class="smaller fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir une compétence</p>
-        </section>
-
-        <section>
-          <h3>Format d'une compétence</h3>
-          <pre style="font-size: 0.55em;"><code class="language-json">{
-  "code": "2GT-NB-008",
-  "intitule": "Démonstration : √2 est irrationnel",
-  "niveau": "2GT",
-  "domaine": "NB",
-  "type": "demonstration",
-  "formulation_bo": "Le nombre réel √2 est irrationnel.",
-  "prerequis": ["2GT-NB-003", "2GT-LOG-003"],
-  "source": {"pdf": "2gt.pdf", "page": 7,
-             "page_image": "../pages/2GT/page_007.png"},
-  "tags": ["démonstration", "absurde", "irrationnel", "exigible"]
+          <div>
+            <p><strong>Une compétence, dans la base</strong></p>
+<pre class="code"><code>{
+  <span class="kw">"code"</span>: <span class="st">"2GT-NB-008"</span>,
+  <span class="kw">"niveau"</span>: <span class="st">"2GT"</span>,
+  <span class="kw">"domaine"</span>: <span class="st">"NB"</span>,
+  <span class="kw">"type"</span>: <span class="st">"capacite"</span>,
+  <span class="kw">"formulation_bo"</span>: <span class="st">"Présenter les fractions
+      sous forme irréductible."</span>,
+  <span class="kw">"source"</span>: { <span class="kw">"pdf"</span>: <span class="st">"2gt.pdf"</span>, <span class="kw">"page"</span>: 7 }
 }</code></pre>
-
-          <div class="example-box fragment" style="font-size: 0.75em;">
-            <p>Cinq types : <code>contenu</code>, <code>capacite</code>, <code>demonstration</code>, <code>algorithme</code>, <code>approfondissement</code></p>
           </div>
-        </section>
-
-        <section>
-          <h3>Nouveau BO ? Mise à jour</h3>
-          <div class="box" style="font-size: 0.8em;">
-            <p>Remplacer le PDF dans <code>data/pdf/</code>, puis relancer les scripts de <code>scripts/build/</code>.</p>
-          </div>
-          <pre class="fragment" style="font-size: 0.6em;"><code class="language-bash"># Vérifier la base après mise à jour
-python scripts/validate.py
-python -m pytest tests/</code></pre>
-        </section>
+        </div>
+      </section>
       </section>
 
-      <!-- SLIDE 15 : AVANTAGES DU SYSTÈME -->
+      <!-- 5. Construire (+ pile) -->
       <section>
-        <section>
-          <h2>Avantages du système</h2>
-
-          <div class="grid-2">
-            <div>
-              <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
-                <h3 class="smaller"><i class="fas fa-quote-right icon"></i> Citations exactes</h3>
-                <p class="smaller">Formulation officielle du BO</p>
-              </div>
-
-              <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
-                <h3 class="smaller"><i class="fas fa-clock icon"></i> Gain de temps</h3>
-                <p class="smaller">Plus besoin de chercher dans les PDF</p>
-              </div>
-            </div>
-
-            <div>
-              <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
-                <h3 class="smaller"><i class="fas fa-sitemap icon"></i> Structure claire</h3>
-                <p class="smaller">Organisation hiérarchique lisible</p>
-              </div>
-
-              <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
-                <h3 class="smaller"><i class="fas fa-search icon"></i> Recherche facile</h3>
-                <p class="smaller">Markdown et JSON interrogeables</p>
-              </div>
-            </div>
-          </div>
-
-          <p class="smaller fragment" data-fragment-index="5" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour plus d'avantages</p>
-        </section>
-
-        <section>
-          <h3>Avantages supplémentaires</h3>
-
-          <div class="grid-2">
-            <div class="box" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-route icon"></i> Progression verticale</h3>
-              <p class="smaller">Suivre une notion du CM1 à la Terminale</p>
-            </div>
-
-            <div class="box" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-code icon"></i> Codes uniques</h3>
-              <p class="smaller">Traçabilité et référencement automatisés</p>
-            </div>
-          </div>
-
-          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
-            <p><i class="fas fa-check-circle icon success"></i> <strong>Vérifiable</strong> : chaque citation renvoie à une page du BO</p>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 16 : CAS D'USAGE CONCRETS -->
       <section>
-        <section>
-          <h2>Cas d'usage concrets</h2>
-
-          <div class="grid-2">
-            <div>
-              <div class="example-box fragment" data-fragment-index="1" style="font-size: 0.8em;">
-                <h3 class="smaller"><i class="fas fa-file-signature icon"></i> Fiche pédagogique</h3>
-                <p class="smaller">Justification des choix avec citation du BO</p>
-              </div>
-
-              <div class="example-box fragment" data-fragment-index="2" style="font-size: 0.8em;">
-                <h3 class="smaller"><i class="fas fa-calendar-alt icon"></i> Progression annuelle</h3>
-                <p class="smaller">Répartition des compétences par trimestre</p>
-              </div>
-            </div>
-
-            <div>
-              <div class="example-box fragment" data-fragment-index="3" style="font-size: 0.8em;">
-                <h3 class="smaller"><i class="fas fa-clipboard-check icon"></i> Évaluation</h3>
-                <p class="smaller">Référencement des compétences évaluées</p>
-              </div>
-
-              <div class="example-box fragment" data-fragment-index="4" style="font-size: 0.8em;">
-                <h3 class="smaller"><i class="fas fa-user-tie icon"></i> Inspection</h3>
-                <p class="smaller">Documents conformes pour l'inspection</p>
-              </div>
-            </div>
-          </div>
-
-          <p class="smaller fragment" data-fragment-index="5" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir un exemple détaillé</p>
-        </section>
-
-        <section>
-          <h3>Exemple : Préparer une progression de 4e</h3>
-
-          <div class="box" style="font-size: 0.75em;">
-            <p><strong>Demande :</strong> « Liste les compétences de 4e en Nombres et calculs avec leur code, pour répartir l'année en trois périodes. »</p>
-          </div>
-
-          <div class="example-box fragment" style="font-size: 0.75em; margin-top: 1em;">
-            <p><strong>Résultat :</strong> la liste des codes <code>4E-NB-…</code> avec leur formulation BO, que le skill <code>progression-builder</code> peut répartir dans le calendrier.</p>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 17 : STRUCTURE DU SKILL -->
-      <section>
-        <h2>Structure du skill</h2>
-
-        <pre style="font-size: 0.55em;"><code class="language-text">.claude/skills/programmes-officiels/
-├── SKILL.md                 # Instructions pour Claude
-├── scripts/
-│   ├── search.py            # Recherche plein texte
-│   ├── get.py               # Détail d'une compétence
-│   ├── demos.py · algos.py  # Démonstrations, algorithmes
-│   ├── progression.py       # Une notion de niveau en niveau
-│   ├── compare.py · stats.py
-│   └── build/               # Construction depuis les PDF
-└── data/
-    ├── pdf/                 # 9 PDF officiels du BO
-    ├── pages/               # Image de chaque page (preuve)
-    ├── json/                # Un fichier par niveau (source de vérité)
-    ├── markdown/            # Miroir lisible, généré
-    └── search_index.sqlite  # Index de recherche</code></pre>
-      </section>
-
-      <!-- SLIDE 18 : CONSEILS D'UTILISATION -->
-      <section>
-        <h2><i class="fas fa-lightbulb icon"></i> Conseils pratiques</h2>
-
-        <div class="grid-2">
+        <div class="frise"><span>1. Chercher</span><span>2. Citer</span><span class="on c3">3. Construire</span><span>4. Vérifier</span></div>
+        <h2 style="border-color:var(--step-3);">Il bâtit avec vous la progression du niveau</h2>
+        <div class="duo" style="grid-template-columns:1fr 1.2fr;">
           <div>
-            <ul class="feature-list">
-              <li class="fragment" data-fragment-index="1">
-                <i class="fas fa-quote-right icon"></i> <strong>Citations exactes</strong><br>
-                <span class="smaller">pour documents officiels (inspecteurs)</span>
-              </li>
-              <li class="fragment" data-fragment-index="2">
-                <i class="fas fa-edit icon"></i> <strong>Reformulation possible</strong><br>
-                <span class="smaller">entre collègues (garder la référence)</span>
-              </li>
-              <li class="fragment" data-fragment-index="3">
-                <i class="fas fa-calendar-check icon"></i> <strong>Vérifier la date du BO</strong><br>
-                <span class="smaller">les programmes évoluent</span>
-              </li>
-            </ul>
+            <div class="bloc" style="border-color:var(--step-3);">
+              <h3>Ce que fait l'agent</h3>
+              <ul>
+                <li>Il prépare la fiche du niveau : à gauche, <strong>toutes</strong> les compétences et tous les automatismes du BO.</li>
+                <li>Il vous demande le nombre de séquences, leurs titres, la place des vacances.</li>
+                <li>Il répartit les compétences par blocs, jamais une par une.</li>
+              </ul>
+            </div>
+            <div class="bloc gain" style="margin-top:0.6em;">
+              <h3>Ce que vous y gagnez</h3>
+              <ul><li>Une progression qui couvre tout le programme, sans tableau à remplir à la main.</li></ul>
+            </div>
           </div>
+          <div class="appli">
+            <div class="gauche">
+              <div class="tete">Objectifs et automatismes — 5<sup>e</sup></div>
+              <div class="dom">Nombres et calculs</div>
+              <div class="obj">5E-NB-015 – Définir la notion de nombre…</div>
+              <div class="dom geo">Espace et géométrie</div>
+              <div class="obj geo">5E-GEO-001 – …</div>
+              <div class="obj geo">5E-GEO-002 – …</div>
+            </div>
+            <div class="droite">
+              <div class="titre">Progression de Cinquième (5E)</div>
+              <div class="barre"><span>➕ Séquence</span><span>HTML</span><span>PDF</span><span>JSON</span><span>Importer</span></div>
+              <div class="seq"><div class="st">Séquence 1 — Nombres relatifs</div>
+                <div class="obj">5E-NB-013 – Définir les nombres relatifs.</div>
+                <div class="obj">5E-NB-014 – Définir l’opposé et la valeur…</div>
+              </div>
+              <div class="vac">Vacances de la Toussaint</div>
+              <div class="seq"><div class="st">Séquence 2 — …</div><div style="height:1.2em;"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
+      <!-- 5.1 La conversation -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">3. Construire</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-3);">La conversation : le squelette d'abord, puis les blocs</h3>
+        <div class="detail duo2" style="grid-template-columns:1.15fr 1fr;">
+          <div class="conv">
+            <div class="agent"><span class="qui">Agent</span>La 5<sup>e</sup> compte 121 compétences et 47 automatismes, en cinq grands domaines. Combien de séquences, et quels titres ?</div>
+            <div class="prof"><span class="qui">Vous</span>Sept. Relatifs, puis symétrie centrale, puis…</div>
+            <div class="agent"><span class="qui">Agent</span>Où placer les vacances ?</div>
+            <div class="prof"><span class="qui">Vous</span>Toussaint après S2, Noël après S3…</div>
+            <div class="agent"><span class="qui">Agent</span>Voici les sous-domaines. Répondez par lignes : «&nbsp;Nombres relatifs → S1&nbsp;».</div>
+            <div class="agent"><span class="qui">Agent</span>Bilan : 160 compétences placées sur 168. Il reste 8 compétences de statistiques : où les mettre ?</div>
+            <p class="muted" style="font-size:0.85em;">Dialogue d'illustration ; les volumes du niveau sont réels.</p>
+          </div>
           <div>
-            <ul class="feature-list">
-              <li class="fragment" data-fragment-index="4">
-                <i class="fas fa-lightbulb icon"></i> <strong>Exemples indicatifs</strong><br>
-                <span class="smaller">les activités suggérées ne sont pas obligatoires</span>
-              </li>
-              <li class="fragment" data-fragment-index="5">
-                <i class="fas fa-image icon"></i> <strong>Donner la page</strong><br>
-                <span class="smaller">PDF et numéro de page pour toute citation</span>
-              </li>
-              <li class="fragment" data-fragment-index="6">
-                <i class="fas fa-atom icon"></i> <strong>Utiliser les codes</strong><br>
-                <span class="smaller">pour traçabilité automatisée</span>
-              </li>
-            </ul>
+            <table class="tab-detail">
+              <tr><th style="width:12%;">#</th><th>Phase</th></tr>
+              <tr><td>0</td><td>Niveau confirmé, fiche générée, volume annoncé.</td></tr>
+              <tr><td>1</td><td>Squelette : séquences, vacances, périodes éventuelles.</td></tr>
+              <tr><td>2</td><td>Répartition par sous-domaine, découpage si besoin.</td></tr>
+              <tr><td>3</td><td>Commentaires et séparateurs (exercices, automatismes).</td></tr>
+              <tr><td>4</td><td>Bilan : compétences placées sur le total.</td></tr>
+            </table>
+            <div class="astuce"><i class="fas fa-ban"></i> Règle du skill : ne <strong>jamais</strong> inventer un code. Chaque code vient de la base ; en cas de doute, l'agent le cherche.</div>
           </div>
         </div>
       </section>
 
-      <!-- SLIDE 19 : EXEMPLE COMPLET DE WORKFLOW -->
+      <!-- 5.2 Le JSON de progression -->
       <section>
-        <section>
-          <h2>Exemple complet de workflow</h2>
-
-          <div class="example-box fragment" style="font-size: 0.85em;">
-            <p><strong>Contexte :</strong> Préparer une évaluation sur le produit scalaire en 1re spécialité et lister les compétences évaluées</p>
-          </div>
-
-          <p class="smaller fragment" style="margin-top: 1em;"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour suivre le workflow</p>
-        </section>
-
-        <section>
-          <h3>Étape 1 : Demander</h3>
-          <div class="box" style="font-size: 0.8em;">
-            <p>« Quelles compétences du programme de 1re spécialité portent sur le produit scalaire ? Indique les démonstrations exigibles. »</p>
-          </div>
-        </section>
-
-        <section>
-          <h3>Étape 2 : Résultat</h3>
-          <div class="example-box" style="font-size: 0.75em;">
-            <p><code>1SPE-GEO-009</code> Utiliser le produit scalaire pour résoudre un problème géométrique.</p>
-            <p><code>1SPE-GEO-010</code> Formule d'Al-Kashi (démonstration avec le produit scalaire).</p>
-            <p class="smaller" style="margin-top: 0.5em;">Source : 1spe.pdf p.9 — BO Hebdo 14 du 2 avril 2026</p>
-          </div>
-        </section>
-
-        <section>
-          <h3>Étape 3 : Réutiliser</h3>
-          <div class="box" style="font-size: 0.8em;">
-            <ul class="smaller">
-              <li>Codes de compétences dans l'en-tête de chaque EXO (skill <code>bfcours-latex</code>)</li>
-              <li>Démonstration exigible proposée en exercice de restitution</li>
-              <li>Vérification qu'aucun outil hors programme n'est utilisé dans la correction</li>
+        <div class="fil-detail"><span class="etiq c3">3. Construire</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-3);">Ce qu'il écrit : un petit fichier, pas la page entière</h3>
+        <div class="detail duo2" style="grid-template-columns:1.2fr 1fr;">
+<pre class="code"><code>{
+  <span class="kw">"niveau"</span>: <span class="st">"5E"</span>,
+  <span class="kw">"elements"</span>: [
+    { <span class="kw">"type"</span>: <span class="st">"sequence"</span>,
+      <span class="kw">"titre"</span>: <span class="st">"Séquence 1 — Repérage dans le plan"</span>,
+      <span class="kw">"contenu"</span>: [
+        { <span class="kw">"type"</span>: <span class="st">"commentaire"</span>, <span class="kw">"titre"</span>: <span class="st">"Période 1"</span>,
+          <span class="kw">"texte"</span>: <span class="st">"Du 1er septembre au 17 octobre."</span> },
+        { <span class="kw">"type"</span>: <span class="st">"objectif"</span>, <span class="kw">"code"</span>: <span class="st">"5E-GEO-001"</span> },
+        { <span class="kw">"type"</span>: <span class="st">"separateur"</span>, <span class="kw">"label"</span>: <span class="st">"Exos / RdP"</span> }
+      ] },
+    { <span class="kw">"type"</span>: <span class="st">"vacances"</span>, <span class="kw">"label"</span>: <span class="st">"Vacances de la Toussaint"</span> }
+  ]
+}</code></pre>
+          <div>
+            <ul>
+              <li>Une fiche pèse plusieurs centaines de kilo-octets (BO embarqué) : l'agent ne la charge pas, il décrit la progression dans ce JSON de quelques lignes.</li>
+              <li>Cinq éléments possibles : séquence, objectif, commentaire, séparateur, vacances.</li>
+              <li>Le même format sort du bouton <strong>JSON</strong> de la fiche : une progression remplie à la souris peut être reprise par l'agent.</li>
             </ul>
-          </div>
-        </section>
-      </section>
-
-      <!-- SLIDE 20 : LIENS AVEC LES AUTRES SKILLS -->
-      <section>
-        <h2>Liens avec les autres skills</h2>
-
-        <div class="grid-2">
-          <div>
-            <div class="box fragment" data-fragment-index="1" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-file-code icon"></i> latex</h3>
-              <p class="smaller">Consulte le programme avant de rédiger un cours ou une fiche</p>
-            </div>
-
-            <div class="box fragment" data-fragment-index="2" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-calendar-alt icon"></i> progression-builder</h3>
-              <p class="smaller">Construit une progression annuelle à partir des compétences</p>
-            </div>
-          </div>
-
-          <div>
-            <div class="box fragment" data-fragment-index="3" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-route icon"></i> make-blueprint-eval</h3>
-              <p class="smaller">Relie les compétences évaluées aux exercices de révision</p>
-            </div>
-
-            <div class="box fragment" data-fragment-index="4" style="font-size: 0.85em;">
-              <h3 class="smaller"><i class="fas fa-sync-alt icon"></i> /continueBO</h3>
-              <p class="smaller">Commande de maintenance pour reprendre une extraction en cours</p>
-            </div>
+            <p class="muted">Extrait de l'exemple fourni avec le skill.</p>
           </div>
         </div>
       </section>
+      </section>
 
-      <!-- SLIDE 21 : CONCLUSION -->
+      <!-- 6. Vérifier (+ pile) -->
       <section>
-        <h2>En résumé</h2>
-
-        <div class="grid-2">
+      <section>
+        <div class="frise"><span>1. Chercher</span><span>2. Citer</span><span>3. Construire</span><span class="on c4">4. Vérifier</span></div>
+        <h2 style="border-color:var(--step-4);">Il vérifie avant de vous remettre la progression</h2>
+        <div class="duo">
           <div>
-            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Points forts</h3>
-            <ul class="smaller fragment" data-fragment-index="1">
-              <li>Citations exactes et sourcées</li>
-              <li>Conformité aux programmes officiels</li>
-              <li>Gain de temps considérable</li>
-              <li>Formulation BO recopiée par script, jamais par l'IA</li>
-              <li>Traçabilité par codes uniques</li>
-              <li>Progression d'une notion de niveau en niveau</li>
-            </ul>
+            <div class="bloc" style="border-color:var(--step-4);">
+              <h3>Ce que fait l'agent</h3>
+              <ul>
+                <li>Il passe la progression au validateur : codes inconnus, doublons, éléments mal formés.</li>
+                <li>Il corrige les erreurs et vous dit combien de compétences restent à placer.</li>
+              </ul>
+            </div>
+            <div class="bloc gain" style="margin-top:0.6em;">
+              <h3>Ce que vous y gagnez</h3>
+              <ul><li>Aucune compétence fantôme, aucune oubliée sans que vous le sachiez.</li></ul>
+            </div>
           </div>
+          <div class="synthese"><span class="t">Codes disponibles : 168</span>
+Structure : 2 séquence(s), 1 vacances
+Objectifs placés : 4 (dont 3 uniques)
 
-          <div>
-            <h3 class="fragment" data-fragment-index="2" style="color: var(--secondary-color);"><i class="fas fa-clipboard-list icon"></i> Cas d'usage</h3>
-            <ul class="smaller fragment" data-fragment-index="2">
-              <li>Fiches techniques inspecteurs</li>
-              <li>Progressions annuelles</li>
-              <li>Documents administratifs</li>
-              <li>Vérification conformité</li>
-              <li>Référencement évaluations</li>
-            </ul>
-          </div>
+<b>[WARN]</b> 1 code(s) en doublon :
+       5E-NB-014×2
+<span class="ko">[ERR]</span> Code inconnu : "5E-NB-099"
+       (elements[0].contenu[2])</div>
         </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
-          <p><strong><i class="fas fa-graduation-cap icon"></i> Indispensable pour une documentation pédagogique conforme et professionnelle</strong></p>
+      <!-- 6.1 Le validateur -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">4. Vérifier</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-4);">Ce que contrôle le validateur</h3>
+        <div class="detail duo2" style="grid-template-columns:1.2fr 1fr;">
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:42%;">Contrôle</th><th style="width:22%;">Niveau</th><th>Exemple</th></tr>
+              <tr><td>Code absent du BO du niveau</td><td><span class="pastille p-ko">erreur</span></td><td><code>5E-NB-099</code></td></tr>
+              <tr><td>Type d'élément inconnu</td><td><span class="pastille p-ko">erreur</span></td><td>une faute de frappe dans <code>type</code></td></tr>
+              <tr><td>Compétence placée deux fois</td><td><span class="pastille p-mid">avertissement</span></td><td><code>5E-NB-014×2</code></td></tr>
+              <tr><td>Bilan de couverture</td><td><span class="pastille p-bleu">information</span></td><td>placées / disponibles</td></tr>
+            </table>
+            <p class="muted" style="margin-top:0.4em;">Code de sortie 0 : la progression est valide ; 1 : au moins une erreur bloquante.</p>
+          </div>
+          <div class="synthese" style="font-size:0.9em;"><span class="t">validate_progression.py</span>
+  --progression progression_5E.json
+
+Codes disponibles : 168
+Objectifs placés : 8 (dont 8 uniques)
+
+<span class="ok">[OK] Progression valide.</span></div>
         </div>
       </section>
 
-      <!-- SLIDE 22 : RESSOURCES -->
+      <!-- 6.2 La fiche entre vos mains -->
       <section>
-        <h2><i class="fas fa-book icon"></i> Ressources</h2>
-
-        <div class="grid-2">
-          <div class="box" style="font-size: 0.8em;">
-            <h3 class="smaller">Documentation</h3>
-            <ul class="smaller">
-              <li><code>SKILL.md</code> - Instructions skill</li>
-              <li><code>scripts/</code> - Recherche et consultation</li>
-              <li><code>data/json/</code> - Un fichier par niveau</li>
-              <li><code>data/pages/</code> - Images des pages du BO</li>
+        <div class="fil-detail"><span class="etiq c4">4. Vérifier</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--step-4);">La fiche entre vos mains : tout se règle à la souris</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--step-4);">
+            <h3>Dans le navigateur, sans installation</h3>
+            <ul>
+              <li>Ouvrir la fiche que l'agent livre déjà remplie, ou <strong>Importer</strong> une progression JSON validée dans une fiche vierge.</li>
+              <li>Glisser-déposer les compétences ; le compteur indique combien restent à placer.</li>
+              <li>Ajouter séquences, séparateurs, commentaires ; plier, déplier.</li>
+              <li>Double-cliquer sur une compétence : le BO s'ouvre à la bonne page.</li>
             </ul>
           </div>
-
-          <div class="box fragment" style="font-size: 0.8em;">
-            <h3 class="smaller">Liens utiles</h3>
-            <ul class="smaller">
-              <li><i class="fas fa-external-link-alt icon"></i> education.gouv.fr - Programmes officiels</li>
-              <li><i class="fas fa-file-pdf icon"></i> Bulletins Officiels (BO)</li>
+          <div class="bloc gain">
+            <h3>Pour la garder et la partager</h3>
+            <ul>
+              <li><strong>HTML</strong> : enregistrer la fiche remplie.</li>
+              <li><strong>PDF</strong> : l'imprimer, colonne de gauche masquée.</li>
+              <li><strong>JSON</strong> : la redonner à l'agent pour la retoucher.</li>
+              <li>Dans la configuration : export Markdown et LaTeX, couleurs des séquences.</li>
             </ul>
           </div>
         </div>
+      </section>
+      </section>
 
-        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
-          <i class="fas fa-question-circle icon"></i> <strong>Questions ?</strong>
+      <!-- 7. Ce que vous obtenez (+ pile) -->
+      <section>
+      <section>
+        <h2>Ce que vous obtenez</h2>
+        <div class="livrables">
+          <div class="livrable fragment">
+            <i class="fas fa-table-columns" style="color:#f39c12;"></i>
+            <div class="titre">La fiche de progression</div>
+            <div>Vos séquences et vos vacances, à compléter, imprimer ou exporter. Treize fiches vierges, du CM1 à la Terminale, sont déjà fournies pour vos collègues.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-quote-right" style="color:#3498db;"></i>
+            <div class="titre">Des citations prouvées</div>
+            <div>La formulation du BO, le PDF et la page de chaque compétence, pour une fiche, un devoir ou un projet d'équipe.</div>
+          </div>
+          <div class="livrable fragment">
+            <i class="fas fa-comments" style="color:#8e44ad;"></i>
+            <div class="titre">Des retouches en français</div>
+            <div>«&nbsp;Déplace les statistiques en séquence 6&nbsp;», «&nbsp;qu'est-ce qui n'est pas encore placé ?&nbsp;»</div>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Votre rôle : décider de l'ordre et du découpage. La progression reste la vôtre ; l'agent garantit qu'elle respecte le BO.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 7.1 Bien formuler sa demande -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 1 / 2</div>
+        <h3 class="titre-detail">Bien formuler sa demande</h3>
+        <div class="detail duo2">
+          <div>
+            <table class="tab-detail">
+              <tr><th style="width:38%;">Précisez…</th><th>Exemple</th></tr>
+              <tr><td>Le niveau exact</td><td>«&nbsp;1<sup>re</sup> technologique&nbsp;» plutôt que «&nbsp;1<sup>re</sup>&nbsp;»</td></tr>
+              <tr><td>Le nombre de séquences</td><td>«&nbsp;sept séquences&nbsp;»</td></tr>
+              <tr><td>Vos contraintes</td><td>«&nbsp;les relatifs avant la Toussaint&nbsp;»</td></tr>
+              <tr><td>Une progression existante</td><td>le JSON exporté de votre fiche</td></tr>
+              <tr><td>Juste une fiche vierge</td><td>«&nbsp;une fiche vierge de 3<sup>e</sup> pour mes collègues&nbsp;»</td></tr>
+            </table>
+          </div>
+          <div>
+            <div class="demande" style="font-size:1.05em;max-width:100%;">
+              <span class="qui"><i class="fas fa-user"></i> Vous</span>
+              «&nbsp;Quelles démonstrations sont exigibles en Terminale spécialité, en analyse ? Cite le BO.&nbsp;»
+            </div>
+            <div class="fleche-bas" style="text-align:center;"><i class="fas fa-arrow-down"></i></div>
+            <div class="bloc gain" style="font-size:1em;">
+              <ul>
+                <li>La liste des démonstrations d'analyse de TSPE, chacune avec son code.</li>
+                <li>Pour chacune, la formulation du BO et sa page.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7.2 Limites -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous obtenez</span> Détail 2 / 2</div>
+        <h3 class="titre-detail">Limites</h3>
+        <div class="detail duo2">
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-exclamation-triangle"></i> À savoir</h3>
+            <ul>
+              <li>La base suit les programmes de la <strong>rentrée 2026</strong> ; un autre BO demande de la reconstruire.</li>
+              <li>Le lien entre compétences (prérequis) n'est pas encore renseigné : la progression d'une notion se fait par recherche, pas par un graphe.</li>
+              <li>La recherche porte sur les mots du BO : un synonyme absent du texte ne trouve rien ; l'agent reformule.</li>
+            </ul>
+          </div>
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-info-circle"></i> Dans la fiche</h3>
+            <ul>
+              <li>Dans une séquence, les commentaires s'affichent sous les compétences ; un séparateur « Exos / RdP » placé au milieu devient un commentaire.</li>
+              <li>Une compétence ne se place qu'une fois : un doublon dans la progression est signalé puis ignoré.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 8. L'installer -->
+      <section>
+        <h2>L'installer</h2>
+        <p class="small" style="margin-top:-0.3em;">
+          <i class="fas fa-shopping-basket" style="color:#3498db;"></i>
+          Sur la <a class="lien" href="https://bfcours.dev/claude-code/presentations/programmes-officiels-system" target="_top">page de cette présentation</a>, ajoutez le <strong>pack «&nbsp;Skills programmes et progression&nbsp;»</strong> au panier, puis téléchargez l'archive.
+        </p>
+        <div class="install">
+          <div class="carte">
+            <div class="titre">Claude Code, dans le projet <span class="badge">recommandé</span></div>
+            Décompresser dans le dossier du projet : les deux skills arrivent dans <code>.claude/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Claude Code, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.claude/skills/</code> : actifs partout, même là où ils n'ont rien à faire.
+          </div>
+          <div class="carte">
+            <div class="titre">Codex, dans le projet <span class="badge">recommandé</span></div>
+            Copier le contenu de <code>.claude/</code> dans <code>.agents/</code> : les skills arrivent dans <code>.agents/skills/</code>.
+          </div>
+          <div class="carte deconseille">
+            <div class="titre">Codex, global <span class="badge">déconseillé</span></div>
+            Dans <code>~/.agents/skills/</code>.
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:0.7em;">
+          Prérequis : Python 3, sans module à installer, et un navigateur pour la fiche. Gardez les deux skills côte à côte.
+          Puis demandez : «&nbsp;<em>construis ma progression de 5<sup>e</sup> en sept séquences</em>&nbsp;».
         </p>
       </section>
 
@@ -865,61 +895,24 @@ python -m pytest tests/</code></pre>
   <!-- Reveal.js Scripts -->
   <script src="assets/reveal/reveal.js"></script>
   <script src="assets/reveal/plugin/notes/notes.js"></script>
-  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
-  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
 
   <script>
     Reveal.initialize({
-      // Navigation 2D
-      navigationMode: 'grid',
+      // Navigation à deux dimensions : → fil principal, ↓ détails de l'étape
+      navigationMode: 'default',
       controls: true,
-      controlsLayout: 'edges',
-      controlsBackArrows: 'visible',
+      controlsLayout: 'bottom-right',
       controlsTutorial: true,
+      controlsBackArrows: 'faded',
       progress: true,
       slideNumber: 'h.v',
-      hash: true,
-
-      // Transitions
-      transition: 'slide',
-      transitionSpeed: 'default',
-
-      // Behavior
-      embedded: false,
       overview: true,
+      hash: true,
+      transition: 'slide',
       center: true,
-      touch: true,
-      loop: false,
-      rtl: false,
-      shuffle: false,
-
-      // Fragments
       fragments: true,
       fragmentInURL: true,
-
-      // Keyboard
-      keyboard: true,
-      keyboardCondition: null,
-
-      // Plugins
-      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
-    });
-
-    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
-    let lastHorizontalIndex = 0;
-
-    Reveal.on('slidechanged', event => {
-      const currentH = event.indexh;
-      const currentV = event.indexv;
-
-      // Si on change de slide horizontale et qu'on n'est pas au top
-      if (currentH !== lastHorizontalIndex && currentV !== 0) {
-        // Revenir au top de la nouvelle slide
-        Reveal.slide(currentH, 0);
-      }
-
-      // Mettre à jour l'index horizontal
-      lastHorizontalIndex = currentH;
+      plugins: [ RevealNotes ]
     });
   </script>
 </body>

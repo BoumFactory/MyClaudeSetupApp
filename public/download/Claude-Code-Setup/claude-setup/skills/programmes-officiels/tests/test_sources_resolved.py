@@ -1,4 +1,6 @@
-"""Tests d'intégrité : chaque source.page_image pointe vers un PNG existant."""
+"""Tests d'intégrité : chaque source.page_image pointe vers un dossier de pages dont le PDF source existe.
+
+Les PNG ne sont pas fournis : ils se régénèrent par scripts/regenerer_pages.py."""
 import json
 from pathlib import Path
 
@@ -18,15 +20,17 @@ def _all_comps():
     return out
 
 
-def test_toutes_sources_resolvent_vers_un_png():
+def test_toutes_sources_resolvent_vers_un_pdf():
+    mapping = json.load(open(SKILL_DIR / "data" / "pdf" / "_mapping.json", encoding="utf-8"))["files"]
     missing = []
     for c in _all_comps():
         rel = c.get("source", {}).get("page_image")
         assert rel, f"Compétence {c['code']} sans page_image"
-        path = (JSON_DIR / rel).resolve()
-        if not path.exists():
-            missing.append((c["code"], str(path)))
-    assert not missing, f"{len(missing)} images manquantes (5 premières : {missing[:5]})"
+        folder = Path(rel).parent.name
+        if not any(e["page_folder"] == folder and (SKILL_DIR / "data" / "pdf" / pdf).exists()
+                   for pdf, e in mapping.items()):
+            missing.append((c["code"], rel))
+    assert not missing, f"{len(missing)} sources sans PDF (5 premières : {missing[:5]})"
 
 
 def test_source_page_strictement_positive():

@@ -104,7 +104,7 @@ export default function NodeJSInstallPage() {
         </div>
 
         <p className="text-muted-foreground">
-          Node.js est un environnement d'exécution JavaScript côté serveur. C'est l'un des compilateurs
+          Node.js est un environnement d'exécution JavaScript côté serveur. C'est l'un des moteurs
           principaux utilisés par les outils d'IA et de développement modernes. Il permet d'exécuter
           du code JavaScript en dehors d'un navigateur web.
         </p>
@@ -195,10 +195,20 @@ export default function NodeJSInstallPage() {
                   <p className="font-medium mb-1">Choisir la version LTS (recommandée)</p>
                   <p className="text-sm text-muted-foreground">
                     Téléchargez la version <strong className="text-emerald-300">LTS (Long Term Support)</strong>,
-                    qui est la version stable et recommandée pour la plupart des utilisateurs.
-                    <strong className="text-foreground ml-1">Minimum version 18</strong> requise pour Claude Code.
+                    qui est la version stable et recommandée pour la plupart des utilisateurs
+                    (Node.js 24 en octobre 2026 ; Node.js 26 prend le relais en fin d&apos;année).
+                    Les versions impaires (25, 27…) sont expérimentales : ignorez-les.
                   </p>
                 </div>
+              </div>
+
+              <div className="p-4 bg-emerald-950/30 border border-emerald-800 rounded-lg space-y-2">
+                <p className="font-medium text-emerald-300">Voie rapide sous Windows : winget</p>
+                <p className="text-sm text-muted-foreground">
+                  Plutôt que de télécharger l&apos;installateur, collez cette commande dans PowerShell.
+                  Elle installe la version LTS du moment ; passez ensuite directement à l&apos;étape 3.
+                </p>
+                <CodeBlock code="winget install OpenJS.NodeJS.LTS" language="powershell" />
               </div>
             </div>
           </CardContent>
@@ -263,17 +273,17 @@ export default function NodeJSInstallPage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs font-bold">
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-cosmic-500 flex items-center justify-center text-white text-xs font-bold">
                   4
                 </div>
                 <div>
-                  <p className="font-medium mb-1 text-emerald-300">
-                    Cocher "Automatically install necessary tools"
+                  <p className="font-medium mb-1">
+                    Laisser décochée « Automatically install the necessary tools »
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">Important :</strong> Cette option installe automatiquement
-                    les outils de compilation nécessaires (Chocolatey, Python, Visual Studio Build Tools).
-                    C'est essentiel pour le bon fonctionnement de nombreux packages npm.
+                    Cette case installe Chocolatey, Python et les outils de compilation de Visual Studio
+                    (plusieurs gigaoctets). Ils ne servent qu&apos;à de rares paquets qui doivent être compilés :
+                    un enseignant n&apos;en a presque jamais besoin. Vous pourrez y revenir si une installation le réclame.
                   </p>
                 </div>
               </div>
@@ -297,8 +307,8 @@ export default function NodeJSInstallPage() {
                 <div>
                   <p className="font-medium mb-1">Finaliser l'installation</p>
                   <p className="text-sm text-muted-foreground">
-                    Une fenêtre PowerShell peut s'ouvrir pour installer les outils supplémentaires.
-                    Appuyez sur Entrée lorsque demandé et laissez le processus se terminer.
+                    Cliquez sur « Finish ». Si vous aviez coché la case de l&apos;étape 4, une fenêtre PowerShell
+                    s&apos;ouvre pour installer les outils supplémentaires : appuyez sur Entrée et laissez-la terminer.
                   </p>
                 </div>
               </div>
@@ -341,7 +351,7 @@ export default function NodeJSInstallPage() {
                 <p className="font-medium mb-3">Vérifier la version de Node.js</p>
                 <CodeBlock code="node --version" language="bash" />
                 <p className="text-sm text-muted-foreground mt-2">
-                  Vous devriez voir s'afficher un numéro de version, par exemple : <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">v20.11.0</code>
+                  Vous devriez voir s'afficher un numéro de version, par exemple : <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">v24.22.1</code>
                 </p>
               </div>
 
@@ -349,7 +359,22 @@ export default function NodeJSInstallPage() {
                 <p className="font-medium mb-3">Vérifier la version de npm</p>
                 <CodeBlock code="npm --version" language="bash" />
                 <p className="text-sm text-muted-foreground mt-2">
-                  Vous devriez voir s'afficher un numéro de version, par exemple : <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">10.2.4</code>
+                  Vous devriez voir s'afficher un numéro de version, par exemple : <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">11.19.1</code>
+                </p>
+              </div>
+
+              <div>
+                <p className="font-medium mb-3">Installer pnpm (facultatif, recommandé)</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  pnpm remplace npm pour installer les dépendances d&apos;un projet : plus rapide, il partage
+                  les fichiers entre projets au lieu de les copier. Les outils de ce site l&apos;utilisent.
+                </p>
+                <CodeBlock code="npm install -g pnpm" language="bash" />
+                <p className="text-sm text-muted-foreground mt-2">
+                  Vérifiez avec <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">pnpm --version</code>.
+                  Vous lirez parfois <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">corepack enable</code> :
+                  cette méthode marche avec Node.js 24, mais Corepack n&apos;est plus livré avec Node.js à partir de la version 25.
+                  La commande npm ci-dessus fonctionne partout.
                 </p>
               </div>
             </div>
@@ -397,8 +422,8 @@ export default function NodeJSInstallPage() {
               Erreurs lors de l'installation de packages
             </h3>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-6">
-              <li>Assurez-vous d'avoir coché "Automatically install necessary tools" lors de l'installation</li>
-              <li>Exécutez le terminal en tant qu'administrateur (Windows)</li>
+              <li>Si l&apos;erreur parle de « node-gyp », de « MSBuild » ou de « Visual Studio », le paquet doit être compilé : relancez l&apos;installateur de Node.js et cochez cette fois « Automatically install the necessary tools »</li>
+              <li>Une installation globale (<code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">-g</code>) refusée pour des droits : ouvrez le terminal en tant qu&apos;administrateur (Windows)</li>
               <li>Nettoyez le cache npm : <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">npm cache clean --force</code></li>
             </ul>
           </div>
@@ -409,9 +434,9 @@ export default function NodeJSInstallPage() {
               Version trop ancienne
             </h3>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-6">
-              <li>Claude Code nécessite Node.js version 18 ou supérieure</li>
-              <li>Désinstallez l'ancienne version depuis le Panneau de configuration</li>
-              <li>Téléchargez et installez la dernière version LTS depuis nodejs.org</li>
+              <li>L&apos;installation de Claude Code par npm demande Node.js 22 ou plus récent (l&apos;installation native n&apos;en a pas besoin)</li>
+              <li>Mettez à jour avec <code className="px-2 py-1 bg-slate-900 rounded text-cosmic-300">winget upgrade OpenJS.NodeJS.LTS</code></li>
+              <li>Ou désinstallez l&apos;ancienne version depuis Paramètres → Applications, puis installez la LTS depuis nodejs.org</li>
             </ul>
           </div>
         </div>

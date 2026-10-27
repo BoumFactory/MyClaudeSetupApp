@@ -2,7 +2,7 @@ export type PackageTier = 'generaliste' | 'latex' | 'typst' | 'avance'
 
 /** Packs dédiés à un skill (le skill + les skills qu'il appelle + leurs dépendances) */
 export type SkillPackId = 'skill-latex' | 'skill-reveals' | 'skill-capsule-video' | 'skill-bareme' | 'skill-typst'
-  | 'skill-grill-me'
+  | 'skill-grill-me' | 'skill-programmes-progression'
 
 /** Tout identifiant téléchargeable par /api/download-package */
 export type PackageId = PackageTier | SkillPackId
@@ -287,9 +287,11 @@ export const SKILL_PACKS: AIPackage<SkillPackId>[] = [
       'latex',                // orchestrateur
       'tex-document-creator', // 1. créer
       'bfcours-latex',        // 2. écrire
+      'choix-didactiques',    // 2. écrire : le fond pédagogique (cité par le diaporama)
       'tex-compiling-skill',  // 3. compiler
       'latex-visual-review',  // 4. regarder et améliorer
       'pdf2tikz',             // étape 0 : reprendre les figures d'un PDF source
+      'programmes-officiels', // étape 0 : attendus du BO (cité par le diaporama et appelé par latex)
     ],
     agentPaths: [],
     commandPaths: [],
@@ -308,9 +310,11 @@ export const SKILL_PACKS: AIPackage<SkillPackId>[] = [
       'latex : enchaîne les quatre étapes',
       'tex-document-creator : crée le document à partir d\'un modèle',
       'bfcours-latex : écrit le contenu avec les environnements bfcours',
+      'choix-didactiques : le fond pédagogique (jeux de données, symétrie énoncé / corrigé, format de fiche)',
       'tex-compiling-skill : compile et corrige les erreurs',
       'latex-visual-review : relit le PDF et améliore la mise en page',
       'pdf2tikz : reprend les figures d\'un PDF source',
+      'programmes-officiels : les attendus du BO du niveau visé',
     ],
   },
   {
@@ -410,8 +414,9 @@ export const SKILL_PACKS: AIPackage<SkillPackId>[] = [
     // (installateur de la Forge) : localiser.py la retrouve sans chemin en dur.
     // Non inclus : typst-creation et typst-documentation (développement de paquets, pas de documents élèves).
     skills: [
-      'bfcours-typst', // partir, écrire, compiler, regarder
-      'typst',         // le langage en plus long (facultatif)
+      'bfcours-typst',     // partir, écrire, compiler, regarder
+      'typst',             // le langage en plus long (facultatif)
+      'choix-didactiques', // fond pédagogique d'un document élève (cité par le diaporama)
     ],
     agentPaths: [],
     commandPaths: [],
@@ -428,6 +433,7 @@ export const SKILL_PACKS: AIPackage<SkillPackId>[] = [
       'chercher.py : la bonne fonction et ses options, aussi par nom de commande LaTeX',
       'Documents complets à imiter : cours, fiche d\'exercices, évaluation, QCM',
       'typst : le langage, les figures cetz, la correspondance LaTeX → Typst',
+      'choix-didactiques : le fond pédagogique d\'un document élève',
     ],
     annexes: 'La suite farfadet elle-même s\'installe à part, en une commande (page Packages Typst)',
   },
@@ -464,6 +470,36 @@ export const SKILL_PACKS: AIPackage<SkillPackId>[] = [
       'skill-creator n\'est pas inclus : il est fourni et maintenu par Anthropic. Claude Code : /plugin install skill-creator@claude-plugins-official. Codex : $skill-creator, intégré.',
       'Tutoriel pas à pas : https://bfcours.dev/claude-code/tutorials/creer-un-skill',
     ],
+  },
+  {
+    id: 'skill-programmes-progression',
+    name: 'Skills programmes et progression',
+    subtitle: 'Du BO 2026 à la progression annuelle',
+    description: 'Les skills programmes-officiels et progression-builder : l\'agent cherche dans les programmes de mathématiques de la rentrée 2026 (CM1 à Terminale), cite le BO mot pour mot avec le PDF et la page, puis construit avec vous une progression annuelle dans une fiche HTML interactive et la vérifie.',
+    icon: '🏛️',
+    color: 'cosmic',
+    tier: 0,
+    // progression-builder lit ../programmes-officiels/data/json/ : les deux skills voyagent ensemble.
+    // Consultation et construction : bibliothèque standard Python (sqlite3 pour la recherche).
+    // PyMuPDF (facultatif) ne sert qu'à régénérer les images de pages du BO (scripts/regenerer_pages.py) et à reconstruire la base avec un nouveau BO ; jsonschema à la validation.
+    // Archive allégée (≈ 20 Mo décompressés) : PDF du BO, fiches vierges avec BO embarqué ; les images de pages ne sont pas fournies.
+    skills: ['programmes-officiels', 'progression-builder'],
+    agentPaths: [],
+    commandPaths: [],
+    dataPaths: [],
+    agentsDataPaths: [],
+    mcpServerPaths: [],
+    claudeMdFile: '',
+    skillOnly: true,
+    highlights: [
+      'programmes-officiels : 13 niveaux, 1 738 compétences, formulation du BO extraite du PDF',
+      'Un script par question : recherche, fiche d\'une compétence, démonstrations, algorithmes, progression d\'une notion, comparaison de niveaux',
+      'Preuves : PDF du BO, texte de chaque page, image de page régénérée à la demande',
+      'progression-builder : fiche HTML de progression par glisser-déposer, BO embarqué',
+      'Treize fiches vierges prêtes, du CM1 à la Terminale',
+      'Validateur de progression : codes inconnus, doublons, couverture',
+    ],
+    annexes: 'Aucun module Python à installer pour consulter et construire (PyMuPDF, facultatif, seulement pour régénérer les images de pages du BO ou reconstruire la base avec un nouveau BO)',
   },
 ]
 

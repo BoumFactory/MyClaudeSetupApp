@@ -147,7 +147,7 @@ Un « pack » est déjà une notion du site (bundles de `AI_PACKAGES`) ; un pack
    - l'API `/api/download-package` résout l'id dans `ALL_PACKAGES` et construit l'archive avec `buildPackageZip` (`src/lib/package-zip.ts`) ;
    - le panier (`CartDrawer`) télécharge tout item `package-<id>` par cette API ;
    - la détection des doublons (`packageIncludes`) considère qu'un bundle inclut un pack de skill s'il contient tous ses skills.
-3. Archive d'un pack de skill : `claude-setup-<id>.zip`, contenant **uniquement** `.claude/` (`skills/`, `mcp_servers/`, `datas/`, `LISEZMOI-<id>.md`). Elle se décompresse donc telle quelle dans un projet existant.
+3. Archive d'un pack de skill : `claude-setup-<id>.zip`, contenant **uniquement** `.claude/` (`skills/`, `mcp_servers/`, `datas/`, `commands/`, `diaporama/<slug>.html` avec ses `assets/`, `LISEZMOI-<id>.md`). Elle se décompresse donc telle quelle dans un projet existant.
 
 ### Déclarer la page
 
@@ -187,7 +187,12 @@ On copie **tout** `.claude/` (pas seulement `skills/`) : les scripts retrouvent 
 7. [ ] Mettre à jour le commentaire de `categories.json`, le libellé du menu et le titre de recherche.
 7 bis. [ ] Vérifier qu'aucun texte propre à un autre skill ne reste en dur dans le code commun (`SkillPackPanel.tsx`, `skill-install.ts`, LISEZMOI de `package-zip.ts`) : ce qui diffère d'un pack à l'autre se déclare dans `SKILL_PACKS` / `SKILL_PAGES` (champs `annexes`, prérequis, `commandPaths`…).
 7 ter. [ ] Liens du diaporama vers le site : URL absolues `https://bfcours.dev/…` (jamais `href="/…"`, qui donne `file:///C:/…` quand le diaporama est ouvert ou téléchargé hors du site), avec `target="_top"` pour une page, `target="_blank"` pour un fichier.
+7 quater. [ ] **Ce qu'on télécharge = le diaporama + les skills dont il parle, rien de plus, rien de moins.**
+   - Relever dans le diaporama (diapo « En coulisse », étapes, diapo d'installation) tous les skills, commandes, agents et données cités ; comparer à `skills`, `commandPaths`, `agentPaths`, `dataPaths`, `mcpServerPaths` du pack. Un skill cité mais absent du pack : l'ajouter (et le publier dans `claude-setup/skills/` s'il n'y est pas) ou retirer la mention du diaporama. Un skill du pack jamais cité : le retirer ou le citer.
+   - Une dépendance indispensable (skill appelé par un autre, script ou dossier commun) doit être dans le pack ; chaque dossier listé doit exister dans `public/download/Claude-Code-Setup/claude-setup/`.
+   - Le diaporama voyage avec le pack : `buildPackageZip` l'ajoute automatiquement dans `.claude/diaporama/<slug>.html` (+ `assets/` reveal.js), le slug étant la clé de `SKILL_PAGES` dont le `packId` est celui du pack (`src/lib/presentation-zip.ts`, partagé avec le bouton « ZIP direct » du viewer). Rien à déclarer ; le LISEZMOI du pack le mentionne.
+   - Hors ligne : seules références relatives permises dans le diaporama = `assets/…` (présentes dans `public/render/Reveals/assets/`) ; tout lien vers le site en `https://bfcours.dev/…`. Reveal.js (plugins) et Font Awesome se chargent en ligne : le dire (déjà fait dans le LISEZMOI).
 8. [ ] `npx tsc --noEmit` (ignorer les erreurs de `.next/` périmé).
-9. [ ] Construire l'archive (jiti), la décompresser dans un projet vide (variante Claude Code ET variante Codex), lancer les scripts clés.
+9. [ ] Construire l'archive (jiti), la décompresser dans un projet vide (variante Claude Code ET variante Codex), lancer les scripts clés, et lister le contenu : skills attendus + `.claude/diaporama/<slug>.html` (règle 7 quater).
 10. [ ] Capturer le diaporama (skill `capture-html`, URL `?print-pdf&pdfSeparateFragments=false`, `--pleine-page`) et relire chaque diapo, **diapos verticales comprises** (en mode impression, chaque détail occupe sa propre page, juste après sa tête de pile). Vérifier aussi une diapo verticale isolée (`#/h/v`) en mode normal : contrôles en croix, numéro `h.v`, aucun débordement.
 11. [ ] Faire relire la page à l'utilisateur sur son serveur de développement (on ne lance pas `pnpm dev`).

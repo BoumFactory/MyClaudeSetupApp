@@ -317,4 +317,53 @@ export const SKILL_PAGES: Record<string, SkillPageConfig> = {
     ],
     invocation: 'Demandez « passe ce cours en Typst, avec la version élève » en indiquant le fichier .tex et le dossier de travail, ou « fais-moi une fiche d\'exercices en Typst sur… ».',
   },
+  'programmes-officiels-system': {
+    titre: 'Les skills programmes et progression : du BO 2026 à la progression annuelle',
+    accroche:
+      'Vous posez une question sur le programme ou demandez une progression ; l\'agent cherche dans le BO de la rentrée 2026, le cite mot pour mot avec sa page, puis construit avec vous la progression du niveau et la vérifie.',
+    packId: 'skill-programmes-progression',
+    demandeExemple: 'Construis ma progression de 5e sur le nouveau programme : sept séquences, avec les vacances.',
+    resultat: 'Une fiche de progression interactive, chaque compétence tirée du BO avec sa page.',
+    etapes: [
+      {
+        nom: 'Chercher',
+        skill: 'programmes-officiels',
+        quoi: 'Trouve dans le programme du niveau les compétences, démonstrations exigibles et algorithmes qui vous concernent ; suit une notion d\'un niveau à l\'autre.',
+        icone: 'Search',
+      },
+      {
+        nom: 'Citer',
+        skill: 'programmes-officiels',
+        quoi: 'Donne la formulation du BO mot pour mot, extraite du PDF par un script, avec le PDF et la page d\'où elle vient.',
+        icone: 'BookOpen',
+      },
+      {
+        nom: 'Construire',
+        skill: 'progression-builder',
+        quoi: 'Prépare la fiche du niveau avec toutes les compétences du BO, puis répartit avec vous les compétences en séquences, bloc par bloc, vacances comprises.',
+        icone: 'ListOrdered',
+      },
+      {
+        nom: 'Vérifier',
+        skill: 'progression-builder',
+        quoi: 'Contrôle chaque code, signale les doublons et compte les compétences placées sur le total du programme.',
+        icone: 'Eye',
+      },
+    ],
+    obtient: [
+      'Une fiche HTML de progression : glisser-déposer, séquences, vacances, commentaires, export HTML, PDF, JSON, Markdown et LaTeX.',
+      'Des citations prouvées : formulation du BO, PDF et page de chaque compétence ; un double-clic dans la fiche ouvre le BO à la bonne page.',
+      'Treize fiches vierges prêtes, du CM1 à la Terminale, à distribuer à vos collègues.',
+      'Des retouches en français : « déplace les statistiques en séquence 6 », « qu\'est-ce qui n\'est pas encore placé ? ».',
+    ],
+    prerequis: [
+      {
+        texte: 'Python 3, sans module à installer (PyMuPDF seulement pour reconstruire la base avec un nouveau BO).',
+        lien: { href: '/claude-code/tutorials/python-install', label: 'Installer Python' },
+      },
+      { texte: 'Un navigateur pour ouvrir la fiche de progression, sans installation.' },
+      { texte: 'Les deux skills côte à côte dans skills/ : progression-builder lit la base de programmes-officiels.' },
+    ],
+    invocation: 'Demandez « construis ma progression de 5e en sept séquences », « une fiche vierge de 3e pour mes collègues » ou « quelles démonstrations sont exigibles en seconde ? Cite le BO ».',
+  },
 }

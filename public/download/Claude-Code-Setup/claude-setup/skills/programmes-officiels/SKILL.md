@@ -81,6 +81,17 @@ python -m pytest tests/
 
 Toute affirmation sur le programme doit pouvoir être prouvée : donner le **chemin du BO** (`data/pdf/<niveau>.pdf`) et la **page** (champ `source.page` de la compétence), et au besoin l'image de la page (`data/pages/<niveau>/page_NNN.png`) ou son texte brut (`data/pages_txt/…`). `python scripts/get.py <CODE>` affiche ces références.
 
+**Images de pages non fournies.** Les dossiers `data/pages/` (PNG) et `data/pages_pdf/` (pages PDF isolées) ne sont pas livrés : ils se régénèrent depuis les BO complets de `data/pdf/`. `get.py` recrée seul l'image de la page citée si PyMuPDF est installé ; sinon il indique la commande à lancer. Régénération manuelle :
+
+```bash
+pip install pymupdf                                        # requis pour cela uniquement
+python scripts/regenerer_pages.py --niveau 5E              # un niveau (PNG + PDF de page)
+python scripts/regenerer_pages.py --niveau cycle4 --page 7 --png
+python scripts/regenerer_pages.py                          # tous les niveaux
+```
+
+Sans PyMuPDF, la preuve reste possible : ouvrir `data/pdf/<niveau>.pdf` à la page `source.page` (ou texte brut dans `data/pages_txt/`).
+
 Les scripts de construction (`scripts/build/`) servent à **mettre à jour les programmes avec un nouveau BO** : remplacer le PDF dans `data/pdf/`, puis relancer le pipeline (voir plus bas).
 
 ## Niveaux et codes
@@ -129,8 +140,8 @@ Les scripts de construction (`scripts/build/`) servent à **mettre à jour les p
 data/
 ├── pdf/{niveau}.pdf                            # 9 PDFs sources (7 lycée + cycle4 + cycle3)
 ├── pages_txt/{folder}/page_NNN.txt             # Texte brut PyMuPDF
-├── pages_pdf/{folder}/page_NNN.pdf             # PDFs page isolée
-├── pages/{folder}/page_NNN.png                 # PNG ~1200 px (preuve visuelle)
+├── pages_pdf/{folder}/page_NNN.pdf             # (non fourni) PDFs page isolée, régénérable
+├── pages/{folder}/page_NNN.png                 # (non fourni) PNG ~1200 px, régénérable
 ├── bullets/{folder}/page_NNN.json              # Bullets BO verbatim — extrait Python
 ├── transcriptions/{niveau}/page_NNN.md         # Optionnel — cas tableaux complexes uniquement
 ├── json/

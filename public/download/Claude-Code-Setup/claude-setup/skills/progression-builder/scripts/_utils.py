@@ -6,6 +6,7 @@ La palette est cohérente pour tous les niveaux du skill `programmes-officiels`.
 from __future__ import annotations
 
 import colorsys
+import json
 import re
 import unicodedata
 
@@ -156,3 +157,61 @@ def html_escape(text: str) -> str:
         .replace('"', "&quot;")
         .replace("'", "&#39;")
     )
+
+
+# ---------------------------------------------------------------------------
+#  Lecture du référentiel embarqué dans une fiche HTML (gabarit v2)
+# ---------------------------------------------------------------------------
+#
+# Le gabarit v2 ne contient aucun objectif statique : la colonne gauche est
+# construite en JS au chargement à partir de l'objet `DATA`, écrit par
+# generate_vierge.py entre les marqueurs `/* __DATA_START__ */` et
+# `/* __DATA_END__ */` sous la forme `let DATA = {...json...};`.
+# Si la fiche a été réenregistrée depuis le navigateur (bouton « Enregistrer »),
+# le snapshot embarqué peut contenir son propre `data` (référentiel importé),
+# qui prime alors sur le DATA du code.
+
+DATA_START = "/* __DATA_START__ */"
+DATA_END = "/* __DATA_END__ */"
+SNAPSHOT_RE = re.compile(
+    r'(<!--\s*__SNAPSHOT_START__\s*-->\s*'
+    r'<script type="application/json" id="__snapshot__">)'
+    r'(?P<json>[\s\S]*?)'
+    r'(</script>\s*<!--\s*__SNAPSHOT_END__\s*-->)'
+)
+
+
+def read_snapshot(html_text: str) -> dict | None:
+    """Renvoie le snapshot embarqué (dict) ou None s'il est vide/absent."""
+    m = SNAPSHOT_RE.search(html_text)
+    if not m or not m.group("json").strip():
+        return None
+    return json.loads(m.group("json"))
+
+
+def read_data(html_text: str) -> dict:
+    """Renvoie le référentiel DATA de la fiche (snapshot prioritaire)."""
+    snap = read_snapshot(html_text)
+    if snap and isinstance(snap.get("data"), dict):
+        return snap["data"]
+    ds = html_text.find(DATA_START)
+    de = html_text.find(DATA_END)
+    if ds == -1 or de == -1:
+        raise ValueError("Marqueurs __DATA_START__/__DATA_END__ introuvables : "
+                         "ce n'est pas une fiche générée par generate_vierge.py.")
+    block = html_text[ds + len(DATA_START):de].strip()
+    block = re.sub(r"^let\s+DATA\s*=\s*", "", block).rstrip().rstrip(";")
+    return json.loads(block)
+
+
+def iter_data_items(data: dict):
+    """Itère (thème, sous-thème, item) sur toutes les compétences de DATA."""
+    for theme_name, theme_val in data.items():
+        for sub_name, sub in (theme_val.get("themes") or {}).items():
+            items = sub if isinstance(sub, list) else (sub.get("items") or [])
+            for item in items:
+                yield theme_name, sub_name, item
+
+
+def codes_from_data(data: dict) -> set[str]:
+    return {item["code"] for _, _, item in iter_data_items(data) if item.get("code")}

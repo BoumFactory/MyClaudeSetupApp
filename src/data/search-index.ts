@@ -141,6 +141,27 @@ export function buildSearchIndex(): SearchableItem[] {
       url: '/claude-code/tutorials/utilisation-config',
       tags: ['configuration', 'utilisation', 'avancé'],
     },
+    {
+      id: 'git-install',
+      title: 'Installation Git pour Windows',
+      description: 'Installer Git et Git Bash, le terminal que Claude Code utilise sous Windows ; winget pour les autres outils',
+      url: '/claude-code/tutorials/git-install',
+      tags: ['git', 'git bash', 'winget', 'ffmpeg', 'installation', 'prérequis', 'windows'],
+    },
+    {
+      id: 'connecteurs',
+      title: 'Connecteurs, serveurs MCP et clés API',
+      description: 'Relier Claude à Google Drive, Gmail, Agenda, Canva… ; serveurs MCP ; clés API ; précautions sur les données d\'élèves',
+      url: '/claude-code/tutorials/connecteurs',
+      tags: ['connecteur', 'mcp', 'api', 'clé api', 'google drive', 'gmail', 'canva', 'rgpd', 'services externes'],
+    },
+    {
+      id: 'mods',
+      title: 'Les mods de Claude Code',
+      description: 'Personnaliser l\'interface de Claude Code : panneau, bandeau, notification de bureau, commande. Mod notif-bureau à télécharger',
+      url: '/claude-code/tutorials/mods',
+      tags: ['mod', 'mods', 'plugin', 'notification', 'interface', 'personnalisation', 'plugin-authoring'],
+    },
   ]
 
   for (const guide of installationGuides) {
@@ -163,7 +184,7 @@ export function buildSearchIndex(): SearchableItem[] {
     'commandes-disponibles': 'Commandes disponibles',
     'tex-document-creator-system': 'Tex Document Creator',
     'reveals-presentation-system': 'Skill reveals : de la demande au diaporama prêt à projeter',
-    'programmes-officiels-system': 'Programmes Officiels',
+    'programmes-officiels-system': 'Skills programmes et progression : du BO 2026 à la progression annuelle',
     'bfcours-latex-system': 'Skill latex : de la demande au PDF relu',
     'bfcours-typst-skill': 'Skill Typst : de la demande aux PDF professeur et élève',
     'jupyter-notebook-skill': 'Jupyter Notebook',

@@ -154,24 +154,24 @@ Avant de générer :
 4. Le HTML rempli est autonome : il peut être ouvert directement dans
    un navigateur. Donner le chemin à l'utilisateur.
 
-## Mode édition directe (alternative)
+## Retouches sur une fiche déjà remplie
 
-Si l'utilisateur préfère une retouche ponctuelle sur un HTML déjà rempli
-(*« renomme la séquence 3 »*, *« ajoute la compétence 5E-GEO-007 à la
-séquence 2 »*), travailler **directement avec Edit** sur le HTML :
+La fiche ne contient aucun bloc HTML statique à éditer : ses séquences
+vivent dans le snapshot JSON de la balise `__snapshot__`, rejoué au
+chargement. Pour une retouche (*« renomme la séquence 3 »*, *« ajoute
+5E-GEO-007 à la séquence 2 »*) :
 
-- Le pattern d'une séquence est stable :
-  `<div class="sequence open"…><div class="sequence-header">…<div class="sequence-title" …>TITRE</div>…`
-- Le pattern d'un objectif déposé est :
-  `<div class="right-objectif" data-code="CODE" title="…" style="background-color: …" draggable="true">TEXTE<span class="close-btn delete-right-objectif">×</span></div>`
-- Quand on ajoute un objectif via Edit, **toujours** marquer le miroir
-  côté leftPanel comme `class="objectif grayed"` et `draggable="false"`.
-- Quand on retire un objectif, faire l'inverse.
+- si l'on dispose du `progression.json` : le modifier, le revalider, puis
+  relancer `apply_progression.py` (sur la vierge ou sur la fiche remplie,
+  dont les séquences sont alors remplacées) ;
+- sinon : demander à l'enseignant le fichier produit par le bouton
+  « 📋 JSON » de sa fiche, le modifier et l'appliquer de la même façon
+  (le script lit aussi ce format : `label`/`html` des commentaires,
+  séparateurs racine). Ce fichier porte en `niveau` le titre de la page :
+  le remplacer par le code (`5E`…) avant `validate_progression.py`.
 
-Cette voie est plus risquée (édition manuelle d'un fichier de ~100 KB),
-elle est recommandée seulement pour 1–3 modifications ciblées. Au-delà,
-préférer reconstruire un `progression.json` et passer par
-`apply_progression.py`.
+L'enseignant peut aussi faire la retouche lui-même à la souris, puis
+« HTML » pour enregistrer la fiche.
 
 ## Astuces pratiques pour la conversation
 

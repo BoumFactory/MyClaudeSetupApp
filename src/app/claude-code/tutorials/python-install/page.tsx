@@ -62,7 +62,7 @@ export default function PythonInstallPage() {
         </div>
 
         <p className="text-muted-foreground">
-          Python est un langage de programmation populaire et polyvalent. C'est l'un des compilateurs
+          Python est un langage de programmation populaire et polyvalent. C'est l'un des langages
           principaux utilisés par les outils d'IA modernes. Il permet d'exécuter de nombreux programmes
           liés à l'intelligence artificielle, au traitement d'images, à l'analyse de données et bien plus.
         </p>
@@ -118,13 +118,41 @@ export default function PythonInstallPage() {
         </div>
       </section>
 
+      {/* Voie rapide : winget */}
+      <section className="glass-card rounded-xl p-8 space-y-4 border-2 border-emerald-500/30">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center">
+            <Terminal className="w-5 h-5 text-white" />
+          </div>
+          <h2 className="text-2xl font-bold">Voie rapide sous Windows : une seule commande</h2>
+        </div>
+        <p className="text-muted-foreground">
+          Windows 10 et 11 intègrent <strong className="text-foreground">winget</strong>, le gestionnaire
+          d&apos;applications de Microsoft. Ouvrez PowerShell (menu Démarrer, tapez « PowerShell ») et collez :
+        </p>
+        <CodeBlock code="winget install Python.Python.3.13" language="powershell" />
+        <p className="text-sm text-muted-foreground">
+          winget télécharge la version 64 bits depuis python.org et l&apos;installe pour votre compte.
+          Fermez ensuite PowerShell, rouvrez-le et passez directement à l&apos;étape 3 (vérification).
+          Si <code className="px-2 py-1 bg-slate-900 rounded text-nebula-300">python --version</code> ne répond pas,
+          suivez plutôt la méthode classique ci-dessous, qui permet de cocher la case PATH vous-même.
+        </p>
+        <div className="p-3 bg-blue-950/30 border border-blue-800 rounded-lg">
+          <p className="text-sm text-muted-foreground">
+            <strong className="text-blue-300">Pourquoi 3.13 et pas la toute dernière version ?</strong> Python
+            sort une version par an (3.15 en octobre 2026). Les bibliothèques scientifiques mettent quelques mois
+            à suivre : une version d&apos;un ou deux ans (3.13 ou 3.14) installe tout sans surprise.
+          </p>
+        </div>
+      </section>
+
       {/* Installation */}
       <section className="space-y-6">
         <div className="flex items-center gap-4">
           <div className="flex-shrink-0 w-12 h-12 rounded-full nebula-gradient flex items-center justify-center text-white font-bold text-xl">
             1
           </div>
-          <h2 className="text-3xl font-bold">Télécharger Python x64</h2>
+          <h2 className="text-3xl font-bold">Télécharger Python x64 (méthode classique)</h2>
         </div>
 
         <Card className="glass-card">
@@ -160,13 +188,15 @@ export default function PythonInstallPage() {
                 <div>
                   <p className="font-medium mb-1">Télécharger la version Windows x64</p>
                   <p className="text-sm text-muted-foreground mb-2">
-                    Cliquez sur le bouton de téléchargement de la dernière version stable.
-                    Le site détecte automatiquement votre système d'exploitation.
+                    Le gros bouton jaune de la page propose désormais le <strong className="text-foreground">Python install manager</strong>,
+                    un nouvel outil de python.org. Pour suivre ce tutoriel pas à pas, cliquez plutôt sur
+                    « Windows », choisissez une version 3.13 ou 3.14, puis le lien
+                    <strong className="text-foreground"> Download Windows installer (64-bit)</strong>.
                   </p>
                   <div className="p-3 bg-amber-950/30 border border-amber-800 rounded-lg">
                     <p className="text-sm text-amber-300">
                       <strong>Vérification importante :</strong> Assurez-vous que le fichier téléchargé contient
-                      bien "amd64" ou "x86-64" dans son nom. Par exemple : <code className="px-2 py-1 bg-slate-900 rounded">python-3.12.0-amd64.exe</code>
+                      bien "amd64" dans son nom. Par exemple : <code className="px-2 py-1 bg-slate-900 rounded">python-3.13.9-amd64.exe</code>
                     </p>
                   </div>
                 </div>
@@ -177,8 +207,8 @@ export default function PythonInstallPage() {
                 <div>
                   <p className="font-medium mb-1">Version recommandée</p>
                   <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">Minimum version 3.8</strong>, mais nous recommandons
-                    la dernière version stable (3.12 ou supérieure) pour bénéficier des dernières améliorations.
+                    <strong className="text-foreground">Python 3.13</strong> (ou 3.14). Les versions 3.10 et
+                    antérieures ne reçoivent plus de correctifs de sécurité : évitez-les.
                   </p>
                 </div>
               </div>
@@ -333,7 +363,7 @@ export default function PythonInstallPage() {
                 <p className="font-medium mb-3">Vérifier la version de Python</p>
                 <CodeBlock code="python --version" language="bash" />
                 <p className="text-sm text-muted-foreground mt-2">
-                  Vous devriez voir s'afficher un numéro de version, par exemple : <code className="px-2 py-1 bg-slate-900 rounded text-nebula-300">Python 3.12.0</code>
+                  Vous devriez voir s'afficher un numéro de version, par exemple : <code className="px-2 py-1 bg-slate-900 rounded text-nebula-300">Python 3.13.9</code>
                 </p>
               </div>
 
@@ -393,6 +423,18 @@ export default function PythonInstallPage() {
           <div className="border border-border rounded-lg p-4">
             <h3 className="font-semibold mb-2 flex items-center gap-2">
               <AlertCircle className="w-5 h-5 text-amber-400" />
+              Taper « python » ouvre le Microsoft Store
+            </h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-6">
+              <li>Windows place un raccourci « python » qui renvoie vers le Store tant qu&apos;aucun Python n&apos;est trouvé</li>
+              <li>Ouvrez Paramètres → Applications → Paramètres avancés des applications → Alias d&apos;exécution d&apos;application</li>
+              <li>Désactivez les deux lignes « Programme d&apos;installation d&apos;application » associées à python.exe et python3.exe, puis rouvrez le terminal</li>
+            </ul>
+          </div>
+
+          <div className="border border-border rounded-lg p-4">
+            <h3 className="font-semibold mb-2 flex items-center gap-2">
+              <AlertCircle className="w-5 h-5 text-amber-400" />
               Architecture 32 bits au lieu de 64 bits
             </h3>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-6">
@@ -410,7 +452,7 @@ export default function PythonInstallPage() {
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-6">
               <li>Mettez à jour pip : <code className="px-2 py-1 bg-slate-900 rounded text-nebula-300">python -m pip install --upgrade pip</code></li>
               <li>Exécutez le terminal en tant qu'administrateur (Windows)</li>
-              <li>Certains packages nécessitent Visual Studio Build Tools (installés automatiquement avec Node.js)</li>
+              <li>Préférez une version 3.13 ou 3.14 : sur la toute dernière version, certains paquets n&apos;existent pas encore « prêts à l&apos;emploi » et pip tente de les compiler</li>
             </ul>
           </div>
 
@@ -421,7 +463,7 @@ export default function PythonInstallPage() {
             </h3>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-6">
               <li>Utilisez <code className="px-2 py-1 bg-slate-900 rounded text-nebula-300">py --list</code> pour voir toutes les versions</li>
-              <li>Utilisez <code className="px-2 py-1 bg-slate-900 rounded text-nebula-300">py -3.12</code> pour lancer une version spécifique</li>
+              <li>Utilisez <code className="px-2 py-1 bg-slate-900 rounded text-nebula-300">py -3.13</code> pour lancer une version spécifique</li>
               <li>Pour simplifier, désinstallez les anciennes versions depuis le Panneau de configuration</li>
             </ul>
           </div>
@@ -445,6 +487,11 @@ export default function PythonInstallPage() {
           <Button asChild variant="nebula" size="lg">
             <Link href="/claude-code/tutorials/nodejs-install" prefetch={false}>
               Installer Node.js
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link href="/claude-code/tutorials/git-install" prefetch={false}>
+              Installer Git
             </Link>
           </Button>
           <Button asChild variant="outline" size="lg">

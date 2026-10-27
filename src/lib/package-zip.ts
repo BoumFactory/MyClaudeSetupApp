@@ -2,6 +2,7 @@ import { SHARED_FOLDERS } from '@/data/ai-packages'
 import type { AIPackage, PackageId } from '@/data/ai-packages'
 import { installMarkdown } from '@/lib/skill-install'
 import { SKILL_PAGES } from '@/data/skill-pages'
+import { addPresentationToZip } from '@/lib/presentation-zip'
 import JSZip from 'jszip'
 import fs from 'fs/promises'
 import path from 'path'
@@ -14,6 +15,12 @@ import path from 'path'
 
 const SETUP_BASE = path.join(process.cwd(), 'public', 'download', 'Claude-Code-Setup')
 const CLAUDE_SETUP = path.join(SETUP_BASE, 'claude-setup')
+const PRESENTATION_DIR = '.claude/diaporama'
+
+/** Slug du diaporama (public/render/Reveals/<slug>.html) de la page de skill liée à ce pack */
+function presentationSlug(packId: string): string | undefined {
+  return Object.entries(SKILL_PAGES).find(([, page]) => page.packId === packId)?.[0]
+}
 
 export async function buildPackageZip(pkg: AIPackage<PackageId>): Promise<JSZip> {
   const zip = new JSZip()
@@ -29,7 +36,13 @@ export async function buildPackageZip(pkg: AIPackage<PackageId>): Promise<JSZip>
       const cmdPath = path.join(CLAUDE_SETUP, 'commands', cmd)
       if (await exists(cmdPath)) zip.file(`.claude/commands/${cmd}`, await fs.readFile(cmdPath))
     }
-    zip.file(`.claude/LISEZMOI-${pkg.id}.md`, generateSkillPackReadme(pkg))
+    // Le diaporama de présentation du skill voyage avec son pack : .claude/diaporama/<slug>.html
+    // (+ assets/ reveal.js), à ouvrir directement dans le navigateur.
+    const slug = presentationSlug(pkg.id)
+    const withPresentation = slug
+      ? await addPresentationToZip(zip, `${slug}.html`, PRESENTATION_DIR)
+      : false
+    zip.file(`.claude/LISEZMOI-${pkg.id}.md`, generateSkillPackReadme(pkg, withPresentation ? `${slug}.html` : undefined))
     return zip
   }
 
@@ -172,7 +185,7 @@ Genere depuis bfcours.dev
 `
 }
 
-function generateSkillPackReadme(pkg: AIPackage<PackageId>): string {
+function generateSkillPackReadme(pkg: AIPackage<PackageId>, presentationFile?: string): string {
   return `# Pack ${pkg.name}
 
 ${pkg.description}
@@ -180,7 +193,7 @@ ${pkg.description}
 ## Contenu
 
 ${pkg.highlights.map(h => `- ${h}`).join('\n')}
-${pkg.mcpServerPaths?.length ? '- mcp_servers/ : serveurs Python appelés par les scripts de création et de compilation\n' : ''}${pkg.dataPaths.length ? '- datas/ : modèles de documents et préférences par défaut\n' : ''}
+${presentationFile ? `- diaporama/${presentationFile} : le diaporama de présentation du skill (à ouvrir dans le navigateur ; reveal.js et les icônes se chargent en ligne)\n` : ''}${pkg.mcpServerPaths?.length ? '- mcp_servers/ : serveurs Python appelés par les scripts de création et de compilation\n' : ''}${pkg.dataPaths.length ? '- datas/ : modèles de documents et préférences par défaut\n' : ''}
 ${installMarkdown(pkg.id, pkg.pythonDeps)}
 ## Prérequis
 
