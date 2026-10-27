@@ -8,7 +8,7 @@ sans connaître les scripts (d'après une idée d'un collègue, rd ; réécrit s
     python capsule.py planche  <capsule> [--images 2.5,10]      # À LA DEMANDE : PNG dans planches/ ; défaut : milieu de chaque temps fort
     python capsule.py rendu    <capsule> [--qualite 540|envoi|projection] [--finition auto|aucune|x264]
                                          [--debut X --fin Y] [--brouillon] [--fenetre]
-    python capsule.py tout     <capsule> [--voix X | --piper] [--planche] [--rendu] [--qualite 540]
+    python capsule.py tout     <capsule> [--voix X | --piper] [--planche] [--rendu] [--qualite 540|envoi|projection]
 
 <capsule> : un chemin, ou un nom cherché dans « dossier_capsules » de config.json.
 `tout` enchaîne relire → voix → caler, puis s'arrête (écrire spec.js) ; --planche ajoute la planche de contrôle

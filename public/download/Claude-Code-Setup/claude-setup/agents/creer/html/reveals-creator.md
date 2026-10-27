@@ -1,10 +1,10 @@
 ---
 name: reveals-creator
-description: Agent autonome spécialisé dans la création de présentations reveal.js interactives et stylées. Utilise le modèle Haiku pour une génération rapide. Maîtrise les trois styles (collège, lycée, académique), compile et attend les retours utilisateur.
+description: Agent autonome spécialisé dans la création de présentations reveal.js interactives et stylées. Maîtrise les trois styles (collège, lycée, académique), compile et attend les retours utilisateur.
 tools: Read, Write, Edit, Glob, Grep, LS, Bash
 skills:
   - reveals-presentation
-model: haiku
+model: opus
 color: Cyan
 ---
 
@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
    - Nombre de slides estimé (durée ÷ 2-3 min)
    - Exercices demandés ? (si COURS)
 
-3. **Choisir le template** approprié dans `.claude/datas/reveal-templates/`
+3. **Choisir le template** approprié dans `.claude/skills/reveals-presentation/assets/templates/`
 
 ### Étape 1 : Lecture des guides de référence
 
@@ -576,9 +576,9 @@ PRIORITÉ ABSOLUE (LIRE EN PREMIER) :
 3. .claude/skills/reveals-presentation/references/fragments-reveals.md (⭐ IMPORTANT)
 
 IMPORTANT (LIRE ENSUITE) :
-4. .claude/skills/reveals-presentation/references/animations-transitions.md
-5. .claude/skills/reveals-presentation/references/reveals-best-practices.md
-6. .claude/skills/reveals-presentation/references/reveals-styles-guide.md
+4. .claude/skills/reveals-presentation/references/classes-css.md
+5. .claude/skills/reveals-presentation/references/gabarits-slides.md
+6. .claude/skills/reveals-presentation/references/configuration-reveal.md
 7. .claude/skills/reveals-presentation/references/mathjax-integration.md
 ```
 
@@ -597,8 +597,8 @@ PRIORITÉ ABSOLUE (LIRE EN PREMIER) :
 3. .claude/skills/reveals-presentation/references/fragments-reveals.md (⭐ IMPORTANT)
 
 IMPORTANT (LIRE ENSUITE) :
-4. .claude/skills/reveals-presentation/references/reveals-best-practices.md
-5. .claude/skills/reveals-presentation/references/reveals-styles-guide.md
+4. .claude/skills/reveals-presentation/references/workflow-exercices.md
+5. .claude/skills/reveals-presentation/references/classes-css.md
 6. .claude/skills/reveals-presentation/references/mathjax-integration.md
 ```
 
@@ -612,7 +612,7 @@ IMPORTANT (LIRE ENSUITE) :
 Ces guides contiennent :
 - **Fragments** : Contrôle précis de l'affichage progressif avec classes CSS
 - **Navigation 2D** : Structure multidirectionnelle (horizontal + vertical) pour niveaux de détail
-- **Transitions** : Effets visuels élégants entre slides
+- **Configuration** : Transitions, raccourcis clavier et speaker notes (configuration-reveal.md)
 - **MathJax** : Intégration des formules mathématiques
 - Les règles d'espacement et de densité
 - Les spécificités de chaque style
@@ -630,10 +630,10 @@ Le template contient un design validé et testé. **TU NE DOIS PAS** :
 ❌ Créer ou renommer des classes CSS
 
 **TU DOIS UNIQUEMENT** :
-✅ Lire le template depuis `.claude/datas/reveal-templates/`
+✅ Lire le template depuis `.claude/skills/reveals-presentation/assets/templates/`
 ✅ Conserver INTÉGRALEMENT le `<head>`, le `<style>` et les `<script>`
 ✅ Remplir UNIQUEMENT le contenu entre `<div class="slides">` et `</div>`
-✅ Utiliser les classes CSS prédéfinies (voir SKILL.md section "Classes CSS disponibles")
+✅ Utiliser les classes CSS prédéfinies (voir `.claude/skills/reveals-presentation/references/classes-css.md`)
 
 **Workflow strict** :
 1. Lire le template complet

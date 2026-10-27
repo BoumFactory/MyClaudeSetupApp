@@ -3,8 +3,9 @@
 
   Ce que fait le script :
     1. demande le DOSSIER DE BASE (ex. D:\Capsules) et y prépare :
-         .claude\skills\capsule-video\   le skill (instructions et scripts suivis par l'agent)
-         CLAUDE.md et AGENTS.md          le mode d'emploi du dossier, pour tout agent (Claude Code, Codex…)
+         .claude\skills\capsule-video\   le skill, UNE seule copie, configurée (agent Claude Code)
+         .agents\skills\capsule-video\   idem à la place de la précédente si l'agent est Codex (-Agent codex)
+         CLAUDE.md ou AGENTS.md          le mode d'emploi du dossier ; il pointe sur cette copie (Codex : AGENTS.md seul)
          outils\                         tout le lourd : Python, modèles, navigateur, MFA… (rien ailleurs)
          capsules\                       vos capsules, une par dossier
     2. inspecte le PC (carte NVIDIA, mémoire, place libre, Python, ffmpeg, Git) ;
@@ -26,11 +27,14 @@
                         retélécharger ; seul l'environnement de rendu est créé. Les installations sautées sont
                         affichées « à sec » (commande qui aurait été lancée). Sert aux essais et à un changement
                         de dossier de base.
+    -Agent claude|codex  agent utilisé (question posée si absent ; sans question : claude, ou codex si seule la
+                        copie .agents existe déjà). Détermine où le skill est copié et configuré.
     -VersionPython 3.12 imposer une version de Python (3.10 à 3.13, 64 bits)
 #>
 param(
   [string]$DossierBase = "",
   [ValidateSet("", "oui", "non")][string]$Enregistrements = "",
+  [ValidateSet("", "claude", "codex")][string]$Agent = "",
   [switch]$Silencieux,
   [string]$Reutiliser = "",
   [string]$VersionPython = ""
@@ -163,12 +167,20 @@ while ($true) {
   if ($Silencieux) { exit 1 }
   $DossierBase = ""
 }
+# Agent utilisé : UNE seule copie du skill est installée et configurée, là où cet agent la cherche
+# (Claude Code : .claude\skills ; Codex : .agents\skills)
+if (-not $Agent) {
+  $defAgent = if ((Test-Path (Join-Path $DossierBase ".agents\skills\capsule-video")) -and -not (Test-Path (Join-Path $DossierBase ".claude\skills\capsule-video"))) { "2" } else { "1" }
+  $Agent = if ((Demander "Agent utilisé : 1 = Claude Code, 2 = Codex" $defAgent) -match "^(2|codex)") { "codex" } else { "claude" }
+}
+$DossierSkills = if ($Agent -eq "codex") { ".agents\skills" } else { ".claude\skills" }
+$AutreSkills = if ($Agent -eq "codex") { ".claude\skills" } else { ".agents\skills" }
 $Base = $DossierBase
 $Outils = Join-Path $Base "outils"
 $Etapes = Join-Path $Outils ".etapes"
 New-Item -ItemType Directory -Force -Path $Outils, $Etapes, (Join-Path $Base "capsules") | Out-Null
 $Log = Join-Path $Outils "installation.log"
-Journal "===== Installation lancée le $(Get-Date -Format 'yyyy-MM-dd HH:mm') ; base = $Base ; skill source = $Skill"
+Journal "===== Installation lancée le $(Get-Date -Format 'yyyy-MM-dd HH:mm') ; base = $Base ; skill source = $Skill ; agent = $Agent"
 
 # ------------------------------------------------------------------ 2. Inspection du PC
 Titre 1 "Votre ordinateur" "Inspection automatique : rien n'est modifié."
@@ -286,7 +298,7 @@ $PyParakeet = if ($ReutParakeet) { $ReutParakeet } else { Join-Path $Outils "ven
 $PyWhisper = if ($ReutWhisper) { $ReutWhisper } else { Join-Path $Outils "venv-whisper\Scripts\python.exe" }
 $VoixPiper = if ($ReutPiper) { $ReutPiper } else { Join-Path $Outils "voix-piper" }
 if ($Ancien) { Journal "Réutilisation : HF $AncienHf ; pocket $ReutPocket ; parakeet $ReutParakeet ; whisper $ReutWhisper ; piper $ReutPiper ; mfa $($ReutMfa.env)" }
-$Cible = Join-Path $Base ".claude\skills\capsule-video"
+$Cible = Join-Path $Base "$DossierSkills\capsule-video"
 $Aide = Join-Path $Cible "installation\aide_installation.py"
 $Chrono = @{}
 
@@ -308,14 +320,17 @@ if ((Resolve-Path $Skill).Path -ne [IO.Path]::GetFullPath($Cible)) {
   if ($LASTEXITCODE -ge 8) { Write-Host "  Copie du skill impossible (voir $Log)." -ForegroundColor Red; exit 1 }
   Ok "skill copié (ou mis à jour) dans $Cible"
 } else { Ok "skill déjà en place" }
+$Autre = Join-Path $Base "$AutreSkills\capsule-video"
+if (Test-Path $Autre) { Alerte "une autre copie du skill existe dans $Autre : elle n'est pas configurée et plus utilisée (la supprimer évite la confusion)" }
 $Pref = Join-Path $Cible "references\preferences.md"
 if (-not (Test-Path $Pref)) { Copy-Item (Join-Path $Cible "installation\preferences-vierge.md") $Pref; Ok "préférences vierges : references\preferences.md" }
 $Modele = Get-Content (Join-Path $Cible "installation\modele-CLAUDE.md") -Raw -Encoding UTF8
-$Modele = $Modele.Replace("{{BASE}}", $Base).Replace("{{PYTHON}}", "outils/venv-rendu/Scripts/python.exe")
-foreach ($f in @("CLAUDE.md", "AGENTS.md")) {
+$Modele = $Modele.Replace("{{BASE}}", $Base).Replace("{{PYTHON}}", "outils/venv-rendu/Scripts/python.exe").Replace("{{SKILLS}}", $DossierSkills.Replace("\", "/"))
+$FichiersAgent = if ($Agent -eq "codex") { @("AGENTS.md") } else { @("CLAUDE.md", "AGENTS.md") }
+foreach ($f in $FichiersAgent) {
   [IO.File]::WriteAllText((Join-Path $Base $f), $Modele, (New-Object Text.UTF8Encoding $false))
 }
-Ok "CLAUDE.md et AGENTS.md écrits (mode d'emploi pour l'agent)"
+Ok "$($FichiersAgent -join ' et ') écrit(s) (mode d'emploi pour l'agent, pointant sur $DossierSkills\capsule-video)"
 
 # config.json : chemins sous outils\, valeurs selon le poste (references/outils-audio.md)
 function Chemin($p) { return $p.Replace("\", "/") }
@@ -497,13 +512,13 @@ if ($Problemes.Count -gt 0) {
 Write-Host ""
 Write-Host "Installation terminée. Pour votre première capsule :" -ForegroundColor Yellow
 Write-Host "  1. Ouvrez votre agent (Claude Code, Codex…) dans le dossier $Base"
-Write-Host "     (PowerShell : cd $Base  puis  claude)"
+Write-Host "     (PowerShell : cd $Base  puis  $(if ($Agent -eq 'codex') { 'codex' } else { 'claude' }))"
 Write-Host "  2. Dites : « Fais-moi une capsule vidéo de correction de l'exercice suivant : … »"
 Write-Host "     La première fois, l'agent vous propose quelques questions sur vos goûts (facultatives)."
 Write-Host "  Vos capsules arriveront dans $Base\capsules"
 Write-Host ""
 Write-Host "  Parler avec VOTRE voix (facultatif) : il faut un compte Hugging Face gratuit et accepter les conditions" -ForegroundColor DarkGray
-Write-Host "  du modèle de clonage. Marche à suivre : .claude\skills\capsule-video\references\cloner-sa-voix.md" -ForegroundColor DarkGray
+Write-Host "  du modèle de clonage. Marche à suivre : $DossierSkills\capsule-video\references\cloner-sa-voix.md" -ForegroundColor DarkGray
 if (-not $AvecWhisper) {
   Write-Host "  Travailler plus tard avec vos enregistrements : relancez ce script et répondez « oui »." -ForegroundColor DarkGray
 }

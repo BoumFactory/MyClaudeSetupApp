@@ -380,7 +380,7 @@
           <div class="etape c3 fragment">
             <i class="fas fa-calculator"></i>
             <div class="nom">3. Calculer</div>
-            <div class="quoi">Il compte les actions, pondère par exercice et convertit sur 20</div>
+            <div class="quoi">Il compte les actions, pondère par exercice et calcule la conversion sur 20</div>
           </div>
           <div class="etape c4 fragment">
             <i class="fas fa-chart-bar"></i>
@@ -407,7 +407,7 @@
             <tr><td><span class="pastille p-gris">En amont</span></td><td><code>bfcours-latex</code></td><td>Le sujet rédigé avec ses corrigés. Ce skill appelle le barème après toute évaluation.</td></tr>
           </table>
           <div class="duo2" style="margin-top:0.6em;">
-            <div class="astuce" style="margin-top:0;"><i class="fas fa-route"></i> Place dans le flux d'une évaluation : rédiger le sujet, rédiger les corrigés, <strong>puis</strong> le barème, puis corriger les copies.</div>
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-route"></i> Place dans le flux d'une évaluation : rédiger le sujet, rédiger les corrigés, <strong>puis</strong> le barème. La notation des copies se fait ensuite, hors du skill.</div>
             <div class="astuce" style="margin-top:0;"><i class="fas fa-plug"></i> Aucun script ni module Python : l'agent lit, compte et écrit lui-même ; seule l'interface est un fichier fourni.</div>
           </div>
         </div>
@@ -626,7 +626,7 @@ $= 4x^2 + 12x + 9$</code></pre>
       <section>
       <section>
         <div class="frise"><span>1. Lire</span><span>2. Atomiser</span><span class="on c3">3. Calculer</span><span>4. Analyser</span></div>
-        <h2 style="border-color:var(--step-calc);">Il calcule les points, puis la note sur 20</h2>
+        <h2 style="border-color:var(--step-calc);">Il calcule les points, puis le coefficient de conversion sur 20</h2>
         <div class="duo" style="grid-template-columns:1fr 1.15fr;">
           <div class="bloc" style="border-color:var(--step-calc);">
             <h3>Ce que fait l'agent</h3>
@@ -644,7 +644,7 @@ $= 4x^2 + 12x + 9$</code></pre>
             <tr><td>3. Intervalles, valeur absolue</td><td>12</td><td>× 1</td><td>12</td></tr>
             <tr><td>4. Géométrie repérée</td><td>26</td><td>× 0,5</td><td>13</td></tr>
             <tr class="somme"><td>Total libre</td><td>63</td><td></td><td>50</td></tr>
-            <tr class="note"><td colspan="3">Note sur 20 = points obtenus × 20/50</td><td>× 0,40</td></tr>
+            <tr class="note"><td colspan="3">Coefficient de conversion = 20/50</td><td>× 0,40</td></tr>
           </table>
         </div>
         <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
@@ -671,9 +671,8 @@ $= 4x^2 + 12x + 9$</code></pre>
 <div class="formule">Points question  = Σ actions × coef exercice
 Points exercice  = Σ points des questions
 Total libre      = Σ points des exercices
-Ratio            = note cible / total libre
-Note sur 20      = points obtenus × ratio</div>
-            <div class="astuce"><i class="fas fa-equals"></i> Exemple : 33 points obtenus sur 50 → 33 × 0,40 = <strong>13,2 / 20</strong>.</div>
+Coef. conversion = note cible / total libre</div>
+            <div class="astuce"><i class="fas fa-equals"></i> Exemple : total libre 50, note cible 20 → coefficient <strong>0,40</strong>. Le skill s'arrête là : la notation des copies se fait hors du skill.</div>
           </div>
         </div>
       </section>
@@ -715,7 +714,7 @@ Note sur 20      = points obtenus × ratio</div>
             </div>
             <ul style="margin-top:0.5em;">
               <li>Un onglet par exercice : critères, points et coefficient modifiables, totaux recalculés.</li>
-              <li>Onglet Synthèse : tout le barème en accordéon, total, coefficient final, densité.</li>
+              <li>Onglet Synthèse : tout le barème en accordéon, total, coefficient de conversion, densité.</li>
               <li>Export CSV pour le tableur.</li>
             </ul>
           </div>
@@ -747,7 +746,7 @@ Note sur 20      = points obtenus × ratio</div>
 <span class="t">BARÈME GÉNÉRÉ</span> · DS Calculs et Géométrie · /20<br>
 Total actions &nbsp;&nbsp;: <b>63</b><br>
 Total points &nbsp;&nbsp;&nbsp;: <b>50</b><br>
-Ratio &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>0,40</b><br>
+Coef. conversion : <b>0,40</b><br>
 Densité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>3,15</b> (standard)
             </div>
             <div class="jauge">
@@ -793,7 +792,7 @@ Densité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>3,15</b> (standard
       <!-- 6.2 Comparer devoirs et élèves -->
       <section>
         <div class="fil-detail"><span class="etiq c4">4. Analyser</span> Détail 2 / 2</div>
-        <h3 class="titre-detail" style="color:var(--step-analyse);">Comparer des devoirs, suivre des élèves</h3>
+        <h3 class="titre-detail" style="color:var(--step-analyse);">Comparer des devoirs entre eux</h3>
         <div class="detail duo2">
           <div>
             <p><strong>Barèmes réels produits avec le skill</strong></p>
@@ -807,12 +806,9 @@ Densité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>3,15</b> (standard
             <p class="muted" style="margin-top:0.4em;">La densité rend visible l'écart entre un sujet standard et sa version aménagée.</p>
           </div>
           <div class="bloc" style="border-color:var(--step-analyse);">
-            <h3>Productivité d'un élève</h3>
-<div class="formule" style="background:#f4ecf7;border-color:var(--step-analyse);">Productivité = actions réussies
-               ÷ total des actions × 100</div>
-            <p style="margin-top:0.4em;">Exemple : 41 actions réussies sur 63 → <strong>65 %</strong>.</p>
-            <p>Elle compare les élèves d'un devoir à l'autre, indépendamment des coefficients et de la note cible.</p>
-            <p class="muted">À calculer au tableur : l'interface sert au barème, pas à la saisie des copies.</p>
+            <h3>Le barème, pas la notation</h3>
+            <p>Le skill produit uniquement des barèmes : il ne saisit ni ne calcule aucune note d'élève.</p>
+            <p class="muted">La notation des copies est externe au skill ; l'interface sert à éditer et relire le barème.</p>
           </div>
         </div>
       </section>
@@ -831,7 +827,7 @@ Densité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>3,15</b> (standard
           <div class="livrable fragment">
             <i class="fas fa-calculator" style="color:#f39c12;"></i>
             <div class="titre">La conversion sur 20</div>
-            <div>Le total libre et le coefficient à appliquer aux points obtenus.</div>
+            <div>Le total libre et le coefficient de conversion vers la note cible.</div>
           </div>
           <div class="livrable fragment">
             <i class="fas fa-chart-bar" style="color:#8e44ad;"></i>
@@ -870,8 +866,8 @@ Densité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>3,15</b> (standard
             <div class="bloc gain" style="font-size:1em;">
               <ul>
                 <li><code>bareme.json</code> et <code>bareme.html</code> rangés à côté du sujet.</li>
-                <li>Coefficient 1 partout, ratio calculé pour une note sur 30.</li>
-                <li>La synthèse : actions, points, ratio, densité et sa lecture.</li>
+                <li>Coefficient 1 partout, coefficient de conversion calculé pour une note sur 30.</li>
+                <li>La synthèse : actions, points, coefficient de conversion, densité et sa lecture.</li>
               </ul>
             </div>
           </div>
@@ -898,7 +894,7 @@ Densité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>3,15</b> (standard
             <ul>
               <li>Le barème vaut ce que vaut le corrigé : un corrigé qui saute des étapes donne trop peu d'actions.</li>
               <li>Ouverte par double-clic, l'interface démarre vide : bouton <strong>Charger</strong>, puis <code>bareme.json</code>. Le chargement automatique demande un petit serveur local (Live Server…).</li>
-              <li>L'interface prépare le barème ; elle ne saisit pas les résultats des copies.</li>
+              <li>L'interface prépare le barème ; elle ne note pas les copies (la notation est externe au skill).</li>
               <li>Les problèmes ouverts ne sont pas atomisés : forfait global.</li>
             </ul>
           </div>

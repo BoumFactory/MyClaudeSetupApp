@@ -337,7 +337,7 @@ export default function DownloadTypstPackagesPage() {
               Le skill <Code>bfcours-typst</Code> apprend à Claude à écrire, compiler et corriger des documents
               farfadet, versions professeur et élève comprises. Sa présentation montre ce que fait l&apos;agent et
               propose un pack dédié à ajouter au panier ; il est aussi fourni dans les bundles{' '}
-              <strong className="text-white/80">LaTeX Enseignant</strong> et{' '}
+              <strong className="text-white/80">Typst Enseignant</strong> et{' '}
               <strong className="text-white/80">Power User</strong>.
             </p>
           </div>

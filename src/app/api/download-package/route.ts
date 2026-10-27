@@ -4,7 +4,7 @@ import type { PackageId } from '@/data/ai-packages'
 import { buildPackageZip } from '@/lib/package-zip'
 
 /**
- * Télécharge un bundle (Généraliste, LaTeX Enseignant, Power User)
+ * Télécharge un bundle (Généraliste, LaTeX Enseignant, Typst Enseignant, Power User)
  * ou un pack de skill (ex. skill-latex) sous forme de ZIP.
  */
 export async function POST(request: NextRequest) {

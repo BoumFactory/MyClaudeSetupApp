@@ -6,7 +6,7 @@ Gratuit, tout tourne sur votre ordinateur. Il faut un PC Windows 64 bits (Linux 
 
 1. Clic droit sur `installer.ps1` (dossier `capsule-video\installation\` du kit) > **Exécuter avec PowerShell**.
 2. Donnez le **dossier de base**, par exemple `D:\Capsules` (sans espace ni accent). Tout s'y installe ; rien ailleurs.
-3. Le script inspecte le PC, puis pose **une question** : voulez-vous travailler avec vos propres enregistrements ? Répondez « non » si vous ne comptez utiliser que la voix de synthèse.
+3. Le script inspecte le PC, puis pose **deux questions**. D'abord, l'agent que vous utilisez (1 = Claude Code, 2 = Codex) : le skill est copié et configuré en **une seule copie**, dans `.claude\skills\capsule-video\` pour Claude Code (avec `CLAUDE.md`) ou dans `.agents\skills\capsule-video\` pour Codex (avec `AGENTS.md`, qui pointe sur cette copie). Ensuite, voulez-vous travailler avec vos propres enregistrements ? Répondez « non » si vous ne comptez utiliser que la voix de synthèse.
 4. Comptez 20 à 40 minutes (surtout du téléchargement). À la fin, chaque brique est essayée sur une phrase : le bilan dit OK, ou le problème et sa solution.
 
 Il manque Python ou ffmpeg ? Le script le dit et propose de l'installer.
@@ -26,11 +26,11 @@ bash installer.sh
 - **Prérequis** : Python 3.10 à 3.13 avec le module `venv`, ffmpeg (sous Linux x86-64 ou ARM, le script peut le télécharger en version portable), ≈ 6 Go libres. S'il manque quelque chose, le script affiche la commande à lancer (`apt`, `dnf`, `pacman`, `zypper` ou Homebrew) et ne l'exécute avec `sudo` que si vous répondez « o ».
 - **Linux** : si Chromium signale des bibliothèques manquantes, lancer la commande `playwright install-deps chromium` que le script indique. Rendu graphique : Vulkan, puis logiciel.
 - **macOS** : pas de carte NVIDIA, donc Whisper tourne sur le processeur (nettement plus lent). Rendu graphique : Metal, puis logiciel. Sur un Mac Intel, les versions récentes de PyTorch n'existent plus : la voix Pocket TTS peut échouer (voix de secours Piper).
-- Options : `bash installer.sh --base ~/Capsules --enregistrements non --silencieux` (sans question) ; `--reutiliser <config.json>` ; `--version-python 3.12` ; `--aide`.
+- Options : `bash installer.sh --base ~/Capsules --enregistrements non --agent claude --silencieux` (sans question ; `--agent codex` pour Codex) ; `--reutiliser <config.json>` ; `--version-python 3.12` ; `--aide`.
 
 ## Ensuite
 
-Ouvrez votre agent dans le dossier de base (PowerShell : `cd D:\Capsules` puis `claude`) et demandez : « Fais-moi une capsule vidéo de correction de l'exercice suivant : … ». La première fois, l'agent vous propose quelques questions sur vos goûts ; tout se change ensuite d'une phrase (« je préfère les formules plus petites »).
+Ouvrez votre agent dans le dossier de base (PowerShell : `cd D:\Capsules` puis `claude` ou `codex`) et demandez : « Fais-moi une capsule vidéo de correction de l'exercice suivant : … ». La première fois, l'agent vous propose quelques questions sur vos goûts ; tout se change ensuite d'une phrase (« je préfère les formules plus petites »).
 
 ## Ce qui est installé
 
@@ -54,7 +54,9 @@ Ouvrez votre agent dans le dossier de base (PowerShell : `cd D:\Capsules` puis `
 ## Options (sans question)
 
 ```
-powershell -ExecutionPolicy Bypass -File installer.ps1 -DossierBase D:\Capsules -Enregistrements non -Silencieux
+powershell -ExecutionPolicy Bypass -File installer.ps1 -DossierBase D:\Capsules -Enregistrements non -Agent claude -Silencieux
 ```
+
+`-Agent codex` installe et configure le skill dans `.agents\skills\capsule-video\` (emplacement des skills de Codex) au lieu de `.claude\skills\`. Sans `-Agent` ni question, le choix est Claude Code, sauf si seule la copie `.agents` existe déjà. Si une copie de l'autre agent existe, le script le signale : elle n'est pas configurée, la supprimer évite la confusion.
 
 `-Caches <dossier>` réutilise les téléchargements d'une installation existante (copiés, jamais liés) ; `-VersionPython 3.13` impose une version de Python.

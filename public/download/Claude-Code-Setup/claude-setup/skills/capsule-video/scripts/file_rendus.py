@@ -6,12 +6,15 @@ dossier toutes les 30 s ; elle s'arrête quand toutes les capsules attendues son
 quand le fichier <dossier>/STOP-RENDUS existe. Journal : <dossier>/rendus.log.
 
 Usage (depuis la racine du projet, en arrière-plan) :
-    python file_rendus.py <dossier_fournee> [--qualite 540] [--total 23]
+    python file_rendus.py <dossier_fournee> [--qualite envoi|540|projection] [--total 23]
+
+--qualite : défaut = qualite_rendu de config.json, sinon envoi (720p).
 
 --total : nombre de capsules attendues (défaut : nombre de sous-dossiers contenant un script.md
 au lancement, recalculé à chaque tour).
 """
 import argparse
+import json
 import os
 import pathlib
 import subprocess
@@ -28,9 +31,15 @@ def main():
         sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
     ap.add_argument("dossier")
-    ap.add_argument("--qualite", default="540", choices=list(SORTIES))
+    ap.add_argument("--qualite", default=None, choices=list(SORTIES))
     ap.add_argument("--total", type=int, default=None)
     a = ap.parse_args()
+    if a.qualite is None:
+        try:
+            q = json.loads((ICI.parent / "config.json").read_text(encoding="utf-8-sig")).get("qualite_rendu")
+        except (OSError, ValueError):
+            q = None
+        a.qualite = q if q in SORTIES else "envoi"
     racine = pathlib.Path(a.dossier)
     journal = racine / "rendus.log"
     sortie = SORTIES[a.qualite]

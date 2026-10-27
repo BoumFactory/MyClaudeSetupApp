@@ -133,7 +133,7 @@ async def rendre(a):
         sys.exit(f"spec.js introuvable dans {dossier}")
     trois = utilise_trois(dossier)
     if a.qualite is None:
-        a.qualite = "envoi" if trois else (commun.CONF.get("qualite_rendu") if commun.CONF.get("qualite_rendu") in QUALITES else "540")
+        a.qualite = "envoi" if trois else (commun.CONF.get("qualite_rendu") if commun.CONF.get("qualite_rendu") in QUALITES else "envoi")
     finition = a.finition == "x264" or (a.finition == "auto" and trois)
     hauteur, debit_def, debit_audio, nom = QUALITES[a.qualite]
     debit_final = a.debit or debit_def

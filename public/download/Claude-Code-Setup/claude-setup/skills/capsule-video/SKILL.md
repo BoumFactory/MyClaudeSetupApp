@@ -45,7 +45,7 @@ $PY $S/maj_moteur.py "<capsule>" [...]                     # recopie le moteur �
 $PY $S/musique.py "<capsule>" [--bpm 104 --niveau -21 --graine 3]  # musique de fond générée + audio-mix.wav
 $PY $S/relire_script.py "<capsule ou fournée>"             # rigueur des scripts (references/rigueur.md), AVANT toute voix
 $PY $S/fournee_voix.py "<fournee>" [--prefixes F1,F2]      # fournée : relecture + voix + capsule + alignement en lot
-$PY $S/file_rendus.py "<fournee>" --qualite 540            # fournée : rend chaque capsule marquée PRET-RENDU, une à la fois
+$PY $S/file_rendus.py "<fournee>" [--qualite envoi|540|projection]  # fournée : rend chaque capsule marquée PRET-RENDU, une à la fois
 ```
 
 - **Suivre un rendu** : `--fenetre` (Windows) ouvre le rendu dans une console visible de l'utilisateur (grand pourcentage, barre, vitesse, temps restant) ; elle se ferme 60 s après la fin.
@@ -63,13 +63,13 @@ $PY $S/file_rendus.py "<fournee>" --qualite 540            # fournée : rend cha
 
 **Première utilisation** : si `premier_usage_fait` vaut `false` dans `config.json`, lire et suivre `references/first_check.md` avant tout (installation vérifiée, préférences, capsule d'essai).
 
-Nouvel utilisateur sans outillage : lui faire lancer `installation/installer.ps1` (voir `installation/LISEZMOI.md`). L'installeur prépare un dossier de base (`<base>/.claude/skills/capsule-video/`, `CLAUDE.md` et `AGENTS.md`, `outils/` pour tout le lourd, `capsules/`), écrit `config.json` et essaie chaque brique ; relancé, il complète sans rien refaire. Le moteur embarque MathJax, GSAP et les polices : seuls Chromium (Playwright) et ffmpeg servent au rendu.
+Nouvel utilisateur sans outillage : lui faire lancer `installation/installer.ps1` (voir `installation/LISEZMOI.md`). L'installeur demande l'agent utilisé (Claude Code ou Codex ; option `-Agent` / `--agent`) et prépare un dossier de base avec **une seule copie du skill, celle qui est configurée** : `<base>/.claude/skills/capsule-video/` et `CLAUDE.md` pour Claude Code, `<base>/.agents/skills/capsule-video/` et `AGENTS.md` pour Codex (le mode d'emploi pointe sur cette copie), puis `outils/` pour tout le lourd et `capsules/`. Il écrit `config.json` et essaie chaque brique ; relancé, il complète sans rien refaire. Le moteur embarque MathJax, GSAP et les polices : seuls Chromium (Playwright) et ffmpeg servent au rendu. Dans une installation Codex, les chemins `.claude/skills/capsule-video/…` écrits dans ces fiches se lisent `.agents/skills/capsule-video/…`.
 
 **Matériel requis** : un PC Windows (Linux et macOS : `installation/installer.sh`, non testé), processeur seul suffisant pour toute la chaîne (voix Pocket, contrôle Parakeet, horodatage MFA, rendu). Une carte NVIDIA n'accélère que Whisper (transcription des enregistrements du prof, arbitre du contrôle). Sans MFA ni Parakeet, le skill retombe sur Whisper (ancienne chaîne, plus lente).
 
 ## Accompagner les choix
 
-Le skill guide sans interroger : **une seule salve de questions au cadrage** (outil AskUserQuestion, 4 questions au plus, option recommandée en premier), uniquement pour ce qui n'est pas déjà dans `references/preferences.md` ni dans la demande. Après réponse, **écrire les choix durables dans `references/preferences.md`** : la fois suivante, on ne redemande pas, on annonce (« voix siwis, thème jour, 540p comme d'habitude »).
+Le skill guide sans interroger : **une seule salve de questions au cadrage** (outil AskUserQuestion, 4 questions au plus, option recommandée en premier), uniquement pour ce qui n'est pas déjà dans `references/preferences.md` ni dans la demande. Après réponse, **écrire les choix durables dans `references/preferences.md`** : la fois suivante, on ne redemande pas, on annonce (« voix siwis, thème jour, 720p comme d'habitude »).
 
 | Moment | Choix | Options (défaut en gras) |
 |---|---|---|
@@ -81,7 +81,7 @@ Le skill guide sans interroger : **une seule salve de questions au cadrage** (ou
 | **Revue du document** (avant le script) | Démarche plus simple, ou point de rigueur absent du document | voir ci-dessous : question à choix **par point relevé** |
 | Après le script (B) | Relire le texte avant la voix ? | **montrer le script en une page** si c'est une première fois, sinon enchaîner |
 | Avant le rendu | Planche ? | **aucune** : on rend directement ; planche seulement si l'utilisateur la demande ou signale un défaut |
-| Rendu | Qualité | **720p** (`config.json` : `qualite_rendu: "envoi"`) · 540p (`--qualite 540`) ou 1080p (`--qualite projection`) sur demande ; versions allégées (`--allegees`) sur demande |
+| Cadrage | Qualité du rendu (choisie par l'utilisateur) | **720p** (défaut du moteur canvas ; `config.json` : `qualite_rendu: "envoi"`) · 540p (`--qualite 540`, plus léger) · 1080p (`--qualite projection`) ; versions allégées (`--allegees`) sur demande |
 | Après le rendu | Diriger | relecture dans `index.html` (« Commenter », « Copier pour Claude ») |
 
 ## Rigueur : la capsule est une copie modèle
@@ -119,7 +119,7 @@ Lire `references/voix-synthese.md` (écriture pour l'oreille, rigueur orale, pro
 - **Tuiles algébriques** (relatifs, calcul littéral) : éléments `tuiles`, `produit`, `tapis` et gestes `deplace`, `retourne`, `annule`, `ajoutePaire` ; voir les § Tuiles de `moteur-canvas.md` et `gestes.md`, exemple `assets/exemples/tuiles-canvas/`.
 - **Déléguer pour le coût** : Claude principal fait la revue critique et écrit le script ; un sous-agent **Sonnet** écrit `spec.js` avec : le script, les chemins du skill, un exemple et les exigences de l'utilisateur. Il ne fait pas de planche.
 - **Erreurs bloquantes** : le rendu refuse une capsule en erreur (mot introuvable, id inconnu ou en double, formule fausse, débordement) : les corriger, rien d'autre à contrôler. Les avertissements de zone réduite (en dessous de 85 %) se traitent si le moteur les signale.
-- **Rendre** : `rendre_canvas.py` → **`capsule-540p.mp4`** (le standard, ≈ 2,2 Mo/min) ; `--qualite envoi` → `capsule-envoi.mp4` (720p) ; `--qualite projection` → `capsule.mp4` (1080p) ; `--allegees 370,220` ajoute des versions très légères. Mesuré le 09/10/2026 à froid (RTX 3060) : 2 min 05 en ≈ 9 s, 3 min 50 en 16 s ; puce Intel seule ≈ 1,2 fois plus lent, sans carte graphique ≈ 1,4 fois. Le résumé final détaille préparation, dessin, encodage, assemblage et mémoire de pointe. **Un seul rendu à la fois.**
+- **Rendre** : `rendre_canvas.py` → qualité choisie par l'utilisateur, **720p par défaut** (`capsule-envoi.mp4`, clé `qualite_rendu` de `config.json`) ; `--qualite 540` → `capsule-540p.mp4` (≈ 2,2 Mo/min, plus léger) ; `--qualite projection` → `capsule.mp4` (1080p) ; `--allegees 370,220` ajoute des versions très légères. Mesuré le 09/10/2026 à froid en 540p (RTX 3060) : 2 min 05 en ≈ 9 s, 3 min 50 en 16 s ; puce Intel seule ≈ 1,2 fois plus lent, sans carte graphique ≈ 1,4 fois. Le résumé final détaille préparation, dessin, encodage, assemblage et mémoire de pointe. **Un seul rendu à la fois.**
 - **Diriger** : donner le MP4 et `index.html` (Espace = lecture, C = commenter, « Copier pour Claude »). Appliquer les retours (§ suivant) ; inscrire les leçons générales dans `references/retours.md`.
 
 ### Vérifications à la demande
@@ -143,7 +143,7 @@ Chaîne en flux tendu : aucune étape n'attend que toute la fournée ait fini l'
 2. **Voix en lot**, en arrière-plan : `$PY $S/fournee_voix.py "<fournee>" [--prefixes F2,F3] [--titre "Fiche {fiche} - Exercice {exo}"]` (saute les capsules déjà préparées).
 3. **Brief commun** : copier `references/brief-fournee-modele.md` en `<fournee>/BRIEF-animation.md` et le remplir (exigences, sources, modèle d'habillage). La mission de chaque animateur se réduit alors à : lire le brief + chemin de la capsule + source + visuels clés propres à l'exercice.
 4. **Animateurs en parallèle** (sous-agents Sonnet, 3 à 4 à la fois) : chacun écrit `spec.js` (sans planche), traite les erreurs bloquantes du moteur, puis pose le fichier vide `PRET-RENDU` dans sa capsule. Dès la première capsule validée, la donner en **modèle d'habillage** aux suivantes (série homogène).
-5. **File de rendus** lancée tôt, en arrière-plan : `$PY $S/file_rendus.py "<fournee>" --qualite 540 [--total N]`. Elle rend une capsule à la fois dès qu'un `PRET-RENDU` apparaît, journalise dans `<fournee>/rendus.log`, s'arrête quand tout est rendu ou si `<fournee>/STOP-RENDUS` existe. Ne jamais lancer `rendre_canvas.py` (sans `--images`) à côté.
+5. **File de rendus** lancée tôt, en arrière-plan : `$PY $S/file_rendus.py "<fournee>" [--qualite envoi|540|projection] [--total N]`. Elle rend une capsule à la fois dès qu'un `PRET-RENDU` apparaît, journalise dans `<fournee>/rendus.log`, s'arrête quand tout est rendu ou si `<fournee>/STOP-RENDUS` existe. Ne jamais lancer `rendre_canvas.py` (sans `--images`) à côté.
 6. Livraison : les MP4 rendus et leur dossier. Pas de revue des planches ni de page de contrôle, sauf demande de l'utilisateur (alors : § Vérifications à la demande, ciblées sur la capsule signalée).
 
 ## Modifier une capsule existante (réutiliser au maximum)

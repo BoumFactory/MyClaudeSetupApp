@@ -18,7 +18,7 @@ $PY $S/rendre_canvas.py "<capsule>" [--qualite 540|envoi|projection] [--allegees
 ```
 
 - **Aperçu** : ouvrir `index.html` (Espace = lecture, ←/→ = ±2 s, C = commenter, « Copier pour Claude »). Les erreurs (mot introuvable, id inconnu ou en double, formule TeX fausse, clé inconnue, image absente) s'affichent dans un bandeau rouge ; la console liste les zones dont le texte a été réduit.
-- **Rendu** : `capsule-540p.mp4` (220 kb/s, ≈ 2,2 Mo/min), `capsule-envoi.mp4` (720p), `capsule.mp4` (1080p). Le rendu refuse de partir s'il reste une erreur. Une image clé est forcée après chaque changement de scène.
+- **Rendu** : `capsule-envoi.mp4` (720p, défaut du moteur canvas), `capsule-540p.mp4` (plus léger, ≈ 2,2 Mo/min), `capsule.mp4` (1080p). La qualité est choisie par l'utilisateur (clé `qualite_rendu` de `config.json`, `envoi` par défaut). Le rendu refuse de partir s'il reste une erreur. Une image clé est forcée après chaque changement de scène.
 - **N'importe quel PC Windows** : `--gpu auto` (défaut) essaie Vulkan (carte dédiée), puis Direct3D 11 (puce Intel ou AMD intégrée), puis le rendu logiciel (avertissement, ≈ 1,4 fois plus lent sur 12 cœurs). `--workers 0` (défaut) met 2 workers dès 4 cœurs et 2 Go libres, sinon 1 ; mémoire de pointe mesurée ≈ 0,6 Go. Mesuré sur labomaths : NVIDIA Vulkan 10,6 s · Intel UHD Direct3D 11 12,5 s · logiciel 14,6 s (22,7 s avec 1 worker), mêmes images.
 - L'encodeur H.264 logiciel de Chromium est le défaut : `--accel materiel` ignore la consigne de débit et donne des fichiers plus lourds.
 - **Après une évolution du moteur** : `maj_moteur.py "<capsule>"` remplace `moteur-canvas/` de la capsule (refuse un dossier sans `spec.js`). Le rendu utilise la copie de la capsule quand elle existe.

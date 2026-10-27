@@ -1,4 +1,4 @@
-export type PackageTier = 'generaliste' | 'latex' | 'avance'
+export type PackageTier = 'generaliste' | 'latex' | 'typst' | 'avance'
 
 /** Packs dédiés à un skill (le skill + les skills qu'il appelle + leurs dépendances) */
 export type SkillPackId = 'skill-latex' | 'skill-reveals' | 'skill-capsule-video' | 'skill-bareme' | 'skill-typst'
@@ -91,6 +91,18 @@ const CONTENT_SKILLS = [
   'reveals-presentation',
 ]
 
+// Skills pédagogiques du bundle Typst : ceux qui ne passent ni par LaTeX ni par des fichiers .tex.
+// Exclus : bareme-actions-eleves, make-blueprint-eval, audit-accessibilite-eval (lisent des sujets .tex)
+// et stats-datagouv (sortie LaTeX bfcours). reveals-presentation : seules ses figures TikZ sont facultatives.
+const TYPST_CONTENT_SKILLS = [
+  'programmes-officiels',
+  'progression-builder',
+  'h5p-branching-scenario',
+  'h5p-gamemap',
+  'moodle-course-creator',
+  'reveals-presentation',
+]
+
 export const AI_PACKAGES: AIPackage[] = [
   {
     id: 'generaliste',
@@ -139,8 +151,6 @@ export const AI_PACKAGES: AIPackage[] = [
       'pdf2tikz',
       'qcm-creator',
       'html-katex-compiler',
-      // Typst
-      'bfcours-typst',
       // Évaluation & contenus pédagogiques
       ...CONTENT_SKILLS,
     ],
@@ -187,13 +197,44 @@ export const AI_PACKAGES: AIPackage[] = [
     claudeMdFile: 'CLAUDE-simple.md',
     highlights: [
       'Tout le bundle Généraliste inclus',
-      'Package bfcours pour documents éducatifs (LaTeX et Typst)',
+      'Package bfcours pour documents éducatifs en LaTeX',
       'Compilation LaTeX automatisée et relecture visuelle',
       'QCM au format bfcours et barèmes',
       'Présentations Reveal.js',
       'Contenus H5P et Moodle',
       'Programmes officiels sourcés et progressions',
       'Géométrie LaTeX et conversion PDF→TikZ',
+    ],
+  },
+  {
+    id: 'typst',
+    name: 'Typst Enseignant',
+    subtitle: 'Documents pédagogiques Typst',
+    description: 'Le bundle Généraliste + les skills Typst : cours, fiches d\'exercices et évaluations avec la suite farfadet, versions professeur et élève, préconversion d\'un cours LaTeX bfcours. Avec les skills de contenus pédagogiques qui ne dépendent pas de LaTeX. La suite farfadet elle-même s\'installe à part (page Packages Typst).',
+    icon: '🪶',
+    color: 'teal',
+    tier: 2,
+    skills: [
+      ...BASE_SKILLS,
+      'bfcours-typst',
+      'typst',
+      ...TYPST_CONTENT_SKILLS,
+    ],
+    agentPaths: BASE_AGENTS,
+    commandPaths: BASE_COMMANDS,
+    dataPaths: [
+      'user-settings.json',
+    ],
+    agentsDataPaths: [],
+    pythonDeps: 'typst pymupdf',
+    claudeMdFile: 'CLAUDE-simple.md',
+    highlights: [
+      'Tout le bundle Généraliste inclus',
+      'Documents Typst avec la suite farfadet (bfcours-typst et typst)',
+      'Préconversion d\'un cours LaTeX bfcours en Typst',
+      'Compilation des versions professeur et élève',
+      'Programmes officiels, progressions, Reveal.js, contenus H5P et Moodle',
+      'La suite farfadet s\'installe à part : voir la page Packages Typst',
     ],
   },
   {
@@ -209,7 +250,7 @@ export const AI_PACKAGES: AIPackage[] = [
       ...CONTENT_SKILLS,
       'bfcours-latex', 'latex', 'adaptTex', 'tex-document-creator', 'tex-compiling-skill',
       'latex-geometry', 'latex-visual-review', 'pdf2tikz', 'qcm-creator', 'html-katex-compiler',
-      'bfcours-typst', 'capsule-video', 'jupyter-notebook', 'mind-map-creator',
+      'bfcours-typst', 'typst', 'capsule-video', 'jupyter-notebook', 'mind-map-creator',
     ],
     agentPaths: ['*'],
     commandPaths: ['*'],
@@ -219,6 +260,7 @@ export const AI_PACKAGES: AIPackage[] = [
     claudeMdFile: 'CLAUDE-autoAmelioration.md',
     highlights: [
       'Tous les bundles précédents inclus',
+      'Documents Typst (bfcours-typst et typst)',
       'Capsules vidéo animées avec voix de synthèse',
       'Notebooks Jupyter et cartes mentales',
       'CLAUDE.md avec auto-amélioration',
@@ -431,7 +473,7 @@ export const ALL_PACKAGES: AIPackage<PackageId>[] = [...AI_PACKAGES, ...SKILL_PA
 /**
  * Returns true if pkgA fully includes pkgB.
  * Power User (tier 3) includes everything.
- * Tier 2 package (latex) includes Généraliste (tier 1).
+ * Tier 2 packages (latex, typst) include Généraliste (tier 1), mais pas l'un l'autre.
  * Un bundle inclut un pack de skill (tier 0) s'il contient tous ses skills.
  * Same package includes itself.
  */

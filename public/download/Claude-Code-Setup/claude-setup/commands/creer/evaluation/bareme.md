@@ -2,7 +2,7 @@
 
 ## Description
 
-Génère un barème rationnel basé sur l'atomisation des actions élèves à partir d'un document LaTeX d'évaluation existant. Produit un fichier `bareme.json` et une interface `bareme.html` pour la correction interactive.
+Génère un barème rationnel basé sur l'atomisation des actions élèves à partir d'un document LaTeX d'évaluation existant. Produit un fichier `bareme.json` et une interface `bareme.html` d'édition du barème (la notation des copies est externe à la commande).
 
 ## Usage
 
@@ -135,7 +135,7 @@ Afficher les métriques finales :
   ├─────────────────────────────────────┤
   │ Total actions     : 63              │
   │ Total points      : 50              │
-  │ Ratio conversion  : 0.40            │
+  │ Coef. conversion  : 0.40            │
   │ Densité           : 3.15 (standard) │
   └─────────────────────────────────────┘
 
@@ -172,7 +172,7 @@ Afficher les métriques finales :
 | Fichier | Description |
 |---------|-------------|
 | `bareme.json` | Structure du barème (portable, éditable) |
-| `bareme.html` | Interface de correction interactive |
+| `bareme.html` | Éditeur et synthèse du barème |
 
 ---
 
@@ -183,8 +183,8 @@ Cette commande s'intègre dans le workflow d'évaluation :
 1. `/createTex` → Créer l'évaluation
 2. Rédiger les exercices avec `bfcours-latex`
 3. `/bareme` → Générer le barème
-4. Corriger avec `bareme.html`
-5. Analyser les résultats
+4. Relire et ajuster le barème avec `bareme.html`
+5. Utiliser le barème dans l'outil de notation de son choix (hors skill)
 
 ---
 

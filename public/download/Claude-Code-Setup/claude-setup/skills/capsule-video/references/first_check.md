@@ -36,7 +36,7 @@ Les poser en **deux salves** de 3 questions au plus, option recommandée (le dé
 | 5 | Le pointeur lumineux qui désigne ce dont on parle ? | **Visible jusqu'au geste suivant** · Discret, s'éteint seul après une seconde · Pas de pointeur | gestes `pointe` du `spec.js` |
 | 6 | Quelle voix de synthèse ? | **Estelle** (voix française du catalogue, installée) · Votre propre voix, clonée plus tard (`references/cloner-sa-voix.md` : compte Hugging Face gratuit, 20 s d'enregistrement) | `voix_pocket_defaut` de `config.json` ; pour le clone, seulement noter l'intention et donner la marche à suivre |
 
-Questions **non posées** ici, car elles ont un défaut raisonnable et se posent au moment où elles servent (salve de cadrage de `SKILL.md`) : sous-titres (défaut : non), qualité du rendu (540p), planche de contrôle avant le rendu (non : seulement sur demande), musique de fond (non), relire le script avant la voix (oui la première fois), comment piloter le skill (l'agent enchaîne les scripts seul ; l'utilisateur ne voit que le résultat).
+Questions **non posées** ici, car elles ont un défaut raisonnable et se posent au moment où elles servent (salve de cadrage de `SKILL.md`) : sous-titres (défaut : non), qualité du rendu (720p par défaut, posée dans la salve de cadrage), planche de contrôle avant le rendu (non : seulement sur demande), musique de fond (non), relire le script avant la voix (oui la première fois), comment piloter le skill (l'agent enchaîne les scripts seul ; l'utilisateur ne voit que le résultat).
 
 Ne pas proposer de notation pour le parallélisme : la règle est fixe (`//`).
 
@@ -51,7 +51,7 @@ Ne pas proposer de notation pour le parallélisme : la règle est fixe (`//`).
 
 > Voulez-vous une petite capsule d'essai (≈ 30 secondes, 3 minutes de fabrication) pour voir ces réglages en action ? Donnez-moi un exercice court, ou je prends un exemple simple (calcul de la longueur d'un vecteur).
 
-Si oui : suivre `SKILL.md` (voie B : script de 3 ou 4 temps forts, voix Pocket, horodatage, `spec.js`, rendu 540p) dans `capsules/essai-<sujet>/`. Montrer la vidéo, puis demander ce qui ne plaît pas : chaque retour durable va dans `preferences.md`.
+Si oui : suivre `SKILL.md` (voie B : script de 3 ou 4 temps forts, voix Pocket, horodatage, `spec.js`, rendu 720p) dans `capsules/essai-<sujet>/`. Montrer la vidéo, puis demander ce qui ne plaît pas : chaque retour durable va dans `preferences.md`.
 
 ## 5. Marquer le premier usage comme fait
 

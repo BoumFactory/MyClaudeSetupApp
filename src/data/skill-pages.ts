@@ -246,7 +246,7 @@ export const SKILL_PAGES: Record<string, SkillPageConfig> = {
     obtient: [
       'Le barème détaillé (bareme.json) : chaque point décrit par l\'action qu\'il récompense.',
       'Une interface (bareme.html) pour relire et ajuster le barème, avec synthèse et export CSV.',
-      'La conversion sur 20 : total libre et coefficient à appliquer aux points obtenus.',
+      'La conversion sur 20 : total libre et coefficient de conversion (la notation des copies reste hors du skill).',
       'Un diagnostic du sujet : densité standard entre 3 et 4 actions par point, trop dense au-delà de 4.',
     ],
     prerequis: [

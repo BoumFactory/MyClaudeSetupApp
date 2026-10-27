@@ -4,8 +4,9 @@
 #
 # Ce que fait le script :
 #   1. demande le DOSSIER DE BASE (ex. ~/Capsules) et y prépare :
-#        .claude/skills/capsule-video/   le skill (instructions et scripts suivis par l'agent)
-#        CLAUDE.md et AGENTS.md          le mode d'emploi du dossier, pour tout agent (Claude Code, Codex…)
+#        .claude/skills/capsule-video/   le skill, UNE seule copie, configurée (agent Claude Code)
+#        .agents/skills/capsule-video/   idem à la place de la précédente si l'agent est Codex (--agent codex)
+#        CLAUDE.md ou AGENTS.md          le mode d'emploi du dossier ; il pointe sur cette copie (Codex : AGENTS.md seul)
 #        outils/                         tout le lourd : Python, modèles, navigateur, MFA… (rien ailleurs)
 #        capsules/                       vos capsules, une par dossier
 #   2. inspecte l'ordinateur (système, carte NVIDIA, mémoire, place libre, Python, ffmpeg, Git) ;
@@ -24,6 +25,8 @@
 # Options :
 #   --base <dossier>            dossier de base (chemin sans espace ni accent)
 #   --enregistrements oui|non   ajouter (oui) ou non la transcription Whisper de vos propres enregistrements
+#   --agent claude|codex        agent utilisé (question posée si absent ; sans question : claude, ou codex si seule
+#                               la copie .agents existe déjà) : détermine où le skill est copié et configuré
 #   --silencieux                aucune question : valeurs proposées
 #   --reutiliser <config.json>  reprendre les outils d'une installation existante par leurs chemins (python_pocket,
 #                               python_parakeet, python_asr, mfa, cache_modeles, voix_piper), sans rien copier
@@ -37,19 +40,22 @@ ENREGISTREMENTS=""
 SILENCIEUX=0
 REUTILISER=""
 VERSION_PYTHON=""
+AGENT=""
 
 while [ $# -gt 0 ]; do
   case "$1" in
     --base) BASE="${2:-}"; shift 2 ;;
     --enregistrements) ENREGISTREMENTS="${2:-}"; shift 2 ;;
+    --agent) AGENT="${2:-}"; shift 2 ;;
     --silencieux) SILENCIEUX=1; shift ;;
     --reutiliser) REUTILISER="${2:-}"; shift 2 ;;
     --version-python) VERSION_PYTHON="${2:-}"; shift 2 ;;
-    --aide|-h|--help) sed -n '2,33p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    --aide|-h|--help) sed -n '2,/^$/p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "Option inconnue : $1 (voir --aide)"; exit 1 ;;
   esac
 done
 case "$ENREGISTREMENTS" in ""|oui|non) ;; *) echo "--enregistrements : oui ou non"; exit 1 ;; esac
+case "$AGENT" in ""|claude|codex) ;; *) echo "--agent : claude ou codex"; exit 1 ;; esac
 
 # ------------------------------------------------------------------ affichage et journal
 if [ -t 1 ]; then
@@ -172,11 +178,19 @@ while true; do
   [ "$SILENCIEUX" = 1 ] && exit 1
   BASE=""
 done
+# Agent utilisé : UNE seule copie du skill est installée et configurée, là où cet agent la cherche
+# (Claude Code : .claude/skills ; Codex : .agents/skills)
+if [ -z "$AGENT" ]; then
+  DEF_AGENT="1"
+  if [ -d "$BASE/.agents/skills/capsule-video" ] && [ ! -d "$BASE/.claude/skills/capsule-video" ]; then DEF_AGENT="2"; fi
+  case "$(demander "Agent utilisé : 1 = Claude Code, 2 = Codex" "$DEF_AGENT")" in 2*|codex*|Codex*) AGENT="codex" ;; *) AGENT="claude" ;; esac
+fi
+if [ "$AGENT" = "codex" ]; then SKILLS_REL=".agents/skills"; AUTRE_REL=".claude/skills"; else SKILLS_REL=".claude/skills"; AUTRE_REL=".agents/skills"; fi
 OUTILS="$BASE/outils"
 ETAPES="$OUTILS/.etapes"
 mkdir -p "$OUTILS" "$ETAPES" "$BASE/capsules" "$OUTILS/tmp" || { echo "Impossible de créer $BASE"; exit 1; }
 LOG="$OUTILS/installation.log"
-journal "===== Installation lancée le $(date '+%Y-%m-%d %H:%M') ; base = $BASE ; skill source = $SKILL ; $SYSTEME $ARCH"
+journal "===== Installation lancée le $(date '+%Y-%m-%d %H:%M') ; base = $BASE ; skill source = $SKILL ; agent = $AGENT ; $SYSTEME $ARCH"
 
 # ------------------------------------------------------------------ 2. Inspection de l'ordinateur
 titre "Votre ordinateur" "Inspection automatique : rien n'est modifié."
@@ -409,7 +423,7 @@ PY_PARAKEET="${REUT_PARAKEET:-$OUTILS/venv-parakeet/bin/python}"
 PY_WHISPER="${REUT_WHISPER:-$OUTILS/venv-whisper/bin/python}"
 VOIX_PIPER="${REUT_PIPER:-$OUTILS/voix-piper}"
 [ -n "$REUTILISER" ] && journal "Réutilisation : HF $ANCIEN_HF ; pocket $REUT_POCKET ; parakeet $REUT_PARAKEET ; whisper $REUT_WHISPER ; piper $REUT_PIPER ; mfa $REUT_MFA"
-CIBLE="$BASE/.claude/skills/capsule-video"
+CIBLE="$BASE/$SKILLS_REL/capsule-video"
 AIDE="$CIBLE/installation/aide_installation.py"
 
 creer_venv() {  # dossier -> 0 si le venv existe et fonctionne
@@ -424,7 +438,8 @@ creer_venv() {  # dossier -> 0 si le venv existe et fonctionne
 # ------------------------------------------------------------------ 4. Skill, CLAUDE.md, AGENTS.md
 titre "Dossier de base" "Le skill (instructions et scripts de l'agent), le mode d'emploi du dossier et le dossier des capsules."
 T_ETAPE=$SECONDS
-mkdir -p "$BASE/.claude/skills"
+mkdir -p "$BASE/$SKILLS_REL"
+if [ -d "$BASE/$AUTRE_REL/capsule-video" ]; then alerte "une autre copie du skill existe dans $BASE/$AUTRE_REL/capsule-video : elle n'est pas configurée et plus utilisée (la supprimer évite la confusion)"; fi
 if [ "$SKILL" != "$CIBLE" ]; then
   # config.json et preferences.md ne sont jamais copiés : ils sont propres à chaque utilisateur
   if executer "$PY_BASE" "$SKILL/installation/aide_installation.py" copier --source "$SKILL" --cible "$CIBLE"; then
@@ -434,10 +449,11 @@ else ok "skill déjà en place"; fi
 chmod +x "$CIBLE/installation/installer.sh" 2> /dev/null
 PREF="$CIBLE/references/preferences.md"
 if [ ! -f "$PREF" ]; then cp "$CIBLE/installation/preferences-vierge.md" "$PREF"; ok "préférences vierges : references/preferences.md"; fi
-sed -e "s|{{BASE}}|$BASE|g" -e "s|{{PYTHON}}|outils/venv-rendu/bin/python|g" -e "s|installer\\.ps1|installer.sh|g" \
-  "$CIBLE/installation/modele-CLAUDE.md" > "$BASE/CLAUDE.md"
-cp "$BASE/CLAUDE.md" "$BASE/AGENTS.md"
-ok "CLAUDE.md et AGENTS.md écrits (mode d'emploi pour l'agent)"
+FICHIER_AGENT="CLAUDE.md"; [ "$AGENT" = "codex" ] && FICHIER_AGENT="AGENTS.md"
+sed -e "s|{{BASE}}|$BASE|g" -e "s|{{PYTHON}}|outils/venv-rendu/bin/python|g" -e "s|{{SKILLS}}|$SKILLS_REL|g" -e "s|installer\\.ps1|installer.sh|g" \
+  "$CIBLE/installation/modele-CLAUDE.md" > "$BASE/$FICHIER_AGENT"
+if [ "$AGENT" = "claude" ]; then cp "$BASE/CLAUDE.md" "$BASE/AGENTS.md"; ok "CLAUDE.md et AGENTS.md écrits (mode d'emploi pour l'agent, pointant sur $SKILLS_REL/capsule-video)"
+else ok "AGENTS.md écrit (mode d'emploi pour l'agent, pointant sur $SKILLS_REL/capsule-video)"; fi
 
 # config.json : chemins sous outils/, valeurs selon l'ordinateur (references/outils-audio.md)
 json_chaine() { if [ -n "$1" ]; then printf '"%s"' "$1"; else printf 'null'; fi; }
@@ -634,13 +650,13 @@ fi
 echo ""
 printf '%sInstallation terminée. Pour votre première capsule :%s\n' "$C_JAUNE" "$C_RAZ"
 echo "  1. Ouvrez votre agent (Claude Code, Codex…) dans le dossier $BASE"
-echo "     (terminal : cd $BASE  puis  claude)"
+echo "     (terminal : cd $BASE  puis  $([ "$AGENT" = "codex" ] && printf codex || printf claude))"
 echo "  2. Dites : « Fais-moi une capsule vidéo de correction de l'exercice suivant : … »"
 echo "     La première fois, l'agent vous propose quelques questions sur vos goûts (facultatives)."
 echo "  Vos capsules arriveront dans $BASE/capsules"
 echo ""
 printf '%s  Parler avec VOTRE voix (facultatif) : il faut un compte Hugging Face gratuit et accepter les conditions%s\n' "$C_GRIS" "$C_RAZ"
-printf '%s  du modèle de clonage. Marche à suivre : .claude/skills/capsule-video/references/cloner-sa-voix.md%s\n' "$C_GRIS" "$C_RAZ"
+printf '%s  du modèle de clonage. Marche à suivre : %s/capsule-video/references/cloner-sa-voix.md%s\n' "$C_GRIS" "$SKILLS_REL" "$C_RAZ"
 if [ "$AVEC_WHISPER" != 1 ]; then
   printf '%s  Travailler plus tard avec vos enregistrements : relancez ce script et répondez « oui ».%s\n' "$C_GRIS" "$C_RAZ"
 fi

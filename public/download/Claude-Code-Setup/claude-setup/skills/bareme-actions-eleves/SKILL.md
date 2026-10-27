@@ -1,11 +1,13 @@
 ---
 name: bareme-actions-eleves
-description: Skill pour établir des barèmes basés sur l'atomisation des actions élèves. Calcule les points via coefficient × actions, permet la conversion sur 20, et fournit des métriques d'analyse (densité, productivité). Utiliser après la rédaction d'un document LaTeX pour générer un barème rationnel.
+description: Skill pour établir des barèmes basés sur l'atomisation des actions élèves. Calcule les points via coefficient × actions, permet la conversion sur 20, et fournit une métrique d'analyse du barème (densité). Le skill produit uniquement des barèmes : la notation des copies se fait hors du skill. Utiliser après la rédaction d'un document LaTeX pour générer un barème rationnel.
 ---
 
 # Barème Basé sur les Actions Élèves
 
 Système expert pour établir des barèmes rationnels et analysables, basés sur l'atomisation des attendus de correction en actions élèves distinctes.
+
+**Périmètre** : le skill produit uniquement des barèmes (fichiers `bareme.json`, `bareme.html`, `bareme.csv`). La notation des copies est externe au skill : il ne saisit ni ne calcule aucune note d'élève.
 
 ## Philosophie
 
@@ -14,7 +16,7 @@ Système expert pour établir des barèmes rationnels et analysables, basés sur
 Les barèmes traditionnels attribuent des points de manière arbitraire :
 - "Question 1 : 3 points" → Pourquoi 3 ? Sur quels critères ?
 - Impossible de comparer la difficulté entre évaluations
-- Impossible de mesurer objectivement la productivité élève
+- Impossible de justifier ou d'ajuster la répartition des points
 
 ### La Solution : Actions Élèves
 
@@ -64,9 +66,10 @@ Une **action élève** est :
 Points_question = Σ(actions_critères) × coef_exercice
 Points_exercice = Σ(points_questions)
 Total_libre = Σ(points_exercices)
-Ratio_conversion = Note_cible / Total_libre
-Note_sur_20 = Points_obtenus × Ratio_conversion
+Coefficient_de_conversion = Note_cible / Total_libre
 ```
+
+Le coefficient de conversion est communiqué avec le barème ; son application aux copies relève de l'outil de notation de l'enseignant, hors skill.
 
 ## Règles d'Atomisation
 
@@ -163,14 +166,6 @@ Densité = Total_actions / Note_cible
 
 **Exemple** : 63 actions pour une note sur 20 → Densité = 3.15 (standard)
 
-### Productivité Élève
-
-```
-Productivité = Actions_réussies / Total_actions × 100
-```
-
-Permet de comparer les élèves indépendamment du barème.
-
 ### Temps par Action
 
 Pour calibrer la durée d'une évaluation :
@@ -241,18 +236,19 @@ Structure du fichier `bareme.json` :
 ### Étape 4 : Utiliser l'Interface HTML
 
 L'interface `bareme.html` permet de :
-- Visualiser et éditer le barème
+- Visualiser et éditer le barème (exercices, questions, critères)
 - Modifier les coefficients en temps réel
 - Voir la synthèse avec accordéon
-- Exporter en CSV pour tableur
-- Calculer automatiquement le ratio de conversion
+- Sauvegarder en JSON et exporter en CSV pour tableur
+- Afficher le coefficient de conversion (note cible ÷ total des points) et la densité
 
-### Étape 5 : Corriger avec le Barème
+L'interface est un éditeur de barème : elle ne note aucune copie.
 
-1. Ouvrir `bareme.html` en parallèle de la copie
-2. Cocher chaque critère réussi
-3. Le score se calcule automatiquement
-4. Appliquer le ratio pour la note finale
+### Étape 5 : Exploiter le barème
+
+1. Relire la synthèse (total des points, densité) et ajuster les critères ou les coefficients
+2. Exporter `bareme.json` / `bareme.csv`
+3. Communiquer le barème aux élèves ou le reporter dans l'outil de notation de l'enseignant (la notation des copies est externe au skill)
 
 ## Intégration avec bfcours-latex
 
@@ -279,7 +275,7 @@ Toujours rédiger la correction **avant** d'attribuer les points. L'atomisation 
 | Fichier | Description |
 |---------|-------------|
 | `bareme.json` | Structure du barème (portable) |
-| `bareme.html` | Interface de correction interactive |
+| `bareme.html` | Éditeur et synthèse du barème |
 | `bareme.csv` | Export tableur |
 
 ### Structure Minimale du JSON
@@ -312,12 +308,11 @@ Toujours rédiger la correction **avant** d'attribuer les points. L'atomisation 
 1. **Toujours atomiser la correction d'abord** avant d'attribuer les points
 2. **Un critère = une action** = quelque chose de visible dans la copie
 3. **Coefficient 0.5 pour la géométrie** (actions moins cognitives) : choix personnel, réglable selon vos pratiques
-4. **Utiliser l'interface HTML** pour la correction interactive
+4. **Utiliser l'interface HTML** pour éditer et relire le barème (pas pour noter)
 5. **Analyser la densité** pour calibrer vos évaluations
-6. **Comparer les productivités** pour un suivi objectif des élèves
 
 ## Références
 
-- Interface de correction : `templates/bareme.html` (monolithique, portable)
+- Éditeur de barème : `templates/bareme.html` (monolithique, portable)
 - Template JSON : Généré automatiquement depuis le document LaTeX
 - Intégration : Skill `bfcours-latex` pour la rédaction

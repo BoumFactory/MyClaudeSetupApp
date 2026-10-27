@@ -166,7 +166,7 @@ const PREREQUIS_GRILL_ME = [
   },
   { texte: 'Chrome ou Edge pour la dictée vocale de la page web (facultatif ; sinon Win + H sous Windows).' },
   {
-    texte: 'Vous avez déjà le bundle Généraliste, LaTeX Enseignant ou Power User ? grill-me y est : rien à installer.',
+    texte: 'Vous avez déjà le bundle Généraliste, LaTeX Enseignant, Typst Enseignant ou Power User ? grill-me y est : rien à installer.',
     lien: { href: '/claude-code/download-ai-packages', label: 'Les bundles' },
   },
 ]

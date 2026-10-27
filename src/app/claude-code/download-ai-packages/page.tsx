@@ -23,6 +23,13 @@ const tierColors: Record<PackageTier, { border: string; bg: string; badge: strin
     text: 'text-cosmic-400',
     glow: 'hover:shadow-[0_0_30px_rgba(139,92,246,0.15)]',
   },
+  typst: {
+    border: 'border-teal-500/30 hover:border-teal-400/50',
+    bg: 'bg-teal-950/20',
+    badge: 'bg-teal-500/20 text-teal-300 border-teal-500/30',
+    text: 'text-teal-400',
+    glow: 'hover:shadow-[0_0_30px_rgba(20,184,166,0.15)]',
+  },
   avance: {
     border: 'border-purple-500/30 hover:border-purple-400/50',
     bg: 'bg-purple-950/20',
@@ -162,6 +169,7 @@ export default function DownloadAIPackagesPage() {
 
   const generaliste = AI_PACKAGES.find(p => p.id === 'generaliste')!
   const latex = AI_PACKAGES.find(p => p.id === 'latex')!
+  const typst = AI_PACKAGES.find(p => p.id === 'typst')!
   const avance = AI_PACKAGES.find(p => p.id === 'avance')!
 
   return (
@@ -194,9 +202,10 @@ export default function DownloadAIPackagesPage() {
         </div>
       </div>
 
-      {/* Tier 2 — LaTeX Enseignant */}
-      <div className="max-w-md mx-auto mb-6">
+      {/* Tier 2 — LaTeX Enseignant et Typst Enseignant (côte à côte) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-6">
         <PackageCard pkg={latex} downloading={downloading} onDownload={handleDirectDownload} />
+        <PackageCard pkg={typst} downloading={downloading} onDownload={handleDirectDownload} />
       </div>
 
       {/* Connector */}
@@ -219,7 +228,8 @@ export default function DownloadAIPackagesPage() {
           <div>
             <h3 className="font-medium text-amber-300 text-sm mb-1">Bundles inclusifs</h3>
             <p className="text-xs text-white/50">
-              Le bundle LaTeX Enseignant inclut le Généraliste.
+              Les bundles LaTeX Enseignant et Typst Enseignant incluent chacun le Généraliste,
+              mais pas l'un l'autre.
               Le Power User inclut tout. Il est inutile d'ajouter un bundle déjà couvert par un autre.
               Le panier vous préviendra en cas de doublons.
             </p>

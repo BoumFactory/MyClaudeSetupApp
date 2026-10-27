@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bareme Libre</title>
+    <title>Barème libre</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -394,7 +394,7 @@
 
         #fileInput { display: none; }
 
-        /* Synthese Accordeon */
+        /* Synthèse accordéon */
         .synth-container {
             max-width: 100%;
         }
@@ -563,15 +563,15 @@
         <div class="header-title">
             <h1>
                 <span>📋</span>
-                <input type="text" id="docTitle" placeholder="Titre du bareme..." value="Nouveau Bareme">
+                <input type="text" id="docTitle" placeholder="Titre du barème..." value="Nouveau barème">
             </h1>
         </div>
         <div class="total-badge">
             <span><strong id="grandTotal">0</strong> pts</span>
             <span>→</span>
             <span>/ <input type="number" id="noteCible" value="20" min="1" max="100" onchange="updateGrandTotal()"></span>
-            <div class="ratio-box"><span id="ratioPoints">0</span> pt/action</div>
-            <div class="density-box" id="densityBox">Densite: <span id="densityValue">0</span></div>
+            <div class="ratio-box" title="Note cible ÷ total des points">Coefficient de conversion : ×<span id="ratioPoints">0</span></div>
+            <div class="density-box" id="densityBox">Densité : <span id="densityValue">0</span></div>
         </div>
     </div>
 
@@ -593,7 +593,7 @@
 
         // Donnees par defaut (bareme vide)
         const defaultBareme = {
-            "titre": "Nouveau Bareme",
+            "titre": "Nouveau barème",
             "noteCible": 20,
             "exercices": [
                 {
@@ -615,7 +615,7 @@
         fetch('bareme.json')
             .then(response => response.json())
             .then(data => {
-                document.getElementById('docTitle').value = data.titre || 'Bareme';
+                document.getElementById('docTitle').value = data.titre || 'Barème';
                 document.getElementById('noteCible').value = data.noteCible || 20;
                 if (data.exercices && data.exercices.length > 0) {
                     exercices = data.exercices;
@@ -662,10 +662,10 @@
             addBtn.onclick = addExercice;
             nav.appendChild(addBtn);
 
-            // Onglet Synthese
+            // Onglet Synthèse
             const synthTab = document.createElement('button');
             synthTab.className = 'slide-tab synth-tab' + (currentSlide === 'synth' ? ' active' : '');
-            synthTab.innerHTML = '📊 Synthese';
+            synthTab.innerHTML = '📊 Synthèse';
             synthTab.onclick = () => showSlide('synth');
             nav.appendChild(synthTab);
 
@@ -740,7 +740,7 @@
                                     <div class="question-enonce">
                                         <input type="text" value="${escapeHtml(q.enonce)}"
                                             onchange="updateQuestion(${idx}, ${qIdx}, 'enonce', this.value)"
-                                            placeholder="Enonce de la question...">
+                                            placeholder="Énoncé de la question...">
                                     </div>
                                     <span class="question-total">${calcQuestionActions(q)} → ${calcQuestionTotal(q, coef)} pts</span>
                                     <div class="question-actions">
@@ -808,7 +808,7 @@
             let html = `
                 <div class="synth-container">
                     <div class="synth-controls">
-                        <button class="synth-ctrl-btn" onclick="synthExpandAll()">▼ Tout deployer</button>
+                        <button class="synth-ctrl-btn" onclick="synthExpandAll()">▼ Tout déplier</button>
                         <button class="synth-ctrl-btn" onclick="synthCollapseAll()">▶ Tout replier</button>
                     </div>
             `;
@@ -845,7 +845,7 @@
                             <div class="synth-q-header" onclick="toggleSynthQ(${exoIdx}, ${qIdx})">
                                 <div class="synth-q-info">
                                     <span class="synth-q-num">${q.numero}</span>
-                                    <span class="synth-q-enonce">${q.enonce || '(sans enonce)'}</span>
+                                    <span class="synth-q-enonce">${q.enonce || '(sans énoncé)'}</span>
                                 </div>
                                 <span class="synth-q-pts">${qActions} act → ${qPts} pts</span>
                                 <span class="synth-q-toggle">▼</span>
@@ -854,7 +854,7 @@
                     `;
 
                     if (q.criteres.length === 0) {
-                        html += `<div class="synth-critere"><em style="color:rgba(255,255,255,0.4)">Aucun critere</em></div>`;
+                        html += `<div class="synth-critere"><em style="color:rgba(255,255,255,0.4)">Aucun critère</em></div>`;
                     } else {
                         q.criteres.forEach((c, cIdx) => {
                             const realPts = (c.points * coef).toFixed(2).replace(/\.?0+$/, '');
@@ -899,11 +899,11 @@
                         </div>
                         <div class="synth-total-item">
                             <div class="value">×${ratio}</div>
-                            <div class="label">Coef. final</div>
+                            <div class="label">Coefficient de conversion</div>
                         </div>
                         <div class="synth-total-item">
                             <div class="value">${density}</div>
-                            <div class="label">Densite</div>
+                            <div class="label">Densité</div>
                         </div>
                     </div>
                 </div>
@@ -1044,8 +1044,8 @@
         }
 
         function newBareme() {
-            if (confirm('Creer un nouveau bareme ?')) {
-                document.getElementById('docTitle').value = 'Nouveau Bareme';
+            if (confirm('Créer un nouveau barème ?')) {
+                document.getElementById('docTitle').value = 'Nouveau barème';
                 exercices = [{
                     titre: 'Exercice 1',
                     coef: 1,
@@ -1064,7 +1064,7 @@
             reader.onload = function(evt) {
                 try {
                     const data = JSON.parse(evt.target.result);
-                    document.getElementById('docTitle').value = data.titre || 'Bareme';
+                    document.getElementById('docTitle').value = data.titre || 'Barème';
                     document.getElementById('noteCible').value = data.noteCible || 20;
 
                     if (data.exercices && data.exercices.length > 0) {
@@ -1135,7 +1135,7 @@
         }
 
         function exportCSV() {
-            let csv = 'Exercice;Question;Enonce;Critere;Points;Description\n';
+            let csv = 'Exercice;Question;Énoncé;Critère;Points;Description\n';
             exercices.forEach(exo => {
                 exo.questions.forEach(q => {
                     q.criteres.forEach((c, idx) => {
