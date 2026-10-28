@@ -1,6 +1,6 @@
 ---
 name: bareme-actions-eleves
-description: Skill pour établir des barèmes basés sur l'atomisation des actions élèves. Calcule les points via coefficient × actions, permet la conversion sur 20, et fournit une métrique d'analyse du barème (densité). Le skill produit uniquement des barèmes : la notation des copies se fait hors du skill. Utiliser après la rédaction d'un document LaTeX pour générer un barème rationnel.
+description: Skill pour établir des barèmes basés sur l'atomisation des actions élèves. Calcule les points via coefficient × actions, permet la conversion sur 20, et fournit une métrique d'analyse du barème (densité). Le skill produit uniquement des barèmes : la notation des copies se fait hors du skill. Utiliser dès qu'un sujet ou une évaluation corrigée (fichier .tex, .typ, PDF, Word/ODT, Markdown ou texte collé dans la conversation) doit recevoir un barème rationnel.
 ---
 
 # Barème Basé sur les Actions Élèves
@@ -182,25 +182,19 @@ Pour calibrer la durée d'une évaluation :
 
 ## Workflow d'Utilisation
 
-### Étape 1 : Rédiger le Document LaTeX
+### Étape 1 : Lire le sujet et son corrigé
 
-Utiliser le skill `bfcours-latex` pour rédiger l'évaluation avec :
-- Environnement `EXO` pour chaque exercice
-- `\tcbitempoint{N}` pour indiquer les points prévus
-- `\exocorrection` suivi de la correction détaillée
+Le sujet peut être fourni sous n'importe quelle forme : fichier `.tex` (bfcours ou non), `.typ`, PDF, Word/ODT, Markdown, ou texte collé dans la conversation. Lire l'énoncé et le corrigé détaillé ; s'il n'y a pas de corrigé, le rédiger (ou le demander) avant d'atomiser.
 
 ### Étape 2 : Atomiser la Correction
 
 Pour chaque question, lister les actions attendues dans la correction :
 
-```latex
-\exocorrection
-% ACTION 1 : Identification de l'identité remarquable
-On reconnaît $(a+b)^2$ avec $a = 2x$ et $b = 3$.
-% ACTION 2 : Application de la formule
-$(2x+3)^2 = (2x)^2 + 2 \times 2x \times 3 + 3^2$
-% ACTION 3 : Calcul final
-$= 4x^2 + 12x + 9$
+```
+Question 1 : Développer (2x+3)²
+- ACTION 1 : Identification de l'identité remarquable (a+b)², a = 2x et b = 3
+- ACTION 2 : Application de la formule (2x)² + 2 × 2x × 3 + 3²
+- ACTION 3 : Calcul final 4x² + 12x + 9
 ```
 
 ### Étape 3 : Générer le Barème JSON
@@ -250,11 +244,13 @@ L'interface est un éditeur de barème : elle ne note aucune copie.
 2. Exporter `bareme.json` / `bareme.csv`
 3. Communiquer le barème aux élèves ou le reporter dans l'outil de notation de l'enseignant (la notation des copies est externe au skill)
 
-## Intégration avec bfcours-latex
+## Intégrations optionnelles
 
-### Correspondance \tcbitempoint
+Le skill ne dépend d'aucun format de sujet. Si le sujet est écrit avec un paquet connu, on peut reporter les points dans le sujet lui-même.
 
-Dans `bfcours-latex`, `\tcbitempoint{N}` indique N points. Avec ce skill :
+### Si le sujet est en bfcours (LaTeX) : \tcbitempoint
+
+Dans `bfcours-latex`, `\tcbitempoint{N}` indique N points (environnement `EXO`, correction après `\exocorrection`). Avec ce skill :
 
 ```latex
 % Avant atomisation (estimation grossière)
@@ -263,6 +259,10 @@ Dans `bfcours-latex`, `\tcbitempoint{N}` indique N points. Avec ce skill :
 % Après atomisation (précis)
 \tcbitempoint{4}\acc{Développer} $(2x+3)^2$ et \acc{réduire}.
 ```
+
+### Si le sujet est en Typst (farfadet) : itempoint
+
+Dans `bfcours-typst`, `#itempoint(N)[Énoncé.]` joue le même rôle (boîtes visibles après `#displayitempoints(true)`).
 
 ### Recommandation
 
@@ -314,5 +314,5 @@ Toujours rédiger la correction **avant** d'attribuer les points. L'atomisation 
 ## Références
 
 - Éditeur de barème : `templates/bareme.html` (monolithique, portable)
-- Template JSON : Généré automatiquement depuis le document LaTeX
-- Intégration : Skill `bfcours-latex` pour la rédaction
+- Template JSON : généré à partir du sujet et de son corrigé, quel que soit le format
+- Intégrations facultatives : `bfcours-latex` ou `bfcours-typst` si le sujet est rédigé avec ces paquets

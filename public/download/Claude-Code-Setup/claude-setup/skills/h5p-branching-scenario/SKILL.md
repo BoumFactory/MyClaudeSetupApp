@@ -129,6 +129,22 @@ Génère des parcours d'apprentissage adaptatifs au format H5P Branching Scenari
 - **Post-production pipeline** : correction d'accents, validation, compilation, visualiseur standalone
 - **Workflow collaboratif** : relecture collegue via HTML interactif, intégration des remarques
 
+## Prérequis : bibliothèques H5P (première utilisation)
+
+Les bibliothèques copiées dans chaque `.h5p` (`h5p_libs/` pour Moodle, `h5p_libs_logiquiz/` pour
+Logiquiz, versions figées) ne sont pas toujours livrées avec le skill. **Avant la première
+génération, si `h5p_libs/` est absent, lancer :**
+
+```bash
+python ".claude/skills/h5p-branching-scenario/scripts/installer_libs.py"
+```
+
+Le script télécharge les deux jeux (environ 13 Mo), vérifie leur sha256 et les extrait à côté de
+`scripts/`. Un jeu déjà présent n'est jamais écrasé (`--forcer` pour réinstaller ; `--jeu moodle`
+ou `--jeu logiquiz` pour un seul jeu ; `--source <dossier>` pour des zips téléchargés à la main).
+Sans `h5p_libs/`, `generate_branching.py` s'arrête avec cette commande : il ne produit jamais de
+`.h5p` « thin » (non importable).
+
 ## Deux modes d'utilisation
 
 ### Mode Transcription (cours existant → H5P)
@@ -783,6 +799,8 @@ par ces versions. **Refaire ce contrôle avant d'aligner sur un jeu de librairie
 2. Extraire tous ses dossiers de librairies (tout sauf `content/`) dans `h5p_libs_logiquiz/`.
 3. `_scan_lib_versions(LOGIQUIZ_LIBS_DIR)` en dérive les versions automatiquement : aucune table à
    tenir à jour. Ne **jamais** écraser `h5p_libs/`, dont dépend la sortie Moodle.
+4. Republier ensuite les archives que télécharge `installer_libs.py` (zips + `manifeste.json`
+   avec sha256), sinon les nouvelles installations reçoivent l'ancien jeu.
 
 #### `--degrade` : le recours de dernier ressort
 
@@ -852,7 +870,7 @@ Rendu à la taille d'un PC élève : `render_h5p.py … --parcours --width 1366 
 
 ## Exemples : régénérer les `.h5p`
 
-`examples/` ne contient que les sources `.json` (les `.h5p` pèsent 7 à 9 Mo chacun, car ils embarquent les librairies H5P). Pour reconstruire un exemple :
+`examples/` ne contient que les sources `.json` (les `.h5p` pèsent 7 à 9 Mo chacun, car ils embarquent les librairies H5P). Pour reconstruire un exemple (bibliothèques installées, voir « Prérequis ») :
 
 ```bash
 python ".claude/skills/h5p-branching-scenario/scripts/generate_branching.py" \
@@ -948,6 +966,7 @@ Pièges mesurés dans le lecteur :
 | `scan_template.py` | Scanne les `__TODO__`, génère rapport + questions challenge |
 | `validators.py` | Validation (import par generate_branching.py) |
 | `generate_branching.py` | Validation + génération du fichier .h5p **fat** (libs bundlées depuis `h5p_libs/`) + **seconde archive `-logiquiz`** si le parcours sort du socle des lecteurs légers |
+| `installer_libs.py` | Télécharge et installe `h5p_libs/` et `h5p_libs_logiquiz/` (sha256 vérifié, jamais d'écrasement sans `--forcer`) |
 | `render_h5p.py` | **Auto-visualisation** : rend le .h5p dans le vrai player H5P (headless), PNG + gate d'erreur |
 | `extract_corpus.py` | Découpe des PDFs en pages + extraction texte pour référence |
 | `fix_accents.py` | Correction des accents français (sortie `_fixed.json`, non destructive) |
@@ -955,8 +974,9 @@ Pièges mesurés dans le lecteur :
 | `assemble_modules.py` | Assemblage de modules parallèles avec gestion des indexes |
 | `integrate_feedback.py` | Intègre (annote) les remarques d'un collègue dans le preplan |
 
-**Ressources bundlées** (ne pas supprimer) :
-- `h5p_libs/` — les 70 bibliothèques H5P copiées dans chaque `.h5p` (sans elles, package « thin » non importable). Versions dérivées automatiquement des `library.json` réels.
+**Ressources** (ne pas supprimer une fois installées) :
+- `h5p_libs/` — téléchargé à la demande par `installer_libs.py` s'il est absent. Les 70 bibliothèques H5P copiées dans chaque `.h5p` (sans elles, package « thin » non importable). Versions dérivées automatiquement des `library.json` réels. Les traductions (`*/language/*.json`) de `h5p_libs/` et `h5p_libs_logiquiz/` ont été réduites au français et à l'anglais (`fr.json`, `en.json`) pour alléger le skill ; les fichiers de langue sont facultatifs en H5P (repli sur l'anglais). Pour ajouter une langue, copier son `<code>.json` depuis un `.h5p` exporté ou depuis le dépôt GitHub de la bibliothèque, dans le dossier `language/` de la lib concernée.
+- `h5p_libs_logiquiz/` — téléchargé de même ; les 73 bibliothèques du lecteur Logiquiz, embarquées dans la variante `-logiquiz` (sans ce dossier, seule la version Moodle est produite).
 - `assets/h5p-standalone/` — le player H5P utilisé par `render_h5p.py` pour l'auto-visualisation.
 
 ### Usage détaillé

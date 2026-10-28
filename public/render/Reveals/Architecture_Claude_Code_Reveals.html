@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Formation IA & Mathématiques">
-  <meta name="description" content="Architecture d'une configuration Agent IA CLI - Conception modulaire pour optimiser le contexte">
-  <title>Architecture d'une configuration Claude Code</title>
+  <meta name="description" content="Le dossier .claude/ de Claude Code : consignes, skills, agents, hooks, serveurs MCP et mémoire, expliqués à partir d'une configuration réelle de professeur">
+  <title>Le dossier .claude/ : le cerveau de mon assistant</title>
 
   <!-- Reveal.js Core -->
   <link rel="stylesheet" href="assets/reveal/reset.css">
@@ -15,16 +15,24 @@
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Theme personnalisé académique -->
   <style>
     :root {
       --primary-color: #2c3e50;
       --secondary-color: #3498db;
       --accent-color: #e74c3c;
       --success-color: #27ae60;
-      --text-color: #34495e;
-      --bg-light: #ecf0f1;
       --warning-color: #f39c12;
+      --violet-color: #8e44ad;
+      --text-color: #34495e;
+      --muted-color: #7f8c8d;
+      --bg-light: #ecf0f1;
+      /* Une couleur par brique */
+      --b-consignes: #3498db;
+      --b-skills: #27ae60;
+      --b-agents: #8e44ad;
+      --b-hooks: #e67e22;
+      --b-mcp: #c0392b;
+      --b-memoire: #16a085;
     }
 
     .reveal {
@@ -37,1000 +45,909 @@
       color: var(--primary-color);
       font-weight: 600;
       text-transform: none;
+      letter-spacing: normal;
     }
 
-    .reveal h1 {
-      font-size: 2.2em;
-      margin-bottom: 0.5em;
-    }
+    .reveal h1 { font-size: 1.7em; margin-bottom: 0.3em; line-height: 1.15; }
 
     .reveal h2 {
-      font-size: 1.6em;
-      margin-bottom: 0.8em;
+      font-size: 1.4em;
+      margin-bottom: 0.6em;
       border-bottom: 3px solid var(--secondary-color);
-      padding-bottom: 0.3em;
+      padding-bottom: 0.25em;
     }
 
-    .reveal h3 {
-      font-size: 1.3em;
-      color: var(--secondary-color);
-      margin-top: 0.4em;
-    }
-
-    .reveal ul, .reveal ol {
-      margin: 1em 0;
-    }
-
-    .reveal li {
-      margin: 0.5em 0;
-      line-height: 1.5;
-    }
+    .reveal p, .reveal li { line-height: 1.45; }
+    .reveal ul { margin: 0.4em 0 0 1em; }
+    .reveal li { margin: 0.3em 0; }
 
     .reveal code {
       background: var(--bg-light);
-      padding: 0.2em 0.5em;
+      padding: 0.1em 0.4em;
       border-radius: 4px;
       font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9em;
+      color: var(--accent-color);
+    }
+
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.72em; }
+    .reveal .muted { color: var(--muted-color); }
+
+    /* Bulle : la demande du professeur */
+    .reveal .demande {
+      display: inline-block;
+      background: #fff;
+      border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px;
+      padding: 0.6em 1em;
       font-size: 0.85em;
-      color: var(--accent-color);
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18);
+      max-width: 90%;
+    }
+    .reveal .demande .qui {
+      display: block;
+      font-size: 0.7em;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 0.2em;
     }
 
-    .reveal pre {
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      margin: 1em 0;
-      width: 100%;
+    .reveal .resultat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+      color: #fff;
+      padding: 0.45em 1.1em;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.8em;
+      box-shadow: 0 6px 18px rgba(39,174,96,0.3);
     }
 
-    .reveal pre code {
-      background: #282c34;
-      color: #abb2bf;
-      padding: 1em;
-      max-height: 500px;
-      font-size: 0.65em;
-      line-height: 1.4;
-    }
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.2em; margin: 0.3em 0; }
 
-    .reveal .highlight {
-      color: var(--accent-color);
-      font-weight: 600;
+    /* Le dossier au centre de la diapo de titre */
+    .reveal .dossier-titre {
+      display: inline-flex; align-items: center; gap: 0.5em;
+      background: #fff; border: 2px dashed var(--primary-color); border-radius: 12px;
+      padding: 0.35em 1em; font-size: 0.75em; color: var(--primary-color); font-weight: 600;
     }
+    .reveal .dossier-titre i { color: var(--warning-color); font-size: 1.3em; }
 
-    .reveal .success {
-      color: var(--success-color);
-      font-weight: 600;
+    /* Frise des six briques */
+    .reveal .frise {
+      display: flex;
+      gap: 0.35em;
+      justify-content: center;
+      margin: 0 0 0.6em 0;
+      font-size: 0.5em;
     }
-
-    .reveal .box {
+    .reveal .frise span {
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
       background: var(--bg-light);
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--secondary-color);
-      margin: 1em 0;
-      text-align: left;
+      color: var(--muted-color);
+      font-weight: 600;
     }
+    .reveal .frise span.on { color: #fff; }
+    .reveal .frise span.on.c1 { background: var(--b-consignes); }
+    .reveal .frise span.on.c2 { background: var(--b-skills); }
+    .reveal .frise span.on.c3 { background: var(--b-agents); }
+    .reveal .frise span.on.c4 { background: var(--b-hooks); }
+    .reveal .frise span.on.c5 { background: var(--b-mcp); }
+    .reveal .frise span.on.c6 { background: var(--b-memoire); }
 
-    .reveal .warning-box {
-      background: #fff3cd;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid #ffc107;
-      margin: 1em 0;
-      text-align: left;
-    }
-
-    .reveal .example-box {
-      background: #e8f5e9;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--success-color);
-      margin: 1em 0;
-      text-align: left;
-    }
-
-    .reveal .grid-2 {
+    /* Arborescence simplifiée (diapo 2) */
+    .reveal .arbo {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2em;
+      grid-template-columns: auto 1fr;
+      gap: 0.25em 0.9em;
+      text-align: left;
+      font-size: 0.6em;
+      background: #fff;
+      border: 1px solid #dfe6e9;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+      padding: 0.7em 1em;
+      align-items: center;
+    }
+    .reveal .arbo .nom {
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .reveal .arbo .nom i { width: 1.3em; text-align: center; }
+    .reveal .arbo .sep { grid-column: 1 / -1; border-top: 1px dashed #dfe6e9; margin: 0.15em 0; }
+    .reveal .arbo .retrait { padding-left: 1.4em; }
+
+    /* Deux colonnes : ce que c'est / ce que vous y gagnez */
+    .reveal .duo {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1em;
+      text-align: left;
       align-items: start;
     }
+    .reveal .bloc {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 0.6em 0.9em;
+      border-left: 5px solid var(--secondary-color);
+      font-size: 0.72em;
+    }
+    .reveal .bloc h3 { font-size: 1.05em; margin: 0 0 0.3em 0; }
+    .reveal .bloc ul { margin-left: 1em; }
+    .reveal .bloc.gain { background: #e8f5e9; border-color: var(--success-color); }
+    .reveal .bloc.gain h3 { color: var(--success-color); }
+    .reveal .bloc.note { background: #fff8e1; border-color: var(--warning-color); margin-top: 0.6em; }
 
-    .reveal .icon {
-      font-size: 1.5em;
-      margin-right: 0.3em;
+    /* Flux : comment ça s'articule */
+    .reveal .chaine {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.45em;
+      margin-top: 0.5em;
+    }
+    .reveal .maillon {
+      border-radius: 12px;
+      padding: 0.6em 0.45em;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      position: relative;
+    }
+    .reveal .maillon i { font-size: 1.4em; margin-bottom: 0.15em; }
+    .reveal .maillon .nom { font-weight: 700; font-size: 0.66em; }
+    .reveal .maillon .quoi { font-size: 0.52em; opacity: 0.95; margin-top: 0.3em; line-height: 1.35; }
+    .reveal .maillon.m0 { background: linear-gradient(135deg, #2c3e50, #34495e); }
+    .reveal .maillon.m1 { background: linear-gradient(135deg, #2980b9, #3498db); }
+    .reveal .maillon.m2 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+    .reveal .maillon.m3 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+    .reveal .maillon.m4 { background: linear-gradient(135deg, #d35400, #e67e22); }
+
+    /* Livrables / cartes */
+    .reveal .livrables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.4em; }
+    .reveal .livrable {
+      background: #f8f9fa; border-radius: 10px; padding: 0.7em 0.6em; font-size: 0.64em; text-align: center;
+      border-top: 4px solid var(--secondary-color);
+    }
+    .reveal .livrable i { font-size: 1.7em; color: var(--secondary-color); margin-bottom: 0.2em; }
+    .reveal .livrable .titre { font-weight: 700; color: var(--primary-color); }
+
+    /* Projet / global */
+    .reveal .portee { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8em; text-align: left; }
+    .reveal .portee .carte {
+      background: #f8f9fa; border-radius: 10px; padding: 0.6em 0.9em; font-size: 0.64em;
+      border-top: 5px solid var(--secondary-color);
+    }
+    .reveal .portee .carte h3 { font-size: 1.15em; margin: 0 0 0.2em 0; }
+    .reveal .portee .carte ul { margin-left: 1em; }
+    .reveal .badge {
+      display: inline-block; font-size: 0.75em; font-weight: 700; color: #fff; border-radius: 10px; padding: 0.05em 0.6em;
       vertical-align: middle;
     }
 
-    .reveal section img {
-      border: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
+    /* Cartes de liens (dernière diapo) */
+    .reveal .install { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; text-align: left; font-size: 0.66em; }
+    .reveal .install .carte { background: #f8f9fa; border-radius: 10px; padding: 0.55em 0.8em; border-left: 5px solid var(--secondary-color); }
+    .reveal .install .carte .titre { font-weight: 700; color: var(--primary-color); }
+    .reveal a.lien { color: var(--secondary-color); text-decoration: underline; }
+    .reveal a.bouton {
+      display: inline-block; margin-top: 0.3em; padding: 0.2em 0.8em; border-radius: 8px;
+      background: var(--secondary-color); color: #fff; font-weight: 700; text-decoration: none;
     }
 
-    .reveal .footer {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      font-size: 0.6em;
-      color: #95a5a6;
+    /* ===== Navigation à deux dimensions ===== */
+    .reveal .indice-details {
+      text-align: right;
+      margin-top: 0.9em;
+      font-size: 0.5em;
+      color: var(--muted-color);
+    }
+    .reveal .indice-details span {
+      display: inline-block;
+      border: 1px solid #d0d7de;
+      border-radius: 14px;
+      padding: 0.15em 0.8em;
+      background: #fff;
+    }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 2em; }
+    .reveal .aide-nav kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color);
     }
 
-    .reveal .architecture-list {
-      font-size: 0.9em;
+    /* Fil d'Ariane des diapos verticales */
+    .reveal .fil-detail {
+      display: flex; align-items: center; gap: 0.6em; justify-content: flex-start;
+      font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600;
     }
-
-    .reveal .architecture-list li {
-      margin: 0.7em 0;
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; }
+    .reveal .fil-detail .etiq.c0 { background: var(--primary-color); }
+    .reveal .fil-detail .etiq.c1 { background: var(--b-consignes); }
+    .reveal .fil-detail .etiq.c2 { background: var(--b-skills); }
+    .reveal .fil-detail .etiq.c3 { background: var(--b-agents); }
+    .reveal .fil-detail .etiq.c4 { background: var(--b-hooks); }
+    .reveal .fil-detail .etiq.c5 { background: var(--b-mcp); }
+    .reveal .fil-detail .etiq.c6 { background: var(--b-memoire); }
+    .reveal h3.titre-detail {
+      font-size: 1.05em; text-align: left; margin: 0 0 0.5em 0;
+      padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light);
     }
+    .reveal h3.titre-detail code { color: inherit; font-size: 0.85em; padding: 0 0.25em; }
 
-    .reveal .workflow-step {
-      display: flex;
-      align-items: center;
-      margin: 0.8em 0;
-      padding: 0.8em;
-      background: var(--bg-light);
-      border-radius: 8px;
+    /* Contenus de détail */
+    .reveal .detail { font-size: 0.6em; text-align: left; }
+    .reveal .detail .bloc { font-size: 1em; }
+    .reveal .detail code { padding: 0 0.2em; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .duo2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; align-items: start; }
+    .reveal pre.code {
+      width: 100%; box-shadow: none; margin: 0; font-size: 0.8em;
     }
-
-    .reveal .workflow-step .step-number {
-      background: var(--secondary-color);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      margin-right: 1em;
-      flex-shrink: 0;
-      font-size: 0.9em;
+    .reveal pre.code code {
+      display: block; background: #f8f9fa; color: #2c3e50; padding: 0.7em 0.9em;
+      border-radius: 8px; border-left: 4px solid var(--secondary-color); line-height: 1.45;
+      max-height: none; font-size: 1em; white-space: pre-wrap;
     }
-
-    .reveal .tree-structure {
-      font-family: 'Consolas', monospace;
-      font-size: 0.75em;
-      text-align: left;
-      background: #f8f9fa;
-      padding: 1.2em;
-      border-radius: 8px;
-      line-height: 1.6;
-      margin: 0.8em 0;
+    .reveal pre.code .cm { color: #95a5a6; }
+    .reveal pre.code .kw { color: #2980b9; font-weight: 700; }
+    .reveal pre.code .pt { color: #8e44ad; font-weight: 700; }
+    .reveal pre.code .st { color: #27ae60; }
+    .reveal pre.code .ti { color: #c0392b; font-weight: 700; }
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.35em 0.5em; text-align: left; vertical-align: top;
     }
-
-    .reveal .two-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5em;
-      text-align: left;
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal .pastille {
+      display: inline-block; border-radius: 10px; padding: 0 0.55em; font-weight: 700; color: #fff; font-size: 0.9em; white-space: nowrap;
     }
-
-    .reveal .two-columns h3 {
-      margin-top: 0;
+    .reveal .astuce {
+      background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px;
+      padding: 0.45em 0.8em; margin-top: 0.6em;
     }
-
-    .reveal .nav-hint {
-      font-size: 0.7em;
-      color: #7f8c8d;
-      margin-top: 1.5em;
-      font-style: italic;
-    }
-
-    .reveal .nav-hint.fragment {
-      animation: fadeInUp 0.5s ease-in-out;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .reveal .schema-box {
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      padding: 1.5em;
-      border-radius: 8px;
-      border: 2px solid var(--secondary-color);
-      font-family: 'Courier New', monospace;
-      font-size: 0.85em;
-      text-align: left;
-      line-height: 1.8;
-    }
-
-    .reveal .config-code {
-      background: #282c34;
-      color: #61dafb;
-      padding: 1em;
-      border-radius: 6px;
-      font-family: 'Consolas', monospace;
-      font-size: 0.75em;
-      text-align: left;
-      overflow-x: auto;
-      max-height: 300px;
-    }
-
-    .reveal section a {
-      color: var(--secondary-color);
-      text-decoration: underline;
-    }
-
-    .reveal section a:hover {
-      color: var(--accent-color);
-    }
-
   </style>
-
-  <!-- Highlight.js pour coloration syntaxique -->
-  <link rel="stylesheet" href="assets/reveal/plugin/highlight/monokai.css">
 </head>
-
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- ========== SLIDE TITRE ========== -->
-      <section data-transition="zoom">
-        <h1>Architecture d'une configuration Agent IA CLI</h1>
-        <h3>Conception modulaire et optimisation du contexte</h3>
-        <p style="margin-top: 2em; font-size: 0.8em;">
-          <em>Groupe de Travail IA & Mathématiques</em><br>
-          2025-2026
+      <!-- 1. Titre -->
+      <section>
+        <h1><i class="fas fa-brain" style="color:#8e44ad;"></i> Le dossier <code style="font-size:0.9em;color:#2c3e50;">.claude/</code> : le cerveau de mon assistant</h1>
+        <p class="subtitle">Ce que Claude Code sait de mon métier, et où il le range</p>
+
+        <div style="margin-top:1em;">
+          <div class="demande">
+            <span class="qui"><i class="fas fa-user"></i> Le professeur demande</span>
+            «&nbsp;Ajoute un QCM de 12 questions sur les fonctions affines à ma fiche.&nbsp;»
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="dossier-titre"><i class="fas fa-folder-open"></i> Claude Code lit le dossier <code>.claude/</code> du projet</div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="resultat"><i class="fas fa-check-circle"></i> Il applique mes consignes, mes modèles et mes garde-fous</div>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
         </p>
       </section>
 
-      <!-- ========== SLIDE PLAN ========== -->
-      <section data-transition="slide">
-        <h2>Plan de la présentation</h2>
-        <ol style="font-size: 0.9em;">
-          <li class="fragment">Vue d'ensemble : schéma global</li>
-          <li class="fragment">Le fichier CLAUDE.md : méta-prompt permanent</li>
-          <li class="fragment">Les Agents : sous-processus spécialisés</li>
-          <li class="fragment">Les Skills : savoir-faire invocables</li>
-          <li class="fragment">Les Commandes : slash commands</li>
-          <li class="fragment">Les Hooks : automatisation</li>
-          <li class="fragment">Les Serveurs MCP : protocole standard</li>
-          <li class="fragment">Multi-plateforme et conclusion</li>
-        </ol>
-      </section>
-
-      <!-- ========== PARTIE 1 : VUE D'ENSEMBLE ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">🏗️</span> Partie 1</h2>
-        <h3>Vue d'ensemble</h3>
-      </section>
-
+      <!-- 2. Arborescence simplifiée (+ pile : le vrai dossier) -->
       <section>
-        <h2>Schéma global : Agent → Résultat</h2>
+      <section>
+        <h2>Ce qu'il y a dedans</h2>
+        <div class="arbo">
+          <span class="nom" style="color:var(--b-consignes);"><i class="fas fa-file-alt"></i> CLAUDE.md</span><span>Les consignes permanentes, relues à chaque session. Il est à la racine du projet, à côté de <code>.claude/</code>.</span>
+          <div class="sep"></div>
+          <span class="nom" style="color:var(--primary-color);"><i class="fas fa-folder"></i> .claude/</span><span class="muted">Le dossier caché du projet :</span>
+          <span class="nom retrait" style="color:var(--b-skills);"><i class="fas fa-lightbulb"></i> skills/</span><span>Les savoir-faire : un dossier par tâche (QCM, cours LaTeX, diaporama…).</span>
+          <span class="nom retrait" style="color:var(--b-agents);"><i class="fas fa-robot"></i> agents/</span><span>Les sous-assistants spécialisés, un fichier chacun.</span>
+          <span class="nom retrait" style="color:var(--b-hooks);"><i class="fas fa-shield-alt"></i> settings.json</span><span>Les permissions et les hooks : ce qui se déclenche tout seul.</span>
+          <span class="nom retrait" style="color:var(--b-hooks);"><i class="fas fa-folder"></i> hooks/</span><span>Les scripts des garde-fous.</span>
+          <span class="nom retrait" style="color:var(--b-mcp);"><i class="fas fa-plug"></i> mcp_servers/</span><span>Des outils supplémentaires : compiler du LaTeX, lire un référentiel…</span>
+          <span class="nom retrait" style="color:var(--b-consignes);"><i class="fas fa-list-ul"></i> rules/</span><span>Des consignes qui ne s'appliquent qu'à certains fichiers.</span>
+          <span class="nom retrait" style="color:var(--muted-color);"><i class="fas fa-terminal"></i> commands/</span><span>Des raccourcis <code>/commande</code> (peu utilisés).</span>
+        </div>
+        <p class="small muted" style="margin-top:0.5em;">La mémoire, elle, est rangée hors du projet, dans <code>~/.claude/</code>.</p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-        <div class="fragment" style="display:flex;flex-direction:column;align-items:center;gap:0;margin-top:0.3em;">
-          <!-- Node 1 -->
-          <div style="background:linear-gradient(135deg,#2c3e50,#34495e);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:700;font-size:0.95em;box-shadow:0 4px 15px rgba(44,62,80,0.4);text-align:center;">
-            <i class="fas fa-robot" style="margin-right:0.4em;"></i>Agent Principal (Claude Code)
-          </div>
-          <!-- Arrow 1 -->
-          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
-            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#2c3e50,#3498db);"></div>
-            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">lit</span>
-            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #3498db;"></div>
-          </div>
-          <!-- Node 2 -->
-          <div style="background:linear-gradient(135deg,#3498db,#2980b9);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:600;font-size:0.85em;box-shadow:0 4px 12px rgba(52,152,219,0.35);text-align:center;">
-            <i class="fas fa-file-code" style="margin-right:0.4em;"></i>CLAUDE.md (Méta-prompt)
-          </div>
-          <!-- Arrow 2 -->
-          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
-            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#2980b9,#27ae60);"></div>
-            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">charge</span>
-            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #27ae60;"></div>
-          </div>
-          <!-- Node 3 -->
-          <div style="background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:600;font-size:0.85em;box-shadow:0 4px 12px rgba(39,174,96,0.35);text-align:center;">
-            <i class="fas fa-puzzle-piece" style="margin-right:0.4em;"></i>Skills + Instructions de Référence
-          </div>
-          <!-- Arrow 3 -->
-          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
-            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#2ecc71,#f39c12);"></div>
-            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">appelle</span>
-            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #f39c12;"></div>
-          </div>
-          <!-- Node 4 -->
-          <div style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:600;font-size:0.85em;box-shadow:0 4px 12px rgba(243,156,18,0.35);text-align:center;">
-            <i class="fas fa-terminal" style="margin-right:0.4em;"></i>Scripts Python / Node.js
-          </div>
-          <!-- Arrow 4 -->
-          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
-            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#e67e22,#9b59b6);"></div>
-            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">exécute</span>
-            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #9b59b6;"></div>
-          </div>
-          <!-- Node 5 -->
-          <div style="background:linear-gradient(135deg,#9b59b6,#8e44ad);color:#fff;padding:0.5em 1.8em;border-radius:12px;font-weight:600;font-size:0.85em;box-shadow:0 4px 12px rgba(155,89,182,0.35);text-align:center;">
-            <i class="fas fa-server" style="margin-right:0.4em;"></i>Serveurs MCP (connexions externes)
-          </div>
-          <!-- Arrow 5 -->
-          <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
-            <div style="width:3px;height:18px;background:linear-gradient(to bottom,#8e44ad,#e74c3c);"></div>
-            <span style="font-size:0.55em;color:#7f8c8d;font-style:italic;">produit</span>
-            <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid #e74c3c;"></div>
-          </div>
-          <!-- Node 6 - Result -->
-          <div style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:0.6em 2em;border-radius:12px;font-weight:700;font-size:0.95em;box-shadow:0 6px 20px rgba(231,76,60,0.4);text-align:center;border:2px solid #fff;">
-            <i class="fas fa-check-circle" style="margin-right:0.4em;"></i>Résultat final (PDF, HTML, etc.)
+      <!-- 2.1 Le vrai dossier -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce qu'il y a dedans</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Le vrai dossier, en chiffres (octobre 2026)</h3>
+        <div class="detail duo2" style="grid-template-columns:1fr 1fr;">
+          <table class="tab-detail">
+            <tr><th>Brique</th><th>Combien</th></tr>
+            <tr><td><code>skills/</code></td><td>72 skills (un <code>SKILL.md</code> chacun)</td></tr>
+            <tr><td><code>agents/</code></td><td>36 agents, rangés en <code>creer/</code>, <code>outillage/</code>, <code>meta/</code>…</td></tr>
+            <tr><td><code>commands/</code></td><td>37 commandes</td></tr>
+            <tr><td><code>hooks/</code></td><td>garde-fous des dossiers protégés et des antislashs</td></tr>
+            <tr><td><code>mcp_servers/</code></td><td>6 serveurs activés dans <code>settings.json</code></td></tr>
+            <tr><td><code>rules/</code></td><td>4 fichiers : <code>latex.md</code>, <code>python.md</code>, <code>h5p.md</code>, <code>pedagogie.md</code></td></tr>
+          </table>
+          <div>
+            <p><strong>Les dossiers de service</strong>, que l'on n'ouvre presque jamais :</p>
+            <ul>
+              <li><code>scripts/</code> : petits utilitaires appelés par les hooks (son de fin, contrôle d'encodage).</li>
+              <li><code>datas/</code> : données partagées (compétences, modèles de documents).</li>
+              <li><code>logs/</code> : le journal des frictions, qui sert à améliorer les skills.</li>
+              <li><code>agent-memory/</code> : la mémoire propre à certains agents.</li>
+              <li><code>backups/</code>, <code>temp/</code> : sauvegardes et brouillons.</li>
+            </ul>
+            <div class="astuce"><i class="fas fa-seedling"></i> Tout cela s'est construit petit à petit, une demande après l'autre. Personne ne commence avec 72 skills.</div>
           </div>
         </div>
-
-        <div class="nav-hint fragment">↓ Détails de chaque composant</div>
+      </section>
       </section>
 
+      <!-- 3. CLAUDE.md (+ pile) -->
       <section>
-        <h2>Pourquoi cette architecture ?</h2>
-
-        <ul class="architecture-list">
-          <li class="fragment">
-            <span class="icon">💾</span> <strong>Contexte limité :</strong> Les modèles IA ont une fenêtre de contexte finie
-          </li>
-
-          <li class="fragment">
-            <span class="icon">🧩</span> <strong>Modularité :</strong> Charger uniquement ce qui est nécessaire
-          </li>
-
-          <li class="fragment">
-            <span class="icon">🎯</span> <strong>Spécialisation :</strong> Agents experts dans leur domaine
-          </li>
-
-          <li class="fragment">
-            <span class="icon">♻️</span> <strong>Réutilisabilité :</strong> Skills utilisables par plusieurs agents
-          </li>
-
-          <li class="fragment">
-            <span class="icon">📈</span> <strong>Extensibilité :</strong> Ajouter des capacités selon les besoins
-          </li>
-        </ul>
-      </section>
-
-      <!-- ========== PARTIE 2 : CLAUDE.MD ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">📄</span> Partie 2</h2>
-        <h3>Le fichier CLAUDE.md</h3>
-      </section>
-
       <section>
-        <section>
-          <h2>CLAUDE.md : Méta-prompt permanent</h2>
-
-          <div class="box fragment">
-            <p><strong>Définition :</strong> Fichier texte qui définit le <span class="highlight">rôle global</span>, <span class="highlight">l'expertise</span> et <span class="highlight">les règles d'exécution</span> de l'agent</p>
-          </div>
-
-          <div class="fragment" style="margin-top: 1.5em;">
-            <h3>Localisation</h3>
-            <p style="font-family: 'Consolas', monospace; font-size: 0.9em;">
-              <code>./CLAUDE.md</code> (racine du projet)
-            </p>
-          </div>
-
-          <div class="nav-hint fragment">↓ Structure type d'un CLAUDE.md</div>
-        </section>
-
-        <section>
-          <h2>Structure d'un CLAUDE.md</h2>
-
-          <div class="tree-structure">
-<pre># MyProject Agent
-
-## Rôle
-Tu es un expert en [DOMAINE]
-
-## Expertise
-- Compétence 1
-- Compétence 2
-- Compétence 3
-
-## Stack technique
-[Technologies utilisées]
-
-## Skills
-[Skills disponibles]
-
-## Workflow
-[Étapes recommandées]
-
-## Règles strictes
-À FAIRE :
-- ...
-
-À NE JAMAIS FAIRE :
-- ...</pre>
-          </div>
-
-          <div class="nav-hint fragment">↑ Permet au modèle de comprendre sa mission</div>
-        </section>
-
-        <section>
-          <h2>Exemple : CLAUDE.md d'enseignant</h2>
-
-          <div class="example-box fragment">
-            <p><strong>Rôle :</strong> Expert en création de ressources pédagogiques mathématiques</p>
-            <p><strong>Expertise :</strong> LaTeX, Beamer, reveal.js, exercices interactifs</p>
-            <p><strong>Stack :</strong> Python (compilation), Node.js (web)</p>
-            <p><strong>Rules :</strong> Formules en LaTeX, vérifier la compilation, tester les exercices</p>
-          </div>
-
-          <div class="nav-hint fragment">↑ Personnalisation totale selon le contexte</div>
-        </section>
-      </section>
-
-      <!-- ========== PARTIE 3 : AGENTS ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">🤖</span> Partie 3</h2>
-        <h3>Les Agents</h3>
-      </section>
-
-      <section>
-        <section>
-          <h2>Agents : Experts autonomes</h2>
-
-          <div class="box fragment">
-            <p><strong>Définition :</strong> Sous-processus spécialisé avec un system prompt dédié, des outils accessibles et une autonomie d'action limitée à son domaine</p>
-          </div>
-
-          <div class="fragment" style="margin-top: 1.5em;">
-            <h3>Avantages</h3>
-            <ul style="font-size: 0.9em;">
-              <li class="fragment">Contexte réduit et ciblé</li>
-              <li class="fragment">Utilisation de modèles légers (Haiku 5.5, Sonnet 5.5)</li>
-              <li class="fragment">Isolation du contexte principal</li>
-              <li class="fragment">Rapport final autonome</li>
+        <div class="frise"><span class="on c1">CLAUDE.md</span><span>Skills</span><span>Agents</span><span>Hooks</span><span>MCP</span><span>Mémoire</span></div>
+        <h2 style="border-color:var(--b-consignes);">CLAUDE.md : les consignes permanentes</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--b-consignes);">
+            <h3>Ce que c'est</h3>
+            <ul>
+              <li>Un simple fichier texte, écrit en français.</li>
+              <li>Claude le lit au début de chaque session, avant votre première demande.</li>
+              <li>On y met les règles de la maison : écrire avec les accents, quel skill charger pour du LaTeX, à quel agent confier une erreur de compilation.</li>
             </ul>
           </div>
-
-          <div class="nav-hint fragment">↓ Exemples d'agents</div>
-        </section>
-
-        <section>
-          <h2>Exemples d'agents</h2>
-
-          <div class="grid-2">
-            <div class="fragment">
-              <div class="example-box">
-                <p><strong>latex-main-worker</strong></p>
-                <p style="font-size: 0.8em;">Création de documents LaTeX structurés</p>
-              </div>
-            </div>
-
-            <div class="fragment">
-              <div class="example-box">
-                <p><strong>debug-tex-log</strong></p>
-                <p style="font-size: 0.8em;">Analyse des erreurs de compilation</p>
-              </div>
-            </div>
-
-            <div class="fragment">
-              <div class="example-box">
-                <p><strong>jupyter-notebook-creator</strong></p>
-                <p style="font-size: 0.8em;">Carnets Jupyter pédagogiques</p>
-              </div>
-            </div>
-
-            <div class="fragment">
-              <div class="example-box">
-                <p><strong>reveals-creator</strong></p>
-                <p style="font-size: 0.8em;">Présentations reveal.js interactives</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="nav-hint fragment">↑ Structure dans .claude/agents/</div>
-        </section>
-
-        <section>
-          <h2>Localisation et structure</h2>
-
-          <div class="tree-structure">
-<pre>.claude/
-├── agents/
-│   ├── latex-main-worker.md
-│   ├── debug-tex-log.md
-│   ├── jupyter-notebook-creator.md
-│   └── reveals-creator.md
-│
-└── agents-data/
-    ├── main-latex-knowledge.md
-    ├── tkz-euclide-master/
-    └── nicematrix-expert/</pre>
-          </div>
-
-          <div class="box fragment" style="margin-top: 1em;">
-            <p><strong>Principe :</strong> Agent = system prompt + données de référence</p>
-          </div>
-        </section>
-      </section>
-
-      <!-- ========== PARTIE 4 : SKILLS ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">💡</span> Partie 4</h2>
-        <h3>Les Skills</h3>
-      </section>
-
-      <section>
-        <section>
-          <h2>Skills : Savoir-faire invocables</h2>
-
-          <div class="box fragment">
-            <p><strong>Définition :</strong> Capacités/workflows réutilisables qui peuvent être activées à la demande par les agents</p>
-          </div>
-
-          <div class="fragment" style="margin-top: 1.5em;">
-            <h3>Caractéristiques</h3>
-            <ul style="font-size: 0.9em;">
-              <li class="fragment">Peuvent inclure des scripts Python/Node.js</li>
-              <li class="fragment">Documentation complète intégrée</li>
-              <li class="fragment">Réutilisables par plusieurs agents</li>
-              <li class="fragment">Chargés en contexte uniquement si activés</li>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Vous ne répétez plus les mêmes consignes à chaque demande.</li>
+              <li>Le fichier se corrige au fil de l'eau : une erreur remarquée devient une règle.</li>
             </ul>
           </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-          <div class="nav-hint fragment">↓ Exemples et structure</div>
-        </section>
+      <!-- 3.1 Extrait réel -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">CLAUDE.md</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--b-consignes);">Un extrait réel</h3>
+        <div class="detail duo2" style="grid-template-columns:1.25fr 1fr;">
+<pre class="code"><code><span class="ti">## Écriture dans des fichiers LaTeX</span>
+Quand tu es appelé à écrire du code latex, tu dois
+systématiquement charger le skill bfcours-latex.
 
-        <section>
-          <h2>Exemples de Skills</h2>
+<span class="ti">## Bugs latex</span>
+Si un fichier latex bug : lance l'agent debug-tex-log
+en lui donnant le fichier dont la compilation plante.
+Il te dira quoi modifier.
 
-          <div class="grid-2">
-            <div class="fragment">
-              <div class="example-box">
-                <p><strong>tex-compiling-skill</strong></p>
-                <p style="font-size: 0.8em;">Compilation LaTeX avec détection d'erreurs</p>
-              </div>
-            </div>
-
-            <div class="fragment">
-              <div class="example-box">
-                <p><strong>reveals-presentation</strong></p>
-                <p style="font-size: 0.8em;">Création de présentations reveal.js</p>
-              </div>
-            </div>
-
-            <div class="fragment">
-              <div class="example-box">
-                <p><strong>qcm-creator</strong></p>
-                <p style="font-size: 0.8em;">QCM bfcours avec distracteurs issus des erreurs d'élèves</p>
-              </div>
-            </div>
-
-            <div class="fragment">
-              <div class="example-box">
-                <p><strong>jupyter-notebook</strong></p>
-                <p style="font-size: 0.8em;">Carnets Python pédagogiques</p>
-              </div>
-            </div>
+<span class="ti">## Langue française et accents</span>
+<span class="kw">RÈGLE ABSOLUE</span> : Ne JAMAIS imiter le style informel
+de l'utilisateur dans les fichiers de production.</code></pre>
+          <div>
+            <ul>
+              <li>Des titres et des phrases courtes : c'est tout.</li>
+              <li>Le fichier <strong>nomme</strong> les skills et les agents à utiliser : c'est lui qui relie les briques entre elles.</li>
+              <li>Les règles en majuscules sont celles qu'il a fallu rappeler plusieurs fois.</li>
+            </ul>
+            <div class="astuce"><i class="fas fa-comment"></i> Pour démarrer : «&nbsp;Crée-moi un CLAUDE.md pour ce dossier de cours : je suis professeur de maths en lycée, j'écris en LaTeX.&nbsp;»</div>
           </div>
+        </div>
+      </section>
 
-          <div class="nav-hint fragment">↑ Modularité et réutilisabilité</div>
-        </section>
+      <!-- 3.2 rules/ -->
+      <section>
+        <div class="fil-detail"><span class="etiq c1">CLAUDE.md</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--b-consignes);">Les règles ciblées : <code>.claude/rules/</code></h3>
+        <div class="detail duo2" style="grid-template-columns:1.2fr 1fr;">
+<pre class="code"><code><span class="cm">&lt;!-- .claude/rules/latex.md (début) --&gt;</span>
+---
+<span class="kw">paths</span>:
+  - <span class="st">"**/*.tex"</span>
+  - <span class="st">"**/*.sty"</span>
+  - <span class="st">"**/*.cls"</span>
+---
 
-        <section>
-          <h2>Structure d'un Skill</h2>
-
-          <div class="tree-structure">
-<pre>skills/
-└── tex-compiling-skill/
-    ├── SKILL.md (en-tête name + description, puis instructions)
-    ├── references/ (documentation lue à la demande)
-    └── scripts/
-        ├── compile.py
-        └── error-parser.py</pre>
-          </div>
-
-          <div class="box fragment" style="margin-top: 1em;">
-            <p><strong>Activation :</strong> Le skill n'est chargé en contexte <span class="highlight">que si nécessaire</span>, de deux manières :</p>
-            <ul style="margin-top:0.4em;font-size:0.85em;">
-              <li><i class="fas fa-user" style="color:var(--secondary-color);margin-right:0.3em;"></i><strong>Par l'utilisateur</strong> — en tapant <code>/</code> suivi de son nom (<code>/qcm-creator</code>, <code>/bfcours-latex</code>...)</li>
-              <li><i class="fas fa-robot" style="color:var(--success-color);margin-right:0.3em;"></i><strong>Par l'agent lui-même</strong> — il détecte le besoin et déclenche le skill automatiquement</li>
+<span class="ti"># Regles Latex</span>
+- INTERDICTION ABSOLUE d'une VIRGULE dans le titre
+  d'un EXO bfcours : … CASSE la compilation. …</code></pre>
+          <div>
+            <ul>
+              <li>Même principe que <code>CLAUDE.md</code>, mais la règle ne se charge que si Claude touche un fichier qui correspond à <code>paths</code>.</li>
+              <li>Ici : les pièges de LaTeX ne sont lus que lorsqu'il travaille sur un <code>.tex</code>.</li>
+              <li><code>CLAUDE.md</code> reste court ; le détail technique part dans <code>rules/</code> ou dans les skills.</li>
             </ul>
           </div>
-        </section>
+        </div>
+      </section>
       </section>
 
-      <!-- ========== PARTIE 5 : COMMANDES ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">⚡</span> Partie 5</h2>
-        <h3>Les Commandes</h3>
-      </section>
-<section>
+      <!-- 4. Skills (+ pile) -->
       <section>
-        <h2>Commandes = Prompts réutilisables</h2>
-
-        <div class="box fragment">
-          <p><strong>Principe :</strong> Une commande est simplement un <span class="highlight">prompt sauvegardé</span> dans un fichier <code>.md</code>, invocable via <code>/nomDeLaCommande</code></p>
-        </div>
-
-        <div class="fragment" style="margin-top: 1em;">
-          <div class="example-box">
-            <p><strong>C'est la forme la plus simple d'un skill.</strong></p>
-            <p style="font-size:0.85em;margin-top:0.3em;">Un skill sans scripts, sans assets, sans sous-dossiers — juste un prompt.</p>
-          </div>
-        </div>
-      </section>
-
       <section>
-          <h3>Stockage</h3>
-          <div class="grid-2" style="font-size:0.85em;">
-            <div class="box">
-              <p><code>.claude/commands/</code></p>
-              <p style="font-size:0.85em;">Emplacement dédié aux commandes</p>
-            </div>
-            <div class="box">
-              <p><code>.claude/skills/</code></p>
-              <p style="font-size:0.85em;">Commandes et skills sont désormais fusionnés : <code>.claude/commands/deploy.md</code> et <code>.claude/skills/deploy/SKILL.md</code> créent tous deux <code>/deploy</code></p>
-            </div>
+        <div class="frise"><span>CLAUDE.md</span><span class="on c2">Skills</span><span>Agents</span><span>Hooks</span><span>MCP</span><span>Mémoire</span></div>
+        <h2 style="border-color:var(--b-skills);">Les skills : le savoir-faire, le cœur du dossier</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--b-skills);">
+            <h3>Ce que c'est</h3>
+            <ul>
+              <li>Un dossier par tâche : écrire un QCM, monter un cours LaTeX, faire un diaporama…</li>
+              <li>Dedans, un fichier <code>SKILL.md</code> : la méthode, les pièges, des exemples. Parfois des modèles et des scripts.</li>
+              <li>Claude ne lit d'abord que sa <strong>description</strong>. Il ouvre le reste seulement quand la tâche s'y prête.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Un travail fait à votre façon, chaque fois.</li>
+              <li>Beaucoup de savoir-faire, sans encombrer l'assistant : il ne charge que ce dont il a besoin.</li>
+              <li>Un skill se partage : il suffit de copier son dossier.</li>
+            </ul>
+          </div>
         </div>
-
-        <div class="fragment" style="margin-top:1em;font-size:0.8em;color:#7f8c8d;text-align:center;">
-          Ex. : <code>/createTex</code>, <code>/makeEval</code>, <code>/createReveals</code> — un seul fichier <code>.md</code> chacun
-        </div>
-        </section>
-      </section>
-      <!-- ========== PARTIE 6 : HOOKS ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">🔗</span> Partie 6</h2>
-        <h3>Les Hooks</h3>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
+      <!-- 4.1 Extrait d'un SKILL.md -->
       <section>
-        <section>
-          <h2>Hooks : Automatisation transparente</h2>
+        <div class="fil-detail"><span class="etiq c2">Skills</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--b-skills);">Un vrai <code>SKILL.md</code> : <code>qcm-creator</code></h3>
+        <div class="detail duo2" style="grid-template-columns:1.3fr 1fr;">
+<pre class="code"><code style="border-color:var(--b-skills);">---
+<span class="kw">name</span>: qcm-creator
+<span class="kw">description</span>: Rédige des QCM de mathématiques au
+  format bfcours (environnement Mcq …) avec des
+  distracteurs construits sur les erreurs réelles des
+  élèves … Utiliser dès qu'il faut écrire, compléter,
+  corriger ou mettre en page un QCM, … des « questions
+  flash » ou des automatismes …
+---
 
-          <div class="box fragment">
-            <p><strong>Définition :</strong> Scripts qui s'exécutent automatiquement à des moments précis de la session : ouverture (SessionStart), envoi d'un message (UserPromptSubmit), avant ou après un outil (PreToolUse / PostToolUse), fin de réponse (Stop)…</p>
+<span class="ti"># QCM Creator — QCM au format bfcours</span>
+Un QCM bfcours s'écrit avec l'environnement `Mcq` et
+la commande `\McqQuest` du paquet `rdmcq` … Charger
+aussi `bfcours-latex` pour le reste du document.</code></pre>
+          <div>
+            <ul>
+              <li><strong>L'en-tête</strong> (entre les <code>---</code>) : le nom et la description. C'est tout ce que Claude voit en permanence.</li>
+              <li>La description dit <strong>quand</strong> s'en servir : «&nbsp;dès qu'il faut écrire… un QCM&nbsp;».</li>
+              <li><strong>Le corps</strong> : la méthode, lue seulement quand le skill est chargé.</li>
+              <li>Un skill peut en appeler un autre : ici <code>bfcours-latex</code>.</li>
+            </ul>
           </div>
+        </div>
+      </section>
 
-          <div class="fragment" style="margin-top: 1.5em;">
-            <h3>Les deux plus utilisés</h3>
+      <!-- 4.2 Structure + commandes -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">Skills</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--b-skills);">Ce que contient un skill, et ce qu'est une commande</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--b-skills);">
+            <h3>Un gros skill : <code>bfcours-latex</code></h3>
+<pre class="code" style="font-size:0.95em;"><code style="border-color:var(--b-skills);">skills/bfcours-latex/
+├── SKILL.md      <span class="cm">la méthode</span>
+├── references/   <span class="cm">la doc, lue au besoin</span>
+├── scripts/      <span class="cm">des outils qu'il lance</span>
+└── assets/       <span class="cm">modèles, exemples</span></code></pre>
+            <p class="muted">Un petit skill, comme <code>qcm-creator</code>, se contente de <code>SKILL.md</code> et <code>references/</code>.</p>
           </div>
-
-          <div class="grid-2">
-            <div class="fragment">
-              <div class="box">
-                <p><strong>PreToolUse</strong></p>
-                <p style="font-size: 0.85em;">S'exécute <strong>avant</strong> un outil (validation, préparation)</p>
-              </div>
-            </div>
-
-            <div class="fragment">
-              <div class="box">
-                <p><strong>PostToolUse</strong></p>
-                <p style="font-size: 0.85em;">S'exécute <strong>après</strong> un outil (correction, nettoyage)</p>
-              </div>
-            </div>
+          <div class="bloc" style="border-color:var(--muted-color);">
+            <h3>Une commande = un skill réduit à un seul fichier</h3>
+            <ul>
+              <li>Un fichier <code>.md</code> dans <code>commands/</code>, sans dossier ni scripts.</li>
+              <li>On la lance en tapant son nom : <code>commands/creer/latex/createTex.md</code> devient <code>/creer:latex:createTex</code>.</li>
+              <li>Dans ce dossier, elles sont peu utilisées : un skill fait la même chose, et Claude le déclenche tout seul.</li>
+            </ul>
           </div>
+        </div>
+      </section>
+      </section>
 
-          <div class="nav-hint fragment">↓ Exemple : Correction d'encodage UTF-8</div>
-        </section>
-
-        <section>
-          <h2>Exemple : Hook de correction UTF-8</h2>
-
-          <div class="box fragment">
-            <p><strong>Problème :</strong> Les fichiers générés ont parfois un mauvais encodage</p>
+      <!-- 5. Agents (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>CLAUDE.md</span><span>Skills</span><span class="on c3">Agents</span><span>Hooks</span><span>MCP</span><span>Mémoire</span></div>
+        <h2 style="border-color:var(--b-agents);">Les agents : des sous-assistants spécialisés</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--b-agents);">
+            <h3>Ce que c'est</h3>
+            <ul>
+              <li>Un fichier par agent : son rôle, son modèle, ses outils, les skills qu'il charge.</li>
+              <li>L'assistant principal lui confie une tâche. L'agent travaille de son côté, puis rend un rapport.</li>
+              <li>Exemple : <code>debug-tex-log</code> lit un fichier qui ne compile pas et dit quoi corriger.</li>
+            </ul>
           </div>
-
-          <div class="fragment" style="margin-top: 1.5em;">
-            <p><strong>Solution : Hook PostToolUse</strong></p>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Les longues lectures se font ailleurs : l'assistant principal garde les idées claires pour dialoguer avec vous.</li>
+              <li>Plusieurs agents peuvent travailler en même temps.</li>
+              <li>Un petit modèle rapide pour les tâches simples.</li>
+            </ul>
           </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-          <div class="config-code fragment">
-<pre>Hook PostToolUse sur Write et Edit
-→ lance check-encoding.ps1
-  sur le fichier qui vient d'être écrit
-
-Résultat : Tous les fichiers écrits
-sont automatiquement en UTF-8</pre>
+      <!-- 5.1 Deux définitions réelles -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">Agents</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--b-agents);">Deux définitions réelles</h3>
+        <div class="detail duo2">
+          <div>
+<pre class="code"><code style="border-color:var(--b-agents);"><span class="cm">&lt;!-- agents/outillage/latex/debug-tex-log.md --&gt;</span>
+---
+<span class="kw">name</span>: debug-tex-log
+<span class="kw">description</span>: Utiliser pour déboguer un fichier.
+  Donner les chemins absolus vers les fichiers
+  à inspecter.
+<span class="kw">tools</span>: <span class="pt">Read</span>
+<span class="kw">model</span>: <span class="st">claude-haiku-4-5-20251001</span>
+---
+<span class="ti"># Agent : Debugger de fichier latex</span>
+On t'appelle en te donnant un fichier maître dont
+la compilation ne fonctionne pas. …</code></pre>
+            <p class="muted">Un seul outil, <code>Read</code> : il lit, il ne peut rien modifier.</p>
           </div>
-
-          <div class="example-box fragment" style="margin-top: 1em;">
-            <p>✅ Pas d'intervention manuelle nécessaire !</p>
+          <div>
+<pre class="code"><code style="border-color:var(--b-agents);"><span class="cm">&lt;!-- agents/creer/latex/qcm-builder.md --&gt;</span>
+---
+<span class="kw">name</span>: qcm-builder
+<span class="kw">description</span>: Agent de création de QCM dans une
+  ressource LaTeX existante. …
+<span class="kw">skills</span>:
+  - <span class="pt">qcm-creator</span>
+  - <span class="pt">bfcours-latex</span>
+<span class="kw">memory</span>: <span class="st">project</span>
+---</code></pre>
+            <p class="muted">Il charge deux skills dès le départ, et garde une mémoire propre dans <code>.claude/agent-memory/qcm-builder/</code>.</p>
           </div>
+        </div>
+      </section>
 
-          <div class="nav-hint fragment">↑ Efficacité accrue</div>
-        </section>
+      <!-- 5.2 Méta-agents -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">Agents</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--b-agents);">Trois agents à tout faire, choisis selon la difficulté</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:18%;">Agent</th><th style="width:16%;">Modèle</th><th>Quand le <code>CLAUDE.md</code> demande de l'utiliser</th></tr>
+            <tr><td><code>meta-low</code></td><td>Haiku</td><td>Une modification ciblée dans un long document : la difficulté est de trouver où modifier.</td></tr>
+            <tr><td><code>meta-mid</code></td><td>Sonnet</td><td>Plusieurs modifications simples, ou l'usage d'un seul skill bien défini.</td></tr>
+            <tr><td><code>meta-high</code></td><td>Opus</td><td>Des créations qui enchaînent plusieurs skills et demandent de s'adapter au contexte.</td></tr>
+          </table>
+          <div class="duo2" style="margin-top:0.6em;">
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-balance-scale"></i> Le petit modèle coûte moins et va plus vite ; le grand réfléchit mieux. On paie la difficulté, pas plus.</div>
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-magic"></i> Si aucun agent ne convient, le <code>CLAUDE.md</code> demande à Claude d'en créer un dans <code>.claude/agents/</code>.</div>
+          </div>
+        </div>
+      </section>
+      </section>
 
-        <section>
-          <h2>Configuration des hooks</h2>
+      <!-- 6. Hooks et settings.json (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>CLAUDE.md</span><span>Skills</span><span>Agents</span><span class="on c4">Hooks</span><span>MCP</span><span>Mémoire</span></div>
+        <h2 style="border-color:var(--b-hooks);">Les hooks : des garde-fous automatiques</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--b-hooks);">
+            <h3>Ce que c'est</h3>
+            <ul>
+              <li>Un petit script déclaré dans <code>settings.json</code>, qui se lance tout seul à un moment précis.</li>
+              <li>Ici : avant chaque action, il vérifie qu'aucun dossier protégé n'est touché.</li>
+              <li>Après chaque écriture, il contrôle l'encodage du fichier. À la fin du travail, un son retentit.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Une règle qui ne dépend plus de la bonne volonté de l'IA : le script s'exécute à chaque fois.</li>
+              <li>Vos dossiers sensibles restent hors de portée.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="small" style="margin-top:0.8em;">
+          <i class="fas fa-shield-alt" style="color:var(--b-hooks);"></i>
+          Tout le détail dans la présentation
+          <a class="lien" href="https://bfcours.dev/claude-code/presentations/mods-et-garde-fous" target="_top">«&nbsp;Mes mods : garder la main sur l'agent&nbsp;»</a>.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-          <div class="tree-structure">
-<pre>.claude/
-└── settings.json
-
+      <!-- 6.1 settings.json -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">Hooks</span> Détail 1 / 1</div>
+        <h3 class="titre-detail" style="color:var(--b-hooks);"><code>.claude/settings.json</code> : permissions et hooks</h3>
+        <div class="detail duo2" style="grid-template-columns:1.2fr 1fr;">
+<pre class="code"><code style="border-color:var(--b-hooks);"><span class="cm">// extrait simplifié et anonymisé</span>
 {
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "powershell -File .claude/scripts/check-encoding.ps1"
-          }
-        ]
-      }
-    ]
+  <span class="kw">"permissions"</span>: {
+    <span class="pt">"deny"</span>: [ <span class="st">"Read(**/.env)"</span>,
+              <span class="st">"Read(**/Administratif/**)"</span> ]
+  },
+  <span class="kw">"hooks"</span>: {
+    <span class="pt">"SessionStart"</span>: [ … session_hook.py ],
+    <span class="pt">"PreToolUse"</span>:   [ … guard_protected_paths.py,
+                     … guard_heredoc_antislash.py ],
+    <span class="pt">"PostToolUse"</span>:  [ … check-encoding.ps1 ],
+    <span class="pt">"Stop"</span>:         [ … play-sound.ps1 ]
   }
-}</pre>
-          </div>
-
-          <div class="nav-hint fragment">↑ Automatisation centralisée</div>
-        </section>
+}</code></pre>
+          <table class="tab-detail">
+            <tr><th>Moment</th><th>Ce qui se passe ici</th></tr>
+            <tr><td><code>SessionStart</code></td><td>Au démarrage : rappeler, s'il le faut, de faire le tri dans la mémoire.</td></tr>
+            <tr><td><code>PreToolUse</code></td><td>Avant chaque outil : refuser l'accès aux dossiers protégés, et les commandes qui perdraient des antislashs LaTeX.</td></tr>
+            <tr><td><code>PostToolUse</code></td><td>Après une écriture : vérifier l'encodage UTF-8.</td></tr>
+            <tr><td><code>Stop</code></td><td>Quand Claude a fini : un son.</td></tr>
+          </table>
+        </div>
+      </section>
       </section>
 
-      <!-- ========== PARTIE 7 : MCP ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">🔌</span> Partie 7</h2>
-        <h3>Les Serveurs MCP</h3>
-      </section>
-
+      <!-- 7. Serveurs MCP (+ pile) -->
       <section>
-        <section>
-          <h2>MCP : Model Context Protocol</h2>
-
-          <div class="box fragment">
-            <p><strong>Définition :</strong> Protocole standardisé pour exposer des outils et connecter l'agent à des services externes</p>
-          </div>
-
-          <div class="fragment" style="margin-top: 1.5em;">
-            <h3>Caractéristiques</h3>
-            <ul style="font-size: 0.9em;">
-              <li class="fragment">Serveurs dédiés avec API standardisée</li>
-              <li class="fragment">Isolation des dépendances (venv Python)</li>
-              <li class="fragment">Outils exposés via le protocole MCP</li>
-              <li class="fragment">Configuration JSON centralisée</li>
+      <section>
+        <div class="frise"><span>CLAUDE.md</span><span>Skills</span><span>Agents</span><span>Hooks</span><span class="on c5">MCP</span><span>Mémoire</span></div>
+        <h2 style="border-color:var(--b-mcp);">Les serveurs MCP : de nouveaux outils</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--b-mcp);">
+            <h3>Ce que c'est</h3>
+            <ul>
+              <li>Un petit programme qui ajoute des outils à Claude, comme une prise sur laquelle on branche un appareil.</li>
+              <li>Ici : compiler un document LaTeX et lire son journal d'erreurs, chercher une commande dans mes paquets LaTeX, consulter un référentiel de compétences, remplir le cahier de textes.</li>
             </ul>
           </div>
-
-          <div class="nav-hint fragment">↓ Exemples de serveurs MCP</div>
-        </section>
-
-        <section>
-          <h2>Exemples de serveurs MCP</h2>
-
-          <div class="fragment">
-            <div class="workflow-step">
-              <div class="step-number">1</div>
-              <div>
-                <strong>latex-compiler-server</strong><br>
-                <span style="font-size: 0.85em;">Compilation LaTeX avec détection d'erreurs avancée</span>
-              </div>
-            </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Claude agit sur vos vrais outils, avec vos réglages.</li>
+              <li>Un même serveur sert à plusieurs skills et agents.</li>
+            </ul>
           </div>
-
-          <div class="fragment">
-            <div class="workflow-step">
-              <div class="step-number">2</div>
-              <div>
-                <strong>competences-server</strong><br>
-                <span style="font-size: 0.85em;">Accès à la base des compétences du programme</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="fragment">
-            <div class="workflow-step">
-              <div class="step-number">3</div>
-              <div>
-                <strong>encoding-fixer-server</strong><br>
-                <span style="font-size: 0.85em;">Correction automatique des problèmes d'encodage</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="fragment">
-            <div class="workflow-step">
-              <div class="step-number">4</div>
-              <div>
-                <strong>datagouv-server</strong><br>
-                <span style="font-size: 0.85em;">Accès aux données publiques françaises</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="nav-hint fragment">↑ Connexions externes standardisées</div>
-        </section>
-
-        <section>
-          <h2>Structure d'un serveur MCP</h2>
-
-          <div class="tree-structure">
-<pre>mcp_servers/
-└── latex-compiler-server/
-    ├── package.json (ou requirements.txt)
-    ├── index.js (ou main.py)
-    ├── src/
-    │   ├── tools.json (description des outils)
-    │   └── compiler.js
-    └── venv/ (environnement isolé)</pre>
-          </div>
-
-          <div class="box fragment" style="margin-top: 1em;">
-            <p><strong>Configuration :</strong> Déclaré dans le fichier <code>.mcp.json</code> à la racine du projet, ou ajouté avec <code>claude mcp add</code></p>
-          </div>
-
-          <div class="nav-hint fragment">↑ Dépendances isolées et gérées</div>
-        </section>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- ========== PARTIE 8 : MULTI-PLATEFORME ========== -->
-      <section data-transition="convex">
-        <h2><span class="icon">🌍</span> Partie 8</h2>
-        <h3>Multi-plateforme et conclusion</h3>
-      </section>
-
+      <!-- 7.1 Déclaration + outils -->
       <section>
-        <h2>Adaptabilité à d'autres plateformes</h2>
-
-        <div class="box fragment">
-          <p><strong>Concept clé :</strong> Cette architecture n'est pas spécifique à Claude.</p>
-          <p>Demander simplement à Claude ce qu'il faudrait faire pour changer de fournisseur.</p>
-        </div>
-
-        <div class="box fragment" style="margin-top: 1.5em;">
-          <p><strong>Avantage :</strong> Si vous changez de fournisseur IA, vous conservez les skills et agents</p>
+        <div class="fil-detail"><span class="etiq c5">MCP</span> Détail 1 / 1</div>
+        <h3 class="titre-detail" style="color:var(--b-mcp);">Où on le déclare, ce qu'il apporte</h3>
+        <div class="detail duo2">
+          <div>
+<pre class="code"><code style="border-color:var(--b-mcp);"><span class="cm">// .claude/.mcp.json (chemin raccourci)</span>
+{
+  <span class="kw">"mcpServers"</span>: {
+    <span class="pt">"cahier-de-textes"</span>: {
+      <span class="kw">"command"</span>: <span class="st">"node"</span>,
+      <span class="kw">"args"</span>: [ <span class="st">".claude/mcp_servers/</span>
+<span class="st">                cahier-de-textes-server/index.js"</span> ]
+    }
+  }
+}</code></pre>
+            <p>La liste des serveurs autorisés se règle ensuite dans <code>settings.json</code> (<code>enabledMcpjsonServers</code>).</p>
+          </div>
+          <div>
+            <p><strong>Le serveur de compilation LaTeX</strong> (<code>latex_compiler_server.py</code>) offre par exemple :</p>
+            <table class="tab-detail">
+              <tr><td><code>compile_document</code></td><td>compiler, avec le bon moteur</td></tr>
+              <tr><td><code>quick_compile</code></td><td>compilation rapide</td></tr>
+              <tr><td><code>analyze_latex_log</code></td><td>lire le journal d'erreurs</td></tr>
+              <tr><td><code>clean_build_files</code></td><td>effacer les fichiers auxiliaires</td></tr>
+            </table>
+            <div class="astuce"><i class="fas fa-plug"></i> Ajouter un serveur MCP existant, plutôt que d'en écrire un : voir le tutoriel <a class="lien" href="https://bfcours.dev/claude-code/tutorials/connecteurs" target="_top">MCP et clés API</a>.</div>
+          </div>
         </div>
       </section>
+      </section>
 
+      <!-- 8. Mémoire (+ pile) -->
       <section>
-        <h2>Ressources et documentation</h2>
-
-        <div class="box fragment" style="margin-top: 1em;">
-          <p><strong>Documentation Claude Code :</strong><br>
-          <a href="https://code.claude.com/docs/fr/" target="_blank">code.claude.com/docs/fr/</a></p>
-          <p style="margin-top:0.5em;"><strong>Formation officielle gratuite (en anglais) :</strong><br>
-          <a href="https://academy.claude.com/courses/claude-code-101" target="_blank">Claude Code 101</a> (environ 1 h 30)</p>
+      <section>
+        <div class="frise"><span>CLAUDE.md</span><span>Skills</span><span>Agents</span><span>Hooks</span><span>MCP</span><span class="on c6">Mémoire</span></div>
+        <h2 style="border-color:var(--b-memoire);">La mémoire : ce qu'il a appris de vous</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--b-memoire);">
+            <h3>Ce que c'est</h3>
+            <ul>
+              <li>Quand vous le corrigez, Claude note la leçon dans une petite fiche.</li>
+              <li>Un sommaire, <code>MEMORY.md</code>, est relu à chaque session. Les fiches, elles, sont ouvertes au besoin.</li>
+              <li>Elle est rangée dans <code>~/.claude/projects/</code>, un dossier par projet.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Une remarque faite une fois n'est plus à refaire.</li>
+              <li>Ce sont des fichiers texte : vous pouvez les lire, les corriger, les effacer.</li>
+            </ul>
+          </div>
         </div>
-
-        <div class="box fragment" style="margin-top: 1.5em;">
-          <p><strong>Concepts clés abordés :</strong></p>
-          <ul style="font-size: 0.85em;">
-            <li>Configuration du projet</li>
-            <li>Création d'agents spécialisés</li>
-            <li>Développement de skills réutilisables</li>
-            <li>Automatisation avec hooks</li>
-            <li>Intégration de serveurs MCP</li>
-          </ul>
-        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- ========== CONCLUSION ========== -->
-      <section data-transition="zoom">
-        <h2><span class="icon">🎯</span> Conclusion</h2>
+      <!-- 8.1 Une fiche réelle -->
+      <section>
+        <div class="fil-detail"><span class="etiq c6">Mémoire</span> Détail 1 / 1</div>
+        <h3 class="titre-detail" style="color:var(--b-memoire);">Une fiche de mémoire réelle (abrégée)</h3>
+        <div class="detail duo2" style="grid-template-columns:1.25fr 1fr;">
+<pre class="code"><code style="border-color:var(--b-memoire);">---
+<span class="kw">name</span>: feedback-point-final-items-phrases
+<span class="kw">description</span>: "Point final dans les items de liste
+  LaTeX : seulement quand l'item est une phrase,
+  jamais après une expression mathématique nue"
+<span class="kw">type</span>: <span class="st">feedback</span>
+---
+Dans les listes bfcours, un item ne prend un
+<span class="ti">point final que si c'est une phrase</span>. Un item
+réduit à une expression mathématique nue
+(`$2^{12}$`) n'en prend pas.
 
-        <ul style="font-size: 0.95em;">
-          <li class="fragment">
-            <strong>Architecture modulaire</strong> : Adaptée aux limites du contexte
-          </li>
-
-          <li class="fragment">
-            <strong>Synergie totale</strong> : Agents, skills, commandes, MCP, hooks = écosystème cohérent
-          </li>
-
-          <li class="fragment">
-            <strong>Système vivant</strong> : Extensible et évolutif selon les besoins
-          </li>
-
-          <li class="fragment">
-            <strong>Productivité décuplée</strong> : Automatisation des tâches répétitives
-          </li>
-
-          <li class="fragment">
-            <strong>Déterminisme</strong> : Scripts et agents réduisent l'imprévisibilité
-          </li>
-        </ul>
-
-        <div class="example-box fragment" style="margin-top: 2em;">
-          <p><span class="icon">🚀</span> L'architecture Claude Code transforme l'IA en <span class="highlight">assistant autonome et fiable</span></p>
+<span class="kw">Why:</span> le point collé à une formule se lit comme un
+symbole mathématique parasite …</code></pre>
+          <div>
+            <ul>
+              <li>Une fiche = une leçon, avec sa raison (<em>Why</em>) : Claude sait quand l'appliquer.</li>
+              <li>Types de fiches : préférences, projets en cours, références utiles.</li>
+              <li>Quand une leçon vaut pour tous les projets, elle remonte dans un skill ou dans <code>CLAUDE.md</code>.</li>
+            </ul>
+            <div class="astuce"><i class="fas fa-recycle"></i> Le skill <code>memory-distiller</code> fait périodiquement le tri : il regroupe, il épure, il propose ce qui mérite de devenir une règle.</div>
+          </div>
         </div>
       </section>
+      </section>
 
-      <section data-transition="zoom">
-        <h2>Merci de votre attention</h2>
-        <p style="margin-top: 2em; font-size: 0.95em;">
-          <strong>Questions ?</strong>
+      <!-- 9. Comment ça s'articule (+ pile) -->
+      <section>
+      <section>
+        <h2>Comment ça s'articule</h2>
+        <div class="demande" style="font-size:0.7em;">
+          <span class="qui"><i class="fas fa-user"></i> Le professeur</span>
+          «&nbsp;Ajoute un QCM de 12 questions sur les fonctions affines à ma fiche.&nbsp;»
+        </div>
+        <div class="chaine">
+          <div class="maillon m1 fragment">
+            <i class="fas fa-file-alt"></i>
+            <div class="nom">1. Il relit les consignes</div>
+            <div class="quoi"><code style="color:#fff;background:rgba(255,255,255,0.2);">CLAUDE.md</code> et la mémoire : accents, LaTeX bfcours.</div>
+          </div>
+          <div class="maillon m2 fragment">
+            <i class="fas fa-lightbulb"></i>
+            <div class="nom">2. Il charge un skill</div>
+            <div class="quoi">La description de <code style="color:#fff;background:rgba(255,255,255,0.2);">qcm-creator</code> correspond : il lit sa méthode.</div>
+          </div>
+          <div class="maillon m3 fragment">
+            <i class="fas fa-robot"></i>
+            <div class="nom">3. Il délègue</div>
+            <div class="quoi">Un agent rédige le QCM de son côté, puis rend compte.</div>
+          </div>
+          <div class="maillon m4 fragment">
+            <i class="fas fa-shield-alt"></i>
+            <div class="nom">4. Un hook surveille</div>
+            <div class="quoi">À chaque lecture ou écriture : dossiers protégés, encodage.</div>
+          </div>
+          <div class="maillon m0 fragment">
+            <i class="fas fa-plug"></i>
+            <div class="nom">5. Il vérifie</div>
+            <div class="quoi">Il compile la fiche avec un outil MCP et corrige les erreurs.</div>
+          </div>
+        </div>
+        <div class="fragment" style="margin-top:0.7em;">
+          <div class="resultat"><i class="fas fa-check-circle"></i> La fiche, avec son QCM, compilée</div>
+        </div>
+        <p class="small muted" style="margin-top:0.5em;">Vous n'avez rien eu à préciser : tout était déjà écrit dans le dossier.</p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 9.1 En coulisse -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Comment ça s'articule</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">En coulisse : quel fichier intervient, et quand</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:18%;">Étape</th><th style="width:38%;">Fichier</th><th>Chargé…</th></tr>
+            <tr><td><span class="pastille" style="background:var(--b-consignes);">Consignes</span></td><td><code>CLAUDE.md</code>, <code>MEMORY.md</code></td><td>toujours, au début de la session</td></tr>
+            <tr><td><span class="pastille" style="background:var(--b-consignes);">Règles</span></td><td><code>.claude/rules/latex.md</code></td><td>dès qu'il touche un <code>.tex</code></td></tr>
+            <tr><td><span class="pastille" style="background:var(--b-skills);">Skill</span></td><td><code>skills/qcm-creator/SKILL.md</code>, puis <code>bfcours-latex</code></td><td>quand la demande correspond à la description</td></tr>
+            <tr><td><span class="pastille" style="background:var(--b-agents);">Agent</span></td><td><code>agents/creer/latex/qcm-builder.md</code></td><td>quand l'assistant principal lui confie la tâche</td></tr>
+            <tr><td><span class="pastille" style="background:var(--b-hooks);">Hook</span></td><td><code>hooks/guard_protected_paths.py</code></td><td>avant chaque outil, déclaré dans <code>settings.json</code></td></tr>
+            <tr><td><span class="pastille" style="background:var(--b-mcp);">MCP</span></td><td>serveur de compilation LaTeX</td><td>quand il appelle l'un de ses outils</td></tr>
+          </table>
+          <div class="astuce"><i class="fas fa-route"></i> C'est un scénario type : selon la demande, Claude peut tout faire lui-même sans agent, ou compiler par un script du skill plutôt que par le serveur MCP.</div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 10. Projet ou global -->
+      <section>
+        <h2>Pour un projet, ou pour tous ?</h2>
+        <div class="portee">
+          <div class="carte" style="border-color:var(--success-color);">
+            <h3><i class="fas fa-folder" style="color:var(--success-color);"></i> <code>.claude/</code> du projet <span class="badge" style="background:var(--success-color);">recommandé</span></h3>
+            <p class="muted" style="margin:0.2em 0;">Dans le dossier de travail, par exemple celui de l'année.</p>
+            <ul>
+              <li><code>CLAUDE.md</code> à la racine du dossier.</li>
+              <li>Presque tout : skills, agents, hooks du projet, serveurs MCP.</li>
+              <li>Actif seulement quand on lance Claude Code dans ce dossier.</li>
+            </ul>
+          </div>
+          <div class="carte" style="border-color:var(--warning-color);">
+            <h3><i class="fas fa-globe" style="color:var(--warning-color);"></i> <code>~/.claude/</code> global</h3>
+            <p class="muted" style="margin:0.2em 0;">Dans votre dossier personnel, pour tous les projets.</p>
+            <ul>
+              <li>Un <code>CLAUDE.md</code> global : les règles valables partout (ici, la prudence avec le navigateur).</li>
+              <li>Un <code>settings.json</code> global : ici, le hook qui envoie les suppressions à la corbeille.</li>
+              <li>La mémoire, un dossier par projet.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:0.8em;">
+          Règle simple : ce qui touche à votre métier va dans le projet ; seuls les garde-fous universels vont dans le global.
         </p>
-        <p style="margin-top: 2em; font-size: 0.8em; color: #95a5a6;">
-          Présentation générée avec reveal.js<br>
-          Groupe de Travail IA & Mathématiques - 2025-2026
+      </section>
+
+      <!-- 11. Pour démarrer -->
+      <section>
+        <h2>Pour démarrer</h2>
+        <div class="install">
+          <div class="carte" style="border-color:var(--b-skills);">
+            <div class="titre"><i class="fas fa-box-open"></i> Les packs prêts à l'emploi</div>
+            Un dossier <code>.claude/</code> tout fait, à décompresser dans votre projet.<br>
+            <a class="bouton" href="https://bfcours.dev/claude-code/download-ai-packages" target="_top">Les packs</a>
+          </div>
+          <div class="carte" style="border-color:var(--b-consignes);">
+            <div class="titre"><i class="fas fa-cog"></i> Configurer Claude Code</div>
+            Installer une configuration, puis l'utiliser au quotidien.<br>
+            <a class="lien" href="https://bfcours.dev/claude-code/tutorials/claude-code-config" target="_top">Configuration</a>
+            &nbsp;·&nbsp;
+            <a class="lien" href="https://bfcours.dev/claude-code/tutorials/utilisation-config" target="_top">Utilisation</a>
+          </div>
+          <div class="carte" style="border-color:var(--b-agents);">
+            <div class="titre"><i class="fas fa-lightbulb"></i> Créer son premier skill</div>
+            Transformer une habitude de travail en savoir-faire réutilisable.<br>
+            <a class="lien" href="https://bfcours.dev/claude-code/tutorials/creer-un-skill" target="_top">Créer un skill</a>
+          </div>
+          <div class="carte" style="border-color:var(--b-hooks);">
+            <div class="titre"><i class="fas fa-shield-alt"></i> Poser des garde-fous</div>
+            Corbeille, dossiers interdits, notifications.<br>
+            <a class="lien" href="https://bfcours.dev/claude-code/presentations/mods-et-garde-fous" target="_top">Mods et garde-fous</a>
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:0.7em;">
+          Première demande possible : «&nbsp;<em>Crée-moi un CLAUDE.md pour ce dossier : je suis professeur de maths et j'écris mes cours en LaTeX.</em>&nbsp;»
         </p>
       </section>
 
     </div>
   </div>
 
-
   <!-- Reveal.js Scripts -->
   <script src="assets/reveal/reveal.js"></script>
   <script src="assets/reveal/plugin/notes/notes.js"></script>
-  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
-  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <script>
     Reveal.initialize({
-      // Navigation 2D
-      navigationMode: 'grid',
+      // Navigation à deux dimensions : → fil principal, ↓ détails de chaque brique
+      navigationMode: 'default',
       controls: true,
-      controlsLayout: 'edges',
-      controlsBackArrows: 'visible',
+      controlsLayout: 'bottom-right',
       controlsTutorial: true,
-
-      // Progression
+      controlsBackArrows: 'faded',
       progress: true,
       slideNumber: 'h.v',
+      overview: true,
       hash: true,
-      center: true,
-
-      // Transitions
       transition: 'slide',
-      transitionSpeed: 'default',
-
-      // Apparence
-      width: 1280,
-      height: 720,
-      margin: 0.04,
-
-      // Math
-      math: {
-        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
-        config: 'TeX-AMS_HTML-full'
-      },
-
-      // Plugins
-      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+      center: true,
+      fragments: true,
+      fragmentInURL: true,
+      plugins: [ RevealNotes ]
     });
-
-    // Retour au top lors de la navigation horizontale
-    let lastHorizontalIndex = 0;
-
-    Reveal.on('slidechanged', event => {
-      const currentH = event.indexh;
-      const currentV = event.indexv;
-
-      if (currentH !== lastHorizontalIndex && currentV !== 0) {
-        Reveal.slide(currentH, 0);
-      }
-
-      lastHorizontalIndex = currentH;
-
-      // Mettre à jour l'état des boutons de navigation
-      updateNavigationPad();
-    });
-
-    // Mettre à jour l'état des boutons de navigation
-    function updateNavigationPad() {
-      const indices = Reveal.getIndices();
-      const slides = Reveal.getSlides();
-
-      const hasLeft = indices.h > 0;
-      const hasRight = indices.h < slides.length - 1;
-      const hasUp = indices.v > 0;
-      const hasDown = Reveal.availableRoutes().down;
-
-      document.querySelector('.nav-left').classList.toggle('disabled', !hasLeft);
-      document.querySelector('.nav-right').classList.toggle('disabled', !hasRight);
-      document.querySelector('.nav-up').classList.toggle('disabled', !hasUp);
-      document.querySelector('.nav-down').classList.toggle('disabled', !hasDown);
-
-      if (hasDown) {
-        document.querySelector('.nav-down').classList.add('active');
-      } else {
-        document.querySelector('.nav-down').classList.remove('active');
-      }
-    }
-
-    Reveal.on('ready', updateNavigationPad);
   </script>
 </body>
 </html>

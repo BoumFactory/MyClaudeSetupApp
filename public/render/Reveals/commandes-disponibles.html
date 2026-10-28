@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Formation IA & Mathématiques">
-  <meta name="description" content="Guide complet des commandes Claude Code disponibles pour la création et gestion de documents pédagogiques">
-  <title>Commandes Claude Code - Guide Pratique</title>
+  <meta name="description" content="Les commandes de Claude Code : un skill d'un seul fichier, lancé en tapant /nom. Différence avec un skill, anatomie, commandes intégrées utiles.">
+  <title>Les commandes : des skills d'un seul fichier</title>
 
   <!-- Reveal.js Core -->
   <link rel="stylesheet" href="assets/reveal/reset.css">
@@ -15,7 +15,6 @@
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Theme personnalisé -->
   <style>
     :root {
       --primary-color: #2c3e50;
@@ -23,8 +22,13 @@
       --accent-color: #e74c3c;
       --success-color: #27ae60;
       --warning-color: #f39c12;
+      --violet-color: #8e44ad;
       --text-color: #34495e;
+      --muted-color: #7f8c8d;
       --bg-light: #ecf0f1;
+      /* Commande = orange, skill = violet */
+      --c-commande: #f39c12;
+      --c-skill: #8e44ad;
     }
 
     .reveal {
@@ -37,207 +41,198 @@
       color: var(--primary-color);
       font-weight: 600;
       text-transform: none;
+      letter-spacing: normal;
     }
 
-    .reveal h1 {
-      font-size: 2.2em;
-      margin-bottom: 0.5em;
-    }
+    .reveal h1 { font-size: 1.7em; margin-bottom: 0.3em; line-height: 1.15; }
 
     .reveal h2 {
-      font-size: 1.6em;
-      margin-bottom: 0.8em;
+      font-size: 1.4em;
+      margin-bottom: 0.6em;
       border-bottom: 3px solid var(--secondary-color);
-      padding-bottom: 0.3em;
+      padding-bottom: 0.25em;
     }
 
-    .reveal h3 {
-      font-size: 1.3em;
-      color: var(--secondary-color);
-      margin-top: 0.4em;
-    }
-
-    .reveal ul, .reveal ol {
-      margin: 1em 0;
-    }
-
-    .reveal li {
-      margin: 0.5em 0;
-      line-height: 1.5;
-    }
+    .reveal p, .reveal li { line-height: 1.45; }
+    .reveal ul { margin: 0.4em 0 0 1em; }
+    .reveal li { margin: 0.3em 0; }
 
     .reveal code {
       background: var(--bg-light);
-      padding: 0.2em 0.5em;
+      padding: 0.1em 0.4em;
       border-radius: 4px;
       font-family: 'Consolas', 'Monaco', monospace;
-      font-size: 0.95em;
+      font-size: 0.9em;
       color: var(--accent-color);
     }
 
-    .reveal pre {
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      margin: 1em 0;
-    }
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.72em; }
+    .reveal .muted { color: var(--muted-color); }
 
-    .reveal pre code {
-      background: #282c34;
-      color: #abb2bf;
-      padding: 1em;
-      max-height: 500px;
+    /* Bulle : ce que tape le professeur */
+    .reveal .demande {
+      display: inline-block;
+      background: #fff;
+      border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px;
+      padding: 0.6em 1em;
       font-size: 0.85em;
-      line-height: 1.4;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18);
+      max-width: 90%;
+    }
+    .reveal .demande .qui {
+      display: block;
+      font-size: 0.7em;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 0.2em;
     }
 
-    .reveal .highlight {
-      color: var(--accent-color);
-      font-weight: 600;
+    .reveal .resultat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+      color: #fff;
+      padding: 0.45em 1.1em;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.8em;
+      box-shadow: 0 6px 18px rgba(39,174,96,0.3);
     }
 
-    .reveal .success {
-      color: var(--success-color);
-      font-weight: 600;
-    }
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.2em; margin: 0.3em 0; }
 
-    .reveal .warning {
-      color: var(--warning-color);
-      font-weight: 600;
-    }
-
-    .reveal .box {
-      background: var(--bg-light);
-      padding: 1em 1.5em;
+    .reveal .idee {
+      display: inline-block;
+      margin-top: 0.9em;
+      background: #f8f9fa;
+      border-left: 5px solid var(--c-commande);
       border-radius: 8px;
-      border-left: 4px solid var(--secondary-color);
-      margin: 1em 0;
+      padding: 0.45em 0.9em;
+      font-size: 0.72em;
+      text-align: left;
     }
 
-    .reveal .warning-box {
-      background: #fff3cd;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--warning-color);
-      margin: 1em 0;
-    }
-
-    .reveal .example-box {
-      background: #e8f5e9;
-      padding: 1em 1.5em;
-      border-radius: 8px;
-      border-left: 4px solid var(--success-color);
-      margin: 1em 0;
-    }
-
-    .reveal .grid-2 {
+    /* Deux colonnes commande / skill */
+    .reveal .face {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2em;
-      align-items: start;
+      gap: 0.9em;
+      text-align: left;
+      align-items: stretch;
     }
-
-    .reveal .icon {
-      font-size: 1.2em;
-      margin-right: 0.3em;
-      vertical-align: middle;
-    }
-
-    .reveal section img {
-      border: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
-
-    .reveal .workflow-step {
-      display: flex;
-      align-items: center;
-      margin: 0.8em 0;
-      padding: 0.8em;
-      background: var(--bg-light);
-      border-radius: 8px;
-    }
-
-    .reveal .workflow-step .step-number {
-      background: var(--secondary-color);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      margin-right: 1em;
-      flex-shrink: 0;
-    }
-
-    .reveal .feature-list {
-      font-size: 0.9em;
-    }
-
-    .reveal .feature-list li {
-      margin: 0.4em 0;
-    }
-
-    .reveal .subtitle {
-      color: var(--secondary-color);
-      font-size: 0.7em;
-      margin-top: 0.5em;
-    }
-
-    .reveal .tag {
-      display: inline-block;
-      background: var(--secondary-color);
-      color: white;
-      padding: 0.3em 0.8em;
-      border-radius: 20px;
-      font-size: 0.7em;
-      font-weight: 600;
-      margin: 0.2em;
-    }
-
-    .reveal .tag.warning {
-      background: var(--warning-color);
-    }
-
-    .reveal .tag.success {
-      background: var(--success-color);
-    }
-
-    .reveal .tag.accent {
-      background: var(--accent-color);
-    }
-
-    .reveal .smaller {
-      font-size: 0.85em;
-    }
-
-    .reveal .nav-hint {
-      color: var(--secondary-color);
-      font-size: 0.8em;
-      margin-top: 1em;
-      font-style: italic;
-    }
-
-    .reveal .command-card {
-      background: linear-gradient(135deg, var(--bg-light) 0%, #d5dbdd 100%);
-      padding: 1.5em;
+    .reveal .carte-type {
+      background: #f8f9fa;
       border-radius: 12px;
-      border-left: 6px solid var(--secondary-color);
-      margin: 1em 0;
+      padding: 0.6em 0.9em;
+      border-top: 6px solid var(--c-commande);
+      font-size: 0.66em;
+    }
+    .reveal .carte-type.skill { border-top-color: var(--c-skill); }
+    .reveal .carte-type h3 { font-size: 1.2em; margin: 0 0 0.4em 0; }
+    .reveal .carte-type h3 i { color: var(--c-commande); }
+    .reveal .carte-type.skill h3 i { color: var(--c-skill); }
+    .reveal .carte-type ul { margin: 0.4em 0 0 1em; }
+    .reveal .carte-type li { margin: 0.2em 0; }
+    .reveal .qui-lance {
+      display: inline-block; margin-top: 0.4em; color: #fff; font-weight: 700;
+      border-radius: 10px; padding: 0.1em 0.7em; background: var(--c-commande);
+    }
+    .reveal .carte-type.skill .qui-lance { background: var(--c-skill); }
+
+    /* Maquette d'arborescence */
+    .reveal .maquette {
+      background: #fff; border: 1px solid #dfe6e9; border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 0.45em 0.8em;
+      font-family: 'Consolas', 'Monaco', monospace; font-size: 0.9em; line-height: 1.6;
+    }
+    .reveal .maquette .dos { color: var(--primary-color); font-weight: 700; }
+    .reveal .maquette .fic-c { color: #d35400; font-weight: 700; }
+    .reveal .maquette .fic-s { color: var(--c-skill); font-weight: 700; }
+    .reveal .maquette .com { color: #95a5a6; font-family: 'Segoe UI', sans-serif; font-size: 0.9em; }
+
+    /* Cartes de liens */
+    .reveal .install { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; text-align: left; font-size: 0.64em; }
+    .reveal .install .carte { background: #f8f9fa; border-radius: 10px; padding: 0.55em 0.8em; border-left: 5px solid var(--secondary-color); }
+    .reveal .install .carte .titre { font-weight: 700; color: var(--primary-color); margin-bottom: 0.2em; }
+    .reveal a.lien { color: var(--secondary-color); text-decoration: underline; }
+    .reveal a.bouton {
+      display: inline-block; margin-top: 0.3em; padding: 0.2em 0.8em; border-radius: 8px;
+      background: var(--secondary-color); color: #fff; font-weight: 700; text-decoration: none;
     }
 
-    .reveal .command-title {
-      font-size: 1.2em;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-bottom: 0.5em;
+    /* ===== Navigation à deux dimensions ===== */
+    .reveal .indice-details {
+      text-align: right;
+      margin-top: 0.8em;
+      font-size: 0.5em;
+      color: var(--muted-color);
+    }
+    .reveal .indice-details span {
+      display: inline-block;
+      border: 1px solid #d0d7de;
+      border-radius: 14px;
+      padding: 0.15em 0.8em;
+      background: #fff;
+    }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 2em; }
+    .reveal .aide-nav kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color);
     }
 
-    .reveal .command-desc {
-      font-size: 0.85em;
-      color: var(--text-color);
-      line-height: 1.4;
+    /* Fil d'Ariane des diapos verticales */
+    .reveal .fil-detail {
+      display: flex; align-items: center; gap: 0.6em; justify-content: flex-start;
+      font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600;
+    }
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; }
+    .reveal .fil-detail .etiq.c0 { background: var(--primary-color); }
+    .reveal .fil-detail .etiq.c1 { background: var(--c-commande); }
+    .reveal h3.titre-detail {
+      font-size: 1.05em; text-align: left; margin: 0 0 0.5em 0;
+      padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light);
+    }
+
+    /* Contenus de détail */
+    .reveal .detail { font-size: 0.6em; text-align: left; }
+    .reveal .detail code { padding: 0 0.2em; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .duo2 { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0.9em; align-items: start; text-align: left; }
+    .reveal pre.code {
+      width: 100%; box-shadow: none; margin: 0; font-size: 0.56em;
+    }
+    .reveal pre.code code {
+      display: block; background: #f8f9fa; color: #2c3e50; padding: 0.7em 0.9em;
+      border-radius: 8px; border-left: 4px solid var(--c-commande); line-height: 1.5;
+      max-height: none; font-size: 1em; white-space: pre-wrap;
+    }
+    .reveal pre.code .cm { color: #95a5a6; }
+    .reveal pre.code .kw { color: #2980b9; font-weight: 700; }
+    .reveal pre.code .ar { color: #fff; background: var(--c-commande); border-radius: 4px; padding: 0 0.2em; font-weight: 700; }
+    .reveal pre.code .ti { color: var(--primary-color); font-weight: 700; }
+    .reveal .notes-code { font-size: 0.6em; text-align: left; }
+    .reveal .notes-code .note {
+      background: #f8f9fa; border-radius: 8px; padding: 0.45em 0.7em; margin-bottom: 0.45em;
+      border-left: 4px solid var(--secondary-color);
+    }
+    .reveal .notes-code .note.ar { border-left-color: var(--c-commande); }
+    .reveal .notes-code .note .titre { font-weight: 700; color: var(--primary-color); }
+
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.32em 0.5em; text-align: left; vertical-align: top;
+    }
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal table.tab-detail td code { white-space: nowrap; }
+    .reveal .tab-integrees { font-size: 0.6em; text-align: left; }
+    .reveal .tab-integrees td:first-child { width: 22%; }
+    .reveal .astuce {
+      background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px;
+      padding: 0.45em 0.8em; margin-top: 0.6em; text-align: left;
     }
   </style>
 </head>
@@ -245,1130 +240,210 @@
   <div class="reveal">
     <div class="slides">
 
-      <!-- SLIDE 1 : TITRE -->
+      <!-- 1. Titre et idée -->
       <section>
-        <h1><i class="fas fa-terminal icon"></i> Commandes Claude Code</h1>
-        <p class="subtitle">Guide Pratique des Slash Commands</p>
-        <p class="fragment" style="margin-top: 2em;">
-          <span class="tag">Formation GT IA & Maths</span>
-          <span class="tag success">LaTeX & Documents Pédagogiques</span>
+        <h1><i class="fas fa-terminal" style="color:var(--c-commande);"></i> Les commandes : des skills d'un seul fichier</h1>
+        <p class="subtitle">Un raccourci que vous lancez vous-même, en tapant <code>/nom</code></p>
+
+        <div style="margin-top:1em;">
+          <div class="demande">
+            <span class="qui"><i class="fas fa-user"></i> Vous tapez</span>
+            <code style="font-size:1em;">/modifyTex</code> ajoute un exercice sur les vecteurs
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="resultat"><i class="fas fa-file-alt"></i> Claude lit le fichier de la commande et suit ses consignes</div>
+          <br>
+          <div class="idee">
+            <strong>L'idée :</strong> une commande, c'est un skill qui tient dans un seul fichier texte.
+          </div>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
         </p>
       </section>
 
-      <!-- SLIDE 2 : SOMMAIRE -->
+      <!-- 2. Commande ou skill ? (+ pile) -->
       <section>
-        <h2>Au programme</h2>
-        <ol class="feature-list">
-          <li class="fragment" data-fragment-index="1"><i class="fas fa-question-circle icon"></i> Qu'est-ce qu'une commande ?</li>
-          <li class="fragment" data-fragment-index="2"><i class="fas fa-folder-open icon"></i> Commandes de création</li>
-          <li class="fragment" data-fragment-index="3"><i class="fas fa-edit icon"></i> Commandes de modification</li>
-          <li class="fragment" data-fragment-index="4"><i class="fas fa-database icon"></i> Commandes de gestion des connaissances</li>
-          <li class="fragment" data-fragment-index="5"><i class="fas fa-project-diagram icon"></i> Commande d'orchestration</li>
-          <li class="fragment" data-fragment-index="6"><i class="fas fa-search icon"></i> Commandes de recherche</li>
-          <li class="fragment" data-fragment-index="7"><i class="fas fa-th-list icon"></i> Les autres commandes fournies</li>
-          <li class="fragment" data-fragment-index="8"><i class="fas fa-lightbulb icon"></i> Comment utiliser une commande</li>
-          <li class="fragment" data-fragment-index="9"><i class="fas fa-graduation-cap icon"></i> Conseils pratiques</li>
-        </ol>
+      <section>
+        <h2>Commande ou skill ?</h2>
+        <div class="face">
+          <div class="carte-type">
+            <h3><i class="fas fa-file-alt"></i> Une commande</h3>
+            <div class="maquette">
+              <div><span class="dos">.claude/commands/</span></div>
+              <div>&nbsp;&nbsp;└ <span class="fic-c">modifyTex.md</span></div>
+            </div>
+            <ul>
+              <li>Un seul fichier : des consignes écrites en français.</li>
+              <li>Le nom du fichier donne la commande : <code>/modifyTex</code>.</li>
+            </ul>
+            <span class="qui-lance"><i class="fas fa-user"></i> Vous la lancez en tapant <code style="background:none;color:#fff;padding:0;">/…</code></span>
+          </div>
+          <div class="carte-type skill">
+            <h3><i class="fas fa-folder-open"></i> Un skill</h3>
+            <div class="maquette">
+              <div><span class="dos">.claude/skills/bfcours-latex/</span></div>
+              <div>&nbsp;&nbsp;├ <span class="fic-s">SKILL.md</span> <span class="com">les consignes</span></div>
+              <div>&nbsp;&nbsp;├ <span class="dos">scripts/</span> <span class="com">des programmes</span></div>
+              <div>&nbsp;&nbsp;└ <span class="dos">exemples/</span> <span class="com">des modèles</span></div>
+            </div>
+            <ul>
+              <li>Un dossier : des consignes, mais aussi des outils et des exemples.</li>
+            </ul>
+            <span class="qui-lance"><i class="fas fa-robot"></i> Claude le charge seul, quand il en a besoin</span>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- SLIDE 3 : QU'EST-CE QU'UNE COMMANDE ? -->
+      <!-- 2.1 Ce que dit la documentation -->
       <section>
-        <h2>Qu'est-ce qu'une commande ?</h2>
-
-        <div class="box fragment">
-          <p><strong>Une slash command (/commande) est un raccourci pour automatiser des tâches complexes</strong></p>
-        </div>
-
-        <ul class="feature-list">
-          <li class="fragment"><i class="fas fa-bolt icon"></i> Lancée en tapant <code>/nom-commande</code> + <code>Tab</code> pour autocomplétion</li>
-          <li class="fragment"><i class="fas fa-robot icon"></i> Déclenche automatiquement des <strong>agents spécialisés</strong></li>
-          <li class="fragment"><i class="fas fa-tools icon"></i> Utilise des <strong>skills experts</strong> pour chaque tâche</li>
-          <li class="fragment"><i class="fas fa-magic icon"></i> Produit des <strong>résultats prêts à l'emploi</strong></li>
-        </ul>
-
-        <div class="example-box fragment" style="font-size: 0.85em; margin-top: 1em;">
-          <p><strong>Exemple :</strong> Au lieu de créer manuellement un document LaTeX, vous tapez :<br>
-          <code>/createTex cours sur les vecteurs en seconde</code></p>
-        </div>
-
-        <div class="box fragment" style="font-size: 0.75em; margin-top: 1em; background: #e3f2fd;">
-          <p><i class="fas fa-info-circle icon"></i> <strong>Multi-plateforme :</strong> Concept similaire dans Codex (OpenAI) et Antigravity (Google) : on peut faire à peu près la même chose, c'est affaire de goût et d'habitudes</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 4 : CATÉGORIES DE COMMANDES -->
-      <section>
-        <section>
-          <h2>Catégories de commandes</h2>
-
-        <div class="grid-2">
-            <div class="command-card fragment" data-fragment-index="1">
-              <div class="command-title"><i class="fas fa-folder-plus icon success"></i> Création</div>
-              <div class="command-desc">Créer documents LaTeX, présentations, cours HTML, évaluations</div>
-            </div>
-
-            <div class="command-card fragment" data-fragment-index="2">
-              <div class="command-title"><i class="fas fa-edit icon warning"></i> Modification</div>
-              <div class="command-desc">Adapter, modifier, optimiser des documents existants</div>
-            </div>
-
-            <div class="command-card fragment" data-fragment-index="3">
-              <div class="command-title"><i class="fas fa-brain icon secondary"></i> Connaissances</div>
-              <div class="command-desc">Charger les connaissances techniques nécessaires</div>
-            </div>
-            <div class="command-card fragment" data-fragment-index="4">
-              <div class="command-title"><i class="fas fa-project-diagram icon accent"></i> Orchestration</div>
-              <div class="command-desc">Confier une demande large qui sera découpée et répartie</div>
-            </div>
-        </div>
-      </section>
-        <section>
-        
-        <div class="grid-2">           
-            <div class="command-card fragment" data-fragment-index="2">
-              <div class="command-title"><i class="fas fa-search icon primary"></i> Recherche</div>
-              <div class="command-desc">Trouver des ressources et produire des rapports sourcés</div>
-            </div>
-
-            <div class="command-card fragment" data-fragment-index="3">
-              <div class="command-title"><i class="fas fa-th-list icon"></i> Autres</div>
-              <div class="command-desc">Moodle, H5P, animations, carnets Jupyter</div>
-            </div>
+        <div class="fil-detail"><span class="etiq c0">Commande ou skill ?</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Ce que dit la documentation officielle</h3>
+        <div class="detail">
+          <p>«&nbsp;Les commandes personnalisées ont été fusionnées dans les skills.&nbsp;» Un fichier <code>.claude/commands/deploy.md</code> et un skill <code>.claude/skills/deploy/SKILL.md</code> créent tous les deux <code>/deploy</code>.</p>
+          <table class="tab-detail" style="margin-top:0.5em;">
+            <tr><th style="width:30%;"></th><th style="width:35%;">Commande</th><th>Skill</th></tr>
+            <tr><td><strong>Forme</strong></td><td>Un fichier <code>.md</code></td><td>Un dossier avec <code>SKILL.md</code></td></tr>
+            <tr><td><strong>Fichiers en plus</strong></td><td>Non</td><td>Oui : scripts, modèles, données</td></tr>
+            <tr><td><strong>Vous tapez <code>/nom</code></strong></td><td>Oui</td><td>Oui</td></tr>
+            <tr><td><strong>Claude peut la charger seul</strong></td><td>Oui, d'après sa description</td><td>Oui, d'après sa description</td></tr>
+            <tr><td><strong>Même nom ?</strong></td><td colspan="2">Le skill l'emporte sur la commande.</td></tr>
+          </table>
+          <div class="astuce">
+            <i class="fas fa-info-circle"></i> Les anciens fichiers de <code>.claude/commands/</code> fonctionnent toujours. Pour tout nouveau travail, la documentation conseille un skill. En pratique, une commande reste ce qu'on lance soi-même ; un skill, ce que Claude va chercher seul.
+          </div>
         </div>
       </section>
       </section>
-      <!-- SECTION : COMMANDES DE CRÉATION -->
+
+      <!-- 3. Anatomie d'une commande (+ pile) -->
       <section>
-        <section>
-          <h2><i class="fas fa-folder-plus icon success"></i> Commandes de Création</h2>
-          <p class="smaller fragment">4 commandes pour créer vos documents de zéro</p>
-
-          <div class="grid-2">
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/createTex</code></strong><br>Documents LaTeX pédagogiques</p>
-            </div>
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/createHtml</code></strong><br>Cours HTML interactifs</p>
-            </div>
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/createReveals</code></strong><br>Présentations reveal.js</p>
-            </div>
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/makeEval</code></strong><br>Sujets d'évaluation</p>
-            </div>
-          </div>
-
-          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque commande en détail</p>
-        </section>
-
-        <!-- /createTex -->
-          <section>
-            <h2><i class="fas fa-file-alt icon"></i> /createTex</h2>
-            <p class="subtitle">Création automatique de documents LaTeX pédagogiques</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Usage :</strong></p>
-              <pre><code class="language-bash">/createTex &lt;description_du_document&gt;</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-info-circle icon"></i> <strong>Principe :</strong> Analyse votre demande pour identifier le type, le niveau, le thème et créer automatiquement le document dans la bonne arborescence</p>
-            </div>
-
-            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
-          </section>
-
-          <section>
-            <h3>Workflow /createTex</h3>
-
-            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
-              <div class="step-number">1</div>
-              <div>Analyse de la requête : type, niveau, thème</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
-              <div class="step-number">2</div>
-              <div>Vérification de l'arborescence existante</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
-              <div class="step-number">3</div>
-              <div>Détermination du chemin de destination</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
-              <div class="step-number">4</div>
-              <div>Création via skill tex-document-creator</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
-              <div class="step-number">5</div>
-              <div>Document prêt dans la bonne séquence</div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Exemples /createTex</h3>
-
-            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
-              <p><strong>Évaluation :</strong></p>
-              <pre><code class="language-bash">/createTex évaluation sur les vecteurs en seconde</code></pre>
-              <p class="success">→ Modèle Devoir, 2nde, Sequence-Vecteurs/Evaluation_vecteurs/</p>
-            </div>
-
-            <div class="example-box fragment" style="font-size: 0.75em; margin-bottom: 0.8em;">
-              <p><strong>Cours :</strong></p>
-              <pre><code class="language-bash">/createTex cours sur les fonctions affines en troisième</code></pre>
-              <p class="success">→ Modèle Cours, 3eme, Sequence-Fonctions_affines/Cours/</p>
-            </div>
-          </section>
-
-          <section>
-            <h3>Types de documents disponibles</h3>
-
-            <div class="grid-2">
-              <div>
-                <ul class="smaller">
-                  <li class="fragment"><code>Cours</code> - Cours complet</li>
-                  <li class="fragment"><code>Devoir</code> - Évaluation/DS</li>
-                  <li class="fragment"><code>Devoir_maison</code> - DM</li>
-                  <li class="fragment"><code>Exercices light</code> - Exercices rapides</li>
-                  <li class="fragment"><code>Exercices heavy</code> - Avec corrections</li>
-                  <li class="fragment"><code>Découverte</code> - Activité découverte</li>
-                </ul>
-              </div>
-              <div>
-                <ul class="smaller">
-                  <li class="fragment"><code>Plan sequence</code> - Planification</li>
-                  <li class="fragment"><code>Recap_seance</code> - Récapitulatif</li>
-                  <li class="fragment"><code>AP</code> - Accompagnement</li>
-                  <li class="fragment"><code>Groupe</code> - Travail de groupe</li>
-                  <li class="fragment"><code>Info</code> - Algo/Info</li>
-                  <li class="fragment"><code>Jeux</code> - Jeux mathématiques</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-        <!-- /createHtml -->
-          <section>
-            <h2><i class="fas fa-code icon"></i> /createHtml</h2>
-            <p class="subtitle">Cours HTML interactif avec formules KaTeX</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Usage :</strong></p>
-              <pre><code class="language-bash">/createHtml cours sur les probabilités conditionnelles en première</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-info-circle icon"></i> <strong>Résultat :</strong> un fichier HTML autonome qui fonctionne hors ligne : formules rendues par KaTeX, mode clair ou sombre, infobulles de vocabulaire, choix parmi plusieurs styles visuels</p>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-exchange-alt icon"></i> <strong>Variante :</strong> <code>/adaptHtml &lt;fichier&gt;</code> transforme un document existant (LaTeX, PDF, Markdown) en cours HTML du même type</p>
-            </div>
-          </section>
-
-        <!-- /createReveals -->
-          <section>
-            <h2><i class="fas fa-globe icon"></i> /createReveals</h2>
-            <p class="subtitle">Création de présentations reveal.js interactives</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Usage :</strong></p>
-              <pre><code class="language-bash">/createReveals --sujet "&lt;sujet&gt;" --duree &lt;minutes&gt; [--style &lt;collège|lycée|académique&gt;]</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-laptop icon"></i> <strong>Web :</strong> Présentation HTML/CSS/JS avec MathJax, fragments progressifs, navigation clavier</p>
-            </div>
-
-            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
-          </section>
-
-          <section>
-            <h3>Workflow /createReveals</h3>
-
-            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
-              <div class="step-number">1</div>
-              <div>Analyse et choix du template</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
-              <div class="step-number">2</div>
-              <div>Création contenu HTML avec fragments</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
-              <div class="step-number">3</div>
-              <div>Configuration reveal.js et MathJax</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
-              <div class="step-number">4</div>
-              <div>Test dans navigateur</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
-              <div class="step-number">5</div>
-              <div>Finalisation et rapport</div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Exemples /createReveals</h3>
-
-            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
-              <p><strong>Présentation collège :</strong></p>
-              <pre><code class="language-bash">/createReveals --sujet "Les nombres relatifs" --duree 20</code></pre>
-              <p class="success">→ 11 slides HTML, police 22px, couleurs vives, MathJax intégré</p>
-            </div>
-
-            <div class="example-box fragment" style="font-size: 0.75em; margin-bottom: 0.8em;">
-              <p><strong>Cours lycée :</strong></p>
-              <pre><code class="language-bash">/createReveals --style lycée --sujet "Dérivation" --duree 55</code></pre>
-              <p class="success">→ 25 slides avec fragments progressifs, mode présentation (S)</p>
-            </div>
-          </section>
-
-          <section>
-            <h3>Avantages reveal.js</h3>
-
-            <div class="grid-2">
-              <div>
-                <ul class="smaller">
-                  <li class="fragment"><i class="fas fa-hand-pointer icon success"></i> <strong>Interactif</strong> : Navigation clavier/souris/tactile</li>
-                  <li class="fragment"><i class="fas fa-mobile-alt icon success"></i> <strong>Responsive</strong> : Mobile, tablette, desktop</li>
-                  <li class="fragment"><i class="fas fa-eye icon success"></i> <strong>Mode présentation</strong> : Speaker notes (touche S)</li>
-                  <li class="fragment"><i class="fas fa-th icon success"></i> <strong>Vue d'ensemble</strong> : Aperçu (Esc)</li>
-                </ul>
-              </div>
-              <div>
-                <ul class="smaller">
-                  <li class="fragment"><i class="fas fa-link icon success"></i> <strong>Partage facile</strong> : URL unique</li>
-                  <li class="fragment"><i class="fas fa-magic icon success"></i> <strong>Animations CSS</strong> : Personnalisables</li>
-                  <li class="fragment"><i class="fas fa-file-pdf icon success"></i> <strong>Export PDF</strong> : ?print-pdf</li>
-                  <li class="fragment"><i class="fas fa-bolt icon success"></i> <strong>Pas de compilation</strong> : Ouverture directe</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-        <!-- /makeEval -->
-          <section>
-            <h2><i class="fas fa-clipboard-check icon"></i> /makeEval</h2>
-            <p class="subtitle">Sujet d'évaluation à partir de vos ressources</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Usage :</strong></p>
-              <pre><code class="language-bash">/makeEval ./Sequence-Vecteurs/ --duree 55 --qcm 4</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-info-circle icon"></i> <strong>Principe :</strong> analyse le cours et les exercices de la séquence, repère les compétences travaillées, puis sélectionne et adapte des exercices pour un sujet équilibré</p>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-plus-circle icon"></i> <strong>Commandes voisines :</strong> <code>/bareme</code> (barème par actions d'élèves), <code>/makePythonEval</code> (évaluation courte après des carnets Jupyter)</p>
-            </div>
-          </section>
-        </section>
-
-      <!-- SECTION : COMMANDES DE MODIFICATION -->
       <section>
-        <section>
-          <h2><i class="fas fa-edit icon warning"></i> Commandes de Modification</h2>
-          <p class="smaller fragment">3 commandes pour adapter et optimiser vos documents existants</p>
+        <h2>Anatomie d'une commande</h2>
+        <div class="duo2">
+          <pre class="code"><code><span class="cm">---</span>
+<span class="kw">description:</span> Recherche approfondie de ressources mathématiques pédagogiques
+<span class="cm">---</span>
 
-          <div class="grid-2">
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/adaptTex</code></strong><br>Adaptation conceptuelle vers bfcours</p>
+<span class="ti"># Recherche de ressources mathématiques</span>
+
+Cette commande effectue une recherche structurée de ressources sur les sites de référence français.
+
+<span class="ti">## Argument requis</span>
+
+<span class="ar">$ARGUMENTS</span> = le sujet de recherche
+(ex. : «&nbsp;exercices Pythagore 4e&nbsp;»)
+
+<span class="ti">## Protocole de recherche</span>
+1. Identifier le niveau scolaire…</code></pre>
+          <div class="notes-code">
+            <div class="note">
+              <div class="titre"><i class="fas fa-tag"></i> L'en-tête</div>
+              Entre les deux lignes <code>---</code>. La <code>description</code> s'affiche dans le menu quand vous tapez <code>/</code>.
             </div>
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/modifyTex</code></strong><br>Modifications sur mesure</p>
+            <div class="note">
+              <div class="titre"><i class="fas fa-list-ol"></i> Les consignes</div>
+              Du français ordinaire : ce que Claude doit faire, dans l'ordre.
             </div>
-            <div class="box fragment" style="font-size: 0.85em;" colspan="2">
-              <p><strong><code>/formatTexBetter</code></strong><br>Optimisation d'espace et mise en page</p>
-            </div>
-          </div>
-
-          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque commande</p>
-        </section>
-
-        <!-- /adaptTex -->
-          <section>
-            <h2><i class="fas fa-exchange-alt icon"></i> /adaptTex</h2>
-            <p class="subtitle">Adaptation conceptuelle de documents LaTeX vers bfcours</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Usage :</strong></p>
-              <pre><code class="language-bash">/adaptTex &lt;chemin_fichier_source&gt; [--output &lt;chemin_sortie&gt;] [--backup]</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-brain icon"></i> <strong>Approche conceptuelle :</strong> Mappe les environnements selon leur rôle pédagogique, pas leur nom syntaxique</p>
-            </div>
-
-            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
-          </section>
-
-          <section>
-            <h3>Workflow /adaptTex</h3>
-
-            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.8em;">
-              <div class="step-number">1</div>
-              <div>Lecture du document source</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.8em;">
-              <div class="step-number">2</div>
-              <div>Initialisation projet avec tex-document-creator</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.8em;">
-              <div class="step-number">3</div>
-              <div>Adaptation conceptuelle avec bfcours-latex</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.8em;">
-              <div class="step-number">4</div>
-              <div>Compilation et correction des erreurs</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.8em;">
-              <div class="step-number">5</div>
-              <div>Vérification visuelle du PDF (skill latex-visual-review)</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.8em;">
-              <div class="step-number">6</div>
-              <div>Itération jusqu'à résultat parfait</div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Exemple /adaptTex</h3>
-
-            <div class="example-box" style="font-size: 0.8em;">
-              <p><strong>Principe de mapping :</strong></p>
-              <ul class="smaller">
-                <li class="fragment"><code>\begin{definition}</code>, <code>\begin{def}</code>, <code>\begin{defi}</code> → <code>\begin{Definition}</code></li>
-                <li class="fragment"><code>\begin{exercise}</code>, <code>\begin{exo}</code>, <code>\begin{exer1}</code> → <code>\begin{EXO}</code></li>
-                <li class="fragment">Listes énumérées → <code>\begin{tcbenumerate}</code></li>
-                <li class="fragment">Listes à puces → <code>\begin{MultiColonnes}{2}</code></li>
-              </ul>
-            </div>
-
-            <div class="warning-box fragment" style="font-size: 0.8em; margin-top: 1em;">
-              <p><i class="fas fa-exclamation-triangle icon"></i> <strong>Règle fondamentale :</strong> Tous les exercices doivent avoir une correction (implémentée automatiquement si absente)</p>
-            </div>
-          </section>
-
-          <section>
-            <h3>Ce qui sera produit</h3>
-
-            <div class="box" style="font-size: 0.8em;">
-              <p><strong>Document adapté bfcours :</strong></p>
-              <ul class="smaller">
-                <li class="fragment"><i class="fas fa-check icon success"></i> Environnements bfcours cohérents</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> Exercices avec corrections complètes</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> Mise en page optimisée (MultiColonnes)</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> Compilation réussie</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> PDF vérifié visuellement</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> Sauvegarde du fichier original</li>
-              </ul>
-            </div>
-          </section>
-
-        <!-- /modifyTex -->
-          <section>
-            <h2><i class="fas fa-pen icon"></i> /modifyTex</h2>
-            <p class="subtitle">Modifier un document LaTeX existant</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Usage :</strong></p>
-              <pre><code class="language-bash">/modifyTex &lt;description_modifications&gt;</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-cog icon"></i> <strong>Sur mesure :</strong> Applique vos modifications précises en respectant les conventions bfcours</p>
-            </div>
-
-            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
-          </section>
-
-          <section>
-            <h3>Workflow /modifyTex</h3>
-
-            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
-              <div class="step-number">1</div>
-              <div>Lecture du document à modifier</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
-              <div class="step-number">2</div>
-              <div>Application modifications (skill bfcours-latex)</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
-              <div class="step-number">3</div>
-              <div>Gestion des imports/annexes</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.9em;">
-              <div class="step-number">4</div>
-              <div>Compilation avec tex-compiling-skill</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.9em;">
-              <div class="step-number">5</div>
-              <div>Correction erreurs si nécessaire</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.9em;">
-              <div class="step-number">6</div>
-              <div>Validation utilisateur</div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Exemple /modifyTex</h3>
-
-            <div class="example-box" style="font-size: 0.8em; margin-bottom: 1em;">
-              <p><strong>Exemple de demande :</strong></p>
-              <p style="font-style: italic;">"Ajoute un exercice sur le théorème de Pythagore après la section 2, avec 3 questions de difficulté croissante"</p>
-            </div>
-
-            <div class="fragment">
-              <p class="success" style="font-size: 0.85em; margin-bottom: 0.5em;"><i class="fas fa-arrow-right icon"></i> L'agent va :</p>
-              <ul class="smaller">
-                <li>Localiser la section 2</li>
-                <li>Créer un environnement <code>\begin{EXO}</code></li>
-                <li>Rédiger 3 questions progressives</li>
-                <li>Ajouter les corrections correspondantes</li>
-                <li>Compiler et vérifier</li>
-              </ul>
-            </div>
-          </section>
-
-          <section>
-            <h3>Ce qui sera produit</h3>
-
-            <div class="box" style="font-size: 0.8em;">
-              <p><strong>Document modifié :</strong></p>
-              <ul class="smaller">
-                <li class="fragment"><i class="fas fa-check icon success"></i> Modifications appliquées précisément</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> Conventions bfcours respectées</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> Compilation réussie</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> Imports gérés automatiquement</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> Validation interactive avec vous</li>
-              </ul>
-            </div>
-          </section>
-
-        <!-- /formatTexBetter -->
-          <section>
-            <h2><i class="fas fa-compress icon"></i> /formatTexBetter</h2>
-            <p class="subtitle">Optimisation d'espace et présentation compacte</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Usage :</strong></p>
-              <pre><code class="language-bash">/formatTexBetter &lt;chemin_document&gt;</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-magic icon"></i> <strong>Optimisation :</strong> Maximise l'utilisation de l'espace sur chaque page sans changer le contenu</p>
-            </div>
-
-            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
-          </section>
-
-          <section>
-            <h3>Workflow /formatTexBetter</h3>
-
-            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.8em;">
-              <div class="step-number">1</div>
-              <div>Lecture du document source</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.8em;">
-              <div class="step-number">2</div>
-              <div>Pages du PDF converties en images (skill latex-visual-review)</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.8em;">
-              <div class="step-number">3</div>
-              <div>Todolist d'optimisations par page</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.8em;">
-              <div class="step-number">4</div>
-              <div>Modification code avec bfcours-latex</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.8em;">
-              <div class="step-number">5</div>
-              <div>Double compilation (tcbraster nécessite 2 passes)</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.8em;">
-              <div class="step-number">6</div>
-              <div>Itération jusqu'à optimum</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="7" style="font-size: 0.8em;">
-              <div class="step-number">7</div>
-              <div>Nettoyage fichiers intermédiaires</div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Exemple /formatTexBetter</h3>
-
-            <div class="example-box" style="font-size: 0.75em; margin-bottom: 0.8em;">
-              <p><strong>Avant optimisation :</strong></p>
-              <ul class="smaller">
-                <li>Liste verticale de 8 items → prend 50% de la page</li>
-                <li>3 exercices sur 3 pages → beaucoup d'espace vide</li>
-                <li>Énoncé long avec beaucoup de paragraphes</li>
-              </ul>
-            </div>
-
-            <div class="example-box fragment" style="font-size: 0.75em;">
-              <p><strong>Après optimisation :</strong></p>
-              <ul class="smaller">
-                <li><code>\begin{MultiColonnes}{2}</code> → liste sur 2 colonnes, économie 25%</li>
-                <li><code>\begin{tcbraster}</code> → 2 exercices par page, économie 1 page</li>
-                <li>Paragraphes réorganisés en colonnes avec espacement optimal</li>
-              </ul>
-              <p class="success">→ Document passe de 5 pages à 3 pages, lisibilité conservée</p>
-            </div>
-          </section>
-
-          <section>
-            <h3>Ce qui sera produit</h3>
-
-            <div class="box" style="font-size: 0.8em;">
-              <p><strong>Document optimisé :</strong></p>
-              <ul class="smaller">
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Gain d'espace</strong> : 20-40% de pages en moins</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Lisibilité</strong> : Conservée voire améliorée</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>MultiColonnes</strong> : Listes et contenus compacts</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>tcbraster</strong> : Exercices en grille</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Compilation</strong> : Réussie et stable</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Propre</strong> : Fichiers temporaires nettoyés</li>
-              </ul>
-            </div>
-          </section>
-        </section>
-
-      <!-- SECTION : GESTION DES CONNAISSANCES -->
-      <section>
-        <section>
-          <h2><i class="fas fa-database icon"></i> Commandes de Gestion des Connaissances</h2>
-          <p class="smaller fragment">2 commandes pour charger les connaissances techniques</p>
-
-          <div class="grid-2">
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/loadTexKnowledge</code></strong><br>Connaissances LaTeX bfcours</p>
-            </div>
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/loadSkillKnowledge</code></strong><br>Documentation création de skills</p>
+            <div class="note ar">
+              <div class="titre"><i class="fas fa-keyboard"></i> <code>$ARGUMENTS</code></div>
+              Remplacé par ce que vous tapez après le nom :<br>
+              <code>/searchMathSource</code> exercices Pythagore 4e
             </div>
           </div>
-
-          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir chaque commande</p>
-        </section>
-
-        <!-- /loadTexKnowledge -->
-          <section>
-            <h2><i class="fas fa-book icon"></i> /loadTexKnowledge</h2>
-            <p class="subtitle">Chargement des connaissances LaTeX bfcours</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Usage :</strong></p>
-              <pre><code class="language-bash">/loadTexKnowledge [--usecase &lt;type&gt;]</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-brain icon"></i> <strong>Objectif :</strong> Charger la documentation essentielle bfcours avant manipulation de code LaTeX</p>
-            </div>
-
-            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
-          </section>
-
-          <section>
-            <h3>Workflow /loadTexKnowledge</h3>
-
-            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
-              <div class="step-number">1</div>
-              <div>Lecture de main-latex-knowledge.md</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
-              <div class="step-number">2</div>
-              <div>Si --usecase spécifié : lecture des exemples correspondants</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
-              <div class="step-number">3</div>
-              <div>Connaissances chargées en mémoire</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.9em;">
-              <div class="step-number">4</div>
-              <div>Prêt à manipuler du code LaTeX</div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Exemples /loadTexKnowledge</h3>
-
-            <div class="example-box" style="font-size: 0.8em; margin-bottom: 0.8em;">
-              <p><strong>Chargement basique :</strong></p>
-              <pre><code class="language-bash">/loadTexKnowledge</code></pre>
-              <p class="success">→ Connaissances essentielles bfcours chargées</p>
-            </div>
-
-            <div class="example-box fragment" style="font-size: 0.8em; margin-bottom: 0.8em;">
-              <p><strong>Cours complexe :</strong></p>
-              <pre><code class="language-bash">/loadTexKnowledge --usecase cours-complexe</code></pre>
-              <p class="success">→ + Lecture Cours_second_degre/enonce.tex</p>
-            </div>
-
-            <div class="example-box fragment" style="font-size: 0.8em;">
-              <p><strong>Fiche d'exercices :</strong></p>
-              <pre><code class="language-bash">/loadTexKnowledge --usecase exercices</code></pre>
-              <p class="success">→ + Lecture Exos_Partie_2_second_degre/enonce.tex + macros</p>
-            </div>
-          </section>
-
-          <section>
-            <h3>Ce qui sera produit</h3>
-
-            <div class="box" style="font-size: 0.8em;">
-              <p><strong>Connaissances chargées :</strong></p>
-              <ul class="smaller">
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Environnements bfcours</strong> : Definition, Theoreme, EXO, etc.</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Mise en page</strong> : MultiColonnes, tcbraster, espacement</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Bonnes pratiques</strong> : Structure, organisation, macros</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Exemples réels</strong> : Code produit en production (si --usecase)</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Prêt à produire</strong> : Code LaTeX de qualité professionnelle</li>
-              </ul>
-            </div>
-          </section>
-
-        <!-- /loadSkillKnowledge -->
-          <section>
-            <h2><i class="fas fa-puzzle-piece icon"></i> /loadSkillKnowledge</h2>
-            <p class="subtitle">Documentation création de skills</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Usage :</strong></p>
-              <pre><code class="language-bash">/loadSkillKnowledge</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><i class="fas fa-graduation-cap icon"></i> <strong>Formation :</strong> Se documenter sur la création de skills Claude Code</p>
-            </div>
-
-            <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Workflow détaillé</p>
-          </section>
-
-          <section>
-            <h3>Workflow /loadSkillKnowledge</h3>
-
-            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.9em;">
-              <div class="step-number">1</div>
-              <div>Lecture documentation officielle Claude Code</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.9em;">
-              <div class="step-number">2</div>
-              <div>Analyse des bonnes pratiques</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.9em;">
-              <div class="step-number">3</div>
-              <div>Suggestions de 2 usages des skills</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.9em;">
-              <div class="step-number">4</div>
-              <div>Attente de vos instructions</div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Exemple /loadSkillKnowledge</h3>
-
-            <div class="example-box" style="font-size: 0.8em;">
-              <p><strong>Commande :</strong></p>
-              <pre><code class="language-bash">/loadSkillKnowledge</code></pre>
-            </div>
-
-            <div class="fragment" style="margin-top: 1em;">
-              <p style="font-size: 0.85em; margin-bottom: 0.5em;"><strong>Réponse attendue :</strong></p>
-              <div class="box" style="font-size: 0.75em;">
-                <p>J'ai lu la documentation officielle Claude Code sur les skills.</p>
-                <p style="margin-top: 0.5em;"><strong>Suggestions d'usage :</strong></p>
-                <ul class="smaller">
-                  <li>1. Créer un skill pour automatiser la génération de QCM à partir d'un cours</li>
-                  <li>2. Créer un skill pour vérifier la cohérence d'une séquence pédagogique</li>
-                </ul>
-                <p class="success" style="margin-top: 0.5em;">Je suis prêt. Quelles sont vos instructions ?</p>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Ce qui sera produit</h3>
-
-            <div class="box" style="font-size: 0.8em;">
-              <p><strong>Connaissances acquises :</strong></p>
-              <ul class="smaller">
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Structure skills</strong> : SKILL.md, knowledge/, scripts/</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Bonnes pratiques</strong> : Documentation, exemples, tests</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Patterns</strong> : Workflow, gestion d'erreurs, résultats</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Suggestions</strong> : 2 idées d'utilisation concrètes</li>
-                <li class="fragment"><i class="fas fa-check icon success"></i> <strong>Prêt</strong> : À créer vos propres skills</li>
-              </ul>
-            </div>
-          </section>
-        </section>
-
-      <!-- SECTION : ORCHESTRATION -->
-      <section>
-        <section>
-          <h2><i class="fas fa-project-diagram icon"></i> Commande d'orchestration</h2>
-
-          <div class="command-card fragment">
-            <div class="command-title"><i class="fas fa-magic icon"></i> /do</div>
-            <div class="command-desc">Point d'entrée unique : vous décrivez le besoin, la commande organise le travail</div>
-          </div>
-
-          <p class="nav-hint fragment"><i class="fas fa-arrow-down icon"></i> Appuyez sur ↓ pour voir en détail</p>
-        </section>
-
-        <!-- /do -->
-          <section>
-            <h2><i class="fas fa-magic icon"></i> /do</h2>
-            <p class="subtitle">Méta-commande d'orchestration</p>
-
-            <div class="example-box" style="font-size: 0.85em;">
-              <p><strong>Exemple :</strong></p>
-              <pre><code class="language-bash">/do prépare la séquence sur les vecteurs en seconde : cours, fiche d'exercices et évaluation</code></pre>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.8em;">
-              <div class="step-number">1</div>
-              <div>Analyse la demande, même formulée vaguement</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.8em;">
-              <div class="step-number">2</div>
-              <div>Découpe en sous-tâches et choisit l'outil adapté (LaTeX ou HTML, par exemple)</div>
-            </div>
-
-            <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.8em;">
-              <div class="step-number">3</div>
-              <div>Confie les sous-tâches aux agents meta-low, meta-mid ou meta-high selon leur difficulté</div>
-            </div>
-          </section>
-
-          <section>
-            <h3>Et <code>/compact</code> ?</h3>
-
-            <div class="box" style="font-size: 0.85em;">
-              <p><i class="fas fa-info-circle icon"></i> <code>/compact</code> n'est pas une commande du setup : c'est une commande intégrée à Claude Code. Elle <strong>résume la conversation</strong> pour libérer de la place dans le contexte. Elle ne touche à aucun fichier.</p>
-            </div>
-
-            <div class="example-box fragment" style="font-size: 0.8em;">
-              <p>Autres commandes intégrées utiles : <code>/help</code>, <code>/clear</code>, <code>/model</code>, <code>/init</code>. Raccourci <strong>Maj+Tab</strong> : mode plan (Claude propose un plan avant d'agir).</p>
-            </div>
-          </section>
-        </section>
-
-      <!-- SECTION : RECHERCHE -->
-      <section>
-        <section>
-          <h2><i class="fas fa-search icon"></i> Commandes de recherche</h2>
-
-          <div class="grid-2">
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/searchMathSource</code></strong><br>Ressources pédagogiques sur les sites de référence français</p>
-            </div>
-            <div class="box fragment" style="font-size: 0.85em;">
-              <p><strong><code>/search-report</code></strong><br>Recherche web approfondie et rapport HTML structuré</p>
-            </div>
-          </div>
-
-          <div class="example-box fragment" style="font-size: 0.8em; margin-top: 1em;">
-            <pre><code class="language-bash">/searchMathSource activité introduction fonctions seconde</code></pre>
-            <p class="success">→ Liste de ressources sourcées, classées par type</p>
-          </div>
-        </section>
+        </div>
+        <p class="small muted" style="margin-top:0.6em;">Extrait d'une commande de ma configuration : fichier <code>searchMathSource.md</code>.</p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- SECTION : AUTRES COMMANDES -->
+      <!-- 3.1 Les réglages possibles -->
       <section>
-        <h2><i class="fas fa-th-list icon"></i> Les autres commandes fournies</h2>
-
-        <div class="grid-2" style="font-size: 0.75em;">
-          <div class="box fragment">
-            <p><strong><code>/animate</code></strong> : animation mathématique interactive</p>
-            <p><strong><code>/optiLatex</code></strong> : document LaTeX guidé pour débutant</p>
-            <p><strong><code>/notebook-audit</code></strong> : relecture pédagogique de carnets Jupyter</p>
-          </div>
-          <div class="box fragment">
-            <p><strong><code>/moodleise</code></strong> : séquence vers cours Moodle (.mbz)</p>
-            <p><strong><code>/createGameMap</code></strong> : parcours gamifié H5P</p>
-            <p><strong><code>/continueBO</code></strong> : poursuite de l'extraction des programmes</p>
+        <div class="fil-detail"><span class="etiq c1">Anatomie d'une commande</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Les réglages possibles</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:34%;">Dans l'en-tête ou le texte</th><th>Effet</th></tr>
+            <tr><td><code>description:</code></td><td>Ce que fait la commande et quand l'utiliser. Claude s'en sert aussi pour décider de la charger seul.</td></tr>
+            <tr><td><code>argument-hint:</code></td><td>Aide affichée pendant la saisie, par exemple <code>[fichier]</code>.</td></tr>
+            <tr><td><code>disable-model-invocation: true</code></td><td>Claude ne la charge jamais seul : il faut taper <code>/nom</code>.</td></tr>
+            <tr><td><code>allowed-tools:</code></td><td>Outils que Claude peut utiliser sans vous demander la permission pendant la commande.</td></tr>
+            <tr><td><code>$ARGUMENTS</code></td><td>Tout ce que vous tapez après le nom de la commande.</td></tr>
+            <tr><td><code>$0</code>, <code>$1</code>…</td><td>Le premier mot, le deuxième mot… (la numérotation commence à 0).</td></tr>
+          </table>
+          <div class="astuce">
+            <i class="fas fa-folder-tree"></i> <strong>Ranger ses commandes :</strong> un sous-dossier ajoute un préfixe. <code>.claude/commands/outillage/recherche/searchMathSource.md</code> devient <code>/outillage:recherche:searchMathSource</code>. Dans le menu, tapez <code>/</code> puis quelques lettres du nom : la liste se filtre.
           </div>
         </div>
-
-        <p class="nav-hint fragment"><i class="fas fa-terminal icon"></i> Tapez <code>/</code> dans Claude Code pour la liste complète, skills compris</p>
+      </section>
       </section>
 
-      <!-- COMMENT UTILISER UNE COMMANDE -->
+      <!-- 4. Les commandes intégrées -->
       <section>
-        <h2>Comment utiliser une commande</h2>
-
-        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.85em;">
-          <div class="step-number">1</div>
-          <div>Ouvrir Claude Code dans votre projet</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.85em;">
-          <div class="step-number">2</div>
-          <div>Taper <code>/</code> pour voir la liste des commandes</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.85em;">
-          <div class="step-number">3</div>
-          <div>Sélectionner la commande ou taper son nom</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.85em;">
-          <div class="step-number">4</div>
-          <div>Appuyer sur <code>Tab</code> pour autocomplétion</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.85em;">
-          <div class="step-number">5</div>
-          <div>Ajouter les paramètres nécessaires</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.85em;">
-          <div class="step-number">6</div>
-          <div>Appuyer sur Entrée</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="7" style="font-size: 0.85em;">
-          <div class="step-number">7</div>
-          <div>L'agent prend le relais automatiquement ✓</div>
+        <h2>Les commandes déjà fournies</h2>
+        <p class="small" style="margin:0 0 0.5em 0;">Claude Code en contient beaucoup. Tapez <code>/</code> pour voir la liste. Voici les plus utiles.</p>
+        <div class="tab-integrees">
+          <table class="tab-detail">
+            <tr><td><code>/clear</code></td><td>Repartir d'une conversation vide, pour une nouvelle tâche.</td></tr>
+            <tr><td><code>/compact</code></td><td>Résumer la conversation pour libérer de la place, sans tout perdre.</td></tr>
+            <tr><td><code>/context</code></td><td>Voir la place occupée dans la mémoire de travail de Claude.</td></tr>
+            <tr><td><code>/resume</code></td><td>Reprendre une conversation précédente.</td></tr>
+            <tr><td><code>/rewind</code></td><td>Revenir en arrière : conversation, fichiers, ou les deux.</td></tr>
+            <tr><td><code>/model</code></td><td>Changer de modèle (plus rapide ou plus réfléchi).</td></tr>
+            <tr><td><code>/skills</code></td><td>Lister les skills installés.</td></tr>
+            <tr><td><code>/plugin</code></td><td>Installer ou gérer des extensions.</td></tr>
+            <tr><td><code>/usage</code></td><td>Voir sa consommation et les limites de son abonnement.</td></tr>
+          </table>
         </div>
       </section>
 
-      <!-- AUTOCOMPLÉTION ET RACCOURCIS -->
+      <!-- 5. Pourquoi je préfère les skills -->
       <section>
-        <h2><i class="fas fa-keyboard icon"></i> Autocomplétion et Raccourcis</h2>
-
-        <div class="grid-2">
-          <div>
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-check icon success"></i> <strong>Tab - Autocomplétion</strong></p>
-              <p class="smaller">Complète automatiquement le nom de la commande</p>
-              <pre style="font-size: 0.7em; margin-top: 0.5em;"><code>/crea<u>Tab</u> → /createTex</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-check icon success"></i> <strong>/ - Liste complète</strong></p>
-              <p class="smaller">Affiche toutes les commandes disponibles</p>
-              <pre style="font-size: 0.7em; margin-top: 0.5em;"><code>/ → Menu des commandes et skills</code></pre>
-            </div>
-          </div>
-
-          <div>
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-check icon success"></i> <strong>Flèches - Navigation</strong></p>
-              <p class="smaller">Naviguez dans le menu des commandes</p>
-              <pre style="font-size: 0.7em; margin-top: 0.5em;"><code><u>↑↓</u> → Parcourir les options</code></pre>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-check icon success"></i> <strong>Entrée - Exécution</strong></p>
-              <p class="smaller">Lance l'agent correspondant</p>
-              <pre style="font-size: 0.7em; margin-top: 0.5em;"><code>/createTex ... <u>Entrée</u> → Début</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <div class="example-box fragment" style="font-size: 0.75em; margin-top: 1em;">
-          <p><strong>Exemple complet :</strong></p>
-          <pre><code>/cre<u>Tab</u> → /createTex<u>Espace</u>cours sur les dérivées<u>Entrée</u></code></pre>
-          <p class="success">→ Création automatique d'un cours LaTeX en quelques secondes</p>
-        </div>
-      </section>
-
-      <!-- CONSEILS PRATIQUES -->
-      <section>
-        <h2><i class="fas fa-lightbulb icon"></i> Conseils pratiques</h2>
-
-        <div class="grid-2">
-          <div>
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-check icon success"></i> <strong>Soyez précis</strong></p>
-              <p class="smaller">Plus votre description est précise, meilleur sera le résultat. Inclure : niveau, durée, nombre de slides</p>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-robot icon success"></i> <strong>Laissez l'agent travailler</strong></p>
-              <p class="smaller">Les commandes sont autonomes. Ne pas interrompre ou re-demander avant fin</p>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-sync icon success"></i> <strong>Itérez si nécessaire</strong></p>
-              <p class="smaller">Vous pouvez relancer avec des ajustements : couleurs, contenu, mise en page</p>
-            </div>
-          </div>
-
-          <div>
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-save icon success"></i> <strong>Vérifiez les résultats</strong></p>
-              <p class="smaller">Toujours tester : ouvrir le PDF, vérifier la compilation, naviguer la présentation</p>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-database icon success"></i> <strong>Chargez les connaissances</strong></p>
-              <p class="smaller">Lancez /loadTexKnowledge avant modifications LaTeX complexes</p>
-            </div>
-
-            <div class="box fragment" style="font-size: 0.8em;">
-              <p><i class="fas fa-history icon success"></i> <strong>Allégez la conversation</strong></p>
-              <p class="smaller">/compact pour résumer une longue session, /clear pour repartir de zéro sur un nouveau sujet</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="example-box fragment" style="font-size: 0.75em; margin-top: 1em;">
-          <p><strong>Conseil bonus :</strong> Demande large ou floue ? Commencez par /do, il choisira les bonnes commandes pour vous</p>
-        </div>
-      </section>
-
-      <!-- EXEMPLE COMPLET DE WORKFLOW -->
-      <section>
-        <h2>Exemple complet de workflow</h2>
-
-        <div class="example-box" style="font-size: 0.75em;">
-          <p><strong>Scénario :</strong> Créer une séquence complète sur les vecteurs en 2nde (cours, exercices, présentation, évaluation, Moodle)</p>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="1" style="font-size: 0.65em; margin-top: 1em;">
-          <div class="step-number">1</div>
-          <div><code>/createTex cours complet sur les vecteurs en seconde</code> → Cours LaTeX créé ✓</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="2" style="font-size: 0.65em;">
-          <div class="step-number">2</div>
-          <div><code>/modifyTex ajouter 5 exercices progressifs avec corrections</code> → Exercices ajoutés ✓</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="3" style="font-size: 0.65em;">
-          <div class="step-number">3</div>
-          <div><code>/formatTexBetter ./Sequence-Vecteurs/Cours_vecteurs.tex</code> → Optimisation ✓</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="4" style="font-size: 0.65em;">
-          <div class="step-number">4</div>
-          <div><code>/createReveals --sujet "Vecteurs 2nde" --duree 50 --style lycée</code> → Présentation HTML ✓</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="5" style="font-size: 0.65em;">
-          <div class="step-number">5</div>
-          <div><code>/makeEval ./Sequence-Vecteurs/ --duree 55</code> → Sujet d'évaluation ✓</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="6" style="font-size: 0.65em;">
-          <div class="step-number">6</div>
-          <div><code>/bareme ./Sequence-Vecteurs/Evaluation/Evaluation.tex</code> → Barème et grille de correction ✓</div>
-        </div>
-
-        <div class="workflow-step fragment" data-fragment-index="7" style="font-size: 0.65em;">
-          <div class="step-number">7</div>
-          <div><code>/moodleise ./Sequence-Vecteurs/</code> → Cours Moodle importable ✓</div>
-        </div>
-
-        <p class="success fragment" style="margin-top: 1em; font-size: 0.85em;"><i class="fas fa-check icon"></i> Relisez chaque production avant de passer à la suivante : vous restez l'auteur de la séquence.</p>
-      </section>
-
-      <!-- CONCLUSION -->
-      <section>
-        <h2>En résumé</h2>
-
-        <div class="grid-2">
-          <div>
-            <h3 class="fragment success" data-fragment-index="1"><i class="fas fa-check-circle icon"></i> Une vingtaine de commandes fournies</h3>
-            <ul class="smaller fragment" data-fragment-index="1">
-              <li>Créer : createTex, createReveals, createHtml, makeEval…</li>
-              <li>Modifier : adaptTex, modifyTex, formatTexBetter</li>
-              <li>Connaissances : loadTexKnowledge, loadSkillKnowledge</li>
-              <li>Orchestrer : do</li>
-              <li>Chercher : searchMathSource, search-report</li>
-              <li>Plus : Moodle, H5P, animations, carnets Jupyter</li>
+        <h2>Pourquoi je préfère les skills</h2>
+        <div class="face">
+          <div class="carte-type skill">
+            <h3><i class="fas fa-folder-open"></i> Le skill, au quotidien</h3>
+            <ul>
+              <li>Pas de nom à retenir : vous demandez en français, Claude trouve le bon skill.</li>
+              <li>Il range ses outils avec lui : scripts, modèles, exemples.</li>
+              <li>Il se partage d'un bloc : on copie le dossier.</li>
             </ul>
           </div>
-
-          <div>
-            <h3 class="fragment" data-fragment-index="2"><i class="fas fa-rocket icon"></i> Bénéfices</h3>
-            <ul class="smaller fragment" data-fragment-index="2">
-              <li>Gain de temps considérable</li>
-              <li>Mise en forme soignée et homogène</li>
-              <li>Autonomie des agents</li>
-              <li>Résultats prêts à l'emploi</li>
-              <li>Auto-amélioration continue</li>
+          <div class="carte-type">
+            <h3><i class="fas fa-file-alt"></i> La commande, en raccourci</h3>
+            <ul>
+              <li>Pour une consigne que vous répétez souvent et que vous voulez lancer vous-même.</li>
+              <li>Exemple : «&nbsp;relis ce fichier et liste les coquilles&nbsp;».</li>
+              <li>Si elle grossit et demande des outils, transformez-la en skill.</li>
             </ul>
           </div>
         </div>
-
-        <div class="example-box fragment" data-fragment-index="3" style="margin-top: 1em;">
-          <p><strong><i class="fas fa-magic icon"></i> Avec les slash commands, créez des ressources pédagogiques de qualité en quelques minutes !</strong></p>
-        </div>
+        <p class="small muted" style="margin-top:0.8em;">J'ai écrit beaucoup de commandes au début. Aujourd'hui, je n'en lance presque plus : mes skills font le travail.</p>
       </section>
 
-      <!-- RESSOURCES -->
+      <!-- 6. En créer une -->
       <section>
-        <h2><i class="fas fa-book icon"></i> Ressources</h2>
-
-        <div class="grid-2">
-          <div class="box" style="font-size: 0.8em;">
-            <h3 class="smaller">Documentation locale</h3>
-            <ul class="smaller">
-              <li><code>.claude/commands/</code> - Toutes les commandes</li>
-              <li><code>.claude/skills/</code> - Skills disponibles</li>
-              <li><code>.claude/agents/</code> - Agents spécialisés</li>
-              <li><code>CLAUDE.md</code> - Instructions projet</li>
-            </ul>
+        <h2>En créer une : demandez-la à Claude</h2>
+        <div class="demande" style="font-size:0.75em;">
+          <span class="qui"><i class="fas fa-user"></i> Vous demandez</span>
+          «&nbsp;Crée-moi une commande <code>/coquilles</code> qui relit le fichier que je lui donne et liste les fautes d'orthographe, sans rien modifier.&nbsp;»
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="resultat" style="font-size:0.7em;"><i class="fas fa-check"></i> Claude écrit <code style="background:rgba(255,255,255,0.25);color:#fff;">.claude/commands/coquilles.md</code> ; vous la lancez avec <code style="background:rgba(255,255,255,0.25);color:#fff;">/coquilles</code></div>
+        <div class="install" style="margin-top:1em;">
+          <div class="carte" style="border-color:var(--c-skill);">
+            <div class="titre"><i class="fas fa-chalkboard-teacher"></i> Plutôt un skill ?</div>
+            Même demande, avec le mot «&nbsp;skill&nbsp;». Le tutoriel vous guide.<br>
+            <a class="bouton" href="https://bfcours.dev/claude-code/tutorials/creer-un-skill" target="_top">Créer un skill</a>
           </div>
-
-          <div class="box fragment" style="font-size: 0.8em;">
-            <h3 class="smaller">Aide en ligne</h3>
-            <ul class="smaller">
-              <li><i class="fas fa-globe icon"></i> <a href="https://code.claude.com/docs/fr/skills" target="_blank">code.claude.com/docs/fr/skills</a></li>
-              <li><i class="fas fa-book icon"></i> <a href="https://code.claude.com/docs/fr" target="_blank">Documentation Claude Code FR</a></li>
-              <li><i class="fas fa-bookmark icon"></i> Documentation bfcours</li>
-              <li><i class="fas fa-terminal icon"></i> Taper <code>/</code> pour la liste</li>
-            </ul>
+          <div class="carte">
+            <div class="titre"><i class="fas fa-book"></i> La documentation officielle</div>
+            <a class="lien" href="https://code.claude.com/docs/fr/skills" target="_blank">Les skills (et les commandes)</a><br>
+            <a class="lien" href="https://code.claude.com/docs/fr/commands" target="_blank">La liste des commandes intégrées</a>
           </div>
         </div>
-
-        <p class="fragment success" style="margin-top: 1.5em; font-size: 1.2em;">
-          <i class="fas fa-question-circle icon"></i> <strong>Prêt à utiliser les commandes ?</strong>
-        </p>
-
-        <p class="fragment" style="margin-top: 1em; font-size: 0.9em;">
-          Tapez simplement <code>/</code> dans Claude Code pour commencer !
-        </p>
       </section>
 
     </div>
@@ -1377,61 +452,24 @@
   <!-- Reveal.js Scripts -->
   <script src="assets/reveal/reveal.js"></script>
   <script src="assets/reveal/plugin/notes/notes.js"></script>
-  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
-  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
 
   <script>
     Reveal.initialize({
-      // Navigation 2D
-      navigationMode: 'grid',
+      // Navigation à deux dimensions : → fil principal, ↓ détails
+      navigationMode: 'default',
       controls: true,
-      controlsLayout: 'edges',
-      controlsBackArrows: 'visible',
+      controlsLayout: 'bottom-right',
       controlsTutorial: true,
+      controlsBackArrows: 'faded',
       progress: true,
       slideNumber: 'h.v',
-      hash: true,
-
-      // Transitions
-      transition: 'slide',
-      transitionSpeed: 'default',
-
-      // Behavior
-      embedded: false,
       overview: true,
+      hash: true,
+      transition: 'slide',
       center: true,
-      touch: true,
-      loop: false,
-      rtl: false,
-      shuffle: false,
-
-      // Fragments
       fragments: true,
       fragmentInURL: true,
-
-      // Keyboard
-      keyboard: true,
-      keyboardCondition: null,
-
-      // Plugins
-      plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
-    });
-
-    // Forcer le retour au top (niveau 0) lors de la navigation horizontale
-    let lastHorizontalIndex = 0;
-
-    Reveal.on('slidechanged', event => {
-      const currentH = event.indexh;
-      const currentV = event.indexv;
-
-      // Si on change de slide horizontale et qu'on n'est pas au top
-      if (currentH !== lastHorizontalIndex && currentV !== 0) {
-        // Revenir au top de la nouvelle slide
-        Reveal.slide(currentH, 0);
-      }
-
-      // Mettre à jour l'index horizontal
-      lastHorizontalIndex = currentH;
+      plugins: [ RevealNotes ]
     });
   </script>
 </body>

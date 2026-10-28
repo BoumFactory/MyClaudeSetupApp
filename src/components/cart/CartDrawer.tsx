@@ -57,7 +57,22 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
     setIsDownloading(true)
     try {
       const packageItems = items.filter(i => i.id.startsWith('package-'))
-      const regularItems = items.filter(i => !i.id.startsWith('package-'))
+      // Fichiers statiques lourds (applications de bureau) : lien direct, sans API
+      const directItems = items.filter(i => !i.id.startsWith('package-') && i.direct === true)
+      const regularItems = items.filter(i => !i.id.startsWith('package-') && i.direct !== true)
+
+      for (const [index, item] of directItems.entries()) {
+        if (index > 0) await new Promise(resolve => setTimeout(resolve, 500))
+        const a = document.createElement('a')
+        a.href = `/download/${item.path.replace(/^\/+/, '').replace(/^download\//, '')}`
+        a.download = ''
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+      }
+      if (directItems.length > 0 && (packageItems.length > 0 || regularItems.length > 0)) {
+        await new Promise(resolve => setTimeout(resolve, 500))
+      }
 
       // Download packages: deduplicate then download each non-redundant one
       if (packageItems.length > 0) {

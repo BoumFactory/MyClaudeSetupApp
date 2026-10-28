@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activité-Timer — mode d'emploi</title>
+<style>
+  body { font-family: system-ui, "Segoe UI", sans-serif; background: #f7f8fb; color: #1f2933; margin: 0; line-height: 1.55; }
+  main { max-width: 760px; margin: 2rem auto; background: #fff; padding: 2rem 2.4rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  h1 { margin-top: 0; color: #be185d; }
+  h2 { color: #9d174d; font-size: 1.15rem; margin-top: 1.8rem; }
+  .meta { color: #52606d; font-size: .95rem; }
+  .bouton { display: inline-block; background: #be185d; color: #fff; padding: .7rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+  .note { background: #fff7ed; border-left: 4px solid #f59e0b; padding: .8rem 1rem; border-radius: 6px; }
+  li { margin: .3rem 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Activité-Timer</h1>
+  <p>Un minuteur qui se superpose au document projeté pour rythmer recherche et correction.</p>
+  <p class="meta">Version 0.1.0 — exécutable Windows 10 ou 11, 64 bits — 5,4 Mo — à lancer directement, sans installation.</p>
+  <p><a class="bouton" href="https://bfcours.dev/download/logiciels-enseignant/applications-bureau/activite-timer/activite-timer-0.1.0.zip">Télécharger le zip</a></p>
+
+  <h2>Ce qu'il fait en classe</h2>
+  <ul>
+    <li>Une fenêtre flottante, toujours au premier plan, se pose sur votre PDF ou votre page projetée sans lui voler le focus.</li>
+    <li>Deux phases explicites, résolution puis correction, avec changement de couleur et jauge.</li>
+    <li>Préréglages de 1, 3, 5, 10, 15 et 20 minutes ; au clavier : Espace pour démarrer ou mettre en pause, touches 1 à 6 pour les préréglages, C pour passer à la correction, R pour remettre à zéro.</li>
+    <li>Une fenêtre de contrôle pour l'enseignant, avec un aperçu de ce que voit la classe.</li>
+  </ul>
+
+  <h2>Premier lancement</h2>
+  <ol>
+    <li>Décompressez le zip dans un dossier où vous avez le droit d'écrire (par exemple vos Documents) : il crée un dossier <code>Activite-Timer</code> avec <code>activite-timer.exe</code> et ce mode d'emploi.</li>
+    <li>Double-cliquez sur <code>activite-timer.exe</code>. Aucun droit d'administrateur n'est nécessaire.</li>
+    <li>Choisissez une durée et lancez.</li>
+  </ol>
+
+  <h2>Vos données</h2>
+  <p>Vos réglages restent sur votre poste, dans les dossiers <code>config</code> et <code>assets</code> créés à côté de l'exécutable. Aucune connexion n'est utilisée.</p>
+
+  <h2>L'avertissement de Windows</h2>
+  <ul>
+    <li>L'exécutable n'est pas signé : Windows SmartScreen affiche « Windows a protégé votre ordinateur ». Cliquez sur <strong>Informations complémentaires</strong>, puis <strong>Exécuter quand même</strong>.</li>
+    <li>Sous Windows 11, si le contrôle intelligent des applications (Smart App Control) est activé, une application non signée est bloquée, sans possibilité de l'autoriser au cas par cas.</li>
+    <li>L'application a besoin du composant WebView2 de Microsoft, présent sur Windows 10 et 11 à jour. S'il manque, la fenêtre ne s'ouvre pas : installez le « runtime WebView2 » depuis le site de Microsoft.</li>
+  </ul>
+</main>
+</body>
+</html>

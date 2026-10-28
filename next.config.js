@@ -53,6 +53,15 @@ const nextConfig = {
         ],
       },
       {
+        // Scripts d'installation de la config (irm ... | iex, curl ... | bash) :
+        // texte UTF-8 (sinon PowerShell 5.1 decode en Latin-1) et cache court.
+        source: '/installer/:file*',
+        headers: [
+          { key: 'Content-Type', value: 'text/plain; charset=utf-8' },
+          { key: 'Cache-Control', value: 'public, max-age=300' },
+        ],
+      },
+      {
         source: '/(.*)',
         headers: [
           {

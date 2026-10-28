@@ -190,7 +190,23 @@ H5P_LIBS_DIR = Path(__file__).parent.parent / 'h5p_libs'
 # la variante se contente de remapper les numeros et de bundler l autre jeu.
 LOGIQUIZ_LIBS_DIR = Path(__file__).parent.parent / 'h5p_libs_logiquiz'
 
+# Les deux jeux ne sont pas toujours livres avec le skill : ils se telechargent
+# a la demande avec scripts/installer_libs.py (versions figees, sha256 verifie).
+# Choix : le generateur NE telecharge PAS lui-meme. Il s arrete avec la commande
+# a lancer, pour ne jamais declencher a l insu de l utilisateur un telechargement
+# de plusieurs Mo (poste hors ligne, proxy, erreur SSL) au milieu d une generation.
+INSTALLER_LIBS = Path(__file__).parent / 'installer_libs.py'
+
+
+def _consigne_installation(libs_dir: Path) -> str:
+    option = ' --jeu logiquiz' if libs_dir.name == LOGIQUIZ_LIBS_DIR.name else ''
+    return (f"Bibliothèques H5P absentes : {libs_dir}\n"
+            f'  Lance d\'abord : python "{INSTALLER_LIBS}"{option}\n'
+            "  (sans elles, le .h5p serait « thin » et ne s'importerait dans aucun lecteur).")
+
 # Fallback si h5p_libs/ est absent : versions alignees sur les Moodle FR standards.
+# Il ne sert qu a --validate : sans le dossier, generate_h5p() s arrete (pas de
+# .h5p thin) et renvoie vers scripts/installer_libs.py.
 _LIB_VERSIONS_FALLBACK = {
     'H5P.BranchingScenario':  (1, 8),
     'H5P.CoursePresentation': (1, 25),
@@ -2315,11 +2331,7 @@ def _bundle_libraries(zf: zipfile.ZipFile, h5p_json: Dict, libs_dir: Path = None
     transitives. Retourne le nombre de fichiers copies."""
     libs_dir = libs_dir or H5P_LIBS_DIR
     if not libs_dir.is_dir():
-        raise FileNotFoundError(
-            f"Dossier des librairies introuvable : {libs_dir}\n"
-            "Sans bundling, le .h5p est 'thin' et ne s'importe dans AUCUN player.\n"
-            "Restaurer le dossier depuis un .h5p fat de reference."
-        )
+        raise FileNotFoundError(_consigne_installation(libs_dir))
     n = 0
     for path in sorted(libs_dir.rglob('*')):
         if path.is_file():
@@ -2338,6 +2350,11 @@ def generate_h5p(data: Dict, output_path: str, libs_dir: Path = None,
     defaut : h5p_libs/ et LIB_VERSIONS, c est-a-dire la cible Moodle.
     base_dir : dossier des chemins d'images locales (celui du preplan)."""
     libs_dir = libs_dir or H5P_LIBS_DIR
+    # Arret AVANT toute construction : sans ce dossier, LIB_VERSIONS retombe sur
+    # _LIB_VERSIONS_FALLBACK et le garde-fou ci-dessous listerait chaque lib comme
+    # « manquante », message trompeur. Aucun .h5p thin n est jamais ecrit.
+    if not libs_dir.is_dir():
+        raise FileNotFoundError(_consigne_installation(libs_dir))
     content_json, h5p_json = build_branching_scenario(data, base_dir=base_dir)
     assets = dict(_ASSETS.files)
 
@@ -2444,6 +2461,10 @@ def main():
         slug = re.sub(r'[^a-z0-9]+', '_', data.get('title', 'scenario').lower()).strip('_')
         args.output = str(input_path.parent / f"branching_{slug}.h5p")
 
+    if not H5P_LIBS_DIR.is_dir():
+        print(f"ERREUR : {_consigne_installation(H5P_LIBS_DIR)}")
+        return 2
+
     h5p_path, report = generate_h5p(data, args.output, base_dir=input_path.parent)
 
     print(f"\nOK H5P genere : {h5p_path}")
@@ -2494,7 +2515,8 @@ def main():
         print(f"  Socle du lecteur : {', '.join(subs['supported_libraries'])}")
         print("  Routage, indices et scores identiques à la version Moodle.")
     elif subs.get('skipped'):
-        print(f"  i Pas de seconde archive : {subs['skipped']}")
+        print(f"  ! Pas de seconde archive : {subs['skipped']}")
+        print(f'    Pour la produire : python "{INSTALLER_LIBS}" --jeu logiquiz')
     else:
         print("OK Parcours déjà entièrement compatible avec un lecteur léger "
               "(Logiquiz) : pas de seconde archive.")

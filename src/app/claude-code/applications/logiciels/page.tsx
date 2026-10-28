@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { AddToCartButton } from "@/components/cart/AddToCartButton"
 import type { Metadata } from "next"
 import type { CartItem } from "@/types/cart-theme"
+import { APPLICATIONS_BUREAU } from "@/data/applications-bureau"
+import { ApplicationBureauCard, AvertissementExecutableNonSigne } from "@/components/logiciels/ApplicationBureauCard"
 
 export const metadata: Metadata = {
   title: "Logiciels Enseignants",
@@ -146,6 +148,24 @@ export default function LogicielsEnseignantsPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Applications de bureau Windows (Tauri) — données dans src/data/applications-bureau.ts */}
+      <section className="space-y-6">
+        <div>
+          <h2 className="text-2xl font-bold">Applications de bureau pour la classe</h2>
+          <p className="text-muted-foreground mt-1">
+            Petites applications Windows : un zip à décompresser, puis un fichier .exe à lancer directement,
+            sans installation. Elles sont livrées vides : aucune donnée n&apos;est fournie, vous créez les
+            vôtres, qui restent à côté de l&apos;exécutable et ne quittent jamais votre ordinateur.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+          {APPLICATIONS_BUREAU.map((app) => (
+            <ApplicationBureauCard key={app.slug} app={app} />
+          ))}
+        </div>
+        <AvertissementExecutableNonSigne />
       </section>
 
       {/* CTA GitHub */}

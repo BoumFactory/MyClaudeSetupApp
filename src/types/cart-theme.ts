@@ -38,6 +38,13 @@ export interface CartItem {
   path: string
   /** Description optionnelle */
   description?: string
+  /**
+   * Fichier statique téléchargé tel quel (`/download/<path>`), sans passer par
+   * l'API : pour les fichiers lourds, la réponse d'une fonction Vercel étant
+   * limitée à quelques Mo. Absent sur les items enregistrés par les anciennes
+   * versions du site (localStorage) : ils restent des items réguliers.
+   */
+  direct?: boolean
 }
 
 export type CartThemeMap = Record<AnimationId, CartTheme>

@@ -129,13 +129,14 @@ export default async function DownloadsPage() {
               <p className="text-xs text-muted-foreground mb-3">
                 Pour utiliser les fichiers de <strong>Claude-Code-Setup</strong>, consultez le tutoriel de configuration
                 qui explique comment les installer dans votre répertoire de travail.
+                Le plus simple : une seule commande installe toute la configuration, pour Claude Code ou Codex.
               </p>
               <Link
-                href="/claude-code/tutorials/claude-code-config"
+                href="/claude-code/tutorials/claude-code-config#une-commande"
                 className="inline-flex items-center gap-2 text-sm text-nebula-400 hover:text-nebula-300 transition-colors"
               >
                 <ArrowRight className="w-4 h-4" />
-                Voir le tutoriel de configuration
+                Tout installer en une commande
               </Link>
             </div>
           </div>

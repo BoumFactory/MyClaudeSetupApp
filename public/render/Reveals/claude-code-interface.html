@@ -3,689 +3,785 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Formation IA & Enseignement">
-  <meta name="description" content="Claude Code - Interface et utilisation de Claude Code et agents CLI similaires">
-  <title>Claude Code - Interface et Utilisation</title>
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Claude Code dans l'application de bureau Claude et dans le terminal : installer, ouvrir un dossier, parler à l'agent, valider ses modifications, reprendre une session, gérer le contexte">
+  <title>Claude Code : l'application et le terminal</title>
 
   <!-- Reveal.js Core -->
   <link rel="stylesheet" href="assets/reveal/reset.css">
   <link rel="stylesheet" href="assets/reveal/reveal.css">
   <link rel="stylesheet" href="assets/reveal/theme/white.css">
-  <link rel="stylesheet" href="assets/reveal/plugin/highlight/zenburn.css">
 
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Theme personnalisé académique -->
   <style>
     :root {
-      --main-color: #2c3e50;
-      --secondary-color: #34495e;
-      --accent-color: #3498db;
-      --text-color: #2c3e50;
-      --border-color: #bdc3c7;
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --violet-color: #8e44ad;
+      --text-color: #34495e;
+      --muted-color: #7f8c8d;
       --bg-light: #ecf0f1;
-      --claude-purple: #8b5cf6;
-      --claude-dark: #5b21b6;
-      --code-bg: #f4f4f4;
+      /* Une couleur par visage */
+      --c-app: #8e44ad;
+      --c-term: #2c3e50;
     }
 
     .reveal {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 24px;
+      font-size: 28px;
       color: var(--text-color);
     }
-
     .reveal h1, .reveal h2, .reveal h3 {
-      color: var(--main-color);
+      color: var(--primary-color);
       font-weight: 600;
       text-transform: none;
+      letter-spacing: normal;
     }
-
-    .reveal h1 {
-      font-size: 2.4em;
-      margin-bottom: 0.5em;
-      color: var(--claude-dark);
-    }
-
+    .reveal h1 { font-size: 1.6em; margin-bottom: 0.3em; line-height: 1.15; }
     .reveal h2 {
-      font-size: 1.8em;
-      margin-bottom: 0.8em;
-      border-bottom: 2px solid var(--accent-color);
-      padding-bottom: 0.3em;
+      font-size: 1.35em;
+      margin-bottom: 0.55em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.25em;
     }
-
-    .reveal h3 {
-      font-size: 1.4em;
-      color: var(--secondary-color);
-      margin-bottom: 0.5em;
-    }
-
-    .reveal ul, .reveal ol {
-      margin-top: 0.8em;
-      margin-left: 0;
-    }
-
-    .reveal li {
-      margin-bottom: 0.6em;
-      line-height: 1.6;
-    }
-
-    /* Code blocks */
-    .code-block {
-      background-color: var(--code-bg);
-      border-left: 3px solid var(--claude-purple);
-      padding: 1em;
-      margin: 1em 0;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85em;
+    .reveal p, .reveal li { line-height: 1.4; }
+    .reveal ul { margin: 0.3em 0 0 1em; }
+    .reveal li { margin: 0.25em 0; }
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.05em 0.35em;
       border-radius: 4px;
-      text-align: left;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9em;
+      color: var(--accent-color);
+    }
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.66em; }
+    .reveal .muted { color: var(--muted-color); }
+    .reveal kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color); font-size: 0.9em; white-space: nowrap;
     }
 
-    .code-inline {
-      background-color: var(--code-bg);
-      padding: 0.2em 0.5em;
-      border-radius: 3px;
-      font-family: 'Courier New', monospace;
-      color: var(--claude-dark);
-      font-size: 0.95em;
+    /* Bulle de demande et résultat */
+    .reveal .demande {
+      display: inline-block; background: #fff; border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px; padding: 0.55em 1em; font-size: 0.8em; text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18); max-width: 88%;
     }
-
-    /* Info boxes */
-    .box-info {
-      border: 1px solid var(--border-color);
-      padding: 1em;
-      margin: 1em 0;
-      background-color: #f0f8ff;
-      border-radius: 4px;
+    .reveal .demande .qui { display: block; font-size: 0.7em; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.2em; }
+    .reveal .resultat {
+      display: inline-flex; align-items: center; gap: 0.5em;
+      background: linear-gradient(135deg, #27ae60, #1e8449); color: #fff;
+      padding: 0.45em 1.1em; border-radius: 12px; font-weight: 700; font-size: 0.75em;
+      box-shadow: 0 6px 18px rgba(39,174,96,0.3);
     }
-
-    .box-tip {
-      border-left: 4px solid var(--accent-color);
-      padding: 1em;
-      margin: 1em 0;
-      background-color: #e8f4f8;
-      border-radius: 4px;
-    }
-
-    .box-command {
-      border: 1px solid var(--claude-purple);
-      padding: 1em;
-      margin: 1em 0;
-      background-color: #f5f0ff;
-      border-radius: 4px;
-      font-family: 'Courier New', monospace;
-    }
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.1em; margin: 0.25em 0; }
 
     /* Deux colonnes */
-    .two-columns {
-      display: flex;
-      gap: 2em;
-      margin: 1em 0;
+    .reveal .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8em; text-align: left; align-items: start; }
+    .reveal .duo.large-gauche { grid-template-columns: 1.35fr 1fr; }
+    .reveal .bloc {
+      background: #f8f9fa; border-radius: 10px; padding: 0.5em 0.8em;
+      border-left: 5px solid var(--secondary-color); font-size: 0.76em;
     }
+    .reveal .bloc h3 { font-size: 1.05em; margin: 0 0 0.25em 0; }
+    .reveal .bloc ul { margin-left: 1em; }
+    .reveal .bloc.v-app { border-color: var(--c-app); }
+    .reveal .bloc.v-app h3 { color: var(--c-app); }
+    .reveal .bloc.v-term { border-color: var(--c-term); }
+    .reveal .bloc.gain { background: #e8f5e9; border-color: var(--success-color); }
+    .reveal .bloc.gain h3 { color: var(--success-color); }
+    .reveal .bandeau {
+      margin-top: 0.7em; background: #eaf4fb; border-left: 5px solid var(--secondary-color);
+      border-radius: 8px; padding: 0.4em 0.8em; font-size: 0.7em; text-align: left;
+    }
+    .reveal .etiquette {
+      display: inline-block; font-size: 0.75em; font-weight: 700; color: #fff; border-radius: 10px;
+      padding: 0.05em 0.6em; margin-bottom: 0.3em;
+    }
+    .reveal .etiquette.app { background: var(--c-app); }
+    .reveal .etiquette.term { background: var(--c-term); }
 
-    .two-columns > div {
-      flex: 1;
+    /* ===== Maquette de l'application de bureau ===== */
+    .reveal .app {
+      background: #fff; border: 1px solid #d5dbe0; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.10); font-size: 0.58em; text-align: left; line-height: 1.35;
     }
+    .reveal .app-barre {
+      background: #f1f3f5; border-bottom: 1px solid #e1e5e9; padding: 0.3em 0.7em;
+      display: flex; align-items: center; gap: 0.35em; color: var(--muted-color); font-weight: 600;
+    }
+    .reveal .app-barre .pt { width: 0.7em; height: 0.7em; border-radius: 50%; display: inline-block; background: #d0d5da; }
+    .reveal .app-barre .droite { margin-left: auto; font-weight: 400; }
+    .reveal .app-corps { display: grid; grid-template-columns: 9em 1fr; min-height: 8em; }
+    .reveal .app-cote { background: #faf9fb; border-right: 1px solid #ebe7ef; padding: 0.5em; }
+    .reveal .onglets { display: flex; gap: 0.2em; margin-bottom: 0.6em; }
+    .reveal .onglets span { padding: 0.1em 0.45em; border-radius: 6px; color: var(--muted-color); }
+    .reveal .onglets span.on { background: var(--c-app); color: #fff; font-weight: 700; }
+    .reveal .nouvelle { border: 1px dashed #c9bfd4; border-radius: 6px; padding: 0.15em 0.4em; color: var(--c-app); font-weight: 600; margin-bottom: 0.4em; }
+    .reveal .session { padding: 0.2em 0.4em; border-radius: 6px; color: var(--text-color); margin-bottom: 0.15em; }
+    .reveal .session.on { background: #efe6f5; font-weight: 600; }
+    .reveal .session .quand { display: block; font-size: 0.85em; color: var(--muted-color); font-weight: 400; }
+    .reveal .app-main { padding: 0.55em 0.7em; display: flex; flex-direction: column; gap: 0.4em; }
+    .reveal .msg { border-radius: 10px; padding: 0.35em 0.6em; max-width: 92%; }
+    .reveal .msg.prof { background: #eaf4fb; align-self: flex-end; }
+    .reveal .msg.agent { background: #f6f6f8; }
+    .reveal .outil { font-size: 0.9em; color: var(--muted-color); }
+    .reveal .outil i { color: var(--c-app); margin-right: 0.3em; }
+    .reveal .saisie { border: 1px solid #cfd6dc; border-radius: 10px; padding: 0.35em 0.6em; color: #9aa5ad; margin-top: auto; }
+    .reveal .rangee { display: flex; gap: 0.35em; flex-wrap: wrap; align-items: center; }
+    .reveal .rangee .ctrl { border: 1px solid #dfe3e7; border-radius: 6px; padding: 0.1em 0.45em; background: #fafbfc; color: var(--primary-color); white-space: nowrap; }
+    .reveal .rangee .ctrl.mis { border-color: var(--c-app); box-shadow: 0 0 0 2px rgba(142,68,173,0.25); }
+    .reveal .rangee .pousse { margin-left: auto; }
+    .reveal .compteur { font-family: Consolas, monospace; font-weight: 700; }
+    .reveal .compteur .plus { color: var(--success-color); }
+    .reveal .compteur .moins { color: var(--accent-color); }
 
-    /* Comparaison tableau */
-    .comparison-table {
-      margin: 1em 0;
-    }
+    /* Maquette agrandie de la rangée sous la zone de saisie */
+    .reveal .app.zoom { font-size: 0.66em; }
 
-    .reveal table {
-      border-collapse: collapse;
-      margin: 1em auto;
-      font-size: 0.9em;
+    /* ===== Maquette du terminal ===== */
+    .reveal .term {
+      background: #f7f8fa; border: 1px solid #d5dbe0; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08); text-align: left; font-size: 0.58em;
     }
+    .reveal .term-barre { background: #e9edf1; padding: 0.3em 0.7em; color: var(--muted-color); font-weight: 600; }
+    .reveal .term pre {
+      margin: 0; padding: 0.55em 0.8em; box-shadow: none; width: auto; font-size: 1em;
+      font-family: Consolas, 'Courier New', monospace; line-height: 1.45; white-space: pre-wrap; color: var(--primary-color);
+    }
+    .reveal .term .ps { color: #2980b9; font-weight: 700; }
+    .reveal .term .cm { color: #95a5a6; }
+    .reveal .term .ok { color: var(--success-color); font-weight: 700; }
+    .reveal .term .ko { color: var(--accent-color); font-weight: 700; }
+    .reveal .term .vi { color: var(--c-app); font-weight: 700; }
+    .reveal .term .sel { background: #e3eefb; display: inline-block; padding: 0 0.3em; border-radius: 3px; }
 
-    .reveal th {
-      background-color: var(--claude-purple);
-      color: white;
-      border: 1px solid var(--border-color);
-      padding: 0.8em 1em;
-      font-weight: bold;
-      text-align: left;
-    }
+    /* Maquette d'une modification (diff) */
+    .reveal .diff { font-family: Consolas, monospace; font-size: 0.95em; border: 1px solid #e1e5e9; border-radius: 6px; overflow: hidden; }
+    .reveal .diff div { padding: 0.05em 0.5em; white-space: pre-wrap; }
+    .reveal .diff .t { background: #f1f3f5; color: var(--muted-color); font-family: 'Segoe UI', sans-serif; font-weight: 600; }
+    .reveal .diff .a { background: #e6f6ea; color: #1e7e43; }
+    .reveal .diff .s { background: #fdeceb; color: #b03a2e; }
+    .reveal .boutons { display: flex; gap: 0.4em; margin-top: 0.35em; }
+    .reveal .boutons span { border-radius: 6px; padding: 0.1em 0.7em; font-weight: 700; }
+    .reveal .boutons .oui { background: var(--success-color); color: #fff; }
+    .reveal .boutons .non { background: #fff; border: 1px solid #cfd6dc; color: var(--primary-color); }
 
-    .reveal td {
-      border: 1px solid var(--border-color);
-      padding: 0.8em 1em;
-    }
+    /* Jauge de contexte */
+    .reveal .jauge { height: 0.9em; background: var(--bg-light); border-radius: 0.45em; overflow: hidden; margin: 0.3em 0; }
+    .reveal .jauge span { display: block; height: 100%; background: linear-gradient(90deg, #3498db, #f39c12); border-radius: 0.45em; }
 
-    /* Badges et labels */
-    .command-badge {
-      display: inline-block;
-      background-color: var(--claude-purple);
-      color: white;
-      padding: 0.3em 0.8em;
-      border-radius: 20px;
-      font-size: 0.85em;
-      margin: 0.2em;
-      font-family: 'Courier New', monospace;
-      font-weight: bold;
-    }
+    /* Cartes de commandes */
+    .reveal .commandes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; }
+    .reveal .commande { background: #f8f9fa; border-radius: 10px; padding: 0.5em 0.6em; text-align: left; border-top: 4px solid var(--secondary-color); font-size: 0.72em; }
+    .reveal .commande code { font-size: 1.15em; font-weight: 700; }
+    .reveal .commande p { margin: 0.25em 0 0 0; }
 
-    .icon-box {
-      text-align: center;
-      margin: 1em 0;
-    }
+    /* Cartes de liens */
+    .reveal .liens { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55em; text-align: left; font-size: 0.64em; }
+    .reveal .liens .carte { background: #f8f9fa; border-radius: 10px; padding: 0.5em 0.8em; border-left: 5px solid var(--secondary-color); }
+    .reveal .liens .carte .titre { font-weight: 700; color: var(--primary-color); }
+    .reveal a.lien { color: var(--secondary-color); text-decoration: underline; }
 
-    .icon-box i {
-      font-size: 2.5em;
-      color: var(--claude-purple);
-      margin-bottom: 0.5em;
-    }
+    /* ===== Navigation à deux dimensions ===== */
+    .reveal .indice-details { text-align: right; margin-top: 0.7em; font-size: 0.5em; color: var(--muted-color); }
+    .reveal .indice-details span { display: inline-block; border: 1px solid #d0d7de; border-radius: 14px; padding: 0.15em 0.8em; background: #fff; }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 2em; }
 
-    /* Links */
-    .reveal a {
-      color: var(--accent-color);
-      text-decoration: underline;
+    .reveal .fil-detail {
+      display: flex; align-items: center; gap: 0.6em; justify-content: flex-start;
+      font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600;
     }
-
-    .reveal a:hover {
-      color: var(--claude-purple);
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; background: var(--secondary-color); }
+    .reveal h3.titre-detail {
+      font-size: 1.05em; text-align: left; margin: 0 0 0.45em 0; color: var(--secondary-color);
+      padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light);
     }
-
-    /* Footer sobre */
-    .reveal .slide-number {
-      background-color: transparent;
-      color: var(--secondary-color);
-      font-size: 0.8em;
+    .reveal .detail { font-size: 0.6em; text-align: left; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .detail .bloc { font-size: 1em; }
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.3em 0.5em; text-align: left; vertical-align: top;
     }
-
-    /* Fragments subtiles */
-    .reveal .fragment {
-      transition: opacity 0.3s ease;
-    }
-
-    /* Mise en évidence */
-    .highlight {
-      background-color: #ffffcc;
-      padding: 0.1em 0.3em;
-      border-radius: 3px;
-      font-weight: bold;
-    }
-
-    .emphasis {
-      font-style: italic;
-      color: var(--accent-color);
-    }
-
-    /* Section titles */
-    .section-title {
-      font-size: 2em;
-      color: var(--claude-dark);
-      text-align: center;
-      margin: auto 0;
-      font-weight: bold;
-    }
-
-    /* Navigation hints */
-    .nav-hint {
-      text-align: center;
-      font-size: 0.8em;
-      color: var(--secondary-color);
-      margin-top: 2em;
-      font-style: italic;
-    }
-
-    .nav-hint i {
-      margin-right: 0.5em;
-    }
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal .pastille { display: inline-block; border-radius: 10px; padding: 0 0.55em; font-weight: 700; color: #fff; font-size: 0.9em; white-space: nowrap; }
+    .reveal .p-ok { background: var(--success-color); }
+    .reveal .p-mid { background: var(--warning-color); }
+    .reveal .p-ko { background: var(--accent-color); }
+    .reveal .p-bleu { background: var(--secondary-color); }
+    .reveal .p-violet { background: var(--violet-color); }
+    .reveal .astuce { background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px; padding: 0.4em 0.8em; margin-top: 0.5em; }
+    .reveal .arbo { font-family: Consolas, monospace; background: #f8f9fa; border-radius: 8px; padding: 0.5em 0.8em; line-height: 1.55; border-left: 4px solid var(--secondary-color); }
+    .reveal .arbo .cm { color: #95a5a6; font-family: 'Segoe UI', sans-serif; }
   </style>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- 1. SLIDE DE TITRE -->
+      <!-- 1. Où l'on veut en venir -->
       <section>
-        <h1>Claude Code</h1>
-        <h3>Interface et Utilisation</h3>
-        <p style="margin-top: 2em;">
-          <strong>Formation IA & Enseignement</strong><br>
-          <em>Agents CLI et automation avec Claude</em><br>
-          <small>2026</small>
+        <h1><i class="fas fa-robot" style="color:#8e44ad;"></i> Claude Code, dans une fenêtre ou dans un terminal</h1>
+        <p class="subtitle">Un même agent, deux façons de lui parler</p>
+        <div style="margin-top:1em;">
+          <div class="demande">
+            <span class="qui"><i class="fas fa-user"></i> Vous demandez</span>
+            «&nbsp;Dans <em>fiche-equations.tex</em>, ajoute une correction détaillée à chaque exercice.&nbsp;»
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="small muted" style="margin-bottom:0.4em;">L'agent lit le fichier, le modifie et vous montre ce qui change</div>
+          <div class="resultat"><i class="fas fa-check-double"></i> Vous relisez, puis vous acceptez ou refusez</div>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
         </p>
       </section>
 
-      <!-- 2. DEUX INTERFACES : Claude Desktop vs Claude Code CLI -->
+      <!-- 2. Deux visages (+ pile) -->
       <section>
-        <h2>Deux interfaces, un même moteur</h2>
-
-        <div class="two-columns">
-          <div>
-            <div class="icon-box">
-              <i class="fas fa-desktop"></i>
-              <h3>Claude Desktop</h3>
-            </div>
+      <section>
+        <h2>Un agent, deux visages</h2>
+        <div class="duo">
+          <div class="bloc v-app">
+            <h3><i class="fas fa-window-maximize"></i> L'application Claude</h3>
             <ul>
-              <li>Interface graphique (GUI)</li>
-              <li>3 onglets intégrés</li>
-              <li>Idéal pour débuter</li>
-              <li>Pas de configuration</li>
-              <li>Multi-plateforme</li>
+              <li>Onglet <strong>Code</strong> de l'application de bureau.</li>
+              <li>On clique, on choisit un dossier.</li>
+              <li>Les modifications s'affichent en couleur.</li>
             </ul>
           </div>
-
-          <div>
-            <div class="icon-box">
-              <i class="fas fa-terminal"></i>
-              <h3>Claude Code CLI</h3>
-            </div>
+          <div class="bloc v-term">
+            <h3><i class="fas fa-terminal"></i> Le terminal</h3>
             <ul>
-              <li>Interface terminal</li>
-              <li>Commandes personnalisées</li>
-              <li>Automation avancée</li>
-              <li>Scripts et workflows</li>
-              <li>Intégration DevOps</li>
+              <li>On tape <code>claude</code> dans un dossier.</li>
+              <li>Tout se fait au clavier.</li>
+              <li>Plus de commandes, et l'automatisation.</li>
             </ul>
           </div>
         </div>
+        <div class="bandeau">
+          <i class="fas fa-link"></i> <strong>C'est le même agent.</strong>
+          Il lit les mêmes fichiers&nbsp;: <code>CLAUDE.md</code>, le dossier <code>.claude/</code> avec vos skills et vos réglages.
+          Ce que vous installez pour l'un sert à l'autre.
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-        <div class="box-info fragment" style="margin-top: 1.5em;">
-          <strong>Point clé :</strong> Mêmes modèles Claude (Opus 5.5, Sonnet 5.5…) dans les deux interfaces.
-          Choisissez selon votre workflow, pas selon la performance.
+      <section>
+        <div class="fil-detail"><span class="etiq">Deux visages</span> Détail 1 / 2</div>
+        <h3 class="titre-detail">Ce qu'ils partagent, ce qui les distingue</h3>
+        <div class="detail">
+          <div class="duo">
+            <div class="bloc gain">
+              <h3>Partagé</h3>
+              <ul>
+                <li><code>CLAUDE.md</code> et <code>CLAUDE.local.md</code> du projet.</li>
+                <li>Les skills et les hooks.</li>
+                <li>Les réglages&nbsp;: <code>~/.claude/settings.json</code>, <code>.claude/settings.json</code>.</li>
+                <li>Les serveurs MCP (<code>~/.claude.json</code>, <code>.mcp.json</code>).</li>
+                <li>Les mêmes modèles.</li>
+              </ul>
+            </div>
+            <div class="bloc">
+              <h3>Propre à chacun</h3>
+              <ul>
+                <li><strong>Application</strong>&nbsp;: pièces jointes (images, PDF), vue des modifications, sessions en onglets, connecteurs et plugins en clics.</li>
+                <li><strong>Terminal</strong>&nbsp;: <kbd>Maj</kbd>+<kbd>Tab</kbd> pour changer de mode, <code style="white-space:nowrap;">claude -p</code> pour les scripts, toutes les commandes à panneau (<code>/permissions</code>…).</li>
+              </ul>
+            </div>
+          </div>
+          <p class="muted" style="margin-top:0.5em;">Source&nbsp;: documentation officielle, page «&nbsp;Desktop&nbsp;», section «&nbsp;Venant de la CLI&nbsp;?&nbsp;».</p>
         </div>
       </section>
 
-      <!-- 3. Claude Desktop - Les 3 onglets -->
       <section>
-        <h2>Claude Desktop - Les 3 onglets</h2>
-
-        <div style="margin: 1.5em 0;">
-          <h3 style="color: var(--claude-purple); font-size: 1.2em; margin-bottom: 0.5em;">
-            <i class="fas fa-message"></i> Chat
-          </h3>
-          <p>Conversation naturelle avec Claude. Partagez texte, code, images. L'interface standard.</p>
-        </div>
-
-        <div style="margin: 1.5em 0;" class="fragment">
-          <h3 style="color: var(--claude-purple); font-size: 1.2em; margin-bottom: 0.5em;">
-            <i class="fas fa-handshake"></i> Cowork (agent de bureau)
-          </h3>
-          <p>Claude mène seul une tâche en plusieurs étapes dans un dossier que vous lui confiez : trier des fichiers, rédiger un document à partir de notes, produire un tableau. Offre payante. Attention : les suppressions sont définitives, sauvegardez le dossier avant.</p>
-        </div>
-
-        <div style="margin: 1.5em 0;" class="fragment">
-          <h3 style="color: var(--claude-purple); font-size: 1.2em; margin-bottom: 0.5em;">
-            <i class="fas fa-code"></i> Code
-          </h3>
-          <p>Claude Code dans une fenêtre : accès direct aux fichiers d'un projet, écriture et exécution de code. Même moteur que Cowork et que la version terminal.</p>
-        </div>
-
-        <div class="box-tip fragment" style="margin-top: 1.5em;">
-          <strong>Conseil :</strong> Commencez par Chat pour explorer, puis explorez Code et Cowork selon vos besoins.
+        <div class="fil-detail"><span class="etiq">Deux visages</span> Détail 2 / 2</div>
+        <h3 class="titre-detail">Passer d'un visage à l'autre</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:38%;">Je veux…</th><th>Je fais…</th></tr>
+            <tr><td>Envoyer ma session du terminal vers l'application</td><td><code>/desktop</code> dans le terminal&nbsp;: la session s'ouvre dans l'application et le terminal se ferme.</td></tr>
+            <tr><td>Ouvrir l'application sur le dossier courant</td><td><code>claude --desktop</code> (ajouter <code>--continue</code> pour la dernière session).</td></tr>
+            <tr><td>Reprendre dans l'application une session commencée au terminal</td><td>Fermer le terminal, puis taper <code>/resume</code> dans l'application et choisir la session.</td></tr>
+            <tr><td>Travailler des deux côtés en même temps</td><td>Possible, même sur le même projet&nbsp;: chacun garde sa propre liste de sessions.</td></tr>
+          </table>
+          <div class="astuce"><i class="fas fa-info-circle"></i> <code>/desktop</code> demande un abonnement Claude, sur macOS ou Windows x64. L'application embarque sa propre copie de Claude Code&nbsp;: mettre à jour l'une ne met pas à jour l'autre.</div>
         </div>
       </section>
+      </section>
 
-      <!-- 4. Claude Code CLI - Installation et lancement -->
+      <!-- 3. Installer (+ pile) -->
       <section>
-        <h2>Claude Code CLI - Installation</h2>
+      <section>
+        <h2>L'installer</h2>
+        <div class="duo">
+          <div class="bloc v-app">
+            <h3><i class="fas fa-download"></i> L'application</h3>
+            <ul>
+              <li>Télécharger l'installateur sur <a class="lien" href="https://claude.ai/download" target="_blank">claude.ai/download</a>.</li>
+              <li>Se connecter avec son compte Claude.</li>
+              <li>Cliquer sur l'onglet <strong>Code</strong>.</li>
+            </ul>
+            <p class="muted" style="margin:0.3em 0 0 0;">Rien d'autre à installer.</p>
+          </div>
+          <div class="bloc v-term">
+            <h3><i class="fas fa-terminal"></i> Le terminal</h3>
+            <ul>
+              <li>Coller une commande dans PowerShell.</li>
+              <li>Ouvrir un nouveau terminal, taper <code>claude</code>.</li>
+              <li>Se connecter dans le navigateur, une seule fois.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bandeau">
+          <i class="fas fa-key"></i> Dans les deux cas, il faut un <strong>abonnement payant</strong>&nbsp;: Pro, Max, Team ou Enterprise.
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-        <h3 style="margin-top: 1em; color: var(--secondary-color);">Prérequis</h3>
-        <ul>
-          <li><strong>Git</strong> (Git for Windows sur Windows)</li>
-          <li><strong>Un abonnement Claude</strong> (Pro, Max, Team ou Enterprise) ou un compte API sur <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a></li>
-          <li>Terminal : bash, zsh, PowerShell ou CMD</li>
-        </ul>
+      <section>
+        <div class="fil-detail"><span class="etiq">L'installer</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Les commandes d'installation du terminal</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:26%;">Système</th><th>Commande</th><th style="width:22%;">Mises à jour</th></tr>
+            <tr><td>Windows, PowerShell</td><td><code>irm https://claude.ai/install.ps1 | iex</code></td><td><span class="pastille p-ok">automatiques</span></td></tr>
+            <tr><td>macOS, Linux, WSL</td><td><code>curl -fsSL https://claude.ai/install.sh | bash</code></td><td><span class="pastille p-ok">automatiques</span></td></tr>
+            <tr><td>Windows, WinGet</td><td><code>winget install Anthropic.ClaudeCode</code></td><td><span class="pastille p-mid">à la main</span></td></tr>
+            <tr><td>macOS, Homebrew</td><td><code>brew install --cask claude-code</code></td><td><span class="pastille p-mid">à la main</span></td></tr>
+          </table>
+          <ul style="margin-top:0.5em;">
+            <li>Vérifier&nbsp;: <code>claude --version</code> affiche un numéro de version.</li>
+            <li>«&nbsp;<code>claude</code> n'est pas reconnu&nbsp;»&nbsp;? Ouvrir un <em>nouveau</em> terminal.</li>
+            <li>Sous Windows, <strong>Git for Windows</strong> est recommandé&nbsp;; sans lui, l'agent utilise PowerShell.</li>
+            <li>Node.js n'est plus nécessaire.</li>
+          </ul>
+          <p class="muted">Application&nbsp;: macOS (Intel et Apple Silicon), Windows x64 et ARM64, Linux en bêta.</p>
+        </div>
+      </section>
+      </section>
 
-        <h3 style="margin-top: 1em; color: var(--secondary-color);">Installation native (recommandée)</h3>
-        <div class="two-columns" style="font-size: 0.9em;">
+      <!-- 4. Ouvrir un dossier (+ pile) -->
+      <section>
+      <section>
+        <h2>Ouvrir un projet, c'est choisir un dossier</h2>
+        <div class="duo large-gauche">
           <div>
-            <p style="margin-bottom:0.3em;"><strong>macOS / Linux</strong></p>
-            <div class="code-block" style="margin-top:0;">
-curl -fsSL https://claude.ai/install.sh | bash</div>
+            <span class="etiquette app">Application</span>
+            <div class="app zoom">
+              <div class="app-main">
+                <div class="saisie">Décrivez la tâche…</div>
+                <div class="rangee">
+                  <span class="ctrl"><i class="fas fa-laptop"></i> Local ▾</span>
+                  <span class="ctrl mis"><i class="fas fa-folder-open"></i> Cours-2nde ▾</span>
+                  <span class="ctrl">Manuel ▾</span>
+                  <span class="ctrl pousse">Modèle ▾</span>
+                </div>
+              </div>
+            </div>
+            <p class="small muted" style="margin:0.3em 0 0 0;">Sous la zone de saisie&nbsp;: «&nbsp;Open folder…&nbsp;», puis le dossier.</p>
           </div>
-          <div class="fragment">
-            <p style="margin-bottom:0.3em;"><strong>Windows (PowerShell)</strong></p>
-            <div class="code-block" style="margin-top:0;">
-irm https://claude.ai/install.ps1 | iex</div>
+          <div>
+            <span class="etiquette term">Terminal</span>
+            <div class="term">
+              <div class="term-barre">PowerShell</div>
+<pre><span class="ps">PS&gt;</span> cd Documents\Cours-2nde
+<span class="ps">PS&gt;</span> claude</pre>
+            </div>
           </div>
         </div>
-
-        <div class="box-tip fragment" style="margin-top: 1em;">
-          <strong>Node.js n'est plus nécessaire.</strong> L'installeur natif est autonome, plus rapide, et se met à jour automatiquement.
-          Autres voies : <span class="code-inline">winget install Anthropic.ClaudeCode</span> (Windows), <span class="code-inline">brew install --cask claude-code</span> (macOS).
+        <div class="bloc gain" style="margin-top:0.7em; text-align:left;">
+          <strong>Ce que vous y gagnez&nbsp;:</strong> l'agent travaille dans ce dossier et lit vos consignes du <code>CLAUDE.md</code>. Un dossier par projet, c'est plus clair pour lui comme pour vous.
         </div>
-
-        <h3 style="margin-top: 1em; color: var(--secondary-color);">Premier lancement</h3>
-        <div class="code-block">
-claude</div>
-
-        <p class="fragment" style="margin-top: 1em; font-size: 0.9em;">
-          <i class="fas fa-info-circle"></i> La première exécution vous connecte à votre compte Anthropic via le navigateur.
-        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- 5. Commandes de base -->
       <section>
-        <h2>Commandes de base</h2>
-
-        <div style="margin: 1.2em 0;">
-          <span class="command-badge">/help</span>
-          <p style="margin: 0.5em 0; font-size: 0.95em;">Affiche la liste de toutes les commandes disponibles.</p>
-        </div>
-
-        <div style="margin: 1.2em 0;" class="fragment">
-          <span class="command-badge">/compact</span>
-          <p style="margin: 0.5em 0; font-size: 0.95em;">Résume la conversation pour réduire l'utilisation du contexte.</p>
-        </div>
-
-        <div style="margin: 1.2em 0;" class="fragment">
-          <span class="command-badge">/clear</span>
-          <p style="margin: 0.5em 0; font-size: 0.95em;">Efface l'historique et démarre une nouvelle conversation.</p>
-        </div>
-
-        <div style="margin: 1.2em 0;" class="fragment">
-          <span class="command-badge">/exit</span>
-          <p style="margin: 0.5em 0; font-size: 0.95em;">Quitte le programme proprement.</p>
-        </div>
-
-        <div class="box-command fragment" style="margin-top: 1.5em; font-size: 0.9em;">
-          <strong>Utilisation :</strong> Tapez la commande dans la conversation (ex: <span class="code-inline">/help</span>)
-          et appuyez sur Entrée.
-        </div>
-
-        <div class="box-tip fragment" style="margin-top: 1em; font-size: 0.85em;">
-          <strong>À connaître aussi :</strong> <span class="code-inline">/model</span> change de modèle ·
-          <span class="highlight">Maj+Tab</span> passe en mode plan (Claude propose avant d'agir) ·
-          <span class="highlight">Échap</span> interrompt Claude ·
-          <span class="code-inline">claude --continue</span> reprend la dernière conversation, <span class="code-inline">claude --resume</span> en choisit une ancienne.
+        <div class="fil-detail"><span class="etiq">Ouvrir un dossier</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Ce que l'agent trouve dans le dossier</h3>
+        <div class="detail">
+          <div class="duo">
+            <div class="arbo">
+Cours-2nde/<br>
+├─ CLAUDE.md <span class="cm">vos consignes, lues à chaque session</span><br>
+├─ .claude/<br>
+│&nbsp;&nbsp;├─ skills/ <span class="cm">savoir-faire du projet</span><br>
+│&nbsp;&nbsp;├─ commands/ <span class="cm">vos commandes /…</span><br>
+│&nbsp;&nbsp;└─ settings.json <span class="cm">permissions, hooks</span><br>
+└─ fiche-equations.tex
+            </div>
+            <div>
+              <ul>
+                <li>Les mêmes dossiers existent dans <code>~/.claude/</code>&nbsp;: ils valent alors pour tous vos projets.</li>
+                <li><code>/init</code> écrit un premier <code>CLAUDE.md</code> à partir du contenu du dossier.</li>
+                <li><code>/memory</code> ouvre les fichiers <code>CLAUDE.md</code> pour les modifier.</li>
+                <li>Dans l'application, l'environnement peut aussi être <strong>Cloud</strong> ou <strong>SSH</strong> (machine distante)&nbsp;: «&nbsp;Local&nbsp;» suffit pour commencer.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
-
-      <!-- 6. Commandes personnalisées -->
-      <section>
-        <h2>Commandes personnalisées</h2>
-
-        <p style="margin-bottom: 1.5em;">
-          Créez vos propres workflows : un fichier <span class="code-inline">.md</span> dans
-          <span class="code-inline">.claude/commands/</span>, ou un skill dans <span class="code-inline">.claude/skills/&lt;nom&gt;/SKILL.md</span>.
-        </p>
-
-        <h3 style="color: var(--secondary-color); margin-bottom: 0.8em;">Exemples fournis dans le setup partagé</h3>
-
-        <div style="margin: 1em 0;">
-          <span class="command-badge">/createTex</span>
-          <p style="margin: 0.5em 0; font-size: 0.9em;">Génère un fichier LaTeX structuré (article, présentation, etc.)</p>
-        </div>
-
-        <div style="margin: 1em 0;" class="fragment">
-          <span class="command-badge">/createReveals</span>
-          <p style="margin: 0.5em 0; font-size: 0.9em;">Crée une présentation reveal.js complète avec plan et slides.</p>
-        </div>
-
-        <h3 style="color: var(--secondary-color); margin: 1.5em 0 0.8em 0;">Autocomplétion</h3>
-        <p style="font-size: 0.95em;">
-          Tapez <span class="highlight">/</span> pour afficher le menu des commandes et skills disponibles,
-          puis <span class="highlight">Tab</span> pour compléter.
-        </p>
-
-        <div class="box-tip fragment" style="margin-top: 1.5em;">
-          <strong>Créez les vôtres :</strong> le fichier <span class="code-inline">.claude/commands/maCommande.md</span>
-          contient simplement le prompt ; il s'appelle ensuite avec <span class="code-inline">/maCommande</span>.
-        </div>
       </section>
 
-      <!-- 7. Le fichier CLAUDE.md - Avant/Après -->
+      <!-- 5. Parler (+ pile) -->
       <section>
-        <h2>Le fichier CLAUDE.md</h2>
-
-        <p style="margin-bottom: 1.5em;">
-          Fichier lu à chaque session : à la racine du projet (ce projet) ou dans <span class="code-inline">~/.claude/CLAUDE.md</span> (tous vos projets).
-          <span class="code-inline">/init</span> en crée un premier jet.
-        </p>
-
-        <h3 style="color: var(--secondary-color); margin-bottom: 0.8em;">Sans CLAUDE.md</h3>
-        <div class="code-block">
-$ claude
-> Qu'est-ce que vous voulez faire ?
-> Je dois créer un fichier LaTeX...
-> [Vous répétez chaque fois le contexte]
+      <section>
+        <h2>Lui parler, en français</h2>
+        <div class="duo large-gauche">
+          <div class="app">
+            <div class="app-barre"><span class="pt"></span><span class="pt"></span><span class="pt"></span>&nbsp;Claude</div>
+            <div class="app-main" style="min-height:11em;">
+              <div class="msg prof">Ajoute une correction détaillée à chaque exercice de <strong>@fiche-equations.tex</strong></div>
+              <div class="outil"><i class="fas fa-file-lines"></i> Lecture de fiche-equations.tex</div>
+              <div class="outil"><i class="fas fa-pen"></i> Modification de fiche-equations.tex</div>
+              <div class="msg agent">J'ai ajouté 6 corrections, une sous chaque exercice. Voulez-vous que je compile&nbsp;?</div>
+              <div class="saisie">Répondre…</div>
+            </div>
+          </div>
+          <div class="bloc gain">
+            <h3>Comme avec un collègue</h3>
+            <ul>
+              <li>Une demande précise, en français.</li>
+              <li><code>@</code> désigne un fichier.</li>
+              <li>Vous voyez ce qu'il lit et ce qu'il modifie.</li>
+              <li>Il part dans la mauvaise direction&nbsp;? Arrêtez-le, corrigez-le.</li>
+            </ul>
+          </div>
         </div>
-
-        <h3 style="color: var(--secondary-color); margin: 1.5em 0 0.8em 0;">Avec CLAUDE.md</h3>
-        <div class="code-block fragment">
-# Mon Workflow IA
-
-Tu es expert en création de documents LaTeX
-et présentations reveal.js.
-
-Commandes disponibles :
-- /createTex : Génère article LaTeX
-- /createReveals : Crée présentation reveal.js
-        </div>
-
-        <p class="fragment" style="margin-top: 1.5em; font-size: 0.95em;">
-          <i class="fas fa-bolt"></i> <strong>Résultat :</strong> Claude comprend immédiatement votre contexte
-          et applique vos consignes sans que vous ayez à les répéter.
-        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- 8. Travailler avec des fichiers -->
       <section>
-        <h2>Travailler avec des fichiers</h2>
-
-        <h3 style="color: var(--secondary-color); margin-bottom: 1em;">Les trois opérations principales</h3>
-
-        <div style="margin: 1.2em 0;">
-          <span style="color: var(--claude-dark); font-weight: bold; font-size: 1.1em;">Lire</span>
-          <p style="margin: 0.3em 0; font-size: 0.95em;">Claude lit vos fichiers et comprend le code/contenu existant.</p>
-          <p style="margin: 0.3em 0; font-size: 0.9em; color: var(--secondary-color);">
-            Tapez <span class="code-inline">@</span> puis le début du nom du fichier (autocomplétion), ou donnez son chemin.
-          </p>
+        <div class="fil-detail"><span class="etiq">Lui parler</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Les gestes utiles</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:30%;">Geste</th><th style="width:35%;">Application</th><th>Terminal</th></tr>
+            <tr><td>Désigner un fichier</td><td><code>@</code> + nom, avec complétion</td><td><code>@</code> + nom, avec complétion</td></tr>
+            <tr><td>Joindre une image, un PDF</td><td>Bouton <strong>+</strong></td><td><span class="muted">—</span></td></tr>
+            <tr><td>Arrêter l'agent</td><td>Bouton d'arrêt</td><td><kbd>Échap</kbd></td></tr>
+            <tr><td>Corriger sans l'arrêter</td><td>Taper la correction, <kbd>Entrée</kbd></td><td>Taper la correction, <kbd>Entrée</kbd> (mise en attente)</td></tr>
+            <tr><td>Voir les commandes et skills</td><td><code>/</code> ou <strong>+</strong> → <strong>Slash commands</strong></td><td><code>/</code>, puis <kbd>Tab</kbd> pour compléter</td></tr>
+            <tr><td>Retrouver un ancien message</td><td><span class="muted">—</span></td><td><kbd>↑</kbd> ou <kbd>Ctrl</kbd>+<kbd>R</kbd></td></tr>
+          </table>
+          <div class="astuce"><i class="fas fa-lightbulb"></i> <strong>Bien demander</strong>&nbsp;: dire le fichier, le niveau, le résultat attendu. Découper une grosse tâche en étapes numérotées.</div>
         </div>
-
-        <div style="margin: 1.2em 0;" class="fragment">
-          <span style="color: var(--claude-dark); font-weight: bold; font-size: 1.1em;">Écrire</span>
-          <p style="margin: 0.3em 0; font-size: 0.95em;">Claude crée de nouveaux fichiers (code, config, docs).</p>
-          <p style="margin: 0.3em 0; font-size: 0.9em; color: var(--secondary-color);">
-            Validez les chemins et permissions avant génération.
-          </p>
-        </div>
-
-        <div style="margin: 1.2em 0;" class="fragment">
-          <span style="color: var(--claude-dark); font-weight: bold; font-size: 1.1em;">Modifier</span>
-          <p style="margin: 0.3em 0; font-size: 0.95em;">Claude met à jour vos fichiers (corrections, améliorations).</p>
-          <p style="margin: 0.3em 0; font-size: 0.9em; color: var(--secondary-color);">
-            Les changements sont intelligents et minimaux (pas de réécriture complète).
-          </p>
-        </div>
-
-        <h3 style="color: var(--secondary-color); margin: 1.5em 0 0.8em 0;">Répertoire de travail</h3>
-        <p style="font-size: 0.95em;">
-          Claude travaille relativement à votre répertoire courant <span class="code-inline">pwd</span>.
-          Toujours utiliser des chemins explicites.
-        </p>
+      </section>
       </section>
 
-      <!-- 9. Gestion de la mémoire -->
+      <!-- 6. Valider les modifications (+ pile) -->
       <section>
-        <h2>La mémoire : gestion du contexte</h2>
+      <section>
+        <h2>Vous gardez la main sur les modifications</h2>
+        <div class="duo">
+          <div>
+            <span class="etiquette app">Application</span>
+            <div class="app" style="padding:0.5em 0.7em;">
+              <div style="margin-bottom:0.3em;"><strong>Modifications</strong> &nbsp;<span class="compteur"><span class="plus">+12</span> <span class="moins">-1</span></span></div>
+              <div class="diff">
+                <div class="t">fiche-equations.tex</div>
+                <div class="s">- \end{EXO}</div>
+                <div class="a">+ \begin{Solution}</div>
+                <div class="a">+ On isole $x$ : $x = 4$.</div>
+              </div>
+              <p class="muted" style="margin:0.3em 0 0 0;">Un clic sur <span class="compteur"><span class="plus">+12</span> <span class="moins">-1</span></span> ouvre la vue détaillée. On peut commenter une ligne.</p>
+            </div>
+          </div>
+          <div>
+            <span class="etiquette term">Terminal</span>
+            <div class="term">
+              <div class="term-barre">claude</div>
+<pre>Modifier fiche-equations.tex ?
+<span class="ko">- \end{EXO}</span>
+<span class="ok">+ \begin{Solution}</span>
 
-        <p style="margin-bottom: 1.5em;">
-          Claude dispose d'une fenêtre de contexte limitée. Quand elle se remplit, Claude Code résume automatiquement la conversation ; vous pouvez aussi le faire vous-même.
-        </p>
-
-        <h3 style="color: var(--secondary-color); margin-bottom: 1em;">Quand utiliser /compact</h3>
-        <ul>
-          <li>Vous avez terminé une phase et en commencez une nouvelle sur le même sujet</li>
-          <li>Les réponses perdent le fil des consignes du début</li>
-          <li>Vous voulez choisir ce que le résumé garde : <span class="code-inline">/compact garde les décisions sur le barème</span></li>
-        </ul>
-
-        <h3 style="color: var(--secondary-color); margin: 1.5em 0 1em 0;">Fonctionnement de /compact</h3>
-        <div class="code-block">
-$ /compact
-[Claude résume la conversation précédente]
-[Le résumé remplace l'historique détaillé]
-[Conversation continue avec mémoire compacte]
+<span class="sel">❯ 1. Oui</span>
+  2. Oui, et ne plus demander…
+  3. Non, et dire quoi faire</pre>
+            </div>
+          </div>
         </div>
+        <div class="bandeau">
+          <i class="fas fa-sliders"></i> Le <strong>mode de permission</strong> règle la liberté de l'agent&nbsp;: tout demander, accepter les modifications de fichiers, ou laisser faire avec des vérifications de sécurité.
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
 
-        <p class="fragment" style="font-size: 0.9em;">
-          Nouveau sujet ? Préférez <span class="code-inline">/clear</span> : une conversation neuve coûte moins qu'un résumé.
-        </p>
-
-        <div class="box-tip fragment" style="margin-top: 1.5em;">
-          <strong>Conseil :</strong> Utilisez <span class="code-inline">/compact</span> régulièrement
-          pour maintenir une session fluide et économique.
+      <section>
+        <div class="fil-detail"><span class="etiq">Les modifications</span> Détail 1 / 2</div>
+        <h3 class="titre-detail">Les modes de permission</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:27%;">Application</th><th style="width:18%;">Terminal</th><th>Ce que l'agent fait sans vous demander</th></tr>
+            <tr><td><span class="pastille p-bleu">Manuel</span></td><td>Manual</td><td>Il lit. Il demande avant de modifier un fichier ou de lancer une commande.</td></tr>
+            <tr><td><span class="pastille p-ok">Accepter les modifications</span></td><td>Accept edits</td><td>Il modifie les fichiers du dossier. Il demande avant les autres commandes.</td></tr>
+            <tr><td><span class="pastille p-violet">Plan</span></td><td>Plan</td><td>Il lit et explore, sans rien modifier, puis propose un plan.</td></tr>
+            <tr><td><span class="pastille p-mid">Auto</span></td><td>Auto</td><td>Presque tout&nbsp;; un contrôle en arrière-plan bloque les actions risquées.</td></tr>
+            <tr><td><span class="pastille p-ko">Contourner les permissions</span></td><td>Bypass</td><td>Tout. À réserver à une machine isolée (conteneur, VM).</td></tr>
+          </table>
+          <div class="duo" style="margin-top:0.5em;">
+            <div class="astuce" style="margin:0;"><strong>Changer de mode</strong>&nbsp;: sélecteur sous la zone de saisie (application)&nbsp;; <kbd>Maj</kbd>+<kbd>Tab</kbd> (terminal).</div>
+            <div class="astuce" style="margin:0;">Le terminal démarre désormais en <strong>Auto</strong> quand ce mode est disponible. La barre d'état affiche le mode actif.</div>
+          </div>
         </div>
       </section>
 
-      <!-- 10. Multi-plateforme -->
       <section>
-        <h2>Multi-plateforme</h2>
-
-        <p style="margin-bottom: 1.5em;">
-          Claude Code fonctionne sur tous les OS majeurs. Les concepts s'appliquent partout.
-        </p>
-
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Plateforme</th>
-              <th>Commande d'installation</th>
-              <th>Terminal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>macOS</strong></td>
-              <td style="font-family:monospace;font-size:0.85em;">curl -fsSL https://claude.ai/install.sh | bash</td>
-              <td>bash / zsh</td>
-            </tr>
-            <tr class="fragment">
-              <td><strong>Linux</strong></td>
-              <td style="font-family:monospace;font-size:0.85em;">curl -fsSL https://claude.ai/install.sh | bash</td>
-              <td>bash / zsh / fish</td>
-            </tr>
-            <tr class="fragment">
-              <td><strong>Windows</strong></td>
-              <td style="font-family:monospace;font-size:0.85em;">irm https://claude.ai/install.ps1 | iex</td>
-              <td>PowerShell / CMD / Git Bash</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 style="color: var(--secondary-color); margin: 1.5em 0 1em 0;">Agents CLI similaires</h3>
-        <p style="font-size: 0.95em; margin-bottom: 0.8em;">
-          Les mêmes concepts (commandes, contexte, fichiers) s'appliquent à :
-        </p>
-        <ul>
-          <li><strong>Codex</strong> (OpenAI) : architecture similaire, fichier <span class="code-inline">AGENTS.md</span></li>
-          <li><strong>Antigravity</strong> (Google) : même principe, commandes et contexte équivalents</li>
-          <li>On peut faire à peu près la même chose avec chacun : c'est affaire de goût et d'habitudes.</li>
-        </ul>
+        <div class="fil-detail"><span class="etiq">Les modifications</span> Détail 2 / 2</div>
+        <h3 class="titre-detail">Revenir en arrière</h3>
+        <div class="detail">
+          <div class="duo">
+            <div class="bloc">
+              <h3>Avant d'accepter</h3>
+              <ul>
+                <li>Refuser&nbsp;: rien n'est écrit.</li>
+                <li>Dans l'application, commenter une ligne de la vue détaillée&nbsp;: l'agent lit le commentaire et corrige.</li>
+                <li>Au terminal, la réponse «&nbsp;Non&nbsp;» permet de dire ce qu'il faut faire autrement.</li>
+              </ul>
+            </div>
+            <div class="bloc">
+              <h3>Après coup</h3>
+              <ul>
+                <li><code>/rewind</code> ramène la conversation et/ou le code à un point antérieur.</li>
+                <li>Au terminal, <kbd>Échap</kbd> deux fois, zone de saisie vide, ouvre le même menu.</li>
+                <li>Demander simplement&nbsp;: «&nbsp;annule ta dernière modification&nbsp;».</li>
+              </ul>
+            </div>
+          </div>
+          <div class="astuce"><i class="fas fa-shield-alt"></i> Un dossier sous Git ou sauvegardé reste la meilleure assurance.</div>
+        </div>
+      </section>
       </section>
 
-      <!-- 11. Ressources et liens -->
+      <!-- 7. Mode plan (sans pile) -->
       <section>
-        <h2>Ressources</h2>
+        <h2>Le mode plan&nbsp;: il propose, vous décidez</h2>
+        <div class="duo large-gauche">
+          <div class="term">
+            <div class="term-barre">claude · <span class="vi">plan mode on</span></div>
+<pre><strong>Plan proposé</strong>
+1. Lire les 6 exercices de la fiche.
+2. Rédiger une correction par exercice.
+3. Compiler et vérifier le PDF.
 
-        <h3 style="color: var(--secondary-color); margin-bottom: 1.2em;">Documentation officielle</h3>
-        <ul style="font-size: 0.95em;">
-          <li>
-            <a href="https://code.claude.com/docs/fr/" target="_blank">
-              code.claude.com/docs/fr/
-            </a>
-            - Documentation complète en français
-          </li>
-          <li class="fragment">
-            <a href="https://console.anthropic.com" target="_blank">
-              console.anthropic.com
-            </a>
-            - Gestion des clés API et facturation
-          </li>
-          <li class="fragment">
-            <a href="https://github.com/anthropics/claude-code" target="_blank">
-              github.com/anthropics/claude-code
-            </a>
-            - Code source et issues
-          </li>
-          <li class="fragment">
-            <a href="https://academy.claude.com/courses/claude-code-101" target="_blank">
-              Claude Code 101
-            </a>
-            - Formation officielle gratuite (en anglais, environ 1 h 30)
-          </li>
-        </ul>
+On applique ce plan ?
+<span class="sel">❯ Oui, et utiliser le mode auto</span>
+  Oui, approuver manuellement les modifications
+  Non, continuer la planification</pre>
+          </div>
+          <div class="bloc gain">
+            <h3>Pour les grosses tâches</h3>
+            <ul>
+              <li>Il explore sans rien modifier.</li>
+              <li>Vous lisez son plan, vous l'amendez.</li>
+              <li>Puis vous choisissez comment il l'exécute.</li>
+            </ul>
+            <p style="margin:0.4em 0 0 0;"><strong>Y entrer</strong>&nbsp;: mode «&nbsp;Plan&nbsp;» dans l'application&nbsp;; <kbd>Maj</kbd>+<kbd>Tab</kbd> ou <code>/plan</code> au terminal.</p>
+          </div>
+        </div>
       </section>
 
-      <!-- 12. Conclusion -->
+      <!-- 8. Reprendre une session (+ pile) -->
       <section>
-        <h2>Résumé</h2>
+      <section>
+        <h2>Reprendre une session</h2>
+        <div class="duo">
+          <div>
+            <span class="etiquette app">Application</span>
+            <div class="app">
+              <div class="app-cote" style="border:none;">
+                <div class="onglets"><span>Chat</span><span>Cowork</span><span class="on">Code</span></div>
+                <div class="nouvelle">+ Nouvelle</div>
+                <div class="session on">Corrections fiche équations<span class="quand">Cours-2nde · il y a 2 h</span></div>
+                <div class="session">Barème du DS 3<span class="quand">Cours-2nde · hier</span></div>
+                <div class="session">Diaporama vecteurs<span class="quand">Cours-1re · lundi</span></div>
+              </div>
+            </div>
+            <p class="small muted" style="margin:0.3em 0 0 0;">Un clic sur une session de la barre latérale.</p>
+          </div>
+          <div>
+            <span class="etiquette term">Terminal</span>
+            <div class="term">
+              <div class="term-barre">PowerShell</div>
+<pre><span class="ps">PS&gt;</span> claude -c   <span class="cm"># la dernière</span>
+<span class="ps">PS&gt;</span> claude -r   <span class="cm"># au choix</span>
 
-        <ul style="margin: 1em 0;">
-          <li><strong>Deux interfaces :</strong> Desktop (GUI) ou CLI (terminal), même moteur</li>
-          <li class="fragment"><strong>Installation :</strong> Installeur natif (sans Node.js), puis <span class="code-inline">claude</span></li>
-          <li class="fragment"><strong>Commandes :</strong> /help, /compact, /clear, /model + personnalisées ; Maj+Tab pour le mode plan</li>
-          <li class="fragment"><strong>CLAUDE.md :</strong> Personnalise le comportement ; commandes et skills dans <span class="code-inline">.claude/</span></li>
-          <li class="fragment"><strong>Fichiers :</strong> Lire, écrire, modifier avec chemin absolu</li>
-          <li class="fragment"><strong>Mémoire :</strong> /compact quand contexte saturé</li>
-          <li class="fragment"><strong>Transférable :</strong> Mêmes concepts sur Codex, Antigravity, autres agents</li>
-        </ul>
-
+<span class="cm">Déjà dans Claude :</span>
+&gt; /resume</pre>
+            </div>
+          </div>
+        </div>
+        <div class="bandeau"><i class="fas fa-history"></i> La conversation reprend avec tout son historique&nbsp;: inutile de tout réexpliquer.</div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
       </section>
 
-      <!-- 13. Questions -->
       <section>
-        <h1>Questions ?</h1>
-        <p style="margin-top: 3em; font-size: 1.2em;">
-          <a href="https://code.claude.com/docs/fr/" target="_blank" style="color: var(--claude-purple);">
-            code.claude.com/docs/fr/
-          </a>
-        </p>
-        <p style="margin-top: 2em; font-size: 0.9em; color: var(--secondary-color);">
-          Formation IA & Enseignement — 2026
-        </p>
+        <div class="fil-detail"><span class="etiq">Reprendre une session</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Plusieurs sessions en parallèle</h3>
+        <div class="detail">
+          <div class="duo">
+            <div class="bloc v-app">
+              <h3>Application</h3>
+              <ul>
+                <li><strong>+ Nouvelle</strong> dans la barre latérale, ou <kbd>Ctrl</kbd>+<kbd>N</kbd>.</li>
+                <li><kbd>Ctrl</kbd>+<kbd>Tab</kbd> passe d'une session à l'autre.</li>
+                <li><kbd>Alt</kbd> + clic&nbsp;: deux sessions côte à côte.</li>
+                <li>Bouton <strong>Worktree</strong>&nbsp;: la session travaille sur une copie isolée du projet (dossier sous Git).</li>
+              </ul>
+            </div>
+            <div class="bloc v-term">
+              <h3>Terminal</h3>
+              <ul>
+                <li>Une session par fenêtre de terminal.</li>
+                <li><code>claude --worktree</code> pour l'isolement.</li>
+                <li><code>/clear</code> ouvre une conversation neuve&nbsp;; <code>/resume</code> retrouve l'ancienne.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="astuce"><i class="fas fa-triangle-exclamation"></i> Sans worktree, deux sessions dans le même dossier modifient les mêmes fichiers.</div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 9. Contexte (+ pile) -->
+      <section>
+      <section>
+        <h2>Le contexte&nbsp;: sa mémoire de travail</h2>
+        <div class="duo large-gauche">
+          <div class="bloc" style="font-size:0.7em;">
+            <h3>Contexte</h3>
+            <div class="jauge"><span style="width:72%;"></span></div>
+            <p class="muted" style="margin:0;">72&nbsp;% utilisés&nbsp;: consignes, fichiers lus, échanges.</p>
+            <p style="margin:0.6em 0 0 0;">Quand la jauge se remplit, l'agent <strong>résume</strong> lui-même la conversation pour continuer.</p>
+          </div>
+          <div class="bloc gain">
+            <h3>Deux réflexes</h3>
+            <ul>
+              <li><strong>Nouveau sujet</strong>&nbsp;: <code>/clear</code>, une conversation neuve.</li>
+              <li><strong>Même sujet, longue séance</strong>&nbsp;: <code>/compact</code>, un résumé qui garde l'essentiel.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bandeau"><i class="fas fa-eye"></i> Où voir la jauge&nbsp;: carte <strong>Contexte</strong> dans l'application, <code>/context</code> dans les deux.</div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <section>
+        <div class="fil-detail"><span class="etiq">Le contexte</span> Détail 1 / 1</div>
+        <h3 class="titre-detail"><code>/compact</code> ou <code>/clear</code>&nbsp;?</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:22%;"></th><th>/compact</th><th>/clear</th></tr>
+            <tr><td><strong>Effet</strong></td><td>Remplace l'historique par un résumé.</td><td>Repart d'une conversation vide.</td></tr>
+            <tr><td><strong>Quand</strong></td><td>On continue le même travail, mais la séance est longue.</td><td>On change de tâche.</td></tr>
+            <tr><td><strong>Astuce</strong></td><td>Dire quoi garder&nbsp;: <code>/compact garde les décisions sur le barème</code></td><td>L'ancienne conversation reste accessible avec <code>/resume</code>.</td></tr>
+          </table>
+          <ul style="margin-top:0.6em;">
+            <li>Le <code>CLAUDE.md</code> est relu à chaque session&nbsp;: ce qui doit toujours valoir va là, pas dans la conversation.</li>
+            <li>Les signes d'un contexte saturé&nbsp;: l'agent oublie les consignes du début.</li>
+            <li><code>/context</code> détaille ce qui occupe la place (fichiers, outils, mémoire).</li>
+          </ul>
+        </div>
+      </section>
+      </section>
+
+      <!-- 10. Commandes (+ pile) -->
+      <section>
+      <section>
+        <h2>Six commandes à connaître</h2>
+        <div class="commandes">
+          <div class="commande"><code>/clear</code><p>Nouvelle conversation, contexte vide.</p></div>
+          <div class="commande"><code>/compact</code><p>Résume la conversation pour libérer de la place.</p></div>
+          <div class="commande"><code>/model</code><p>Change de modèle (plus rapide ou plus puissant).</p></div>
+          <div class="commande"><code>/resume</code><p>Reprend une conversation précédente.</p></div>
+          <div class="commande"><code>/plugin</code><p>Installe et gère des plugins (skills, agents…).</p></div>
+          <div class="commande"><code>/help</code><p>Affiche l'aide et les commandes disponibles.</p></div>
+        </div>
+        <p class="small muted" style="margin-top:0.8em;">Taper <code>/</code> affiche la liste&nbsp;: commandes intégrées, mais aussi vos skills et vos commandes personnelles.</p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <section>
+        <div class="fil-detail"><span class="etiq">Commandes</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">D'autres commandes utiles</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:20%;">Commande</th><th>Ce qu'elle fait</th></tr>
+            <tr><td><code>/init</code></td><td>Écrit un premier <code>CLAUDE.md</code> pour le projet.</td></tr>
+            <tr><td><code>/memory</code></td><td>Ouvre les fichiers <code>CLAUDE.md</code> et la mémoire automatique.</td></tr>
+            <tr><td><code>/context</code></td><td>Montre ce qui occupe le contexte.</td></tr>
+            <tr><td><code>/plan</code></td><td>Passe en mode plan, éventuellement avec la tâche&nbsp;: <code>/plan corrige le barème</code>.</td></tr>
+            <tr><td><code>/rewind</code></td><td>Revient à un point antérieur de la conversation et/ou du code.</td></tr>
+            <tr><td><code>/skills</code></td><td>Liste les skills disponibles.</td></tr>
+            <tr><td><code>/usage</code></td><td>Coût de la session et limites de l'abonnement (alias <code>/cost</code>).</td></tr>
+            <tr><td><code>/exit</code></td><td>Quitte le terminal (alias <code>/quit</code>).</td></tr>
+          </table>
+          <div class="astuce"><i class="fas fa-window-maximize"></i> Dans l'application, les commandes qui ouvrent un panneau au terminal (<code>/permissions</code>…) ne sont pas disponibles&nbsp;; <code>/config</code> ouvre les <strong>Paramètres</strong>.</div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 11. Pour aller plus loin (sans pile) -->
+      <section>
+        <h2>Pour aller plus loin</h2>
+        <div class="liens">
+          <div class="carte" style="border-color:var(--c-app);">
+            <div class="titre"><i class="fas fa-window-maximize"></i> Installer l'application</div>
+            Le pas-à-pas illustré sur ce site.<br>
+            <a class="lien" href="https://bfcours.dev/claude-code/tutorials/claude-desktop-install" target="_top">Tutoriel Claude Desktop</a>
+          </div>
+          <div class="carte" style="border-color:var(--c-term);">
+            <div class="titre"><i class="fas fa-terminal"></i> Installer le terminal</div>
+            Le pas-à-pas illustré sur ce site.<br>
+            <a class="lien" href="https://bfcours.dev/claude-code/tutorials/claude-code-install" target="_top">Tutoriel Claude Code</a>
+          </div>
+          <div class="carte">
+            <div class="titre"><i class="fas fa-book"></i> Documentation officielle</div>
+            En français, tenue à jour.<br>
+            <a class="lien" href="https://code.claude.com/docs/fr/" target="_blank">code.claude.com/docs/fr</a>
+          </div>
+          <div class="carte" style="border-color:var(--success-color);">
+            <div class="titre"><i class="fas fa-graduation-cap"></i> Claude Code 101</div>
+            Formation officielle gratuite, en anglais.<br>
+            <a class="lien" href="https://academy.claude.com/courses/claude-code-101" target="_blank">academy.claude.com</a>
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:0.9em;">Les mêmes idées (dossier, consignes, validation) valent pour d'autres agents, comme Codex et son fichier <code>AGENTS.md</code>.</p>
       </section>
 
     </div>
   </div>
 
-  <!-- Reveal.js scripts -->
   <script src="assets/reveal/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
   <script src="assets/reveal/plugin/notes/notes.js"></script>
-  <script src="assets/reveal/plugin/highlight/highlight.js"></script>
-  <script src="assets/reveal/plugin/zoom/zoom.js"></script>
 
   <script>
     Reveal.initialize({
-      // Affichage
-      width: 1280,
-      height: 720,
-      margin: 0.1,
-
-      // Navigation
+      // Navigation à deux dimensions : → fil principal, ↓ détails
+      navigationMode: 'default',
       controls: true,
       controlsLayout: 'bottom-right',
+      controlsTutorial: true,
+      controlsBackArrows: 'faded',
       progress: true,
-      slideNumber: 'c/t',
+      slideNumber: 'h.v',
+      overview: true,
       hash: true,
-      navigationMode: 'default',
-
-      // Comportement (transitions sobres pour académique)
       transition: 'slide',
-      transitionSpeed: 'default',
-      backgroundTransition: 'fade',
-
-      // Math avec MathJax 3
-      math: {
-        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
-        config: 'TeX-AMS_HTML-full',
-      },
-
-      // Plugins
-      plugins: [
-        RevealMath,
-        RevealNotes,
-        RevealHighlight,
-        RevealZoom
-      ]
+      center: true,
+      fragments: true,
+      fragmentInURL: true,
+      plugins: [ RevealNotes ]
     });
   </script>
 </body>

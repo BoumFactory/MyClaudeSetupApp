@@ -159,6 +159,12 @@ export function MainNav() {
               description: "Git Bash pour Claude Code"
             },
             {
+              title: "Première app Tauri",
+              href: "/claude-code/tutorials/premiere-app-tauri",
+              icon: Download,
+              description: "Application locale React + Tauri"
+            },
+            {
               title: "Claude Desktop",
               href: "/claude-code/tutorials/claude-desktop-install",
               icon: Monitor,
@@ -239,22 +245,28 @@ export function MainNav() {
           description: "Architecture et interface",
           presentations: [
             {
-              title: "Architecture Claude Code",
+              title: "Le dossier .claude/",
               href: "/claude-code/presentations/architecture-claude-code-reveals",
               icon: Presentation,
-              description: "Architecture de ma configuration"
+              description: "Le cerveau de l'assistant, brique par brique"
             },
             {
-              title: "Interface Claude Code",
+              title: "Application et terminal",
               href: "/claude-code/presentations/claude-code-interface",
               icon: Presentation,
-              description: "Guide de l'interface"
+              description: "Claude Code sous ses deux visages"
             },
             {
-              title: "Commandes disponibles",
+              title: "Les commandes",
               href: "/claude-code/presentations/commandes-disponibles",
               icon: Presentation,
-              description: "Catalogue des commandes"
+              description: "Des skills d'un seul fichier"
+            },
+            {
+              title: "Mes mods et garde-fous",
+              href: "/claude-code/presentations/mods-et-garde-fous",
+              icon: Presentation,
+              description: "Corbeille, dossiers interdits, recherches filtrées"
             },
           ]
         },
@@ -323,10 +335,10 @@ export function MainNav() {
           ]
         },
         {
-          title: "Outils LaTeX",
+          title: "Outils d'écriture",
           isCategory: true,
           icon: BookOpen,
-          description: "Création et compilation LaTeX",
+          description: "Création et compilation en LaTeX et en Typst",
           presentations: [
             {
               title: "Skill latex",

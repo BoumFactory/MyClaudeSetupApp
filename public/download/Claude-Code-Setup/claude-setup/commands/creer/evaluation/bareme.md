@@ -2,7 +2,7 @@
 
 ## Description
 
-Génère un barème rationnel basé sur l'atomisation des actions élèves à partir d'un document LaTeX d'évaluation existant. Produit un fichier `bareme.json` et une interface `bareme.html` d'édition du barème (la notation des copies est externe à la commande).
+Génère un barème rationnel basé sur l'atomisation des actions élèves à partir d'un sujet d'évaluation existant, quel que soit son format (.tex, .typ, PDF, Word/ODT, Markdown ou texte collé). Produit un fichier `bareme.json` et une interface `bareme.html` d'édition du barème (la notation des copies est externe à la commande).
 
 ## Usage
 
@@ -14,7 +14,7 @@ Génère un barème rationnel basé sur l'atomisation des actions élèves à pa
 
 | Argument | Description | Défaut |
 |----------|-------------|--------|
-| `chemin_document` | Chemin vers le .tex ou dossier d'évaluation | Dossier courant |
+| `chemin_document` | Chemin vers le sujet (tout format) ou dossier d'évaluation | Dossier courant |
 | `--note-cible N` | Note maximale souhaitée | 20 |
 | `--output-dir DIR` | Dossier de sortie | Même que le document |
 
@@ -38,16 +38,15 @@ Génère un barème rationnel basé sur l'atomisation des actions élèves à pa
 ### ÉTAPE 0 : Chargement des Connaissances
 
 1. Charger le skill `bareme-actions-eleves` pour la méthodologie
-2. Identifier le document LaTeX source
+2. Identifier le sujet source (fichier ou texte fourni dans la conversation)
 
-### ÉTAPE 1 : Analyse du Document
+### ÉTAPE 1 : Analyse du Sujet
 
-1. **Lire le fichier principal** (.tex)
-2. **Identifier les fichiers de contenu** : `enonce.tex`, `sections/*.tex`
-3. **Extraire la structure** :
-   - Environnements `EXO` avec leurs titres et codes compétences
-   - Questions avec `\tcbitempoint{N}`
-   - Corrections après `\exocorrection`
+1. **Lire le sujet** (tout format : .tex, .typ, PDF, Word/ODT, Markdown, texte collé)
+2. **Identifier les fichiers annexes** s'il y en a (ex. `enonce.tex`, `sections/*.tex`)
+3. **Extraire la structure** : exercices, titres, questions, corrections
+   - Si le sujet est en bfcours : environnements `EXO`, `\tcbitempoint{N}`, corrections après `\exocorrection`
+   - Si le sujet est en Typst farfadet : `#itempoint(N)`
 
 ### ÉTAPE 2 : Détection du Type d'Exercice
 
@@ -63,7 +62,7 @@ Pour chaque exercice, déterminer le coefficient :
 
 Pour chaque question avec correction :
 
-1. **Lire la correction** après `\exocorrection`
+1. **Lire la correction** (après `\exocorrection` en bfcours)
 2. **Identifier les actions atomiques** :
    - Chaque calcul intermédiaire = 1 action
    - Chaque identification (IR, facteur commun...) = 1 action
@@ -180,9 +179,8 @@ Afficher les métriques finales :
 
 Cette commande s'intègre dans le workflow d'évaluation :
 
-1. `/createTex` → Créer l'évaluation
-2. Rédiger les exercices avec `bfcours-latex`
-3. `/bareme` → Générer le barème
+1. Disposer du sujet et de son corrigé (rédigés comme on le souhaite ; `/createTex` et `bfcours-latex` si l'on travaille en bfcours)
+2. `/bareme` → Générer le barème
 4. Relire et ajuster le barème avec `bareme.html`
 5. Utiliser le barème dans l'outil de notation de son choix (hors skill)
 

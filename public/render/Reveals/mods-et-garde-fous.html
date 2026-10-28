@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Formation IA & Mathématiques">
+  <meta name="description" content="Mods et hooks de Claude Code : intercepter une commande dangereuse, interdire des dossiers, filtrer les recherches">
+  <title>Mes mods : garder la main sur l'agent</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="assets/reveal/reset.css">
+  <link rel="stylesheet" href="assets/reveal/reveal.css">
+  <link rel="stylesheet" href="assets/reveal/theme/white.css">
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --violet-color: #8e44ad;
+      --text-color: #34495e;
+      --muted-color: #7f8c8d;
+      --bg-light: #ecf0f1;
+      /* Une couleur par garde-fou */
+      --g-notif: #f39c12;
+      --g-corbeille: #27ae60;
+      --g-dossiers: #8e44ad;
+      --g-recherches: #3498db;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 28px;
+      color: var(--text-color);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .reveal h1 { font-size: 1.8em; margin-bottom: 0.3em; line-height: 1.15; }
+
+    .reveal h2 {
+      font-size: 1.4em;
+      margin-bottom: 0.6em;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.25em;
+    }
+
+    .reveal p, .reveal li { line-height: 1.45; }
+    .reveal ul { margin: 0.4em 0 0 1em; }
+    .reveal li { margin: 0.3em 0; }
+
+    .reveal code {
+      background: var(--bg-light);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9em;
+      color: var(--accent-color);
+    }
+
+    .reveal .subtitle { color: var(--muted-color); font-size: 0.8em; margin: 0; }
+    .reveal .small { font-size: 0.72em; }
+    .reveal .muted { color: var(--muted-color); }
+
+    /* Bulle : ce que lance l'agent */
+    .reveal .demande {
+      display: inline-block;
+      background: #fff;
+      border: 2px solid var(--secondary-color);
+      border-radius: 18px 18px 18px 4px;
+      padding: 0.6em 1em;
+      font-size: 0.85em;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(52,152,219,0.18);
+      max-width: 90%;
+    }
+    .reveal .demande .qui {
+      display: block;
+      font-size: 0.7em;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 0.2em;
+    }
+    .reveal .demande.agent { border-color: var(--primary-color); box-shadow: 0 4px 12px rgba(44,62,80,0.18); }
+    .reveal .demande.agent .qui { color: var(--primary-color); }
+
+    .reveal .resultat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+      color: #fff;
+      padding: 0.45em 1.1em;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.8em;
+      box-shadow: 0 6px 18px rgba(39,174,96,0.3);
+    }
+
+    .reveal .fleche-bas { color: var(--muted-color); font-size: 1.2em; margin: 0.3em 0; }
+
+    /* Frise des quatre garde-fous */
+    .reveal .frise {
+      display: flex;
+      gap: 0.4em;
+      justify-content: center;
+      margin: 0 0 0.7em 0;
+      font-size: 0.55em;
+    }
+    .reveal .frise span {
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      background: var(--bg-light);
+      color: var(--muted-color);
+      font-weight: 600;
+    }
+    .reveal .frise span.on { color: #fff; }
+    .reveal .frise span.on.c1 { background: var(--g-notif); }
+    .reveal .frise span.on.c2 { background: var(--g-corbeille); }
+    .reveal .frise span.on.c3 { background: var(--g-dossiers); }
+    .reveal .frise span.on.c4 { background: var(--g-recherches); }
+
+    /* Cartes des garde-fous (diapo 2) */
+    .reveal .etapes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5em;
+      margin-top: 0.4em;
+    }
+    .reveal .etape {
+      border-radius: 12px;
+      padding: 0.7em 0.5em;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .reveal .etape i { font-size: 1.6em; margin-bottom: 0.2em; }
+    .reveal .etape .nom { font-weight: 700; font-size: 0.8em; }
+    .reveal .etape .quoi { font-size: 0.58em; opacity: 0.95; margin-top: 0.3em; line-height: 1.35; }
+    .reveal .etape .genre { display: inline-block; margin-top: 0.5em; font-size: 0.5em; font-weight: 700; background: rgba(255,255,255,0.25); border-radius: 10px; padding: 0.05em 0.6em; }
+    .reveal .etape.c1 { background: linear-gradient(135deg, #e67e22, #f39c12); }
+    .reveal .etape.c2 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+    .reveal .etape.c3 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+    .reveal .etape.c4 { background: linear-gradient(135deg, #2980b9, #3498db); }
+
+    /* Deux colonnes : ce que fait l'agent / ce que vous y gagnez */
+    .reveal .duo {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1em;
+      text-align: left;
+      align-items: start;
+    }
+    .reveal .bloc {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 0.6em 0.9em;
+      border-left: 5px solid var(--secondary-color);
+      font-size: 0.72em;
+    }
+    .reveal .bloc h3 { font-size: 1.05em; margin: 0 0 0.3em 0; }
+    .reveal .bloc ul { margin-left: 1em; }
+    .reveal .bloc.gain { background: #e8f5e9; border-color: var(--success-color); }
+    .reveal .bloc.gain h3 { color: var(--success-color); }
+    .reveal .bloc.note { background: #fff8e1; border-color: var(--warning-color); margin-top: 0.6em; }
+
+    /* Maquette : un dossier dont une branche est exclue */
+    .reveal .maquette {
+      background: #fff; border: 1px solid #dfe6e9; border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08); padding: 0.6em 0.9em;
+      font-size: 0.6em; text-align: left; line-height: 1.7;
+    }
+    .reveal .maquette .titre-maquette { font-weight: 700; color: var(--primary-color); margin-bottom: 0.2em; }
+    .reveal .maquette .ok { color: var(--success-color); }
+    .reveal .maquette .exclu { color: #b2bec3; text-decoration: line-through; }
+    .reveal .maquette .etiq-exclu { font-size: 0.8em; color: #fff; background: var(--g-dossiers); border-radius: 8px; padding: 0 0.5em; margin-left: 0.4em; text-decoration: none; display: inline-block; }
+
+    /* Livrables */
+    .reveal .livrables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.4em; }
+    .reveal .livrable {
+      background: #f8f9fa; border-radius: 10px; padding: 0.7em 0.6em; font-size: 0.66em; text-align: center;
+      border-top: 4px solid var(--secondary-color);
+    }
+    .reveal .livrable i { font-size: 1.8em; color: var(--secondary-color); margin-bottom: 0.2em; }
+    .reveal .livrable .titre { font-weight: 700; color: var(--primary-color); }
+
+    /* Cartes de liens (dernière diapo) */
+    .reveal .install { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; text-align: left; font-size: 0.66em; }
+    .reveal .install .carte { background: #f8f9fa; border-radius: 10px; padding: 0.55em 0.8em; border-left: 5px solid var(--secondary-color); }
+    .reveal .install .carte .titre { font-weight: 700; color: var(--primary-color); }
+    .reveal .install code { font-size: 0.95em; }
+    .reveal a.lien { color: var(--secondary-color); text-decoration: underline; }
+    .reveal a.bouton {
+      display: inline-block; margin-top: 0.3em; padding: 0.2em 0.8em; border-radius: 8px;
+      background: var(--secondary-color); color: #fff; font-weight: 700; text-decoration: none;
+    }
+
+    /* ===== Navigation à deux dimensions ===== */
+    .reveal .indice-details {
+      text-align: right;
+      margin-top: 0.9em;
+      font-size: 0.5em;
+      color: var(--muted-color);
+    }
+    .reveal .indice-details span {
+      display: inline-block;
+      border: 1px solid #d0d7de;
+      border-radius: 14px;
+      padding: 0.15em 0.8em;
+      background: #fff;
+    }
+    .reveal .aide-nav { font-size: 0.48em; color: var(--muted-color); margin-top: 2.2em; }
+    .reveal .aide-nav kbd {
+      font-family: inherit; border: 1px solid #ccd; border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 0.35em; background: #fafbfc; color: var(--primary-color);
+    }
+
+    /* Fil d'Ariane des diapos verticales */
+    .reveal .fil-detail {
+      display: flex; align-items: center; gap: 0.6em; justify-content: flex-start;
+      font-size: 0.5em; color: var(--muted-color); margin-bottom: 0.3em; font-weight: 600;
+    }
+    .reveal .fil-detail .etiq { color: #fff; padding: 0.15em 0.8em; border-radius: 20px; }
+    .reveal .fil-detail .etiq.c0 { background: var(--primary-color); }
+    .reveal .fil-detail .etiq.c1 { background: var(--g-notif); }
+    .reveal .fil-detail .etiq.c2 { background: var(--g-corbeille); }
+    .reveal .fil-detail .etiq.c3 { background: var(--g-dossiers); }
+    .reveal .fil-detail .etiq.c4 { background: var(--g-recherches); }
+    .reveal h3.titre-detail {
+      font-size: 1.05em; text-align: left; margin: 0 0 0.5em 0;
+      padding-bottom: 0.2em; border-bottom: 2px solid var(--bg-light);
+    }
+
+    /* Contenus de détail */
+    .reveal .detail { font-size: 0.6em; text-align: left; }
+    .reveal .detail .bloc { font-size: 1em; }
+    .reveal .detail code, .reveal .fil-detail code { padding: 0 0.2em; }
+    .reveal h3.titre-detail code { color: inherit; font-size: 0.85em; padding: 0 0.25em; }
+    .reveal .detail p { margin: 0.3em 0; }
+    .reveal .duo2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; align-items: start; }
+    .reveal pre.code {
+      width: 100%; box-shadow: none; margin: 0; font-size: 0.8em;
+    }
+    .reveal pre.code code {
+      display: block; background: #f8f9fa; color: #2c3e50; padding: 0.7em 0.9em;
+      border-radius: 8px; border-left: 4px solid var(--secondary-color); line-height: 1.45;
+      max-height: none; font-size: 1em; white-space: pre;
+    }
+    .reveal pre.code .cm { color: #95a5a6; }
+    .reveal pre.code .kw { color: #2980b9; font-weight: 700; }
+    .reveal pre.code .pt { color: #8e44ad; font-weight: 700; }
+    .reveal pre.code .st { color: #27ae60; }
+    .reveal table.tab-detail { width: 100%; border-collapse: collapse; font-size: 0.95em; margin: 0; }
+    .reveal table.tab-detail th, .reveal table.tab-detail td {
+      border: none; border-bottom: 1px solid #e3e8ec; padding: 0.35em 0.5em; text-align: left; vertical-align: top;
+    }
+    .reveal table.tab-detail th { background: #f1f4f6; color: var(--primary-color); font-weight: 700; }
+    .reveal table.tab-detail td code { word-break: break-word; }
+    .reveal .pastille {
+      display: inline-block; border-radius: 10px; padding: 0 0.55em; font-weight: 700; color: #fff; font-size: 0.9em; white-space: nowrap;
+    }
+    .reveal .p-ok { background: var(--success-color); }
+    .reveal .p-mid { background: var(--warning-color); }
+    .reveal .p-ko { background: var(--accent-color); }
+    .reveal .p-bleu { background: var(--secondary-color); }
+    .reveal .p-violet { background: var(--violet-color); }
+    .reveal .p-gris { background: #95a5a6; }
+    .reveal .astuce {
+      background: #eaf4fb; border-left: 5px solid var(--secondary-color); border-radius: 8px;
+      padding: 0.45em 0.8em; margin-top: 0.6em;
+    }
+
+    /* Schéma du hook PreToolUse */
+    .reveal .flux { display: flex; align-items: center; gap: 0.4em; justify-content: center; margin: 0.3em 0 0.5em 0; }
+    .reveal .flux .case {
+      background: #f8f9fa; border: 2px solid #dfe6e9; border-radius: 10px; padding: 0.35em 0.6em;
+      text-align: center; font-weight: 600; color: var(--primary-color);
+    }
+    .reveal .flux .case.hook { border-color: var(--primary-color); background: #fff; }
+    .reveal .flux i.fa-arrow-right { color: var(--muted-color); }
+    .reveal .decisions { display: flex; flex-direction: column; gap: 0.25em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1. Où l'on veut en venir -->
+      <section>
+        <h1><i class="fas fa-shield-alt" style="color:#27ae60;"></i> Mes mods : garder la main sur l'agent</h1>
+        <p class="subtitle">Intercepter une commande, interdire des dossiers, filtrer les recherches</p>
+
+        <div style="margin-top:1em;">
+          <div class="demande agent">
+            <span class="qui"><i class="fas fa-robot"></i> L'agent lance</span>
+            <code style="font-size:1em;">rm -rf brouillons/</code>
+            <span class="muted" style="font-size:0.8em;">&nbsp;(effacer définitivement le dossier)</span>
+          </div>
+        </div>
+        <div class="fleche-bas"><i class="fas fa-arrow-down"></i></div>
+        <div class="fragment">
+          <div class="small muted" style="margin-bottom:0.4em;">Un garde-fou intercepte la commande avant qu'elle s'exécute</div>
+          <div class="resultat"><i class="fas fa-trash-restore"></i> Le dossier part à la corbeille : il reste récupérable</div>
+        </div>
+        <p class="aide-nav">
+          <kbd>→</kbd> la suite &nbsp;·&nbsp; <kbd>↓</kbd> les détails, sous les diapos marquées «&nbsp;↓ détails&nbsp;» &nbsp;·&nbsp; <kbd>Échap</kbd> vue d'ensemble
+        </p>
+      </section>
+
+      <!-- 2. Quatre garde-fous (+ pile : mod ou hook ?) -->
+      <section>
+      <section>
+        <h2>Quatre garde-fous</h2>
+        <div class="etapes">
+          <div class="etape c1 fragment">
+            <i class="fas fa-bell"></i>
+            <div class="nom">Notifications</div>
+            <div class="quoi">Il vous prévient quand il a fini ou qu'il attend votre réponse.</div>
+            <span class="genre">mod</span>
+          </div>
+          <div class="etape c2 fragment">
+            <i class="fas fa-trash-restore"></i>
+            <div class="nom">Corbeille</div>
+            <div class="quoi">Ce qu'il supprime part à la corbeille, jamais en définitif.</div>
+            <span class="genre">hook</span>
+          </div>
+          <div class="etape c3 fragment">
+            <i class="fas fa-folder-minus"></i>
+            <div class="nom">Dossiers interdits</div>
+            <div class="quoi">Il ne peut ni lire, ni modifier, ni parcourir les dossiers sensibles.</div>
+            <span class="genre">hook</span>
+          </div>
+          <div class="etape c4 fragment">
+            <i class="fas fa-filter"></i>
+            <div class="nom">Recherches filtrées</div>
+            <div class="quoi">Ses recherches reviennent sans les fichiers interdits.</div>
+            <span class="genre">hook</span>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          On peut contrôler ce que fait l'IA. Chacun de ces garde-fous s'obtient en le demandant à Claude, en français.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 2.1 Mod ou hook ? -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Quatre garde-fous</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Mod ou hook ?</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:20%;"></th><th style="width:40%;">Mod</th><th>Hook</th></tr>
+            <tr><td><strong>Ce que c'est</strong></td><td>Une extension de Claude Code, avec du code.</td><td>Un petit script déclaré dans <code>settings.json</code>.</td></tr>
+            <tr><td><strong>Interface</strong></td><td>Peut en avoir une : panneau, bandeau, notification, commande.</td><td>Aucune : il agit en silence.</td></tr>
+            <tr><td><strong>Où il vit</strong></td><td>Un petit dossier, installé comme un plugin.</td><td><code>~/.claude/settings.json</code> (tous les projets) ou <code>.claude/settings.json</code> (un projet).</td></tr>
+            <tr><td><strong>Ici</strong></td><td>Les notifications.</td><td>La corbeille ; les dossiers interdits et les recherches filtrées (un même hook).</td></tr>
+          </table>
+          <p style="margin-top:0.6em;"><strong>Quand un hook s'exécute</strong> : ici, avant chaque outil (événement <code>PreToolUse</code>).</p>
+          <div class="flux">
+            <div class="case">Claude veut lancer<br>un outil</div>
+            <i class="fas fa-arrow-right"></i>
+            <div class="case hook"><i class="fas fa-shield-alt"></i> Le hook<br>lit la commande</div>
+            <i class="fas fa-arrow-right"></i>
+            <div class="decisions">
+              <span><span class="pastille p-ok">autoriser</span> sans vous demander</span>
+              <span><span class="pastille p-ko">refuser</span> avec un message qui explique</span>
+              <span><span class="pastille p-bleu">réécrire</span> la commande, puis l'autoriser</span>
+            </div>
+          </div>
+          <p class="muted">Sans décision du hook, Claude Code applique ses règles de permission habituelles.</p>
+        </div>
+      </section>
+      </section>
+
+      <!-- 3. Notifications (sans pile) -->
+      <section>
+        <div class="frise"><span class="on c1">Notifications</span><span>Corbeille</span><span>Dossiers interdits</span><span>Recherches filtrées</span></div>
+        <h2 style="border-color:var(--g-notif);">Il vous prévient sur le bureau</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--g-notif);">
+            <h3>Ce que fait le mod <code style="font-size:0.75em;">notif-bureau</code></h3>
+            <ul>
+              <li>Une notification Windows s'affiche quand Claude a fini, ou quand il attend votre réponse.</li>
+              <li>Seulement si sa fenêtre n'est pas au premier plan.</li>
+              <li>Une question à choix ? On répond depuis la notification.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Vous travaillez ailleurs pendant que l'agent avance.</li>
+              <li>Vous voyez tout de suite quand il attend une réponse de votre part.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="small" style="margin-top:0.9em;">
+          <i class="fas fa-download" style="color:var(--g-notif);"></i>
+          Le mod à télécharger et son installation : tutoriel
+          <a class="lien" href="https://bfcours.dev/claude-code/tutorials/mods" target="_top">«&nbsp;Les mods&nbsp;»</a>.
+        </p>
+      </section>
+
+      <!-- 4. Corbeille (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>Notifications</span><span class="on c2">Corbeille</span><span>Dossiers interdits</span><span>Recherches filtrées</span></div>
+        <h2 style="border-color:var(--g-corbeille);">La corbeille au lieu de l'effacement</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--g-corbeille);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Il lance une suppression, comme d'habitude.</li>
+              <li>Le hook l'intercepte avant qu'elle s'exécute.</li>
+              <li>Les fichiers partent à la corbeille Windows au lieu d'être effacés.</li>
+              <li>La commande passe sans vous demander la permission : elle est devenue réversible.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Une erreur de l'agent se répare : on restaure depuis la corbeille.</li>
+              <li>Vous choisissez vous-même ce qui arrive quand l'IA lance une commande que vous jugez dangereuse.</li>
+              <li>Un hook sans interface, actif dans tous vos projets.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 4.1 Comment ça marche -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">Corbeille</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--g-corbeille);">Comment ça marche</h3>
+        <div class="detail duo2" style="grid-template-columns:1fr 1.15fr;">
+          <div>
+            <p>Un hook <code>PreToolUse</code> sur les outils Bash et PowerShell. Il ne touche qu'aux commandes qui contiennent une suppression.</p>
+            <ul>
+              <li><strong>Bash</strong> : il place en tête du <code>PATH</code> un <code>rm</code> de substitution. Cela couvre aussi <code>xargs rm</code> et <code>find -exec rm</code>.</li>
+              <li><strong>PowerShell</strong> : il définit une fonction <code>Remove-Item</code> prioritaire. Les alias <code>rm</code>, <code>del</code>, <code>ri</code>, <code>rd</code>, <code>erase</code>, <code>rmdir</code> y mènent.</li>
+              <li>Le <code>rm</code> de substitution reprend <code>-f</code>, <code>-r</code>/<code>-R</code> et <code>--</code>. Comme le vrai, il refuse un dossier sans <code>-r</code>.</li>
+            </ul>
+            <p class="muted">Déclaré dans <code>~/.claude/settings.json</code>, outils <code>Bash|PowerShell</code>.</p>
+          </div>
+<pre class="code"><code><span class="cm">// ~/.claude/hooks/pre-tool-corbeille.mjs (extrait)</span>
+<span class="kw">if</span> (outil === <span class="st">'Bash'</span> &amp;&amp; <span class="cm">/* contient rm */</span>) {
+  prefixe = <span class="st">`export PATH='…/corbeille/bin':"$PATH"; `</span>;
+} <span class="kw">else if</span> (outil === <span class="st">'PowerShell'</span> &amp;&amp;
+           <span class="cm">/* Remove-Item, rm, del… */</span>) {
+  prefixe = <span class="cm">/* charge remove-item.ps1 */</span>;
+}
+<span class="kw">if</span> (!prefixe) process.exit(0); <span class="cm">// rien à changer</span>
+
+<span class="cm">// Décision rendue à Claude Code :</span>
+permissionDecision: <span class="pt">'allow'</span>,
+permissionDecisionReason:
+  <span class="st">'suppression redirigée vers la corbeille Windows'</span>,
+updatedInput: { command: prefixe + cmd }</code></pre>
+        </div>
+      </section>
+
+      <!-- 4.2 Limites et demande -->
+      <section>
+        <div class="fil-detail"><span class="etiq c2">Corbeille</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--g-corbeille);">Ses limites, et comment l'obtenir</h3>
+        <div class="detail duo2">
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-exclamation-triangle"></i> Limites</h3>
+            <ul>
+              <li>Rien n'est libéré sur le disque tant que vous ne videz pas la corbeille.</li>
+              <li>Un élément plus gros que la capacité de la corbeille peut être effacé directement par Windows.</li>
+              <li>Une suppression faite dans un script Python (<code>shutil.rmtree</code>, <code>os.remove</code>) ou directement en .NET ne passe pas par le hook.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="demande" style="font-size:1.1em;max-width:100%;">
+              <span class="qui"><i class="fas fa-user"></i> Vous</span>
+              «&nbsp;Écris-moi un hook global qui envoie à la corbeille tout ce que tu supprimes avec rm ou Remove&#8209;Item.&nbsp;»
+            </div>
+            <div class="astuce"><i class="fas fa-flask"></i> Vérifiez-le sur un dossier d'essai : demandez à Claude de le supprimer, puis retrouvez-le dans la corbeille.</div>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 5. Dossiers interdits (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>Notifications</span><span>Corbeille</span><span class="on c3">Dossiers interdits</span><span>Recherches filtrées</span></div>
+        <h2 style="border-color:var(--g-dossiers);">Des dossiers hors de portée</h2>
+        <div class="duo">
+          <div class="bloc" style="border-color:var(--g-dossiers);">
+            <h3>Ce que fait l'agent</h3>
+            <ul>
+              <li>Vous dressez la liste : «&nbsp;Copies des élèves&nbsp;», «&nbsp;Notes&nbsp;», «&nbsp;Administratif&nbsp;»…</li>
+              <li>Avant chaque action, le hook vérifie qu'elle n'y touche pas.</li>
+              <li>Si elle y touche, elle est refusée, avec un message qui explique pourquoi.</li>
+            </ul>
+          </div>
+          <div class="bloc gain">
+            <h3>Ce que vous y gagnez</h3>
+            <ul>
+              <li>Un degré de certitude sur vos données sensibles.</li>
+              <li>Valable quel que soit le mode de permission.</li>
+              <li>Vous seul modifiez la liste : l'agent ne peut pas y toucher.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 5.1 Le fichier de configuration -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">Dossiers interdits</span> Détail 1 / 3</div>
+        <h3 class="titre-detail" style="color:var(--g-dossiers);">La liste : <code>.claude/protected-paths.json</code></h3>
+        <div class="detail duo2" style="grid-template-columns:1fr 1.05fr;">
+<pre class="code"><code style="border-color:var(--g-dossiers);"><span class="cm">// exemple anonymisé</span>
+{
+  <span class="kw">"protected_directories"</span>: [
+    <span class="st">"Administratif"</span>,
+    <span class="st">"D:/Notes"</span>,
+    <span class="st">"D:/Classes/*/Notes"</span>
+  ],
+  <span class="kw">"protected_allowlists"</span>: [
+    { <span class="pt">"root"</span>: <span class="st">"D:/Copies des élèves"</span>,
+      <span class="pt">"readable"</span>: [<span class="st">"anonymes"</span>] }
+  ],
+  <span class="kw">"trusted_scripts"</span>: [
+    { <span class="pt">"chemin"</span>: <span class="st">"outils/export.py"</span>,
+      <span class="pt">"sha256"</span>: <span class="st">"3f9a…"</span> }
+  ],
+  <span class="kw">"block_broad_recursive_shell"</span>: <span class="pt">true</span>
+}</code></pre>
+          <div>
+            <ul>
+              <li><code>protected_directories</code> : les dossiers interdits. Un nom relatif, un chemin absolu, ou un motif avec <code>*</code>.</li>
+              <li><code>protected_allowlists</code> : un dossier interdit (<code>root</code>), sauf quelques sous-dossiers lisibles malgré tout (<code>readable</code>), par exemple des copies anonymisées.</li>
+              <li><code>trusted_scripts</code> : des scripts autorisés, épinglés par leur empreinte. Modifié après l'épinglage : refusé.</li>
+              <li><code>block_broad_recursive_shell</code> : surveiller les parcours récursifs des commandes.</li>
+            </ul>
+            <div class="astuce"><i class="fas fa-lock"></i> Le fichier est lui-même protégé : l'agent ne peut pas le modifier. Seul le professeur le modifie, et seul le professeur épingle un script.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.2 Ce qui est contrôlé -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">Dossiers interdits</span> Détail 2 / 3</div>
+        <h3 class="titre-detail" style="color:var(--g-dossiers);">Ce qui est contrôlé</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:26%;">Accès</th><th>Ce que vérifie le hook</th></tr>
+            <tr><td>Outils fichiers de Claude</td><td><code>Read</code>, <code>Edit</code>, <code>Write</code>, <code>Glob</code>, <code>Grep</code> : le chemin visé.</td></tr>
+            <tr><td>Commandes shell</td><td><code>cat</code>, <code>python</code>, <code>grep</code>… en Bash comme en PowerShell : les chemins lus et parcourus.</td></tr>
+            <tr><td>Scripts lancés</td><td><code>python x.py</code>, <code>node x.js</code>… : le script est lu et analysé. Refus s'il cite le dossier, même reconstitué par concaténation, ou s'il parcourt récursivement le projet ou un dossier parent.</td></tr>
+            <tr><td>Liens et jonctions</td><td>Résolus avant la vérification. Créer un lien vers un dossier protégé est refusé.</td></tr>
+          </table>
+          <div class="duo2" style="margin-top:0.6em;">
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-user-shield"></i> Contrairement aux règles <code>permissions.deny</code> de <code>settings.json</code>, il s'applique dans <strong>tous</strong> les modes de permission, y compris le mode «&nbsp;bypass&nbsp;», et couvre aussi les commandes shell.</div>
+            <div class="astuce" style="margin-top:0;"><i class="fas fa-plus-circle"></i> Le même hook garde aussi les fichiers <code>.env</code>, refuse <code>git push --force</code> et les suppressions trop larges.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.3 Limites honnêtes -->
+      <section>
+        <div class="fil-detail"><span class="etiq c3">Dossiers interdits</span> Détail 3 / 3</div>
+        <h3 class="titre-detail" style="color:var(--g-dossiers);">Ses limites, dites franchement</h3>
+        <div class="detail duo2">
+          <div class="bloc note" style="margin-top:0;">
+            <h3><i class="fas fa-balance-scale"></i> Refuser seulement sur preuve</h3>
+            <ul>
+              <li>Le hook refuse ce qu'il <strong>voit</strong> : un nom ou un chemin protégé, un parcours dont la racine connue englobe un dossier protégé.</li>
+              <li>En cas de doute (un chemin rangé dans une variable, par exemple), il laisse passer.</li>
+              <li>Un script absent ou illisible n'est pas bloqué.</li>
+            </ul>
+            <p class="muted">Choix assumé : un garde-fou qui refuse au moindre doute bloque l'agent sans cesse.</p>
+          </div>
+          <div class="bloc" style="border-color:var(--g-dossiers);">
+            <h3><i class="fas fa-search"></i> Une analyse, pas un verrou</h3>
+            <ul>
+              <li>Le hook analyse la commande avant qu'elle s'exécute. Ce n'est pas un verrou du système.</li>
+              <li>Pour une garantie absolue, il faudrait des droits Windows sur les dossiers (ACL). Piste étudiée, non déployée.</li>
+              <li>Hook de projet : déclaré dans le <code>.claude/settings.json</code> du projet.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 6. Recherches filtrées (+ pile) -->
+      <section>
+      <section>
+        <div class="frise"><span>Notifications</span><span>Corbeille</span><span>Dossiers interdits</span><span class="on c4">Recherches filtrées</span></div>
+        <h2 style="border-color:var(--g-recherches);">Des recherches qui contournent l'interdit</h2>
+        <div class="duo">
+          <div>
+            <div class="bloc" style="border-color:var(--g-recherches);">
+              <h3>Ce que fait l'agent</h3>
+              <ul>
+                <li>Il cherche dans tout un dossier, qui contient un dossier interdit.</li>
+                <li>Au lieu de refuser, le hook réécrit la recherche pour exclure ce dossier.</li>
+                <li>Le résultat revient sans les fichiers interdits.</li>
+              </ul>
+            </div>
+            <div class="bloc gain" style="margin-top:0.6em;">
+              <h3>Ce que vous y gagnez</h3>
+              <ul>
+                <li>L'agent travaille normalement, sans être bloqué.</li>
+                <li>Rien ne fuit.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="maquette">
+            <div class="titre-maquette"><i class="fas fa-search"></i> «&nbsp;Tous les fichiers .tex du dossier&nbsp;»</div>
+            <div><i class="fas fa-folder-open muted"></i> Mon dossier/</div>
+            <div style="padding-left:1.2em;"><i class="fas fa-folder muted"></i> Cours/</div>
+            <div style="padding-left:2.4em;" class="ok"><i class="fas fa-check"></i> fractions.tex</div>
+            <div style="padding-left:2.4em;" class="ok"><i class="fas fa-check"></i> vecteurs.tex</div>
+            <div style="padding-left:1.2em;"><i class="fas fa-folder muted"></i> Exercices/</div>
+            <div style="padding-left:2.4em;" class="ok"><i class="fas fa-check"></i> fiche-1.tex</div>
+            <div style="padding-left:1.2em;"><span class="exclu"><i class="fas fa-folder"></i> Administratif/</span><span class="etiq-exclu">exclu</span></div>
+            <div style="padding-left:2.4em;" class="exclu"><i class="fas fa-file"></i> courrier.tex</div>
+          </div>
+        </div>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 6.1 Avant / après -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">Recherches filtrées</span> Détail 1 / 2</div>
+        <h3 class="titre-detail" style="color:var(--g-recherches);">Avant / après : la commande réécrite</h3>
+        <div class="detail">
+          <p>Exemples tirés des tests du hook, avec un dossier interdit nommé «&nbsp;Administratif&nbsp;» :</p>
+          <table class="tab-detail" style="margin-top:0.3em;">
+            <tr><th style="width:30%;">L'agent lance</th><th>Le hook exécute à la place</th></tr>
+            <tr><td><code>grep -rn motif .</code></td><td><code>grep --exclude-dir='Administratif' -rn motif .</code></td></tr>
+            <tr><td><code>find . -name '*.tex'</code></td><td><code>find . \( -path './Administratif' -prune \) -o \( -name '*.tex' \) -print</code></td></tr>
+            <tr><td><code>rg --no-ignore motif .</code></td><td>ajout d'un filtre <code>-g '!…'</code> qui écarte le dossier</td></tr>
+          </table>
+          <p class="muted" style="margin-top:0.4em;">Dans la commande réelle, le nom est écrit sous forme de motif (<code>[A]dministratif</code>), pour ne pas déclencher les autres règles de refus.</p>
+          <div class="astuce"><i class="fas fa-ban"></i> Quand la réécriture est impossible, la commande est refusée : <code>find . -delete</code> (incompatible avec l'exclusion), <code>find -L</code> (suit les liens), <code>ls -R .</code> (non réécrit).</div>
+        </div>
+      </section>
+
+      <!-- 6.2 Les outils de recherche de Claude -->
+      <section>
+        <div class="fil-detail"><span class="etiq c4">Recherches filtrées</span> Détail 2 / 2</div>
+        <h3 class="titre-detail" style="color:var(--g-recherches);">Et les outils de recherche de Claude ?</h3>
+        <div class="detail duo2">
+          <div class="bloc" style="border-color:var(--g-recherches);">
+            <h3>Dossier interdit relatif</h3>
+            <p>Exemple : «&nbsp;Administratif&nbsp;», à la racine du projet.</p>
+            <ul>
+              <li>Les outils <code>Grep</code> et <code>Glob</code> de Claude respectent le fichier <code>.ignore</code> du projet : un dossier qui y est listé n'est pas parcouru.</li>
+              <li>Même chose pour <code>rg</code> lancé sans <code>--no-ignore</code>.</li>
+            </ul>
+          </div>
+          <div class="bloc" style="border-color:var(--g-recherches);">
+            <h3>Dossier interdit absolu</h3>
+            <p>Exemple : <code>D:/Copies des élèves</code>.</p>
+            <ul>
+              <li>Une recherche <code>Grep</code> dont la racine englobe ce dossier est refusée.</li>
+              <li>Le message propose de cibler un sous-dossier lisible (par exemple les copies anonymisées).</li>
+              <li>Un motif <code>Glob</code> qui pourrait désigner son contenu est refusé de la même façon.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 7. Ce que vous y gagnez (+ pile : les obtenir) -->
+      <section>
+      <section>
+        <h2>Ce que vous y gagnez</h2>
+        <div class="livrables">
+          <div class="livrable fragment" style="border-color:var(--g-corbeille);">
+            <i class="fas fa-trash-restore" style="color:var(--g-corbeille);"></i>
+            <div class="titre">Sérénité</div>
+            <div>Les suppressions sont réversibles : une erreur se rattrape.</div>
+          </div>
+          <div class="livrable fragment" style="border-color:var(--g-dossiers);">
+            <i class="fas fa-user-lock" style="color:var(--g-dossiers);"></i>
+            <div class="titre">Confidentialité</div>
+            <div>Copies, notes, documents administratifs : hors de portée de l'agent.</div>
+          </div>
+          <div class="livrable fragment" style="border-color:var(--g-recherches);">
+            <i class="fas fa-wind" style="color:var(--g-recherches);"></i>
+            <div class="titre">Fluidité</div>
+            <div>Moins de demandes de permission, et un agent qui n'est pas bloqué.</div>
+          </div>
+        </div>
+        <p class="fragment small muted" style="margin-top:1em;">
+          Vous fixez les règles une fois. L'agent travaille ensuite librement, à l'intérieur de ces règles.
+        </p>
+        <div class="indice-details"><span><i class="fas fa-arrow-down"></i> détails</span></div>
+      </section>
+
+      <!-- 7.1 Les obtenir -->
+      <section>
+        <div class="fil-detail"><span class="etiq c0">Ce que vous y gagnez</span> Détail 1 / 1</div>
+        <h3 class="titre-detail">Les obtenir : demandez-les à Claude</h3>
+        <div class="detail">
+          <table class="tab-detail">
+            <tr><th style="width:22%;">Garde-fou</th><th>Exemple de demande</th></tr>
+            <tr><td><span class="pastille" style="background:var(--g-notif);">Notifications</span></td><td>«&nbsp;Fais-moi un mod qui m'affiche une notification Windows quand tu as fini ou que tu attends ma réponse.&nbsp;» Ou téléchargez <code>notif-bureau</code> depuis le tutoriel.</td></tr>
+            <tr><td><span class="pastille" style="background:var(--g-corbeille);">Corbeille</span></td><td>«&nbsp;Écris-moi un hook global qui envoie à la corbeille tout ce que tu supprimes avec rm ou Remove&#8209;Item.&nbsp;»</td></tr>
+            <tr><td><span class="pastille" style="background:var(--g-dossiers);">Dossiers interdits</span></td><td>«&nbsp;Écris-moi un hook de projet qui t'interdit de lire, modifier ou parcourir les dossiers que je liste dans un fichier de configuration, y compris par des commandes ou des scripts, et que tu ne pourras pas modifier.&nbsp;»</td></tr>
+            <tr><td><span class="pastille" style="background:var(--g-recherches);">Recherches filtrées</span></td><td>«&nbsp;Quand une recherche sur tout un dossier engloberait un dossier interdit, réécris-la pour l'exclure au lieu de la refuser.&nbsp;»</td></tr>
+          </table>
+          <div class="astuce"><i class="fas fa-flask"></i> Testez sur un dossier d'essai avant de compter dessus : créez un dossier interdit avec un fichier factice, puis demandez à Claude de le lire, de le chercher, de le supprimer. Vérifiez chaque refus.</div>
+        </div>
+      </section>
+      </section>
+
+      <!-- 8. Pour aller plus loin -->
+      <section>
+        <h2>Pour aller plus loin</h2>
+        <div class="install">
+          <div class="carte" style="border-color:var(--g-notif);">
+            <div class="titre"><i class="fas fa-chalkboard-teacher"></i> Le tutoriel du site</div>
+            Demander un mod, l'installer, télécharger <code style="white-space:nowrap;">notif-bureau</code>.<br>
+            <a class="bouton" href="https://bfcours.dev/claude-code/tutorials/mods" target="_top">Les mods</a>
+          </div>
+          <div class="carte">
+            <div class="titre"><i class="fas fa-book"></i> La documentation officielle</div>
+            <a class="lien" href="https://code.claude.com/docs/fr/plugins/mods/overview" target="_blank">Les mods</a>
+            &nbsp;·&nbsp;
+            <a class="lien" href="https://code.claude.com/docs/fr/hooks" target="_blank">Les hooks</a>
+          </div>
+          <div class="carte" style="border-color:var(--g-corbeille);">
+            <div class="titre"><i class="fas fa-globe"></i> Un hook pour tous les projets</div>
+            Déclaré dans <code>~/.claude/settings.json</code>. C'est le cas de la corbeille.
+          </div>
+          <div class="carte" style="border-color:var(--g-dossiers);">
+            <div class="titre"><i class="fas fa-folder"></i> Un hook pour un seul projet</div>
+            Déclaré dans le <code>.claude/settings.json</code> du projet. C'est le cas des dossiers interdits.
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:0.7em;">
+          Pour commencer : «&nbsp;<em>Écris-moi un hook global qui envoie à la corbeille tout ce que tu supprimes.</em>&nbsp;»
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="assets/reveal/reveal.js"></script>
+  <script src="assets/reveal/plugin/notes/notes.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // Navigation à deux dimensions : → fil principal, ↓ détails du garde-fou
+      navigationMode: 'default',
+      controls: true,
+      controlsLayout: 'bottom-right',
+      controlsTutorial: true,
+      controlsBackArrows: 'faded',
+      progress: true,
+      slideNumber: 'h.v',
+      overview: true,
+      hash: true,
+      transition: 'slide',
+      center: true,
+      fragments: true,
+      fragmentInURL: true,
+      plugins: [ RevealNotes ]
+    });
+  </script>
+</body>
+</html>

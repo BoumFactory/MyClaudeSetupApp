@@ -42,6 +42,10 @@ export function ChangelogFilters({ onFilterChange }: ChangelogFiltersProps) {
       downloads: "Téléchargements",
       formations: "Formations",
       general: "Général",
+      tutorials: "Tutoriels",
+      skills: "Skills",
+      presentations: "Présentations",
+      applications: "Applications",
     }
     return labels[category] || category
   }

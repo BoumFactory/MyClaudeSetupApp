@@ -1,6 +1,74 @@
 {
   "changelogs": [
     {
+      "id": "2026-10-28",
+      "date": "2026-10-28",
+      "title": "Vidéos avec Claude Code, diaporamas refondus et packs par skill",
+      "categories": ["tutorials", "presentations", "skills", "downloads", "applications"],
+      "changes": [
+        {
+          "title": "Nouveau tutoriel : créer des vidéos avec Claude Code",
+          "details": "Le skill capsule-video transforme une demande en capsule animée avec voix off. Tutoriel pas à pas avec vidéo de démonstration, diaporama refondu et installeur (Claude Code ou Codex, qualité au choix, 720p par défaut).",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Nouveau tutoriel : créer son propre skill",
+          "details": "Un parcours à étapes avec skill-creator et grill-me, des prompts à copier et son diaporama.",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Toute la configuration en une commande",
+          "details": "Une commande, lancée depuis le dossier du projet, installe la configuration complète dans .claude (Claude Code) ou .agents (Codex). Si le dossier existe déjà, il est sauvegardé avant l'installation. La relancer met la configuration à jour. Le tutoriel « Config Claude Code » est réécrit autour de cette commande.",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Skill H5P allégé",
+          "details": "Le skill passe de 57 Mo à moins de 3 Mo : ses bibliothèques H5P se téléchargent à la demande, avec vérification d'empreinte. Les fichiers .h5p produits sont aussi plus légers.",
+          "type": "improvement"
+        },
+        {
+          "title": "Packs « Ajouter au panier » par skill",
+          "details": "Chaque skill présenté a son pack : skills enchaînés, données, diaporama inclus, et commandes d'installation pour Claude Code et Codex. Nouveau bundle Typst Enseignant.",
+          "type": "feature"
+        },
+        {
+          "title": "Nouveau tutoriel : sa première application React + Tauri",
+          "details": "Une application locale, rapide et légère, obtenue en demandant tout à l'agent, installation des logiciels comprise. Le tutoriel insiste sur le workspace : un cache Rust partagé entre les applications, au lieu de 2 à 5 Go de compilation par application.",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Trois applications de bureau à télécharger",
+          "details": "Exos Lombards (fiches d'exercices, avec un kit de départ), Gestion de classes (plans de classe et rôles) et Activité-Timer (minuteur à projeter). Ce sont des exécutables Windows à lancer sans installation, et vos données restent sur votre poste. Le panier télécharge désormais ces applications directement.",
+          "type": "feature",
+          "highlight": true
+        },
+        {
+          "title": "Nouveaux tutoriels : Git, connecteurs, mods",
+          "details": "Le tutoriel des mods propose un exemple à télécharger : les notifications de bureau.",
+          "type": "feature"
+        },
+        {
+          "title": "Nouveau diaporama : mes mods et garde-fous",
+          "details": "Suppressions envoyées à la corbeille, dossiers interdits à l'agent, recherches filtrées pour ne rien laisser fuiter.",
+          "type": "feature"
+        },
+        {
+          "title": "Diaporamas refondus selon un standard commun",
+          "details": "Fil principal à suivre avec →, détails techniques en descendant avec ↓. Sont concernés latex, reveals, typst, barème détaillé, programmes officiels et progression, ainsi que, en plus simple, l'architecture du dossier .claude/ et l'interface (l'application de bureau et le terminal, sans débordement). Les commandes sont présentées comme ce qu'elles sont : des skills d'un seul fichier.",
+          "type": "improvement"
+        },
+        {
+          "title": "Tutoriels et skills publiés mis à jour",
+          "details": "Tutoriels Python, Node.js, VS Code et Claude Code actualisés. Barème : le skill produit uniquement des barèmes. Programmes officiels allégé. Modèles LaTeX anonymisés. L'onglet Formations est retiré.",
+          "type": "improvement"
+        }
+      ]
+    },
+    {
       "id": "2026-10-21",
       "date": "2026-10-21",
       "title": "Packages Typst, tutoriel Typst et mise à jour des tutoriels IA",

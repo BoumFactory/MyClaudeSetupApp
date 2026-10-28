@@ -250,14 +250,14 @@ export const SKILL_PAGES: Record<string, SkillPageConfig> = {
       'Un diagnostic du sujet : densité standard entre 3 et 4 actions par point, trop dense au-delà de 4.',
     ],
     prerequis: [
-      { texte: 'Un sujet avec son corrigé rédigé, idéalement en bfcours (EXO, \\tcbitempoint, \\exocorrection).' },
+      { texte: 'Un sujet avec son corrigé rédigé, dans le format de votre choix : .tex, .typ, PDF, Word/ODT, Markdown ou texte collé dans la conversation (le bfcours est un bonus facultatif : EXO, \\tcbitempoint, \\exocorrection).' },
       { texte: 'Un navigateur pour ouvrir l\'interface bareme.html. Ni Python, ni LaTeX nécessaires.' },
       {
-        texte: 'Pour rédiger le sujet lui-même : le skill latex.',
+        texte: 'Pour rédiger le sujet avec Claude (facultatif) : skill latex ou Typst.',
         lien: { href: '/claude-code/presentations/bfcours-latex-system', label: 'Skill latex' },
       },
     ],
-    invocation: 'Demandez « établis le barème de mon DS, sur 20 » en indiquant le fichier .tex, ou tapez /bareme suivi du chemin du sujet (Claude Code).',
+    invocation: 'Demandez « établis le barème de mon DS, sur 20 » en indiquant le fichier du sujet (ou en collant son texte), ou tapez /bareme suivi du chemin du sujet (Claude Code).',
   },
   'bfcours-typst-skill': {
     titre: 'Le skill Typst : de votre demande aux PDF professeur et élève',

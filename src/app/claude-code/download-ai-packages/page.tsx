@@ -187,6 +187,13 @@ export default function DownloadAIPackagesPage() {
           Des setups <code className="text-cosmic-300 bg-cosmic-900/50 px-1.5 py-0.5 rounded text-sm">.claude</code> prêts à l'emploi,
           adaptés à votre profil. Chaque package contient les skills, agents et commandes nécessaires.
         </p>
+        <p className="text-sm text-white/50 max-w-2xl mx-auto mt-3">
+          Vous voulez toute la configuration ?{' '}
+          <a href="/claude-code/tutorials/claude-code-config#une-commande" className="underline text-cosmic-300 hover:text-cosmic-200">
+            Une seule commande l'installe
+          </a>
+          , pour Claude Code ou Codex.
+        </p>
       </div>
 
       {/* Tier 1 — Généraliste (centré, seul) */}

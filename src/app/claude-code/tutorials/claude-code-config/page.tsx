@@ -18,12 +18,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Breadcrumb } from "@/components/layout/Breadcrumb"
 import { TutorialTracker } from "@/components/analytics/PageTracker"
+import { InstallerConfigCommande } from "@/components/tutorials/InstallerConfigCommande"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Configuration de Claude Code | Tutoriels",
   description:
-    "Guide complet pour configurer Claude Code avec mes outils personnalisés : agents, skills, commandes et serveurs MCP pour l'enseignement.",
+    "Installer en une commande ma configuration pour Claude Code ou Codex : agents, skills, commandes et serveurs MCP pour l'enseignement.",
 }
 
 export default function ClaudeCodeConfigPage() {
@@ -53,6 +54,50 @@ export default function ClaudeCodeConfigPage() {
         </p>
       </section>
 
+      {/* Installation en une commande */}
+      <InstallerConfigCommande />
+
+      {/* Alternative : une partie seulement */}
+      <section className="glass-card rounded-xl p-6 space-y-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg cosmic-gradient flex items-center justify-center">
+            <Package className="w-5 h-5 text-white" />
+          </div>
+          <h2 className="text-2xl font-bold">Pour ne prendre qu'une partie</h2>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Vous n'avez besoin que de quelques skills ? Deux autres chemins existent.
+        </p>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Link
+            href="/claude-code/download-ai-packages"
+            className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 transition-all group"
+            prefetch={false}
+          >
+            <Package className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors">Les packs par profil</h3>
+              <p className="text-sm text-muted-foreground">
+                Un ensemble prêt à l'emploi : généraliste, LaTeX ou Typst.
+              </p>
+            </div>
+          </Link>
+          <Link
+            href="/claude-code/presentations"
+            className="flex items-start gap-3 p-4 rounded-lg bg-cosmic-950/30 border border-cosmic-800 hover:border-cosmic-600 transition-all group"
+            prefetch={false}
+          >
+            <Sparkles className="w-5 h-5 text-cosmic-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold mb-1 group-hover:text-cosmic-400 transition-colors">Un skill à la fois</h3>
+              <p className="text-sm text-muted-foreground">
+                Les principaux skills ont une page de présentation. On y trouve leur pack et ses commandes d'installation.
+              </p>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* Prérequis */}
       <section className="glass-card rounded-xl p-8 space-y-4 border-2 border-amber-500/30 bg-amber-950/10">
         <div className="flex items-start gap-4">
@@ -77,6 +122,10 @@ export default function ClaudeCodeConfigPage() {
                 <CheckCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
                 <span><strong className="text-foreground">Un répertoire de travail</strong> - Un dossier dédié à vos projets avec Claude</span>
               </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-foreground">Git</strong> - Pour l'installation en une commande (<Link href="/claude-code/tutorials/git-install" className="underline text-amber-300 hover:text-amber-200" prefetch={false}>tutoriel Git</Link>)</span>
+              </li>
             </ul>
             <div className="mt-4">
               <Button asChild variant="outline" size="sm">
@@ -90,14 +139,18 @@ export default function ClaudeCodeConfigPage() {
         </div>
       </section>
 
-      {/* Étapes de configuration */}
+      {/* Installation manuelle (sans Git) */}
       <section className="space-y-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-lg nebula-gradient flex items-center justify-center">
             <Download className="w-5 h-5 text-white" />
           </div>
-          <h2 className="text-3xl font-bold">Étapes de configuration</h2>
+          <h2 className="text-3xl font-bold">Autre méthode : installation à la main</h2>
         </div>
+        <p className="text-sm text-muted-foreground">
+          Sans Git, vous pouvez télécharger les fichiers depuis le site, puis les ranger vous-même.
+          La configuration complète est lourde : la commande ci-dessus reste plus simple.
+        </p>
 
         {/* Étape 1 */}
         <div className="glass-card rounded-xl p-6">

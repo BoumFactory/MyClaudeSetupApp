@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exos Lombards — mode d'emploi</title>
+<style>
+  body { font-family: system-ui, "Segoe UI", sans-serif; background: #f7f8fb; color: #1f2933; margin: 0; line-height: 1.55; }
+  main { max-width: 780px; margin: 2rem auto; background: #fff; padding: 2rem 2.4rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  h1 { margin-top: 0; color: #047857; }
+  h2 { color: #065f46; font-size: 1.15rem; margin-top: 1.8rem; }
+  .meta { color: #52606d; font-size: .95rem; }
+  .bouton { display: inline-block; background: #047857; color: #fff; padding: .7rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin: .2rem .4rem .2rem 0; }
+  .secondaire { background: #e6f4ef; color: #065f46; }
+  pre { background: #f1f5f9; padding: .8rem 1rem; border-radius: 6px; overflow-x: auto; }
+  .note { background: #fff7ed; border-left: 4px solid #f59e0b; padding: .8rem 1rem; border-radius: 6px; }
+  li { margin: .3rem 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Exos Lombards</h1>
+  <p>Composer des fiches d'exercices, des devoirs et des sujets au format bac à partir de vos propres exercices LaTeX.</p>
+  <p class="meta">Version 0.1.0 — exécutable Windows 10 ou 11, 64 bits — à lancer directement, sans installation.</p>
+  <p>
+    <a class="bouton" href="https://bfcours.dev/download/logiciels-enseignant/applications-bureau/exos-lombards/exos-lombards-0.1.0.zip">Télécharger l'application et son kit (zip)</a>  </p>
+
+  <h2>Ce qu'il fait</h2>
+  <ul>
+    <li>Compose des fiches d'exercices, des devoirs avec barème et des sujets au format bac, compilés en PDF, avec les corrigés en fin de document ou dans un second fichier.</li>
+    <li>Importe vos fichiers LaTeX (environnement EXO de bfcours, paires énoncé et corrigé…) pour constituer vos propres bases d'exercices, classées par thèmes.</li>
+    <li>Accepte des exercices libres, écrits directement en LaTeX, avec un aperçu compilé.</li>
+    <li>Garde, pour chaque classe, la trace des exercices déjà donnés, et produit des catalogues PDF de vos bases.</li>
+  </ul>
+
+  <h2>Ce que contient le zip</h2>
+  <p>Un dossier <code>Exos-Lombards</code> avec :</p>
+  <ul>
+    <li><code>exos-lombards.exe</code>, l'application ;</li>
+    <li><code>.exoslombards</code>, le kit de départ : les modèles de documents (fiche, devoir, sujet bac), le préambule commun et une copie du paquet LaTeX bfcours. <strong>Aucune banque d'exercices n'est fournie</strong> : l'application démarre avec « 0 exercice ».</li>
+  </ul>
+  <p>Ces deux éléments doivent rester <strong>côte à côte</strong> : le dossier <code>.exoslombards</code> doit se trouver dans le même dossier que <code>exos-lombards.exe</code>.</p>
+
+  <h2>Prérequis</h2>
+  <ul>
+    <li><strong>LuaLaTeX</strong>, par MiKTeX (recommandé) ou TeX Live. Au premier document, MiKTeX installe à la volée les paquets qui lui manquent : gardez une connexion internet.</li>
+    <li><strong>bfcours</strong> : si ce paquet n'est pas déjà installé sur votre poste, ouvrez <em>Réglages</em>, rubrique « bfcours embarqué », puis cliquez sur <em>Installer bfcours dans MiKTeX</em>. La copie fournie dans le kit est alors déclarée à MiKTeX. Avec TeX Live, l'application affiche la commande à lancer.</li>
+    <li><strong>Tectonic</strong>, en secours seulement, si LuaLaTeX est absent : téléchargez <code>tectonic.exe</code> sur le site officiel de Tectonic et placez-le à côté de <code>exos-lombards.exe</code>. Tectonic refuse les chemins qui contiennent une espace.</li>
+    <li>Une connexion internet pour l'éditeur de code LaTeX (exercices libres, éditeur d'exercices), qui se charge en ligne.</li>
+  </ul>
+
+  <h2>Premier lancement</h2>
+  <ol>
+    <li>Décompressez le zip dans un dossier dont le chemin <strong>ne contient aucune espace</strong>, par exemple <code>C:\Applis\Exos-Lombards</code>.</li>
+    <li>Double-cliquez sur <code>exos-lombards.exe</code>.</li>
+    <li>Dans <em>Composer</em>, remplacez le nom d'établissement proposé par celui de votre établissement.</li>
+    <li>Premier document : <em>Composer</em>, bouton <em>Exercice libre</em>, collez un exercice LaTeX, par exemple :
+<pre>\begin{EXO}{Premier essai}{ESSAI}
+Calculer $2+3$.
+\exocorrection
+$2+3=5$.
+\end{EXO}</pre>
+      puis <em>Ajouter au panier</em>, <em>Retour au Composer</em> et <em>Produire le document</em>.</li>
+    <li>Pour constituer une base, passez par l'onglet <em>Importer</em> avec vos propres fichiers LaTeX.</li>
+  </ol>
+  <p class="note">L'écran <em>Aide</em> de l'application est vide dans cette distribution : ce mode d'emploi le remplace.</p>
+
+  <h2>Vos données</h2>
+  <p>Tout reste sur votre poste, dans le dossier <code>.exoslombards</code> à côté de l'exécutable : vos bases, vos fiches, vos classes et vos réglages. Aucun compte, aucun envoi. Pour sauvegarder ou changer de poste, copiez le dossier <code>Exos-Lombards</code> entier.</p>
+
+  <h2>L'avertissement de Windows</h2>
+  <ul>
+    <li>L'exécutable n'est pas signé : Windows SmartScreen affiche « Windows a protégé votre ordinateur ». Cliquez sur <strong>Informations complémentaires</strong>, puis <strong>Exécuter quand même</strong>.</li>
+    <li>Sous Windows 11, si le contrôle intelligent des applications (Smart App Control) est activé, une application non signée est bloquée, sans possibilité de l'autoriser au cas par cas.</li>
+    <li>L'application a besoin du composant WebView2 de Microsoft, présent sur Windows 10 et 11 à jour. S'il manque, la fenêtre ne s'ouvre pas : installez le « runtime WebView2 » depuis le site de Microsoft.</li>
+  </ul>
+</main>
+</body>
+</html>

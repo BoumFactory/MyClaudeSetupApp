@@ -402,9 +402,9 @@
           <table class="tab-detail">
             <tr><th style="width:24%;">Élément</th><th style="width:30%;">Nom</th><th>Rôle</th></tr>
             <tr><td><span class="pastille p-bleu">Méthode</span></td><td><code>bareme-actions-eleves</code></td><td>Les règles d'atomisation, les coefficients, les formules et les seuils de densité.</td></tr>
-            <tr><td><span class="pastille p-ok">Déroulé</span></td><td>commande <code>/bareme</code></td><td>Le protocole pas à pas : lire le <code>.tex</code>, détecter les types d'exercice, atomiser, écrire le JSON, afficher la synthèse.</td></tr>
+            <tr><td><span class="pastille p-ok">Déroulé</span></td><td>commande <code>/bareme</code></td><td>Le protocole pas à pas : lire le sujet (tout format), détecter les types d'exercice, atomiser, écrire le JSON, afficher la synthèse.</td></tr>
             <tr><td><span class="pastille p-mid">Interface</span></td><td><code>templates/bareme.html</code></td><td>Une page autonome, sans installation, pour relire et ajuster le barème.</td></tr>
-            <tr><td><span class="pastille p-gris">En amont</span></td><td><code>votre sujet</code></td><td>Le sujet et ses corrigés, que vous fournissez : ce pack ne les rédige pas (c'est le rôle du skill latex, présenté à part).</td></tr>
+            <tr><td><span class="pastille p-gris">En amont</span></td><td><code>votre sujet</code></td><td>Le sujet et ses corrigés, que vous fournissez dans le format de votre choix (.tex, .typ, PDF, Word/ODT, Markdown, texte collé) : ce pack ne les rédige pas.</td></tr>
           </table>
           <div class="duo2" style="margin-top:0.6em;">
             <div class="astuce" style="margin-top:0;"><i class="fas fa-route"></i> Place dans le flux d'une évaluation : rédiger le sujet, rédiger les corrigés, <strong>puis</strong> le barème. La notation des copies se fait ensuite, hors du skill.</div>
@@ -442,7 +442,7 @@
       <!-- 3.1 Ce qu'il repère dans le fichier -->
       <section>
         <div class="fil-detail"><span class="etiq c1">1. Lire</span> Détail 1 / 2</div>
-        <h3 class="titre-detail" style="color:var(--step-read);">Ce qu'il repère dans un sujet bfcours</h3>
+        <h3 class="titre-detail" style="color:var(--step-read);">Ce qu'il repère dans un sujet, et le bonus bfcours</h3>
         <div class="detail duo2" style="grid-template-columns:1.3fr 1fr;">
 <pre class="code"><code><span class="kw">\begin{EXO}</span>{Probabilités conditionnelles}{}
 <span class="kw">\begin{tcbenumerate}</span>[1]
@@ -457,12 +457,13 @@ $P_A(W)=\dfrac{P(A\cap W)}{P(A)}$ ...
           <div>
             <table class="tab-detail">
               <tr><th style="width:42%;">Il cherche</th><th>Pour en tirer</th></tr>
-              <tr><td>Le fichier maître, <code>enonce.tex</code>, <code>sections/*.tex</code></td><td>Tout le contenu, même découpé.</td></tr>
-              <tr><td><code>EXO</code> et son titre</td><td>Un exercice du barème, son type.</td></tr>
-              <tr><td><code>\tcbitempoint{N}</code></td><td>Les points que vous aviez prévus.</td></tr>
-              <tr><td><code>\exocorrection</code></td><td>Le corrigé à découper en actions.</td></tr>
+              <tr><td>Le sujet, quel que soit son format (.tex, .typ, PDF, Word/ODT, Markdown, texte collé)</td><td>Tout le contenu, même découpé en plusieurs fichiers.</td></tr>
+              <tr><td>Les exercices et leurs titres</td><td>Un exercice du barème, son type.</td></tr>
+              <tr><td>Les questions</td><td>Les lignes du barème.</td></tr>
+              <tr><td>Le corrigé</td><td>Ce qui sera découpé en actions.</td></tr>
+              <tr><td><strong>Bonus bfcours</strong> : <code>EXO</code>, <code>\tcbitempoint{N}</code>, <code>\exocorrection</code></td><td>Exercices, points déjà prévus et corrigé, repérés directement (exemple de gauche).</td></tr>
             </table>
-            <p class="muted" style="margin-top:0.5em;">Un sujet hors bfcours convient aussi, pourvu que son corrigé soit rédigé.</p>
+            <p class="muted" style="margin-top:0.5em;">Le cas général suffit : il faut seulement que le corrigé soit rédigé.</p>
           </div>
         </div>
       </section>
@@ -597,7 +598,7 @@ $P_A(W)=\dfrac{P(A\cap W)}{P(A)}$ ...
       <!-- 4.3 Avant / après dans le .tex -->
       <section>
         <div class="fil-detail"><span class="etiq c2">2. Atomiser</span> Détail 3 / 3</div>
-        <h3 class="titre-detail" style="color:var(--step-atom);">Dans le sujet : de l'estimation au compte exact</h3>
+        <h3 class="titre-detail" style="color:var(--step-atom);">Bonus bfcours : de l'estimation au compte exact dans le sujet</h3>
         <div class="detail duo2">
           <div>
             <p><strong>Avant</strong> : une estimation à l'œil.</p>
@@ -849,7 +850,7 @@ Densité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>3,15</b> (standard
           <div>
             <table class="tab-detail">
               <tr><th style="width:40%;">Précisez…</th><th>Exemple</th></tr>
-              <tr><td>Le sujet</td><td>le fichier <code>.tex</code> ou son dossier</td></tr>
+              <tr><td>Le sujet</td><td>le fichier du sujet (tout format), son dossier, ou le texte collé</td></tr>
               <tr><td>La note cible</td><td>«&nbsp;sur 20&nbsp;», «&nbsp;sur 30&nbsp;»</td></tr>
               <tr><td>Vos coefficients</td><td>«&nbsp;la géométrie compte comme le calcul&nbsp;»</td></tr>
               <tr><td>Un forfait</td><td>«&nbsp;5 points pour la tâche complexe&nbsp;»</td></tr>
@@ -928,7 +929,7 @@ Densité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>3,15</b> (standard
           </div>
         </div>
         <p class="small muted" style="margin-top:0.7em;">
-          Prérequis : un sujet avec son corrigé (idéalement en bfcours) et un navigateur. Ni Python, ni LaTeX.
+          Prérequis : un sujet avec son corrigé (dans n'importe quel format) et un navigateur. Ni Python, ni LaTeX.
           Puis demandez : «&nbsp;<em>établis le barème de mon DS, sur 20</em>&nbsp;».
         </p>
       </section>

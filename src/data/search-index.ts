@@ -123,9 +123,9 @@ export function buildSearchIndex(): SearchableItem[] {
     {
       id: 'claude-code-config',
       title: 'Configuration Claude Code',
-      description: 'Configurer Claude Code avec vos skills et agents',
+      description: 'Installer toute la configuration en une commande (Claude Code ou Codex)',
       url: '/claude-code/tutorials/claude-code-config',
-      tags: ['configuration', 'claude code', 'setup'],
+      tags: ['configuration', 'claude code', 'codex', 'setup', 'installation', 'une commande'],
     },
     {
       id: 'bfcours-setup',
@@ -147,6 +147,13 @@ export function buildSearchIndex(): SearchableItem[] {
       description: 'Installer Git et Git Bash, le terminal que Claude Code utilise sous Windows ; winget pour les autres outils',
       url: '/claude-code/tutorials/git-install',
       tags: ['git', 'git bash', 'winget', 'ffmpeg', 'installation', 'prérequis', 'windows'],
+    },
+    {
+      id: 'premiere-app-tauri',
+      title: 'Première application React + Tauri',
+      description: 'Créer une application locale en demandant tout à Claude Code : Rust, Build Tools, workspace avec cache Rust partagé, installeur Windows',
+      url: '/claude-code/tutorials/premiere-app-tauri',
+      tags: ['tauri', 'react', 'rust', 'cargo', 'application', 'installeur', 'workspace', 'winget', 'prérequis'],
     },
     {
       id: 'connecteurs',
@@ -179,9 +186,10 @@ export function buildSearchIndex(): SearchableItem[] {
   // ============ 3. Presentations ============
   // Human-readable titles for presentation slugs
   const presentationTitles: Record<string, string> = {
-    'architecture-claude-code-reveals': 'Architecture Claude Code',
-    'claude-code-interface': 'Interface Claude Code',
-    'commandes-disponibles': 'Commandes disponibles',
+    'architecture-claude-code-reveals': 'Le dossier .claude/ : le cerveau de mon assistant',
+    'claude-code-interface': "Claude Code : l'application et le terminal",
+    'commandes-disponibles': "Les commandes : des skills d'un seul fichier",
+    'mods-et-garde-fous': 'Mes mods : garder la main sur l\'agent (corbeille, dossiers interdits, recherches filtrées)',
     'tex-document-creator-system': 'Tex Document Creator',
     'reveals-presentation-system': 'Skill reveals : de la demande au diaporama prêt à projeter',
     'programmes-officiels-system': 'Skills programmes et progression : du BO 2026 à la progression annuelle',
@@ -375,6 +383,30 @@ export function buildSearchIndex(): SearchableItem[] {
       description: 'Suite d\'outils de productivité et d\'automatisation pour enseignants sur GitHub',
       url: '/claude-code/applications/logiciels',
       tags: ['outils', 'enseignant', 'productivité', 'github', 'automatisation'],
+      categoryLabel: 'Logiciel enseignant',
+    },
+    {
+      id: 'app-bureau-gestion-classes',
+      title: 'Gestion de classes',
+      description: 'Plans de classe et rôles des élèves : exécutable Windows à lancer sans installation, données gardées sur le poste',
+      url: '/claude-code/applications/logiciels',
+      tags: ['plan de classe', 'rôles', 'classe', 'exécutable', 'windows'],
+      categoryLabel: 'Logiciel enseignant',
+    },
+    {
+      id: 'app-bureau-activite-timer',
+      title: 'Activité-Timer',
+      description: 'Minuteur d\'activité à projeter en classe : exécutable Windows à lancer sans installation',
+      url: '/claude-code/applications/logiciels',
+      tags: ['minuteur', 'timer', 'classe', 'exécutable', 'windows'],
+      categoryLabel: 'Logiciel enseignant',
+    },
+    {
+      id: 'app-bureau-exos-lombards',
+      title: 'Exos Lombards',
+      description: 'Fiches, devoirs et sujets bac composés à partir de vos exercices LaTeX : exécutable Windows sans installation, avec kit de départ',
+      url: '/claude-code/applications/logiciels',
+      tags: ['exercices', 'latex', 'bfcours', 'fiches', 'devoirs', 'exécutable', 'windows'],
       categoryLabel: 'Logiciel enseignant',
     },
   ]

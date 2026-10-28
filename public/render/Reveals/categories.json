@@ -17,14 +17,14 @@
           "presentations": [
             {
               "slug": "architecture-claude-code-reveals",
-              "comment": "Vue d'ensemble complète de l'architecture de ma configuration Claude Code. Découvrez comment agents, skills, commandes, hooks et serveurs MCP s'articulent ensemble.",
+              "comment": "Le dossier .claude/, cerveau de l'assistant : CLAUDE.md, skills, agents, hooks, serveurs MCP et mémoire, une brique par diapo, avec des exemples réels de ma configuration.",
               "tags": ["architecture", "vue d'ensemble", "agents", "skills"],
               "level": "débutant",
               "updatedAt": "2026-10"
             },
             {
               "slug": "claude-code-interface",
-              "comment": "Guide de l'interface de Claude Code : application de bureau (Chat, Cowork, Code) et terminal, installation, commandes de base, mode plan, reprise de session et gestion du contexte.",
+              "comment": "Claude Code dans l'application de bureau et dans le terminal : le même agent. Installer, ouvrir un dossier, valider les modifications, mode plan, reprendre une session, gérer le contexte.",
               "tags": ["interface", "navigation", "outils", "vue d'ensemble"],
               "level": "débutant",
               "updatedAt": "2026-10"
@@ -33,13 +33,27 @@
         },
         {
           "id": "commandes",
-          "name": "Commandes disponibles",
-          "description": "Liste et utilisation des commandes",
+          "name": "Les commandes",
+          "description": "Des skills d'un seul fichier",
           "presentations": [
             {
               "slug": "commandes-disponibles",
-              "comment": "Catalogue des commandes fournies dans ma configuration : création, modification, orchestration avec /do, recherche, évaluations, Moodle et H5P.",
-              "tags": ["commandes", "workflow", "productivité", "référence"],
+              "comment": "Une commande, c'est un skill d'un seul fichier qu'on lance en tapant /nom. Commande ou skill, anatomie d'une commande, commandes intégrées utiles, en créer une.",
+              "tags": ["commandes", "skills", "référence"],
+              "level": "intermédiaire",
+              "updatedAt": "2026-10"
+            }
+          ]
+        },
+        {
+          "id": "securite-confidentialite",
+          "name": "Sécurité et confidentialité",
+          "description": "Mods et hooks pour garder la main sur l'agent",
+          "presentations": [
+            {
+              "slug": "mods-et-garde-fous",
+              "comment": "Mes mods : on peut contrôler ce que fait l'IA. Quatre garde-fous obtenus en le demandant à Claude : notifications de bureau, suppressions envoyées à la corbeille, dossiers interdits (ni lecture, ni modification, ni parcours, dans tous les modes de permission) et recherches réécrites pour exclure ces dossiers. Mod ou hook, fonctionnement exact, limites et demandes à faire.",
+              "tags": ["sécurité", "hooks", "mods", "confidentialité"],
               "level": "intermédiaire",
               "updatedAt": "2026-10"
             }
@@ -178,8 +192,8 @@
     },
     {
       "id": "outils-latex",
-      "name": "Outils LaTeX",
-      "description": "Systèmes de création et compilation de documents LaTeX",
+      "name": "Outils d'écriture",
+      "description": "Systèmes de création et compilation de documents en LaTeX et en Typst",
       "icon": "FileCode",
       "gradient": "from-slate-500/10 via-gray-500/10 to-zinc-500/10",
       "color": "slate",
@@ -256,7 +270,11 @@
       "évaluation",
       "révision",
       "Typst",
-      "farfadet"
+      "farfadet",
+      "sécurité",
+      "hooks",
+      "mods",
+      "confidentialité"
     ],
     "availableLevels": ["débutant", "intermédiaire", "avancé"]
   }
