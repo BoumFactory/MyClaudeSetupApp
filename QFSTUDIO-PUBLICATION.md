@@ -56,13 +56,15 @@ Dossier disque correspondant **1:1** :
      (`cat QF-Studio_<ver>_x64-setup.nsis.zip.sig`)
 
 4. **Mettre à jour la page humaine** (facultatif mais conseillé) :
-   `src/app/claude-code/applications/logiciels/page.tsx`
+   `src/app/claude-code/applications/logiciels/qf-studio/page.tsx`
+   (page propre à QF-Studio depuis le 30/10/2026 ; la mise à jour automatique
+   n'en dépend pas, elle ne lit que la zone gelée)
    - `QFSTUDIO_VERSION` → nouvelle version
-   - ajouter une entrée en tête de `QFSTUDIO_CHANGELOG`
+   - remplacer `QFSTUDIO_LATEST_NOTES` par les notes de la nouvelle version
 
 5. **Déposer** = commit + push :
    ```sh
-   git add public/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio src/app/claude-code/applications/logiciels/page.tsx
+   git add public/7gOdepBMu5OY2QBKBcd7mGyA/qfstudio src/app/claude-code/applications/logiciels/qf-studio/page.tsx
    git commit -m "QF-Studio <ver>"
    git push      # Vercel redéploie automatiquement bfcours.dev
    ```

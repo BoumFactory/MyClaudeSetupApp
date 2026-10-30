@@ -116,6 +116,7 @@ const INSTALL_GUIDES = [
       { title: 'Python', href: '/claude-code/tutorials/python-install', icon: Code2, color: 'text-yellow-400', description: 'Langage requis pour les scripts et skills avancés' },
       { title: 'Node.js', href: '/claude-code/tutorials/nodejs-install', icon: Globe, color: 'text-green-400', description: 'Environnement JavaScript pour Claude Code et les outils web' },
       { title: 'VS Code + MiKTeX', href: '/claude-code/tutorials/vscode-miktex', icon: FileText, color: 'text-sky-400', description: 'Éditeur de code et compilateur LaTeX pour les documents' },
+      { title: 'Snippets VS Code', href: '/claude-code/tutorials/vscode-snippets', icon: FileText, color: 'text-sky-400', description: 'Raccourcis et autocomplétion pour vos macros LaTeX, écrits par Claude Code' },
       { title: 'Git pour Windows', href: '/claude-code/tutorials/git-install', icon: GitBranch, color: 'text-orange-400', description: 'Git Bash, le terminal que Claude Code utilise sous Windows' },
       { title: 'Première app React + Tauri', href: '/claude-code/tutorials/premiere-app-tauri', icon: AppWindow, color: 'text-amber-400', description: 'Une application locale demandée à l\'agent : logiciels, workspace partagé, installeur' },
     ],

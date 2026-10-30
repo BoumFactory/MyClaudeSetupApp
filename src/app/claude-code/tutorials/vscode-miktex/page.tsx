@@ -514,6 +514,11 @@ export default function VSCodeMikTeXPage() {
 
           <div className="flex flex-wrap gap-4 justify-center pt-4">
             <Button asChild variant="cosmic" size="lg">
+              <Link href="/claude-code/tutorials/vscode-snippets" prefetch={false}>
+                Étape suivante : les snippets LaTeX
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
               <Link href="/claude-code/tutorials" prefetch={false}>
                 Voir d'autres tutoriels
               </Link>

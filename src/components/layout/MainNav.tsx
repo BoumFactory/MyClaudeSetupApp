@@ -153,6 +153,12 @@ export function MainNav() {
               description: "Éditeur et compilateur LaTeX"
             },
             {
+              title: "Snippets VS Code",
+              href: "/claude-code/tutorials/vscode-snippets",
+              icon: Download,
+              description: "Raccourcis pour vos macros LaTeX"
+            },
+            {
               title: "Git pour Windows",
               href: "/claude-code/tutorials/git-install",
               icon: Download,
@@ -360,18 +366,101 @@ export function MainNav() {
       title: "Applications",
       href: "/claude-code/applications",
       icon: Settings,
+      isMultiLevel: true,
+      // Une page par logiciel : garder en accord avec le sommaire
+      // src/app/claude-code/applications/logiciels/page.tsx
       submenu: [
         {
-          title: "Applications Éducatives",
-          href: "/claude-code/applications/educatives",
-          icon: GraduationCap,
-          description: "Applications interactives pour les élèves"
+          title: "Vue d'ensemble",
+          isCategory: true,
+          icon: Package,
+          description: "Toutes les applications, pour les élèves et pour l'enseignant",
+          presentations: [
+            {
+              title: "Applications Éducatives",
+              href: "/claude-code/applications/educatives",
+              icon: GraduationCap,
+              description: "Pour les élèves : exercices, visualisations, Python"
+            },
+            {
+              title: "Logiciels Enseignants",
+              href: "/claude-code/applications/logiciels",
+              icon: Package,
+              description: "Sommaire de tous les logiciels enseignants"
+            },
+          ]
         },
         {
-          title: "Logiciels Enseignants",
-          href: "/claude-code/applications/logiciels",
-          icon: Package,
-          description: "Outils de productivité pour enseignants"
+          title: "Créer des documents",
+          isCategory: true,
+          icon: FileText,
+          description: "Questions flash, fiches, devoirs, Word, Moodle",
+          presentations: [
+            {
+              title: "QF-Studio",
+              href: "/claude-code/applications/logiciels/qf-studio",
+              icon: Monitor,
+              description: "Windows — questions flash, mise à jour automatique"
+            },
+            {
+              title: "Exos Lombards",
+              href: "/claude-code/applications/logiciels/exos-lombards",
+              icon: Monitor,
+              description: "Windows — fiches et devoirs depuis vos exercices LaTeX"
+            },
+            {
+              title: "Loiseau Generator",
+              href: "/claude-code/applications/logiciels/loiseau-generator",
+              icon: FileCode2,
+              description: "Navigateur — documents Word mis en page"
+            },
+            {
+              title: "Stats DataGouv",
+              href: "/claude-code/applications/logiciels/stats-datagouv",
+              icon: FileCode2,
+              description: "Navigateur — exercices de stats sur données réelles"
+            },
+            {
+              title: "Générateur H5P / Moodle",
+              href: "/claude-code/applications/logiciels/h5p-moodle",
+              icon: FileCode2,
+              description: "Navigateur — activités interactives pour Moodle"
+            },
+          ]
+        },
+        {
+          title: "Gérer la classe",
+          isCategory: true,
+          icon: GraduationCap,
+          description: "Plan de classe, rôles, rythme de la séance",
+          presentations: [
+            {
+              title: "Gestion de classes",
+              href: "/claude-code/applications/logiciels/gestion-classes",
+              icon: Monitor,
+              description: "Windows — plan de classe et rôles des élèves"
+            },
+            {
+              title: "Activité-Timer",
+              href: "/claude-code/applications/logiciels/activite-timer",
+              icon: Monitor,
+              description: "Windows — minuteur à projeter en classe"
+            },
+          ]
+        },
+        {
+          title: "Ressources prêtes à l'emploi",
+          isCategory: true,
+          icon: Video,
+          description: "Capsules vidéo et fiches à projeter",
+          presentations: [
+            {
+              title: "Tuiles algébriques",
+              href: "/claude-code/applications/logiciels/tuiles-algebriques",
+              icon: FileVideo2,
+              description: "Dix capsules et dix fiches"
+            },
+          ]
         },
       ]
     },

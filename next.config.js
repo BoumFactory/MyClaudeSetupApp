@@ -62,11 +62,25 @@ const nextConfig = {
         ],
       },
       {
-        source: '/(.*)',
+        // Relais vidéo des tuiles algébriques : la page téléchargée, ouverte en
+        // fichier local, l'intègre pour lire YouTube. Il doit donc échapper à
+        // X-Frame-Options (exclu de la règle générale ci-dessous).
+        source: '/tuiles-algebriques/lecteur.html',
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://img.youtube.com https://i.ytimg.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; connect-src 'self' https://cdn.jsdelivr.net; frame-src 'self' blob: https://www.youtube-nocookie.com https://www.youtube.com; media-src 'self'"
+            value: "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; frame-src https://www.youtube-nocookie.com"
+          },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        ],
+      },
+      {
+        source: '/((?!tuiles-algebriques/lecteur\\.html$).*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://img.youtube.com https://i.ytimg.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://cdn.jsdelivr.net; connect-src 'self' https://cdn.jsdelivr.net; frame-src 'self' blob: https://www.youtube-nocookie.com https://www.youtube.com; media-src 'self'"
           },
           {
             key: 'X-Frame-Options',

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Lecteur vidéo — Tuiles algébriques</title>
+<!-- Relais : la page des tuiles ouverte en fichier local (file://) n'a pas d'origine web,
+     et YouTube refuse alors de jouer (erreur 153). Elle charge donc ce relais, servi par
+     bfcours.dev, qui intègre la vidéo avec une vraie origine. -->
+<style>
+  html, body { margin: 0; height: 100%; background: #000; }
+  iframe { border: 0; width: 100%; height: 100%; display: block; }
+  p { color: #fff; font: 16px sans-serif; text-align: center; margin-top: 20%; }
+</style>
+</head>
+<body>
+<script>
+  var v = new URLSearchParams(location.search).get('v') || '';
+  if (/^[\w-]{11}$/.test(v)) {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + v + '?rel=0';
+    f.title = 'Vidéo';
+    f.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    document.body.appendChild(f);
+  } else {
+    document.body.innerHTML = '<p>Vidéo introuvable.</p>';
+  }
+</script>
+</body>
+</html>
