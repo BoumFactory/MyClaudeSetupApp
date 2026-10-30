@@ -5,7 +5,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Tuiles algébriques | Logiciels Enseignants",
-  description: "Dix capsules vidéo et dix fiches élève et professeur sur les tuiles algébriques, d'après MathBits.com",
+  description: "Dix capsules vidéo et dix fiches élève et professeur sur les tuiles algébriques, inspirées de Working with Algebra Tiles (MathBits.com)",
 }
 
 // Page statique public/tuiles-algebriques/index.html, produite par
@@ -22,9 +22,9 @@ const LIENS = [
     url: "https://mathsbot.com/manipulatives/tiles",
   },
   {
-    titre: "Working with Algebra Tiles (MathBits)",
-    texte: "La ressource d'origine de la série, en anglais.",
-    url: "https://mathbits.com/MathBits/AlgebraTiles/AlgebraTiles/AlgebraTiles.html",
+    titre: "MathBits.com",
+    texte: "Site de « Working with Algebra Tiles », la ressource en anglais qui a inspiré la série.",
+    url: "https://mathbits.com/",
   },
 ]
 
@@ -60,7 +60,9 @@ export default function TuilesAlgebriquesPage() {
           <div className="space-y-2">
             <h1 className="text-3xl font-bold">Tuiles algébriques</h1>
             <p className="text-muted-foreground leading-relaxed">
-              Dix capsules vidéo et dix fiches d&apos;activité, d&apos;après MathBits.com : fabriquer ses tuiles,
+              Dix capsules vidéo et dix fiches d&apos;activité, inspirées de « Working with Algebra Tiles » (
+              <a href={LIENS[1].url} target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:underline">MathBits.com</a>
+              ) : fabriquer ses tuiles,
               opérations sur les nombres relatifs, calcul littéral, équations et distributivité. Chaque fiche
               existe en version élève et professeur, imprimable en A4, avec le gabarit des tuiles à imprimer.
             </p>
