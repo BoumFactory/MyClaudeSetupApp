@@ -15,6 +15,19 @@ export const metadata: Metadata = {
 const PAGE = "/tuiles-algebriques/index.html"
 const PLAYLIST = "https://www.youtube.com/playlist?list=PLJTH_FcV6OCY"
 
+const LIENS = [
+  {
+    titre: "Tuiles virtuelles (Mathsbot)",
+    texte: "Manipuler et projeter les tuiles en ligne, sans matériel : pratique pour montrer les gestes à la classe.",
+    url: "https://mathsbot.com/manipulatives/tiles",
+  },
+  {
+    titre: "Working with Algebra Tiles (MathBits)",
+    texte: "La ressource d'origine de la série, en anglais.",
+    url: "https://mathbits.com/MathBits/AlgebraTiles/AlgebraTiles/AlgebraTiles.html",
+  },
+]
+
 const CAPSULES = [
   "Fabriquer ses tuiles",
   "Les pièces et la paire nulle",
@@ -109,6 +122,28 @@ export default function TuilesAlgebriquesPage() {
             )
           })}
         </ol>
+      </section>
+
+      <section className="glass-card rounded-xl p-6 space-y-3">
+        <h2 className="text-xl font-semibold">Pour aller plus loin</h2>
+        <ul className="space-y-3">
+          {LIENS.map((l) => (
+            <li key={l.url}>
+              <a
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 text-muted-foreground hover:text-amber-300 transition-colors"
+              >
+                <ExternalLink className="w-4 h-4 mt-1 flex-shrink-0 text-amber-400" />
+                <span>
+                  <span className="font-medium text-foreground group-hover:underline">{l.titre}</span>
+                  <span className="block text-sm">{l.texte}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   )
